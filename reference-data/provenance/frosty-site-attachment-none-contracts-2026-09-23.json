@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "title": "Attachment identity defaults and UI metadata contracts",
+  "buildBoundary": "Analyzer software contract; neutral identity defaults and UI metadata are not claims about in-game source mechanics.",
+  "sourceSite": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\attachments.json",
+    "sha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79"
+  },
+  "contracts": [
+    {
+      "sitePointer": "/BARRELS/0/pts",
+      "siteValue": 0,
+      "rowIdentity": "id:none",
+      "siteConsumer": "sim/loadout.js computeAttPts reads BARRELS[atts.barrel] through getAttPts; this data row is the site-side id:none sentinel.",
+      "status": "software-default"
+    },
+    {
+      "sitePointer": "/ERGOS/0/pts",
+      "siteValue": 0,
+      "rowIdentity": "id:none",
+      "siteConsumer": "sim/loadout.js attachmentOptions includes the none ergo option; computeAttPts adds the selected ergo pts.",
+      "status": "software-default"
+    },
+    {
+      "sitePointer": "/LASERS/0/pts",
+      "siteValue": 0,
+      "rowIdentity": "id:none",
+      "siteConsumer": "sim/loadout.js computeAttPts includes resolved rail-mount attachment costs; sim/loadout.js also creates synthetic None mount options.",
+      "status": "software-default"
+    },
+    {
+      "sitePointer": "/LIGHTS/0/pts",
+      "siteValue": 0,
+      "rowIdentity": "id:none",
+      "siteConsumer": "sim/loadout.js computeAttPts includes resolved rail-mount attachment costs; sim/loadout.js also creates synthetic None mount options.",
+      "status": "software-default"
+    },
+    {
+      "sitePointer": "/MUZZLES/0/pts",
+      "siteValue": 0,
+      "rowIdentity": "id:none",
+      "siteConsumer": "sim/loadout.js computeAttPts reads MUZZLES[atts.muzzle] through getAttPts.",
+      "status": "software-default"
+    },
+    {
+      "sitePointer": "/BARRELS/0/movingAdsSpreadTierMod",
+      "siteValue": 0,
+      "rowIdentity": "id:none",
+      "siteConsumer": "sim/applyAttachments.js sums barrel movingAdsSpreadTierMod with the other loadout modifiers and applies an override only when the sum is nonzero.",
+      "status": "software-neutral-default"
+    },
+    {
+      "sitePointer": "/LASERS/0/movingAdsSpreadTierMod",
+      "siteValue": 0,
+      "rowIdentity": "id:none",
+      "siteConsumer": "sim/applyAttachments.js sums the selected laser tier with grip, barrel and magazine shifts and applies a spread override only for a nonzero total.",
+      "status": "software-neutral-default"
+    },
+    {
+      "sitePointer": "/BARRELS/0/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "id:none",
+      "selectedWeaponChoices": 0,
+      "sourceCheck": "No selected site weapon choice in the exact attachment map.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/1/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "basic",
+      "selectedWeaponChoices": 55,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/2/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "short",
+      "selectedWeaponChoices": 29,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/3/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "extended",
+      "selectedWeaponChoices": 44,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/6/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "light",
+      "selectedWeaponChoices": 40,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/8/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "ext_light",
+      "selectedWeaponChoices": 1,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/9/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "short_light",
+      "selectedWeaponChoices": 1,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/10/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "vssm_suppressed",
+      "selectedWeaponChoices": 1,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/BARRELS/11/adsSpreadIncMult",
+      "siteValue": 1,
+      "rowIdentity": "vssm_suppressed_asm",
+      "selectedWeaponChoices": 1,
+      "sourceCheck": "No selector-bound GBM_Increase_ADS object in the reviewed exact current GS weapon settings records.",
+      "siteConsumer": "sim/applyAttachments.js defaults adsSpreadIncMult to 1 and applies spread changes only when a non-identity multiplier is present.",
+      "status": "software-identity-default"
+    },
+    {
+      "sitePointer": "/LIGHTS/1/noEffect",
+      "siteValue": true,
+      "rowIdentity": "ads_taclight",
+      "siteConsumer": "ui/loadout.js passes this metadata to the option renderer, which colors a noEffect option gray. It does not control the simulator.",
+      "status": "site-ui-metadata"
+    },
+    {
+      "sitePointer": "/LIGHTS/4/noEffect",
+      "siteValue": true,
+      "rowIdentity": "range_finder",
+      "siteConsumer": "ui/loadout.js passes this metadata to the option renderer, which colors a noEffect option gray. It does not control the simulator.",
+      "status": "site-ui-metadata"
+    }
+  ],
+  "limits": [
+    "These are site-side None choices, neutral model defaults, or UI-only metadata; they are not in-game attachment costs or modifier values.",
+    "BARRELS/0 has no selected weapon choices in the exact current site attachment map; its zero tier is not an attachment-source absence claim."
+  ],
+  "supportingEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-barrel-ads-spread-review-2026-09-23-v2.jsonl",
+      "sha256": "55599b4cb5d7e4ebdbb87f1c39c8ea7c7604922142262568b55211f624e03ff9",
+      "scope": "All 12 barrel ADS entries; nine identity default rows and three source-matched modifier groups."
+    }
+  ],
+  "inputs": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\loadout.js",
+      "sha256": "c81c3123813eb1f4d75b8ff3fd9db9863173352c06e47881752be6dc127bf563"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\applyAttachments.js",
+      "sha256": "8403b8dd30edb3c60b194021bf3a8e1f7b836553eb669af962603fcb27647a0d"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\ui\\loadout.js",
+      "sha256": "75268474030c0ef1f92fda20c213b46cd72e026880b59f72be45a934fdfd8dd8"
+    }
+  ]
+}

@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "build": "1.4.3.0",
+  "sourceInventory": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-inventory-v2-reload\\site-simulation-lines.jsonl",
+    "sha256": "517638cd307dbdd674b6e6300021b635af6136463b1562d6632b2acb5e747554",
+    "rows": 1582
+  },
+  "sourceLineComparisons": {
+    "mismatchCount": 0,
+    "verifiedMojibakeRepairs": 0,
+    "unexplainedMismatches": 0,
+    "mismatches": []
+  },
+  "numericClassification": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-inventory\\site-simulation-numeric-classification-2026-09-23.jsonl",
+    "sha256": "7348d371f538106b70ba774b5d9dcf16fb9f4c661222bb1e2c52a8508c92ac73",
+    "rows": 347
+  },
+  "numericCandidateTokens": 520,
+  "numericCandidateLineTokenMismatches": [],
+  "sources": {
+    "sim/applyAttachments.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\applyAttachments.js",
+      "sha256": "8403b8dd30edb3c60b194021bf3a8e1f7b836553eb669af962603fcb27647a0d",
+      "lines": 612
+    },
+    "sim/attachments.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\attachments.js",
+      "sha256": "e78a07420d70fe29dd2b241eb47fcafe0c49cadb339ee17297ed35fc6782b5af",
+      "lines": 22
+    },
+    "sim/ballistics.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\ballistics.js",
+      "sha256": "1e898ae51313f30863af2ccc78dee012041e92f5ba03548d14308e137c415d67",
+      "lines": 110
+    },
+    "sim/core.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\core.js",
+      "sha256": "fcb90a7e5eeaa0833cb9e0efde247a78a0db2f9b394785a51aeb9c81ae53720d",
+      "lines": 429
+    },
+    "sim/damage.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\damage.js",
+      "sha256": "3c5e0c645c1cc8abc7e34f74a7345d33b284bbda8247c6c3a5e8feafbd857e78",
+      "lines": 105
+    },
+    "sim/loadout.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\loadout.js",
+      "sha256": "c81c3123813eb1f4d75b8ff3fd9db9863173352c06e47881752be6dc127bf563",
+      "lines": 233
+    },
+    "sim/required-data.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\required-data.js",
+      "sha256": "6af219a5fdfc085c780783182740d3dfa9d396416fe018cafdfa30a3ed0b62ab",
+      "lines": 21
+    },
+    "sim/share-state.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\share-state.js",
+      "sha256": "53c46839d139d7b00f8a38544d02b22ef5021a2011d5a8a0d3343a45ac7afbf7",
+      "lines": 214
+    },
+    "sim/target.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\target.js",
+      "sha256": "2ab9e293115c4c59ed25cfaeddc6a94060cce1bcd5652fca885d4edbf7265f32",
+      "lines": 176
+    },
+    "sim/weapon-attributes.js": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\weapon-attributes.js",
+      "sha256": "687938a8fdc3ca25d3e6ea033ae7d78de23b3f4a34720ed823bec94b663ec5d1",
+      "lines": 152
+    }
+  },
+  "detail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-inventory-v2-reload\\site-simulation-line-review-2026-09-23.jsonl",
+    "sha256": "d3d2d55dde93ce0158ab1192ca791a3a0a7e480ab67b3514405f000c4ec72fc5",
+    "rows": 1582
+  },
+  "lineCounts": {
+    "module-dependency": 9,
+    "site-runtime-context": 36,
+    "project-display-model": 151,
+    "project-resolver": 209,
+    "project-implementation": 17,
+    "site-unit-conversion": 3,
+    "project-validation": 55,
+    "site-data-resolver": 130,
+    "site-resolver-rule": 391,
+    "site-source-candidate": 2,
+    "project-numerical-method": 21,
+    "model-equation": 271,
+    "project-model-parameter": 4,
+    "site-model-rule": 68,
+    "project-metric": 21,
+    "project-serialization": 194
+  },
+  "familyLineCounts": {
+    "module-wiring": 9,
+    "attachment-resolver-context-defaults": 14,
+    "velocity-display-epsilon": 1,
+    "velocity-display-rounding": 5,
+    "attachment-lookup": 3,
+    "object-property-guard": 3,
+    "draw-time-units": 3,
+    "draw-time-guard": 9,
+    "selector-index-validation": 3,
+    "tier-index-clamp": 10,
+    "draw-time-selection": 43,
+    "ammo-velocity-composition": 20,
+    "barrel-velocity-composition": 30,
+    "reload-timing-composition": 54,
+    "attachment-context-injection": 10,
+    "attachment-composition": 234,
+    "spotting-world-base": 1,
+    "spotting-minimap-base": 1,
+    "weapon-label-projection": 3,
+    "attachment-context": 8,
+    "ballistics-solver-controls": 2,
+    "projectile-model-guard": 5,
+    "level-flight-drag": 6,
+    "gravity-drag-derivative": 10,
+    "rk4-integrator": 18,
+    "trajectory-solver": 27,
+    "zeroing-solver": 18,
+    "simulation-context-defaults": 9,
+    "simulation-context-injection": 3,
+    "deterministic-rng": 14,
+    "recoil-direction-sampling": 3,
+    "recoil-spread-integration-and-display": 4,
+    "recoil-recovery": 26,
+    "recoil-input-selection": 19,
+    "shot-cadence": 5,
+    "recoil-composition": 17,
+    "spread-distribution": 6,
+    "spread-input-selection": 21,
+    "fire-cadence": 20,
+    "spread-recovery-inputs": 18,
+    "spread-recovery": 11,
+    "spread-display-metric": 21,
+    "spread-recovery-and-simulation": 27,
+    "recoil-output": 52,
+    "simulation-input-guards": 18,
+    "body-zone-grouping": 1,
+    "damage-floating-point-tolerance": 1,
+    "hit-zone-and-ammo-inputs": 10,
+    "damage-input-guard": 4,
+    "damage-curve-interpolation": 13,
+    "damage-per-shot": 5,
+    "hit-zone-multiplier-selection": 5,
+    "shot-count-arithmetic": 19,
+    "shots-to-kill": 12,
+    "loadout-selection": 198,
+    "required-data-guards": 19,
+    "share-url-codec": 194,
+    "target-geometry-and-summary": 142,
+    "weapon-attributes": 66,
+    "attribute-recoil-inputs": 8,
+    "attribute-mobility-inputs": 11,
+    "precision-table-keys": 13,
+    "precision-table-selection": 17
+  },
+  "perFile": {
+    "sim/applyAttachments.js": {
+      "module-dependency": 4,
+      "site-runtime-context": 24,
+      "project-display-model": 9,
+      "project-resolver": 3,
+      "project-implementation": 3,
+      "site-unit-conversion": 3,
+      "project-validation": 9,
+      "site-data-resolver": 3,
+      "site-resolver-rule": 391,
+      "site-source-candidate": 2
+    },
+    "sim/attachments.js": {
+      "project-resolver": 8
+    },
+    "sim/ballistics.js": {
+      "project-numerical-method": 20,
+      "project-validation": 5,
+      "model-equation": 61
+    },
+    "sim/core.js": {
+      "module-dependency": 1,
+      "site-runtime-context": 12,
+      "project-implementation": 14,
+      "model-equation": 144,
+      "project-model-parameter": 4,
+      "site-data-resolver": 80,
+      "site-model-rule": 1,
+      "project-metric": 21,
+      "project-validation": 18
+    },
+    "sim/damage.js": {
+      "module-dependency": 1,
+      "site-model-rule": 50,
+      "project-numerical-method": 1,
+      "site-data-resolver": 15,
+      "project-validation": 4
+    },
+    "sim/loadout.js": {
+      "project-resolver": 198
+    },
+    "sim/required-data.js": {
+      "project-validation": 19
+    },
+    "sim/share-state.js": {
+      "project-serialization": 194
+    },
+    "sim/target.js": {
+      "project-display-model": 142
+    },
+    "sim/weapon-attributes.js": {
+      "module-dependency": 3,
+      "model-equation": 66,
+      "site-data-resolver": 32,
+      "site-model-rule": 17
+    }
+  },
+  "unclassifiedLines": 0,
+  "codeInventoryReviewComplete": true,
+  "modelFamilies": [
+    "ballistics",
+    "recoil-recovery",
+    "spread-recovery",
+    "spread-distribution",
+    "fire-cadence",
+    "damage",
+    "attachment-composition",
+    "weapon-attributes"
+  ],
+  "spottingBaseComparison": {
+    "siteLiterals": {
+      "worldMeters": 54,
+      "minimapMeters": 150
+    },
+    "sourceFields": {
+      "world": "WB Field_5ebda408/Field_9918e670",
+      "minimap": "WB Field_5ebda408/Field_31022dc5"
+    },
+    "siteWeaponDistribution": {
+      "match54_150": 61,
+      "m45a1": [
+        27,
+        64.285713
+      ],
+      "vz61": [
+        27,
+        64.285713
+      ]
+    },
+    "referenceOnly": {
+      "KSG": [
+        75,
+        150
+      ],
+      "includedInMultiplayerCount": false
+    },
+    "receipt": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-spotting-2026-09-23.json",
+      "sha256": "be1102b916ec436dd9c49634e7ab7c207212eafa8df6a51c93070d3b248f762c"
+    },
+    "rawEvidence": {
+      "baseTrace": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\spotting-base-range-trace-2026-09-23.json",
+        "sha256": "3ff76eb996bc5ed7a0e7805b9727ecbaeac6cdbe47caf56490ae5a960c8f4d48"
+      },
+      "fieldBindings": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-spotting-field-bindings-2026-09-23.jsonl",
+        "sha256": "5a2a1311e1967b0a989dc4ae23769ac9f3a530e5622a72482a1b496df5fa3efb"
+      },
+      "audit": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-spotting-audit-2026-09-23.json",
+        "sha256": "05dff67a7640d2fb4df69a1eaea8d35058484a5ac1c19a74689de2a289748e2a"
+      },
+      "selectedChoices": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-spotting-runtime-choices-2026-09-23.json",
+        "sha256": "3ce4baafccc1c911ae181d422faf1ee019339e8ad7cf241b274274683dd310a8"
+      }
+    },
+    "status": "mixed source candidate and site hardcode; no correction proposed until native WB consumption and modifier composition are resolved."
+  },
+  "limits": [
+    "Reviewed code documents the Analyzer implementation, not native Frosty consumption.",
+    "Source operand evidence is a separate ledger; equation/function behavior remains a site model unless a specific runtime record proves it.",
+    "No game-process or production behavior was changed."
+  ]
+}

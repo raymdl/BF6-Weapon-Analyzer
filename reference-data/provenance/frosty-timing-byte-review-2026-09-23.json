@@ -1,0 +1,116 @@
+{
+  "date": "2026-09-23",
+  "status": "reviewed byte locations; runtime semantics unresolved",
+  "sourceBuild": "1.4.3.0 release capture",
+  "archiveHead": 4892017,
+  "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+  "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\M4A1_WB.ebx",
+  "rawSha256": "622dff6f877e798cd5d38a6bb5cf09b0b19a44dfaf81b2d43a270b1c1b7e1ac9",
+  "fileGuid": "8ffbc2c5-12a3-43f9-9e3d-8582e49e8c34",
+  "objectGuid": null,
+  "objectGuidLimit": "Non-exported object has no serialized exported GUID; identify by object index and absolute offset.",
+  "objectIndex": 2,
+  "objectByteOffset": 928,
+  "typeKey": "503dde81ed5cf4d154423f8a5b58e439",
+  "selectedWBDescriptorIndex": 515,
+  "fireLogicFieldOffset": 496,
+  "fireLogicDescriptorIndex": 539,
+  "frameDuration": {
+    "field": "Field_f8822efa/Field_440ed7fa",
+    "absoluteByteOffset": 1676,
+    "bytesHex": "4c37893d",
+    "float32": 0.06700000166893005
+  },
+  "reloadArray": {
+    "field": "Field_f8822efa/Field_d15a0c1c",
+    "relativePointerByteOffset": 1680,
+    "relativePointerValue": 14728,
+    "descriptorIndex": 544,
+    "elementSize": 56,
+    "entries": [
+      {
+        "index": 0,
+        "baseByteOffset": 16408,
+        "values": [
+          {
+            "field": "Field_9c1e1476",
+            "absoluteByteOffset": 16420,
+            "bytesHex": "f6281c3f",
+            "float32": 0.6100000143051147
+          },
+          {
+            "field": "Field_c0c7c72f",
+            "absoluteByteOffset": 16428,
+            "bytesHex": "00000000",
+            "float32": 0.0
+          },
+          {
+            "field": "Field_85ff24a0",
+            "absoluteByteOffset": 16436,
+            "bytesHex": "00000000",
+            "float32": 0.0
+          },
+          {
+            "field": "Field_fc66e75e",
+            "absoluteByteOffset": 16440,
+            "bytesHex": "9a990940",
+            "float32": 2.1500000953674316
+          },
+          {
+            "field": "Field_b480c17a",
+            "absoluteByteOffset": 16444,
+            "bytesHex": "00000000",
+            "float32": 0.0
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "baseByteOffset": 16464,
+        "values": [
+          {
+            "field": "Field_9c1e1476",
+            "absoluteByteOffset": 16476,
+            "bytesHex": "713d4a3f",
+            "float32": 0.7900000214576721
+          },
+          {
+            "field": "Field_c0c7c72f",
+            "absoluteByteOffset": 16484,
+            "bytesHex": "00000000",
+            "float32": 0.0
+          },
+          {
+            "field": "Field_85ff24a0",
+            "absoluteByteOffset": 16492,
+            "bytesHex": "75932840",
+            "float32": 2.634000062942505
+          },
+          {
+            "field": "Field_fc66e75e",
+            "absoluteByteOffset": 16496,
+            "bytesHex": "75932840",
+            "float32": 2.634000062942505
+          },
+          {
+            "field": "Field_b480c17a",
+            "absoluteByteOffset": 16500,
+            "bytesHex": "00000000",
+            "float32": 0.0
+          }
+        ]
+      }
+    ]
+  },
+  "layoutReview": {
+    "classCount": 9513,
+    "uniqueTypeKeys": 9513,
+    "duplicateNameCount": 803,
+    "conclusion": "The decoder marks duplicated name hashes, including nested types. This descriptor set has unique type keys; the selected top-level key and nested descriptor index are deterministic. Different same-name layouts exist, so retain current warnings until the earlier XML mismatches and layout dependencies are reviewed. No warning removed."
+  },
+  "reproduce": "python scripts/frosty-ebx-decode.py --descriptors \"../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors.ebx\" --ebx \"../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB.ebx\" --out <new-file.json>; verify listed bytes with Python struct.unpack_from(\"<f\", Path(rawFile).read_bytes(), absoluteByteOffset).",
+  "limits": [
+    "One representative offset audit; not a complete layout validation.",
+    "Scalar bytes and source labels do not establish timing composition or active gameplay."
+  ]
+}

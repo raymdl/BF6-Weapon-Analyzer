@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "title": "Grip tier and sight effect-flag source review",
+  "build": {
+    "label": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": {
+    "siteLeaves": 167,
+    "gripLeaves": 162,
+    "sightNoEffectLeaves": 5,
+    "siteDataSha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79"
+  },
+  "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-grips-sights-effect-pending-2026-09-23.json",
+  "detailSha256": "45977349d5a4e32aa4d11669eda3063fc228f1608fcacdc5298b51641bf50dd0",
+  "detailBytes": 4267693,
+  "findings": [
+    {
+      "leafGroups": [
+        "adsRecoilTierMod",
+        "hipRecoilTierMod",
+        "movingAdsSpreadTierMod",
+        "adsTimeTierMod"
+      ],
+      "result": "Selector graph compared across mapped current site choices. Direct operands byte-verified where available; weapon-specific frostyModifiers applied before comparing global values. Outlier qd_grip_pod source tier 3 overrides for brod3, ef88, m16a4, rpk74m, vssm match the site. slim_angled_sr source -1 overrides for l115, miniscout, psr, sv98 match the site."
+    },
+    {
+      "sitePath": "/GRIPS/48/hipSpreadTierMod",
+      "siteValue": -2,
+      "source": "GDM HipDispersion field Class_743a3ce0/Field_9540bd8e/Struct_d204f959/Field_4692836a; signed int +2 at descriptor-derived byte offset 96 (02000000); raw asset sha256 1c2ecf2174b4664b17606af69b3df99417655b052e97bd5671f974ee9c9cedf8",
+      "result": "18 selected bindings match after the documented site sign inversion."
+    },
+    {
+      "sitePath": "/GRIPS/*/noEffect and /SIGHTS/1-5/noEffect",
+      "result": "Nine true site UI flags; ui/loadout.js greys options. No direct Frosty boolean binding. This does not establish zero gameplay effect."
+    },
+    {
+      "sitePath": "/GRIPS/*/pts, adsTimeTierMod",
+      "result": "Neutral none sentinel plus VSSM-suffixed catalog IDs have no current mapped site selector; no source-based numeric claim."
+    },
+    {
+      "sitePath": "/GRIPS/17/frostyModifiers/ks18k/movingAdsSpreadTierMod",
+      "siteValue": 0,
+      "source": "The GDM_Array_ADSMoveDispersion_BTM_M10 tier is -1 at descriptor-derived offset 96 (ffffffff), but the KS18K selector binds under GS Class_539cff9b/Field_b30a73ed/member[Index=7]/Struct_a92e7ee4. This is distinct from moving-ADS Field_2ffeb6ac/Struct_28529b7f.",
+      "result": "Do not compare this source value to site movingAdsSpreadTierMod. Keep site value 0; no source mismatch established.",
+      "runtimeEvidence": "Twelve ADS-indicator captures in ks18k-ads-indicator-2026-09-21.json show Slim Angled matching no grip within one pixel, with and without Violet.",
+      "uncertainty": "The SDK proves distinct array types but does not name Field_b30a73ed runtime semantics. Capture pixels do not establish exact pellet distribution or native collection semantics."
+    },
+    {
+      "sourceAudit": "Current 1.4.3.0 selected site-visible grip choices were rechecked via exact WPM selector GUIDs in current GS XML: 535 ADSMove bindings in Field_2ffeb6ac/Struct_28529b7f, 9 ADSMove bindings in Field_b30a73ed/Struct_a92e7ee4, and 151 hip-dispersion bindings in Field_b53510be/Struct_039fa9f3. The 2026-09-06 broader full-pass counts (548/9/186) are historical context only."
+    }
+  ],
+  "remainingUncertainty": [
+    "Byte-backed source operands show field values and selected asset routes, not multiplayer runtime activation or composition.",
+    "Where the selector route has no direct scalar for a modeled leaf, retain the exact per-leaf status in the external ledger; absence of a matching scalar is not proof of runtime absence.",
+    "17 of 167 leaves use per-weapon frostyModifiers; comparisons apply effective override values."
+  ],
+  "overallMismatchCount": 0,
+  "mismatchPointers": [],
+  "evidenceLimits": [
+    "Descriptor-derived EBX bytes validate stored fields, not runtime consumption.",
+    "Selector presence does not prove multiplayer activation.",
+    "noEffect is an Analyzer UI flag, not a Frosty boolean or proof of no gameplay effect.",
+    "Suffixed VSSM ids without site availability are not inferred from names.",
+    "Field_b30a73ed runtime semantics remain unknown. The 12-frame/condition indicator evidence supports retaining the site zero but cannot name the native array target."
+  ],
+  "ownerCollectionEvidence": {
+    "fieldMapSha256": "16dc7bec87848dcf71f156c2c250830c9d14a2228f047efa5395e2e258f87050",
+    "attachmentsDocSha256": "59b442cb1669847c1ce687efa4b138c3fac1839cc062b67d39e5d0ee670c0d56",
+    "adsIndicatorEvidence": "reference-data/provenance/ks18k-ads-indicator-2026-09-21.json",
+    "adsIndicatorSha256": "4d4d86605b3b9ab1cd76fc1e7065052335b9e88b93374104d20b04045a431dc7",
+    "currentGsLedgerSha256": "269fe0c8c20030b5693805477b5d57c2c65761df7659e42ff3c598da2d8e880e",
+    "currentNoDirectReviewSha256": "b619a4fb332edf2f63af8ebfa724baa41ab80c0991c8cbf60c9386c5e33111ae"
+  },
+  "currentOwnerBindingAudit": {
+    "report": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-current-grip-gdm-owner-bindings-2026-09-23.json",
+    "sha256": "269fe0c8c20030b5693805477b5d57c2c65761df7659e42ff3c598da2d8e880e",
+    "bindingRows": 695,
+    "countsByOwnerStruct": {
+      "Field_2ffeb6ac/Struct_28529b7f": 535,
+      "Field_b53510be/Struct_039fa9f3": 151,
+      "Field_b30a73ed/Struct_a92e7ee4": 9
+    },
+    "historical2026_09_06Counts": {
+      "Field_2ffeb6ac/Struct_28529b7f": 548,
+      "Field_b30a73ed/Struct_a92e7ee4": 9,
+      "Field_b53510be/Struct_039fa9f3": 186
+    },
+    "note": "Historical pass counts are explicitly not current-build selected-site counts."
+  },
+  "currentDirectScalarRouteReview": {
+    "report": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-grip-current-gs-no-direct-scalar-review-2026-09-23.json",
+    "sha256": "b619a4fb332edf2f63af8ebfa724baa41ab80c0991c8cbf60c9386c5e33111ae",
+    "counts": {
+      "movingAdsSpreadTierMod|no expected class binding in current GS for exact source attachment/WPM selector": 276,
+      "adsRecoilTierMod|no expected class binding in current GS for exact source attachment/WPM selector": 116,
+      "movingAdsSpreadTierMod|expected class binding found": 6
+    },
+    "interpretation": [
+      "No expected GRM_Recoil current GS route in 116 choices marked missing direct ADS recoil scalar.",
+      "No expected GDM_Array_ADSMoveDispersion current GS route in 276 choices marked missing direct moving-spread scalar.",
+      "Six expected GDM routes were found and are already byte-sourced effective per-weapon matches for L115, Mini Scout and Interdictor.",
+      "No runtime-zero inference is made from a missing GS route."
+    ]
+  }
+}

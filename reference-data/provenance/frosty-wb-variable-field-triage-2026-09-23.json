@@ -1,0 +1,2128 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-23",
+  "build": {
+    "head": 4892017,
+    "rawFieldInventory": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-fields.jsonl",
+    "rawFieldInventorySha256": "6040e4633851c6d796b4fed231da097f63d45ca6da2e8a79333c9e1ebfb5783a",
+    "registryBindingsSha256": "d80a04a6d780e88f4b58917b216ab449bc104a080ebc248cb6a48d11a3718a31",
+    "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+  },
+  "scope": "The listed WB field candidates and named render sibling only; exact Analyzer weapon crosswalk from roster roots internalId/siteIdentity. Source capture presence is not runtime proof.",
+  "siteFileHashes": {
+    "data/weapons.json": "a7831165561b9fcb260900bc88b23e3109935cc7f7254f9f24348104c6020dde",
+    "data/ammo.json": "a43307df41f519dc8c6da5e9f3c50553b0782929c2dd333687eea3b7b6703027",
+    "sim/applyAttachments.js": "8403b8dd30edb3c60b194021bf3a8e1f7b836553eb669af962603fcb27647a0d",
+    "sim/core.js": "fcb90a7e5eeaa0833cb9e0efde247a78a0db2f9b394785a51aeb9c81ae53720d",
+    "ui/app.js": "71df01c7d686082a4df3b955bc2ebccbd6ac907bce7623aa81c1d90a0ad8f70f",
+    "reference-data/provenance/frosty-audit-roster-2026-09-23.json": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32",
+    "reference-data/provenance/frosty-weapon-identities.json": "eb08a671dff2756dc8d65ae9b15927e30a46c983e6c55d51cf02f0d9be7a7711"
+  },
+  "fields": [
+    {
+      "fieldHash": "Field_f8822efa",
+      "candidateOwner": "Class_35259f6b",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 6684,
+      "typeCounts": {
+        "float": 3687,
+        "bool": 2205,
+        "int": 792
+      },
+      "distinctValueCount": 345,
+      "valueDistribution": null,
+      "frequentValues": [
+        [
+          "0.0",
+          1568
+        ],
+        [
+          "false",
+          1504
+        ],
+        [
+          "true",
+          701
+        ],
+        [
+          "1.0",
+          575
+        ],
+        [
+          "0",
+          241
+        ],
+        [
+          "0.1",
+          211
+        ],
+        [
+          "2",
+          156
+        ],
+        [
+          "1",
+          134
+        ],
+        [
+          "2.0",
+          71
+        ],
+        [
+          "0.067",
+          71
+        ],
+        [
+          "10.0",
+          64
+        ],
+        [
+          "1018135856",
+          63
+        ],
+        [
+          "1131457753",
+          63
+        ],
+        [
+          "0.95",
+          63
+        ],
+        [
+          "1200.0",
+          63
+        ],
+        [
+          "0.5",
+          56
+        ],
+        [
+          "-1145593149",
+          53
+        ],
+        [
+          "61",
+          25
+        ],
+        [
+          "399.998993",
+          25
+        ],
+        [
+          "299.998993",
+          24
+        ]
+      ],
+      "numericRange": [
+        -1341426433.0,
+        1131457753.0
+      ],
+      "pointerVariants": {
+        "/Field_f8822efa/Field_9b93601b/Field_151d848e": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_ec195c9b": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_48aee273": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_d42f669a": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_a43c6019": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_c034ecbf": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_648eb569": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_1a60bc55": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_53ac118d": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_2b7f6452": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_349aeb20": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_f71015e1": 63,
+        "/Field_f8822efa/Field_9b93601b/Field_cc8fa565": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_caf2ace0": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_19b2eed9": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_a1abbce8": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_2084d4bf": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_21f2d4ee": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_1c57216a": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_68c40b57": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_dbfa8aaf": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_168e57d5": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_65310f94": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_c2b88435": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_85df0c4a": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_a60870ff": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_3ff462cc": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_9596ab2d": 63,
+        "/Field_f8822efa/Field_eebe0fd8/Field_7e9e4ae5": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_e46be715": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_5e333fc7": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_f136c888": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_4bbdcba4": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_7c079e39": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_b9c1162b": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_91121984": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_0d926433": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_a5b3b3b5": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_9bdfb218": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_123054e6": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_3d8587e3": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_9ee55a42": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_320d378d": 63,
+        "/Field_f8822efa/Field_c5d1c8fe/Field_23637942": 63,
+        "/Field_f8822efa/Field_8705f422": 63,
+        "/Field_f8822efa/Field_bf023fd1": 63,
+        "/Field_f8822efa/Field_5dff15bc": 63,
+        "/Field_f8822efa/Field_b0a854aa": 63,
+        "/Field_f8822efa/Field_c6bb7e57": 63,
+        "/Field_f8822efa/Field_14c4a054": 63,
+        "/Field_f8822efa/Field_5bd8006c": 63,
+        "/Field_f8822efa/Field_be31b12d": 63,
+        "/Field_f8822efa/Field_2320e742": 63,
+        "/Field_f8822efa/Field_ae0dda32": 63,
+        "/Field_f8822efa/Field_e70158eb": 63,
+        "/Field_f8822efa/Field_f5b71617": 63,
+        "/Field_f8822efa/Field_4417d15d": 63,
+        "/Field_f8822efa/Field_6a91edad": 63,
+        "/Field_f8822efa/Field_0be6cb7f": 63,
+        "/Field_f8822efa/Field_736b11a7": 63,
+        "/Field_f8822efa/Field_6fc68886": 63,
+        "/Field_f8822efa/Field_52a8ad43": 63,
+        "/Field_f8822efa/Field_802ac8be": 63,
+        "/Field_f8822efa/Field_42cb5986": 63,
+        "/Field_f8822efa/Field_5553b1f4": 63,
+        "/Field_f8822efa/Field_16e6fa59": 63,
+        "/Field_f8822efa/Field_2d3be104": 63,
+        "/Field_f8822efa/Field_440ed7fa": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_c59cc6a8": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_82265a82": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_6e081af4": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_9c1e1476": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_1c533b56": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_c0c7c72f": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_27b15985": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_85ff24a0": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_fc66e75e": 63,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_b480c17a": 63,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_c59cc6a8": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_82265a82": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_6e081af4": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_9c1e1476": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_1c533b56": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_c0c7c72f": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_27b15985": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_85ff24a0": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_fc66e75e": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_b480c17a": 61,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_dc244b57/0": 57,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_dc244b57/1": 57,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_dc244b57/2": 57,
+        "/Field_f8822efa/Field_0fb2d151": 63,
+        "/Field_f8822efa/Field_5a2b8911": 63,
+        "/Field_f8822efa/Field_02c2a4b4": 63,
+        "/Field_f8822efa/Field_bd35a8f3": 63,
+        "/Field_f8822efa/Field_62b62eb1": 63,
+        "/Field_f8822efa/Field_28bb69b0": 63,
+        "/Field_f8822efa/Field_db669b42": 63,
+        "/Field_f8822efa/Field_dbfce517": 63,
+        "/Field_f8822efa/Field_71788932": 63,
+        "/Field_f8822efa/Field_6aba2e11": 63,
+        "/Field_f8822efa/Field_9de091c4": 63,
+        "/Field_f8822efa/Field_99a33446": 63,
+        "/Field_f8822efa/Field_059e5549": 63,
+        "/Field_f8822efa/Field_66679eef": 63,
+        "/Field_f8822efa/Field_9b956c3d/0": 36,
+        "/Field_f8822efa/Field_9b956c3d/1": 6,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_dc244b57/3": 35,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_dc244b57/4": 15,
+        "/Field_f8822efa/Field_d15a0c1c/1/Field_dc244b57/5": 6,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_dc244b57/0": 2,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_dc244b57/1": 2,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_dc244b57/2": 2,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_dc244b57/3": 2,
+        "/Field_f8822efa/Field_d15a0c1c/0/Field_dc244b57/4": 1
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "Contains registry-bound RateOfFire / ReloadInfoArray inputs already consumed by site RPM and reload; this is a parent container, not one scalar."
+    },
+    {
+      "fieldHash": "Field_16e6fa59",
+      "candidateOwner": "Class_35259f6b",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 63,
+      "typeCounts": {
+        "int": 63
+      },
+      "distinctValueCount": 4,
+      "valueDistribution": {
+        "0": 14,
+        "1": 8,
+        "2": 40,
+        "3": 1
+      },
+      "frequentValues": [
+        [
+          "2",
+          40
+        ],
+        [
+          "0",
+          14
+        ],
+        [
+          "1",
+          8
+        ],
+        [
+          "3",
+          1
+        ]
+      ],
+      "numericRange": [
+        0.0,
+        3.0
+      ],
+      "pointerVariants": {
+        "/Field_f8822efa/Field_16e6fa59": 63
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "Correlates exactly with site fireMode on all 63 exact-crosswalk weapons under candidate 0=semi, 1=bolt/pump, 2=auto, 3=burst; impacts displayed site fire-mode label if validated. Preserve as candidate enum, not engine-confirmed name.",
+      "rawEvidenceSamples": [
+        {
+          "weapon": "185KSK",
+          "pointer": "/Field_f8822efa/Field_16e6fa59"
+        },
+        {
+          "weapon": "M16A3",
+          "pointer": "/Field_f8822efa/Field_16e6fa59"
+        }
+      ]
+    },
+    {
+      "fieldHash": "Field_4cc9e2ed",
+      "candidateOwner": "Class_35259f6b",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 1764,
+      "typeCounts": {
+        "int": 756,
+        "bool": 567,
+        "float": 441
+      },
+      "distinctValueCount": 34,
+      "valueDistribution": null,
+      "frequentValues": [
+        [
+          "false",
+          378
+        ],
+        [
+          "-1",
+          312
+        ],
+        [
+          "1.0",
+          207
+        ],
+        [
+          "true",
+          189
+        ],
+        [
+          "0",
+          117
+        ],
+        [
+          "3",
+          92
+        ],
+        [
+          "1",
+          86
+        ],
+        [
+          "0.5",
+          72
+        ],
+        [
+          "5.0",
+          63
+        ],
+        [
+          "30.0",
+          36
+        ],
+        [
+          "10.0",
+          36
+        ],
+        [
+          "7",
+          29
+        ],
+        [
+          "0.0",
+          27
+        ],
+        [
+          "4",
+          25
+        ],
+        [
+          "31",
+          24
+        ],
+        [
+          "6",
+          10
+        ],
+        [
+          "8",
+          8
+        ],
+        [
+          "11",
+          8
+        ],
+        [
+          "2",
+          8
+        ],
+        [
+          "21",
+          8
+        ]
+      ],
+      "numericRange": [
+        -1.0,
+        100.0
+      ],
+      "pointerVariants": {
+        "/Field_4cc9e2ed/Field_7f22bfb4": 63,
+        "/Field_4cc9e2ed/Field_4614adfe": 63,
+        "/Field_4cc9e2ed/Field_5702ee70": 63,
+        "/Field_4cc9e2ed/Field_80a58418": 63,
+        "/Field_4cc9e2ed/Field_bd024e1d": 63,
+        "/Field_4cc9e2ed/Field_d3385e74": 63,
+        "/Field_4cc9e2ed/Field_507f1b88": 63,
+        "/Field_4cc9e2ed/Field_85952c69": 63,
+        "/Field_4cc9e2ed/Field_f91b80cb": 63,
+        "/Field_4cc9e2ed/Field_7909bca5": 63,
+        "/Field_4cc9e2ed/Field_7035fb55": 63,
+        "/Field_4cc9e2ed/Field_82c20082": 63,
+        "/Field_4cc9e2ed/Field_db4fa3c2": 63,
+        "/Field_4cc9e2ed/Field_fb100c14": 63,
+        "/Field_4cc9e2ed/Field_a8794741": 63,
+        "/Field_4cc9e2ed/Field_46afa73c": 63,
+        "/Field_4cc9e2ed/Field_2b213f7d/Field_043d7a08": 63,
+        "/Field_4cc9e2ed/Field_22486c02": 63,
+        "/Field_4cc9e2ed/Field_e08e1282": 63,
+        "/Field_4cc9e2ed/Field_1699a8cd": 63,
+        "/Field_4cc9e2ed/Field_f561f7dd": 63,
+        "/Field_4cc9e2ed/Field_4fcf051d": 63,
+        "/Field_4cc9e2ed/Field_8a3bda22": 63,
+        "/Field_4cc9e2ed/Field_0f0da05f": 63,
+        "/Field_4cc9e2ed/Field_1aacb519": 63,
+        "/Field_4cc9e2ed/Field_c2d54c7b": 63,
+        "/Field_4cc9e2ed/Field_719e605d": 63,
+        "/Field_4cc9e2ed/Field_b06210cc": 63
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "Its MagazineCapacity child is registry-bound and feeds site mag; other ammo children include NumberOfMagazines and reserve/replenishment inputs not shown by Analyzer."
+    },
+    {
+      "fieldHash": "Field_8a3bda22",
+      "candidateOwner": "Class_35259f6b",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 63,
+      "typeCounts": {
+        "int": 63
+      },
+      "distinctValueCount": 5,
+      "valueDistribution": {
+        "0": 27,
+        "1": 3,
+        "2": 4,
+        "3": 19,
+        "4": 10
+      },
+      "frequentValues": [
+        [
+          "0",
+          27
+        ],
+        [
+          "3",
+          19
+        ],
+        [
+          "4",
+          10
+        ],
+        [
+          "2",
+          4
+        ],
+        [
+          "1",
+          3
+        ]
+      ],
+      "numericRange": [
+        0.0,
+        4.0
+      ],
+      "pointerVariants": {
+        "/Field_4cc9e2ed/Field_8a3bda22": 63
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "Not linked to a displayed/proposed Analyzer value; park pending semantic name/runtime consumer.",
+      "rawEvidenceSamples": [
+        {
+          "weapon": "185KSK",
+          "pointer": "/Field_4cc9e2ed/Field_8a3bda22"
+        },
+        {
+          "weapon": "6P67",
+          "pointer": "/Field_4cc9e2ed/Field_8a3bda22"
+        }
+      ]
+    },
+    {
+      "fieldHash": "Field_7768ebf2",
+      "candidateOwner": "Class_76a3b0eb",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 196,
+      "typeCounts": {
+        "float": 196
+      },
+      "distinctValueCount": 25,
+      "valueDistribution": {
+        "18.0": 1,
+        "20.0": 2,
+        "22.0": 1,
+        "23.0": 1,
+        "24.0": 2,
+        "25.0": 1,
+        "26.0": 1,
+        "28.0": 6,
+        "29.0": 4,
+        "30.0": 5,
+        "32.0": 7,
+        "34.0": 2,
+        "35.0": 6,
+        "36.0": 1,
+        "37.0": 4,
+        "38.0": 3,
+        "39.0": 1,
+        "40.0": 5,
+        "42.0": 2,
+        "44.218929": 1,
+        "45.0": 5,
+        "48.0": 2,
+        "50.0": 3,
+        "55.0": 66,
+        "59.0": 64
+      },
+      "frequentValues": [
+        [
+          "55.0",
+          66
+        ],
+        [
+          "59.0",
+          64
+        ],
+        [
+          "32.0",
+          7
+        ],
+        [
+          "35.0",
+          6
+        ],
+        [
+          "28.0",
+          6
+        ],
+        [
+          "30.0",
+          5
+        ],
+        [
+          "40.0",
+          5
+        ],
+        [
+          "45.0",
+          5
+        ],
+        [
+          "29.0",
+          4
+        ],
+        [
+          "37.0",
+          4
+        ],
+        [
+          "38.0",
+          3
+        ],
+        [
+          "50.0",
+          3
+        ],
+        [
+          "20.0",
+          2
+        ],
+        [
+          "34.0",
+          2
+        ],
+        [
+          "24.0",
+          2
+        ],
+        [
+          "42.0",
+          2
+        ],
+        [
+          "48.0",
+          2
+        ],
+        [
+          "25.0",
+          1
+        ],
+        [
+          "39.0",
+          1
+        ],
+        [
+          "26.0",
+          1
+        ]
+      ],
+      "numericRange": [
+        18.0,
+        59.0
+      ],
+      "pointerVariants": {
+        "/Field_7768ebf2": 196
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "Presentation/render FOV; current site zoom/magnification uses optic zoom data. No Analyzer metric consumer found.",
+      "rawEvidenceSamples": [
+        {
+          "weapon": "185KSK",
+          "pointer": "/Field_7768ebf2"
+        },
+        {
+          "weapon": "Ultimax",
+          "pointer": "/Field_7768ebf2"
+        }
+      ]
+    },
+    {
+      "fieldHash": "Field_f2d603de",
+      "candidateOwner": "Class_76a3b0eb",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 17444,
+      "typeCounts": {
+        "float": 17052,
+        "bool": 196,
+        "int": 196
+      },
+      "distinctValueCount": 673,
+      "valueDistribution": null,
+      "frequentValues": [
+        [
+          "0.0",
+          4566
+        ],
+        [
+          "1.0",
+          1679
+        ],
+        [
+          "0.5",
+          1033
+        ],
+        [
+          "2.0",
+          719
+        ],
+        [
+          "0.2",
+          511
+        ],
+        [
+          "100.0",
+          511
+        ],
+        [
+          "0.001",
+          323
+        ],
+        [
+          "0.3",
+          321
+        ],
+        [
+          "0.1",
+          233
+        ],
+        [
+          "0.7",
+          229
+        ],
+        [
+          "3.0",
+          206
+        ],
+        [
+          "false",
+          196
+        ],
+        [
+          "0.01",
+          190
+        ],
+        [
+          "2",
+          177
+        ],
+        [
+          "0.14",
+          171
+        ],
+        [
+          "10.0",
+          160
+        ],
+        [
+          "6.0",
+          138
+        ],
+        [
+          "20.0",
+          124
+        ],
+        [
+          "0.06",
+          121
+        ],
+        [
+          "0.24",
+          115
+        ]
+      ],
+      "numericRange": [
+        -99.800003,
+        1200.0
+      ],
+      "pointerVariants": {
+        "/Field_f2d603de/Field_f00a5d84/Field_3901db14": 196,
+        "/Field_f2d603de/Field_f00a5d84/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_f00a5d84/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_a7afee83/Field_3901db14": 196,
+        "/Field_f2d603de/Field_a7afee83/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_a7afee83/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_436165e1/Field_3901db14": 196,
+        "/Field_f2d603de/Field_436165e1/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_436165e1/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_98405f44": 196,
+        "/Field_f2d603de/Field_6eb133f8/Field_3901db14": 196,
+        "/Field_f2d603de/Field_6eb133f8/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_6eb133f8/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_0e7b114c/Field_3901db14": 196,
+        "/Field_f2d603de/Field_0e7b114c/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_0e7b114c/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_aaa123d3/Field_3901db14": 196,
+        "/Field_f2d603de/Field_aaa123d3/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_aaa123d3/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_12335056/Field_3901db14": 196,
+        "/Field_f2d603de/Field_12335056/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_12335056/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_0f11e241/Field_3901db14": 196,
+        "/Field_f2d603de/Field_0f11e241/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_0f11e241/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_e785b372/Field_3901db14": 196,
+        "/Field_f2d603de/Field_e785b372/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_e785b372/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_3f5f0ea4/Field_3901db14": 196,
+        "/Field_f2d603de/Field_3f5f0ea4/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_3f5f0ea4/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_5c1b5593/Field_3901db14": 196,
+        "/Field_f2d603de/Field_5c1b5593/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_5c1b5593/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_5655cbbd/Field_3901db14": 196,
+        "/Field_f2d603de/Field_5655cbbd/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_5655cbbd/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_aadf6b56/Field_3901db14": 196,
+        "/Field_f2d603de/Field_aadf6b56/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_aadf6b56/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_7b2604d7": 196,
+        "/Field_f2d603de/Field_9d73a58d": 196,
+        "/Field_f2d603de/Field_7772811b/Field_3901db14": 196,
+        "/Field_f2d603de/Field_7772811b/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_7772811b/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_6d91bf2f": 196,
+        "/Field_f2d603de/Field_26faeb21": 196,
+        "/Field_f2d603de/Field_5d40c2d9/Field_3901db14": 196,
+        "/Field_f2d603de/Field_5d40c2d9/Field_42fc0f5e": 196,
+        "/Field_f2d603de/Field_5d40c2d9/Field_32a99b9c": 196,
+        "/Field_f2d603de/Field_0b895610": 196,
+        "/Field_f2d603de/Field_b5677f3e": 196,
+        "/Field_f2d603de/Field_425df981": 196,
+        "/Field_f2d603de/Field_5470cee8": 196,
+        "/Field_f2d603de/Field_eefb9add": 196,
+        "/Field_f2d603de/Field_e0d9c23c": 196,
+        "/Field_f2d603de/Field_63fa02c2": 196,
+        "/Field_f2d603de/Field_84215f7b": 196,
+        "/Field_f2d603de/Field_e1d8c5f8": 196,
+        "/Field_f2d603de/Field_93052b13": 196,
+        "/Field_f2d603de/Field_2abd11c6": 196,
+        "/Field_f2d603de/Field_c91d692b": 196,
+        "/Field_f2d603de/Field_fc4967c6": 196,
+        "/Field_f2d603de/Field_3ba2afc2": 196,
+        "/Field_f2d603de/Field_94ce6280": 196,
+        "/Field_f2d603de/Field_c65afe50": 196,
+        "/Field_f2d603de/Field_a732ab97": 196,
+        "/Field_f2d603de/Field_1982d3c1": 196,
+        "/Field_f2d603de/Field_c8a5cbe2": 196,
+        "/Field_f2d603de/Field_fa6b2996": 196,
+        "/Field_f2d603de/Field_9aab20d7": 196,
+        "/Field_f2d603de/Field_ab3ed539": 196,
+        "/Field_f2d603de/Field_9923928e": 196,
+        "/Field_f2d603de/Field_e3524e34": 196,
+        "/Field_f2d603de/Field_65f78a49": 196,
+        "/Field_f2d603de/Field_fc78c9a9": 196,
+        "/Field_f2d603de/Field_1dc89582": 196,
+        "/Field_f2d603de/Field_f950161d": 196,
+        "/Field_f2d603de/Field_87fe6c09": 196,
+        "/Field_f2d603de/Field_5ee83159": 196,
+        "/Field_f2d603de/Field_cf831aaf": 196,
+        "/Field_f2d603de/Field_0380d9e1": 196,
+        "/Field_f2d603de/Field_6ee9375e": 196,
+        "/Field_f2d603de/Field_0a0046dc": 196,
+        "/Field_f2d603de/Field_0bb0be2c": 196,
+        "/Field_f2d603de/Field_334b03c0": 196,
+        "/Field_f2d603de/Field_dc7538cf": 196,
+        "/Field_f2d603de/Field_1ffc99e6": 196,
+        "/Field_f2d603de/Field_31e7f780": 196
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "Presentation/render candidate. No site consumer found; do not call cosmetic absent runtime proof."
+    },
+    {
+      "fieldHash": "Field_5d05d9dc",
+      "candidateOwner": "Class_542ac52c",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 63,
+      "typeCounts": {
+        "int": 63
+      },
+      "distinctValueCount": 10,
+      "valueDistribution": {
+        "12": 2,
+        "13": 1,
+        "16": 12,
+        "17": 4,
+        "18": 11,
+        "19": 8,
+        "20": 10,
+        "7": 2,
+        "8": 7,
+        "9": 6
+      },
+      "frequentValues": [
+        [
+          "16",
+          12
+        ],
+        [
+          "18",
+          11
+        ],
+        [
+          "20",
+          10
+        ],
+        [
+          "19",
+          8
+        ],
+        [
+          "8",
+          7
+        ],
+        [
+          "9",
+          6
+        ],
+        [
+          "17",
+          4
+        ],
+        [
+          "7",
+          2
+        ],
+        [
+          "12",
+          2
+        ],
+        [
+          "13",
+          1
+        ]
+      ],
+      "numericRange": [
+        7.0,
+        20.0
+      ],
+      "pointerVariants": {
+        "/Field_5d05d9dc": 63
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "No direct site data or sim consumer found; park as non-output candidate, not cosmetic.",
+      "rawEvidenceSamples": [
+        {
+          "weapon": "185KSK",
+          "pointer": "/Field_5d05d9dc"
+        },
+        {
+          "weapon": "6P67",
+          "pointer": "/Field_5d05d9dc"
+        },
+        {
+          "weapon": "ARADMR",
+          "pointer": "/Field_5d05d9dc"
+        }
+      ]
+    },
+    {
+      "fieldHash": "Field_668292c7",
+      "candidateOwner": "Class_542ac52c",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 63,
+      "typeCounts": {
+        "int": 63
+      },
+      "distinctValueCount": 5,
+      "valueDistribution": {
+        "0": 33,
+        "1": 6,
+        "4": 3,
+        "5": 9,
+        "7": 12
+      },
+      "frequentValues": [
+        [
+          "0",
+          33
+        ],
+        [
+          "7",
+          12
+        ],
+        [
+          "5",
+          9
+        ],
+        [
+          "1",
+          6
+        ],
+        [
+          "4",
+          3
+        ]
+      ],
+      "numericRange": [
+        0.0,
+        7.0
+      ],
+      "pointerVariants": {
+        "/Field_668292c7": 63
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "No direct site data or sim consumer found; park as non-output candidate, not cosmetic.",
+      "rawEvidenceSamples": [
+        {
+          "weapon": "185KSK",
+          "pointer": "/Field_668292c7"
+        },
+        {
+          "weapon": "ARADMR",
+          "pointer": "/Field_668292c7"
+        }
+      ]
+    },
+    {
+      "fieldHash": "Field_8ff6f90f",
+      "candidateOwner": "Class_542ac52c",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 63,
+      "typeCounts": {
+        "float": 63
+      },
+      "distinctValueCount": 16,
+      "valueDistribution": {
+        "0.95": 1,
+        "0.96": 1,
+        "1.0": 22,
+        "1.03": 16,
+        "1.05": 3,
+        "1.15": 1,
+        "1.2": 2,
+        "1.5": 2,
+        "1.52": 1,
+        "1.6": 1,
+        "1.667": 2,
+        "1.75": 1,
+        "1.8": 1,
+        "2.2": 1,
+        "2.25": 7,
+        "2.3": 1
+      },
+      "frequentValues": [
+        [
+          "1.0",
+          22
+        ],
+        [
+          "1.03",
+          16
+        ],
+        [
+          "2.25",
+          7
+        ],
+        [
+          "1.05",
+          3
+        ],
+        [
+          "1.2",
+          2
+        ],
+        [
+          "1.5",
+          2
+        ],
+        [
+          "1.667",
+          2
+        ],
+        [
+          "1.15",
+          1
+        ],
+        [
+          "1.8",
+          1
+        ],
+        [
+          "1.6",
+          1
+        ],
+        [
+          "0.96",
+          1
+        ],
+        [
+          "0.95",
+          1
+        ],
+        [
+          "1.52",
+          1
+        ],
+        [
+          "2.2",
+          1
+        ],
+        [
+          "2.3",
+          1
+        ],
+        [
+          "1.75",
+          1
+        ]
+      ],
+      "numericRange": [
+        0.95,
+        2.3
+      ],
+      "pointerVariants": {
+        "/Field_8ff6f90f": 63
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "No direct site data or sim consumer found; park as non-output candidate, not cosmetic.",
+      "rawEvidenceSamples": [
+        {
+          "weapon": "185KSK",
+          "pointer": "/Field_8ff6f90f"
+        },
+        {
+          "weapon": "RPKM",
+          "pointer": "/Field_8ff6f90f"
+        },
+        {
+          "weapon": "Skorpion",
+          "pointer": "/Field_8ff6f90f"
+        }
+      ]
+    },
+    {
+      "fieldHash": "Field_e287c7f3",
+      "candidateOwner": "Class_542ac52c",
+      "siteWeaponsWithValues": 63,
+      "valueOccurrences": 63,
+      "typeCounts": {
+        "int": 63
+      },
+      "distinctValueCount": 63,
+      "valueDistribution": null,
+      "frequentValues": [
+        [
+          "62",
+          1
+        ],
+        [
+          "41",
+          1
+        ],
+        [
+          "45",
+          1
+        ],
+        [
+          "59",
+          1
+        ],
+        [
+          "39",
+          1
+        ],
+        [
+          "61",
+          1
+        ],
+        [
+          "94",
+          1
+        ],
+        [
+          "56",
+          1
+        ],
+        [
+          "133",
+          1
+        ],
+        [
+          "109",
+          1
+        ],
+        [
+          "136",
+          1
+        ],
+        [
+          "134",
+          1
+        ],
+        [
+          "74",
+          1
+        ],
+        [
+          "19",
+          1
+        ],
+        [
+          "44",
+          1
+        ],
+        [
+          "13",
+          1
+        ],
+        [
+          "47",
+          1
+        ],
+        [
+          "57",
+          1
+        ],
+        [
+          "130",
+          1
+        ],
+        [
+          "78",
+          1
+        ]
+      ],
+      "numericRange": [
+        7.0,
+        136.0
+      ],
+      "pointerVariants": {
+        "/Field_e287c7f3": 63
+      },
+      "varianceStatus": "varies",
+      "siteImpact": "No direct site data or sim consumer found; park as non-output candidate, not cosmetic.",
+      "rawEvidenceSamples": [
+        {
+          "weapon": "185KSK",
+          "pointer": "/Field_e287c7f3"
+        },
+        {
+          "weapon": "MP5MLI",
+          "pointer": "/Field_e287c7f3"
+        },
+        {
+          "weapon": "DesertTechHTI",
+          "pointer": "/Field_e287c7f3"
+        }
+      ]
+    }
+  ],
+  "directSiteSourceLinks": {
+    "rpm": {
+      "matchedSiteWeapons": 63,
+      "exactAgreementCount": 55,
+      "mismatches": [
+        {
+          "siteId": "m87a1",
+          "siteValue": 94.73654016716576,
+          "sourceValue": 1799.999023,
+          "equal": false
+        },
+        {
+          "siteId": "interdictor",
+          "siteValue": 31.914882299649403,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "l115",
+          "siteValue": 46.14231275806206,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "m2010esr",
+          "siteValue": 43.90240199281473,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "psr",
+          "siteValue": 38.663458649662005,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "miniscout",
+          "siteValue": 47.092969500363495,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "sv98",
+          "siteValue": 38.20751292717492,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "vssm",
+          "siteValue": 449.999,
+          "sourceValue": 799.999023,
+          "equal": false
+        }
+      ],
+      "sourceRegistryField": "RateOfFire",
+      "pairs": [
+        {
+          "siteId": "ks18k",
+          "siteValue": 299.999,
+          "sourceValue": 299.998993,
+          "equal": true
+        },
+        {
+          "siteId": "m87a1",
+          "siteValue": 94.73654016716576,
+          "sourceValue": 1799.999023,
+          "equal": false
+        },
+        {
+          "siteId": "kord6p67",
+          "siteValue": 899.999,
+          "sourceValue": 899.999023,
+          "equal": true
+        },
+        {
+          "siteId": "nvo228e",
+          "siteValue": 654.545,
+          "sourceValue": 654.544983,
+          "equal": true
+        },
+        {
+          "siteId": "ak205",
+          "siteValue": 719.999,
+          "sourceValue": 719.999023,
+          "equal": true
+        },
+        {
+          "siteId": "scw10",
+          "siteValue": 799.999,
+          "sourceValue": 799.999023,
+          "equal": true
+        },
+        {
+          "siteId": "sl9",
+          "siteValue": 674.999,
+          "sourceValue": 674.999023,
+          "equal": true
+        },
+        {
+          "siteId": "lmr27",
+          "siteValue": 449.999,
+          "sourceValue": 449.998993,
+          "equal": true
+        },
+        {
+          "siteId": "brod3",
+          "siteValue": 830.7692307692307,
+          "sourceValue": 830.768982,
+          "equal": true
+        },
+        {
+          "siteId": "db12",
+          "siteValue": 359.999,
+          "sourceValue": 359.998993,
+          "equal": true
+        },
+        {
+          "siteId": "interdictor",
+          "siteValue": 31.914882299649403,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "ef88",
+          "siteValue": 674.999,
+          "sourceValue": 674.999023,
+          "equal": true
+        },
+        {
+          "siteId": "es57",
+          "siteValue": 449.999,
+          "sourceValue": 449.998993,
+          "equal": true
+        },
+        {
+          "siteId": "ggh22",
+          "siteValue": 359.999,
+          "sourceValue": 359.998993,
+          "equal": true
+        },
+        {
+          "siteId": "b36a4",
+          "siteValue": 719.999,
+          "sourceValue": 719.999023,
+          "equal": true
+        },
+        {
+          "siteId": "ak4d",
+          "siteValue": 514.285,
+          "sourceValue": 514.284973,
+          "equal": true
+        },
+        {
+          "siteId": "m417a2",
+          "siteValue": 654.545,
+          "sourceValue": 654.544983,
+          "equal": true
+        },
+        {
+          "siteId": "m433",
+          "siteValue": 830.769,
+          "sourceValue": 830.768982,
+          "equal": true
+        },
+        {
+          "siteId": "l115",
+          "siteValue": 46.14231275806206,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "l85a3",
+          "siteValue": 635.294,
+          "sourceValue": 635.294006,
+          "equal": true
+        },
+        {
+          "siteId": "m1014",
+          "siteValue": 199.999,
+          "sourceValue": 199.998993,
+          "equal": true
+        },
+        {
+          "siteId": "m16a4",
+          "siteValue": 771.428,
+          "sourceValue": 771.427979,
+          "equal": true
+        },
+        {
+          "siteId": "p18",
+          "siteValue": 399.999,
+          "sourceValue": 399.998993,
+          "equal": true
+        },
+        {
+          "siteId": "m2010esr",
+          "siteValue": 43.90240199281473,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "m240l",
+          "siteValue": 599.999,
+          "sourceValue": 599.999023,
+          "equal": true
+        },
+        {
+          "siteId": "m250",
+          "siteValue": 674.999,
+          "sourceValue": 674.999023,
+          "equal": true
+        },
+        {
+          "siteId": "drsiar",
+          "siteValue": 771.428,
+          "sourceValue": 771.427979,
+          "equal": true
+        },
+        {
+          "siteId": "m39emr",
+          "siteValue": 257.142,
+          "sourceValue": 257.141998,
+          "equal": true
+        },
+        {
+          "siteId": "m45a1",
+          "siteValue": 327.272,
+          "sourceValue": 327.272003,
+          "equal": true
+        },
+        {
+          "siteId": "m4a1",
+          "siteValue": 899.999,
+          "sourceValue": 899.999023,
+          "equal": true
+        },
+        {
+          "siteId": "m60",
+          "siteValue": 514.285,
+          "sourceValue": 514.284973,
+          "equal": true
+        },
+        {
+          "siteId": "m123k",
+          "siteValue": 830.769,
+          "sourceValue": 830.768982,
+          "equal": true
+        },
+        {
+          "siteId": "m121a2",
+          "siteValue": 654.545,
+          "sourceValue": 654.544983,
+          "equal": true
+        },
+        {
+          "siteId": "pw5a3",
+          "siteValue": 771.428,
+          "sourceValue": 771.427979,
+          "equal": true
+        },
+        {
+          "siteId": "pw7a2",
+          "siteValue": 947.368,
+          "sourceValue": 947.367981,
+          "equal": true
+        },
+        {
+          "siteId": "sgx",
+          "siteValue": 830.769,
+          "sourceValue": 830.768982,
+          "equal": true
+        },
+        {
+          "siteId": "psr",
+          "siteValue": 38.663458649662005,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "grtbc",
+          "siteValue": 830.769,
+          "sourceValue": 830.768982,
+          "equal": true
+        },
+        {
+          "siteId": "grtcps",
+          "siteValue": 359.999,
+          "sourceValue": 359.998993,
+          "equal": true
+        },
+        {
+          "siteId": "miniscout",
+          "siteValue": 47.092969500363495,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "l110",
+          "siteValue": 719.999,
+          "sourceValue": 719.999023,
+          "equal": true
+        },
+        {
+          "siteId": "usg90",
+          "siteValue": 899.999,
+          "sourceValue": 899.999023,
+          "equal": true
+        },
+        {
+          "siteId": "pp19",
+          "siteValue": 719.999,
+          "sourceValue": 719.999023,
+          "equal": true
+        },
+        {
+          "siteId": "qbz192",
+          "siteValue": 771.428,
+          "sourceValue": 771.427979,
+          "equal": true
+        },
+        {
+          "siteId": "rpk74m",
+          "siteValue": 685.714,
+          "sourceValue": 685.713989,
+          "equal": true
+        },
+        {
+          "siteId": "rpkm",
+          "siteValue": 553.846,
+          "sourceValue": 553.846008,
+          "equal": true
+        },
+        {
+          "siteId": "m44",
+          "siteValue": 163.636,
+          "sourceValue": 163.636002,
+          "equal": true
+        },
+        {
+          "siteId": "sor556",
+          "siteValue": 568.421,
+          "sourceValue": 568.421021,
+          "equal": true
+        },
+        {
+          "siteId": "sor300sc",
+          "siteValue": 599.999,
+          "sourceValue": 599.999023,
+          "equal": true
+        },
+        {
+          "siteId": "sg553r",
+          "siteValue": 719.999,
+          "sourceValue": 719.999023,
+          "equal": true
+        },
+        {
+          "siteId": "sv98",
+          "siteValue": 38.20751292717492,
+          "sourceValue": 299.998993,
+          "equal": false
+        },
+        {
+          "siteId": "svk86",
+          "siteValue": 149.999,
+          "sourceValue": 149.998993,
+          "equal": true
+        },
+        {
+          "siteId": "svdm",
+          "siteValue": 299.999,
+          "sourceValue": 299.998993,
+          "equal": true
+        },
+        {
+          "siteId": "cz3a1",
+          "siteValue": 981.818,
+          "sourceValue": 981.817993,
+          "equal": true
+        },
+        {
+          "siteId": "vz61",
+          "siteValue": 818.181,
+          "sourceValue": 818.18103,
+          "equal": true
+        },
+        {
+          "siteId": "m357trait",
+          "siteValue": 224.999,
+          "sourceValue": 224.998993,
+          "equal": true
+        },
+        {
+          "siteId": "tr7",
+          "siteValue": 719.999,
+          "sourceValue": 719.999023,
+          "equal": true
+        },
+        {
+          "siteId": "umg40",
+          "siteValue": 635.294,
+          "sourceValue": 635.294006,
+          "equal": true
+        },
+        {
+          "siteId": "kts100",
+          "siteValue": 514.285,
+          "sourceValue": 514.284973,
+          "equal": true
+        },
+        {
+          "siteId": "vcr2",
+          "siteValue": 899.999,
+          "sourceValue": 899.999023,
+          "equal": true
+        },
+        {
+          "siteId": "vssm",
+          "siteValue": 449.999,
+          "sourceValue": 799.999023,
+          "equal": false
+        },
+        {
+          "siteId": "kv9",
+          "siteValue": 1079.999,
+          "sourceValue": 1079.999023,
+          "equal": true
+        },
+        {
+          "siteId": "m277",
+          "siteValue": 719.999,
+          "sourceValue": 719.999023,
+          "equal": true
+        }
+      ]
+    },
+    "mag": {
+      "matchedSiteWeapons": 63,
+      "exactAgreementCount": 63,
+      "mismatches": [],
+      "sourceRegistryField": "MagazineCapacity",
+      "pairs": [
+        {
+          "siteId": "ks18k",
+          "siteValue": 9,
+          "sourceValue": 9,
+          "equal": true
+        },
+        {
+          "siteId": "m87a1",
+          "siteValue": 8,
+          "sourceValue": 8,
+          "equal": true
+        },
+        {
+          "siteId": "kord6p67",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "nvo228e",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "ak205",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "scw10",
+          "siteValue": 16,
+          "sourceValue": 16,
+          "equal": true
+        },
+        {
+          "siteId": "sl9",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "lmr27",
+          "siteValue": 11,
+          "sourceValue": 11,
+          "equal": true
+        },
+        {
+          "siteId": "brod3",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "db12",
+          "siteValue": 16,
+          "sourceValue": 16,
+          "equal": true
+        },
+        {
+          "siteId": "interdictor",
+          "siteValue": 6,
+          "sourceValue": 6,
+          "equal": true
+        },
+        {
+          "siteId": "ef88",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "es57",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        },
+        {
+          "siteId": "ggh22",
+          "siteValue": 16,
+          "sourceValue": 16,
+          "equal": true
+        },
+        {
+          "siteId": "b36a4",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "ak4d",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        },
+        {
+          "siteId": "m417a2",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        },
+        {
+          "siteId": "m433",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "l115",
+          "siteValue": 6,
+          "sourceValue": 6,
+          "equal": true
+        },
+        {
+          "siteId": "l85a3",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "m1014",
+          "siteValue": 7,
+          "sourceValue": 7,
+          "equal": true
+        },
+        {
+          "siteId": "m16a4",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "p18",
+          "siteValue": 18,
+          "sourceValue": 18,
+          "equal": true
+        },
+        {
+          "siteId": "m2010esr",
+          "siteValue": 6,
+          "sourceValue": 6,
+          "equal": true
+        },
+        {
+          "siteId": "m240l",
+          "siteValue": 50,
+          "sourceValue": 50,
+          "equal": true
+        },
+        {
+          "siteId": "m250",
+          "siteValue": 50,
+          "sourceValue": 50,
+          "equal": true
+        },
+        {
+          "siteId": "drsiar",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "m39emr",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        },
+        {
+          "siteId": "m45a1",
+          "siteValue": 8,
+          "sourceValue": 8,
+          "equal": true
+        },
+        {
+          "siteId": "m4a1",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "m60",
+          "siteValue": 100,
+          "sourceValue": 100,
+          "equal": true
+        },
+        {
+          "siteId": "m123k",
+          "siteValue": 100,
+          "sourceValue": 100,
+          "equal": true
+        },
+        {
+          "siteId": "m121a2",
+          "siteValue": 50,
+          "sourceValue": 50,
+          "equal": true
+        },
+        {
+          "siteId": "pw5a3",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "pw7a2",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "sgx",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "psr",
+          "siteValue": 11,
+          "sourceValue": 11,
+          "equal": true
+        },
+        {
+          "siteId": "grtbc",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "grtcps",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        },
+        {
+          "siteId": "miniscout",
+          "siteValue": 11,
+          "sourceValue": 11,
+          "equal": true
+        },
+        {
+          "siteId": "l110",
+          "siteValue": 100,
+          "sourceValue": 100,
+          "equal": true
+        },
+        {
+          "siteId": "usg90",
+          "siteValue": 51,
+          "sourceValue": 51,
+          "equal": true
+        },
+        {
+          "siteId": "pp19",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "qbz192",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "rpk74m",
+          "siteValue": 46,
+          "sourceValue": 46,
+          "equal": true
+        },
+        {
+          "siteId": "rpkm",
+          "siteValue": 41,
+          "sourceValue": 41,
+          "equal": true
+        },
+        {
+          "siteId": "m44",
+          "siteValue": 6,
+          "sourceValue": 6,
+          "equal": true
+        },
+        {
+          "siteId": "sor556",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "sor300sc",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "sg553r",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "sv98",
+          "siteValue": 11,
+          "sourceValue": 11,
+          "equal": true
+        },
+        {
+          "siteId": "svk86",
+          "siteValue": 11,
+          "sourceValue": 11,
+          "equal": true
+        },
+        {
+          "siteId": "svdm",
+          "siteValue": 11,
+          "sourceValue": 11,
+          "equal": true
+        },
+        {
+          "siteId": "cz3a1",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "vz61",
+          "siteValue": 11,
+          "sourceValue": 11,
+          "equal": true
+        },
+        {
+          "siteId": "m357trait",
+          "siteValue": 8,
+          "sourceValue": 8,
+          "equal": true
+        },
+        {
+          "siteId": "tr7",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        },
+        {
+          "siteId": "umg40",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "kts100",
+          "siteValue": 60,
+          "sourceValue": 60,
+          "equal": true
+        },
+        {
+          "siteId": "vcr2",
+          "siteValue": 31,
+          "sourceValue": 31,
+          "equal": true
+        },
+        {
+          "siteId": "vssm",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        },
+        {
+          "siteId": "kv9",
+          "siteValue": 18,
+          "sourceValue": 18,
+          "equal": true
+        },
+        {
+          "siteId": "m277",
+          "siteValue": 21,
+          "sourceValue": 21,
+          "equal": true
+        }
+      ]
+    },
+    "fireModeSelectorCandidate": {
+      "sourceFieldPath": "/Field_f8822efa/Field_16e6fa59",
+      "siteWeaponsCompared": 63,
+      "crossTab": {
+        "semi": {
+          "0": 14
+        },
+        "pump": {
+          "1": 2
+        },
+        "auto": {
+          "2": 40
+        },
+        "bolt": {
+          "1": 6
+        },
+        "burst": {
+          "3": 1
+        }
+      },
+      "candidateEnumMapping": {
+        "0": "semi",
+        "1": "bolt or pump (not distinguished by this field)",
+        "2": "auto",
+        "3": "burst"
+      },
+      "agreement": "Categorical mapping is consistent for all 63 exact-crosswalk site weapons; field name and native consumer remain unconfirmed. All eight site bolt/pump weapons with enum 1 also have a registry-bound BoltActionTime field, which supports distinguishing the two modes using other firing data but does not name this enum.",
+      "boltPumpSupportingSource": [
+        {
+          "siteId": "m87a1",
+          "internalId": "590A1",
+          "siteFireMode": "pump",
+          "registryName": "590A1_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 0.500001,
+          "registryStatus": "equal-scalar"
+        },
+        {
+          "siteId": "db12",
+          "internalId": "DP12",
+          "siteFireMode": "pump",
+          "registryName": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 0.433334,
+          "registryStatus": "equal-scalar"
+        },
+        {
+          "siteId": "interdictor",
+          "internalId": "DesertTechHTI",
+          "siteFireMode": "bolt",
+          "registryName": "DesertTechHTI_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 1.68,
+          "registryStatus": "equal-scalar"
+        },
+        {
+          "siteId": "l115",
+          "internalId": "L115A3",
+          "siteFireMode": "bolt",
+          "registryName": "L115A3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 1.133334,
+          "registryStatus": "equal-scalar"
+        },
+        {
+          "siteId": "m2010esr",
+          "internalId": "M2010ESR",
+          "siteFireMode": "bolt",
+          "registryName": "M2010ESR_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 1.2,
+          "registryStatus": "equal-scalar"
+        },
+        {
+          "siteId": "psr",
+          "internalId": "MRAD",
+          "siteFireMode": "bolt",
+          "registryName": "MRAD_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 1.216667,
+          "registryStatus": "equal-scalar"
+        },
+        {
+          "siteId": "miniscout",
+          "internalId": "MiniFix",
+          "siteFireMode": "bolt",
+          "registryName": "MiniFix_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 1.0,
+          "registryStatus": "equal-scalar"
+        },
+        {
+          "siteId": "sv98",
+          "internalId": "SV98M",
+          "siteFireMode": "bolt",
+          "registryName": "SV98M_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.BoltAction.BoltActionTime",
+          "registryPointer": "/Field_f8822efa/Field_eebe0fd8",
+          "sourceValue": 1.233334,
+          "registryStatus": "equal-scalar"
+        }
+      ]
+    }
+  },
+  "rawOffsetDetail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\wb-variable-field-triage.jsonl",
+    "sha256": "5eae5d2197238663902b341edf336ab505c4688a2318c88c3af9b60d49eb6cfd",
+    "records": 206
+  },
+  "consumerSearch": "No named hash appears in sim/*.js, ui/*.js or site data except corresponding source-derived JSON leaves. Existing mapping identifies RateOfFire and Ammo MagazineCapacity as direct current inputs.",
+  "limits": [
+    "Hashes without an established semantic name remain unnamed; value patterns alone do not identify function.",
+    "FireLogic/Ammo parent blocks contain consequential inputs, but parent-container variance does not prove every child affects the site.",
+    "Render FOV/transform are parked as presentation candidates. No cosmetic conclusion is made.",
+    "Source registry values do not prove native runtime consumers."
+  ]
+}

@@ -1,0 +1,91 @@
+{
+  "date": "2026-09-23",
+  "scope": "Bounded, read-only audit of RIFF BOXEDVALUEREF and EBXX boxed metadata for exhaustive BF6 1.4.3.0 audit.",
+  "sharedDecoderEdited": false,
+  "sources": {
+    "sdkReader": {
+      "path": "C:/Users/royal/Documents/BF6 Datamining/FrostyToolsuite-battlefield6/FrostySdk/IO/EbxReaderRiff.cs",
+      "sha256": "e13b7008331c1163b7d7c9adac370cdb9006be497d9dc559c8ce897da33a8be6",
+      "relevantMethod": "ReadBoxedValueRef, lines 951-1036"
+    },
+    "sharedDecoder": {
+      "path": "scripts/frosty-ebx-decode.py",
+      "sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+      "observed": "BOXEDVALUEREF skips 8 bytes and returns a marker; EBXX array rows are parsed, boxed rows are not."
+    },
+    "ledger": {
+      "path": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/coverage.sqlite",
+      "mode": "read-only",
+      "finding": "captures hold raw_path/raw_sha256 and descriptor_path/descriptor_sha256; objects.body_json records markers; no XML path is recorded."
+    },
+    "descriptor": {
+      "path": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors.ebx",
+      "sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    }
+  },
+  "representativeAssets": [
+    {
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+      "rawPath": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB.ebx",
+      "rawSha256": "06f2649035e846e34f01062920fb7b02915f990a1188d2acb9b4ddba4b2a8b49",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectIndex": 37,
+      "objectClass": "Class_5702a14c",
+      "objectAbsoluteOffset": 6368,
+      "field": "Field_42c8b257",
+      "fieldAbsoluteOffset": 6392,
+      "headerHex": "6002008000000000e048000000000000",
+      "fieldTypeWord": "0x80000260",
+      "fieldValueOffset": 18656,
+      "lookupOffset": 25024,
+      "boxedRow": {
+        "offset": 25024,
+        "count": 1,
+        "hash": "0x300c06fb",
+        "typeWord": "0x0260",
+        "subtype": 19,
+        "category": 0,
+        "classRef": 65535
+      },
+      "payloadAbsoluteOffset": 25056,
+      "decodedValue": 0.0,
+      "classification": "non-null scalar Float32; zero is a valid value"
+    },
+    {
+      "route": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/PresEx_DesertTechHTI",
+      "rawPath": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/BoltAction/DesertTechHTI/PresEx_DesertTechHTI.ebx",
+      "rawSha256": "bf19243486480bbc86823ff3c1430d6b43a5c322b5697e6b0ba47cdeeab8b000",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "boxedRows": [
+        {"offset": 2320, "count": 1, "hash": "0x5bdd8e96", "typeWord": "0x0040", "subtype": 2, "category": 0, "classRef": 15},
+        {"offset": 2328, "count": 1, "hash": "0x5bdd8e96", "typeWord": "0x0040", "subtype": 2, "category": 0, "classRef": 16}
+      ],
+      "references": [
+        {"fieldAbsoluteOffset": 2280, "fieldTypeWord": "0x3e", "lookupOffset": 2320, "classRefFromUnmaskedWord": 15},
+        {"fieldAbsoluteOffset": 2288, "fieldTypeWord": "0x40", "lookupOffset": 2328, "classRefFromUnmaskedWord": 16}
+      ],
+      "decodedPayloads": "Descriptor class 15 and class 16 structures; see docs/working/FROSTY_AUDIT_BOXED_REVIEW.md.",
+      "classification": "non-null boxed structs"
+    }
+  ],
+  "boundedSample": {
+    "selection": "First 100 alphabetically ordered Common/Hardware/Weapons captures with at least one boxed marker in objects.body_json.",
+    "arrayCategoryEntriesObserved": 0,
+    "interpretation": "ArrayType behavior below is derived from the local SDK source, not validated against a sampled weapon asset.",
+    "xmlComparison": "No XML export was available from the inspected datamining tree or ledger fields."
+  },
+  "recommendedBehavior": {
+    "null": "Return null for zero field type or absent EBXX offset match, matching SDK default semantics.",
+    "scalarOrStruct": "Resolve category 0 using EBXX subtype and classRef and retain those metadata with the decoded value.",
+    "array": "For category 4, follow the relative array header and embedded count. Decode descriptor-backed elements only when ClassRef identifies an array descriptor. With ClassRef 65535, the SDK records subtype but leaves value unset; preserve array metadata/header without claiming scalar elements were decoded.",
+    "nativeSemantics": "Unknown; this audit establishes serialized representation only."
+  },
+  "proposedChecks": [
+    "Zero reference type word yields null.",
+    "Nonzero reference with no EBXX row remains a distinct null/default outcome.",
+    "6P67 boxed Float32 decodes as 0.0.",
+    "DesertTech HTI boxed structs resolve with classRef 15 and classRef 16.",
+    "Exercise masked and unmasked reference type words.",
+    "Use an array fixture with descriptor-backed struct elements and check the ClassRef 65535 metadata-only path; no asset-backed array case was found in the bounded sample."
+  ]
+}

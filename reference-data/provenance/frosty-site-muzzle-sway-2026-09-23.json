@@ -1,0 +1,102 @@
+{
+  "date": "2026-09-23",
+  "scope": "All 12 current MUZZLES weaponSwayMult site leaves: five generic muzzle defaults plus seven weapon-specific overrides.",
+  "leafCount": 12,
+  "leafKindCounts": {
+    "generic-default": 5,
+    "weapon-specific-override": 7
+  },
+  "genericLeaves": [
+    {
+      "sitePointer": "/MUZZLES/1/weaponSwayMult",
+      "attachment": "sp_brake",
+      "siteValue": 1.5,
+      "choiceCount": 39,
+      "directSourceEffectChoiceCount": 34,
+      "noDirectSourceEffectChoiceCount": 5,
+      "effectiveSiteValueAgreementCount": 34,
+      "sourceValueDistribution": {
+        "1.5": 34
+      },
+      "noDirectEffectWeapons": [
+        "es57",
+        "ggh22",
+        "m45a1",
+        "p18",
+        "vz61"
+      ]
+    },
+    {
+      "sitePointer": "/MUZZLES/3/weaponSwayMult",
+      "attachment": "slant_brake",
+      "siteValue": 1.5,
+      "choiceCount": 2,
+      "directSourceEffectChoiceCount": 2,
+      "noDirectSourceEffectChoiceCount": 0,
+      "effectiveSiteValueAgreementCount": 2,
+      "sourceValueDistribution": {
+        "1.5": 2
+      },
+      "noDirectEffectWeapons": []
+    },
+    {
+      "sitePointer": "/MUZZLES/5/weaponSwayMult",
+      "attachment": "thread_prot",
+      "siteValue": 1.5,
+      "choiceCount": 1,
+      "directSourceEffectChoiceCount": 1,
+      "noDirectSourceEffectChoiceCount": 0,
+      "effectiveSiteValueAgreementCount": 1,
+      "sourceValueDistribution": {
+        "1.5": 1
+      },
+      "noDirectEffectWeapons": []
+    },
+    {
+      "sitePointer": "/MUZZLES/11/weaponSwayMult",
+      "attachment": "long_supp",
+      "siteValue": 1.5,
+      "choiceCount": 48,
+      "directSourceEffectChoiceCount": 48,
+      "noDirectSourceEffectChoiceCount": 0,
+      "effectiveSiteValueAgreementCount": 47,
+      "sourceValueDistribution": {
+        "1.5": 48
+      },
+      "noDirectEffectWeapons": []
+    },
+    {
+      "sitePointer": "/MUZZLES/15/weaponSwayMult",
+      "attachment": "hybrid_supp_l",
+      "siteValue": 1.5,
+      "choiceCount": 39,
+      "directSourceEffectChoiceCount": 39,
+      "noDirectSourceEffectChoiceCount": 0,
+      "effectiveSiteValueAgreementCount": 39,
+      "sourceValueDistribution": {
+        "1.5": 39
+      },
+      "noDirectEffectWeapons": []
+    }
+  ],
+  "overrideStatuses": {
+    "no-direct-captured-weapon-sway-effect": 6,
+    "source-value-difference": 1
+  },
+  "limits": [
+    "Descriptor-derived WME raw bytes and exact selector package imports establish serialized source configuration, not native effect activation or ordering.",
+    "When a selected captured WPM has no direct Class_2fea847d import, that is not proof of source absence or native no-effect.",
+    "Site generic and weapon-specific fallback/override composition is software-authored and is not presented as game-native behavior."
+  ],
+  "inputHashes": {
+    "site": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79",
+    "mapping": "3f8f41fed52840b61fb5c8527f22f92ee0272850276d429cb4f2cc437f351f64",
+    "spottingBindingGraph": "d28190e4ab50024cc33d107620dfdc06cf151f7b455341e3f832a13b732ae2a4",
+    "script": "51abc8c7dcf3e7a05642fdc236d9204215e018c19952acfbda16bdfcd0633d1b"
+  },
+  "detail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-muzzle-sway-2026-09-23-leaves.jsonl",
+    "sha256": "53192f69e3494552c9576c1fa0d750223908429fc083c8af584b7656a0cd50fb",
+    "rows": 12
+  }
+}

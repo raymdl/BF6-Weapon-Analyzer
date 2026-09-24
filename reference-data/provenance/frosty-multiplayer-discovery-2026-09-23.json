@@ -1,0 +1,131 @@
+{
+  "date": "2026-09-23",
+  "catalogPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\asset-catalog.json",
+  "candidateFamilies": [
+    {
+      "route": "Common/Gameplay/InRoundProgression/Adrenaline/Affector_FasterRegen",
+      "fileGuid": "ba23423b-64fd-49c4-9f9c-1cb320c50782",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Adrenaline/U_Ability_FasterHealing",
+      "fileGuid": "227af61b-4ef8-469c-abbe-e324b1f68e27",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "fileGuid": "dd37af08-0e76-4bba-a095-d134b1fc7c37",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Flak/Affector_Flak",
+      "fileGuid": "bfbe4b7d-e889-46aa-b98e-318da0e72c9b",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "fileGuid": "bb82e15e-fdb7-4317-96eb-7cd6de582023",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Flak/U_Ability_Flak",
+      "fileGuid": "093fa063-143a-481f-85a8-b76283ef3942",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/U_Ability_StanceFlak",
+      "fileGuid": "4e8ef996-afa0-4ea1-bdf1-7ad22299bcfa",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/Affector_StanceFlak",
+      "fileGuid": "68d25e8a-854c-4628-8f52-57311df50d8f",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "fileGuid": "c209e3bc-0f42-4dd6-8f5b-add2b13088d1",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fileGuid": "ce0aaa8d-454e-479d-b287-80accc9d2916",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/FL_Ability_StanceFlak",
+      "fileGuid": "b14eef86-d8da-4acb-a93e-afc5ed051a44",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/LowProfile/Affector_LowProfile_SpotDelay",
+      "fileGuid": "a3f54305-d8c2-4755-94f9-e589bda6d31b",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/LowProfile/Affector_LowProfile_SpotDuration",
+      "fileGuid": "0cf17320-d131-4cba-b432-5914cd72c548",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/LowProfile/U_Ability_LowProfile",
+      "fileGuid": "eb4b2810-5e74-4186-8aca-f4bdd89795f6",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/LowProfile/Ability_LowProfile",
+      "fileGuid": "c22ad966-22e4-4483-8643-b35e0922998e",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/LowProfile/FL_Ability_LowProfile",
+      "fileGuid": "6d78451c-7bfc-4455-9047-19228df4a129",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/LowProfile/SimEx_Ability_LowProfile",
+      "fileGuid": "4e031ae4-9af6-4e5d-b089-30bf87782ef8",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/SimEx_Ability_DamageSpot",
+      "fileGuid": "21b1582d-be1a-4414-bde2-53c11621d01d",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/U_Ability_DamageSpot",
+      "fileGuid": "bff24385-8608-409a-90fc-2a27e4ce6326",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/FL_Ability_DamageSpot",
+      "fileGuid": "496f5fa4-6499-496d-a9c2-5792c0e4c648",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "fileGuid": "db6144a6-9d18-4c89-9bec-a03d6b90f2ad",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/SilentMovement/U_Ability_SilentMovement",
+      "fileGuid": "84a5972b-c771-4066-b62c-c4d56f07b698",
+      "capturedRawPaths": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+      "fileGuid": "5a2013ce-98fa-43f8-a443-cc97c1b5034a",
+      "capturedRawPaths": []
+    }
+  ],
+  "basis": "Bounded discovery of source families with plausible direct relevance to health, protection, spotting and movement. Names are candidates, not proof of standard MP activation.",
+  "priorities": [
+    "Finish LowProfile and suppression captures, then movement/protection worker source links.",
+    "Adrenaline and Flak have potential health/protection value and need exact activation review before adoption.",
+    "DamageSpot/SilentMovement are lower-priority candidates; inspect source only if a precise unresolved question survives the higher-priority pass."
+  ],
+  "limits": [
+    "Raw availability in the three historical roots only; fresh hotfix LowProfile capture is recorded separately.",
+    "No cosmetic, SP-only or BR-only mechanic is promoted. Shared family relevance requires caller evidence."
+  ]
+}

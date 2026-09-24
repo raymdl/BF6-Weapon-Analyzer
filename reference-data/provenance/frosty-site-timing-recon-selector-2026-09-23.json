@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "build": {
+    "id": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "finding": "The selector is exactly shared by WM_ReconTrait and all six bolt rifle Class_897 records. This confirms selector identity and common trait binding, but not that the trait effect class and the rifle-local Class_582 timing effect compose or execute identically.",
+  "selectorGuid": "89c5e29e-fc24-495b-9435-d30f7403e993",
+  "byteOrder": "UUID as stored in EBX (bytes_le)",
+  "reconTrait": {
+    "route": "Common/Gameplay/InRoundProgression/WeaponTraits/Recon/WM_ReconTrait",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\InRoundProgression\\WeaponTraits\\Recon\\WM_ReconTrait.ebx",
+    "rawSha256": "17ef550ac8e6abebda0d9c366d91185dd870df915e9a8054006416f3240a95a7",
+    "objectIndex": 2,
+    "objectGuid": "a72abbc0-37be-488c-bf5e-14384ab5f159",
+    "class": "Class_897c99a7",
+    "selectorFieldPath": "/Field_819acc98/0",
+    "selectorGuid": "89c5e29e-fc24-495b-9435-d30f7403e993",
+    "selectorRawOffset": 260,
+    "selectorBytesHex": "9ee2c58924fc5b499435d30f7403e993",
+    "uniqueRawOccurrenceCount": 1,
+    "effectFieldPath": "/Field_9690d604/0",
+    "effectObjectClass": "Class_d2f4fec8",
+    "effectObjectGuid": "b5a2a015-22a3-4b88-b370-cab303e74740"
+  },
+  "boltRifles": [
+    {
+      "siteId": "interdictor",
+      "route": "common/hardware/weapons/boltaction/deserttechhti/deserttechhti_wb",
+      "rawSha256": "f6c269d06a65c296bbc03f0accd09d314ad1987f31d0fa08c4de9b9b70b2e889",
+      "selectorRawOffset": 15052,
+      "selectorBytesHex": "9ee2c58924fc5b499435d30f7403e993",
+      "uniqueRawOccurrenceCount": 1,
+      "ownerClass": "Class_542ac52c",
+      "ownerObjectIndex": 15,
+      "ownerArrayPointer": "/Field_0cd9f20f/8",
+      "class897ObjectIndex": 30,
+      "class582ObjectIndex": 24,
+      "localEffectClass": "Class_582cbe36"
+    },
+    {
+      "siteId": "l115",
+      "route": "common/hardware/weapons/boltaction/l115a3/l115a3_wb",
+      "rawSha256": "0ea5ee85a866abb9ba4d6a2cb20cabc07f0fb2a59983c2bdd318160a814e9024",
+      "selectorRawOffset": 15708,
+      "selectorBytesHex": "9ee2c58924fc5b499435d30f7403e993",
+      "uniqueRawOccurrenceCount": 1,
+      "ownerClass": "Class_542ac52c",
+      "ownerObjectIndex": 15,
+      "ownerArrayPointer": "/Field_0cd9f20f/13",
+      "class897ObjectIndex": 36,
+      "class582ObjectIndex": 25,
+      "localEffectClass": "Class_582cbe36"
+    },
+    {
+      "siteId": "m2010esr",
+      "route": "common/hardware/weapons/boltaction/m2010esr/m2010esr_wb",
+      "rawSha256": "39bd961b4e1462ee812d5b5ddb3722daa52e36601dce36bbf79f2c84a044f3ff",
+      "selectorRawOffset": 16972,
+      "selectorBytesHex": "9ee2c58924fc5b499435d30f7403e993",
+      "uniqueRawOccurrenceCount": 1,
+      "ownerClass": "Class_542ac52c",
+      "ownerObjectIndex": 17,
+      "ownerArrayPointer": "/Field_0cd9f20f/110",
+      "class897ObjectIndex": 38,
+      "class582ObjectIndex": 26,
+      "localEffectClass": "Class_582cbe36"
+    },
+    {
+      "siteId": "psr",
+      "route": "common/hardware/weapons/boltaction/mrad/mrad_wb",
+      "rawSha256": "da39ddac6a3ca3faf4bbb691e2dac19091ac1effac6c54a677d85bbce5041f96",
+      "selectorRawOffset": 33228,
+      "selectorBytesHex": "9ee2c58924fc5b499435d30f7403e993",
+      "uniqueRawOccurrenceCount": 1,
+      "ownerClass": "Class_542ac52c",
+      "ownerObjectIndex": 42,
+      "ownerArrayPointer": "/Field_0cd9f20f/47",
+      "class897ObjectIndex": 73,
+      "class582ObjectIndex": 56,
+      "localEffectClass": "Class_582cbe36"
+    },
+    {
+      "siteId": "miniscout",
+      "route": "common/hardware/weapons/boltaction/minifix/minifix_wb",
+      "rawSha256": "13c95ce34604212b900be0bcb4b7cdf5b487a78f11ff10ebed7b70c2d7624e93",
+      "selectorRawOffset": 32148,
+      "selectorBytesHex": "9ee2c58924fc5b499435d30f7403e993",
+      "uniqueRawOccurrenceCount": 1,
+      "ownerClass": "Class_542ac52c",
+      "ownerObjectIndex": 40,
+      "ownerArrayPointer": "/Field_0cd9f20f/74",
+      "class897ObjectIndex": 72,
+      "class582ObjectIndex": 54,
+      "localEffectClass": "Class_582cbe36"
+    },
+    {
+      "siteId": "sv98",
+      "route": "common/hardware/weapons/boltaction/sv98m/sv98m_wb",
+      "rawSha256": "79980f6a742f514a7685308894d2ee1fc34fc0b0c72b1aea4aed9ee17d415fef",
+      "selectorRawOffset": 33572,
+      "selectorBytesHex": "9ee2c58924fc5b499435d30f7403e993",
+      "uniqueRawOccurrenceCount": 1,
+      "ownerClass": "Class_542ac52c",
+      "ownerObjectIndex": 43,
+      "ownerArrayPointer": "/Field_0cd9f20f/83",
+      "class897ObjectIndex": 77,
+      "class582ObjectIndex": 61,
+      "localEffectClass": "Class_582cbe36"
+    }
+  ],
+  "effectComparison": {
+    "reconTraitEffect": "Class_d2f4fec8 at WM_ReconTrait Field_9690d604/0",
+    "rifleLocalEffect": "Class_582cbe36 at each rifle Class_897 Field_9690d604/0",
+    "meaning": "Different effect classes; common selector does not establish equivalent functions or application order."
+  },
+  "runtimeLimits": [
+    "The literal common selector proves source identity/binding only.",
+    "Class_582 fields may inherit or override; the meaning of -1, completion fractions, speed and modifier composition are not runtime proven.",
+    "Panel selection cannot establish which ADS stage applies the timing block or whether it is consumed at idle."
+  ]
+}

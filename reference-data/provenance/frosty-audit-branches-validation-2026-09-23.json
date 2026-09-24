@@ -1,0 +1,472 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "sourceReport": {
+    "path": "reference-data/provenance/frosty-audit-branches-reviewed-2026-09-23.json",
+    "sha256": "94e2b62dd55ca9e186e2ab1f1d73e8a8dabbc49d33cb0460d8309b404483fdb5"
+  },
+  "sourceDetails": {
+    "path": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/branches-reviewed.jsonl",
+    "sha256": "26c2a0fe220525910b05ce2a7add5068a9e38f7621727af2e13064bb768f04b1"
+  },
+  "readerSha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558",
+  "counts": {
+    "selectorReferences": 14015,
+    "referencedBranches": 6112,
+    "actionReferences": 6111,
+    "gsBindingRows": 8367,
+    "roots": 64
+  },
+  "method": "Parent fresh-decode comparison across all 64 Ability/GS roots: ordered root branch references, branch field-name sets, ordered action references, every selector file/object pair against current catalog identities, and full GS binding multiset (selector/index/modifier file/object pair) across all objects. All raw and descriptor hashes verified. Worker WPM/other selected field checks remain separately scoped in its report.",
+  "roots": [
+    {
+      "weapon": "185KSK",
+      "abilityRawSha256": "e1659d4e8e20e2fbc9e8a104cec2f0fbf4285656ccfda87ea49fdb230670ee8e",
+      "gsRawSha256": "f0fca308a7d1bee3c3daea2bc9ba12179be057a341b80be8266ebfb61b0bfd6b",
+      "branches": 83,
+      "gsBindings": 145
+    },
+    {
+      "weapon": "590A1",
+      "abilityRawSha256": "0b0cabda73f6eeb33c25ff09882bb1178d74c9703481915302d3874979f150de",
+      "gsRawSha256": "055db2a414334e7bf7c0cec4bb7a9cc13d55686a16b9f9f99318e59f25ad0276",
+      "branches": 82,
+      "gsBindings": 134
+    },
+    {
+      "weapon": "6P67",
+      "abilityRawSha256": "1f948bec28806b2f24a3f9c2648bdd568310ab2810ea80422ec857bf696f73bb",
+      "gsRawSha256": "0e0dc3d71c9a2b74cf5325294ea3ce906366280cb4b239769df0616828293fdb",
+      "branches": 113,
+      "gsBindings": 147
+    },
+    {
+      "weapon": "ACE32",
+      "abilityRawSha256": "ca63c611aa0b9c41ec6c5cdb48fbd12c9f86a38e9baa2d6c03ecb60426046437",
+      "gsRawSha256": "e166e2020f83c03d978b7c69cee8947289cc06429e1d3b66f71ba6a32c324ac5",
+      "branches": 112,
+      "gsBindings": 153
+    },
+    {
+      "weapon": "AK205",
+      "abilityRawSha256": "881a76e5a67b26fcac2e9bbd77428214139421bec4c797111af791a135af19c6",
+      "gsRawSha256": "607b4e7fe770f1973de2c7d6b37122e4c6dba9f44019aab81de29149973def9c",
+      "branches": 112,
+      "gsBindings": 138
+    },
+    {
+      "weapon": "APC10",
+      "abilityRawSha256": "8fc72af64960a5360e9cdcdc832d59a6e67e0c5c0ba1a515092df362d2614f01",
+      "gsRawSha256": "1b4543b2a2a093f73e0303834c6c002ffaecc1edbbde26614d92ab9f50bb476d",
+      "branches": 92,
+      "gsBindings": 129
+    },
+    {
+      "weapon": "APDW",
+      "abilityRawSha256": "61318ef12ee45e07e97ddf0717b6ea2e137e9c8fb3e14ef7767c682e09d7b6a1",
+      "gsRawSha256": "41820c9d759b8ed7d275e2d69e925e98184ae1f497d3785f57455c8b2981f0c7",
+      "branches": 101,
+      "gsBindings": 138
+    },
+    {
+      "weapon": "ARADMR",
+      "abilityRawSha256": "54998aee26eb8bffb41a4a68f22e8fa377fc04397f3847fb57532793b675b1a9",
+      "gsRawSha256": "ebe69ab7930b4ead1ccebc74de0bdbc81ccffbf83399c5cad34257b843e56ce0",
+      "branches": 120,
+      "gsBindings": 141
+    },
+    {
+      "weapon": "BREN3",
+      "abilityRawSha256": "31fe3729b84216d7e6b4436382e037ba50eef1a50708997febf7d052512a300a",
+      "gsRawSha256": "b24946fdf779702d08715cd66b8ba7aa7602ca365d355204753de2b9e7e51617",
+      "branches": 103,
+      "gsBindings": 150
+    },
+    {
+      "weapon": "DP12",
+      "abilityRawSha256": "3baef1dd0b4c1bfe98187ba9bbdef028d69a22a89d0eb69cc1e5774beb2b1ee2",
+      "gsRawSha256": "4b69300cc2e9459292ef78009e2c4fbb5f3a4d872ff0b21dfce617c98f8bed3c",
+      "branches": 86,
+      "gsBindings": 131
+    },
+    {
+      "weapon": "DesertTechHTI",
+      "abilityRawSha256": "1cacc3f05a36c20832c1f7534cda84c24e8f8cfae77dfb62b49a932926d0b0e3",
+      "gsRawSha256": "c7f19c774fe975d1b596e0f64d6f20eda82199520482bf21a3d82af73f4a3391",
+      "branches": 81,
+      "gsBindings": 89
+    },
+    {
+      "weapon": "EF88",
+      "abilityRawSha256": "f57b5063c3f92284ea81afa1c4ac66caafedeee2bece397616be5aebf909e2c7",
+      "gsRawSha256": "ce5ab5e3d65011bc310b355b3a3cea316d0fa5240643e83bc9ac379b3c607eb7",
+      "branches": 104,
+      "gsBindings": 151
+    },
+    {
+      "weapon": "FiveSeven",
+      "abilityRawSha256": "6fe4213903db8ef2e428f88b3f5a1949ab7a99500da09b22cb5b808e6bca3a19",
+      "gsRawSha256": "2a23d031e95db01b68310bc25b1b1e3c3565d5b60ab1bab6e467860f28e334e5",
+      "branches": 38,
+      "gsBindings": 73
+    },
+    {
+      "weapon": "G22",
+      "abilityRawSha256": "8c4255e5d331927701e74095e93430eeb89408fe05cdea90f73f1bce5a21bf8f",
+      "gsRawSha256": "020569cfe00db858cc1128096bdc2ba64589fafb1b4f3f39dcefdc67b6607394",
+      "branches": 40,
+      "gsBindings": 74
+    },
+    {
+      "weapon": "G36",
+      "abilityRawSha256": "81b2dc9471c1d239539b482cd39e755ef6f4c10ce5e29f8cb21c10ff1144e150",
+      "gsRawSha256": "f2b8b8706ed5ace0fa751fba3190fdf71054f23c35ad58d8dd298711c4ba74be",
+      "branches": 120,
+      "gsBindings": 154
+    },
+    {
+      "weapon": "G3A4",
+      "abilityRawSha256": "7ced721ac8616d5890f5a491b547533b46ae171fdf1078b97a09182aaa8d81c1",
+      "gsRawSha256": "722889630106a12cffdd3e8a18737470f2f3013a016e96f619be75d07678d772",
+      "branches": 110,
+      "gsBindings": 153
+    },
+    {
+      "weapon": "HK417A2",
+      "abilityRawSha256": "60d5d298aedf9fdbb91d5356d5e7d9988c7ccfa21d81172311e1c8bbd0715f6d",
+      "gsRawSha256": "948dde8f5b9a2c13bf0107c2c0e6c6225997ec726a4e41643c029c13cc13c5be",
+      "branches": 114,
+      "gsBindings": 154
+    },
+    {
+      "weapon": "HK433",
+      "abilityRawSha256": "52c72f8d8d8c7dc0344636999fe47c1d98599142cb5718b17bfec247e3742982",
+      "gsRawSha256": "66caca0e667d17fdf03f9fb4f620b9c5842aa1fd8de0221128ad4862895eed51",
+      "branches": 112,
+      "gsBindings": 151
+    },
+    {
+      "weapon": "KSG",
+      "abilityRawSha256": "da41c407bc6f2b248f2e938c6b5e80c0fce5b71179b15cc991dc05c6d3851de0",
+      "gsRawSha256": "a01df3898a287cbd66b3539361c5ae2192cf1e416216a78c8652304a5257cb93",
+      "branches": 48,
+      "gsBindings": 86
+    },
+    {
+      "weapon": "L115A3",
+      "abilityRawSha256": "7517aea552e7a1c06eb5d29073ef9f3b061b0ddbe1cbeb0bb50a436ccde287f7",
+      "gsRawSha256": "334967599558e15b5cdcaddf9d6e73ecb75970ae1c21de1996a1c85699e96e2e",
+      "branches": 88,
+      "gsBindings": 95
+    },
+    {
+      "weapon": "L85A3",
+      "abilityRawSha256": "ae109c038814b47bb98811979f0c6407fe70a38744116b66d718ddcef4608659",
+      "gsRawSha256": "6ba618d337e296fb913463d3b631d228cb60986a9620170fc8d386eac54ac4f5",
+      "branches": 117,
+      "gsBindings": 154
+    },
+    {
+      "weapon": "M1014",
+      "abilityRawSha256": "48e2eecefb05c9b0b7e72172970a056ab26622cfa92a24e85314fc7771c1563d",
+      "gsRawSha256": "1034652b489e839f2e069c0b91d74c75d1f8956efc6c7aa22175e70f9203cf76",
+      "branches": 78,
+      "gsBindings": 134
+    },
+    {
+      "weapon": "M16A3",
+      "abilityRawSha256": "86ddf6085e79af5111bbc56eb046c11f8a31da0bfef8805217c0f987ee3358d7",
+      "gsRawSha256": "855365041ea07429144a469f42bd50e70ff6bc1288592490c77e98293d512983",
+      "branches": 112,
+      "gsBindings": 156
+    },
+    {
+      "weapon": "M18",
+      "abilityRawSha256": "7b5ae3426681ab3727a898fde4bb1751ff642926e1dcd7b42922fc166f8e7c77",
+      "gsRawSha256": "8b39c067c13e149c1f2186e7d615aa5740f9dcbda106e416fc17aef656b4cc2d",
+      "branches": 40,
+      "gsBindings": 73
+    },
+    {
+      "weapon": "M2010ESR",
+      "abilityRawSha256": "f175006e993075a34f9b5109bbdf4a7b73ff45cf80eff825560bd307aa9c3927",
+      "gsRawSha256": "2771205ce60ef9fe855aeaaece4c162a3e8bf08e3981daefc16d9a36a8bed544",
+      "branches": 109,
+      "gsBindings": 104
+    },
+    {
+      "weapon": "M240L",
+      "abilityRawSha256": "4f338e0cadd741c093d4fa6e1311e28fd7db7d8fea0c18d2cdac5d1fbaf83473",
+      "gsRawSha256": "2aaa2983e4f3edcf48158049c8ce6f0108147a4f585c3dddcdae5e87a46ad213",
+      "branches": 96,
+      "gsBindings": 150
+    },
+    {
+      "weapon": "M250",
+      "abilityRawSha256": "1222360dc1878215f369705c8c811d9188d721ba50489ebf1ad25a3a9db36b89",
+      "gsRawSha256": "fadecc2e2b06cba35d1716409e168d6908e69c5aa6fde7e96e2f8b0f2b274f9e",
+      "branches": 96,
+      "gsBindings": 150
+    },
+    {
+      "weapon": "M27IAR",
+      "abilityRawSha256": "75e34cf3f612e306482d9389bf8327ed58471031001b1b701e1ccae07a178d75",
+      "gsRawSha256": "8a1ac794fa688e02406c565aebc0b1dbb9233638a30355c75d8574af32efcf58",
+      "branches": 137,
+      "gsBindings": 155
+    },
+    {
+      "weapon": "M39EMR",
+      "abilityRawSha256": "9ae909f3985a139ec94753ffe1783f9ec46187468463cff4e6c60a229f567c63",
+      "gsRawSha256": "c1d943cf12cf33a5ab703bf2324ba6f177d15d602b36e177c4017350399db58e",
+      "branches": 124,
+      "gsBindings": 145
+    },
+    {
+      "weapon": "M45A1",
+      "abilityRawSha256": "ac2fc4ae1f57c5569887441b1c0cf747589a3bf56495f7c0391d05bc50cec299",
+      "gsRawSha256": "7163d206a72e155d48517635fd2fdb9f999937fbc4b45bd97b68540a8ffb4498",
+      "branches": 38,
+      "gsBindings": 73
+    },
+    {
+      "weapon": "M4A1",
+      "abilityRawSha256": "e9e385dc47207a5995931bc388f9da35b3c766b4be36ff8296d4a98d04475600",
+      "gsRawSha256": "12d448446554821b223d9341701cc17641c705459e261fa5aedeee6c98c52674",
+      "branches": 117,
+      "gsBindings": 151
+    },
+    {
+      "weapon": "M60E6",
+      "abilityRawSha256": "1bfc66f728e15d641d5bdfd9cfe7715f8f05b761a6f06ee4916d947f7901a527",
+      "gsRawSha256": "b3433194e85116af150c249307b68802957e29934975a38d24bb8b6c81e522c8",
+      "branches": 98,
+      "gsBindings": 151
+    },
+    {
+      "weapon": "MG4K",
+      "abilityRawSha256": "af9b7a2cd8f1ce3c1230d41571f0fc6e09033d650e50e0606d8b63275383c191",
+      "gsRawSha256": "9d54a6d1f132a66ec0c922cbf7e32fdb2b55f7882fa512cac9f50f47bdc7620b",
+      "branches": 96,
+      "gsBindings": 151
+    },
+    {
+      "weapon": "MG5",
+      "abilityRawSha256": "cc1c01a15e1749f41f5e81f3642e824cc30746a548fd5a074a4387c6ec8215ee",
+      "gsRawSha256": "c0a3effd2779553401543149ad6f4fce6ece112784e3d3fe153e6e456518e001",
+      "branches": 86,
+      "gsBindings": 150
+    },
+    {
+      "weapon": "MP5MLI",
+      "abilityRawSha256": "b26760c0d28303c9ae079f239958003329e424c3e5a129542908d2c9edd5a679",
+      "gsRawSha256": "bd80c80c72e6c7759b0a44923a32e47bd6ef8ba69e10948f8ffc3db1caeef57e",
+      "branches": 94,
+      "gsBindings": 134
+    },
+    {
+      "weapon": "MP7A2",
+      "abilityRawSha256": "d87de33706d63c961c86f10c5ab86235aa58d2fb428e18998cfd56600f817ed4",
+      "gsRawSha256": "34449fe37e642b13fb34ac77915e7770c4ef2a11c987534a1d76853c3405a34b",
+      "branches": 94,
+      "gsBindings": 129
+    },
+    {
+      "weapon": "MPX",
+      "abilityRawSha256": "37ce8e2338248c906ff2851a7ac7a352a7779f7e7a265940e04361ae8ddd35b4",
+      "gsRawSha256": "0f11e6f3ae35d53f5294f93954d6e258e0c42425f9026c0274ece13dd3313a35",
+      "branches": 93,
+      "gsBindings": 128
+    },
+    {
+      "weapon": "MRAD",
+      "abilityRawSha256": "6c7363205242480c1fd7785698a6d4d9e50309b00c6db2775c98d87e2ec6ac65",
+      "gsRawSha256": "5fdac2f46c3831434a4555eef8fd8d5c5349a92a0c9132a6f1ea111c0ed2f10f",
+      "branches": 102,
+      "gsBindings": 106
+    },
+    {
+      "weapon": "MSBSGROTB",
+      "abilityRawSha256": "d831692cec8092032493e8ea848f049fa573d732a9cc0b9666adf8443da0ee87",
+      "gsRawSha256": "3eadad38fab81d424c584d537f234a97671eddfed2aec479ee38d183c3b11086",
+      "branches": 113,
+      "gsBindings": 150
+    },
+    {
+      "weapon": "MSBSGROTCPS",
+      "abilityRawSha256": "fe132bbd42dbc6a92242eb6af4b9c0cbb198087b7d6fac7e3e2d5fa9f4dbeb79",
+      "gsRawSha256": "5ee4a993172f39843a2aaf94651aa139719abe5acba59e050d3b4e16c1526fc3",
+      "branches": 107,
+      "gsBindings": 145
+    },
+    {
+      "weapon": "MiniFix",
+      "abilityRawSha256": "b922ee2898bb1c81b1762ff4a43345f1fb7ecb6278a2d2ce85114904c044decd",
+      "gsRawSha256": "cb78e3988036e4e8847bd451f24e30ac3a5c0d45ae51fbb147b3a6d93bcdf8be",
+      "branches": 97,
+      "gsBindings": 107
+    },
+    {
+      "weapon": "Minimi",
+      "abilityRawSha256": "83f41ac81509b5ca52b185dff54935f638ab773605893f5536187484a42c3394",
+      "gsRawSha256": "895cc52d5adf6592ae91d5e2ade717ea84dc1f8f5367019e0a2d6fc826fb04bd",
+      "branches": 101,
+      "gsBindings": 151
+    },
+    {
+      "weapon": "P90",
+      "abilityRawSha256": "712fe487edf7960d41a3958bfea23fbf39f908d10415f16008ec8b1e452ebb99",
+      "gsRawSha256": "bb0b136acd1cd56475c23a28cf6c095e8d1b4bb7341e859da0c9a00d9875f84c",
+      "branches": 85,
+      "gsBindings": 103
+    },
+    {
+      "weapon": "PP19",
+      "abilityRawSha256": "b6eacb625d5ccccdad5252d91e5d6d233a70ed5906fb44b4c9785a5e2b34c18d",
+      "gsRawSha256": "8a6eb6039b7929a067cf2b9c2025757cedaf0c47a2d3fe3ba0a6026cb3ac8543",
+      "branches": 84,
+      "gsBindings": 115
+    },
+    {
+      "weapon": "QBZ192",
+      "abilityRawSha256": "b006b32cf326149423fe2549d3bf679f639dc4401e07f5a29215c2340cadf140",
+      "gsRawSha256": "19946fb8396e7db1b80d3b8e6ce176c178f58971c8817ba76f331011820d86aa",
+      "branches": 100,
+      "gsBindings": 146
+    },
+    {
+      "weapon": "RPK74M",
+      "abilityRawSha256": "126cecda02f12c6bf1eaaa6395f40f90d8b096a0ced849b5c0da4cfdba3b699e",
+      "gsRawSha256": "21cd4cccbba45ab79b8ef7b9337e9438377a266a7f0376cca294fe14879b2041",
+      "branches": 104,
+      "gsBindings": 145
+    },
+    {
+      "weapon": "RPKM",
+      "abilityRawSha256": "7d9a63ace8a76542818995b8a7f9d1f4d625f7d794b5773fd46fc3e5c8975acc",
+      "gsRawSha256": "ce23c6a86b1f61de01031104af6e54f9371fb57e46867770985ce536f2db3b10",
+      "branches": 113,
+      "gsBindings": 154
+    },
+    {
+      "weapon": "RagingHunter",
+      "abilityRawSha256": "ef8d88ef6f384971a3e647832e61526f436bd46cd366b6305639021b124694d3",
+      "gsRawSha256": "0bdb40c17971cd776db5ec37054ee247a4df24131925376876668db7e9322ea9",
+      "branches": 52,
+      "gsBindings": 78
+    },
+    {
+      "weapon": "SCARL",
+      "abilityRawSha256": "68687aea87d20bfb4da3902aa97f47463813962cbe3204300fd6b2f764856ed6",
+      "gsRawSha256": "281d2cfe7e65a9400d63236c66a5934c4816b53fdd916978271a284b833671ea",
+      "branches": 121,
+      "gsBindings": 154
+    },
+    {
+      "weapon": "SCARSC",
+      "abilityRawSha256": "067206f4781bb70c61c8c2b028d9a107acd3b257d130d502f1413d555e66f961",
+      "gsRawSha256": "1e2a6931102d4aa411433dad2249f279bd1cb7be895f343c5cea00af32f3695b",
+      "branches": 122,
+      "gsBindings": 151
+    },
+    {
+      "weapon": "SIG553R",
+      "abilityRawSha256": "2834d6d2287d9e362f59f1da72977dbc5411a17e790aee0595879adda7fb51d2",
+      "gsRawSha256": "60d3b4422771fb7a83cf194da821809b4fa9d1fba9e097fcd02a9f48965581fc",
+      "branches": 115,
+      "gsBindings": 153
+    },
+    {
+      "weapon": "SV98M",
+      "abilityRawSha256": "a807a1a04a51886f6a8be5b6a28b880fe106ac4de926df6cb9b546f66dd9f771",
+      "gsRawSha256": "97220b3105f24f576b0a93883fd8873552ea9b94dcf8a68db41f30c8b112dff7",
+      "branches": 93,
+      "gsBindings": 105
+    },
+    {
+      "weapon": "SVCh",
+      "abilityRawSha256": "b0fd2bbda53e818fcb9b97163fa155b9bfe552d39e7a31962daea5faea693bf0",
+      "gsRawSha256": "30897b7c69773325d36d1060bba77538f1b0072f74e262a68b2f5e95c2efbeac",
+      "branches": 118,
+      "gsBindings": 141
+    },
+    {
+      "weapon": "SVDM",
+      "abilityRawSha256": "631545b9e9d68a35abd02d839f78bd8122e1b4dd7ea0ec0fa4353e096425bd67",
+      "gsRawSha256": "ce20c950adb3436568b4344e09dee0ef511dc2767e4452d5d4ef82faf11241a5",
+      "branches": 118,
+      "gsBindings": 141
+    },
+    {
+      "weapon": "ScorpionEvo3",
+      "abilityRawSha256": "7a61063a78a1d68ebe876c89ef7cb5c71b7ab2ca774cdd983bc433d9b9008576",
+      "gsRawSha256": "a77960f17538a6324f6d9aef87726dcf2cc02f49aaa453165a3a9621769b2211",
+      "branches": 86,
+      "gsBindings": 133
+    },
+    {
+      "weapon": "Skorpion",
+      "abilityRawSha256": "7b1d914a58965c07d89abd78b053c56559c0c2f609248e33f90d6a67abdafa50",
+      "gsRawSha256": "27b567e6c331c3d4fe93559d8c285a927fb57b7479b3f2b0113392ee0e8ce3c1",
+      "branches": 33,
+      "gsBindings": 40
+    },
+    {
+      "weapon": "TRR8",
+      "abilityRawSha256": "3eab3cdba8854e2bef9e5149a1f4214dd2a7aceec9c40287aa54785ce1a82e36",
+      "gsRawSha256": "d5e149d16de59b75f210714bf3613593057adec33b1e89e1aa98a19ebf4e4802",
+      "branches": 43,
+      "gsBindings": 73
+    },
+    {
+      "weapon": "Tavor7",
+      "abilityRawSha256": "d94fccb0eb61cf3700b04666971aee0337fe006904c5763470c5b28aa4cffd57",
+      "gsRawSha256": "397e58e0a1e69572d792ec1c785e0ada6291f1f6daa359993ca9be94bc834893",
+      "branches": 110,
+      "gsBindings": 152
+    },
+    {
+      "weapon": "UMP40",
+      "abilityRawSha256": "db4463fa34054c1a08365c978e7d63b14b8e72cb8a24068d1ed681b3f81b4977",
+      "gsRawSha256": "5802f219ea8e0961421596488979d49c175045aac78279bddc4a75472e6395e3",
+      "branches": 98,
+      "gsBindings": 134
+    },
+    {
+      "weapon": "Ultimax",
+      "abilityRawSha256": "ecc2bbe3a3af80e9ee6051002f5efd01923c5ad3afbcfe70855596f669e6bce0",
+      "gsRawSha256": "8f399c816e83e3c5c4c1840f6c0cd4874207bc49cfc4d9e4a849cae203931831",
+      "branches": 119,
+      "gsBindings": 157
+    },
+    {
+      "weapon": "VHS2",
+      "abilityRawSha256": "7e76de06804f070a4c2e3e426c9bb4235d7eb129bab41a11a6c81e4db52c2618",
+      "gsRawSha256": "431832c1a3c3993c438e7a09cbca7ce675d736f72b2781e953cc90412da7affe",
+      "branches": 96,
+      "gsBindings": 153
+    },
+    {
+      "weapon": "VSSM",
+      "abilityRawSha256": "0ff367e5c424384ba34aa595de5d4af522bfe37e69f7414adf123f2f55d86329",
+      "gsRawSha256": "ae0dc64afb3df7e40bea4d58054266f1fa38146c235786efaa52a27bff94e5b3",
+      "branches": 94,
+      "gsBindings": 125
+    },
+    {
+      "weapon": "Vector",
+      "abilityRawSha256": "bdfc158fe72ee3193ba2052976fda5185f25ad932ab59a70927586a71f1be7e2",
+      "gsRawSha256": "0b48957b1e5704e41dd36f75567862b21420d73274f4d33f203f96e55760a985",
+      "branches": 92,
+      "gsBindings": 130
+    },
+    {
+      "weapon": "XM7",
+      "abilityRawSha256": "d420d56ce6c9d322b01833eb657503583dbf7f103b1dff1919f600d3227b0154",
+      "gsRawSha256": "9cf80d41bc8dd941d9bed7cb924e4a251276c61dc59ff0149d9d02014b43f505",
+      "branches": 112,
+      "gsBindings": 151
+    }
+  ],
+  "limits": "Structural source validation only; fields without names and native activation/MP eligibility remain unresolved. Existing layout warnings are retained."
+}

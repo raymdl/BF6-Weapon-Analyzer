@@ -1,0 +1,1643 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "workerReview": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\underbarrel-sru-review-2026-09-23.json",
+    "sha256": "16a2ad1f1617b1d1eb874e27f713056706453b5cbf51171892a7490d5c52a6f0"
+  },
+  "decoderSha256": "776fa6af2a4abec497df061f4d36cb431ce1494f3af26ca0f8389c81dd419530",
+  "roots": [
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M26DB",
+      "rawSha256": "3b6e99d7c35e71df9ded0253b0dec8c2977709e29e415ed1570713f38d373714",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectGuid": "c2c970bd-fb49-4c8b-b0e2-3b7c1d1880cf",
+      "members": 184,
+      "uniqueMembers": 183,
+      "duplicatePair": [
+        {
+          "fileGuid": "a2e075b9-4d72-4273-aad2-fc33eaa2f8cf",
+          "classGuid": "8755f011-6d67-4fa9-8a5c-0125344f9ff7"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320AT",
+      "rawSha256": "5fcab8609f89b2ad1d95a02293aa684b90312a7d9da04f83b18dc47d506a4cde",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectGuid": "62976990-b661-4e77-8892-c954c1080b36",
+      "members": 187,
+      "uniqueMembers": 186,
+      "duplicatePair": [
+        {
+          "fileGuid": "a2e075b9-4d72-4273-aad2-fc33eaa2f8cf",
+          "classGuid": "8755f011-6d67-4fa9-8a5c-0125344f9ff7"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320HE",
+      "rawSha256": "d6055afd70e28e02176413276f0a9e798ad596050e90b4f80b43d56110b63cf1",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectGuid": "90407ece-9db1-4aa0-a6e6-120b12136858",
+      "members": 187,
+      "uniqueMembers": 186,
+      "duplicatePair": [
+        {
+          "fileGuid": "a2e075b9-4d72-4273-aad2-fc33eaa2f8cf",
+          "classGuid": "8755f011-6d67-4fa9-8a5c-0125344f9ff7"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320SMK",
+      "rawSha256": "e6c2b799c31e563902e7a1758d620978927435192edcd6b01b77d69ff10cecb8",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectGuid": "fa89eec5-ac1f-4a92-8a60-8cc91907f38c",
+      "members": 187,
+      "uniqueMembers": 186,
+      "duplicatePair": [
+        {
+          "fileGuid": "a2e075b9-4d72-4273-aad2-fc33eaa2f8cf",
+          "classGuid": "8755f011-6d67-4fa9-8a5c-0125344f9ff7"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320TB",
+      "rawSha256": "de17f3944023c5660b015f4637f055df5e2eb7cbeb09ccfe9800cf15d658f8ee",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectGuid": "bdaf692b-2df4-4e17-9e3a-0f6c3bcc6f16",
+      "members": 187,
+      "uniqueMembers": 186,
+      "duplicatePair": [
+        {
+          "fileGuid": "a2e075b9-4d72-4273-aad2-fc33eaa2f8cf",
+          "classGuid": "8755f011-6d67-4fa9-8a5c-0125344f9ff7"
+        }
+      ]
+    }
+  ],
+  "freshRawBodiesDecoded": 191,
+  "uniqueMemberTargets": 186,
+  "memberTargetClassCounts": {
+    "Class_bc0062dc": 186
+  },
+  "targets": [
+    {
+      "fileGuid": "9e34aeec-aab9-4d75-b5d9-665d1b5e853b",
+      "objectGuid": "68ba8281-7079-48a3-b53a-ff5bf30c63da",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/TungstenCore/U_WPM_AMO_TungstenCore_W05",
+      "rawSha256": "515e5aecd953d27c47cfaaec2c59f7c302d1282947cef5afd2e5b90a2c94440f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "dd81ecc9-3494-4a73-9c3d-e00c183f011b",
+      "objectGuid": "6eb50b6b-c6c7-435b-8af5-defcf355d527",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/Slugs/U_WPM_AMO_Slugs_W40",
+      "rawSha256": "995bc626c82c4a83268ba74446c89f3fd1f6283182987e79d854f6ca3e686647",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "74b431d3-8b5e-41ff-a74e-8554549596f7",
+      "objectGuid": "071bd6ea-9bf2-4bbf-874b-90a58bdc09ef",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/PolymerCase/U_WPM_AMO_PolymerCase_W10",
+      "rawSha256": "c528eeca82369e05484459510ba840b6bca310d129c3d02acccfb30f06715ade",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "94b67815-4b1a-44a6-b360-cc612903cd1e",
+      "objectGuid": "29a69d9e-fc75-4a20-875b-4d97ab355398",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Match/U_WPM_AMO_Match_W10",
+      "rawSha256": "8fd004dedc91fb1105a2e2042ccf9b10a28c445530593d6a3d67bfcc22af25dd",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "af6eec4b-41a9-496f-b502-e515daf40ac9",
+      "objectGuid": "61ea6e53-2725-458a-843a-c464e43dc453",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/HollowPoint/U_WPM_AMO_JHP_W10",
+      "rawSha256": "fac1815dc862f09132c710f9ac8a2fe235fb3ffe7f812a4df49b89a09a203109",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f35f0179-7c27-44f2-bb0b-d3e92179fd2b",
+      "objectGuid": "a171ea8c-66dd-4e91-846b-06f8659f0f03",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Frangible/U_WPM_AMO_Frangible_W20",
+      "rawSha256": "766b5636cd72787d9475c5ebb91912419fcf44a9fbb60aa6eec85ff451a3be60",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "64a420e8-42ee-4f5e-9271-ab2be0cb84dc",
+      "objectGuid": "7b6c6a00-b6ac-4abb-bbc5-e3a9f26914c0",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Ball/U_WPM_AMO_FMJ_W05",
+      "rawSha256": "50cead55c7223d616b1b03d1ef744e75c4cc2da61a669973f140ab961ad6f096",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7d6b69d8-b18f-4bf7-8308-6655c6db334e",
+      "objectGuid": "184d8a91-2438-4451-b6a1-365e0151c790",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/Flechette/U_WPM_AMO_Flechette_W30",
+      "rawSha256": "1935a677a0243591f40b278052b5020f75288afbb52a38acb86c8ea850dc1e0b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "d1bf3439-bdb5-4f21-b8bb-92641f4cc8ad",
+      "objectGuid": "cd574a89-c340-4754-949e-504fce061c18",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/No01Buckshot/U_WPM_AMO_No01Buckshot_W10",
+      "rawSha256": "a9913d5476fd1dbe67fa2d8d309105bffdbab4ce6568393565cb5b34315145cf",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ac5a7dee-5c92-4e19-8726-cf167b06dbda",
+      "objectGuid": "d37ca0b9-ff84-49f7-b23c-acc732d6cd01",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/BallisticTip/U_WPM_AMO_BallisticTip_W20",
+      "rawSha256": "32380a0eb61b7b7bba1673d3226aa846fced9ab1a5e699e28bf637a45c9f08f1",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "e36ee698-4e0f-4d25-9810-84dfdb5cbf04",
+      "objectGuid": "f7b59868-d8c2-489e-927b-6f5bb375245f",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10",
+      "rawSha256": "a5cd01be68db4bbe8f797422b4a0dbd189bcdd88644de56740433f9fa5a0e9bb",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3c97f8ca-4a0f-4aa6-8b69-fba36d9efaf8",
+      "objectGuid": "91d746ab-7de6-4c08-a7e7-df8911e03f95",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Short_W15",
+      "rawSha256": "307c0e055fb4af6b1640ccd2878570b8248c3381158fce4ba7697689fa2c8d1f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "6d98cee0-3af2-4f0a-b6bc-492a22f357c2",
+      "objectGuid": "1280c64a-6377-403b-8c0e-382c07651088",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_HeavyExtended_W10",
+      "rawSha256": "f8300704cc602ed170913b9de1c0e3cd0954229b954740ebb4305f7fdfcfc8e7",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "630af288-1797-4b65-9dcf-3b46f9ce34dc",
+      "objectGuid": "2d081e92-5aa0-46ed-92dd-c73d194dff3e",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Heavy_W10",
+      "rawSha256": "19db03dcb14c531261b6964621400f0356e9ed7c34178a4633de8eb5113ac5f4",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "bf6c3e68-ab48-47a2-a583-4480d5544890",
+      "objectGuid": "eb5b8519-a150-4b88-b85c-5de6f8bec73c",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Fluted_W20",
+      "rawSha256": "eed711d2a265fbb2551fa1162ddb4e5a281b93f88868071c5c93fdd999768d57",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f0c591c4-9ca8-4f2c-b6a2-b1806ce9710a",
+      "objectGuid": "49b8a26a-3e70-4837-8c06-30edd0e523cf",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Extended_W05",
+      "rawSha256": "f63eaa3328b7376439700f57c84e9fae64f438f84f7886143c0b4197e9514884",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "82de24fa-153b-42a4-a5d5-9b34aa668b41",
+      "objectGuid": "ebf5fb27-d869-4038-a9df-8ca13d2ad941",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/DLCBolt/U_WPM_ERG_DLCBolt_W25",
+      "rawSha256": "302e0a8514b4f1741676455c631212a91eb005e8f64ddc4f32bc1fd3999e6141",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9aea0de8-1dd0-4a86-ad6f-03ac2718d36a",
+      "objectGuid": "5bc72678-6179-463f-8a1a-60915c72901a",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RailCover/U_WPM_ERG_RailCover_W05",
+      "rawSha256": "1c37ee1fa68e82151019a7794d206c9d7817b768144c6686c3fb358835fe8542",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "510d58e1-d71b-47fe-ae7d-cd3b2176c69f",
+      "objectGuid": "3eaeac2e-a854-4cd1-90db-216da7845135",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/MatchTrigger/U_WPM_ERG_MatchTrigger_W15",
+      "rawSha256": "63f77741fc712768cc21f44906cded39a194b6b51722506c82192dfc39d9c2c8",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "275698e6-f76a-4265-8ed6-4a8f072e5990",
+      "objectGuid": "a4ee0d99-daea-4621-89a1-5241ed39f49c",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/ImprovedMagCatch/U_WPM_ERG_ImprovedMagCatch_W05",
+      "rawSha256": "d7d6358288223b105cb2b0f025f7a49b4abf3530dd01db868167df82eb887444",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3392adc7-a3f8-4a77-96ad-b95a9212e4f7",
+      "objectGuid": "83c0654a-99cf-4464-b7d1-4500bee9a751",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/HeavyRecoilSpring/U_WPM_ERG_HeavyRecoilSpring981_W10",
+      "rawSha256": "a1f84faabbdc9cf05ba5188001cf1a402cbca6d0cfa618d149aa9f347e11f5e0",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "22f6feba-10fb-498f-ad26-d0d4e73fd728",
+      "objectGuid": "f50d5d0d-d5a5-41d0-8089-06236aedbcd2",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/HeavyRecoilSpring/U_WPM_ERG_HeavyRecoilSpring900_W10",
+      "rawSha256": "98b6d73619fcf311ad4fc29f4b76a916a3de9405248c14be262eccfa4d41c2b3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "246823a2-030c-43e3-a6c0-83f088bc8f50",
+      "objectGuid": "f082b5ae-236f-4011-9576-9f4a91360199",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FlaredMagwell/U_WPM_ERG_FlaredMagwell_W10",
+      "rawSha256": "5d760ae26ae3c7b6786bab793c7d0c1a307027e3444f4ace50c566a8052f132a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "2cc9d40f-de48-4ac6-8395-432503e7c9d1",
+      "objectGuid": "ed425017-d1ed-4286-8bd1-90be0263f808",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/U_WPM_IronSights",
+      "rawSha256": "13c601287de366de909244200de2cf8cae2a8ad29490a681c20c892402de42c6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9b4ed012-ff27-4eda-888b-0bc3055ef6fb",
+      "objectGuid": "449b9b15-ea80-4a9d-8b83-00381ede5ec0",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake1_W05",
+      "rawSha256": "058e42ad50582f1ad4d2015d47b29449b738c99622ce4d0a22af3ac78bb10573",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "85de4b02-8f5d-4c22-9836-9f9972251106",
+      "objectGuid": "3eda1130-c3d9-4df5-8d83-65ca7dd381f6",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_Suppressor02_W25",
+      "rawSha256": "54c92beb7a5ac8717572f162ca3667b68357561a0ba194d9a6b1870039f0036d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "bfcf2e54-29cb-40af-b39b-ab3a0b105c9b",
+      "objectGuid": "276be3b0-2455-46b7-a85e-52c37aa5b3b8",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_Suppressor01_W20",
+      "rawSha256": "86750cd4245d93952f42c7e83c01ecf7fd6f659b0f32ade8c66d8f3fd9ac32f2",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "d9af61fa-9e7d-4e90-9c1f-8d6c064955f7",
+      "objectGuid": "b9708344-05f4-4ebc-b020-c8fbd5267598",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Compensator/U_WPM_MZL_LinearComp_W10",
+      "rawSha256": "f5d0a59b4d07575a9066c5c703c1202ab43fba9d7831c65c0251d599109ee737",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "de92adb8-dd26-4370-8b04-7f4dc4dd5290",
+      "objectGuid": "bb26754b-fb9d-467b-96ac-ecd132bc3f95",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor02_W30",
+      "rawSha256": "f98488315fc99d52af24dc2d826e944ade562675b9339389b1c6bf18c792f934",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "b6d9768d-c382-4280-a884-4783986da5d7",
+      "objectGuid": "1ebabe52-91e9-41f0-a59b-4623694efeda",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/U_WPM_MZL_ImprvdSuppressor01_W30",
+      "rawSha256": "3baf81d04ebbdcbda30333f399372ffd5aefb6398fd4c0908ce4768d0680a8ca",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "918ebfd2-9f03-4d72-b78d-896073ec8ce1",
+      "objectGuid": "eaa7ac43-a9fb-42c5-a7d4-b04c0b6ea893",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/FlashHider/U_WPM_MZL_FlashHider_W10",
+      "rawSha256": "9721e0c2d91b2ca996f1692b3ece6e0bf54f3b7933d9e93df944eaa81d3dd9b3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "95335d7d-f23b-4eb8-b334-bd9ab1ecd104",
+      "objectGuid": "2aee835d-7c6d-4194-a250-fa87dfe205b8",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake3_W20",
+      "rawSha256": "17dc7273c071f7609a39ea5bd76898a72d1e92ea717e583c2ad5a7076a8ce200",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "df687396-8465-4d9a-810f-1a2cc7085182",
+      "objectGuid": "67a15160-099a-409f-ba6f-f35045d5c54a",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/MuzzleBrake/U_WPM_MZL_Brake2_W10",
+      "rawSha256": "ffcc4c9c7f471f001a5e71e2ce3b070d9d0925db9157ca5782fa81e904ceab66",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "5d7ee464-ecee-4104-823b-86dc59dff5cf",
+      "objectGuid": "daee4672-0414-42ad-89d5-6f63b7ded9a7",
+      "route": "Common/Hardware/Weapons/_Attachments/_Shared/Canted/U_WPM_SCA_CantedIronSights",
+      "rawSha256": "76224de878432beb779186e162d5500631fd944fbfe3ddd79a1044d69291862c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "720b806f-5aec-458f-8b92-1106a341e040",
+      "objectGuid": "2c81cd53-e148-4812-991c-ccaed668046c",
+      "route": "Common/Hardware/Weapons/_Attachments/Holo/VZOR3/Unlocks/U_WPM_SCP_VZOR3_Short",
+      "rawSha256": "b686c75b27f6b197e8e8edaab1945ba46f9888c9aeafdb00d45309c64e4bfa2e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "798e71a6-dc96-4d04-96f1-d90d0c09aa41",
+      "objectGuid": "02376e8b-268d-4283-a410-dea4aaeab895",
+      "route": "Common/Hardware/Weapons/_Attachments/Holo/VZOR3/Unlocks/U_WPM_SCP_VZOR3",
+      "rawSha256": "2ac332fe039c6ec55fb3e065b65850a102cc5e924e8780c1d274b9fb004c2799",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "4bc2eea3-388f-4907-b45c-e57c3e7b94e2",
+      "objectGuid": "c675b4bd-f924-4414-811b-ffd3d99400aa",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconSRO/U_WPM_SCP_TrijiconSRO",
+      "rawSha256": "2cc5f6f257d6db783b4afb05a6a7f18b98d8bc48b1baeece0a2524df96a8abef",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "15cae972-d431-40df-b9de-c8f2af13c854",
+      "objectGuid": "245a48b5-fd9e-4711-b990-3a1688e50a55",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/TrijiconSDO/U_WPM_SCP_TrijiconSDO",
+      "rawSha256": "43fcc54b86929dcef5d03ccbd82c3d2395e457fad8ead4ca4c6788553410284c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "316b9bb7-fcd7-4803-bfd5-e12db5fb0431",
+      "objectGuid": "5ff7894f-c05f-4695-ad1e-e6aac670501e",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/TrijiconVCOG/U_WPM_SCP_TrijiconSCO",
+      "rawSha256": "c89e53b5cdd1f7cc6b665f0f93a0a5df6ac31a287ee06d104fc59d1e9953ff68",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7148377f-8ce6-47d5-b525-f37df6103bf4",
+      "objectGuid": "9dd7c50c-784c-4f26-b3b5-54414fc762ca",
+      "route": "Common/Hardware/weapons/_Attachments/Thermal/TrijiconREAP/U_WPM_SCP_TrijiconREAP",
+      "rawSha256": "b40d7c327f8f7bab3d03091b69f16ad1113c83d75752cd7b7b30ca790ad4cbfd",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7102d59b-8a88-4404-9007-d1964be32c84",
+      "objectGuid": "c2e1e941-3649-41c9-9554-e0f899947366",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/TrijiconM150/U_WPM_SCP_TrijiconM150",
+      "rawSha256": "c80653e625852341bd3e6561eb4e54f273c3cda41da05538ecfc79ba67023999",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "972a0a3d-63d8-4a6c-a626-59c12fb97f1f",
+      "objectGuid": "d9ec647d-6762-412b-9bf6-0267ec189923",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/Tango6T/U_WPM_SCP_Tango6T",
+      "rawSha256": "3d2243ce4ec9b0473df78e728ea01e53005a794add509a6acb45656e63f91343",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7643f05c-8ac8-48c6-99d6-5cfc327755ce",
+      "objectGuid": "4e7217f3-c6c6-4a22-a363-9344a309f120",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/SteinerT536/U_WPM_SCP_SteinerT536",
+      "rawSha256": "fc9d5dd3d0005875acdf5f20bad6a8708e3384db3eecf1c65f97d72acdf00681",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7bb9279a-1865-499d-a347-27de8c281d6c",
+      "objectGuid": "e6008d17-ad02-45c2-b9da-e166834b7c8f",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/Spitfire5x/U_WPM_SCP_Spitfire5x",
+      "rawSha256": "fa44c50c97ed7d7766e53b9004302b7becd7a67a1ab4cc3b841e1dc79659cbde",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "55b22224-f099-42ed-a9ee-b096f1540632",
+      "objectGuid": "9739dfdd-613b-488e-be2d-9957186bab82",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/CQS/U_WPM_SCP_ShieldCQS",
+      "rawSha256": "36d54adb0ed60c48f398784dd65df8b79524e1f31c9db6e5450e3f02e4033bf3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "85aeb6c4-5a7f-41aa-9384-284785a9191f",
+      "objectGuid": "e2c25355-a944-4763-9598-d3ab5523dfce",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/SBPMII/U_WPM_SCP_SBPMII",
+      "rawSha256": "007e1bbfe2210e13f22c2fdbf41caa56f67ee5f53af162a39f70a796b91b0a89",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "18313e0c-a0ed-4669-8010-86b9a79f348d",
+      "objectGuid": "1103e853-0d81-4e4f-a7bd-6d40e53a9033",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/RomeoX/U_WPM_SCP_RomeoX",
+      "rawSha256": "9b9e1381c827e50282fd89c14f37087dc68510b95e1c338c68589cddcdd8aed6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "bc303b22-dd2e-44ce-8e91-7782ca791f50",
+      "objectGuid": "47b2243c-3c30-442f-8556-9dd483793655",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/Romeo4T/U_WPM_SCP_Romeo4t",
+      "rawSha256": "c0ed878ad3f7e744e171035bac59183d77eceac501733f106d31daaafcb9ea24",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9f04e1cb-894f-4690-82ae-676b4527b81a",
+      "objectGuid": "20f72809-b7ce-4bff-98dc-25bf614f3059",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/RMR/U_WPM_SCP_RMR",
+      "rawSha256": "1783dc1d1f858fc5a0b407a47a38d81c943599067784dd0e2056b1e71834f047",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "d7ce5db9-6354-49b6-b28a-02b2327190c5",
+      "objectGuid": "fb310929-7a1c-4ff9-a690-e0ccbfd77e42",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/PO4x17/U_WPM_SCP_PO4x17",
+      "rawSha256": "979ab14d20731c5a72874fa373f3c1715e26f58d2e742b6a4dcbe80bc5cadf78",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "560ebd9b-e626-4c4e-a0ab-2f9b2db23cdc",
+      "objectGuid": "16ae3ab6-2a53-4060-a0f8-502e4d6bdf6f",
+      "route": "Common/Hardware/Weapons/_Attachments/Holo/PG350/U_WPM_SCP_PG350",
+      "rawSha256": "20b7e15f997e9f2d17a59ca7a30509b88d6e989a12bab4e05d85819796f5afa4",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "37e2ec81-35aa-42c8-9cf7-4cd194406006",
+      "objectGuid": "e9ecc947-be17-49cd-b78a-3ffac8027a9c",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/OPK7/U_WPM_SCP_OPK7",
+      "rawSha256": "6fcd6cacfea780685abd282e47353c71cef0c4fb4a2ae15fc0dcf046ad90302e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "6b6f21f3-6ea2-4a29-9ec1-19a341962e5d",
+      "objectGuid": "626c71f1-bffa-479a-abf4-f71478bee06b",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/NX81/U_WPM_SCP_NX8-1",
+      "rawSha256": "181a0eb1022c9dceda082eeb0715980d6abdc086d707bc93fa566aab622b0dca",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f2fbdd51-6b98-47b5-9883-bb6df448e869",
+      "objectGuid": "57f83336-57a1-46a2-9791-d7a2272fb65a",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/NX84/U_WPM_SCP_NX8_4",
+      "rawSha256": "6e555216f686247d7b808af324310f92ad2d965fb61452cc6c96004a85f0fd09",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "878abc51-e7f2-40c2-a8cb-942aa4d582d3",
+      "objectGuid": "12fb66aa-5b2f-40bf-9401-973635ab20b0",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/NFATACR/U_WPM_SCP_NF_ATACR",
+      "rawSha256": "435a3b0fccdfbdf3a910e2d42e4f26c7bb90321edd4c9ec974a8f8c057758b7c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "8486cda3-3261-43f9-af08-dea380b18634",
+      "objectGuid": "a0a1386e-af98-4f3b-befe-ced48c5e8484",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconMRO/U_WPM_SCP_MRO_Tall",
+      "rawSha256": "e032991939f34166ae721a5c852f7477bc7fb91c831f94140ab1f05cd43d7946",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "74729cd7-5131-4ab3-9a9e-43ebbb680c7f",
+      "objectGuid": "0c271f66-aebe-408b-8e07-4b1240ae072a",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/TrijiconMRO/U_WPM_SCP_MRO",
+      "rawSha256": "7e9ab5368a124dbf4468dad8859471f7b2ea49fe22a41771e79d153c42a08bef",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "14d63902-4446-4d07-92bb-645dd5f66dd6",
+      "objectGuid": "a186fbf7-b0eb-4e8a-8c03-6693a717c726",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/Mepro22/U_WPM_SCP_Mepro22",
+      "rawSha256": "cc092d87bfae14de17935e9ce54b3b6257393e62410b4b4705e0dc68cea09044",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "e896f341-8710-4f0b-96bb-aacbfc69ded3",
+      "objectGuid": "d244711f-d412-4b0d-b1c2-520bf20305b9",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/Mark4M5A2/U_WPM_SCP_Mark4M5A2",
+      "rawSha256": "1287d3f91ef5115469e75ff94f7dcd48d30ef9427ea0bfe10da17866827023a5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3e2edb5c-4b26-4a7c-bacd-505ba5be2b68",
+      "objectGuid": "2e239842-967c-432d-a0d7-bd066acb7946",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/MarchFFPShorty/U_WPM_SCP_marchshorty",
+      "rawSha256": "f191bcc7e3c3aa9c61fa12e93cef775bdfc0253d2c154694338f24fa35c9838e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "1ef3c3ad-048d-4600-a28d-0fb4c5822f0f",
+      "objectGuid": "b45f8837-3ecf-401b-a1bf-ad701fd5568c",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/SteinerM7xi/U_WPM_SCP_m7xi20x50",
+      "rawSha256": "6040e1c146993cd08c77ea2aa1e888621726812caca0e400ecb706894f21d326",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "e89e08ec-fcbb-4e60-8467-9a595f6154c3",
+      "objectGuid": "0bfe307e-5c03-471b-8244-9a0df48552ee",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/VortexM157/U_WPM_SCP_M157",
+      "rawSha256": "6402a0c424fb2beaef31a552d14a999c2bec18965093b8e6da7a8d26a0251ec3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "5dd0a421-4cac-4db4-93c5-c231f88414b0",
+      "objectGuid": "c2bc18e2-04e3-4cb6-ae79-d641d4cdb7e5",
+      "route": "Common/Hardware/Weapons/_Attachments/Thermal/HISSHD/U_WPM_SCP_HISSHD",
+      "rawSha256": "4b99dda61218fb0479f7edd6c45cb69ab233783ff0948b6a02567c4481b5f73f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "d8a1507f-8a62-4882-8180-57d738f0fece",
+      "objectGuid": "88cfb761-448e-48f7-8ab4-35a4147babee",
+      "route": "Common/Hardware/Weapons/_Attachments/Reflex/EotechXPS3/U_WPM_SCP_EotechXPS3",
+      "rawSha256": "8838702e2bed3de769d5d1afdadc5f20bd3d125b4e4a23d79a8fd24c6ff7e059",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f367c3b9-4ea6-4638-bbd7-b7593d6f5f95",
+      "objectGuid": "c5cf1cb2-998f-4984-ba0e-d348b5507903",
+      "route": "Common/Hardware/weapons/_Attachments/Reflex/EotechELFX/U_WPM_SCP_EotechEFLX",
+      "rawSha256": "ea78c0edecb4cd7d531d713f9a54ed56d3d69c0f331290190966d80579d93896",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "e27aca22-ac93-4402-9106-7e10347ff8d3",
+      "objectGuid": "a22e3717-ceb2-4b9e-b3f3-5c21adc3637f",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/Elcan4x/U_WPM_SCP_Elcan4x",
+      "rawSha256": "161523a260c5cf771a118de1697ca059aee807ecb0e14d6988d00762153eeca6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "4a51548d-1d95-46c0-80fb-4ce69b571331",
+      "objectGuid": "42e87768-9444-4fd8-bb69-7f9a351c235a",
+      "route": "Common/Hardware/weapons/_Attachments/Reflex/CompM5B/U_WPM_SCP_CompM5b",
+      "rawSha256": "3675b76e7b95daf1fcc19b95273f91ef63ce8ad8a8149c4c8ac702108af3fe9b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "e0a67418-32b4-4c9b-9bcd-8c69c04d2227",
+      "objectGuid": "e9f35b17-8e18-4ae2-afb8-57995f6d813f",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/Bravo3x/U_WPM_SCP_Bravo3x",
+      "rawSha256": "3d63b6f686f69eb3839268675ed750e41cee363b33d95e43d76878a073ade111",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "a2e075b9-4d72-4273-aad2-fc33eaa2f8cf",
+      "objectGuid": "8755f011-6d67-4fa9-8a5c-0125344f9ff7",
+      "route": "Common/Hardware/weapons/_Attachments/Thermal/ANPAS35/U_WPM_SCP_ANPAS35_Base",
+      "rawSha256": "1d88200444ea61d49249105319282f7b091b3e8adaf3f15e65cc09ddaa0f504f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f73ce406-761f-41b5-aeac-ef16dda4159c",
+      "objectGuid": "a7a55fa9-7095-4ea0-98c4-37c598b90f59",
+      "route": "Common/Hardware/weapons/_Attachments/Reflex/AcroP2/U_WPM_SCP_AcroP2",
+      "rawSha256": "512b7eb966ddcd868e37d9a071f18db961081b9db64bb7a353494173b73f8ab5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "570d648b-3b41-4a9e-a0e6-66460b7afa4a",
+      "objectGuid": "6b2866e9-ba27-4087-b40f-e1f72345cc7e",
+      "route": "Common/Hardware/Weapons/_Attachments/SniperOptic/1P885/U_WPM_SCP_1P885",
+      "rawSha256": "d571fcbb8c8e70c8ff28e9cd377aaf69288af941f18cdad08f6088ceef49b467",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f46b7c4c-bdd2-4552-81e9-da6aa0bdadbd",
+      "objectGuid": "406d6c39-e5ef-441f-bd77-6cb0dedd40a7",
+      "route": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_Variable_LPVO",
+      "rawSha256": "2b6745a7356f0abf0b4941336201924bbd52407c0a24efc8425a03a6ae602b38",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ccd4f15b-c3df-4472-b920-d629f309b16a",
+      "objectGuid": "78bcf770-19bd-45d6-af75-9a067e00c783",
+      "route": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_Variable_4x",
+      "rawSha256": "3e70150c5d9c0e22b66f992c9874a6a09f35b16f8778afe989afb5313b67a1a1",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "39824743-2d26-4500-9077-c8a36ab743d8",
+      "objectGuid": "d1c1db85-899f-4e2f-931c-144f7c8528c6",
+      "route": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_Variable_3x",
+      "rawSha256": "dfe326f30b28fdf7b005e6ab8d0f611d96559aa1fdb7c999aba8dd5dbb5f1818",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "2befd20b-0546-4ae3-bdb5-a974049375e3",
+      "objectGuid": "1f984f9a-70a5-4776-80d9-60761244b635",
+      "route": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_Variable_2x",
+      "rawSha256": "221e7b2d04f29a17635d043ded43a580126e1d7f509bc7fd1a5c345025d2c102",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "6a941c6d-1dcc-442f-b303-0f1fcd4827c4",
+      "objectGuid": "3885f47d-990b-40db-b9e0-339dda276d87",
+      "route": "Common/Hardware/Weapons/_Attachments/_Shared/OffsetRedDot/U_WPM_SCA_OffsetRedDot",
+      "rawSha256": "cd153214b29e3290b9e921037eb1959aad362460ccbd92326672a1f1ea98b011",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "c159206a-125b-4afe-b51f-7670459cfb18",
+      "objectGuid": "09ccabb8-e3f4-4a66-96c6-0998217a039a",
+      "route": "Common/Hardware/Weapons/_Attachments/Magnifier/EOTechG43/Art/U_WPM_SCA_EOTechG43",
+      "rawSha256": "fd5d50fd7acd343b964d208be64ecc5271793590cad8548e21fc38156d5c011a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "06390f8b-88bf-4541-9b57-52d79bc286eb",
+      "objectGuid": "10f9a5ee-1cfd-4fba-9e0b-bad5009100f8",
+      "route": "Common/Hardware/Weapons/_Attachments/Canted/RedDot/U_WPM_SCA_CantedRedDot",
+      "rawSha256": "a96f3dfda11fb933201ac4e036816c094b49bf11f40dfb4324dcf7e9906d4422",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "98f884a9-06a9-4deb-b0ac-d4d9f1b81456",
+      "objectGuid": "f601eb64-6e5d-48fe-a5bb-23ce07f4ef11",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_200Ext1_556_W50",
+      "rawSha256": "8fc60f47c560e116c8379c6adddd35b3bbb90e846c0989e1b19bb7760be640ae",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "5a2f4638-1018-4c59-883c-da03aa881c9e",
+      "objectGuid": "f8dda924-39d4-4ce4-b6a2-46ef37492079",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_100Ext2_M240L_W20",
+      "rawSha256": "9e91f2e6367b10318a4ed2b1254ad1d70f3f57be103704185398aa2bf1b0484e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "aca48ae7-c895-48ef-b224-a15284cb7fc5",
+      "objectGuid": "0f8a22b0-48a6-424d-8f61-44a5a7263dd0",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_100Ext1_Ultimax_W55",
+      "rawSha256": "b4a462050fe50e64ce145ef8c7c8d9bbf443c07b1a78e3d57dd8b922c1e2d07e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "5d0c43d5-3a9a-4a6f-af4e-ee8fb9d2337d",
+      "objectGuid": "fa720198-0ffe-42f7-a7ff-749c16173c31",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_100Ext1_M250_W55",
+      "rawSha256": "af68815c2add9194fbe6dd4a79a2f0dd2350b9c1358006cd3a1c85cc2bebbcfc",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "06a20ebc-aa36-406c-aa2a-10222723b569",
+      "objectGuid": "c4f0c2ae-78f1-4698-8a98-87eaa98e09e8",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_075Ext2_RPKM_W50",
+      "rawSha256": "e824468b250560b6687953a84d705c8e93292c1615d5f19a3fb687e2e74344f6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "d2b369e4-4ca7-4772-8f37-dedf40c564f9",
+      "objectGuid": "dd7850e3-43f7-40b4-9e0e-0fc0b3d779f6",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_075Ext1_M240L_W10",
+      "rawSha256": "8c7a21442a49f66b602817bd695caf6bce6b1345133a26925b6781365624e16a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "4139f7ea-24ba-4216-81f4-fb1023b5b7f7",
+      "objectGuid": "1cb6796d-d18a-4be7-9f0a-8f12a3e88d8b",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_060Ext5_556_W55",
+      "rawSha256": "325e59783d1bae1e434ced9ca487aaa6f52338b33fb15c44662c5daefe52b540",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "e64ff509-0154-4da9-86f8-139fd5493807",
+      "objectGuid": "0a310c6c-cb65-4899-93b4-78c158bc6e37",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_060Ext5_545_W55",
+      "rawSha256": "5bb74baf5eacce3bebe5edbaba0ad38b7ca3414f33e85ca835c2cd4746ffd05e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "cd3e1d9b-292a-4e3a-bc14-1d3a479da6db",
+      "objectGuid": "18e1c5e7-2719-4953-8d5e-fc58399d384a",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_060Ext1_RPKM_W30",
+      "rawSha256": "78daee35cdb9576a58be35da5755b9f1e54c4480269f683c874f5a9b4dd5c9ff",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "0b6813f5-1ce5-4d5e-81f3-1c29ad36cf19",
+      "objectGuid": "5f8bd23c-3d95-4e9d-aba3-aab7e6e1ba1a",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_060Ext1_APDW_W55",
+      "rawSha256": "eaa56d3dacd58780934318b86d14b10eb5a3e3f3a30f38145c26c1cbc87e66f0",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "60c2e01b-e948-46e2-b611-1540b221890d",
+      "objectGuid": "2ed6abf4-6dda-4881-b610-c3d948f3724e",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_050Ext4_556_W45",
+      "rawSha256": "1dd596867df769014fa9fd94b09d4d391d4c43d9baafddabd6e9c835e2d74804",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3514b163-ee19-46ac-b138-f58b8e5f6782",
+      "objectGuid": "a9b44336-472a-4a33-85be-e483e5e12cee",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_050Ext4_545_W45",
+      "rawSha256": "821b160305bd1bc45850eb5dd9576a04cc41adf8789c555deb483fb47ff35e3d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "72145142-0e00-4351-b14a-f851b1282887",
+      "objectGuid": "16312699-dc8e-4cca-8222-d608c79f7d9d",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_050Cpt2_Ultimax_W05",
+      "rawSha256": "2cd951f2fb9a0e774619ba2bf301cd4caebc93bc802ab3eb4cafcf06fefc7ec9",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ad36904a-cb96-4338-8c90-e0aff52ebb37",
+      "objectGuid": "4cac9ef4-accd-4b8f-95b8-0cda3430c6c5",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_050Cpt1_M60E6_W05",
+      "rawSha256": "15b2f7c0b84c4d5abd9b46b30590f796baf4fe0f17fe89d1d6114ff0890d9c5d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7281a3ff-cf32-457b-a334-23d9bdc45e29",
+      "objectGuid": "53290d9c-0c8f-4de0-8937-31f1cc412875",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_045Ext3Fast_556_W40",
+      "rawSha256": "11f3c76318778f635276788d902d27c67258138e2f0a2bbdaf8b663c44b5e94b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "89ca3901-a49d-4e3e-8262-570b6f522fc2",
+      "objectGuid": "bcab14f4-2df3-46bd-bac1-cd30de06b270",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_045Ext3Fast_545_W40",
+      "rawSha256": "f6f682f93cc652913ef1419fa02e60b7265488e185b020ce31a709a1d4dd8e9e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "de9cf47f-8486-4e5b-bdf0-c498991f22b4",
+      "objectGuid": "a0128e93-1b29-4822-ac71-9baf762f6a86",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_045Ext3_556_W35",
+      "rawSha256": "f63705f89685ccd05882a1d446156a5e0d3a02ee2a40179082bf105ae16dd38e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "4b402704-18dd-4601-80bc-5b4ee6d29f40",
+      "objectGuid": "0728c9c1-0b4f-4223-baec-999b1c933735",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_045Ext3_545_W35",
+      "rawSha256": "8431cc4c0ff0dbbd46b77fd0af9ba85b494e52ad30f022fe216ba907d3742630",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "4400277b-3215-4442-b636-2df3e6c19ff7",
+      "objectGuid": "3bef0e1e-37f4-420e-9429-3011003b5f5e",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_045Cpt3_Ultimax_W10",
+      "rawSha256": "19b11743c807e10e9d95adbff36adf207eba7823c1764940a4f1690c70c1b91d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "90acecc3-e261-49e2-a5b4-1aa212858504",
+      "objectGuid": "0ec72c9a-50fc-4bbc-a1c9-0b65322e2ee9",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_045Cpt1_Ultimax_W05",
+      "rawSha256": "58536c7e55ddfafaeb91565f3ccbd8dea537ffd0bbe9bf05e85d50ff932345d5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "d16c7fdc-33e1-4b41-8952-aa02912e2c7d",
+      "objectGuid": "86550cb0-666c-484b-b6f7-3eeffa4ffb35",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_044Ext3_MPX_W35",
+      "rawSha256": "ad2b632839a45ff5292fc1621a0281f396135e634fb0c41d1f1570c86e671c00",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "42e88031-1ed6-4c12-944f-3f11a9fca4ca",
+      "objectGuid": "b371d0c2-f93e-4014-909a-6b093fe0186c",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_041Ext2_MPX_W25",
+      "rawSha256": "bd55b6af33762cca3e0ab4f81db229922c454c9d4e1f87f5ed260a2375770594",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "1f87928d-95e0-493f-b019-8fb79e422c2d",
+      "objectGuid": "0fb83399-d681-44b1-93bc-c47cb615a7f2",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_040Ext2Fast_762AK_W30",
+      "rawSha256": "2b913c0713675cf39a8a9dba4232073faf0b97725286b3590fe70defa1a73dd6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9cfdefcc-2407-423f-985a-cd7017c9e7ce",
+      "objectGuid": "311f3ba0-d06b-4aab-9c6e-09372050be35",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_040Ext2Fast_545_W30",
+      "rawSha256": "e6fa7576ca5f3277dbd8ed714873c9d0b35ca98ff5e3205e988217f92fffb3c0",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9a49717d-6e2d-4e4f-af61-64db4e445cbd",
+      "objectGuid": "181f290d-1481-4ee7-bbde-4de801ea32b6",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_040Ext2_UMP40_W25",
+      "rawSha256": "27a2c740d833c3fc07cfb9a8b55a0bead9c845cf50eb1eff246df0a1a358d0b6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3016bc12-d4aa-42a9-b5f2-50e304d421f3",
+      "objectGuid": "46e5505c-9395-4bbd-9130-81a59bab1499",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_040Ext2_762AK_W25",
+      "rawSha256": "7e6c81ec259851feb5692ec28d4c7fd54377db371254c51fcf85826cc93bf3a8",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "dfd5de6e-c43b-42ca-a928-3205121e56f4",
+      "objectGuid": "61f837df-9a12-4c58-981b-8481311cd57c",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_040Ext2_556_W25",
+      "rawSha256": "bff06ae137201de0a77482758b4de056d2e8502ead372091bd72ed2f8e0ff3cf",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "588ce142-8ca8-4cb3-b307-04d432b2d702",
+      "objectGuid": "47089bd9-af2b-43a2-8351-1e8306c76fb0",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_040Ext2_545_W25",
+      "rawSha256": "46f77ec47fa77e015b5fc7943c774115bf47af9a57def1ca42386642c2e3b9c4",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "fe9b842b-0eb4-47bc-9358-dea330a2b2aa",
+      "objectGuid": "5a33b43a-c2cd-42d5-b628-7c15db4d7c3d",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_040Ext1_MP7A2_W25",
+      "rawSha256": "de4ece1a6c4fc23d79276f27e9aeb11d6eb29c154a6050d527350dd26c0f82fc",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "dcb1684a-a5b2-4240-8ce0-cd8551a3e135",
+      "objectGuid": "0038a1f8-4d55-434b-8918-a5e335a5fef7",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_040Ext1_MP5MLI_W25",
+      "rawSha256": "2e9cd214d2a3a747a725545e569b34ef6fb9016cd939abbdb346fcc2f4068844",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "937aec07-3686-4941-aeef-0f363d47a3ca",
+      "objectGuid": "54ea8299-5986-4c6f-a8ea-2cc18bed8763",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_UMP40_W15",
+      "rawSha256": "9983ff2a65f230ce7ebdde7826e8dce08aa7520b6811d8e6c630ffa4a2e9e13b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "cd49bd3a-b900-4ef8-aed7-a87cf3422ecb",
+      "objectGuid": "115acffe-8597-41a8-b177-63b8707bdd5f",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_MPX_W15",
+      "rawSha256": "85d15331600cdd13f78862c165131986b319bfb4715015a034f5bf0c17ac3f6b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "4e7531fe-6b29-4cd9-8552-22e08f52f133",
+      "objectGuid": "26dbd928-f060-4b03-a4ea-a1387b5ec994",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_762AK_W15",
+      "rawSha256": "c939324aa82eeb4a36fb701dc534a674bec7a838d932f809d22023f03f8a4044",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9229669b-f45a-4812-8e3a-a482dc1052a5",
+      "objectGuid": "806b0662-49ac-4cc7-87c9-e3fc59be4605",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_556_W15",
+      "rawSha256": "3b22864c0637bd44f1edd7971410234731ac21ecae9e099695fedc172178261d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f4a5b9f1-0a4b-496f-90a3-4ed4530d0353",
+      "objectGuid": "0664e889-c8af-47e3-8483-c0fdb72962c2",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_036Ext1_545_W15",
+      "rawSha256": "223acc2688145232d8ecd93003c440f6cbf1f37f38a6aae389c13891a0329de1",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7aac7905-b3f3-4e3a-99c2-58a1a6709363",
+      "objectGuid": "af431cd6-3379-420a-b874-25d119382092",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_036Cpt3_RPKM_W05",
+      "rawSha256": "5a75ffa7a17d88435a5c0d410957bc471dbce88ba59810a894f52595feecb7a0",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "0e828e08-712c-4b9b-bd15-8cdedf60eb69",
+      "objectGuid": "8c2b1100-373b-4d85-b02d-1bbc4c1aab0e",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_030Ext2_XM7_W40",
+      "rawSha256": "702446e5b12b0b76dc51eb1d213c23bfead1bcd342f5e96d794d84a386af21f6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "da6bb488-aefb-4c0c-8b3a-f70893536f59",
+      "objectGuid": "1381a5e5-f73e-4607-bc01-d66303d29d49",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_030Ext2_M18_W40",
+      "rawSha256": "40a998374bf5ca086fa8195019525a374f4ebe7e7f1de29e1ff819dbd128c0a3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "632af460-a961-42a8-aea1-42b83c045c58",
+      "objectGuid": "a08df313-2119-4428-8f4e-630ea70b71a9",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_030Ext2_762N_W40",
+      "rawSha256": "bc5b08f7fd0415268809fd52823bbc6e25dbe5b2ec4e422f2b3adb8d88f47c5f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "cf07fbc2-4da6-4c43-9fd6-baf06a42442f",
+      "objectGuid": "2c83ad0e-d721-4956-b913-6bb2012c0d68",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_030Ext1_G3A4_W40",
+      "rawSha256": "9358c688b2650c3121ee58ceead5034939b35d252fbb905d4df5392af5f94b23",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "21052eb9-6bd2-4ed9-98ae-b6eda06b9585",
+      "objectGuid": "a2d0be8c-6271-48b6-bef0-7922014d5f30",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_030Ext1_FiveSeven_W40",
+      "rawSha256": "ab50c43b6e188d173e25ad3f0820f98f8ce63e8540d463fe67a8822e472b3567",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "27b519c6-48d0-4cfa-b0f7-e87a5f4d5fae",
+      "objectGuid": "8c9b2a1b-b5c7-4e49-8ab0-0c1e7fe136ed",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt2_RPKM_W10",
+      "rawSha256": "b0a0552b13c5faa3caee44bdfc59eb83a76f649236ab89f6c0691e032d85ea5a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "bf8b3b15-0352-4178-9031-b22f65a68c5d",
+      "objectGuid": "89c6dcd7-ec28-4e79-8744-b0a04e1711b1",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_030Cpt1_RPKM_W05",
+      "rawSha256": "61e5d0b04db0e455b3f3da0c0e504b8c208ef7fd9368027d9e79addc0e4b7e16",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "2a24abe2-c97e-4c05-bc54-4d3f13b8d534",
+      "objectGuid": "e53002bf-4ffa-4927-9f21-9ddeb07186f3",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_027Ext2_Vector_W45",
+      "rawSha256": "7ec6c83acc716fa503a42be18d4c8912c8b660e10d93dfe6521d7b0af0304039",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f369ff60-0903-4987-ba6d-5753d072c866",
+      "objectGuid": "f13a9741-b03d-48c4-a3de-0bb5cd5259e9",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_025Ext2_APC10_W45",
+      "rawSha256": "e4feb09333ebd8023ef2bdbfcf945b39e3fc5e66df0c280806c6fda4ae6d5b14",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "82b499d4-b0d3-4fda-abf6-08a11a1241ee",
+      "objectGuid": "22648f1e-4bde-4cd9-8246-3dbacad29252",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_025Ext1Fast_XM7_W25",
+      "rawSha256": "3746730713dc988c35d6159daaf0c0ef95674611e51bfb81910ec20826b9e48d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f3dc00cf-4fd8-4eee-9477-9b52dc87430a",
+      "objectGuid": "2a5731ac-b322-4b53-8138-50c94f5be052",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_040Ext2Fast_556_W30",
+      "rawSha256": "1e853eb57783a85f368aa7a844deead72aa3d54d6e4977a66b42441cdecedc4b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "a6d9d733-a863-40fb-b833-27bba5039832",
+      "objectGuid": "b442a8f9-a55a-42b7-aef1-0968d4ad88e1",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_025Ext1_XM7_W20",
+      "rawSha256": "eec62701c15ec38112e2940c52c841fe6dffd3a72afd8d5a1e40e602c466d418",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "e6344732-7601-4965-9c0b-64220acd7531",
+      "objectGuid": "2a48cf27-333e-4791-952a-5404dcab8115",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_025Ext1_M39EMR_W20",
+      "rawSha256": "3b2f440e23255c7685b36be7da8d60f91037d331984dd8e3fdda682da7efcff7",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ebb02644-0076-47a4-9782-d665756b3e7f",
+      "objectGuid": "76e8b4e8-5767-4a20-ad23-74a872217bbe",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_025Ext1_762N_W20",
+      "rawSha256": "7b4c3388a5d37f67b57d9380e513957469fb70a8980b565c71fc6b6c2253cf1d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "289a166d-e4ab-481e-b3b8-25b1de202ae6",
+      "objectGuid": "eeff3226-9dc4-49cc-bb62-cad8abb26e22",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_025Cpt2_UMP40_W15",
+      "rawSha256": "13aab6166671ee50e80932d183c4e3ef33f69f7e8b13f776188d0182301f6cb7",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "abb83590-89e0-45ec-97b2-cce263268806",
+      "objectGuid": "ede0a101-c5db-4444-9dc8-695c8abf82db",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_025Cpt1_UMP40_W05",
+      "rawSha256": "c52232758c9257226679a289052b60f03212548a77eefa3ea8f14f4402a3bcf5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "1419d9b3-921f-48d9-a8c5-19d599b99bb9",
+      "objectGuid": "63e6850f-28dd-4def-b1ab-12821d3ee34e",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_023Ext1_Vector_W25",
+      "rawSha256": "e618a2dcd3cb1c49ce3c3b0d7d709774f76a83ba33646c75827e92596f701eba",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "109032fb-01ad-4ba1-bf79-872d89667b5b",
+      "objectGuid": "176bbaca-7458-4e8a-85ba-c8f18d069e85",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_022Ext2_G22_W30",
+      "rawSha256": "5d6d659414282fb02acf0be33cb01fe3603b029b92decf4ea259aff8661225ba",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "2732e43e-276c-4f71-a7ce-c1e3356e8c6a",
+      "objectGuid": "48910b4b-f7ac-42b0-94bc-25a3556a290b",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_021Ext1_M18_W15",
+      "rawSha256": "182976cde32754e14ef36eb08382fa5cfb7b10bdc77f8f1acbe885ecacbf167b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9988f2d3-f260-405f-b861-ce93eacfc912",
+      "objectGuid": "c7ad9e3c-f708-4828-94f1-01585d5cc2f0",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_020Ext2Fast_MiniFix_W60",
+      "rawSha256": "8f5aa928ca28e2adb2e6c97c0f92d2b13b7a4ab6bf263900346f9f93d907b85d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "65c88d2f-d157-4dc4-bea6-79427e21e401",
+      "objectGuid": "4ad70adf-af6a-45c4-b323-cf88e5ae21ce",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_020Ext2Fast_ARADMR_W50",
+      "rawSha256": "ceea98fa30d4261f501b0a65e9a73834de58c5225bffe52079ac98f57116f9bb",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "dddab68b-303c-4a81-bb8e-2fab1a7d494c",
+      "objectGuid": "2773bdb0-dd64-421a-9973-9cea657fd1fc",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_020Ext2_MiniFix_W55",
+      "rawSha256": "ece0dad3f26688208239975cc44dca157429575e077c7da44bb034d35222992e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "dffaab91-051e-44da-a64a-0e2ac99cb0d3",
+      "objectGuid": "592bc8d9-7ec4-4b2d-b689-79e39105fdec",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_020Ext2_ARADMR_W45",
+      "rawSha256": "26f1c0aa736a1298d798b46ebc2fde00e91ab95d40bc1d8de3e55a2a2901dff4",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "66df9b06-2a62-492b-a411-f80af527ebce",
+      "objectGuid": "fd72b641-0f00-4432-9e76-073a1014de66",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_020Ext1_SVDM_W45",
+      "rawSha256": "e6672a08b2ebf0e66b3390cf34ced7e6a3f8aa8ed697452cc83eae28606f23c7",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3c141ff3-02bc-4d4b-99f5-9f825718f57f",
+      "objectGuid": "deca1333-144c-4cf9-91ad-cbbc82c38240",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_020Ext1_SVCh_W45",
+      "rawSha256": "6bc341fe6d78284de82909f000b7ae61b80e0e7e747fb12d94f331880d64ba4f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "422e1eb9-8b66-4a3d-9185-35cf70482f01",
+      "objectGuid": "fa2c652e-096c-4637-aeff-2dce7b164a10",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_020Ext1_G22_W20",
+      "rawSha256": "b947fcab88989c7ee579028ad31316b7040aa71368c35096884ef7a2c47ab445",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "da623226-e182-470d-a859-8b69a9af927e",
+      "objectGuid": "a382ae3d-5f8e-45dd-8f29-baba2325da29",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_020Ext1_APC10_W20",
+      "rawSha256": "f58cf080b1b5f4f47ad6d30504d36e182a6934d986f5f809df10867e098ce790",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "2b7a207b-3da2-47a0-aa54-a49f3b5d2c11",
+      "objectGuid": "a53f065f-4d05-4a0b-b1b6-974bbf17020d",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_020Cpt2_762AK_W05",
+      "rawSha256": "44e7a4468ab84534991071130f9e183d60babca5b5c5ffcb34eceb388332eaa4",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ec16bd03-a848-4c84-8b90-31555cce2884",
+      "objectGuid": "8491af05-20f0-4c9f-9202-4ebd380e4b90",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_020Cpt2_556_W05",
+      "rawSha256": "3b444699d3949b57302fad6e240b32578a23266a29a96650905d70650ae745b8",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3ee0564f-9b30-4244-b3b7-76510374d7fd",
+      "objectGuid": "cc90f422-ba78-4a3c-a226-924ad20a9f47",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_020Cpt1_MP7A2_W05",
+      "rawSha256": "5c9b217cce3e07a67fa2ca1fa872a87ac3a85c3f8dddd68e8fe94a7ae657fffc",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ba0d9d52-b269-4216-bef1-9b4ba38329e8",
+      "objectGuid": "7e516ceb-86a7-4fed-a3da-23d49af23f39",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_020Cpt1_MP5MLI_W05",
+      "rawSha256": "08b9f1d772e29602e09d4d15f1396bb2ab81341cf15314d8d40c25011ea21dc8",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "a172169b-deb4-452c-a2a6-9cbc4f32b32d",
+      "objectGuid": "dee3070c-5a06-4ae6-be12-ef93cf0e1bd6",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_020Cpt1_762AK_W05",
+      "rawSha256": "cbfc9ff7bab31580b8e304b05b3355fbbc417a6229df635eabfa51fc06e25320",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "b1aa002e-bb74-4ec5-b3e4-dc2d08e0260b",
+      "objectGuid": "122d743e-83f6-44c8-adcb-8b3c1f5a0807",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_020Cpt1_556_W05",
+      "rawSha256": "c6d9780aa61a1cbf76031caba0f8914c581000476e88a2c6b938d9da3aee2f50",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "877f0671-ae3b-4fa2-930b-11a98e49666b",
+      "objectGuid": "95d97509-3b1a-40e9-9cb2-4257a230b430",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_015Ext1Fast_MiniFix_W35",
+      "rawSha256": "583c27f70cad72386c0fcb7560f46e122b72cb0a5dd20833b2856ecbbd9a2587",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "75864dbb-8740-46f6-a960-dc484a720053",
+      "objectGuid": "acc12f7c-0e71-467b-a976-9351eb21e20c",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_015Ext1Fast_ARADMR_W25",
+      "rawSha256": "a00bcbde1efd63e130df655e760c2b13a55e8a5c16c8420ec5fc1d842608c56c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "5df807e5-ecd6-404e-97c3-83f8a24c3ed5",
+      "objectGuid": "8814f395-8b09-4f31-8885-57b210cba000",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_015Ext1_MiniFix_W30",
+      "rawSha256": "7299383c444c8fcbb36e9b4d1e6e9deab6a31047be794b29c8ecc71e27528fa9",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "68908717-1e5d-4f1f-a784-c4d7871ab998",
+      "objectGuid": "04f5e956-406e-4a3f-bec1-c70260ea649b",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_015Ext1_ARADMR_W20",
+      "rawSha256": "67e044d502b78b1aa409f83c70c48cb56fe6b85bf0503e47e91b9aff172c24f7",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ccba6bed-9272-4476-aa72-9a65a2e22014",
+      "objectGuid": "33f9841e-a342-4950-aa1b-e13522249b09",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_015Cpt2_M39EMR_W10",
+      "rawSha256": "38ac96d1cd31279ce0b17a062b864825ed2c7debc079f4c4894c1d35c5787140",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "c7b22b61-70f6-4b22-be31-0a5b783de3da",
+      "objectGuid": "0063669c-945c-40f6-b75b-b91a33e0e790",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_015Cpt2_G3A4_W10",
+      "rawSha256": "8362a032b0174599459f76bcbec87d41ba09c6783b2c80b56db76e1b0632064e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9d2a2217-44c5-4228-a16d-2c6d8f283658",
+      "objectGuid": "59d67d2e-470c-46ea-9c32-14f5e33da6ce",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_015Cpt1_XM7_W05",
+      "rawSha256": "364379aa1c068ce26e78a62daac163b32b6b5d59432c0992b192987c6c63f66b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "2e13bb38-2f2c-4d72-84e3-091241141aeb",
+      "objectGuid": "1a0e346d-71fd-404d-8113-97a31c7aff78",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_015Cpt1_M39EMR_W05",
+      "rawSha256": "653ff60fc0b1ad0f8cc972be35026b3d5a193edfe2239a05150c79eb1d9327aa",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "cf83c6e4-3c57-4b0c-92cd-66b56e91dcee",
+      "objectGuid": "25eb262c-7336-41c8-8737-eca9e7bfe5b3",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_015Cpt1_G3A4_W05",
+      "rawSha256": "3d9e755697a534b82d6c708a5d332394b009181f7b1c815783be64383cec0a14",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "deba1702-6eea-42aa-807e-1e7999215847",
+      "objectGuid": "42770902-c589-418e-8d80-363e7e6f1714",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_015Cpt1_762N_W05",
+      "rawSha256": "537ad412983c08781b575bd3aaddc921559773b86278a8bc6675941fbc1cd6d9",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3bdceacc-d04a-4702-a7ed-c153885fc658",
+      "objectGuid": "6f540e01-4e55-47f0-8e33-d326293c832b",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_011Ext1Fast_M45A1_W30",
+      "rawSha256": "5085d8cf66d8c517ee49d0eac53c25510f0c770bcde030bd5e5d46f8d4187226",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "db5ea79a-9bb0-4877-b976-07a666577f0f",
+      "objectGuid": "afa42774-c4c3-4631-a1a4-217c73091b52",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_011Ext1_M45A1_W25",
+      "rawSha256": "0d7e6e3a320590491f63d9024cd6261817ea13678551c271b6bf34e1c99b9433",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "7143da62-9f8b-4fb6-a784-531bbf03de93",
+      "objectGuid": "60e9fc6f-f04c-40ce-a064-f8df4d1274d4",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_010Cpt2_XM7_W05",
+      "rawSha256": "c9dbf50a19a84b23b7a9c8337e1ff191f7580af90adb86c6645fa882699dd67b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "428825f9-3300-43e0-9cd3-5d5a69e28cbd",
+      "objectGuid": "bc4c222d-ea24-44f9-9e14-847639c2aba9",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_010Cpt2_762N_W05",
+      "rawSha256": "164bd8be403273138182c9bedd726d545149bee3e26b45a00b5a971638382f69",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3dd6772b-3718-4609-9e03-2ff66704f15c",
+      "objectGuid": "536078e4-b5d5-45f0-a330-d83b2e04fd13",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_010Cpt1_HK417A2_W05",
+      "rawSha256": "c3acae0bc2ccf1c50086eecd7a61971320c5a212cf4aa05ec687a78434f21df3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ea4769ab-6e01-457c-a062-5d96d5ae2906",
+      "objectGuid": "392652eb-036d-4a16-85bf-023ecca8d793",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_009Ext1Fast_590A1_W10",
+      "rawSha256": "88a107f2265ca0ff3836cddc156fdd6622e06745f88d2bee09bc7dee0d6d1be3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "696e3286-678f-4a96-bfcb-46db8236dab8",
+      "objectGuid": "7af9792a-0e73-46d0-aa20-f9c9882a7113",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_009Ext1_M1014_W15",
+      "rawSha256": "c7e4695f79a0795f08c6e1fa11d6b3b2035f26e2e3fa94352773dc95e291a742",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "f9ea8e30-2da2-4f05-bd41-ae83531e8b53",
+      "objectGuid": "fc8dd89a-9917-4a38-b698-e8f9393cd4ad",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_009Ext1_590A1_W20",
+      "rawSha256": "0b4ae1e8a71541a54a955edc755dcdf5bb52bf981314d94f752f2745d1496e37",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "ffca50a8-a288-4774-98f9-8e509fedc93b",
+      "objectGuid": "a1225ec3-9628-4d23-87a4-8cb017d573a5",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_008Ext1_M2010ESR_W25",
+      "rawSha256": "613fe3ad0700ee60c5e82b65eb073239b3a94b94fbc80b2ef1e7ecd5255c8461",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "d838b20a-2b9b-4c3a-a9c9-08d717ee78fa",
+      "objectGuid": "4c4f0fcd-ea88-4846-add9-6bb79612eb7c",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_008Cpt2_MRAD_W05",
+      "rawSha256": "2ed6ccdd8656e882e5e4012872d521adc36e3ceb5de15c9592d2be9f5d78f126",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "48197de9-1563-41c8-8ab7-24eb12ba6b14",
+      "objectGuid": "e3b208e8-5bbb-44fd-b5b0-4c47255d7a3a",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_008Cpt1_MRAD_W05",
+      "rawSha256": "0dac38d4b81463ec936f9fc967cbf8d308f5620d402050668410242660ab9545",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "38e587b8-f698-439c-a6ab-4f9c792d607f",
+      "objectGuid": "93de3311-9389-4bd0-8c5a-2902988f5d85",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/U_WPM_MAG_007Ext1_M1014_W15",
+      "rawSha256": "ace48e49ca6bb3fac8f4787781db909fbcd75f2ca0f67b21826f4882fa509ca7",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "02e58280-8ec0-4cd5-8a01-35caa0ce6961",
+      "objectGuid": "0288117a-2f23-4b6c-88a0-509400a09658",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_007Cpt2_SVCh_W10",
+      "rawSha256": "1065848d925eeb1211d569646cc88fcb12fbae0eee53d19b5db5c74313e4395a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "b8d80d0a-33e0-46fc-b0a9-c11bc79212d1",
+      "objectGuid": "67ce1988-649d-4d58-b1d2-951b90099c8a",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_007Cpt2_MRAD_W05",
+      "rawSha256": "21d08098060b4c2752e041091acbc851f614b0037b8361c72ea7fc18fc1b25a2",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "364058e2-f359-452c-86bf-508416fdf6df",
+      "objectGuid": "ee6aa76a-61cc-456e-903b-662543baf74b",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_007Cpt2_590A1_W05",
+      "rawSha256": "1228495a5b19d915ceba2bd37678dded9d6b7fdb3dd60c85d77312ab1a4812ec",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "5b11e47a-48e4-4b38-b326-c42ca8888161",
+      "objectGuid": "a48b8437-b79d-4f69-b748-fa99540359be",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_007Cpt1_SVCh_W05",
+      "rawSha256": "8ac54b7e70d06207c992ac12c71d61247a7c0fe31cd904af61e1df65fe02ba24",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "575b4b5f-c3b0-4499-8ab1-f3979a7e2aee",
+      "objectGuid": "b1e8fd29-4f88-47cf-a67b-d1084bea3a72",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_007Cpt1_MRAD_W05",
+      "rawSha256": "88ee26ca6d2ced4b5fb03fbad20b14518e4fcceb08ddab8e73dddd28f7df2f74",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "dc8f8586-f68c-4941-a255-d2e04b3e3931",
+      "objectGuid": "aec8d410-0f42-4fb6-81ab-81534821f9a4",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_006Cpt1_590A1_W05",
+      "rawSha256": "4d498725f035e3fb50d614ee655a7f8d0503d647cb51ac65f97d4ea87924269d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "2b54cfdf-2e3c-47f4-a318-8d60eee6896b",
+      "objectGuid": "da58a667-3a01-4d3f-902a-f77564c9e0de",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_005Cpt1_SVDM_W05",
+      "rawSha256": "69fc0cb1c2209db7cf3958b08fcc82d0badee3a8778b4a09b3284070754855e0",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "4e11ed8f-197a-4851-9d4a-da00aedf66c9",
+      "objectGuid": "49dfc7ac-a19c-4fba-a0d1-38b796f083b2",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_005Cpt1_M1014_W05",
+      "rawSha256": "e08569208857a7267f2c6eba205e868b0b95d2c676ee3b269897a3762bcfe460",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "8d5687e0-a0da-42c7-ab32-2c31ca1bf9bc",
+      "objectGuid": "c2e6e970-774c-40af-8249-9d83582067d5",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_004Cpt2_185KSK_W05",
+      "rawSha256": "3e13a84c426150e383132f25f71fcae80e4fb1117528196c62c1ce63feaf95e3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "83f3c0ff-1024-4e12-9734-8ffc8de16c26",
+      "objectGuid": "eb86ee15-1ab4-447c-abc5-6ed94eda37f5",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/CompactMagazine/U_WPM_MAG_004Cpt1_185KSK_W05",
+      "rawSha256": "26fbd81fe0a99f723c78d406f62a8c35fbc81dd04581db57bb973f935bc1a24c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "b5db7686-a16e-4f4a-9557-cab7fca798e1",
+      "objectGuid": "f66c9ab7-bb18-4d2d-8133-6d90b19f0e84",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/ElcanDR/U_WPM_SCP_ElcanDR",
+      "rawSha256": "5bb71a734fe9cb441c28f1402de28638b8e51912ce3d341bccf98f58bd64f24e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "3ab41752-804d-44b5-8dbe-716d5d029022",
+      "objectGuid": "b0f57204-d6fc-4367-a102-d922803c8811",
+      "route": "Common/Hardware/Weapons/_Attachments/Thermal/HolosunDRS/U_WPM_SCP_HolosunDRSTH",
+      "rawSha256": "2c87030f20584704059234274291407db93f6b97157015abd47bb08c0dbcde22",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "9b4483ba-d5b3-447c-ab8c-ef61127f671f",
+      "objectGuid": "f7996b55-b276-4cf1-acf5-37a0d08628d9",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/FlashHider/U_WPM_MZL_FlashCompensator_W15",
+      "rawSha256": "ba987516ecc25b6abd713ce4ae3b73d3a7fc9bdd15ca73eab15a0691f13ecb7c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "5cc13cdc-2c4f-4f44-a580-9da4e2af0b2b",
+      "objectGuid": "682dff4a-22d2-4874-995b-456a46ed5e54",
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedFastMagazine/U_WPM_MAG_025Ext1Fast_762N_W25_",
+      "rawSha256": "f1e81a6b12bdf0a535d0acde2f71b40eab532d6e4d83c8b336d8b38a10749a61",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "8321b999-e442-4e92-9c94-5128e1d3c9c2",
+      "objectGuid": "a33cb2b8-e360-4549-ab27-0488180fd8f0",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/1P86/U_WPM_SCP_1P86",
+      "rawSha256": "e336e62244ec5cd9297c1f0577e7de63739a849c5e7e07c32b60c8e7d6482415",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "cdb68296-144d-4904-a727-012c7a5dc295",
+      "objectGuid": "41435e2a-8255-4aba-a4c0-477d0506d98f",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/QMK171A/U_WPM_SCP_QMK171A",
+      "rawSha256": "2aa4321783147947097aa639ab083fd4fc874fdf27a84631b57657ab524f93db",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "1f2e6c0d-0f84-4d7d-9165-392ad4ad7286",
+      "objectGuid": "7e71b74a-fd47-4621-a7b1-5121e50b190a",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/M145MGO/U_WPM_SCP_M145MGO",
+      "rawSha256": "6316fc918d8587f28f3c86ff388935e660f7666cfccd183f049e105632755dbf",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    }
+  ],
+  "m320OnlyTargets": [
+    {
+      "fileGuid": "1f2e6c0d-0f84-4d7d-9165-392ad4ad7286",
+      "objectGuid": "7e71b74a-fd47-4621-a7b1-5121e50b190a",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/M145MGO/U_WPM_SCP_M145MGO",
+      "rawSha256": "6316fc918d8587f28f3c86ff388935e660f7666cfccd183f049e105632755dbf",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "8321b999-e442-4e92-9c94-5128e1d3c9c2",
+      "objectGuid": "a33cb2b8-e360-4549-ab27-0488180fd8f0",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/1P86/U_WPM_SCP_1P86",
+      "rawSha256": "e336e62244ec5cd9297c1f0577e7de63739a849c5e7e07c32b60c8e7d6482415",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    },
+    {
+      "fileGuid": "cdb68296-144d-4904-a727-012c7a5dc295",
+      "objectGuid": "41435e2a-8255-4aba-a4c0-477d0506d98f",
+      "route": "Common/Hardware/Weapons/_Attachments/MidZoom/QMK171A/U_WPM_SCP_QMK171A",
+      "rawSha256": "2aa4321783147947097aa639ab083fd4fc874fdf27a84631b57657ab524f93db",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "class": "Class_bc0062dc"
+    }
+  ],
+  "actionsComparedToSecondarySelectors": 135,
+  "memberSecondarySelectorOverlaps": 0,
+  "limits": "Exact raw membership and target-object identities only. SRU application, removal/reset meaning, native evaluation order and runtime activation remain unproved. Duplicate serialized member is not itself a proven game defect.",
+  "nativeTypeLookup": {
+    "mapPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostyPlugin\\Sdk\\ClassGuids.txt",
+    "mapSha256": "06a5ea8ff3d0773f7206db81a12bdb993e3235ec7069c3f5a9d7e0b56a6b354f",
+    "roots": [
+      {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M26DB",
+        "rootClassRef": 0,
+        "originalEfixGuid": "a6c78ecb-97fd-0c6c-371b-debe6cc426df",
+        "alternateByteOrder": "a6c78ecb-97fd-0c6c-371b-debe6cc426df"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320AT",
+        "rootClassRef": 0,
+        "originalEfixGuid": "a6c78ecb-97fd-0c6c-371b-debe6cc426df",
+        "alternateByteOrder": "a6c78ecb-97fd-0c6c-371b-debe6cc426df"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320HE",
+        "rootClassRef": 0,
+        "originalEfixGuid": "a6c78ecb-97fd-0c6c-371b-debe6cc426df",
+        "alternateByteOrder": "a6c78ecb-97fd-0c6c-371b-debe6cc426df"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320SMK",
+        "rootClassRef": 0,
+        "originalEfixGuid": "a6c78ecb-97fd-0c6c-371b-debe6cc426df",
+        "alternateByteOrder": "a6c78ecb-97fd-0c6c-371b-debe6cc426df"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/SRU_M320TB",
+        "rootClassRef": 0,
+        "originalEfixGuid": "a6c78ecb-97fd-0c6c-371b-debe6cc426df",
+        "alternateByteOrder": "a6c78ecb-97fd-0c6c-371b-debe6cc426df"
+      }
+    ],
+    "exactGuidPresent": false,
+    "limit": "No matching native SDK name in this local map; SRU meaning remains unresolved."
+  }
+}

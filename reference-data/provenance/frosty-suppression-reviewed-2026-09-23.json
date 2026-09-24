@@ -1,0 +1,104 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-23",
+  "purpose": "Follow-up to the initial suppression review: verify the exact PresEx_Suppression class imported by the release Soldier feature, using a fresh hotfix raw capture.",
+  "initialEvidence": {
+    "path": "reference-data/provenance/frosty-suppression-2026-09-23.json",
+    "sha256": "258711e0f5635aacfa03b3f743af3dc176c37218ac7e64b3e0e4166646a0142b",
+    "scope": "Release feature/import identity, separate SimEx hotfix capture, one-layer SimEx dependencies, and related release soldier settings."
+  },
+  "buildBoundary": {
+    "releaseFeatureHead": 4892017,
+    "releaseDescriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "presentationCaptureHead": 4892087,
+    "presentationCapture": "../BF6 Datamining/builds/1.4.3.0/capture/suppression-presentation-2026-09-23",
+    "presentationCaptureBytes": 3474,
+    "presentationCaptureSha256": "49f07e9048e0e6e6d49fcbcc507fddc34f4f4f77b2e90019ec29326a2a4c531f",
+    "presentationDescriptor": "../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+    "presentationDescriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+    "limit": "The target raw is from Head 4892087. This validates the matching imported class identity, not byte identity or behavior for the Head 4892017 release feature."
+  },
+  "featureImport": {
+    "sourcePath": "Common/Gameplay/Soldier/Feature_Soldier_Suppression",
+    "sourceRoot": "../BF6 Datamining/builds/1.4.3.0/capture/collection-review-2026-09-16/raw",
+    "sourceFileGuid": "c29039a4-aa5f-465f-a1c8-9259236a079e",
+    "sourceRawSha256": "a589f11f9559327301bf0ffe29bd2b5e39166dac4e49f80990e825c8ea66de52",
+    "sourceObjectIndex": 1,
+    "sourceObjectGuid": "41ee2c78-4a15-cfb2-3f75-fb67e7fb74a9",
+    "importField": "Field_6e2bdf2b",
+    "importByteOffset": 176,
+    "importFileGuid": "b99d6485-67a4-4eec-b25a-237d2fd873bd",
+    "importClassGuid": "44bdf5bf-899e-4e34-94ca-44a3331d12da"
+  },
+  "targetAsset": {
+    "path": "Common/FX/Soldiers/Logic/PresEx_Suppression",
+    "fileGuid": "b99d6485-67a4-4eec-b25a-237d2fd873bd",
+    "catalogSha1": "92d0969b1b5ce2570108dfd363aa3d1f36e7be9e",
+    "rawSha256": "49f07e9048e0e6e6d49fcbcc507fddc34f4f4f77b2e90019ec29326a2a4c531f",
+    "unresolvedTypes": [],
+    "matchedObject": {
+      "index": 0,
+      "objectGuid": "44bdf5bf-899e-4e34-94ca-44a3331d12da",
+      "class": "Class_f180827c",
+      "pathField": "Common/FX/Soldiers/Logic/PresEx_Suppression"
+    },
+    "namedMembers": [
+      {
+        "sourcePath": "Field_6d73e276.Field_d65d1b09[0]",
+        "nameField": "Field_820ec965",
+        "name": "Suppression Wedge",
+        "handleTypeField": "Field_9f7c96d1",
+        "handleType": "DiceVfxHandle",
+        "rawIndexField": "Field_7e9479b2",
+        "rawIndex": 5,
+        "memberRefField": "Field_cad42e1d",
+        "memberRefObjectIndex": 3,
+        "memberRefObjectClass": "Class_2adb696e"
+      },
+      {
+        "sourcePath": "Field_6d73e276.Field_d65d1b09[1]",
+        "nameField": "Field_820ec965",
+        "name": "Suppression Vignette",
+        "handleTypeField": "Field_9f7c96d1",
+        "handleType": "DiceVfxHandle",
+        "rawIndexField": "Field_7e9479b2",
+        "rawIndex": 21,
+        "memberRefField": "Field_cad42e1d",
+        "memberRefObjectIndex": 4,
+        "memberRefObjectClass": "Class_2adb696e"
+      },
+      {
+        "sourcePath": "Field_6d73e276.Field_d65d1b09[2]",
+        "nameField": "Field_820ec965",
+        "name": "AngleEventCounter",
+        "handleTypeField": "Field_9f7c96d1",
+        "handleType": "Int",
+        "rawIndexField": "Field_7e9479b2",
+        "rawIndex": 1,
+        "memberRefField": "Field_cad42e1d",
+        "memberRefObjectIndex": 2,
+        "memberRefObjectClass": "Class_f0341e8e"
+      }
+    ],
+    "compiledResource": {
+      "objectIndex": 1,
+      "class": "Class_25c12137",
+      "resourceRefField": "Field_aa4fa860",
+      "resourceRef": "3fd5a0c60db66055"
+    },
+    "xmlStatus": "No PresEx_Suppression XML file was present in the searched 1.4.3.0 xml-overlay or xml-changed paths."
+  },
+  "assessment": {
+    "confirmed": [
+      "The exact object class GUID imported by the Head 4892017 Soldier feature matches object 0 of the Head 4892087 PresEx_Suppression raw asset.",
+      "The presentation asset has named serialized members Suppression Wedge and Suppression Vignette, both typed DiceVfxHandle, plus AngleEventCounter typed Int.",
+      "The presentation asset includes a compiled resource reference; decoding recovered serialized member names and links, not its runtime evaluation."
+    ],
+    "notEstablished": [
+      "The release and hotfix assets are from different Heads; their matching file/class GUIDs do not prove the same source bytes were used in both builds.",
+      "The VFX labels do not establish when the presentation is activated, what gameplay effect causes it, or how it composes with the separate SimEx_SpotOnSuppression asset.",
+      "No suppression amount, spotting range, duration, activation condition, or hit/reset rule is established by this direct target review."
+    ],
+    "finalBlocker": "Native or compiled expression evaluation and mode-specific activation are not exposed by these EBX fields or the inspected XML."
+  }
+}

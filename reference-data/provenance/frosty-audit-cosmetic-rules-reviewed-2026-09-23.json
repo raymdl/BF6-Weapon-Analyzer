@@ -1,0 +1,284 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-23",
+  "status": "reviewed-cosmetic-role-rule",
+  "supersedes": {
+    "previousReport": "reference-data/provenance/frosty-audit-cosmetic-rules-2026-09-23.json",
+    "previousReportSha256": "60b2dc7111dee5cf2ea5f807f0829e20cd747d58151028b525ddc09adc3b0477",
+    "correction": "Cosmetic-only descendants are excluded even when they have MP consumers. Do not keep charm-only physics/animation or skin/camo/decal data for hypothetical sightline or visibility effects. Preserve only independently sourced functional weapon/optic/compatibility/gameplay nodes and shared functional targets."
+  },
+  "sourceIdentity": {
+    "catalogPath": "../BF6 Datamining/builds/1.4.3.0/capture/weapon-audit-2026-09-23/asset-catalog.json",
+    "catalogSha256": "645243bffa7631df81289065ea82cd49dae480f5b67c2116b03cf4e50fcf2c1a",
+    "catalogBytes": 117928309,
+    "catalogAssets": 467208,
+    "gameHead": 4892087,
+    "sdkVersion": 4414275,
+    "descriptorPath": "../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+    "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+    "classGuidsPath": "../BF6 Datamining/FrostyToolsuite-battlefield6/FrostyPlugin/Sdk/ClassGuids.txt",
+    "classGuidsSha256": "06a5ea8ff3d0773f7206db81a12bdb993e3235ec7069c3f5a9d7e0b56a6b354f",
+    "capture": {
+      "newRoot": "../BF6 Datamining/builds/1.4.3.0/capture/weapon-audit-2026-09-23/raw",
+      "rawStatusPath": "../BF6 Datamining/builds/1.4.3.0/capture/weapon-audit-2026-09-23/raw-status.jsonl",
+      "newRootRawStatusSha256": "1f6ec91aea8fb9291274a2fdfa8521b4b65c4bbfef280e2c3c5d28181a723d34",
+      "newRootSuccess": 29377,
+      "newRootFailures": 0,
+      "newRootBytes": 17223770,
+      "weaponNamespaceCatalogRecords": 49285,
+      "uniqueSuccessAcrossFourCaptureRoots": 49285,
+      "missingWeaponNamespaceBodies": 0,
+      "otherRoots": [
+        "collection",
+        "collection-dependencies",
+        "collection-review-2026-09-16"
+      ]
+    }
+  },
+  "familyCounts": {
+    "unit": "catalog records; case-insensitive path matching",
+    "weaponNamespace": 49285,
+    "charmsSegment": 2478,
+    "artSkinsSegment": 22827,
+    "camoSegment": 513,
+    "decalsSegment": 774,
+    "attachmentsSegment": 8896,
+    "weaponModifiersSegment": 728,
+    "opticWordMatches": 4044,
+    "prefixCounts": {
+      "charms": {
+        "T": 1672,
+        "ob": 524,
+        "U": 261,
+        "OB": 16,
+        "u": 2,
+        "MDT": 2,
+        "MDR": 1
+      },
+      "skins": {
+        "T": 9295,
+        "U": 8275,
+        "OV": 3867,
+        "ob": 1027,
+        "SPO": 123,
+        "u": 96,
+        "OB": 87,
+        "WEP": 18,
+        "ov": 13,
+        "WEPATT": 12,
+        "t": 6,
+        "Skins": 4,
+        "Ov": 4
+      },
+      "camo": {
+        "U": 202,
+        "T": 171,
+        "SPO": 140
+      },
+      "decals": {
+        "U": 463,
+        "T": 245,
+        "SPO": 66
+      },
+      "attachments": {
+        "T": 4979,
+        "OV": 1380,
+        "U": 1161,
+        "ob": 1021,
+        "WPM": 94,
+        "MDT": 71,
+        "OB": 53,
+        "VE": 50,
+        "MDR": 43,
+        "AttachmentCategory": 12,
+        "WEPATT": 12,
+        "WM": 9,
+        "ov": 4,
+        "ve": 2,
+        "u": 2,
+        "DiceFeature": 1,
+        "RET": 1,
+        "Ov": 1
+      },
+      "weaponModifiers": {
+        "WPM": 270,
+        "U": 239,
+        "WME": 79,
+        "GCR": 34,
+        "GRM": 29,
+        "GBM": 28,
+        "GDM": 17,
+        "WM": 6,
+        "SP": 6,
+        "MPDarkness": 6,
+        "GID": 5,
+        "SRU": 5,
+        "CMU": 4
+      }
+    }
+  },
+  "positiveClassificationRule": {
+    "anchor": "Begin at an authoritative source assignment record whose declared type/content and owner/reference edge positively identify charm, skin/finish, camo, or decal role. The category token or folder alone is not sufficient. Retain the source-to-weapon association as availability metadata.",
+    "inheritance": "Traverse outgoing file/object references from that cosmetic assignment. Classify a descendant cosmetic-only when its incoming path is exclusively through that root and no independently sourced functional assignment or override reaches it. Apply this to all pure descendants regardless of their declared visual type, MP consumer, geometry, physics, or animation status.",
+    "skinWithoutFunctionalOverrides": "If the skin assignment branch has no independently sourced weapon, attachment, ammo, modifier, or optic override, classify the skin root and its exclusive descendants as cosmetic-only. Mesh/object variations and physics are part of the skin role; do not require pixel, geometry, collision, or sightline review.",
+    "sharedTarget": "If a node is also reachable from a functional root, retain that shared node under its functional identity. Exclude only the cosmetic reference/assignment branch. MP use of the cosmetic branch does not make the node functional.",
+    "unresolved": "If the assignment edge, all incoming functional references, or override presence cannot be resolved, mark only that record/branch unresolved. Do not infer role from path tokens or keep the whole cosmetic family open."
+  },
+  "functionalExceptionsToRetain": [
+    {
+      "role": "Weapon base/equipment and physical attachment definition",
+      "evidence": "Independently assigned weapon or equipment root and source refs into weapon/attachment definitions or DefinitionSlots_Weapons."
+    },
+    {
+      "role": "Compatibility and attachment selection",
+      "evidence": "Independent compatibility/slot-selection source branch, not merely a visual variation within a cosmetic assignment."
+    },
+    {
+      "role": "Weapon modifiers and ammo/combat parameters",
+      "evidence": "Independent WPM/WME/GRM/GBM/GDM or weapon/ammo source branch that contains configuration or modifier references."
+    },
+    {
+      "role": "Optic and sight mechanics",
+      "evidence": "Independent optic/sight source branch for alignment, zoom, reticle, or selector-gated glint/lens flare. Existing WPM_NoScopeGlint source trace targets WeaponLensFlareData_NoFlare; optic-part report records M2010 and RMR riser source fields. These establish source relevance, not runtime activation."
+    }
+  ],
+  "familyDispositionRules": [
+    {
+      "family": "Charms",
+      "count": 2478,
+      "classExamples": [
+        "UnlockAsset",
+        "PhysicsAsset"
+      ],
+      "disposition": "When anchored by the typed charm assignment, all exclusive charm descendants are cosmetic-only and excluded, including physics/animation/model records. Retain only a separately assigned functional weapon/optic/compatibility node or a shared functional target."
+    },
+    {
+      "family": "Skins and finishes",
+      "count": 22827,
+      "classExamples": [
+        "TextureAsset",
+        "UnlockAsset",
+        "ObjectVariation"
+      ],
+      "disposition": "A skin branch with no independently sourced functional overrides is cosmetic-only. Exclude its full descendant branch, including object variations, meshes, physics, and animations. A functional override or independently shared functional target remains under the functional role."
+    },
+    {
+      "family": "Camo",
+      "count": 513,
+      "classExamples": [
+        "TextureAsset",
+        "UnlockAsset"
+      ],
+      "disposition": "Typed camo assignment anchors a cosmetic branch; exclusive texture/unlock descendants are cosmetic-only. Keep independent weapon or optic overrides only."
+    },
+    {
+      "family": "Decals",
+      "count": 774,
+      "classExamples": [
+        "TextureAsset",
+        "UnlockAsset"
+      ],
+      "disposition": "Typed decal assignment anchors a cosmetic branch; exclusive texture/unlock descendants are cosmetic-only. Keep independent weapon or optic overrides only."
+    }
+  ],
+  "sourceEvidence": {
+    "capture": {
+      "newRootSuccess": 29377,
+      "newRootFailures": 0,
+      "newRootBytes": 17223770,
+      "weaponNamespaceCatalogRecords": 49285,
+      "uniqueSuccessAcrossFourCaptureRoots": 49285,
+      "missingWeaponNamespaceBodies": 0,
+      "rawStatusSha256": "1f6ec91aea8fb9291274a2fdfa8521b4b65c4bbfef280e2c3c5d28181a723d34"
+    },
+    "decodedSamples": [
+      {
+        "path": "Common/Hardware/Weapons/_Charms/CHE0003/Art/U_ATT_WEPCHRM_CHE0003",
+        "type": "UnlockAsset",
+        "layoutAmbiguous": false,
+        "rawSha256": "aeef091f0291bf035c3868c7bdde1a76fcfd613a2f80701e9d11c91a5a119a65",
+        "bytes": 356,
+        "interpretation": "Unlock wrapper only; referenced charm role still needs ref resolution."
+      },
+      {
+        "path": "Common/Hardware/Weapons/_Charms/LegendaryBenchmark/Art/OB_WEPCHRM_LegendaryBenchmark_3p.physics",
+        "type": "PhysicsAsset",
+        "layoutAmbiguous": false,
+        "rawSha256": "817b4694e9896a2ec74ada7669989f4beddd30411a6b22a07c52b89f4fb116b2",
+        "bytes": 492,
+        "interpretation": "Retain for geometry/interaction review; no runtime effect inferred."
+      },
+      {
+        "path": "Common/Hardware/Weapons/_Textures/Camo/T_WEP_Camo_WCR0032",
+        "type": "TextureAsset",
+        "layoutAmbiguous": false,
+        "rawSha256": "011242c765c849052659f7c8fa2fd7c88ab649263786826b3bb6a090619263e8",
+        "bytes": 326,
+        "interpretation": "Texture type confirmed; assignment consumers determine cosmetic-only role."
+      },
+      {
+        "path": "Common/Hardware/Weapons/_Textures/Decals/U_WEPDEC_Primary_WTR0002",
+        "type": "UnlockAsset",
+        "layoutAmbiguous": false,
+        "rawSha256": "02a58f7021c88f30f3418e9a1985eecaacc548b55699962b459ca96f442fa4bf",
+        "bytes": 360,
+        "interpretation": "Keep unlock/assignment links; this is not the decal texture leaf."
+      },
+      {
+        "path": "Common/Hardware/Weapons/MG/M250/Art/Skins/WSEr0036/OV_WEP_MG_M250_WSEr0036_Base_1P",
+        "type": "ObjectVariation",
+        "layoutAmbiguous": false,
+        "rawSha256": "58ae007bfb6449cd8b59fcc0efaa9c0da3ee1ac76fd9e431b48ffe7152f34ecb",
+        "bytes": 332,
+        "interpretation": "Skin-context variation; path alone does not prove material-only behavior."
+      },
+      {
+        "path": "Common/Hardware/Weapons/MG/M250/Art/Skins/WSEr0036/T_WEP_MG_M250_WSEr0036_Base_01_NMT",
+        "type": "TextureAsset",
+        "layoutAmbiguous": false,
+        "rawSha256": "454c80c7f9dc51be078bad844aed6bd789b800d399e1c97863856256f1325cde",
+        "bytes": 354,
+        "interpretation": "Skin texture leaf; consumer refs still determine role."
+      },
+      {
+        "path": "Common/Hardware/Weapons/BoltAction/SV98M/Art/OB_WEP_BoltAction_SV98M_Base_1P",
+        "types": [
+          "ObjectBlueprint",
+          "StaticModelEntityData",
+          "PartComponentData"
+        ],
+        "layoutAmbiguous": true,
+        "unresolvedTypes": [],
+        "rawSha256": "dc46c7f88ac8649ffc47e59776ebf5f087b3d88040732fd7fe8acf9142faa87f",
+        "bytes": 4198,
+        "interpretation": "Preservation case for base model graph; no layout offsets interpreted."
+      }
+    ],
+    "supportingReports": {
+      "opticGlint": {
+        "path": "reference-data/provenance/frosty-optic-glint-reviewed-2026-09-23.json",
+        "sha256": "8251fac5b07b99bec2f7f3df2d12b3f756089b5271a70999636823598ba50225"
+      },
+      "opticParts": {
+        "path": "reference-data/provenance/frosty-optic-parts-2026-09-23.json",
+        "sha256": "26249e48b3fe2c64bbc8469b424cd7bd45abe2da306cc00bf48fde4d438d7c9d"
+      },
+      "attachmentReferenceBoundary": {
+        "path": "reference-data/provenance/frosty-attachment-reference-boundary.json",
+        "sha256": "2cf4ee878cd6cd4afbbaeac2d14c6a2820924427a1e16b5ae99c0dc641ab1b10"
+      }
+    },
+    "limitations": [
+      "Representative declared types establish record kinds but do not independently prove assignment role; the positive anchor and reference closure are required.",
+      "The rule was not applied en masse to or written into the SQL ledger.",
+      "Operator supplied ledger totals (24017 captured, 22150 decoded); this supplement independently verifies namespace raw-status coverage only.",
+      "No pixel, art, collision, physics behavior, runtime, or broad reference-closure investigation was performed."
+    ]
+  },
+  "decisionLabels": {
+    "cosmetic_only": "Exclusive descendants of a source-confirmed cosmetic assignment, with no independently sourced functional role; MP use is allowed.",
+    "shared_functional": "A node independently referenced from a confirmed gameplay/optic/compatibility root; retain under that functional role and exclude only its cosmetic assignment edge.",
+    "functional": "Independently sourced weapon, optic, compatibility, ammo, modifier, or gameplay configuration.",
+    "unresolved": "Assignment, references, or override status not resolved; hold only the affected branch pending source evidence."
+  }
+}

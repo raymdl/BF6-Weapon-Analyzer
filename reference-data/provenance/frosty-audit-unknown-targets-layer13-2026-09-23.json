@@ -1,0 +1,128 @@
+{
+  "date": "2026-09-23",
+  "head": 4892087,
+  "sdkVersion": 4414275,
+  "candidateUnknownFileGuids": [
+    {
+      "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+      "referenceCount": 5,
+      "sourceCount": 3,
+      "sources": [
+        {
+          "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+          "target_object_guid": "b076d863-e744-40da-8ff1-b4047af4a2c7"
+        },
+        {
+          "route": "Common/Gameplay/Vehicles/Expressions/PresEx_Vehicle_OverlayPicker",
+          "target_object_guid": "fbbfa0fd-987a-4477-9b42-9571423f8046"
+        },
+        {
+          "route": "Common/Hardware/Gadgets/Throwables/Incendiary/SimEx_IncendiaryFireRadius",
+          "target_object_guid": "16579309-a72c-4364-b3a6-3fd42647b6b0"
+        },
+        {
+          "route": "Common/Hardware/Gadgets/Throwables/Incendiary/SimEx_IncendiaryFireRadius",
+          "target_object_guid": "f16c2015-292e-489c-a1d1-9509aca9b41d"
+        },
+        {
+          "route": "Common/Hardware/Gadgets/Throwables/Incendiary/SimEx_IncendiaryFireRadius",
+          "target_object_guid": "b3d5d77a-b836-4b38-acb6-9f0cdea8b42e"
+        }
+      ]
+    },
+    {
+      "target_file_guid": "3b426618-353e-4657-a063-c66c577e5f76",
+      "referenceCount": 1,
+      "sourceCount": 1,
+      "sources": [
+        {
+          "route": "Common/Hardware/Gadgets/Supply/VehicleSupplyCrate/VehicleGadget_DisablePickupOnActivation_InteractEnableConditionGraph_VSC",
+          "target_object_guid": "d9946303-6c70-4a47-8e96-92c9d8cf2641"
+        }
+      ]
+    },
+    {
+      "target_file_guid": "5310c6a4-736e-4803-a8f3-d8fba19527bd",
+      "referenceCount": 1,
+      "sourceCount": 1,
+      "sources": [
+        {
+          "route": "Common/Hardware/Gadgets/Supply/VehicleSupplyCrate/VehicleGadget_DisablePickupOnActivation_InteractEnableConditionGraph_VSC",
+          "target_object_guid": "b4d4c801-ea74-4898-9eab-a82aefc423a0"
+        }
+      ]
+    },
+    {
+      "target_file_guid": "739427fe-e6f5-47bf-a48e-d1b3d00dfdd8",
+      "referenceCount": 1,
+      "sourceCount": 1,
+      "sources": [
+        {
+          "route": "Common/Hardware/Gadgets/Misc/Defibrillator/SimEx_Defib",
+          "target_object_guid": "46e01cb8-e98b-412a-80ff-797d7c6050e4"
+        }
+      ]
+    },
+    {
+      "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+      "referenceCount": 2,
+      "sourceCount": 1,
+      "sources": [
+        {
+          "route": "Common/Hardware/Vehicles/Car/Marauder/SimEx_VEH_Car_APC_Ownership",
+          "target_object_guid": "c0d5ac01-37e7-4130-9fe7-55984c6743ab"
+        },
+        {
+          "route": "Common/Hardware/Vehicles/Car/Marauder/SimEx_VEH_Car_APC_Ownership",
+          "target_object_guid": "6579d362-a970-4396-a4ae-1acfdd6b7fc1"
+        }
+      ]
+    },
+    {
+      "target_file_guid": "b4765624-c221-4138-b446-3b3aa155cf3b",
+      "referenceCount": 1,
+      "sourceCount": 1,
+      "sources": [
+        {
+          "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+          "target_object_guid": "fb052257-a5eb-4479-ae06-649ff4f7973d"
+        }
+      ]
+    },
+    {
+      "target_file_guid": "cd88d4b7-104a-40c5-a8a7-140c8b6f3100",
+      "referenceCount": 1,
+      "sourceCount": 1,
+      "sources": [
+        {
+          "route": "Common/Hardware/Gadgets/Throwables/Incendiary/SimEx_IncendiaryFireRadius",
+          "target_object_guid": "7d8aebbc-16b1-436e-a3e1-335a64929ea1"
+        }
+      ]
+    },
+    {
+      "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+      "referenceCount": 4,
+      "sourceCount": 4,
+      "sources": [
+        {
+          "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+          "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf"
+        },
+        {
+          "route": "Common/Gameplay/Vehicles/Expressions/PresEx_Vehicle_OverlayPicker",
+          "target_object_guid": "eb968356-6f48-4a55-b6ec-d05e57d67c0c"
+        },
+        {
+          "route": "Common/Hardware/Gadgets/Misc/Defibrillator/SimEx_Defib",
+          "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf"
+        },
+        {
+          "route": "Common/Hardware/Vehicles/Car/Marauder/SimEx_VEH_Car_APC_Ownership",
+          "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf"
+        }
+      ]
+    }
+  ],
+  "limits": "Absent from effective catalog. Duplicate cache GUIDs all have effective selected rows, so these absent GUIDs cannot be resolved by skipped-duplicate variants. Runtime origin remains unknown."
+}

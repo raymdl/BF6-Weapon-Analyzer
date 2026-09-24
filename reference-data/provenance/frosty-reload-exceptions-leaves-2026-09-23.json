@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "build": "1.4.3.0",
+  "scope": "Per-scalar-leaf review of data/reload-exceptions.json; identity joins distinguish site selectors from absent source timing values.",
+  "siteFile": "data/reload-exceptions.json",
+  "siteFileSha256": "bb456d5c1ce40dfdee2b2a223f27d7ffaca1dc980fc80285a738c7cc3897187b",
+  "externalPerLeaf": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-reload-exceptions-per-leaf-2026-09-23.jsonl",
+    "sha256": "e674daeb0593457e4577dda2d9aa234a4e88ea6bfa8c55d856a2ebd98f0d2f4b",
+    "bytes": 38256,
+    "rows": 33
+  },
+  "counts": {
+    "scalarLeaves": 33,
+    "gameplay-observation-known-bug": 1,
+    "gameplay-observation-composed-loadout": 1,
+    "sourced-configuration-derived-ms": 5
+  },
+  "findings": {
+    "animationOverrides": "All five values are now sourced through exact selected magazine binding to a Class_7d916d6b reload-animation override: M240L 75/100 each 7.267/1.023511=7.100070s -> 7100ms; M60 4.567/1.007278=4.534002s -> 4534ms; PP19 2.667/1=2.667s; RPK74M 2.784/0.943728=2.950003s -> 2950ms. Raw field paths, offsets, bytes and hashes are included per leaf. The selected source values agree after site-ms rounding. Live animation timing remains a runtime boundary.",
+    "pp19Bug": "2467 ms is a known gameplay/UI bug observation and excluded as a rule for fast magazines; EA report is contextual only.",
+    "pp19Composition": "2667 / 1.063 = 2508.9379 ms -> 2509 ms matches the composed gameplay observation using current simulator equation. This supports arithmetic under that observation but is not Frosty runtime proof.",
+    "leafCount": "The current file has 30 scalar JSON leaves, not 33. All 30 are represented; counts metadata included."
+  },
+  "limits": [
+    "Frosty attachment identity mapping and selector binding do not prove timing or animation behavior.",
+    "No production changes."
+  ],
+  "selectedMagazineBindingEvidence": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-magazines-2026-09-23-leaves.jsonl",
+    "sha256": "fd2d90538b06051580f161421a1f78b380ddb372159a13372bffddb155e50d48",
+    "bytes": 2200077,
+    "scope": "Selector, branch, Class_7d916d6b reload-animation override, exact raw paths/offsets/bytes, and source/site formula comparison for five overridden site magazine aliases."
+  }
+}

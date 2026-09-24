@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "captureDirectory": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer3-2026-09-23",
+  "head": 4892087,
+  "sdkVersion": 4414275,
+  "routeList": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-dependency-layer3-routes.txt",
+    "sha256": "cc436ba42b37e2013642a254f34be2b19f3a6bff1143c65e025ceb65e5778b72"
+  },
+  "rawStatus": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer3-2026-09-23\\raw-status.jsonl",
+    "sha256": "325d59d47061977b4f071ab4814f5bf3e643d6fa6e06eeb58beb3ff008bf69e8"
+  },
+  "catalogSha256": "5e10a0155dd6c1d64c1d1fc7d38b5fe95ae81f16a7d268fc6026da5adc087343",
+  "collectorSha256": "03dd11335d199976e15a8551932c0e1fff49cde9295c8957733e0f3b93bd4d0c",
+  "successCount": 2389,
+  "failureCount": 0,
+  "rawBytes": 19706206,
+  "allSizesAndHashesMatch": true,
+  "scope": "Candidate dependencies after reviewed 19746 cosmetic exclusions; no raw capture implies MP or functional role.",
+  "runtime": "Windows PowerShell .NET Framework; initial PowerShell Core attempt failed during initialization before capture."
+}

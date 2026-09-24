@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "scope": "Bounded source and raw-byte review of four representative SerializedExpressionNodeGraph resources among the 22 captured weapon-core resources. Samples: smallest M1014 PresEx, SharedSoldierAbilityWeapon, M45A1 Blacklight SimEx, and M2010 ESR PresEx.",
+  "capture": {
+    "build": "1.4.3.0",
+    "gameHead": 4892087,
+    "directory": "builds/1.4.3.0/capture/weapon-core-resources-2026-09-23",
+    "resourceStatusSha256": "e6f6351b5ed3bcca8464eef7a9f701c2d649c6e8893fb35d77f603d9ed0a7bf9",
+    "sourceResourceCatalogSha256": "b2e58c061b8d082a86d30fd3bc1afbf214f922f9d27eae83305919eb01b8522f",
+    "all22CaptureFacts": "The existing capture manifest records 22/22 successful SerializedExpressionNodeGraph bodies, type ID 7dd4cc89, 367552 bytes total. This review directly inspected four representative bodies only."
+  },
+  "sourceEvidence": {
+    "tree": "C:/Users/royal/Documents/BF6 Datamining/FrostyToolsuite-battlefield6",
+    "files": [
+      {
+        "path": "FrostySdk/Managers/Entries/ResAssetEntry.cs",
+        "sha256": "c8323d8e415d4652f938d2866cfe4b5d5d9e7c1ca873ca7c8dcb3a054d0ce39",
+        "lines": "5-105, 194",
+        "finding": "ResourceType enum includes SerializedExpressionNodeGraph = 0x7DD4CC89. ResAssetEntry stores ResRid, ResType, and ResMeta as separate resource-entry properties."
+      },
+      {
+        "path": "FrostySdk/IO/EbxReader.cs",
+        "sha256": "96a6a7c68e1da04519c95a3adf2771536cc5e6d30e7c51c8778faa9a353d77fb",
+        "lines": "1156",
+        "finding": "ReadResourceRef reads a UInt64 and wraps it in ResourceRef. The reader has generic resource references, not a graph-payload decoder."
+      },
+      {
+        "path": "FrostySdk/IO/EbxReaderRiff.cs",
+        "sha256": "e13b7008331c1163b7d7c9adac370cdb9006be497d9dc559c8ce897da33a8be6",
+        "lines": "132-225, 951-1036",
+        "finding": "RIFF EBX parsing records resource-reference fixup offsets. EBXX parsing reads array and boxed-value tables. Boxed records contain offset/count/hash/type/classRef fields; the code does not associate these EBX/EBXX records with byte sections of a RES payload."
+      },
+      {
+        "path": "FrostySdk/Managers/AssetManager.cs",
+        "sha256": "e2aab7a264747fa3f3d0949b523313bb55a58f96760cb46d3e0da4ce6e503a56",
+        "lines": "1299, 1353-1370",
+        "finding": "Resource stream retrieval is handled by the asset/resource manager; the inspected code did not dispatch a SerializedExpressionNodeGraph body to a typed parser."
+      }
+    ],
+    "searchResult": "A bounded text-source search of the local Frosty SDK/plugin tree found the exact type name in the ResourceType enum and generated game string tables. No graph-body parser or format definition was located in the inspected source. Binary strings were not treated as implementation evidence."
+  },
+  "samples": [
+    {
+      "resourceId": "2117d058ace42169",
+      "name": "common/hardware/weapons/shotgun/m1014/presex_m1014",
+      "bytes": 128,
+      "sha256": "80167d9e98a2ce952c962affa80a56aed3648a5691e23cdec435b00cab7b232b",
+      "recordSha1": "d2ef49154a44fbc4d59aaef3f3ced40b7bd3e2d9",
+      "metadataHex": "00000000000000000000000000000000",
+      "caller": {
+        "route": "Common/Hardware/weapons/shotgun/M1014/PresEx_M1014",
+        "captureHead": 4892017,
+        "rawSha256": "4ee541f079090ca2374df5a76887b98ed7673f24b5196570448dcea15ca6d341",
+        "objectIndex": 1,
+        "field": "/Field_aa4fa860"
+      },
+      "first64BytesHex": "000000000000000000000000000000009AFB9CDFFFFFFFFFFFFFFFFFFFFFFFFF2000000000000000000000000100000003000000000000000000000000000000"
+    },
+    {
+      "resourceId": "2b64d43d0b8463d3",
+      "name": "common/hardware/weapons/simex_sharedsoldierabilityweapon",
+      "bytes": 1344,
+      "sha256": "4071b190c96a73b9ab74506f0c9ad23d6b26f14341d4589864ec53e7f88f3786",
+      "recordSha1": "0c8177c7cd7a1e4bd511b6a8e0cf6fb336bd50ee",
+      "metadataHex": "00000000000000000000000000000000",
+      "caller": {
+        "route": "Common/Hardware/Weapons/SimEx_SharedSoldierAbilityWeapon",
+        "captureHead": 4892017,
+        "rawSha256": "2f263dd918dab3d15941729c4aa93ef03d54a7d0bfa1ad08861627e8f5b1c803",
+        "objectIndex": 6,
+        "field": "/Field_aa4fa860"
+      },
+      "first64BytesHex": "0000000000000000000000000000000013ACA419FFFFFFFF00000000FFFFFFFF30000000580000002C000000DC00000003000000000000000000000018000000"
+    },
+    {
+      "resourceId": "fa024f9392897b47",
+      "name": "common/hardware/weapons/secondary/m45a1/simex_m45a1_blacklight",
+      "bytes": 816,
+      "sha256": "9738002d1f984db0a2f1fb1fa379d839991a581108ea7b3479b1842796f26996",
+      "recordSha1": "dc79baafd74bb8803ed156d4efacf1e8053352fd",
+      "metadataHex": "00000000000000000000000000000000",
+      "caller": {
+        "route": "Common/Hardware/Weapons/Secondary/M45A1/SimEx_M45A1_Blacklight",
+        "captureHead": 4892017,
+        "rawSha256": "0dd7356062b01180c27f6979266a226c34e08cd618dda65af4697168bf413173",
+        "objectIndex": 2,
+        "field": "/Field_aa4fa860"
+      },
+      "first64BytesHex": "00000000000000000000000000000000BADBCB11FFFFFFFF00000000FFFFFFFF30000000800000001C0100007100000003000000000000000000000007000000"
+    },
+    {
+      "resourceId": "1e831b064aef802f",
+      "name": "common/hardware/weapons/boltaction/m2010esr/presex_m2010esr",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "caller": {
+        "route": "Common/Hardware/Weapons/BoltAction/M2010ESR/PresEx_M2010ESR",
+        "captureHead": 4892017,
+        "rawSha256": "0a90ffebe4b303c1c58cf2bd831a86edca8b1aae6e10461f582309872b250b4e",
+        "objectIndex": 2,
+        "field": "/Field_aa4fa860"
+      },
+      "first64BytesHex": "000000000000000000000000000000009C2E233FFFFFFFFF00000000FFFFFFFF3000000008020000A2000000D90000000300000000000000020000000F000A00"
+    }
+  ],
+  "observedByteFacts": [
+    "All four bodies begin with 16 zero bytes. Their separate captured 16-byte resource metadata fields are also all zero.",
+    "All four file lengths are multiples of 16 (128, 816, 1344, 1792). This is a size observation only; it does not establish alignment rules or section boundaries.",
+    "At byte offset 0x20, the little-endian 32-bit value is 0x20 in M1014 and 0x30 in the other three samples. The value's meaning is unknown.",
+    "The remaining body bytes vary. No authoritative field map or section split can be assigned from these four samples alone."
+  ],
+  "hypotheses": {
+    "initial": "The type name SerializedExpressionNodeGraph and resource names suggest that these bodies may encode expression graphs. This is a naming-based hypothesis only.",
+    "not_established": "No opcode, node name, field interpretation, runtime equation, or relationship between resource payload offsets and EBX/EBXX metadata is established by this review."
+  },
+  "conclusion": "The local SDK substantiates the resource type code and generic resource-ID handling, but not the inner SerializedExpressionNodeGraph format. EBX resource-reference fixups and EBXX array/boxed-value tables are parsed as EBX metadata; inspected source does not connect them to sections within these RES bodies. Repeated raw prefixes and 16-byte-multiple sizes are observations, not a decoded layout. A useful typed decode is blocked pending an authoritative graph reader/specification or independent format evidence that maps boundaries and fields."
+}

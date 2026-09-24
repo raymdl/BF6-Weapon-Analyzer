@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "status": "accepted-insufficient-exclusion-evidence",
+  "workerReviews": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\skin-wrapper-role-review-2026-09-23.json",
+      "sha256": "305cb1cc8d9b116bba1707bae34a977f4faece0eef81cf047ad729805becd43e"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\mode-scope-review-2026-09-23.json",
+      "sha256": "7503a597673226c90625faf83db6bcc6678593af8b32128c1771dfcac9c64ebf"
+    }
+  ],
+  "skinProposal": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\skin-unresolved-unlock-consumer-dispositions-2026-09-23.jsonl",
+    "sha256": "cc9051cf844c647f2b12b4ffb1ad1bf5b28cdde9f43c8cb75847e57104872c78",
+    "rows": 3169,
+    "proposedExclusionsNotAccepted": 2150
+  },
+  "modeCensus": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\candidate-mode-membership-summary-2026-09-23.json",
+    "sha256": "17b42797092409c504581442e69012720f312c9626a5e3171ff16138c4533b65",
+    "spNamedWeaponCandidates": 2789,
+    "duplicateGuidExceptions": 29
+  },
+  "scopeChanges": 0,
+  "parentDecision": "Preserve current scope. Same-family typed import edges do not prove an opaque Equipment collection cosmetic-only. SP-named package membership and bounded absence of MP callers do not establish exclusive scope; skipped duplicate GUID records remain identity exceptions.",
+  "limits": "Review of exclusion sufficiency, not a new complete role trace or whole-asset semantic review. Existing validated cosmetic and KSG exclusions are unchanged.",
+  "revisitWhen": [
+    "The opaque Equipment collection or exact unlock consumer has a positively established cosmetic-only role.",
+    "Typed package/Blueprint consumers and duplicate identities establish the asset-specific SP-only scope."
+  ]
+}

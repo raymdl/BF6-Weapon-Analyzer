@@ -1,0 +1,48 @@
+{
+  "date": "2026-09-23",
+  "scope": "Reconcile SGX/MPX long, light, and CQB muzzle sway values using exact attachment identities, local WB WME selectors, and selected WPM effect imports.",
+  "siteSha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79",
+  "attachmentMappingSha256": "3f8f41fed52840b61fb5c8527f22f92ee0272850276d429cb4f2cc437f351f64",
+  "oldOperandLedgerSha256": "b3a0560bc7785e61b7c14b43348a4c89a9f7f6b3bd7adfff257a68cbfe2b83f5",
+  "historicalFollowupSha256": "e43421bc48bfa688c78b7c87f6245bbde83b799a2f0e7c7e044bdb5f9ca0d57b",
+  "muzzleSwayLedgerSha256": "53192f69e3494552c9576c1fa0d750223908429fc083c8af584b7656a0cd50fb",
+  "currentMpXWbRawSha256": "a048d1233e9c3f2adaff1a7b32ef1772f8560684b2eb4faff8a2e06dd89262aa",
+  "currentMpXWbDescriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+  "currentMpXWbXmlSha256": "8f8b4b8b6f18a1f993b7d4a101f47fd7f89adf693538ef42b889569b2333e5bd",
+  "oldMpXWbXmlSha256": "408bb3d0306c42d721395ec31c2e577aaa3d82f4344902485dce855a7de27231",
+  "localValue": 0.9752820134162903,
+  "longWmeFactor": 1.5,
+  "localTimesLongWme": 1.462923,
+  "siteLongValue": 1.462923,
+  "longProductMatchesSite": true,
+  "findings": {
+    "long_supp": "The source-compatible composite is corroborated by exact shared conditional selector, current local WB field bytes, and selected direct WPM M05 field bytes; native composition remains unproved.",
+    "light_supp": "Likely stale site source identity: current exact map is SAICobraSuppressor/selector02, while the old provenance attached .975282 to Compact_Streamer; current exact map assigns Compact_Streamer to cqb_supp.",
+    "cqb_supp": "Likely missing site override candidate .975282 from current MPX WB local sway WME, because current exact attachment selects U_WPM_ANY_ConditionalExtended listed by the WB local WME wrapper."
+  },
+  "proposal": "Review moving the SGX .975282 weaponSwayMult override from light_supp to cqb_supp. Current site deltas are light −2.5% and CQB neutral; the candidate move makes light neutral and CQB −2.5%. Keep long_supp at 1.462923 as a source-compatible 0.975282×1.5 composite candidate. This does not claim native runtime activation or composition.",
+  "detail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-sgx-sway-lineage-2026-09-23.jsonl",
+    "sha256": "89fec78a64039f97e9d106d302af96aee66701d47b9537c1fca5c6ad985dec09",
+    "rows": 3
+  },
+  "scriptSha256": "f0490a57300a4b999304723ec6a2fddf38453908c27dc465556903c8277b204a",
+  "limits": [
+    "The exact WME fields, branch selectors, attachment identity crosswalk, and captures establish serialized source links only.",
+    "The 9/13 operand ledger has an older MPX_WB XML hash than current 1.4.3.0; current raw EBX/descriptor values and current extracted XML are separately verified.",
+    "No game-process or runtime change was performed."
+  ],
+  "independentReview": {
+    "method": "Separate raw-file hash and byte-slice checks plus current MPX Ability XML branch/action inspection",
+    "rawFactorReferenceChecks": 4,
+    "attachmentXmlHashChecks": 3,
+    "currentAbilityActionOwnerClass": "Class_4ed159fb",
+    "currentAbilityActionSelectorField": "Field_7e54e22c",
+    "actionGuids": {
+      "long_supp": "c45c7b5f-bbe0-4377-ac74-979f8c578bee",
+      "light_supp": "decce4f2-a48a-470e-8d5b-d7dfd89eb5e4",
+      "cqb_supp": "8270d893-6f9f-4649-ba29-e73cb3981a07"
+    },
+    "result": "ConditionalExtended selector appears on Long and CQB current actions, and not on Light; local 0.9752820134162903 and imported 1.5 raw factors match the receipt. Native array selection and composition remain unresolved."
+  }
+}

@@ -1,0 +1,517 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "buildHead": 4892017,
+  "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-hit-zones-leaf-byte-comparison-2026-09-23.json",
+  "detailReportSha256": "ec0acea54f2457e8cd45b161ba2ed45121eae8c749c21b73ffe301ace94a1860",
+  "inputs": {
+    "siteHitZonesSha256": "674faccf63d883cfac5be7c33ac194cc4bbd2ca4af1e3db1620c4885ed3a7132",
+    "siteBalanceTablesSha256": "e4b2946ab0aaea54a25a6703029994a824da6f1d49c37072a7e7205faa36a08b",
+    "hit-zones-live-evidence-2026-09-23.json": "148b1b0afa17d884ff1ccbdbd7d1096013f9bcaa4718232df774a5ce648706ec",
+    "hit-zones-live-source-2026-09-23.json": "fae5d157a0b08264beed382483270ee52b65ccf0a0cc9b93a68fd74842f98fc0",
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "hitZoneLeafCounts": {
+    "records": 782,
+    "exactMatches": 782,
+    "mismatches": 0,
+    "baseWeaponLeaves": 126,
+    "ammoLeaves": 656
+  },
+  "materialGrids": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Game\\GlacierMP\\levels\\mp_abbasid\\mp_abbasid\\materialgrid_win32.ebx",
+      "sha256": "aa93a111c7ee6443ef00e0df63834433672ff72dbbb3e3d6c10efc72f38c3de7",
+      "bytes": 16354904
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Game\\GlacierMP\\levels\\mp_badlands\\mp_badlands\\materialgrid_win32.ebx",
+      "sha256": "b2ca0a2bde7aa7ebae1d0eea5880d59a72ab3a9f6a3f602e6d4fbec07498edec",
+      "bytes": 16037042
+    }
+  ],
+  "gridEndpointMaterials": {
+    "head": 24,
+    "limb": 26,
+    "abdomen": 25
+  },
+  "balanceTableShapes": {
+    "RELOAD_SPEED_MULTIPLIERS": {
+      "kind": "array",
+      "rowCount": 3
+    },
+    "VELOCITY_LADDER": {
+      "kind": "float",
+      "rowCount": null
+    },
+    "HEALTH_REGEN_DELAY_S": {
+      "kind": "int",
+      "rowCount": null
+    },
+    "RECOIL_MULT": {
+      "kind": "object",
+      "rowCount": 63
+    },
+    "HIP_SPREAD_TABLE": {
+      "kind": "array",
+      "rowCount": 18
+    },
+    "HIP_SPREAD_BASE_INDEX": {
+      "kind": "object",
+      "rowCount": 63
+    },
+    "HIP_SPREAD_BASE_INDEX_OVERRIDES": {
+      "kind": "object",
+      "rowCount": 0
+    },
+    "COLLATERAL_MULT_OVERRIDE": {
+      "kind": "object",
+      "rowCount": 63
+    },
+    "MOVING_ACC_TIERS": {
+      "kind": "array",
+      "rowCount": 7
+    },
+    "ADS_SPD_TIERS": {
+      "kind": "array",
+      "rowCount": 8
+    },
+    "ADS_MOVE_TIERS": {
+      "kind": "array",
+      "rowCount": 12
+    },
+    "DRAW_TIME_TABLES": {
+      "kind": "object",
+      "rowCount": 3
+    }
+  },
+  "collateralSiteLeaves": 328,
+  "collateralSourceStatus": "Current WB base-index and ammo selector/effect routes still need per-leaf joining; no source match is claimed.",
+  "hitZoneLimits": [
+    "Raw offsets identify the material-grid float selected by the candidate chain; this does not prove native runtime consumption.",
+    "15 source SubsonicFrangible attachment routes are outside current Analyzer ammo identities; they remain unbound."
+  ],
+  "scopeLimit": "Other weapons.json base scalars and CLS/CAL/fireMode/recoil basis are not covered.",
+  "collateralResolver": {
+    "sitePath": "sim/applyAttachments.js:445-446 -> _collateralMult",
+    "leafCount": 328,
+    "overridePresentForEveryDisplayedWeaponAmmoLeaf": true,
+    "effectiveOverrideLeaves": 328,
+    "globalAmmoFallbackIsShadowedForDisplayedLeaves": true,
+    "fallbackMissingForCount": 1,
+    "fallbackValueDiffersForCount": 284,
+    "fallbackDiffExamples": [
+      {
+        "weapon": "m433",
+        "ammo": "standard",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "m433",
+        "ammo": "lightweight",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "m433",
+        "ammo": "hollow_pt",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "m433",
+        "ammo": "frangible",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "b36a4",
+        "ammo": "standard",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "b36a4",
+        "ammo": "lightweight",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "b36a4",
+        "ammo": "hollow_pt",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "b36a4",
+        "ammo": "frangible",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "b36a4",
+        "ammo": "synthetic",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "sor556",
+        "ammo": "standard",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "sor556",
+        "ammo": "lightweight",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "sor556",
+        "ammo": "hollow_pt",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "sor556",
+        "ammo": "frangible",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "sor556",
+        "ammo": "synthetic",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "ak4d",
+        "ammo": "standard",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "ak4d",
+        "ammo": "lightweight",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "ak4d",
+        "ammo": "hollow_pt",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "ak4d",
+        "ammo": "frangible",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "tr7",
+        "ammo": "standard",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "tr7",
+        "ammo": "lightweight",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "tr7",
+        "ammo": "hollow_pt",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "tr7",
+        "ammo": "frangible",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "kord6p67",
+        "ammo": "standard",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "kord6p67",
+        "ammo": "lightweight",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "kord6p67",
+        "ammo": "hollow_pt",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "kord6p67",
+        "ammo": "frangible",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "nvo228e",
+        "ammo": "standard",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "nvo228e",
+        "ammo": "lightweight",
+        "cls": "Assault Rifle",
+        "override": 0.750001,
+        "globalFallback": 0.75,
+        "effective": 0.750001,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "nvo228e",
+        "ammo": "hollow_pt",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      },
+      {
+        "weapon": "nvo228e",
+        "ammo": "frangible",
+        "cls": "Assault Rifle",
+        "override": 0.666667,
+        "globalFallback": 0.67,
+        "effective": 0.666667,
+        "resolver": "override ?? globalAMMO[id].collateralMult[weapon.cls]"
+      }
+    ],
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-collateral-effective-resolution-2026-09-23.json",
+    "detailSha256Pending": true,
+    "limits": [
+      "This proves current Analyzer precedence: all 328 displayed weapon/ammo routes use COLLATERAL_MULT_OVERRIDE. It does not source the override operands or establish native runtime use."
+    ],
+    "detailSha256": "1b5a6c41f83d14e77eb687cbf6159fbe181a4dc8972fc0d9b379ade9b6f4d273"
+  },
+  "recoilBaseFields": {
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-recoil-base-current-perleaf-2026-09-23.json",
+    "detailReportSha256": "dda5bf4870d4ae73241fb63fda185a62cf249b3bb99696f7ce36e2f868f2ac62",
+    "leafRecords": 1008,
+    "siteWeapons": 63,
+    "sourceRootsIncludingKSG": 64,
+    "exactWithinPrecision": 1008,
+    "candidateTopLevelFormulaMatches": 187,
+    "candidateTopLevelFormulaExceptions": [
+      "m16a4/recoilVar",
+      "vssm/recoilVar"
+    ],
+    "remaining": [
+      "recoilIncAds is covered by spread audit",
+      "top-level recoilVar special normalization in current sim",
+      "fireMode, cls, cal source association"
+    ]
+  },
+  "hitZoneInputInventory": {
+    "count": 912,
+    "multipliers": 782,
+    "sourceWeaponLeaves": 126,
+    "sourceMetadataLeaves": 4,
+    "currentSourceMatches": 912,
+    "leafDetails": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-hit-zones-leaf-byte-comparison-2026-09-23.json",
+      "sha256": "ec0acea54f2457e8cd45b161ba2ed45121eae8c749c21b73ffe301ace94a1860"
+    },
+    "metadataDetails": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-hit-zones-current-metadata-leaf-joins-2026-09-23.json",
+      "sha256": "501ff79a1fe7fecab430eecd476d63368cb8876444d5b58785c08ecda8433ffe"
+    },
+    "wbIndexAndPenetrationIndexRawEvidence": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-hit-zone-wb-indices-live-2026-09-23.json",
+      "sha256": "7fdacf6df00b8660e4745b640ea5279371fd3b20572f21aa3204a27aaacae075"
+    },
+    "metadataLeaves": {
+      "schemaVersion": 1,
+      "source.build": "1.4.3.0",
+      "source.generatedBy": "scripts/frosty-hit-zones.py",
+      "source.evidence": "reference-data/provenance/frosty-hit-zones-2026-09-15.json"
+    },
+    "limits": [
+      "63 protection indices are current WB DamageProtectionMultiplierIndex raw leaves; 63 projectileMaterial leaves are raw PD MaterialDecl packed values.",
+      "782 headshot/limb site values are compared against current raw MP material-grid arrays. Four metadata leaves agree with the referenced 1.4.3.0 provenance/script metadata.",
+      "Raw presence, graph links, and generated values do not prove native runtime consumer behavior."
+    ]
+  },
+  "collateralSourceJoin": {
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-collateral-current-perleaf-source-2026-09-23.json",
+    "detailReportSha256": "ae2685348f8e2558ce7ea8e4bf10ab9ece1e73da4bae122d6f23e3a4225dc69f",
+    "siteLeaves": 328,
+    "candidateMatches": 328,
+    "ambiguousMultiEffectCases": [
+      "m121a2/penetration",
+      "m45a1/penetration"
+    ],
+    "tableSource": "Current two MP grids Class_6aa794ef/Field_c52d90b8 repeated ten-value collateral arrays; exact raw file offsets and bytes in report.",
+    "limits": [
+      "Candidate source step sum and 0..9 clamp reproduce 328 site override leaves.",
+      "For two penetration routes, the graph associates P15 and P05 effects; candidate addition+clamp outputs same saturated 1.0, leaving composition order unresolved but site values unaffected.",
+      "Native activation and runtime consumption remain unresolved."
+    ]
+  },
+  "recoilBaseCurrentJoin": {
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-recoil-base-current-perleaf-2026-09-23.json",
+    "detailReportSha256": "dda5bf4870d4ae73241fb63fda185a62cf249b3bb99696f7ce36e2f868f2ac62",
+    "siteLeaves": 1008,
+    "matchedWithinPrecision": 1008,
+    "actualDefaultApplyAttachments": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-recoil-actual-default-application-2026-09-23.json",
+      "sha256": "e82ace11fddf50654567b68d3eb78ad3eff53c1c7578b212e4a4f23e932b8385"
+    },
+    "actualDefaultApplyNote": "applyAttachments overwrites the raw root recoilVar for all weapons. For M16A4/VSSM it returns 29.174/9.218 from nested source formula, despite stored input recoilVar 37.5/45.4; candidate nested formula is live in the current default path, so these are not displayed mismatches.",
+    "limits": [
+      "fireMode, cls and cal source associations remain pending. recoilIncAds is covered by existing spread source receipt."
+    ]
+  },
+  "magazineCapacityJoin": {
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-firemode-magazine-source-leaves-2026-09-23.json",
+    "detailReportSha256": "a97238fb79ec4efc90880117e3df3ed519c2ade90aaaeecfb20e7336ad1b2034",
+    "siteWeapons": 63,
+    "rawMatches": 63,
+    "sourceFieldPath": "WB WeaponEntityData.WeaponFiring.PrimaryFire.Ammo.MagazineCapacity / Field_7f22bfb4"
+  },
+  "fireModeJoin": {
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-firemode-magazine-source-leaves-2026-09-23.json",
+    "detailReportSha256": "a97238fb79ec4efc90880117e3df3ed519c2ade90aaaeecfb20e7336ad1b2034",
+    "siteWeapons": 63,
+    "directNamedSourceField": false,
+    "status": "Current raw WB enum Field_f8822efa/Field_16e6fa59 is source-backed for all 63: enum 0 (semi) 14, 1 (bolt/pump combined) 8, 2 (auto) 40, 3 (burst) 1. The combined enum-1 class agrees with six bolt-action and two pump site labels when cross-tabbed with independent BoltActionTime support, but does not itself distinguish bolt from pump. Enum parsing is supported by raw descriptor-derived words; gameplay/runtime consumption is not established. Site-mode classification is now sourced at the broad semi/bolt-pump/auto/burst level; bolt-vs-pump split is associated through additional firing fields and site identity.",
+    "enumEvidence": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\wb-variable-field-triage.jsonl",
+    "enumEvidenceSha256": "5eae5d2197238663902b341edf336ab505c4688a2318c88c3af9b60d49eb6cfd",
+    "remainingUncertainty": [
+      "No native runtime test proves enum consumption by firing behavior.",
+      "Enum 1 alone does not distinguish bolt from pump; BoltActionTime and other registered firing fields support the split."
+    ]
+  },
+  "clsCalCurrentJoin": {
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-weapon-cls-cal-63-leaves-2026-09-23.json",
+    "detailReportSha256": "9ed382ecec5eb7e323de057af7a3485a03748b4fde0c426a3c461ee9982dc74b",
+    "mergeJsonl": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-weapon-cls-cal-63-leaves-2026-09-23.jsonl",
+    "mergeJsonlSha256": "d2ea9cfa808292e1a5e70e2b9c93c3ed227c0fd87fdf0f3c72cfb749f9120103",
+    "clsLeaves": 63,
+    "clsMatched": 63,
+    "clsFieldPath": "UIWeaponAbilityMetaData Field_f8c63ce7 -> Class_fbe1d3bc/Field_3d34898a -> localized string",
+    "calLeaves": 63,
+    "calTypedFieldLeaves": 0,
+    "calPreciseBlocks": 62,
+    "calProposedMismatch": {
+      "sitePointer": "/57/cal",
+      "siteValue": "9×19mm",
+      "weapon": "ggh22",
+      "pdAsset": "Common/Hardware/Weapons/_Bullets/PD_.40SW",
+      "uiDescription": "A renowned semi-auto pistol with a .40 caliber chambering for improved ranged performance.",
+      "proposed": ".40 S&W"
+    },
+    "limits": [
+      "Caliber is not a typed field in the selected UI metadata or PD MaterialDecl; 62 leaves lack a typed direct source.",
+      "UI description and PD asset path are retained as corroboration; asset naming does not alone prove semantic caliber."
+    ]
+  },
+  "ammoPointCostJoin": {
+    "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-ammo-point-cost-current-perleaf-2026-09-23.jsonl",
+    "detailSha256": "699c8ea1d4e5037cff174d0fa8badd17a7b947bae76079b6d5a627ecc5c659af",
+    "leafCount": 328,
+    "rawDescriptorByteMatches": 328,
+    "sourceField": "Class_a9b2eb87/Field_6ee865a5",
+    "sitePointerPattern": "/WEAPON_AMMO/{weapon}/ammo/{ammoId}",
+    "limits": [
+      "Current exact attachment identity mapping source attachment GUID/route and selected raw EBX value are matched to each per-weapon ammo point leaf.",
+      "This sources configured point cost values, not battle-mode native accounting behavior."
+    ]
+  },
+  "ammoNumericInventory": null
+}

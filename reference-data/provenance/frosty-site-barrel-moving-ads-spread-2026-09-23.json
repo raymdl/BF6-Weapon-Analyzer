@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "title": "Barrel moving-ADS spread tier fields and owner-collection source review",
+  "build": {
+    "frosty": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": {
+    "sitePointers": ["/BARRELS/0/movingAdsSpreadTierMod", "/BARRELS/1/movingAdsSpreadTierMod", "/BARRELS/2/movingAdsSpreadTierMod", "/BARRELS/3/movingAdsSpreadTierMod", "/BARRELS/4/movingAdsSpreadTierMod", "/BARRELS/5/movingAdsSpreadTierMod", "/BARRELS/6/movingAdsSpreadTierMod", "/BARRELS/7/movingAdsSpreadTierMod", "/BARRELS/8/movingAdsSpreadTierMod", "/BARRELS/9/movingAdsSpreadTierMod", "/BARRELS/10/movingAdsSpreadTierMod", "/BARRELS/11/movingAdsSpreadTierMod"],
+    "siteWeaponIdentities": 63,
+    "selectedWeaponChoices": 233,
+    "siteLeaves": 12,
+    "sourceMatches": 3,
+    "unresolvedOwnerCollectionCases": 8,
+    "noSelectedWeaponCases": 1
+  },
+  "finding": {
+    "matchedPointers": ["/BARRELS/6/movingAdsSpreadTierMod", "/BARRELS/8/movingAdsSpreadTierMod", "/BARRELS/9/movingAdsSpreadTierMod"],
+    "matchedSiteValue": 1,
+    "sourceField": "Class_743a3ce0/Field_9540bd8e/Struct_d204f959/Field_4692836a",
+    "rawProof": "Exact selector references under GS Class_539cff9b/Field_2ffeb6ac were followed to GDM_Array_ADSMoveDispersion objects. Descriptor-derived raw field bytes, decoded source values, current XML values, and site tier value agree for the three matching site leaves.",
+    "unresolved": "Eight site-zero leaves have selected weapons but no matching GDM_Array_ADSMoveDispersion selector reference in the identified moving-ADS owner collection Field_2ffeb6ac. Exact selector refs in sibling Field_b30a73ed are recorded separately because the SDK evidence leaves that collection's target unknown. Other source paths and native consumer behavior are not ruled out. BARRELS/0 has no selected weapon choices in the exact site map.",
+    "status": "partial-source-closure"
+  },
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-barrel-moving-spread-leaf-review-2026-09-23-v3.jsonl",
+    "sha256": "b59818cb49780bb9afaa3568a2afc5c40e1fd929a8d8c4b394d2f97c7cde5a18"
+  },
+  "reproduction": {
+    "command": "python scripts/frosty-site-barrel-moving-spread-review.py --root \"../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay\" --report-dir \"../BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23\" --out \"../BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/site-barrel-moving-spread-leaf-review-2026-09-23-v3.jsonl\"",
+    "scriptSha256": "a5709f00adee726c21d1bcf13c1a553410ea2d35ab8991fd6db8180e5af987dc"
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\attachments.json",
+      "sha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-attachment-mapping-2026-09-15.json",
+      "sha256": "3f8f41fed52840b61fb5c8527f22f92ee0272850276d429cb4f2cc437f351f64"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\docs\\frosty\\FIELD_MAP.md",
+      "sha256": "16dc7bec87848dcf71f156c2c250830c9d14a2228f047efa5395e2e258f87050"
+    }
+  ],
+  "limits": [
+    "Collection identity comes from current SDK reflection: Field_2ffeb6ac is the moving-ADS collection; Field_b30a73ed has a distinct element type and unknown runtime target. A GDM filename match without the owner collection is not accepted.",
+    "The source review closes three matching leaves and identifies a collection-specific source gap for eight; it does not prove source absence or baseline runtime behavior.",
+    "No runtime or gameplay claim is made."
+  ]
+}

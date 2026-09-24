@@ -1,0 +1,111 @@
+{
+  "families": {
+    "charm": {
+      "catalogCount": 2478,
+      "dispositions": {
+        "excluded-cosmetic": 2368,
+        "unresolved-role": 110
+      },
+      "rules": {
+        "CHARM_TYPED_ASSIGNMENT_ROOT": 263,
+        "CHARM_MATCHED_BRANCH_MEMBER": 2105,
+        "UNRESOLVED_NO_POSITIVE_ROLE_LINK": 110
+      },
+      "typedAssignmentRootAssets": 263,
+      "assignmentAnchorKeys": 262,
+      "rootAssetsWithEquipmentImportPointer": 262,
+      "unresolvedExamples": [
+        "common/hardware/weapons/_charms/CharmHolder01/Art/T_WEPCHRM_CharmHolder01_3P_CS",
+        "common/hardware/weapons/_charms/CharmHolder01/Art/T_WEPCHRM_CharmHolder01_3P_NMT",
+        "common/hardware/weapons/_charms/CharmHolder01/Art/T_WEPCHRM_CharmHolder01_3P_WO",
+        "common/hardware/weapons/_charms/CharmHolder01/Art/T_WEPCHRM_CharmHolder01_CS",
+        "common/hardware/weapons/_charms/CharmHolder01/Art/T_WEPCHRM_CharmHolder01_NMT",
+        "common/hardware/weapons/_charms/CharmHolder01/Art/T_WEPCHRM_CharmHolder01_WO",
+        "Common/Hardware/Weapons/_Charms/CharmHolder02/Art/T_WEPCHRM_Charmholder02_3P_CS",
+        "Common/Hardware/Weapons/_Charms/CharmHolder02/Art/T_WEPCHRM_Charmholder02_3P_NMT",
+        "Common/Hardware/Weapons/_Charms/CharmHolder02/Art/T_WEPCHRM_Charmholder02_3P_WO",
+        "Common/Hardware/Weapons/_Charms/CharmHolder02/Art/T_WEPCHRM_Charmholder02_CS",
+        "Common/Hardware/Weapons/_Charms/CharmHolder02/Art/T_WEPCHRM_Charmholder02_NMT",
+        "Common/Hardware/Weapons/_Charms/CharmHolder02/Art/T_WEPCHRM_Charmholder02_WO",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_3P_CS",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_3P_NMT",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_3P_WO",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_Bronze_3P_CS",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_Bronze_3P_NMT",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_Bronze_3P_WO",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_Bronze_CS",
+        "Common/Hardware/Weapons/_Charms/CharmHolderRing01/Art/T_WEPCHRM_CharmHolderRing01_Bronze_NMT"
+      ]
+    },
+    "camo": {
+      "catalogCount": 513,
+      "dispositions": {
+        "excluded-cosmetic": 511,
+        "unresolved-role": 2
+      },
+      "rules": {
+        "CAMO_TYPED_ASSIGNMENT_ROOT": 202,
+        "UNRESOLVED_NO_POSITIVE_ROLE_LINK": 2,
+        "CAMO_SHADER_BUNDLE": 140,
+        "CAMO_MATCHED_TEXTURE": 169
+      },
+      "typedAssignmentRootAssets": 202,
+      "assignmentAnchorKeys": 202,
+      "rootAssetsWithEquipmentImportPointer": 198,
+      "unresolvedExamples": [
+        "Common/Hardware/Weapons/_Textures/Camo/Mastery/T_Mastery_Camo_CA",
+        "Common/Hardware/Weapons/_Textures/Camo/Mastery/T_MasteryRare_Camo_01"
+      ]
+    },
+    "decal": {
+      "catalogCount": 774,
+      "dispositions": {
+        "excluded-cosmetic": 769,
+        "unresolved-role": 5
+      },
+      "rules": {
+        "DECAL_TYPED_ASSIGNMENT_ROOT": 463,
+        "DECAL_SHADER_BUNDLE": 66,
+        "UNRESOLVED_NO_POSITIVE_ROLE_LINK": 5,
+        "DECAL_MATCHED_TEXTURE": 240
+      },
+      "typedAssignmentRootAssets": 463,
+      "assignmentAnchorKeys": 232,
+      "rootAssetsWithEquipmentImportPointer": 463,
+      "unresolvedExamples": [
+        "Common/Hardware/Weapons/_Textures/Decals/T_WEPDEC_BTK_CA",
+        "Common/Hardware/Weapons/_Textures/Decals/T_WEPDEC_GoodGame_CS",
+        "Common/Hardware/Weapons/_Textures/Decals/T_WEPDEC_GoodGame_NMX",
+        "Common/Hardware/Weapons/_Textures/Decals/T_WEPDEC_RW_CS",
+        "Common/Hardware/Weapons/_Textures/Decals/T_WEPDEC_RW_NMX"
+      ]
+    }
+  },
+  "source": {
+    "ledger": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage.sqlite",
+    "ledgerMode": "SQLite URI mode=ro; rows materialized and connection closed before classification",
+    "fixedLedgerCatalogHead": 4892017,
+    "fixedLedgerCatalogSha256": "815ef184c8530d1d70a7a6d4c4793eb49e2372be6ca54325571e6b419c2addc5",
+    "decoderSha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+    "currentCaptureCatalog": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\asset-catalog.json",
+    "currentCaptureCatalogSha256": "645243bffa7631df81289065ea82cd49dae480f5b67c2116b03cf4e50fcf2c1a",
+    "catalogHead": 4892087,
+    "descriptorSha256": [
+      "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    ],
+    "classGuidMappingSource": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostyPlugin\\Sdk\\ClassGuids.txt",
+    "classGuidMappingSha256": "06a5ea8ff3d0773f7206db81a12bdb993e3235ec7069c3f5a9d7e0b56a6b354f",
+    "reviewedRoleRuleSource": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-audit-cosmetic-rules-reviewed-2026-09-23.json",
+    "reviewedRoleRuleSourceSha256": "ec9e6159c255c8d45e195a8fd47ca7e8ff0f57496bb2e53437396bd62149e922",
+    "scope": "only primary weapon namespace _Charms, _Textures/Camo, _Textures/Decals",
+    "limitation": "No runtime claims. Missing direct edges do not prove global exclusivity. Same-key family membership is accepted only with a typed cosmetic wrapper and typed/content-shaped member; otherwise unresolved.",
+    "classifierSha256": "5ba8b85b291dd21437800aa15b1502a51f6a1bcc1bb254304a073fd515987ac3"
+  },
+  "rowCount": 3765,
+  "generatedUtc": "2026-09-23T16:53:11.536570+00:00",
+  "dispositionTotals": {
+    "excluded-cosmetic": 3648,
+    "unresolved-role": 117
+  }
+}

@@ -1,0 +1,1577 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-09-23",
+  "question": "Recoil recovery and named spring, fade-out, first-shot, and pattern fields versus Analyzer inputs.",
+  "build": {
+    "id": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+  },
+  "coverage": {
+    "siteWeapons": 63,
+    "sourceRoots": 64,
+    "referenceOnly": [
+      "KSG"
+    ],
+    "rawFieldRecords": 3964,
+    "selectedAimFields": 2684,
+    "descriptorOffsetChecks": 3964,
+    "siteRecoveryValueComparison": {
+      "match": 756
+    }
+  },
+  "inputDigests": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\weapons.json",
+      "sha256": "7a96b89b356d402a557990433f800ca8bb99191e32183380d1f409710d2c9adc"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-audit-roster-2026-09-23.json",
+      "sha256": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-audit-registry-bindings-2026-09-23.json",
+      "sha256": "f3cac1ce7e16198ba417d4235d3d01d7bff4935cd3a4fe969b47cfada3fb076c"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-fields.jsonl",
+      "sha256": "6040e4633851c6d796b4fed231da097f63d45ca6da2e8a79333c9e1ebfb5783a"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+      "sha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+    }
+  ],
+  "sourcePaths": {
+    "recoilADS": "GS Class_539cff9b/Field_c5d1c8fe/Field_6b84de87/Struct_bcfafb0d",
+    "recoilHip": "GS Class_539cff9b/Field_c5d1c8fe/Field_7b609515/Struct_bcfafb0d",
+    "cameraRecoil": "GS root object 1, Class_d25bd3f6, hash fields named through GRX_Weapons anchors",
+    "rawVerification": "The script resolves each path through the selected build SharedTypeDescriptors, reads the field at its computed EBX byte offset, and compares that scalar to weapon-fields.jsonl."
+  },
+  "objectIndexCorrection": {
+    "HK433Camera": {
+      "objectIndex": 1,
+      "objectGuid": "1a630d73-9c6b-402c-a202-9dedf8e57afd",
+      "class": "Class_d25bd3f6"
+    },
+    "HK433Recoil": {
+      "objectIndex": 2,
+      "objectGuid": "824bbec4-abae-4f7b-bfe7-018f0e2b0cb8",
+      "class": "Class_539cff9b"
+    },
+    "note": "The previous entry incorrectly copied root object 0 metadata onto nested recoil fields. Each detailed row now records the actual field-owning object."
+  },
+  "sourceVsSite": {
+    "result": "All 63 site weapons match 1.4.3.0 recoil decrease factor, exponent, time exponent, offset, norm and shooting scale in both aim states. No source/site recovery input mismatch was found.",
+    "siteRecoveryInputs": [
+      "RecoilDecreaseFactor -> recoil.*.decFactor",
+      "RecoilDecreaseExponent -> recoil.*.decExp",
+      "RecoilDecreaseTimeExponent -> recoil.*.decTimeExp",
+      "RecoilDecreaseOffset -> recoil.*.decOffset"
+    ],
+    "neutralStoredInputs": [
+      "RecoilDecreaseNorm (1.0) and ShootingRecoilDecreaseScale (1.0) are stored in site data but have no effect in the current sim/core.js equation."
+    ],
+    "patternFields": "RecoilPatternSeed is 0 and Pitch/Yaw multipliers are 0 across 63 site weapons. FirstShotMultiplierVerticalRecoil is 1.0. RecoilFadeOutStart/End are -1 and Factor is 1.0. Vertical and horizontal bounds vary; their scheduler and application remain unresolved.",
+    "spreadBoundary": "FiringDecrease, NotFiringDecrease, IdleDecrease and IdleTime belong to spread recovery; they do not directly map to recoil recovery."
+  },
+  "siteFieldDistributions": [
+    {
+      "scope": "site",
+      "fieldName": "FirstShotMultiplierVerticalRecoil",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "FirstShotMultiplierVerticalRecoil",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "FirstShotMultiplierVerticalRecoil",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "FirstShotMultiplierVerticalRecoil",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "HorizontalRecoilLeft",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 5,
+      "distribution": {
+        "0.6": 4,
+        "0.2": 34,
+        "0.3": 14,
+        "0.4": 7,
+        "0.25": 4
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "HorizontalRecoilLeft",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.6": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "HorizontalRecoilLeft",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 5,
+      "distribution": {
+        "0.6": 4,
+        "0.2": 34,
+        "0.3": 14,
+        "0.4": 7,
+        "0.25": 4
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "HorizontalRecoilLeft",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.6": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "HorizontalRecoilRight",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 5,
+      "distribution": {
+        "-0.6": 17,
+        "-0.3": 22,
+        "-0.2": 18,
+        "-0.4": 4,
+        "-0.1": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "HorizontalRecoilRight",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "-0.6": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "HorizontalRecoilRight",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 5,
+      "distribution": {
+        "-0.6": 17,
+        "-0.3": 22,
+        "-0.2": 18,
+        "-0.4": 4,
+        "-0.1": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "HorizontalRecoilRight",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "-0.6": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "IdleSpringConstant",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 3,
+      "distribution": {
+        "2000.0": 14,
+        "200.0": 47,
+        "1000.0": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "IdleSpringConstant",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "2000.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "IdleSpringConstantZoomed",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 4,
+      "distribution": {
+        "3500.0": 10,
+        "200.0": 47,
+        "500.0": 4,
+        "1000.0": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "IdleSpringConstantZoomed",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "3500.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "IdleSpringDamping",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 3,
+      "distribution": {
+        "0.9": 14,
+        "0.4": 47,
+        "0.63": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "IdleSpringDamping",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.9": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "IdleSpringDampingZoomed",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 4,
+      "distribution": {
+        "0.85": 10,
+        "0.42": 47,
+        "0.5": 4,
+        "0.63": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "IdleSpringDampingZoomed",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.85": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "IdleSpringExponent",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "30.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "IdleSpringExponent",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "30.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "IdleSpringExponentZoomed",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "30.0": 59,
+        "50.0": 4
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "IdleSpringExponentZoomed",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "30.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseExponent",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "1.0": 55,
+        "0.6": 8
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseExponent",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.6": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseExponent",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "1.0": 55,
+        "0.6": 8
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseExponent",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.6": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseFactor",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 13,
+      "distribution": {
+        "21.5": 5,
+        "70.0": 8,
+        "55.0": 8,
+        "76.0": 5,
+        "48.0": 2,
+        "72.0": 14,
+        "13.7": 5,
+        "57.0": 5,
+        "12.0": 1,
+        "104.0": 5,
+        "16.0": 3,
+        "46.0": 1,
+        "40.0": 1
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseFactor",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "70.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseFactor",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 13,
+      "distribution": {
+        "21.5": 5,
+        "70.0": 8,
+        "55.0": 8,
+        "76.0": 5,
+        "48.0": 2,
+        "72.0": 14,
+        "13.7": 5,
+        "57.0": 5,
+        "12.0": 1,
+        "104.0": 5,
+        "16.0": 3,
+        "46.0": 1,
+        "40.0": 1
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseFactor",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "70.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseNorm",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseNorm",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseNorm",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseNorm",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseOffset",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0.06": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseOffset",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.001": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseOffset",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0.06": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseOffset",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.001": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseTimeExponent",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 13,
+      "distribution": {
+        "1.333": 5,
+        "4.0": 8,
+        "1.023": 8,
+        "1.24": 5,
+        "0.905": 2,
+        "1.2": 14,
+        "0.5555": 5,
+        "1.045": 5,
+        "0.398": 1,
+        "1.459": 5,
+        "0.75": 3,
+        "0.919": 1,
+        "0.84": 1
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseTimeExponent",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "3.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilDecreaseTimeExponent",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 13,
+      "distribution": {
+        "1.333": 5,
+        "4.0": 8,
+        "1.023": 8,
+        "1.24": 5,
+        "0.905": 2,
+        "1.2": 14,
+        "0.5555": 5,
+        "1.045": 5,
+        "0.398": 1,
+        "1.459": 5,
+        "0.75": 3,
+        "0.919": 1,
+        "0.84": 1
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilDecreaseTimeExponent",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "3.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilFadeOutEnd",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilFadeOutEnd",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilFadeOutEnd",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilFadeOutEnd",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilFadeOutFactor",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilFadeOutFactor",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilFadeOutFactor",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilFadeOutFactor",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilFadeOutStart",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilFadeOutStart",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilFadeOutStart",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilFadeOutStart",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "-1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilPatternMultiplierPitch",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilPatternMultiplierPitch",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilPatternMultiplierPitch",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilPatternMultiplierPitch",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilPatternMultiplierYaw",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilPatternMultiplierYaw",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilPatternMultiplierYaw",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilPatternMultiplierYaw",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilPatternSeed",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilPatternSeed",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "RecoilPatternSeed",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "RecoilPatternSeed",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "ShootingRecoilDecreaseScale",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "ShootingRecoilDecreaseScale",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "ShootingRecoilDecreaseScale",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "ShootingRecoilDecreaseScale",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "SpringConstant",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "1500.0": 61,
+        "1000.0": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "SpringConstant",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1500.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "SpringConstantZoomed",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 3,
+      "distribution": {
+        "1500.0": 57,
+        "200.0": 4,
+        "1000.0": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "SpringConstantZoomed",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "1500.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "SpringDamping",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "0.94": 61,
+        "0.9": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "SpringDamping",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.94": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "SpringDampingZoomed",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "0.5": 61,
+        "0.9": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "SpringDampingZoomed",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.5": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "SpringExponent",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "30.0": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "SpringExponent",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "30.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "SpringExponentZoomed",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "50.0": 61,
+        "30.0": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "SpringExponentZoomed",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "50.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "UseTimeSinceLastShot",
+      "aim": "shared",
+      "coverage": 63,
+      "distinctValues": 1,
+      "distribution": {
+        "True": 63
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "UseTimeSinceLastShot",
+      "aim": "shared",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "True": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "VerticalRecoilIncrease",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "0.0": 47,
+        "0.6": 16
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "VerticalRecoilIncrease",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "VerticalRecoilIncrease",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 2,
+      "distribution": {
+        "0.0": 47,
+        "0.6": 16
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "VerticalRecoilIncrease",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "VerticalRecoilMax",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 5,
+      "distribution": {
+        "0.0": 32,
+        "0.42": 12,
+        "0.578": 13,
+        "0.43": 4,
+        "0.35": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "VerticalRecoilMax",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "VerticalRecoilMax",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 5,
+      "distribution": {
+        "0.0": 32,
+        "0.42": 12,
+        "0.578": 13,
+        "0.43": 4,
+        "0.35": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "VerticalRecoilMax",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "VerticalRecoilMin",
+      "aim": "ads",
+      "coverage": 63,
+      "distinctValues": 6,
+      "distribution": {
+        "0.0": 16,
+        "0.42": 12,
+        "0.578": 13,
+        "0.6": 16,
+        "0.43": 4,
+        "0.35": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "VerticalRecoilMin",
+      "aim": "ads",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    },
+    {
+      "scope": "site",
+      "fieldName": "VerticalRecoilMin",
+      "aim": "hip",
+      "coverage": 63,
+      "distinctValues": 6,
+      "distribution": {
+        "0.0": 16,
+        "0.42": 12,
+        "0.578": 13,
+        "0.6": 16,
+        "0.43": 4,
+        "0.35": 2
+      }
+    },
+    {
+      "scope": "reference",
+      "fieldName": "VerticalRecoilMin",
+      "aim": "hip",
+      "coverage": 1,
+      "distinctValues": 1,
+      "distribution": {
+        "0.0": 1
+      }
+    }
+  ],
+  "numericPredictions": {
+    "currentSiteRecovery": [
+      {
+        "weapon": "m433",
+        "aim": "ads",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 72,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 0.989683,
+          "50": 0.953417,
+          "100": 0.802236,
+          "150": 0.580445,
+          "200": 0.350437,
+          "300": 0.044678,
+          "400": 0
+        }
+      },
+      {
+        "weapon": "m433",
+        "aim": "hip",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 72,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 0.989683,
+          "50": 0.953417,
+          "100": 0.802236,
+          "150": 0.580445,
+          "200": 0.350437,
+          "300": 0.044678,
+          "400": 0
+        }
+      },
+      {
+        "weapon": "ak4d",
+        "aim": "ads",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 104,
+        "decExp": 1,
+        "decTimeExp": 1.459,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 0.994859,
+          "50": 0.972039,
+          "100": 0.855105,
+          "150": 0.651701,
+          "200": 0.412409,
+          "300": 0.058589,
+          "400": 0
+        }
+      },
+      {
+        "weapon": "ak4d",
+        "aim": "hip",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 104,
+        "decExp": 1,
+        "decTimeExp": 1.459,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 0.994859,
+          "50": 0.972039,
+          "100": 0.855105,
+          "150": 0.651701,
+          "200": 0.412409,
+          "300": 0.058589,
+          "400": 0
+        }
+      },
+      {
+        "weapon": "sv98",
+        "aim": "ads",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 70,
+        "decExp": 0.6,
+        "decTimeExp": 4,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 1.0,
+          "50": 0.999995,
+          "100": 0.999852,
+          "150": 0.998873,
+          "200": 0.995257,
+          "300": 0.964303,
+          "400": 0.854475
+        }
+      },
+      {
+        "weapon": "sv98",
+        "aim": "hip",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 70,
+        "decExp": 0.6,
+        "decTimeExp": 4,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 1.0,
+          "50": 0.999995,
+          "100": 0.999852,
+          "150": 0.998873,
+          "200": 0.995257,
+          "300": 0.964303,
+          "400": 0.854475
+        }
+      },
+      {
+        "weapon": "vssm",
+        "aim": "ads",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 13.7,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 0.970351,
+          "50": 0.915195,
+          "100": 0.76958,
+          "150": 0.608804,
+          "200": 0.455726,
+          "300": 0.213788,
+          "400": 0.067532
+        }
+      },
+      {
+        "weapon": "vssm",
+        "aim": "hip",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 13.7,
+        "decExp": 1,
+        "decTimeExp": 0.5555,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 0.970351,
+          "50": 0.915195,
+          "100": 0.76958,
+          "150": 0.608804,
+          "200": 0.455726,
+          "300": 0.213788,
+          "400": 0.067532
+        }
+      },
+      {
+        "weapon": "interdictor",
+        "aim": "ads",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 70.0,
+        "decExp": 0.6,
+        "decTimeExp": 4.0,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 1.0,
+          "50": 0.999995,
+          "100": 0.999852,
+          "150": 0.998873,
+          "200": 0.995257,
+          "300": 0.964303,
+          "400": 0.854475
+        }
+      },
+      {
+        "weapon": "interdictor",
+        "aim": "hip",
+        "inputAssumedDisplacementDegrees": 1.0,
+        "decFactor": 70.0,
+        "decExp": 0.6,
+        "decTimeExp": 4.0,
+        "decOffset": 0.06,
+        "remainingDegreesAtMs": {
+          "25": 1.0,
+          "50": 0.999995,
+          "100": 0.999852,
+          "150": 0.998873,
+          "200": 0.995257,
+          "300": 0.964303,
+          "400": 0.854475
+        }
+      }
+    ],
+    "candidateSeedInterpretation": [
+      {
+        "weapon": "m433",
+        "aim": "ads",
+        "effectiveVariationDegrees": 41.4,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            6.762239,
+            28.780106,
+            8.823987,
+            16.017326,
+            -33.929229
+          ],
+          "candidateSourceSeedZero": [
+            -19.339662,
+            -41.372697,
+            -22.913076,
+            -29.294462,
+            -2.705256
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      },
+      {
+        "weapon": "m433",
+        "aim": "hip",
+        "effectiveVariationDegrees": 41.4,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            6.762239,
+            28.780106,
+            8.823987,
+            16.017326,
+            -33.929229
+          ],
+          "candidateSourceSeedZero": [
+            -19.339662,
+            -41.372697,
+            -22.913076,
+            -29.294462,
+            -2.705256
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      },
+      {
+        "weapon": "ak4d",
+        "aim": "ads",
+        "effectiveVariationDegrees": 20.0,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            -4.676673,
+            -10.649768,
+            -16.435116,
+            16.180887,
+            5.980668
+          ],
+          "candidateSourceSeedZero": [
+            -9.342832,
+            -19.98681,
+            -11.069119,
+            -14.151914,
+            -1.306887
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      },
+      {
+        "weapon": "ak4d",
+        "aim": "hip",
+        "effectiveVariationDegrees": 20.0,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            -4.676673,
+            -10.649768,
+            -16.435116,
+            16.180887,
+            5.980668
+          ],
+          "candidateSourceSeedZero": [
+            -9.342832,
+            -19.98681,
+            -11.069119,
+            -14.151914,
+            -1.306887
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      },
+      {
+        "weapon": "vssm",
+        "aim": "ads",
+        "effectiveVariationDegrees": 9.218004,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            -1.640245,
+            3.807756,
+            -5.589041,
+            2.598179,
+            7.414152
+          ],
+          "candidateSourceSeedZero": [
+            -4.306113,
+            -9.211925,
+            -5.101759,
+            -6.52262,
+            -0.602345
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      },
+      {
+        "weapon": "vssm",
+        "aim": "hip",
+        "effectiveVariationDegrees": 9.218004,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            -1.640245,
+            3.807756,
+            -5.589041,
+            2.598179,
+            7.414152
+          ],
+          "candidateSourceSeedZero": [
+            -4.306113,
+            -9.211925,
+            -5.101759,
+            -6.52262,
+            -0.602345
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      },
+      {
+        "weapon": "interdictor",
+        "aim": "ads",
+        "effectiveVariationDegrees": 10.0,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            -9.100008,
+            8.694561,
+            -4.095825,
+            -9.617459,
+            -0.658722
+          ],
+          "candidateSourceSeedZero": [
+            -4.671416,
+            -9.993405,
+            -5.534559,
+            -7.075957,
+            -0.653444
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      },
+      {
+        "weapon": "interdictor",
+        "aim": "hip",
+        "effectiveVariationDegrees": 10.0,
+        "sourceRecoilPatternSeed": 0,
+        "deviationSamplesDegrees": {
+          "siteWhashSeed": [
+            -9.100008,
+            8.694561,
+            -4.095825,
+            -9.617459,
+            -0.658722
+          ],
+          "candidateSourceSeedZero": [
+            -4.671416,
+            -9.993405,
+            -5.534559,
+            -7.075957,
+            -0.653444
+          ]
+        },
+        "interpretation": "Conditional comparison only: field name suggests a seed, but its native generator/use is unresolved."
+      }
+    ],
+    "conditionalDampedSpring": [
+      {
+        "weapon": "m433",
+        "sourceZoomedSpringConstant": 1500.0,
+        "sourceZoomedSpringDamping": 0.5,
+        "assumedEquation": "x\" + c*x' + k*x = 0",
+        "initialDisplacementDegrees": 1.0,
+        "predictedNormalizedResidualAtMs": {
+          "10": 0.926056,
+          "25": 0.568516,
+          "50": -0.347166,
+          "100": -0.730128
+        },
+        "assumption": "Conditional units/equation only. Source names do not establish the output channel or runtime consumer."
+      },
+      {
+        "weapon": "m87a1",
+        "sourceZoomedSpringConstant": 200.0,
+        "sourceZoomedSpringDamping": 0.42,
+        "assumedEquation": "x\" + c*x' + k*x = 0",
+        "initialDisplacementDegrees": 1.0,
+        "predictedNormalizedResidualAtMs": {
+          "10": 0.990031,
+          "25": 0.938364,
+          "50": 0.7619,
+          "100": 0.167218
+        },
+        "assumption": "Conditional units/equation only. Source names do not establish the output channel or runtime consumer."
+      }
+    ]
+  },
+  "hypothesesAndLimits": [
+    "The site recovery curve below is a numerical evaluation of its current equation for a normalized 1-degree residual; it is not an engine measurement.",
+    "A conditional seed-zero interpretation is compared with the site whash seed. Source naming does not establish native generator or seed semantics.",
+    "A conditional damped-spring equation is shown as a capture discriminator only. Source CameraRecoil names and values do not prove which channel consumes them, their units or governing equation.",
+    "Exact source values and bytes do not prove runtime consumption, native time reset, overlap handling, state transitions or attachment composition."
+  ],
+  "externalDetail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-recoil-details-v4-2026-09-23.json",
+    "sha256": "9dca795adf6dfb04fe590daf6101b2db4c122219ae82e3f54a07aa425d5c74fa",
+    "summaryPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-recoil-summary-v4-2026-09-23.json",
+    "summarySha256": "5fada7b4522bb4bd9a2e4b02525fc77355b3d2c9a41fcb81d844f1dbe292be17"
+  },
+  "reproducer": "scripts/frosty-site-recoil-audit.py; its SHA256 is recorded in the external summary."
+}

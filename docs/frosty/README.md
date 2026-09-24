@@ -12,6 +12,66 @@ what the hashed fields mean, how the assets link to site values, and what is sti
 | [UI text](UI_TEXT.md) | Strings table, weapon and attachment names, labels, descriptions, site tooltip mapping. |
 | [Tools](TOOLS.md) | FrostyCmd, safety rules, SDK and decoder, export coverage, per-build collection, generators. |
 | [Open questions](OPEN_QUESTIONS.md) | Everything still unresolved, with the suggested test. |
+| [23 September evidence index](AUDIT_EVIDENCE_2026-09-23.md) | Dated audit receipts, grouped by source topic, with supported review and validation links. |
+
+Research status: [prioritized queue, proposals and handoff](../working/FROSTY_RESEARCH_QUEUE.md).
+Capture work: [ranked in-game capture plan](../working/BF6_CAPTURE_PRIORITIES.md).
+
+The current audit starts from every `data/*.json` entry and `sim/*.js` input or
+equation across all 63 site weapons. The queue links the current per-input review
+and its remaining work. Topic pages explain findings; compact JSON receipts in
+`reference-data/provenance/` pin field paths, builds and hashes. Large comparison
+tables and raw evidence stay in the external Datamining reports directory.
+The catalog coverage below is supporting context, not the completion condition.
+
+## Exhaustive audit coverage
+
+The 23 September pass audits multiplayer source assets, starting with weapons and
+attachments. Cosmetics and content proven exclusive to single player or battle
+royale are excluded. Shared or ambiguous records remain candidates. Capture,
+decoding, field interpretation and runtime proof are separate states.
+
+The [catalog census](../../reference-data/provenance/frosty-audit-namespace-2026-09-23.json)
+contains 467,208 entries, including 49,285 under `Common/Hardware/Weapons`.
+All entries in that primary namespace now have raw captures. Related definitions,
+equipment, launchers, presentation and UI records also occur outside it. Neither
+an `Art` directory nor an `SP` substring proves an exclusion. Positive cosmetic
+assignment can exclude a purely cosmetic branch; it does not exclude independent
+functional targets shared with that branch.
+Once a pure cosmetic role is established, its model, material, physics and animation
+branch is excluded. Possible visual differences do not reopen that branch. Retain
+independently functional weapon, compatibility, ammunition, modifier or optic nodes.
+
+The first [validated cosmetic dispositions](../../reference-data/provenance/frosty-audit-cosmetic-validation-2026-09-23.json)
+exclude 3,643 charm, camo and decal records. Another 122 records in those families
+remain unresolved. All 3,765 raw bodies and 923 exact assignment roots were checked;
+slot tags match the named Charm, Camo_SPO or Sticker definition records. Typed
+same-key cosmetic members inherit that role. This does not exclude independent
+functional consumers or classify every weapon skin. Detailed reasons stay in the
+ledger and the reviewed per-asset report.
+
+The [skin validation](../../reference-data/provenance/frosty-audit-skin-validation-2026-09-23.json)
+adds 16,103 supported exclusions, bringing the cosmetic total to 19,746. It checks
+raw identities, exact model assignments and named camo slots. Unresolved wrapper
+roles remain candidates.
+
+The [prior coverage review](../../reference-data/provenance/frosty-audit-prior-coverage-2026-09-23.json)
+separates previous field-specific passes from complete asset review. Its initial
+capture census had 23,975 unique routes across three raw trees, with no overlap.
+The [root census](../../reference-data/provenance/frosty-audit-roster-2026-09-23.json)
+identifies 64 GS/WB/primary-ability triples. KSG is the additional candidate outside
+the site's 63 identities. The later [package review](../../reference-data/provenance/frosty-audit-ksg-scope-validation-2026-09-23.json)
+excludes 19 exact KSG records with sole campaign package assignments, including its
+three primary roots. Shared KSG-folder content remains in scope. The root census
+and package membership do not prove live multiplayer availability.
+
+The [full GS/WB field inventory](../../reference-data/provenance/frosty-audit-fields-2026-09-23.json)
+and [raw registry associations](../../reference-data/provenance/frosty-audit-registry-bindings-2026-09-23.json)
+now cover those roots. Ability branches, non-site attachments, scope exclusions,
+resource bodies and unresolved references still require review. The external audit
+ledger preserves every catalog row and source variant. No whole-asset completion
+is inferred from a successful export or a named field. Use the maintained queue
+for current counts and the next exact work items.
 
 ## Where to record new work
 

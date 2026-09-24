@@ -1,0 +1,313 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "oldDecoder": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\frosty-ebx-decode-776fa6af2a4a.py",
+    "sha256": "776fa6af2a4abec497df061f4d36cb431ce1494f3af26ca0f8389c81dd419530"
+  },
+  "newDecoder": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+    "sha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+  },
+  "independentReview": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\boxed-populated-array-independent-review-2026-09-23.json",
+    "sha256": "f40a9dfe4e61e0f01d3b4a00375f9c8c2a412faf2757bd95682fba399701a269"
+  },
+  "capturedBodiesCompared": 2818,
+  "unchangedBodies": 2817,
+  "changedBodies": 1,
+  "changedValues": 2,
+  "propagatedLayoutWarnings": [
+    {
+      "captureId": 69292,
+      "pointer": "/objects/1/$layoutAmbiguous",
+      "value": true
+    }
+  ],
+  "otherDifferences": 0,
+  "tests": {
+    "command": "python scripts/frosty-ebx-decode.test.py",
+    "passed": 20
+  },
+  "affected": [
+    {
+      "captureId": 69292,
+      "route": "Common/UI/HUD/WorldIcons/Expressions/WorldIconTrackingQueryGraph",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer7-2026-09-23\\raw\\common\\UI\\HUD\\WorldIcons\\Expressions\\WorldIconTrackingQueryGraph.ebx",
+      "rawSha256": "5134a74b1574ccdba8c82f6530fd9b9a94b49102add6465364147dbcec8ca9fd",
+      "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "changes": [
+        {
+          "pointer": "/objects/1/Field_c939b436/0/Field_8cf424e7",
+          "before": {
+            "$boxedValueRef": {
+              "absoluteOffset": 1824,
+              "typeWord": 78,
+              "reserved": 0,
+              "relativeOffset": 88,
+              "lookupOffset": 1888,
+              "entry": {
+                "offset": 1888,
+                "count": 1,
+                "hash": "5bdd8e96",
+                "type": 72,
+                "classRef": 8
+              },
+              "kind": 2,
+              "category": 4,
+              "array": {
+                "relativeOffset": -352,
+                "dataOffset": 1536,
+                "count": 1
+              }
+            },
+            "$unresolvedBoxedValue": "boxed array decoding awaits asset-backed validation"
+          },
+          "after": {
+            "$boxedValue": {
+              "absoluteOffset": 1824,
+              "typeWord": 78,
+              "reserved": 0,
+              "relativeOffset": 88,
+              "lookupOffset": 1888,
+              "entry": {
+                "offset": 1888,
+                "count": 1,
+                "hash": "5bdd8e96",
+                "type": 72,
+                "classRef": 8
+              },
+              "kind": 2,
+              "category": 4,
+              "array": {
+                "relativeOffset": -352,
+                "dataOffset": 1536,
+                "count": 1
+              },
+              "typeKey": "6501e0cd0f5ea91a245003e5242e2ab1",
+              "elementClass": "Class_98c26e48"
+            },
+            "value": [
+              {
+                "$layoutAmbiguous": true,
+                "Field_103a4449": {
+                  "$layoutAmbiguous": true,
+                  "Field_839a88a9": {
+                    "$import": {
+                      "fileGuid": "13cf4bc6-3ad9-4625-892f-13f8d26c330a",
+                      "classGuid": "92b4e864-681b-5efe-2b92-df998d401f96"
+                    }
+                  },
+                  "Field_fce3a5a4": {
+                    "$import": {
+                      "fileGuid": "6fdab0ec-d3b2-441d-a157-4e20ce4cff66",
+                      "classGuid": "337623bf-893d-42f9-a849-1080f21319a5"
+                    }
+                  }
+                },
+                "Field_789f22bc": [
+                  {
+                    "Field_9a12675e": {
+                      "$import": {
+                        "fileGuid": "e338d2bc-d711-4ccb-a6a3-c739122d2398",
+                        "classGuid": "99ca3265-1aef-4bbc-8fe4-ca08ea11de22"
+                      }
+                    },
+                    "Field_215bc362": 2
+                  }
+                ],
+                "Field_7929a676": [
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": -1100619234,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 62,
+                      "typeGuid": "b63c5d1e-641b-4912-7288-f8523f642447"
+                    }
+                  },
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": -1239107814,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 70,
+                      "typeGuid": "eb04546b-870f-bb82-4450-f353d8685dec"
+                    }
+                  },
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": 554398983,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 86,
+                      "typeGuid": "4febd7ce-7f3d-282e-e949-6c3a38beb920"
+                    }
+                  },
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": -498128134,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 74,
+                      "typeGuid": "e533f399-0cec-2fd7-407e-6dcbecc808f8"
+                    }
+                  }
+                ],
+                "Field_0a1b861d": [],
+                "Field_1f5f56ec": false,
+                "Field_c1dc5a6f": {
+                  "Field_3901db14": 0.0,
+                  "Field_42fc0f5e": 0.05,
+                  "Field_32a99b9c": 0.0
+                }
+              }
+            ]
+          }
+        },
+        {
+          "pointer": "/objects/1/Field_c939b436/1/Field_8cf424e7",
+          "before": {
+            "$boxedValueRef": {
+              "absoluteOffset": 1848,
+              "typeWord": 78,
+              "reserved": 0,
+              "relativeOffset": 72,
+              "lookupOffset": 1896,
+              "entry": {
+                "offset": 1896,
+                "count": 1,
+                "hash": "5bdd8e96",
+                "type": 72,
+                "classRef": 8
+              },
+              "kind": 2,
+              "category": 4,
+              "array": {
+                "relativeOffset": -184,
+                "dataOffset": 1712,
+                "count": 1
+              }
+            },
+            "$unresolvedBoxedValue": "boxed array decoding awaits asset-backed validation"
+          },
+          "after": {
+            "$boxedValue": {
+              "absoluteOffset": 1848,
+              "typeWord": 78,
+              "reserved": 0,
+              "relativeOffset": 72,
+              "lookupOffset": 1896,
+              "entry": {
+                "offset": 1896,
+                "count": 1,
+                "hash": "5bdd8e96",
+                "type": 72,
+                "classRef": 8
+              },
+              "kind": 2,
+              "category": 4,
+              "array": {
+                "relativeOffset": -184,
+                "dataOffset": 1712,
+                "count": 1
+              },
+              "typeKey": "6501e0cd0f5ea91a245003e5242e2ab1",
+              "elementClass": "Class_98c26e48"
+            },
+            "value": [
+              {
+                "$layoutAmbiguous": true,
+                "Field_103a4449": {
+                  "$layoutAmbiguous": true,
+                  "Field_839a88a9": {
+                    "$import": {
+                      "fileGuid": "13cf4bc6-3ad9-4625-892f-13f8d26c330a",
+                      "classGuid": "92b4e864-681b-5efe-2b92-df998d401f96"
+                    }
+                  },
+                  "Field_fce3a5a4": {
+                    "$import": {
+                      "fileGuid": "6fdab0ec-d3b2-441d-a157-4e20ce4cff66",
+                      "classGuid": "337623bf-893d-42f9-a849-1080f21319a5"
+                    }
+                  }
+                },
+                "Field_789f22bc": [
+                  {
+                    "Field_9a12675e": {
+                      "$import": {
+                        "fileGuid": "e338d2bc-d711-4ccb-a6a3-c739122d2398",
+                        "classGuid": "99ca3265-1aef-4bbc-8fe4-ca08ea11de22"
+                      }
+                    },
+                    "Field_215bc362": 2
+                  }
+                ],
+                "Field_7929a676": [
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": -1100619234,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 62,
+                      "typeGuid": "b63c5d1e-641b-4912-7288-f8523f642447"
+                    }
+                  },
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": -1239107814,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 70,
+                      "typeGuid": "eb04546b-870f-bb82-4450-f353d8685dec"
+                    }
+                  },
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": 554398983,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 86,
+                      "typeGuid": "4febd7ce-7f3d-282e-e949-6c3a38beb920"
+                    }
+                  },
+                  {
+                    "$layoutAmbiguous": true,
+                    "Field_e03e9c5f": -498128134,
+                    "Field_2e992994": {
+                      "$delegateTypeRef": 74,
+                      "typeGuid": "e533f399-0cec-2fd7-407e-6dcbecc808f8"
+                    }
+                  }
+                ],
+                "Field_0a1b861d": [],
+                "Field_1f5f56ec": true,
+                "Field_c1dc5a6f": {
+                  "Field_3901db14": 0.0,
+                  "Field_42fc0f5e": 0.5,
+                  "Field_32a99b9c": 0.0
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "limits": [
+    "Only count-one STRUCT arrays with matching EBXX offset/count/hash/type/classRef are supported.",
+    "Full local class offsets are validated against raw EFIX import and pointer slots; duplicate layout warnings remain.",
+    "No multi-element stride or native field semantics are established.",
+    "The existing ordinary nested-array reader does not validate every nested member span against EBXD. Current raw-corpus validation does not establish a malformed-input bounds guarantee."
+  ],
+  "codeReview": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\expression-resource-structure-review-2026-09-23.md",
+    "sha256": "4b1f2b599bc6d396ba3a08d4b0bc0db84b2dc7119d71f3a3ee74cb9bd3b92243",
+    "section": "Decoder review against the pinned 776 snapshot",
+    "result": "No blocker for the validated count-one STRUCT predicate."
+  },
+  "ledgerRefresh": {
+    "previous": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v4.sqlite",
+    "current": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+    "captureIds": [
+      69292
+    ],
+    "newDecoderSnapshot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\frosty-ebx-decode-190f7d51cd7b.py",
+    "originalPerCaptureDecoderHashesRetainedForUnchangedBodies": true
+  }
+}

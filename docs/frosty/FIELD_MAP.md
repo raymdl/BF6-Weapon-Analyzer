@@ -15,7 +15,7 @@ hash candidate names. Names come from value matching, structure and in-game test
 
 | Value | Meaning |
 |---|---|
-| Named | A named registry leaf (`GRX_Weapons`) matches the value in every observation. |
+| Named | A named registry leaf (`GRX_Weapons`) matches all stated observations; current raw child/hash associations provide additional direct name evidence where linked. |
 | Structure | Proven by links between objects (pointers, GUID joins, selector lists). |
 | Value | Inferred from values that match site data, a formula or a UI string. |
 | Tested | Confirmed by in-game screenshots or panels. |
@@ -49,6 +49,10 @@ A generic hash means nothing alone. Read the enclosing class or struct first
 | `Field_ffba60f0` | Ability branch | Action list (`Class_4ed159fb`) | Structure |
 | `Field_def7f8dd/Struct_181e89a5` | Ability branch | Kill switch: registry `Field_e0b43a29/Struct_9bc51bd0/Field_6b28f68f`, local fallback `Field_043d7a08` | Structure |
 | `Field_7e54e22c` | Action `Class_4ed159fb` | Unlocks: `U_WPM_*` package selectors and art unlocks; one action can list several | Structure |
+| `Field_f1f008ba` | Action `Class_4ed159fb` | Additional unlock-import list; the primary census has 190 underbarrel WPM imports and one legacy bipod import. Application order is unresolved. | Structure |
+| `Field_2717f5c2` | Action `Class_4ed159fb` | Exact `SRU_*` reference in 135 underbarrel actions; runtime function remains open. | Structure |
+| `Field_072fe4eb` | Action `Class_4ed159fb` | Linked Ability: 135 underbarrel roots and four bipod roots. | Structure |
+| `Field_b9875db0` | Action `Class_4ed159fb` | Matches the linked Ability's `Field_de6f63b3` ID in all 139 non-null cases; zero in all 5,976 null cases. | Structure |
 | `Class_897c99a7` | WB part, `WPM_*` root | Weapon part (modifier package) | Structure |
 | `Field_0cd9f20f` | WB | Part list: external `WPM_*` files and inline `Class_897c99a7` objects | Structure |
 | `Field_819acc98` | `Class_897c99a7` | Selector GUIDs that enable the part (bare GUID strings) | Structure |
@@ -56,6 +60,11 @@ A generic hash means nothing alone. Read the enclosing class or struct first
 | `Struct_3e61171a` | GS binding | `Field_6d011165` selector GUID; `Field_2f0e5b83` bound modifier (`GRM_*`, `GID_*`, `GDM_*`); `Field_3f680d24` entry index | Structure |
 | `Field_e70ce6be/Struct_4f9523cc` | Equipment | Prerequisite rule: `Field_399fae20` dependent attachment, `Field_f4142987` allowed attachment IDs | Structure, Tested (PP-19) |
 | `Class_e7d2410a.Field_7f22bfb4` | Magazine package | Capacity including the chambered round (40 Rnd = `0x29`) | Value |
+
+The [full raw action census](../../reference-data/provenance/frosty-audit-action-fields-2026-09-23.json)
+and [Ability ID check](../../reference-data/provenance/frosty-audit-action-ability-ids-2026-09-23.json)
+support the additional action fields above. These are class-specific structural
+meanings, not canonical SDK names or native activation rules.
 
 ## Modifier operands and effects
 
@@ -83,6 +92,7 @@ not known.
 | `Class_d11a23a2` / `Class_e85fff64` | `Field_fbfacac9` | Penetration / protection steps (`P05` = 1, `P15` = 3) | Value |
 | `Class_5830cb87` | `Field_8359723e` | Health regeneration delay added, seconds | Value |
 | `Class_0045e7fa` | `Field_d98b0371` / `Field_6f8d5f40` | Minimap / in-world spot range factors | Value |
+| WB `Class_542ac52c` | `Field_5ebda408/Field_31022dc5` / `Field_5ebda408/Field_9918e670` | Minimap / in-world spot-on-fire base candidates, m (150/54 on 61 weapons) | Raw values checked; role inferred, native consumer unresolved ([report](../../reference-data/provenance/frosty-spot-range-bases-2026-09-23.json)) |
 | `Class_c6c66955` | `Field_ffba8126` | Silenced flag | Value |
 | `WME_DynamicPivot` | `Field_f235e44f`, `Field_a4f104cc` | X/Y/Z multipliers (M10 1.333333, P10 0.75, P20 0.5625) | Probable |
 | `WME_*` muzzle velocity | `Field_6a5c4efd` | Velocity tier factor 0.8^n | Value |
@@ -102,6 +112,7 @@ not known.
 | `Field_bd300f62` | `ZDA_Moving_Weapons` | Jumping/sprinting ADS minimum | Probable |
 | `Field_440ed7fa` | WB | Frame-quantized duration (whole 1/60 s). Tracks cadence but is clamped; **not** the rate of fire | Value |
 | `Field_52a8ad43` | WB | Constant 0.067 (four frames) on every weapon | Value |
+| `Field_5b6caeda/Struct_038e6367` | GS | Idle-duration block: `Field_6138f58f` = `StationaryIndex`, `Field_54a69c98` = `MovingIndex`; pointers `Field_fdc3ebd3` and `Field_d9d776d4` target `IDA_Weapons` | Names resolved by current raw GRX child/hash arrays in 62 anchors; native indexing and runtime use unresolved ([review](../../reference-data/provenance/frosty-audit-registry-bindings-2026-09-23.json)) |
 | `Class_35259f6b/Field_58d70acb/Struct_29ea5d2b/Field_808dd66c` | WB | Primary projectile selection | Structure |
 | `Struct_739f3ac5.Field_32a99b9c` | WB | Muzzle velocity (`Shot.InitialSpeed.z`) | Value |
 | `Field_d9d33d20` / `Field_30c37c24` | Projectile | Gravity (−9.81) / drag (0.0035) | Named, Value |
@@ -277,8 +288,9 @@ is name evidence only. Operand meaning and runtime use need their own checks.
 | `Field_c0c7c72f` | ReloadDelay | `Struct_b50f190f` |
 | `Field_1c533b56` | ReloadSpeed | `Struct_b50f190f` |
 | `Field_9c1e1476` | ReloadThreshold | `Struct_b50f190f` |
-| `Field_85ff24a0` | ReloadTime | `Struct_b50f190f` |
-| `Field_fc66e75e` | ReloadTimeBulletsLeft | `Struct_b50f190f` |
+| `Field_85ff24a0` | ReloadTime (not used when it differs from `Field_fc66e75e` in the empty entry; [capture](../../reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json)) | `Struct_b50f190f` |
+| `Field_fc66e75e` | ReloadTimeBulletsLeft (effective reload time in both `ReloadInfoArray` entries) | `Struct_b50f190f` |
+| `Field_dc244b57` | Reload phase-time list (unnamed); last entry equals `Field_fc66e75e` on 56 of 57 weapons (Value) | `Struct_b50f190f` |
 | `Field_3ef01f58` | ShockwaveDamage | `Class_9966532d` |
 | `Field_524836d3` | ShockwaveRadius | `Class_9966532d` |
 | `Field_94869d67` | StartDamage | `Class_23637dce` |
@@ -357,3 +369,77 @@ Precision table extraction for current panels must use the
 [1.4.3.0 report](../../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json).
 The changed settings export takes precedence over a stale overlay; the older
 report above remains historical evidence.
+
+## Weapon zeroing block
+
+The [zeroing extraction](../../reference-data/provenance/frosty-zeroing-parameters-2026-09-23.json)
+finds the block at `Field_58d70acb/Field_7d5dc312` in the captured WB firing object.
+Twelve direct GRX anchors name the block `Shot.Zeroing`; 51 anchors are null.
+Nested layout warnings remain. The following scalar matches apply to the 12
+named blocks, not a native consumer or a proof of units.
+
+| Field in the block | Source association | Confidence |
+|---|---|---|
+| `Field_fdf17e6a/Field_6b28f68f` | Reference to the named GRX zeroing block, or null | Structure |
+| `Field_0910a3f6` | MinimumCustomZeroingDistance = 100 | Named; 12 matching records |
+| `Field_7a592b4e` | MaximumCustomZeroingDistance = 1000 | Named; 12 matching records |
+| `Field_812f7451` | CustomZeroingDelay = 0.4 | Named; 12 matching records; units unverified |
+| `Field_4e34fabb` | RangeFindingInAdsOnly = true in the named group | Value; only true boolean in that block |
+| `Field_4b636fc6`, `Field_4449ee55` | Both false; RangeFinder and CustomZeroing are also false | Individual assignment unresolved |
+| `Field_410f6aa8` | Integer list in the zeroing block: single 60/75/100 or 100–500 | Structure; list role and active selection unresolved |
+
+## Additional current raw registry names (1.4.3.0)
+
+The [current raw association report](../../reference-data/provenance/frosty-audit-registry-bindings-2026-09-23.json) pairs named child references with stored field hashes. It checks 16,889 equal scalar pairs across 5,381 GS/WB anchors, covering 126 hashes. There are no conflicts with the 60 overlapping names in the earlier value-match report. Twelve older names lie outside this root pass; their absence here does not invalidate them.
+
+The table adds hashes not listed elsewhere on this page. Confidence is **Named by raw registry association**, within the stated source context. It does not establish units, equations or active multiplayer values. The same hash in another context still needs review. Earlier weak labels in this page are strengthened only where this report records the exact linked context.
+
+| Hash | Named field | Source context |
+|---|---|---|
+| `Field_74b1aad2` | `IdleSpringConstant` | CameraRecoil |
+| `Field_abf3655a` | `IdleSpringConstantSwitchTime` | CameraRecoil |
+| `Field_eff75a4b` | `IdleSpringConstantZoomed` | CameraRecoil |
+| `Field_43b22d90` | `IdleSpringConstantZoomedSwitchTime` | CameraRecoil |
+| `Field_c7ccd1a7` | `IdleSpringDamping` | CameraRecoil |
+| `Field_2b61552e` | `IdleSpringDampingSwitchTime` | CameraRecoil |
+| `Field_bbd799e1` | `IdleSpringDampingZoomed` | CameraRecoil |
+| `Field_131218dc` | `IdleSpringDampingZoomedSwitchTime` | CameraRecoil |
+| `Field_f260924b` | `IdleSpringExponent` | CameraRecoil |
+| `Field_c2d55f05` | `IdleSpringExponentSwitchTime` | CameraRecoil |
+| `Field_99f2d08c` | `IdleSpringExponentZoomed` | CameraRecoil |
+| `Field_def6553a` | `IdleSpringExponentZoomedSwitchTime` | CameraRecoil |
+| `Field_01e71818` | `SpringConstant` | CameraRecoil |
+| `Field_cea8c368` | `SpringConstantZoomed` | CameraRecoil |
+| `Field_bfc65eb8` | `SpringDamping` | CameraRecoil |
+| `Field_3d7a9f12` | `SpringDampingZoomed` | CameraRecoil |
+| `Field_67cfff28` | `SpringExponent` | CameraRecoil |
+| `Field_469a2fb5` | `SpringExponentZoomed` | CameraRecoil |
+| `Field_560bbb82` | `SpringMinThresholdAngle` | CameraRecoil |
+| `Field_57f8e02b` | `UseTimeSinceLastShot` | CameraRecoil |
+| `Field_2859e2fd` | `FirstShotMultiplierVerticalRecoil` | Recoil |
+| `Field_834a710f` | `HorizontalRecoilDecreaseMultiplier` | Recoil |
+| `Field_1e41c505` | `RecoilFadeOutEnd` | Recoil |
+| `Field_27f30454` | `RecoilFadeOutFactor` | Recoil |
+| `Field_89e9f16e` | `RecoilFadeOutStart` | Recoil |
+| `Field_ddac0349` | `RecoilPatternMultiplierPitch` | Recoil |
+| `Field_b468bc2c` | `RecoilPatternMultiplierYaw` | Recoil |
+| `Field_0fc53def` | `RecoilPatternSeed` | Recoil |
+| `Field_9b46e71d` | `ShootingRecoilDecreaseScale` | Recoil |
+| `Field_54ba3947` | `VerticalRecoilDecreaseMultiplier` | Recoil |
+| `Field_8dcef541` | `SpawnDelay` | WB.Shot |
+| `Field_caf2ace0` | `BoltActionDelay` | WB.FireLogic.BoltAction |
+| `Field_1c57216a` | `BoltActionSpeed` | WB.FireLogic.BoltAction |
+| `Field_a1abbce8` | `BoltActionTime` | WB.FireLogic.BoltAction |
+| `Field_2084d4bf` | `BoltActionTimeCompletedFraction` | WB.FireLogic.BoltAction |
+| `Field_21f2d4ee` | `BoltActionTimeCompletedFractionZoom` | WB.FireLogic.BoltAction |
+| `Field_19b2eed9` | `SuppressionBoltActionDelay` | WB.FireLogic.BoltAction |
+| `Field_6e081af4` | `ReloadType` | WB.FireLogic.ReloadInfoArray[0], WB.FireLogic.ReloadInfoArray[1] |
+| `Field_7909bca5` | `AutoReplenishMagazine` | WB.Ammo |
+| `Field_db4fa3c2` | `AutoReplenishRounds` | WB.Ammo |
+| `Field_80a58418` | `InitialAmmo` | WB.Ammo |
+| `Field_661b879d` | `InitialSpeedVariation` | WB.Shot |
+| `Field_ed10e827` | `Duration` | StanceChangePenalties.CrouchToProne, StanceChangePenalties.CrouchToStand, StanceChangePenalties.ProneToCrouch, StanceChangePenalties.ProneToStand, StanceChangePenalties.StandToCrouch, StanceChangePenalties.StandToProne |
+| `Field_7ce404e6` | `MinAngleOffset` | StanceChangePenalties.CrouchToProne, StanceChangePenalties.CrouchToStand, StanceChangePenalties.ProneToCrouch, StanceChangePenalties.ProneToStand, StanceChangePenalties.StandToCrouch, StanceChangePenalties.StandToProne |
+| `Field_3b078489` | `OverHeatDropDelay` | WB.OverHeat |
+| `Field_3ad34fcc` | `OverHeatPenaltyTime` | WB.OverHeat |
+| `Field_37a30bd2` | `OverHeatThreshold` | WB.OverHeat |

@@ -313,10 +313,15 @@ unchanged and remains a model assumption.
 
 Mini Scout Tungsten applies the combined -1 and -6 source recoil amount steps
 (-7 total) in ADS and hip. Other sniper Tungsten values are unchanged.
-PSR, SV-98, L115, Mini Scout and Interdictor Slim Angled, and KS18K Slim Angled,
+PSR, SV-98, L115, Mini Scout and Interdictor Slim Angled
 add -1 to the moving-ADS spread row index. These are per-weapon effects. The
 operator approved these source composition choices. On the five sniper rifles the
 Slim Angled action selects the Full Angled `FastBOLT01_W05` package, which carries
 the dispersion binding. Interdictor and Mini Scout HUD captures and matching Mobility
 panels support the penalty ([captures](../reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json)).
 M2010 ESR Slim Angled selects `FastBOLT02_W15` and has no penalty.
+KS18K Slim Angled uses zero moving-ADS penalty. Its similarly named GDM modifier
+belongs to `Field_b30a73ed`, not moving-ADS collection `Field_2ffeb6ac`.
+The [21 September indicator captures](../reference-data/provenance/ks18k-ads-indicator-2026-09-21.json)
+support the retained zero; the other collection's effect and pellet distribution
+remain unresolved. See the [attachment trace](frosty/ATTACHMENTS.md#weapon-attributes-attachment-tracing-21-september-2026).

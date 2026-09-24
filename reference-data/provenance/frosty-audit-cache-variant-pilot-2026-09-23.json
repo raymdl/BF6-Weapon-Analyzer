@@ -1,0 +1,383 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "head": 4892087,
+  "sdkVersion": 4414275,
+  "records": [
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_200Ext1_556_W50",
+      "fileGuid": "8c619cb8-2f10-41d2-bf42-1f90f33a50ca",
+      "recordSha1": "90e669d52fc2391a2e6bbea38eb8fa1d398e9f1c",
+      "cacheOffset": 21551458,
+      "cacheRecordBytes": 486,
+      "status": "success",
+      "file": "variants/8c619cb8-2f10-41d2-bf42-1f90f33a50ca/90e669d52fc2391a2e6bbea38eb8fa1d398e9f1c-21551458.ebx",
+      "bytes": 872,
+      "sha256": "1b4e64ed53a1eec848c07e596c5f4f17b718cbe4b619d471a790049f7e881fee",
+      "reason": null,
+      "gameHead": 4892087,
+      "sdkVersion": 4414275,
+      "selectedControl": {
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Magazine\\ExtendedMagazine\\WPM_MAG_200Ext1_556_W50.ebx",
+        "raw_sha256": "1b4e64ed53a1eec848c07e596c5f4f17b718cbe4b619d471a790049f7e881fee",
+        "head": 4892017
+      },
+      "decodedPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\cache-variant-pilot-decoded-21551458.json",
+      "side": "selected"
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_200Ext1_556_W55",
+      "fileGuid": "8c619cb8-2f10-41d2-bf42-1f90f33a50ca",
+      "recordSha1": "51189e56f42510e076111bfa8e23b0ff3afd4196",
+      "cacheOffset": 193610477,
+      "cacheRecordBytes": 376,
+      "status": "success",
+      "file": "variants/8c619cb8-2f10-41d2-bf42-1f90f33a50ca/51189e56f42510e076111bfa8e23b0ff3afd4196-193610477.ebx",
+      "bytes": 924,
+      "sha256": "0128a2d97dc330784e7e9eab257a700d9c6d6002b8436ff931aff435d7663e5d",
+      "reason": null,
+      "gameHead": 4892087,
+      "sdkVersion": 4414275,
+      "decodedPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\cache-variant-pilot-decoded-193610477.json",
+      "side": "skipped"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/SVDM/CUST_SVDM",
+      "fileGuid": "0e34abd2-e94b-4bbd-b53e-eefb3a915c70",
+      "recordSha1": "116b65eb55d6e26bf2a711d70411e11f02ff5535",
+      "cacheOffset": 25804429,
+      "cacheRecordBytes": 389,
+      "status": "success",
+      "file": "variants/0e34abd2-e94b-4bbd-b53e-eefb3a915c70/116b65eb55d6e26bf2a711d70411e11f02ff5535-25804429.ebx",
+      "bytes": 380,
+      "sha256": "7564f1c004866f7a4b392cf6ea9b450e7a1ed87452a2ca76142c740bbc5c1083",
+      "reason": null,
+      "gameHead": 4892087,
+      "sdkVersion": 4414275,
+      "selectedControl": {
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\DMR\\SVDM\\CUST_SVDM.ebx",
+        "raw_sha256": "7564f1c004866f7a4b392cf6ea9b450e7a1ed87452a2ca76142c740bbc5c1083",
+        "head": 4892017
+      },
+      "decodedPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\cache-variant-pilot-decoded-25804429.json",
+      "side": "selected"
+    },
+    {
+      "path": "Common/Hardware/Weapons/DMR/SVDM/WeaponName_CUS",
+      "fileGuid": "0e34abd2-e94b-4bbd-b53e-eefb3a915c70",
+      "recordSha1": "e2f0ca5bf58acc7f735a74bfad910b8799f74274",
+      "cacheOffset": 194904308,
+      "cacheRecordBytes": 268,
+      "status": "success",
+      "file": "variants/0e34abd2-e94b-4bbd-b53e-eefb3a915c70/e2f0ca5bf58acc7f735a74bfad910b8799f74274-194904308.ebx",
+      "bytes": 384,
+      "sha256": "afb7751fe4b86f925275e8b49c740d4cf6ee82b5a873de71bad82db2bf9461e5",
+      "reason": null,
+      "gameHead": 4892087,
+      "sdkVersion": 4414275,
+      "decodedPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\cache-variant-pilot-decoded-194904308.json",
+      "side": "skipped"
+    },
+    {
+      "path": "Common/UI/Static/Metadata/Attachments/M4A1/AD_EnticerLTi",
+      "fileGuid": "70c41532-40d3-760d-a3ec-9316b7f205fa",
+      "recordSha1": "958dfe300b25b90f7dc50249e135e9de1d9befd6",
+      "cacheOffset": 209611594,
+      "cacheRecordBytes": 354,
+      "status": "success",
+      "file": "variants/70c41532-40d3-760d-a3ec-9316b7f205fa/958dfe300b25b90f7dc50249e135e9de1d9befd6-209611594.ebx",
+      "bytes": 1446,
+      "sha256": "a6fb8f9b0e018225b68729eb2ec707928fa58aeb180781ae03e1d5ab37bd16ff",
+      "reason": null,
+      "gameHead": 4892087,
+      "sdkVersion": 4414275,
+      "selectedControl": {
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\UI\\Static\\Metadata\\Attachments\\M4A1\\AD_EnticerLTi.ebx",
+        "raw_sha256": "a6fb8f9b0e018225b68729eb2ec707928fa58aeb180781ae03e1d5ab37bd16ff",
+        "head": 4892017
+      },
+      "decodedPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\cache-variant-pilot-decoded-209611594.json",
+      "side": "selected"
+    },
+    {
+      "path": "Common/UI/Static/Metadata/Attachments/Shared/AD_EnticerLTi",
+      "fileGuid": "70c41532-40d3-760d-a3ec-9316b7f205fa",
+      "recordSha1": "29478d2d09df4fda7ce070783fdd0fdbf8b5fe42",
+      "cacheOffset": 219793999,
+      "cacheRecordBytes": 289,
+      "status": "success",
+      "file": "variants/70c41532-40d3-760d-a3ec-9316b7f205fa/29478d2d09df4fda7ce070783fdd0fdbf8b5fe42-219793999.ebx",
+      "bytes": 1144,
+      "sha256": "6b2374cac816e495e0a14a253fac34f88f4cd9fabb49290a3097103ac5cb820b",
+      "reason": null,
+      "gameHead": 4892087,
+      "sdkVersion": 4414275,
+      "decodedPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\cache-variant-pilot-decoded-219793999.json",
+      "side": "skipped"
+    }
+  ],
+  "cache": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostyEditor\\bin\\Release\\Final\\Caches\\bf6.cache",
+    "sha256": "7c39b5734f225aeb08560409ea3631a08caeeba6ffb695d816d69e6b9d9bb490",
+    "bytes": 494256779,
+    "profileHash": "0b8746d7",
+    "ebxSectionEnd": 230504523
+  },
+  "collectorSha256": "98735f437e1a14a8548688afb23c0649f75c7fa635ad7b48a3c0c585fce27f3f",
+  "variantReaderSha256": "60018e1ea3dfe3c3645fe57bdca6efab63b688e6e36b3cafc547399d2e00b9e2",
+  "decoderSha256": "776fa6af2a4abec497df061f4d36cb431ce1494f3af26ca0f8389c81dd419530",
+  "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+  "allThreeSelectedControlsMatchPriorRaw": true,
+  "allThreeAlternateRawHashesDiffer": true,
+  "limits": "Exact cache records reconstructed without modifying SDK asset dictionaries. Original cache hash checked before and after extraction. Variant raw-byte differences verified; semantic and native selection review remains open. Alternative payloads are not merged into the effective-catalog ledger.",
+  "decodedObjectFieldComparisons": [
+    {
+      "fileGuid": "8c619cb8-2f10-41d2-bf42-1f90f33a50ca",
+      "differences": [
+        {
+          "pointer": "/objects/0/Field_0c59fa06",
+          "selectedPresent": true,
+          "selected": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_200Ext1_556_W50",
+          "skippedPresent": true,
+          "skipped": "Common/Hardware/Weapons/_WeaponModifiers/_Magazine/ExtendedMagazine/WPM_MAG_200Ext1_556_W55"
+        },
+        {
+          "pointer": "/objects/2/Field_9690d604",
+          "selectedPresent": true,
+          "selected": [
+            {
+              "$ref": 1
+            },
+            {
+              "$import": {
+                "fileGuid": "60421291-3bcc-4679-ad87-578375c82f40",
+                "classGuid": "20eae443-52ef-4b08-9b5b-313446a00033"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "26873528-8798-4691-999d-d3ace5278b99",
+                "classGuid": "8f35e474-6e82-4ff6-80dc-4908366b2cfb"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "e4f2ba08-f62e-409b-bb99-9ca46fbd31b3",
+                "classGuid": "62880565-cd65-482a-89ec-84f44ab0d77f"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "5d4362f6-65de-4199-b144-f054218c1c79",
+                "classGuid": "b1987108-56a5-4d06-8d59-a6d34f9414ea"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "db690b56-a6ca-40a4-9d62-ba0e811df350",
+                "classGuid": "2bb2304d-b6b4-45ef-b14e-d034777212d1"
+              }
+            }
+          ],
+          "skippedPresent": true,
+          "skipped": [
+            {
+              "$ref": 1
+            },
+            {
+              "$import": {
+                "fileGuid": "60421291-3bcc-4679-ad87-578375c82f40",
+                "classGuid": "20eae443-52ef-4b08-9b5b-313446a00033"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "26873528-8798-4691-999d-d3ace5278b99",
+                "classGuid": "8f35e474-6e82-4ff6-80dc-4908366b2cfb"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "e4f2ba08-f62e-409b-bb99-9ca46fbd31b3",
+                "classGuid": "62880565-cd65-482a-89ec-84f44ab0d77f"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "5d4362f6-65de-4199-b144-f054218c1c79",
+                "classGuid": "b1987108-56a5-4d06-8d59-a6d34f9414ea"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "db690b56-a6ca-40a4-9d62-ba0e811df350",
+                "classGuid": "2bb2304d-b6b4-45ef-b14e-d034777212d1"
+              }
+            },
+            {
+              "$import": {
+                "fileGuid": "f22439d6-99ea-4100-ba13-801b29decaec",
+                "classGuid": "961d6549-1638-4249-bf1a-b3ede5a825e9"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "fileGuid": "0e34abd2-e94b-4bbd-b53e-eefb3a915c70",
+      "differences": [
+        {
+          "pointer": "/objects/0/Field_0c59fa06",
+          "selectedPresent": true,
+          "selected": "Common/Hardware/Weapons/DMR/SVDM/CUST_SVDM",
+          "skippedPresent": true,
+          "skipped": "Common/Hardware/Weapons/DMR/SVDM/WeaponName_CUS"
+        }
+      ]
+    },
+    {
+      "fileGuid": "70c41532-40d3-760d-a3ec-9316b7f205fa",
+      "differences": [
+        {
+          "pointer": "/objects/0/Field_0c59fa06",
+          "selectedPresent": true,
+          "selected": "Common/UI/Static/Metadata/Attachments/M4A1/AD_EnticerLTi",
+          "skippedPresent": true,
+          "skipped": "Common/UI/Static/Metadata/Attachments/Shared/AD_EnticerLTi"
+        },
+        {
+          "pointer": "/objects/0/Field_45422b18",
+          "selectedPresent": true,
+          "selected": {
+            "Field_c3b1f3de": null,
+            "Field_14c4a054": 0,
+            "Field_92012be9": [],
+            "Field_ace86d22": 0,
+            "Field_5bdc4dd7": [
+              {
+                "Field_7c7e22c1": {
+                  "$import": {
+                    "fileGuid": "8ac1187d-36a4-4e20-a6bd-99a969fb655d",
+                    "classGuid": "d321822a-5ce3-4f35-85f7-41b72cbb84d5"
+                  }
+                },
+                "Field_8cf424e7": -10
+              },
+              {
+                "Field_7c7e22c1": {
+                  "$import": {
+                    "fileGuid": "8d848999-17aa-4dcf-911c-2403d95f5b9f",
+                    "classGuid": "afd637e7-72c7-4ca4-ba88-0013e478c9fd"
+                  }
+                },
+                "Field_8cf424e7": 0
+              },
+              {
+                "Field_7c7e22c1": {
+                  "$import": {
+                    "fileGuid": "c968300e-3915-4344-a3db-d05e6adf405b",
+                    "classGuid": "af037b5b-bcdb-42f0-a8d7-1078abc8d5ef"
+                  }
+                },
+                "Field_8cf424e7": -5
+              },
+              {
+                "Field_7c7e22c1": {
+                  "$import": {
+                    "fileGuid": "f5eb13f2-b0a2-46c9-9a2c-27442a2a50ca",
+                    "classGuid": "24f8634e-59ff-49ef-af7a-a4d64109586d"
+                  }
+                },
+                "Field_8cf424e7": -5
+              }
+            ]
+          },
+          "skippedPresent": false,
+          "skipped": null
+        },
+        {
+          "pointer": "/objects/0/Field_56475e5c",
+          "selectedPresent": false,
+          "selected": null,
+          "skippedPresent": true,
+          "skipped": {
+            "Field_3901db14": 0.5,
+            "Field_42fc0f5e": 0.5,
+            "Field_32a99b9c": 0.5
+          }
+        },
+        {
+          "pointer": "/objects/0/Field_651ab360",
+          "selectedPresent": true,
+          "selected": {
+            "Field_0b86ea6a": {
+              "$import": {
+                "fileGuid": "94efc4fc-7e2d-4fbb-8cf6-1584b74efb12",
+                "classGuid": "c0c874d4-f5a9-4d66-8caf-6e99d01475b6"
+              }
+            },
+            "Field_b94a3c65": 38
+          },
+          "skippedPresent": true,
+          "skipped": {
+            "Field_0b86ea6a": {
+              "$import": {
+                "fileGuid": "94efc4fc-7e2d-4fbb-8cf6-1584b74efb12",
+                "classGuid": "c0c874d4-f5a9-4d66-8caf-6e99d01475b6"
+              }
+            },
+            "Field_b94a3c65": 45
+          }
+        },
+        {
+          "pointer": "/objects/0/Field_c39698a3",
+          "selectedPresent": true,
+          "selected": -1,
+          "skippedPresent": true,
+          "skipped": 11
+        },
+        {
+          "pointer": "/objects/0/Field_c9a39085",
+          "selectedPresent": false,
+          "selected": null,
+          "skippedPresent": true,
+          "skipped": 6120
+        },
+        {
+          "pointer": "/objects/0/Field_f0aecf83",
+          "selectedPresent": true,
+          "selected": {
+            "Field_0b86ea6a": {
+              "$import": {
+                "fileGuid": "c4600df1-06f3-4d4b-915f-d8c4bd53d9bd",
+                "classGuid": "1b84e009-789e-486e-a9f7-c313a059e3ea"
+              }
+            },
+            "Field_b94a3c65": 166
+          },
+          "skippedPresent": true,
+          "skipped": {
+            "Field_0b86ea6a": {
+              "$import": {
+                "fileGuid": "c4600df1-06f3-4d4b-915f-d8c4bd53d9bd",
+                "classGuid": "1b84e009-789e-486e-a9f7-c313a059e3ea"
+              }
+            },
+            "Field_b94a3c65": 47
+          }
+        }
+      ]
+    }
+  ],
+  "extraMagazineReferenceValidation": {
+    "route": "Common/Hardware/Weapons/_WeaponModifiers/ADSMoveDispersion/WME_DynamicPivot_M10",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSMoveDispersion\\WME_DynamicPivot_M10.ebx",
+    "rawSha256": "7073caf27f4938b2a42493509f56f5d1f98ad61489192af5ad27dfe81454b820",
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "fileGuid": "f22439d6-99ea-4100-ba13-801b29decaec",
+    "objectGuid": "961d6549-1638-4249-bf1a-b3ede5a825e9",
+    "class": "Class_c42bd53b",
+    "nativeApplication": "Unresolved; exact source reference only."
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "date": "2026-09-23",
+  "scope": "287 exact magazine selections; capacities and reload tiers only",
+  "selections": 287,
+  "leaves": 569,
+  "capacityCases": {
+    "[1]": 263,
+    "[2]": 1,
+    "[0]": 23
+  },
+  "reloadCases": {
+    "(0, [])": 179,
+    "(1, [1.13])": 101,
+    "(None, [])": 5,
+    "(2, [1.277])": 1,
+    "(1, [])": 1
+  },
+  "statuses": {
+    "precisely-blocked-runtime": 264,
+    "software-contract": 179,
+    "sourced-configuration": 125,
+    "mismatch-with-proposal": 1
+  },
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-magazines-2026-09-23-leaves.jsonl",
+    "sha256": "fd2d90538b06051580f161421a1f78b380ddb372159a13372bffddb155e50d48"
+  },
+  "scriptSha256": "f149e62ac129dfbb80bbfe128e277f40846b73dc7d37cc82c19bdbaafe130341",
+  "siteSha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79",
+  "limits": [
+    "Exact source graph presence does not prove native use.",
+    "Capacity differences retain site nominal-magazine versus raw loaded-capacity semantics; no production correction is made."
+  ],
+  "xmlSourceHashes": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-magazines-2026-09-23-xml-hashes.json",
+    "sha256": "3cd975cc76666b923967eea11503ce1582d73f65884fc5ec4d659cd03b30ec67",
+    "count": 4220
+  }
+}

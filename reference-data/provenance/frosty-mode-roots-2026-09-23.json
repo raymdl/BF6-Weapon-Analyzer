@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-23",
+  "subject": "Conquest and Breakthrough mode-root combat override check",
+  "builds": {
+    "modeRoots": {
+      "gameHead": 4892087,
+      "descriptor": "builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "capture": "builds/1.4.3.0/capture/mode-roots-2026-09-23"
+    },
+    "modeMutators": {
+      "gameHead": 4892017,
+      "sdkVersion": 4414275,
+      "descriptor": "builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors.ebx",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "capture": "builds/1.4.3.0/capture/collection/raw"
+    }
+  },
+  "decode": {
+    "api": "runpy.run_path('scripts/frosty-ebx-decode.py'); Ebx(raw, type_descriptors(descriptor)).decode()",
+    "warnings": "Both mode root Class_2448eddb records have $layoutAmbiguous=true. Decoded records have no unresolved types. The MUT bodies are release-build captures, separate from the hotfix mode roots."
+  },
+  "roots": [
+    {
+      "route": "Game/GlacierMP/Gamemodes/Conquest/Mode/GM_Conquest",
+      "rawPath": "builds/1.4.3.0/capture/mode-roots-2026-09-23/Game__GlacierMP__Gamemodes__Conquest__Mode__GM_Conquest.ebx",
+      "sha256": "8e205198d468a02a4f3d77e56538affd3c58f210e352835f411e15641d8eb4d5",
+      "fileGuid": "0598e862-9ef9-4860-8737-2d899fd85fda",
+      "rootObject": {
+        "index": 0,
+        "class": "Class_2448eddb",
+        "objectGuid": "df8766e5-9539-4fa6-a057-b31f819e828b",
+        "dataOffset": 16,
+        "absoluteOffset": 48,
+        "Field_143c40d5": "Conquest0"
+      },
+      "modePropertyLink": {
+        "objectIndex": 1,
+        "class": "Class_1e75e365",
+        "objectGuid": "4b7e8615-7b4b-4a07-890d-b1fcaa437adb",
+        "dataOffset": 152,
+        "absoluteOffset": 184,
+        "Field_2090e04e.Field_e0b43a29.Field_6b28f68f.import.fileGuid": "da200abe-15b6-471e-9975-771f673cdf66",
+        "Field_2090e04e.Field_e0b43a29.Field_6b28f68f.import.classGuid": "f431edc4-d110-4431-ad68-61ae3f6bf420",
+        "Field_043d7a08": 0.0,
+        "resolvedTargetName": "CQ_fNoInteractivityTimeoutOverride"
+      }
+    },
+    {
+      "route": "Game/GlacierMP/Gamemodes/Breakthrough/Mode/GM_Breakthrough",
+      "rawPath": "builds/1.4.3.0/capture/mode-roots-2026-09-23/Game__GlacierMP__Gamemodes__Breakthrough__Mode__GM_Breakthrough.ebx",
+      "sha256": "cfbabc00b6d7a80c1dd38a760e8802bb2a28dcef86e8065ae773b9cb773a03e8",
+      "fileGuid": "5aa6ec8e-3e1f-4c60-a0ab-cf46405ca2f2",
+      "rootObject": {
+        "index": 0,
+        "class": "Class_2448eddb",
+        "objectGuid": "491bf165-fe66-4410-9da0-e61ff8e20252",
+        "dataOffset": 16,
+        "absoluteOffset": 48,
+        "Field_143c40d5": "Breakthrough0"
+      },
+      "modePropertyLink": {
+        "objectIndex": 3,
+        "class": "Class_1e75e365",
+        "objectGuid": "d38e9129-b929-44e0-b7b1-f3fcdb7d25d3",
+        "dataOffset": 280,
+        "absoluteOffset": 312,
+        "Field_2090e04e.Field_e0b43a29.Field_6b28f68f.import.fileGuid": "0f2564c8-f0e7-4883-8867-5bb9d25d6b0a",
+        "Field_2090e04e.Field_e0b43a29.Field_6b28f68f.import.classGuid": "7e24c6fd-dd0a-4181-b36f-e143bc310949",
+        "Field_043d7a08": 0.0,
+        "resolvedTargetName": "BT_fNoInteractivityTimeoutOverride"
+      }
+    }
+  ],
+  "directModeMutatorTargets": [
+    {
+      "route": "Game/GlacierMP/Gamemodes/Conquest/Mode/MUT_Conquest",
+      "rawPath": "builds/1.4.3.0/capture/collection/raw/Game/GlacierMP/Gamemodes/Conquest/Mode/MUT_Conquest.ebx",
+      "sha256": "1b3aea7d510c98da1e8d41f1b5dee4c0bc21fa9309f2be039e87b47d17004239",
+      "fileGuid": "da200abe-15b6-471e-9975-771f673cdf66",
+      "targetObject": {
+        "index": 44,
+        "class": "Class_d59e68b9",
+        "objectGuid": "f431edc4-d110-4431-ad68-61ae3f6bf420",
+        "dataOffset": 4184,
+        "absoluteOffset": 4216,
+        "Field_0c59fa06": "CQ_fNoInteractivityTimeoutOverride",
+        "Field_42c8b257": 120.0,
+        "Field_c06d0cbb": 0.0,
+        "Field_3ff76ddb": 600.0
+      },
+      "rootEntryCount": 59,
+      "rootField_3128532f_import": {
+        "fileGuid": "25810f31-7914-4c1c-b996-a9b43c546fb2",
+        "classGuid": "46ab6fc3-24e2-447d-be80-d8f724f6a4a5",
+        "catalogRoute": "Common/GameSetup/Tweakables/Mutators/MutatorSupportedTypeList"
+      }
+    },
+    {
+      "route": "Game/GlacierMP/Gamemodes/Breakthrough/Mode/MUT_Breakthrough",
+      "rawPath": "builds/1.4.3.0/capture/collection/raw/Game/GlacierMP/Gamemodes/Breakthrough/Mode/MUT_Breakthrough.ebx",
+      "sha256": "3e40def5f8942ab83a7791f6ae41d0abefc3378b72bf0bb76322d402de3c908e",
+      "fileGuid": "0f2564c8-f0e7-4883-8867-5bb9d25d6b0a",
+      "targetObject": {
+        "index": 118,
+        "class": "Class_d59e68b9",
+        "objectGuid": "7e24c6fd-dd0a-4181-b36f-e143bc310949",
+        "dataOffset": 11240,
+        "absoluteOffset": 11272,
+        "Field_0c59fa06": "BT_fNoInteractivityTimeoutOverride",
+        "Field_42c8b257": 120.0,
+        "Field_c06d0cbb": 0.0,
+        "Field_3ff76ddb": 600.0
+      },
+      "rootEntryCount": 118,
+      "rootField_3128532f_import": {
+        "fileGuid": "25810f31-7914-4c1c-b996-a9b43c546fb2",
+        "classGuid": "46ab6fc3-24e2-447d-be80-d8f724f6a4a5",
+        "catalogRoute": "Common/GameSetup/Tweakables/Mutators/MutatorSupportedTypeList"
+      }
+    }
+  ],
+  "breakthroughRetreaterSpottingDefaults": [
+    {
+      "entryIndex": 55,
+      "class": "Class_18d40008",
+      "objectGuid": "d2653a6e-0be7-47ca-852c-948d034b257b",
+      "dataOffset": 5256,
+      "absoluteOffset": 5288,
+      "Field_0c59fa06": "RetreatersSpotting_NoOcclusion",
+      "Field_42c8b257": true
+    },
+    {
+      "entryIndex": 61,
+      "class": "Class_18d40008",
+      "objectGuid": "f1992a7d-a717-4614-b2c0-bf61b459709b",
+      "dataOffset": 5824,
+      "absoluteOffset": 5856,
+      "Field_0c59fa06": "RetreatersSpotting_InMinimap",
+      "Field_42c8b257": true
+    },
+    {
+      "entryIndex": 68,
+      "class": "Class_18d40008",
+      "objectGuid": "a71a5e8b-2f39-41e9-bb05-8b61b4b21dc2",
+      "dataOffset": 6480,
+      "absoluteOffset": 6512,
+      "Field_0c59fa06": "RetreatersSpotting_InWorld",
+      "Field_42c8b257": true
+    }
+  ],
+  "notEstablished": [
+    "Whether the release MUT object values are identical to the corresponding hotfix MUT objects.",
+    "Whether these serialized values are active in a current standard Conquest or Breakthrough server.",
+    "Whether the Breakthrough retreater-spotting defaults affect general player spotting.",
+    "Any direct mode-root override for health, regeneration, or combat damage.",
+    "The runtime meaning of the root import wrapper fallback Field_043d7a08=0.0."
+  ],
+  "report": "docs/working/FROSTY_MODE_ROOTS_REVIEW.md"
+}

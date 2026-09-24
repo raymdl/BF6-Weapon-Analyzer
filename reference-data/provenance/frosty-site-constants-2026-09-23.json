@@ -1,0 +1,422 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "buildHead": 4892017,
+  "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-constants-live-byte-sym-audit-2026-09-23.json",
+  "balanceKeys": {
+    "RELOAD_SPEED_MULTIPLIERS": {
+      "type": "array",
+      "rows": 3,
+      "distinctValueCount": 3,
+      "leafValues": 3,
+      "sourceLocation": "data/balance_tables.json key RELOAD_SPEED_MULTIPLIERS line 2"
+    },
+    "VELOCITY_LADDER": {
+      "type": "scalar",
+      "rows": 1,
+      "distinctValueCount": 1,
+      "leafValues": 1,
+      "sourceLocation": "data/balance_tables.json key VELOCITY_LADDER line 7"
+    },
+    "HEALTH_REGEN_DELAY_S": {
+      "type": "scalar",
+      "rows": 1,
+      "distinctValueCount": 1,
+      "leafValues": 1,
+      "sourceLocation": "data/balance_tables.json key HEALTH_REGEN_DELAY_S line 8"
+    },
+    "RECOIL_MULT": {
+      "type": "object",
+      "rows": 63,
+      "distinctValueCount": 20,
+      "leafValues": 63,
+      "sourceLocation": "data/balance_tables.json key RECOIL_MULT line 9"
+    },
+    "HIP_SPREAD_TABLE": {
+      "type": "array",
+      "rows": 18,
+      "distinctValueCount": 18,
+      "leafValues": 126,
+      "sourceLocation": "data/balance_tables.json key HIP_SPREAD_TABLE line 74"
+    },
+    "HIP_SPREAD_BASE_INDEX": {
+      "type": "object",
+      "rows": 63,
+      "distinctValueCount": 5,
+      "leafValues": 63,
+      "sourceLocation": "data/balance_tables.json key HIP_SPREAD_BASE_INDEX line 238"
+    },
+    "HIP_SPREAD_BASE_INDEX_OVERRIDES": {
+      "type": "object",
+      "rows": 0,
+      "distinctValueCount": 0,
+      "leafValues": 0,
+      "sourceLocation": "data/balance_tables.json key HIP_SPREAD_BASE_INDEX_OVERRIDES line 303"
+    },
+    "COLLATERAL_MULT_OVERRIDE": {
+      "type": "object",
+      "rows": 63,
+      "distinctValueCount": 21,
+      "leafValues": 328,
+      "sourceLocation": "data/balance_tables.json key COLLATERAL_MULT_OVERRIDE line 304"
+    },
+    "MOVING_ACC_TIERS": {
+      "type": "array",
+      "rows": 7,
+      "distinctValueCount": 7,
+      "leafValues": 7,
+      "sourceLocation": "data/balance_tables.json key MOVING_ACC_TIERS line 760"
+    },
+    "ADS_SPD_TIERS": {
+      "type": "array",
+      "rows": 8,
+      "distinctValueCount": 8,
+      "leafValues": 8,
+      "sourceLocation": "data/balance_tables.json key ADS_SPD_TIERS line 769"
+    },
+    "ADS_MOVE_TIERS": {
+      "type": "array",
+      "rows": 12,
+      "distinctValueCount": 11,
+      "leafValues": 12,
+      "sourceLocation": "data/balance_tables.json key ADS_MOVE_TIERS line 779"
+    },
+    "DRAW_TIME_TABLES": {
+      "type": "object",
+      "rows": 3,
+      "distinctValueCount": 3,
+      "leafValues": 66,
+      "sourceLocation": "data/balance_tables.json key DRAW_TIME_TABLES line 793"
+    }
+  },
+  "recoilMult": {
+    "count": 63,
+    "matches": 63,
+    "mismatches": [],
+    "ambiguousCount": 0
+  },
+  "hipSpreadBaseIndex": {
+    "count": 63,
+    "matches": 63,
+    "mismatches": [],
+    "ambiguousCount": 0
+  },
+  "arrayChecks": [
+    {
+      "siteTable": "ADS_MOVE_TIERS",
+      "status": "exact-order-match",
+      "agreement": true,
+      "deployAgreement": null,
+      "undeployAgreement": null,
+      "sourceRawSha256": "c9fcb122c7b2ed489146ceaea0b6250284c76217f715f62b20e5ddb884a4c106",
+      "sourcePath": "root Field_913ca3be"
+    },
+    {
+      "siteTable": "MOVING_ACC_TIERS",
+      "status": "exact-order-match-verified-from-source-ref-order",
+      "agreement": true,
+      "deployAgreement": null,
+      "undeployAgreement": null,
+      "sourceRawSha256": "24f8a82f7deb2b642310f818170a670b71b2f0e56b4aaf46e9857bb8e67625c6",
+      "sourcePath": "ZDA root Field_ed5a92bf reference list, in serialized selector order; no sorting permitted"
+    },
+    {
+      "siteTable": "HIP_SPREAD_TABLE",
+      "status": "exact-order-match",
+      "agreement": true,
+      "deployAgreement": null,
+      "undeployAgreement": null,
+      "sourceRawSha256": "b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012",
+      "sourcePath": "Field_d37c6521 refs -> HDA child row fields; hipStand=Field_1867639b, hipMove=Field_c5401fc2, remaining columns exact hash fields"
+    },
+    {
+      "siteTable": "DRAW_TIME_TABLES.primary",
+      "status": "exact-after-seconds-to-ms",
+      "agreement": null,
+      "deployAgreement": true,
+      "undeployAgreement": true,
+      "sourceRawSha256": "9971cf9640654c98b7b8d0a6247cbb8cafd9b84a96774d69f0b338f650e91c1c",
+      "sourcePath": "Field_70fd8f5f[].Field_ada3e7d9 deploy and Field_6225d335 undeploy; x1000"
+    },
+    {
+      "siteTable": "DRAW_TIME_TABLES.sidearm",
+      "status": "exact-after-seconds-to-ms",
+      "agreement": null,
+      "deployAgreement": true,
+      "undeployAgreement": true,
+      "sourceRawSha256": "c55b9171ce536c84b3cdb885baf0ab79944256a9616d8311e68ffd9255d3385d",
+      "sourcePath": "Field_70fd8f5f[].Field_ada3e7d9 deploy and Field_6225d335 undeploy; x1000"
+    }
+  ],
+  "pending": [
+    "ADS transition native field meaning and the two-frame offset remain unresolved; the later ADS receipt byte-checks all eight AZTT tiers and reproduces the site ladder numerically. IDA is still not an established general idle-recovery timer.",
+    "Health-regeneration runtime addition, trigger, and reset semantics require the ranked controlled multiplayer capture.",
+    "Spotting WB bases vary for M45A1 and Skorpion; their default site outputs remain 54/150 versus source candidates 27/64.285713. Native consumption and modifier composition remain unresolved."
+  ],
+  "rawNamedOperands": [
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ReloadSpeed\\WME_ReloadSpeedRegular_P10.ebx",
+      "rawSha256": "4dac133c6ffb4e7ec19c2c6ce25c4c51e7760f955cfaf4b858d1b2faed1eeabc",
+      "gameHead": 4892017,
+      "class": "Class_9705264b",
+      "fieldPath": "Field_348b8cd1",
+      "value": 1.13,
+      "siteDestination": "RELOAD_SPEED_MULTIPLIERS",
+      "layoutLimit": false
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ReloadSpeed\\WME_ReloadSpeedDouble_P20.ebx",
+      "rawSha256": "01117daa555e5d592efe5a5ca385c0ef599b5c4cb09ef8d8736a45bab3274912",
+      "gameHead": 4892017,
+      "class": "Class_9705264b",
+      "fieldPath": "Field_348b8cd1",
+      "value": 1.277,
+      "siteDestination": "RELOAD_SPEED_MULTIPLIERS",
+      "layoutLimit": false
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_M05.ebx",
+      "rawSha256": "7bbab10256ae9ddd51e733df7f7d0842d3752170adcb66d3ed27b918536a8e1e",
+      "gameHead": 4892017,
+      "class": "Class_3e93759b",
+      "fieldPath": "Field_6a5c4efd",
+      "value": 0.8,
+      "siteDestination": "VELOCITY_LADDER^signedTier",
+      "layoutLimit": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_M10.ebx",
+      "rawSha256": "ebed7e5bad2f09554bbcd98c0f445750e48b468a9be7dae1ae6842eae6e4c4e9",
+      "gameHead": 4892017,
+      "class": "Class_3e93759b",
+      "fieldPath": "Field_6a5c4efd",
+      "value": 0.64,
+      "siteDestination": "VELOCITY_LADDER^signedTier",
+      "layoutLimit": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_M15.ebx",
+      "rawSha256": "7036496b778a0cabd7d4e9259d948b28a7853b2ccc7c7b8551e7c7bd964809f7",
+      "gameHead": 4892017,
+      "class": "Class_3e93759b",
+      "fieldPath": "Field_6a5c4efd",
+      "value": 0.512,
+      "siteDestination": "VELOCITY_LADDER^signedTier",
+      "layoutLimit": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_P05.ebx",
+      "rawSha256": "d919c385ede97b4bc6e8a4fbc2ea84c50f7bdc64634d7f69a9021ade0011853f",
+      "gameHead": 4892017,
+      "class": "Class_3e93759b",
+      "fieldPath": "Field_6a5c4efd",
+      "value": 1.25,
+      "siteDestination": "VELOCITY_LADDER^signedTier",
+      "layoutLimit": true
+    }
+  ],
+  "simNumericRules": [
+    {
+      "site": "data/balance_tables.json RELOAD_SPEED_MULTIPLIERS",
+      "equation": "reload seconds / selected factor / ergo multiplier",
+      "status": "raw operands verified for 1.13 and 1.277; base 1 identity; attachment binding/native activation remains a separate question"
+    },
+    {
+      "site": "data/balance_tables.json VELOCITY_LADDER",
+      "equation": "0.8 ** (-barrelTier); ammo/subsonic follows source-specific tiers",
+      "status": "raw operands verified: M05=.8, M10=.64, M15=.512, P05=1.25; containing modifier layouts remain provisional"
+    },
+    {
+      "site": "data/balance_tables.json HEALTH_REGEN_DELAY_S",
+      "equation": "5 + selected ammo add",
+      "status": "source values independently raw checked in frosty-regen receipt; native sum/activation/reset not proven"
+    },
+    {
+      "site": "sim/core.js SPREAD_TIME_STEP",
+      "value": 0.001,
+      "status": "numerical integration step, not a Frosty game constant; convergence comparison is code-comment evidence only"
+    },
+    {
+      "site": "sim/core.js SPREAD_EFFECTIVE_MAX_SHOTS",
+      "value": 50,
+      "status": "display/model horizon, no Frosty source expected"
+    },
+    {
+      "site": "sim/core.js SPREAD_BAR_SCALE",
+      "value": 12,
+      "status": "UI display scale, no Frosty source expected"
+    },
+    {
+      "site": "sim/applyAttachments.js spotting bases",
+      "equation": "54*world factors; 150*minimap factors",
+      "status": "WB candidates vary by weapon; see spotting receipt and known outlier mismatches"
+    },
+    {
+      "site": "sim/target.js TARGET_ASPECT_RATIO",
+      "value": "529/1254",
+      "status": "UI target graphic geometry, no Frosty source expected"
+    },
+    {
+      "site": "sim/core.js recoil fallback duration",
+      "value": 0.025,
+      "status": "model fallback when source duration missing/zero; source/runtime fallback behavior not established"
+    },
+    {
+      "site": "sim/weapon-attributes.js control/hipfire display conversions",
+      "status": "display equations and calibrated constants; require UI-evidence/model review, not game mechanics inputs"
+    }
+  ],
+  "rawFileValidation": {
+    "recoilMultRawFiles": {
+      "hashVerified": 63,
+      "mismatchOrMissing": []
+    },
+    "hipSpreadBaseIndexRawFiles": {
+      "hashVerified": 63,
+      "mismatchOrMissing": []
+    }
+  },
+  "sourceArrayHashValidation": {
+    "ADS_MOVE_TIERS": true,
+    "MOVING_ACC_TIERS": true,
+    "HIP_SPREAD_TABLE": true,
+    "DRAW_TIME_TABLES.primary": true,
+    "DRAW_TIME_TABLES.sidearm": true
+  },
+  "namedOperandHashValidation": [
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ReloadSpeed\\WME_ReloadSpeedRegular_P10.ebx",
+      "rawFileHashRecomputed": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ReloadSpeed\\WME_ReloadSpeedDouble_P20.ebx",
+      "rawFileHashRecomputed": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_M05.ebx",
+      "rawFileHashRecomputed": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_M10.ebx",
+      "rawFileHashRecomputed": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_M15.ebx",
+      "rawFileHashRecomputed": true
+    },
+    {
+      "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\MuzzleVelocity\\WME_MuzzleVelocity_P05.ebx",
+      "rawFileHashRecomputed": true
+    }
+  ],
+  "dtaBaseIndexAudit": {
+    "siteWeaponCount": 63,
+    "sourceFieldPath": "WB Class_542ac52c/Field_2c3e0fbf/Field_2b6f2936 (field hash remains unnamed; DTA role is a candidate association)",
+    "exactIndexAgreementCount": 63,
+    "rawFilesVerified": 63,
+    "mismatches": [],
+    "tableOutputAgreementCount": 63,
+    "limits": [
+      "Selector-to-DTA meaning is inferred from source index matching the Analyzer deployBaseIndex across all 63 plus exact lookup into captured table rows; the serialized field remains unnamed and no native consumer is established.",
+      "Sym 1.4.2.0 selected deploy/undeploy timings match all 63 corresponding indexed 1.4.3.0 table outputs at microsecond precision; this is cross-version corroboration, not runtime-consumption proof."
+    ],
+    "detailsInExternalReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-constants-comparison-2026-09-23.json",
+    "rawFilesVerifiedMeaning": "63 unique WB bodies (one per site weapon), each checked for DTA and sprint selector fields."
+  },
+  "sprintBaseIndexAudit": {
+    "count": 63,
+    "sourceFieldPath": "WB Class_542ac52c/Field_5198399a/Field_2b6f2936 (named SprintSettingsIndex)",
+    "exactMatchCount": 63,
+    "mismatches": [],
+    "rawFilesVerified": 63,
+    "limits": [
+      "This index matches the site sprintRecoveryBaseIndex and indexes the separate SSA path; it is not the DTA index for eight weapons."
+    ],
+    "detailsInExternalReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-constants-comparison-2026-09-23.json"
+  },
+  "relatedReceipts": [
+    {
+      "path": "reference-data/provenance/frosty-site-spread-reviewed-2026-09-23.json",
+      "sha256": "ea80acf1b7556743ffe82c0ab7be8dca8715f415be4e6d0f1ccd8c7f9df775d6",
+      "scope": "3276 spread dynamics comparisons; does not establish ZDA minima/index associations"
+    },
+    {
+      "path": "reference-data/provenance/frosty-site-spread-reviewed-2026-09-23.json",
+      "scope": "spread dynamics comparison only; does not establish ZDA minima/index associations"
+    }
+  ],
+  "detailReportSha256": "15fd2aef2c395b8308279407fbcd983e003186aab24f1650606e09f85672e282",
+  "reproductionScript": "scripts/frosty-site-constants-audit.py",
+  "reproductionScriptSha256": "35480168f8b89f93aef6630fee7a513f5735c21e9a0eee0864da8de3aec6454b",
+  "spreadMinimaAudit": {
+    "siteWeaponCount": 63,
+    "hipDisplayedExactCount": 63,
+    "adsMovingExactCount": 63,
+    "sym142PerFieldExactCounts": {
+      "HIPStandBaseMin": 63,
+      "HIPStandMoveMin": 63,
+      "HIPCrouchBaseMin": 63,
+      "HIPCrouchMoveMin": 63,
+      "HIPProneBaseMin": 63,
+      "HIPProneMoveMin": 63,
+      "ADSStandMoveMin": 63,
+      "ADSCrouchMoveMin": 63,
+      "ADSProneMoveMin": 63
+    },
+    "sym142SymFileSha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+    "sourceBuild": 4892017,
+    "sourcePaths": {
+      "hipRowOrder": "HDA root Field_d37c6521 reference list, serialized order",
+      "hipSelector": "GS Class_539cff9b/Field_fe708077",
+      "adsMovingRowOrder": "ZDA root Field_ed5a92bf reference list, serialized order",
+      "adsMovingSelector": "GS Class_539cff9b/Field_d94fe6ad"
+    },
+    "limits": [
+      "Rows are indexed through source root reference lists, not sorted numeric values. Selected source fields have per-row byte offsets, bytesHex, decoded descriptor hashes, raw body hashes, and actual raw-file SHA256 verification in the external detail report.",
+      "H1 jump/sprint candidate lacks a corresponding named Sym minimum; its meaning remains provisional. H2-H5 candidate labels are corroborated by matching the six named hip minima in Sym across all 63 weapons; consumer/runtime semantics still are not proven."
+    ]
+  },
+  "drawSym142Comparison": {
+    "siteWeaponCount": 63,
+    "deployExactCount": 63,
+    "undeployExactCount": 63,
+    "sourceDtaSelectorExactIndexCount": 63,
+    "symFileSha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+    "limits": [
+      "Sym is an independently decoded 1.4.2.0 snapshot and is not the 1.4.3.0 Frosty source.",
+      "Per-weapon draw source selector agrees with current site index; time-array and Sym agreement is a cross-version comparison, not proof of runtime consumption."
+    ]
+  },
+  "laterReview": {
+    "supersededPending": [
+      "ADS_SPD_TIERS comparison to raw transition sources; IDA is a related table one frame shorter, not an established equivalent.",
+      "DRAW_TIME_TABLES.sprint SSA imported chain and all 63 per-weapon sprint index outputs.",
+      "Collateral override table per-ammo source/current comparison is outside this focused pass.",
+      "Health-regeneration runtime addition, trigger, and reset semantics require a controlled multiplayer capture.",
+      "Spotting WB bases vary for M45A1 and Skorpion; default site outputs are known mismatches for M45A1/VZ61. Composition/runtime remain unresolved.",
+      "Unused per-weapon spread idleTime is not consumed in sim code; explain whether retained data input or remove only after main inventory decision."
+    ],
+    "resolutions": [
+      {
+        "topic": "ADS_SPD_TIERS",
+        "receipt": "reference-data/provenance/frosty-site-ads-2026-09-23.json",
+        "result": "Source numeric comparison completed; native meaning/frame offset blocked."
+      },
+      {
+        "topic": "SSA sprint table and 63 selectors",
+        "receipt": "reference-data/provenance/frosty-site-draw-2026-09-23.json",
+        "selectorReceipt": "reference-data/provenance/frosty-site-weapmag-base-selectors-2026-09-23.json",
+        "result": "All 12 source seconds-to-ms rows and all 63 exact WB selectors compared."
+      },
+      {
+        "topic": "328 collateral overrides",
+        "externalDetail": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/site-collateral-current-perleaf-source-2026-09-23.json",
+        "result": "Per-leaf source WB indices, selected penetration modifiers and raw grid values reproduce the site candidates. Native index composition remains unproved."
+      },
+      {
+        "topic": "spread.idleTime",
+        "result": "Stale pending wording removed: this key is absent from all 63 current data/weapons.json entries and has no sim/*.js consumer. Native idle spread behavior remains a distinct unresolved mechanic."
+      }
+    ]
+  }
+}

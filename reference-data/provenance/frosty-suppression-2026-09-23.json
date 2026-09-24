@@ -1,0 +1,201 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-09-23",
+  "question": "What do the named suppression feature and spotting-expression assets establish about suppression behavior?",
+  "decoder": "scripts/frosty-ebx-decode.py, descriptor-driven Ebx/type_descriptors decoding",
+  "releaseSource": {
+    "head": 4892017,
+    "sdkVersion": 4414275,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c",
+    "captureRoots": [
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection-dependencies/raw",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection-review-2026-09-16/raw"
+    ]
+  },
+  "freshHotfixSource": {
+    "head": 4892087,
+    "captureDate": "2026-09-23",
+    "descriptorPath": "../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+    "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+    "rawRoots": [
+      "../BF6 Datamining/builds/1.4.3.0/capture/multiplayer-features-2026-09-23",
+      "../BF6 Datamining/builds/1.4.3.0/capture/multiplayer-feature-links-2026-09-23"
+    ],
+    "dateLimit": "These hotfix assets are separate from the Head 4892017 release/review assets. Matching catalog file GUIDs identify asset routes, not identical build bytes."
+  },
+  "assets": [
+    {
+      "path": "Common/Gameplay/Soldier/Feature_Soldier_Suppression",
+      "captureRoot": "collection-review-2026-09-16/raw",
+      "catalogFileGuid": "c29039a4-aa5f-465f-a1c8-9259236a079e",
+      "catalogSha1": "ff0438fb11a6743bdf70e24fa118a21636ab22dd",
+      "rawBytes": 532,
+      "rawSha256": "a589f11f9559327301bf0ffe29bd2b5e39166dac4e49f80990e825c8ea66de52",
+      "object": {
+        "index": 0,
+        "objectGuid": "425e0373-83f3-4368-a710-4be9f916e325",
+        "class": "Class_03c48ade",
+        "layoutAmbiguous": true,
+        "namedFeature": "Suppression",
+        "featureMemberRefIndex": 1
+      },
+      "featureMember": {
+        "index": 1,
+        "objectGuid": "41ee2c78-4a15-cfb2-3f75-fb67e7fb74a9",
+        "class": "Class_bb3337f9",
+        "importField": "Field_6e2bdf2b",
+        "importByteOffset": 176,
+        "import": {
+          "fileGuid": "b99d6485-67a4-4eec-b25a-237d2fd873bd",
+          "classGuid": "44bdf5bf-899e-4e34-94ca-44a3331d12da",
+          "catalogPath": "Common/FX/Soldiers/Logic/PresEx_Suppression",
+          "catalogSha1": "92d0969b1b5ce2570108dfd363aa3d1f36e7be9e"
+        }
+      },
+      "xmlOverlay": "../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay/Common/Gameplay/Soldier/Feature_Soldier_Suppression.xml",
+      "xmlRawAgreement": "The XML overlay and raw decode agree on the named Suppression member, member object identity, and PresEx_Suppression target class GUID.",
+      "targetRawStatus": "PresEx_Suppression raw was absent from collection, collection-dependencies, and collection-review-2026-09-16."
+    },
+    {
+      "path": "Common/Gameplay/Spotting/SimEx_SpotOnSuppression",
+      "captureRoot": "multiplayer-features-2026-09-23",
+      "head": 4892087,
+      "catalogFileGuid": "0b408afc-f66d-4b9f-81e8-254884011ea2",
+      "catalogSha1": "141040de27c003cab7a3f338dc648faabccc36ae",
+      "rawBytes": 2182,
+      "rawSha256": "616efcd086885dfeb4c322ef95a3dfc4d19c75e0bde70b69c166655989a50255",
+      "object": {
+        "index": 0,
+        "objectGuid": "b93d9e73-367b-4bb5-85fb-837f049ecf04",
+        "class": "Class_53d7404d",
+        "compiledResourceRef": "d2bb4d51d6fd8337",
+        "expressionMemberRefIndex": 3
+      },
+      "expressionMember": {
+        "index": 3,
+        "class": "Class_25c12137",
+        "namedFields": [],
+        "directImports": [
+          {
+            "nestedArrayIndex": 2,
+            "fileGuid": "7bd1ef6f-60be-4f7b-a984-2e1c9d560d93",
+            "classGuid": "5b5672d9-39b2-4adb-9bb9-cc163c1dcc14",
+            "catalogPath": "Common/Hardware/Gadgets/Misc/DeployableMortar/Affector_LockTypeSecretlyGuided",
+            "catalogSha1": "944b50c94229a42ff860025eed743d7cc17264f3"
+          },
+          {
+            "nestedArrayIndex": 3,
+            "fileGuid": "a78be808-be80-4023-941e-47d1eaadff67",
+            "classGuid": "9ee8bce6-67f1-4112-a705-ae2ef98992f0",
+            "catalogPath": "Common/GameSetup/Tweakables/Killswitches/KST_Glacier",
+            "catalogSha1": "9c52bc24a42dacb7809ec2f8509655148e2fdc9b"
+          },
+          {
+            "nestedArrayIndex": 4,
+            "fileGuid": "7bd1ef6f-60be-4f7b-a984-2e1c9d560d93",
+            "classGuid": "5b5672d9-39b2-4adb-9bb9-cc163c1dcc14",
+            "catalogPath": "Common/Hardware/Gadgets/Misc/DeployableMortar/Affector_LockTypeSecretlyGuided",
+            "catalogSha1": "944b50c94229a42ff860025eed743d7cc17264f3"
+          }
+        ]
+      },
+      "opaqueMembers": [
+        {
+          "index": 1,
+          "objectGuid": "fd8d3e25-57d2-4dee-b7c3-0654c875e42f",
+          "class": "Class_b281afe1",
+          "field": "Field_87611ff9",
+          "value": 150.0,
+          "fieldByteOffset": 828,
+          "semanticName": null
+        },
+        {
+          "index": 2,
+          "objectGuid": "f46144cb-b468-4a6b-8e85-cb8fd1984aa6",
+          "class": "Class_b281afe1",
+          "field": "Field_87611ff9",
+          "value": 150.0,
+          "fieldByteOffset": 892,
+          "semanticName": null
+        }
+      ],
+      "xmlStatus": "No SimEx_SpotOnSuppression XML file was found in the 1.4.3.0 XML trees searched."
+    },
+    {
+      "path": "Common/Hardware/Gadgets/Misc/DeployableMortar/Affector_LockTypeSecretlyGuided",
+      "captureRoot": "multiplayer-feature-links-2026-09-23",
+      "head": 4892087,
+      "catalogFileGuid": "7bd1ef6f-60be-4f7b-a984-2e1c9d560d93",
+      "catalogSha1": "944b50c94229a42ff860025eed743d7cc17264f3",
+      "rawBytes": 506,
+      "rawSha256": "e71c1c07629a226b83facc7368422fff3aa1c5a9d50a87b0ebf2a20cd21cf612",
+      "matchedImportedObject": {
+        "index": 0,
+        "objectGuid": "5b5672d9-39b2-4adb-9bb9-cc163c1dcc14",
+        "class": "Class_12ca74a7",
+        "name": "Common/Hardware/Gadgets/Misc/DeployableMortar/Affector_LockTypeSecretlyGuided"
+      },
+      "assessmentLimit": "This confirms the imported identity, not any effect on soldier suppression."
+    },
+    {
+      "path": "Common/GameSetup/Tweakables/Killswitches/KST_Glacier",
+      "captureRoot": "collection/raw",
+      "catalogFileGuid": "a78be808-be80-4023-941e-47d1eaadff67",
+      "catalogSha1": "9c52bc24a42dacb7809ec2f8509655148e2fdc9b",
+      "rawStatus": "Present in the release collection; this review resolved the import to the catalog route and did not inspect its internals."
+    }
+  ],
+  "relatedReleaseSettings": {
+    "assets": [
+      {
+        "path": "Common/Gameplay/Soldier/Glacier_Soldier",
+        "catalogFileGuid": "9697f666-aff6-4035-ac81-148ac0e840f3",
+        "catalogSha1": "18be1aba1ac4e852af4cd44219d25edadf1e15da",
+        "rawSha256": "22e0ccf07219f8094eed17f57585041b0b075196c120b071fe8dd0870351bf19"
+      },
+      {
+        "path": "Common/Gameplay/Soldier/GRX_Glacier_Soldier",
+        "catalogFileGuid": "bc547f6c-e296-4218-ba9e-c585539862cb",
+        "catalogSha1": "82354c100a8eb0d40346e8ed65d4fb93bb00f253",
+        "rawSha256": "9b44340483d9af272ef5f0cbda5934ad9a30ff1f055fd3fddc60fc4943e822cc"
+      }
+    ],
+    "confirmedNamedValues": [
+      {
+        "glacierObjectIndex": 161,
+        "grxObjectIndex": 188,
+        "grxObjectGuid": "508216aa-a369-4744-80b6-bcdc167f6006",
+        "grxName": "SuppressionInterruptsHoldBreath",
+        "grxField": "Field_42c8b257",
+        "value": false,
+        "glacierImportField": "Field_e0b43a29.Field_6b28f68f"
+      },
+      {
+        "glacierObjectIndex": 162,
+        "grxObjectIndex": 40,
+        "grxObjectGuid": "245bbe27-5350-40fc-8518-e33df6983890",
+        "grxName": "InterruptHoldBreathSuppressionThreshold",
+        "grxField": "Field_42c8b257",
+        "value": 0.99,
+        "glacierImportField": "Field_e0b43a29.Field_6b28f68f"
+      }
+    ],
+    "limit": "These named serialized settings do not establish when suppression is applied or whether either value controls the named spotting expression."
+  },
+  "assessment": {
+    "supported": [
+      "The release Soldier feature object is named Suppression and imports the catalog asset PresEx_Suppression.",
+      "The separate hotfix SpotOnSuppression expression asset contains a compiled resource reference and direct imports to the exact Affector_LockTypeSecretlyGuided and KST_Glacier class identities.",
+      "The fresh raw bytes for Affector_LockTypeSecretlyGuided contain the class GUID imported by SimEx_SpotOnSuppression.",
+      "Release soldier configuration has named SuppressionInterruptsHoldBreath=false and InterruptHoldBreathSuppressionThreshold=0.99 entries."
+    ],
+    "notEstablished": [
+      "No release or review raw for PresEx_Suppression was available to decode its behavior.",
+      "The feature asset does not point to SimEx_SpotOnSuppression in the inspected link; a relationship between these two assets is not established.",
+      "No semantics are assigned to SimEx hashed fields or its two 150.0 values.",
+      "No native implementation, activation condition, spotting range, duration, or hit/reset mechanic is established by this source trace."
+    ],
+    "confidence": "High for asset identities, serialized links, raw scalar values and capture boundaries; insufficient for suppression runtime behavior."
+  }
+}

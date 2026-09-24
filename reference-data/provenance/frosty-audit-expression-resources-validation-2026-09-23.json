@@ -1,0 +1,95 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "scope": "Parent validation of the four sampled expression resources; this does not decode the graph format.",
+  "reviewedReport": {
+    "path": "reference-data/provenance/frosty-audit-expression-resources-reviewed-2026-09-23.json",
+    "sha256": "d404455c9a7e2b099b989e929b869e7b1bd6f3e646c97a6e96565731fb996330"
+  },
+  "corrections": [
+    {
+      "path": "FrostySdk/Managers/Entries/ResAssetEntry.cs",
+      "reportedSha256": "c8323d8e415d4652f938d2866cfe4b5d5d9e7c1ca873ca7c8dcb3a054d0ce39",
+      "correctSha256": "c8323d8e415d4652f938d2866cefe4b5d5d9e7c1ca873ca7c8dcb3a054d0ce39",
+      "reason": "Transcription omitted one hexadecimal character; file bytes unchanged."
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "FrostySdk/Managers/Entries/ResAssetEntry.cs",
+      "sha256": "c8323d8e415d4652f938d2866cefe4b5d5d9e7c1ca873ca7c8dcb3a054d0ce39"
+    },
+    {
+      "path": "FrostySdk/IO/EbxReader.cs",
+      "sha256": "96a6a7c68e1da04519c95a3adf2771536cc5e6d30e7c51c8778faa9a353d77fb"
+    },
+    {
+      "path": "FrostySdk/IO/EbxReaderRiff.cs",
+      "sha256": "e13b7008331c1163b7d7c9adac370cdb9006be497d9dc559c8ce897da33a8be6"
+    },
+    {
+      "path": "FrostySdk/Managers/AssetManager.cs",
+      "sha256": "e2aab7a264747fa3f3d0949b523313bb55a58f96760cb46d3e0da4ce6e503a56"
+    }
+  ],
+  "captureCatalog": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\asset-catalog.json",
+    "sha256": "b2e58c061b8d082a86d30fd3bc1afbf214f922f9d27eae83305919eb01b8522f",
+    "note": "The review sourceResourceCatalogSha256 field identifies the EBX asset-catalog.json emitted by the collector, not a resource catalog."
+  },
+  "samples": [
+    {
+      "resourceId": "2117d058ace42169",
+      "sha256": "80167d9e98a2ce952c962affa80a56aed3648a5691e23cdec435b00cab7b232b",
+      "bytes": 128,
+      "caller": {
+        "route": "Common/Hardware/weapons/shotgun/M1014/PresEx_M1014",
+        "captureHead": 4892017,
+        "rawSha256": "4ee541f079090ca2374df5a76887b98ed7673f24b5196570448dcea15ca6d341",
+        "objectIndex": 1,
+        "field": "/Field_aa4fa860"
+      },
+      "checked": "Hash, size, 64-byte prefix and exact EBX resource-reference caller match."
+    },
+    {
+      "resourceId": "2b64d43d0b8463d3",
+      "sha256": "4071b190c96a73b9ab74506f0c9ad23d6b26f14341d4589864ec53e7f88f3786",
+      "bytes": 1344,
+      "caller": {
+        "route": "Common/Hardware/Weapons/SimEx_SharedSoldierAbilityWeapon",
+        "captureHead": 4892017,
+        "rawSha256": "2f263dd918dab3d15941729c4aa93ef03d54a7d0bfa1ad08861627e8f5b1c803",
+        "objectIndex": 6,
+        "field": "/Field_aa4fa860"
+      },
+      "checked": "Hash, size, 64-byte prefix and exact EBX resource-reference caller match."
+    },
+    {
+      "resourceId": "fa024f9392897b47",
+      "sha256": "9738002d1f984db0a2f1fb1fa379d839991a581108ea7b3479b1842796f26996",
+      "bytes": 816,
+      "caller": {
+        "route": "Common/Hardware/Weapons/Secondary/M45A1/SimEx_M45A1_Blacklight",
+        "captureHead": 4892017,
+        "rawSha256": "0dd7356062b01180c27f6979266a226c34e08cd618dda65af4697168bf413173",
+        "objectIndex": 2,
+        "field": "/Field_aa4fa860"
+      },
+      "checked": "Hash, size, 64-byte prefix and exact EBX resource-reference caller match."
+    },
+    {
+      "resourceId": "1e831b064aef802f",
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "bytes": 1792,
+      "caller": {
+        "route": "Common/Hardware/Weapons/BoltAction/M2010ESR/PresEx_M2010ESR",
+        "captureHead": 4892017,
+        "rawSha256": "0a90ffebe4b303c1c58cf2bd831a86edca8b1aae6e10461f582309872b250b4e",
+        "objectIndex": 2,
+        "field": "/Field_aa4fa860"
+      },
+      "checked": "Hash, size, 64-byte prefix and exact EBX resource-reference caller match."
+    }
+  ],
+  "conclusion": "Accept the four byte observations and generic SDK resource handling. No typed graph format or runtime operation is established. Embedded source-like strings remain separate from current EFIX imports. Reopen with a reader/specification or independently validated structural evidence; such evidence need not be an official specification."
+}

@@ -1,0 +1,34 @@
+{
+  "date": "2026-09-23",
+  "scope": "Four data/weapons.json base pellet-count leaves, separate from ammunition projectile replacement counts.",
+  "rows": 4,
+  "siteSourceMatches": 4,
+  "siteIdentityCrosswalk": {
+    "m87a1": "590A1",
+    "m1014": "M1014",
+    "ks18k": "185KSK",
+    "db12": "DP12"
+  },
+  "sourceFieldPath": "/Field_58d70acb/Field_db0fcea2 (WB inline primary-fire Ammo)",
+  "sourceValues": {
+    "m87a1": 16,
+    "m1014": 16,
+    "ks18k": 16,
+    "db12": 16
+  },
+  "dataHashes": {
+    "siteWeapons": "a7831165561b9fcb260900bc88b23e3109935cc7f7254f9f24348104c6020dde",
+    "exactRoster": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32",
+    "weaponFields": "6040e4633851c6d796b4fed231da097f63d45ca6da2e8a79333c9e1ebfb5783a",
+    "script": "cb0c1a15bfa4c0cc68e543f28874d7883f6e9479ba6c926a86824e2489b18458"
+  },
+  "detail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-base-shotgun-pellets-2026-09-23-leaves.jsonl",
+    "sha256": "b99fb956f9126e6a4d9d76b4ed975517358278bf2f1ed0164bc0efde2561739d",
+    "rows": 4
+  },
+  "limits": [
+    "The exact WB source fields agree with site base pellets=16; they do not prove native projectile emission.",
+    "Ammo replacement projectile counts remain independent of these base values."
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "date": "2026-09-23",
+  "site": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\weapons.json",
+    "sha256": "7a96b89b356d402a557990433f800ca8bb99191e32183380d1f409710d2c9adc"
+  },
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-weapon-label-leaf-review.jsonl",
+    "sha256": "0219bc18d33162ebad98c49abfcea297d344bfad6e5ca2418b2274499fa9c81f"
+  },
+  "sourceStrings": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Localization\\Languages\\fs_us_loc.strings.tsv",
+    "sha256": "a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9"
+  },
+  "metadataXml": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+      "sha256": "06a4d8ef2ffd72e61687c438c4bece072f3eac828195511c6ee7079810cbc90f"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B1.xml",
+      "sha256": "1ccf60044819f341521cbd601369b10034886d310ff2e89f616882466d0144b3"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\Static\\Metadata\\S3\\UIWeaponAbilityMetaData_S3B1.xml",
+      "sha256": "80f26295c3a5e1295e963a090383647ff7fe59e82833225ade400028a4d94037"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B1.xml",
+      "sha256": "9d951652ebab84515ce57fb7e0905eac3a879a2d21b91a31df8ae66c5d9d05aa"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\Static\\Metadata\\S2\\UIWeaponAbilityMetaData_S2B2.xml",
+      "sha256": "a1796dbd1e2e9868d6027550b1b34b73dbefb8ec96d5e8d0047bf2c17d052ef3"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\Static\\Metadata\\S4\\UIWeaponAbilityMetaData_S4B1.xml",
+      "sha256": "272551e832ea216ffd7a43f5d363d86190c7a4d9581f0c325451b2c348c5982e"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\Static\\Metadata\\S1\\UIWeaponAbilityMetaData_S1B2.xml",
+      "sha256": "204116de5caa97e6c16c8dce1e026d83d7a13ae5530781f815219e9f333210d8"
+    }
+  ],
+  "rowCounts": {
+    "project-identity": 63,
+    "sourced-ui-xml": 124,
+    "precisely-blocked-source": 2
+  },
+  "outliers": [
+    {
+      "siteFile": "data/weapons.json",
+      "pointer": "/43/description",
+      "siteValue": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m.",
+      "reviewStatus": "precisely-blocked-source",
+      "sourceSiteAgreement": "bound-string-id-missing",
+      "sourceFieldPath": "Field_490f0dd0 -> Class_fbe1d3bc/Field_3d34898a",
+      "evidence": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "xml": {
+            "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+            "sha256": "06a4d8ef2ffd72e61687c438c4bece072f3eac828195511c6ee7079810cbc90f"
+          },
+          "recordGuid": "000a5c66-5bf6-4852-9604-b4d7206add87",
+          "label": "M2010ESR",
+          "sourceFieldPath": "Field_490f0dd0 -> Class_fbe1d3bc/Field_3d34898a",
+          "localizedGuid": "0f6a74ed-6f95-72fe-5d7e-9b14b768c5c7",
+          "stringId": "2DB86D4C",
+          "sourceValue": null
+        }
+      ],
+      "remainingUncertainty": "Exact metadata record and localized string ID are mapped, but the current English TSV has no entry for that ID. Need the native localization entry or a dated panel to source this description; gameplay cannot establish the missing string binding. No wording correction justified."
+    },
+    {
+      "siteFile": "data/weapons.json",
+      "pointer": "/44/description",
+      "siteValue": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m.",
+      "reviewStatus": "precisely-blocked-source",
+      "sourceSiteAgreement": "bound-string-id-missing",
+      "sourceFieldPath": "Field_490f0dd0 -> Class_fbe1d3bc/Field_3d34898a",
+      "evidence": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "xml": {
+            "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\UI\\MetaData\\UIWeaponAbilityMetaData.xml",
+            "sha256": "06a4d8ef2ffd72e61687c438c4bece072f3eac828195511c6ee7079810cbc90f"
+          },
+          "recordGuid": "738cb003-38be-4d55-9b20-685e18cc4bc6",
+          "label": "SV98M",
+          "sourceFieldPath": "Field_490f0dd0 -> Class_fbe1d3bc/Field_3d34898a",
+          "localizedGuid": "70e97445-66fd-df5a-bfb4-1249c30a4818",
+          "stringId": "E8EA1B59",
+          "sourceValue": null
+        }
+      ],
+      "remainingUncertainty": "Exact metadata record and localized string ID are mapped, but the current English TSV has no entry for that ID. Need the native localization entry or a dated panel to source this description; gameplay cannot establish the missing string binding. No wording correction justified."
+    }
+  ],
+  "limits": [
+    "Uses exact retained metadata object GUIDs and current XML/localized text, not name-only string matches.",
+    "Does not follow any UI art dependencies.",
+    "Current native gameplay descriptions not mechanically validated by localized text."
+  ]
+}

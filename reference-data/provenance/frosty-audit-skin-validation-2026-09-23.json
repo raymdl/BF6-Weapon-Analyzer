@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "reviewedReport": {
+    "path": "reference-data/provenance/frosty-audit-skin-classification-reviewed-2026-09-23.json",
+    "sha256": "1130c5b814014a7e244fad828a783b3ac702bd8da4a6352511663ce89daa48d6"
+  },
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\skin-dispositions-reviewed-2026-09-23.jsonl",
+    "sha256": "141238c95f768fbf89f9fe2ed0310265673293440b418d73320e3ff4f6613521"
+  },
+  "decoderSha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558",
+  "assetsChecked": 19334,
+  "dispositions": {
+    "excluded-cosmetic": 16103,
+    "unresolved-role": 3231
+  },
+  "freshRawBodiesDecoded": 19407,
+  "exactWrapperAssignments": 2378,
+  "exactVisualCollectionImports": 10109,
+  "correctedCamoAssignments": 34,
+  "namedSlotFreshRawChecked": true,
+  "warningCounts": {
+    "bodiesWithWarnings": 119,
+    "$layoutAmbiguous": 123460
+  },
+  "limits": "Scope role only; no full semantic or runtime conclusion. Four unknown file GUID rows stay in reference evidence, not asset disposition counts. Earlier validation v1 used a missing top-level warning field; its zero warning count is superseded by v2 nested counts."
+}

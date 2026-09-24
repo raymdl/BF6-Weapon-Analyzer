@@ -1,0 +1,299 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "reviewedReport": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-roster-bundle-context-review-receipt-2026-09-23.json",
+    "sha256": "8bb41fdb39507ee17ac4dcdbe9b264e6c973e1f2f29e4354c1fc51a238101403"
+  },
+  "decision": "excluded-single-player",
+  "assetsChecked": 19,
+  "rows": [
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/CUST_KSG",
+      "fileGuid": "2a168271-6f69-4ac8-a646-8ff34a4786e4",
+      "recordSha1": "4a2ccde3b4f271aa844e5a8f2dab329777c6f3e4",
+      "originalBytes": 382,
+      "bundleIds": [
+        3970
+      ],
+      "partition": "core_sp_assault_sublevel_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/CUST_KSG",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\CUST_KSG.ebx",
+      "rawSha256": "aa5f0300427f0aec8ba2fb5917da0dc697cfe667a761d37f410692dcb6964eb8",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Shotgun/KSG/GS_KSG",
+      "fileGuid": "036f5f36-3da3-45a7-abce-81cb789a1e31",
+      "recordSha1": "e2961f858acbfc2da4ddbe6d3b18aa65369b7aa6",
+      "originalBytes": 9184,
+      "bundleIds": [
+        3970
+      ],
+      "partition": "core_sp_assault_sublevel_only",
+      "catalogRoute": "Common/Hardware/Weapons/Shotgun/KSG/GS_KSG",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\GS_KSG.ebx",
+      "rawSha256": "a01df3898a287cbd66b3539361c5ae2192cf1e416216a78c8652304a5257cb93",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/KSG_Ability",
+      "fileGuid": "422bbf07-fedb-4313-a487-b224cebafd61",
+      "recordSha1": "ead02fcefc0261827524e572eb808add9a8ad905",
+      "originalBytes": 33400,
+      "bundleIds": [
+        3970
+      ],
+      "partition": "core_sp_assault_sublevel_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/KSG_Ability",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\KSG_Ability.ebx",
+      "rawSha256": "da41c407bc6f2b248f2e938c6b5e80c0fce5b71179b15cc991dc05c6d3851de0",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/KSG_WB",
+      "fileGuid": "15383052-b4eb-4182-a233-3491278e407b",
+      "recordSha1": "6c18724e0a019f1a997e20512075332f9e2618ce",
+      "originalBytes": 18462,
+      "bundleIds": [
+        3970
+      ],
+      "partition": "core_sp_assault_sublevel_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/KSG_WB",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\KSG_WB.ebx",
+      "rawSha256": "812f11962f5aa3c1c0538ecd810d9a6fc3510e2d3f97dc83f38e1e98fbad87f6",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/KSG_WB_Client_Schematic_Preset",
+      "fileGuid": "e79432a5-8a10-4ae8-946e-a215fd32f1b0",
+      "recordSha1": "6ba198176abb623fdc376094ac67d6f57efffa83",
+      "originalBytes": 568,
+      "bundleIds": [
+        3970
+      ],
+      "partition": "core_sp_assault_sublevel_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/KSG_WB_Client_Schematic_Preset",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\KSG_WB_Client_Schematic_Preset.ebx",
+      "rawSha256": "30dfb973c7b63a3b90e9f846b2a8b42c6cdfaa7dab032837d036679fdc6d2850",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Shotgun/KSG/Art/Skins/WSD0001/U_MDV_KSG_WSD0001",
+      "fileGuid": "3f19a024-014b-44ca-87a9-2f63149ab406",
+      "recordSha1": "5ca79644fb634d1b2113ea4566067b5970044fed",
+      "originalBytes": 358,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/Weapons/Shotgun/KSG/Art/Skins/WSD0001/U_MDV_KSG_WSD0001",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\art\\Skins\\WSD0001\\U_MDV_KSG_WSD0001.ebx",
+      "rawSha256": "cdecb0fa8bd3e1fc647979bb9f7a75858c1ac19e70ad485dfec7ca52d288dc8b",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/Art/U_ATT_KSG_Base",
+      "fileGuid": "3ffaef27-7629-43b8-9cb2-fb0eac01ee51",
+      "recordSha1": "cb96e89b14960581415dedfeeaf32ff69b1ad9c6",
+      "originalBytes": 338,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/Art/U_ATT_KSG_Base",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\art\\U_ATT_KSG_Base.ebx",
+      "rawSha256": "64b9a251827675e0dec76e5abc60df8d61257b77ce9bb32656014c4e2253726f",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/Art/U_ATT_KSG_Shells",
+      "fileGuid": "f16ff008-c66f-4e94-bebe-5e0c835119fc",
+      "recordSha1": "ad00a072373b985a3ebe8ef87c20ed2d065319ac",
+      "originalBytes": 342,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/Art/U_ATT_KSG_Shells",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\art\\U_ATT_KSG_Shells.ebx",
+      "rawSha256": "a2222110c79ad364e4e3a9fc6ad0d407648c080c0d9592d78bd121a5e428d1ed",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/Art/U_ATT_KSG_Sight",
+      "fileGuid": "770df4d7-d860-4014-b02e-b9c56edbe729",
+      "recordSha1": "5cc1eabcf231050d76575ee060a58fdb2b0dfec6",
+      "originalBytes": 340,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/Art/U_ATT_KSG_Sight",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\art\\U_ATT_KSG_Sight.ebx",
+      "rawSha256": "45e7653e05af0365bbb9141b3174ce6c4de1c0b921d0bbdd55551568c6a1108a",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/Art/U_KSG",
+      "fileGuid": "9653fd0c-4dc8-405b-bd6c-74b5f347f3af",
+      "recordSha1": "36e2de80380bb49a7f441572f6c7d9fe29953226",
+      "originalBytes": 716,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/Art/U_KSG",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\art\\U_KSG.ebx",
+      "rawSha256": "73262af563b61923c6ea9125df6b68f4307a087453e2c534592244b62090ae1c",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/MD_KSG",
+      "fileGuid": "1546f2e9-a453-456b-93f5-1d1c1ae5258c",
+      "recordSha1": "210873fd4a5f7c5b26ce0bdc7e7f0b3026f2b51f",
+      "originalBytes": 276136,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/MD_KSG",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\MD_KSG.ebx",
+      "rawSha256": "bdbadd9e0935bcbe3a48ec8aefb6d0aac0c361c22ba99ca955ef3fb32df097d4",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_BTM_BottomRail",
+      "fileGuid": "939c1816-fbe2-492b-ad10-9ff27af78155",
+      "recordSha1": "902033cb46480adddddffb78a5e32bb2bc589a5a",
+      "originalBytes": 354,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_BTM_BottomRail",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_BTM_BottomRail.ebx",
+      "rawSha256": "f3742febb9b364c64f339afcf4affe0a88a19986b3cabcd3e5a1a8b434698f4b",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_ERG_Ergonomic",
+      "fileGuid": "b911c5a1-48db-4eba-ab8b-230eb97de9f7",
+      "recordSha1": "62731a92ca1dd0aa70ec885947d59ff07b3b8bd5",
+      "originalBytes": 352,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_ERG_Ergonomic",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_ERG_Ergonomic.ebx",
+      "rawSha256": "7af882cc1fde70799684c713d04a1cbd749a8157c5538057e855391fade29e3d",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Shotgun/KSG/U_PRG_KSG_RGT_RightRail",
+      "fileGuid": "de275c42-859f-4614-8f0f-a9792d13aa08",
+      "recordSha1": "23b30fb846d7ff93ea320b292aee50aae32e34e5",
+      "originalBytes": 352,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/Weapons/Shotgun/KSG/U_PRG_KSG_RGT_RightRail",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_RGT_RightRail.ebx",
+      "rawSha256": "3642e4e18d15c9b4699ba2437cc3ac2bf5ef0ba43461470f52e3aab28087321a",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_SCA_CantedReflex",
+      "fileGuid": "8623d730-7f54-4334-86ec-fd41d9712ee3",
+      "recordSha1": "fa605eb62ae8af8e37a1948a62941d624374789a",
+      "originalBytes": 358,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_SCA_CantedReflex",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_SCA_CantedReflex.ebx",
+      "rawSha256": "b6a6b355dd3c228bd6f477bfe6bc2facc5b60539d5b5ff89f048dfd9033a1c6a",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_SCA_SecondarySight",
+      "fileGuid": "4944454b-97b2-4809-90df-d5c0ba14089f",
+      "recordSha1": "0c190a6d6c560cd902ba898a104ecb155075f1a9",
+      "originalBytes": 362,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_SCA_SecondarySight",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_SCA_SecondarySight.ebx",
+      "rawSha256": "f9d6a9ddd7183a2ab211fc251e6f0bf5dfd59d0dfdfe62f572dca60c9a2b90f9",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_SCA_Variable3x",
+      "fileGuid": "891d3a40-c2b8-4d5c-bd9f-3b5d65356ef1",
+      "recordSha1": "3da3af6d5bbcedc23a747427d27b7d5adaa81c26",
+      "originalBytes": 354,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/weapons/shotgun/KSG/U_PRG_KSG_SCA_Variable3x",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_SCA_Variable3x.ebx",
+      "rawSha256": "34e00667d3187eb546b74edcb08dfaf8041408b1950a405452da7c5d1d5a505c",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Shotgun/KSG/U_PRG_KSG_SCP_Tango6T",
+      "fileGuid": "c6de91a9-bf53-4f17-8b9a-8763d32d730f",
+      "recordSha1": "4b418b186ba53505eb94d36849a1d99ee5f6275a",
+      "originalBytes": 348,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/Weapons/Shotgun/KSG/U_PRG_KSG_SCP_Tango6T",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_SCP_Tango6T.ebx",
+      "rawSha256": "1ee7c5ad77937936f24869d62399054fe14b6b8eb905c8f52a7397c8929b9286",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Shotgun/KSG/U_PRG_KSG_TOP_TopRail",
+      "fileGuid": "0f6884d2-91c8-4efe-b0b2-e3efb9511661",
+      "recordSha1": "f7056c6f19f10497c3a0a7183fb5cb7984a56f04",
+      "originalBytes": 348,
+      "bundleIds": [
+        4286
+      ],
+      "partition": "campaign_root_bundle_only",
+      "catalogRoute": "Common/Hardware/Weapons/Shotgun/KSG/U_PRG_KSG_TOP_TopRail",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\shotgun\\ksg\\U_PRG_KSG_TOP_TopRail.ebx",
+      "rawSha256": "77f4a641243fea31764d649570184c285baec1e15f4619e5d6a2d857079710ed",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    }
+  ],
+  "method": "Exact effective archive membership and SDK SubLevel/campaign context checked against immutable cache receipt. All catalog GUIDs/record hashes and captured raw hashes matched. Exclusion applies only to these19records.",
+  "limits": "Archive source scope only, not runtime behavior;80shared and28asset-specific KSG records retain their prior scope. No whole-folder exclusion."
+}

@@ -1,0 +1,267 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "build": "1.4.3.0",
+  "scope": "Non-numeric/non-boolean string leaves in data/attachments.json and data/ammo.json plus object-key references used by per-weapon magazine/ammo option lists.",
+  "inputs": {
+    "tooltipsMappingPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-tooltips-mapping.json",
+    "tooltipsMappingSha256": "66ceadcaba5142189368456df9c1e7264a0ff8da383c9534be3a2f2b60daec24",
+    "rosterPath": "reference-data/provenance/frosty-audit-roster-2026-09-23.json",
+    "attachmentsSha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79",
+    "ammoSha256": "a43307df41f519dc8c6da5e9f3c50553b0782929c2dd333687eea3b7b6703027",
+    "coverageDecoderV5Sha256": "1fac4aa159b11741943eaf6ae94f64e63928b9fa0f866ca4a1d191897718cf10",
+    "weaponFieldsJsonl": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-fields.jsonl",
+      "sha256": "6040e4633851c6d796b4fed231da097f63d45ca6da2e8a79333c9e1ebfb5783a"
+    },
+    "coverageDecoderV5": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+      "sha256": "1fac4aa159b11741943eaf6ae94f64e63928b9fa0f866ca4a1d191897718cf10"
+    },
+    "roster": {
+      "path": "reference-data\\provenance\\frosty-audit-roster-2026-09-23.json",
+      "sha256": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32"
+    },
+    "compatibilityGraph": {
+      "path": "reference-data\\provenance\\frosty-attachment-compatibility.json",
+      "sha256": "6b603b164bea75b0bfbd22f9c1d6a74c10bba796ddd2f7de6c3cf48d4f788389"
+    }
+  },
+  "coverage": {
+    "stringScalarLeaves": 3760,
+    "additionalChoiceKeyReferences": 615,
+    "detailedRows": 4375,
+    "rosterWeapons": 63,
+    "sourceMappedNonSightChoices": 3011,
+    "sourceLinkedChoiceIdentities": 3011,
+    "exactSelectableAttachmentIdUnmatched": 0,
+    "neutralPlaceholderRows": 10,
+    "unreachableSuffixedVssmGripRecords": 4,
+    "defaultsWithChoiceIdentityButUnprovenFactoryState": 189,
+    "defaultSplit": {
+      "barrel": 63,
+      "magazine": 63,
+      "ammo": 63
+    },
+    "sourceGradeCounts": [
+      {
+        "file": "data/ammo.json",
+        "semantic": "ammo-availability-id-key",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 248
+      },
+      {
+        "file": "data/ammo.json",
+        "semantic": "ammo-availability-id-key",
+        "grade": "XML/AAM",
+        "count": 80
+      },
+      {
+        "file": "data/ammo.json",
+        "semantic": "ammo-display-name",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 15
+      },
+      {
+        "file": "data/ammo.json",
+        "semantic": "ammo-id",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 15
+      },
+      {
+        "file": "data/ammo.json",
+        "semantic": "ammo-simulation-treatment-enum",
+        "grade": "Analyzer-model-configuration",
+        "count": 58
+      },
+      {
+        "file": "data/ammo.json",
+        "semantic": "default-ammo-choice-id",
+        "grade": "choice-linked-default-unproven",
+        "count": 63
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "Analyzer-slot-acceptance-contract",
+        "grade": "software-contract",
+        "count": 189
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "attachment-related-string",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 1
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "catalog-id",
+        "grade": "software-or-site-convention",
+        "count": 6
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "catalog-id",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 94
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "catalog-id",
+        "grade": "XML/AAM",
+        "count": 9
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "default-barrel-choice-id",
+        "grade": "choice-linked-default-unproven",
+        "count": 63
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "default-magazine-choice-id",
+        "grade": "choice-linked-default-unproven",
+        "count": 63
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "display-name",
+        "grade": "software-or-site-convention",
+        "count": 6
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "display-name",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 94
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "display-name",
+        "grade": "XML/AAM",
+        "count": 9
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "magazine-availability-id-key",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 212
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "magazine-availability-id-key",
+        "grade": "XML/AAM",
+        "count": 75
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "magazine-display-name",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 212
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "magazine-display-name",
+        "grade": "XML/AAM",
+        "count": 75
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "per-weapon-availability-id",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 1793
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "per-weapon-availability-id",
+        "grade": "XML/AAM",
+        "count": 484
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "per-weapon-ergo-availability-or-default-id",
+        "grade": "software-neutral-sentinel",
+        "count": 2
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "per-weapon-ergo-availability-or-default-id",
+        "grade": "XML-graph+raw-captured-asset",
+        "count": 94
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "per-weapon-ergo-availability-or-default-id",
+        "grade": "XML/AAM",
+        "count": 25
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "software-metadata",
+        "grade": "software-only",
+        "count": 88
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "software-neutral-sentinel",
+        "grade": "software-neutral-sentinel",
+        "count": 8
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "source-linked-site-dependency-string",
+        "grade": "XML-graph compatibility evidence",
+        "count": 286
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "unreachable-legacy-catalog-display-name",
+        "grade": "unreachable-catalog-variant",
+        "count": 4
+      },
+      {
+        "file": "data/attachments.json",
+        "semantic": "unreachable-legacy-catalog-id",
+        "grade": "unreachable-catalog-variant",
+        "count": 4
+      }
+    ]
+  },
+  "findings": [
+    {
+      "status": "covered",
+      "claim": "Every currently selectable per-weapon attachment choice excluding literal neutral none sentinels matches the exact (weapon, slot, attachment) identity in the current source-to-site mapping. All roster 63 site weapons are represented.",
+      "limits": "Identity linkage combines source XML/AAM evidence with captured asset provenance; it does not prove runtime availability or effects."
+    },
+    {
+      "status": "software-neutral-sentinel",
+      "claim": "Eight WEAPON_ATTS none placeholders and two WEAPON_ERGO none placeholders represent empty/neutral Analyzer slots, not source choices."
+    },
+    {
+      "status": "unreachable-catalog-variant",
+      "claim": "GRIPS[24..27] VSSM-suffixed catalog ids and names are absent from every WEAPON_ATTS availability list; current VSSM selectable list uses unsuffixed shared identities that are separately mapped."
+    },
+    {
+      "blocker": "Current source-to-site choice mapping records selectable choices and selectors, but no default flag; exact factory-equipment consumer evidence or runtime equipment state is required.",
+      "status": "choice-linked-default-unproven",
+      "claim": "Each of 63 WEAPON_ATTS.barrelDef, WEAPON_MAG.def and WEAPON_AMMO.def references a mapped valid choice, but available selector mapping contains no factory/default-state marker."
+    },
+    {
+      "status": "software-contract",
+      "claim": "Analyzer slot acceptance lists (189 string leaves) are Analyzer UI constraints. They are not asserted as native source restrictions."
+    },
+    {
+      "status": "model-configuration",
+      "claim": "58 ammo velocityTreatment strings are Analyzer model enums. Numeric projectile values are separately owned by zeroing audit."
+    }
+  ],
+  "limits": [
+    "This deliverable classifies every string scalar leaf and additional magazine/ammo option-key reference in the two requested files; numeric/boolean attachment leaves are excluded and owned by other workers.",
+    "Source identity and capture hashes do not establish runtime availability, exact factory configuration, or effect behavior.",
+    "The 189 default selectors remain explicitly blocked; no default inference is made from option membership or site value."
+  ],
+  "externalDetail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-choice-identities-detail-final-2026-09-23.json",
+    "sha256": "f55cc5172c5c7d7229e17a35ee4b076e4f915b52e57a0dfe8ef7d9fafa217a3f",
+    "rows": "rows[] carries file, JSON pointer path, exact value, semantic category, source grade, mapping status, source route/provenance, and precise reason/limit."
+  }
+}

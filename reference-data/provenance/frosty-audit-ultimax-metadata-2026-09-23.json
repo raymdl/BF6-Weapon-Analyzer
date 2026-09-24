@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "question": "Which of the two Ultimax short-barrel metadata records does the captured Equipment asset reference?",
+  "sources": [
+    {
+      "route": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_BRL_Short",
+      "rawSha256": "1cac5533ab73770f75445f5ed4285f88815141d94b0864feacd4bb59890f8239",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\Ultimax\\Attachment_Ultimax_BRL_Short.ebx",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "fileGuid": "ab1c1cc9-6865-4617-aad5-e02e91f934cb",
+      "objectGuid": "d7bb70b0-f213-4233-bff4-78bf2cddcb67",
+      "class": "Class_a9b2eb87",
+      "layoutAmbiguous": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_BRL_ShortBarrel",
+      "rawSha256": "24f0480f43dae2376304f5d1fa2d19fcac751d4e22f62b943a2fd7c7a58a7556",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\Ultimax\\Attachment_Ultimax_BRL_ShortBarrel.ebx",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "fileGuid": "10415a2f-2bfc-4485-bfa1-bf7c711f8eed",
+      "objectGuid": "a25ada00-2fae-40d2-8760-cbd455ed0d75",
+      "class": "Class_a9b2eb87",
+      "layoutAmbiguous": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/MG/Ultimax/Equipment_Ultimax",
+      "rawSha256": "b1c68d0490dae5d6a251ff89d1c39634d8c4f9054b0454809786230fbd5f3650",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\Ultimax\\Equipment_Ultimax.ebx",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "fileGuid": "b966c957-c7c7-4ece-800d-9e1b12608de5",
+      "objectGuid": "6080648f-7eee-4d51-a17d-74bef3faffef",
+      "class": "Class_33e63a99",
+      "layoutAmbiguous": true
+    }
+  ],
+  "sharedProgressionReference": {
+    "$import": {
+      "fileGuid": "d74acd60-1adf-4456-ae21-b8b6d44f2984",
+      "classGuid": "a72d8ab3-c232-4281-a99a-c938927814e0"
+    }
+  },
+  "equipmentLinks": [
+    {
+      "sourceRoute": "Common/Hardware/Weapons/MG/Ultimax/Equipment_Ultimax",
+      "objectIndex": 0,
+      "pointer": "/Field_6d390b97/77/Field_d28dfb00",
+      "target": {
+        "fileGuid": "10415a2f-2bfc-4485-bfa1-bf7c711f8eed",
+        "classGuid": "a25ada00-2fae-40d2-8760-cbd455ed0d75"
+      }
+    },
+    {
+      "sourceRoute": "Common/Hardware/Weapons/MG/Ultimax/Equipment_Ultimax",
+      "objectIndex": 0,
+      "pointer": "/Field_844f8184/77/Field_d28dfb00",
+      "target": {
+        "fileGuid": "10415a2f-2bfc-4485-bfa1-bf7c711f8eed",
+        "classGuid": "a25ada00-2fae-40d2-8760-cbd455ed0d75"
+      }
+    }
+  ],
+  "branchCensus": {
+    "report": "reference-data/provenance/frosty-audit-branches-reviewed-2026-09-23.json",
+    "sha256": "94e2b62dd55ca9e186e2ab1f1d73e8a8dabbc49d33cb0460d8309b404483fdb5",
+    "weapon": "Ultimax",
+    "branchIndex": 83,
+    "branchObjectGuid": "18a23d62-03b0-4825-9c57-48605a640050"
+  },
+  "conclusion": "Both metadata records share the progression target, but the two inspected Equipment lists reference Attachment_Ultimax_BRL_ShortBarrel by exact file/object GUID. This resolves the captured Equipment association; it does not establish live menu availability or globally exclude the Short record.",
+  "limits": "Source objects retain ambiguous-layout warnings. No runtime execution or product mapping changed."
+}

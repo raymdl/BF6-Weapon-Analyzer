@@ -118,6 +118,12 @@ not independent validation.
 
 ## Standing recording conditions — operator confirmed 11 September 2026
 
+For new captures requested on or after 23 September, the
+[ranked capture plan](BF6_CAPTURE_PRIORITIES.md) supersedes the carry-forward rule
+below. Record the actual current build and settings once per session. The older
+confirmed conditions remain valid metadata for the earlier recordings; they are
+not assumed for new 1.4.3.0 comparisons.
+
 Use these conditions for all recoil and spread recording sets covered by this
 handoff, including Heavy-type barrels and VSSM, unless the operator explicitly
 reports a change:

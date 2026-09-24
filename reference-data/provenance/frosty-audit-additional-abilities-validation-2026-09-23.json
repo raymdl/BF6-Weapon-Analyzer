@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "sourceReport": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\additional-ability-roots-draft.json",
+    "sha256": "15d401d2c570d662716e2b1ac2882555f552ef92d4843b3c7719334de485f5a6"
+  },
+  "sourceHelper": {
+    "path": "scripts/frosty-audit-additional-abilities.py",
+    "sha256": "f3e85c69933b1e367db9389524bc9021387129afb5de1695b693bbffc0cc30e0"
+  },
+  "decoderSha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558",
+  "freshRawBodiesDecoded": 176,
+  "rootsChecked": 142,
+  "emptyBranchArrays": 142,
+  "objectClasses": {
+    "Class_e515b7b8": 142,
+    "Class_e923016e": 548,
+    "Class_d68e0211": 18,
+    "Class_963b8312": 7
+  },
+  "exactIncomingReferences": 142,
+  "callerClasses": {
+    "Class_4ed159fb": 135,
+    "Class_5e2bf7c2": 7
+  },
+  "method": "Fresh raw SHA256 and file GUID check, all 142 root object GUID/class lists and empty Field_d7605aab arrays matched. Every reported caller was freshly decoded and exact field path/file GUID/object GUID checked. Uses v2 per-capture descriptor hashes.",
+  "limits": "Source structure and reported incoming references only; no whole-asset semantic closure or runtime inclusion claim."
+}

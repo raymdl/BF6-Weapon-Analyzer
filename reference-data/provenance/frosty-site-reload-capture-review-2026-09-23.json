@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "scope": "Independent identity/arithmetic review of provided capture report and dated/current inventory transition",
+  "captureReport": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-empty-reload-capture-2026-09-23.json",
+    "sha256": "3a8d72db3ceb60ff461c8b9273c707c81fac50b38da36bd61419de5e502b9247",
+    "buildLabel": "1.4.3.1",
+    "labelSource": "User-supplied label based on EA 18 September roundup; Head4892087 client, without folder rename."
+  },
+  "recordings": [
+    {
+      "siteId": "m4a1",
+      "video": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\Recordings\\09232026\\Empty Reload\\M4A1.mp4",
+      "sha256": "8d2130daebcccc352f75ffc8515d838d5e3a8c40b35980fc4951a2c1ebb8daf6",
+      "cycles": 4,
+      "medianSeconds": 2.7,
+      "candidatePredictionSeconds": 2.7006667390371155,
+      "mainFieldPredictionSeconds": 2.7006667390371155,
+      "residualSeconds": -0.0006667390371153381
+    },
+    {
+      "siteId": "sor300sc",
+      "video": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\Recordings\\09232026\\Empty Reload\\SOR-300SC.mp4",
+      "sha256": "eca5fbe6b1d48c940e9f4e7ff55da0790e72da6d70a64e9096d1b147105eb8e7",
+      "cycles": 4,
+      "medianSeconds": 3.3,
+      "candidatePredictionSeconds": 3.300000162833599,
+      "mainFieldPredictionSeconds": 3.3840001628335985,
+      "residualSeconds": -1.6283359904889494e-07
+    },
+    {
+      "siteId": "grtcps",
+      "video": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\Recordings\\09232026\\Empty Reload\\GRT-CPS.mp4",
+      "sha256": "36887becd0f992a533bb0ab7e76d255995ede365529b14faac7ae9656b938198",
+      "cycles": 4,
+      "medianSeconds": 3.2,
+      "candidatePredictionSeconds": 3.2006671328716743,
+      "mainFieldPredictionSeconds": 3.4506671328716743,
+      "residualSeconds": -0.000667132871674081
+    },
+    {
+      "siteId": "lmr27",
+      "video": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\Recordings\\09232026\\Empty Reload\\LMR27.mp4",
+      "sha256": "ad35f6d1c7ec6c0ee4b34068ce514d2835522eecc91be364dc58f98203c9dcb4",
+      "cycles": 4,
+      "medianSeconds": 3.207,
+      "candidatePredictionSeconds": 3.2003336317043716,
+      "mainFieldPredictionSeconds": 3.2003336317043716,
+      "residualSeconds": 0.006666368295628278
+    }
+  ],
+  "inventoryDelta": {
+    "new": [
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/17/provenance/frosty/buildEvidence",
+        "shape": "/*/provenance/frosty/buildEvidence",
+        "siteWeapon": "sor300sc",
+        "sourceWeapon": "SCARSC",
+        "selectionId": "sor300sc",
+        "siteValue": "hotfix raw WB field inventory; in-game capture 2026-09-23",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/17/provenance/frosty/emptyReloadEvidence",
+        "shape": "/*/provenance/frosty/emptyReloadEvidence",
+        "siteWeapon": "sor300sc",
+        "sourceWeapon": "SCARSC",
+        "selectionId": "sor300sc",
+        "siteValue": "reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json#weapons/sor300sc",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/17/provenance/frosty/fields/0",
+        "shape": "/*/provenance/frosty/fields/*",
+        "siteWeapon": "sor300sc",
+        "sourceWeapon": "SCARSC",
+        "selectionId": "sor300sc",
+        "siteValue": "emptyRld",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/17/provenance/frosty/sourceBuild",
+        "shape": "/*/provenance/frosty/sourceBuild",
+        "siteWeapon": "sor300sc",
+        "sourceWeapon": "SCARSC",
+        "selectionId": "sor300sc",
+        "siteValue": "1.4.3.0",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/42/provenance/frosty/buildEvidence",
+        "shape": "/*/provenance/frosty/buildEvidence",
+        "siteWeapon": "grtcps",
+        "sourceWeapon": "MSBSGROTCPS",
+        "selectionId": "grtcps",
+        "siteValue": "hotfix raw WB field inventory; in-game capture 2026-09-23",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/42/provenance/frosty/emptyReloadEvidence",
+        "shape": "/*/provenance/frosty/emptyReloadEvidence",
+        "siteWeapon": "grtcps",
+        "sourceWeapon": "MSBSGROTCPS",
+        "selectionId": "grtcps",
+        "siteValue": "reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json#weapons/grtcps",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/42/provenance/frosty/fields/0",
+        "shape": "/*/provenance/frosty/fields/*",
+        "siteWeapon": "grtcps",
+        "sourceWeapon": "MSBSGROTCPS",
+        "selectionId": "grtcps",
+        "siteValue": "emptyRld",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "pointer": "/42/provenance/frosty/sourceBuild",
+        "shape": "/*/provenance/frosty/sourceBuild",
+        "siteWeapon": "grtcps",
+        "sourceWeapon": "MSBSGROTCPS",
+        "selectionId": "grtcps",
+        "siteValue": "1.4.3.0",
+        "category": "provenance-or-schema",
+        "reviewStatus": "pending-review",
+        "sourceFieldPath": null,
+        "sourceSiteAgreement": null,
+        "remainingUncertainty": "Exact source join and current-build comparison not yet attached."
+      }
+    ],
+    "changed": [
+      {
+        "siteFile": "data/weapons.json",
+        "sitePointer": "/17/emptyRld",
+        "old": 3.284,
+        "new": 3.2
+      },
+      {
+        "siteFile": "data/weapons.json",
+        "sitePointer": "/42/emptyRld",
+        "old": 3.284,
+        "new": 3.034
+      }
+    ]
+  },
+  "regression": {
+    "script": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\sym-crossmatch-2026-09-23\\site-regression-reload-rerun\\site_vs_source.py",
+      "sha256": "9f37c5c84d75b528d52e3730da602db33108f97d6d6bae06586262bf24626e6f"
+    },
+    "freshCache": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\sym-crossmatch-2026-09-23\\site-regression-reload-rerun\\dump_numeric.pkl",
+      "sha256": "11e5f68121e5a7e2e8fe7c2d04b1c6001f4eb56a889148a0166fcbfee8685863"
+    },
+    "result": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\sym-crossmatch-2026-09-23\\site-regression-reload-rerun\\site_vs_source.json",
+      "sha256": "c99b5e833639f44eced947bd02259fbf3c025cb70a740d07dd6b9c8364d1079b"
+    },
+    "stdout": "fields checked: 52 comparisons: 3391\ntacRld                       18  tr7: site 2.4 src 2.35; nvo228e: site 2.5 src 2.434; l85a3: site 2.767 src 2.7; vcr2: site 2.434 src 2.334; m4a1: site 2.2 src 2.15; m277: site 2.384 src 2.334; ak205: site 2.484 src 2.384; sg553r: site 2.5 src 2.45\nemptyRld                     15  tr7: site 3.367 src 3.3; nvo228e: site 3.0 src 2.9; l85a3: site 2.834 src 2.667; vcr2: site 3.117 src 3.0; m277: site 2.55 src 2.5; ak205: site 2.917 src 2.8; sg553r: site 2.934 src 2.867; sor300sc: site 3.2 src 3.284\nrpm                           1  m87a1: site 94.73654016716576 src 1799.999023\n",
+    "methodLimits": [
+      "52 field names and3391 comparisons; duplicate candidate paths can count more than once.",
+      "The supplied script compares direct reload scalars, not the now established stored-time divided by speed rule. Its mismatch list is not a list of site errors.",
+      "It collapses classes into a rootKind/path index, so independent exact-object raw-byte receipts remain the source proof."
+    ]
+  },
+  "limits": [
+    "Video hashes, timestamp subtraction, medians and formula were independently checked; muzzle-flash detections were not independently re-annotated.",
+    "Stored time plus one fire interval is supported only for the four recorded weapons and stated recording conditions.",
+    "Two user-approved data edits and eight provenance leaves are external Claude changes; this review makes no production change."
+  ],
+  "labelRefresh": "The two new sourceBuild provenance leaves were subsequently relabeled from1.4.3.0 to1.4.3.1 by Claude at user direction. Numeric values unchanged; current inventory v3 captures the label update."
+}

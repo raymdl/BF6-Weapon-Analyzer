@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "inputInventory": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-input-inventory-2026-09-23.json",
+    "sha256": "5e228c65d25dec7c152bc2373ef866ea5cd79621a6cf24abb5c36c22372f798a"
+  },
+  "sourceReceipts": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-precision-2026-09-23.json",
+      "sha256": "841f8cf883558d4cf4b08ccf352fbca43efab701be9f2f67a30dccd57c7a00ef"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-spread-reviewed-2026-09-23.json",
+      "sha256": "ea80acf1b7556743ffe82c0ab7be8dca8715f415be4e6d0f1ccd8c7f9df775d6"
+    }
+  ],
+  "rowCounts": {
+    "pending-review": 23673,
+    "sourced-configuration": 41585
+  },
+  "perFile": {
+    "data/ammo.json": {
+      "pending-review": 799
+    },
+    "data/attachment-tooltips.json": {
+      "pending-review": 3478
+    },
+    "data/attachments.json": {
+      "pending-review": 11174
+    },
+    "data/balance_tables.json": {
+      "pending-review": 679
+    },
+    "data/ballistics.json": {
+      "pending-review": 652
+    },
+    "data/hit_zones.json": {
+      "pending-review": 912
+    },
+    "data/recoil_decay.json": {
+      "pending-review": 135
+    },
+    "data/reload-exceptions.json": {
+      "pending-review": 33
+    },
+    "data/weapon-role-tags.json": {
+      "pending-review": 884
+    },
+    "data/weapon_attributes.json": {
+      "pending-review": 12,
+      "sourced-configuration": 39946
+    },
+    "data/weapons.json": {
+      "pending-review": 4915,
+      "sourced-configuration": 1639
+    }
+  },
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-review\\site-input-reviewed.jsonl",
+    "sha256": "4773be6f79d83f9aea889133413e31386630f6d4bd44f16ab335d10344f1e3c9"
+  },
+  "complete": false,
+  "simulationCodeReview": "pending; exact line inventory retained separately",
+  "limits": [
+    "Sourced configuration does not establish the simulator formula or native activation.",
+    "Pending rows need research. They are not classified as blocked merely because review has not started.",
+    "Additional topic receipts are joined only after their field evidence is reviewed."
+  ],
+  "scriptSha256": "1a46a96b0e530937c29a1549285b1df8bf77a39329cc160d6197ccf8be56f8d0"
+}

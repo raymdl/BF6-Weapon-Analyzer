@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "captureDirectory": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer8-2026-09-23",
+  "head": 4892087,
+  "sdkVersion": 4414275,
+  "routeList": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-dependency-layer8-routes.txt",
+    "sha256": "2c26e923a9b61f80cb90aac12da6e4586084b442d57cc5638f5070857a4ef873"
+  },
+  "rawStatus": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer8-2026-09-23\\raw-status.jsonl",
+    "sha256": "8151e6693054caf38ed14cf687f4da6f8018395cbd4daf2f5eee8d768076055f"
+  },
+  "catalogSha256": "5b81fe9676d395da82cc73fae5f4017d66fc99834213238d4e1269d1e884bb60",
+  "previousCatalog": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer7-2026-09-23\\asset-catalog.json",
+    "sha256": "68f5f547bccaccaf2be92f4013c0897f356f48ea40e81e1b096d8a4e5b94a4cb"
+  },
+  "collectorSha256": "03dd11335d199976e15a8551932c0e1fff49cde9295c8957733e0f3b93bd4d0c",
+  "reviewerSha256": "341144b3891987aa94c1b2aa606efba58fb1241b2357d3b210ef8851b30ae633",
+  "successCount": 365,
+  "failureCount": 0,
+  "rawBytes": 1292884,
+  "allSizesAndHashesMatch": true,
+  "catalogMatchesPreviousLayer": true,
+  "scope": "Candidate dependency capture only; no new semantic or mode exclusions.",
+  "runtime": "Windows PowerShell .NET Framework; game archives read only."
+}

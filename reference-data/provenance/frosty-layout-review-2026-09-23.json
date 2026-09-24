@@ -1,0 +1,67 @@
+{
+  "date": "2026-09-23",
+  "status": "review complete; decoder behavior unchanged",
+  "build": {
+    "version": "1.4.3.0",
+    "archiveHead": 4892017,
+    "sdk": 4414275,
+    "descriptors": "../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors.ebx",
+    "descriptorsSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "classCount": 9513,
+    "uniqueTypeKeyCount": 9513,
+    "repeatedNameHashCount": 803
+  },
+  "sample": {
+    "asset": "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB.ebx",
+    "assetSha256": "622dff6f877e798cd5d38a6bb5cf09b0b19a44dfaf81b2d43a270b1c1b7e1ac9",
+    "objectIndex": 2,
+    "objectByteOffset": 928,
+    "typeKey": "503dde81ed5cf4d154423f8a5b58e439",
+    "selectedDescriptorIndex": 515,
+    "selectedNameHash": "35259f6b",
+    "selectedNameHashOccurrences": 2,
+    "selectedSize": 1248,
+    "selectedAlignment": 16,
+    "nestedField": "Field_f8822efa",
+    "nestedFieldOffset": 496,
+    "nestedClassRef": 539,
+    "nestedDescriptorNameHash": "30331789",
+    "nestedNameHashOccurrences": 2,
+    "nestedSize": 304,
+    "nestedAlignment": 8,
+    "conclusion": "Per-asset type key selects descriptor index 515; field classRef selects descriptor index 539. Repeated names trigger provisionality warnings but neither selection uses a name-hash lookup."
+  },
+  "comparisonAudit": {
+    "savedSource": "reference-data/provenance/frosty-1.4.3.0-sdk-independent-decode-2026-09-15.json",
+    "sampleSize": 400,
+    "baseline": "random 1.4.2.5 raw EBX assets compared with Frosty XML",
+    "identical": 234,
+    "decoderSupersets": 151,
+    "disagreements": 14,
+    "decodeFailures": 0,
+    "savedSummarySays": "All 14 disagreements involve type names with more than one layout; decoder uses the asset type key, Frosty uses its SDK class.",
+    "itemizedMismatchRecordsFound": false,
+    "missingEvidence": "The saved summary has no asset paths, type keys, descriptor indices, or field-level diff for the 14 cases. The cases were not rerun in this review."
+  },
+  "sourceFiles": {
+    "decoder": {
+      "path": "scripts/frosty-ebx-decode.py",
+      "sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+    },
+    "sdkEbxReaderRiff": {
+      "path": "../BF6 Datamining/FrostyToolsuite-battlefield6/FrostySdk/IO/EbxReaderRiff.cs",
+      "sha256": "e13b7008331c1163b7d7c9adac370cdb9006be497d9dc559c8ce897da33a8be6"
+    },
+    "sdkSharedTypeDescriptors": {
+      "path": "../BF6 Datamining/FrostyToolsuite-battlefield6/FrostySdk/IO/EbxSharedTypeDescriptors.cs",
+      "sha256": "dada83fc1128fce5dae827c5d3cb1c7fb8f1f690eca57d303af9069b3106d737"
+    }
+  },
+  "decision": "Keep duplicate-name warnings. They are conservatism for unresolved same-name layouts, not evidence of a selection ambiguity in this 1.4.3.0 type-key map.",
+  "recommendedRegression": "Construct two descriptor classes with the same name hash but unique type keys and distinct fields. Assert each top-level key selects its own descriptor, nested structures follow the explicit classRef index, and both decoded objects retain the ambiguity marker. Add a guard for duplicate type keys because dictionary construction otherwise overwrites an entry.",
+  "limits": [
+    "One representative M4A1 object chain was re-decoded; this is not a complete layout audit.",
+    "The 14 prior XML disagreement records were unavailable in itemized form and were not rerun.",
+    "Layout correctness does not establish field semantics, weapon-timing composition, activation, or runtime mechanics."
+  ]
+}

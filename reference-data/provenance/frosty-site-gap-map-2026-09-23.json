@@ -1,0 +1,314 @@
+{
+  "schemaVersion": 2,
+  "date": "2026-09-23",
+  "detail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-gap-map.json",
+    "sha256": "d8e4cd232bcc5699052e60844e48bd0997eec0fd7fc92c08bfc99b92099a4922",
+    "bytes": 4088869
+  },
+  "v2Ledger": {
+    "groups": 1800,
+    "rows": 65258,
+    "statusCounts": {
+      "pending-review": 18861,
+      "project-metadata": 18,
+      "sourced-ui-xml": 3424,
+      "precisely-blocked-source": 36,
+      "sourced-configuration": 42919
+    },
+    "simSourceLines": 1582,
+    "simSourceLinesPending": 1582,
+    "simNumericCandidates": 347,
+    "simNumericCandidatesPending": 347
+  },
+  "perFile": {
+    "data/ammo.json": {
+      "groups": 59,
+      "leaves": 799,
+      "leafRowsByStatus": {
+        "pending-review": 799
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 59
+      }
+    },
+    "data/attachment-tooltips.json": {
+      "groups": 608,
+      "leaves": 3478,
+      "leafRowsByStatus": {
+        "sourced-ui-xml": 3424,
+        "precisely-blocked-source": 36,
+        "project-metadata": 18
+      },
+      "groupsByLedgerState": {
+        "no-pending-ledger-rows": 608
+      }
+    },
+    "data/attachments.json": {
+      "groups": 585,
+      "leaves": 11174,
+      "leafRowsByStatus": {
+        "pending-review": 10985,
+        "sourced-configuration": 189
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 582,
+        "no-pending-ledger-rows": 3
+      }
+    },
+    "data/balance_tables.json": {
+      "groups": 36,
+      "leaves": 679,
+      "leafRowsByStatus": {
+        "sourced-configuration": 145,
+        "pending-review": 534
+      },
+      "groupsByLedgerState": {
+        "no-pending-ledger-rows": 4,
+        "all-rows-pending": 32
+      }
+    },
+    "data/ballistics.json": {
+      "groups": 277,
+      "leaves": 652,
+      "leafRowsByStatus": {
+        "pending-review": 652
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 277
+      }
+    },
+    "data/hit_zones.json": {
+      "groups": 38,
+      "leaves": 912,
+      "leafRowsByStatus": {
+        "pending-review": 912
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 38
+      }
+    },
+    "data/recoil_decay.json": {
+      "groups": 4,
+      "leaves": 135,
+      "leafRowsByStatus": {
+        "pending-review": 135
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 4
+      }
+    },
+    "data/reload-exceptions.json": {
+      "groups": 33,
+      "leaves": 33,
+      "leafRowsByStatus": {
+        "pending-review": 33
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 33
+      }
+    },
+    "data/weapon-role-tags.json": {
+      "groups": 20,
+      "leaves": 884,
+      "leafRowsByStatus": {
+        "pending-review": 884
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 20
+      }
+    },
+    "data/weapon_attributes.json": {
+      "groups": 21,
+      "leaves": 39958,
+      "leafRowsByStatus": {
+        "pending-review": 12,
+        "sourced-configuration": 39946
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 7,
+        "no-pending-ledger-rows": 14
+      }
+    },
+    "data/weapons.json": {
+      "groups": 119,
+      "leaves": 6554,
+      "leafRowsByStatus": {
+        "pending-review": 3915,
+        "sourced-configuration": 2639
+      },
+      "groupsByLedgerState": {
+        "all-rows-pending": 76,
+        "no-pending-ledger-rows": 39,
+        "partly-covered-or-partly-blocked": 4
+      }
+    }
+  },
+  "activeAssumptionPending": [
+    {
+      "siteFile": "data/weapon_attributes.json",
+      "shape": "/mobilityInputs/{weapon}/animationZoomBaseIndex",
+      "leafCount": 1,
+      "candidateTopicOwner": "weapon-attributes/ADS mobility input; verify source index and attachment shift"
+    },
+    {
+      "siteFile": "data/weapon_attributes.json",
+      "shape": "/mobilityInputs/{weapon}/movingAdsGripShifts/qd_grip_pod_sr",
+      "leafCount": 1,
+      "candidateTopicOwner": "weapon-attributes/ADS mobility input; verify source index and attachment shift"
+    },
+    {
+      "siteFile": "data/weapon_attributes.json",
+      "shape": "/mobilityInputs/{weapon}/movingAdsGripShifts/slim_angled",
+      "leafCount": 1,
+      "candidateTopicOwner": "weapon-attributes/ADS mobility input; verify source index and attachment shift"
+    },
+    {
+      "siteFile": "data/weapon_attributes.json",
+      "shape": "/mobilityInputs/{weapon}/zoomTransitionBaseIndex",
+      "leafCount": 1,
+      "candidateTopicOwner": "weapon-attributes/ADS mobility input; verify source index and attachment shift"
+    },
+    {
+      "siteFile": "data/weapon_attributes.json",
+      "shape": "/provenance/*",
+      "leafCount": 3,
+      "candidateTopicOwner": "precision tables direct source evidence; model selection/fallback owner is precision/recoil"
+    },
+    {
+      "siteFile": "data/weapon_attributes.json",
+      "shape": "/shotgunDispersion/{weapon}",
+      "leafCount": 4,
+      "candidateTopicOwner": "weapon-attributes/projectile-shotgun dispersion assumed input; verify source basis and sim consumer"
+    },
+    {
+      "siteFile": "data/weapon_attributes.json",
+      "shape": "/sourceVersion",
+      "leafCount": 1,
+      "candidateTopicOwner": "precision tables direct source evidence; model selection/fallback owner is precision/recoil"
+    }
+  ],
+  "highestPendingGroups": [
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/WEAPON_ATTS/{weapon}/grip/*",
+      "pendingLeaves": 829,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/GRIPS/*/frostyModifiers/{weapon}/adsMoveSpeedTierShift",
+      "pendingLeaves": 827,
+      "candidateTopicOwner": "ADS/mobility attachment modifier and per-weapon binding"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/GRIPS/*/frostyModifiers/{weapon}/adsTimeTierMod",
+      "pendingLeaves": 827,
+      "candidateTopicOwner": "ADS/mobility attachment modifier and per-weapon binding"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/GRIPS/*/frostyModifiers/{weapon}/deployTimeTierShift",
+      "pendingLeaves": 827,
+      "candidateTopicOwner": "attachment modifier; resolve consumer, selector, and per-weapon variance"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/GRIPS/*/frostyModifiers/{weapon}/sprintRecoveryTierShift",
+      "pendingLeaves": 827,
+      "candidateTopicOwner": "attachment modifier; resolve consumer, selector, and per-weapon variance"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/WEAPON_ATTS/{weapon}/muzzle/*",
+      "pendingLeaves": 655,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    },
+    {
+      "siteFile": "data/weapons.json",
+      "shape": "/*/dmg/*/d",
+      "pendingLeaves": 417,
+      "candidateTopicOwner": "projectile damage"
+    },
+    {
+      "siteFile": "data/weapons.json",
+      "shape": "/*/dmg/*/r",
+      "pendingLeaves": 417,
+      "candidateTopicOwner": "projectile damage"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/WEAPON_ATTS/{weapon}/laser/*",
+      "pendingLeaves": 375,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/LASERS/*/frostyModifiers/{weapon}/hipSpreadTierMod",
+      "pendingLeaves": 373,
+      "candidateTopicOwner": "spread attachment modifier and per-weapon binding"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/LASERS/*/frostyModifiers/{weapon}/movingAdsSpreadTierMod",
+      "pendingLeaves": 373,
+      "candidateTopicOwner": "spread attachment modifier and per-weapon binding"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/BARRELS/*/adsTimeTierModByWeapon/{weapon}",
+      "pendingLeaves": 233,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/WEAPON_ATTS/{weapon}/barrel/*",
+      "pendingLeaves": 233,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/WEAPON_ATTS/{weapon}/light/*",
+      "pendingLeaves": 193,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    },
+    {
+      "siteFile": "data/weapons.json",
+      "shape": "/*/spread/adsMove/*",
+      "pendingLeaves": 126,
+      "candidateTopicOwner": "spread"
+    },
+    {
+      "siteFile": "data/weapons.json",
+      "shape": "/*/spread/adsStand/*",
+      "pendingLeaves": 126,
+      "candidateTopicOwner": "spread"
+    },
+    {
+      "siteFile": "data/weapons.json",
+      "shape": "/*/spread/hipMove/*",
+      "pendingLeaves": 126,
+      "candidateTopicOwner": "spread"
+    },
+    {
+      "siteFile": "data/weapons.json",
+      "shape": "/*/spread/hipStand/*",
+      "pendingLeaves": 126,
+      "candidateTopicOwner": "spread"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/WEAPON_ATTS/{weapon}/dependencies/*/requiresAny/*/attachment",
+      "pendingLeaves": 121,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "shape": "/WEAPON_ATTS/{weapon}/dependencies/*/requiresAny/*/slot",
+      "pendingLeaves": 121,
+      "candidateTopicOwner": "attachment availability/default selector; split current UI choice from active modifier"
+    }
+  ],
+  "coverageLimit": "Statuses are current v2 exact-row ledger outcomes. Pending means no attached per-row evidence; later topic receipts are not closure until joined."
+}

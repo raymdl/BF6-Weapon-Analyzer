@@ -1,0 +1,2029 @@
+{
+  "date": "2026-09-23",
+  "build": "1.4.3.0 release capture",
+  "archiveHead": 4892017,
+  "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+  "decoderSha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+  "scriptSha256": "b3005ebb13e3da1849aa4eb804014d9b4620720a0012e23ad7cc2ce5f7b7c73d",
+  "assets": [
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00",
+      "fileGuid": "5fe8ff19-5555-4fd3-a5c4-0177cbe8733f",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\DispersionIncrease\\GBM_NoIncrease_ERG_P00.ebx",
+      "rawSha256": "f72b06b468711162922b73a16fd824cc0954d9f6f494149f2f1a6072d5e2cdde",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\DispersionIncrease\\GBM_NoIncrease_ERG_P00.xml",
+      "xmlSha256": "fcec831edfff29c9db017c99127aae6d7ad158aefb9bf17db9f9f6c8230e093b",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 0,
+          "absoluteByteOffset": 48,
+          "data": {
+            "$class": "Class_5e5631ff",
+            "$guid": "cccd28b8-8b80-4dcd-ad9b-fa7d59b9a6c0",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00",
+            "Field_b0057325": false,
+            "Field_93dd77b9": false,
+            "Field_b574fa40": false,
+            "Field_15cae63e": false,
+            "Field_897a3f2c": false,
+            "Field_92cdfefc": false,
+            "Field_9ca063e9": true,
+            "Field_94752c29": 0,
+            "Field_7b609515": {
+              "Field_0a160c57": {
+                "Field_0084b1d1": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 0.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_bf650805": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_2ca8533e": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_f37351e6": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_1b9eef5d": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_b5ee0f41": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0f79aaed": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_4d3f0635": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_af333987": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_66d08b86": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0b26c028": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_aa558d2b": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_94efea57": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_cfd82dee": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0
+                }
+              },
+              "Field_447d6d51": {
+                "Field_0084b1d1": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 0.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_bf650805": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_2ca8533e": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_f37351e6": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_1b9eef5d": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_b5ee0f41": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0f79aaed": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_4d3f0635": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_af333987": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_66d08b86": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0b26c028": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_aa558d2b": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_94efea57": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_cfd82dee": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0
+                }
+              }
+            },
+            "Field_6b84de87": {
+              "Field_0a160c57": {
+                "Field_0084b1d1": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 0.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_bf650805": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_2ca8533e": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_f37351e6": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_1b9eef5d": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_b5ee0f41": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0f79aaed": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_4d3f0635": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_af333987": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_66d08b86": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0b26c028": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_aa558d2b": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_94efea57": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_cfd82dee": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0
+                }
+              },
+              "Field_447d6d51": {
+                "Field_0084b1d1": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 0.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_bf650805": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_2ca8533e": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_f37351e6": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_1b9eef5d": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_b5ee0f41": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0f79aaed": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_4d3f0635": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_af333987": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_66d08b86": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_0b26c028": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_aa558d2b": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_94efea57": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0.0,
+                  "Field_5695ee1c": 1.0,
+                  "Field_4692836a": 0.0,
+                  "Field_98a799ba": 1.0
+                },
+                "Field_cfd82dee": {
+                  "Field_bbffe8bc": false,
+                  "Field_bbbfe9cc": 0
+                }
+              }
+            }
+          }
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MountedVertical",
+      "fileGuid": "68c3f229-85d6-4102-9a43-477247c31069",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_MountedVertical.ebx",
+      "rawSha256": "0ad8133a7286e5aa4e1518a3f223b8efe19b63b6c431867dbfa8547f0f095d2a",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_MountedVertical.xml",
+      "xmlSha256": "b8a27e7d132177ffb0b60e968943bed81a175f1c8044a02a7d4cb9fb3e428fd5",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 0,
+          "absoluteByteOffset": 48,
+          "data": {
+            "$class": "Class_bb838ff6",
+            "$guid": "eed7e9d7-33a2-4471-aceb-8bb1fadd2b26",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MountedVertical",
+            "Field_b0057325": false,
+            "Field_93dd77b9": true,
+            "Field_b574fa40": false,
+            "Field_15cae63e": false,
+            "Field_897a3f2c": false,
+            "Field_92cdfefc": false,
+            "Field_9ca063e9": false,
+            "Field_94752c29": 0,
+            "Field_7b609515": {
+              "$layoutAmbiguous": true,
+              "Field_8bd6dcdd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": false
+              },
+              "Field_f888cb38": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_865174fa": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_02433593": {
+                "Field_4692836a": 0
+              },
+              "Field_22810b21": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_22ce7cf3": {
+                "Field_4692836a": 0
+              },
+              "Field_9546447c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ce4b3347": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_a63f14a6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_2859e2fd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b7e27231": [],
+              "Field_205e8a1c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_65700a5d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_edbd0711": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_eec30064": [],
+              "Field_1afd1bf1": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_28df1cde": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9045ba17": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_39740463": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_834a710f": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_54ba3947": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_04490b34": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1d04f0f6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_5a02dd65": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9b46e71d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b468bc2c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ddac0349": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_89e9f16e": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1e41c505": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_27f30454": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              }
+            },
+            "Field_6b84de87": {
+              "$layoutAmbiguous": true,
+              "Field_8bd6dcdd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": false
+              },
+              "Field_f888cb38": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_865174fa": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_02433593": {
+                "Field_4692836a": 0
+              },
+              "Field_22810b21": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_22ce7cf3": {
+                "Field_4692836a": 0
+              },
+              "Field_9546447c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ce4b3347": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_a63f14a6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_2859e2fd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b7e27231": [],
+              "Field_205e8a1c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_65700a5d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_edbd0711": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_eec30064": [],
+              "Field_1afd1bf1": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_28df1cde": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9045ba17": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_39740463": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_834a710f": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_54ba3947": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_04490b34": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1d04f0f6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_5a02dd65": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9b46e71d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b468bc2c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ddac0349": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_89e9f16e": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1e41c505": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_27f30454": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              }
+            }
+          }
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MountedHorizontal",
+      "fileGuid": "1fd97140-6b8e-4d7f-a055-85885e3c8551",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_MountedHorizontal.ebx",
+      "rawSha256": "c4d06bfc75f438d8a3fe2c56fda78e9f5abf321233d58fa44b42185f1a41e334",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_MountedHorizontal.xml",
+      "xmlSha256": "c35a8784aacede763ed67879aad5827d9bd95db91ad95348984e0e091a6a765c",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 0,
+          "absoluteByteOffset": 48,
+          "data": {
+            "$class": "Class_bb838ff6",
+            "$guid": "4a14cbcf-56d5-44e0-846a-c589fca45f62",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MountedHorizontal",
+            "Field_b0057325": true,
+            "Field_93dd77b9": false,
+            "Field_b574fa40": false,
+            "Field_15cae63e": false,
+            "Field_897a3f2c": false,
+            "Field_92cdfefc": false,
+            "Field_9ca063e9": false,
+            "Field_94752c29": 0,
+            "Field_7b609515": {
+              "$layoutAmbiguous": true,
+              "Field_8bd6dcdd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": false
+              },
+              "Field_f888cb38": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_865174fa": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_02433593": {
+                "Field_4692836a": 0
+              },
+              "Field_22810b21": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_22ce7cf3": {
+                "Field_4692836a": 0
+              },
+              "Field_9546447c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ce4b3347": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_a63f14a6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_2859e2fd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b7e27231": [],
+              "Field_205e8a1c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_65700a5d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_edbd0711": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_eec30064": [],
+              "Field_1afd1bf1": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_28df1cde": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9045ba17": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_39740463": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_834a710f": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_54ba3947": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_04490b34": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1d04f0f6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_5a02dd65": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9b46e71d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b468bc2c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ddac0349": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_89e9f16e": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1e41c505": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_27f30454": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              }
+            },
+            "Field_6b84de87": {
+              "$layoutAmbiguous": true,
+              "Field_8bd6dcdd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": false
+              },
+              "Field_f888cb38": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_865174fa": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_02433593": {
+                "Field_4692836a": 0
+              },
+              "Field_22810b21": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_22ce7cf3": {
+                "Field_4692836a": 0
+              },
+              "Field_9546447c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ce4b3347": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_a63f14a6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_2859e2fd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b7e27231": [],
+              "Field_205e8a1c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_65700a5d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_edbd0711": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_eec30064": [],
+              "Field_1afd1bf1": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_28df1cde": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9045ba17": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_39740463": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_834a710f": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_54ba3947": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_04490b34": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1d04f0f6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_5a02dd65": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9b46e71d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b468bc2c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ddac0349": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_89e9f16e": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1e41c505": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_27f30454": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              }
+            }
+          }
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/Bipod/GRM_BipodDeployed_BTM_P50",
+      "fileGuid": "31ee266f-eb2d-4cc6-8d85-06cea1540f44",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Bipod\\GRM_BipodDeployed_BTM_P50.ebx",
+      "rawSha256": "a3b86c301d13bd71d0b32c4b1e7553233229755a4e4417147eb01da92fb88a78",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Bipod\\GRM_BipodDeployed_BTM_P50.xml",
+      "xmlSha256": "dad773e9d9bc1ee7fadee0cfbfe1bf23a8d48588d1a335722f4231518b56f27a",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 0,
+          "absoluteByteOffset": 48,
+          "data": {
+            "$class": "Class_bb838ff6",
+            "$guid": "fd96b3ba-41ff-43dc-a05b-475a893d9376",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Bipod/GRM_BipodDeployed_BTM_P50",
+            "Field_b0057325": false,
+            "Field_93dd77b9": false,
+            "Field_b574fa40": true,
+            "Field_15cae63e": false,
+            "Field_897a3f2c": false,
+            "Field_92cdfefc": false,
+            "Field_9ca063e9": false,
+            "Field_94752c29": 0,
+            "Field_7b609515": {
+              "$layoutAmbiguous": true,
+              "Field_8bd6dcdd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": false
+              },
+              "Field_f888cb38": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_865174fa": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_02433593": {
+                "Field_4692836a": -4
+              },
+              "Field_22810b21": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_22ce7cf3": {
+                "Field_4692836a": 10
+              },
+              "Field_9546447c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ce4b3347": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_a63f14a6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_2859e2fd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b7e27231": [],
+              "Field_205e8a1c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_65700a5d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_edbd0711": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_eec30064": [],
+              "Field_1afd1bf1": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_28df1cde": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9045ba17": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_39740463": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_834a710f": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_54ba3947": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_04490b34": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1d04f0f6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_5a02dd65": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9b46e71d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b468bc2c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ddac0349": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_89e9f16e": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1e41c505": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_27f30454": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              }
+            },
+            "Field_6b84de87": {
+              "$layoutAmbiguous": true,
+              "Field_8bd6dcdd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": false
+              },
+              "Field_f888cb38": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_865174fa": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_02433593": {
+                "Field_4692836a": -4
+              },
+              "Field_22810b21": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_22ce7cf3": {
+                "Field_4692836a": 10
+              },
+              "Field_9546447c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ce4b3347": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_a63f14a6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_2859e2fd": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b7e27231": [],
+              "Field_205e8a1c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_65700a5d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_edbd0711": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_eec30064": [],
+              "Field_1afd1bf1": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_28df1cde": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9045ba17": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_39740463": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_834a710f": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_54ba3947": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_04490b34": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1d04f0f6": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_5a02dd65": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_9b46e71d": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_b468bc2c": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_ddac0349": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_89e9f16e": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_1e41c505": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              },
+              "Field_27f30454": {
+                "Field_bbffe8bc": false,
+                "Field_bbbfe9cc": 0.0,
+                "Field_5695ee1c": 1.0,
+                "Field_4692836a": 0.0,
+                "Field_98a799ba": 1.0
+              }
+            }
+          }
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSReload/WM_MountedHorizontal_ADSReload",
+      "fileGuid": "61b851d5-3d6a-4c69-99ac-50715fdf839a",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSReload\\WM_MountedHorizontal_ADSReload.ebx",
+      "rawSha256": "cd82ed8550109b9258ba7b56232bbefb006e02fc9102e434817b2877ba0ef11c",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSReload\\WM_MountedHorizontal_ADSReload.xml",
+      "xmlSha256": "0723660a32c569abdbec613cad89306e520c01d96568fc708740d09959b4e3c4",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 0,
+          "absoluteByteOffset": 48,
+          "data": {
+            "$class": "Class_b2468102",
+            "$guid": "4f16d3eb-7262-4972-a535-ddf7fb747abf",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/ADSReload/WM_MountedHorizontal_ADSReload",
+            "Field_50f33881": {
+              "$ref": 2
+            }
+          }
+        },
+        {
+          "objectIndex": 1,
+          "absoluteByteOffset": 104,
+          "data": {
+            "$class": "Class_5872ef92",
+            "$guid": "6860f29e-5c52-48ad-8b8c-4c9994ab2a8d",
+            "Field_3f680d24": 11,
+            "Field_9ca063e9": true,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_db669b42": true,
+            "Field_85d40b98": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "objectIndex": 2,
+          "absoluteByteOffset": 184,
+          "data": {
+            "$class": "Class_897c99a7",
+            "$guid": "9308aaca-2800-446e-bd2c-f53be1d98ef1",
+            "Field_819acc98": [
+              "c9d17854-c639-4652-80c2-6975eef5a432"
+            ],
+            "Field_9690d604": [
+              {
+                "$ref": 1
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSReload/WM_MountedVertical_ADSReload",
+      "fileGuid": "0885105e-9a32-42c0-9660-3dcf5d98192a",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSReload\\WM_MountedVertical_ADSReload.ebx",
+      "rawSha256": "3fb98ac902b7762191e30e3c8188ffb6975f879cb70e4adc044acb7635f1bac2",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSReload\\WM_MountedVertical_ADSReload.xml",
+      "xmlSha256": "a4bd26d3660d4e24a30fa628899a37367dde508aa918260d1c5bd6314265b6fe",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 0,
+          "absoluteByteOffset": 48,
+          "data": {
+            "$class": "Class_b2468102",
+            "$guid": "6af8c805-66ab-4fb6-9d94-3ea84108dc6d",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/ADSReload/WM_MountedVertical_ADSReload",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "objectIndex": 1,
+          "absoluteByteOffset": 104,
+          "data": {
+            "$class": "Class_897c99a7",
+            "$guid": "ee26fb2f-2a8c-40fb-87e8-ebf052e9f7a8",
+            "Field_819acc98": [
+              "d37fbd7e-0624-4cbf-a842-0363de40a560"
+            ],
+            "Field_9690d604": [
+              {
+                "$ref": 2
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "objectIndex": 2,
+          "absoluteByteOffset": 168,
+          "data": {
+            "$class": "Class_5872ef92",
+            "$guid": "417d3e73-0b5e-40aa-b3e5-59204910d7cc",
+            "Field_3f680d24": 12,
+            "Field_9ca063e9": true,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_db669b42": true,
+            "Field_85d40b98": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSReload/WME_ADSReload_P10",
+      "fileGuid": "60ac5b4d-df97-47bb-96d0-75b3b9e78508",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSReload\\WME_ADSReload_P10.ebx",
+      "rawSha256": "352f3f4c50f9ad0d73c72bcdb10b2d5cb925465bf21e311246af78486fc37451",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\ADSReload\\WME_ADSReload_P10.xml",
+      "xmlSha256": "af82318573a1019826768660197fac1345f8b3b920112fdc7913cbd1c68d7892",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 0,
+          "absoluteByteOffset": 48,
+          "data": {
+            "$class": "Class_b2468102",
+            "$guid": "f15d1929-d05f-4614-ba33-6e54aaa09d38",
+            "Field_0c59fa06": "Common/Hardware/weapons/_WeaponModifiers/ADSReload/WME_ADSReload_P10",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "objectIndex": 1,
+          "absoluteByteOffset": 104,
+          "data": {
+            "$class": "Class_5872ef92",
+            "$guid": "98bb62c9-2f0d-42d8-b68d-be7c142d2bad",
+            "Field_3f680d24": 13,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_db669b42": true,
+            "Field_85d40b98": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ],
+      "bindings": []
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/M4A1/GS_M4A1",
+      "fileGuid": "2b73fa37-541a-4359-945b-a1e57620441e",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\GS_M4A1.ebx",
+      "rawSha256": "12d448446554821b223d9341701cc17641c705459e261fa5aedeee6c98c52674",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\GS_M4A1.xml",
+      "xmlSha256": "574a2bcb74945d79e5cc8464d690ca9d8ab68c17b74e5562487cf01f01a268e8",
+      "unresolvedTypes": [],
+      "selectedObjects": [],
+      "bindings": [
+        {
+          "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+          "objectClass": "Class_539cff9b",
+          "fieldPath": "Field_ee32ca16/member[1]",
+          "xml": "<member Index=\"1\">\n        <Struct_17c17f47>\n          <Field_2f0e5b83>[Ebx] Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00 [cccd28b8-8b80-4dcd-ad9b-fa7d59b9a6c0]</Field_2f0e5b83>\n          <Field_6d011165>15cff9ff-aab0-4230-9a53-5a2bb1606587</Field_6d011165>\n          <Field_3f680d24>0x00000003</Field_3f680d24>\n        </Struct_17c17f47>\n          </member>\n      "
+        },
+        {
+          "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+          "objectClass": "Class_539cff9b",
+          "fieldPath": "Field_2296f84f/member[0]",
+          "xml": "<member Index=\"0\">\n        <Struct_3e61171a>\n          <Field_2f0e5b83>[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Bipod/GRM_BipodDeployed_BTM_P50 [fd96b3ba-41ff-43dc-a05b-475a893d9376]</Field_2f0e5b83>\n          <Field_6d011165>a5578cf4-546c-44ef-9a79-b84021406c17</Field_6d011165>\n          <Field_3f680d24>0x00000001</Field_3f680d24>\n        </Struct_3e61171a>\n          </member>\n      "
+        },
+        {
+          "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+          "objectClass": "Class_539cff9b",
+          "fieldPath": "Field_2296f84f/member[38]",
+          "xml": "<member Index=\"38\">\n        <Struct_3e61171a>\n          <Field_2f0e5b83>[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MountedHorizontal [4a14cbcf-56d5-44e0-846a-c589fca45f62]</Field_2f0e5b83>\n          <Field_6d011165>f65516f2-1c1b-4795-9616-b2bde463fe95</Field_6d011165>\n          <Field_3f680d24>0x000003e8</Field_3f680d24>\n        </Struct_3e61171a>\n          </member>\n      "
+        },
+        {
+          "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+          "objectClass": "Class_539cff9b",
+          "fieldPath": "Field_2296f84f/member[39]",
+          "xml": "<member Index=\"39\">\n        <Struct_3e61171a>\n          <Field_2f0e5b83>[Ebx] Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MountedVertical [eed7e9d7-33a2-4471-aceb-8bb1fadd2b26]</Field_2f0e5b83>\n          <Field_6d011165>f65516f2-1c1b-4795-9616-b2bde463fe95</Field_6d011165>\n          <Field_3f680d24>0x000003e9</Field_3f680d24>\n        </Struct_3e61171a>\n          </member>\n      "
+        },
+        {
+          "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+          "objectClass": "Class_539cff9b",
+          "fieldPath": "Field_2296f84f/member[40]",
+          "xml": "<member Index=\"40\">\n        <Struct_3e61171a>\n          <Field_2f0e5b83>[Ebx] Common/Gameplay/InRoundProgression/MountedPlus/GRM_MountedPlusHorizontal [894143ff-3af1-4acf-ad3d-a21ab17d2293]</Field_2f0e5b83>\n          <Field_6d011165>b9e5e8e5-1d51-45ec-99d2-2b77b0144dfc</Field_6d011165>\n          <Field_3f680d24>0x000003ea</Field_3f680d24>\n        </Struct_3e61171a>\n          </member>\n      "
+        },
+        {
+          "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+          "objectClass": "Class_539cff9b",
+          "fieldPath": "Field_2296f84f/member[41]",
+          "xml": "<member Index=\"41\">\n        <Struct_3e61171a>\n          <Field_2f0e5b83>[Ebx] Common/Gameplay/InRoundProgression/MountedPlus/GRM_MountedPlusVertical [c004d275-e1c4-4079-a1ee-ffe0bd7eec69]</Field_2f0e5b83>\n          <Field_6d011165>b9e5e8e5-1d51-45ec-99d2-2b77b0144dfc</Field_6d011165>\n          <Field_3f680d24>0x000003eb</Field_3f680d24>\n        </Struct_3e61171a>\n          </member>\n  "
+        }
+      ]
+    },
+    {
+      "path": "Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB",
+      "fileGuid": "8ffbc2c5-12a3-43f9-9e3d-8582e49e8c34",
+      "rawFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\M4A1_WB.ebx",
+      "rawSha256": "622dff6f877e798cd5d38a6bb5cf09b0b19a44dfaf81b2d43a270b1c1b7e1ac9",
+      "xmlFile": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\M4A1_WB.xml",
+      "xmlSha256": "a0fff4a3b5f7d69d7d7ec11cb347b8e2a079ca0977d00c8edf77b672eebbf5c9",
+      "unresolvedTypes": [],
+      "selectedObjects": [
+        {
+          "objectIndex": 28,
+          "absoluteByteOffset": 6544,
+          "data": {
+            "$class": "Class_e30e403c",
+            "$guid": null,
+            "Field_6d011165": "d37fbd7e-0624-4cbf-a842-0363de40a560",
+            "Field_b0057325": false,
+            "Field_93dd77b9": true,
+            "Field_b574fa40": false
+          }
+        },
+        {
+          "objectIndex": 29,
+          "absoluteByteOffset": 6592,
+          "data": {
+            "$class": "Class_e30e403c",
+            "$guid": null,
+            "Field_6d011165": "f6bad488-a353-47f9-8c67-81f6cf7b625f",
+            "Field_b0057325": false,
+            "Field_93dd77b9": false,
+            "Field_b574fa40": true
+          }
+        },
+        {
+          "objectIndex": 30,
+          "absoluteByteOffset": 6640,
+          "data": {
+            "$class": "Class_e30e403c",
+            "$guid": null,
+            "Field_6d011165": "c9d17854-c639-4652-80c2-6975eef5a432",
+            "Field_b0057325": true,
+            "Field_93dd77b9": false,
+            "Field_b574fa40": false
+          }
+        },
+        {
+          "objectIndex": 32,
+          "absoluteByteOffset": 6728,
+          "data": {
+            "$class": "Class_10713bed",
+            "$guid": null,
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_238b47d7": {
+              "$ref": 56
+            },
+            "Field_0baa9c2a": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "objectIndex": 35,
+          "absoluteByteOffset": 6912,
+          "data": {
+            "$class": "Class_9dfbb158",
+            "$guid": null,
+            "Field_6d011165": "15cff9ff-aab0-4230-9a53-5a2bb1606587",
+            "Field_1c85cbb1": 1
+          }
+        },
+        {
+          "objectIndex": 56,
+          "absoluteByteOffset": 8056,
+          "data": {
+            "$class": "Class_1e5eeaaa",
+            "$guid": null,
+            "Field_62af22f7": false,
+            "Field_4287ef66": [
+              {
+                "$ref": 35
+              },
+              {
+                "$ref": 29
+              },
+              {
+                "$ref": 30
+              },
+              {
+                "$ref": 28
+              }
+            ]
+          }
+        }
+      ],
+      "bindings": [
+        {
+          "objectIndex": 12,
+          "objectClass": "Class_542ac52c",
+          "fieldPath": "Field_0cd9f20f",
+          "members": {
+            "109": {
+              "$import": {
+                "fileGuid": "61b851d5-3d6a-4c69-99ac-50715fdf839a",
+                "classGuid": "9308aaca-2800-446e-bd2c-f53be1d98ef1"
+              }
+            },
+            "110": {
+              "$import": {
+                "fileGuid": "0885105e-9a32-42c0-9660-3dcf5d98192a",
+                "classGuid": "ee26fb2f-2a8c-40fb-87e8-ebf052e9f7a8"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "reproduce": "python scripts/frosty-deployed-review.py --datamining \"../BF6 Datamining\" --out <new-report.json>",
+  "review": {
+    "status": "source references and operands; native state composition unresolved",
+    "supersedes": [
+      "reference-data/provenance/frosty-weapon-states-2026-09-23.json",
+      "reference-data/provenance/frosty-weapon-states-detail-2026-09-23.json"
+    ],
+    "corrections": [
+      "WB mounted ADS reload packages are in Field_0cd9f20f, not Field_954bae40.",
+      "ADSReload Field_3f680d24 values11,12,13 are preserved as raw values, not identified operation codes; the maintained general field map calls this Priority.",
+      "IncreasePerShot is Field_0084b1d1; Field_5695ee1c is its multiplier operand, not the target name.",
+      "15cff9ff is on Class_9dfbb158 with mask1, within a group that also holds bipod/mounted conditions. The older deployed-only activation interpretation is not proved.",
+      "The initial idle-index interpretation is withdrawn; the detail report correctly records Field_42c8b257=1 for both GRX children. No target table identified."
+    ],
+    "configuration": [
+      "GBM_NoIncrease_ERG_P00 holds IncreasePerShot multiplier0 for both aim and movement states.",
+      "GRM_BipodDeployed_BTM_P50 holds amount exponent tier+10 and direction-variation exponent tier-4 for both aim states; configured eligibility and native stacking still require validation.",
+      "The inspected mounted recoil assets have identity scalar operands and zero tier deltas; different top-level condition flags do not prove a numerical recoil reduction.",
+      "Mounted ADSReload packages have state selector GUIDs and boolean fields, not a source duration or speed multiplier."
+    ],
+    "limits": [
+      "Non-exported objects have null raw GUIDs; use object index and byte offset, not synthetic XML GUIDs as global identity.",
+      "Keep all decoder layout warnings. Standard MP weapon-source relevance does not establish every mode/state is enabled.",
+      "This is one complete representative source chain, not a per-weapon eligibility audit or engine execution trace."
+    ]
+  }
+}

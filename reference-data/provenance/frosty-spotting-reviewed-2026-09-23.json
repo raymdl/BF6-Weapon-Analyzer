@@ -1,0 +1,2599 @@
+{
+  "date": "2026-09-23",
+  "decoderSha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+  "scriptSha256": "9322568aad7e1fec264fa4947abf466a657890c26ef5e8dd1f13265db04069c7",
+  "assets": [
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Spotting\\WME_SpotRange_2D3D_P25.ebx",
+      "rawSha256": "6fb70ff3f176761efcfad6c8ccb5fd6e40eeeb98cbc607881cb34a94528597f8",
+      "fileGuid": "c248832f-64f5-4694-85ee-27a04c0d5b21",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "5b21d9db-fe75-4c20-b708-6cd100046fa1",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_2D3D_P25",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_0045e7fa",
+            "$guid": "735a6178-7c1d-473e-807e-3fa2d96fc2bf",
+            "Field_3f680d24": 9000,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_d98b0371": 0.14,
+            "Field_6f8d5f40": 0.0,
+            "Field_13a5410b": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Spotting\\WME_SpotRange_2D3D_P25_SP.ebx",
+      "rawSha256": "615b027a2662d03268791732fd0df85db814e128439e32758941464887530dfa",
+      "fileGuid": "84796886-6ede-4cee-8e6e-4f897da867b5",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "8cd62dfc-8c12-4be6-8756-e17ad3d30f7f",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_2D3D_P25_SP",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_0045e7fa",
+            "$guid": "96f5627d-2600-44a5-8e16-1f25c1c9e0ed",
+            "Field_3f680d24": 9001,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_d98b0371": 0.1,
+            "Field_6f8d5f40": 0.0,
+            "Field_13a5410b": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Spotting\\WME_SpotRange_2D3D_VSSM_P35.ebx",
+      "rawSha256": "29cf22a003c6386dd8b60703d0321e31bff385b0a9d3fc4da30760c60e08a1f9",
+      "fileGuid": "d8595907-afbe-4adf-b0ca-32af118b7d08",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "3d9bc02b-e5b5-4c96-9643-e933bd23c25e",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_2D3D_VSSM_P35",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_0045e7fa",
+            "$guid": "6937f2b0-c304-442d-8d04-625f3502bbf8",
+            "Field_3f680d24": 9000,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_d98b0371": 0.06,
+            "Field_6f8d5f40": 0.0,
+            "Field_13a5410b": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Spotting\\WME_SpotRange_2D_P10.ebx",
+      "rawSha256": "0929a67b7dc934c300bef01444e8bc0a52128f8c4f65b1f0c793a17fc09f078b",
+      "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "2e1bba25-342b-4492-9588-258239f7b7d9",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_2D_P10",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_0045e7fa",
+            "$guid": "69f14364-de2a-4c3f-84b0-757f9decf8cc",
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_d98b0371": 0.428571,
+            "Field_6f8d5f40": 1.0,
+            "Field_13a5410b": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Spotting\\WME_SpotRange_3D_P05.ebx",
+      "rawSha256": "1cf3d6cccffe53d806093aaac2b34c916725f52d035a732becaae990216a1258",
+      "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "ddad879f-2222-466c-ab7c-8c2bacb3f374",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_3D_P05",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_0045e7fa",
+            "$guid": "a7aa5897-0769-4a2e-91be-af9237540cb6",
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_d98b0371": 1.0,
+            "Field_6f8d5f40": 0.5,
+            "Field_13a5410b": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Spotting\\WME_SpotRange_3D_P10.ebx",
+      "rawSha256": "48386f40633e2fa7533b697366b422fb35ca995608789ca5b2d5ff5cc50091db",
+      "fileGuid": "38b2c548-2be0-4e3d-8992-fc7b6f433f71",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "3e29d090-a9e8-44ef-a01c-368ae9f50486",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/Spotting/WME_SpotRange_3D_P10",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_0045e7fa",
+            "$guid": "e19ef85c-cb0b-4e38-9dbe-914268084614",
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_d98b0371": 1.0,
+            "Field_6f8d5f40": 0.0,
+            "Field_13a5410b": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_Subsonic_W10.ebx",
+      "rawSha256": "2e8bfd97c3c4c18e4278bd50a3ae057df64d159a324745ac94e7bac0fe66c36f",
+      "fileGuid": "5491aa8d-f8f0-426f-861b-70719e18e649",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "134dd7d6-d74c-46b6-9368-b566432c6c02",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W10",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "6c79c272-4a8c-44d1-991c-910197ad5297",
+            "Field_819acc98": [
+              "bccda280-ecc4-46d4-8c1b-a3c13e90ce97"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "e4837d73-bc02-4bbb-8bfe-c4017a9412b0",
+                  "classGuid": "11013f68-f803-42ff-87a3-7f4ddae3d9b9"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_Subsonic_W15.ebx",
+      "rawSha256": "3d827d89faecbddab8d721a760329680822b5275c79976f8e1d02f11d3b417db",
+      "fileGuid": "9a00d872-3625-4272-a6f0-a21fa4dde738",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "55a63e27-4dbd-4270-9cb4-ee3c9b112347",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "95bdfa17-85ff-4423-8dbb-7d12f651673b",
+            "Field_819acc98": [
+              "bccda280-ecc4-46d4-8c1b-a3c13e90ce97"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "4410125f-7f80-451d-932f-3abbe2a9a735",
+                  "classGuid": "2592d4c4-13c5-45b6-a880-4298b759b4e5"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_Subsonic_W15_HK417.ebx",
+      "rawSha256": "268adcf7624c0035268b92c4b2d03166d7f9d3fa82ee056c54ddd1571e2765f2",
+      "fileGuid": "1c3a7502-a924-4b14-8fef-6f2ea53cc359",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "de9f7bde-c7e7-4a28-922c-2df41c0c650b",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15_HK417",
+            "Field_50f33881": {
+              "$ref": 2
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 112,
+          "decoded": {
+            "$class": "Class_3e93759b",
+            "$guid": "b03da70d-620e-4ca9-8089-04f54c4e4950",
+            "$layoutAmbiguous": true,
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_5c0f6e1d": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f7575939": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f8e9b929": false,
+            "Field_ae8f3c99": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dc12800": false,
+            "Field_d7e3da82": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_0bf4f62b": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dcef541": -1.0,
+            "Field_2fd1661f": -1.0,
+            "Field_6a5c4efd": 0.48857,
+            "Field_1da7e9ad": 1.0,
+            "Field_661b879d": -1.0,
+            "Field_802096b2": 0.0,
+            "Field_451469bc": 1.0,
+            "Field_ebfc467b": {
+              "Field_6b28f68f": null
+            },
+            "Field_44a55c22": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 352,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "2322a3da-d267-4caa-8f80-68b8f95040ad",
+            "Field_819acc98": [
+              "bccda280-ecc4-46d4-8c1b-a3c13e90ce97"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$ref": 1
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_Subsonic_W15_Slower.ebx",
+      "rawSha256": "6f7c03933f415396ef25434acebc2da289bd881fea08f0d16d50967c9c3de525",
+      "fileGuid": "f2a3f252-fb28-43f6-be0c-dccd2821a359",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "03703cb6-89f3-44b9-98ca-40ab85cf313c",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15_Slower",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "d7f5fdec-58fe-4132-a245-d34a1bbf31e8",
+            "Field_819acc98": [
+              "bccda280-ecc4-46d4-8c1b-a3c13e90ce97"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "59c96afe-cec8-4778-9e42-1000b750850e",
+                  "classGuid": "e1b42947-1ebb-489e-b1af-1c4ec556916a"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicFRNG_W20.ebx",
+      "rawSha256": "15334779a4319acdddf6c2c015385a530b47f6ca948834dc5bbe24746276ced6",
+      "fileGuid": "86490211-42f4-42bd-af05-3de0eccb90af",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "2e9b8ed0-eac9-4837-b863-d31ac11cda5b",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W20",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "d7a10998-df39-4bee-aa29-612bc6568394",
+            "Field_819acc98": [
+              "d7649699-a002-458f-aa94-a371de94d5df"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "e4837d73-bc02-4bbb-8bfe-c4017a9412b0",
+                  "classGuid": "11013f68-f803-42ff-87a3-7f4ddae3d9b9"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "1e048fae-fc79-4742-a473-f96ef08490f4",
+                  "classGuid": "99c0badd-e20b-47a3-9560-0970b8b8e48a"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicFRNG_W25.ebx",
+      "rawSha256": "acebb585839d2778030ad39b759509eb254aa938825eb26d6d27a7fd3913dad7",
+      "fileGuid": "1e2013fc-c0b1-4b07-8520-a8bedd912b9b",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "b4c8c1ee-0eda-4696-bf3b-b83376ced396",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "122b06ef-252e-4742-b479-22c882b1b0e2",
+            "Field_819acc98": [
+              "d7649699-a002-458f-aa94-a371de94d5df"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "4410125f-7f80-451d-932f-3abbe2a9a735",
+                  "classGuid": "2592d4c4-13c5-45b6-a880-4298b759b4e5"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "1e048fae-fc79-4742-a473-f96ef08490f4",
+                  "classGuid": "99c0badd-e20b-47a3-9560-0970b8b8e48a"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicFRNG_W25_HK417.ebx",
+      "rawSha256": "cb3b42042cf106b22dad984d8ceb74c6ac0285937c102589bff9924a6867e2da",
+      "fileGuid": "383daac2-3d6a-4fdd-b49a-7724e46a23f3",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "fc20f8a3-6404-4463-967b-b1b69c58f552",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25_HK417",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "e7ae9ab3-d36a-4c18-bd49-2952ac5737d4",
+            "Field_819acc98": [
+              "d7649699-a002-458f-aa94-a371de94d5df"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$ref": 2
+              },
+              {
+                "$import": {
+                  "fileGuid": "1e048fae-fc79-4742-a473-f96ef08490f4",
+                  "classGuid": "99c0badd-e20b-47a3-9560-0970b8b8e48a"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 176,
+          "decoded": {
+            "$class": "Class_3e93759b",
+            "$guid": "436fa5e3-1cc3-48da-adb4-572def24a632",
+            "$layoutAmbiguous": true,
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_5c0f6e1d": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f7575939": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f8e9b929": false,
+            "Field_ae8f3c99": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dc12800": false,
+            "Field_d7e3da82": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_0bf4f62b": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dcef541": -1.0,
+            "Field_2fd1661f": -1.0,
+            "Field_6a5c4efd": 0.48857,
+            "Field_1da7e9ad": 1.0,
+            "Field_661b879d": -1.0,
+            "Field_802096b2": 0.0,
+            "Field_451469bc": 1.0,
+            "Field_ebfc467b": {
+              "Field_6b28f68f": null
+            },
+            "Field_44a55c22": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicFRNG_W25_Slower.ebx",
+      "rawSha256": "df08794fc4c1f91d9da3f9c4925ac6fd1c34659cafed357c65d24500b2431697",
+      "fileGuid": "80994994-77c4-4629-a6b2-498959459a2b",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "2175dbba-ce37-419d-8009-52ec2f8bac6c",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25_Slower",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "f6d64099-fb16-4bf1-9b7b-ae37433b4187",
+            "Field_819acc98": [
+              "d7649699-a002-458f-aa94-a371de94d5df"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "59c96afe-cec8-4778-9e42-1000b750850e",
+                  "classGuid": "e1b42947-1ebb-489e-b1af-1c4ec556916a"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "1e048fae-fc79-4742-a473-f96ef08490f4",
+                  "classGuid": "99c0badd-e20b-47a3-9560-0970b8b8e48a"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicJHP_W30.ebx",
+      "rawSha256": "712e7a783d69f7d6ec29a30b172905bae58ab49ca8d50f0f01bba026fd945cc3",
+      "fileGuid": "73e33838-23f0-4c37-8812-d8f32320e326",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "75a305a5-d652-4110-8b1e-9cf7e7febe9b",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W30",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "a8e8cc74-d7ad-4f96-a076-85d9ec3c6360",
+            "Field_819acc98": [
+              "5647365d-4475-4343-82d0-2a83e0718c75"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "e4837d73-bc02-4bbb-8bfe-c4017a9412b0",
+                  "classGuid": "11013f68-f803-42ff-87a3-7f4ddae3d9b9"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "a9cf867f-bb78-4913-81f0-82a18995dba5",
+                  "classGuid": "4f2d7706-4fbf-4585-b5bf-3e5caf08f311"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicJHP_W35.ebx",
+      "rawSha256": "f77252eb1fbfd9587a106abc1e6d801fd63a1f8c2f6dcaabadd8a4c1c47cbb0e",
+      "fileGuid": "5e7c7713-df03-4d88-b27e-dbcf9ac230e7",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "0eb17996-92d1-435b-90bc-354fa20619ab",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "cead9da5-f1f3-4e79-8b32-eb8a48394d82",
+            "Field_819acc98": [
+              "5647365d-4475-4343-82d0-2a83e0718c75"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "4410125f-7f80-451d-932f-3abbe2a9a735",
+                  "classGuid": "2592d4c4-13c5-45b6-a880-4298b759b4e5"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "a9cf867f-bb78-4913-81f0-82a18995dba5",
+                  "classGuid": "4f2d7706-4fbf-4585-b5bf-3e5caf08f311"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicJHP_W35_HK417.ebx",
+      "rawSha256": "795df0e91c4a0ad0f25643988152490b71448ea8e25e412f6956194bf0613fcb",
+      "fileGuid": "f6f9deb8-3e26-4581-b5e7-f39975190549",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "6e860c55-d38b-4344-a958-ccba2b53dd37",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35_HK417",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "94b80995-9f73-40e9-b1b7-245ed206cced",
+            "Field_819acc98": [
+              "5647365d-4475-4343-82d0-2a83e0718c75"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$ref": 2
+              },
+              {
+                "$import": {
+                  "fileGuid": "a9cf867f-bb78-4913-81f0-82a18995dba5",
+                  "classGuid": "4f2d7706-4fbf-4585-b5bf-3e5caf08f311"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 176,
+          "decoded": {
+            "$class": "Class_3e93759b",
+            "$guid": "aef9ffad-2984-438e-b558-240b7f5e0631",
+            "$layoutAmbiguous": true,
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_5c0f6e1d": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f7575939": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f8e9b929": false,
+            "Field_ae8f3c99": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dc12800": false,
+            "Field_d7e3da82": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_0bf4f62b": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dcef541": -1.0,
+            "Field_2fd1661f": -1.0,
+            "Field_6a5c4efd": 0.48857,
+            "Field_1da7e9ad": 1.0,
+            "Field_661b879d": -1.0,
+            "Field_802096b2": 0.0,
+            "Field_451469bc": 1.0,
+            "Field_ebfc467b": {
+              "Field_6b28f68f": null
+            },
+            "Field_44a55c22": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicJHP_W35_Slower.ebx",
+      "rawSha256": "9539973f96432c2a3746f7ca5113deee241f46c437cf7d511a7ac2f92f46e800",
+      "fileGuid": "a60b537d-c293-4639-a074-e3f0029faf60",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "4d47352f-62d5-432d-b4af-ce9a6c3794a8",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35_Slower",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "05362c72-a208-489e-ad93-78c747ae45d1",
+            "Field_819acc98": [
+              "5647365d-4475-4343-82d0-2a83e0718c75"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "59c96afe-cec8-4778-9e42-1000b750850e",
+                  "classGuid": "e1b42947-1ebb-489e-b1af-1c4ec556916a"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "a9cf867f-bb78-4913-81f0-82a18995dba5",
+                  "classGuid": "4f2d7706-4fbf-4585-b5bf-3e5caf08f311"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ammo\\Subsonic\\WPM_AMO_SubsonicPenetration_W10.ebx",
+      "rawSha256": "cea32c20bf1a68cee5f92c969a3e6308d4d564fc0a6486e1de12fa1bf5631b55",
+      "fileGuid": "336f0695-940c-4d00-b154-4390e9f3bd9b",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "d1d29a54-0bfa-48d4-804f-5aa0dec2f70d",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicPenetration_W10",
+            "Field_50f33881": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "9425f609-2bd6-4fe9-a995-482d7d2fa74d",
+            "Field_819acc98": [
+              "bccda280-ecc4-46d4-8c1b-a3c13e90ce97"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+                  "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+                  "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+                }
+              },
+              {
+                "$ref": 3
+              },
+              {
+                "$ref": 2
+              },
+              {
+                "$import": {
+                  "fileGuid": "d7cddc45-624c-46e0-babf-2381a0fb3daa",
+                  "classGuid": "8df51fca-655e-481f-8359-fe6346cba982"
+                }
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 168,
+          "decoded": {
+            "$class": "Class_d11a23a2",
+            "$guid": "cad00da8-54ec-4ef6-b3a0-efd10f0dca7e",
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_fbfacac9": 1,
+            "Field_f914e669": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "index": 3,
+          "absoluteByteOffset": 256,
+          "decoded": {
+            "$class": "Class_3e93759b",
+            "$guid": "f74b29f2-cbb5-4ce5-94ca-b0e3a4c36bcb",
+            "$layoutAmbiguous": true,
+            "Field_3f680d24": -1,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_5c0f6e1d": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f7575939": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_f8e9b929": false,
+            "Field_ae8f3c99": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dc12800": false,
+            "Field_d7e3da82": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_0bf4f62b": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_8dcef541": -1.0,
+            "Field_2fd1661f": -1.0,
+            "Field_6a5c4efd": 0.593,
+            "Field_1da7e9ad": 1.0,
+            "Field_661b879d": -1.0,
+            "Field_802096b2": 0.0,
+            "Field_451469bc": 1.0,
+            "Field_ebfc467b": {
+              "Field_6b28f68f": null
+            },
+            "Field_44a55c22": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Muzzle\\Suppressor\\SP_WPM_MZL_ImprvdSuppressor01_W30.ebx",
+      "rawSha256": "1a909c0c8e3fc9bec05860ed244727a4b25fccfb15a0c508ebd30835dd66f531",
+      "fileGuid": "fea1b671-520b-4c59-b974-ef02a3cbecfc",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "2dc92bec-b028-47be-b921-2df6a327209a",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/SP_WPM_MZL_ImprvdSuppressor01_W30",
+            "Field_50f33881": {
+              "$ref": 3
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_e724fd60",
+            "$guid": "c9e24d59-bc8f-40b5-900f-f8ca563d2a52",
+            "Field_8cf424e7": 1.0,
+            "Field_7d88ccda": {
+              "$import": {
+                "fileGuid": "6b1c494b-b766-11ed-86ad-f8ccc2b3c331",
+                "classGuid": "0261493b-a718-3279-acf0-e63db118603e"
+              }
+            },
+            "Field_c124c7d8": 1453355331
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 160,
+          "decoded": {
+            "$class": "Class_96bab3b8",
+            "$guid": "ac8f4c69-1104-4586-96e3-7da5f99478ba",
+            "Field_3f680d24": 9001,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_ec30e918": [
+              {
+                "$ref": 1
+              }
+            ],
+            "Field_c9c033be": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "index": 3,
+          "absoluteByteOffset": 240,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "37ab17c0-1c0d-489c-822d-dc2faa9bdfd0",
+            "Field_819acc98": [
+              "1ebabe52-91e9-41f0-a59b-4623694efeda",
+              "c90ae37f-4a1f-4994-b4a7-b759bf10cbf1"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "081f2a51-aa36-4e5a-82e9-11219a4cd064",
+                  "classGuid": "dc84f9cc-c09c-4d1d-81f0-5682daf82461"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "817e437a-b2a0-473a-a381-d9c55acd0103",
+                  "classGuid": "d96be899-5d86-4aeb-9bd0-733033f78cb9"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "84796886-6ede-4cee-8e6e-4f897da867b5",
+                  "classGuid": "96f5627d-2600-44a5-8e16-1f25c1c9e0ed"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "9b4a37eb-8aec-43b4-b4bc-ae0a6678bc51",
+                  "classGuid": "585c98c7-fa2d-4096-a43d-54267b1b1587"
+                }
+              },
+              {
+                "$ref": 2
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Muzzle\\Suppressor\\SP_WPM_MZL_ImprvdSuppressor02_W30.ebx",
+      "rawSha256": "6c48c1c0dae2ba66a715e7eaa25b5a19ef348ad870f6c0543aa62f887309d8f9",
+      "fileGuid": "83267009-a423-4ddd-8b52-773fd3a6a036",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_b2468102",
+            "$guid": "09e48767-567f-4368-a0e8-b3bf6f26ee71",
+            "Field_0c59fa06": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/SP_WPM_MZL_ImprvdSuppressor02_W30",
+            "Field_50f33881": {
+              "$ref": 3
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 104,
+          "decoded": {
+            "$class": "Class_e724fd60",
+            "$guid": "54a97f0a-88b2-4591-9160-5855614e4f2d",
+            "Field_8cf424e7": 1.0,
+            "Field_7d88ccda": {
+              "$import": {
+                "fileGuid": "6b1c494b-b766-11ed-86ad-f8ccc2b3c331",
+                "classGuid": "0261493b-a718-3279-acf0-e63db118603e"
+              }
+            },
+            "Field_c124c7d8": 1453355331
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 160,
+          "decoded": {
+            "$class": "Class_96bab3b8",
+            "$guid": "02ea7334-1742-4069-9e39-0998967fc257",
+            "Field_3f680d24": 9001,
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false,
+            "Field_d396a5f7": {
+              "Field_6b28f68f": null
+            },
+            "Field_e8134251": {
+              "Field_6b28f68f": null
+            },
+            "Field_ec30e918": [
+              {
+                "$ref": 1
+              }
+            ],
+            "Field_c9c033be": {
+              "Field_6b28f68f": null
+            }
+          }
+        },
+        {
+          "index": 3,
+          "absoluteByteOffset": 240,
+          "decoded": {
+            "$class": "Class_897c99a7",
+            "$guid": "7a6b3672-8d9a-4313-9122-4255b43f93ac",
+            "Field_819acc98": [
+              "bb26754b-fb9d-467b-96ac-ecd132bc3f95",
+              "c90ae37f-4a1f-4994-b4a7-b759bf10cbf1"
+            ],
+            "Field_9690d604": [
+              {
+                "$import": {
+                  "fileGuid": "081f2a51-aa36-4e5a-82e9-11219a4cd064",
+                  "classGuid": "dc84f9cc-c09c-4d1d-81f0-5682daf82461"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "817e437a-b2a0-473a-a381-d9c55acd0103",
+                  "classGuid": "d96be899-5d86-4aeb-9bd0-733033f78cb9"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "84796886-6ede-4cee-8e6e-4f897da867b5",
+                  "classGuid": "96f5627d-2600-44a5-8e16-1f25c1c9e0ed"
+                }
+              },
+              {
+                "$import": {
+                  "fileGuid": "ee53164e-d111-4952-b214-426e3face4f0",
+                  "classGuid": "9a0263a6-4c45-4c13-a018-80d4be61d659"
+                }
+              },
+              {
+                "$ref": 2
+              }
+            ],
+            "Field_1c31def0": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\M2010ESR\\M2010ESR_WB.ebx",
+      "rawSha256": "39bd961b4e1462ee812d5b5ddb3722daa52e36601dce36bbf79f2c84a044f3ff",
+      "fileGuid": "9826a2e2-62f2-4228-b995-684e9b0348fe",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": []
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\DMR\\M39EMR\\M39EMR_WB.ebx",
+      "rawSha256": "872425191e616c7b2073a4563f0b5478b5bdcad1371dbe3f604b547920123d4e",
+      "fileGuid": "b4effdb2-7007-4903-a3c7-0adf34cd0171",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": []
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\HK417A2\\HK417A2_WB.ebx",
+      "rawSha256": "b47ee43b4aeb92048d76b884d676b213671cee26dba9b7d1ddf0c0576aaac973",
+      "fileGuid": "897a8b89-6fd1-4ec1-b6b6-bed96d76cb43",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": []
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\spotting-2026-09-23\\Common__Gameplay__Soldier__FL_Soldier__FL_Soldier_SingleFeature_8_WeaponFireSpotting.ebx",
+      "rawSha256": "7f7aa8902f15d33ee3ccc3680d7681498db7373c9e3a349b69445e06cbb5d8af",
+      "fileGuid": "0eead172-15c2-4465-9839-36ffa6aae4c2",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_03c48ade",
+            "$guid": "5ec473af-799e-461d-9df6-679c7bf6e4fa",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/Soldier/FL_Soldier/FL_Soldier_SingleFeature_8_WeaponFireSpotting",
+            "Field_d2b8fc26": {
+              "$layoutAmbiguous": true,
+              "Field_0c59fa06": "WeaponFireSpotting",
+              "Field_a07bc334": {
+                "$import": {
+                  "fileGuid": "433f8be1-0c5e-4c51-9e83-5a5521f1e139",
+                  "classGuid": "104223b7-8262-4fe2-b664-5618a56822fd"
+                }
+              },
+              "Field_9d5dcce0": null,
+              "Field_e7200213": null,
+              "Field_3ec230ea": [],
+              "Field_f77bff1a": null
+            },
+            "Field_f675bc33": 0,
+            "Field_56d874f5": false
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\spotting-2026-09-23\\Common__Gameplay__Spotting__PF_SpotSelfOnFire.ebx",
+      "rawSha256": "8aa0f1ab6e6b94ed837bbf6306f1037407463950dbcf5e706e8f81d1de9be7c5",
+      "fileGuid": "fdafc0fd-19f7-11eb-a1b3-e7098fc612dc",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_f0c2fa46",
+            "$guid": "509d73a7-4eff-8d12-16eb-815bbdac5f50",
+            "Field_0c59fa06": "Common/Gameplay/Spotting/PF_SpotSelfOnFire",
+            "Field_5645e663": 2,
+            "Field_c78408a3": [
+              {
+                "Field_4676ba2c": {
+                  "$ref": 2
+                },
+                "Field_645b319c": {
+                  "$ref": 1
+                },
+                "Field_c41fb636": -1325441723,
+                "Field_2d7314c9": -1954560482,
+                "Field_5645e663": 3
+              },
+              {
+                "Field_4676ba2c": {
+                  "$ref": 2
+                },
+                "Field_645b319c": {
+                  "$ref": 1
+                },
+                "Field_c41fb636": -1325441723,
+                "Field_2d7314c9": -1278429913,
+                "Field_5645e663": 3
+              }
+            ],
+            "Field_f7791e41": [
+              {
+                "Field_4676ba2c": {
+                  "$ref": 2
+                },
+                "Field_645b319c": {
+                  "$ref": 4
+                },
+                "Field_c41fb636": -1952628240,
+                "Field_2d7314c9": -1952628240
+              }
+            ],
+            "Field_3abe5247": {
+              "$ref": 4
+            },
+            "Field_f5dfcfc5": [
+              {
+                "Field_4676ba2c": {
+                  "$ref": 3
+                },
+                "Field_645b319c": {
+                  "$ref": 1
+                },
+                "Field_2656523a": {
+                  "Field_c1ad37da": -81881639
+                },
+                "Field_a57adf71": {
+                  "Field_c1ad37da": 2089405309
+                },
+                "Field_47f39ff3": 3
+              },
+              {
+                "Field_4676ba2c": {
+                  "$ref": 2
+                },
+                "Field_645b319c": {
+                  "$ref": 3
+                },
+                "Field_2656523a": {
+                  "Field_c1ad37da": 419185456
+                },
+                "Field_a57adf71": {
+                  "Field_c1ad37da": 5862146
+                },
+                "Field_47f39ff3": 3
+              },
+              {
+                "Field_4676ba2c": {
+                  "$ref": 4
+                },
+                "Field_645b319c": {
+                  "$ref": 2
+                },
+                "Field_2656523a": {
+                  "Field_c1ad37da": -1785817022
+                },
+                "Field_a57adf71": {
+                  "Field_c1ad37da": -1785817022
+                },
+                "Field_47f39ff3": 3
+              },
+              {
+                "Field_4676ba2c": {
+                  "$ref": 4
+                },
+                "Field_645b319c": {
+                  "$ref": 2
+                },
+                "Field_2656523a": {
+                  "Field_c1ad37da": 1767991738
+                },
+                "Field_a57adf71": {
+                  "Field_c1ad37da": 1767991738
+                },
+                "Field_47f39ff3": 3
+              }
+            ],
+            "Field_5a6115b2": [
+              {
+                "$ref": 3
+              },
+              {
+                "$ref": 1
+              },
+              {
+                "$ref": 2
+              }
+            ],
+            "Field_4d349c47": null,
+            "Field_5389566e": null,
+            "Field_f58a743c": {
+              "Field_01147a7c": 65535
+            },
+            "Field_a038e63d": 0
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 160,
+          "decoded": {
+            "$class": "Class_b90a1a91",
+            "$guid": null,
+            "Field_5645e663": 360770975,
+            "Field_a0173f36": [
+              1605496306
+            ],
+            "Field_927f2627": "00000000-0000-0000-0000-000000000000",
+            "Field_21320cfa": 0.0,
+            "Field_ed10e827": 5.0,
+            "Field_4f5db65a": 0.0,
+            "Field_c11ed6c8": false,
+            "Field_989feb5b": false,
+            "Field_e011b010": false,
+            "Field_ab231406": [
+              {
+                "$ref": 5
+              }
+            ],
+            "Field_e9aa758a": {
+              "Field_ab0fae12": 0,
+              "Field_0ec97922": 0
+            },
+            "Field_c84f0653": false,
+            "Field_48c07add": {
+              "Field_3901db14": 0.0,
+              "Field_42fc0f5e": 0.0,
+              "Field_32a99b9c": 0.0
+            },
+            "Field_72103efb": false,
+            "Field_d8d16ecb": false,
+            "Field_052848ee": {
+              "Field_ab0fae12": 0,
+              "Field_0ec97922": 0
+            },
+            "Field_57c8c634": 0
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 304,
+          "decoded": {
+            "$class": "Class_56173ff9",
+            "$guid": null,
+            "Field_5645e663": 1706354706,
+            "Field_dfd68748": 1,
+            "Field_e3620f7a": -1,
+            "Field_4cc9e2ed": 0,
+            "Field_a33f2425": 0,
+            "Field_1aee086a": false,
+            "Field_f55f2fd5": true
+          }
+        },
+        {
+          "index": 3,
+          "absoluteByteOffset": 368,
+          "decoded": {
+            "$class": "Class_0f55f96e",
+            "$guid": null,
+            "Field_5645e663": 92216160,
+            "Field_dfd68748": 1,
+            "Field_4d7f7285": false,
+            "Field_012cec9e": false,
+            "Field_3781fc99": false,
+            "Field_cad0d2cb": false
+          }
+        },
+        {
+          "index": 4,
+          "absoluteByteOffset": 416,
+          "decoded": {
+            "$class": "Class_1788e77e",
+            "$guid": null,
+            "Field_21943083": [
+              {
+                "Field_47f25917": {
+                  "$boxedValueRef": true
+                },
+                "Field_a38d791c": {
+                  "Field_73e9a894": null,
+                  "Field_3af2e007": {
+                    "$typeRef": 2147484256
+                  }
+                },
+                "Field_cc54425a": false,
+                "Field_c1ad37da": 1844388671,
+                "Field_331d8a7b": 1
+              }
+            ],
+            "Field_523b0c9f": [
+              {
+                "Field_c1ad37da": -1785817022
+              },
+              {
+                "Field_c1ad37da": 1767991738
+              }
+            ],
+            "Field_0b9aeb53": [],
+            "Field_cded6304": [],
+            "Field_bd61adcb": [
+              {
+                "Field_c1ad37da": -1952628240
+              }
+            ]
+          }
+        },
+        {
+          "index": 5,
+          "absoluteByteOffset": 480,
+          "decoded": {
+            "$class": "Class_b281afe1",
+            "$guid": null,
+            "Field_623aaa1f": 1,
+            "Field_bb32cd2f": -1.0,
+            "Field_87611ff9": -1.0,
+            "Field_c326a099": -1.0,
+            "Field_cf42f64c": false
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\spotting-2026-09-23\\Common__Gameplay__Spotting__SimEx_WeaponFireSpotting.ebx",
+      "rawSha256": "11e79f0d494635fa1c9c2b7ede880683610acea03aeb768cc61b707c73ed2ffb",
+      "fileGuid": "433f8be1-0c5e-4c51-9e83-5a5521f1e139",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_53d7404d",
+            "$guid": "104223b7-8262-4fe2-b664-5618a56822fd",
+            "Field_0c59fa06": "Common/Gameplay/Spotting/SimEx_WeaponFireSpotting",
+            "Field_ff9ea35f": "",
+            "Field_4f8ab9fb": "",
+            "Field_ec3c12a7": 4149427286,
+            "Field_b9667857": 926273662,
+            "Field_ebdd5457": false,
+            "Field_7633b5b9": [],
+            "Field_fc6bec62": false,
+            "Field_bd72a639": false,
+            "Field_ec30e918": [],
+            "Field_2f0e5b83": 0,
+            "Field_23e8fc11": {
+              "Field_73e9a894": null,
+              "Field_3af2e007": {
+                "$typeRef": 0
+              }
+            },
+            "Field_6cea3822": 0,
+            "Field_2094d4d6": {
+              "$ref": 2
+            },
+            "Field_06fb7d40": false,
+            "Field_8c81b3f5": [],
+            "Field_ac8a6ab1": 0,
+            "Field_75587794": 0,
+            "Field_0c18a620": "cd56a4bc45c5dea02e281da02424496030714dfb",
+            "Field_c7ffe639": "fa1178d89dd1f2891e62062f0389078864424722",
+            "Field_b95c345e": [
+              "1b7fd51c-e9cf-296c-c1b8-de9c2148e955",
+              "51fea342-7417-4507-a15a-7f92115a2bf3",
+              "376b7d4f-d40a-4b68-b9a9-c39ce3d15175",
+              "7d14035d-aa78-6074-4c82-5798c7a261bf",
+              "336f70d5-a371-d0f0-4f2c-0237453fa922"
+            ],
+            "Field_4c5e38ce": "8b290e18-a52b-4da2-a806-85c018d43083",
+            "Field_991be1db": [],
+            "Field_a93062b8": "00000000-0000-0000-0000-000000000000",
+            "Field_0ba7f153": {
+              "$typeRef": 34
+            },
+            "Field_ea0047a8": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_6d73e276": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_a146eb4f": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_5298cf59": {
+              "Field_85ec6187": []
+            },
+            "Field_6f96388d": false,
+            "Field_211b6bfa": [
+              7,
+              22,
+              77,
+              102
+            ],
+            "Field_494cfc58": [
+              77,
+              102
+            ],
+            "Field_b50d4aae": [
+              "GetChannelNode",
+              "GetWeaponEventStateNode",
+              "GetChannelNode"
+            ],
+            "Field_7a0c0298": [
+              0,
+              2
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 792,
+          "decoded": {
+            "$class": "Class_1953785e",
+            "$guid": "88c13afb-b549-4c83-bb00-4290bf87eeaa",
+            "Field_958dc613": [
+              1583085095
+            ]
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 824,
+          "decoded": {
+            "$class": "Class_25c12137",
+            "$guid": null,
+            "Field_fa116802": [],
+            "Field_3bb8b649": [],
+            "Field_24f0f98e": [],
+            "Field_c22413a8": [],
+            "Field_aa4fa860": {
+              "$resourceRef": "2715dacdf212b88f"
+            },
+            "Field_a2734e52": [
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "bc547f6c-e296-4218-ba9e-c585539862cb",
+                    "classGuid": "9a5e7e19-bfba-4bf9-b06f-08a6f43a498c"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 40
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "c99991bb-91fb-4848-9604-0f1d2ae74776",
+                    "classGuid": "c0f21e45-fb88-42c1-8741-c219684f7ec3"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 32
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$ref": 1
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 80
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              }
+            ],
+            "Field_98410e11": [
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 120
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 152
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 136
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 144
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 96
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 104
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 112
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 128
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 38
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 88
+                },
+                "Field_1b0becee": 0
+              }
+            ],
+            "Field_e4880f28": [
+              {
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 16
+                },
+                "Field_1b0becee": 0,
+                "Field_9cae1909": false
+              },
+              {
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 64
+                },
+                "Field_1b0becee": 0,
+                "Field_9cae1909": false
+              },
+              {
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 72
+                },
+                "Field_1b0becee": 0,
+                "Field_9cae1909": false
+              },
+              {
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 24
+                },
+                "Field_1b0becee": 0,
+                "Field_9cae1909": false
+              }
+            ],
+            "Field_c939b436": [],
+            "Field_b32b1867": [],
+            "Field_259e9f81": [
+              {
+                "Field_a2138df5": 0,
+                "Field_fc88f64b": 16
+              }
+            ],
+            "Field_c201a703": [],
+            "Field_810e1414": "7b163edd-619e-49aa-6006-820457236f5f"
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\GRX_Glacier_Soldier.ebx",
+      "rawSha256": "9b44340483d9af272ef5f0cbda5934ad9a30ff1f055fd3fddc60fc4943e822cc",
+      "fileGuid": "bc547f6c-e296-4218-ba9e-c585539862cb",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 24,
+          "absoluteByteOffset": 2336,
+          "decoded": {
+            "$class": "Class_d59e68b9",
+            "$guid": "9a5e7e19-bfba-4bf9-b06f-08a6f43a498c",
+            "Field_0c59fa06": "SpotOnFireDuration",
+            "Field_c124c7d8": -1161822438,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 42239,
+            "Field_a524635f": -1048704094,
+            "Field_e73c7944": 769639186,
+            "Field_605f79af": [],
+            "Field_42c8b257": 0.4,
+            "Field_c06d0cbb": 0.1,
+            "Field_3ff76ddb": 10.0
+          }
+        }
+      ]
+    },
+    {
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\Mutators\\MUT_UI.ebx",
+      "rawSha256": "df3dace90f38d63f3b7af2d92a17deec6136fa8a23e87bdf90608dbe77be622b",
+      "fileGuid": "c99991bb-91fb-4848-9604-0f1d2ae74776",
+      "archiveHead": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "unresolvedTypes": [],
+      "objects": [
+        {
+          "index": 11,
+          "absoluteByteOffset": 1096,
+          "decoded": {
+            "$class": "Class_18d40008",
+            "$guid": "c0f21e45-fb88-42c1-8741-c219684f7ec3",
+            "Field_0c59fa06": "SpottingAllowed",
+            "Field_c124c7d8": -1656043759,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 45856,
+            "Field_a524635f": 358542684,
+            "Field_e73c7944": 2217845162,
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "dfcf28cb-967f-4230-90de-be6031062e6c",
+                    "classGuid": "306e2916-6199-4d86-a777-706ea4f8fc26"
+                  }
+                }
+              }
+            ],
+            "Field_42c8b257": true
+          }
+        }
+      ]
+    }
+  ],
+  "subsonicPackages": [
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W10",
+      "fileGuid": "5491aa8d-f8f0-426f-861b-70719e18e649",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15",
+      "fileGuid": "9a00d872-3625-4272-a6f0-a21fa4dde738",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15_HK417",
+      "fileGuid": "1c3a7502-a924-4b14-8fef-6f2ea53cc359",
+      "spottingImports": [
+        {
+          "fieldPath": "/2/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/2/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_Subsonic_W15_Slower",
+      "fileGuid": "f2a3f252-fb28-43f6-be0c-dccd2821a359",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W20",
+      "fileGuid": "86490211-42f4-42bd-af05-3de0eccb90af",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25",
+      "fileGuid": "1e2013fc-c0b1-4b07-8520-a8bedd912b9b",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25_HK417",
+      "fileGuid": "383daac2-3d6a-4fdd-b49a-7724e46a23f3",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicFRNG_W25_Slower",
+      "fileGuid": "80994994-77c4-4629-a6b2-498959459a2b",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W30",
+      "fileGuid": "73e33838-23f0-4c37-8812-d8f32320e326",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35",
+      "fileGuid": "5e7c7713-df03-4d88-b27e-dbcf9ac230e7",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35_HK417",
+      "fileGuid": "f6f9deb8-3e26-4581-b5e7-f39975190549",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicJHP_W35_Slower",
+      "fileGuid": "a60b537d-c293-4639-a074-e3f0029faf60",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/WPM_AMO_SubsonicPenetration_W10",
+      "fileGuid": "336f0695-940c-4d00-b154-4390e9f3bd9b",
+      "spottingImports": [
+        {
+          "fieldPath": "/1/Field_9690d604/0",
+          "fileGuid": "83492fce-f2f3-43bf-beaa-4f36116ab227",
+          "classGuid": "69f14364-de2a-4c3f-84b0-757f9decf8cc"
+        },
+        {
+          "fieldPath": "/1/Field_9690d604/1",
+          "fileGuid": "cf01664e-bfce-4e1a-9748-5562f06bdc21",
+          "classGuid": "a7aa5897-0769-4a2e-91be-af9237540cb6"
+        }
+      ]
+    }
+  ],
+  "sharedBlueprintCallers": [
+    {
+      "route": "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_WB",
+      "fileGuid": "9826a2e2-62f2-4228-b995-684e9b0348fe",
+      "sharedPackageImports": [
+        {
+          "fieldPath": "/17/Field_0cd9f20f/2",
+          "fileGuid": "83267009-a423-4ddd-8b52-773fd3a6a036",
+          "classGuid": "7a6b3672-8d9a-4313-9122-4255b43f93ac"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/DMR/M39EMR/M39EMR_WB",
+      "fileGuid": "b4effdb2-7007-4903-a3c7-0adf34cd0171",
+      "sharedPackageImports": [
+        {
+          "fieldPath": "/36/Field_0cd9f20f/5",
+          "fileGuid": "fea1b671-520b-4c59-b974-ef02a3cbecfc",
+          "classGuid": "37ab17c0-1c0d-489c-822d-dc2faa9bdfd0"
+        }
+      ]
+    },
+    {
+      "route": "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_WB",
+      "fileGuid": "897a8b89-6fd1-4ec1-b6b6-bed96d76cb43",
+      "sharedPackageImports": [
+        {
+          "fieldPath": "/11/Field_0cd9f20f/1",
+          "fileGuid": "fea1b671-520b-4c59-b974-ef02a3cbecfc",
+          "classGuid": "37ab17c0-1c0d-489c-822d-dc2faa9bdfd0"
+        }
+      ]
+    }
+  ],
+  "reproduce": "python scripts/frosty-spotting-review.py --datamining \"../BF6 Datamining\" --out <new-report.json>",
+  "conclusions": [
+    "All 13 captured subsonic packages import separate minimap and world range effects: 0.428571/1 and 1/0.5. Decoder float output is rounded to six decimals.",
+    "The current SimEx links to the exact named SpotOnFireDuration (0.4) and SpottingAllowed (true) source objects.",
+    "The current SimEx resource ID is 2715dacdf212b88f, also present in the older compiled trace. An equal resource ID does not prove equal compiled bytes.",
+    "Three shared weapon blueprints import SP-prefixed suppressor packages. Their names alone do not establish SP-only activation."
+  ],
+  "limits": [
+    "Release operands and fresh hotfix expression assets have separate per-asset build identities; reference continuity does not prove every target is unchanged in the installed hotfix.",
+    "The WB base fields are now located; see baseRangeFollowup. Their presence does not establish mode activation, native operation, modifier composition, priorities or effective runtime results.",
+    "The former screenshot-only base limitation is superseded by the WB field report. Multiplying 0.14 by 0.1 remains unconfirmed.",
+    "PF graph hashes and unnamed float values are preserved without assigning mechanics. Existing compiled-byte guessing is not repeated.",
+    "The two subsonic effects do not alone establish the native composition rule. Existing site world factor 0.5 is unchanged."
+  ],
+  "priorRevision": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\before-spot-base-review\\frosty-spotting-reviewed-2026-09-23-ef2d643e0595.json",
+    "sha256": "ef2d643e05956197e7af41e81ebdc79bff6f452f8abadd378d5edeceb0256c7b"
+  },
+  "baseRangeFollowup": {
+    "path": "reference-data/provenance/frosty-spot-range-bases-2026-09-23.json",
+    "conclusion": "WB Class_542ac52c/Field_5ebda408 holds two per-weapon base candidates. Field_9918e670/Field_31022dc5 are 54/150 on 61 records, 27/64.285713 on M45A1/Skorpion, and 75/150 on the excluded KSG_WB. Native consumer and composition remain unresolved."
+  }
+}

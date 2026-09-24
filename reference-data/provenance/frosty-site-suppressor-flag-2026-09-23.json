@@ -1,0 +1,63 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "title": "Site suppressor booleans versus selected WPM and IsSilenced WME",
+  "build": {
+    "frosty": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": {
+    "siteLeaves": 9,
+    "fields": [
+      "BARRELS/*/suppressor",
+      "MUZZLES/*/suppressor"
+    ],
+    "exactSelections": "Current mapping choices resolve each selector asset+GUID; source-field rows prove selector wrapper capture; current XML package is found by exact selector GUID, not guessed by suffix.",
+    "allCandidates": true
+  },
+  "finding": {
+    "rows": 9,
+    "siteValue": true,
+    "wmeField": "WME_Flag_IsSilenced / Class_c6c66955/Field_ffba8126",
+    "wmeRawValue": true,
+    "rawProof": "All nine leaf rows verify descriptor-derived offset bytes equal decoded captured WME boolean true.",
+    "selectorEffectEdge": "Current-build XML package matched to the exact selector GUID and contains the IsSilenced WME object GUID.",
+    "remainingUncertainty": "WPM source package is matched to the exact selector GUID and the captured WPM raw imports contain the linked IsSilenced WME GUID; WME bytes verify true. Native runtime priority/application and the site boolean consumer remain unproven."
+  },
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-suppressor-flag-leaf-review-2026-09-23-v2.jsonl",
+    "sha256": "5b226eabf66c79a97d74fb88588019a8c43044c1f068d8d40226f8a7cb5cd270"
+  },
+  "reproduction": {
+    "command": "python scripts/frosty-site-suppressor-flag-review.py --root \"../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay\" --report-dir \"../BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23\" --out \"../BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/site-suppressor-flag-leaf-review-2026-09-23.jsonl\"",
+    "scriptSha256": "aa81d7ef04c97e07ed7d398774d99ef544c5ef803cf7b41c5b9b0d5d8a262bca"
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\attachments.json",
+      "sha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-attachment-mapping-2026-09-15.json",
+      "sha256": "3f8f41fed52840b61fb5c8527f22f92ee0272850276d429cb4f2cc437f351f64"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-site-suppressor-flag-review.py",
+      "sha256": "aa81d7ef04c97e07ed7d398774d99ef544c5ef803cf7b41c5b9b0d5d8a262bca"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+      "sha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-site-recoil-audit.py",
+      "sha256": "2e3ef122998f0cb2ee91c82d6ed07f62d30d83aa00ddce3d882549f713e38935"
+    }
+  ],
+  "limits": [
+    "Raw captured WPM imports verify the exact WME object link; source package configuration does not prove native runtime priority/application.",
+    "Captured WME proves the scalar bytes; the site boolean may serve other Analyzer logic.",
+    "No new captures; no KSG source join."
+  ]
+}

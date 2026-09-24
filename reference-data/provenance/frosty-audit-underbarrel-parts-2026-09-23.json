@@ -1,0 +1,1010 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "status": "reviewed-structural-joins",
+  "source": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\underbarrel-secondary-parts-2026-09-23.json",
+    "sha256": "13a576ba732a0e1106bf18ec267eee9477db1d2320089e12b4f515ec6495671b"
+  },
+  "readerSha256": "bb2b462e4b8e83039cace2e32e870d28066bd10b8a3770d3f2b524e27033c298",
+  "decoderSha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558",
+  "counts": {
+    "actions": 135,
+    "weapons": 27,
+    "secondarySelectorReferences": 190,
+    "selectorPartMatches": 393,
+    "unmatchedSelectors": 40,
+    "matchedPackages": 17,
+    "freshRawBodiesDecoded": 73
+  },
+  "selectorMatches": [
+    {
+      "selector": "U_WPM_UBL_Any",
+      "matchesPerReference": 0,
+      "references": 40
+    },
+    {
+      "selector": "U_WPM_UBL_Generic",
+      "matchesPerReference": 1,
+      "references": 15
+    },
+    {
+      "selector": "U_WPM_UBL_M26DB",
+      "matchesPerReference": 2,
+      "references": 27
+    },
+    {
+      "selector": "U_WPM_UBL_M320AT",
+      "matchesPerReference": 3,
+      "references": 27
+    },
+    {
+      "selector": "U_WPM_UBL_M320HE",
+      "matchesPerReference": 3,
+      "references": 27
+    },
+    {
+      "selector": "U_WPM_UBL_M320SMK",
+      "matchesPerReference": 3,
+      "references": 27
+    },
+    {
+      "selector": "U_WPM_UBL_M320TB",
+      "matchesPerReference": 3,
+      "references": 27
+    }
+  ],
+  "additionalSelectorsFreshlyVerified": [
+    {
+      "route": "Common/Gameplay/InRoundProgression/_BaseTraits/Grenadier_Base/U_Ability_Grenadier_Base",
+      "file_guid": "88c5e5b4-6798-4384-abbb-9aaf5d2faf81",
+      "raw_sha256": "6f489559c5c42ff893ab89ca7e110980b0fb15e5ae8e76793714b95ebc0ce6ac",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer3-2026-09-23\\raw\\Common\\Gameplay\\InRoundProgression\\_BaseTraits\\Grenadier_Base\\U_Ability_Grenadier_Base.ebx",
+      "head": 4892087,
+      "descriptor_sha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objectGuid": "4f13191c-b7ea-4f20-af47-5addea605022",
+      "body": {
+        "$class": "Class_bc0062dc",
+        "$guid": "4f13191c-b7ea-4f20-af47-5addea605022",
+        "Field_0c59fa06": "Common/Gameplay/InRoundProgression/_BaseTraits/Grenadier_Base/U_Ability_Grenadier_Base",
+        "Field_9d34093f": "U_Ability_Grenadier_Base",
+        "Field_de6f63b3": 1143812725,
+        "Field_32cf19f5": true,
+        "Field_5aec774f": {
+          "$ref": 1
+        }
+      }
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/AssaultGadgetReload/U_Ability_AssaultGadgetReload",
+      "file_guid": "5b43f563-d3c6-4570-a009-714876a28d75",
+      "raw_sha256": "3ba5811d4d0b4c97d1bcba6b2937cc0b5d0151bd9eee02c0e9bc08304ebe1e1e",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer3-2026-09-23\\raw\\Common\\Gameplay\\InRoundProgression\\AssaultGadgetReload\\U_Ability_AssaultGadgetReload.ebx",
+      "head": 4892087,
+      "descriptor_sha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objectGuid": "56cb4ecf-6516-4a22-ab81-fefcada930dd",
+      "body": {
+        "$class": "Class_bc0062dc",
+        "$guid": "56cb4ecf-6516-4a22-ab81-fefcada930dd",
+        "Field_0c59fa06": "Common/Gameplay/InRoundProgression/AssaultGadgetReload/U_Ability_AssaultGadgetReload",
+        "Field_9d34093f": "U_Ability_AssaultGadgetReload",
+        "Field_de6f63b3": 3014006896,
+        "Field_32cf19f5": true,
+        "Field_5aec774f": {
+          "$ref": 1
+        }
+      }
+    }
+  ],
+  "packages": [
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE",
+        "raw_sha256": "335a66ff6664d12042abe064e24aad61a9d008009b1248b7f0455d50fce656b3",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 1,
+      "partObjectGuid": "b4ccbc23-86d1-4c01-a31c-6f3839565550",
+      "selectors": [
+        "81b91dca-feae-48a9-8aae-8a6ea8f8b7d1"
+      ],
+      "reachableObjectCount": 17,
+      "effectClasses": {
+        "Class_d7fb375e": 1,
+        "Class_8cdc5b63": 2,
+        "Class_21374adc": 1,
+        "Class_5cc04eb2": 1,
+        "Class_5872ef92": 1,
+        "Class_d79973ba": 1,
+        "Class_936532d0": 1
+      },
+      "firingAndProjectileReferences": [
+        {
+          "objectIndex": 10,
+          "pointer": "/Field_e29fe7dd",
+          "fileGuid": "a16e7250-6037-4f7a-bd9e-e5dcf30160f7",
+          "classGuid": "8727447a-6810-46e9-8534-8c84517fc3a5",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320HE/PrimaryFire_M320",
+            "raw_sha256": "31c69c52177fc06d1514b48e6ca613358e382134f0f34a55ae71f2115f8b9e8f",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_35259f6b"
+        },
+        {
+          "objectIndex": 10,
+          "pointer": "/Field_775480e0",
+          "fileGuid": "9184d5a6-e55a-4596-8769-7f7709a1ae8a",
+          "classGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+            "raw_sha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 2,
+          "targetClass": "Class_539cff9b"
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE_Plus",
+        "raw_sha256": "7692cc381a64a4b160bdc9d13a498d9ca1380bd3896558bddc600bf81c3b0c72",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 1,
+      "partObjectGuid": "8aeb2098-40ee-4dbf-8b13-2fc6f2dc4e85",
+      "selectors": [
+        "81b91dca-feae-48a9-8aae-8a6ea8f8b7d1",
+        "4f13191c-b7ea-4f20-af47-5addea605022"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_700f0abc": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_700f0abc",
+          "$guid": "8e970cae-907a-4cb9-94d3-3a5f70ced64f",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_7f22bfb4": 30,
+          "Field_4614adfe": 6,
+          "Field_80a58418": -1,
+          "Field_bd024e1d": -1,
+          "Field_54315b82": 1.0,
+          "Field_d1d55a1b": 1.0,
+          "Field_9e2714f7": 0,
+          "Field_ca77c408": 1,
+          "Field_49ac3d27": 1.0,
+          "Field_e767b8cb": 1.0,
+          "Field_dbecaf0b": 0,
+          "Field_05ccf49e": {
+            "Field_6b28f68f": null
+          },
+          "Field_8dd8b91d": true,
+          "Field_6f62002a": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE_Reload",
+        "raw_sha256": "4e7b2e9071623b90064a4fb3bede7d2334a35ccb1c1a5fd6ff80c7fc0525f0a7",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 2,
+      "partObjectGuid": "9cb7d5d8-6c9f-4835-86a0-94be360670c5",
+      "selectors": [
+        "81b91dca-feae-48a9-8aae-8a6ea8f8b7d1",
+        "56cb4ecf-6516-4a22-ab81-fefcada930dd"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_9705264b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_9705264b",
+          "$guid": "46ea9369-b7ec-49c1-a4c6-48c9061e6d5e",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_1c533b56": -1.0,
+          "Field_348b8cd1": 1.1,
+          "Field_9ecc28fe": {
+            "Field_6b28f68f": null
+          },
+          "Field_e2fc37b5": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320SMK",
+        "raw_sha256": "ed5bc7a88c9ded9a78c2e27562b8ec76ab521245622bb14b70953764a5c729d6",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 6,
+      "partObjectGuid": "2f408c69-005f-4c33-8242-7ff758e047c9",
+      "selectors": [
+        "6b1f8363-6ffd-4518-9ed6-e52d51be8f82"
+      ],
+      "reachableObjectCount": 19,
+      "effectClasses": {
+        "Class_d7fb375e": 1,
+        "Class_b1afeb65": 1,
+        "Class_b0392450": 1,
+        "Class_8cdc5b63": 2,
+        "Class_21374adc": 1,
+        "Class_5cc04eb2": 1,
+        "Class_5872ef92": 1,
+        "Class_d79973ba": 1,
+        "Class_936532d0": 1
+      },
+      "firingAndProjectileReferences": [
+        {
+          "objectIndex": 4,
+          "pointer": "/Field_e29fe7dd",
+          "fileGuid": "a16e7250-6037-4f7a-bd9e-e5dcf30160f7",
+          "classGuid": "8727447a-6810-46e9-8534-8c84517fc3a5",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320HE/PrimaryFire_M320",
+            "raw_sha256": "31c69c52177fc06d1514b48e6ca613358e382134f0f34a55ae71f2115f8b9e8f",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_35259f6b"
+        },
+        {
+          "objectIndex": 4,
+          "pointer": "/Field_775480e0",
+          "fileGuid": "9184d5a6-e55a-4596-8769-7f7709a1ae8a",
+          "classGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+            "raw_sha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 2,
+          "targetClass": "Class_539cff9b"
+        },
+        {
+          "objectIndex": 9,
+          "pointer": "/Field_808dd66c",
+          "fileGuid": "b90e2811-9006-4666-bd04-dcfc460bc2e2",
+          "classGuid": "2f47da5c-8f24-4fa2-bd8d-7aafdb752639",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320Smoke/PB_M320_Smoke",
+            "raw_sha256": "2e12eda0b8802a86503a6fe88f19ed9599b31aaf9714c8a4274079b24f4dd015",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_6761170b"
+        },
+        {
+          "objectIndex": 9,
+          "pointer": "/Field_2f258a51",
+          "fileGuid": "b90e2811-9006-4666-bd04-dcfc460bc2e2",
+          "classGuid": "96659b38-7de5-4d18-ad24-671271e12b9d",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320Smoke/PB_M320_Smoke",
+            "raw_sha256": "2e12eda0b8802a86503a6fe88f19ed9599b31aaf9714c8a4274079b24f4dd015",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 0,
+          "targetClass": "Class_b141ba19"
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320SMK_Plus",
+        "raw_sha256": "c6d9fcb45c4fe2a64e715e4c24f9418521c2063e47624d6ac8727eead456e19a",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 2,
+      "partObjectGuid": "f0aeb8ae-17d5-46b8-8cba-bfdae17b44ec",
+      "selectors": [
+        "6b1f8363-6ffd-4518-9ed6-e52d51be8f82",
+        "4f13191c-b7ea-4f20-af47-5addea605022"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_700f0abc": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_700f0abc",
+          "$guid": "77368184-b049-47c8-a63d-3620dd64ca76",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_7f22bfb4": 30,
+          "Field_4614adfe": 6,
+          "Field_80a58418": -1,
+          "Field_bd024e1d": -1,
+          "Field_54315b82": 1.0,
+          "Field_d1d55a1b": 1.0,
+          "Field_9e2714f7": 0,
+          "Field_ca77c408": 1,
+          "Field_49ac3d27": 1.0,
+          "Field_e767b8cb": 1.0,
+          "Field_dbecaf0b": 0,
+          "Field_05ccf49e": {
+            "Field_6b28f68f": null
+          },
+          "Field_8dd8b91d": true,
+          "Field_6f62002a": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320SMK_Reload",
+        "raw_sha256": "aae3d9850a8d07c9ffedb0ac5040abe2e94e709356eea980657e085bed2ed778",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 2,
+      "partObjectGuid": "85b36bba-e26f-4de9-9066-4b01634538d1",
+      "selectors": [
+        "6b1f8363-6ffd-4518-9ed6-e52d51be8f82",
+        "56cb4ecf-6516-4a22-ab81-fefcada930dd"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_9705264b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_9705264b",
+          "$guid": "6b44e568-943f-4f60-8784-04605863adb1",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_1c533b56": -1.0,
+          "Field_348b8cd1": 1.1,
+          "Field_9ecc28fe": {
+            "Field_6b28f68f": null
+          },
+          "Field_e2fc37b5": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320AT",
+        "raw_sha256": "5a0a21f83ed6d74c7218c8e57577c3eddde8c29b47e3b727909abe8cfb7236d3",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 3,
+      "partObjectGuid": "39e00a20-1b36-4602-814f-2cf1f78881e9",
+      "selectors": [
+        "73d62dbf-14db-424a-9cca-b89d32482a80"
+      ],
+      "reachableObjectCount": 19,
+      "effectClasses": {
+        "Class_d7fb375e": 1,
+        "Class_b1afeb65": 1,
+        "Class_b0392450": 1,
+        "Class_8cdc5b63": 2,
+        "Class_21374adc": 1,
+        "Class_5cc04eb2": 1,
+        "Class_5872ef92": 1,
+        "Class_d79973ba": 1,
+        "Class_936532d0": 1
+      },
+      "firingAndProjectileReferences": [
+        {
+          "objectIndex": 5,
+          "pointer": "/Field_e29fe7dd",
+          "fileGuid": "a16e7250-6037-4f7a-bd9e-e5dcf30160f7",
+          "classGuid": "8727447a-6810-46e9-8534-8c84517fc3a5",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320HE/PrimaryFire_M320",
+            "raw_sha256": "31c69c52177fc06d1514b48e6ca613358e382134f0f34a55ae71f2115f8b9e8f",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_35259f6b"
+        },
+        {
+          "objectIndex": 5,
+          "pointer": "/Field_775480e0",
+          "fileGuid": "9184d5a6-e55a-4596-8769-7f7709a1ae8a",
+          "classGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+            "raw_sha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 2,
+          "targetClass": "Class_539cff9b"
+        },
+        {
+          "objectIndex": 7,
+          "pointer": "/Field_808dd66c",
+          "fileGuid": "6374e343-155f-4885-958c-793809b59930",
+          "classGuid": "8daa68cf-6567-4302-baed-d99ad775f8c4",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320HE/PB_NS_M320HE",
+            "raw_sha256": "36eea37d05d4487ec0cb7d74db59dd3d015cf15da07f47159285358dbb652e7d",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_6761170b"
+        },
+        {
+          "objectIndex": 7,
+          "pointer": "/Field_2f258a51",
+          "fileGuid": "6374e343-155f-4885-958c-793809b59930",
+          "classGuid": "60e74b5d-b47d-4b2e-816a-f33e460e73cf",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320HE/PB_NS_M320HE",
+            "raw_sha256": "36eea37d05d4487ec0cb7d74db59dd3d015cf15da07f47159285358dbb652e7d",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 0,
+          "targetClass": "Class_5b3064b4"
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320AT_Plus",
+        "raw_sha256": "4d98c9234715a7597d19e4ceb974bfbefd793d52fd31eb7ea110799fc54d4566",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 1,
+      "partObjectGuid": "b9e3d44a-1db9-4414-9e91-aa6f0dd604d1",
+      "selectors": [
+        "73d62dbf-14db-424a-9cca-b89d32482a80",
+        "4f13191c-b7ea-4f20-af47-5addea605022"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_700f0abc": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_700f0abc",
+          "$guid": "664871e5-2f6e-4515-8045-f65813aa0aa2",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_7f22bfb4": 30,
+          "Field_4614adfe": 6,
+          "Field_80a58418": -1,
+          "Field_bd024e1d": -1,
+          "Field_54315b82": 1.0,
+          "Field_d1d55a1b": 1.0,
+          "Field_9e2714f7": 0,
+          "Field_ca77c408": 1,
+          "Field_49ac3d27": 1.0,
+          "Field_e767b8cb": 1.0,
+          "Field_dbecaf0b": 0,
+          "Field_05ccf49e": {
+            "Field_6b28f68f": null
+          },
+          "Field_8dd8b91d": true,
+          "Field_6f62002a": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320AT_Reload",
+        "raw_sha256": "cf1b1105720b8286be720af47cf37055dac6861eb41f6eb7f3f50f6c9999d2a6",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 1,
+      "partObjectGuid": "1d5f7a6c-e71d-412d-85a6-296a46511271",
+      "selectors": [
+        "73d62dbf-14db-424a-9cca-b89d32482a80",
+        "56cb4ecf-6516-4a22-ab81-fefcada930dd"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_9705264b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_9705264b",
+          "$guid": "8c6e8fed-0cc7-4144-92a3-98af9122127f",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_1c533b56": -1.0,
+          "Field_348b8cd1": 1.1,
+          "Field_9ecc28fe": {
+            "Field_6b28f68f": null
+          },
+          "Field_e2fc37b5": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB",
+        "raw_sha256": "65b5bcfe5512ca14544ca2982bb4c93c667a2849aed9e54c0c01930f19aa75b1",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 12,
+      "partObjectGuid": "4b7b6cb5-a456-4cc1-82b8-5db9f507310f",
+      "selectors": [
+        "c263ba23-efec-4268-9722-172abc143e67"
+      ],
+      "reachableObjectCount": 19,
+      "effectClasses": {
+        "Class_d7fb375e": 1,
+        "Class_b1afeb65": 1,
+        "Class_b0392450": 1,
+        "Class_8cdc5b63": 2,
+        "Class_21374adc": 1,
+        "Class_5cc04eb2": 1,
+        "Class_5872ef92": 1,
+        "Class_d79973ba": 1,
+        "Class_936532d0": 1
+      },
+      "firingAndProjectileReferences": [
+        {
+          "objectIndex": 11,
+          "pointer": "/Field_808dd66c",
+          "fileGuid": "3b2f84e8-3a89-461c-9933-5a1336f72aee",
+          "classGuid": "d2c28ea9-60dd-4862-8f5f-4b9835307d85",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320Thermobaric/PB_NS_M320Thermobaric",
+            "raw_sha256": "7434e629cb66b7f41cc03933f0ee031cd0ae7993fc47668266a9edd5d13aaa2c",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_6761170b"
+        },
+        {
+          "objectIndex": 11,
+          "pointer": "/Field_2f258a51",
+          "fileGuid": "3b2f84e8-3a89-461c-9933-5a1336f72aee",
+          "classGuid": "722756a3-982a-452b-a5bb-b160138a13dc",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320Thermobaric/PB_NS_M320Thermobaric",
+            "raw_sha256": "7434e629cb66b7f41cc03933f0ee031cd0ae7993fc47668266a9edd5d13aaa2c",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 0,
+          "targetClass": "Class_5b3064b4"
+        },
+        {
+          "objectIndex": 13,
+          "pointer": "/Field_e29fe7dd",
+          "fileGuid": "a16e7250-6037-4f7a-bd9e-e5dcf30160f7",
+          "classGuid": "8727447a-6810-46e9-8534-8c84517fc3a5",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320HE/PrimaryFire_M320",
+            "raw_sha256": "31c69c52177fc06d1514b48e6ca613358e382134f0f34a55ae71f2115f8b9e8f",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_35259f6b"
+        },
+        {
+          "objectIndex": 13,
+          "pointer": "/Field_775480e0",
+          "fileGuid": "9184d5a6-e55a-4596-8769-7f7709a1ae8a",
+          "classGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+            "raw_sha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 2,
+          "targetClass": "Class_539cff9b"
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB_Plus",
+        "raw_sha256": "a785b9118ef40c8433b2ab4e781c37f5499199d9ab0a3958d707f80bf6813ea1",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 2,
+      "partObjectGuid": "4b456f56-c1e7-4a86-b43f-29dfe92c228c",
+      "selectors": [
+        "c263ba23-efec-4268-9722-172abc143e67",
+        "4f13191c-b7ea-4f20-af47-5addea605022"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_700f0abc": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_700f0abc",
+          "$guid": "7002d631-ca82-4955-92f8-3ee49fafbb67",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_7f22bfb4": 30,
+          "Field_4614adfe": 6,
+          "Field_80a58418": -1,
+          "Field_bd024e1d": -1,
+          "Field_54315b82": 1.0,
+          "Field_d1d55a1b": 1.0,
+          "Field_9e2714f7": 0,
+          "Field_ca77c408": 1,
+          "Field_49ac3d27": 1.0,
+          "Field_e767b8cb": 1.0,
+          "Field_dbecaf0b": 0,
+          "Field_05ccf49e": {
+            "Field_6b28f68f": null
+          },
+          "Field_8dd8b91d": true,
+          "Field_6f62002a": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320TB_Reload",
+        "raw_sha256": "e62871109d68a7b3d36da64ae19b286c5af60de10c5f7db1c9a4e9fd8fdff1ec",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 1,
+      "partObjectGuid": "bccd3897-1155-472c-877a-c76ef7131217",
+      "selectors": [
+        "c263ba23-efec-4268-9722-172abc143e67",
+        "56cb4ecf-6516-4a22-ab81-fefcada930dd"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_9705264b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_9705264b",
+          "$guid": "e244c7c7-af79-47f0-ac10-b3ac6bc95769",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_1c533b56": -1.0,
+          "Field_348b8cd1": 1.1,
+          "Field_9ecc28fe": {
+            "Field_6b28f68f": null
+          },
+          "Field_e2fc37b5": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB",
+        "raw_sha256": "51512469ae7c1760bfdb9b055160c12aa34b0de0b79427efa17215c0ee39dc82",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 18,
+      "partObjectGuid": "1e8e01f9-19c2-4c67-82d8-d3d327ded635",
+      "selectors": [
+        "4b97c99c-676e-4bb8-a851-1fbc52221a8f"
+      ],
+      "reachableObjectCount": 18,
+      "effectClasses": {
+        "Class_d7fb375e": 1,
+        "Class_d4826d58": 1,
+        "Class_10082599": 1,
+        "Class_b0392450": 1,
+        "Class_b1afeb65": 1,
+        "Class_8cdc5b63": 2,
+        "Class_21374adc": 1,
+        "Class_5cc04eb2": 1
+      },
+      "firingAndProjectileReferences": [
+        {
+          "objectIndex": 5,
+          "pointer": "/Field_808dd66c",
+          "fileGuid": "a9f3087a-4c8a-4e8e-8f2a-79a60fbca3b0",
+          "classGuid": "b86bddf5-dee3-4da0-908a-f804de6ea495",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Underbarrels/M26MassDragonbreath/PD_M26MassDragonbreath",
+            "raw_sha256": "60676ed799571bc161f0a3ace732b0325ccd209c5b0abc8086ad0931b0ee83aa",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 3,
+          "targetClass": "Class_23637dce"
+        },
+        {
+          "objectIndex": 7,
+          "pointer": "/Field_58d70acb/Field_808dd66c",
+          "fileGuid": "43ebcca7-d4c3-42bc-9e04-4ba9343f94d1",
+          "classGuid": "78ea7e40-cef6-4860-a14a-6461609bc489",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Underbarrels/M26Mass00Buck/PD_M26Mass",
+            "raw_sha256": "638342bfd55923bf586e38390286ab02afaa9e604072537537fb0f90e6bd17f4",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 1,
+          "targetClass": "Class_23637dce"
+        },
+        {
+          "objectIndex": 16,
+          "pointer": "/Field_775480e0",
+          "fileGuid": "7cc274f1-adcf-4af3-a70a-4a5eb96a5798",
+          "classGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78",
+          "target": {
+            "route": "Common/Hardware/Gadgets/Underbarrels/M26Mass00Buck/GS_M26Mass",
+            "raw_sha256": "f31d17adeb7f8d86a8015597f4c78677c68c832a3dedd4185faa2e16d418a83b",
+            "head": 4892017,
+            "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+          },
+          "targetObjectIndex": 2,
+          "targetClass": "Class_539cff9b"
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB_Reload",
+        "raw_sha256": "cf9ceda598605aa1f2e2ce10e4ac9cdf81256bd679f206fca5e98326925a46d2",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 1,
+      "partObjectGuid": "a6ccceed-feaf-49c6-89c7-010c17407297",
+      "selectors": [
+        "4b97c99c-676e-4bb8-a851-1fbc52221a8f",
+        "56cb4ecf-6516-4a22-ab81-fefcada930dd"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_9705264b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_9705264b",
+          "$guid": "46f55ffa-9954-4535-a5c1-49c96f3ba293",
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": true,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_1c533b56": -1.0,
+          "Field_348b8cd1": 1.1,
+          "Field_9ecc28fe": {
+            "Field_6b28f68f": null
+          },
+          "Field_e2fc37b5": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_WB",
+        "raw_sha256": "b47ee43b4aeb92048d76b884d676b213671cee26dba9b7d1ddf0c0576aaac973",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 38,
+      "partObjectGuid": null,
+      "selectors": [
+        "9673e31d-3bd8-4a20-8282-5de92ab57e7e"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_4aac041b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_4aac041b",
+          "$guid": null,
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": false,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_9540bd8e": 1,
+          "Field_26535101": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB",
+        "raw_sha256": "622dff6f877e798cd5d38a6bb5cf09b0b19a44dfaf81b2d43a270b1c1b7e1ac9",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 46,
+      "partObjectGuid": null,
+      "selectors": [
+        "9673e31d-3bd8-4a20-8282-5de92ab57e7e"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_4aac041b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_4aac041b",
+          "$guid": null,
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": false,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_9540bd8e": 1,
+          "Field_26535101": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    },
+    {
+      "source": {
+        "route": "Common/Hardware/weapons/Carbine/XM7/XM7_WB",
+        "raw_sha256": "d4a54f48df3ee1dbf1d5d1b81b8df8cd96c62de2d8faf92c19a2ed25716b4a59",
+        "head": 4892017,
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "partObjectIndex": 44,
+      "partObjectGuid": null,
+      "selectors": [
+        "9673e31d-3bd8-4a20-8282-5de92ab57e7e"
+      ],
+      "reachableObjectCount": 2,
+      "effectClasses": {
+        "Class_4aac041b": 1
+      },
+      "firingAndProjectileReferences": [],
+      "effectBodies": [
+        {
+          "$class": "Class_4aac041b",
+          "$guid": null,
+          "Field_3f680d24": -1,
+          "Field_9ca063e9": false,
+          "Field_96eb74f6": false,
+          "Field_d396a5f7": {
+            "Field_6b28f68f": null
+          },
+          "Field_e8134251": {
+            "Field_6b28f68f": null
+          },
+          "Field_9540bd8e": 1,
+          "Field_26535101": {
+            "Field_6b28f68f": null
+          }
+        }
+      ]
+    }
+  ],
+  "findings": [
+    "All 135 underbarrel actions across 27 weapon roots link through secondary selector object GUIDs to parts listed in the parent WB. There are 393 one-selector matches, not 393 fully evaluated activations.",
+    "Each M320 family has base, Plus and Reload parts; M26DB has base and Reload parts. Plus parts also list the Grenadier_Base selector; Reload parts also list AssaultGadgetReload. Exact selectors are retained for native condition review.",
+    "All four Plus effects share their complete scalar fields, including Field_7f22bfb4=30 and Field_4614adfe=6. All five Reload effects have Field_348b8cd1=1.1. These are serialized operands, not measured ammunition counts or timing gains.",
+    "HK417A2, M4A1 and XM7 each have one inline Generic part with Class_4aac041b Field_9540bd8e=1. All 15 references to that selector match.",
+    "All 40 unmatched references are U_WPM_UBL_Any in the checked parent WB part lists; this does not prove global non-use.",
+    "M26DB includes an internal firing object with a buckshot projectile reference and a separate Class_b1afeb65 effect that references Dragonbreath with priority 9000. Native application remains unverified."
+  ],
+  "supersedes": "The earlier additional-ubl-primary-branch-joins-draft.json zero-WPM counts only inspected Field_7e54e22c. They cannot describe all underbarrel modifier links.",
+  "limits": "Exact serialized joins and reachable part contents only. Secondary list application, SRU semantics, condition evaluation and runtime switching remain open. Fresh target resolution does not fully review target fields. Layout warnings are retained. One matching selector does not satisfy every selector on a part. No whole-asset semantic closure, runtime behavior, inventory count or timing percentage is established."
+}

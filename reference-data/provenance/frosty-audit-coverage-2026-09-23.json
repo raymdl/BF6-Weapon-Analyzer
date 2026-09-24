@@ -1,0 +1,1154 @@
+{
+  "schemaVersion": 1,
+  "recordedUtc": "2026-09-23T15:58:52.637970+00:00",
+  "scope": "Exhaustive audit structural baseline; semantic review is NOT complete.",
+  "source": {
+    "schemaVersion": 1,
+    "buildRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0",
+    "catalogPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\asset-catalog.json",
+    "catalogSha256": "815ef184c8530d1d70a7a6d4c4793eb49e2372be6ca54325571e6b419c2addc5",
+    "catalogHead": 4892017,
+    "decoderSha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+    "findingsAtInitSha256": "16b24654f3fff2ed996636e65960828306343fab7f3663cad5d791eb3c084b70",
+    "scriptAtInitSha256": "011139a17fdc80994aecf32e048a32888c6ba05934b4ba2d6fa0516d853d1fde",
+    "policy": "All catalog entries retained. Namespace seeds and dependency reachability are candidates, not MP activation proof. No automatic cosmetic/mode exclusions. Prior findings are narrow evidence, not whole-asset review. Decoded bodies retain hashes and warning markers; no native semantics inferred.",
+    "collection:weapon-audit-2026-09-23": {
+      "head": 4892087,
+      "catalogSha256": "645243bffa7631df81289065ea82cd49dae480f5b67c2116b03cf4e50fcf2c1a",
+      "statusSha256": "1f6ec91aea8fb9291274a2fdfa8521b4b65c4bbfef280e2c3c5d28181a723d34"
+    }
+  },
+  "ledgerPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage.sqlite",
+  "ledgerSha256AtSnapshot": "f68e9dd701ff225c2639f08362efae22fcd6eb0e4454e9a02cfd587fc98ff132",
+  "coverageToolPath": "scripts/frosty-audit-coverage.py",
+  "coverageToolSha256AtSnapshot": "5c7d0149fe151d248d83a1572c73150089ebc5f6badf5cf84607bdccef57dacc",
+  "counts": {
+    "catalogAssets": 467208,
+    "scope": {
+      "additional-namespace-candidate": 2857,
+      "unclassified": 410540,
+      "weapon-dependency-candidate": 4526,
+      "weapon-namespace-candidate": 49285
+    },
+    "captureHeaderStates": {
+      "ok": 53394
+    },
+    "decodeStates": {
+      "decoded": 43294,
+      "decoded-provisional": 8400,
+      "pending": 1700
+    },
+    "objectCount": 293507,
+    "headerImportCount": 514005,
+    "decodedReferenceCount": 730201,
+    "primaryNamespaceMissingRaw": 0,
+    "candidateMissingRaw": {
+      "additional-namespace-candidate": 2847,
+      "weapon-dependency-candidate": 2127
+    },
+    "semanticReview": {
+      "pending": 467208
+    },
+    "uncataloguedImportFileGuids": 65
+  },
+  "uncataloguedImportTargets": {
+    "021cb30a-f27d-55ff-66e1-6acffc467dc9": [
+      {
+        "target_file_guid": "021cb30a-f27d-55ff-66e1-6acffc467dc9",
+        "target_object_guid": "021cb30a-f27d-55ff-66e1-6acffc467dc9",
+        "ordinal": 14,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "0330a36c-1a53-96ae-0818-23ba5558e2d4": [
+      {
+        "target_file_guid": "0330a36c-1a53-96ae-0818-23ba5558e2d4",
+        "target_object_guid": "0330a36c-1a53-96ae-0818-23ba5558e2d4",
+        "ordinal": 243,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "096e485e-79a6-a884-de9e-1f412c299f04": [
+      {
+        "target_file_guid": "096e485e-79a6-a884-de9e-1f412c299f04",
+        "target_object_guid": "096e485e-79a6-a884-de9e-1f412c299f04",
+        "ordinal": 205,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "0feac0b6-db65-e161-6877-b865094c1606": [
+      {
+        "target_file_guid": "0feac0b6-db65-e161-6877-b865094c1606",
+        "target_object_guid": "0feac0b6-db65-e161-6877-b865094c1606",
+        "ordinal": 334,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "1701c95a-fb0b-711c-5050-00bafacd4aa9": [
+      {
+        "target_file_guid": "1701c95a-fb0b-711c-5050-00bafacd4aa9",
+        "target_object_guid": "1701c95a-fb0b-711c-5050-00bafacd4aa9",
+        "ordinal": 203,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "1aa36288-3aec-51b3-7fc6-5c77357de74a": [
+      {
+        "target_file_guid": "1aa36288-3aec-51b3-7fc6-5c77357de74a",
+        "target_object_guid": "1aa36288-3aec-51b3-7fc6-5c77357de74a",
+        "ordinal": 285,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "1dc4460e-76e9-2a07-f979-f4d83c29abca": [
+      {
+        "target_file_guid": "1dc4460e-76e9-2a07-f979-f4d83c29abca",
+        "target_object_guid": "1dc4460e-76e9-2a07-f979-f4d83c29abca",
+        "ordinal": 20,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "1f6adb88-58e0-aa9a-4b2e-7caa38fd9bb5": [
+      {
+        "target_file_guid": "1f6adb88-58e0-aa9a-4b2e-7caa38fd9bb5",
+        "target_object_guid": "1f6adb88-58e0-aa9a-4b2e-7caa38fd9bb5",
+        "ordinal": 286,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "21936f38-73c6-a2ef-7c17-b42f878a813e": [
+      {
+        "target_file_guid": "21936f38-73c6-a2ef-7c17-b42f878a813e",
+        "target_object_guid": "21936f38-73c6-a2ef-7c17-b42f878a813e",
+        "ordinal": 81,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "2631e8f8-a115-413d-a696-5ec194081d73": [
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "fbbfa0fd-987a-4477-9b42-9571423f8046",
+        "ordinal": 30,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_InMandown_Master",
+        "raw_sha256": "b3ba0d566c140ab99ed76bf31a0c8eedfa14b0e9277c50f50e7913d947650446",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "75dcf6a2-4c81-4785-a638-2559b5535e45",
+        "ordinal": 1,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_ManDownLookAtReviverSP",
+        "raw_sha256": "592455cb5c78165a8dfdf5557f5dd39668050ac3bd0fee72a5fc18461e8b9e1d",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "fbbfa0fd-987a-4477-9b42-9571423f8046",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_ManDownLookAtReviverSP",
+        "raw_sha256": "592455cb5c78165a8dfdf5557f5dd39668050ac3bd0fee72a5fc18461e8b9e1d",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d69a122c-ef68-48a2-8bc7-da5815f50bd7",
+        "ordinal": 9,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_GetRevive",
+        "raw_sha256": "418d5b8a1de63412c3cbe2457aca8e2cf6051015d245a1a8ab52d38c33de8cdc",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "75dcf6a2-4c81-4785-a638-2559b5535e45",
+        "ordinal": 42,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown",
+        "raw_sha256": "57a249dfab24089ed9d360ccb71069e290e4dedd0e13393ef1d5a4b9c9d598d7",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "fbbfa0fd-987a-4477-9b42-9571423f8046",
+        "ordinal": 43,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown",
+        "raw_sha256": "57a249dfab24089ed9d360ccb71069e290e4dedd0e13393ef1d5a4b9c9d598d7",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "75dcf6a2-4c81-4785-a638-2559b5535e45",
+        "ordinal": 3,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_Mandown_GamemodeChecks",
+        "raw_sha256": "00e03a1fc04ce35a5750a140d8a165fc035a93d1df7f1f625649daad84e3991b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "fbbfa0fd-987a-4477-9b42-9571423f8046",
+        "ordinal": 4,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_Mandown_GamemodeChecks",
+        "raw_sha256": "00e03a1fc04ce35a5750a140d8a165fc035a93d1df7f1f625649daad84e3991b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "75dcf6a2-4c81-4785-a638-2559b5535e45",
+        "ordinal": 21,
+        "route": "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker",
+        "raw_sha256": "f6a7f8b0802fc5b9e020ffebae0106b8e0d3842fb585a4e1ce825ef0d77bdd00",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "fbbfa0fd-987a-4477-9b42-9571423f8046",
+        "ordinal": 22,
+        "route": "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker",
+        "raw_sha256": "f6a7f8b0802fc5b9e020ffebae0106b8e0d3842fb585a4e1ce825ef0d77bdd00",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d374e245-a2aa-4092-8f0e-46b1f74cffb2",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/Expressions/PresEx_OnLadder",
+        "raw_sha256": "8adb0a4323e22cc9fb81bd3bbedd78b207ec5f34a5cf9301874451d07b296577",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "16579309-a72c-4364-b3a6-3fd42647b6b0",
+        "ordinal": 8,
+        "route": "Common/Gameplay/Soldier/Features/FirePutOut/SimEx_Soldier_FirePutOut",
+        "raw_sha256": "5235df632cd593a869bd7c13984d29ec47fe0dd842b421f404e8667c7ffc180a",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "f16c2015-292e-489c-a1d1-9509aca9b41d",
+        "ordinal": 9,
+        "route": "Common/Gameplay/Soldier/Features/FirePutOut/SimEx_Soldier_FirePutOut",
+        "raw_sha256": "5235df632cd593a869bd7c13984d29ec47fe0dd842b421f404e8667c7ffc180a",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "1985d366-c86d-48c0-8879-6203029a9b4f",
+        "ordinal": 10,
+        "route": "Common/Gameplay/Soldier/Features/FirePutOut/SimEx_Soldier_FirePutOut",
+        "raw_sha256": "5235df632cd593a869bd7c13984d29ec47fe0dd842b421f404e8667c7ffc180a",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "b3d5d77a-b836-4b38-acb6-9f0cdea8b42e",
+        "ordinal": 11,
+        "route": "Common/Gameplay/Soldier/Features/FirePutOut/SimEx_Soldier_FirePutOut",
+        "raw_sha256": "5235df632cd593a869bd7c13984d29ec47fe0dd842b421f404e8667c7ffc180a",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "b076d863-e744-40da-8ff1-b4047af4a2c7",
+        "ordinal": 30,
+        "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+        "raw_sha256": "b6d2ceca11185c8da0578a9d76ee3c2ba7235088f65e6ac60e3fde65b4cc7733",
+        "head": 4892017,
+        "scope": "weapon-dependency-candidate"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d69a122c-ef68-48a2-8bc7-da5815f50bd7",
+        "ordinal": 11,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions",
+        "raw_sha256": "97cfd7df9becc93d1ebd36cab0c114a09060994bbe9bf6552c581c077205733b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d374e245-a2aa-4092-8f0e-46b1f74cffb2",
+        "ordinal": 14,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/SimEx_InAirExpressions",
+        "raw_sha256": "f2573e414b3ac2453b7498d2305d4f062a08cba2be425b7e060c65996bb8612c",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d374e245-a2aa-4092-8f0e-46b1f74cffb2",
+        "ordinal": 58,
+        "route": "Common/Gameplay/Soldier/Traversal/SimEx_RootLayerLogic",
+        "raw_sha256": "533b75fa90ff5a6c4bbad9262d113baa7ac94568b3680e8abd7f7fa1e8be50bb",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d374e245-a2aa-4092-8f0e-46b1f74cffb2",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/Traversal/Vault/SimEx_CheckStartLadder",
+        "raw_sha256": "08bd844935f5f64f7ab40269b2b44a55ea720f021091f8d6cc5670081171f51b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d374e245-a2aa-4092-8f0e-46b1f74cffb2",
+        "ordinal": 7,
+        "route": "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Rope/SimEx_MoveWithRope_Master",
+        "raw_sha256": "04f60f2bc1dfb020f01012ed107e886f9e681cfa1e7328e4d7d91462293e9a3e",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "2631e8f8-a115-413d-a696-5ec194081d73",
+        "target_object_guid": "d374e245-a2aa-4092-8f0e-46b1f74cffb2",
+        "ordinal": 6,
+        "route": "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Zipline/SimEx_MoveWithZipLine_Master",
+        "raw_sha256": "aa31f91aa2171f6f36fba41917d7235911fc54e245bd42250d30485ab590ddab",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "27057c4e-0735-29e8-b4c2-d3166f842b24": [
+      {
+        "target_file_guid": "27057c4e-0735-29e8-b4c2-d3166f842b24",
+        "target_object_guid": "27057c4e-0735-29e8-b4c2-d3166f842b24",
+        "ordinal": 192,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "280ca964-6ac2-1642-4251-f451b5186a2c": [
+      {
+        "target_file_guid": "280ca964-6ac2-1642-4251-f451b5186a2c",
+        "target_object_guid": "280ca964-6ac2-1642-4251-f451b5186a2c",
+        "ordinal": 208,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "331d9280-7f36-a1e6-70df-84e32a6824c5": [
+      {
+        "target_file_guid": "331d9280-7f36-a1e6-70df-84e32a6824c5",
+        "target_object_guid": "331d9280-7f36-a1e6-70df-84e32a6824c5",
+        "ordinal": 271,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "334bdf50-84b7-1c88-4382-0373a6974b32": [
+      {
+        "target_file_guid": "334bdf50-84b7-1c88-4382-0373a6974b32",
+        "target_object_guid": "334bdf50-84b7-1c88-4382-0373a6974b32",
+        "ordinal": 194,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "3a99ab79-1a1e-7915-8f5e-274d0bbacce8": [
+      {
+        "target_file_guid": "3a99ab79-1a1e-7915-8f5e-274d0bbacce8",
+        "target_object_guid": "3a99ab79-1a1e-7915-8f5e-274d0bbacce8",
+        "ordinal": 261,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "3aaa2df6-94b3-0414-91ba-82786e7872e0": [
+      {
+        "target_file_guid": "3aaa2df6-94b3-0414-91ba-82786e7872e0",
+        "target_object_guid": "3aaa2df6-94b3-0414-91ba-82786e7872e0",
+        "ordinal": 406,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "3c847efd-679f-e994-711f-3d0838320842": [
+      {
+        "target_file_guid": "3c847efd-679f-e994-711f-3d0838320842",
+        "target_object_guid": "3c847efd-679f-e994-711f-3d0838320842",
+        "ordinal": 414,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "3fe28212-9663-9476-2f5a-dffd0f8ab4f6": [
+      {
+        "target_file_guid": "3fe28212-9663-9476-2f5a-dffd0f8ab4f6",
+        "target_object_guid": "3fe28212-9663-9476-2f5a-dffd0f8ab4f6",
+        "ordinal": 37,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "406a9598-51b8-d95c-0874-b882d7fc05a5": [
+      {
+        "target_file_guid": "406a9598-51b8-d95c-0874-b882d7fc05a5",
+        "target_object_guid": "406a9598-51b8-d95c-0874-b882d7fc05a5",
+        "ordinal": 303,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "4fa2dae6-a918-e075-7f1f-c3e69c965ec0": [
+      {
+        "target_file_guid": "4fa2dae6-a918-e075-7f1f-c3e69c965ec0",
+        "target_object_guid": "4fa2dae6-a918-e075-7f1f-c3e69c965ec0",
+        "ordinal": 388,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "546c535e-14ef-1d21-90d7-cbbb40c892a2": [
+      {
+        "target_file_guid": "546c535e-14ef-1d21-90d7-cbbb40c892a2",
+        "target_object_guid": "546c535e-14ef-1d21-90d7-cbbb40c892a2",
+        "ordinal": 206,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "59604db8-0e58-a5f2-49c5-466032a9b58c": [
+      {
+        "target_file_guid": "59604db8-0e58-a5f2-49c5-466032a9b58c",
+        "target_object_guid": "59604db8-0e58-a5f2-49c5-466032a9b58c",
+        "ordinal": 337,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "5a460680-2197-2848-8813-642286cd5f2f": [
+      {
+        "target_file_guid": "5a460680-2197-2848-8813-642286cd5f2f",
+        "target_object_guid": "5a460680-2197-2848-8813-642286cd5f2f",
+        "ordinal": 269,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "5a4a8113-3d1a-1896-cf30-ee1d725442fd": [
+      {
+        "target_file_guid": "5a4a8113-3d1a-1896-cf30-ee1d725442fd",
+        "target_object_guid": "5a4a8113-3d1a-1896-cf30-ee1d725442fd",
+        "ordinal": 38,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "5d685dbb-ba84-ab4a-2255-1558aee1498c": [
+      {
+        "target_file_guid": "5d685dbb-ba84-ab4a-2255-1558aee1498c",
+        "target_object_guid": "5d685dbb-ba84-ab4a-2255-1558aee1498c",
+        "ordinal": 339,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "61b32470-da0f-0d4f-06df-00d07742132c": [
+      {
+        "target_file_guid": "61b32470-da0f-0d4f-06df-00d07742132c",
+        "target_object_guid": "61b32470-da0f-0d4f-06df-00d07742132c",
+        "ordinal": 248,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "643df82c-843e-8b6f-da47-f7e852ca63ba": [
+      {
+        "target_file_guid": "643df82c-843e-8b6f-da47-f7e852ca63ba",
+        "target_object_guid": "643df82c-843e-8b6f-da47-f7e852ca63ba",
+        "ordinal": 64,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "6a1c392f-d35e-c8be-c3de-af091f43eaee": [
+      {
+        "target_file_guid": "6a1c392f-d35e-c8be-c3de-af091f43eaee",
+        "target_object_guid": "6a1c392f-d35e-c8be-c3de-af091f43eaee",
+        "ordinal": 66,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "6a3d2432-d8b2-6da5-a518-e19ea9741787": [
+      {
+        "target_file_guid": "6a3d2432-d8b2-6da5-a518-e19ea9741787",
+        "target_object_guid": "6a3d2432-d8b2-6da5-a518-e19ea9741787",
+        "ordinal": 69,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "817f063d-93fc-440b-31b2-53aaa762f242": [
+      {
+        "target_file_guid": "817f063d-93fc-440b-31b2-53aaa762f242",
+        "target_object_guid": "817f063d-93fc-440b-31b2-53aaa762f242",
+        "ordinal": 173,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "8f992c03-80cb-4ed5-8a6e-0274a57f659c": [
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "cd259f69-4165-4e01-a124-b5c5cec53359",
+        "ordinal": 0,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions",
+        "raw_sha256": "97cfd7df9becc93d1ebd36cab0c114a09060994bbe9bf6552c581c077205733b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "23f98d96-1e0a-4d10-89ad-13d856521d47",
+        "ordinal": 1,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions",
+        "raw_sha256": "97cfd7df9becc93d1ebd36cab0c114a09060994bbe9bf6552c581c077205733b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "1d358ec6-1793-48d5-8a91-52b601d58886",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions",
+        "raw_sha256": "97cfd7df9becc93d1ebd36cab0c114a09060994bbe9bf6552c581c077205733b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "cd259f69-4165-4e01-a124-b5c5cec53359",
+        "ordinal": 0,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/SimEx_InAirExpressions",
+        "raw_sha256": "f2573e414b3ac2453b7498d2305d4f062a08cba2be425b7e060c65996bb8612c",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "23f98d96-1e0a-4d10-89ad-13d856521d47",
+        "ordinal": 1,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/SimEx_InAirExpressions",
+        "raw_sha256": "f2573e414b3ac2453b7498d2305d4f062a08cba2be425b7e060c65996bb8612c",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "1d358ec6-1793-48d5-8a91-52b601d58886",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/SimEx_InAirExpressions",
+        "raw_sha256": "f2573e414b3ac2453b7498d2305d4f062a08cba2be425b7e060c65996bb8612c",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "cd259f69-4165-4e01-a124-b5c5cec53359",
+        "ordinal": 0,
+        "route": "Common/Gameplay/Soldier/Traversal/Parachute/SimEx_SimpleParachutePhysics",
+        "raw_sha256": "681f6d8ed568797e843b2a473922a78e731de74e38106572b7d1e67e296a5d6d",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "23f98d96-1e0a-4d10-89ad-13d856521d47",
+        "ordinal": 1,
+        "route": "Common/Gameplay/Soldier/Traversal/Parachute/SimEx_SimpleParachutePhysics",
+        "raw_sha256": "681f6d8ed568797e843b2a473922a78e731de74e38106572b7d1e67e296a5d6d",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "8f992c03-80cb-4ed5-8a6e-0274a57f659c",
+        "target_object_guid": "1d358ec6-1793-48d5-8a91-52b601d58886",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/Traversal/Parachute/SimEx_SimpleParachutePhysics",
+        "raw_sha256": "681f6d8ed568797e843b2a473922a78e731de74e38106572b7d1e67e296a5d6d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "951d4eb6-949f-f1e9-8364-110cfe324707": [
+      {
+        "target_file_guid": "951d4eb6-949f-f1e9-8364-110cfe324707",
+        "target_object_guid": "951d4eb6-949f-f1e9-8364-110cfe324707",
+        "ordinal": 1,
+        "route": "DiceAI/Behavior/Blackboards/HybridBlackboard_Soldier",
+        "raw_sha256": "d1c1c73e96dc18168e1e20c522865d42ea721d4b0749b4b7d93d4f09976577c6",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "96c05ebf-3301-227b-8f7d-380c536c1ef4": [
+      {
+        "target_file_guid": "96c05ebf-3301-227b-8f7d-380c536c1ef4",
+        "target_object_guid": "96c05ebf-3301-227b-8f7d-380c536c1ef4",
+        "ordinal": 342,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "9714563c-03db-e2e2-1ebd-506eeb2f95e8": [
+      {
+        "target_file_guid": "9714563c-03db-e2e2-1ebd-506eeb2f95e8",
+        "target_object_guid": "9714563c-03db-e2e2-1ebd-506eeb2f95e8",
+        "ordinal": 171,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "a37d006d-88ab-60ef-4e24-0b7c86239b5a": [
+      {
+        "target_file_guid": "a37d006d-88ab-60ef-4e24-0b7c86239b5a",
+        "target_object_guid": "a37d006d-88ab-60ef-4e24-0b7c86239b5a",
+        "ordinal": 244,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "a5636ee9-b524-c258-ee71-1cd4e02f0602": [
+      {
+        "target_file_guid": "a5636ee9-b524-c258-ee71-1cd4e02f0602",
+        "target_object_guid": "a5636ee9-b524-c258-ee71-1cd4e02f0602",
+        "ordinal": 391,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "a7f06633-46d1-4587-280d-70b144dd5db4": [
+      {
+        "target_file_guid": "a7f06633-46d1-4587-280d-70b144dd5db4",
+        "target_object_guid": "a7f06633-46d1-4587-280d-70b144dd5db4",
+        "ordinal": 71,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "a8a32782-4cb8-64da-3472-90ab916c3881": [
+      {
+        "target_file_guid": "a8a32782-4cb8-64da-3472-90ab916c3881",
+        "target_object_guid": "a8a32782-4cb8-64da-3472-90ab916c3881",
+        "ordinal": 278,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "a9ea327f-3610-af67-2388-7c211b74e5ee": [
+      {
+        "target_file_guid": "a9ea327f-3610-af67-2388-7c211b74e5ee",
+        "target_object_guid": "a9ea327f-3610-af67-2388-7c211b74e5ee",
+        "ordinal": 267,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "adec9866-fefd-6dfa-c908-8ea0bd38be04": [
+      {
+        "target_file_guid": "adec9866-fefd-6dfa-c908-8ea0bd38be04",
+        "target_object_guid": "adec9866-fefd-6dfa-c908-8ea0bd38be04",
+        "ordinal": 211,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "b03678e9-15ad-043e-6461-3870d725056f": [
+      {
+        "target_file_guid": "b03678e9-15ad-043e-6461-3870d725056f",
+        "target_object_guid": "b03678e9-15ad-043e-6461-3870d725056f",
+        "ordinal": 392,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "b31ceeba-1ff9-dde9-f7b1-5ca54ead6859": [
+      {
+        "target_file_guid": "b31ceeba-1ff9-dde9-f7b1-5ca54ead6859",
+        "target_object_guid": "b31ceeba-1ff9-dde9-f7b1-5ca54ead6859",
+        "ordinal": 338,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "b335907c-2696-79b2-57e0-3aa268b7b39f": [
+      {
+        "target_file_guid": "b335907c-2696-79b2-57e0-3aa268b7b39f",
+        "target_object_guid": "b335907c-2696-79b2-57e0-3aa268b7b39f",
+        "ordinal": 263,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "b4765624-c221-4138-b446-3b3aa155cf3b": [
+      {
+        "target_file_guid": "b4765624-c221-4138-b446-3b3aa155cf3b",
+        "target_object_guid": "e76e76fd-ff97-4dd4-89b4-e53109f79140",
+        "ordinal": 4,
+        "route": "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker",
+        "raw_sha256": "f6a7f8b0802fc5b9e020ffebae0106b8e0d3842fb585a4e1ce825ef0d77bdd00",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "b4765624-c221-4138-b446-3b3aa155cf3b",
+        "target_object_guid": "fb052257-a5eb-4479-ae06-649ff4f7973d",
+        "ordinal": 7,
+        "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+        "raw_sha256": "b6d2ceca11185c8da0578a9d76ee3c2ba7235088f65e6ac60e3fde65b4cc7733",
+        "head": 4892017,
+        "scope": "weapon-dependency-candidate"
+      },
+      {
+        "target_file_guid": "b4765624-c221-4138-b446-3b3aa155cf3b",
+        "target_object_guid": "5770d38e-a6ec-41d5-8d99-a4129fe4d547",
+        "ordinal": 4,
+        "route": "Common/Gameplay/Soldier/Traversal/InAir/PresEx_InAirExpressions",
+        "raw_sha256": "97cfd7df9becc93d1ebd36cab0c114a09060994bbe9bf6552c581c077205733b",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "b58f7f2e-7b0d-1a68-9d47-d928e080d08c": [
+      {
+        "target_file_guid": "b58f7f2e-7b0d-1a68-9d47-d928e080d08c",
+        "target_object_guid": "b58f7f2e-7b0d-1a68-9d47-d928e080d08c",
+        "ordinal": 65,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "b6a13c17-ca4e-7553-4884-d5b2b22c293e": [
+      {
+        "target_file_guid": "b6a13c17-ca4e-7553-4884-d5b2b22c293e",
+        "target_object_guid": "b6a13c17-ca4e-7553-4884-d5b2b22c293e",
+        "ordinal": 41,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "ba0d81d5-ddf5-a9b8-dfd7-23f38120a18d": [
+      {
+        "target_file_guid": "ba0d81d5-ddf5-a9b8-dfd7-23f38120a18d",
+        "target_object_guid": "ba0d81d5-ddf5-a9b8-dfd7-23f38120a18d",
+        "ordinal": 369,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "be0064c2-fbe3-0635-642f-5c4b3c1d04b0": [
+      {
+        "target_file_guid": "be0064c2-fbe3-0635-642f-5c4b3c1d04b0",
+        "target_object_guid": "be0064c2-fbe3-0635-642f-5c4b3c1d04b0",
+        "ordinal": 346,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "beef0679-6203-e529-4ba3-02131ce1424f": [
+      {
+        "target_file_guid": "beef0679-6203-e529-4ba3-02131ce1424f",
+        "target_object_guid": "beef0679-6203-e529-4ba3-02131ce1424f",
+        "ordinal": 259,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "c144f0e4-c05b-1e71-b2ab-ce3ff0ae9385": [
+      {
+        "target_file_guid": "c144f0e4-c05b-1e71-b2ab-ce3ff0ae9385",
+        "target_object_guid": "c144f0e4-c05b-1e71-b2ab-ce3ff0ae9385",
+        "ordinal": 386,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "c33ff1d4-1269-f0fb-838a-cff50fcf64ae": [
+      {
+        "target_file_guid": "c33ff1d4-1269-f0fb-838a-cff50fcf64ae",
+        "target_object_guid": "c33ff1d4-1269-f0fb-838a-cff50fcf64ae",
+        "ordinal": 368,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "c70afa35-ff25-6aec-a698-1e40da19641b": [
+      {
+        "target_file_guid": "c70afa35-ff25-6aec-a698-1e40da19641b",
+        "target_object_guid": "c70afa35-ff25-6aec-a698-1e40da19641b",
+        "ordinal": 77,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "cb730c34-26c0-eea6-3322-7a4abe894d7f": [
+      {
+        "target_file_guid": "cb730c34-26c0-eea6-3322-7a4abe894d7f",
+        "target_object_guid": "cb730c34-26c0-eea6-3322-7a4abe894d7f",
+        "ordinal": 72,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "cc0eebd1-767b-4195-49bf-2d132718761d": [
+      {
+        "target_file_guid": "cc0eebd1-767b-4195-49bf-2d132718761d",
+        "target_object_guid": "cc0eebd1-767b-4195-49bf-2d132718761d",
+        "ordinal": 365,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "ccc88fce-a7fb-dfbc-0969-065bfd8da198": [
+      {
+        "target_file_guid": "ccc88fce-a7fb-dfbc-0969-065bfd8da198",
+        "target_object_guid": "ccc88fce-a7fb-dfbc-0969-065bfd8da198",
+        "ordinal": 362,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "cdcfad80-8cee-744a-d597-c31c58b4f1a1": [
+      {
+        "target_file_guid": "cdcfad80-8cee-744a-d597-c31c58b4f1a1",
+        "target_object_guid": "cdcfad80-8cee-744a-d597-c31c58b4f1a1",
+        "ordinal": 272,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180": [
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "15c5416b-4169-4402-9d87-37ea7c613fa4",
+        "ordinal": 7,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_InMandown_Master",
+        "raw_sha256": "b3ba0d566c140ab99ed76bf31a0c8eedfa14b0e9277c50f50e7913d947650446",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "e693cdea-5042-4dc0-bf82-a660a3c2b41b",
+        "ordinal": 8,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/PresEx_InMandown_Master",
+        "raw_sha256": "b3ba0d566c140ab99ed76bf31a0c8eedfa14b0e9277c50f50e7913d947650446",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "50d3640a-59a5-4494-9e53-7733be3c2af1",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_GetRevive",
+        "raw_sha256": "418d5b8a1de63412c3cbe2457aca8e2cf6051015d245a1a8ab52d38c33de8cdc",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "15c5416b-4169-4402-9d87-37ea7c613fa4",
+        "ordinal": 1,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown",
+        "raw_sha256": "57a249dfab24089ed9d360ccb71069e290e4dedd0e13393ef1d5a4b9c9d598d7",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf",
+        "ordinal": 2,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown",
+        "raw_sha256": "57a249dfab24089ed9d360ccb71069e290e4dedd0e13393ef1d5a4b9c9d598d7",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "e693cdea-5042-4dc0-bf82-a660a3c2b41b",
+        "ordinal": 3,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_IsInMandown",
+        "raw_sha256": "57a249dfab24089ed9d360ccb71069e290e4dedd0e13393ef1d5a4b9c9d598d7",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf",
+        "ordinal": 0,
+        "route": "Common/Gameplay/Soldier/DeathFlow/ManDown/SimEx_Mandown_GamemodeChecks",
+        "raw_sha256": "00e03a1fc04ce35a5750a140d8a165fc035a93d1df7f1f625649daad84e3991b",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "eb968356-6f48-4a55-b6ec-d05e57d67c0c",
+        "ordinal": 0,
+        "route": "Common/Gameplay/Soldier/ExpressionFunctions/PresEx_Soldier_OverlayPicker",
+        "raw_sha256": "f6a7f8b0802fc5b9e020ffebae0106b8e0d3842fb585a4e1ce825ef0d77bdd00",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf",
+        "ordinal": 5,
+        "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+        "raw_sha256": "b6d2ceca11185c8da0578a9d76ee3c2ba7235088f65e6ac60e3fde65b4cc7733",
+        "head": 4892017,
+        "scope": "weapon-dependency-candidate"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf",
+        "ordinal": 0,
+        "route": "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Rope/SimEx_MoveWithRope_Master",
+        "raw_sha256": "04f60f2bc1dfb020f01012ed107e886f9e681cfa1e7328e4d7d91462293e9a3e",
+        "head": 4892017,
+        "scope": "unclassified"
+      },
+      {
+        "target_file_guid": "d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180",
+        "target_object_guid": "bb877fb6-5b82-4983-85d5-d5c971b133cf",
+        "ordinal": 0,
+        "route": "Common/Gameplay/Soldier/Traversal/Vault/ZiplineAndRope/Zipline/SimEx_MoveWithZipLine_Master",
+        "raw_sha256": "aa31f91aa2171f6f36fba41917d7235911fc54e245bd42250d30485ab590ddab",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "dc018e7d-0ae6-7045-8efd-7f92e81a3fe6": [
+      {
+        "target_file_guid": "dc018e7d-0ae6-7045-8efd-7f92e81a3fe6",
+        "target_object_guid": "dc018e7d-0ae6-7045-8efd-7f92e81a3fe6",
+        "ordinal": 0,
+        "route": "DiceAI/Behavior/Blackboards/HybridBlackboard_Soldier",
+        "raw_sha256": "d1c1c73e96dc18168e1e20c522865d42ea721d4b0749b4b7d93d4f09976577c6",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "dd1eecae-cd76-709d-99cf-0002361f5ad5": [
+      {
+        "target_file_guid": "dd1eecae-cd76-709d-99cf-0002361f5ad5",
+        "target_object_guid": "dd1eecae-cd76-709d-99cf-0002361f5ad5",
+        "ordinal": 323,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "e192896b-d5c9-c418-2684-d1030683699b": [
+      {
+        "target_file_guid": "e192896b-d5c9-c418-2684-d1030683699b",
+        "target_object_guid": "e192896b-d5c9-c418-2684-d1030683699b",
+        "ordinal": 238,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "ea3d681e-e0cf-7aec-998f-66510a991923": [
+      {
+        "target_file_guid": "ea3d681e-e0cf-7aec-998f-66510a991923",
+        "target_object_guid": "ea3d681e-e0cf-7aec-998f-66510a991923",
+        "ordinal": 48,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "f09b7229-145c-ca45-6c50-216da1e3c929": [
+      {
+        "target_file_guid": "f09b7229-145c-ca45-6c50-216da1e3c929",
+        "target_object_guid": "f09b7229-145c-ca45-6c50-216da1e3c929",
+        "ordinal": 61,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "fad29d87-6735-10ff-e7b5-baafdc29e4d8": [
+      {
+        "target_file_guid": "fad29d87-6735-10ff-e7b5-baafdc29e4d8",
+        "target_object_guid": "fad29d87-6735-10ff-e7b5-baafdc29e4d8",
+        "ordinal": 284,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "fc9225c9-2d90-ac77-eac3-228b3d3fbce4": [
+      {
+        "target_file_guid": "fc9225c9-2d90-ac77-eac3-228b3d3fbce4",
+        "target_object_guid": "fc9225c9-2d90-ac77-eac3-228b3d3fbce4",
+        "ordinal": 356,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ],
+    "ff87ba78-df11-bf20-bb3b-309e93be8e41": [
+      {
+        "target_file_guid": "ff87ba78-df11-bf20-bb3b-309e93be8e41",
+        "target_object_guid": "ff87ba78-df11-bf20-bb3b-309e93be8e41",
+        "ordinal": 258,
+        "route": "Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings",
+        "raw_sha256": "95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d",
+        "head": 4892017,
+        "scope": "unclassified"
+      }
+    ]
+  },
+  "limitations": [
+    "All catalog rows retained; candidate namespace or dependency reachability is not proof of active MP relevance.",
+    "All primary weapons namespace assets are captured; related assets outside it and semantic review remain pending.",
+    "Header import records are structural references. Missing catalog GUIDs are explicitly retained, not counted as resolved closure.",
+    "Every object body and import/reference position is retained in the external ledger. Provisional layouts, boxed placeholders and unsupported delegate fields remain visible.",
+    "The shared decoder has not changed at this snapshot; decoder improvements require a separate source-versioned pass.",
+    "Prior reports are linked as field-specific evidence; no asset has been promoted to fully semantically reviewed from capture/decoding alone."
+  ],
+  "reproduction": [
+    "python scripts/frosty-audit-coverage.py init --build <1.4.3.0-build> --db <new-ledger.sqlite>",
+    "python scripts/frosty-audit-coverage.py scan --build <build> --db <ledger> --hotfix-dir <each-of-12-recorded-hotfix-folders> --collection-dir weapon-audit-2026-09-23 --seed-prefix <each-recorded-adjacent-namespace>",
+    "python scripts/frosty-audit-coverage.py decode --build <build> --db <ledger>",
+    "python scripts/frosty-audit-coverage.py decode --build <build> --db <ledger> --route Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons --retry-bounded --max-decode-bytes 8388608 --max-objects 40000"
+  ]
+}

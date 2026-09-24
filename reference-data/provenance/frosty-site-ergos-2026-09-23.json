@@ -1,0 +1,2746 @@
+{
+  "sourceBuild": "1.4.3.0, archive Head 4892017",
+  "scope": "Current 51 ERGOS leaves in integrated pending inventory; synthetic /ERGOS/0/pts excluded for spotting receipt.",
+  "inventorySource": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-review-v4-spotting-corrected\\site-input-pending.jsonl",
+  "inventorySha256": "c9ddad1b2944efe7c30cdbbffc476904dae31a1775de019c22f237f3626f6321",
+  "mappingSha256": "3f8f41fed52840b61fb5c8527f22f92ee0272850276d429cb4f2cc437f351f64",
+  "rosterSha256": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32",
+  "siteFileSha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79",
+  "simFileSha256": "8403b8dd30edb3c60b194021bf3a8e1f7b836553eb669af962603fcb27647a0d",
+  "scriptSha256": "03aa7d2d1ffb8ef02479931ac604ffb9ea47cf2f31411da222a888caf7081152",
+  "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+  "graphMethod": "frosty-configuration.attachment_graph over cached 1.4.3.0 XML overlay; exact attachment GUID → Ability branch/action selector → WB modifier object/effects and GS binding refs.",
+  "ergosGraphIssueCount": 0,
+  "unrelatedGlobalGraphIssueCount": 24,
+  "leafCount": 51,
+  "detailPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-ergos-2026-09-23-leaves.jsonl",
+  "detailSha256": "42c81ecfd8cdd909d8eaf757efe8809be5e271ee86daa1dfcbb2ef6d7b2e887e",
+  "perLeafSourcePathAndRawBytes": true,
+  "activationLimit": "Graph and byte matches establish current-build serialized source and exact per-weapon binding paths; they do not establish runtime activation or the native consumer formula.",
+  "detailSchema": "Each detail row is a site leaf; sourceSelections contains every exact matching current site weapon, source weapon, attachment asset/GUID, selector GUID, WB WPM effects, GS binding paths, effect scalar field paths, object indexes, raw byte offsets/hex, raw SHA and descriptor SHA. Local zero-GUID references are aligned through exact XML GUID and verified class-table order.",
+  "rows": [
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/1/sprintRecoveryTierShift",
+      "siteSelection": "rail_cover",
+      "siteValue": -1,
+      "sourceChoiceCount": 9,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05",
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05"
+      ],
+      "sourceSiteAgreement": "site tier shift is the inverse-sign representation of the exact selected Draw timing operand",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "SCARL",
+          "siteWeapon": "sor556",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M4A1",
+          "siteWeapon": "m4a1",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "QBZ192",
+          "siteWeapon": "qbz192",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "SCARSC",
+          "siteWeapon": "sor300sc",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M27IAR",
+          "siteWeapon": "drsiar",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "Ultimax",
+          "siteWeapon": "kts100",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M240L",
+          "siteWeapon": "m240l",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "BREN3",
+          "siteWeapon": "brod3",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled sprint recovery or deployment timing.",
+      "remainingUncertainty": "Site sign conversion matches the paired source operands; native timing formula is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/1/deployTimeTierShift",
+      "siteSelection": "rail_cover",
+      "siteValue": -1,
+      "sourceChoiceCount": 9,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05",
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05"
+      ],
+      "sourceSiteAgreement": "site tier shift is the inverse-sign representation of the exact selected Draw timing operand",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "SCARL",
+          "siteWeapon": "sor556",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M4A1",
+          "siteWeapon": "m4a1",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "QBZ192",
+          "siteWeapon": "qbz192",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "SCARSC",
+          "siteWeapon": "sor300sc",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M27IAR",
+          "siteWeapon": "drsiar",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "Ultimax",
+          "siteWeapon": "kts100",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M240L",
+          "siteWeapon": "m240l",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "BREN3",
+          "siteWeapon": "brod3",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled sprint recovery or deployment timing.",
+      "remainingUncertainty": "Site sign conversion matches the paired source operands; native timing formula is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/2/noEffect",
+      "siteSelection": "mag_flare",
+      "siteValue": true,
+      "sourceChoiceCount": 11,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/weapons/_WeaponModifiers/ADSReload/WME_ADSReload_P10"
+      ],
+      "sourceSiteAgreement": "software-authored omission marker; selected source effects are captured, but this is not evidence of game no-effect",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "HK433",
+          "siteWeapon": "m433",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SCARL",
+          "siteWeapon": "sor556",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M4A1",
+          "siteWeapon": "m4a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "XM7",
+          "siteWeapon": "m277",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "AK205",
+          "siteWeapon": "ak205",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "HK417A2",
+          "siteWeapon": "m417a2",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SCARSC",
+          "siteWeapon": "sor300sc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M27IAR",
+          "siteWeapon": "drsiar",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "RPKM",
+          "siteWeapon": "rpkm",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "RPK74M",
+          "siteWeapon": "rpk74m",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Marks an unmodeled behavior. ADS Bolt is relevant to sustained sniper cadence because it may add unscope → chamber → ADS return; the current Analyzer cadence model omits this sequence. Other noEffect rows have no numeric sim consumer.",
+      "remainingUncertainty": "Exact selected WME/local-object fields are in detail; native activation and the resulting cadence delta are not established here."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/3/reloadSpeedMult",
+      "siteSelection": "mag_catch",
+      "siteValue": 1.063,
+      "sourceChoiceCount": 28,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/ReloadSpeed/WME_ReloadSpeedSmall_P05"
+      ],
+      "sourceSiteAgreement": "site multiplier exactly matches selected WME_ReloadSpeedSmall_P05 operand",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "Tavor7",
+          "siteWeapon": "tr7",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "M4A1",
+          "siteWeapon": "m4a1",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "XM7",
+          "siteWeapon": "m277",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "AK205",
+          "siteWeapon": "ak205",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "MP7A2",
+          "siteWeapon": "pw7a2",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "P90",
+          "siteWeapon": "usg90",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "APC10",
+          "siteWeapon": "scw10",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "APDW",
+          "siteWeapon": "sl9",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "PP19",
+          "siteWeapon": "pp19",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "M39EMR",
+          "siteWeapon": "m39emr",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "ARADMR",
+          "siteWeapon": "lmr27",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "SVDM",
+          "siteWeapon": "svdm",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "SV98M",
+          "siteWeapon": "sv98",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "MRAD",
+          "siteWeapon": "psr",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "L115A3",
+          "siteWeapon": "l115",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "DesertTechHTI",
+          "siteWeapon": "interdictor",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "M18",
+          "siteWeapon": "p18",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "FiveSeven",
+          "siteWeapon": "es57",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "M45A1",
+          "siteWeapon": "m45a1",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "G22",
+          "siteWeapon": "ggh22",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "Skorpion",
+          "siteWeapon": "vz61",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "BREN3",
+          "siteWeapon": "brod3",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "EF88",
+          "siteWeapon": "ef88",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "direct WME reload-speed multiplier; independent class/field meaning is recorded in docs/frosty/FIELD_MAP.md for Class_9705264b Field_348b8cd1",
+          "sourceFieldPaths": [
+            "/Field_348b8cd1"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Changes modeled reload duration through the attachment reload-speed consumer.",
+      "remainingUncertainty": "Serialized operand and site value match; native reload composition is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/4/noEffect",
+      "siteSelection": "match_trigger",
+      "siteValue": true,
+      "sourceChoiceCount": 24,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/AssaultRifle/ACE32/ACE32_WB",
+        "Common/Hardware/Weapons/AssaultRifle/EF88/EF88_WB",
+        "Common/Hardware/Weapons/AssaultRifle/G36/G36_WB",
+        "Common/Hardware/Weapons/AssaultRifle/G3A4/G3A4_WB",
+        "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB",
+        "Common/Hardware/Weapons/AssaultRifle/L85A3/L85A3_WB",
+        "Common/Hardware/Weapons/AssaultRifle/M16A3/M16A3_WB",
+        "Common/Hardware/Weapons/AssaultRifle/SCARL/SCARL_WB",
+        "Common/Hardware/Weapons/AssaultRifle/Tavor7/Tavor7_WB",
+        "Common/Hardware/Weapons/AssaultRifle/VHS2/VHS2_WB",
+        "Common/Hardware/Weapons/Carbine/AK205/AK205_WB",
+        "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB",
+        "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_WB",
+        "Common/Hardware/Weapons/Carbine/M4A1/M4A1_WB",
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB",
+        "Common/Hardware/Weapons/Carbine/QBZ192/QBZ192_WB",
+        "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/Carbine/XM7/XM7_WB",
+        "Common/Hardware/Weapons/MG/M27IAR/M27IAR_WB",
+        "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB",
+        "Common/Hardware/Weapons/MG/RPKM/RPKM_WB",
+        "Common/Hardware/Weapons/MG/Ultimax/Ultimax_WB"
+      ],
+      "sourceSiteAgreement": "software-authored omission marker; selected source effects are captured, but this is not evidence of game no-effect",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "HK433",
+          "siteWeapon": "m433",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "G36",
+          "siteWeapon": "b36a4",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SCARL",
+          "siteWeapon": "sor556",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "G3A4",
+          "siteWeapon": "ak4d",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Tavor7",
+          "siteWeapon": "tr7",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ACE32",
+          "siteWeapon": "nvo228e",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "L85A3",
+          "siteWeapon": "l85a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "VHS2",
+          "siteWeapon": "vcr2",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M4A1",
+          "siteWeapon": "m4a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "XM7",
+          "siteWeapon": "m277",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "AK205",
+          "siteWeapon": "ak205",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "HK417A2",
+          "siteWeapon": "m417a2",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "QBZ192",
+          "siteWeapon": "qbz192",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SCARSC",
+          "siteWeapon": "sor300sc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M27IAR",
+          "siteWeapon": "drsiar",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "RPKM",
+          "siteWeapon": "rpkm",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Ultimax",
+          "siteWeapon": "kts100",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "RPK74M",
+          "siteWeapon": "rpk74m",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "BREN3",
+          "siteWeapon": "brod3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "EF88",
+          "siteWeapon": "ef88",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Marks an unmodeled behavior. ADS Bolt is relevant to sustained sniper cadence because it may add unscope → chamber → ADS return; the current Analyzer cadence model omits this sequence. Other noEffect rows have no numeric sim consumer.",
+      "remainingUncertainty": "Exact selected WME/local-object fields are in detail; native activation and the resulting cadence delta are not established here."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/5/noEffect",
+      "siteSelection": "ads_bolt",
+      "siteValue": true,
+      "sourceChoiceCount": 4,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/ADSBoltRechamber/WME_ADSBoltRechamber_P25"
+      ],
+      "sourceSiteAgreement": "software-authored omission marker; ADS Bolt has exact selected boolean evidence",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "M2010ESR",
+          "siteWeapon": "m2010esr",
+          "result": "match",
+          "transformation": "site noEffect marker omits exact selected ADS-bolt boolean; possible cadence model gap",
+          "sourceFieldPaths": [
+            "/Field_68c40b57"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "SV98M",
+          "siteWeapon": "sv98",
+          "result": "match",
+          "transformation": "site noEffect marker omits exact selected ADS-bolt boolean; possible cadence model gap",
+          "sourceFieldPaths": [
+            "/Field_68c40b57"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "MRAD",
+          "siteWeapon": "psr",
+          "result": "match",
+          "transformation": "site noEffect marker omits exact selected ADS-bolt boolean; possible cadence model gap",
+          "sourceFieldPaths": [
+            "/Field_68c40b57"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "L115A3",
+          "siteWeapon": "l115",
+          "result": "match",
+          "transformation": "site noEffect marker omits exact selected ADS-bolt boolean; possible cadence model gap",
+          "sourceFieldPaths": [
+            "/Field_68c40b57"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Marks an unmodeled behavior. ADS Bolt is relevant to sustained sniper cadence because it may add unscope → chamber → ADS return; the current Analyzer cadence model omits this sequence. Other noEffect rows have no numeric sim consumer.",
+      "remainingUncertainty": "Exact selected WME/local-object fields are in detail; native activation and the resulting cadence delta are not established here."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/6/visualRecoil",
+      "siteSelection": "buffer",
+      "siteValue": -1,
+      "sourceChoiceCount": 27,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/RecoilBuffer/WPM_ERG_Buffer_W05"
+      ],
+      "sourceSiteAgreement": "site visualRecoil=-1 is an Analyzer-authored tier; selected Buffer WPM contains Field_c4814c93=-1 and a separate 0.75 recoil-vector candidate, but field meaning is unresolved",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "G36",
+          "siteWeapon": "b36a4",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SCARL",
+          "siteWeapon": "sor556",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "G3A4",
+          "siteWeapon": "ak4d",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ACE32",
+          "siteWeapon": "nvo228e",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "VHS2",
+          "siteWeapon": "vcr2",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M4A1",
+          "siteWeapon": "m4a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "AK205",
+          "siteWeapon": "ak205",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "HK417A2",
+          "siteWeapon": "m417a2",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SCARSC",
+          "siteWeapon": "sor300sc",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MPX",
+          "siteWeapon": "sgx",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "P90",
+          "siteWeapon": "usg90",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "PP19",
+          "siteWeapon": "pp19",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M27IAR",
+          "siteWeapon": "drsiar",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "RPKM",
+          "siteWeapon": "rpkm",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "RPK74M",
+          "siteWeapon": "rpk74m",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "M39EMR",
+          "siteWeapon": "m39emr",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SVDM",
+          "siteWeapon": "svdm",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MSBSGROTCPS",
+          "siteWeapon": "grtcps",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "185KSK",
+          "siteWeapon": "ks18k",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "BREN3",
+          "siteWeapon": "brod3",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "EF88",
+          "siteWeapon": "ef88",
+          "result": "semantic field mapping unresolved",
+          "transformation": "semantic blocker: Field_c4814c93 has no independently validated visual-recoil meaning",
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes the Analyzer visual-recoil badge; possible source relationship to recoil-vector scaling is proposed, not established.",
+      "remainingUncertainty": "Class_bfd4f199 Field_c4814c93 and the .75 vector are both raw-confirmed, but no independent field registry or native consumer mapping proves their relationship."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/7/adsRecoilTierMod",
+      "siteSelection": "full_auto",
+      "siteValue": -1,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_ERG_M10",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplace_W30",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/7/hipRecoilTierMod",
+      "siteSelection": "full_auto",
+      "siteValue": -1,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_ERG_M10",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplace_W30",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/7/recoilDurationAdd",
+      "siteSelection": "full_auto",
+      "siteValue": -0.0006,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_ERG_M10",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplace_W30",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00"
+      ],
+      "sourceSiteAgreement": "site recoil operand matches exact selected source field path(s) recorded in detail",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "match",
+          "transformation": "exact selected GS recoil-duration operand",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_5a02dd65/Field_4692836a",
+            "/Field_7b609515/Field_5a02dd65/Field_4692836a"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/7/setsFireModeAuto",
+      "siteSelection": "full_auto",
+      "siteValue": true,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_ERG_M10",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplace_W30",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00"
+      ],
+      "sourceSiteAgreement": "site mode flag agrees with exact selected-source mode enum/selector path",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "M16A3",
+          "siteWeapon": "m16a4",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 2",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Changes displayed fire mode and corresponding RPM or burst presentation.",
+      "remainingUncertainty": "Serialized enum and selected branch agree; runtime activation and selector precedence are not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/8/sprintRecoveryTierShift",
+      "siteSelection": "fast_deploy",
+      "siteValue": -1,
+      "sourceChoiceCount": 5,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05",
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05"
+      ],
+      "sourceSiteAgreement": "site tier shift is the inverse-sign representation of the exact selected Draw timing operand",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "M18",
+          "siteWeapon": "p18",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M45A1",
+          "siteWeapon": "m45a1",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "RagingHunter",
+          "siteWeapon": "m44",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "G22",
+          "siteWeapon": "ggh22",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "TRR8",
+          "siteWeapon": "m357trait",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled sprint recovery or deployment timing.",
+      "remainingUncertainty": "Site sign conversion matches the paired source operands; native timing formula is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/8/deployTimeTierShift",
+      "siteSelection": "fast_deploy",
+      "siteValue": -1,
+      "sourceChoiceCount": 5,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P05",
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P05"
+      ],
+      "sourceSiteAgreement": "site tier shift is the inverse-sign representation of the exact selected Draw timing operand",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "M18",
+          "siteWeapon": "p18",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "M45A1",
+          "siteWeapon": "m45a1",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "RagingHunter",
+          "siteWeapon": "m44",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "G22",
+          "siteWeapon": "ggh22",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        },
+        {
+          "sourceWeapon": "TRR8",
+          "siteWeapon": "m357trait",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled sprint recovery or deployment timing.",
+      "remainingUncertainty": "Site sign conversion matches the paired source operands; native timing formula is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/9/sprintRecoveryTierShift",
+      "siteSelection": "fast_deploy_10",
+      "siteValue": -2,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P10",
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P10"
+      ],
+      "sourceSiteAgreement": "site tier shift is the inverse-sign representation of the exact selected Draw timing operand",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "RagingHunter",
+          "siteWeapon": "m44",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled sprint recovery or deployment timing.",
+      "remainingUncertainty": "Site sign conversion matches the paired source operands; native timing formula is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/9/deployTimeTierShift",
+      "siteSelection": "fast_deploy_10",
+      "siteValue": -2,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Deploy_P10",
+        "Common/Hardware/Weapons/_WeaponModifiers/Draw/WME_Draw_Sprint_P10"
+      ],
+      "sourceSiteAgreement": "site tier shift is the inverse-sign representation of the exact selected Draw timing operand",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "RagingHunter",
+          "siteWeapon": "m44",
+          "result": "match",
+          "transformation": "site shift is the negated source timing operand; sim resolves index as baseIndex - shift",
+          "sourceFieldPaths": [
+            "/Field_9540bd8e"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled sprint recovery or deployment timing.",
+      "remainingUncertainty": "Site sign conversion matches the paired source operands; native timing formula is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/adsRecoilVariationTierMod",
+      "siteSelection": "burst_training",
+      "siteValue": 3,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/setsFireModeBurst",
+      "siteSelection": "burst_training",
+      "siteValue": true,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "site mode flag agrees with exact selected-source mode enum/selector path",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Changes displayed fire mode and corresponding RPM or burst presentation.",
+      "remainingUncertainty": "Serialized enum and selected branch agree; runtime activation and selector precedence are not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/adsRecoilTierMod",
+      "siteSelection": "burst_training",
+      "siteValue": 0,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/hipRecoilTierMod",
+      "siteSelection": "burst_training",
+      "siteValue": 0,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/hipRecoilVariationTierMod",
+      "siteSelection": "burst_training",
+      "siteValue": 3,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/weaponOverrides/sg553r/recoilDurationAdd",
+      "siteSelection": "burst_training",
+      "siteValue": -0.0006,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/weaponOverrides/pw5a3/recoilDurationAdd",
+      "siteSelection": "burst_training",
+      "siteValue": -0.0006,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/10/weaponOverrides/cz3a1/recoilDurationAdd",
+      "siteSelection": "burst_training",
+      "siteValue": -0.0006,
+      "sourceChoiceCount": 6,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+        "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_WB",
+        "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_WB",
+        "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "Common/Hardware/Weapons/SMG/UMP40/UMP40_WB",
+        "Common/Hardware/Weapons/SMG/Vector/Vector_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireEnabled_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "6P67",
+          "siteWeapon": "kord6p67",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "SIG553R",
+          "siteWeapon": "sg553r",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "MP5MLI",
+          "siteWeapon": "pw5a3",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "UMP40",
+          "siteWeapon": "umg40",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "Vector",
+          "siteWeapon": "kv9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        },
+        {
+          "sourceWeapon": "ScorpionEvo3",
+          "siteWeapon": "cz3a1",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/11/adsRecoilVariationTierMod",
+      "siteSelection": "burst_mode",
+      "siteValue": 3,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/SMG/APDW/APDW_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "APDW",
+          "siteWeapon": "sl9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/11/setsFireModeBurst",
+      "siteSelection": "burst_mode",
+      "siteValue": true,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/SMG/APDW/APDW_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "site mode flag agrees with exact selected-source mode enum/selector path",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "APDW",
+          "siteWeapon": "sl9",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Changes displayed fire mode and corresponding RPM or burst presentation.",
+      "remainingUncertainty": "Serialized enum and selected branch agree; runtime activation and selector precedence are not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/11/adsRecoilTierMod",
+      "siteSelection": "burst_mode",
+      "siteValue": 0,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/SMG/APDW/APDW_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "APDW",
+          "siteWeapon": "sl9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/11/hipRecoilTierMod",
+      "siteSelection": "burst_mode",
+      "siteValue": 0,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/SMG/APDW/APDW_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "APDW",
+          "siteWeapon": "sl9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/11/hipRecoilVariationTierMod",
+      "siteSelection": "burst_mode",
+      "siteValue": 3,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/SMG/APDW/APDW_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "APDW",
+          "siteWeapon": "sl9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/11/weaponOverrides/sl9/recoilDurationAdd",
+      "siteSelection": "burst_mode",
+      "siteValue": -0.0006,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/SMG/APDW/APDW_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "APDW",
+          "siteWeapon": "sl9",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/12/adsRecoilTierMod",
+      "siteSelection": "grtbc_burst_mode",
+      "siteValue": 1,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/12/adsRecoilVariationTierMod",
+      "siteSelection": "grtbc_burst_mode",
+      "siteValue": 3,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/12/setsFireModeBurst",
+      "siteSelection": "grtbc_burst_mode",
+      "siteValue": true,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "site mode flag agrees with exact selected-source mode enum/selector path",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 3",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Changes displayed fire mode and corresponding RPM or burst presentation.",
+      "remainingUncertainty": "Serialized enum and selected branch agree; runtime activation and selector precedence are not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/12/hipRecoilTierMod",
+      "siteSelection": "grtbc_burst_mode",
+      "siteValue": 1,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/12/hipRecoilVariationTierMod",
+      "siteSelection": "grtbc_burst_mode",
+      "siteValue": 3,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/12/weaponOverrides/grtbc/recoilDurationAdd",
+      "siteSelection": "grtbc_burst_mode",
+      "siteValue": -0.0006,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/Carbine/MSBSGROTB/MSBSGROTB_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_BurstFireReplace_W10"
+      ],
+      "sourceSiteAgreement": "selected recoil source route is verified, but no mapped source operand equals the site leaf; see perLeafComparisons",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "MSBSGROTB",
+          "siteWeapon": "grtbc",
+          "result": "semantic field mapping unresolved",
+          "transformation": null,
+          "sourceFieldPaths": [],
+          "sourceFieldCount": 0
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsSpreadDynOverride/inc",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 0.409,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_0a160c57/Field_0084b1d1/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsSpreadDynOverride/firingCoef",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 1.2,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_0a160c57/Field_2ca8533e/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsSpreadDynOverride/firingExp",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 2.5,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_0a160c57/Field_f37351e6/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsSpreadDynOverride/firingOffset",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 2.7,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_0a160c57/Field_1b9eef5d/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsSpreadDynOverride/notFiringOffset",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 7.2,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_0a160c57/Field_4d3f0635/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsSpreadDynOverride/idleExp",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 0.25,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_0a160c57/Field_0b26c028/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsSpreadDynOverride/idleOffset",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 7.5,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_0a160c57/Field_aa558d2b/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/adsRecoilVariationTierMod",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": -20,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site recoil operand matches exact selected source field path(s) recorded in detail",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS recoil-variation tier field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_02433593/Field_4692836a",
+            "/Field_7b609515/Field_02433593/Field_4692836a"
+          ],
+          "sourceFieldCount": 4
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/setsFireModeAuto",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": true,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site mode flag agrees with exact selected-source mode enum/selector path",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "site true flag is derived from selected fire-mode enum 2",
+          "sourceFieldPaths": [
+            "/Field_7313f5d3"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Changes displayed fire mode and corresponding RPM or burst presentation.",
+      "remainingUncertainty": "Serialized enum and selected branch agree; runtime activation and selector precedence are not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/recoilDecreaseFactorOverride",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 76,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site recoil-recovery override matches exact selected VSSM GRM field path",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS recoil-recovery field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_28df1cde/Field_bbbfe9cc",
+            "/Field_7b609515/Field_28df1cde/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 4
+        }
+      ],
+      "siteImpact": "Changes modeled VSSM recoil recovery.",
+      "remainingUncertainty": "Serialized fields and bytes match; native recovery implementation is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/recoilDecreaseTimeExponentOverride",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 1.24,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site recoil-recovery override matches exact selected VSSM GRM field path",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS recoil-recovery field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_1d04f0f6/Field_bbbfe9cc",
+            "/Field_7b609515/Field_1d04f0f6/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 4
+        }
+      ],
+      "siteImpact": "Changes modeled VSSM recoil recovery.",
+      "remainingUncertainty": "Serialized fields and bytes match; native recovery implementation is not proven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/autoRpm",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 799.999,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "source value matches VSSM WB RateOfFire; selected WPM separately writes RateOfFireForSingleFire",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "direct VSSM WB automatic RateOfFire field",
+          "sourceFieldPaths": [
+            "/Field_f8822efa/Field_14c4a054"
+          ],
+          "sourceFieldCount": 1
+        }
+      ],
+      "siteImpact": "Changes VSSM auto RPM displayed and used after receiver selection.",
+      "remainingUncertainty": "Site 799.999 matches current WB /Field_f8822efa/Field_14c4a054; selected WPM Class_582cbe36/Field_be31b12d=399.999 matches the base single-fire field hash, not automatic rate. Native WPM application to semiauto/full-auto firing mode remains unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/hipSpreadDynOverride/inc",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 0.736,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_7b609515/Field_447d6d51/Field_0084b1d1/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/hipSpreadDynOverride/firingCoef",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 0.5,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_7b609515/Field_447d6d51/Field_2ca8533e/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/hipSpreadDynOverride/firingOffset",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": 4.86,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site spread override scalars match exact selected VSSM GS field paths",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS spread-curve field",
+          "sourceFieldPaths": [
+            "/Field_7b609515/Field_447d6d51/Field_1b9eef5d/Field_bbbfe9cc"
+          ],
+          "sourceFieldCount": 2
+        }
+      ],
+      "siteImpact": "Changes modeled ADS or hip spread progression under VSSM full-auto selection.",
+      "remainingUncertainty": "Serialized fields and bytes match; native replacement and spread-composition behavior remain unproven."
+    },
+    {
+      "siteFile": "data/attachments.json",
+      "sitePointer": "/ERGOS/13/hipRecoilVariationTierMod",
+      "siteSelection": "full_auto_vssm",
+      "siteValue": -20,
+      "sourceChoiceCount": 1,
+      "sourceEffectOrModifierAssets": [
+        "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50"
+      ],
+      "sourceSiteAgreement": "site recoil operand matches exact selected source field path(s) recorded in detail",
+      "perLeafComparisons": [
+        {
+          "sourceWeapon": "VSSM",
+          "siteWeapon": "vssm",
+          "result": "match",
+          "transformation": "exact selected VSSM GS recoil-variation tier field",
+          "sourceFieldPaths": [
+            "/Field_6b84de87/Field_02433593/Field_4692836a",
+            "/Field_7b609515/Field_02433593/Field_4692836a"
+          ],
+          "sourceFieldCount": 4
+        }
+      ],
+      "siteImpact": "Changes modeled recoil tier, pattern variation, or recoil recovery duration.",
+      "remainingUncertainty": "Per-weapon source fields and bytes are verified; native recoil combination/order remains unproven."
+    }
+  ]
+}

@@ -1,0 +1,221 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "sourceBranchRowsSha256": "26c2a0fe220525910b05ce2a7add5068a9e38f7621727af2e13064bb768f04b1",
+  "decoderSha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558",
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\primary-action-all-fields-2026-09-23.jsonl",
+    "sha256": "a2d6c76724805149aac4833400359bf6ad13b7cd982cbbbc9c414e1945a0f05c"
+  },
+  "freshAbilityRoots": 64,
+  "allActionObjects": 6115,
+  "referencedActions": 6111,
+  "unreferencedActionObjects": [
+    {
+      "sourceRoute": "Common/Hardware/Weapons/MG/M27IAR/M27IAR_Ability",
+      "sourceSha256": "75e34cf3f612e306482d9389bf8327ed58471031001b1b701e1ccae07a178d75",
+      "sourceFileGuid": "5cc08b09-a716-4030-9ea2-a2daf291b118",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectIndex": 292,
+      "objectGuid": "e9f301ac-6851-47d4-8a46-3d9aa321eed3",
+      "inReferencedBranchCensus": false,
+      "internalCallers": [],
+      "body": {
+        "$class": "Class_4ed159fb",
+        "$guid": "e9f301ac-6851-47d4-8a46-3d9aa321eed3",
+        "Field_7e54e22c": [
+          {
+            "$import": {
+              "fileGuid": "9bd6702c-9ecf-4b5d-8bb7-536d5fb0ccd3",
+              "classGuid": "0c7e5fb0-f9ee-47cf-b68e-0191b3d721b6"
+            }
+          }
+        ],
+        "Field_f1f008ba": [],
+        "Field_2717f5c2": null,
+        "Field_072fe4eb": null,
+        "Field_b9875db0": 0,
+        "Field_fcdc2697": false,
+        "Field_18d5ee8e": 0,
+        "Field_b68b27dc": 4
+      },
+      "imports": [
+        {
+          "pointer": "/Field_7e54e22c/0",
+          "fileGuid": "9bd6702c-9ecf-4b5d-8bb7-536d5fb0ccd3",
+          "classGuid": "0c7e5fb0-f9ee-47cf-b68e-0191b3d721b6",
+          "targetRoute": "Game/KingstonLegacy/Mica/Hardware/Weapons/_WeaponAttachments/OB_WEPATT_GRP__NoAttachment/U_ATT_GRP_NoUnderbarrel"
+        }
+      ]
+    },
+    {
+      "sourceRoute": "Common/Hardware/Weapons/SMG/MP7A2/MP7A2_Ability",
+      "sourceSha256": "d87de33706d63c961c86f10c5ab86235aa58d2fb428e18998cfd56600f817ed4",
+      "sourceFileGuid": "15152262-8cf0-45f5-a5f0-4cf99574ddd1",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectIndex": 132,
+      "objectGuid": "ac0bcd83-1e21-436f-9c9e-05512caaa399",
+      "inReferencedBranchCensus": false,
+      "internalCallers": [],
+      "body": {
+        "$class": "Class_4ed159fb",
+        "$guid": "ac0bcd83-1e21-436f-9c9e-05512caaa399",
+        "Field_7e54e22c": [
+          {
+            "$import": {
+              "fileGuid": "38e212fa-5c54-4f25-bce4-0d28fcc91733",
+              "classGuid": "b024997c-afff-4146-9d64-e964397f5db4"
+            }
+          },
+          {
+            "$import": {
+              "fileGuid": "4a51548d-1d95-46c0-80fb-4ce69b571331",
+              "classGuid": "42e87768-9444-4fd8-bb69-7f9a351c235a"
+            }
+          },
+          {
+            "$import": {
+              "fileGuid": "84c32c45-8105-4386-b0ce-b33e08331dba",
+              "classGuid": "1ec56070-958d-4aee-ba5e-425a70af6b71"
+            }
+          },
+          {
+            "$import": {
+              "fileGuid": "0a0d4f5e-cd27-4e3e-aa7a-e6a6c1006c9f",
+              "classGuid": "71eae900-e67c-4e02-b6b3-f79cf031d800"
+            }
+          }
+        ],
+        "Field_f1f008ba": [],
+        "Field_2717f5c2": null,
+        "Field_072fe4eb": null,
+        "Field_b9875db0": 0,
+        "Field_fcdc2697": false,
+        "Field_18d5ee8e": 0,
+        "Field_b68b27dc": 4
+      },
+      "imports": [
+        {
+          "pointer": "/Field_7e54e22c/0",
+          "fileGuid": "38e212fa-5c54-4f25-bce4-0d28fcc91733",
+          "classGuid": "b024997c-afff-4146-9d64-e964397f5db4",
+          "targetRoute": "Common/Hardware/weapons/_Attachments/Reflex/CompM5B/U_ATT_CompM5b"
+        },
+        {
+          "pointer": "/Field_7e54e22c/1",
+          "fileGuid": "4a51548d-1d95-46c0-80fb-4ce69b571331",
+          "classGuid": "42e87768-9444-4fd8-bb69-7f9a351c235a",
+          "targetRoute": "Common/Hardware/weapons/_Attachments/Reflex/CompM5B/U_WPM_SCP_CompM5b"
+        },
+        {
+          "pointer": "/Field_7e54e22c/2",
+          "fileGuid": "84c32c45-8105-4386-b0ce-b33e08331dba",
+          "classGuid": "1ec56070-958d-4aee-ba5e-425a70af6b71",
+          "targetRoute": "Common/Hardware/Weapons/_Attachments/Magnifier/U_WPM_SCP_2x00_MagnifierCompatible"
+        },
+        {
+          "pointer": "/Field_7e54e22c/3",
+          "fileGuid": "0a0d4f5e-cd27-4e3e-aa7a-e6a6c1006c9f",
+          "classGuid": "71eae900-e67c-4e02-b6b3-f79cf031d800",
+          "targetRoute": "Common/Hardware/Weapons/_Attachments/_Shared/IronSights/U_ATT_FoldedIronsSights"
+        }
+      ]
+    },
+    {
+      "sourceRoute": "Common/Hardware/Weapons/SMG/MP7A2/MP7A2_Ability",
+      "sourceSha256": "d87de33706d63c961c86f10c5ab86235aa58d2fb428e18998cfd56600f817ed4",
+      "sourceFileGuid": "15152262-8cf0-45f5-a5f0-4cf99574ddd1",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectIndex": 208,
+      "objectGuid": "2450f2b8-bd5b-4ecc-8848-4ac36539c4a2",
+      "inReferencedBranchCensus": false,
+      "internalCallers": [],
+      "body": {
+        "$class": "Class_4ed159fb",
+        "$guid": "2450f2b8-bd5b-4ecc-8848-4ac36539c4a2",
+        "Field_7e54e22c": [
+          {
+            "$import": {
+              "fileGuid": "6c1c70c3-94de-4187-9ae0-438cb0186aca",
+              "classGuid": "9606b2b7-e736-4a08-88fd-1458308778e2"
+            }
+          }
+        ],
+        "Field_f1f008ba": [],
+        "Field_2717f5c2": null,
+        "Field_072fe4eb": null,
+        "Field_b9875db0": 0,
+        "Field_fcdc2697": false,
+        "Field_18d5ee8e": 0,
+        "Field_b68b27dc": 4
+      },
+      "imports": [
+        {
+          "pointer": "/Field_7e54e22c/0",
+          "fileGuid": "6c1c70c3-94de-4187-9ae0-438cb0186aca",
+          "classGuid": "9606b2b7-e736-4a08-88fd-1458308778e2",
+          "targetRoute": "Common/Hardware/Weapons/SMG/MP7A2/U_ATT_MP7A2_Magazine"
+        }
+      ]
+    },
+    {
+      "sourceRoute": "Common/Hardware/Weapons/SMG/MP7A2/MP7A2_Ability",
+      "sourceSha256": "d87de33706d63c961c86f10c5ab86235aa58d2fb428e18998cfd56600f817ed4",
+      "sourceFileGuid": "15152262-8cf0-45f5-a5f0-4cf99574ddd1",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectIndex": 251,
+      "objectGuid": "91c4dddc-a3f8-4ad2-b553-64360fa9af54",
+      "inReferencedBranchCensus": false,
+      "internalCallers": [],
+      "body": {
+        "$class": "Class_4ed159fb",
+        "$guid": "91c4dddc-a3f8-4ad2-b553-64360fa9af54",
+        "Field_7e54e22c": [
+          {
+            "$import": {
+              "fileGuid": "1e181bc9-a252-4e29-896e-18f1e20f72af",
+              "classGuid": "847a6c80-fce6-433a-8e3e-d260bbed48aa"
+            }
+          }
+        ],
+        "Field_f1f008ba": [],
+        "Field_2717f5c2": null,
+        "Field_072fe4eb": null,
+        "Field_b9875db0": 0,
+        "Field_fcdc2697": false,
+        "Field_18d5ee8e": 0,
+        "Field_b68b27dc": 4
+      },
+      "imports": [
+        {
+          "pointer": "/Field_7e54e22c/0",
+          "fileGuid": "1e181bc9-a252-4e29-896e-18f1e20f72af",
+          "classGuid": "847a6c80-fce6-433a-8e3e-d260bbed48aa",
+          "targetRoute": "Common/Hardware/Weapons/_Attachments/Laser/DBAL/Unlocks/U_ATT_TopRail_Laser_DBAL"
+        }
+      ]
+    }
+  ],
+  "fieldPresenceCounts": {
+    "Field_7e54e22c": 6115,
+    "Field_f1f008ba": 6115,
+    "Field_2717f5c2": 6115,
+    "Field_072fe4eb": 6115,
+    "Field_b9875db0": 6115,
+    "Field_fcdc2697": 6115,
+    "Field_18d5ee8e": 6115,
+    "Field_b68b27dc": 6115
+  },
+  "externalImportsByField": {
+    "Field_7e54e22c": 14022,
+    "Field_f1f008ba": 191,
+    "Field_2717f5c2": 135,
+    "Field_072fe4eb": 139
+  },
+  "method": "Fresh raw identity and matching descriptor checks for all64 primary Ability roots; enumerate every Class_4ed159fb object and every field/import, then reconcile exact action GUIDs to reviewed branch census. Internal callers scanned across all decoded objects in each source body.",
+  "limits": "Four actions are absent from branch census and have no internal raw-body caller; this does not prove global/native unused state. Secondary port semantics and native behavior remain open. The earlier6111 count covers referenced actions, not every action object in the64 bodies."
+}

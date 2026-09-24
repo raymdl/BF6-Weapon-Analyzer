@@ -1,0 +1,68 @@
+{
+  "date": "2026-09-23",
+  "suppressionKillswitch": {
+    "route": "Common/GameSetup/Tweakables/Killswitches/KST_Glacier",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\Killswitches\\KST_Glacier.ebx",
+    "rawSha256": "27963bc55a74c45ac0a8ecd8db6f3dad8a2d974a0b0216c7c91e45f132253c0e",
+    "fileGuid": "a78be808-be80-4023-941e-47d1eaadff67",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "objectIndex": 151,
+    "objectAbsoluteByteOffset": 13560,
+    "decodedObject": {
+      "$class": "Class_18d40008",
+      "$guid": "9ee8bce6-67f1-4112-a705-ae2ef98992f0",
+      "Field_0c59fa06": "KS_DisableSuppressionSecretlyGuidesMunitions",
+      "Field_c124c7d8": 1969195413,
+      "Field_96e1b4f3": {
+        "$ref": 0
+      },
+      "Field_8cf424e7": 1690,
+      "Field_a524635f": 358542684,
+      "Field_e73c7944": 235855557,
+      "Field_605f79af": [],
+      "Field_42c8b257": false
+    },
+    "join": "Fresh hotfix SimEx_SpotOnSuppression objects/3/Field_a2734e52/3/Field_8cf424e7 imports this exact file/object pair. Initial suppression report records the pointer.",
+    "limit": "Setting name and false release default do not prove hotfix activation, suppression-triggered guidance or native equation."
+  },
+  "discoveryDisposition": [
+    {
+      "family": "Regeneration/spotting",
+      "status": "source-reviewed; runtime blocked",
+      "reason": "Base/operand/expression references retained; native spotting bases/composition and regen addition/reset unverified. Capture priorities1/2."
+    },
+    {
+      "family": "General soldier settings",
+      "status": "source-reviewed; native/mode blocked",
+      "reason": "Named regen and per-team factors; setup expressions do not establish the health/rate consumer."
+    },
+    {
+      "family": "Movement/protection",
+      "status": "bounded source review; native/mode blocked",
+      "reason": "Named registry entries and selected root structures; no proven MP effective units or application."
+    },
+    {
+      "family": "LowProfile",
+      "status": "source chain closed for selected family; activation/compiled blocked",
+      "reason": "Six hotfix family assets resolve Ability->FL->SimEx->both affectors; referenced release MP killswitch identified. Class caller/native expression unresolved."
+    },
+    {
+      "family": "Suppression",
+      "status": "direct feature and expression targets reviewed; activation/compiled blocked",
+      "reason": "Presentation wedge/vignette separated from SpotOnSuppression guidance-related source references. Neither establishes active gameplay."
+    },
+    {
+      "family": "Adrenaline/Flak/StanceFlak/DamageSpot/SilentMovement",
+      "status": "17 asset bounded pass complete; activation/native blocked",
+      "reason": "44 exact direct import joins reviewed; effect semantics/conditions and MP class selection unresolved. StanceFlak caller extends prior breath trace."
+    },
+    {
+      "family": "Weapon damage/penetration/material grids",
+      "status": "prior source work retained",
+      "reason": "No changed source target or new field-consumer evidence found in this candidate pass that warrants repeating the existing material-grid work."
+    }
+  ],
+  "scopeLimit": "This is exhaustion of the recorded queue and selected discovery families, not a claim of complete game dependency closure. Reopen on a new class selection path, consumer/schema evidence, source change or controlled capture. Map/mode overrides are the next phase.",
+  "reproduce": "python scripts/frosty-ebx-decode.py --descriptors <recorded descriptor> --ebx <suppressionKillswitch.rawPath> --out <new decode.json>; inspect objects[151]."
+}

@@ -1,0 +1,107 @@
+{
+  "date": "2026-09-23",
+  "build": {
+    "version": "1.4.3.0",
+    "archiveHead": 4892017,
+    "sdk": 4414275,
+    "rawRoot": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/capture/collection/raw",
+    "descriptorPath": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors.ebx",
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "decoder": "scripts/frosty-ebx-decode.py",
+    "decodeMethod": "Descriptor-driven EBX decode via scripts/frosty-ebx-decode.py runpy Ebx/type_descriptors; decoded all five target assets successfully."
+  },
+  "scope": "Shared mutator registry representation and direct source evidence of override application for standard multiplayer health, damage, and spotting controls.",
+  "assets": [
+    {
+      "route": "Common/GameSetup/Tweakables/Mutators/MutatorDatabase_Glacier",
+      "catalogFileGuid": "98d938e7-6363-46d1-b414-3073feafe3d6",
+      "catalogSha1": "19e3f8f98ef666543e4d03ba8031b0ecb5fdbeef",
+      "rawSha256": "64fd304155d294e9157c687b54359c9f807392eada7838c12652d2b2b034791b",
+      "objectCount": 1,
+      "rootObject": {"index": 0, "guid": "4c55a235-9792-40bf-8617-07912dc3d0e4"},
+      "observed": {
+        "Field_3128532f": {"importFileGuid": "25810f31-7914-4c1c-b996-a9b43c546fb2", "importClassGuid": "46ab6fc3-24e2-447d-be80-d8f724f6a4a5", "route": "Common/GameSetup/Tweakables/Mutators/MutatorSupportedTypeList"},
+        "Field_9dd482e8": {"importFileGuid": "dfcf28cb-967f-4230-90de-be6031062e6c", "importClassGuid": "0ee40310-2cd2-4259-9dd4-e2a343c9a5ba", "route": "Common/GameSetup/Tweakables/Mutators/TweakableTags_Mutators"},
+        "Field_2feccbb0": [],
+        "Field_3a2ba52b": [],
+        "Field_44a3a7c1[0]": {"importFileGuid": "73093937-860e-428f-ad7f-b692acd95d54", "importClassGuid": "99aeefeb-9e37-4954-a9ee-63dbb2bc171f", "route": "Common/GameSetup/Tweakables/Mutators/MutatorDatabase_CH1"}
+      }
+    },
+    {
+      "route": "Common/GameSetup/Tweakables/Mutators/MutatorDatabase_CH1",
+      "catalogFileGuid": "73093937-860e-428f-ad7f-b692acd95d54",
+      "catalogSha1": "60a51d60890ffb33b12fb723db461ca7d2210a4f",
+      "rawSha256": "30d21f09d21e4d54863b05b19b361c3660ff4669fb578356d8d9eea68cf33f15",
+      "objectCount": 1047,
+      "rootObject": {"index": 0, "guid": "99aeefeb-9e37-4954-a9ee-63dbb2bc171f"},
+      "observed": {
+        "Field_3a2ba52b.length": 1046,
+        "Field_44a3a7c1.length": 33,
+        "Field_44a3a7c1[1]": {"importFileGuid": "c99991bb-91fb-4848-9604-0f1d2ae74776", "importClassGuid": "8a0e5a64-8e8c-470c-a385-68472d62b5fb", "route": "Common/GameSetup/Tweakables/Mutators/MUT_UI"},
+        "Field_3128532f": {"importFileGuid": "25810f31-7914-4c1c-b996-a9b43c546fb2", "importClassGuid": "46ab6fc3-24e2-447d-be80-d8f724f6a4a5", "route": "Common/GameSetup/Tweakables/Mutators/MutatorSupportedTypeList"},
+        "Field_9dd482e8": null
+      },
+      "relevantEntries": [
+        {"name": "DamageMultiplier_PerTeam", "index": 15, "objectGuid": "5a12aa02-2824-41d2-9dca-6d30821d1da6", "tags": ["WA_ST_Teams", "WA_XP_Reduced", "WA_GM_Custom"]},
+        {"name": "HeadshotMultiplier_PerTeam", "index": 128, "objectGuid": "0598ad1e-1999-430d-9d8a-4049d5cef216", "tags": ["WA_ST_Soldier", "WA_XP_Reduced", "WA_GM_Custom"]},
+        {"name": "BodyshotMultiplier_PerTeam", "index": 939, "objectGuid": "af9a9ee2-ca91-4d8d-9d15-7a00da156dbd", "tags": ["WA_XP_Reduced", "WA_ST_Soldier", "WA_GM_Custom"]},
+        {"name": "SoldierMaxHealthMultiplier_PerTeam", "index": 282, "objectGuid": "f8e2b33f-5cdd-49ba-b46a-6fb2beefceb7", "tags": ["Native", "WA_ST_Soldier", "WA_XP_Reduced"]},
+        {"name": "SoldierHealthRegenAllowed_PerTeam", "index": 394, "objectGuid": "77a98f5a-3856-4818-96c7-e0e2c786e8d4", "tags": ["Native", "WA_ST_Soldier"]},
+        {"name": "SoldierRegenRateMultiplier_PerTeam", "index": 1018, "objectGuid": "57b21bf8-557d-4524-a16b-884ca9aafd8a", "tags": ["Native", "WA_ST_Soldier"]}
+      ],
+      "entryTagField": "Field_605f79af[i].Field_6b28f68f",
+      "storedValueField": "Field_42c8b257 contains a wrapper with scalar default and 33 array entries; array positions are not assigned to teams by this evidence."
+    },
+    {
+      "route": "Common/GameSetup/Tweakables/Mutators/MUT_UI",
+      "catalogFileGuid": "c99991bb-91fb-4848-9604-0f1d2ae74776",
+      "catalogSha1": "aa949e20dc3336ce6ad19375d750ae02e9999256",
+      "rawSha256": "df3dace90f38d63f3b7af2d92a17deec6136fa8a23e87bdf90608dbe77be622b",
+      "objectCount": 36,
+      "rootObject": {"index": 0, "guid": "8a0e5a64-8e8c-470c-a385-68472d62b5fb"},
+      "observed": {
+        "Field_3128532f": {"importFileGuid": "25810f31-7914-4c1c-b996-a9b43c546fb2", "importClassGuid": "46ab6fc3-24e2-447d-be80-d8f724f6a4a5", "route": "Common/GameSetup/Tweakables/Mutators/MutatorSupportedTypeList"},
+        "Field_3a2ba52b.length": 35,
+        "SpottingAllowed": {"index": 11, "objectGuid": "c0f21e45-fb88-42c1-8741-c219684f7ec3", "class": "Class_18d40008", "valueField": "Field_42c8b257", "value": true},
+        "HideDamageNumbers_PerTeam": {"index": 30, "objectGuid": "a68b39cd-4446-4c54-86e6-3416db81f018"},
+        "BlockSpottingVolumeSizeScalar": {"index": 33, "objectGuid": "de3ffce6-7889-4826-a68a-e529dd86aba2"},
+        "MinimapAllowed_PerTeam": {"index": 34, "objectGuid": "326e26e8-9b68-45e9-9a53-16848337480f"}
+      }
+    },
+    {
+      "route": "Common/GameSetup/Tweakables/Mutators/MutatorSupportedTypeList",
+      "catalogFileGuid": "25810f31-7914-4c1c-b996-a9b43c546fb2",
+      "catalogSha1": "270f559f8291cb0b1c54078aaf73d59aa6a09dae",
+      "rawSha256": "d747108ee097177b45826e820d2dcd55dd61641510dc35f9e250a89f7f48bb83",
+      "objectCount": 15,
+      "rootObject": {"index": 0, "guid": "46ab6fc3-24e2-447d-be80-d8f724f6a4a5"},
+      "finding": "14 named supported-type entries; type vocabulary/classification only, not override values."
+    },
+    {
+      "route": "Common/GameSetup/Tweakables/Mutators/TweakableTags_Mutators",
+      "catalogFileGuid": "dfcf28cb-967f-4230-90de-be6031062e6c",
+      "catalogSha1": "21bf9055e0ec630ca2101cd5858bd0b7cf4a6d42",
+      "rawSha256": "0bb9badd2100f3d532888280732dfd126bb5e1aba2f9c52878a4f6279cd5d527",
+      "objectCount": 31,
+      "rootObject": {"index": 0, "guid": "0ee40310-2cd2-4259-9dd4-e2a343c9a5ba"},
+      "representativeTags": [
+        {"name": "WA_ST_Teams", "objectGuid": "b3168348-8dc0-4512-a6ff-16d2535c328e"},
+        {"name": "WA_ST_Soldier", "objectGuid": "ebd6204c-d6c6-48ef-80f2-c2630e6aa8ee"},
+        {"name": "WA_GM_Custom", "objectGuid": "9d498360-78dc-4f25-b1b4-f56ad73dbd9f"},
+        {"name": "WA_XP_Reduced", "objectGuid": "2d3887f4-03cf-4616-bdcd-04e1b7f97739"},
+        {"name": "Native", "objectGuid": "299afe02-889b-4a64-987d-8be115f3cd4d"}
+      ],
+      "finding": "Tag classification only; CH1 entry tag imports are found at Field_605f79af[i].Field_6b28f68f."
+    }
+  ],
+  "captureCoverage": {
+    "present": ["capture/collection/raw"],
+    "absent": ["capture/collection-dependencies/raw", "capture/collection-review-2026-09-16/raw"],
+    "meaning": "This bounded registry conclusion is based on the release collection only, not independent corroboration from the other two raw roots."
+  },
+  "conclusion": {
+    "finding": "These records establish shared registry membership, setting definitions, defaults/arrays, and classification tags. They do not provide a concrete standard-multiplayer override application or active-mode selection path.",
+    "blocker": "Compiled/runtime selection and application evidence is required to connect these registered controls to active standard multiplayer values.",
+    "limits": ["Do not equate stored defaults with effective match settings.", "Do not map array indices to teams from these assets alone.", "Do not infer active modes from registry or tag names."]
+  }
+}

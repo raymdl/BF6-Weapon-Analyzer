@@ -1,0 +1,265 @@
+{
+  "schemaVersion": 1,
+  "createdUtc": "2026-09-23",
+  "purpose": "Weapon and attachment asset namespace census for the 1.4.3.0 BF6 multiplayer Frosty audit. Candidate taxonomy only; no runtime conclusions.",
+  "source": {
+    "catalog": "../BF6 Datamining/builds/1.4.3.0/capture/collection/asset-catalog.json",
+    "catalogSha256": "815ef184c8530d1d70a7a6d4c4793eb49e2372be6ca54325571e6b419c2addc5",
+    "catalogBytes": 117928309,
+    "catalogAssets": 467208,
+    "gameHead": 4892017,
+    "sdkVersion": 4414275,
+    "capturedUtc": "2026-09-16T00:23:00Z (collection manifest start)",
+    "pathGuidType": "Catalog records contain path, guid, type, originalBytes, storedBytes, sha1; type is null for all 467208 records",
+    "collectionManifestSha256": "7991cab97f265630ec61ff1b4bcf3a743cb33bef16f2989c74aed8cf8e7f21d7",
+    "collectionManifestStatus": "partial; 23557 raw status records (23554 success, 3 failed)",
+    "collectionRawStatusSha256": "124aa748ec87b67289a661a49c8fb1273b65ae58bd346c0cec0ee5454d6f4b65",
+    "otherCaptureRoots": {
+      "collection-dependencies": {
+        "catalogSha256": "10bb990919f6d0fb60ed991a2a54e8d2131447026c709f61191f520f5c63a83b",
+        "rawStatusSha256": "56d5f9492ef58b193f564d2681c2d6ed5bb8030d879c76ddfe92d6a372043546",
+        "statusRecords": 152,
+        "success": 152
+      },
+      "collection-review-2026-09-16": {
+        "catalogSha256": "1459f7e767a87e2700fd7b218026c2f72c7c85c9cb60d6e24e58779f733c25c2",
+        "rawStatusSha256": "fbe98511926e252f5bca5d73f6feae9500ced449bc97ed428bd7b76a49068811",
+        "statusRecords": 269,
+        "success": 269
+      }
+    }
+  },
+  "method": {
+    "reproduction": "Load JSON and iterate assets[]. For namespace counts, compare path.casefold() against listed slash-delimited prefix. For lexical discovery, apply case-insensitive regex (weapon|firearm|rifle|pistol|shotgun|sniper|smg|lmg|ammo|magazine|muzzle|barrel|optic|sight|grip|stock|attachment|ballistic|recoil) to path. Art count uses case-insensitive segment regex (^|/)Art(/|$). Counts are asset records, not deduplicated GUIDs or gameplay objects.",
+    "limitations": [
+      "Lexical matches are discovery evidence and are neither a complete candidate set nor an exclusion test.",
+      "Catalog path/type metadata does not establish mode ownership or runtime use.",
+      "Raw captures are partial; an absent body is not evidence that an asset is irrelevant.",
+      "Namespace and lexical counts overlap and must not be summed."
+    ]
+  },
+  "counts": {
+    "allLexicalDiscoveryMatches": 80685,
+    "lexicalMatchesOutsideCommonHardwareWeapons": 31400,
+    "allAssetsWithArtPathSegment": 39840,
+    "lexicalMatchesWithArtSegment": 33770,
+    "primaryAndAdjacentNamespaces": [
+      {
+        "prefixCaseInsensitive": "common/hardware/weapons/",
+        "records": 49285,
+        "lexicalMatches": 49285,
+        "ArtSegment": 32867
+      },
+      {
+        "prefixCaseInsensitive": "common/gameplay/weapons/",
+        "records": 43,
+        "lexicalMatches": 43,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "common/gameplay/loadouts/",
+        "records": 723,
+        "lexicalMatches": 155,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "common/ui/weapons/",
+        "records": 117,
+        "lexicalMatches": 117,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "common/ui/weaponcustomization/",
+        "records": 47,
+        "lexicalMatches": 47,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "common/fx/weapons/",
+        "records": 284,
+        "lexicalMatches": 284,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "common/sound/weapons/",
+        "records": 1534,
+        "lexicalMatches": 1534,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "common/hardware/gadgets/",
+        "records": 4248,
+        "lexicalMatches": 768,
+        "ArtSegment": 2325
+      },
+      {
+        "prefixCaseInsensitive": "diceai/sp/weapon/",
+        "records": 106,
+        "lexicalMatches": 106,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "diceai/settings/weapon/",
+        "records": 81,
+        "lexicalMatches": 81,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "animations/glacier/assets/",
+        "records": 15445,
+        "lexicalMatches": 7582,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "win32/dpf/",
+        "records": 15538,
+        "lexicalMatches": 6656,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "game/glaciermp/",
+        "records": 34826,
+        "lexicalMatches": 266,
+        "ArtSegment": 0
+      },
+      {
+        "prefixCaseInsensitive": "game/glaciersp/",
+        "records": 15072,
+        "lexicalMatches": 385,
+        "ArtSegment": 9
+      }
+    ],
+    "lexicalMatchesByTopTwoSegments": [
+      {
+        "prefix": "Common/Hardware",
+        "count": 46646
+      },
+      {
+        "prefix": "Animations/Glacier",
+        "count": 8125
+      },
+      {
+        "prefix": "win32/dpf",
+        "count": 6656
+      },
+      {
+        "prefix": "Common/UI",
+        "count": 6634
+      },
+      {
+        "prefix": "common/hardware",
+        "count": 4171
+      },
+      {
+        "prefix": "Common/Sound",
+        "count": 1972
+      },
+      {
+        "prefix": "win32/md",
+        "count": 1505
+      },
+      {
+        "prefix": "Common/Environment",
+        "count": 903
+      },
+      {
+        "prefix": "Common/FX",
+        "count": 494
+      },
+      {
+        "prefix": "Animations/Kingston",
+        "count": 437
+      },
+      {
+        "prefix": "Common/Gameplay",
+        "count": 324
+      },
+      {
+        "prefix": "Game/GlacierPortal",
+        "count": 266
+      },
+      {
+        "prefix": "Game/GlacierSP",
+        "count": 265
+      },
+      {
+        "prefix": "Game/GlacierGranite",
+        "count": 170
+      },
+      {
+        "prefix": "Common/VO",
+        "count": 172
+      },
+      {
+        "prefix": "Common/Characters",
+        "count": 167
+      },
+      {
+        "prefix": "DiceAI/SP",
+        "count": 147
+      },
+      {
+        "prefix": "Game/GlacierMP",
+        "count": 125
+      },
+      {
+        "prefix": "game/glaciermp",
+        "count": 125
+      },
+      {
+        "prefix": "game/glaciersp",
+        "count": 120
+      },
+      {
+        "prefix": "DiceAI/Settings",
+        "count": 82
+      }
+    ]
+  },
+  "inclusionRules": [
+    "Include all records under Common/Hardware/Weapons regardless of capitalization or Art, skin, texture, mesh, 1P/3P, or cosmetic-looking path components until dependency/ownership review proves an exclusion. This namespace includes weapon bases and attachment presentation as well as art dependencies.",
+    "Include Common/Gameplay/Weapons and Common/Gameplay/Loadouts. Examples include DefinitionSlots_Weapons/Handguard and loadout equipment records; these can express slots, selectable configurations, and equipment linkage outside the hardware tree.",
+    "Include weapon customization/equipment UI namespaces (Common/UI/WeaponCustomization, Common/UI/Weapons), plus Common/FX/Weapons, Common/Sound/Weapons, weapon-linked VO, and weapon-named animation assets as dependency candidates.",
+    "Include Common/Hardware/Gadgets weapon-like deployables and launchers when records identify launcher, minigun, combat weapon, ammunition, or weapon attachment roles. Relevant examples include Common/Hardware/Gadgets/Launchers and BattlePickups/Minigun.",
+    "Include win32/dpf and related packaged dependency records when names or dependency links identify a weapon, attachment, or weapon part.",
+    "Include candidate records in Game, Animations, DiceAI, Test, and Art paths when the asset identity, owner/dependency edge, or body points to an MP weapon/attachment. Folder names and lexical names alone set review priority, not final scope. Preserve shared and unresolved records."
+  ],
+  "exclusionEvidenceRules": [
+    "Exclude a cosmetic only after positive evidence identifies the asset as cosmetic-only and dependency/owner review shows no shared weapon geometry, compatibility, configuration, or gameplay linkage. A skin/camo/Art path or cosmetic library name alone is insufficient.",
+    "Exclude SP-only or BR-only records only after positive mode ownership evidence plus a dependency/reference check finds no MP or shared consumer. SPO/SP/BR suffixes and Game/GlacierSP or DiceAI/SP namespace hits are review cues, not standalone exclusion proof.",
+    "Do not exclude a weapon-like record because it sits under Art, UI, Animation, Environment, gadget, vehicle, win32, or a case-variant directory. Do not interpret a missing body, null type, or absent lexical keyword as proof of irrelevance."
+  ],
+  "representativeReview": [
+    {
+      "assetPath": "Common/Gameplay/Weapons/Template/DefinitionSlots_Weapons/Handguard",
+      "guid": "b0a2dd76-447c-40bc-81cf-b492c7996b2e",
+      "raw": "collection/raw/Common/Gameplay/Weapons/Template/DefinitionSlots_Weapons/Handguard.ebx",
+      "rawSha256": "0fca37d589ea7d5a2e47db76e8f982a2648e0b9df680e94a6280e15dee7e0b79",
+      "rawBytes": 316,
+      "observation": "Captured EBX body contains the exact catalog path in readable payload. This is a weapon definition-slot candidate outside Common/Hardware/Weapons; its path and slot identity justify inclusion. No runtime behavior inferred."
+    },
+    {
+      "assetPath": "Common/Hardware/Gadgets/BattlePickups/Minigun/Equipment_Minigun",
+      "guid": "5b26c9da-92a8-4c69-9dee-79b0c0a21887",
+      "bodyAvailableInReviewedRawRoots": false,
+      "observation": "Catalog identity is a gameplay equipment record under BattlePickups/Minigun; included as a candidate. No body was present in collection, collection-dependencies, or collection-review-2026-09-16 raw roots, so no content claim is made."
+    },
+    {
+      "assetPath": "Common/UI/WeaponCustomization/Widgets/WeaponAttributes_ExtendedList",
+      "guid": "4dad14f0-0938-11ef-8d9e-91fa554535a0",
+      "bodyAvailableInReviewedRawRoots": false,
+      "observation": "Catalog identity is a weapon customization UI widget; preserve as a linkage/context candidate. No body was present in the three reviewed raw roots."
+    }
+  ],
+  "examplesOutsidePrimaryNamespace": [
+    "Common/Gameplay/Weapons/Template/DefinitionSlots_Weapons/Handguard",
+    "Common/Gameplay/Loadouts/Vehicles/MBT/Eq_Vehicle_MBT_AmmoType_MPAT",
+    "Common/UI/WeaponCustomization/Widgets/WeaponAttributes_ExtendedList",
+    "Common/FX/Weapons/Attachments/FX_Weapon_Attachment_Flashlight_3P_Blacklight",
+    "Common/Sound/Weapons/Handheld/MG4K/BF03_Weapons_Handheld_MG4K_Audiosettings_PresEx_01",
+    "Common/Hardware/Gadgets/BattlePickups/Minigun/Equipment_Minigun",
+    "DiceAI/SP/Weapon/Data/Vehicles/AttackHeli/Primary/AbilityData_AttackHeli_Gunner_AutoCannon_SP_Squad",
+    "win32/dpf/dpf_m250_ironsights_1dmlfto_bundle_1p",
+    "Common/Hardware/Weapons/MG/M250/Art/OB_WEP_MG_M250_Base_1P"
+  ]
+}

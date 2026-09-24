@@ -25,6 +25,7 @@ STRING, CSTRING, ENUM, FILEREF, BOOLEAN = 0x06, 0x07, 0x08, 0x09, 0x0A
 INT8, UINT8, INT16, UINT16, INT32, UINT32 = 0x0B, 0x0C, 0x0D, 0x0E, 0x0F, 0x10
 UINT64, INT64, FLOAT32, FLOAT64 = 0x11, 0x12, 0x13, 0x14
 GUID, SHA1, RESOURCEREF, FUNCTION, TYPEREF, BOXEDVALUEREF = 0x15, 0x16, 0x17, 0x18, 0x19, 0x1A
+DELEGATE = 0x1C
 
 SIMPLE = {
     BOOLEAN: ("<?", 1), INT8: ("<b", 1), UINT8: ("<B", 1),
@@ -112,6 +113,7 @@ class Ebx:
         ebxd_size = struct.unpack_from("<I", d, 16)[0]
         ebxd_offset = 20
         self.data_start = (ebxd_offset + 15) & ~15
+        self.data_end = ebxd_offset + ebxd_size
         pos = ebxd_offset + ebxd_size
         pos += pos % 2
         if d[pos:pos + 4] != b"EFIX":
@@ -125,6 +127,12 @@ class Ebx:
         signatures = c.array(lambda: c.take(4))
         # The lookup GUID is class GUID bytes 4..15 followed by the 4-byte signature.
         self.class_keys = [(g[4:] + s).hex() for g, s in zip(raw_guids, signatures)]
+        # Type/delegate references can address GUID entries with no layout signature.
+        # Match EbxReaderRiff's transformed prefix and preserve the remaining entries.
+        self.reference_type_guids = [
+            g[4:] + signatures[i] if i < len(signatures) else g
+            for i, g in enumerate(raw_guids)
+        ]
 
         self.exported_count = c.u32()
         self.data_offsets = []
@@ -150,9 +158,15 @@ class Ebx:
         array_count, boxed_count = c.u32(), c.u32()
         self.arrays = []
         for _ in range(array_count):
-            offset, count, _hash = c.u32(), c.u32(), c.u32()
-            c.u16(), c.u16()
-            self.arrays.append({"offset": offset, "count": count})
+            self.arrays.append({"offset": c.u32(), "count": c.u32(), "hash": f"{c.u32():08x}",
+                                "type": c.u16(), "classRef": c.u16()})
+        self.boxed_values = {}
+        for _ in range(boxed_count):
+            row = {"offset": c.u32(), "count": c.u32(), "hash": f"{c.u32():08x}",
+                   "type": c.u16(), "classRef": c.u16()}
+            if row["offset"] in self.boxed_values:
+                raise ValueError("duplicate EBXX boxed offset")
+            self.boxed_values[row["offset"]] = row
 
     # -- descriptor access -----------------------------------------------------
     def class_by_index(self, index):
@@ -223,6 +237,18 @@ class Ebx:
             raw = struct.unpack_from("<I", self.data, self.pos)[0]
             self.pos += 8
             return {"$typeRef": raw}
+        if kind == DELEGATE:
+            raw = struct.unpack_from("<I", self._take(8), 0)[0]
+            result = {"$delegateTypeRef": raw}
+            if raw & 0x80000000:
+                result["primitiveType"] = (raw >> 5) & 0x1F
+            elif raw:
+                index = raw >> 2
+                if index < len(self.reference_type_guids):
+                    result["typeGuid"] = _guid(self.reference_type_guids[index])
+                else:
+                    result["$unresolvedTypeRef"] = index
+            return result
         if kind == RESOURCEREF:
             value = struct.unpack_from("<Q", self.data, self.pos)[0]
             self.pos += 8
@@ -230,10 +256,123 @@ class Ebx:
         if kind == FILEREF:
             return {"$fileRef": self._cstring()}
         if kind == BOXEDVALUEREF:
-            self.pos += 8
-            return {"$boxedValueRef": True}
+            return self._boxed_value()
         self.pos += 4
         return {"$undecoded": f"type 0x{kind:02x}"}
+
+    def _boxed_value(self):
+        start = self.pos
+        end = start + 16
+        metadata = {"absoluteOffset": start}
+        depth = getattr(self, "_boxed_depth", 0)
+        try:
+            if start < self.data_start or end > self.data_end:
+                raise ValueError("boxed header outside EBXD")
+            raw_type, reserved, relative = struct.unpack_from("<IIq", self.data, start)
+            metadata.update(typeWord=raw_type, reserved=reserved, relativeOffset=relative)
+            if raw_type == 0:
+                return {"$boxedValue": metadata, "value": None}
+            lookup = start + 8 + relative - self.data_start
+            metadata["lookupOffset"] = lookup
+            row = self.boxed_values.get(lookup)
+            if row is None:
+                raise ValueError("no matching EBXX boxed row")
+            metadata["entry"] = row
+            kind, category = (row["type"] >> 5) & 0x1F, (row["type"] >> 1) & 0xF
+            metadata.update(kind=kind, category=category)
+            if category == CATEGORY_ARRAY:
+                # Captured empty boxed arrays use the ordinary empty-array sentinel.
+                # EBXX row.count describes the box, not the number of array elements.
+                # A populated struct is supported only for a validated count-one layout.
+                payload = self.data_start + lookup
+                if not self.data_start <= payload <= self.data_end - 8:
+                    raise ValueError("boxed array header outside EBXD")
+                relative_array = struct.unpack_from("<i", self.data, payload)[0]
+                target = payload + relative_array
+                if not self.data_start + 4 <= target <= self.data_end:
+                    raise ValueError("boxed array count outside EBXD")
+                count = struct.unpack_from("<I", self.data, target - 4)[0]
+                metadata["array"] = {"relativeOffset": relative_array,
+                                     "dataOffset": target - self.data_start, "count": count}
+                if count not in (0, 1) or (count == 1 and kind != STRUCT):
+                    raise ValueError("boxed array decoding awaits asset-backed validation")
+                if count == 0 and target - self.data_start != self.arrays_offset + 0x10:
+                    raise ValueError("boxed array decoding awaits asset-backed validation")
+                if count == 1:
+                    expected = dict(row, offset=target - self.data_start, count=count)
+                    if expected not in self.arrays:
+                        raise ValueError("no matching EBXX boxed array element row")
+                if kind not in (INT32, UINT32, FLOAT32, STRUCT):
+                    raise ValueError(f"unvalidated empty boxed array type {kind}")
+                if kind == STRUCT:
+                    if row["classRef"] >= len(self.class_keys):
+                        raise ValueError("boxed local class index out of range")
+                    key = self.class_keys[row["classRef"]]
+                    cls = self.class_by_key(key)
+                    if cls is None:
+                        raise ValueError("boxed descriptor unavailable")
+                    metadata.update(typeKey=key, elementClass=f"Class_{cls['hash']}")
+                    if count == 1:
+                        if cls["alignment"] <= 0 or target % cls["alignment"]:
+                            raise ValueError("boxed array struct alignment mismatch")
+                        if cls["size"] <= 0 or target + cls["size"] > self.data_end:
+                            raise ValueError("boxed array struct outside EBXD")
+                        if depth >= 32:
+                            raise ValueError("boxed nesting limit")
+                        self._boxed_depth = depth + 1
+                        # The complete local class is required. Its first declared
+                        # field can start after offset zero (WorldIconTrackingQueryGraph).
+                        value = self._read_class(cls, target)
+                        if self.pos > self.data_end:
+                            raise ValueError("boxed array struct outside EBXD")
+                        return {"$boxedValue": metadata, "value": [value]}
+                return {"$boxedValue": metadata, "value": []}
+            if category != 0:
+                raise ValueError(f"unsupported boxed category {category}")
+            supported = set(SIMPLE) | {ENUM, GUID, SHA1, STRING, CSTRING, POINTER, STRUCT,
+                                       TYPEREF, DELEGATE, RESOURCEREF, FILEREF, BOXEDVALUEREF}
+            if kind not in supported:
+                raise ValueError(f"unsupported boxed type {kind}")
+            if depth >= 32:
+                raise ValueError("boxed nesting limit")
+            self._boxed_depth = depth + 1
+            self.pos = self.data_start + lookup
+            if not self.data_start <= self.pos < self.data_end:
+                raise ValueError("boxed payload outside EBXD")
+            if kind in (STRING, CSTRING, FILEREF):
+                if self.pos + 4 > self.data_end:
+                    raise ValueError("boxed string header outside EBXD")
+                relative_string = struct.unpack_from("<i", self.data, self.pos)[0]
+                if relative_string not in (-1, 0):
+                    string_start = self.pos + relative_string
+                    if not self.data_start <= string_start < self.data_end or self.data.find(b"\x00", string_start, self.data_end) < 0:
+                        raise ValueError("boxed string outside EBXD")
+            if kind == STRUCT:
+                local_index = row["classRef"]
+                if local_index >= len(self.class_keys):
+                    raise ValueError("boxed local class index out of range")
+                key = self.class_keys[local_index]
+                metadata["typeKey"] = key
+                cls = self.class_by_key(key)
+                if cls is None:
+                    raise ValueError("boxed descriptor unavailable")
+                self._pad(cls["alignment"])
+                if self.pos + cls["size"] > self.data_end:
+                    raise ValueError("boxed struct outside EBXD")
+                metadata["class"] = f"Class_{cls['hash']}"
+                value = self._read_class(cls, self.pos)
+            else:
+                # Enums retain their serialized integer and local descriptor reference.
+                # Ordinary nested struct fields use global descriptor indices.
+                value = self._read_field(None, kind, row["classRef"])
+            if self.pos > self.data_end:
+                raise ValueError("boxed value outside EBXD")
+            return {"$boxedValue": metadata, "value": value}
+        except (ValueError, IndexError, struct.error) as error:
+            return {"$boxedValueRef": metadata, "$unresolvedBoxedValue": str(error)}
+        finally:
+            self._boxed_depth = depth
+            self.pos = end
 
     def _take(self, n):
         chunk = self.data[self.pos:self.pos + n]

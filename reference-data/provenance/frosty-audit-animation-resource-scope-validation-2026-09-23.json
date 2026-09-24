@@ -1,0 +1,341 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "reviewedReport": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\animation-resource-scope-review-2026-09-23.json",
+    "sha256": "4e99aa015411d50455376c1965eabfb198846ff78942585831346788ad9a66e3"
+  },
+  "metadata": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\candidate-resource-metadata-2026-09-23\\resource-metadata.jsonl",
+    "sha256": "5c9b0798076f917518dfe958c62129cb7ad989fcb7a7e25b7894f5c89bbc753c"
+  },
+  "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+  "rawBodiesFreshDecoded": 40,
+  "exactResourceRefMatches": 40,
+  "incomingImportRows": 257,
+  "exclusionsAccepted": 0,
+  "scopeAmbiguous": 40,
+  "validated": [
+    {
+      "resourceId": "06a2ef1f213b32cf",
+      "captureId": 62327,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_TakeOff_Straight_01",
+      "rawSha256": "ab2279fd5953168a42aeb16e4d453a32c6be45759b03191e9b2afc7bf3b48ee1",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "0c9a43669b0db9b5",
+      "captureId": 62314,
+      "route": "Animations/Granite/Assets/Vehicles/Air/SpyBalloon/VEH_SpyBalloon_Fly_01",
+      "rawSha256": "3f1ba063803c0bc5441a67b26143abc6c29ef8c831e1cb9283b5fb59c46d0160",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 31
+    },
+    {
+      "resourceId": "0ecd4ea9cfd44d69",
+      "captureId": 62313,
+      "route": "Animations/Granite/Assets/Vehicles/Air/MH47/VEH_MH47_CargoRamp_Open_01",
+      "rawSha256": "7a7206169d10bdf43c5ec372a2468c70985fd49544833dd685630d0c5f3a4338",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "12dd276c54ca1fff",
+      "captureId": 62328,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_TakeOff_Straight_Vertical_01",
+      "rawSha256": "64f63c83bce7e47104cf46419c1433f3a15b3b54fe40cd0b2cdd1b3b92e9f451",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "183e2f86a88a48c9",
+      "captureId": 62334,
+      "route": "Animations/Kingston/Assets/Vehicles/Air/Apache/VEH_Apache_RightDoor1_Open_01",
+      "rawSha256": "983165a2eff1265e1f3d144a889283f572f1bd0c2902bee23445814411668c70",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "2399aaea94fda99f",
+      "captureId": 62316,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/Conquest/RTC_Insertion_CQ_Condor_VehicleAnim_01",
+      "rawSha256": "f19eb2bf5b93c942ff2aeb39ba514ea3b1600c0a55d8527debc4919afc3c6465",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "3f8ffd49ab998e05",
+      "captureId": 62310,
+      "route": "Animations/Granite/Assets/Vehicles/Air/F14/VEH_F14_LandingGear_LowerArms",
+      "rawSha256": "1845c356d0c4f609d1fe06a238395cc05ccd191c13d9108ae29fabced7095836",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 3
+    },
+    {
+      "resourceId": "43a628fcbc68bd75",
+      "captureId": 64912,
+      "route": "Animations/Glacier/Assets/3P/Vehicles/Air/Parachute/Parachute_01_Idle",
+      "rawSha256": "7896bb25691ef5cce2aa62d41856a0e397ed3c69ff00d7994d8f48c1aaca01f3",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "4587ac062be42311",
+      "captureId": 62331,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/Prologue/GO_s050_10_foxtrotoutro/RTC_GO_s050_20_foxtrotoutro_bombers_f35_01",
+      "rawSha256": "6802faf7506f06737e9ce20e0b192959e0cf5bf97ff585f874c97454f131ccbf",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "462e563ed63fb2c5",
+      "captureId": 62336,
+      "route": "Animations/Kingston/Assets/Vehicles/Land/Abrams/VEH_Abrams_RightHatch_Open_01",
+      "rawSha256": "4bb5b07df1911ef6b1c5cc17b66f131f3543876cef9272ae4fb2e8953f10bd3a",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "555a2ecaf983b1b7",
+      "captureId": 62247,
+      "route": "Animations/Glacier/Assets/3P/Vehicles/Stationary/CWS/VEH_Stationary_CWS_Door_Open_01",
+      "rawSha256": "3e15dd17f3e9fceae0820078a24bb6cfb887d85615af22f6f06b20f279154c68",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "5ea7818a04c2389b",
+      "captureId": 62189,
+      "route": "Animations/Campaign/Test_Cinematics/heli_MH47_rappel/Cin_Helicopter_MH47_Flight_Crash",
+      "rawSha256": "b835ea4399dea1dfbfd0ea43f76c03fff449b029d6df84f871e1ef8313d2b761",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 31
+    },
+    {
+      "resourceId": "6ab5301864f37bd1",
+      "captureId": 62325,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_PreLanding_01",
+      "rawSha256": "06736d467f8e92cb7f00b369eb0b7f26c6c2531fe7539670149a468bba95c94a",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "747c23957a6d6c21",
+      "captureId": 62333,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/RTC_RUS_Veh_HindIns_01",
+      "rawSha256": "898d42ea2897a7aa6ca91026c6599f87117886293b03525c5523899ea03ab8e8",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "75d36f34d6b27dbf",
+      "captureId": 62321,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_Landing_Straight_01",
+      "rawSha256": "02480e6b363c39790e2dfb6fe2ab237603692e403913fc6aee00040b296d54ef",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "76b97a73c6f85a17",
+      "captureId": 67205,
+      "route": "Animations/Glacier/Assets/3P/Vehicles/Air/Parachute/Parachute_01_UndeployMidAir",
+      "rawSha256": "77acf4a39826fbd6827ec35b02d58cb0c27a40101aafd9f403c5d22f689b2c35",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "775b75772556f967",
+      "captureId": 62329,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/insertion_littlebird_landing",
+      "rawSha256": "629906c62979d026363b6d1aeaa15bc99b97952babd4c920bba2ec921017b0ff",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "7ae38222bad87ca5",
+      "captureId": 62323,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_PostTakeOff_01",
+      "rawSha256": "79cbd7c13a5b6f0e58f26b32b412fca35e12ce263bf07fd586b9244fcecaa64c",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "81f62601fd745da9",
+      "captureId": 62324,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_PostTakeOff_Straight_Vertical_01",
+      "rawSha256": "a11c8664c702566be80225cb698a271e0cc461da70538801daa20eb5a7e27b8e",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "83266a1a4b37a6e1",
+      "captureId": 62200,
+      "route": "Animations/Common/Hardware/Vehicles/VEH_Airplane_FA18F/VEH_FA18F_LandingGear_Open",
+      "rawSha256": "50a006144cd70b4cae607a94f2cb8be43235f602e3b4e4a4f08bc5af6de5a60a",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 3
+    },
+    {
+      "resourceId": "842ff41ab22a6df3",
+      "captureId": 62322,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_Landing_Straight_Vertical_01",
+      "rawSha256": "4206f3ddc373a705723e4fa50ac25ff097bfaef9067a656bc9d39ce34f49bbef",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "85b0bcb38d0d50a9",
+      "captureId": 62248,
+      "route": "Animations/Glacier/Assets/Campaign/Vehicles/an_vector_anim_door",
+      "rawSha256": "a5a430960180288708dce7f722e99dc5b5602d2d2b31d8703f3b344cb877c8a6",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "9200257276a15ba5",
+      "captureId": 62317,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/Conquest/RTC_Insertion_CQ_Condor_VehicleAnim_Vertical_01",
+      "rawSha256": "1572c610176901deafc0aabea3a4092e6dbca5ad2428fa96311c1e070e7faa89",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "97694380b8e50497",
+      "captureId": 59874,
+      "route": "Animations/Glacier/Assets/3P/Vehicles/Air/Parachute/Parachute_01_DeployPose",
+      "rawSha256": "950a54059d69a231d1e5f2c28c316687831c9719f8aad39d2227969fc5da27e5",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "97a2377c956bb1ab",
+      "captureId": 62335,
+      "route": "Animations/Kingston/Assets/Vehicles/Air/Condor/VEH_Empty",
+      "rawSha256": "be94d6141250a7d7cb84a01bd59a8b3978ff1cd9d05b68c228a8337472c14212",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 69
+    },
+    {
+      "resourceId": "9b9af4337e7dc85f",
+      "captureId": 62315,
+      "route": "Animations/Granite/Assets/Vehicles/Air/SpyBalloon/VEH_SpyBalloon_Plane_Fly_01",
+      "rawSha256": "73131fc09668196b02e6b3abc2a389f20283b0ed3234d5ac2551607c4198f87e",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 31
+    },
+    {
+      "resourceId": "9cf147a5987c717f",
+      "captureId": 62311,
+      "route": "Animations/Granite/Assets/Vehicles/Air/F14/VEH_F14_LandingGear_Open",
+      "rawSha256": "436d49af0b274ec95680647e134bb42d3d82d806677924965c532ece7682fc37",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 3
+    },
+    {
+      "resourceId": "9d832059a9bc0925",
+      "captureId": 62330,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/Prologue/GO_s010_10_heliintro/RTC_GO_s010_10_heliintro_littlebird_ins",
+      "rawSha256": "7cf448f22484ba92f4e705ac96061d3beed1458c400a2c86edc67963ecb7c5c1",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "a8dfbb78887efeb5",
+      "captureId": 62252,
+      "route": "Animations/Glacier/Assets/FrontEnd/Granite/GameplayStart/VEH_MH47_Insertion_Deploy_01",
+      "rawSha256": "5f736a4dde537ffa84a30b7c479a0188631d123d55a99807ddb325f28ca0bc48",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 31
+    },
+    {
+      "resourceId": "b0beb11fb1d0ea07",
+      "captureId": 62320,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_IdleClosedDoors",
+      "rawSha256": "81ae5b20ddfb0b17f9d9c1228b8b16134ab72195d0e6162c8d197f10d343a916",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "b202a7756b3c0d09",
+      "captureId": 62246,
+      "route": "Animations/Glacier/Assets/3P/Vehicles/Air/Parachute/Parachute_01_Deploy",
+      "rawSha256": "3cb57b51a5f7fcf718fb153f98fbd52c9dd0665c17a11059d330e2a268cec730",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "b486189c1e7054b5",
+      "captureId": 62326,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_PreLanding_Straight_Vertical_01",
+      "rawSha256": "92fabfead4a15ad2ff2928e10a2eec3f0f1f9e5acff911185e2861d3c54fcd61",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "bded1558b5d8ca27",
+      "captureId": 62318,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_CloseRearDoor",
+      "rawSha256": "44922bfabc286016227818d6e07bf8a61fbc59adc8310728c5cf71ad48aa2bc2",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "d1d6af5a5ed2c791",
+      "captureId": 58380,
+      "route": "Animations/Glacier/Assets/3P/Common/Rifle/Loco/L_3P_Rifle_Stand_Idle_01",
+      "rawSha256": "76d9a507f4c9cd8e3127a425fd617617446e1b0c81fe80f16f781ea278f794e6",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 4
+    },
+    {
+      "resourceId": "d4b9b77b9fb33d19",
+      "captureId": 62319,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/HazardZone/Extraction_Condor_Idle",
+      "rawSha256": "5ff912f80e6d2a28fc36da2f97bc22b4f79648058742c63bca7cb8191e067b7f",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "d4ed5c94d0ea24d9",
+      "captureId": 67204,
+      "route": "Animations/Glacier/Assets/3P/Vehicles/Air/Parachute/Parachute_01_Undeploy",
+      "rawSha256": "b32810ceb04e9940e899e86c87b06329700ec99d143b074bca2c128c4742f80d",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "e9c56403c9ce9829",
+      "captureId": 62199,
+      "route": "Animations/Common/Hardware/Vehicles/VEH_Airplane_FA18F/VEH_FA18F_Hatches_Open",
+      "rawSha256": "b3ed7cbbeee0b6253a729b64d3440d42201660f26a9a40f1886c07097eb25bb1",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 3
+    },
+    {
+      "resourceId": "f720069653ccd197",
+      "captureId": 62312,
+      "route": "Animations/Granite/Assets/Vehicles/Air/F14/VEH_F14_LandingGearDoors_Open",
+      "rawSha256": "846694ac2f78de61155527674f52a2ab2fb33cd6ce5c993a510f2f944e7d2b90",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    },
+    {
+      "resourceId": "fc335642a6addc43",
+      "captureId": 62332,
+      "route": "Animations/Kingston/Assets/Cinematic/RTC/RTC_Insertion_CQ_Hind_VehicleAnim_Vertical_01",
+      "rawSha256": "a0353db7fdf2904c7f036d3c838fe8dbf9f932fa2ce63f35376ffb4aa2de7579",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 1
+    },
+    {
+      "resourceId": "fe08772cf5d7392f",
+      "captureId": 62337,
+      "route": "Animations/Kingston/Assets/Vehicles/Land/Pickup/VEH_Pickup_RightDoor1_Open_01",
+      "rawSha256": "77250d001dca0005c228a6246afdf929c35acda32559af9ceaf0b1b6c4c20c8f",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "incomingImportRows": 2
+    }
+  ],
+  "conclusion": "All 40 metadata IDs and caller reference slots match fresh raw decoding. Incoming imports do not establish mode exclusivity, gameplay use or cosmetic role. No resource bodies were exported for this review."
+}

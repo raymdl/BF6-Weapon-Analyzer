@@ -1,0 +1,3041 @@
+{
+  "date": "2026-09-23",
+  "decoderSha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+  "assets": [
+    {
+      "route": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\health-protection-2026-09-23\\Common__Gameplay__InRoundProgression__Adrenaline__Ability_FasterHealing.ebx",
+      "rawSha256": "f202eca4b075fa593553e8f36275981257d2f84e073d04418bcad908720a8172",
+      "fileGuid": "dd37af08-0e76-4bba-a095-d134b1fc7c37",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_af900787",
+            "$guid": "35f7aebb-7d23-4330-99d9-6eef1de180fb",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+            "Field_a4da4b98": true,
+            "Field_b2193141": true,
+            "Field_9dac47e3": true,
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "227af61b-4ef8-469c-abbe-e324b1f68e27",
+                "classGuid": "ba9d1524-b55b-46ff-909b-0e643067f6b5"
+              }
+            },
+            "Field_18d8777e": {
+              "$import": {
+                "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+              }
+            },
+            "Field_8a7dfc78": [
+              {
+                "$import": {
+                  "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                  "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+                }
+              }
+            ],
+            "Field_c910f9c2": 0,
+            "Field_5aec774f": {
+              "$ref": 1
+            },
+            "Field_ec8171fa": [],
+            "Field_3fcbdff0": null,
+            "Field_6b831b88": null,
+            "Field_def7f8dd": {
+              "Field_e0b43a29": {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+                    "classGuid": "84ba2bc6-f69c-49e7-8850-455caf4f78ed"
+                  }
+                }
+              },
+              "Field_043d7a08": false
+            },
+            "Field_958dc613": [],
+            "Field_49b3bb0e": [],
+            "Field_de6f63b3": 1307973472,
+            "Field_b77123cc": true,
+            "Field_d7605aab": [],
+            "Field_a21a7b29": [
+              {
+                "$import": {
+                  "fileGuid": "ba23423b-64fd-49c4-9f9c-1cb320c50782",
+                  "classGuid": "a701da6e-8bbf-4f0d-9cc8-2f565ab7eca5"
+                }
+              }
+            ],
+            "Field_87293fc2": 0,
+            "Field_e59acd2d": 0,
+            "Field_8986fc0b": 0,
+            "Field_409478c9": 0,
+            "Field_460a9db1": 0,
+            "Field_abc643c2": 0,
+            "Field_1af83dc6": 0,
+            "Field_48c6ff7d": 0,
+            "Field_20746087": false,
+            "Field_e2cee558": false,
+            "Field_98d8888a": null,
+            "Field_dfc3e000": {
+              "Field_c478cc3b": {
+                "Field_3901db14": 1.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_bf151ef9": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 1.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_695d12a4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 1.0
+              },
+              "Field_bc4b07b4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              }
+            },
+            "Field_98aaa29d": [],
+            "Field_779b28f6": null,
+            "Field_6cce2f25": {
+              "Field_f29fce94": 0,
+              "Field_675a2be7": 0,
+              "Field_d2b8fc26": null
+            },
+            "Field_9a433a49": [],
+            "Field_ffe24fd8": [],
+            "Field_e58acee4": false
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 400,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "96c639e3-58d2-4000-8ac7-361c0d472e7d",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Adrenaline/Affector_FasterRegen",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\health-protection-2026-09-23\\Common__Gameplay__InRoundProgression__Adrenaline__Affector_FasterRegen.ebx",
+      "rawSha256": "8db6061c2e9aae97fd3b024352cac4f37ec99edbb9e55a5092d85d2cefc60ebe",
+      "fileGuid": "ba23423b-64fd-49c4-9f9c-1cb320c50782",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_911c1f2e",
+            "$guid": "a701da6e-8bbf-4f0d-9cc8-2f565ab7eca5",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/Adrenaline/Affector_FasterRegen",
+            "Field_de6f63b3": 3729682560,
+            "Field_ec3c12a7": 2434539310,
+            "Field_b50e1230": 0,
+            "Field_958dc613": [
+              575361343
+            ],
+            "Field_003bcbca": 1,
+            "Field_ec4c3e7f": 0,
+            "Field_95eed6ac": [
+              {
+                "Field_3233bcbf": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": 30.0
+                },
+                "Field_5c9d2d82": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": 2.5
+                },
+                "Field_507ad482": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": 0.0
+                },
+                "Field_be94b05f": 0,
+                "Field_33d6811e": false
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Adrenaline/U_Ability_FasterHealing",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\health-protection-2026-09-23\\Common__Gameplay__InRoundProgression__Adrenaline__U_Ability_FasterHealing.ebx",
+      "rawSha256": "9f9fe9ece59621efe9683e7af3e7bf5d227d8dba4d85c5c8cac36c6185c055d3",
+      "fileGuid": "227af61b-4ef8-469c-abbe-e324b1f68e27",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_bc0062dc",
+            "$guid": "ba9d1524-b55b-46ff-909b-0e643067f6b5",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/Adrenaline/U_Ability_FasterHealing",
+            "Field_9d34093f": "U_Ability_FasterHealing",
+            "Field_de6f63b3": 2539806303,
+            "Field_32cf19f5": true,
+            "Field_5aec774f": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 120,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "b451c778-ab4b-4e8e-ae5f-da51f0227360",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\health-protection-2026-09-23\\Common__Gameplay__InRoundProgression__Flak__Ability_Flak.ebx",
+      "rawSha256": "2008eefd0759346a1d9668ffd61f4e3fa9c160bdc2e7db47c6ebf8e2e54a2b7e",
+      "fileGuid": "bb82e15e-fdb7-4317-96eb-7cd6de582023",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_af900787",
+            "$guid": "55a0c98e-12f7-423c-acc9-a103aa8dadf5",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+            "Field_a4da4b98": true,
+            "Field_b2193141": true,
+            "Field_9dac47e3": true,
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "093fa063-143a-481f-85a8-b76283ef3942",
+                "classGuid": "77794bb8-a55c-4e33-86d7-7db2f0b97835"
+              }
+            },
+            "Field_18d8777e": {
+              "$import": {
+                "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+              }
+            },
+            "Field_8a7dfc78": [
+              {
+                "$import": {
+                  "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                  "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+                }
+              }
+            ],
+            "Field_c910f9c2": 0,
+            "Field_5aec774f": {
+              "$ref": 1
+            },
+            "Field_ec8171fa": [],
+            "Field_3fcbdff0": null,
+            "Field_6b831b88": null,
+            "Field_46409036": false,
+            "Field_def7f8dd": {
+              "Field_e0b43a29": {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+                    "classGuid": "429989f5-dfb3-47a5-ab4b-0793bca36fd6"
+                  }
+                }
+              },
+              "Field_043d7a08": false
+            },
+            "Field_958dc613": [],
+            "Field_49b3bb0e": [],
+            "Field_de6f63b3": 2248252310,
+            "Field_b77123cc": true,
+            "Field_d7605aab": [],
+            "Field_a21a7b29": [
+              {
+                "$import": {
+                  "fileGuid": "bfbe4b7d-e889-46aa-b98e-318da0e72c9b",
+                  "classGuid": "6ba0d89e-b0ab-43a3-bb03-f2c052a186ee"
+                }
+              }
+            ],
+            "Field_87293fc2": 0,
+            "Field_8986fc0b": 0,
+            "Field_409478c9": 0,
+            "Field_460a9db1": 0,
+            "Field_abc643c2": 0,
+            "Field_1af83dc6": 0,
+            "Field_48c6ff7d": 0,
+            "Field_20746087": false,
+            "Field_e2cee558": false,
+            "Field_98d8888a": null,
+            "Field_dfc3e000": {
+              "Field_c478cc3b": {
+                "Field_3901db14": 1.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_bf151ef9": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 1.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_695d12a4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 1.0
+              },
+              "Field_bc4b07b4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              }
+            },
+            "Field_98aaa29d": [],
+            "Field_779b28f6": null,
+            "Field_6cce2f25": {
+              "Field_f29fce94": 0,
+              "Field_675a2be7": 0,
+              "Field_d2b8fc26": null
+            },
+            "Field_9a433a49": [],
+            "Field_ffe24fd8": [],
+            "Field_e58acee4": true
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 400,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "a2a47e86-9b15-49e5-bc24-e01ddf9ccf48",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "1a8fe9d5-1881-4b7b-8317-a496094f2efc"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Flak/Affector_Flak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\health-protection-2026-09-23\\Common__Gameplay__InRoundProgression__Flak__Affector_Flak.ebx",
+      "rawSha256": "f4410993f9ce7e8d1db76000a311d3dc3e02e5f13f0fcf55d07d6e94f459e1b3",
+      "fileGuid": "bfbe4b7d-e889-46aa-b98e-318da0e72c9b",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_7d3d8a5c",
+            "$guid": "6ba0d89e-b0ab-43a3-bb03-f2c052a186ee",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/Flak/Affector_Flak",
+            "Field_de6f63b3": 1075936575,
+            "Field_ec3c12a7": 2101185116,
+            "Field_b50e1230": 0,
+            "Field_958dc613": [
+              3863025116
+            ],
+            "Field_003bcbca": 3,
+            "Field_95eed6ac": [
+              {
+                "Field_658381bd": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": 0.67
+                },
+                "Field_0a5e9034": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": true
+                },
+                "Field_ac6090d6": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": false
+                },
+                "Field_2c65377f": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": false
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/Flak/U_Ability_Flak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\health-protection-2026-09-23\\Common__Gameplay__InRoundProgression__Flak__U_Ability_Flak.ebx",
+      "rawSha256": "5456b2cd1050897a4d570179c012cd0eef2b7e187233787bf1eb8b7d33401fb2",
+      "fileGuid": "093fa063-143a-481f-85a8-b76283ef3942",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_bc0062dc",
+            "$guid": "77794bb8-a55c-4e33-86d7-7db2f0b97835",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/Flak/U_Ability_Flak",
+            "Field_9d34093f": "U_Ability_Flak",
+            "Field_de6f63b3": 2668481870,
+            "Field_32cf19f5": true,
+            "Field_5aec774f": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 120,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "2dab7382-de33-4d7d-8cba-fab582e52350",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "1a8fe9d5-1881-4b7b-8317-a496094f2efc"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__DamageSpot__Ability_DamageSpot.ebx",
+      "rawSha256": "f2d2f055a2321714a7b81f4ddbe6619823d650e1f74c00eb2c0942959c014c6e",
+      "fileGuid": "db6144a6-9d18-4c89-9bec-a03d6b90f2ad",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_af900787",
+            "$guid": "18f009f2-9e3f-4692-a8d3-665853114d7c",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+            "Field_a4da4b98": true,
+            "Field_b2193141": true,
+            "Field_9dac47e3": true,
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "bff24385-8608-409a-90fc-2a27e4ce6326",
+                "classGuid": "3cbdca4f-606f-4598-bcd4-411f67507ecd"
+              }
+            },
+            "Field_18d8777e": {
+              "$import": {
+                "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+              }
+            },
+            "Field_8a7dfc78": [
+              {
+                "$import": {
+                  "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                  "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+                }
+              }
+            ],
+            "Field_c910f9c2": 0,
+            "Field_5aec774f": {
+              "$ref": 1
+            },
+            "Field_ec8171fa": [],
+            "Field_3fcbdff0": null,
+            "Field_6b831b88": null,
+            "Field_def7f8dd": {
+              "Field_e0b43a29": {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+                    "classGuid": "3d316a92-9f7b-4831-b88d-0577cdd16202"
+                  }
+                }
+              },
+              "Field_043d7a08": false
+            },
+            "Field_958dc613": [],
+            "Field_49b3bb0e": [],
+            "Field_de6f63b3": 3324075206,
+            "Field_b77123cc": true,
+            "Field_d7605aab": [],
+            "Field_a21a7b29": [],
+            "Field_87293fc2": 0,
+            "Field_e59acd2d": 0,
+            "Field_8986fc0b": 0,
+            "Field_409478c9": 0,
+            "Field_460a9db1": 0,
+            "Field_abc643c2": 0,
+            "Field_1af83dc6": 0,
+            "Field_48c6ff7d": 0,
+            "Field_20746087": false,
+            "Field_e2cee558": false,
+            "Field_98d8888a": null,
+            "Field_dfc3e000": {
+              "Field_c478cc3b": {
+                "Field_3901db14": 1.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_bf151ef9": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 1.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_695d12a4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 1.0
+              },
+              "Field_bc4b07b4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              }
+            },
+            "Field_98aaa29d": [],
+            "Field_779b28f6": null,
+            "Field_6cce2f25": {
+              "Field_f29fce94": 32,
+              "Field_675a2be7": 0,
+              "Field_d2b8fc26": {
+                "$import": {
+                  "fileGuid": "496f5fa4-6499-496d-a9c2-5792c0e4c648",
+                  "classGuid": "96d40091-2b2f-4fd0-a04d-cd52fb02f08d"
+                }
+              }
+            },
+            "Field_9a433a49": [],
+            "Field_ffe24fd8": [],
+            "Field_e58acee4": false
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 400,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "896ca73c-3448-4a30-b398-4a6aacfc3f2e",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "6175a5c6-f096-45f4-a6dc-5d172bb5fc42"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/FL_Ability_DamageSpot",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__DamageSpot__FL_Ability_DamageSpot.ebx",
+      "rawSha256": "acef81df6445f6978e0199addb74ef5561297d03c94dd7491066badc358c08ec",
+      "fileGuid": "496f5fa4-6499-496d-a9c2-5792c0e4c648",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_03c48ade",
+            "$guid": "96d40091-2b2f-4fd0-a04d-cd52fb02f08d",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/DamageSpot/FL_Ability_DamageSpot",
+            "Field_d2b8fc26": {
+              "$layoutAmbiguous": true,
+              "Field_0c59fa06": "FL_Ability_Bloodhound",
+              "Field_a07bc334": {
+                "$import": {
+                  "fileGuid": "21b1582d-be1a-4414-bde2-53c11621d01d",
+                  "classGuid": "483866c1-d858-4cc8-a1cb-ca26efee95f6"
+                }
+              },
+              "Field_9d5dcce0": null,
+              "Field_e7200213": null,
+              "Field_3ec230ea": [],
+              "Field_f77bff1a": null
+            },
+            "Field_f675bc33": 0,
+            "Field_56d874f5": false
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/SimEx_Ability_DamageSpot",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__DamageSpot__SimEx_Ability_DamageSpot.ebx",
+      "rawSha256": "7f9f610d25665fb1fdbcd69de2aaa7854108b23fb71abccf9d7288052deb3e09",
+      "fileGuid": "21b1582d-be1a-4414-bde2-53c11621d01d",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_53d7404d",
+            "$guid": "483866c1-d858-4cc8-a1cb-ca26efee95f6",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/DamageSpot/SimEx_Ability_DamageSpot",
+            "Field_ff9ea35f": "",
+            "Field_4f8ab9fb": "",
+            "Field_ec3c12a7": 3403133597,
+            "Field_b9667857": 3886416907,
+            "Field_ebdd5457": false,
+            "Field_7633b5b9": [],
+            "Field_fc6bec62": false,
+            "Field_bd72a639": false,
+            "Field_ec30e918": [],
+            "Field_2f0e5b83": 0,
+            "Field_23e8fc11": {
+              "Field_73e9a894": null,
+              "Field_3af2e007": {
+                "$typeRef": 0
+              }
+            },
+            "Field_6cea3822": 0,
+            "Field_2094d4d6": {
+              "$ref": 3
+            },
+            "Field_06fb7d40": false,
+            "Field_8c81b3f5": [],
+            "Field_ac8a6ab1": 0,
+            "Field_75587794": 0,
+            "Field_0c18a620": "98d552fb0721dffb5e2d8ad42c4a18c148909ca4",
+            "Field_c7ffe639": "d9433361c2e14822a36230d38cd5c29e0a284c4b",
+            "Field_b95c345e": [
+              "40e80ca9-16e7-ded3-761d-601e3bbc7d0c",
+              "2caccfbb-4cf8-4a9e-b6a0-c960a283e6c5",
+              "1b089ad5-e9fa-49db-a08c-97938a56699e"
+            ],
+            "Field_4c5e38ce": "2f363788-63ce-48f7-8007-3558e18a1621",
+            "Field_991be1db": [],
+            "Field_a93062b8": "00000000-0000-0000-0000-000000000000",
+            "Field_0ba7f153": {
+              "$typeRef": 34
+            },
+            "Field_ea0047a8": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_6d73e276": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_a146eb4f": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_5298cf59": {
+              "Field_85ec6187": []
+            },
+            "Field_6f96388d": false,
+            "Field_211b6bfa": [
+              7,
+              22
+            ],
+            "Field_494cfc58": [],
+            "Field_b50d4aae": [],
+            "Field_7a0c0298": []
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 792,
+          "decoded": {
+            "$class": "Class_b281afe1",
+            "$guid": "292a5805-c618-4bf5-a9d9-bfafac751db6",
+            "Field_623aaa1f": 0,
+            "Field_bb32cd2f": -1.0,
+            "Field_87611ff9": -1.0,
+            "Field_c326a099": 75.0,
+            "Field_cf42f64c": false
+          }
+        },
+        {
+          "index": 2,
+          "absoluteByteOffset": 856,
+          "decoded": {
+            "$class": "Class_b281afe1",
+            "$guid": "0aa01534-3a13-47fd-9b06-787b946283c9",
+            "Field_623aaa1f": 0,
+            "Field_bb32cd2f": -1.0,
+            "Field_87611ff9": -1.0,
+            "Field_c326a099": 75.0,
+            "Field_cf42f64c": false
+          }
+        },
+        {
+          "index": 3,
+          "absoluteByteOffset": 904,
+          "decoded": {
+            "$class": "Class_25c12137",
+            "$guid": null,
+            "Field_fa116802": [],
+            "Field_3bb8b649": [],
+            "Field_24f0f98e": [],
+            "Field_c22413a8": [],
+            "Field_aa4fa860": {
+              "$resourceRef": "c19e2dc1b3825847"
+            },
+            "Field_a2734e52": [
+              {
+                "Field_8cf424e7": {
+                  "$ref": 1
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 40
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$ref": 2
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 48
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "bc547f6c-e296-4218-ba9e-c585539862cb",
+                    "classGuid": "bccfae15-4c44-454c-8e76-8c721aafb191"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 32
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              }
+            ],
+            "Field_98410e11": [
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 6
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 56
+                },
+                "Field_1b0becee": 0
+              },
+              {
+                "Field_8cf424e7": {
+                  "$typeRef": 6
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 64
+                },
+                "Field_1b0becee": 0
+              }
+            ],
+            "Field_e4880f28": [
+              {
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 16
+                },
+                "Field_1b0becee": 0,
+                "Field_9cae1909": false
+              },
+              {
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 24
+                },
+                "Field_1b0becee": 0,
+                "Field_9cae1909": false
+              }
+            ],
+            "Field_c939b436": [],
+            "Field_b32b1867": [],
+            "Field_259e9f81": [
+              {
+                "Field_a2138df5": 0,
+                "Field_fc88f64b": 16
+              }
+            ],
+            "Field_c201a703": [],
+            "Field_810e1414": "1faeb7f6-d80e-8c39-eee2-b50b96e7951c"
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/DamageSpot/U_Ability_DamageSpot",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__DamageSpot__U_Ability_DamageSpot.ebx",
+      "rawSha256": "63c72a8f13619abf5f6e301186635bfc2f7e8aee46fb25303accf503b6a5489c",
+      "fileGuid": "bff24385-8608-409a-90fc-2a27e4ce6326",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_bc0062dc",
+            "$guid": "3cbdca4f-606f-4598-bcd4-411f67507ecd",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/DamageSpot/U_Ability_DamageSpot",
+            "Field_9d34093f": "U_Ability_DamageSpot",
+            "Field_de6f63b3": 3195956807,
+            "Field_32cf19f5": true,
+            "Field_5aec774f": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 120,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "48531eb4-b723-4109-b229-fbc3f23d407c",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__SilentMovement__Ability_SilentMovement.ebx",
+      "rawSha256": "2694f4602ec4d94b572127ab9ede135b717a28bc54fbf921a57383d1e96ae5c0",
+      "fileGuid": "5a2013ce-98fa-43f8-a443-cc97c1b5034a",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_af900787",
+            "$guid": "d077d4e2-9003-42a8-a7ae-223a3bc2857d",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+            "Field_a4da4b98": true,
+            "Field_b2193141": true,
+            "Field_9dac47e3": true,
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "84a5972b-c771-4066-b62c-c4d56f07b698",
+                "classGuid": "c46a3034-a614-443a-9f58-0c8296dfa23d"
+              }
+            },
+            "Field_18d8777e": {
+              "$import": {
+                "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+              }
+            },
+            "Field_8a7dfc78": [
+              {
+                "$import": {
+                  "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                  "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+                }
+              }
+            ],
+            "Field_c910f9c2": 0,
+            "Field_5aec774f": {
+              "$ref": 1
+            },
+            "Field_ec8171fa": [],
+            "Field_3fcbdff0": null,
+            "Field_6b831b88": null,
+            "Field_def7f8dd": {
+              "Field_e0b43a29": {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+                    "classGuid": "02ea7c0d-0e7a-49c6-855a-8daff7d109ce"
+                  }
+                }
+              },
+              "Field_043d7a08": false
+            },
+            "Field_958dc613": [],
+            "Field_49b3bb0e": [],
+            "Field_de6f63b3": 33125277,
+            "Field_b77123cc": true,
+            "Field_d7605aab": [],
+            "Field_a21a7b29": [],
+            "Field_87293fc2": 0,
+            "Field_e59acd2d": 0,
+            "Field_8986fc0b": 0,
+            "Field_409478c9": 0,
+            "Field_460a9db1": 0,
+            "Field_abc643c2": 0,
+            "Field_1af83dc6": 0,
+            "Field_48c6ff7d": 0,
+            "Field_20746087": false,
+            "Field_e2cee558": false,
+            "Field_98d8888a": null,
+            "Field_dfc3e000": {
+              "Field_c478cc3b": {
+                "Field_3901db14": 1.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_bf151ef9": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 1.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_695d12a4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 1.0
+              },
+              "Field_bc4b07b4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              }
+            },
+            "Field_98aaa29d": [],
+            "Field_779b28f6": null,
+            "Field_6cce2f25": {
+              "Field_f29fce94": 0,
+              "Field_675a2be7": 0,
+              "Field_d2b8fc26": null
+            },
+            "Field_9a433a49": [],
+            "Field_ffe24fd8": [],
+            "Field_e58acee4": false
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 400,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "eadc48e1-ae3b-4e14-b053-d992d2cafbd5",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "94d6d5f9-05fb-4b1d-bd8c-dde09839ffc8"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/SilentMovement/U_Ability_SilentMovement",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__SilentMovement__U_Ability_SilentMovement.ebx",
+      "rawSha256": "6b92c64ffbf43666b5b8342a8c3dbe24e7236a3f95745768d7e7022bf0218667",
+      "fileGuid": "84a5972b-c771-4066-b62c-c4d56f07b698",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_bc0062dc",
+            "$guid": "c46a3034-a614-443a-9f58-0c8296dfa23d",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/SilentMovement/U_Ability_SilentMovement",
+            "Field_9d34093f": "U_Ability_SilentMovement",
+            "Field_de6f63b3": 1945231491,
+            "Field_32cf19f5": true,
+            "Field_5aec774f": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 120,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "9a1aaad3-50e0-4001-9f5c-f8718c0c5956",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__StanceFlak__Ability_StanceFlak.ebx",
+      "rawSha256": "0aded562af050e50d77ef18c18e9b5645037b1cd1a23b7e1ad8d41ff6ac31a2f",
+      "fileGuid": "ce0aaa8d-454e-479d-b287-80accc9d2916",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_af900787",
+            "$guid": "e59dddc2-8873-49a5-9415-af10d01fa4cb",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+            "Field_a4da4b98": true,
+            "Field_b2193141": true,
+            "Field_9dac47e3": true,
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "4e8ef996-afa0-4ea1-bdf1-7ad22299bcfa",
+                "classGuid": "5b0f3597-2004-420e-a8b1-6b59c09209d3"
+              }
+            },
+            "Field_18d8777e": {
+              "$import": {
+                "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+              }
+            },
+            "Field_8a7dfc78": [
+              {
+                "$import": {
+                  "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+                  "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+                }
+              }
+            ],
+            "Field_c910f9c2": 0,
+            "Field_5aec774f": {
+              "$ref": 1
+            },
+            "Field_ec8171fa": [],
+            "Field_3fcbdff0": null,
+            "Field_6b831b88": null,
+            "Field_def7f8dd": {
+              "Field_e0b43a29": {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+                    "classGuid": "a53a121e-afdf-475a-a82e-922530f7834b"
+                  }
+                }
+              },
+              "Field_043d7a08": false
+            },
+            "Field_958dc613": [],
+            "Field_49b3bb0e": [],
+            "Field_de6f63b3": 2274010492,
+            "Field_b77123cc": true,
+            "Field_d7605aab": [],
+            "Field_a21a7b29": [
+              {
+                "$import": {
+                  "fileGuid": "24e7f63a-7c6f-41bc-acb0-44d578d18eec",
+                  "classGuid": "f09235ce-a0fd-4c6b-8e59-f66d37b9d770"
+                }
+              }
+            ],
+            "Field_87293fc2": 0,
+            "Field_e59acd2d": 0,
+            "Field_8986fc0b": 0,
+            "Field_409478c9": 0,
+            "Field_460a9db1": 0,
+            "Field_abc643c2": 0,
+            "Field_1af83dc6": 0,
+            "Field_48c6ff7d": 0,
+            "Field_20746087": false,
+            "Field_e2cee558": false,
+            "Field_98d8888a": null,
+            "Field_dfc3e000": {
+              "Field_c478cc3b": {
+                "Field_3901db14": 1.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_bf151ef9": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 1.0,
+                "Field_32a99b9c": 0.0
+              },
+              "Field_695d12a4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 1.0
+              },
+              "Field_bc4b07b4": {
+                "Field_3901db14": 0.0,
+                "Field_42fc0f5e": 0.0,
+                "Field_32a99b9c": 0.0
+              }
+            },
+            "Field_98aaa29d": [],
+            "Field_779b28f6": null,
+            "Field_6cce2f25": {
+              "Field_f29fce94": 32,
+              "Field_675a2be7": 0,
+              "Field_d2b8fc26": {
+                "$import": {
+                  "fileGuid": "b14eef86-d8da-4acb-a93e-afc5ed051a44",
+                  "classGuid": "4a120b80-be5d-49dc-95fe-deacd7669161"
+                }
+              }
+            },
+            "Field_9a433a49": [],
+            "Field_ffe24fd8": [],
+            "Field_e58acee4": true
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 400,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "80f984ee-152c-4d88-8ad3-c091ccec46d8",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "8852cea3-8917-45fb-8ef4-b58abd37d23c"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/Affector_StanceFlak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__StanceFlak__Affector_StanceFlak.ebx",
+      "rawSha256": "72458d797c1d4903002ef5b52b97be2dc25128bb7c5d5f93015df94f3d0b8e46",
+      "fileGuid": "68d25e8a-854c-4628-8f52-57311df50d8f",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_7d3d8a5c",
+            "$guid": "6f799430-34c7-42a1-919a-4e1c95f530c3",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/StanceFlak/Affector_StanceFlak",
+            "Field_de6f63b3": 1141966473,
+            "Field_ec3c12a7": 2101185116,
+            "Field_b50e1230": 0,
+            "Field_958dc613": [],
+            "Field_003bcbca": 3,
+            "Field_95eed6ac": [
+              {
+                "Field_658381bd": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": 0.75
+                },
+                "Field_0a5e9034": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": true
+                },
+                "Field_ac6090d6": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": false
+                },
+                "Field_2c65377f": {
+                  "Field_e0b43a29": {
+                    "Field_6b28f68f": null
+                  },
+                  "Field_043d7a08": false
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/FL_Ability_StanceFlak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__StanceFlak__FL_Ability_StanceFlak.ebx",
+      "rawSha256": "ededeb9c5a8872c4733a5c851b8db0e8d296fe0eb504e73cbe0f07093aa01bfa",
+      "fileGuid": "b14eef86-d8da-4acb-a93e-afc5ed051a44",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_03c48ade",
+            "$guid": "4a120b80-be5d-49dc-95fe-deacd7669161",
+            "$layoutAmbiguous": true,
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/StanceFlak/FL_Ability_StanceFlak",
+            "Field_d2b8fc26": {
+              "$layoutAmbiguous": true,
+              "Field_0c59fa06": "FL_Ability_Despicable",
+              "Field_a07bc334": {
+                "$import": {
+                  "fileGuid": "c209e3bc-0f42-4dd6-8f5b-add2b13088d1",
+                  "classGuid": "a0d9dacf-8aa5-4419-a45a-0f35e6b04777"
+                }
+              },
+              "Field_9d5dcce0": null,
+              "Field_e7200213": null,
+              "Field_3ec230ea": [],
+              "Field_f77bff1a": null
+            },
+            "Field_f675bc33": 0,
+            "Field_56d874f5": false
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__StanceFlak__SimEx_Ability_StanceFlak.ebx",
+      "rawSha256": "8762a1acd4212aca707edfd2e0388eb950774a48ab7554116c200d0de9202287",
+      "fileGuid": "c209e3bc-0f42-4dd6-8f5b-add2b13088d1",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_53d7404d",
+            "$guid": "a0d9dacf-8aa5-4419-a45a-0f35e6b04777",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+            "Field_ff9ea35f": "",
+            "Field_4f8ab9fb": "",
+            "Field_ec3c12a7": 845843157,
+            "Field_b9667857": 517373591,
+            "Field_ebdd5457": false,
+            "Field_7633b5b9": [],
+            "Field_fc6bec62": false,
+            "Field_bd72a639": false,
+            "Field_ec30e918": [],
+            "Field_2f0e5b83": 0,
+            "Field_23e8fc11": {
+              "Field_73e9a894": null,
+              "Field_3af2e007": {
+                "$typeRef": 0
+              }
+            },
+            "Field_6cea3822": 0,
+            "Field_2094d4d6": {
+              "$ref": 1
+            },
+            "Field_06fb7d40": false,
+            "Field_8c81b3f5": [],
+            "Field_ac8a6ab1": 0,
+            "Field_75587794": 0,
+            "Field_0c18a620": "5dadcc319ac6a22b6a818d0d27badc1b335b94d3",
+            "Field_c7ffe639": "a2cbb3cc16273770377edb7c98363325b66a07d7",
+            "Field_b95c345e": [
+              "9064031e-4565-e411-49af-b911d7f5187d",
+              "219d3277-78be-465b-b2b8-52d30b0ba6bf",
+              "3cdc19db-5e19-5530-a909-825e7fb17a8b",
+              "e26dcbef-f4ed-48ff-bc98-60da1720fec6",
+              "9973e7f4-67a1-532e-0d4d-199416a9cb05"
+            ],
+            "Field_4c5e38ce": "62ec5e96-0826-4556-8a73-29f484034175",
+            "Field_991be1db": [],
+            "Field_a93062b8": "00000000-0000-0000-0000-000000000000",
+            "Field_0ba7f153": {
+              "$typeRef": 22
+            },
+            "Field_ea0047a8": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_6d73e276": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_a146eb4f": {
+              "Field_7e9479b2": 0,
+              "Field_d65d1b09": [],
+              "Field_592df111": 0,
+              "Field_56d69c4a": [],
+              "Field_bd893064": [],
+              "Field_d7c059a6": 0,
+              "Field_c6737a8a": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_671d9ae9": {
+                "Field_9a1f4a81": [],
+                "Field_d4f92b28": [],
+                "Field_b4ddc325": [],
+                "Field_e6669381": [],
+                "Field_4eae5ec7": []
+              },
+              "Field_470a100b": [],
+              "Field_0c59fa06": "",
+              "Field_77820947": ""
+            },
+            "Field_5298cf59": {
+              "Field_85ec6187": []
+            },
+            "Field_6f96388d": false,
+            "Field_211b6bfa": [
+              22,
+              24,
+              77,
+              102
+            ],
+            "Field_494cfc58": [
+              77,
+              102
+            ],
+            "Field_b50d4aae": [
+              "GetChannelNode",
+              "GetTickNode",
+              "GetChannelNode"
+            ],
+            "Field_7a0c0298": [
+              0,
+              2
+            ]
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 776,
+          "decoded": {
+            "$class": "Class_25c12137",
+            "$guid": null,
+            "Field_fa116802": [],
+            "Field_3bb8b649": [],
+            "Field_24f0f98e": [],
+            "Field_c22413a8": [],
+            "Field_aa4fa860": {
+              "$resourceRef": "862fb92acf483af1"
+            },
+            "Field_a2734e52": [
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+                    "classGuid": "5aa9ec2a-fd3f-44fe-b676-73cae01ca72c"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 72
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+                    "classGuid": "73cd80a1-4d05-4ef3-94a4-b29845d6db20"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 64
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+                    "classGuid": "9abd3e09-329a-421e-869b-362b90e6a020"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 96
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+                    "classGuid": "f039b83a-b1d4-4dd5-aa4e-035b3aa7534d"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 80
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+                    "classGuid": "e7dd8513-8eb2-4a35-91f4-b613dea33dca"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 88
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              },
+              {
+                "Field_8cf424e7": {
+                  "$import": {
+                    "fileGuid": "68d25e8a-854c-4628-8f52-57311df50d8f",
+                    "classGuid": "6f799430-34c7-42a1-919a-4e1c95f530c3"
+                  }
+                },
+                "Field_fc636c1f": {
+                  "Field_bdf81e34": 0,
+                  "Field_4ff541e4": 112
+                },
+                "Field_1b0becee": 0,
+                "Field_f2b8de4b": false
+              }
+            ],
+            "Field_98410e11": [],
+            "Field_e4880f28": [],
+            "Field_c939b436": [],
+            "Field_b32b1867": [],
+            "Field_259e9f81": [
+              {
+                "Field_a2138df5": 0,
+                "Field_fc88f64b": 16
+              }
+            ],
+            "Field_c201a703": [],
+            "Field_810e1414": "f3d67e44-0684-6b27-da44-4c305c2cc634"
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    },
+    {
+      "route": "Common/Gameplay/InRoundProgression/StanceFlak/U_Ability_StanceFlak",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\multiplayer-candidates-2026-09-23\\Common__Gameplay__InRoundProgression__StanceFlak__U_Ability_StanceFlak.ebx",
+      "rawSha256": "54e3b8571741ec38952dbadbb135ce8491eea3512fbf13ed63b59dcaa84cebce",
+      "fileGuid": "4e8ef996-afa0-4ea1-bdf1-7ad22299bcfa",
+      "archiveHead": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "objects": [
+        {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_bc0062dc",
+            "$guid": "5b0f3597-2004-420e-a8b1-6b59c09209d3",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/StanceFlak/U_Ability_StanceFlak",
+            "Field_9d34093f": "U_Ability_StanceFlak",
+            "Field_de6f63b3": 3398881933,
+            "Field_32cf19f5": true,
+            "Field_5aec774f": {
+              "$ref": 1
+            }
+          }
+        },
+        {
+          "index": 1,
+          "absoluteByteOffset": 120,
+          "decoded": {
+            "$class": "Class_e923016e",
+            "$guid": "c20a43e3-643d-4f79-a63c-854463e7e68a",
+            "Field_605f79af": [
+              {
+                "Field_6b28f68f": {
+                  "$import": {
+                    "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+                    "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "unresolvedTypes": []
+    }
+  ],
+  "references": [
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "fieldPath": "/0/Field_f86e0433",
+      "target": {
+        "fileGuid": "227af61b-4ef8-469c-abbe-e324b1f68e27",
+        "classGuid": "ba9d1524-b55b-46ff-909b-0e643067f6b5"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/Adrenaline/U_Ability_FasterHealing",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "fieldPath": "/0/Field_18d8777e",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "fieldPath": "/0/Field_8a7dfc78/0",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "fieldPath": "/0/Field_def7f8dd/Field_e0b43a29/Field_6b28f68f",
+      "target": {
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "classGuid": "84ba2bc6-f69c-49e7-8850-455caf4f78ed"
+      },
+      "catalogRoute": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+      "targetEvidence": {
+        "route": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Game\\GlacierMP\\GameSetup\\Killswitches\\KST_GlacierMP.ebx",
+        "rawSha256": "96fec3729c8b8d47c721bb913149c5e04275c91f59144d1bc75f95de81990d73",
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 181,
+          "absoluteByteOffset": 15976,
+          "decoded": {
+            "$class": "Class_18d40008",
+            "$guid": "84ba2bc6-f69c-49e7-8850-455caf4f78ed",
+            "Field_0c59fa06": "Ability_FasterHealing",
+            "Field_c124c7d8": 964903023,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 2836,
+            "Field_a524635f": 358542684,
+            "Field_e73c7944": 3271258131,
+            "Field_605f79af": [],
+            "Field_42c8b257": false
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "fieldPath": "/0/Field_a21a7b29/0",
+      "target": {
+        "fileGuid": "ba23423b-64fd-49c4-9f9c-1cb320c50782",
+        "classGuid": "a701da6e-8bbf-4f0d-9cc8-2f565ab7eca5"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/Adrenaline/Affector_FasterRegen",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Adrenaline/Ability_FasterHealing",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 4345,
+          "absoluteByteOffset": 245496,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171",
+            "Field_0c59fa06": "U_Ability_FasterHealing",
+            "Field_c124c7d8": -52865403,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 422
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Adrenaline/U_Ability_FasterHealing",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 4345,
+          "absoluteByteOffset": 245496,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171",
+            "Field_0c59fa06": "U_Ability_FasterHealing",
+            "Field_c124c7d8": -52865403,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 422
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "fieldPath": "/0/Field_f86e0433",
+      "target": {
+        "fileGuid": "093fa063-143a-481f-85a8-b76283ef3942",
+        "classGuid": "77794bb8-a55c-4e33-86d7-7db2f0b97835"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/Flak/U_Ability_Flak",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "fieldPath": "/0/Field_18d8777e",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "fieldPath": "/0/Field_8a7dfc78/0",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "fieldPath": "/0/Field_def7f8dd/Field_e0b43a29/Field_6b28f68f",
+      "target": {
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "classGuid": "429989f5-dfb3-47a5-ab4b-0793bca36fd6"
+      },
+      "catalogRoute": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+      "targetEvidence": {
+        "route": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Game\\GlacierMP\\GameSetup\\Killswitches\\KST_GlacierMP.ebx",
+        "rawSha256": "96fec3729c8b8d47c721bb913149c5e04275c91f59144d1bc75f95de81990d73",
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 228,
+          "absoluteByteOffset": 20112,
+          "decoded": {
+            "$class": "Class_18d40008",
+            "$guid": "429989f5-dfb3-47a5-ab4b-0793bca36fd6",
+            "Field_0c59fa06": "Ability_Flak",
+            "Field_c124c7d8": -520890088,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 2845,
+            "Field_a524635f": 358542684,
+            "Field_e73c7944": 839141340,
+            "Field_605f79af": [],
+            "Field_42c8b257": false
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "fieldPath": "/0/Field_a21a7b29/0",
+      "target": {
+        "fileGuid": "bfbe4b7d-e889-46aa-b98e-318da0e72c9b",
+        "classGuid": "6ba0d89e-b0ab-43a3-bb03-f2c052a186ee"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/Flak/Affector_Flak",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Flak/Ability_Flak",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "1a8fe9d5-1881-4b7b-8317-a496094f2efc"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 7915,
+          "absoluteByteOffset": 447032,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "1a8fe9d5-1881-4b7b-8317-a496094f2efc",
+            "Field_0c59fa06": "U_Ability_Flak",
+            "Field_c124c7d8": 359049842,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 424
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/Flak/U_Ability_Flak",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "1a8fe9d5-1881-4b7b-8317-a496094f2efc"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 7915,
+          "absoluteByteOffset": 447032,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "1a8fe9d5-1881-4b7b-8317-a496094f2efc",
+            "Field_0c59fa06": "U_Ability_Flak",
+            "Field_c124c7d8": 359049842,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 424
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "fieldPath": "/0/Field_f86e0433",
+      "target": {
+        "fileGuid": "bff24385-8608-409a-90fc-2a27e4ce6326",
+        "classGuid": "3cbdca4f-606f-4598-bcd4-411f67507ecd"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/DamageSpot/U_Ability_DamageSpot",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "fieldPath": "/0/Field_18d8777e",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "fieldPath": "/0/Field_8a7dfc78/0",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "fieldPath": "/0/Field_def7f8dd/Field_e0b43a29/Field_6b28f68f",
+      "target": {
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "classGuid": "3d316a92-9f7b-4831-b88d-0577cdd16202"
+      },
+      "catalogRoute": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+      "targetEvidence": {
+        "route": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Game\\GlacierMP\\GameSetup\\Killswitches\\KST_GlacierMP.ebx",
+        "rawSha256": "96fec3729c8b8d47c721bb913149c5e04275c91f59144d1bc75f95de81990d73",
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 132,
+          "absoluteByteOffset": 11664,
+          "decoded": {
+            "$class": "Class_18d40008",
+            "$guid": "3d316a92-9f7b-4831-b88d-0577cdd16202",
+            "Field_0c59fa06": "Ability_DamageSpot",
+            "Field_c124c7d8": 1865452555,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 2892,
+            "Field_a524635f": 358542684,
+            "Field_e73c7944": 2328769919,
+            "Field_605f79af": [],
+            "Field_42c8b257": false
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "fieldPath": "/0/Field_6cce2f25/Field_d2b8fc26",
+      "target": {
+        "fileGuid": "496f5fa4-6499-496d-a9c2-5792c0e4c648",
+        "classGuid": "96d40091-2b2f-4fd0-a04d-cd52fb02f08d"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/DamageSpot/FL_Ability_DamageSpot",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/Ability_DamageSpot",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "6175a5c6-f096-45f4-a6dc-5d172bb5fc42"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 7360,
+          "absoluteByteOffset": 415784,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "6175a5c6-f096-45f4-a6dc-5d172bb5fc42",
+            "Field_0c59fa06": "U_Ability_DamageSpot",
+            "Field_c124c7d8": 1341525793,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 3335
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/FL_Ability_DamageSpot",
+      "fieldPath": "/0/Field_d2b8fc26/Field_a07bc334",
+      "target": {
+        "fileGuid": "21b1582d-be1a-4414-bde2-53c11621d01d",
+        "classGuid": "483866c1-d858-4cc8-a1cb-ca26efee95f6"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/DamageSpot/SimEx_Ability_DamageSpot",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/SimEx_Ability_DamageSpot",
+      "fieldPath": "/3/Field_a2734e52/2/Field_8cf424e7",
+      "target": {
+        "fileGuid": "bc547f6c-e296-4218-ba9e-c585539862cb",
+        "classGuid": "bccfae15-4c44-454c-8e76-8c721aafb191"
+      },
+      "catalogRoute": "Common/Gameplay/Soldier/GRX_Glacier_Soldier",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Soldier/GRX_Glacier_Soldier",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\GRX_Glacier_Soldier.ebx",
+        "rawSha256": "9b44340483d9af272ef5f0cbda5934ad9a30ff1f055fd3fddc60fc4943e822cc",
+        "fileGuid": "bc547f6c-e296-4218-ba9e-c585539862cb",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 19,
+          "absoluteByteOffset": 1856,
+          "decoded": {
+            "$class": "Class_d59e68b9",
+            "$guid": "bccfae15-4c44-454c-8e76-8c721aafb191",
+            "Field_0c59fa06": "DamageSpot_Duration",
+            "Field_c124c7d8": 1448894615,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 42243,
+            "Field_a524635f": -1048704094,
+            "Field_e73c7944": 913624302,
+            "Field_605f79af": [],
+            "Field_42c8b257": 8.0,
+            "Field_c06d0cbb": 0.0,
+            "Field_3ff76ddb": 100.0
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/DamageSpot/U_Ability_DamageSpot",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 4345,
+          "absoluteByteOffset": 245496,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171",
+            "Field_0c59fa06": "U_Ability_FasterHealing",
+            "Field_c124c7d8": -52865403,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 422
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+      "fieldPath": "/0/Field_f86e0433",
+      "target": {
+        "fileGuid": "84a5972b-c771-4066-b62c-c4d56f07b698",
+        "classGuid": "c46a3034-a614-443a-9f58-0c8296dfa23d"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/SilentMovement/U_Ability_SilentMovement",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+      "fieldPath": "/0/Field_18d8777e",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+      "fieldPath": "/0/Field_8a7dfc78/0",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+      "fieldPath": "/0/Field_def7f8dd/Field_e0b43a29/Field_6b28f68f",
+      "target": {
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "classGuid": "02ea7c0d-0e7a-49c6-855a-8daff7d109ce"
+      },
+      "catalogRoute": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+      "targetEvidence": {
+        "route": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Game\\GlacierMP\\GameSetup\\Killswitches\\KST_GlacierMP.ebx",
+        "rawSha256": "96fec3729c8b8d47c721bb913149c5e04275c91f59144d1bc75f95de81990d73",
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 11,
+          "absoluteByteOffset": 1016,
+          "decoded": {
+            "$class": "Class_18d40008",
+            "$guid": "02ea7c0d-0e7a-49c6-855a-8daff7d109ce",
+            "Field_0c59fa06": "Ability_SilentMovement",
+            "Field_c124c7d8": 1831052722,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 2893,
+            "Field_a524635f": 358542684,
+            "Field_e73c7944": 1646658065,
+            "Field_605f79af": [],
+            "Field_42c8b257": false
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/SilentMovement/Ability_SilentMovement",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "94d6d5f9-05fb-4b1d-bd8c-dde09839ffc8"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 9284,
+          "absoluteByteOffset": 524328,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "94d6d5f9-05fb-4b1d-bd8c-dde09839ffc8",
+            "Field_0c59fa06": "U_Ability_SilentMovement",
+            "Field_c124c7d8": -1696528168,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 3337
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/SilentMovement/U_Ability_SilentMovement",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 4345,
+          "absoluteByteOffset": 245496,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171",
+            "Field_0c59fa06": "U_Ability_FasterHealing",
+            "Field_c124c7d8": -52865403,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 422
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fieldPath": "/0/Field_f86e0433",
+      "target": {
+        "fileGuid": "4e8ef996-afa0-4ea1-bdf1-7ad22299bcfa",
+        "classGuid": "5b0f3597-2004-420e-a8b1-6b59c09209d3"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/StanceFlak/U_Ability_StanceFlak",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fieldPath": "/0/Field_18d8777e",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fieldPath": "/0/Field_8a7dfc78/0",
+      "target": {
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "classGuid": "7cf7a02f-3823-4594-9faf-415ed0d8a803"
+      },
+      "catalogRoute": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Shared/PlayerAbilityGroups/PlayerAbilityCategoriesAsset",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Shared\\PlayerAbilityGroups\\PlayerAbilityCategoriesAsset.ebx",
+        "rawSha256": "7b7a188b40287f024ad87c52a5297cc87301fb345ef15e816813d6e251a2e3a5",
+        "fileGuid": "aa96f839-1e9e-4657-a645-a229b0de25b6",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6,
+          "absoluteByteOffset": 744,
+          "decoded": {
+            "$class": "Class_5b46b128",
+            "$guid": "7cf7a02f-3823-4594-9faf-415ed0d8a803",
+            "$layoutAmbiguous": true,
+            "Field_18d8777e": "Passive",
+            "Field_de6f63b3": 1087075292,
+            "Field_fb3e0041": 2,
+            "Field_e3620f7a": 14,
+            "Field_59b8e090": false,
+            "Field_09878ede": -1,
+            "Field_eb7948cc": false,
+            "Field_a7dff09b": true,
+            "Field_87293fc2": false,
+            "Field_e59acd2d": false,
+            "Field_8986fc0b": false,
+            "Field_409478c9": false,
+            "Field_460a9db1": false,
+            "Field_abc643c2": false,
+            "Field_1af83dc6": true,
+            "Field_48c6ff7d": true,
+            "Field_8e2ca087": false,
+            "Field_c20045ec": null,
+            "Field_e158048a": 0,
+            "Field_0e005b64": null,
+            "Field_c779221f": null,
+            "Field_0eee5c86": null,
+            "Field_a1e1c873": {
+              "Field_6b28f68f": null
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fieldPath": "/0/Field_def7f8dd/Field_e0b43a29/Field_6b28f68f",
+      "target": {
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "classGuid": "a53a121e-afdf-475a-a82e-922530f7834b"
+      },
+      "catalogRoute": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+      "targetEvidence": {
+        "route": "Game/GlacierMP/GameSetup/Killswitches/KST_GlacierMP",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Game\\GlacierMP\\GameSetup\\Killswitches\\KST_GlacierMP.ebx",
+        "rawSha256": "96fec3729c8b8d47c721bb913149c5e04275c91f59144d1bc75f95de81990d73",
+        "fileGuid": "138824da-0a17-4122-9c6a-77fcca0506ef",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 30,
+          "absoluteByteOffset": 2688,
+          "decoded": {
+            "$class": "Class_18d40008",
+            "$guid": "a53a121e-afdf-475a-a82e-922530f7834b",
+            "Field_0c59fa06": "Ability_StanceFlak",
+            "Field_c124c7d8": 126340630,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 2938,
+            "Field_a524635f": 358542684,
+            "Field_e73c7944": 3238825611,
+            "Field_605f79af": [],
+            "Field_42c8b257": false
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fieldPath": "/0/Field_a21a7b29/0",
+      "target": {
+        "fileGuid": "24e7f63a-7c6f-41bc-acb0-44d578d18eec",
+        "classGuid": "f09235ce-a0fd-4c6b-8e59-f66d37b9d770"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/HoldBreath/Affector_HoldBreath",
+      "targetEvidence": {
+        "route": "Common/Gameplay/InRoundProgression/HoldBreath/Affector_HoldBreath",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\optic-breath-2026-09-23\\Common__Gameplay__InRoundProgression__HoldBreath__Affector_HoldBreath.ebx",
+        "rawSha256": "c533b6b95547b4de47a508fb19d52cc492f1bae92f6ecf8273441f651659079f",
+        "fileGuid": "24e7f63a-7c6f-41bc-acb0-44d578d18eec",
+        "archiveHead": 4892087,
+        "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+        "object": {
+          "index": 0,
+          "absoluteByteOffset": 48,
+          "decoded": {
+            "$class": "Class_6bbe0eba",
+            "$guid": "f09235ce-a0fd-4c6b-8e59-f66d37b9d770",
+            "Field_0c59fa06": "Common/Gameplay/InRoundProgression/HoldBreath/Affector_HoldBreath",
+            "Field_de6f63b3": 2662916694,
+            "Field_ec3c12a7": 1807617722,
+            "Field_b50e1230": 0,
+            "Field_958dc613": [
+              2942930902
+            ],
+            "Field_003bcbca": 1
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fieldPath": "/0/Field_6cce2f25/Field_d2b8fc26",
+      "target": {
+        "fileGuid": "b14eef86-d8da-4acb-a93e-afc5ed051a44",
+        "classGuid": "4a120b80-be5d-49dc-95fe-deacd7669161"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/StanceFlak/FL_Ability_StanceFlak",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/Ability_StanceFlak",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "8852cea3-8917-45fb-8ef4-b58abd37d23c"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 6078,
+          "absoluteByteOffset": 343640,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "8852cea3-8917-45fb-8ef4-b58abd37d23c",
+            "Field_0c59fa06": "U_Ability_StanceFlak",
+            "Field_c124c7d8": -610296260,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 5248
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/FL_Ability_StanceFlak",
+      "fieldPath": "/0/Field_d2b8fc26/Field_a07bc334",
+      "target": {
+        "fileGuid": "c209e3bc-0f42-4dd6-8f5b-add2b13088d1",
+        "classGuid": "a0d9dacf-8aa5-4419-a45a-0f35e6b04777"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "fieldPath": "/1/Field_a2734e52/0/Field_8cf424e7",
+      "target": {
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "classGuid": "5aa9ec2a-fd3f-44fe-b676-73cae01ca72c"
+      },
+      "catalogRoute": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Channels\\ChannelCollections\\SoldierOnlyPublicChannels.ebx",
+        "rawSha256": "4ee67487bd44276712813214ddd547bbb6ab1d83f3dfa952ecdbbd10fd112ed2",
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 79,
+          "absoluteByteOffset": 4568,
+          "decoded": {
+            "$class": "Class_f7ca88c8",
+            "$guid": "5aa9ec2a-fd3f-44fe-b676-73cae01ca72c",
+            "Field_cdc6f6a3": 1310836219,
+            "Field_0c59fa06": "IsMountedLeft"
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "fieldPath": "/1/Field_a2734e52/1/Field_8cf424e7",
+      "target": {
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "classGuid": "73cd80a1-4d05-4ef3-94a4-b29845d6db20"
+      },
+      "catalogRoute": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Channels\\ChannelCollections\\SoldierOnlyPublicChannels.ebx",
+        "rawSha256": "4ee67487bd44276712813214ddd547bbb6ab1d83f3dfa952ecdbbd10fd112ed2",
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 269,
+          "absoluteByteOffset": 15440,
+          "decoded": {
+            "$class": "Class_de66f14c",
+            "$guid": "73cd80a1-4d05-4ef3-94a4-b29845d6db20",
+            "Field_cdc6f6a3": 1259854801,
+            "Field_0c59fa06": "CurrentStance",
+            "Field_bdaa3187": {
+              "Field_23de5099": {
+                "$import": {
+                  "fileGuid": "9f75b645-fcd2-0c88-9f75-b645fcd20c88",
+                  "classGuid": "9f75b645-fcd2-0c88-9f75-b645fcd20c88"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "fieldPath": "/1/Field_a2734e52/2/Field_8cf424e7",
+      "target": {
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "classGuid": "9abd3e09-329a-421e-869b-362b90e6a020"
+      },
+      "catalogRoute": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Channels\\ChannelCollections\\SoldierOnlyPublicChannels.ebx",
+        "rawSha256": "4ee67487bd44276712813214ddd547bbb6ab1d83f3dfa952ecdbbd10fd112ed2",
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 19,
+          "absoluteByteOffset": 1128,
+          "decoded": {
+            "$class": "Class_f7ca88c8",
+            "$guid": "9abd3e09-329a-421e-869b-362b90e6a020",
+            "Field_cdc6f6a3": 4088561222,
+            "Field_0c59fa06": "IsBenefittingFromBipod"
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "fieldPath": "/1/Field_a2734e52/3/Field_8cf424e7",
+      "target": {
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "classGuid": "f039b83a-b1d4-4dd5-aa4e-035b3aa7534d"
+      },
+      "catalogRoute": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Channels\\ChannelCollections\\SoldierOnlyPublicChannels.ebx",
+        "rawSha256": "4ee67487bd44276712813214ddd547bbb6ab1d83f3dfa952ecdbbd10fd112ed2",
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 113,
+          "absoluteByteOffset": 6512,
+          "decoded": {
+            "$class": "Class_f7ca88c8",
+            "$guid": "f039b83a-b1d4-4dd5-aa4e-035b3aa7534d",
+            "Field_cdc6f6a3": 1999958884,
+            "Field_0c59fa06": "IsMountedRight"
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "fieldPath": "/1/Field_a2734e52/4/Field_8cf424e7",
+      "target": {
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "classGuid": "e7dd8513-8eb2-4a35-91f4-b613dea33dca"
+      },
+      "catalogRoute": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+      "targetEvidence": {
+        "route": "Common/Gameplay/Soldier/Channels/ChannelCollections/SoldierOnlyPublicChannels",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Channels\\ChannelCollections\\SoldierOnlyPublicChannels.ebx",
+        "rawSha256": "4ee67487bd44276712813214ddd547bbb6ab1d83f3dfa952ecdbbd10fd112ed2",
+        "fileGuid": "b383d9c7-46a3-4f9e-afc2-3a811930baeb",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 44,
+          "absoluteByteOffset": 2552,
+          "decoded": {
+            "$class": "Class_f7ca88c8",
+            "$guid": "e7dd8513-8eb2-4a35-91f4-b613dea33dca",
+            "Field_cdc6f6a3": 2880108,
+            "Field_0c59fa06": "IsMountedUp"
+          }
+        }
+      }
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/SimEx_Ability_StanceFlak",
+      "fieldPath": "/1/Field_a2734e52/5/Field_8cf424e7",
+      "target": {
+        "fileGuid": "68d25e8a-854c-4628-8f52-57311df50d8f",
+        "classGuid": "6f799430-34c7-42a1-919a-4e1c95f530c3"
+      },
+      "catalogRoute": "Common/Gameplay/InRoundProgression/StanceFlak/Affector_StanceFlak",
+      "targetObjectIndex": 0,
+      "targetWithinCapturedFamilies": true
+    },
+    {
+      "caller": "Common/Gameplay/InRoundProgression/StanceFlak/U_Ability_StanceFlak",
+      "fieldPath": "/1/Field_605f79af/0/Field_6b28f68f",
+      "target": {
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "classGuid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171"
+      },
+      "catalogRoute": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+      "targetEvidence": {
+        "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_Common",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\GameConfigurations\\CT_GLA_CH1_S0_Common.ebx",
+        "rawSha256": "0f4517a469c8e18024c4d0b5b3119d80010cd41f3efecf7158b2f82da1cb188b",
+        "fileGuid": "18958c64-77e6-6301-9a22-738608045d48",
+        "archiveHead": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "object": {
+          "index": 4345,
+          "absoluteByteOffset": 245496,
+          "decoded": {
+            "$class": "Class_9d00fa52",
+            "$guid": "0bf78e74-d3e9-4de2-91d5-e410f58b1171",
+            "Field_0c59fa06": "U_Ability_FasterHealing",
+            "Field_c124c7d8": -52865403,
+            "Field_96e1b4f3": {
+              "$ref": 0
+            },
+            "Field_8cf424e7": 422
+          }
+        }
+      }
+    }
+  ],
+  "missingDirectTargets": [],
+  "reproduce": "python scripts/frosty-ebx-decode.py --descriptors <per-asset recorded descriptor> --ebx <rawPath> --out <new decode.json>; resolve exact import pairs using references.",
+  "findings": [
+    "FasterRegen stores local literals30,2.5,0 in fields3233bcbf,5c9d2d82,507ad482. These field hashes match the soldier wrappers bound to named regeneration rate,delay,amount. No native override/addition rule is established.",
+    "Flak and StanceFlak share Class7d3d8a5c with raw658381bd literals0.67 and0.75, plus true/false/false flags. This is not yet an established percentage reduction for a specific damage category.",
+    "DamageSpot and StanceFlak feature lists resolve to compiled expressions. Exact registry/channel targets are recorded; compiled evaluation and MP selection remain unresolved.",
+    "SilentMovement is retained as an authored ability candidate; its name alone does not prove footstep suppression.",
+    "The paired FasterHealing/Flak ability and unlock GUID byte scan found no callers in23970 historical raw files under2MB (five larger files excluded). Captures are partial, so this is not proof that the abilities are unused.",
+    "StanceFlak Ability directly imports Affector_HoldBreath in Field_a21a7b29[0]. Its own feature expression references mounted-left/right/up, current stance and benefiting-from-bipod channels, plus the StanceFlak affector. These links extend the prior breath-control trace without proving their compiled condition or MP activation.",
+    "SilentMovement ability has empty Field_a21a7b29 and null feature reference in the decoded source. Its U asset tag links to a release record named U_Ability_FasterHealing, whereas the Ability tag links to U_Ability_SilentMovement. Keep this cross-build identity mismatch as source context; no gameplay bug is inferred."
+  ],
+  "limits": [
+    "No candidate is promoted to active standard multiplayer solely from a common route, MP killswitch reference, name, false/true default or category label.",
+    "Release referenced targets and fresh hotfix ability bodies have distinct build boundaries.",
+    "Ability layout warnings remain. Unknown expression/channel semantics are not assigned from plausible values."
+  ],
+  "review": {
+    "baseReport": "reference-data/provenance/frosty-multiplayer-ability-candidates-2026-09-23.json",
+    "baseReportSha256": "530836c36560ef425c0c3df3040cecdb55b33a69cfff7ffd54c03d54780ed82d",
+    "change": "Resolved one historical-root missing dependency using the already captured hotfix HoldBreath asset. No new export needed."
+  }
+}

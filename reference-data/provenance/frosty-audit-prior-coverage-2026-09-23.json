@@ -1,0 +1,75 @@
+{
+  "schemaVersion": 1,
+  "recordedDate": "2026-09-23",
+  "build": "1.4.3.0",
+  "purpose": "Bound existing Frosty research coverage before the exhaustive multiplayer weapon and attachment audit.",
+  "status": "coverage_inventory_not_full_source_audit",
+  "capture": {
+    "root": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/capture",
+    "rawFileCounts": {
+      "collection": 23554,
+      "collection-dependencies": 152,
+      "collection-review-2026-09-16": 269
+    },
+    "countMethod": "Recursive file count under each capture/<name>/raw directory. For route comparison, relative routes had extensions removed and were lowercased.",
+    "pairwiseRouteIntersections": {"collection-collection-dependencies": 0, "collection-collection-review-2026-09-16": 0, "collection-dependencies-collection-review-2026-09-16": 0},
+    "uniqueNormalizedRoutes": 23975,
+    "caveat": "These are capture files/routes, not a complete game catalog. The capture manifest is partial."
+  },
+  "repositoryEvidence": [
+    {"path":"reference-data/frosty/asset-findings.json","assetCount":355,"findingCount":428,"boundary":"Selected findings; source scope explicitly says not a complete audit."},
+    {"path":"reference-data/frosty/asset-watchlist.json","boundary":"Tracked targets and discovery hints; not proof each target is audited."},
+    {"path":"docs/frosty/TOOLS.md","boundary":"Documents partial collection, export and decoder limits."},
+    {"path":"docs/frosty/FIELD_MAP.md","boundary":"Field-specific semantics and confidence, not a complete field ledger."},
+    {"path":"docs/frosty/DATA_GRAPH.md","boundary":"Describes weapon/attachment source chains and scoped coverage."},
+    {"path":"docs/frosty/WEAPONS.md","boundary":"Contains multiple targeted and some roster-wide passes; coverage is per named field."},
+    {"path":"docs/frosty/ATTACHMENTS.md","boundary":"Documents 5542 attachment records and selected branch/effect/generator coverage."},
+    {"path":"docs/frosty/UI_TEXT.md","boundary":"Names/descriptions/localization; presentation evidence only."},
+    {"path":"docs/frosty/OPEN_QUESTIONS.md","boundary":"Retained source/runtime and availability uncertainties."},
+    {"path":"scripts/frosty-attachment-compatibility.py","boundary":"Works from reviewed attachment identities and site choices; reads active branches, mount slots, and equipment prerequisite IDs; unresolved mappings stop generation."},
+    {"path":"scripts/frosty-attachment-handling.py","boundary":"Generated site handling scope for mapped choices and recognized effect/selector families."},
+    {"path":"scripts/frosty-descriptions.py","boundary":"Description extraction through metadata/localization links."},
+    {"path":"scripts/frosty-global-operands.py","boundary":"Selected global/shared operand tracing, not a complete consumer index."}
+  ],
+  "coverage": {
+    "weaponIdentityAndNames": {"state":"scoped_coverage_exists","completeFor":"Reviewed site-to-source identity/name links.","notEstablished":"Current-build exhaustive MP roster or mode availability."},
+    "weaponBlueprintWB": {"state":"field_specific_only","coveredExamples":["projectile/ballistics","zeroing","aim links","reload timing","selected firing/render fields"],"notEstablished":"Every field, nested branch, array and reference for each included MP weapon."},
+    "weaponStatsGS": {"state":"field_specific_only","coveredExamples":["selected recoil/spread","reload and ADS/movement","precision tables","recoil duration","idle-duration indices","selector bindings"],"notEstablished":"Complete field and selector/modifier reference ledger across all MP GS roots."},
+    "weaponAbilityBranches": {"state":"selected_and_site_choice_centered","notEstablished":"Classification of every branch including hidden, disabled, gated or non-site branches."},
+    "attachmentRecordsAndEffects": {"state":"broad_inventory_plus_selected_effect_families","recordCount":5542,"notEstablished":"Current MP eligibility per record or all effects/operands for every reachable attachment."},
+    "compatibilityAndPrerequisites": {"state":"generated_for_reviewed_site_choices","relationships":["ability active root membership","progression identity","physical mount","equipment prerequisite ID to attachment mapping"],"notEstablished":"All non-site branches, uncaptured roots, or mode-gated choices."},
+    "globalOperands": {"state":"topic_specific_traces","topics":["soldier settings","spotting","regeneration/protection","movement","suppression"],"notEstablished":"Complete mapping of shared assets consumed by each MP weapon and branch."},
+    "uiText": {"state":"scoped_metadata_and_localization_extraction","notEstablished":"Live availability or mechanics."},
+    "nativeRuntime": {"state":"explicitly_separate","notEstablished":"Engine consumer meaning, activation and effective mode behavior where open questions remain."}
+  },
+  "rankedGaps": [
+    {"rank":1,"gap":"Derive a current-build MP include/exclude roster from roots and identities; record evidence for cosmetic and proven SP/BR-only exclusions; retain uncertain entries.","actionable":"Compare candidate roots and referenced assets to the partial 1.4.3.0 raw trees and catalog. Mark uncaptured dependencies."},
+    {"rank":2,"gap":"Create one source-backed field/reference row per included weapon GS and WB field, nested branch, array and external reference.","actionable":"Use captured raw assets; record exact path/hash and decode status. Preserve layout warnings."},
+    {"rank":3,"gap":"Enumerate every included MP ability branch and cross-link progression, slot, kill switch, action, package, WB part and GS binding.","actionable":"Extend beyond site choices covered by compatibility generation."},
+    {"rank":4,"gap":"Close attachment effects by eligibility and follow operands to WB inclusion and GS binding.","actionable":"Reuse existing handling/barrel/brake/optic/tooltip evidence as subfield coverage; flag unsupported effect classes."},
+    {"rank":5,"gap":"Resolve dependency closure for included roots and classify missing targets as uncaptured, unresolved identity, or decoder limitation.","actionable":"Prioritize only references reachable from MP roots before broader catalog discovery."}
+  ],
+  "limitations": [
+    "The coverage inventory reports evidence found in existing repository artifacts. It does not assert absent source values where no pass is documented.",
+    "Counts of attachments or weapons in a named field pass do not imply complete field-level coverage.",
+    "Registry presence, strings, tags and source defaults alone do not prove multiplayer availability.",
+    "Raw captures overlap and are partial. Lack of a captured file is a collection gap, not evidence that an asset is nonexistent.",
+    "No raw assets, generated site data, scripts, or shared research files were changed by this coverage inventory."
+  ],
+  "evidenceSha256": [
+    {"path":"reference-data/frosty/asset-findings.json","sha256":"16b24654f3fff2ed996636e65960828306343fab7f3663cad5d791eb3c084b70"},
+    {"path":"reference-data/frosty/asset-watchlist.json","sha256":"26c2114194a991a66933d1f995f37ebb6343b54da56c6cb1ccb9a2b2f577d3c3"},
+    {"path":"docs/frosty/TOOLS.md","sha256":"b01c7654d9a78a8588ac27e216ff6d56b6dd9e206b07cfebea1e66f6583eb089"},
+    {"path":"docs/frosty/FIELD_MAP.md","sha256":"2139a20d6975dacc5b412973224b1e0950c6f0add33eba7136b4cf55397ed403"},
+    {"path":"docs/frosty/DATA_GRAPH.md","sha256":"2c9c1bb62bede4d1064eb57d258745f6fb1b3976176e5acc021310205febbc9f"},
+    {"path":"docs/frosty/WEAPONS.md","sha256":"0360d558479bfdcd1513d7b0c2988dac13376ca09c4b1e1d6ef674eccbc7373d"},
+    {"path":"docs/frosty/ATTACHMENTS.md","sha256":"e00e7b6b373a9c2eac2c4f14d5eb6a6bcef44551f120789df891b6a069edbda8"},
+    {"path":"docs/frosty/UI_TEXT.md","sha256":"5c89026d840f5166ec58c95341206c427af606ab1dd7c5d1f97ad150dfac2800"},
+    {"path":"docs/frosty/OPEN_QUESTIONS.md","sha256":"13e0ca6b04b2744a60cc3d8fde2177ea094c887a852fc564f13fefbdb89887d1"},
+    {"path":"scripts/frosty-attachment-compatibility.py","sha256":"de163a469d21f31afa6abd73b86c34e0e4c723ba66c90c22081ff7871c40c0b1"},
+    {"path":"scripts/frosty-attachment-handling.py","sha256":"aa96649ffcd58f5b729c3472ef861a962784e2a7e2cfd3b305ea7646e734d2a1"},
+    {"path":"scripts/frosty-descriptions.py","sha256":"df7d57db150daa789415265a3516e9b3d5f01f5bd62ff8c4bbfefb0a0da23b48"},
+    {"path":"scripts/frosty-global-operands.py","sha256":"3904a9cc452ecd7a51cbedaca3ebdb9c1ade788e37cba2eb44c0c18168213d22"}
+  ],
+  "companionDocument": "docs/working/FROSTY_AUDIT_PRIOR_COVERAGE.md"
+}

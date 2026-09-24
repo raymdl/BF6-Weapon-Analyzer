@@ -1,0 +1,249 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "workerReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\melee-cust-blueprint-review-2026-09-23.json",
+  "workerReportSha256": "83b74cde4b4b8239622cb7731c6cdaffbc138c7487e5303854aab9a9691b91ed",
+  "decoderSha256": "776fa6af2a4abec497df061f4d36cb431ce1494f3af26ca0f8389c81dd419530",
+  "freshRawBodyCount": 26,
+  "sourceIdentities": [
+    {
+      "route": "Common/Hardware/Weapons/Melee/EODArm/WB_Melee_EODArm",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\EODArm\\WB_Melee_EODArm.ebx",
+      "head": 4892017,
+      "raw_sha256": "4b6e4ec11b670b39913815f619d2510cb38f8dc89ddd8d03903b7728da25bc0b",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/GekoKnife/Ability_Melee_GekoKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\GekoKnife\\Ability_Melee_GekoKnife.ebx",
+      "head": 4892017,
+      "raw_sha256": "7e0f2391396ef044dc73d835c59fd04b68509e185512a0783fa5a7425c0d9ea0",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/GekoKnife/CUST_GekoKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\GekoKnife\\CUST_GekoKnife.ebx",
+      "head": 4892017,
+      "raw_sha256": "d73975ca2b9f4bc78cfe382fd6c3ea057725b6afa8073c940245b40ad33e593f",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/GekoKnife/WB_Melee_GekoKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\GekoKnife\\WB_Melee_GekoKnife.ebx",
+      "head": 4892017,
+      "raw_sha256": "73ceeb1f60406f23fc8ee52a4904c7c89a52ebae4ac050cdef0413e709ea2d40",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/IceClimbingAxe/Ability_Melee_IceClimbingAxe",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\IceClimbingAxe\\Ability_Melee_IceClimbingAxe.ebx",
+      "head": 4892017,
+      "raw_sha256": "d7e48f1ce196d33e524a15a8f3728c047ca71f88860150b6195a0c0a76ba64bd",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/IceClimbingAxe/CUST_IceClimbingAxe",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\IceClimbingAxe\\CUST_IceClimbingAxe.ebx",
+      "head": 4892017,
+      "raw_sha256": "253924db6e5752f6975cdded730c10939dbf6e608a215b2e5626bd461aec913d",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Common/Arrays/Deploy/DTA_Melee",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Common\\Arrays\\Deploy\\DTA_Melee.ebx",
+      "head": 4892017,
+      "raw_sha256": "3e27c89024e25062276e02d076121faa8c780671f584c7d30c2f20f68eec0892",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/IceClimbingAxe/WB_Melee_IceClimbingAxe",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\IceClimbingAxe\\WB_Melee_IceClimbingAxe.ebx",
+      "head": 4892017,
+      "raw_sha256": "a2ddd4cefd9d781163904f7ced67bb4aceb307ca4ef342a32ef37565d28f340d",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/SledgeHammer/Ability_Melee_Sledgehammer",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\SledgeHammer\\Ability_Melee_Sledgehammer.ebx",
+      "head": 4892017,
+      "raw_sha256": "31c80063c315622d413470ebbde4206a7f7af0a0b97d2ef36108f567cc531535",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/SledgeHammer/CUST_Sledgehammer",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\SledgeHammer\\CUST_Sledgehammer.ebx",
+      "head": 4892017,
+      "raw_sha256": "31ed1d05feb1f673d2333c0096ded3047c35836d891b6154d913f1bc0a62738d",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/SledgeHammer/WB_Melee_Sledgehammer",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\SledgeHammer\\WB_Melee_Sledgehammer.ebx",
+      "head": 4892017,
+      "raw_sha256": "ab2937a951094b0711b8f35ead6b12cfa947d96eed26bbc535b7121645154446",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/DiveKnife/Ability_Melee_DiveKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\Melee\\DiveKnife\\Ability_Melee_DiveKnife.ebx",
+      "head": 4892087,
+      "raw_sha256": "5024d23bf4f6eaba84e46c8742abe1fbb34e8d0b8dac8af3c75889e84a1ec3ab",
+      "descriptor_sha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/DiveKnife/CUST_DiveKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\Melee\\DiveKnife\\CUST_DiveKnife.ebx",
+      "head": 4892087,
+      "raw_sha256": "9dcedba3e3b49de63e47917dfc7600fc384f4821084bbf9f4104208fe0dac4e0",
+      "descriptor_sha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/DiveKnife/WB_Melee_DiveKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\Melee\\DiveKnife\\WB_Melee_DiveKnife.ebx",
+      "head": 4892087,
+      "raw_sha256": "5cd899a024776385475cf772fde2965ec960deaaf792720e4193edc9840877e5",
+      "descriptor_sha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/Melee_Shared_EODArm_WeaponFiring",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\Melee_Shared_EODArm_WeaponFiring.ebx",
+      "head": 4892017,
+      "raw_sha256": "44886dcd0f376b8a6bd102044f9d05361ae21324d1e01df21120adc0ddaacd13",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/Melee_Shared_Sledgehammer_WeaponFiring",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\Melee_Shared_Sledgehammer_WeaponFiring.ebx",
+      "head": 4892017,
+      "raw_sha256": "2dc63cba970efb6370428c0d2ad93431992d91b5d1ef38fe01d785c983abfdb4",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/Melee_Shared_WeaponFiring",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\Melee_Shared_WeaponFiring.ebx",
+      "head": 4892017,
+      "raw_sha256": "3b87bdaf0b47fbfa88472cd943ed09a8df37fd2425bac243c11d82fa7293b212",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/Melee_Shared_Sledgehammer_WeaponFiring_TempWeaponDeployTimeArray0",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\Melee_Shared_Sledgehammer_WeaponFiring_TempWeaponDeployTimeArray0.ebx",
+      "head": 4892017,
+      "raw_sha256": "7f77153f0bb8f599f1e37b120633a3141368d70200d4f799d68176fc3f6c4d8e",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/CombatKnife/Ability_Melee_CombatKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\CombatKnife\\Ability_Melee_CombatKnife.ebx",
+      "head": 4892017,
+      "raw_sha256": "e3ff8573144739839a83122a4ad3ed9b5b1f32f45a5e1b48e87d956b719247fd",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/CombatKnife/CUST_CombatKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\CombatKnife\\CUST_CombatKnife.ebx",
+      "head": 4892017,
+      "raw_sha256": "e7f4dc6aef80425e82a33a8acd4c318df5097d9e556a6b8b9a589bde2b06b244",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/CombatKnife/WB_Melee_CombatKnife",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\CombatKnife\\WB_Melee_CombatKnife.ebx",
+      "head": 4892017,
+      "raw_sha256": "ada5cde3b1ef61857cc95304e81d1c4683f0563d88410a92d51758039caefaa0",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/DinoMachete/Ability_Melee_DinoMachete",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\DinoMachete\\Ability_Melee_DinoMachete.ebx",
+      "head": 4892017,
+      "raw_sha256": "181dabe153e5ef1476741e3a2c625259e2b370be51f731bda0a7ee7f6c933a0d",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/DinoMachete/CUST_DinoMachete",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\DinoMachete\\CUST_DinoMachete.ebx",
+      "head": 4892017,
+      "raw_sha256": "a975c1831ba60ef8e20b9cd9eedb872f692cc40546a5bf028a2add0e24074e15",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/DinoMachete/WB_Melee_DinoMachete",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\DinoMachete\\WB_Melee_DinoMachete.ebx",
+      "head": 4892017,
+      "raw_sha256": "2ff40b25d86cd57881776916d915963cc94ed423dbb575f517e1478549ca3758",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/EODArm/Ability_Melee_EODArm",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\EODArm\\Ability_Melee_EODArm.ebx",
+      "head": 4892017,
+      "raw_sha256": "24cb7a19cdb8b43aaeb4b0d6b25e958f5b4eb5ef33091e3c10145a6a2dde67ca",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    {
+      "route": "Common/Hardware/Weapons/Melee/EODArm/CUST_EODArm",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Melee\\EODArm\\CUST_EODArm.ebx",
+      "head": 4892017,
+      "raw_sha256": "e58749797d47234b07d3fd5e4cafea459218ffe76cb482e5808c1326e8640659",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    }
+  ],
+  "chains": [
+    {
+      "ability": "Common/Hardware/Weapons/Melee/CombatKnife/Ability_Melee_CombatKnife",
+      "firing": "Common/Gameplay/Soldier/Melee/Melee_Shared_WeaponFiring",
+      "firingObjectGuid": "5e01a293-ed92-4f9c-b28d-d962f6838e08",
+      "deployArray": "Common/Hardware/Common/Arrays/Deploy/DTA_Melee",
+      "deployArrayObjectGuid": "4f741333-1852-fd51-7044-86c168f0b5bb"
+    },
+    {
+      "ability": "Common/Hardware/Weapons/Melee/DinoMachete/Ability_Melee_DinoMachete",
+      "firing": "Common/Gameplay/Soldier/Melee/Melee_Shared_WeaponFiring",
+      "firingObjectGuid": "5e01a293-ed92-4f9c-b28d-d962f6838e08",
+      "deployArray": "Common/Hardware/Common/Arrays/Deploy/DTA_Melee",
+      "deployArrayObjectGuid": "4f741333-1852-fd51-7044-86c168f0b5bb"
+    },
+    {
+      "ability": "Common/Hardware/Weapons/Melee/DiveKnife/Ability_Melee_DiveKnife",
+      "firing": "Common/Gameplay/Soldier/Melee/Melee_Shared_WeaponFiring",
+      "firingObjectGuid": "5e01a293-ed92-4f9c-b28d-d962f6838e08",
+      "deployArray": "Common/Hardware/Common/Arrays/Deploy/DTA_Melee",
+      "deployArrayObjectGuid": "4f741333-1852-fd51-7044-86c168f0b5bb"
+    },
+    {
+      "ability": "Common/Hardware/Weapons/Melee/EODArm/Ability_Melee_EODArm",
+      "firing": "Common/Gameplay/Soldier/Melee/Melee_Shared_EODArm_WeaponFiring",
+      "firingObjectGuid": "15ad4191-9ddc-4319-9b8b-5729362dd558",
+      "deployArray": "Common/Hardware/Common/Arrays/Deploy/DTA_Melee",
+      "deployArrayObjectGuid": "4f741333-1852-fd51-7044-86c168f0b5bb"
+    },
+    {
+      "ability": "Common/Hardware/Weapons/Melee/GekoKnife/Ability_Melee_GekoKnife",
+      "firing": "Common/Gameplay/Soldier/Melee/Melee_Shared_WeaponFiring",
+      "firingObjectGuid": "5e01a293-ed92-4f9c-b28d-d962f6838e08",
+      "deployArray": "Common/Hardware/Common/Arrays/Deploy/DTA_Melee",
+      "deployArrayObjectGuid": "4f741333-1852-fd51-7044-86c168f0b5bb"
+    },
+    {
+      "ability": "Common/Hardware/Weapons/Melee/IceClimbingAxe/Ability_Melee_IceClimbingAxe",
+      "firing": "Common/Gameplay/Soldier/Melee/Melee_Shared_WeaponFiring",
+      "firingObjectGuid": "5e01a293-ed92-4f9c-b28d-d962f6838e08",
+      "deployArray": "Common/Hardware/Common/Arrays/Deploy/DTA_Melee",
+      "deployArrayObjectGuid": "4f741333-1852-fd51-7044-86c168f0b5bb"
+    },
+    {
+      "ability": "Common/Hardware/Weapons/Melee/SledgeHammer/Ability_Melee_Sledgehammer",
+      "firing": "Common/Gameplay/Soldier/Melee/Melee_Shared_Sledgehammer_WeaponFiring",
+      "firingObjectGuid": "96434e90-a180-4477-b0c5-8652450586e0",
+      "deployArray": "Common/Gameplay/Soldier/Melee/Melee_Shared_Sledgehammer_WeaponFiring_TempWeaponDeployTimeArray0",
+      "deployArrayObjectGuid": "96ff1a25-29e8-b2b3-3f5a-36c92466c89d"
+    }
+  ],
+  "firingGroups": {
+    "Common/Gameplay/Soldier/Melee/Melee_Shared_WeaponFiring": 5,
+    "Common/Gameplay/Soldier/Melee/Melee_Shared_EODArm_WeaponFiring": 1,
+    "Common/Gameplay/Soldier/Melee/Melee_Shared_Sledgehammer_WeaponFiring": 1
+  },
+  "limits": "Exact raw graph checked across seven Ability/CUST/WB/Firing/array paths; decoded WB/firing bodies retain layout warnings. No damage/timing/native application inference. No cosmetic descendants expanded."
+}

@@ -1,0 +1,158 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "build": "1.4.3.0",
+  "scope": "All numeric candidate occurrences in sim/*.js, with assumed game equations separated from project implementation, display, and encoding constants.",
+  "inventory": {
+    "source": "site-input-inventory/site-simulation-lines.jsonl",
+    "sourceLineCount": 1582,
+    "numericCandidateLineCount": 347,
+    "candidateTokenCount": 520,
+    "classifiedFile": "site-input-inventory/site-simulation-numeric-classification-2026-09-23.jsonl",
+    "classifiedSha256": "7348d371f538106b70ba774b5d9dcf16fb9f4c661222bb1e2c52a8508c92ac73",
+    "perFileNumericLines": {
+      "sim/applyAttachments.js": 95,
+      "sim/attachments.js": 1,
+      "sim/ballistics.js": 28,
+      "sim/core.js": 78,
+      "sim/damage.js": 19,
+      "sim/loadout.js": 11,
+      "sim/required-data.js": 1,
+      "sim/share-state.js": 35,
+      "sim/target.js": 41,
+      "sim/weapon-attributes.js": 38
+    }
+  },
+  "gameModelAssumptions": [
+    {
+      "group": "recoil recovery",
+      "site": "sim/core.js:80-109 and 378-410",
+      "equation": "axis recovery rate (|r|^decExp + decOffset) * decFactor * t^timeExp; exp=1 branch uses exponential closed form; coupled shot recoil evaluated with 1 ms steps",
+      "sourceStatus": "Native consumption/equation unconfirmed; source attachments only establish operands. Existing docs: docs/RECOIL_SPREAD_MODEL.md and docs/ATTACHMENT_MODEL.md.",
+      "constants": {
+        "RECOIL_TIME_STEP": 0.001,
+        "decOffsetDefault": 0.06,
+        "loopEpsilon": 1e-12
+      },
+      "modelStatus": "assumed equation/numerical approximation; 1 ms documented <=0.2% vs 0.1 ms reference on reviewed spread recovery, does not prove engine formula."
+    },
+    {
+      "group": "spread growth/recovery and distribution",
+      "site": "sim/core.js:193-217, 264-355",
+      "equation": "spread increment and recovery are stepped/clamped; sample radius uses u^distExp",
+      "sourceStatus": "Frosty supplies dispersion parameters; consumer equation and native random spatial distribution are not proven.",
+      "constants": {
+        "SPREAD_TIME_STEP": 0.001,
+        "SPREAD_EFFECTIVE_MAX_SHOTS": 50,
+        "SPREAD_BAR_SCALE": 12
+      },
+      "modelStatus": "time step numeric; 50 is representative site metric; 12 is UI scale. Direct M39 evidence is limited to settled hipfire; do not generalize native random distribution."
+    },
+    {
+      "group": "ballistics",
+      "site": "sim/ballistics.js:9-109",
+      "equation": "level-flight drag closed-form time = expm1(k*x)/(k*v0); trajectory solves vector drag/gravity with RK4 and zero-angle bisection",
+      "sourceStatus": "Source projectile values and drag coefficients are in Frosty-derived data; modeled drag form/gravity trajectory are not runtime-verified. See docs/DAMAGE_BALLISTICS.md and data/ballistics.json provenance.",
+      "constants": {
+        "gravity": -9.81,
+        "baseDragPerMeter": 0.0035,
+        "matchReplacementDragPerMeter": 0.002,
+        "rk4StepSeconds": 0.002,
+        "maxFlightSeconds": 30,
+        "zeroAngleBoundsRadians": [
+          -0.1,
+          0.1
+        ],
+        "bisectionIterations": 36
+      },
+      "modelStatus": "ODE/numerical settings; gravity/coefficient are model inputs with source-review evidence, not verified native projectile simulation."
+    },
+    {
+      "group": "control attribute",
+      "site": "sim/weapon-attributes.js:14,22-26",
+      "equation": "96/(1.1*R*sinc(V)+0.75)^2.25+4",
+      "source": "docs/WEAPON_ATTRIBUTES_MODEL.md; reference-data/provenance/composite-control-candidate-2026-09-06.json; six panel rows (4 rifles plus 2 shotgun holdouts).",
+      "status": "Delegate trace candidate; unary hash is interpreted as sin from matches. Native function semantics/active binding unresolved; zero variation guard is implementation extension."
+    },
+    {
+      "group": "hipfire attribute",
+      "site": "sim/weapon-attributes.js:9,12,15,18,88-110",
+      "equation": "min(100,10*sqrt(0.425/tan(1.25*H*pi/180)*83.33333587646484/40.92409896850586)); source ladder and inferred sqrt(1.2) fraction gate",
+      "source": "docs/WEAPON_ATTRIBUTES_MODEL.md; reference-data/provenance/composite-hipfire-decode-2026-09-06.json (decoded resource SHA256 7d4470d20e1b6ac1e90a6b76c36cf049ca69511b32ce8eb667ecd0a086079a64).",
+      "status": "Partial delegate decode; table values and constants appear in checker candidate, but unary hashes, exact input sourcing/transformation, branch conditions unresolved; not native formula proof. Six-panel candidate has 5/6 matches, DB12 mismatch remains."
+    },
+    {
+      "group": "precision attribute",
+      "site": "sim/weapon-attributes.js:41-82",
+      "equation": "source-authored lookup by recoil amount/variation sums, RPM, min angle, duration, decrease; exact/near tolerance, tie and fallback rules are checker selection logic",
+      "source": "1.4.3.0 settings EBX raw SHA256 95ac6ffced530d79722a69ab6a2e9d79419e02e32cb5d5fa2225119e74ad822d, settings field Class_fe5894b1.Field_d0874615; reference-data/provenance/frosty-site-precision-2026-09-23.json reports all 39,946 comparisons match across 63 weapons.",
+      "status": "Table values/source byte comparisons established for this build; identity associations retained via multi-field matches. Runtime selection/interpolation and tolerance policy not proven game behavior."
+    },
+    {
+      "group": "mobility attribute",
+      "site": "sim/weapon-attributes.js:28-40 and 117-129",
+      "equation": "D + 4A + S + 2M + 4Z + 4*CanFireWhileSprinting",
+      "source": "docs/WEAPON_ATTRIBUTES_MODEL.md; reference-data/provenance/composite-mobility-source-trace-2026-09-21.json",
+      "status": "Source inputs/index candidates with partial panel checks. Coefficients remain inferred from panels/research reconstruction; not identified as native delegate constants. Sprint-firing grip binary is selector-based but score mapping is not native-proof."
+    },
+    {
+      "group": "damage",
+      "site": "sim/damage.js:11,43-103",
+      "equation": "piecewise linear interpolation, clamp to end values, epsilon-aware hit counts/ceil-like shot calculation",
+      "source": "docs/DAMAGE_BALLISTICS.md; reference-data/provenance/frosty-damage-curve-review-2026-09-13.json; M45A1 gameplay recording validates reviewed damage tier shots.",
+      "status": "Damage curve source-backed; interpolation/application continuous behavior only partially runtime-checked. DAMAGE_EPSILON=1e-9 is numerical hygiene; health=100 and multipliers are UI calculation defaults."
+    },
+    {
+      "group": "attachment composition",
+      "site": "sim/applyAttachments.js:45-570",
+      "equations": "source-operand tier shifts compose additively before multiplier powers; selected tables/indexes clamp; reload, velocity, spotting, regen and display projections compose",
+      "source": "docs/ATTACHMENT_MODEL.md; Frosty provenance including recoil duration, attachment handling, branch review, site recoil/spread receipts; `frosty-site-recoil`, `frosty-site-spread` receipts in repo.",
+      "status": "Many operands are source-traced; calculations are Analyzer resolver rules. Spotting 54/150 bases preserved as unresolved native consumption/composition (root task constraint). Regen 5s base and ammo additions are source-backed by attachment docs; no runtime proof."
+    }
+  ],
+  "projectConstantsSeparate": [
+    {
+      "group": "deterministic random implementation",
+      "site": "sim/core.js:49-69",
+      "values": "Mulberry32 constants and string hash factor 31",
+      "role": "Simulator reproducibility; not game constants or RNG proof."
+    },
+    {
+      "group": "damage arithmetic",
+      "site": "sim/damage.js:11",
+      "value": "DAMAGE_EPSILON=1e-9",
+      "role": "Floating point boundary tolerance, not game rule."
+    },
+    {
+      "group": "display and UI geometry",
+      "site": "sim/core.js:182-185; sim/target.js:6-13,102-104,158-169; sim/weapon-attributes.js:12,14-18",
+      "values": "50-shot metric, spread bar scale 12, target dimensions/region points/alpha cutoff/marker bounds; unit conversions",
+      "role": "Presentation or checker choices, distinct from source mechanics. Weapon attribute formula constants are separate model assumptions above."
+    },
+    {
+      "group": "share and URL format",
+      "site": "sim/share-state.js:3-208",
+      "values": "defaults, tokens, ranges, decimal precision",
+      "role": "Serialization schema and validation. No gameplay semantics."
+    },
+    {
+      "group": "solver/integrator controls",
+      "site": "sim/ballistics.js:9-10,95-109; sim/core.js:80-109,185",
+      "values": "time steps, iteration counts, bounds, epsilon loops",
+      "role": "Numerical accuracy/performance controls. Their existence is not an engine match."
+    },
+    {
+      "group": "pure catalog, loadout and guard defaults",
+      "site": "sim/loadout.js; sim/required-data.js; sim/applyAttachments.js guards",
+      "values": "sentinel zero/one, costs, array indexes, fallback IDs",
+      "role": "Resolver/default behavior. Constants with semantic game impact should be audited against source data individually; occurrences mainly encode absence/neutral effect."
+    }
+  ],
+  "limits": [
+    "Inventory is lexical and full file coverage but numeric classification line labels are broad semantic buckets, not an AST-native per-function parser.",
+    "Data constants read by sim from JSON are not individually enumerated by this task; this receipt inventories source literals/equations in all 10 sim files.",
+    "Source asset presence does not prove native runtime consumption.",
+    "Attachment trace confirms operands and selected graph paths, not native order or equation consumption.",
+    "No runtime blocker is closed by model documentation alone."
+  ]
+}

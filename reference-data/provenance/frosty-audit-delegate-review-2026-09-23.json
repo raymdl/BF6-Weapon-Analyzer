@@ -1,0 +1,1065 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "finding": "Delegate fields use the SDK TypeRef reader: eight-byte entries, with a raw type word and optional GUID/primitive type identity. This recovers source type references, not delegate implementation or runtime execution.",
+  "source": {
+    "priorDecoderSha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+    "decoderSha256": "421305f25fe3953ef8f5eafc8bf5f0014b902b997c1564ce40a0307b1d38b9f3",
+    "decoderSnapshot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\decoder-421305f25fe3.py",
+    "sdkFiles": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostySdk\\IO\\EbxReader.cs",
+        "sha256": "96a6a7c68e1da04519c95a3adf2771536cc5e6d30e7c51c8778faa9a353d77fb"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostySdk\\IO\\EbxReaderRiff.cs",
+        "sha256": "e13b7008331c1163b7d7c9adac370cdb9006be497d9dc559c8ce897da33a8be6"
+      }
+    ]
+  },
+  "sdkLocations": [
+    "EbxReader.cs:1049-1051 Delegate dispatches to ReadTypeRef",
+    "EbxReaderRiff.cs:893-922 ReadTypeRef consumes 8 bytes",
+    "EbxReaderRiff.cs:80-104 preserves full class GUID table and transforms signature-bearing prefix"
+  ],
+  "validation": {
+    "assetVariants": 102,
+    "fieldCounts": {
+      "guid": 8601
+    },
+    "nonDelegateDecodedValuesUnchangedForEveryAsset": true,
+    "allRawWordsMatchBytes": true,
+    "existingAndNewRegressionTestsPassed": 6,
+    "fullTypeGuidTableRequired": "M2010 PresEx has24 GUIDs but18 layout signatures; delegate word82 selects index20."
+  },
+  "detailPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\delegate-fields.jsonl",
+  "detailSha256": "5171e1959d7d39ce85349cb29ac26fb72a8eac488f30cf20357f1e064fe27576",
+  "assets": [
+    {
+      "route": "Common/FX/Weapons/Logic/VFX_Weapons_Shared_ScopeShaderManager",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\FX\\Weapons\\Logic\\VFX_Weapons_Shared_ScopeShaderManager.ebx",
+      "head": 4892017,
+      "rawSha256": "0bbd0893be67386206f55eb2c13eb280a7933641a940458c0080daa03da89b51",
+      "fileGuid": "b58e59d8-1aa6-4bf5-b7b5-114f21a303ec",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/FX/Weapons/Logic/Shared/VFX_Weapons_Shared_1pMuzzlePos_PresEx",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\FX\\Weapons\\Logic\\Shared\\VFX_Weapons_Shared_1pMuzzlePos_PresEx.ebx",
+      "head": 4892017,
+      "rawSha256": "a337db22bbd7184d3ad26334e8d4497af4a4bfb12e9d931b69004dfbafaf2509",
+      "fileGuid": "9e093f24-d107-4897-b483-99f3e2994f1a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 5,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/FX/Weapons/Logic/Shared/VFX_Weapons_Shared_GroundShockwave",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\FX\\Weapons\\Logic\\Shared\\VFX_Weapons_Shared_GroundShockwave.ebx",
+      "head": 4892017,
+      "rawSha256": "cb4275ae677874be16223d40fcb3797e0db0e8e518c7c523c22687c919dd7098",
+      "fileGuid": "4bb5263c-c810-4633-ab55-35ed45f7ca58",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 11,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/FX/Weapons/Logic/Shared/VFX_Weapons_Shared_Overheat_Effects",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\FX\\Weapons\\Logic\\Shared\\VFX_Weapons_Shared_Overheat_Effects.ebx",
+      "head": 4892017,
+      "rawSha256": "94f97150281cc4ab305eb7ab21b0703b227db25ab3e510b43e1e78dae43fa5b3",
+      "fileGuid": "c6d57ffc-ea12-46af-ae71-3b9e75b28526",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 18,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/DQD_MeleeTargetInfo",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\DQD_MeleeTargetInfo.ebx",
+      "head": 4892017,
+      "rawSha256": "9de0a390a67a6ab91405e541c7ad6d49c0bda88d30abe8c6562fd405542c57d2",
+      "fileGuid": "9380dc21-2da7-4bd9-93c2-2b775b722197",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 16,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/DQD_Melee_BodyTwistAmount",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\DQD_Melee_BodyTwistAmount.ebx",
+      "head": 4892017,
+      "rawSha256": "d8d77dc36bc8e54a16bc9c1133c0ac3f45f7b3894de85bd78b5413aebece6581",
+      "fileGuid": "1beed18c-1deb-42e8-995a-573bd6430756",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\PresEx_Melee.ebx",
+      "head": 4892017,
+      "rawSha256": "8b72dbb6a08e9728bd53bd9c318a0e75504d30fd6517a793a034e27910407c72",
+      "fileGuid": "c736f502-d678-4b30-9e7f-12e6eb050447",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 47,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_Additional_VFX",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\PresEx_Melee_Additional_VFX.ebx",
+      "head": 4892017,
+      "rawSha256": "10c30d518745e2e6760b4b350ae0911a56cea4c56ebb0dd326145f95ee18c2ea",
+      "fileGuid": "b8dc695d-c4b3-4513-8e7e-9205bbfc85c0",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 40,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/PresEx_Melee_ViewedPlayer",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\PresEx_Melee_ViewedPlayer.ebx",
+      "head": 4892017,
+      "rawSha256": "b6d2ceca11185c8da0578a9d76ee3c2ba7235088f65e6ac60e3fde65b4cc7733",
+      "fileGuid": "ae3962f0-47b5-4cfe-9f76-67016ecf6d54",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 45,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/SimEx_Melee",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\Melee\\SimEx_Melee.ebx",
+      "head": 4892017,
+      "rawSha256": "5f22da1e020a296bb65fec35ca8bfd7b5948e8bc2a8bd66e28c08ba8d27e66e8",
+      "fileGuid": "6df2e167-4dfc-49b3-b935-5795d18e3db3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 34,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Gadgets/_Logic/SimEx_Smoke_FirePutOut",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\_Logic\\SimEx_Smoke_FirePutOut.ebx",
+      "head": 4892017,
+      "rawSha256": "475deec6a6c65e12bc66f188e4c1a0c557d0d72ec0cc8426b52c936719388d9f",
+      "fileGuid": "8cc20408-6dbd-4a15-9aa2-a9b6dfc90494",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 1,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/PresEx_DesertTechHTI",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\PresEx_DesertTechHTI.ebx",
+      "head": 4892017,
+      "rawSha256": "bf19243486480bbc86823ff3c1430d6b43a5c322b5697e6b0ba47cdeeab8b000",
+      "fileGuid": "f2417d09-1304-4ea8-a1f4-fcc8dbd4411c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/BoltAction/L115A3/PresEx_L115A3",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\L115A3\\PresEx_L115A3.ebx",
+      "head": 4892017,
+      "rawSha256": "14452afda285cc13326b2e0a2f75dee47aac1b1230ced6524d0386ec439a3fc7",
+      "fileGuid": "7614e106-6034-4476-aa07-457df981d954",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/BoltAction/M2010ESR/PresEx_M2010ESR",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\M2010ESR\\PresEx_M2010ESR.ebx",
+      "head": 4892017,
+      "rawSha256": "0a90ffebe4b303c1c58cf2bd831a86edca8b1aae6e10461f582309872b250b4e",
+      "fileGuid": "27db1632-4a21-4a89-abfb-2934d6cf5bb3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/BoltAction/MiniFix/PresEx_MiniFix",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\MiniFix\\PresEx_MiniFix.ebx",
+      "head": 4892017,
+      "rawSha256": "9ebe3523175ad50aafd05aa043c1d96a65e07a6c768f51dcd6963bde2d6b3794",
+      "fileGuid": "3b6c0581-c2bf-472b-a9a9-09a7a9e6b467",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/weapons/BoltAction/MRAD/PresEx_MRAD",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\MRAD\\PresEx_MRAD.ebx",
+      "head": 4892017,
+      "rawSha256": "0a66aed89754cdb0fdde6ae194b46dc95d6cffc01270519bf921b5916cb84e96",
+      "fileGuid": "61aaf82e-b232-427a-be51-f7502eb90bf6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/BoltAction/SV98M/PresEx_SV98M",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\SV98M\\PresEx_SV98M.ebx",
+      "head": 4892017,
+      "rawSha256": "6fb45999c6911303e219a38e3a7e1ab82937ccda23bbc3259c4078318f4df9eb",
+      "fileGuid": "150c33f3-92ab-48c8-bd17-452b73f20e1a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/weapons/Secondary/RagingHunter/PresEx_RagingHunter",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Secondary\\RagingHunter\\PresEx_RagingHunter.ebx",
+      "head": 4892017,
+      "rawSha256": "2ad0cbc4bf3466ad02a2838ef666a1733fb7b01be77340d47a22f2df0397a591",
+      "fileGuid": "a32ac46d-d822-40b3-bb01-8b284499985b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/weapons/Secondary/TRR8/PresEx_TRR8",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Secondary\\TRR8\\PresEx_TRR8.ebx",
+      "head": 4892017,
+      "rawSha256": "4d95a51b511bd770f35d0f799d5878c70f1b96514d0a8cecb432e27ea11dffa8",
+      "fileGuid": "bc97f0d8-7b16-4a89-8415-2710092e535a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/Shotgun/590A1/PresEx_590A1",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Shotgun\\590A1\\PresEx_590A1.ebx",
+      "head": 4892017,
+      "rawSha256": "5006c5bbaa269c3bdbc30a790e405647582e1934d510803920942aa99f48c717",
+      "fileGuid": "a022e193-bf07-45f7-ad8c-8559efa9723a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/Shotgun/DP12/PresEx_DP12",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\PresEx_DP12.ebx",
+      "head": 4892017,
+      "rawSha256": "7a1bc7e6deefccd81652c93dbeccf4a7d564db441639d1e5bffe51aa4483b4aa",
+      "fileGuid": "ccaeeef1-e6f3-44a8-a572-86e357a8d5d5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 6,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Soldier/Melee/BF03_Soldier_Melee_Logic_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Soldier\\Melee\\BF03_Soldier_Melee_Logic_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "00d308c198991888ff7b0d6067b07ed5a6215536228e58dd97b357410f0e22b3",
+      "fileGuid": "da28020b-ec5c-4e3f-9768-eb2a6a42fce2",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 78,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/185KSK/BF03_Weapons_Handheld_185KSK_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\185KSK\\BF03_Weapons_Handheld_185KSK_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "12d2a5a973aba849c9d1d7885cea728b2b214e9710ca2dbec4038829913d2bec",
+      "fileGuid": "48d5a81c-1e9a-4f0f-80ce-2d6210b51c33",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/590A1/BF03_Weapons_Handheld_590A1_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\590A1\\BF03_Weapons_Handheld_590A1_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "570dbd7e9dd87bac4770f03996a77c1f198ce36d57b8488d3cf47916877ab37a",
+      "fileGuid": "26d8d0d1-ab37-46e6-a27e-2f781e4b9b27",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/6P67/BF03_Weapons_Handheld_6P67_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\6P67\\BF03_Weapons_Handheld_6P67_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "4f85de72ad318f19992626f8964f2c9ade1823c5b104c51be19f35e64643ff51",
+      "fileGuid": "25158668-6336-4ac6-b37f-3535b5343865",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/ACE32/BF03_Weapons_Handheld_ACE32_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\ACE32\\BF03_Weapons_Handheld_ACE32_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "b3893b6ed17251da34146b08219e949ddb404f44613d3fdaf7dea0f1b3082724",
+      "fileGuid": "bd16bfb5-6a88-4a8b-8630-6a971622fcdd",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/AK205/BF03_Weapons_Handheld_AK205_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\AK205\\BF03_Weapons_Handheld_AK205_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "fc114d309f69c306850e0228ed1891bccace54305cbbc645a7de848e6e351944",
+      "fileGuid": "c5a4d668-90ae-4716-9c3f-efebf0888f03",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/APC10/BF03_Weapons_Handheld_APC10_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\APC10\\BF03_Weapons_Handheld_APC10_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "64c886e72c6216808cf32b24abef86397604f2347399bb8701dbb77a4c331b81",
+      "fileGuid": "50e5071e-381c-4271-83c3-d7dc4184f970",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/APDW/BF03_Weapons_Handheld_APDW_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\APDW\\BF03_Weapons_Handheld_APDW_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "9d41419e1129b3ce0bc99ae455ebb35e669e426eae64f4f3c76ae18e07e6ff97",
+      "fileGuid": "961a3afb-f035-4cf6-bb33-b99ffa09e5c5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/ARA-DMR/BF03_Weapons_Handheld_ARA-DMR_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\ARA-DMR\\BF03_Weapons_Handheld_ARA-DMR_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "dd4f467d00458498215bd7cf28c6925bd8d876916773a4fe0ec59520271e6f01",
+      "fileGuid": "773e3aa4-faa1-47c2-84c2-5e7ea822a253",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/Bren3/BF03_Weapons_Handheld_Bren3_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\Bren3\\BF03_Weapons_Handheld_Bren3_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "f24e35c45d41330cad360e93dcd39e45883ae41fe9d875dcff0c85b3de3c1009",
+      "fileGuid": "3ae0c8f0-a58d-413c-83ce-5d9904f0730f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/DesertTechHTI/BF03_Weapons_Handheld_DesertTechHTI_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\DesertTechHTI\\BF03_Weapons_Handheld_DesertTechHTI_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "af20ad9e052a3cafa5ac874b31834f2979f31e1799f0817d58d5c6a610c339ca",
+      "fileGuid": "5f3d8f37-c32f-4a4f-9d0c-f6f7bdcddfb3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/DP12/BF03_Weapons_Handheld_DP12_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\DP12\\BF03_Weapons_Handheld_DP12_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "e71b4744ebdbb6edf52b729216127449a8f04d8ddf1a75772b3a4a316607967d",
+      "fileGuid": "a171ca8d-cc06-498b-a509-9afeaa3c2028",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/EF88/BF03_Weapons_Handheld_EF88_Audiosettings_PresEx_02",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\EF88\\BF03_Weapons_Handheld_EF88_Audiosettings_PresEx_02.ebx",
+      "head": 4892017,
+      "rawSha256": "2634d945736532739f7b5309ba931657a3517e65d8db2fdc7c736749f87c168a",
+      "fileGuid": "5b79d1a0-e5fa-482e-93eb-d0f454d469f6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/FiveSeven/BF03_Weapons_Handheld_FiveSeven_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\FiveSeven\\BF03_Weapons_Handheld_FiveSeven_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "fb4020ba117f52f826bf5610994542f19c2338e4e53351b09f878a029ca90f1e",
+      "fileGuid": "be23bb0b-53c5-4b77-aa93-1de7e3304958",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/G22/BF03_Weapons_Handheld_G22_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\G22\\BF03_Weapons_Handheld_G22_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "5cc7379d6891bc34e8f12d9fd94a10e8997eb1d4ca09193e0e3db4834c9cd764",
+      "fileGuid": "529e74f5-90ec-4829-a809-66e8fa014069",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/G36/BF03_Weapons_Handheld_G36_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\G36\\BF03_Weapons_Handheld_G36_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "8b0bb9352f626fe32ab6f15e8131a7372f7792d4c156a40882320e03203f4055",
+      "fileGuid": "40bb498e-3922-49f7-98c3-f8ee71966a78",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/G3A4/BF03_Weapons_Handheld_G3A4_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\G3A4\\BF03_Weapons_Handheld_G3A4_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "bff9b0f91de1cd80f3d2107108c671c5840c39e40ec63b304291a746082a540c",
+      "fileGuid": "dde79060-f8b4-454b-afbe-c9cc8f4e0cba",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/HK417A2/BF03_Weapons_Handheld_HK417A2_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\HK417A2\\BF03_Weapons_Handheld_HK417A2_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "6e24fcc97ac9492c166e6823ad804b3a1ed56758344556d45314f18c85ed3818",
+      "fileGuid": "0c703d65-cd2c-482c-9153-602f311c393b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/HK433/BF03_Weapons_Handheld_HK433_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\HK433\\BF03_Weapons_Handheld_HK433_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "59026d3d5445edb32425bdb9ed1997aca57b03b272e75940b07aba6fd4eeac68",
+      "fileGuid": "731acb44-68d0-461c-80bc-99e518efedf2",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/L115A3/BF03_Weapons_Handheld_L115A3_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\L115A3\\BF03_Weapons_Handheld_L115A3_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "a16b94f43d452ae659e7d629c858325133869ca9c6d3a0e3e7434692da07949a",
+      "fileGuid": "f75fb7af-bc54-4991-aa49-d83065cb232b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/L85A3/BF03_Weapons_Handheld_L85A3_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\L85A3\\BF03_Weapons_Handheld_L85A3_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "765a8d76f9cc7ca69df4d11586de8a6c931e4928d1bc8c694ad2c813331227bf",
+      "fileGuid": "ac143f7b-9d3d-4936-aeee-4de902532f79",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M1014/BF03_Weapons_Handheld_M1014_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M1014\\BF03_Weapons_Handheld_M1014_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "0024fb7176ffeffb18e323afa85a684ed3177837a9bdc5db7c7eea2c8a5ef199",
+      "fileGuid": "08f2b410-6e1f-4cbd-b71e-62db82a77f37",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M16/BF03_Weapons_Handheld_M16_Audiosettings_PresEx_02",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M16\\BF03_Weapons_Handheld_M16_Audiosettings_PresEx_02.ebx",
+      "head": 4892017,
+      "rawSha256": "c04b7be10ebdebf5e059a42879997da4b4cbf7da01a3273f71592c9c99aa7428",
+      "fileGuid": "049728b4-72bd-4dc3-90e7-b22ed16d568c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M18/BF03_Weapons_Handheld_M18_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M18\\BF03_Weapons_Handheld_M18_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "27924b9d2ebd6bbcaf512524acab9d8d19564cad188eb546aef87e663775b8cd",
+      "fileGuid": "6ca9847e-708e-4315-90f4-ca3f1b03df17",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M2010ESR/BF03_Weapons_Handheld_M2010ESR_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M2010ESR\\BF03_Weapons_Handheld_M2010ESR_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "4560bf031760f632db68c80462bc572721bd20b7175ed36a11263187140d4f2f",
+      "fileGuid": "2e0feb46-fe4e-4228-9719-7328d93bf5f5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M240L/BF03_Weapons_Handheld_M240L_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M240L\\BF03_Weapons_Handheld_M240L_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "265ad3f586cc43cbfca15fddc4ca4da013489d2120d49ae5b21a3169e1c5729f",
+      "fileGuid": "5cab2ab2-8fdb-4827-ac60-ab427a5a2c6f",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M250/BF03_Weapons_Handheld_M250_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M250\\BF03_Weapons_Handheld_M250_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "8df8e2cf362142d66922f47d9c3949539cd0746968a28277c9fbaec18cfb601f",
+      "fileGuid": "56ff2f9d-0221-4906-9241-8a7c7d02c8ef",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M27IAR/BF03_Weapons_Handheld_M27IAR_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M27IAR\\BF03_Weapons_Handheld_M27IAR_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "35fe9b8a154f1fdcba6482d9200c7f0956d175999afeb0ded733195cad908062",
+      "fileGuid": "9ccb5163-a882-48df-b288-664271c7d848",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M39EMR/BF03_Weapons_Handheld_M39EMR_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M39EMR\\BF03_Weapons_Handheld_M39EMR_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "ce69d9abd4b12fbbc12b2798a1823f9146fc03ee09bcd656790bd3a5f33ba23d",
+      "fileGuid": "dd7a17f3-ed90-4dd7-ba2a-1e8a38a5a537",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M45A1/BF03_Weapons_Handheld_M45A1_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M45A1\\BF03_Weapons_Handheld_M45A1_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "3cb13fd74a0f1bdd5aa93ffd1f75aabbd52a1f294f0a92840f23c75c25bbd4cd",
+      "fileGuid": "9f58f6b5-3468-4d87-a276-b04adae5a75a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M4A1/BF03_Weapons_Handheld_M4A1_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M4A1\\BF03_Weapons_Handheld_M4A1_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "d3e9bb4ccda2932cb5d5d8497a68037c99171bbe12c3f9f47b994cb7c333a7bb",
+      "fileGuid": "13603d1a-fb47-4175-af4b-279a72077146",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/M60E6/BF03_Weapons_Handheld_M60E6_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\M60E6\\BF03_Weapons_Handheld_M60E6_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "cae3335085db99eddf57bb822eb04b1d961302a7d603fb69a960ef6493d6d5ac",
+      "fileGuid": "95269cf9-9eb6-426f-b9f1-a3a987e90374",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MG4K/BF03_Weapons_Handheld_MG4K_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MG4K\\BF03_Weapons_Handheld_MG4K_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "eee6b5b15561121d21fb6cd840f92c0c8ca0d9a3016dcda783d20e78c7a2969e",
+      "fileGuid": "0edd2dcf-a451-4f75-8895-1690f02650b4",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "common/sound/weapons/handheld/mg5/bf03_weapons_handheld_mg5_audiosettings_presex_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\mg5\\bf03_weapons_handheld_mg5_audiosettings_presex_01.ebx",
+      "head": 4892017,
+      "rawSha256": "5b74573e83416b317dbb3c8d21d8aea3241ba8f3fe0b09a4c8187ecd65632b10",
+      "fileGuid": "4e8f40c8-ee1a-4c56-8fd2-8cc6813c861c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MiniFix/BF03_Weapons_Handheld_MiniFix_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MiniFix\\BF03_Weapons_Handheld_MiniFix_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "507018d9c2677de4ed1f13f19d995f4aa4d732a1bad53bd53834292cbb8da294",
+      "fileGuid": "fce3c055-a63f-4d95-b3a6-68396666ca25",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/Minimi/BF03_Weapons_Handheld_Minimi_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\Minimi\\BF03_Weapons_Handheld_Minimi_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "9e1649fef80334e5c7a14af8333a37699507794e927712f376d83957eca96aa6",
+      "fileGuid": "64d6ad8e-3590-4f2e-99ad-3d47cca92ec5",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MP5MLI/BF03_Weapons_Handheld_MP5MLI_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MP5MLI\\BF03_Weapons_Handheld_MP5MLI_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "900cb015acd76761f7e3517df4b31c60ec0cbf727fe149eebfc4798bf16299a1",
+      "fileGuid": "fd7aa6da-366d-4b03-97fa-dec13e4e0c70",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MP7A2/BF03_Weapons_Handheld_MP7A2_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MP7A2\\BF03_Weapons_Handheld_MP7A2_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "b25e4b56989515eb00eb38f67d6192998c52cf4af579a5df90726aec9a5649ff",
+      "fileGuid": "35fa0314-f948-4f4f-8709-15f5a9803fcc",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MPX/BF03_Weapons_Handheld_MPX_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MPX\\BF03_Weapons_Handheld_MPX_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "e6b2f66bca00ad5460b1c5ba8b7de95870d1667ea2c5e74d4d06578740e7d281",
+      "fileGuid": "58289aa8-cd58-4a70-8a22-b0a63b3e6141",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MRAD/BF03_Weapons_Handheld_MRAD_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MRAD\\BF03_Weapons_Handheld_MRAD_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "18ec7b611f40f735e4b092f5f53064823add8f4dd6cb0bd54ab6a07d394e4d36",
+      "fileGuid": "bb5bc0b6-ae5b-438d-946d-710452914515",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MSBSGROTB/BF03_Weapons_Handheld_MSBSGROTB_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MSBSGROTB\\BF03_Weapons_Handheld_MSBSGROTB_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "275ced8d0dd68b7c3a733d1923013e26542e4c1ccd81e9f3496c27a31e818255",
+      "fileGuid": "3460472c-d864-4c40-b6d4-82a6db68b291",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/MSBSGROTCPS/BF03_Weapons_Handheld_MSBSGROTCPS_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\MSBSGROTCPS\\BF03_Weapons_Handheld_MSBSGROTCPS_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "77418e9100a4d75202e5b9b1d32ef9e3308298bed01f396838456e987279493f",
+      "fileGuid": "0992d1b5-22f6-41a1-aa67-2a1416197d87",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/P90/BF03_Weapons_Handheld_P90_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\P90\\BF03_Weapons_Handheld_P90_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "e08124a63ea5ec3d10cfa96f45fd27753df0395f9535e73b55d1a4f98954ce54",
+      "fileGuid": "43d9a8d4-1d33-4b1a-91dd-bb6568aae006",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/PP19/BF03_Weapons_Handheld_PP19_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\PP19\\BF03_Weapons_Handheld_PP19_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "f4722130cd02a711d7d3142bc4f7ee51ce97818ae200e47b6e97d81c3b85e8da",
+      "fileGuid": "1cd1127a-04a6-4361-bf27-fb6c05f6a7d3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/QBZ192/BF03_Weapons_Handheld_QBZ192_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\QBZ192\\BF03_Weapons_Handheld_QBZ192_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "7fc12db53da478cc92823b13353a7a9f1bdade6ae6966c602c1cdcec650eb5e4",
+      "fileGuid": "854dac22-d496-4531-85b3-84bdc7115bf0",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/RagingHunter/BF03_Weapons_Handheld_RagingHunter_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\RagingHunter\\BF03_Weapons_Handheld_RagingHunter_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "5c9420482a4542923f4e526a4b58f558bbe4ba5a8678101e56c17b2af5325df3",
+      "fileGuid": "2cf3e25c-c605-41f9-b591-71e2b931ab75",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/RPK74M/BF03_Weapons_Handheld_RPK74M_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\RPK74M\\BF03_Weapons_Handheld_RPK74M_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "4bffd1af756aaa481762ca1b430a393a34067732188dc52b2a088fb52fa85c09",
+      "fileGuid": "a86014ce-f15e-4ea5-8d02-7043a77e5ac6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/RPKM/BF03_Weapons_Handheld_RPKM_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\RPKM\\BF03_Weapons_Handheld_RPKM_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "8b06a09a6d181bdec5d25c82b82b99070e102cd28346f7a38564bf396f901b18",
+      "fileGuid": "1ba07564-ff16-418f-b5c0-eb63f76336cb",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/SCARL/BF03_Weapons_Handheld_SCARL_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\SCARL\\BF03_Weapons_Handheld_SCARL_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "2a32a8e07b4cf5ecc1b8172a607610a706a66c4f0dafd59472e9d28aee34af98",
+      "fileGuid": "7383fbc7-b17d-4c68-92f6-3c69488cc5b1",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/SCARSC/BF03_Weapons_Handheld_SCARSC_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\SCARSC\\BF03_Weapons_Handheld_SCARSC_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "e6ef1cdd6aed459171e98bab5a84603e40b08589960cfa89d56959c7b7fc5de0",
+      "fileGuid": "94cb8495-17d6-4935-ba42-5668bc6a2063",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/ScorpionEvo3/BF03_Weapons_Handheld_ScorpionEvo3_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\ScorpionEvo3\\BF03_Weapons_Handheld_ScorpionEvo3_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "f33e4433fce18c9b5baacd3a0fa4257ade8a7625c157ab77535b21336cc2c8ab",
+      "fileGuid": "9f3461f3-78f4-4851-b7b4-30bb24bfd311",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/SIG553R/BF03_Weapons_Handheld_SIG553R_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\SIG553R\\BF03_Weapons_Handheld_SIG553R_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "26eabfbfa5307d806bb66be2a5b6be7456f3cda2aba5068b2f3807fdcf94b80f",
+      "fileGuid": "733aa263-46f0-461e-ae46-0b7d00e6242d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/Skorpion/BF03_Weapons_Handheld_Skorpion_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\Skorpion\\BF03_Weapons_Handheld_Skorpion_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "948906791c6c4b4d9e3cf79c218550dcb54dec41f919b61f98bec0d7651228ef",
+      "fileGuid": "ee95c870-e33a-47c8-a5c9-8ab422b3047e",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/SV98M/BF03_Weapons_Handheld_SV98M_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\SV98M\\BF03_Weapons_Handheld_SV98M_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "8d46138ba512b8c0486a79e8137a409f2582996f287708c9dccc2e2d093ffb9f",
+      "fileGuid": "218e1875-d5a7-4a33-9911-b89d2b44ac5b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/SVCh/BF03_Weapons_Handheld_SVCh_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\SVCh\\BF03_Weapons_Handheld_SVCh_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "8c36dab2afedc8c5c98547eb0713a38d7551b54e71f661c4ef1aab7b1fbc99c9",
+      "fileGuid": "3a2d9f9d-5416-4521-ab8d-eaeb0cab424c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/SVDM/BF03_Weapons_Handheld_SVDM_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\SVDM\\BF03_Weapons_Handheld_SVDM_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "3d902721506d5ace1d159eee079f0c38f5e333cee66b860ef723bc02178760e1",
+      "fileGuid": "09545458-7c6f-46d6-963b-1dce0ee557fc",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/Tavor7/BF03_Weapons_Handheld_Tavor7_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\Tavor7\\BF03_Weapons_Handheld_Tavor7_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "9a6393ad35c3eb3a8897233072cefb0ced69a9022e550f1046c0c02c02d9efa5",
+      "fileGuid": "5130ff8c-4052-45ab-9c18-30bec01d3c80",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/TRR8/BF03_Weapons_Handheld_TRR8_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\TRR8\\BF03_Weapons_Handheld_TRR8_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "7b395ac4eaf7292e05366024a610a59ba5ec253420193c4b032fc372e034cf0a",
+      "fileGuid": "a48f8644-140f-413b-9c7a-683c0cc55df8",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/Ultimax/BF03_Weapons_Handheld_Ultimax_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\Ultimax\\BF03_Weapons_Handheld_Ultimax_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "bc8fab74abac885b6085d285683f1b4978768fd675d1f745697477ae82a682e7",
+      "fileGuid": "f3caa0f6-130f-4558-97c0-cb4faf4cfee6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/UMP40/BF03_Weapons_Handheld_UMP40_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\UMP40\\BF03_Weapons_Handheld_UMP40_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "ca3ab723ce5253c3d62032a3884a809e424679acaffe15376d22c16b1f3e923a",
+      "fileGuid": "31421bf0-110b-4555-a4ce-674448c5850a",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/Vector/BF03_Weapons_Handheld_Vector_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\Vector\\BF03_Weapons_Handheld_Vector_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "82953b230fdb2dfdff10cb00e5f3b4f8fd81d81c09f360755b8132ce52a4d95a",
+      "fileGuid": "21f565e3-9bba-46c8-8089-52ed5a8af910",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/vhs2/bf03_weapons_handheld_vhs2_audiosettings_presex_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\vhs2\\bf03_weapons_handheld_vhs2_audiosettings_presex_01.ebx",
+      "head": 4892017,
+      "rawSha256": "814052f06c11a9a2fdff0b1608c67f654ac0afbd95129e887bf1e7b715bfc789",
+      "fileGuid": "c93479b4-a378-413e-994e-84d8746064a1",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/VSSM/BF03_Weapons_Handheld_VSSM_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\VSSM\\BF03_Weapons_Handheld_VSSM_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "fa5b3b7250bf3f4580605a7cd7b4210327d2dbe36cabca6f238efee312f4c5f3",
+      "fileGuid": "ff4068c6-4404-4631-b216-64028ebd89ba",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Sound/Weapons/Handheld/XM7/BF03_Weapons_Handheld_XM7_Audiosettings_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Sound\\Weapons\\Handheld\\XM7\\BF03_Weapons_Handheld_XM7_Audiosettings_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "cfd875ba21dad9f53ba6ae957f32d7d5e7adb2eef26cf07dc0af79595805fba5",
+      "fileGuid": "cd9d7a97-30b9-46f2-9ba6-44ebc5a62b5c",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 122,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/UI/HUD/Crosshair/Expressions/PresEx_Crosshair_Soldier_Default",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\UI\\HUD\\Crosshair\\Expressions\\PresEx_Crosshair_Soldier_Default.ebx",
+      "head": 4892017,
+      "rawSha256": "89bf5cb2946f5a6cc610321335cb92d62f42bfbbef23acbd862ba194b9f0e51f",
+      "fileGuid": "1f242161-5797-4997-a3b6-ca9731830958",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/UI/HUD/Crosshair/Expressions/PresEx_Crosshair_Soldier_Dot",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\UI\\HUD\\Crosshair\\Expressions\\PresEx_Crosshair_Soldier_Dot.ebx",
+      "head": 4892017,
+      "rawSha256": "d532bb42db76ea859a2661fbe0c8e805ae432a4706d70269d92e4a2f5b671988",
+      "fileGuid": "03dd4f50-ce17-4cd5-866e-aa9b4515e7af",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/UI/HUD/Crosshair/Expressions/PresEx_Crosshair_Soldier_GrenadeLauncher",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\UI\\HUD\\Crosshair\\Expressions\\PresEx_Crosshair_Soldier_GrenadeLauncher.ebx",
+      "head": 4892017,
+      "rawSha256": "6fe82678c8056f009effc384a8c9781c3192226c443bc6ef3b627ba4ff975d7e",
+      "fileGuid": "7a9af24c-2520-4dd5-becc-824bd4ea4b18",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/UI/HUD/Crosshair/Expressions/PresEx_Crosshair_Soldier_Shotgun",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\UI\\HUD\\Crosshair\\Expressions\\PresEx_Crosshair_Soldier_Shotgun.ebx",
+      "head": 4892017,
+      "rawSha256": "854445b4d03c6d28985a020e8e59252b18d8a987435b93a6597de0b75762d5c3",
+      "fileGuid": "23b99b12-bc5b-41fe-aebc-6892064058c3",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/VO/Logic/Soldier/Alert/BF03_VO_Logic_Soldier_Alert_Grenade_PresEx_01",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\VO\\Logic\\Soldier\\Alert\\BF03_VO_Logic_Soldier_Alert_Grenade_PresEx_01.ebx",
+      "head": 4892017,
+      "rawSha256": "ba6fb64b92d5150efe0726751bc721e49c2a6da4db58779f8c197f88dca3e83f",
+      "fileGuid": "f90197b6-35f8-4f42-9ce2-f9e71128f396",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 9,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/UI/HUD/Assets/DataQueryDescriptors/DQD_SoldierDisallowFireData",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection-dependencies\\raw\\Common\\UI\\HUD\\Assets\\DataQueryDescriptors\\DQD_SoldierDisallowFireData.ebx",
+      "head": 4892017,
+      "rawSha256": "b4a00d0c26bd6418d94fe8a4c79259021871199bc6c2910086dff759447cdcc2",
+      "fileGuid": "86ddc79b-980c-4022-8543-77fa24a343a9",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 12,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Game/GlacierGranite/Common/Gameplay/Loot/PresEx_Granite_Loot_CheckLootType",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection-dependencies\\raw\\Game\\GlacierGranite\\Common\\Gameplay\\Loot\\PresEx_Granite_Loot_CheckLootType.ebx",
+      "head": 4892017,
+      "rawSha256": "0d6a0cda2307f776c5fcc83af415405952ae51a2f08b40ff976433ac399b5192",
+      "fileGuid": "b3ed78fa-d000-4e62-965b-4c94747b283d",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 2,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Gameplay/Soldier/Melee/DQD_TargetInTakedown",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection-review-2026-09-16\\raw\\Common\\Gameplay\\Soldier\\Melee\\DQD_TargetInTakedown.ebx",
+      "head": 4892017,
+      "rawSha256": "9b05fc2fe782e9a75d2a52614a9edad6e5912496880b48e94a549b09c296aa33",
+      "fileGuid": "9160b023-4a8e-4b64-b33d-8f88d38e5bb6",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "delegateFieldCount": 2,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/AssaultRifle/SCARL/PresEx_SCARL",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\assaultrifle\\scarl\\PresEx_SCARL.ebx",
+      "head": 4892087,
+      "rawSha256": "43a1fd0a7557245566f5cc9f5c114838b22a4a509226a79244d7ea233174822b",
+      "fileGuid": "37806d88-40bf-49d7-813d-9674d52d6640",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/Carbine/M4A1/PresEx_M4A1",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\carbine\\m4a1\\PresEx_M4A1.ebx",
+      "head": 4892087,
+      "rawSha256": "d477630684cc7b1c936fa7ac16a00bfbae75d2ace4f5df96bfba46760d5581a7",
+      "fileGuid": "61f26f7a-dadf-46ea-b4fa-59d61b5b5ada",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 11,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/Carbine/SIG553R/PresEx_SIG553R",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\carbine\\sig553r\\PresEx_SIG553R.ebx",
+      "head": 4892087,
+      "rawSha256": "f0e35736843522aa02fe4280870a231e875dbe7785fa96c4557c6ee0cc17c9dd",
+      "fileGuid": "ff56aee9-c408-4d25-9c44-2175f1fc1e45",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 4,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/MG/M240L/PresEx_M240L",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\mg\\m240l\\PresEx_M240L.ebx",
+      "head": 4892087,
+      "rawSha256": "49d27d318ba68df18283bd5a25f57b459976d4efc06027bb34db23c75e90e47f",
+      "fileGuid": "a28c888b-2e01-42f8-9759-5c2d15435dfa",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 136,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/MG/Minimi/PresEx_Minimi",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\mg\\minimi\\PresEx_Minimi.ebx",
+      "head": 4892087,
+      "rawSha256": "ab557273e14847e1ef9d1c2e4e13947be1fb1ba36d35610795d70e97104825e7",
+      "fileGuid": "d3491e73-03a6-4903-89ee-c303f4b0a1ec",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 18,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/weapons/Secondary/FiveSeven/PresEx_FiveSeven",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\secondary\\fiveseven\\PresEx_FiveSeven.ebx",
+      "head": 4892087,
+      "rawSha256": "ec0ead357069ad34ad4945d249788cccb2d5e4f062c0a04bfc588779658bace8",
+      "fileGuid": "3c5c8ba7-e9ba-468c-9089-950b4ee81635",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 109,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/weapons/Secondary/G22/PresEx_G22",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\secondary\\G22\\PresEx_G22.ebx",
+      "head": 4892087,
+      "rawSha256": "1c7c575b92489f94098ffd67de85034fb7a809e84899d3b168e1a58c8607de4e",
+      "fileGuid": "ee7260bb-dd85-4393-8514-ca9b3e558202",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 109,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "common/hardware/weapons/secondary/M45A1/presex_m45a1",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\secondary\\m45a1\\presex_m45a1.ebx",
+      "head": 4892087,
+      "rawSha256": "f3c4e9a1362e762bb31a74dbaab972faf08ce2a2469a2deeccef8cd2057a2756",
+      "fileGuid": "6ed11773-0447-419c-872d-5e89a1c027a6",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 109,
+      "otherDecodedFieldsUnchanged": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/SMG/MP7A2/PresEx_MP7A2",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-audit-2026-09-23\\raw\\Common\\Hardware\\Weapons\\smg\\mp7a2\\PresEx_MP7A2.ebx",
+      "head": 4892087,
+      "rawSha256": "d70271d64ef2811b2602d62d2a0bbab0722d84712dc2e09a3a03207c3e06cca6",
+      "fileGuid": "b0428958-fd0d-448e-a682-5f05eb466fcb",
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "delegateFieldCount": 11,
+      "otherDecodedFieldsUnchanged": true
+    }
+  ],
+  "reproduction": "Select all old-ledger captures with $undecoded markers. Decode with pinned new reader, record each Delegate field absolute offset while reading; walk returned objects to record exact paths. Replace new delegate dictionaries with old type0x1c marker and compare complete object trees to stored baseline; compare every raw word to struct.unpack_from(<II).",
+  "limits": [
+    "Type identity does not establish delegate code, effect activation or native arithmetic.",
+    "Original descriptor layout warnings remain.",
+    "Old ledger remains pinned to its reader; these new fields require a separate decode version."
+  ]
+}

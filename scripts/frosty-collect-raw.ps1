@@ -1,7 +1,11 @@
 <#
-Capture the full EBX catalog and selected raw streams without object decoding.
+Capture the full EBX catalog and selected raw EBX/resource streams without object decoding.
 Use a new OutputDirectory per build. Catalog-only runs omit RoutesFile.
 Existing raw files are not overwritten. Use a new directory for each capture.
+ResourceIdsFile is optional and contains one 16-digit hexadecimal resource ID per line.
+ResourceMetadataOnly records those IDs' SDK metadata without reading resource bodies.
+BundleRoutesFile optionally records archive bundle membership for exact EBX routes.
+CacheVariantRequestsFile optionally reads exact cache records into a separate variants folder.
 Requires Windows PowerShell and the local Frosty .NET Framework runtime.
 #>
 param(
@@ -9,9 +13,14 @@ param(
     [Parameter(Mandatory)][string]$GamePath,
     [Parameter(Mandatory)][string]$OutputDirectory,
     [string]$RoutesFile,
+    [string]$ResourceIdsFile,
+    [switch]$ResourceMetadataOnly,
+    [string]$BundleRoutesFile,
+    [string]$CacheVariantRequestsFile,
     [long]$MaxBytes = 33554432
 )
 $ErrorActionPreference = 'Stop'
+if ($ResourceMetadataOnly -and -not $ResourceIdsFile) { throw 'ResourceMetadataOnly requires ResourceIdsFile' }
 $outputRoot = [IO.Path]::GetFullPath((New-Item -ItemType Directory -Force -Path $OutputDirectory).FullName)
 Push-Location -LiteralPath $FrostyDirectory
 try {
@@ -41,6 +50,10 @@ try {
     $assetManager = New-Object FrostySdk.Managers.AssetManager($fileSystem, $resourceManager)
     $assetManager.SetLogger($logger)
     $assetManager.Initialize($true)
+
+    if ($CacheVariantRequestsFile) {
+        & (Join-Path $PSScriptRoot 'frosty-capture-cache-variants.ps1') -AssetManager $assetManager -ResourceManager $resourceManager -FrostyDirectory $FrostyDirectory -RequestsFile $CacheVariantRequestsFile -OutputRoot $outputRoot -Head $fileSystem.Head -MaxBytes $MaxBytes
+    }
 
 
     $catalogPath = Join-Path $outputRoot 'asset-catalog.json'
@@ -134,6 +147,76 @@ public static class CatalogCapture {
                 if ($index % 500 -eq 0) { Write-Output "Processed $index raw assets" }
             }
         } finally { $statusWriter.Dispose() }
+    }
+    if ($BundleRoutesFile) {
+        $bundleStatus = Join-Path $outputRoot 'bundle-status.jsonl'
+        if (Test-Path -LiteralPath $bundleStatus) { throw 'Bundle status already exists; use a new capture directory' }
+        $bundleWriter = [IO.StreamWriter]::new($bundleStatus, $false)
+        try {
+            foreach ($route in [IO.File]::ReadAllLines($BundleRoutesFile)) {
+                if ([string]::IsNullOrWhiteSpace($route)) { continue }
+                $item = [ordered]@{path=$route.Trim(); status='failed'; guid=$null; recordSha1=$null; bundles=@(); reason=$null; gameHead=$fileSystem.Head; sdkVersion=[FrostySdk.TypeLibrary]::GetSdkVersion()}
+                try {
+                    $entry = $assetManager.GetEbxEntry($route.Trim())
+                    if ($null -eq $entry) { throw 'EBX route not in current catalog' }
+                    if ($entry.IsModified) { throw 'EBX entry has modifications' }
+                    $item.path=$entry.Name; $item.guid=$entry.Guid.ToString(); $item.recordSha1=$entry.Sha1.ToString()
+                    $item.bundles=@(foreach ($bundleId in $entry.Bundles) {
+                        if ($bundleId -lt 0) { throw 'Negative bundle index' }
+                        $bundle = $assetManager.GetBundleEntry($bundleId)
+                        if ($null -eq $bundle) { throw 'Bundle index has no entry' }
+                        $superBundle = if ($bundle.SuperBundleId -ge 0) { $assetManager.GetSuperBundle($bundle.SuperBundleId) } else { $null }
+                        [ordered]@{id=$bundleId; name=$bundle.Name; type=$bundle.Type.ToString(); superBundleId=$bundle.SuperBundleId; superBundleName=if ($null -ne $superBundle) { $superBundle.Name } else { $null }; blueprint=if ($null -ne $bundle.Blueprint) { $bundle.Blueprint.Name } else { $null }}
+                    })
+                    $item.status='success'
+                } catch { $item.reason=$_.Exception.Message }
+                $bundleWriter.WriteLine(($item | ConvertTo-Json -Depth 6 -Compress)); $bundleWriter.Flush()
+            }
+        } finally { $bundleWriter.Dispose() }
+    }
+    if ($ResourceIdsFile) {
+        $statusName = if ($ResourceMetadataOnly) { 'resource-metadata.jsonl' } else { 'resource-status.jsonl' }
+        $resourceStatus = Join-Path $outputRoot $statusName
+        if ($ResourceMetadataOnly -and (Test-Path -LiteralPath $resourceStatus)) { throw 'Resource metadata exists; use a new output directory' }
+        $writer = [IO.StreamWriter]::new($resourceStatus, $true)
+        try {
+            foreach ($idText in [IO.File]::ReadAllLines($ResourceIdsFile)) {
+                $idText = $idText.Trim().ToLowerInvariant()
+                if ([string]::IsNullOrWhiteSpace($idText)) { continue }
+                $item = [ordered]@{resourceId=$idText; status='failed'; name=$null; type=$null; typeId=$null; recordSha1=$null; metadataHex=$null; file=$null; bytes=$null; sha256=$null; reason=$null; gameHead=$fileSystem.Head; sdkVersion=[FrostySdk.TypeLibrary]::GetSdkVersion()}
+                try {
+                    if ($idText -notmatch '^[0-9a-f]{16}$') { throw 'Expected a 16-digit hexadecimal resource ID' }
+                    $entry = $assetManager.GetResEntry([Convert]::ToUInt64($idText, 16))
+                    if ($null -eq $entry) { throw 'Resource ID not in current catalog' }
+                    $item.name=$entry.Name; $item.type=$entry.Type; $item.typeId=('{0:x8}' -f $entry.ResType)
+                    $item.recordSha1=$entry.Sha1.ToString()
+                    $item.metadataHex=([BitConverter]::ToString($entry.ResMeta)).Replace('-', '').ToLowerInvariant()
+                    if ($entry.IsModified) { throw 'Resource has modifications' }
+                    if ($ResourceMetadataOnly) {
+                        $item.status='metadata-only'; $item.originalBytes=$entry.OriginalSize; $item.storedBytes=$entry.Size
+                        $writer.WriteLine(($item | ConvertTo-Json -Compress)); $writer.Flush()
+                        continue
+                    }
+                    if ($entry.OriginalSize -gt $MaxBytes) { throw "Resource exceeds $MaxBytes byte limit" }
+                    $relative = 'resources/' + $idText + '.res'
+                    $target = Join-Path $outputRoot $relative
+                    [void][IO.Directory]::CreateDirectory([IO.Path]::GetDirectoryName($target))
+                    if (Test-Path -LiteralPath $target) { throw 'Output already exists; not overwritten or treated as a fresh export' }
+                    $stream = $assetManager.GetRes($entry)
+                    try {
+                        if ($stream.Length -gt $MaxBytes) { throw "Resource stream exceeds $MaxBytes byte limit" }
+                        $temp = $target + '.partial'
+                        $output = [IO.File]::Create($temp)
+                        try { $stream.CopyTo($output) } finally { $output.Dispose() }
+                        Move-Item -LiteralPath $temp -Destination $target
+                    } finally { $stream.Dispose() }
+                    $item.status='success'; $item.file=$relative
+                    $item.bytes=(Get-Item -LiteralPath $target).Length
+                    $item.sha256=(Get-FileHash -LiteralPath $target -Algorithm SHA256).Hash.ToLowerInvariant()
+                } catch { $item.reason=$_.Exception.Message }
+                $writer.WriteLine(($item | ConvertTo-Json -Compress)); $writer.Flush()
+            }
+        } finally { $writer.Dispose() }
     }
 } finally {
     Pop-Location

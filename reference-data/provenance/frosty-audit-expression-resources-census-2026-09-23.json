@@ -1,0 +1,612 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "head": 4892087,
+  "sdkVersion": 4414275,
+  "scope": "Complete byte identity and header census of the22 already captured core SerializedExpressionNodeGraph resources; no additional visual branch expansion.",
+  "statusPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resource-status.jsonl",
+  "statusSha256": "e6f6351b5ed3bcca8464eef7a9f701c2d649c6e8893fb35d77f603d9ed0a7bf9",
+  "count": 22,
+  "totalBytes": 367552,
+  "rawIdentityGroups": {
+    "d344ae6199cba3cd199ba8bcd00cccaee7a1592cc285048e0998063eb62a6998": [
+      "136984f8bc181397",
+      "eba1f242f25e3949"
+    ],
+    "733bea991a31f5364807ed0d89fbf3cbc9a8ceb5c02e129eebd57d7cba515f4a": [
+      "15441c9d3111d659"
+    ],
+    "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01": [
+      "17a9146ddda714e3",
+      "1e831b064aef802f",
+      "34b4f73208de7f3b",
+      "3779337d5734dda7",
+      "859eb9a562576f93",
+      "9fbb9eab5b51eac7",
+      "cc5f00aa25f4c3dd",
+      "d44766c0d1bd012f"
+    ],
+    "28ac4bc8fb79cd8b850608f9205ae43fdf70856524832075e09254016a71a6ab": [
+      "1e9b54ba95ffd587"
+    ],
+    "80167d9e98a2ce952c962affa80a56aed3648a5691e23cdec435b00cab7b232b": [
+      "2117d058ace42169"
+    ],
+    "4071b190c96a73b9ab74506f0c9ad23d6b26f14341d4589864ec53e7f88f3786": [
+      "2b64d43d0b8463d3"
+    ],
+    "9f8d50bffe0efce8e9e2c52fc4f1986aef7c33b4c11078d4efca8e12481a3954": [
+      "2d1f2f00710ce523"
+    ],
+    "f1ab7c237c451f2791c3b69299bfa6fc1a9a060f0a5a23df3526fd5600d65d05": [
+      "59154b05604b6d95"
+    ],
+    "0d576f1c7a35d618a91a76aa991bdce862288e3e1cb631581b0139adcb025d2f": [
+      "6190589525a1dbe9"
+    ],
+    "8a2cd1b3ad06f144f2b55c46530d086fe4c7d3708015106bdab2a97f03c38e6d": [
+      "77f7aad75b3853f5"
+    ],
+    "ed284a55095bc18364dffa2afa6f0034ea084bf3de48f360b2fb9870b3b3df3e": [
+      "86d0cd4f1e2effcb"
+    ],
+    "488a6d751980986eac2d9f9903ba29afa7619eb62777042de81b5c3f1d44e773": [
+      "f1f13a023c7cb85d"
+    ],
+    "9347de47bd865595b480ccb235868abdf64fd553c2fb690e115c68fc2a864808": [
+      "f74030c6daffc613"
+    ],
+    "9738002d1f984db0a2f1fb1fa379d839991a581108ea7b3479b1842796f26996": [
+      "fa024f9392897b47"
+    ]
+  },
+  "byteIdenticalGroups": [
+    [
+      "136984f8bc181397",
+      "eba1f242f25e3949"
+    ],
+    [
+      "17a9146ddda714e3",
+      "1e831b064aef802f",
+      "34b4f73208de7f3b",
+      "3779337d5734dda7",
+      "859eb9a562576f93",
+      "9fbb9eab5b51eac7",
+      "cc5f00aa25f4c3dd",
+      "d44766c0d1bd012f"
+    ]
+  ],
+  "records": [
+    {
+      "resourceId": "136984f8bc181397",
+      "name": "common/hardware/weapons/assaultrifle/scarl/presex_scarl",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\136984f8bc181397.res",
+      "bytes": 1856,
+      "sha256": "d344ae6199cba3cd199ba8bcd00cccaee7a1592cc285048e0998063eb62a6998",
+      "recordSha1": "963b52a0d4aaa5f553b1130a355f0d8a7a220925",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000d204321fffffffff00000000ffffffff30000000e80100006d0000000801000003000000000000000300000014000000",
+      "littleEndianWordsAtOffsets16Through60": [
+        523371730,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        488,
+        109,
+        264,
+        3,
+        0,
+        3,
+        20
+      ]
+    },
+    {
+      "resourceId": "15441c9d3111d659",
+      "name": "common/hardware/weapons/carbine/m4a1/presex_m4a1",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\15441c9d3111d659.res",
+      "bytes": 4336,
+      "sha256": "733bea991a31f5364807ed0d89fbf3cbc9a8ceb5c02e129eebd57d7cba515f4a",
+      "recordSha1": "2b87edbb7f688d134926a671871d34aaccaabceb",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000ed549b03ffffffff00000000ffffffff30000000580400004a0100007502000003000000000000000600000032000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        60511469,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        1112,
+        330,
+        629,
+        3,
+        0,
+        6,
+        655410
+      ]
+    },
+    {
+      "resourceId": "17a9146ddda714e3",
+      "name": "common/hardware/weapons/shotgun/590a1/presex_590a1",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\17a9146ddda714e3.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "1e831b064aef802f",
+      "name": "common/hardware/weapons/boltaction/m2010esr/presex_m2010esr",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\1e831b064aef802f.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "1e9b54ba95ffd587",
+      "name": "common/hardware/weapons/secondary/g22/presex_g22",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\1e9b54ba95ffd587.res",
+      "bytes": 74960,
+      "sha256": "28ac4bc8fb79cd8b850608f9205ae43fdf70856524832075e09254016a71a6ab",
+      "recordSha1": "7a2f10dc92308e4e12edd11467736161897888cf",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000f9d9ad6cffffffff7003000084030000c0030000482b00009b6c0000a43400002e000000000000004c00000076031900",
+      "littleEndianWordsAtOffsets16Through60": [
+        1823332857,
+        4294967295,
+        880,
+        900,
+        960,
+        11080,
+        27803,
+        13476,
+        46,
+        0,
+        76,
+        1639286
+      ]
+    },
+    {
+      "resourceId": "2117d058ace42169",
+      "name": "common/hardware/weapons/shotgun/m1014/presex_m1014",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\2117d058ace42169.res",
+      "bytes": 128,
+      "sha256": "80167d9e98a2ce952c962affa80a56aed3648a5691e23cdec435b00cab7b232b",
+      "recordSha1": "d2ef49154a44fbc4d59aaef3f3ced40b7bd3e2d9",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009afb9cdfffffffffffffffffffffffff2000000000000000000000000100000003000000000000000000000000000000",
+      "littleEndianWordsAtOffsets16Through60": [
+        3751607194,
+        4294967295,
+        4294967295,
+        4294967295,
+        32,
+        0,
+        0,
+        1,
+        3,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "resourceId": "2b64d43d0b8463d3",
+      "name": "common/hardware/weapons/simex_sharedsoldierabilityweapon",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\2b64d43d0b8463d3.res",
+      "bytes": 1344,
+      "sha256": "4071b190c96a73b9ab74506f0c9ad23d6b26f14341d4589864ec53e7f88f3786",
+      "recordSha1": "0c8177c7cd7a1e4bd511b6a8e0cf6fb336bd50ee",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "0000000000000000000000000000000013aca419ffffffff00000000ffffffff30000000580000002c000000dc00000003000000000000000000000018000000",
+      "littleEndianWordsAtOffsets16Through60": [
+        430222355,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        88,
+        44,
+        220,
+        3,
+        0,
+        0,
+        24
+      ]
+    },
+    {
+      "resourceId": "2d1f2f00710ce523",
+      "name": "common/hardware/weapons/mg/m240l/presex_m240l",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\2d1f2f00710ce523.res",
+      "bytes": 105280,
+      "sha256": "9f8d50bffe0efce8e9e2c52fc4f1986aef7c33b4c11078d4efca8e12481a3954",
+      "recordSha1": "021b5a483ad5baa3334bebfbec101c4019c9318b",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "0000000000000000000000000000000097a98baaffffffff7c02000098020000d0020000d838000081760000704a00000900000000000000610000005e051e00",
+      "littleEndianWordsAtOffsets16Through60": [
+        2861279639,
+        4294967295,
+        636,
+        664,
+        720,
+        14552,
+        30337,
+        19056,
+        9,
+        0,
+        97,
+        1967454
+      ]
+    },
+    {
+      "resourceId": "34b4f73208de7f3b",
+      "name": "common/hardware/weapons/boltaction/l115a3/presex_l115a3",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\34b4f73208de7f3b.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "3779337d5734dda7",
+      "name": "common/hardware/weapons/boltaction/minifix/presex_minifix",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\3779337d5734dda7.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "59154b05604b6d95",
+      "name": "common/hardware/weapons/secondary/trr8/presex_trr8",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\59154b05604b6d95.res",
+      "bytes": 1792,
+      "sha256": "f1ab7c237c451f2791c3b69299bfa6fc1a9a060f0a5a23df3526fd5600d65d05",
+      "recordSha1": "ab5675c83e7973652691d992e96951b7b2a497f9",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000fdd7372effffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        775411709,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "6190589525a1dbe9",
+      "name": "common/hardware/weapons/secondary/fiveseven/presex_fiveseven",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\6190589525a1dbe9.res",
+      "bytes": 75024,
+      "sha256": "0d576f1c7a35d618a91a76aa991bdce862288e3e1cb631581b0139adcb025d2f",
+      "recordSha1": "656054835ca31aaf8be9bab956403df01826bfc6",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000d10b58b1ffffffff7003000084030000c0030000502b0000a76c0000b33400002e000000000000004c00000076031900",
+      "littleEndianWordsAtOffsets16Through60": [
+        2975337425,
+        4294967295,
+        880,
+        900,
+        960,
+        11088,
+        27815,
+        13491,
+        46,
+        0,
+        76,
+        1639286
+      ]
+    },
+    {
+      "resourceId": "77f7aad75b3853f5",
+      "name": "common/hardware/weapons/mg/minimi/presex_minimi",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\77f7aad75b3853f5.res",
+      "bytes": 4688,
+      "sha256": "8a2cd1b3ad06f144f2b55c46530d086fe4c7d3708015106bdab2a97f03c38e6d",
+      "recordSha1": "9821f181f319708bf6c816bd53d2fada8a94faf1",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "0000000000000000000000000000000071de0ec9ffffffff0000000004000000400000000804000079020000c10200000400000000000000040000003c000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        3373194865,
+        4294967295,
+        0,
+        4,
+        64,
+        1032,
+        633,
+        705,
+        4,
+        0,
+        4,
+        655420
+      ]
+    },
+    {
+      "resourceId": "859eb9a562576f93",
+      "name": "common/hardware/weapons/boltaction/deserttechhti/presex_deserttechhti",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\859eb9a562576f93.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "86d0cd4f1e2effcb",
+      "name": "common/hardware/weapons/secondary/raginghunter/presex_raginghunter",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\86d0cd4f1e2effcb.res",
+      "bytes": 1792,
+      "sha256": "ed284a55095bc18364dffa2afa6f0034ea084bf3de48f360b2fb9870b3b3df3e",
+      "recordSha1": "14a5734a968c1adecf4f01f048ecfdeee0303785",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000277fb184ffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        2226224935,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "9fbb9eab5b51eac7",
+      "name": "common/hardware/weapons/boltaction/mrad/presex_mrad",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\9fbb9eab5b51eac7.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "cc5f00aa25f4c3dd",
+      "name": "common/hardware/weapons/boltaction/sv98m/presex_sv98m",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\cc5f00aa25f4c3dd.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "d44766c0d1bd012f",
+      "name": "common/hardware/weapons/shotgun/dp12/presex_dp12",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\d44766c0d1bd012f.res",
+      "bytes": 1792,
+      "sha256": "bc1a6e8717586307b8bdcbb18ea197d2dfebd87788aad7d54f3dc8c4c0a2cf01",
+      "recordSha1": "51e224333424ccf52afcf2e7f7bfaffa6515f30e",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "000000000000000000000000000000009c2e233fffffffff00000000ffffffff3000000008020000a2000000d90000000300000000000000020000000f000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        1059270300,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        520,
+        162,
+        217,
+        3,
+        0,
+        2,
+        655375
+      ]
+    },
+    {
+      "resourceId": "eba1f242f25e3949",
+      "name": "common/hardware/weapons/carbine/sig553r/presex_sig553r",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\eba1f242f25e3949.res",
+      "bytes": 1856,
+      "sha256": "d344ae6199cba3cd199ba8bcd00cccaee7a1592cc285048e0998063eb62a6998",
+      "recordSha1": "963b52a0d4aaa5f553b1130a355f0d8a7a220925",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000d204321fffffffff00000000ffffffff30000000e80100006d0000000801000003000000000000000300000014000000",
+      "littleEndianWordsAtOffsets16Through60": [
+        523371730,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        488,
+        109,
+        264,
+        3,
+        0,
+        3,
+        20
+      ]
+    },
+    {
+      "resourceId": "f1f13a023c7cb85d",
+      "name": "common/hardware/weapons/secondary/m45a1/presex_m45a1",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\f1f13a023c7cb85d.res",
+      "bytes": 74992,
+      "sha256": "488a6d751980986eac2d9f9903ba29afa7619eb62777042de81b5c3f1d44e773",
+      "recordSha1": "e9c84c6f1aa858add682049da08f9ea3434bfb5f",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000dcdeccd0ffffffff7003000084030000c0030000402b0000a36c0000ae3400002e000000000000004c00000076031900",
+      "littleEndianWordsAtOffsets16Through60": [
+        3503087324,
+        4294967295,
+        880,
+        900,
+        960,
+        11072,
+        27811,
+        13486,
+        46,
+        0,
+        76,
+        1639286
+      ]
+    },
+    {
+      "resourceId": "f74030c6daffc613",
+      "name": "common/hardware/weapons/smg/mp7a2/presex_mp7a2",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\f74030c6daffc613.res",
+      "bytes": 4352,
+      "sha256": "9347de47bd865595b480ccb235868abdf64fd553c2fb690e115c68fc2a864808",
+      "recordSha1": "d87aa094901b58205d4b1211f22710afe76a70b2",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000c21648eeffffffff00000000ffffffff30000000680400004a0100007502000003000000000000000600000032000a00",
+      "littleEndianWordsAtOffsets16Through60": [
+        3997701826,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        1128,
+        330,
+        629,
+        3,
+        0,
+        6,
+        655410
+      ]
+    },
+    {
+      "resourceId": "fa024f9392897b47",
+      "name": "common/hardware/weapons/secondary/m45a1/simex_m45a1_blacklight",
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-core-resources-2026-09-23\\resources\\fa024f9392897b47.res",
+      "bytes": 816,
+      "sha256": "9738002d1f984db0a2f1fb1fa379d839991a581108ea7b3479b1842796f26996",
+      "recordSha1": "dc79baafd74bb8803ed156d4efacf1e8053352fd",
+      "metadataHex": "00000000000000000000000000000000",
+      "first64BytesHex": "00000000000000000000000000000000badbcb11ffffffff00000000ffffffff30000000800000001c0100007100000003000000000000000000000007000000",
+      "littleEndianWordsAtOffsets16Through60": [
+        298572730,
+        4294967295,
+        0,
+        4294967295,
+        48,
+        128,
+        284,
+        113,
+        3,
+        0,
+        0,
+        7
+      ]
+    }
+  ],
+  "allFirst16BytesZero": true,
+  "allLengthsMultipleOf16": true,
+  "limits": "Integer positions and repeated byte strings are observations only. No header field semantics, operation codes, graph grammar, or runtime behavior established. Identical resource bodies do not imply identical weapon behavior; callers and other parameters differ."
+}

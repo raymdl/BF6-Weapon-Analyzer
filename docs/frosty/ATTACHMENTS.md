@@ -7,6 +7,87 @@ generated from it. The site model is in the [attachment model](../ATTACHMENT_MOD
 game data errors are in [attachment bugs](../ATTACHMENT_BUGS.md). The link path from a
 site choice to its modifiers is in the [data graph](DATA_GRAPH.md).
 
+## Exhaustive source census (1.4.3.0)
+
+The [reviewed primary-root census](../../reference-data/provenance/frosty-audit-branches-reviewed-2026-09-23.json)
+covers all 64 candidate base weapon triples: 6,112 referenced branches, 6,111 referenced
+action objects and 14,015 selector references. All branch/action references resolve within
+this set. Its 358 WPM selector lists support 6,007 selector-to-WB joins. The GS pass
+covers 8,367 binding structures across eight structure types, supporting 5,089
+selector-to-GS joins. The [parent fresh-decode check](../../reference-data/provenance/frosty-audit-branches-validation-2026-09-23.json)
+independently matches every root branch/action reference, selector identity and GS
+binding tuple. Earlier one-structure-type results were incomplete and are superseded.
+Eight references whose target XML was absent were resolved through the catalog and
+hash-checked raw target objects. Layout warnings remain.
+
+The [complete action-field check](../../reference-data/provenance/frosty-audit-action-fields-2026-09-23.json)
+freshly enumerates all 6,115 action objects in those raw bodies. Four are outside
+the branch census: one in M27IAR and three in MP7A2. They have no internal caller
+in their decoded source files; global/native use remains unresolved. All eight
+action fields are retained. In addition to the main selector list, 191 imports
+occur in `Field_f1f008ba`, 135 in `Field_2717f5c2` and 139 in `Field_072fe4eb`.
+These fields include underbarrel and bipod references and require separate joins.
+The earlier selector-to-GS/WB totals cover `Field_7e54e22c` only.
+The [linked Ability ID check](../../reference-data/provenance/frosty-audit-action-ability-ids-2026-09-23.json)
+matches all 139 action IDs to the exact linked Ability's ID. This confirms the
+serialized association for 135 underbarrel and four bipod actions; it does not
+establish when the game executes them.
+
+The [underbarrel secondary-selector trace](../../reference-data/provenance/frosty-audit-underbarrel-parts-2026-09-23.json)
+joins all 135 underbarrel actions across 27 weapons to their parent WB parts.
+Its 190 secondary-selector references yield 393 single-selector matches across
+14 shared parts and three inline parts. These are structural matches, not fully
+evaluated activations. The four M320 families each have base, Plus and Reload
+parts; M26DB has base and Reload parts. Plus parts list the Grenadier trait as a
+second selector. Reload parts list Assault Gadget Reload and contain the same
+`1.1` reload operand. Native selector evaluation and timing remain unresolved.
+
+The shared M320 parts reference `PrimaryFire_M320` and `GS_M320HE`; smoke, AT and
+thermobaric parts also carry distinct projectile references. M26DB contains a
+buckshot firing reference and a separate Dragon's Breath projectile effect with
+priority `9000`. That composition needs native application proof. HK417A2, M4A1
+and XM7 also have inline Generic parts with a draw-step operand of `1`.
+All 40 unmatched secondary references are `U_WPM_UBL_Any` in the checked parent
+WB part lists; they are not evidence of global non-use. The earlier draft's zero
+WPM counts checked only the main action list and cannot describe these paths.
+
+The [SRU membership check](../../reference-data/provenance/frosty-audit-sru-validation-2026-09-23.json)
+freshly validates all five SRU roots and their 186 distinct member targets. The four
+M320 lists share 186 unique entries; M26DB has 183. The three M320-only entries are
+the 1P86, QMK171A and M145MGO optic selectors. Every list repeats ANPAS35_Base at
+indices 68 and 69. None of the SRU member targets overlaps the same action's
+secondary selectors in the 135 checked actions. This confirms membership, not
+whether the game adds, removes or resets these selectors. The repeated entry is
+not a proven gameplay defect.
+
+This is structural coverage, not native activation or multiplayer availability.
+The progression-to-metadata join leaves 537 branches without a matching metadata
+record and one with two matches. A [600-body raw check](../../reference-data/provenance/frosty-audit-branch-metadata-gaps-validation-2026-09-23.json)
+confirms all 537 progression links and targets. None has a reference from the
+scanned `Class_a9b2eb87` metadata class in the captured index. This is a metadata
+join gap, not a missing raw target or proof that the attachment is unavailable.
+A [follow-up grouping](../../reference-data/provenance/frosty-audit-phase1-checkpoint-2026-09-23.json)
+reconciles the 537 branches into 135 known underbarrel choices, 51 default-like
+selector paths, 350 further attachment action candidates and one VSSM branch.
+The 51 paths include 46 `_Empty`-named records and five named optics: one Steiner
+CQT and four ZT410 records. Their exact structural joins are checked; neither
+names nor paths prove default selection or no-op behavior. VSSM branch 93 links to
+`U_ATT_VSSM_Stock`, but has no exact identity join to the separate Folding Stock
+ADS spread receipt. Availability and native activation remain unresolved.
+The [Ultimax follow-up](../../reference-data/provenance/frosty-audit-ultimax-metadata-2026-09-23.json)
+finds that `Short` and `ShortBarrel` share a progression entry, while the captured
+Equipment lists select `ShortBarrel` by exact GUID. This resolves that source
+association without proving that the other record is globally unused.
+
+The [additional Ability census](../../reference-data/provenance/frosty-audit-additional-abilities-validation-2026-09-23.json)
+checks another 142 roots: 135 UBL-labelled and seven melee-labelled records, not
+bipod variants. Their branch arrays are empty, but each has an exact captured caller:
+135 attachment action objects and seven equipment objects. Fresh raw decoding checks
+all 142 roots and all 34 caller files, including both file and object GUIDs. These
+records remain in scope. Empty branch arrays do not mean unused abilities. Their
+other fields and the caller selectors still need review; source links alone do not
+prove runtime activation.
+
 ## Composition rules
 
 - A package's `WME_*` effects apply to a weapon only when that weapon's WB lists the
@@ -32,6 +113,39 @@ site choice to its modifiers is in the [data graph](DATA_GRAPH.md).
   are True). An unset switch does not prove availability.
 - Source presence is not availability: SVK-8.6 Adjustable Angled and AK-205 Underslung
   Mount exist in the data but are not offered in game, and were removed.
+
+## Unmatched branch follow-up (1.4.3.0, 23 September 2026)
+
+The [reviewed branch evidence](../../reference-data/provenance/frosty-attachment-branches-reviewed-2026-09-23.json)
+keeps source identities separate from live availability:
+
+- M4A1 `ERG_Magwell` has a zero-cost MagazineWell category entry in the Ergonomic
+  slot and selects `U_DPF_MagWell_Empty`. It is distinct from `ERG_FlaredMagwell`,
+  which selects magwell-flare art and its shared modifier selector. Do not create
+  a second player-facing Magwell Flare from the plain record; its purpose remains
+  unresolved. Both inspected registry defaults are false.
+- `AD_M4A1_ERG_Flare` directly resolves to **Mag Flare** (`ECC4BCCE`) and
+  **Enables reloading while aiming down sights.** (`ECC670D6`) in the current US
+  strings export. This corrects a transcription error in the worker draft that
+  made the strings appear absent. UI wording is not native effect activation proof.
+  The [exact package trace](../../reference-data/provenance/frosty-mag-flare-capability-2026-09-23.json)
+  links the selected FlaredMagwell package to `WME_ADSReload_P10`, which contains
+  boolean settings and no established reload-speed multiplier. A future utility
+  indicator could distinguish this from a numerical stat change; active behavior
+  and weapon eligibility still need validation.
+- BROD 3 is source `BREN3`, as established by the weapon identity mapping.
+  Its treated-barrel metadata directly names **Cryo**. The associated registry
+  default is true; the current live offer is unverified.
+- All 15 Subsonic Frangible attachment/progression/ability branches have individual
+  registry references with true defaults. File hashes and all 15 registry values
+  were checked, with three branch samples independently decoded. Current menu
+  offers and server overrides remain unverified; true defaults are not proof of
+  active exclusion or gameplay behavior.
+
+The current-build strings file is under `builds/1.4.3.0/xml/Common/Localization/`;
+the XML overlay holds a different strings snapshot. The reviewed report records
+the exact current file hash. Stale metadata XML was replaced by raw decoding for
+this review; conservative descriptor-layout warnings remain.
 
 ## Generated site values
 
@@ -59,8 +173,12 @@ input hashes change. Commands: [maintenance](../../MAINTENANCE.md#regenerate-att
   generate from matched sibling modifiers; three extra selectors have no binding and are
   recorded, not assigned values
   ([evidence](../../reference-data/provenance/frosty-handling-unbound-selector-review.json)).
-- **Green laser.** The normal LA-23 has the hip step; its `_IR_SP` single-player variant
-  does not. The site maps only the normal attachment.
+- **Green laser.** The earlier handling trace finds the hip step on normal LA-23,
+  but not on the `_IR_SP` variant. The current DRS-IAR mapping retains normal
+  LA23PEQ and LA-23 IR SP alternatives. Their runtime selection and the latter's
+  mode exclusivity are not established; the suffix alone does not exclude it.
+  The [visibility review](../../reference-data/provenance/frosty-site-laser-visible-2026-09-23.json)
+  preserves both source records.
 - **Shotgun tube variants.** M1014 4 Rnd / 4 Fast are `MAG_Compact1` / `Compact2`; M87A1
   5 Rnd / 5 Fast are `590A1 MAG_Compact1` / `Compact3`. Variant values (99 tube; 4 and 5
   speedloader) identify the variants; they are not reload multipliers.
@@ -71,6 +189,67 @@ input hashes change. Commands: [maintenance](../../MAINTENANCE.md#regenerate-att
   (bug entry 7).
 - **Suppressor identities.** `ImprvdSuppressor01` is CQB, `ImprvdSuppressor02` is
   Lightened.
+
+### Magazine capacities and reload operands (23 September 2026)
+
+The [current magazine review](../../reference-data/provenance/frosty-site-magazines-2026-09-23.json)
+traces all 287 selections through their exact ability actions, selectors and WB
+effect lists. It checks 569 site leaves against descriptor-derived raw values.
+The site reports nominal magazine rounds: 263 selected capacities are one below
+the raw configured count, DB-12 is two below, and 23 match directly. This is a
+representation and loaded-state question, not an automatic correction. The
+current `Mag Size` tooltip says rounds in the selected magazine; `sim/core.js`
+does not use that number for cadence. A future loaded-capacity value should state
+whether chambers are included and distinguish spawn, empty and tactical reloads.
+
+Of 282 reload-tier leaves, 101 select the raw 1.13 multiplier, one selects 1.277,
+and 179 are neutral with no reload-speed effect in their selected graph. M121 A2
+50 Fast is the exception: its selected package replaces `ReloadInfoArray`, with
+`5.6 / 1.009009 ≈ 5.550` seconds. The site's generic tier gives
+`6.267 / 1.13 ≈ 5.546018` seconds. A selection-specific animation override is a
+source-backed proposal; native activation is still unverified. Ordinary 60 fps
+shot timing cannot reliably distinguish this roughly four-millisecond difference.
+
+The five existing magazine animation overrides are also source-backed after
+time/speed division and millisecond rounding: M240L 75/100 Rnd 7100 ms, M60
+50 Rnd 4534 ms, PP19 53 Rnd 2667 ms and RPK-74M 95 Rnd 2950 ms.
+The [exception review](../../reference-data/provenance/frosty-reload-exceptions-leaves-2026-09-23.json)
+retains the separate PP19 bug and composed-observation evidence.
+
+### Ammunition effect operands (23 September 2026)
+
+The [current ammo review](../../reference-data/provenance/frosty-site-ammo-effects-2026-09-23.json)
+checks 83 effect leaves against exact attachment selectors and descriptor-offset
+raw fields. All 337 applicable weapon/ammo comparisons agree. These include
+subsonic recoil shifts of +1, penetration shifts of -6 on M2010/SV-98/PSR and -7
+on Mini Scout, and the -9 hip-spread tier shifts on the four site shotguns.
+The seven shared recoil/movement tier values agree for every applicable current
+selection after per-weapon overrides are accounted for.
+
+The same review checks the six shared spotting factors and the frangible/flechette
+regeneration additions. Selected source operands support the site's index sums,
+reversed spread/movement ladder signs, spot factors and delay additions. Native
+activation and composition order remain separate questions.
+
+All 77 class-based collateral fallback values are inactive for current choices:
+all 328 selectable weapon/ammo pairs have a per-weapon collateral override. Their
+retained values are software fallback data, not verified effective mechanics.
+
+The [subsonic velocity review](../../reference-data/provenance/frosty-site-ammo-velocity-2026-09-23.json)
+sources all 26 tier inputs from selected velocity factors and checks the slug ADS
+spread increment (0.05 in both source movement branches for four shotguns).
+Five screenshot-based absolute velocity inputs discard source precision:
+
+| Weapon / ammo | Site input | Base source velocity × selected factor |
+|---|---:|---:|
+| M417 A2 Subsonic / Subsonic HP | 273 m/s | 560 × 0.488570005 = 273.599203 m/s |
+| PW7A2 Subsonic Tungsten | 341 m/s | 576 × 0.592999995 = 341.567997 m/s |
+| USG-90 Subsonic / Subsonic HP | 265 m/s | 543 × 0.488570005 = 265.293513 m/s |
+
+Every integer equals the floor of the source-derived candidate. This can explain
+the original menu transcription; it is not evidence that the menu is wrong.
+Propose using the selected source coefficient in the velocity model, while keeping
+ammo/barrel composition as an explicit native-consumer limit. No site value changed.
 
 ### Recoil operands
 
@@ -93,6 +272,74 @@ Applied follow-ups:
 - Slim Angled: moving-ADS index −1 on PSR, SV-98, L115, Mini Scout and
   Interdictor (bug entry 1a). KS18K is excluded; see the trace below.
 
+The [current muzzle operand audit](../../reference-data/provenance/frosty-site-muzzle-operands-2026-09-23.json)
+checks 172 recoil/spread/handling leaves: 151 match selected source operands and
+17 are neutral or inactive software fallbacks. Four source questions remain.
+PP-19 Flash Comp has no GS selector binding in the captured body, and its WB package
+contains a spotting effect without a recoil modifier. The site nevertheless applies
+1.2 ADS/hip recovery factors and a 0.05-second duration override. L115 Standard
+Suppressor also lacks the GS hip-spread index binding that would explain the site's
++1 spread tier (source index -1). These bounded graph results do not prove native
+absence. The capture plan compares these exact choices with their controls.
+
+### Current grip and barrel field review (1.4.3.0, 23 September 2026)
+
+The [grip/sight leaf review](../../reference-data/provenance/frosty-site-grips-sights-effect-review-2026-09-23.json)
+covers 167 site entries. Its current selected GDM trace contains 535 moving-ADS
+bindings in `Field_2ffeb6ac`, nine distinct-target KS18K bindings in `Field_b30a73ed`,
+and 151 hip bindings in `Field_b53510be`. Compare effective per-weapon overrides,
+not just shared catalog values. The QD Grip Pod and sniper Slim Angled outliers
+match their mapped source operands. A missing direct selector operand is retained
+as a bounded source gap, not proof of zero effect. The nine `noEffect` flags are
+Analyzer UI flags; they are not native boolean findings.
+
+The [heavy-family barrel review](../../reference-data/provenance/frosty-site-barrel-ads-spread-2026-09-23.json)
+checks 61 selected weapon/barrel choices. Heavy, Heavy Extended and Cryogenic
+match the site's four ADS spread factors: increment `0.666667`, firing decrease
+coefficient `1.837117`, firing offset `0.666667`, and not-firing offset `0.666667`.
+All 488 operand checks agree across both source branches, decoded values and raw
+bytes. The [barrel velocity review](../../reference-data/provenance/frosty-site-barrel-velocity-2026-09-23.json)
+sources `0.8/1.25` factors; the site's `-1/+1` tiers encode those values through
+`0.8^(-tier)`. This does not claim that the native source stores those tier integers.
+Native activation, priority and composition remain unresolved.
+
+### Ergonomic attachment field review
+
+The [ERGOS receipt](../../reference-data/provenance/frosty-site-ergos-2026-09-23.json)
+records 51 effect leaves with exact selected attachment routes and raw bytes.
+Draw timing uses the selected WME's `Field_9540bd8e=+1`; the site's `-1` shift is
+its inverse representation because the resolver subtracts the shift. Mag Catch's
+`1.063` maps to `Class_9705264b/Field_348b8cd1` in `WME_ReloadSpeedSmall_P05`.
+VSSM automatic RPM maps to the WB's `799.999` RateOfFire, distinct from its single
+shot rate and the Folding Stock's separate single-fire modifier.
+
+Buffer's `visualRecoil=-1` only selects the site's "Decreased" badge. Do not read
+it as a measured magnitude or a native `-1` operand. The selected package contains
+an opaque `Field_c4814c93` with `-1/0` variants and a separate three-component
+`0.75` vector at `Field_3b707594`; their consumers and relation to this badge remain
+unresolved. A recording can test visible motion but cannot identify that anonymous
+field by itself. Other unmapped recoil tier and duration leaves retain their exact
+source routes as semantic blockers; equal numbers are not accepted as mappings.
+
+### ADS Bolt and sniper cadence
+
+The [ADS Bolt source receipt](../../reference-data/provenance/frosty-site-ads-bolt-cadence-2026-09-23.json)
+checks the site ID `ads_bolt` (DLC Bolt), available for M2010ESR, SV98M, MRAD and
+L115A3. Its exact selector binds `WPM_ERG_DLCBolt_W25`, which imports
+`WME_ADSBoltRechamber_P25`. The latter stores `Field_68c40b57=true` (one byte
+`01` at offset 144). The package supplies a capability flag, not a demonstrated
+25% speed bonus. Mini Scout and Interdictor are not in this attachment's current
+four-weapon choice set; their base behavior needs separate comparison.
+
+The Analyzer stores `noEffect=true` and does not apply an ADS Bolt cadence branch.
+The proposed output must distinguish the next accepted shot from the next shot
+with ADS fully restored. Without the attachment, ADS exit, rechambering and ADS
+entry may affect the latter. Their overlap and the meaning of the zoom completion
+fraction are unresolved, so adding three full durations is not yet justified.
+Keep Recon's separate bolt-speed modifier fixed during the attachment comparison.
+See [weapon timing](WEAPONS.md#timing-fields) and
+[capture rank 6](../working/BF6_CAPTURE_PRIORITIES.md#6-reload-timing).
+
 ## Lights
 
 All twelve `GBM_Increase_Hip_{S1..S5,A30..A60}_RGT_P10` assets hold the same ten entries:
@@ -110,6 +357,18 @@ Links cover 62 weapons. The site applies these factors to 137 supported light
 selections, treats a selected light as on, and does not model idle recovery. Native
 activation is not decoded.
 
+### Laser visibility remains a semantic blocker
+
+The [visibility review](../../reference-data/provenance/frosty-site-laser-visible-2026-09-23.json)
+traces the site's `laserVisible` flag to its enemy-visibility tooltip. The inspected
+candidate `Class_bc0062dc/Field_32cf19f5` is true for every laser type, including
+5 mW Red, 50 mW Violet and the Red combination device, whose site flags are false.
+This rules out a direct use of that flag as the site's classification; it does
+not prove that those site values are wrong. The candidate's meaning and native
+visibility consumer are unknown. Keep source alternatives and their scope limits
+in the receipt. The rank-11 paired beam/dot test checks the displayed claim without
+expanding FX or material graphs.
+
 ## Sway
 
 206 weapon-sway and 3 camera-sway objects. Shared P05/M05/P10 factors are
@@ -120,11 +379,64 @@ site's six sight categories do not identify one source optic. `WME_DynamicPivot`
 `Field_f235e44f`/`Field_a4f104cc` multipliers; canted iron sights set only
 `Field_f235e44f` (2.5 or 3).
 
+The [23 September optic discovery](../../reference-data/provenance/frosty-optic-discovery-2026-09-23.json)
+captured `Affector_HoldBreath` and `PresEx_HoldBreath` from the registered hotfix
+(Head 4892087). The expression's external pointer resolves to the existing
+`SoldierOnlyPublicChannels.IsSniperHoldingBreath` object; the collection also
+contains `InputBreathControl`. The expression references compiled resource
+`08a1a89d496bbf73`. These records do not establish hold duration, sway reduction,
+or standard multiplayer activation. A bounded search of 230 older soldier raw
+captures found no caller of the expression. Keep breath-control modeling blocked
+on an activation/consumer trace or controlled measurements.
+
+The later [multiplayer ability review](../../reference-data/provenance/frosty-multiplayer-ability-candidates-reviewed-2026-09-23.json)
+found a direct `Ability_StanceFlak/Field_a21a7b29[0]` import of that same
+`Affector_HoldBreath`. Its separate StanceFlak expression imports `CurrentStance`,
+`IsBenefittingFromBipod` and the left/right/up mounted channels. This supplies an
+authored ability caller for the affector. It does not decode the condition, identify
+an active standard MP class, or establish a breath-control/protection bonus.
+
+## VSSM barrel ADS follow-up (1.4.3.0, 23 September 2026)
+
+The [reviewed source trace](../../reference-data/provenance/frosty-vssm-ads-reviewed-2026-09-23.json)
+confirms two separate paths. `GS_VSSM/Field_4d248d91[11]` binds
+`GID_ADSTime_BRL_P10` to the regular-barrel selector
+`2d77eab2-17a5-48bb-b917-3a35913e0dd4`. Both integer modifier operands are 1.
+The WB package list is `Class_542ac52c/Field_0cd9f20f[72:74]`: its regular and
+no-port packages contain four silenced/audio/spotting effects each, with no ADS
+animation or FOV timing effect in either package.
+
+Six raw assets passed independent hash and file-GUID checks. The GS/WB containing
+layouts retain decoder warnings. The raw enum value 0 is labeled `Field_84e57075`
+in XML; that label alone does not identify a native calculation.
+
+Keep the separate GS tier visible in research. It is not evidence to add another
+delay to the current 250 ms WB-derived value. A controlled regular/ASM barrel
+comparison with the factory optic and a fixed magazine, or the native GS consumer,
+is still needed to determine its effect on completed ADS.
+
+The [63-weapon ADS comparison](../../reference-data/provenance/frosty-site-ads-2026-09-23.json)
+also identifies an Interdictor exception. Full Angled selector `8ad0e9cd…` maps to
+GS binding 1; Slim Angled has that selector and `8cf80d8c…`, mapping to bindings
+1 and 2. Both bind the +1/+1 ADS operand package. The site gives one tier to each
+grip. Whether the native bindings add, deduplicate or use priority is unresolved.
+The ranked capture plan gives 300 versus 366.667 ms predictions for Slim Angled
+with Basic barrel, Standard ammo and 5 Rnd held fixed.
+
 ## Spotting candidates
 
-The old audit multiplies two linked values into 0.014 for M39 EMR/M417 A2 CQB and
-DRS-IAR/M2010 ESR Lightened; the site uses 0.14 (21 m). This is a composition question,
-not proof of 2.1 m ([open questions](OPEN_QUESTIONS.md)).
+The [exact-choice audit](../../reference-data/provenance/frosty-site-spotting-2026-09-23.json)
+checks 653 muzzle, 233 barrel and 328 ammo choices. Four selections bind an
+SP-prefixed suppressor package carrying 0.1 at priority 9001: M39 EMR/M417 A2
+CQB and DRS-IAR/M2010 ESR Lightened. The site uses 0.14 (21 m); a controlling
+0.1 package would give 15 m. Do not multiply the linked packages into 0.014
+without native composition evidence. A prefix alone does not exclude these
+multiplayer-bound packages.
+
+VSSM's actual default selects `vssm_suppressed`, whose package imports P35
+(world 0, minimap 0.06); the site gives 0/9 m. PP-19 Flash Hider and Flash Comp
+both bind `WME_SpotRange_3D_P10` (world 0, minimap 1), matching site factors.
+These checks resolve exact associations; activation and priority remain open.
 
 ## Optic categories and costs
 
@@ -177,8 +489,18 @@ large the weapon, optic and arms are drawn, not the world zoom.
   log magnification). 6× to 10× scopes use 16–28; red dots and low-power optics mostly
   28–44; at 3.50× the SDO has 34 and the MGO 48. Read the value per part.
 - **Rejected causes.** Riser model height (same model and aim), the
-  `Field_149939ab`/`Field_e9129d03` pair (1.25–1.3 on some riser parts; the MRO has no
-  pair) and the zoom levels.
+  `Field_149939ab`/`Field_e9129d03` pair (1.25–1.3 on some riser parts; the reviewed
+  MRO blocks have the pair at 1.0, without that non-unit value) and the zoom levels.
+
+The [23 September raw review](../../reference-data/provenance/frosty-optic-parts-2026-09-23.json)
+confirms the distinct M2010 paths: WB part entry 15 selects local object 34, which
+leads through object 41 to model/render object 6 (55); LERT's local object 30 leads
+through 42 to object 5 (59). Shared parts at entries 11 and 48 hold 34 and 20.
+The local render objects retain layout warnings. Named GRX anchors identify the
+modifier structure, but do not establish native precedence. Do not treat array
+order as priority or these render records as aiming-controller overrides.
+The same review reads the Riser field pair as 1.3 on RMR and 1.2 on Acro P2;
+sampled RMR base and MRO values are 1.0. The pair's physical meaning remains unknown.
 
 ### Iron sights
 
@@ -208,9 +530,64 @@ blueprint links it. The G36 built-in sights use `Aim_Fast_1x25` and
 
 ### Recheck after an update
 
+**PiP setting (1.4.3.0).** EA documents a new switch: disabled uses full-screen
+FOV zoom; enabled combines that with extra zoom inside the optic. EA states that
+total magnification stays unchanged. [Official update notes](https://forums.ea.com/blog/battlefield-game-info-hub-en/battlefield-6-update-1-4-3-0/13707600).
+The raw `Aim_03x50_PiP` comparison adds an exact reference to
+`Common/GameSetup/Options/Graphics/OptionEnablePiPZoom`; all shared decoded values
+match the older capture. The option record contains `EnablePiPZoom` and `true`,
+which does not establish the player's effective setting. Record PiP on/off with
+camera FOV and ADS FOV settings in future optic comparisons. The documented
+behavior does not clear nested decoder warnings or prove a native formula.
+[Source review](../../reference-data/provenance/frosty-pip-review-2026-09-23.json)
+and [setting context](../../reference-data/provenance/frosty-pip-setting-context-2026-09-23.json).
+
 Compare `opticRenderFovByPart`, `riserFamilyLinksByWeapon` and `ironSights` in a new
 dated report with this one. All 1,810 optic parts with their own aim zoom to the
 magnification in their UI label.
+
+### Visibility and zeroing research
+
+The [bounded glint trace](../../reference-data/provenance/frosty-optic-glint-reviewed-2026-09-23.json)
+resolves the M2010 ESR iron-sight attachment through its ability action to
+`U_WPM_IronSights`, which matches the selector of `WPM_NoScopeGlint` in the
+weapon part list. Its modifier references
+`WeaponLensFlareData_NoFlare`; the target's `Field_3062d390` array is empty.
+The decoy anti-glint affector selects a separate unlock/package that references
+the same target. The checked 6P67 part list lacks `WPM_NoScopeGlint`; this does
+not establish whether the 6P67 can produce glint through another path. Active
+multiplayer selection and a gameplay distance threshold are not established.
+
+The narrow discovery pass found no zeroing name under gameplay/hardware/setup
+folders. A wider catalog check found standard-MP zeroing HUD routes and a
+RangeFinder weapon package. This is why a name-search miss is not proof that a
+mechanic is absent. The [reviewed UI/package trace](../../reference-data/provenance/frosty-zeroing-reviewed-2026-09-23.json)
+links the multiplayer widget to `ZeroingDistance`, and separately links the
+rangefinder package to `Has Rangefinder`. The package has two true booleans;
+their individual names and native application are not established. The
+[weapon zeroing blocks](WEAPONS.md#zeroing-source-configuration-1430-23-september-2026)
+provide named scalar limits and raw integer lists, with separate runtime limits.
+
+### SGX suppressor sway identity (1.4.3.0, 23 September 2026)
+
+The [current SGX lineage review](../../reference-data/provenance/frosty-site-sgx-sway-lineage-2026-09-23.json)
+traces exact attachment actions and selectors to MPX WB local object 20,
+`Class_2fea847d/Field_90fd0310`. Its raw value is `0.9752820134` (offset 5156,
+`15ac793f`). The wrapper lists the ConditionalExtended selector used by Long
+Suppressor (SRD9) and CQB Suppressor (Compact Streamer). Light Suppressor
+(SAI Cobra) selects a different package and does not share that selector.
+
+The site's SGX Light Suppressor override `0.975282` therefore has a likely stale
+attachment identity. The proposal is to move it to CQB Suppressor: Light's displayed
+sway delta would change from -2.5% to neutral, and CQB from neutral to -2.5%.
+Long's `1.462923` equals the local factor times its selected `WME_WSway_M05`
+factor `1.5`; keep it as a source-compatible composition candidate. Current raw
+hashes and exact attachment XML identities were checked separately from the older
+13 September provenance. Native selector activation and multiplication remain
+unproved. The local wrapper also lists a second selector; a shared selector alone
+does not establish whether either or both are required. No production value was
+changed. The paired capture is listed under
+[optic framing](../working/BF6_CAPTURE_PRIORITIES.md#8-optic-framing-and-pip).
 
 ## Evidence
 

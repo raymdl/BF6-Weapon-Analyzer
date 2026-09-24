@@ -1,0 +1,285 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "scope": "Evidence-based cosmetic-role rules for the BF6 1.4.3.0 weapon/attachment audit. Catalog-family census and representative EBX declared-type checks; no pixel/art review or runtime claims.",
+  "correction": {
+    "supplements": "docs/working/FROSTY_AUDIT_NAMESPACE.md",
+    "correction": "An asset may be cosmetic-only while consumed in multiplayer. MP use does not disqualify its cosmetic role. Exclude only the appearance-only branch from gameplay-mechanics analysis after positive type/content and reference evidence shows no configuration, compatibility, combat, handling, ammunition, optic, or other gameplay role. Preserve MP availability/ownership links.",
+    "priorReport": "The dated namespace report is preserved. This supplement corrects its overly restrictive no-MP-consumer exclusion criterion."
+  },
+  "source": {
+    "catalogPath": "../BF6 Datamining/builds/1.4.3.0/capture/weapon-audit-2026-09-23/asset-catalog.json",
+    "catalogSha256": "645243bffa7631df81289065ea82cd49dae480f5b67c2116b03cf4e50fcf2c1a",
+    "catalogBytes": 117928309,
+    "catalogAssets": 467208,
+    "gameHead": 4892087,
+    "sdkVersion": 4414275,
+    "descriptorPath": "../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+    "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+    "classGuidsPath": "../BF6 Datamining/FrostyToolsuite-battlefield6/FrostyPlugin/Sdk/ClassGuids.txt",
+    "classGuidsSha256": "06a5ea8ff3d0773f7206db81a12bdb993e3235ec7069c3f5a9d7e0b56a6b354f",
+    "capture": {
+      "newRoot": "../BF6 Datamining/builds/1.4.3.0/capture/weapon-audit-2026-09-23/raw",
+      "rawStatusPath": "../BF6 Datamining/builds/1.4.3.0/capture/weapon-audit-2026-09-23/raw-status.jsonl",
+      "newRootRawStatusSha256": "1f6ec91aea8fb9291274a2fdfa8521b4b65c4bbfef280e2c3c5d28181a723d34",
+      "newRootSuccess": 29377,
+      "newRootFailures": 0,
+      "newRootBytes": 17223770,
+      "weaponNamespaceCatalogRecords": 49285,
+      "uniqueSuccessAcrossFourCaptureRoots": 49285,
+      "missingWeaponNamespaceBodies": 0,
+      "otherRoots": [
+        "collection",
+        "collection-dependencies",
+        "collection-review-2026-09-16"
+      ]
+    }
+  },
+  "method": {
+    "familyCounts": "Count capture/weapon-audit-2026-09-23/asset-catalog.json assets[] whose path.casefold() begins common/hardware/weapons/ and matches case-insensitive slash-segment family regexes. Counts overlap and are catalog records.",
+    "typeReview": "Decode representative RIFF EBX bodies with scripts/frosty-ebx-decode.py and the Head 4892087 hotfix SharedTypeDescriptors. Map Class_* hashes through descriptor GUID prefixes to FrostyPlugin/Sdk/ClassGuids.txt using the same GUID convention as scripts/frosty-material-grid-inventory.py. Report unique names only; retain decoder ambiguity/unresolved markers.",
+    "limits": [
+      "Lexical paths discover families; they do not prove cosmetic-only role.",
+      "Representative type checks do not estimate type proportions within families.",
+      "Raw coverage is complete for the weapon namespace, but reference closure and visual interaction review are bounded.",
+      "SQL ledger totals supplied by the operator (24017 captured, 22150 decoded) were not re-derived here; namespace capture coverage is independently counted from raw-status files."
+    ]
+  },
+  "familyCounts": {
+    "unit": "catalog records; case-insensitive path matching",
+    "weaponNamespace": 49285,
+    "charmsSegment": 2478,
+    "artSkinsSegment": 22827,
+    "camoSegment": 513,
+    "decalsSegment": 774,
+    "attachmentsSegment": 8896,
+    "weaponModifiersSegment": 728,
+    "opticWordMatches": 4044,
+    "prefixCounts": {
+      "charms": {
+        "T": 1672,
+        "ob": 524,
+        "U": 261,
+        "OB": 16,
+        "u": 2,
+        "MDT": 2,
+        "MDR": 1
+      },
+      "skins": {
+        "T": 9295,
+        "U": 8275,
+        "OV": 3867,
+        "ob": 1027,
+        "SPO": 123,
+        "u": 96,
+        "OB": 87,
+        "WEP": 18,
+        "ov": 13,
+        "WEPATT": 12,
+        "t": 6,
+        "Skins": 4,
+        "Ov": 4
+      },
+      "camo": {
+        "U": 202,
+        "T": 171,
+        "SPO": 140
+      },
+      "decals": {
+        "U": 463,
+        "T": 245,
+        "SPO": 66
+      },
+      "attachments": {
+        "T": 4979,
+        "OV": 1380,
+        "U": 1161,
+        "ob": 1021,
+        "WPM": 94,
+        "MDT": 71,
+        "OB": 53,
+        "VE": 50,
+        "MDR": 43,
+        "AttachmentCategory": 12,
+        "WEPATT": 12,
+        "WM": 9,
+        "ov": 4,
+        "ve": 2,
+        "u": 2,
+        "DiceFeature": 1,
+        "RET": 1,
+        "Ov": 1
+      },
+      "weaponModifiers": {
+        "WPM": 270,
+        "U": 239,
+        "WME": 79,
+        "GCR": 34,
+        "GRM": 29,
+        "GBM": 28,
+        "GDM": 17,
+        "WM": 6,
+        "SP": 6,
+        "MPDarkness": 6,
+        "GID": 5,
+        "SRU": 5,
+        "CMU": 4
+      }
+    }
+  },
+  "rules": [
+    {
+      "family": "Charms",
+      "evidence": {
+        "segment": "/_Charms/",
+        "count": 2478
+      },
+      "rule": "Exclude a positively identified charm-only unlock or visual branch from recoil, damage, ammunition, compatibility, and weapon-stat effect searches. An expected MP consumer is allowed; preserve MP ownership/availability links.",
+      "exceptions": "Do not drop the whole folder. It contains 524 lower-case ob-prefixed and 16 OB-prefixed records, plus 261 U-prefixed wrappers. A decoded charm OB_WEPCHRM_LegendaryBenchmark_3p.physics is PhysicsAsset. Retain charm model, physics, animation, collision, attachment parent, and sightline records for relevant visual/interaction analysis. Do not infer harmlessness from CHE/CHL/CHR names."
+    },
+    {
+      "family": "Skins and finishes",
+      "evidence": {
+        "segment": "/Art/Skins/",
+        "count": 22827,
+        "prefixCounts": {
+          "T": 9295,
+          "U": 8275,
+          "OV": 3867,
+          "ob": 1027
+        }
+      },
+      "rule": "Mark a concrete leaf appearance-only when declared type/content and its reference path establish it as a skin material or visual variation, with no functional weapon/attachment fields. It may have MP consumers. Retain the skin-to-weapon relation as availability metadata.",
+      "exceptions": "Never exclude the subtree or all U/OV/OB records. A decoded T asset is TextureAsset, U_MDV is UnlockAsset, and M250 skin OV is ObjectVariation. UnlockAsset describes a wrapper; ObjectVariation can select mesh as well as material. Follow the exact child refs. Retain geometry, physics, optic, compatibility, and gameplay-bearing children until independently classified."
+    },
+    {
+      "family": "Camo and paint",
+      "evidence": {
+        "segment": "/_Textures/Camo/",
+        "count": 513,
+        "prefixCounts": {
+          "U": 202,
+          "T": 171,
+          "SPO": 140
+        }
+      },
+      "rule": "A TextureAsset can be excluded from mechanics extraction when refs prove it is only a camo/material assignment. MP use does not change that role.",
+      "exceptions": "Resolve U and SPO wrappers and their referenced content; tokens are not mode proof. Keep render data for visibility, emissive, scope, or sight-contrast review."
+    },
+    {
+      "family": "Decals",
+      "evidence": {
+        "segment": "/_Textures/Decals/",
+        "count": 774,
+        "prefixCounts": {
+          "U": 463,
+          "T": 245,
+          "SPO": 66
+        }
+      },
+      "rule": "A decal texture leaf may be marked cosmetic for combat-stat analysis after ref closure confirms an appearance-only decal assignment.",
+      "exceptions": "Keep U_WEPDEC unlock/assignment links. Retain visual review when placement or contrast can affect identification, reticle clarity, or sightlines. T/U/SPO alone is insufficient."
+    },
+    {
+      "family": "Weapon bases and attachment geometry",
+      "evidence": {
+        "attachmentSegment": 8896,
+        "weaponNamespace": 49285
+      },
+      "rule": "No directory-wide cosmetic exclusion. Preserve base weapon geometry, model blueprints, functional attachment parts, and owner links in their appropriate geometry, compatibility, and gameplay branches.",
+      "exceptions": "A decoded SV98M base graph contains ObjectBlueprint, StaticModelEntityData, and PartComponentData; decoder marks layouts ambiguous. Retain without interpreting offsets. Charm physics and skin ObjectVariation samples also require branch-specific decisions."
+    },
+    {
+      "family": "Optics, sights, and modifiers",
+      "evidence": {
+        "opticNameTokenMatches": 4044,
+        "weaponModifiersSegment": 728
+      },
+      "rule": "Keep optic/sight WPM branches, sight alignment, zoom, reticle, and anti-glint/lens-flare selector sources even if the optic also has cosmetic children. Filter a proven appearance-only child texture separately.",
+      "exceptions": "Reviewed source connects WPM_NoScopeGlint through a selector-gated modifier to WeaponLensFlareData_NoFlare. A separate report reviews M2010 SDO/LERT and RMR riser fields. These reports do not establish native activation; preserve the source branches."
+    }
+  ],
+  "decodedSamples": [
+    {
+      "path": "Common/Hardware/Weapons/_Charms/CHE0003/Art/U_ATT_WEPCHRM_CHE0003",
+      "type": "UnlockAsset",
+      "layoutAmbiguous": false,
+      "rawSha256": "aeef091f0291bf035c3868c7bdde1a76fcfd613a2f80701e9d11c91a5a119a65",
+      "bytes": 356,
+      "interpretation": "Unlock wrapper only; referenced charm role still needs ref resolution."
+    },
+    {
+      "path": "Common/Hardware/Weapons/_Charms/LegendaryBenchmark/Art/OB_WEPCHRM_LegendaryBenchmark_3p.physics",
+      "type": "PhysicsAsset",
+      "layoutAmbiguous": false,
+      "rawSha256": "817b4694e9896a2ec74ada7669989f4beddd30411a6b22a07c52b89f4fb116b2",
+      "bytes": 492,
+      "interpretation": "Retain for geometry/interaction review; no runtime effect inferred."
+    },
+    {
+      "path": "Common/Hardware/Weapons/_Textures/Camo/T_WEP_Camo_WCR0032",
+      "type": "TextureAsset",
+      "layoutAmbiguous": false,
+      "rawSha256": "011242c765c849052659f7c8fa2fd7c88ab649263786826b3bb6a090619263e8",
+      "bytes": 326,
+      "interpretation": "Texture type confirmed; assignment consumers determine cosmetic-only role."
+    },
+    {
+      "path": "Common/Hardware/Weapons/_Textures/Decals/U_WEPDEC_Primary_WTR0002",
+      "type": "UnlockAsset",
+      "layoutAmbiguous": false,
+      "rawSha256": "02a58f7021c88f30f3418e9a1985eecaacc548b55699962b459ca96f442fa4bf",
+      "bytes": 360,
+      "interpretation": "Keep unlock/assignment links; this is not the decal texture leaf."
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/M250/Art/Skins/WSEr0036/OV_WEP_MG_M250_WSEr0036_Base_1P",
+      "type": "ObjectVariation",
+      "layoutAmbiguous": false,
+      "rawSha256": "58ae007bfb6449cd8b59fcc0efaa9c0da3ee1ac76fd9e431b48ffe7152f34ecb",
+      "bytes": 332,
+      "interpretation": "Skin-context variation; path alone does not prove material-only behavior."
+    },
+    {
+      "path": "Common/Hardware/Weapons/MG/M250/Art/Skins/WSEr0036/T_WEP_MG_M250_WSEr0036_Base_01_NMT",
+      "type": "TextureAsset",
+      "layoutAmbiguous": false,
+      "rawSha256": "454c80c7f9dc51be078bad844aed6bd789b800d399e1c97863856256f1325cde",
+      "bytes": 354,
+      "interpretation": "Skin texture leaf; consumer refs still determine role."
+    },
+    {
+      "path": "Common/Hardware/Weapons/BoltAction/SV98M/Art/OB_WEP_BoltAction_SV98M_Base_1P",
+      "types": [
+        "ObjectBlueprint",
+        "StaticModelEntityData",
+        "PartComponentData"
+      ],
+      "layoutAmbiguous": true,
+      "unresolvedTypes": [],
+      "rawSha256": "dc46c7f88ac8649ffc47e59776ebf5f087b3d88040732fd7fe8acf9142faa87f",
+      "bytes": 4198,
+      "interpretation": "Preservation case for base model graph; no layout offsets interpreted."
+    }
+  ],
+  "supportingReports": {
+    "opticGlint": {
+      "path": "reference-data/provenance/frosty-optic-glint-reviewed-2026-09-23.json",
+      "sha256": "8251fac5b07b99bec2f7f3df2d12b3f756089b5271a70999636823598ba50225"
+    },
+    "opticParts": {
+      "path": "reference-data/provenance/frosty-optic-parts-2026-09-23.json",
+      "sha256": "26249e48b3fe2c64bbc8469b424cd7bd45abe2da306cc00bf48fde4d438d7c9d"
+    },
+    "attachmentReferenceBoundary": {
+      "path": "reference-data/provenance/frosty-attachment-reference-boundary.json",
+      "sha256": "2cf4ee878cd6cd4afbbaeac2d14c6a2820924427a1e16b5ae99c0dc641ab1b10"
+    }
+  },
+  "labels": {
+    "cosmetic_only": "Type/content and refs establish appearance-only role; MP consumer allowed.",
+    "cosmetic_visual_review": "Appearance branch retained for geometry, collision, visibility, sightline, reticle, or optic-render review.",
+    "gameplay_candidate": "Branch carries compatibility, modifiers, ammo, handling, combat, optic, or other gameplay configuration.",
+    "unresolved": "Incomplete refs/body, ambiguous layout, missing role review, or mode uncertainty; keep candidate."
+  }
+}

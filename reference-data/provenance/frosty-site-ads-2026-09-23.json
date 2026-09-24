@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "topic": "Analyzer ADS/IDA/AZT exceptions and source audit",
+  "build": {
+    "label": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "collectionStatus": "partial"
+  },
+  "scope": "Multiplayer site weapons only; 63 rows; KSG reference retained in full external report. No runtime proof claimed.",
+  "fullEvidence": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-ads-full-provenance-2026-09-23.json",
+    "sha256": "c21abf656940696197ff933d09d2d51f35bd6f161065ada0e3cc05fdd5dc74c3",
+    "siteRowJoinKeys": [
+      "siteInventory.rows[].siteId",
+      "siteInventory.rows[].sourceWeaponIdentity",
+      "siteInventory.rows[].siteInput.weaponMagDefAdsIndex",
+      "siteInventory.rows[].source.wbWeaponZoomTransitionIndex"
+    ],
+    "purpose": "All 63 source/site rows, exact raw field pointers and hashes, consumers, attachment mappings, and actual Analyzer execution details."
+  },
+  "all63Summary": {
+    "siteWeapons": 63,
+    "siteBaseAdsEqualsWbTransitionIndex": 63,
+    "siteBaseAdsEqualsWbAnimationIndex": 62,
+    "defaultResolvedIndexEqualsWbAnimationIndex": 9,
+    "actualDefaultExecutionRows": 63,
+    "all63AdsCandidateFormulaMaxResidualMs": 0.000342,
+    "candidateFormula": "ADS_SPD_TIERS[i] ~= 1000*AZTT_{Main|Alt}_Weapons_Ti.Field_a89997ad + 2*(1000/60) ms; correlation only, field meaning and selected Main/Alt semantics unresolved."
+  },
+  "sourceBuildInputs": {
+    "siteInventory": {
+      "path": "reference-data/provenance/frosty-site-input-inventory-2026-09-23.json",
+      "sha256": "5e228c65d25dec7c152bc2373ef866ea5cd79621a6cf24abb5c36c22372f798a"
+    },
+    "identityReceipt": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-audit-roster-2026-09-23.json",
+      "sha256": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32"
+    },
+    "weaponFieldsJsonl": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-fields.jsonl",
+      "sha256": "6040e4633851c6d796b4fed231da097f63d45ca6da2e8a79333c9e1ebfb5783a"
+    },
+    "coverageDecoderV5": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+      "sha256": "1fac4aa159b11741943eaf6ae94f64e63928b9fa0f866ca4a1d191897718cf10"
+    },
+    "attachmentsJsonSha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79",
+    "balanceTablesSha256": "e4b2946ab0aaea54a25a6703029994a824da6f1d49c37072a7e7205faa36a08b",
+    "weaponDataSha256": "7a96b89b356d402a557990433f800ca8bb99191e32183380d1f409710d2c9adc"
+  },
+  "consumers": {
+    "IDA": {
+      "fileGuid": "1dfb9dc7-eae2-42b9-a4fb-4429d08d07c0",
+      "route": "Common/Hardware/Common/Arrays/ZoomTransitions/IDA_Weapons",
+      "rawSha256": "388add5d6c9a2ae8e02ae2cd4ef31a51f44a04100b71ce41f37ad2316479d082",
+      "directGSRefs": 66,
+      "siteWeapons": 63,
+      "KSG": 1,
+      "other": [
+        "Minigun",
+        "Lancet"
+      ],
+      "pointers": [
+        "GS Field_5b6caeda/Field_fdc3ebd3 (stationary)",
+        "GS Field_5b6caeda/Field_d9d776d4 (moving)"
+      ]
+    },
+    "AZT_Main": {
+      "fileGuid": "ecf630f4-0107-44ba-932d-669c8c2a0e85",
+      "route": "Common/Hardware/Common/Arrays/ZoomTransitions/AZT_Main_Weapons",
+      "rawSha256": "099dd03a907d5814d0f3d336fc161995266b4eac96af2580ea42e4055412fae2",
+      "directWBRefs": 66,
+      "pointer": "Field_6216fc77"
+    },
+    "AZT_Alt": {
+      "fileGuid": "a5273dfa-62c2-42cb-81cc-d3d4cf35f079",
+      "route": "Common/Hardware/Common/Arrays/ZoomTransitions/AZT_Alt_Weapons",
+      "rawSha256": "db6d4e96c3ebdeeb99ea47edfcfdff6be66399ff85cb718cb44667d5f4775937",
+      "directWBRefs": 66,
+      "pointer": "Field_6bf034da"
+    }
+  },
+  "IDA": {
+    "tableRawSha256": "388add5d6c9a2ae8e02ae2cd4ef31a51f44a04100b71ce41f37ad2316479d082",
+    "orderedIndex0to7Ms": [
+      483.334005,
+      416.667014,
+      350.001007,
+      283.333987,
+      233.334005,
+      183.333993,
+      150.001004,
+      116.667002
+    ],
+    "relationship": "ADS ladder minus one 60 Hz frame within rounding. Do not use as general idle recovery.",
+    "all63IdleComparisons": {
+      "idleEqualsAnimation": 61,
+      "idleEqualsTransition": 60
+    }
+  },
+  "exceptions": {
+    "VSSM": {
+      "siteBaseAndResolvedIndex": 4,
+      "wbAnimationIndex": 4,
+      "wbTransitionIndex": 4,
+      "IDAIndex": 2,
+      "siteDefaultAdsMs": 250,
+      "GSSelector": "U_WPM_BRL_VSSMBasic_W10",
+      "GSModifier": "GID_ADSTime_BRL_P10",
+      "siteDefaultBarrelDelta": 0,
+      "limits": "WB VSSM barrel package has no ADS effect; GS +1 is a separate path. Native composition unresolved."
+    },
+    "Interdictor": {
+      "siteBaseIndex": 0,
+      "wbAnimationIndex": 0,
+      "wbTransitionIndex": 0,
+      "IDAIndex": 1,
+      "defaultBarrel": "basic",
+      "actualDefaultAdsMs": 433.334,
+      "actualFullAngledMs": 366.667,
+      "actualSlimAngledMs": 366.667,
+      "bindingMap": "Full Angled selector 8ad… -> GS binding 1. Slim Angled selectors 8ad…+8cf… -> bindings 1 and 2. Entry 0 is separate FastAim selector.",
+      "unresolved": "Native sum/dedup/priority semantics of overlapping GS bindings are unknown; raw Field_3f680d24 values are recorded without assigning order meaning."
+    },
+    "L115": {
+      "siteBaseTransitionIndex": 1,
+      "wbAnimationIndex": 2,
+      "actualDefaultResolvedAdsIndex": 2,
+      "note": "Basic barrel changes actual default resolved ADS tier; mobility animation-index correction is separate."
+    }
+  },
+  "rawEvidence": {
+    "adsByteLedgerPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-ads-bytecheck-ledger-2026-09-23.json",
+    "adsByteLedgerSha256": "92be2504aa49a8e35f16c54c1adf3bd4fe175813bcd9a92afaacbd703b092415",
+    "covers": "Exact WB byte offsets for 63; IDA raw array values; AZTT Main/Alt float bytes and all63 WB AZT import references."
+  },
+  "SSA_Sprint": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\ssa-sprint-site-audit-2026-09-23.json",
+    "sha256": "84dcf47d4c17705d918cd76d8c238eb3191fb4750e133828a39b7764d76eba2d",
+    "summary": "63/63 WB source index matches site sprintRecoveryBaseIndex; SSA_Weapons array positions 0..11 bind SprintSettings_T00..T11; both source seconds fields match DRAW_TIME_TABLES.sprint for all 63 within 2us. Source consumption/field semantics remain runtime-unproven.",
+    "siteTablePath": "data/balance_tables.json#/DRAW_TIME_TABLES/sprint",
+    "unitRelation": "Source fields are seconds; ×1000 yields site ms directly, with no extra multiplier needed for numerical equality."
+  },
+  "limits": [
+    "Source presence is not runtime proof.",
+    "IDA is an ADS timing correlation; not general idle recovery.",
+    "AZTT numeric relation is a conditional proposal; no semantics/source runtime proof.",
+    "Interdictor GS containing layout and composition are unresolved."
+  ]
+}

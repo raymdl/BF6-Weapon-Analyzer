@@ -1,0 +1,191 @@
+{
+  "date": "2026-09-23",
+  "build": "1.4.3.1 (EA label from the 18 Sep 2026 status roundup for the 16 Sep client hotfix; live game at recording time). Source values from the hotfix raw WB field inventory (Frosty archive Head 4892087, descriptor SHA-256 99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640), recorded locally under the 1.4.3.0 build folder.",
+  "question": "Which stored empty-reload value governs gameplay when ReloadInfoArray[1].Field_85ff24a0 differs from Field_fc66e75e (SOR-300SC, GRT-CPS: 3.284 vs 3.2 / 3.034)?",
+  "method": "60 fps firing-range recordings, hipfire, default loadouts, magazine fired dry so the reload starts automatically. Time from the last muzzle-flash onset of the old magazine to the first muzzle-flash onset of the new one, from per-frame video timestamps (OpenCV). False flash detections during the reload animation are skipped; one cycle per weapon was checked frame by frame. Precision about +/-1 frame (17 ms).",
+  "weapons": {
+    "m4a1": {
+      "weapon": "M4A1",
+      "siteId": "m4a1",
+      "internalId": "m4a1",
+      "video": "reference-data/Recordings/09232026/Empty Reload/M4A1.mp4",
+      "videoSha256": "8d2130daebcccc352f75ffc8515d838d5e3a8c40b35980fc4951a2c1ebb8daf6",
+      "fireInput": "automatic, fire held",
+      "source": {
+        "rpm": 899.999023,
+        "emptyReloadTime_Field_fc66e75e": 2.634,
+        "emptyReloadMain_Field_85ff24a0": 2.634,
+        "reloadSpeed_Field_1c533b56": 1.0,
+        "phaseList_Field_dc244b57": [
+          0.266,
+          0.633,
+          1.716,
+          2.116,
+          2.634
+        ]
+      },
+      "predictedLastToFirstShot": 2.701,
+      "predictedIfMainField": 2.701,
+      "cycles": [
+        {
+          "lastShot": 3.216,
+          "firstShot": 5.916,
+          "seconds": 2.7
+        },
+        {
+          "lastShot": 7.85,
+          "firstShot": 10.55,
+          "seconds": 2.7
+        },
+        {
+          "lastShot": 12.433,
+          "firstShot": 15.251,
+          "seconds": 2.818
+        },
+        {
+          "lastShot": 17.116,
+          "firstShot": 19.816,
+          "seconds": 2.7
+        }
+      ],
+      "medianSeconds": 2.7
+    },
+    "sor300sc": {
+      "weapon": "SOR-300SC",
+      "siteId": "sor300sc",
+      "internalId": "scarsc",
+      "video": "reference-data/Recordings/09232026/Empty Reload/SOR-300SC.mp4",
+      "videoSha256": "eca5fbe6b1d48c940e9f4e7ff55da0790e72da6d70a64e9096d1b147105eb8e7",
+      "fireInput": "automatic, fire held",
+      "source": {
+        "rpm": 599.999023,
+        "emptyReloadTime_Field_fc66e75e": 3.2,
+        "emptyReloadMain_Field_85ff24a0": 3.284,
+        "reloadSpeed_Field_1c533b56": 1.0,
+        "phaseList_Field_dc244b57": [
+          0.33,
+          1.566,
+          3.2
+        ]
+      },
+      "predictedLastToFirstShot": 3.3,
+      "predictedIfMainField": 3.384,
+      "cycles": [
+        {
+          "lastShot": 4.183,
+          "firstShot": 7.483,
+          "seconds": 3.3
+        },
+        {
+          "lastShot": 10.383,
+          "firstShot": 13.683,
+          "seconds": 3.3
+        },
+        {
+          "lastShot": 16.583,
+          "firstShot": 19.883,
+          "seconds": 3.3
+        },
+        {
+          "lastShot": 22.783,
+          "firstShot": 26.083,
+          "seconds": 3.3
+        }
+      ],
+      "medianSeconds": 3.3
+    },
+    "grtcps": {
+      "weapon": "GRT-CPS",
+      "siteId": "grtcps",
+      "internalId": "msbsgrotcps",
+      "video": "reference-data/Recordings/09232026/Empty Reload/GRT-CPS.mp4",
+      "videoSha256": "36887becd0f992a533bb0ab7e76d255995ede365529b14faac7ae9656b938198",
+      "fireInput": "semi-automatic, 10 ms click macro",
+      "source": {
+        "rpm": 359.998993,
+        "emptyReloadTime_Field_fc66e75e": 3.034,
+        "emptyReloadMain_Field_85ff24a0": 3.284,
+        "reloadSpeed_Field_1c533b56": 1.0,
+        "phaseList_Field_dc244b57": [
+          0.45,
+          1.6,
+          2.266,
+          3.034
+        ]
+      },
+      "predictedLastToFirstShot": 3.201,
+      "predictedIfMainField": 3.451,
+      "cycles": [
+        {
+          "lastShot": 3.251,
+          "firstShot": 6.451,
+          "seconds": 3.2
+        },
+        {
+          "lastShot": 9.617,
+          "firstShot": 12.817,
+          "seconds": 3.2
+        },
+        {
+          "lastShot": 15.984,
+          "firstShot": 19.184,
+          "seconds": 3.2
+        },
+        {
+          "lastShot": 22.351,
+          "firstShot": 25.551,
+          "seconds": 3.2
+        }
+      ],
+      "medianSeconds": 3.2
+    },
+    "lmr27": {
+      "weapon": "LMR27",
+      "siteId": "lmr27",
+      "internalId": "aradmr",
+      "video": "reference-data/Recordings/09232026/Empty Reload/LMR27.mp4",
+      "videoSha256": "ad35f6d1c7ec6c0ee4b34068ce514d2835522eecc91be364dc58f98203c9dcb4",
+      "fireInput": "semi-automatic, click macro",
+      "source": {
+        "rpm": 449.998993,
+        "emptyReloadTime_Field_fc66e75e": 3.067,
+        "emptyReloadMain_Field_85ff24a0": 3.067,
+        "reloadSpeed_Field_1c533b56": 1.0,
+        "phaseList_Field_dc244b57": [
+          1.0,
+          2.0,
+          3.067
+        ]
+      },
+      "predictedLastToFirstShot": 3.2,
+      "predictedIfMainField": 3.2,
+      "cycles": [
+        {
+          "lastShot": 3.417,
+          "firstShot": 6.65,
+          "seconds": 3.233
+        },
+        {
+          "lastShot": 7.851,
+          "firstShot": 11.05,
+          "seconds": 3.199
+        },
+        {
+          "lastShot": 12.266,
+          "firstShot": 15.451,
+          "seconds": 3.185
+        },
+        {
+          "lastShot": 16.651,
+          "firstShot": 19.866,
+          "seconds": 3.215
+        }
+      ],
+      "medianSeconds": 3.207
+    }
+  },
+  "result": "All four weapons measure ReloadInfoArray[1].Field_fc66e75e + one fire interval (60/RPM): M4A1 2.700 (2.634+0.067), SOR-300SC 3.300 (3.2+0.1), GRT-CPS 3.200 (3.034+0.167), LMR27 3.207 (3.067+0.133). Using Field_85ff24a0 (3.284) would predict 3.384 and 3.451 for SOR-300SC and GRT-CPS; both are rejected.",
+  "interpretation": "Field_fc66e75e (equal to the last entry of the phase list Field_dc244b57) is the effective empty reload time; Field_85ff24a0 is not used when it differs. The extra fire interval is most likely the automatic reload waiting for the next permitted shot; the video cannot place it before or after the reload.",
+  "siteChange": "data/weapons.json emptyRld: sor300sc 3.284 -> 3.2, grtcps 3.284 -> 3.034 (ReloadSpeed is 1.0 for both). emptyRld is currently not read by sim/ or ui/.",
+  "limits": "One build, one loadout per weapon, hipfire, auto-reload only; manual empty reload not recorded. The one-interval offset is established for these four weapons only. Four timed cycles per weapon; one M4A1 cycle reads 2.818 s because a flash was missed, and the median uses all four."
+}

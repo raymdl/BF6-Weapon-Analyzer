@@ -1,0 +1,417 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "build": {
+    "id": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": "Exact 63-site-weapon comparison of WB /Field_f8822efa/Field_c5d1c8fe/{Field_91121984,Field_0d926433} with registry-named GS recoil HorizontalRecoilLeft/Right and VerticalRecoilMin/Max in ADS and hip states. KSG excluded as reference-only.",
+  "finding": "The WB pair does not reproduce the named GS horizontal/vertical recoil bounds across the site weapons; coincidences are partial and there are material outliers. The WB values therefore cannot be substituted for the named GS fields or labelled as a second horizontal/vertical bound input from this comparison alone.",
+  "siteImpact": "No corresponding site data leaf or sim consumer for these WB fields was found in data/weapons.json or sim/*.js. They could still affect native firing behavior, but no displayed Analyzer stat linkage is established.",
+  "coverage": {
+    "siteWeapons": 63,
+    "wbRawHashesVerified": 63,
+    "wbFieldRows": 128,
+    "wbFieldRowAccounting": "128 is two compared fields (Field_91121984 and Field_0d926433) for each of 64 distinct WB roots: 63 site identities plus the KSG reference. Each pair is read from the same per-asset owner object at /Field_f8822efa/Field_c5d1c8fe; objectIndex and objectAbsoluteOffset are recorded per weapon, and are not extra duplicate weapon rows.",
+    "namedGsBindingHits": {},
+    "namedGsBindingRows": {
+      "HorizontalRecoilLeft": 126,
+      "HorizontalRecoilRight": 126,
+      "VerticalRecoilMin": 126,
+      "VerticalRecoilMax": 126
+    }
+  },
+  "bren3CoverageCorrection": {
+    "siteWeapon": "brod3",
+    "sourceWeapon": "BREN3",
+    "wbOwner": {
+      "asset": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB",
+      "rawSha256": "5e5c96431ee2b098f459b326f2ee4c208cdadcbd91ed7c6835a9e5313f9cb74f",
+      "class": "Class_35259f6b",
+      "objectIndex": 1,
+      "objectAbsoluteOffset": 160,
+      "fields": {
+        "Field_91121984": {"path": "/Field_f8822efa/Field_c5d1c8fe/Field_91121984", "byteOffset": 764, "rawBytesHex": "cdcc4c3e", "rawValue": 0.20000000298023224},
+        "Field_0d926433": {"path": "/Field_f8822efa/Field_c5d1c8fe/Field_0d926433", "byteOffset": 796, "rawBytesHex": "cdccccbd", "rawValue": -0.10000000149011612}
+      }
+    },
+    "namedGsOwner": {
+      "asset": "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3",
+      "rawSha256": "b24946fdf779702d08715cd66b8ba7aa7602ca365d355204753de2b9e7e51617",
+      "class": "Class_539cff9b",
+      "objectIndex": 2,
+      "objectGuid": "9d5b80ce-d550-4e75-9689-e3a44a3b2711",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "adsAndHip": {
+        "HorizontalRecoilLeft": {"adsPath": "/Field_c5d1c8fe/Field_6b84de87/Field_edbd0711", "hipPath": "/Field_c5d1c8fe/Field_7b609515/Field_edbd0711", "adsOffset": 1128, "hipOffset": 976, "rawBytesHex": "cdcc4c3e", "rawValue": 0.20000000298023224},
+        "HorizontalRecoilRight": {"adsPath": "/Field_c5d1c8fe/Field_6b84de87/Field_65700a5d", "hipPath": "/Field_c5d1c8fe/Field_7b609515/Field_65700a5d", "adsOffset": 1124, "hipOffset": 972, "rawBytesHex": "9a9999be", "rawValue": -0.30000001192092896},
+        "VerticalRecoilMin": {"adsPath": "/Field_c5d1c8fe/Field_6b84de87/Field_ce4b3347", "hipPath": "/Field_c5d1c8fe/Field_7b609515/Field_ce4b3347", "adsOffset": 1100, "hipOffset": 948, "rawBytesHex": "3d0ad73e", "rawValue": 0.41999998688697815},
+        "VerticalRecoilMax": {"adsPath": "/Field_c5d1c8fe/Field_6b84de87/Field_a63f14a6", "hipPath": "/Field_c5d1c8fe/Field_7b609515/Field_a63f14a6", "adsOffset": 1104, "hipOffset": 952, "rawBytesHex": "3d0ad73e", "rawValue": 0.41999998688697815}
+      }
+    },
+    "comparison": "Field_91121984 exactly equals HorizontalRecoilLeft at ADS and hip; the other seven candidate-vs-named comparisons differ. Field_0d926433 (-0.1) does not equal HorizontalRecoilRight (-0.3), and neither WB value equals VerticalRecoilMin/Max (0.42). This fills named GS capture coverage but does not resolve either WB field's semantics or native consumer.",
+    "rawVerification": "All listed offsets were sliced from the captured EBX bodies and matched the recorded little-endian float bytes; hashes and descriptor hash are pinned above.",
+    "sourceDetail": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-recoil-details-v4-2026-09-23.json",
+      "sha256": "9dca795adf6dfb04fe590daf6101b2db4c122219ae82e3f54a07aa425d5c74fa"
+    }
+  },
+  "valueDistributions": {
+    "Field_91121984": {
+      "2.0": 2,
+      "4.0": 2,
+      "0.20000000298023224": 20,
+      "0.10000000149011612": 11,
+      "1.0": 4,
+      "0.25": 1,
+      "20.0": 1,
+      "-0.20000000298023224": 6,
+      "0.30000001192092896": 10,
+      "10.0": 1,
+      "0.0": 1,
+      "16.0": 2,
+      "14.0": 1,
+      "8.0": 1
+    },
+    "Field_0d926433": {
+      "0.0": 14,
+      "-0.10000000149011612": 20,
+      "-0.05000000074505806": 11,
+      "-0.25": 1,
+      "6.0": 1,
+      "0.30000001192092896": 6,
+      "-0.20000000298023224": 10
+    }
+  },
+  "exactMatchMatrix": {
+    "Field_91121984": {
+      "HorizontalRecoilLeft": {
+        "exactAnyAimCount": 21,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 21,
+        "comparisonOutlierCount": 42,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "ks18k",
+            "wbValue": 2.0,
+            "namedAds": 0.6000000238418579,
+            "namedHip": 0.6000000238418579
+          },
+          {
+            "siteWeapon": "m87a1",
+            "wbValue": 4.0,
+            "namedAds": 0.6000000238418579,
+            "namedHip": 0.6000000238418579
+          },
+          {
+            "siteWeapon": "nvo228e",
+            "wbValue": 0.20000000298023224,
+            "namedAds": 0.30000001192092896,
+            "namedHip": 0.30000001192092896
+          }
+        ]
+      },
+      "HorizontalRecoilRight": {
+        "exactAnyAimCount": 4,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 4,
+        "comparisonOutlierCount": 59,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "ks18k",
+            "wbValue": 2.0,
+            "namedAds": -0.6000000238418579,
+            "namedHip": -0.6000000238418579
+          },
+          {
+            "siteWeapon": "m87a1",
+            "wbValue": 4.0,
+            "namedAds": -0.6000000238418579,
+            "namedHip": -0.6000000238418579
+          },
+          {
+            "siteWeapon": "kord6p67",
+            "wbValue": 0.20000000298023224,
+            "namedAds": -0.30000001192092896,
+            "namedHip": -0.30000001192092896
+          }
+        ]
+      },
+      "VerticalRecoilMin": {
+        "exactAnyAimCount": 1,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 0,
+        "comparisonOutlierCount": 62,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "ks18k",
+            "wbValue": 2.0,
+            "namedAds": 0.0,
+            "namedHip": 0.0
+          },
+          {
+            "siteWeapon": "m87a1",
+            "wbValue": 4.0,
+            "namedAds": 0.0,
+            "namedHip": 0.0
+          },
+          {
+            "siteWeapon": "kord6p67",
+            "wbValue": 0.20000000298023224,
+            "namedAds": 0.41999998688697815,
+            "namedHip": 0.41999998688697815
+          }
+        ]
+      },
+      "VerticalRecoilMax": {
+        "exactAnyAimCount": 1,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 0,
+        "comparisonOutlierCount": 62,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "ks18k",
+            "wbValue": 2.0,
+            "namedAds": 0.0,
+            "namedHip": 0.0
+          },
+          {
+            "siteWeapon": "m87a1",
+            "wbValue": 4.0,
+            "namedAds": 0.0,
+            "namedHip": 0.0
+          },
+          {
+            "siteWeapon": "kord6p67",
+            "wbValue": 0.20000000298023224,
+            "namedAds": 0.41999998688697815,
+            "namedHip": 0.41999998688697815
+          }
+        ]
+      }
+    },
+    "Field_0d926433": {
+      "HorizontalRecoilLeft": {
+        "exactAnyAimCount": 2,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 2,
+        "comparisonOutlierCount": 61,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "ks18k",
+            "wbValue": 0.0,
+            "namedAds": 0.6000000238418579,
+            "namedHip": 0.6000000238418579
+          },
+          {
+            "siteWeapon": "m87a1",
+            "wbValue": 0.0,
+            "namedAds": 0.6000000238418579,
+            "namedHip": 0.6000000238418579
+          },
+          {
+            "siteWeapon": "kord6p67",
+            "wbValue": -0.10000000149011612,
+            "namedAds": 0.20000000298023224,
+            "namedHip": 0.20000000298023224
+          }
+        ]
+      },
+      "HorizontalRecoilRight": {
+        "exactAnyAimCount": 2,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 2,
+        "comparisonOutlierCount": 61,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "ks18k",
+            "wbValue": 0.0,
+            "namedAds": -0.6000000238418579,
+            "namedHip": -0.6000000238418579
+          },
+          {
+            "siteWeapon": "m87a1",
+            "wbValue": 0.0,
+            "namedAds": -0.6000000238418579,
+            "namedHip": -0.6000000238418579
+          },
+          {
+            "siteWeapon": "kord6p67",
+            "wbValue": -0.10000000149011612,
+            "namedAds": -0.30000001192092896,
+            "namedHip": -0.30000001192092896
+          }
+        ]
+      },
+      "VerticalRecoilMin": {
+        "exactAnyAimCount": 3,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 0,
+        "comparisonOutlierCount": 60,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "kord6p67",
+            "wbValue": -0.10000000149011612,
+            "namedAds": 0.41999998688697815,
+            "namedHip": 0.41999998688697815
+          },
+          {
+            "siteWeapon": "nvo228e",
+            "wbValue": -0.10000000149011612,
+            "namedAds": 0.578000009059906,
+            "namedHip": 0.578000009059906
+          },
+          {
+            "siteWeapon": "ak205",
+            "wbValue": -0.10000000149011612,
+            "namedAds": 0.41999998688697815,
+            "namedHip": 0.41999998688697815
+          }
+        ]
+      },
+      "VerticalRecoilMax": {
+        "exactAnyAimCount": 14,
+        "namedRowsMissingCount": 0,
+        "exactNonzeroAnyAimCount": 0,
+        "comparisonOutlierCount": 49,
+        "sampleOutliers": [
+          {
+            "siteWeapon": "kord6p67",
+            "wbValue": -0.10000000149011612,
+            "namedAds": 0.41999998688697815,
+            "namedHip": 0.41999998688697815
+          },
+          {
+            "siteWeapon": "nvo228e",
+            "wbValue": -0.10000000149011612,
+            "namedAds": 0.578000009059906,
+            "namedHip": 0.578000009059906
+          },
+          {
+            "siteWeapon": "ak205",
+            "wbValue": -0.10000000149011612,
+            "namedAds": 0.41999998688697815,
+            "namedHip": 0.41999998688697815
+          }
+        ]
+      }
+    }
+  },
+  "externalDetail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-wb-recoil-pair-triage-2026-09-23.json",
+    "sha256": "aedbc022ffba9ea5923ffaaa70fbeee92ff3d3f1cc6bc6fedcab1519930481aa",
+    "bytes": 575178,
+    "rows": 63
+  },
+  "sourceArtifacts": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\weapon-fields.jsonl",
+      "sha256": "6040e4633851c6d796b4fed231da097f63d45ca6da2e8a79333c9e1ebfb5783a"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\registry-bindings.jsonl",
+      "sha256": "d80a04a6d780e88f4b58917b216ab449bc104a080ebc248cb6a48d11a3718a31"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-audit-roster-2026-09-23.json",
+      "sha256": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+      "sha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-site-recoil-audit.py",
+      "sha256": "2e3ef122998f0cb2ee91c82d6ed07f62d30d83aa00ddce3d882549f713e38935"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\weapons.json",
+      "sha256": "a7831165561b9fcb260900bc88b23e3109935cc7f7254f9f24348104c6020dde"
+    }
+  ],
+  "limits": [
+    "Registry-bound GS names and their comparisons establish which named target fields are present; value matching alone does not prove shared meaning.",
+    "The WB field hashes remain semantically unnamed. A registry name search miss is not proof that the fields have no consumer.",
+    "Exact raw source presence does not prove multiplayer runtime consumption."
+  ],
+  "pairSummary": {
+    "Field_91121984_vs_HorizontalRecoilLeft": {
+      "exactAnyAimCount": 21,
+      "namedRowsMissingCount": 0,
+      "exactNonzeroAnyAimCount": 21,
+      "comparisonOutlierCount": 42,
+      "sampleOutliers": [
+        {
+          "siteWeapon": "ks18k",
+          "wbValue": 2.0,
+          "namedAds": 0.6000000238418579,
+          "namedHip": 0.6000000238418579
+        },
+        {
+          "siteWeapon": "m87a1",
+          "wbValue": 4.0,
+          "namedAds": 0.6000000238418579,
+          "namedHip": 0.6000000238418579
+        },
+        {
+          "siteWeapon": "nvo228e",
+          "wbValue": 0.20000000298023224,
+          "namedAds": 0.30000001192092896,
+          "namedHip": 0.30000001192092896
+        },
+        {
+          "siteWeapon": "scw10",
+          "wbValue": 0.10000000149011612,
+          "namedAds": 0.30000001192092896,
+          "namedHip": 0.30000001192092896
+        },
+        {
+          "siteWeapon": "sl9",
+          "wbValue": 0.10000000149011612,
+          "namedAds": 0.4000000059604645,
+          "namedHip": 0.4000000059604645
+        }
+      ]
+    },
+    "Field_0d926433_vs_HorizontalRecoilRight": {
+      "exactAnyAimCount": 2,
+      "namedRowsMissingCount": 0,
+      "exactNonzeroAnyAimCount": 2,
+      "comparisonOutlierCount": 61,
+      "sampleOutliers": [
+        {
+          "siteWeapon": "ks18k",
+          "wbValue": 0.0,
+          "namedAds": -0.6000000238418579,
+          "namedHip": -0.6000000238418579
+        },
+        {
+          "siteWeapon": "m87a1",
+          "wbValue": 0.0,
+          "namedAds": -0.6000000238418579,
+          "namedHip": -0.6000000238418579
+        },
+        {
+          "siteWeapon": "kord6p67",
+          "wbValue": -0.10000000149011612,
+          "namedAds": -0.30000001192092896,
+          "namedHip": -0.30000001192092896
+        },
+        {
+          "siteWeapon": "nvo228e",
+          "wbValue": -0.10000000149011612,
+          "namedAds": -0.6000000238418579,
+          "namedHip": -0.6000000238418579
+        },
+        {
+          "siteWeapon": "ak205",
+          "wbValue": -0.10000000149011612,
+          "namedAds": -0.30000001192092896,
+          "namedHip": -0.30000001192092896
+        }
+      ]
+    },
+    "namedGSBindingCoverage": "63 of 63 site identities, including BREN3 directly sourced from GS_BREN3 raw fields; 126 ADS/hip named rows per field. WB candidate semantics remain unresolved."
+  }
+}

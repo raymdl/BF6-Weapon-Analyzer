@@ -1,0 +1,1078 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "build": {
+    "label": "1.4.3.0",
+    "archiveHead": 4892017,
+    "sdkVersion": 4414275,
+    "descriptorPath": "../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors.ebx",
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "source": "capture/collection/raw",
+    "localizationPath": "../BF6 Datamining/builds/1.4.3.0/xml/Common/Localization/Languages/fs_us_loc.strings.tsv",
+    "localizationSha256": "1ec449fa2a12bc3d307bfa5878ee7d8c56af14fae65ea1f6c6286e85d98e7392"
+  },
+  "limits": [
+    "No Frosty exports or game access were used. xml-overlay-stale.txt lists the M4A1 Equipment and M4A1 UI metadata XML paths, so those XML files were not treated as current-build evidence.",
+    "EBX values below were decoded with scripts/frosty-ebx-decode.py and the build-matched SharedTypeDescriptors.ebx. Hash-field semantics use docs/frosty/DATA_GRAPH.md; unlabelled UI meanings remain unresolved.",
+    "A killswitch true value is recorded as a source default. Current active availability and server overrides remain unverified; do not infer a live offer or gameplay state from the default alone.",
+    "The supplied name BROD3 does not match a raw asset path found in this capture. BREN3 was traced as the closest matching barrel branch; identity equivalence is unconfirmed."
+  ],
+  "findings": [
+    {
+      "question": "M4A1 ERG_Magwell identity and purpose",
+      "status": "Source identity traced; player-facing distinction and purpose of ERG_Magwell remain unresolved",
+      "chain": [
+        {
+          "path": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_ERG_Magwell.ebx",
+          "fileGuid": "efb7f9d7-9cd1-4858-a465-da4d2f6a64c9",
+          "sha256": "2cc8297808a8078c8ed9f61ef6db36b6301c12f2ef88fe6a565ba62d8a255e35",
+          "objectGuid": "37417041-e6f1-4875-8a57-bf58c03f1b53",
+          "class": "Class_a9b2eb87",
+          "fields": {
+            "Field_de6f63b3": 2558147437,
+            "Field_157a7d74": {
+              "fileGuid": "cdd4b0d0-8a5f-4628-8348-c5ddd7fac4e8",
+              "classGuid": "aaed225b-2e9c-4903-8adf-5ca83b33a6ec"
+            },
+            "Field_6ee865a5": 0,
+            "Field_fe77e9a9": {
+              "fileGuid": "4e984ba6-f5f4-491b-8acd-7492f8688266",
+              "classGuid": "ecd0343d-ef1c-4fcf-97a6-17570da9aea1",
+              "resolvedPath": "Common/Hardware/Weapons/_Attachments/AttachmentCategory_MagazineWell"
+            },
+            "Field_46de69bc": 2542992740
+          },
+          "interpretation": "Attachment record references the M4A1 progression asset and has cost value 0."
+        },
+        {
+          "path": "Common/Hardware/Weapons/Carbine/M4A1/U_PRG_M4A1_ERG_Magwell.ebx",
+          "fileGuid": "cdd4b0d0-8a5f-4628-8348-c5ddd7fac4e8",
+          "sha256": "cce23e8864646e4eac7aeca47a7e79f1187388b5a3c4ea29e7890173a98fe43c",
+          "objectGuid": "aaed225b-2e9c-4903-8adf-5ca83b33a6ec",
+          "class": "Class_bc0062dc",
+          "fields": {
+            "Field_9d34093f": "U_PRG_M4A1_ERG_Magwell",
+            "Field_de6f63b3": 3676303584,
+            "Field_32cf19f5": false
+          }
+        },
+        {
+          "path": "Common/Hardware/Weapons/_Attachments/_Shared/DefaultRails/U_DPF_MagWell_Empty.ebx",
+          "fileGuid": "e1dec9f4-d913-4da3-9065-adb67590b419",
+          "sha256": "fe85aa6b2a24b29319fc5d786df7bc9749436e0da502b44129a571c422487ed0",
+          "objectGuid": "5e55969c-9f81-44bf-b740-498ed2c96e42",
+          "fields": {
+            "Field_9d34093f": "U_DPF_MagWell_Empty",
+            "Field_32cf19f5": true
+          },
+          "interpretation": "The M4A1 ability action selects this default part. It does not explain why the attachment is offered or its player-facing purpose."
+        },
+        {
+          "path": "Common/Hardware/Weapons/_SlotCategories/SC_Ergonomic.ebx",
+          "fileGuid": "3e6e7bd9-3308-4c3f-acdf-ab433a24fe67",
+          "sha256": "7851b234108d909538b6dd925d27267b32299aa4fa8ce2417401f0deff061840",
+          "objectGuid": "6ccff60f-5bb9-4353-b5bb-9a881945fd85",
+          "fields": {
+            "Field_fbe9b7c9": 3,
+            "Field_c8a20d44": 0,
+            "Field_23b24086": 3
+          }
+        },
+        {
+          "path": "Common/Hardware/Weapons/Carbine/M4A1/M4A1_Ability.ebx",
+          "fileGuid": "cb2ec63f-5419-4120-83c2-467284cd57d5",
+          "sha256": "e9e385dc47207a5995931bc388f9da35b3c766b4be36ff8296d4a98d04475600",
+          "objectGuid": "0fc33180-0b21-4dbf-b3b3-cae7d9fba53f",
+          "class": "Class_74f6b9e4",
+          "fields": {
+            "Field_f86e0433": {
+              "fileGuid": "cdd4b0d0-8a5f-4628-8348-c5ddd7fac4e8",
+              "classGuid": "aaed225b-2e9c-4903-8adf-5ca83b33a6ec"
+            },
+            "Field_64ef48eb": {
+              "fileGuid": "3e6e7bd9-3308-4c3f-acdf-ab433a24fe67",
+              "classGuid": "6ccff60f-5bb9-4353-b5bb-9a881945fd85"
+            },
+            "Field_5323be31": false,
+            "Field_def7f8dd": {
+              "registryFileGuid": "67f9001c-9aa5-4949-b5c3-4509eeb3ac7e",
+              "registryObjectGuid": "f8bcb2d1-287f-477c-8872-09a74b562359",
+              "default": false
+            },
+            "Field_ffba60f0": [
+              {
+                "ref": 176
+              }
+            ]
+          },
+          "action": {
+            "path": "Common/Hardware/Weapons/_Attachments/_Shared/DefaultRails/U_DPF_MagWell_Empty",
+            "selectorObjectGuid": "5e55969c-9f81-44bf-b740-498ed2c96e42"
+          },
+          "interpretation": "Ability root contains this branch. Its slot import resolves to SC_Ergonomic. Action selects U_DPF_MagWell_Empty; this supports a default/empty-magwell association, not a descriptive attachment purpose."
+        },
+        {
+          "path": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.ebx",
+          "fileGuid": "67f9001c-9aa5-4949-b5c3-4509eeb3ac7e",
+          "sha256": "4eca3a190ec3870af77dfa27fe5ef444b1c0f2d951852c32448b6d545804cd5b",
+          "objectGuid": "f8bcb2d1-287f-477c-8872-09a74b562359",
+          "fields": {
+            "Field_0c59fa06": "U_PRG_M4A1_ERG_Magwell",
+            "Field_42c8b257": false
+          }
+        }
+      ],
+      "availability": "ERG_Magwell and the distinct FlaredMagwell sibling have captured registry defaults of false. Current menu or server availability remains unverified.",
+      "multiplayerRelevance": "The asset is under multiplayer weapon data. A live offer and in-match effect are not established.",
+      "interpretation": "The attachment record references the M4A1 progression and the MagazineWell category; the ability slot resolves to SC_Ergonomic. Its cost value is 0. The current localization table contains “Magwell Flare” (ID D3FCCBB8, line 90203), but no direct link from that string to this M4A1 record was found. Do not assign that displayed name to this branch.",
+      "relatedSiblingBranch": {
+        "interpretation": "This is a separate M4A1 branch whose name distinguishes it from ERG_Magwell. It points to a magwell-flare art asset plus the shared FlaredMagwell WPM package. The raw paths support identifying a separate FlaredMagwell option; the captured metadata localization IDs do not directly match the current string-table ID for “Magwell Flare,” so that UI label link remains unproven.",
+        "attachment": {
+          "path": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_ERG_FlaredMagwell.ebx",
+          "fileGuid": "350b2f9a-6206-40f6-86b7-7d89faba0b67",
+          "sha256": "c1f84c7b46c2e1843d960e83822a93e96b94e77e7a4cbd17bb4af0e32a3d60e8",
+          "objectGuid": "8fb8221e-ab5d-4087-8a07-d9698a7ddc89",
+          "fields": {
+            "Field_157a7d74": {
+              "fileGuid": "7c940bc1-a64e-4fdd-ab9a-f3aed7312b35",
+              "classGuid": "aee20e49-15d2-4e06-9de6-57c43160b555"
+            },
+            "Field_6ee865a5": 10
+          }
+        },
+        "progression": {
+          "path": "Common/Hardware/Weapons/Carbine/M4A1/U_PRG_M4A1_ERG_FlaredMagwell.ebx",
+          "fileGuid": "7c940bc1-a64e-4fdd-ab9a-f3aed7312b35",
+          "sha256": "e680407b3d9e0d5c5774f0d6572df4a045fc446608ba4dfe8526db75da1b4222",
+          "objectGuid": "aee20e49-15d2-4e06-9de6-57c43160b555",
+          "fields": {
+            "Field_9d34093f": "U_PRG_M4A1_ERG_FlaredMagwell",
+            "Field_32cf19f5": false
+          }
+        },
+        "abilityBranch": {
+          "path": "Common/Hardware/Weapons/Carbine/M4A1/M4A1_Ability.ebx",
+          "fileGuid": "cb2ec63f-5419-4120-83c2-467284cd57d5",
+          "sha256": "e9e385dc47207a5995931bc388f9da35b3c766b4be36ff8296d4a98d04475600",
+          "objectGuid": "0a299144-2158-4dd9-9ea0-807973466ef5",
+          "fields": {
+            "Field_f86e0433": {
+              "fileGuid": "7c940bc1-a64e-4fdd-ab9a-f3aed7312b35",
+              "classGuid": "aee20e49-15d2-4e06-9de6-57c43160b555"
+            },
+            "Field_64ef48eb": {
+              "fileGuid": "3e6e7bd9-3308-4c3f-acdf-ab433a24fe67",
+              "classGuid": "6ccff60f-5bb9-4353-b5bb-9a881945fd85"
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "67f9001c-9aa5-4949-b5c3-4509eeb3ac7e",
+              "registryObjectGuid": "7b22dce7-7102-4747-8e29-e6cba98839dd",
+              "Field_42c8b257": false
+            },
+            "Field_ffba60f0": [
+              {
+                "ref": 241
+              }
+            ]
+          }
+        },
+        "actions": [
+          {
+            "path": "Common/Hardware/Weapons/Carbine/M4A1/Art/U_ATT_M4A1_Magwellflare",
+            "fileGuid": "8131675c-fe04-4df1-ae34-316bf0001d9f",
+            "objectGuid": "fe64fdd0-e4d8-4c1d-af87-4a44da7b3bd7",
+            "sha256": "fc98484a55f32e07c04d8058f8e6619c5ce0f6555a5dc331f92871918fc2fbd5",
+            "Field_9d34093f": "U_ATT_M4A1_Magwellflare"
+          },
+          {
+            "path": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FlaredMagwell/U_WPM_ERG_FlaredMagwell_W10",
+            "fileGuid": "246823a2-030c-43e3-a6c0-83f088bc8f50",
+            "objectGuid": "f082b5ae-236f-4011-9576-9f4a91360199",
+            "sha256": "5d760ae26ae3c7b6786bab793c7d0c1a307027e3444f4ace50c566a8052f132a",
+            "Field_9d34093f": "U_WPM_ERG_FlaredMagwell_W10"
+          },
+          {
+            "path": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FlaredMagwell/WPM_ERG_FlaredMagwell_W10",
+            "fileGuid": "7975d22b-f790-4a9a-9a88-5d1a7f589a3d",
+            "objectGuid": "1dc804ac-3ffc-42d1-adf9-53f2787b4d27",
+            "sha256": "b19aa322a8d5d62d2ece1401b07e828433176155938b13b44ef754c3a34e9097",
+            "fields": {
+              "Field_819acc98": [
+                "f082b5ae-236f-4011-9576-9f4a91360199"
+              ]
+            }
+          }
+        ],
+        "registry": {
+          "path": "Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons",
+          "fileGuid": "67f9001c-9aa5-4949-b5c3-4509eeb3ac7e",
+          "sha256": "4eca3a190ec3870af77dfa27fe5ef444b1c0f2d951852c32448b6d545804cd5b",
+          "objectGuid": "7b22dce7-7102-4747-8e29-e6cba98839dd",
+          "fields": {
+            "Field_0c59fa06": "U_PRG_M4A1_ERG_FlaredMagwell",
+            "Field_42c8b257": false
+          }
+        },
+        "uiMetadata": {
+          "path": "Common/UI/Static/Metadata/Attachments/M4A1/AD_M4A1_ERG_Flare",
+          "fileGuid": "ec2c0de2-b89b-d75a-8224-5a666f0396fd",
+          "sha256": "ec118e606f7b25a76bc6b262522d3560217fdbe68aff5af6eb03457295291d1e",
+          "nameLocId": "EBC4BCCE",
+          "descriptionLocId": "EBC670D6",
+          "currentTsvDirectMatch": false,
+          "unrelatedStringCandidate": {
+            "id": "D3FCCBB8",
+            "text": "Magwell Flare"
+          }
+        }
+      },
+      "identityNotes": {
+        "siteDoesNotUseRawName": "Current source distinguishes ERG_Magwell from ERG_FlaredMagwell. The plain ERG_Magwell branch selects U_DPF_MagWell_Empty. The separate FlaredMagwell branch selects U_ATT_M4A1_Magwellflare and U_WPM_ERG_FlaredMagwell_W10. Captured UI metadata references localization IDs absent from the current US TSV; the separate “Magwell Flare” string has no direct ID link here."
+      }
+    },
+    {
+      "question": "BROD3 TreatedBarrel / Cryo",
+      "status": "BREN3 branch traced; its site identity is BROD 3",
+      "chain": [
+        {
+          "path": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_BRL_TreatedBarrel.ebx",
+          "fileGuid": "af027c5c-e547-4c83-b6e7-bfd05529ba69",
+          "sha256": "949c17d4c40485048329091b70ff4d168db4ae43f8a77efcb654f770cfcd231a",
+          "objectGuid": "27f4afc1-10e4-4d03-8a7c-8b1d85cad57c",
+          "class": "Class_a9b2eb87",
+          "fields": {
+            "Field_de6f63b3": 2551415148,
+            "Field_157a7d74": {
+              "fileGuid": "09e3f188-66b1-469a-8396-55c301615eb1",
+              "classGuid": "0e880db6-c2cc-4b9c-b6ce-8526152b6502"
+            },
+            "Field_6ee865a5": 20
+          },
+          "uiTextPath": "Common/UI/Static/Metadata/Attachments/BREN3/AD_BREN3_BRL_Treated"
+        },
+        {
+          "path": "Common/Hardware/Weapons/Carbine/BREN3/U_PRG_BREN3_BRL_TreatedBarrel.ebx",
+          "fileGuid": "09e3f188-66b1-469a-8396-55c301615eb1",
+          "sha256": "ca2f84ab222b98fd3d2ae2a2d5ad7a6d0af39ac85def4f25b8b1fe5f21d9ef1c",
+          "objectGuid": "0e880db6-c2cc-4b9c-b6ce-8526152b6502",
+          "class": "Class_bc0062dc",
+          "fields": {
+            "Field_9d34093f": "U_PRG_BREN3_BRL_TreatedBarrel",
+            "Field_de6f63b3": 2497518031,
+            "Field_32cf19f5": false
+          }
+        },
+        {
+          "path": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.ebx",
+          "fileGuid": "fdae299f-17f2-42af-b4ec-e95beaf4ffbc",
+          "sha256": "31fe3729b84216d7e6b4436382e037ba50eef1a50708997febf7d052512a300a",
+          "objectGuid": "9e117f9c-ac2d-4e46-bdd5-8fa9f0f3863b",
+          "class": "Class_74f6b9e4",
+          "fields": {
+            "Field_f86e0433": {
+              "fileGuid": "09e3f188-66b1-469a-8396-55c301615eb1",
+              "classGuid": "0e880db6-c2cc-4b9c-b6ce-8526152b6502"
+            },
+            "Field_64ef48eb": {
+              "fileGuid": "9f63b6ee-d01c-483a-83bf-93dc10a0cf65",
+              "classGuid": "941cb5ad-f4f8-4e30-af26-2e618582343a"
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "d81820a0-612e-4293-99d8-0004d0ffadca",
+              "registryObjectGuid": "e632e6ce-7f61-4d64-a098-02c66c29e46b",
+              "default": true
+            }
+          }
+        },
+        {
+          "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.ebx",
+          "fileGuid": "d81820a0-612e-4293-99d8-0004d0ffadca",
+          "sha256": "6ebc6715929981a0ae3af0171d5db968c506ec43fd17a9d259b952942078b033",
+          "objectGuid": "e632e6ce-7f61-4d64-a098-02c66c29e46b",
+          "fields": {
+            "Field_0c59fa06": "U_PRG_BREN3_BRL_TreatedBarrel",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "path": "Common/UI/Static/Metadata/Attachments/BREN3/AD_BREN3_BRL_Treated.ebx",
+          "fileGuid": "7cfc333f-9fcf-4a83-926f-dc4e788a7562",
+          "sha256": "cfd7cdbc885854bcb03282519e79185788c09676afd72e4b1d7e47286a0aee0f",
+          "objectGuid": "0dfceb15-11d2-47bf-8bf0-c8a96e32751e",
+          "fields": {
+            "Field_490f0dd0": {
+              "ref": 1
+            },
+            "Field_33a358a7": {
+              "ref": 2
+            }
+          },
+          "linkedTextRecords": [
+            {
+              "field": "Field_3d34898a",
+              "value": 1701297039,
+              "localizationId": "6567BB8F",
+              "text": "Cryo",
+              "line": 43400
+            },
+            {
+              "field": "Field_3d34898a",
+              "value": 861403742,
+              "localizationId": "3357FA5E",
+              "text": "Cryogenically-treated barrel that enables a quick transition to aim down sights (ADS) and improves…",
+              "line": 22359
+            }
+          ]
+        }
+      ],
+      "interpretation": "BREN3 is the established Frosty internal identity for site weapon BROD 3 (site id brod3). Current BREN3 UI metadata resolves directly to “Cryo” and a Cryogenically-treated-barrel description in current-build localization. The true captured killswitch default does not establish current availability.",
+      "availability": "Captured KST_CH1_S4_Weapons default is true. Current menu or server availability is unverified.",
+      "multiplayerRelevance": "Multiplayer weapon branch data; live offer and active gameplay effect are not established.",
+      "siteIdentityMapping": {
+        "siteId": "brod3",
+        "displayName": "BROD 3",
+        "frostyInternalId": "BREN3",
+        "evidencePath": "reference-data/provenance/frosty-weapon-display-names-2026-09-13.json",
+        "currentSiteDataPath": "data/weapons.json",
+        "currentDataId": "brod3",
+        "mappingStatus": "established"
+      }
+    },
+    {
+      "question": "SubsonicFrangible source branches",
+      "status": "source branch exists; example traced for HK417A2; site/live availability excluded by captured switch",
+      "chain": [
+        {
+          "path": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_AMO_SubsonicFrangible.ebx",
+          "fileGuid": "c7d9ed7b-c7ef-4c6a-a7e7-881830c806fb",
+          "sha256": "d2d8e59318276eece175d1b392da8e8beac373ab14fe32c680809bed0b6d8fc0",
+          "objectGuid": "ca6da475-906d-4c6e-a009-2caadbec2e90",
+          "fields": {
+            "Field_de6f63b3": 187780394,
+            "Field_157a7d74": {
+              "fileGuid": "420a0586-30ce-43b2-8d30-b2e5653e8ddd",
+              "classGuid": "4f28babc-b6ec-4314-82d1-89841c31e6ce"
+            },
+            "Field_6ee865a5": 25
+          }
+        },
+        {
+          "path": "Common/Hardware/Weapons/Carbine/HK417A2/U_PRG_HK417A2_AMO_SubsonicFrangible.ebx",
+          "fileGuid": "420a0586-30ce-43b2-8d30-b2e5653e8ddd",
+          "sha256": "cf019ecf9c44dffe2fa7aec67ed5c924a5eabe452bbf5445d70a0b6444136184",
+          "objectGuid": "4f28babc-b6ec-4314-82d1-89841c31e6ce",
+          "fields": {
+            "Field_9d34093f": "U_PRG_HK417A2_AMO_SubsonicFrangible",
+            "Field_de6f63b3": 2810079476,
+            "Field_32cf19f5": false
+          }
+        },
+        {
+          "path": "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_Ability.ebx",
+          "fileGuid": "ed972cbc-17f9-4144-89f3-b323c1205015",
+          "sha256": "60d5d298aedf9fdbb91d5356d5e7d9988c7ccfa21d81172311e1c8bbd0715f6d",
+          "objectGuid": "cc8a4562-d2cd-40ea-a4e2-f83e2012fd6b",
+          "fields": {
+            "Field_f86e0433": {
+              "fileGuid": "420a0586-30ce-43b2-8d30-b2e5653e8ddd",
+              "classGuid": "4f28babc-b6ec-4314-82d1-89841c31e6ce"
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "7f897061-6c99-4db2-9694-b3a55c2d295c",
+              "default": true
+            },
+            "Field_ffba60f0": [
+              {
+                "ref": 267
+              }
+            ]
+          },
+          "action": {
+            "Field_7e54e22c": [
+              {
+                "fileGuid": "8ecc62b6-7693-4f49-a5c5-1d5acc108ec8",
+                "classGuid": "d7649699-a002-458f-aa94-a371de94d5df"
+              }
+            ]
+          }
+        },
+        {
+          "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+          "fileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+          "sha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+          "objectGuid": "7f897061-6c99-4db2-9694-b3a55c2d295c",
+          "fields": {
+            "Field_0c59fa06": "U_PRG_HK417A2_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "path": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/Subsonic/U_WPM_AMO_SubsonicFRNG.ebx",
+          "fileGuid": "8ecc62b6-7693-4f49-a5c5-1d5acc108ec8",
+          "sha256": "80ebb076e407842c599a143dba5327c69722bce74ab23b73531e01691dc5b9b4",
+          "objectGuid": "d7649699-a002-458f-aa94-a371de94d5df",
+          "fields": {
+            "Field_32cf19f5": true,
+            "Field_9d34093f": "U_WPM_AMO_SubsonicFRNG"
+          }
+        }
+      ],
+      "scope": "ATTACHMENTS.md records 15 unmapped SubsonicFrangible assets and says all 15 kill-switch defaults are true. This trace verifies that the HK417A2 path resolves into KST_CH1_S3_Weapons with true default.",
+      "availability": "The source registry default is true for all 15 traced branches. Current menu or server override availability is unverified.",
+      "multiplayerRelevance": "Weapon ability, attachment, and modifier data are under multiplayer weapon paths; active offering/effect is not proved.",
+      "currentLocalizationString": {
+        "localizationId": "05FD4E9D",
+        "text": "Subsonic Frangible",
+        "line": 2386,
+        "path": "../BF6 Datamining/builds/1.4.3.0/xml/Common/Localization/Languages/fs_us_loc.strings.tsv",
+        "linkToHK417Metadata": "not resolved by direct ID match"
+      },
+      "perWeaponTraces": [
+        {
+          "weapon": "HK417A2",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "d2d8e59318276eece175d1b392da8e8beac373ab14fe32c680809bed0b6d8fc0",
+            "objectGuid": "ca6da475-906d-4c6e-a009-2caadbec2e90",
+            "Field_157a7d74": {
+              "fileGuid": "420a0586-30ce-43b2-8d30-b2e5653e8ddd",
+              "classGuid": "4f28babc-b6ec-4314-82d1-89841c31e6ce"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/Weapons/Carbine/HK417A2/U_PRG_HK417A2_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "cf019ecf9c44dffe2fa7aec67ed5c924a5eabe452bbf5445d70a0b6444136184",
+            "objectGuid": "4f28babc-b6ec-4314-82d1-89841c31e6ce",
+            "Field_9d34093f": "U_PRG_HK417A2_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_Ability.ebx",
+            "fileSha256": "60d5d298aedf9fdbb91d5356d5e7d9988c7ccfa21d81172311e1c8bbd0715f6d",
+            "branchObjectGuid": "cc8a4562-d2cd-40ea-a4e2-f83e2012fd6b",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "420a0586-30ce-43b2-8d30-b2e5653e8ddd",
+                "classGuid": "4f28babc-b6ec-4314-82d1-89841c31e6ce"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "7f897061-6c99-4db2-9694-b3a55c2d295c",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "7f897061-6c99-4db2-9694-b3a55c2d295c",
+            "Field_0c59fa06": "U_PRG_HK417A2_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "SCARSC",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "41a3b8a74a71e4e59051a2ccaa88c5b0c2a86ecff0b80fccaf5232f8aebe9c01",
+            "objectGuid": "95dcdb6b-1199-4c1b-9d91-7f4d979f05d2",
+            "Field_157a7d74": {
+              "fileGuid": "c5d8be16-2dd3-45a4-a8e8-1a0cf1604f30",
+              "classGuid": "e5e943db-354f-45cf-a24b-a63e0bf5f512"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/Carbine/SCARSC/U_PRG_SCARSC_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "ad4a4d9e983b28fab0d9e8c2855ece913fff7d341950a84c9528059154a68707",
+            "objectGuid": "e5e943db-354f-45cf-a24b-a63e0bf5f512",
+            "Field_9d34093f": "U_PRG_SCARSC_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/Carbine/SCARSC/SCARSC_Ability.ebx",
+            "fileSha256": "067206f4781bb70c61c8c2b028d9a107acd3b257d130d502f1413d555e66f961",
+            "branchObjectGuid": "34e52c23-e51a-466d-b0a7-f02cd13f20b0",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "c5d8be16-2dd3-45a4-a8e8-1a0cf1604f30",
+                "classGuid": "e5e943db-354f-45cf-a24b-a63e0bf5f512"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "2477c20e-9312-46f8-a4b4-d7962506b8c3",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "2477c20e-9312-46f8-a4b4-d7962506b8c3",
+            "Field_0c59fa06": "U_PRG_SCARSC_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "SIG553R",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "0039709e76ffc8fc826769449d89459ebab943d5889fb9adca90ffa337b209b2",
+            "objectGuid": "49ecfdb2-9009-4457-a046-7b5852a246ec",
+            "Field_157a7d74": {
+              "fileGuid": "16b521da-6b88-4fe2-814b-7f5046582aaf",
+              "classGuid": "5e994a50-6724-4ba4-8f0a-d646f23088b6"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/Carbine/SIG553R/U_PRG_SIG553R_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "5394df5a3ee4c58969f30168291c7fc8cd96a915c09246518b62b33003883180",
+            "objectGuid": "5e994a50-6724-4ba4-8f0a-d646f23088b6",
+            "Field_9d34093f": "U_PRG_SIG553R_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/Carbine/SIG553R/SIG553R_Ability.ebx",
+            "fileSha256": "2834d6d2287d9e362f59f1da72977dbc5411a17e790aee0595879adda7fb51d2",
+            "branchObjectGuid": "e1cfe129-d0f8-4897-a794-38a71f8b78cd",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "16b521da-6b88-4fe2-814b-7f5046582aaf",
+                "classGuid": "5e994a50-6724-4ba4-8f0a-d646f23088b6"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "4ff901ca-ba2d-4d68-bb8f-2511acb41c88",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "4ff901ca-ba2d-4d68-bb8f-2511acb41c88",
+            "Field_0c59fa06": "U_PRG_SIG553R_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "FiveSeven",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "6017aaf0123e5a7ef8311d255dbf880568201ee8114225a31fdb4ce8c088fd20",
+            "objectGuid": "74018c2c-e8ef-4edf-ad9b-419ff5d5916f",
+            "Field_157a7d74": {
+              "fileGuid": "f88f9a41-df99-42c3-be1e-961968ff8c1f",
+              "classGuid": "1555da0d-c742-42c4-ad55-01d279512b6b"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/Secondary/FiveSeven/U_PRG_FiveSeven_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "3739a7f60fb9a4711345959aa83089925caf8b3bf26c3d190d4580cfb464b2b0",
+            "objectGuid": "1555da0d-c742-42c4-ad55-01d279512b6b",
+            "Field_9d34093f": "U_PRG_FiveSeven_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/Secondary/FiveSeven/FiveSeven_Ability.ebx",
+            "fileSha256": "6fe4213903db8ef2e428f88b3f5a1949ab7a99500da09b22cb5b808e6bca3a19",
+            "branchObjectGuid": "5fed06a8-7c7a-4fb2-88b7-a4c519bbfb0f",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "f88f9a41-df99-42c3-be1e-961968ff8c1f",
+                "classGuid": "1555da0d-c742-42c4-ad55-01d279512b6b"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "85f039ef-723c-4730-be7f-529d11ca8f41",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "85f039ef-723c-4730-be7f-529d11ca8f41",
+            "Field_0c59fa06": "U_PRG_FiveSeven_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "G22",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "5841590975d22f6467220b8c7f6b44d1ae7f4a0165f928ea0ca3b7068ac28fcb",
+            "objectGuid": "b5abdfab-84ea-426f-8227-9a1829d559d7",
+            "Field_157a7d74": {
+              "fileGuid": "9b707478-9357-4a7a-bc04-c0e15b18b413",
+              "classGuid": "2c308c6b-9162-418d-a983-593838504015"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/Secondary/G22/U_PRG_G22_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "a78dac0a0f9f9509c264cc8a654c28b8d95503864c936212e482d3a0f283ca1b",
+            "objectGuid": "2c308c6b-9162-418d-a983-593838504015",
+            "Field_9d34093f": "U_PRG_G22_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/Secondary/G22/G22_Ability.ebx",
+            "fileSha256": "8c4255e5d331927701e74095e93430eeb89408fe05cdea90f73f1bce5a21bf8f",
+            "branchObjectGuid": "9f598523-da88-4e84-91ee-0c3d05957b4b",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "9b707478-9357-4a7a-bc04-c0e15b18b413",
+                "classGuid": "2c308c6b-9162-418d-a983-593838504015"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "c7695953-5b94-4f8d-a5d7-e3b151a4c5c8",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "c7695953-5b94-4f8d-a5d7-e3b151a4c5c8",
+            "Field_0c59fa06": "U_PRG_G22_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "M18",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/Secondary/M18/Attachment_M18_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "5b80c4d52b9b11bd15fb3c4e3277b9d64d79b89d833bca4edba46eaacf3f33bb",
+            "objectGuid": "29d026c2-b3d4-4a76-8430-3476a9a83efd",
+            "Field_157a7d74": {
+              "fileGuid": "d6dee414-3554-42fd-9d84-3c5d9df45758",
+              "classGuid": "3cd1fd89-fc73-4286-8895-4c95e4fca8d2"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/Weapons/Secondary/M18/U_PRG_M18_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "9dbd5f062eb5f72d5973e05c9f9fdb38c1dff403318c663ac4575c2af768a847",
+            "objectGuid": "3cd1fd89-fc73-4286-8895-4c95e4fca8d2",
+            "Field_9d34093f": "U_PRG_M18_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/Secondary/M18/M18_Ability.ebx",
+            "fileSha256": "7b5ae3426681ab3727a898fde4bb1751ff642926e1dcd7b42922fc166f8e7c77",
+            "branchObjectGuid": "76c54ff5-2e09-4cad-b44b-44d4473415d9",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "d6dee414-3554-42fd-9d84-3c5d9df45758",
+                "classGuid": "3cd1fd89-fc73-4286-8895-4c95e4fca8d2"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "14ee4029-8c44-48cd-8b65-b081f3fe6022",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "14ee4029-8c44-48cd-8b65-b081f3fe6022",
+            "Field_0c59fa06": "U_PRG_M18_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "APC10",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "84038d747fed672fdb07be138b85ed0c37fe24c48376f4f464de40ec5be4a183",
+            "objectGuid": "e2f09cd6-f296-466a-968e-fbf5878cc154",
+            "Field_157a7d74": {
+              "fileGuid": "12b3bfa8-78a6-4685-befa-5c79b6a7361a",
+              "classGuid": "e075b6da-f577-4fc6-8eed-3c92fdd95d85"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/SMG/APC10/U_PRG_APC10_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "2cc7a6d70c5ade1960f8f96b613e7fc6b0c2b0935b8597f049e866c4df3a1853",
+            "objectGuid": "e075b6da-f577-4fc6-8eed-3c92fdd95d85",
+            "Field_9d34093f": "U_PRG_APC10_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/APC10/APC10_Ability.ebx",
+            "fileSha256": "8fc72af64960a5360e9cdcdc832d59a6e67e0c5c0ba1a515092df362d2614f01",
+            "branchObjectGuid": "c817c4b8-4fcf-4cfa-80ab-0693eebd08a7",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "12b3bfa8-78a6-4685-befa-5c79b6a7361a",
+                "classGuid": "e075b6da-f577-4fc6-8eed-3c92fdd95d85"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "d880aeb9-652c-4970-b8ce-cd79299f7d25",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "d880aeb9-652c-4970-b8ce-cd79299f7d25",
+            "Field_0c59fa06": "U_PRG_APC10_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "APDW",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "bc61415dafb46b5a8b3c509f686cf9a20c146125ee5c2a8b9c4c6d1fb2e461bf",
+            "objectGuid": "770ddf95-1435-49cf-b724-89fa1d3e423c",
+            "Field_157a7d74": {
+              "fileGuid": "713b939c-e511-489a-b352-fb846388c190",
+              "classGuid": "a71be9c7-108b-41db-a6dc-18c8c99a8c94"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/SMG/APDW/U_PRG_APDW_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "9cfe088f5c902658ade1656a2de1bd115816b306348a6a0c47a657e38c903209",
+            "objectGuid": "a71be9c7-108b-41db-a6dc-18c8c99a8c94",
+            "Field_9d34093f": "U_PRG_APDW_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/APDW/APDW_Ability.ebx",
+            "fileSha256": "61318ef12ee45e07e97ddf0717b6ea2e137e9c8fb3e14ef7767c682e09d7b6a1",
+            "branchObjectGuid": "12c363ee-e622-439e-b05c-9989171930fa",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "713b939c-e511-489a-b352-fb846388c190",
+                "classGuid": "a71be9c7-108b-41db-a6dc-18c8c99a8c94"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "1933210f-b4b9-4a58-85e6-05ab32684695",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "1933210f-b4b9-4a58-85e6-05ab32684695",
+            "Field_0c59fa06": "U_PRG_APDW_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "MP5MLI",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "f669e5f1523117c1c9c87880ece063dfafb90688d6609f64a0c08c7e9abe367b",
+            "objectGuid": "e78fc500-9845-49e1-9f3e-e235caf8323a",
+            "Field_157a7d74": {
+              "fileGuid": "060f5fd3-8b5f-4d54-9c8e-d822624f602d",
+              "classGuid": "06670962-eeaf-4991-9d9b-24656a02f246"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/SMG/MP5MLI/U_PRG_MP5MLI_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "f396630afec35cc8a44d471e497342070331cc3b96a71d832ec349529e5653ef",
+            "objectGuid": "06670962-eeaf-4991-9d9b-24656a02f246",
+            "Field_9d34093f": "U_PRG_MP5MLI_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/MP5MLI/MP5MLI_Ability.ebx",
+            "fileSha256": "b26760c0d28303c9ae079f239958003329e424c3e5a129542908d2c9edd5a679",
+            "branchObjectGuid": "15d093b4-97a9-41e4-8566-85ea9edfa30d",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "060f5fd3-8b5f-4d54-9c8e-d822624f602d",
+                "classGuid": "06670962-eeaf-4991-9d9b-24656a02f246"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "fc32aa6a-5529-4c82-8f52-3607b7fd4e47",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "fc32aa6a-5529-4c82-8f52-3607b7fd4e47",
+            "Field_0c59fa06": "U_PRG_MP5MLI_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "MPX",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "5425bb885442b9e8535e406cd07eabcab4477fd9e0958cf561294b08419aecb5",
+            "objectGuid": "afcbb02a-0073-4c1b-badc-2415619b0c86",
+            "Field_157a7d74": {
+              "fileGuid": "8d7bb17d-6d8b-4247-8947-10d7924b81ff",
+              "classGuid": "d689ad9e-c440-4912-ad61-5a64b7e1996a"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/Weapons/SMG/MPX/U_PRG_MPX_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "ddf4fbefcda37e0d1d3bfee682caa006d75f59f1f8297d33b839a338f186a520",
+            "objectGuid": "d689ad9e-c440-4912-ad61-5a64b7e1996a",
+            "Field_9d34093f": "U_PRG_MPX_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/MPX/MPX_Ability.ebx",
+            "fileSha256": "37ce8e2338248c906ff2851a7ac7a352a7779f7e7a265940e04361ae8ddd35b4",
+            "branchObjectGuid": "2d0b0130-e227-4b44-aa0a-fa16c067da7e",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "8d7bb17d-6d8b-4247-8947-10d7924b81ff",
+                "classGuid": "d689ad9e-c440-4912-ad61-5a64b7e1996a"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "37477ebc-9e7e-4327-a232-dd7c1389d25a",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "37477ebc-9e7e-4327-a232-dd7c1389d25a",
+            "Field_0c59fa06": "U_PRG_MPX_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "P90",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "786ca02a599c1c42a5606796569d4af5b11d36625c84b0825fd56d887fd8a824",
+            "objectGuid": "efe649eb-9bf2-4d90-9397-e47c89351c94",
+            "Field_157a7d74": {
+              "fileGuid": "d26d2789-ee55-4a9b-886f-68f72e82101c",
+              "classGuid": "8894fde3-e64b-46ff-9eb3-6213ca44b519"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/SMG/P90/U_PRG_P90_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "bf8ca50197d484ed1da929cd14ae59eb163407f942015036b32941e1ef34e5d0",
+            "objectGuid": "8894fde3-e64b-46ff-9eb3-6213ca44b519",
+            "Field_9d34093f": "U_PRG_P90_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/P90/P90_Ability.ebx",
+            "fileSha256": "712fe487edf7960d41a3958bfea23fbf39f908d10415f16008ec8b1e452ebb99",
+            "branchObjectGuid": "c809a6ff-ebf0-412a-b53b-da32cff3243a",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "d26d2789-ee55-4a9b-886f-68f72e82101c",
+                "classGuid": "8894fde3-e64b-46ff-9eb3-6213ca44b519"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "51042b96-9f8b-4234-a251-a10e599e31db",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "51042b96-9f8b-4234-a251-a10e599e31db",
+            "Field_0c59fa06": "U_PRG_P90_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "PP19",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "78d207aab99437d36f21d083c6943d99526ba213a7e42d252d027d1178a8a6ea",
+            "objectGuid": "bfc025df-d1f2-4f67-8f6a-98d8fd2effce",
+            "Field_157a7d74": {
+              "fileGuid": "11d30049-1e6a-4718-92c6-c2a51ec59f55",
+              "classGuid": "1aee0aa1-e9d0-4b63-b9bf-17c41b20c9da"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/Weapons/SMG/PP19/U_PRG_PP19_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "65b9c1a6ffff94917b64da5d8c4a0e4d8fbb193c3a1d8e8d60e4e64cdce036e2",
+            "objectGuid": "1aee0aa1-e9d0-4b63-b9bf-17c41b20c9da",
+            "Field_9d34093f": "U_PRG_PP19_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/PP19/PP19_Ability.ebx",
+            "fileSha256": "b6eacb625d5ccccdad5252d91e5d6d233a70ed5906fb44b4c9785a5e2b34c18d",
+            "branchObjectGuid": "ec6cc1a5-79b5-466f-9657-60cc15d0729f",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "11d30049-1e6a-4718-92c6-c2a51ec59f55",
+                "classGuid": "1aee0aa1-e9d0-4b63-b9bf-17c41b20c9da"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "71ce0ef2-959b-4aae-b09e-befc165ae346",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "71ce0ef2-959b-4aae-b09e-befc165ae346",
+            "Field_0c59fa06": "U_PRG_PP19_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "ScorpionEvo3",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "fc27eed2f611528d3765aba07ceabd0c740c3e5fc6947bacc40e459f640d7378",
+            "objectGuid": "655f0f25-491f-4f08-b023-4a3ba7b25e04",
+            "Field_157a7d74": {
+              "fileGuid": "9cbf0271-3b3b-473d-a2b9-be2f5b6255db",
+              "classGuid": "4cf3a8d8-75d4-4b18-8264-00c33edf1dcf"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/Weapons/SMG/ScorpionEvo3/U_PRG_ScorpionEvo3_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "b72f2213a1023746565f4a2b3face32c6bfe0dff2977accf32632e592a4ee043",
+            "objectGuid": "4cf3a8d8-75d4-4b18-8264-00c33edf1dcf",
+            "Field_9d34093f": "U_PRG_ScorpionEvo3_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_Ability.ebx",
+            "fileSha256": "7a61063a78a1d68ebe876c89ef7cb5c71b7ab2ca774cdd983bc433d9b9008576",
+            "branchObjectGuid": "5c09fe92-de78-4e50-8031-4f1408aa7d7c",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "9cbf0271-3b3b-473d-a2b9-be2f5b6255db",
+                "classGuid": "4cf3a8d8-75d4-4b18-8264-00c33edf1dcf"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "ff392bd9-8aa0-4b59-a427-7347ffa71580",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "ff392bd9-8aa0-4b59-a427-7347ffa71580",
+            "Field_0c59fa06": "U_PRG_ScorpionEvo3_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "UMP40",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "4dbbf32ee98281ce416668bcafecaefde34ee40b2578a73516dc3c634a29c427",
+            "objectGuid": "790d80e8-92f0-4dfd-8199-8de623e99188",
+            "Field_157a7d74": {
+              "fileGuid": "764a5fc4-a450-4a86-a844-c443e25f312f",
+              "classGuid": "87d1c0d9-fee2-4cb2-be8f-d3f225553840"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/SMG/UMP40/U_PRG_UMP40_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "f8092de31998db1a4391c5a82eebdf038cbf71adb291d2d4a9e779f7aa751203",
+            "objectGuid": "87d1c0d9-fee2-4cb2-be8f-d3f225553840",
+            "Field_9d34093f": "U_PRG_UMP40_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/UMP40/UMP40_Ability.ebx",
+            "fileSha256": "db4463fa34054c1a08365c978e7d63b14b8e72cb8a24068d1ed681b3f81b4977",
+            "branchObjectGuid": "67170b16-5ecb-4cc8-afba-a381d46ffa6f",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "764a5fc4-a450-4a86-a844-c443e25f312f",
+                "classGuid": "87d1c0d9-fee2-4cb2-be8f-d3f225553840"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "56746d81-e69b-4893-b628-6739c2c9dbc2",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "56746d81-e69b-4893-b628-6739c2c9dbc2",
+            "Field_0c59fa06": "U_PRG_UMP40_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        },
+        {
+          "weapon": "Vector",
+          "attachment": {
+            "path": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "aff2c3c1d39305af73077dbcf949de3ff9d2eecdcb8f20fd4c3e802cc342e1ef",
+            "objectGuid": "3734a01d-dd98-4307-b682-8328e7447b51",
+            "Field_157a7d74": {
+              "fileGuid": "773c93c1-2abe-4c8b-a1d1-311a38a3e105",
+              "classGuid": "62c3c418-7c3b-4045-afb6-2b1ee0f7f1ab"
+            }
+          },
+          "progression": {
+            "path": "Common/Hardware/weapons/SMG/Vector/U_PRG_Vector_AMO_SubsonicFrangible.ebx",
+            "fileSha256": "46b7c6812c4403a7fb7f0489596abc221de6f1ffc4534f417abbaab0c2edaa78",
+            "objectGuid": "62c3c418-7c3b-4045-afb6-2b1ee0f7f1ab",
+            "Field_9d34093f": "U_PRG_Vector_AMO_SubsonicFrangible"
+          },
+          "ability": {
+            "path": "Common/Hardware/Weapons/SMG/Vector/Vector_Ability.ebx",
+            "fileSha256": "bdfc158fe72ee3193ba2052976fda5185f25ad932ab59a70927586a71f1be7e2",
+            "branchObjectGuid": "a31efa56-bc13-4846-b76a-ce92eb95216e",
+            "Field_f86e0433": {
+              "$import": {
+                "fileGuid": "773c93c1-2abe-4c8b-a1d1-311a38a3e105",
+                "classGuid": "62c3c418-7c3b-4045-afb6-2b1ee0f7f1ab"
+              }
+            },
+            "Field_def7f8dd": {
+              "registryFileGuid": "64f06884-9a96-4fd8-83d8-7aaacdf00881",
+              "registryObjectGuid": "a3ecaaf6-b685-4c5e-98a8-fa0430b7e7aa",
+              "Field_42c8b257": true
+            }
+          },
+          "registry": {
+            "path": "Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+            "fileSha256": "ad23e7cf70428f42654318a957d62f405533a738eacdfa26bc1600e09ffec9dd",
+            "objectGuid": "a3ecaaf6-b685-4c5e-98a8-fa0430b7e7aa",
+            "Field_0c59fa06": "U_PRG_Vector_AMO_SubsonicFrangible",
+            "Field_42c8b257": true
+          }
+        }
+      ],
+      "summary": {
+        "count": 15,
+        "capturedRegistryDefaultTrue": 15,
+        "capturedRegistryDefaultFalse": 0,
+        "currentMenuAvailability": "unverified for every weapon"
+      }
+    }
+  ],
+  "reproduction": {
+    "decoder": "python scripts/frosty-ebx-decode.py",
+    "descriptorArgument": "--descriptors ../BF6 Datamining/builds/1.4.3.0/capture/toolchain/SharedTypeDescriptors.ebx",
+    "assets": [
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/M4A1/M4A1_Ability.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/BREN3/BREN3_Ability.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/HK417A2/HK417A2_Ability.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/GameSetup/Tweakables/Killswitches/KST_GLA_Weapons.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/GameSetup/Tweakables/Killswitches/KST_CH1_S4_Weapons.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/GameSetup/Tweakables/Killswitches/KST_CH1_S3_Weapons.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/UI/Static/Metadata/Attachments/BREN3/AD_BREN3_BRL_Treated.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/_Attachments/_Shared/DefaultRails/U_DPF_MagWell_Empty.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/_SlotCategories/SC_Ergonomic.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_ERG_FlaredMagwell.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/M4A1/U_PRG_M4A1_ERG_FlaredMagwell.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/M4A1/Art/U_ATT_M4A1_Magwellflare.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FlaredMagwell/U_WPM_ERG_FlaredMagwell_W10.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FlaredMagwell/WPM_ERG_FlaredMagwell_W10.ebx",
+      "../BF6 Datamining/builds/1.4.3.0/capture/collection/raw/Common/UI/Static/Metadata/Attachments/M4A1/AD_M4A1_ERG_Flare.ebx"
+    ],
+    "cliForm": "python scripts/frosty-ebx-decode.py --descriptors <descriptor-path> --ebx <asset-path> --out <scratch-json>"
+  }
+}

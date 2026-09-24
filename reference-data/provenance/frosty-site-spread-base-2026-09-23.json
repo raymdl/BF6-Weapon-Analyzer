@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "buildHead": 4892017,
+  "detailReport": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-spread-base-504-perleaf-2026-09-23.jsonl",
+  "detailReportSha256": "5f46317abc7ea0377b81f6f0e792fc8da9aa80b395847a93f0367def218956bc",
+  "rowCount": 504,
+  "exactMatches": 504,
+  "mismatches": 0,
+  "siteValues": {
+    "path": "data/weapons.json",
+    "sha256": "a7831165561b9fcb260900bc88b23e3109935cc7f7254f9f24348104c6020dde",
+    "scope": "63 weapons x four spread arrays x two bounds"
+  },
+  "sourceFields": {
+    "hipMinimums": "HDA_Weapons row selected by source Field_d37c6521 ordered object-reference list and per-weapon GS Field_fe708077 selector; raw HDA fields exact with offset/hash. H1-H5 labels remain provisional.",
+    "adsMovingMinimums": "ZDA_Moving_Weapons row selected by root Field_ed5a92bf ordered reference list and per-weapon GS Field_d94fe6ad selector; exact source raw offsets/hash.",
+    "maximaAndAdsStationaryMinimum": "Per-weapon GS `Field_a1ec29c4` MinMaxDispersion array rows: 0/1 unzoomed standing stationary/moving, 9/10 zoomed standing stationary/moving; field Field_60e4e484 MaxAngle, Field_7baf4297 MinAngle."
+  },
+  "limits": [
+    "Source values and bytes match all current site leaves. This proves data lineage candidates, not runtime consumption.",
+    "HDA H1-H5 semantic labels remain provisional; this report uses direct ordered-reference and selector association."
+  ],
+  "sourceReportSha256": "15fd2aef2c395b8308279407fbcd983e003186aab24f1650606e09f85672e282",
+  "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+  "note": "Raw per-leaf sources include descriptor-derived byte offsets, raw bytes, source asset hashes and current site pointers. H1-H5 labels remain provisional.",
+  "previousDetailReportSha256": "262dbdfed7d89eb24329d0ec63f0d4c412890fd9672d89c9d47d43e7e12ad40d",
+  "validation": {
+    "currentActualJsonPointers": 504,
+    "rawFloatWordsChecked": 504,
+    "uniqueRawBodyHashesChecked": 65,
+    "failures": 0,
+    "enrichment": "Logical identity pointers retained; actual current numeric JSON pointers and HDA/ZDA exact source path/object/selector/reference order added from pinned current-build source report."
+  }
+}

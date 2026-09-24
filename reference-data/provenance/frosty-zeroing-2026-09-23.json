@@ -1,0 +1,194 @@
+{
+  "reviewDate": "2026-09-23",
+  "build": {
+    "version": "1.4.3.0",
+    "archiveHead": 4892087,
+    "sdkVersion": 4414275,
+    "descriptor": "capture/toolchain/SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+    "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+  },
+  "decoder": {
+    "script": "scripts/frosty-ebx-decode.py",
+    "sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+    "result": "4 decoded, 0 failed",
+    "commandPattern": "python scripts/frosty-ebx-decode.py --descriptors <build>/capture/toolchain/SharedTypeDescriptors-hotfix-2026-09-16.ebx --ebx <each raw EBX path below> --out <temporary JSON>"
+  },
+  "scope": "Bounded MP zeroing UI and RangeFinder/unlock source chain. Does not establish native zero-distance mechanics.",
+  "zeroingUi": {
+    "multiplayerWidget": {
+      "route": "Game/GlacierMP/Common/UI/HUD/Widgets/SoldierInfoPromptZeroing",
+      "catalogFileGuid": "403a49a3-8b29-462d-8068-9d4bd9a8428f",
+      "catalogOriginalBytes": 5514,
+      "catalogStoredBytes": 2122,
+      "catalogSha1": "4e67e21ac015e03650b5889eecca2843874af44d",
+      "captureFile": "capture/optic-zeroing-2026-09-23/Game__GlacierMP__Common__UI__HUD__Widgets__SoldierInfoPromptZeroing.ebx",
+      "rawBytes": 5514,
+      "rawSha256": "8bd6a46fe196d55ad099d2c1ea2deaa89553d97ff325aeae8ccbf39700fe2a61",
+      "fileGuid": "403a49a3-8b29-462d-8068-9d4bd9a8428f",
+      "objects": [
+        {
+          "index": 0,
+          "offset": "0x30",
+          "class": "Class_4cffef6a",
+          "guid": "fc5ee0d2-d9d1-4878-9d6f-8957fb2a34f5",
+          "layoutAmbiguous": true,
+          "path": "Field_0c59fa06",
+          "value": "Game/GlacierMP/Common/UI/HUD/Widgets/SoldierInfoPromptZeroing"
+        },
+        {
+          "index": 1,
+          "offset": "0xb0",
+          "class": "Class_cac902e5",
+          "componentName": "ZeroingContainer"
+        },
+        {
+          "index": 2,
+          "offset": "0x220",
+          "class": "Class_3db12873",
+          "componentName": "DistanceLabel"
+        },
+        {
+          "index": 3,
+          "offset": "0x370",
+          "class": "Class_76c26376",
+          "layoutAmbiguous": true,
+          "componentName": "ZeroingIcon"
+        },
+        {
+          "index": 4,
+          "offset": "0x590",
+          "class": "Class_76c26376",
+          "layoutAmbiguous": true,
+          "componentName": "ZeroingPrompt"
+        },
+        {
+          "index": 5,
+          "offset": "0x7b0",
+          "class": "Class_b61a7d65",
+          "componentName": "ZeroingDistanceAdd"
+        },
+        {
+          "index": 6,
+          "offset": "0x950",
+          "class": "Class_b61a7d65",
+          "componentName": "ZeroingDistanceNormal"
+        },
+        {
+          "index": 7,
+          "offset": "0xaf0",
+          "class": "Class_560f0d62",
+          "bindingImportPath": "Field_427995a4[0].Field_73e9a894",
+          "importFileGuid": "655aef85-3718-4ad4-a77a-a1fbded864d6",
+          "importClassGuid": "a7dc906e-c84c-45ff-87c1-e3063b280540"
+        },
+        {
+          "index": 13,
+          "offset": "0xcb0",
+          "class": "Class_1788e77e",
+          "bindingImportPath": "Field_21943083[0].Field_a38d791c.Field_73e9a894",
+          "importFileGuid": "655aef85-3718-4ad4-a77a-a1fbded864d6",
+          "importClassGuid": "a7dc906e-c84c-45ff-87c1-e3063b280540"
+        }
+      ],
+      "layoutLimit": "The root and two Class_76c26376 records are layout-ambiguous under the pinned type-key decoder. Their named fields are reported as stored source, not decoded widget behavior."
+    },
+    "dataBinding": {
+      "route": "Common/UI/HUD/Inventory/Assets/DataBindings/HUDLoadout_WeaponZeroingDBD",
+      "catalogFileGuid": "655aef85-3718-4ad4-a77a-a1fbded864d6",
+      "catalogOriginalBytes": 810,
+      "catalogStoredBytes": 473,
+      "catalogSha1": "557820e164ed468631b638c03d26e9298cb95a38",
+      "captureFile": "capture/optic-zeroing-2026-09-23/Common__UI__HUD__Inventory__Assets__DataBindings__HUDLoadout_WeaponZeroingDBD.ebx",
+      "rawBytes": 810,
+      "rawSha256": "4a13e99d3adbe57234c399eb6fbd0bc055fed5f28026c5a20929064c162f8186",
+      "fileGuid": "655aef85-3718-4ad4-a77a-a1fbded864d6",
+      "objects": [
+        {
+          "index": 0,
+          "offset": "0x30",
+          "class": "Class_20b5e4dc",
+          "guid": "a7dc906e-c84c-45ff-87c1-e3063b280540",
+          "path": "Field_1191b52c -> object[1]"
+        },
+        {
+          "index": 1,
+          "offset": "0xc8",
+          "class": "Class_8c598ae2",
+          "guid": "70295aac-c4c3-41da-b310-eb9f719cf3a9",
+          "properties": [
+            "Field_da58bbd4[0].Field_0c59fa06 = IsInputVisible",
+            "Field_da58bbd4[1].Field_0c59fa06 = ZeroingDistance"
+          ]
+        }
+      ],
+      "numericZeroDistance": "not present as a named distance value in this DBD record"
+    }
+  },
+  "rangeFinder": {
+    "route": "Common/Hardware/Weapons/_WeaponModifiers/_RightRail/RangeFinder/WPM_RGT_RangeFinder_W10",
+    "rawPath": "capture/collection/raw/Common/Hardware/Weapons/_WeaponModifiers/_RightRail/RangeFinder/WPM_RGT_RangeFinder_W10.ebx",
+    "rawSha256": "ed1655f0b8affb802dfbd2330aab3826a59ea98e3e9076560792dba251e1423f",
+    "rawBytes": 4418,
+    "fileGuid": "0bf1b5c8-ba40-4de8-aa23-e6a42e40b475",
+    "selector": {
+      "objectIndex": 1,
+      "offset": "0x68",
+      "class": "Class_897c99a7",
+      "guid": "a2570547-4ea0-4f9a-b466-2656f4848726",
+      "path": "Field_819acc98[0]",
+      "value": "1285c9c4-ff6a-41df-baa6-d3726a5db590"
+    },
+    "linkedObjects": [
+      {
+        "arrayPath": "Field_9690d604[0]",
+        "objectIndex": 4,
+        "offset": "0x128",
+        "class": "Class_4e0a8f72",
+        "guid": "7160c5ee-96c2-4a26-875e-69b789b282a4",
+        "fields": {
+          "Field_4b636fc6": true,
+          "Field_4449ee55": true
+        },
+        "booleanSemantics": "unresolved"
+      },
+      {
+        "arrayPath": "Field_9690d604[1] -> object[2].Field_5aec774f -> object[3]",
+        "objectIndex": 3,
+        "offset": "0xf8",
+        "class": "Class_e923016e",
+        "guid": "10e8e2df-eac7-4410-aa2c-4f4c7cd9fb31",
+        "importPath": "Field_605f79af[0].Field_6b28f68f",
+        "importFileGuid": "440dc2eb-ded9-431f-83df-39160a425971",
+        "importClassGuid": "841da45e-7849-4187-90db-055e8f4041e7"
+      }
+    ],
+    "directReferenceToMultiplayerWidgetOrDbD": false
+  },
+  "unlockTarget": {
+    "route": "Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_WeaponUnlocks",
+    "rawPath": "capture/collection/raw/Common/GameSetup/GameConfigurations/CT_GLA_CH1_S0_WeaponUnlocks.ebx",
+    "rawSha256": "b0e012e23e6d4f6a594d5254e2ce144a7149f8b359d3c59166d94e55fb1c2d0d",
+    "fileGuid": "440dc2eb-ded9-431f-83df-39160a425971",
+    "catalogOriginalBytes": 1574,
+    "catalogStoredBytes": 900,
+    "catalogSha1": "80a24c7826676cc29dc0723fd4f4653d27637959",
+    "object": {
+      "index": 1,
+      "offset": "0x88",
+      "class": "Class_9d00fa52",
+      "guid": "841da45e-7849-4187-90db-055e8f4041e7",
+      "fields": {
+        "Field_0c59fa06": "Has Rangefinder",
+        "Field_96e1b4f3": "ref object[0]"
+      }
+    }
+  },
+  "limits": [
+    "The GlacierMP widget and common DBD establish MP zeroing UI metadata, not RangeFinder gameplay behavior.",
+    "The source does not connect the RangeFinder selector to the GlacierMP widget or common DBD.",
+    "The unlock route and named Has Rangefinder entry do not define the two hashed RangeFinder booleans.",
+    "This bounded UI/RangeFinder/unlock chain shows no numeric zero distance. Companion GRX-to-weapon-blueprint evidence records named source values in reference-data/provenance/frosty-zeroing-parameters-2026-09-23.json, without proving effective indexed distances.",
+    "Prior SP_Zeroing tutorial routes and shared RangefinderZero tutorials were excluded from this MP evidence."
+  ],
+  "companionParameterEvidence": "reference-data/provenance/frosty-zeroing-parameters-2026-09-23.json; source values are recorded there, but effective distances and indexing semantics remain unresolved."
+}

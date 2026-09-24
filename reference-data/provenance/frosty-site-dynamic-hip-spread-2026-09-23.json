@@ -1,0 +1,70 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "title": "Selector-bound dynamic hip spread factors for selected lasers and lights",
+  "build": {
+    "frosty": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": {
+    "sitePointers": ["/LASERS/7", "/LASERS/8", "/LIGHTS/2", "/LIGHTS/3"],
+    "siteWeapons": 63,
+    "selectedWeaponChoices": 137,
+    "selectorBoundGbmModifierBindings": 139,
+    "siteFields": ["hipSpreadIncMult", "hipSpreadFiringDecCoefMult", "hipSpreadFiringDecOffsetMult", "hipSpreadNotFiringDecOffsetMult", "hipSpreadIdleDecOffsetMult"],
+    "rawOperandChecks": 1390
+  },
+  "finding": {
+    "status": "source-site-match",
+    "siteValues": {
+      "hipSpreadIncMult": 0.666667,
+      "hipSpreadFiringDecCoefMult": 1.837117,
+      "hipSpreadFiringDecOffsetMult": 0.666667,
+      "hipSpreadNotFiringDecOffsetMult": 0.666667,
+      "hipSpreadIdleDecOffsetMult": 0.666667
+    },
+    "sourceObjects": "Class_5e5631ff GBM_Increase_Hip_* right-rail modifiers bound by each exact weapon GS selector (indices and every source object retained in details). Both Field_447d6d51 and Field_0a160c57 branches checked.",
+    "rawProof": "For each selector-bound GBM source object and each field, descriptor-derived raw scalar bytes equal decoded object/body values and corresponding current XML-overlay values. Source/site decimal comparison allows 1e-6 float-rounding tolerance.",
+    "remainingUncertainty": "GS bindings establish configured modifier choices and priorities. Native modifier selection/composition and Analyzer model consumption remain unproven. This match does not establish in-game behavior."
+  },
+  "details": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-dynamic-hip-spread-leaf-review-2026-09-23-v2.jsonl",
+    "sha256": "5e8454b24ac8e8fb3b0f07cf9a69ea10cc59e8063561e4c02078a58ea4481b4f"
+  },
+  "reproduction": {
+    "command": "python scripts/frosty-site-dynamic-hip-spread-review.py --root \"../BF6 Datamining/builds/1.4.3.0/xml/xml-overlay\" --report-dir \"../BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23\" --out \"../BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/site-dynamic-hip-spread-leaf-review-2026-09-23-v2.jsonl\"",
+    "scriptSha256": "6a052431c41c861749787c7a53dc82b580fae40b23f817fc890e1356ecb1e5f5"
+  },
+  "inputs": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\attachments.json",
+      "sha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-attachment-mapping-2026-09-15.json",
+      "sha256": "3f8f41fed52840b61fb5c8527f22f92ee0272850276d429cb4f2cc437f351f64"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+      "sha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-site-recoil-audit.py",
+      "sha256": "2e3ef122998f0cb2ee91c82d6ed07f62d30d83aa00ddce3d882549f713e38935"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\DispersionIncrease\\GBM_Increase_Hip_A40_RGT_P10.xml",
+      "sha256": "c0cfc368b41175e455ca6a0995c6c94a0d19856f151644223e2f1adcc64c0506"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Hardware\\Weapons\\_WeaponModifiers\\DispersionIncrease\\GBM_Increase_Hip_S1_RGT_P10.xml",
+      "sha256": "17c33661661f452e0e40dba7670a63e1fd31c794f97bce58f9ec95a75aae3d7f"
+    }
+  ],
+  "limits": [
+    "All exact site weapon choices are retained; multiple selector-bound modifier records remain separate rows and are not collapsed into an assumed composition.",
+    "The receipt closes only these 20 selected LASERS/LIGHTS numeric leaves; other attachment leaves remain assigned or pending.",
+    "The source-to-site field interpretation is supported by exact site source-field mapping and selector-bound GBM operands, but native runtime behavior is not proven."
+  ]
+}

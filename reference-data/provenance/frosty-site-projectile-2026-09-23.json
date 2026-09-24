@@ -1,0 +1,800 @@
+{
+  "reviewDate": "2026-09-23",
+  "scope": "Every PD projectile asset referenced by all 63 site weapons base and selected-ammo routes. Capture/decode evidence is source presence, not proof of native execution or selected ammo in-game.",
+  "build": {
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "inputs": {
+    "ballisticsSha256": "d149293cddf25daa0ac65db41acfe170e3d6aaa3b240c3e10979304d90658054",
+    "weaponsSha256": "314b1ff1d1bdd17d43bcc8d3bb4d0eb7a36e0a46dca9f4e89d19daeb11decb7a",
+    "ammoSha256": "a43307df41f519dc8c6da5e9f3c50553b0782929c2dd333687eea3b7b6703027",
+    "v5DatabasePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+    "v5DatabaseSha256": "1fac4aa159b11741943eaf6ae94f64e63928b9fa0f866ca4a1d191897718cf10",
+    "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+    "fieldWalkerSha256": "23100068e3b9b9e95a02ef1711c47db826972b3529531284e38e96c786ec6ca9",
+    "symFilePath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\outputs\\datamine\\sym-1.4.2.0\\bf6.json",
+    "symFileSha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9",
+    "symBuildLabel": "1.4.2.0 / 18 Aug 2026",
+    "selectionTrace": "frosty-hit-zones-2026-09-15.json",
+    "selectionTraceSha256": "eb67585bae08c714145912ad44ba4bbc543d6c947f5ddf007b39501a86a6d3c9",
+    "xmlOverlayHashMapSha256": "24b51041d8b6c707386bc3039628f0cad094fb9be7044d88ed816320ff373f78"
+  },
+  "captureAndFieldInventory": {
+    "siteWeapons": 63,
+    "uniqueReferencedPDRoutes": 64,
+    "capturesHashMatchedAndDecoded": 64,
+    "exactBodyGuidMatches": 64,
+    "rawFieldEntries": 18158,
+    "fieldsJsonl": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\projectile-fields.jsonl",
+      "sha256": "0ed58cfbfc3d1b97ae8f2a4573a8c4ab3a78e7c9b7df13617549feed7c99c545",
+      "bytes": 9529983
+    },
+    "siteUsageJsonl": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\projectile-site-usage.jsonl",
+      "sha256": "ce859b821950addb91d0d08270551f14fc30ae66e7a2ac5a32aaefc8f3c2fcb9",
+      "records": 63
+    },
+    "captureIds": [
+      1895,
+      1897,
+      1898,
+      1899,
+      1900,
+      1901,
+      1902,
+      1903,
+      1904,
+      1905,
+      1906,
+      1907,
+      1908,
+      1909,
+      1910,
+      1911,
+      1912,
+      1913,
+      1914,
+      1915,
+      1916,
+      1917,
+      1918,
+      1919,
+      1920,
+      1921,
+      1922,
+      1923,
+      1924,
+      1925,
+      1926,
+      1927,
+      1928,
+      1929,
+      1930,
+      1931,
+      1932,
+      1933,
+      1934,
+      1935,
+      1936,
+      1937,
+      1938,
+      1939,
+      1940,
+      1941,
+      1942,
+      1943,
+      1944,
+      1945,
+      1946,
+      1947,
+      1948,
+      1949,
+      1950,
+      1951,
+      1952,
+      1953,
+      1954,
+      1955,
+      1956,
+      1957,
+      1958,
+      1959
+    ]
+  },
+  "directFieldResults": {
+    "dragFieldPath": "projectile GUID body object Field_30c37c24",
+    "gravityFieldPath": "projectile GUID body object Field_d9d33d20",
+    "allSiteDragValuesMatchRaw": 64,
+    "allSiteGravityValuesMatchRaw": 64,
+    "dragDistribution": {
+      "0.0035": 55,
+      "0.002": 9
+    },
+    "gravityDistribution": {
+      "-9.81": 64
+    },
+    "healthAndTweakableAreDistinctCurves": true,
+    "healthCurveBinding": "Projectile Field_6008eb31 -> referenced health-curve object Field_edfc6df6 point structs.",
+    "siteDamageCurveBinding": "Projectile Field_2ad7e688 -> referenced TweakableDamageCurve object; Field_5279388d is its flat interleaved curve. Any Field_edfc6df6 points are on this same object and are compared only with its own flat array.",
+    "tweakableObjectsWithPointArrayPopulated": 0,
+    "tweakablePointAndFlatComparedOnlyWhenBothPresent": "Object-index/GUID refs, descriptor paths and all fields are in the external JSONL. The separately referenced health curve is not a second representation of TweakableDamageCurve."
+  },
+  "siteDamageComparison": {
+    "all63BaseWeaponsCompared": 63,
+    "baseRepresentationAgreement": {
+      "pointExactPairs": 0,
+      "pointBehavior": 0,
+      "flatExactPairs": 59,
+      "flatBehavior": 62,
+      "pointOutlierSiteIds": [],
+      "flatOutlierSiteIds": [
+        "m277",
+        "m250",
+        "miniscout",
+        "m45a1"
+      ],
+      "flatFunctionalOutlierSiteIds": [
+        "m45a1"
+      ],
+      "limits": "Pair-array equality and function-level behavior are separate. Functional comparison mirrors sim/damage.js and checks either side of each breakpoint, repeated-distance steps, and segment midpoints."
+    },
+    "siteMatchesDatedSym": 10,
+    "siteDiffersFromDatedSymSiteIds": [
+      "m433",
+      "b36a4",
+      "sor556",
+      "ak4d",
+      "tr7",
+      "kord6p67",
+      "nvo228e",
+      "l85a3",
+      "vcr2",
+      "m16a4",
+      "m4a1",
+      "m277",
+      "ak205",
+      "m417a2",
+      "grtbc",
+      "qbz192",
+      "sg553r",
+      "sor300sc",
+      "sgx",
+      "pw5a3",
+      "pw7a2",
+      "umg40",
+      "usg90",
+      "kv9",
+      "scw10",
+      "sl9",
+      "cz3a1",
+      "pp19",
+      "l110",
+      "drsiar",
+      "m60",
+      "rpkm",
+      "m123k",
+      "m250",
+      "kts100",
+      "m240l",
+      "m121a2",
+      "rpk74m",
+      "m39emr",
+      "lmr27",
+      "svk86",
+      "svdm",
+      "grtcps",
+      "m2010esr",
+      "sv98",
+      "psr",
+      "miniscout",
+      "l115",
+      "interdictor",
+      "db12",
+      "vz61",
+      "brod3",
+      "ef88"
+    ],
+    "currentPointCopyDiffersFromDatedSymSiteIds": [],
+    "currentFlatCopyDiffersFromDatedSymSiteIds": [
+      "m433",
+      "b36a4",
+      "sor556",
+      "ak4d",
+      "tr7",
+      "kord6p67",
+      "nvo228e",
+      "l85a3",
+      "vcr2",
+      "m16a4",
+      "m4a1",
+      "m277",
+      "ak205",
+      "m417a2",
+      "grtbc",
+      "qbz192",
+      "sg553r",
+      "sor300sc",
+      "sgx",
+      "pw5a3",
+      "pw7a2",
+      "umg40",
+      "usg90",
+      "kv9",
+      "scw10",
+      "sl9",
+      "cz3a1",
+      "pp19",
+      "l110",
+      "drsiar",
+      "m60",
+      "rpkm",
+      "m123k",
+      "m250",
+      "kts100",
+      "m240l",
+      "m121a2",
+      "rpk74m",
+      "m39emr",
+      "lmr27",
+      "svk86",
+      "svdm",
+      "grtcps",
+      "m2010esr",
+      "sv98",
+      "psr",
+      "miniscout",
+      "l115",
+      "interdictor",
+      "db12",
+      "m45a1",
+      "vz61",
+      "brod3",
+      "ef88"
+    ],
+    "ammoRoutesCompared": 328,
+    "ammoRepresentationAgreement": {
+      "routesCompared": 328,
+      "pointExactPairs": 0,
+      "pointBehavior": 0,
+      "flatExactPairs": 313,
+      "flatBehavior": 324,
+      "flatFunctionalOutlierSelections": [
+        {
+          "siteId": "m45a1",
+          "ammoId": "standard",
+          "route": "Common/Hardware/Weapons/_Bullets/PD_.45ACP"
+        },
+        {
+          "siteId": "m45a1",
+          "ammoId": "penetration",
+          "route": "Common/Hardware/Weapons/_Bullets/PD_.45ACP"
+        },
+        {
+          "siteId": "m45a1",
+          "ammoId": "frangible",
+          "route": "Common/Hardware/Weapons/_Bullets/PD_.45ACP"
+        },
+        {
+          "siteId": "m45a1",
+          "ammoId": "hollow_pt",
+          "route": "Common/Hardware/Weapons/_Bullets/PD_.45ACP"
+        }
+      ],
+      "limits": "Full per-route records, including point/flat curves, are in siteUsageJsonl."
+    },
+    "curveRoles": {
+      "tweakablePointFlatSameObjectDisagreements": 0,
+      "healthVsTweakableDistinctCurves": true,
+      "tweakablePointAndFlatSameObjectComparedOnlyWhenBothPopulated": true,
+      "assetsWithEmptyTweakablePointArray": 64,
+      "all64CurvesAndExactReferencedObjectPaths": "projectile-fields.jsonl and projectile-site-usage.jsonl"
+    },
+    "namedBuildExceptions": {
+      "vssm": {
+        "siteId": "vssm",
+        "internalId": "VSSM",
+        "baseRoute": "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Semi",
+        "siteBaseDamagePairs": [
+          [
+            0,
+            35.22
+          ],
+          [
+            9,
+            35.22
+          ],
+          [
+            9,
+            27.48
+          ],
+          [
+            21,
+            27.48
+          ],
+          [
+            21,
+            21.56
+          ],
+          [
+            36,
+            21.56
+          ],
+          [
+            36,
+            20.67
+          ],
+          [
+            75,
+            20.67
+          ],
+          [
+            75,
+            17.13
+          ]
+        ],
+        "symBaseDamagePairs": [
+          [
+            0.0,
+            35.22
+          ],
+          [
+            9.0,
+            35.22
+          ],
+          [
+            9.0,
+            27.48
+          ],
+          [
+            21.0,
+            27.48
+          ],
+          [
+            21.0,
+            21.56
+          ],
+          [
+            36.0,
+            21.56
+          ],
+          [
+            36.0,
+            20.67
+          ],
+          [
+            75.0,
+            20.67
+          ],
+          [
+            75.0,
+            17.13
+          ]
+        ],
+        "baseHealthCurveReference": {
+          "objectIndex": 6,
+          "objectGuid": "8acad6f5-f9fa-48ec-b9f3-59d42ecb14e5",
+          "fieldPath": "objects[6].Field_edfc6df6",
+          "pairs": [
+            [
+              0.0,
+              35.220001
+            ],
+            [
+              9.0,
+              35.220001
+            ],
+            [
+              9.0,
+              27.48
+            ],
+            [
+              21.0,
+              27.48
+            ],
+            [
+              21.0,
+              21.559999
+            ],
+            [
+              36.0,
+              21.559999
+            ],
+            [
+              36.0,
+              20.67
+            ],
+            [
+              75.0,
+              20.67
+            ],
+            [
+              75.0,
+              17.129999
+            ]
+          ]
+        },
+        "baseTweakableDamageCurveReference": {
+          "objectIndex": 4,
+          "objectGuid": "b7d3644c-4cb7-4238-b9da-113efe05f6e6",
+          "pointFieldPath": "objects[4].Field_edfc6df6",
+          "pointPairs": [],
+          "flatFieldPath": "objects[4].Field_5279388d",
+          "flatPairs": [
+            [
+              0.0,
+              35.220001
+            ],
+            [
+              9.0,
+              35.220001
+            ],
+            [
+              9.0,
+              27.48
+            ],
+            [
+              21.0,
+              27.48
+            ],
+            [
+              21.0,
+              21.559999
+            ],
+            [
+              36.0,
+              21.559999
+            ],
+            [
+              36.0,
+              20.67
+            ],
+            [
+              75.0,
+              20.67
+            ],
+            [
+              75.0,
+              17.129999
+            ]
+          ]
+        },
+        "baseTweakablePointAgreement": null,
+        "baseTweakableFlatAgreement": true,
+        "siteSymAgreement": true
+      },
+      "interdictor": {
+        "siteId": "interdictor",
+        "internalId": "DesertTechHTI",
+        "baseRoute": "Common/Hardware/Weapons/_Bullets/PD_.416Barrett",
+        "siteBaseDamagePairs": [
+          [
+            100,
+            80
+          ],
+          [
+            120,
+            100
+          ],
+          [
+            160,
+            100
+          ],
+          [
+            180,
+            80
+          ],
+          [
+            200,
+            80
+          ]
+        ],
+        "symBaseDamagePairs": [
+          [
+            0.0,
+            80.0
+          ],
+          [
+            100.0,
+            80.0
+          ],
+          [
+            120.0,
+            150.0
+          ],
+          [
+            150.0,
+            150.0
+          ],
+          [
+            170.0,
+            62.0
+          ],
+          [
+            200.0,
+            62.0
+          ]
+        ],
+        "baseHealthCurveReference": {
+          "objectIndex": 4,
+          "objectGuid": "d90eb3b5-db54-42a8-9c1a-6503ad013a68",
+          "fieldPath": "objects[4].Field_edfc6df6",
+          "pairs": [
+            [
+              100.0,
+              80.0
+            ],
+            [
+              120.0,
+              100.0
+            ],
+            [
+              160.0,
+              100.0
+            ],
+            [
+              180.0,
+              80.0
+            ],
+            [
+              200.0,
+              80.0
+            ]
+          ]
+        },
+        "baseTweakableDamageCurveReference": {
+          "objectIndex": 5,
+          "objectGuid": "ba0c9abc-a912-4db1-9edd-15d3e588f8c3",
+          "pointFieldPath": "objects[5].Field_edfc6df6",
+          "pointPairs": [],
+          "flatFieldPath": "objects[5].Field_5279388d",
+          "flatPairs": [
+            [
+              100.0,
+              80.0
+            ],
+            [
+              120.0,
+              100.0
+            ],
+            [
+              160.0,
+              100.0
+            ],
+            [
+              180.0,
+              80.0
+            ],
+            [
+              200.0,
+              80.0
+            ]
+          ]
+        },
+        "baseTweakablePointAgreement": null,
+        "baseTweakableFlatAgreement": true,
+        "siteSymAgreement": false
+      },
+      "m45a1": {
+        "siteId": "m45a1",
+        "exactInternalId": "M45A1",
+        "route": "Common/Hardware/Weapons/_Bullets/PD_.45ACP",
+        "siteCurve": [
+          [
+            0,
+            33.4
+          ],
+          [
+            9,
+            33.4
+          ],
+          [
+            9,
+            25
+          ],
+          [
+            21,
+            25
+          ],
+          [
+            21,
+            20
+          ],
+          [
+            36,
+            20
+          ],
+          [
+            36,
+            16.7
+          ],
+          [
+            54,
+            16.7
+          ],
+          [
+            54,
+            14.3
+          ],
+          [
+            75,
+            14.3
+          ],
+          [
+            75,
+            12.5
+          ]
+        ],
+        "currentPDTweakablePointCurve": [],
+        "currentPDTweakableDamageCurve": [
+          [
+            0.0,
+            33.400002
+          ],
+          [
+            9.0,
+            33.400002
+          ],
+          [
+            9.0,
+            25.0
+          ],
+          [
+            21.0,
+            25.0
+          ],
+          [
+            21.0,
+            20.0
+          ],
+          [
+            36.0,
+            20.0
+          ],
+          [
+            36.0,
+            16.700001
+          ],
+          [
+            54.0,
+            16.700001
+          ],
+          [
+            54.0,
+            14.3
+          ],
+          [
+            75.0,
+            12.5
+          ]
+        ],
+        "datedSym1420Curve": [
+          [
+            0.0,
+            33.4
+          ],
+          [
+            9.0,
+            33.4
+          ],
+          [
+            9.0,
+            25.0
+          ],
+          [
+            21.0,
+            25.0
+          ],
+          [
+            21.0,
+            20.0
+          ],
+          [
+            36.0,
+            20.0
+          ],
+          [
+            36.0,
+            16.7
+          ],
+          [
+            54.0,
+            16.7
+          ],
+          [
+            54.0,
+            14.3
+          ],
+          [
+            75.0,
+            14.3
+          ],
+          [
+            75.0,
+            12.5
+          ]
+        ],
+        "curveRole": "Field_6008eb31 points to a separate health-curve object. Field_2ad7e688 points to the TweakableDamageCurve object; its Field_edfc6df6 point array is empty for M45A1, while its Field_5279388d flat array is populated. Do not treat the health curve as a second encoding/copy of the TweakableDamageCurve.",
+        "descriptorSelectedFieldOffsets": {
+          "healthCurvePoints": {
+            "objectClass": "Class_afbfd124",
+            "field": "Field_edfc6df6",
+            "objectRelativeOffset": 24
+          },
+          "tweakableCurvePoints": {
+            "objectClass": "Class_6a0d9448",
+            "field": "Field_edfc6df6",
+            "objectRelativeOffset": 32
+          },
+          "flatArray": {
+            "objectClass": "Class_6a0d9448",
+            "field": "Field_5279388d",
+            "objectRelativeOffset": 24
+          },
+          "projectileReferences": {
+            "objectClass": "Class_23637dce",
+            "pointField": "Field_6008eb31",
+            "pointObjectRelativeOffset": 520,
+            "flatField": "Field_2ad7e688",
+            "flatObjectRelativeOffset": 528
+          },
+          "provenance": "Offsets come from the exact instance-selected descriptor key and inherited field layout in SharedTypeDescriptors; they are object-relative, not arbitrary raw-body byte-search hits. The matching exact capture raw SHA, field paths, GUIDs and decoded values are in external JSONL."
+        },
+        "damageAtRangeSamples": [
+          {
+            "rangeMeters": 54,
+            "site": 16.7,
+            "currentPDHealthCurve": null,
+            "currentPDTweakableDamageCurve": 16.700001,
+            "datedSym1420": 16.7
+          },
+          {
+            "rangeMeters": 60,
+            "site": 14.3,
+            "currentPDHealthCurve": null,
+            "currentPDTweakableDamageCurve": 13.785714285714286,
+            "datedSym1420": 14.3
+          },
+          {
+            "rangeMeters": 74.999,
+            "site": 14.3,
+            "currentPDHealthCurve": null,
+            "currentPDTweakableDamageCurve": 12.500085714285715,
+            "datedSym1420": 14.3
+          },
+          {
+            "rangeMeters": 75,
+            "site": 14.3,
+            "currentPDHealthCurve": null,
+            "currentPDTweakableDamageCurve": 12.5,
+            "datedSym1420": 14.3
+          },
+          {
+            "rangeMeters": 75.001,
+            "site": 12.5,
+            "currentPDHealthCurve": null,
+            "currentPDTweakableDamageCurve": 12.5,
+            "datedSym1420": 12.5
+          }
+        ],
+        "siteSelectedAmmoIdsAffected": [
+          "standard",
+          "penetration",
+          "frangible",
+          "hollow_pt"
+        ],
+        "priorSiteDecision": "Known intentional transformation, not a newly identified site error. docs/DAMAGE_BALLISTICS.md and reference-data/provenance/frosty-damage-curve-review-2026-09-13.json record that the then-reviewed damage source omitted the 75m 14.3 point, while a 2026-09-13 in-game test observed damage marker 14 and 7 body shots below 75m, then marker 12 and 8 body shots beyond. The site intentionally retained 75m 14.3 to represent that tested step.",
+        "currentBuildStatus": "The current Head4892017 TweakableDamageCurve flat array has a direct 54m-to-75m ramp; its same-object point array is empty. This differs from the prior runtime step observation and needs controlled current-build revalidation. The separately referenced health curve is not used to make this comparison. Native runtime consumption remains unverified.",
+        "interpretation": "At 60m site and dated Sym retain 14.3, while the current PD TweakableDamageCurve interpolate to about 13.7857. The existing site step is intentionally runtime-supported by dated capture; repeat the same under-75/over-75 damage-marker and BTK test on Head4892017 to determine whether that behavior persists. This applies to M45A1 standard, penetration, frangible, and hollow_pt rows because all select the same PD route without a curve override."
+      },
+      "limits": "The health curve, TweakableDamageCurve same-object point array, TweakableDamageCurve flat array, and dated Sym 1.4.2.0 are reported as distinct sources. Empty arrays are non-comparable; differences retain their field path and build provenance."
+    }
+  },
+  "limitations": [
+    "The supplied full Sym 1.4.2.0 file is compared by exact crosswalk identity; its older build is context, not current-build authority.",
+    "The stored selector traces identify site data routes. They do not prove that the native game selects the same route at runtime or that every attachment chain is active.",
+    "Current site weapon damage data provenance labels include older 1.4.2.5 values for some weapons, while PD captures here are Head 4892017. Build changes and semantic consumers must be considered when interpreting mismatches.",
+    "The health curve and TweakableDamageCurve are distinct linked assets. Tweakable point and flat arrays are compared only within the same object when both are populated; source presence does not prove runtime consumption."
+  ]
+}

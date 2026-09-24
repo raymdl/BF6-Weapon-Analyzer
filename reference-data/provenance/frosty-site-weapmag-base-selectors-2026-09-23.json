@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-23",
+  "topic": "WEAPON_MAG 252 base selector leaves: source/site ledger",
+  "build": {
+    "label": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "collectionStatus": "partial"
+  },
+  "inputs": {
+    "attachments": {
+      "path": "data/attachments.json",
+      "sha256": "c361862b5ef615608fbd2b034a6b18f86fce1627ed271e9ac58c4c9d996ceb79"
+    },
+    "balanceTables": {
+      "path": "data/balance_tables.json",
+      "sha256": "e4b2946ab0aaea54a25a6703029994a824da6f1d49c37072a7e7205faa36a08b"
+    },
+    "adsFull": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-ads-full-provenance-2026-09-23.json",
+      "sha256": "c21abf656940696197ff933d09d2d51f35bd6f161065ada0e3cc05fdd5dc74c3"
+    },
+    "adsBytecheck": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-ads-bytecheck-ledger-2026-09-23.json",
+      "sha256": "92be2504aa49a8e35f16c54c1adf3bd4fe175813bcd9a92afaacbd703b092415"
+    },
+    "ssaSprint": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\ssa-sprint-site-audit-2026-09-23.json",
+      "sha256": "84dcf47d4c17705d918cd76d8c238eb3191fb4750e133828a39b7764d76eba2d"
+    }
+  },
+  "summary": {
+    "siteWeaponCount": 63,
+    "leafCount": 252,
+    "perLeaf": {
+      "defAds": {
+        "count": 63,
+        "sourceAgreementCount": 63,
+        "byteValidatedCount": 63
+      },
+      "defAms": {
+        "count": 63,
+        "sourceAgreementCount": 63,
+        "byteValidatedCount": 63
+      },
+      "sprintRecoveryBaseIndex": {
+        "count": 63,
+        "sourceAgreementCount": 63,
+        "byteValidatedCount": 63
+      },
+      "deployBaseIndex": {
+        "count": 63,
+        "sourceAgreementCount": 63,
+        "byteValidatedCount": 63
+      }
+    },
+    "defAds": "defAds equals WB WeaponZoomTransitionIndex for 63/63. AnimationZoomSettingsIndex equals 62/63; L115 is base defAds=1 / transition=1 / animation=2. Both distinct raw fields byte-checked; preserve exception.",
+    "sprintRecoveryBaseIndex": "63/63 WB selector indices match site base index, WB exact bytes verified; selected SSA tier numeric values match site ms within 2us. Engine use unresolved.",
+    "defAms": "Numeric field equality 63/63 to WB WeaponZoomedMoveSpeedMultiplierIndex.Index at /Field_dcb8bf9e/Field_2b6f2936; registry name binding plus descriptor-derived raw bytes checked. Native runtime use not proven.",
+    "deployBaseIndex": "Numeric field equality 63/63 to WB /Field_2c3e0fbf/Field_2b6f2936; descriptor-derived raw bytes checked. Site table selection and runtime use are separate.",
+    "defaultOutput": "Run through resetAttsForWeapon + applyAttachments is separately recorded in ADS full-provenance and default-resolved artifacts; do not compare effective value directly with base selector without attachment shifts."
+  },
+  "effectiveAdsDefaults": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-ads-default-resolved-2026-09-23.json",
+    "sha256": "b1ee840f91e4a1eb64c68a5bf3857669b1216011a8a131e0b3cd6875a8ebc8a6",
+    "siteRows": 63,
+    "note": "The ADS report recorded 63 executions with defaults, including default barrel and magazine; evidence keeps site raw base tier separate from computed output."
+  },
+  "limits": [
+    "Descriptor-byte agreement confirms exact Frosty field contents, not native runtime consumption.",
+    "defAds is WeaponZoomTransitionIndex match; AnimationZoomSettingsIndex has a single L115 exception.",
+    "Sprint recovery source timing values and field meanings remain limited to numeric/site agreement; no engine-consumption proof.",
+    "Analyzer effective output includes attachment shifts and differs from raw/base selector values."
+  ],
+  "externalReport": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-weapmag-base-selectors-2026-09-23.json",
+    "sha256": "b457e9fb3775bb3f6d6aef475589a0a754d712551539ed371417021bcc8975cd",
+    "rowCount": 252,
+    "rowSchema": [
+      "path",
+      "siteValue",
+      "siteDataSha256",
+      "siteAgreement",
+      "source/rawValidation/limit"
+    ]
+  }
+}
