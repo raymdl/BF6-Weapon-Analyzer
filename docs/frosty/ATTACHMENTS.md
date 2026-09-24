@@ -739,3 +739,11 @@ Match Trigger in manually selected semi-auto and automatic control. A candidate
 model gives recoil ratio 0.945^3 = 0.843908625, recovery factor 72*1.728 = 124.416
 and no added per-shot bloom; minimum spread remains. These are conditional model
 predictions, not runtime measurements. No cadence change or game bug is established.
+
+The [L24 family check](../../reference-data/provenance/frosty-2026-09-24-L24-match-trigger-family.json)
+confirms the same exact GBM and GRM targets for all 24 current Match Trigger
+selections. The parent fresh-decoded each WB and GS and checked the selector
+array, local references, embedded identifier and both GS imports. Source priority
+values differ between weapons. Shared targets extend source coverage; they do
+not establish universal activation, stacking or a single final multiplier.
+Keep the L17 capture requirement and each weapon's base values.

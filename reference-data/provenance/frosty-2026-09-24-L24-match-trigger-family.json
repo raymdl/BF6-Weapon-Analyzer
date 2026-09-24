@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L24",
+  "status": "Shared source targets established across 24 exact Match Trigger selections; runtime still needs capture",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": {
+    "receipt": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\frosty-site-ergos-2026-09-23-leaves.jsonl",
+    "JSONLFilter": "row.siteSelection == \"match_trigger\"",
+    "sitePointer": "/ERGOS/4/noEffect",
+    "leafName": "noEffect",
+    "siteValue": true,
+    "sourceSelectionCount": 24
+  },
+  "finding": "All 24 exact attachment selections lead through WB selector arrays and local targets to identifier 15cff9ff-aab0-4230-9a53-5a2bb1606587. All 24 GS assets bind that identifier to the same GBM_NoIncrease and GRM_MatchTrigger object/file GUIDs and raw hashes reviewed in L17.",
+  "sourceTargets": {
+    "GBM_NoIncrease_ERG_P00": "f72b06b468711162922b73a16fd824cc0954d9f6f494149f2f1a6072d5e2cdde",
+    "GRM_MatchTrigger_ERG_P15": "d7785a0b638a8d238c906d772481639137b244181f26dacb46f45c0461e32fa1"
+  },
+  "priorities": {
+    "5fe8ff19-5555-4fd3-a5c4-0177cbe8733f": {
+      "3": 6,
+      "4": 3,
+      "5": 8,
+      "7": 5,
+      "9": 2
+    },
+    "841ca76e-7e64-41e2-b94f-06b554258d9e": {
+      "6": 1,
+      "28": 1,
+      "29": 20,
+      "34": 1,
+      "36": 1
+    }
+  },
+  "siteWeapons": [
+    "m433",
+    "b36a4",
+    "sor556",
+    "ak4d",
+    "tr7",
+    "kord6p67",
+    "nvo228e",
+    "l85a3",
+    "vcr2",
+    "m16a4",
+    "m4a1",
+    "m277",
+    "ak205",
+    "m417a2",
+    "grtbc",
+    "qbz192",
+    "sg553r",
+    "sor300sc",
+    "drsiar",
+    "rpkm",
+    "kts100",
+    "rpk74m",
+    "brod3",
+    "ef88"
+  ],
+  "priorEvidence": "frosty-2026-09-24-L17-match-trigger-indirect-effects.json",
+  "verifiedOperands": {
+    "IncreasePerShot": "multiply 0 in four aim/stance branches",
+    "RecoilAmountMultiplierExponent": "add 3 in both aim branches",
+    "RecoilDecreaseFactor": "second-multiply operand 1.728 in both aim branches"
+  },
+  "parentVerification": "Independently fresh-decoded all 24 WB and 24 GS files after raw/descriptor hash checks; exact selector arrays and references verified before GS embedded identifier/import checks.",
+  "incidentalDifferences": "Selected local sibling identifier records differ on VHS2/M27IAR; raw controls/outliers retained externally. No inference about mounted or fire-mode activation follows from those unnamed boolean tuples.",
+  "siteProposal": "L17 proposal now has source target coverage for the 24 current selections. Do not apply a blanket runtime correction before capture validates activation and composition; retain per-weapon base values and source priorities.",
+  "limits": [
+    "Bindings and common effect asset hashes do not prove active runtime use, operator order, semi-only activation, or cadence changes.",
+    "Per-GS source priority values differ; no stacking equation established.",
+    "Some local sibling classes have provisional layout warnings; no new semantic claim is made from those fields."
+  ],
+  "reproduction": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\verify_parent.py\"",
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\match-trigger-24-summary.json",
+      "sha256": "18aa2b26e8d65ebc3db92b8b391d29eb8b3559ae2da4a4f8189315cd3d6d9d43"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\match-trigger-24-consistency.json",
+      "sha256": "996166b6e4f5c03d8f6dc1464522e599d470293c7540845aa2808efcdb447f4c"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\parent-raw-chain-check.json",
+      "sha256": "c7acdab938004d58e67168801ba14a8de54a22a6650a6cd187674f09483da7b1"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\verify_parent.py",
+      "sha256": "cee2cdddb461388ebf05526a88724263fa1fcd4b241aa48c572283aa44c5e824"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\trace_match_trigger.py",
+      "sha256": "976b3d3d0bc02f7a7eaf1f16b1571f2b4da012d9a20f376e66338fb5f9553026"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\raw-wb-outliers-control.json",
+      "sha256": "89442e73a0c791e654f773ff742141a63c3998214fb90bef34f1aac624c7be82"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L24\\raw_wb_outliers.py",
+      "sha256": "ed3deb3abfef66efa8e65175b84af722ec71c4c3197c6b612b38f6e3a8ded3cc"
+    }
+  ]
+}
