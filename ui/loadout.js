@@ -1,5 +1,5 @@
 import { ATTACHMENT_SLOT_KEYS } from '../sim/attachments.js';
-import { availableAttachments, attachmentSlots, normalizeAttachments, computeAttPts, getAttPts, attDisplayName, isAssumedAtt } from '../sim/loadout.js';
+import { availableAttachments, attachmentSlots, normalizeAttachments, computeAttPts, getAttPts, attDisplayName, isAssumedAtt, gameBugsFor, GAME_BUG_MARK } from '../sim/loadout.js';
 
 let selectSequence = 0;
 
@@ -25,18 +25,21 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   options.forEach(optData => {
     const opt = document.createElement('option');
     opt.value = optData.id;
-    opt.textContent = optData.text;
-    if (optData.description) opt.title = optData.description;
+    const bugNotes = (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.note}`);
+    opt.textContent = bugNotes.length ? `${optData.text}${GAME_BUG_MARK}` : optData.text;
+    const title = [optData.description, ...bugNotes].filter(Boolean).join('\n\n');
+    if (title) opt.title = title;
     if (optData.noEffect) opt.style.color = '#666';
     if (optData.id === value) opt.selected = true;
     sel.appendChild(opt);
   });
   const updateTooltip = () => {
-    const description = options.find(option => option.id === sel.value)?.description;
-    const tooltip = description || '';
+    const selected = options.find(option => option.id === sel.value);
+    const tooltip = [selected?.description, ...(selected?.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.note}`)]
+      .filter(Boolean).join('\n\n');
     row.title = tooltip;
     sel.title = tooltip;
-    if (description) sel.setAttribute('aria-description', tooltip);
+    if (tooltip) sel.setAttribute('aria-description', tooltip);
     else sel.removeAttribute('aria-description');
   };
   updateTooltip();
@@ -73,6 +76,7 @@ export function renderAttachmentSection({
   normalizeSelection();
   container.innerHTML = `<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px"><span class="sb-lbl" style="margin-bottom:0">Attachments</span><span class="att-total" id="${containerId}_total"></span></div>`;
   const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
+  const bugsFor = (slot, id) => (weapon ? gameBugsFor(data, weapon.id, slot, id) : []);
   const tooltipFor = (slot, id) => {
     const stringId = data.ATTACHMENT_TOOLTIPS?.byWeapon?.[weapon?.id]?.[slot]?.[id];
     return stringId ? data.ATTACHMENT_TOOLTIPS.descriptions[stringId] : undefined;
@@ -138,7 +142,8 @@ export function renderAttachmentSection({
         label,
         value: single?.id ?? '',
         options: [{ id: single?.id ?? '', text: single ? attDisplayName(single) : noWeaponText,
-          description: single && tooltipFor(key === 'rail' ? single.type : key, single.id), assumed: isAssumedAtt(single) }],
+          description: single && tooltipFor(key === 'rail' ? single.type : key, single.id), assumed: isAssumedAtt(single),
+          bugs: single ? bugsFor(key === 'rail' ? single.type : key, single.id) : [] }],
         onChange: () => {},
         disabled: true,
       });
@@ -152,7 +157,8 @@ export function renderAttachmentSection({
         const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a, weapon);
         const name = attDisplayName(a);
         return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name,
-          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a) };
+          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a),
+          bugs: bugsFor(key === 'rail' ? a.type : key, a.id) };
       }),
       onChange: value => handleChange(key, value),
     });
@@ -168,7 +174,8 @@ export function renderAttachmentSection({
         const pts = wAmmo.ammo[a.id] ?? 0;
         const name = attDisplayName(a);
         return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name,
-          description: tooltipFor('ammo', a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a) };
+          description: tooltipFor('ammo', a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a),
+          bugs: bugsFor('ammo', a.id) };
       }),
       onChange: value => handleChange('ammo', value),
     });
@@ -192,6 +199,7 @@ export function renderAttachmentSection({
         text: m.pts > 0 ? `${attDisplayName(m)} [${m.pts}]` : attDisplayName(m),
         description: tooltipFor('mag', m.id),
         assumed: isAssumedAtt(m),
+        bugs: bugsFor('mag', m.id),
       })),
       onChange: value => handleChange('mag', value),
     });
@@ -216,6 +224,7 @@ export function renderAttachmentSection({
         description: tooltipFor('ergo', e.id),
         noEffect: e.noEffect,
         assumed: isAssumedAtt(e),
+        bugs: bugsFor('ergo', e.id),
       })),
       onChange: value => handleChange('ergo', value),
     });

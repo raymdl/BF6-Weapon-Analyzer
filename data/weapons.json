@@ -8238,7 +8238,7 @@
     "name": "GGH-22",
     "description": "A renowned semi-auto pistol with a .40 caliber chambering for improved ranged performance.",
     "cls": "Sidearm",
-    "cal": "9×19mm",
+    "cal": ".40 S&W",
     "rpm": 359.999,
     "mag": 16,
     "tacRld": 1.934,

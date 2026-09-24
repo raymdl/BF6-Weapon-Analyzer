@@ -215,6 +215,38 @@ export function attDisplayName(a) {
   return isAssumedAtt(a) ? `${displayName(a)}*` : displayName(a);
 }
 
+// Marks a choice whose in-game effect differs from its description. The site
+// models the in-game behavior; the note records what the description promises.
+export const GAME_BUG_MARK = '†';
+
+/** Confirmed in-game bugs (data/attachments.json GAME_BUGS) for one weapon choice. */
+export function gameBugsFor(data, weaponId, slot, attId) {
+  return (data.GAME_BUGS ?? []).filter(bug => bug.slot === slot
+    && bug.weapons.includes(weaponId) && bug.attachments.includes(attId));
+}
+
+/** Bugs for the selected loadout, each with the display name of its attachment. */
+export function selectedGameBugs(atts, data, weapon) {
+  if (!atts || !weapon || !data.GAME_BUGS?.length) return [];
+  atts = normalizeAttachments(atts, weapon, data);
+  const lookups = getLookups(data);
+  const wm = data.WEAPON_MAG?.[weapon.id];
+  const magId = atts.mag ?? wm?.def;
+  const ammoId = atts.ammo ?? data.WEAPON_AMMO?.[weapon.id]?.def;
+  const picks = [
+    ['sight', lookups.SIGHTS[atts.sight ?? 'iron']],
+    ['muzzle', lookups.MUZZLES[atts.muzzle]],
+    ['barrel', lookups.BARRELS[atts.barrel]],
+    ...Object.entries(resolveMountAttachments(atts, weapon, data)),
+    ['ammo', lookups.AMMO[ammoId]],
+    ['mag', magId && wm?.mags?.[magId] ? { ...wm.mags[magId], id: magId } : null],
+    ['ergo', lookups.ERGOS[atts.ergo]],
+  ];
+  return picks.flatMap(([slot, att]) => att?.id
+    ? gameBugsFor(data, weapon.id, slot, att.id).map(bug => ({ ...bug, attachmentName: displayName(att) }))
+    : []);
+}
+
 export function hasSelectedAssumedAtt(atts, data, weapon = null) {
   if (!atts) return false;
   atts = normalizeAttachments(atts, weapon, data);

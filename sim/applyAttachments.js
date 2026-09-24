@@ -365,9 +365,11 @@ export function applyAttachments(w, atts) {
 
   // ── Weapon sway ───────────────────────────────────────────────────────────────
   const selectedMag = WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def];
-  // Source amount factors for muzzle/magazine effects. Generic optic categories
-  // cannot select the game's individual optic and camera-sway configurations.
-  const weaponSwayMult = (muz.weaponSwayMult ?? 1) * (selectedMag?.weaponSwayMult ?? 1);
+  // Source amount factors for muzzle/magazine effects, plus weapon-local barrel
+  // overrides. Generic optic categories cannot select the game's individual
+  // optic and camera-sway configurations.
+  const weaponSwayMult = (muz.weaponSwayMult ?? 1) * (selectedMag?.weaponSwayMult ?? 1)
+    * (barrelBase.weaponSwayMultByWeapon?.[w.id] ?? 1);
 
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
   // Catalog shifts have the opposite sign to Frosty's source index modifiers.

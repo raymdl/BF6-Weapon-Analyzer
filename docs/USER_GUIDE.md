@@ -32,8 +32,14 @@ no longer add points or effects. Shared links also remove invalid combinations.
 
 Attachment labels include point costs. **More than 100 points produces a warning;
 it does not block calculation or sharing.** An asterisk marks an attachment with
-assumed effects. Attachments with no modeled stat effect still retain their availability and
-point cost.
+assumed effects. A dagger (†) marks a choice whose in-game effect differs from its
+description because of a game bug. The site shows what the game does; hovering the
+option shows the intended effect, and the Attachment Effects panel marks the affected
+stat and adds a footnote. Attachments with no modeled stat effect still retain their
+availability and point cost.
+
+The Attachment Effects panel also shows Recoil Duration: how long each shot's kick
+takes to play out. Longer is smoother to track; the kick itself is the same size.
 
 Hover a weapon button or a weapon name above the comparison stats to read its
 in-game description. All 63 weapons have descriptions, also exposed as accessible

@@ -93,12 +93,8 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
     const ammoShift = catalogs.WEAPON_AMMO?.[weapon.id]?.effectOverrides?.[ammoId]?.hipSpreadTierMod
       ?? catalogs.AMMO.find(item => item.id === ammoId)?.hipSpreadTierMod ?? 0;
     const firingDispersion = SHOTGUN_DISPERSION[weapon.id];
-    // GS_L115A3 omits the Standard Suppressor selector from its hip-dispersion bindings.
-    // See l115-standard-suppressor-hipfire-2026-09-21.json; retain other attachment effects.
-    const unboundMuzzleShift = weapon.id === 'l115' && atts.muzzle === 'std_supp'
-      ? catalogs.MUZZLES.find(item => item.id === 'std_supp').hipSpreadTierMod : 0;
     const hipIndex = Number.isInteger(hipBase) ? Math.max(0, Math.min(HIPFIRE_LADDER.length - 1,
-      hipBase - (build._hipSpreadTierMod - unboundMuzzleShift - (firingDispersion == null ? ammoShift : 0)))) : null;
+      hipBase - (build._hipSpreadTierMod - (firingDispersion == null ? ammoShift : 0)))) : null;
     const H = hipIndex != null ? HIPFIRE_LADDER[hipIndex] + (firingDispersion ?? 0) : null;
     const baseHipInc = weapon.spreadDyn?.hip?.inc;
     const resolvedHipInc = build.spreadDyn?.hip?.inc;

@@ -417,6 +417,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .att-total{font-size:0.65rem;color:var(--accent);text-align:right;margin-top:4px;letter-spacing:.03em}
 .att-total.over{color:#c46464}
 .att-note{font-size:0.58rem;color:var(--muted);line-height:1.35;margin-top:5px}
+.att-bug-note{font-size:0.62rem;color:var(--muted);line-height:1.4;margin-top:5px}
+.att-bug-note b{color:var(--text);font-weight:600}
 .wbtn.p1.p2{background:rgba(130,100,180,.13);border-left-color:var(--accent2);color:var(--accent2)}
 /* Footer */
 .footer{font-size:0.65rem;color:var(--muted);padding:5px 14px;border-top:1px solid var(--border);background:var(--bg2);flex-shrink:0;display:flex;justify-content:space-between;align-items:center;gap:12px}

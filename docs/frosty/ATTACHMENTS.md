@@ -286,7 +286,7 @@ absence. The capture plan compares these exact choices with their controls.
 A raw byte search confirms the PP-19 result: `GS_PP19` does not contain the
 `U_WPM_MZL_FlashCompensator_W15` selector GUID, while the `GS_UMP40` control does.
 It is bound on 39 of the 40 Flash Comp weapons. This is the same kind of binding
-omission as the L115 suppressor; see [attachment bugs](../ATTACHMENT_BUGS.md) #16.
+omission as the L115 suppressor; see [attachment bugs](../ATTACHMENT_BUGS.md) #6, which also has the operator report.
 
 ### Current grip and barrel field review (1.4.3.0, 23 September 2026)
 
@@ -606,8 +606,10 @@ weapons, all on barrels:
 | BROD3 | Short | Two parts: 1.016938 and 1.024638 |
 
 No shared barrel package imports a sway effect, and the site models
-`weaponSwayMult` only on muzzles and magazines, so these are unmodeled. How BROD3's
-two parts combine is not known.
+barrel sway only through these per-weapon values (`weaponSwayMultByWeapon` on the barrel).
+The site applies Mini Scout Short ×1.033862 since 23 September. GGH22's Short and
+Extended barrels are not offered in game. BROD3 is deferred: how its two parts combine
+is not known.
 [Receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json).
 
 ## Evidence

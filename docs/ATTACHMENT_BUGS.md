@@ -29,6 +29,11 @@ Site status uses one of these values, followed by the value that the site applie
 - **Does not match game**: in-game evidence conflicts with the site value.
 - **Not modelled**: the site does not show this property.
 
+The site models what the game does. Game errors where the in-game effect differs from
+the description are listed in `GAME_BUGS` in `data/attachments.json`. The attachment
+menu marks those choices with †, and the Attachment Effects panel marks the affected
+stat and adds a footnote with the intended effect.
+
 | # | Attachment | Weapons | Type | Error | Site status |
 |---|---|---|---|---|---|
 | 1a | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Matches game: −1 ADS accuracy while moving |
@@ -37,17 +42,16 @@ Site status uses one of these values, followed by the value that the site applie
 | 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19 | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches source data: no weapon draw speed change |
 | 4 | 20 Rnd fast | PP-19 | Game error | The description states faster reloads. The game does not apply the reload speed bonus (×1.13). | Matches game: no reload speed change |
 | 5 | Subsonic, Sub HP | P18, GGH-22, ES 5.7 | Game error | The description states lower recoil. The game does not apply it. | Matches source data: no recoil change |
-| 6 | Flash Comp | PP-19 | Game error | The description states less recoil buildup and better recoil recovery (recoil smoothing). The game does not apply it: `GS_PP19` has no smoothing binding for the Flash Comp package (source trace and operator report). | Does not match game: recoil smoothing applied |
+| 6 | Flash Comp | PP-19 | Game error | The description states less recoil buildup and better recoil recovery (recoil smoothing). The game does not apply it: `GS_PP19` has no smoothing binding for the Flash Comp package (source trace and operator report). | Matches game: no recoil smoothing (corrected 23 September) |
 | 7 | 200 Rnd belt box | L110, M123K | Game error | The description states reduced ADS accuracy while moving. The game does not apply it. | Matches game: no ADS accuracy while moving change |
 | 8 | 30 Rnd fast | PW7A2 | Description error | The description states improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Matches game: reload speed ×1.13 |
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
 | 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches source data: source values |
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
-| 12 | Standard Suppressor | L115 | Game error (source binding omission) | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Does not match game panel: generic hipfire penalty applied |
+| 12 | Standard Suppressor | L115 | Game error (source binding omission) | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Matches game: no hipfire change (corrected 23 September) |
 | 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
 | 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
-| 16 | Flash Comp | PP-19 | Suspected game error (source binding omission) | The PP-19 GS has no binding for the shared Flash Compensator selector, so the recoil recovery and duration effects bound on the other 39 Flash Comp weapons are absent. Panel and firing behavior not yet checked. | Generic effect applied: recovery ×1.2 and 0.05 s duration |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -233,12 +237,11 @@ classification was a site interpretation error; see 1b.
 - **In-game panels.** They cannot show smoothing: on PW5A3, PW7A2 and SCW-10, Flash
   Comp and Flash Hider show the same Control and recoil. PP-19 shows Control 54 with
   None, Flash Hider and Flash Comp.
-- **Site.** The `flash_comp` record has no PP-19 override. The site applies the
-  ordinary smoothing: `recoilDurationOverride: 0.05`, `adsRecoilDecayMult: 1.2` and
-  `hipRecoilDecayMult: 1.2`.
-- **Status.** Game error, confirmed by source trace. The site does not match the game.
-- **Action.** Add a PP-19 `weaponOverrides` entry to `flash_comp` that removes the
-  smoothing. First confirm how an override can remove `recoilDurationOverride`.
+- **Site.** Since 23 September, a PP-19 `weaponOverrides` entry on `flash_comp` removes
+  the smoothing: recovery multipliers 1 and `recoilDurationOverride: null`, which the
+  simulator treats as no override. The choice is marked as bugged.
+- **Status.** Game error, confirmed by source trace (a byte search of `GS_PP19` with a
+  `GS_UMP40` control repeats it) and operator report. The site matches the game.
 
 ### 7. L110 and M123K 200 Rnd belt box
 
@@ -267,9 +270,8 @@ classification was a site interpretation error; see 1b.
   The hipfire penalty is a separate GS binding to `GDM_Array_HipDispersion_MZL_M10`.
   `GS_L115A3` omits that selector; `GS_EF88` and `GS_M2010ESR` include it. Other L115
   suppressor selectors retain their hipfire bindings.
-- **Site.** The shared Standard Suppressor record applies `hipSpreadTierMod: 1` with
-  no L115 exception. The research composite checker now excludes this unbound shift;
-  the production attachment model is unchanged.
+- **Site.** Since 23 September, a `weaponOverrides.l115` entry sets `hipSpreadTierMod: 0`,
+  matching the game panel. The choice is marked as bugged.
 - **Status.** Missing source binding and unchanged game panel confirmed. Whether the
   omission is intentional is unknown. Actual firing spread has not been tested here.
 - **Evidence.** [Versioned source paths, hashes and selector bindings](../reference-data/provenance/l115-standard-suppressor-hipfire-2026-09-21.json).
@@ -384,21 +386,6 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   Local measurement artifacts are under `outputs/burst-factorial-analysis/`
   and `outputs/burst-cadence-comparison/`; these ignored outputs are not shipped.
 
-### 16. PP-19 Flash Comp has no recoil binding
-
-- **Source trace (1.4.3.0).** `Attachment_PP19_MZL_VityazFlashComp` links through
-  PP-19 ability action `25f310f4-64ca-44da-82e0-75bc33ea44b0` to
-  `U_WPM_MZL_FlashCompensator_W15`, selector `f7996b55-b276-4cf1-acf5-37a0d08628d9`.
-  The WB package supplies only a spotting effect; the recoil changes are GS bindings.
-  `GS_PP19` does not contain the selector GUID in its raw bytes, while `GS_UMP40`
-  does. 39 of the 40 site weapons with Flash Comp bind it.
-- **Site.** The shared Flash Comp record applies ADS and hip recovery ×1.2 and a
-  0.05 s recoil duration override to PP-19 as well.
-- **Status.** Same shape as #12. Not yet checked on the game panel or in firing; the
-  recoil bar may not show recovery changes.
-- **Evidence.** [Source-leads receipt](../reference-data/provenance/frosty-source-leads-2026-09-23.json)
-  and the [muzzle operand audit](../reference-data/provenance/frosty-site-muzzle-operands-2026-09-23.json).
-
 ## Description errors
 
 ### 8. PW7A2 30 Rnd fast magazine
@@ -496,7 +483,7 @@ scope size with another sniper rifle in game before you add an entry.
 
 **Iron-sight zoom.** All iron sights zoom 1.50× (`Aim_1x50`), more than 1.00× optics.
 The operator confirmed this in game. It is consistent on all weapons, so it is not
-listed as an error. The site shows it as "Iron Sights (1.50x)".
+listed as an error. The site labels it "Iron Sights" without a magnification, like the other optics.
 
 ## Source data inconsistencies
 

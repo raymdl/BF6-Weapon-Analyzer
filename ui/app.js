@@ -75,6 +75,7 @@ const LOADOUT_DATA = {
   WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
   AMMO, WEAPON_AMMO, WEAPON_ATTS,
   ATTACHMENT_TOOLTIPS: _attachmentTooltips,
+  GAME_BUGS: _atts.GAME_BUGS ?? [],
 };
 
 const calculateWeaponAttributes = createWeaponAttributeModel({ balance: _balance, catalogs: LOADOUT_DATA, attributes: _weaponAttributes });
@@ -2000,6 +2001,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.' },
     { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after attachment effects. Lower is more consistent.' },
     { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: 'x',   dec: 2, higherBetter: true, tooltip: 'ADS recoil recovery/decay multiplier applied to the weapon recoil decay factor. Higher returns to center faster.' },
+    { lbl: 'Recoil Duration',     val: w => w.recoil?.ads?.duration != null ? w.recoil.ads.duration * 1000 : null, unit: 'ms', dec: 0, higherBetter: true, tooltip: 'How long the kick from each shot takes to play out. A longer duration spreads the same kick over more time, so the reticle moves more smoothly and is easier to keep on a moving target. The kick itself is not smaller.' },
     { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after attachment effects. Lower builds spread more slowly.' },
     { lbl: 'Hip Spread/Shot',     val: w => w.spreadDyn?.hip?.inc,            unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Hipfire spread increase per shot after light effects. Lower builds spread more slowly.' },
     { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle and barrel effects. Higher clears spread faster.' },
@@ -2023,6 +2025,7 @@ function renderAttachmentStats(loadouts) {
     'ADS Recoil/Shot': ['adsRecoilTierMod'],
     'ADS Recoil Variation': ['adsRecoilVariationTierMod'],
     'Recoil Recovery': ['adsRecoilDecayMult'],
+    'Recoil Duration': ['recoilDurationOverride', 'recoilDurationAdd'],
     'Spread/Shot': ['adsSpreadIncMult'],
     'ADS Spread Recovery': ['adsSpreadDecayBoost', 'adsSpreadFiringDecOffsetMult', 'adsSpreadFiringDecCoefMult'],
     'Hip Spread/Shot': ['hipSpreadIncMult'],
@@ -2057,6 +2060,9 @@ function renderAttachmentStats(loadouts) {
     const base = { ...baseWeapon, _projectileModel: projectileModelFor(baseWeapon, baseAtts) };
     const cur = { ...curWeapon, _projectileModel: projectileModelFor(curWeapon, atts) };
     const selectedAttachments = selectedAttachmentRecords(weapon, atts);
+    const bugs = Loadout.selectedGameBugs(atts, LOADOUT_DATA, weapon);
+    const bugMetrics = new Set(bugs.flatMap(bug => bug.metrics));
+    const bugMark = lbl => bugMetrics.has(lbl) ? Loadout.GAME_BUG_MARK : '';
     const chips = [];
     metrics.forEach(m => {
       const baseVal = m.val(base), curVal = m.val(cur);
@@ -2068,14 +2074,14 @@ function renderAttachmentStats(loadouts) {
       if (Math.abs(delta) < 0.0005) return;
       const better = (m.higherBetter && delta > 0) || (m.lowerBetter && delta < 0);
       const color = better ? 'var(--green)' : 'var(--red)';
-      const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments) ? '*' : ''}`;
+      const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments) ? '*' : ''}${bugMark(m.lbl)}`;
       const tip = escAttr(m.tooltip ?? m.lbl);
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${signed(delta, m.unit, m.dec)}</div></div>`);
     });
     const swayVal = ((cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1) - 1) * 100;
     if (Math.abs(swayVal) >= 0.05) {
       const decreased = swayVal < 0;
-      const tip = escAttr('Weapon sway amount from muzzle and magazine modifiers, compared with the default loadout. Optic and camera sway are not included. Lower is better.');
+      const tip = escAttr('Weapon sway amount from muzzle, magazine and barrel modifiers, compared with the default loadout. Optic and camera sway are not included. Lower is better.');
       const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${signed(swayVal, '%', 1)}</div></div>`);
     }
@@ -2098,9 +2104,10 @@ function renderAttachmentStats(loadouts) {
       const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${visible ? 'var(--red)' : 'var(--green)'}">${visible ? 'Visible' : 'Not Visible'}</div></div>`);
     }
-    if (!chips.length) return;
+    if (!chips.length && !bugs.length) return;
     rendered = true;
-    html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div><div class="att-grid">${chips.join('')}</div></div>`;
+    const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${escAttr(bug.note)} Stats show the in-game behavior.</div>`).join('');
+    html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
   el.innerHTML = html;

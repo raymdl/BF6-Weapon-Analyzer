@@ -2,7 +2,7 @@
   "SIGHTS": [
     {
       "id": "iron",
-      "name": "Iron Sights (1.5x)",
+      "name": "Iron Sights",
       "pts": 5
     },
     {
@@ -253,6 +253,13 @@
       "adsRecoilDecayMult": 1.2,
       "hipRecoilDecayMult": 1.2,
       "recoilDurationOverride": 0.05,
+      "weaponOverrides": {
+        "pp19": {
+          "adsRecoilDecayMult": 1,
+          "hipRecoilDecayMult": 1,
+          "recoilDurationOverride": null
+        }
+      },
       "pts": 20,
       "worldSpotMult": 0,
       "minimapSpotMult": 1
@@ -264,6 +271,11 @@
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
       "hipSpreadTierMod": 1,
+      "weaponOverrides": {
+        "l115": {
+          "hipSpreadTierMod": 0
+        }
+      },
       "pts": 20,
       "worldSpotMult": 0,
       "minimapSpotMult": 0.14
@@ -563,6 +575,9 @@
         "svk86": 1,
         "tr7": 1,
         "vcr2": 1
+      },
+      "weaponSwayMultByWeapon": {
+        "miniscout": 1.033862
       }
     },
     {
@@ -17036,5 +17051,139 @@
       "deployBaseIndex": 6,
       "deployTimeTable": "primary"
     }
-  }
+  },
+  "GAME_BUGS": [
+    {
+      "ref": "1a",
+      "slot": "grip",
+      "attachments": [
+        "slim_angled_sr",
+        "slim_angled_interdictor"
+      ],
+      "weapons": [
+        "psr",
+        "sv98",
+        "l115",
+        "miniscout",
+        "interdictor"
+      ],
+      "metrics": [
+        "Mov Spread"
+      ],
+      "note": "The game also applies the Full Angled grip's ADS accuracy-while-moving penalty, which the description doesn't mention."
+    },
+    {
+      "ref": "2",
+      "slot": "ammo",
+      "attachments": [
+        "hollow_pt",
+        "frangible",
+        "penetration"
+      ],
+      "weapons": [
+        "m45a1",
+        "m121a2"
+      ],
+      "metrics": [
+        "Collateral Mult"
+      ],
+      "note": "This ammo also gets FMJ's penetration bonus, so its collateral damage is higher than intended."
+    },
+    {
+      "ref": "3",
+      "slot": "grip",
+      "attachments": [
+        "slim_angled_smg"
+      ],
+      "weapons": [
+        "sgx",
+        "pw5a3",
+        "pw7a2",
+        "umg40",
+        "kv9",
+        "scw10",
+        "cz3a1",
+        "pp19"
+      ],
+      "metrics": [
+        "Weapon Draw Speed"
+      ],
+      "note": "The description promises faster weapon draw, but the game doesn't apply it."
+    },
+    {
+      "ref": "4",
+      "slot": "mag",
+      "attachments": [
+        "20_fast"
+      ],
+      "weapons": [
+        "pp19"
+      ],
+      "metrics": [
+        "Tac Reload"
+      ],
+      "note": "The description promises faster reloads, but the game doesn't apply the reload bonus."
+    },
+    {
+      "ref": "5",
+      "slot": "ammo",
+      "attachments": [
+        "subsonic",
+        "subsonic_hp"
+      ],
+      "weapons": [
+        "p18",
+        "ggh22",
+        "es57"
+      ],
+      "metrics": [
+        "ADS Recoil/Shot"
+      ],
+      "note": "The description promises lower recoil, but the game doesn't apply it on this pistol."
+    },
+    {
+      "ref": "6",
+      "slot": "muzzle",
+      "attachments": [
+        "flash_comp"
+      ],
+      "weapons": [
+        "pp19"
+      ],
+      "metrics": [
+        "Recoil Recovery",
+        "Recoil Duration"
+      ],
+      "note": "The description promises smoother recoil and faster recovery, but the game doesn't apply either on the PP-19."
+    },
+    {
+      "ref": "7",
+      "slot": "mag",
+      "attachments": [
+        "200_rnd"
+      ],
+      "weapons": [
+        "l110",
+        "m123k"
+      ],
+      "metrics": [
+        "Mov Spread"
+      ],
+      "note": "The description lists an ADS accuracy-while-moving penalty, but the game doesn't apply it."
+    },
+    {
+      "ref": "12",
+      "slot": "muzzle",
+      "attachments": [
+        "std_supp"
+      ],
+      "weapons": [
+        "l115"
+      ],
+      "metrics": [
+        "Hipfire Spread"
+      ],
+      "note": "The description lists a hipfire accuracy penalty, but the game doesn't apply it on the L115."
+    }
+  ]
 }
