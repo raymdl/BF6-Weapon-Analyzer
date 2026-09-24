@@ -618,3 +618,20 @@ similar groups nor a few irregular groups proves the native algorithm. If marks
 merge or disappear, stop the pilot and retain unavailable pellet statistics.
 The source currently gives no justified numerical direction distribution; this
 test must establish a usable signal before fitting one. See [L20 scope](../../reference-data/provenance/frosty-2026-09-24-L20-pellet-direction-scope.json).
+
+## L22 follow-up: Projectile expiry and range
+
+Use KS-18K with a recorded bare-equivalent setup. Change only standard buckshot
+versus Slug. Use a cooperative target at measured 125, 150, 175 and 200 m, with
+a repeatable aim point, stable stance and full recovery between shots. Record
+health/hit confirmation and exact distance; wall marks are secondary evidence.
+Use nearby shots to verify aim and the recording method, and Slug as a control
+for target visibility and range. Preserve misses and unavailable marks separately.
+
+If the source 0.5 value is a lifetime in seconds and the current flight model is
+applicable, standard buckshot should expire near 151.61 m. A confirmed standard
+buckshot hit beyond that boundary rejects this combined hypothesis. Missing hits
+alone cannot confirm expiry because pellet spread, aim error and mark culling
+can hide impacts. Slug's 2.0 value predicts reach beyond 200 m under the same
+assumptions. Compare repeated confirmed outcomes before changing reachability;
+source units, native equation and lifetime start remain open. See [L22 evidence](../../reference-data/provenance/frosty-2026-09-24-L22-projectile-lifetime.json).

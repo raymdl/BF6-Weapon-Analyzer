@@ -301,7 +301,7 @@ is name evidence only. Operand meaning and runtime use need their own checks.
 | `Field_3ef01f58` | ShockwaveDamage | `Class_9966532d` |
 | `Field_524836d3` | ShockwaveRadius | `Class_9966532d` |
 | `Field_94869d67` | StartDamage | `Class_23637dce` |
-| `Field_5ef7b9a1` | TimeToLive | `Class_23637dce` |
+| `Field_5ef7b9a1` | TimeToLive; exact current GRX child/hash pairing verified in [L22](../../reference-data/provenance/frosty-2026-09-24-L22-projectile-lifetime.json) | `Class_23637dce` |
 | `Field_fe708077` | UnzoomedMinAnglesArrayIndex | `Class_539cff9b` |
 | `Field_8bd6dcdd` | UsePolarRecoil | `Struct_bcfafb0d` |
 | `Field_9546447c` | VerticalRecoilIncrease | `Struct_bcfafb0d` |

@@ -939,3 +939,21 @@ and cannot prove absence of patterns. SDK direction names remain mapping clues.
 Keep the existing unavailable pellet-impact statistics until a typed consumer or
 controlled impact result supports a model. The single direction plotted per shell
 is not a pellet simulation. No random-only runtime mechanism is established.
+
+## Projectile lifetime and reachability (L22, 24 September 2026)
+
+The [current raw registry check](../../reference-data/provenance/frosty-2026-09-24-L22-projectile-lifetime.json)
+names PD `Field_5ef7b9a1` **TimeToLive** through the exact paired GRX child/hash.
+The selected 185KSK standard buck projectile stores 0.5; its Slug replacement
+stores 2.0. The name is current source evidence, independent of the value match.
+The generated binding report omitted these inherited-wrapper associations.
+
+The site has a 30 s integration guard, but no projectile lifetime gate. With the
+current bare KS-18K velocity 400 m/s and drag 0.0035, a lifetime of 0.5 s would
+end the modeled level flight near 151.61 m; 2 s would give about 381.35 m. At
+200 m the site returns about 0.72412 s flight time and a conditional all-pellet
+damage-curve value of 32. These calculations do not establish a native range limit.
+
+Seconds, the lifetime start event and runtime expiry need the L22 capture.
+If confirmed, model trajectory reachability separately from damage conditional
+on a hit. Do not infer a zero-damage curve point from an expired projectile.
