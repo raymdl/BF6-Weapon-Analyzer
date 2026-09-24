@@ -369,6 +369,11 @@ SDK reflection reviewed on 21 September 2026 identifies two separate arrays on
 18.5KS-K Slim Angled places the named ADS-move modifier in the first array.
 Its indicator and Mobility panel do not show the presumed moving penalty.
 SDK layout establishes distinct types, not the unknown array's semantic name.
+The [L29 direct registry check](../../reference-data/provenance/frosty-2026-09-24-L29-dispersion-registry-scope.json)
+found neither collection hash in the exact GS_185KSK root pairs or its linked
+MinMaxDispersion/DispersionBehavior registry groups. A named camera scalar passed
+the same raw association check. This route does not resolve the unknown target;
+it does not show that the collection is unused.
 See the [Mobility trace](../../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
 and [attachment follow-up](ATTACHMENTS.md#weapon-attributes-attachment-tracing-21-september-2026).
 
