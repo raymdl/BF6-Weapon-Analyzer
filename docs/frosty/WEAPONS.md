@@ -549,8 +549,11 @@ spread before selecting a different model.
   equals ADS for factor and offset. Factor and time exponent form 13 profiles (for
   example 72/1.2, 55/1.023, 104/1.459; 70/4.0 with exponent 0.6 for bolt-actions and two
   shotguns). Half-lives under the site law are 150–330 ms, with no fire-rate design
-  target. Recoil modifiers change amount through tier exponents and do not scale
-  recovery.
+  target. Some recoil modifiers change amount through tier exponents. Match Trigger also
+  carries a recovery-factor operand ([L17](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json));
+  the controller modifier carries a separate vertical recovery-axis operand
+  ([L19](../../reference-data/provenance/frosty-2026-09-24-L19-controller-recovery-operand.json)).
+  Their runtime composition remains unverified.
 - Sniper brakes: `GRM_Recoil_MZL_Bolt_P10` adds 6 amount tiers (ADS and hip);
   `scripts/frosty-sniper-brakes.py` generates 16 weapon/brake pairs.
 
