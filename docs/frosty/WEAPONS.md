@@ -1064,3 +1064,11 @@ HeatPerBullet. Its site base magazine is 31; selected capacities are 30-60.
 Even 60 shots without cooling add only about 0.15 heat against threshold 1
 (about 400 shots). No base heat gate is proposed under this conditional model;
 selected overrides and native cooling/penalty rules remain outside the result.
+
+## Paired release and hotfix sample
+
+The [L39 comparison](../../reference-data/provenance/frosty-2026-09-24-L39-paired-build-raw.json)
+found byte-identical KORD 6P67 GS, WB and referenced projectile files between
+retained release Head 4892017 and fresh hotfix Head 4892087 captures. This rules
+out serialized changes in those three bodies only; selected modifiers, other
+weapons and native behavior are outside the comparison.

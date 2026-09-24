@@ -1,0 +1,127 @@
+{
+  "lead": "L39",
+  "date": "2026-09-24",
+  "status": "No serialized change in three paired assets",
+  "scope": "KORD 6P67 GS, WB and referenced PD only; not the full 63-weapon roster.",
+  "siteLink": "data/weapons.json kord6p67 source configuration, recoil, firing and ballistic inputs",
+  "builds": {
+    "hotfix": {
+      "label": "1.4.3.1 user-supplied label",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "descriptorEvidence": "BUILD.json immutable copy matches the descriptor hash captured from the actual Frosty runtime",
+      "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+      "runtimeDescriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostyEditor\\bin\\Release\\Final\\SharedTypeDescriptors.ebx",
+      "catalog": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-hotfix-capture\\asset-catalog.json",
+        "sha256": "d3f9cfdb02bc71b76aa8e4ca49bd0d26eaf2f2ade5eebac436d49762ba6804e1"
+      },
+      "descriptorVerifiedSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "runtimeDescriptorVerifiedSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    },
+    "release": {
+      "label": "1.4.3.0",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "descriptorEvidence": "builds/1.4.3.0/BUILD.json client 1.4.3.0",
+      "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "catalog": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\asset-catalog.json",
+        "sha256": "815ef184c8530d1d70a7a6d4c4793eb49e2372be6ca54325571e6b419c2addc5"
+      },
+      "descriptorVerifiedSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    }
+  },
+  "assets": [
+    {
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "siteUse": "GS: recoil/stat values",
+      "release": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\GS_6P67.ebx",
+        "bytes": 15762,
+        "sha256": "0e0dc3d71c9a2b74cf5325294ea3ce906366280cb4b239769df0616828293fdb"
+      },
+      "hotfix": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-hotfix-capture\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\GS_6P67.ebx",
+        "bytes": 15762,
+        "sha256": "0e0dc3d71c9a2b74cf5325294ea3ce906366280cb4b239769df0616828293fdb"
+      },
+      "exactBytesEqual": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/6P67_WB",
+      "siteUse": "WB: primary shot parameters",
+      "release": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\6P67_WB.ebx",
+        "bytes": 37328,
+        "sha256": "06f2649035e846e34f01062920fb7b02915f990a1188d2acb9b4ddba4b2a8b49"
+      },
+      "hotfix": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-hotfix-capture\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\6P67_WB.ebx",
+        "bytes": 37328,
+        "sha256": "06f2649035e846e34f01062920fb7b02915f990a1188d2acb9b4ddba4b2a8b49"
+      },
+      "exactBytesEqual": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/_Bullets/PD_545x39mm",
+      "siteUse": "PD damage curve referenced by 6P67_WB",
+      "release": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Bullets\\PD_545x39mm.ebx",
+        "bytes": 2394,
+        "sha256": "159f5173c329d48cdf515507bbb250901894d8b2e83b937486ab12897aa14612"
+      },
+      "hotfix": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-hotfix-capture\\raw\\Common\\Hardware\\Weapons\\_Bullets\\PD_545x39mm.ebx",
+        "bytes": 2394,
+        "sha256": "159f5173c329d48cdf515507bbb250901894d8b2e83b937486ab12897aa14612"
+      },
+      "exactBytesEqual": true
+    }
+  ],
+  "sourceFacts": [
+    "Fresh hotfix capture Head 4892087 reproduces the exact bytes of the three retained release Head 4892017 assets.",
+    "The v5 ledger has no shared capture routes between the two Heads; fresh capture supplies these pairs."
+  ],
+  "inference": "No serialized field value can differ in these three byte-identical bodies. No all-weapon or native behavior conclusion follows.",
+  "runtime": "Native evaluation, selected modifiers and external dependencies were not compared.",
+  "observations": "No in-game observation collected.",
+  "reproduction": {
+    "script": "scripts/frosty-build-compare.py",
+    "arguments": [
+      "--manifest",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-comparison-plan.json",
+      "--out",
+      "<new-external-comparison.json>"
+    ],
+    "manifest": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-comparison-plan.json",
+      "sha256": "fa8b6d1c2f296971bd48d0006f643812c27fffbe2e48ac0c7722655f94a890ef"
+    },
+    "result": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-comparison.json",
+      "sha256": "a13528e023313319dfae631989fc1d50a69399c5a58cb2ce7c689c40fccc5f0f"
+    }
+  },
+  "capture": {
+    "guard": "python scripts/frosty-build.py --datamining \"C:/Users/royal/Documents/BF6 Datamining\" guard 1.4.3.0 --game \"C:/Program Files/EA Games/Battlefield 6\"",
+    "guardResult": "Installed hotfix client belongs to the open retained 1.4.3.0 build folder.",
+    "script": "scripts/frosty-collect-raw.ps1",
+    "arguments": [
+      "-FrostyDirectory",
+      "C:/Users/royal/Documents/BF6 Datamining/FrostyToolsuite-battlefield6/FrostyEditor/bin/Release/Final",
+      "-GamePath",
+      "C:/Program Files/EA Games/Battlefield 6",
+      "-OutputDirectory",
+      "<new-external-capture-directory>",
+      "-RoutesFile",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-routes.txt"
+    ],
+    "routesSha256": "e559b69da1b17829c2e836b97bdc41bec20e2e1dcc93d3f6cec7a38f1a6af404",
+    "rawStatus": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-hotfix-capture\\raw-status.jsonl",
+      "sha256": "d4263ea541694e63641fec7bb34640f9e846420a9ab6c5a9364a93b3b6583d1e"
+    }
+  },
+  "reopenCondition": "A changed site-used asset/hash or a concrete gameplay difference justifies another exact paired capture; coverage expansion alone does not."
+}

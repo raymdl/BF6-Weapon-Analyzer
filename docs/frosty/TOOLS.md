@@ -501,6 +501,10 @@ records the exact arguments and comparison with the earlier scan.
   lifetimes and conditional site reachability; its Node helper calls the current
   site functions unchanged. L22/L25 inputs and comparisons remain external.
 
+- `frosty-build-compare.py --manifest --out`: rehashes pinned raw files, catalogs
+  and descriptors for two recorded builds, then compares the listed bytes.
+  It checks catalog Heads and makes no whole-build or runtime claim.
+
 Use `python scripts/<name> --help` and the receipt arguments. Outputs require a
 new external `--out` or `--report-dir`; existing output paths are refused.
 These checks reproduce configured source facts, not native runtime behavior.
