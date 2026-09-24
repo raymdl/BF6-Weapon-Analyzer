@@ -62,7 +62,7 @@ and the separate `1.4.3.1` directory under this run root.
 
 Checkpoint, 24 September 2026: L37-L43 are recorded; L44 checks nonlinear
 recoil integration and L45 checks the spread summary against its per-shot table.
-L46 is reserved for a bounded search for a changed site-used build asset.
+L46 found no changed catalog record in its sample; L47 checks an exact suppressor selector.
 Source facts and software consistency checks do not establish native behavior.
 Reviewed work is committed locally; current checks are in progress. Reuse the
 recorded plans and do not repeat neutral base scans.
@@ -120,6 +120,8 @@ Work these from source before handing them to the capture plan. Results from the
 | L43 | **Ballistic calculation consistency - Checked** | [Comparison](../../reference-data/provenance/frosty-2026-09-24-L43-ballistic-consistency.json): 328 selections; scalar/vector time differs by at most 0.00389 ms within TTK charts and 2.786 ms at 300 m. | Distinct model assumptions, not native validation; no change or new capture. Reopen if the supported ranges or equations change. |
 | L44 | **Nonlinear recoil integration** | In progress: compare the site's 1 ms recovery steps with a converged evaluation of the same assumed equation for actual nonlinear weapon groups. | Require an effect on displayed precision or shot residuals before proposing a change; no synthetic-only or native claim. |
 | L45 | **Spread summary - Software contradiction verified** | [Raw inputs and model check](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json): DB-12 hip summary shows 1.44 degrees maximum, but its shot-2 tooltip shows 1.95 degrees. | Propose a peak pre-shot summary for operator review; no new capture. Native equations remain unresolved. |
+| L46 | **Build-change screen - No candidate in sample** | [Reproducible catalog comparison](../../reference-data/provenance/frosty-2026-09-24-L46-site-route-build-screen.json): 534 site-linked routes have equal asset-record SHA1/size/GUID across the two recorded builds. | Catalog evidence only; no new raw trace or capture. Reopen on a changed site-used route or a concrete discrepancy outside this sample. |
+| L47 | **Exact suppressor selection and spotting branch** | In progress: check whether an exact MP attachment selector resolves the ordinary/SP-prefixed ambiguity left by L38. | Require a new selected source link; do not repeat candidate values or claim native activation. |
 
 ## Proposed Analyzer changes
 

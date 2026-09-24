@@ -1084,6 +1084,14 @@ retained release Head 4892017 and fresh hotfix Head 4892087 captures. This rules
 out serialized changes in those three bodies only; selected modifiers, other
 weapons and native behavior are outside the comparison.
 
+The broader [L46 catalog screen](../../reference-data/provenance/frosty-2026-09-24-L46-site-route-build-screen.json)
+finds equal SHA1/size/GUID records for 534 distinct site-linked routes across
+those builds: 63 WB roots, 63 GS roots, eight selected modifier routes, and
+463 projectile-input graph routes with overlap. The last group includes only
+64 PD assets, plus ammo attachments and source links. These are catalog records,
+not a new raw-byte audit or a native-behavior claim. No changed route in this
+sample warrants further field comparison.
+
 ## Ballistic calculation consistency
 
 [L43](../../reference-data/provenance/frosty-2026-09-24-L43-ballistic-consistency.json)

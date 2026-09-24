@@ -1,0 +1,97 @@
+{
+  "lead": "L46",
+  "date": "2026-09-24",
+  "status": "No changed catalog record in the bounded site-linked sample",
+  "builds": {
+    "release": {
+      "label": "1.4.3.0",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "catalog": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\asset-catalog.json",
+        "sha256": "815ef184c8530d1d70a7a6d4c4793eb49e2372be6ca54325571e6b419c2addc5"
+      },
+      "descriptorVerifiedSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    "hotfix": {
+      "label": "1.4.3.1 user-supplied label",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+      "runtimeDescriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostyEditor\\bin\\Release\\Final\\SharedTypeDescriptors.ebx",
+      "catalog": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-hotfix-capture\\asset-catalog.json",
+        "sha256": "d3f9cfdb02bc71b76aa8e4ca49bd0d26eaf2f2ade5eebac436d49762ba6804e1"
+      },
+      "descriptorVerifiedSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "runtimeDescriptorVerifiedSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    }
+  },
+  "scope": "Declared Analyzer source-route candidates only. Catalog fields are screening evidence, not raw-byte or per-field source verification.",
+  "reproduction": {
+    "script": "scripts/frosty-build-compare.py",
+    "scriptSha256": "4ddb3959e93436fc1091c96d9fc1290be5454469a6e0ec1aaf8e784e7c7fff3d",
+    "arguments": [
+      "--mode",
+      "catalog-screen",
+      "--manifest",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L46-candidate\\catalog-screen-manifest.json",
+      "--out",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L46-candidate\\parent-catalog-check-final.json"
+    ],
+    "manifest": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L46-candidate\\catalog-screen-manifest.json",
+      "sha256": "1b3a70bdedc505a865944f8a61497f329e5b8ec4b1555e50a942f1d89a0d033d"
+    },
+    "output": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L46-candidate\\parent-catalog-check-final.json",
+      "sha256": "28f0cb3cc6ae8be15c76935bab46b82fa75f1ad975593fc2cc3b834a19f3c904"
+    }
+  },
+  "groups": [
+    {
+      "id": "release_site_primary_WB",
+      "description": "63 primary weapon bundle roots from the current site primary-field input scan.",
+      "routeCount": 63,
+      "presentBoth": 63,
+      "changedOrMissing": 0
+    },
+    {
+      "id": "release_site_GS_roots",
+      "description": "63 mapped site weapon stat roots from the current base-leaf manifest.",
+      "routeCount": 63,
+      "presentBoth": 63,
+      "changedOrMissing": 0
+    },
+    {
+      "id": "known_selected_modifier_extra_routes",
+      "description": "Eight unique additional weapon/modifier routes appearing in reviewed L13, L17, L19 or L41 receipts after removing roots above.",
+      "routeCount": 8,
+      "presentBoth": 8,
+      "changedOrMissing": 0
+    },
+    {
+      "id": "site_projectile_input_leaf_source_assets",
+      "description": "463 Common asset routes in the site projectile input-leaf report; breakdown: {'AmmoAttachmentEBX': 328, 'PDData': 64, 'WeaponBundleRoots': 63, 'OtherCommonHardware': 8}. Includes ammo-attachment EBX and WB routes, so not a count of projectiles.",
+      "routeCount": 463,
+      "presentBoth": 463,
+      "changedOrMissing": 0
+    }
+  ],
+  "uniqueRoutes": 534,
+  "changedOrMissing": 0,
+  "catalogHashMeaning": {
+    "release": "sha1 is Frosty asset-record SHA1, not a separately recomputed raw-stream hash; zero hash means unavailable",
+    "hotfix": "sha1 is Frosty asset-record SHA1, not a separately recomputed raw-stream hash; zero hash means unavailable"
+  },
+  "limits": [
+    "Catalog SHA1 is Frosty asset-record SHA1, not a separately computed raw-stream hash.",
+    "No whole-build change inference.",
+    "Catalog equality cannot prove field-level/runtime behavior.",
+    "Project input-leaf route set has 463 routes: 64 PD data, 328 ammo attachment EBX, 63 WB roots, and 8 other Common/Hardware routes; groups overlap on WB roots."
+  ],
+  "existingExactRawReceipt": "reference-data/provenance/frosty-2026-09-24-L39-paired-build-raw.json",
+  "decision": "No changed route warrants a new raw field trace in this sample. Native behavior and unmatched source routes remain unresolved.",
+  "reopen": "A changed catalog record or raw hash on a site-used route; a concrete source/runtime discrepancy outside the screened sample."
+}

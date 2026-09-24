@@ -506,6 +506,8 @@ records the exact arguments and comparison with the earlier scan.
 - `frosty-build-compare.py --manifest --out`: rehashes pinned raw files, catalogs
   and descriptors for two recorded builds, then compares the listed bytes.
   It checks catalog Heads and makes no whole-build or runtime claim.
+  `--mode catalog-screen` instead compares declared route groups by nonzero
+  asset-record SHA1, size and GUID; it pins catalogs, descriptors and route inputs.
 
 - `frosty-simulation-summary.py --weapons ID,ID --out`: compares spread summaries
   with per-shot values for bare and software-reset loadouts. Pins the unchanged
