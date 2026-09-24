@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L17",
+  "status": "Finding established: indirect selected source effects; runtime model needs capture",
+  "question": "Does Match Trigger have a source path to effects omitted by the current noEffect site marker?",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "attachment": {
+    "attachmentAsset": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_ERG_MatchTrigger",
+    "attachmentGuid": "80c903ee-58a6-4fcf-921e-e50d47eba23f",
+    "attachmentRawSha256": "57a12fb55e2b71f62b6524ccb3cbf167ea1d90a19599437661012ab9012c6627",
+    "selectorGuids": [
+      "3eaeac2e-a854-4cd1-90db-216da7845135"
+    ]
+  },
+  "weaponBlock": {
+    "capture": {
+      "id": 3349,
+      "route": "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\HK433\\HK433_WB.ebx",
+      "head": 4892017,
+      "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "raw_sha256": "c02751eac2b054343a2a115dff8f2000bc450548c96185445cd7c3b613030e0a",
+      "header_status": "ok",
+      "decode_status": "decoded-provisional",
+      "error": null,
+      "object_count": 33,
+      "root_class": "Class_a6e2adec",
+      "warnings_json": "{\"$layoutAmbiguous\":17}",
+      "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+    },
+    "chain": "selector object26 at5456 -> effect20 at5120 -> target32 at5808 -> record22 at5240",
+    "record22": {
+      "index": 22,
+      "offset": 5240,
+      "body": {
+        "Field_6d011165": "15cff9ff-aab0-4230-9a53-5a2bb1606587",
+        "Field_1c85cbb1": 1
+      },
+      "rawFields": [
+        {
+          "field": "Field_6d011165",
+          "offset": 5264,
+          "type": 21,
+          "first4Bytes": "fff9cf15"
+        },
+        {
+          "field": "Field_1c85cbb1",
+          "offset": 5280,
+          "type": 16,
+          "first4Bytes": "01000000"
+        }
+      ]
+    },
+    "identifier": "15cff9ff-aab0-4230-9a53-5a2bb1606587",
+    "identifierValue": "Class_9dfbb158.Field_1c85cbb1=1; operation/condition unnamed"
+  },
+  "gameplaySetup": {
+    "capture": {
+      "id": 3342,
+      "route": "Common/Hardware/Weapons/AssaultRifle/HK433/GS_HK433",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\HK433\\GS_HK433.ebx",
+      "head": 4892017,
+      "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "raw_sha256": "66caca0e667d17fdf03f9fb4f620b9c5842aa1fd8de0221128ad4862895eed51",
+      "header_status": "ok",
+      "decode_status": "decoded-provisional",
+      "error": null,
+      "object_count": 3,
+      "root_class": "Class_b2468102",
+      "warnings_json": "{\"$layoutAmbiguous\":223}",
+      "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+    },
+    "objectIndex": 2,
+    "bindings": [
+      {
+        "path": "Field_ee32ca16/2",
+        "entry": {
+          "Field_6d011165": "15cff9ff-aab0-4230-9a53-5a2bb1606587",
+          "Field_3f680d24": 3,
+          "Field_2f0e5b83": {
+            "$import": {
+              "fileGuid": "5fe8ff19-5555-4fd3-a5c4-0177cbe8733f",
+              "classGuid": "cccd28b8-8b80-4dcd-ad9b-fa7d59b9a6c0"
+            }
+          }
+        },
+        "effectCapture": {
+          "id": 21050,
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\DispersionIncrease\\GBM_NoIncrease_ERG_P00.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "f72b06b468711162922b73a16fd824cc0954d9f6f494149f2f1a6072d5e2cdde",
+          "header_status": "ok",
+          "decode_status": "decoded",
+          "error": null,
+          "object_count": 1,
+          "root_class": "Class_5e5631ff",
+          "warnings_json": "{}",
+          "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+        },
+        "effectObjectIndex": 0
+      },
+      {
+        "path": "Field_2296f84f/28",
+        "entry": {
+          "Field_6d011165": "15cff9ff-aab0-4230-9a53-5a2bb1606587",
+          "Field_3f680d24": 29,
+          "Field_2f0e5b83": {
+            "$import": {
+              "fileGuid": "841ca76e-7e64-41e2-b94f-06b554258d9e",
+              "classGuid": "9e4de4fd-59a9-4667-b09d-a49ee56cf7eb"
+            }
+          }
+        },
+        "effectCapture": {
+          "id": 21096,
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MatchTrigger_ERG_P15",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_MatchTrigger_ERG_P15.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "d7785a0b638a8d238c906d772481639137b244181f26dacb46f45c0461e32fa1",
+          "header_status": "ok",
+          "decode_status": "decoded-provisional",
+          "error": null,
+          "object_count": 1,
+          "root_class": "Class_bb838ff6",
+          "warnings_json": "{\"$layoutAmbiguous\":3}",
+          "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+        },
+        "effectObjectIndex": 0
+      }
+    ]
+  },
+  "rawOperands": [
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00",
+      "sha256": "f72b06b468711162922b73a16fd824cc0954d9f6f494149f2f1a6072d5e2cdde",
+      "path": "Field_7b609515/Field_0a160c57/Field_0084b1d1/Field_5695ee1c",
+      "offset": 912,
+      "bytes": "00000000",
+      "typeCode": 19,
+      "value": 0.0
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00",
+      "sha256": "f72b06b468711162922b73a16fd824cc0954d9f6f494149f2f1a6072d5e2cdde",
+      "path": "Field_7b609515/Field_447d6d51/Field_0084b1d1/Field_5695ee1c",
+      "offset": 644,
+      "bytes": "00000000",
+      "typeCode": 19,
+      "value": 0.0
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00",
+      "sha256": "f72b06b468711162922b73a16fd824cc0954d9f6f494149f2f1a6072d5e2cdde",
+      "path": "Field_6b84de87/Field_0a160c57/Field_0084b1d1/Field_5695ee1c",
+      "offset": 376,
+      "bytes": "00000000",
+      "typeCode": 19,
+      "value": 0.0
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/DispersionIncrease/GBM_NoIncrease_ERG_P00",
+      "sha256": "f72b06b468711162922b73a16fd824cc0954d9f6f494149f2f1a6072d5e2cdde",
+      "path": "Field_6b84de87/Field_447d6d51/Field_0084b1d1/Field_5695ee1c",
+      "offset": 108,
+      "bytes": "00000000",
+      "typeCode": 19,
+      "value": 0.0
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MatchTrigger_ERG_P15",
+      "sha256": "d7785a0b638a8d238c906d772481639137b244181f26dacb46f45c0461e32fa1",
+      "path": "Field_7b609515/Field_22ce7cf3/Field_4692836a",
+      "offset": 1144,
+      "bytes": "03000000",
+      "typeCode": 15,
+      "value": 3
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MatchTrigger_ERG_P15",
+      "sha256": "d7785a0b638a8d238c906d772481639137b244181f26dacb46f45c0461e32fa1",
+      "path": "Field_7b609515/Field_28df1cde/Field_98a799ba",
+      "offset": 924,
+      "bytes": "1b2fdd3f",
+      "typeCode": 19,
+      "value": 1.7280000448226929
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MatchTrigger_ERG_P15",
+      "sha256": "d7785a0b638a8d238c906d772481639137b244181f26dacb46f45c0461e32fa1",
+      "path": "Field_6b84de87/Field_22ce7cf3/Field_4692836a",
+      "offset": 616,
+      "bytes": "03000000",
+      "typeCode": 15,
+      "value": 3
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_MatchTrigger_ERG_P15",
+      "sha256": "d7785a0b638a8d238c906d772481639137b244181f26dacb46f45c0461e32fa1",
+      "path": "Field_6b84de87/Field_28df1cde/Field_98a799ba",
+      "offset": 396,
+      "bytes": "1b2fdd3f",
+      "typeCode": 19,
+      "value": 1.7280000448226929
+    }
+  ],
+  "namedTargets": [
+    {
+      "captureId": 2147,
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "objectIndex": 1,
+      "pointer": "/Field_0a5922e0/Field_7b609515/Field_0a160c57",
+      "wrapper": "Field_fc13ebe4",
+      "anchorGuid": "2d1ca63f-edfe-4b4a-83e1-87c2d205f271",
+      "anchorName": "GS_6P67.DispersionBehavior.Unzoomed.Stationary",
+      "arrayIndex": 12,
+      "field": "Field_0084b1d1",
+      "name": "GS_6P67.DispersionBehavior.Unzoomed.Stationary.IncreasePerShot",
+      "childGuid": "f591817a-b562-48f8-bd29-95f7ff0ff62d",
+      "status": "equal-scalar",
+      "fieldValue": 0.504,
+      "registryValue": 0.504,
+      "comparedRegistryValue": 0.504,
+      "registryLayoutProvisional": true
+    },
+    {
+      "captureId": 2147,
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "objectIndex": 1,
+      "pointer": "/Field_c5d1c8fe/Field_7b609515",
+      "wrapper": "Field_2a325077",
+      "anchorGuid": "9a6c9076-f188-4203-b647-29a136dc27dc",
+      "anchorName": "GS_6P67.Recoil.Unzoomed",
+      "arrayIndex": 8,
+      "field": "Field_22ce7cf3",
+      "name": "GS_6P67.Recoil.Unzoomed.RecoilAmountMultiplierExponent",
+      "childGuid": "d2986592-56b2-4564-bed3-17d45be12b64",
+      "status": "equal-scalar",
+      "fieldValue": -3,
+      "registryValue": -3,
+      "comparedRegistryValue": -3,
+      "registryLayoutProvisional": true
+    },
+    {
+      "captureId": 2147,
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "objectIndex": 1,
+      "pointer": "/Field_c5d1c8fe/Field_7b609515",
+      "wrapper": "Field_2a325077",
+      "anchorGuid": "9a6c9076-f188-4203-b647-29a136dc27dc",
+      "anchorName": "GS_6P67.Recoil.Unzoomed",
+      "arrayIndex": 10,
+      "field": "Field_28df1cde",
+      "name": "GS_6P67.Recoil.Unzoomed.RecoilDecreaseFactor",
+      "childGuid": "f38ec2d6-8605-438d-9bc7-3a25e28768d7",
+      "status": "equal-scalar",
+      "fieldValue": 55.0,
+      "registryValue": 55.0,
+      "comparedRegistryValue": 55.0,
+      "registryLayoutProvisional": true
+    }
+  ],
+  "observed": "Exact embedded identifier joins the selected HK433 WB record to two GS effect bindings. GBM_NoIncrease has multiplier0 on IncreasePerShot in all four aim/stance branches. GRM_MatchTrigger has additive operand3 on RecoilAmountMultiplierExponent and second multiply operand1.728 on RecoilDecreaseFactor in both aim branches.",
+  "site": {
+    "current": "data/attachments.json ERGOS[id=match_trigger].noEffect=true; ui/loadout.js dims the choice; sim/applyAttachments.js applies no Match Trigger stat effects",
+    "proposal": "After controlled validation, model the traced Match Trigger recoil/bloom behavior in an explicit tested fire-mode context for M433. Review wider weapon coverage separately.",
+    "implementationReadiness": "Needs capture/native activation and composition proof; no shipped correction made"
+  },
+  "conditionalModelPrediction": {
+    "assumptions": "If the selected source operands act as the current model conventions imply and are active in the tested state, with no other modifiers. These are candidate predictions, not measured game values.",
+    "m433RecoilAmountRatio": 0.8439086249999999,
+    "m433RecoveryFactor": 124.416,
+    "increasePerShot": "0 added bloom; existing minimum spread remains, not zero cone",
+    "fireMode": "Tooltip14F044F9 describes semi-auto, but text is not activation proof. Compare manually selected semi-auto against automatic control.",
+    "cadence": "No RPM or trigger-acceptance change established."
+  },
+  "limits": [
+    "Class_10713bed direct neutral flags alone do not establish no effect. Its target chain exposes indirect GS effects.",
+    "Four-identifier object/file/direct-ref searches returned no target; an embedded body search found relevant bindings. Prior worker negative route is superseded by this trace.",
+    "Three sibling identifiers occur in named bipod/mounted records; this context does not prove conjunction, precedence or fire-mode activation.",
+    "Field_98a799ba is an operand member under target Field_28df1cde, not the target name. Native meaning/order of the two multiply slots remains unresolved.",
+    "Build-matched decode retains layout ambiguity. Parent verified raw hashes, operands and exact GRX child/hash associations.",
+    "Only HK433 selection is reviewed here; no family-wide implementation or confirmed game bug."
+  ],
+  "capturePlan": "docs/working/BF6_CAPTURE_PRIORITIES.md L17 Match Trigger",
+  "evidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\parent-raw-verification.json",
+      "sha256": "79b885c1c4666b1bbbb0e880bb1819a2803cb58722178814ed29b879693b2d57"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\parent-gs-match-trigger-chain.json",
+      "sha256": "8332605fd8125e7b1cb2f54cd70cb4fc4677afc316502b4b87416684dd466744"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\parent-gs-match-trigger-operands.json",
+      "sha256": "a9973faa12bd9408a270427d53c17cd4512fe4581d8837c58041e99bcc766fee"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\parent-named-targets.json",
+      "sha256": "7916ba2e9a55c51d86c13795ff326698f50610398380de4348f5df26f2f9f04b"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\embedded-guid-summary.json",
+      "sha256": "84509d922042079a3c8c252b062a49f7c595aa41ce328ca1435ea8bf458869bb"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\L17-evidence.json",
+      "sha256": "e1224a4d2bcc6260d76879a8a51e2fcf7ddacee57699546a9932a330341b8dcf"
+    }
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\verify_parent.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\verify_gs_parent.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\verify_names_parent.py\""
+  ]
+}

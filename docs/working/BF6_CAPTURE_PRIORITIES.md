@@ -576,3 +576,27 @@ changes within measurement error, this setup does not demonstrate an active
 effect; it does not prove global absence. The source 0.75 vector is not a justified
 25% prediction because its target and operation remain unnamed. This test cannot
 alone assign a field name. See the [L18 source limit](../../reference-data/provenance/frosty-2026-09-24-L18-buffer-animation-context.json).
+
+## L17 follow-up: Match Trigger in semi-auto and automatic modes
+
+Use M433, matching the HK433 source trace. Compare the bare baseline with Match
+Trigger, with all other choices fixed. Show the selected fire mode and attachment.
+Run manually selected semi-auto first, then automatic as a condition control;
+tapping an automatic trigger is not proof of selecting semi-auto. Record repeated
+isolated shots and equal-cadence groups in ADS and hip, stationary first.
+
+Measure initial aim displacement separately from weapon animation, recoil return
+at matched displacement/time, and the spread indicator or repeated impact groups.
+Use a cadence high enough that the baseline shows measurable bloom; full recovery
+between taps cannot distinguish the zero-increase candidate. Match shot intervals
+between paired trials. A missing/censored indicator is unavailable, not zero.
+
+If all source operands act under the current model, the M433 candidate predicts
+a per-shot recoil ratio of 0.843908625, a recovery factor of 124.416 instead of 72,
+and zero added bloom with unchanged minimum spread. If the attachment acts only
+in semi-auto, the automatic control should lack those changes. If no differences
+are resolved, the result is inconclusive about activation and global absence.
+A different direction or magnitude can reject this simple composition. There is
+no sourced cadence prediction; record timing to control the experiment. Native
+operator order and broader weapon coverage remain separate questions. See
+[L17 evidence](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json).

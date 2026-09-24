@@ -720,3 +720,22 @@ exact registry member arrays name only Priority. They do not name this vector
 or its operation. Buffer has null anchors in both relevant objects. This is a
 purpose clue, not proof of a 25% recoil reduction. Retain the qualitative site
 badge; no numeric change is supported without a typed field or consumer.
+
+### Match Trigger indirect effects (L17, 24 September 2026)
+
+The [raw HK433 trace](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json)
+follows the attachment selector through a local WB target to embedded identifier
+`15cff9ff-aab0-4230-9a53-5a2bb1606587`. The same identifier selects two GS effects:
+`GBM_NoIncrease_ERG_P00` multiplies IncreasePerShot by zero in all four aim/stance
+branches; `GRM_MatchTrigger_ERG_P15` adds 3 to RecoilAmountMultiplierExponent and
+stores a 1.728 second-multiply operand on RecoilDecreaseFactor in both aim states.
+Exact GRX child/hash pairs name all three targets.
+
+This provides a source path beyond the site noEffect marker. It does not prove
+native activation or composition. The description specifies semi-auto, but that
+text is not a consumer. The three sibling WB identifiers relate to bipod/mounted
+contexts and do not prove a fire-mode condition. Capture M433 with and without
+Match Trigger in manually selected semi-auto and automatic control. A candidate
+model gives recoil ratio 0.945^3 = 0.843908625, recovery factor 72*1.728 = 124.416
+and no added per-shot bloom; minimum spread remains. These are conditional model
+predictions, not runtime measurements. No cadence change or game bug is established.

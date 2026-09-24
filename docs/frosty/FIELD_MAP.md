@@ -78,7 +78,7 @@ not known.
 | `Field_bbffe8bc` = True with `Field_bbbfe9cc` | Override with value; `Field_bbffe8bc` is the enable flag | Smooth `RecoilDuration` 0.05 / 0.066667; GCR camera values |
 | `Field_4692836a` | Add (neutral 0) | `GRM_AutoIdentifier_P00` duration −0.0006 |
 | `Field_5695ee1c` | Multiply (neutral 1) | Smooth recovery ×1.2 / ×1.728 |
-| `Field_98a799ba` | Multiply (neutral 1); seen only on `FiringDecreaseCoefficient` | ×k^−1.5 |
+| `Field_98a799ba` | Multiply operand (neutral 1); target and native order must be kept separate | FiringDecreaseCoefficient examples; [L17](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json) also raw-verifies 1.728 under RecoilDecreaseFactor |
 | `Field_9540bd8e` | Signed step on `WME_ADSTime_FOV_*`, `WME_ADSTime_Anim_*` (must agree), `WME_Draw_*` | Barrel ADS, draw (`P05` = 1) |
 
 | Effect class | Field | Meaning | Confidence |
