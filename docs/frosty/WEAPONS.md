@@ -1039,9 +1039,12 @@ HeatPerBullet 0, drop rate about 0.2, threshold about 0.8, delay 0 and penalty 3
 These base values do not support adding per-bullet heat accumulation to those
 three site weapons.
 
-The naming control is different: DRS-IAR (M27IAR source) stores HeatPerBullet
-about 0.0025, threshold 1 and penalty 0. This is a source candidate, not proof of
-an active firing gate. Cooling during fire, initial heat, threshold handling,
-unnamed booleans and native use remain unresolved. Keep the cadence model
-unchanged until a controlled capture distinguishes a firing restriction from
-visual heat and ordinary reload pauses.
+DRS-IAR (M27IAR source) stores HeatPerBullet about 0.0025,
+HeatDropPerSecond about 0.2, OverHeatThreshold 1, OverHeatPenaltyTime 0 and
+OverHeatDropDelay 0. Under a simple additive model with continuous cooling,
+0.0025 * 771.428 / 60 = 0.03214 heat/s, well below 0.2 heat/s cooling;
+a zero penalty supplies no timed lockout even if the threshold is reached.
+Without cooling, a zero-start threshold would take about 400 shots. These are
+conditional calculations, not native behavior. The L35 capture is optional and
+low value unless source evidence shows cooling pauses during fire or another
+penalty mechanism. Initial heat, threshold handling and native use remain unresolved.

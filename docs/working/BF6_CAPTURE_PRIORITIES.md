@@ -686,7 +686,14 @@ did not identify the native setting or equation. Do not convert its unnamed zero
 values into a sourced coefficient. Keep the site calculation unchanged pending
 this test and operator review.
 
-## L35 follow-up: DRS-IAR heat configuration
+## L35 follow-up: DRS-IAR heat configuration (optional / low value)
+
+Source values are HeatPerBullet 0.0025, HeatDropPerSecond 0.2, threshold 1,
+delay 0 and penalty 0. Under a simple additive model with continuous cooling,
+0.0025 * 771.428 / 60 = 0.03214 heat/s is below the 0.2 heat/s drop rate;
+zero penalty supplies no timed lockout even at threshold. This is not a native
+behavior claim. Defer this low-value test unless source evidence shows cooling
+pauses during fire or the penalty is applied another way.
 
 Use DRS-IAR (M27IAR source), standard ammo and a documented magazine. Record a
 cold first-magazine baseline, then repeated sustained firing with the same build,
