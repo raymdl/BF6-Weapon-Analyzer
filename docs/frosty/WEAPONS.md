@@ -999,3 +999,12 @@ pass 300 m in this screening model; this is not a native range guarantee.
 
 The L22 lifetime-units and native-expiry limits still apply. Add a subsonic
 control to the capture before proposing loadout-dependent reachability.
+
+The [L28 compensation check](../../reference-data/provenance/frosty-2026-09-24-L28-subsonic-compensation-scope.json)
+verified the exact CZ3A1 Subsonic selection chain. It selects two SpotRange effects,
+a muzzle-velocity operand about 0.64, a SubsonicSFX effect, and the separate GS
+recoil modifier. Its primary WB projectile matches the current site base PD.
+The SFX local child imports a handheld firing Sound source patch. No independently
+identified lifetime compensation or projectile replacement was found in this
+bounded chain. Unnamed muzzle-effect fields and native compensation remain open;
+this check does not turn the conditional range into a confirmed game limit.
