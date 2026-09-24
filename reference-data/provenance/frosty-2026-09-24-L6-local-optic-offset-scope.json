@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L6",
+  "status": "Finding established for optic-offset candidate; broader local-effect investigation remains open",
+  "question": "Do weapon-local Class_897c99a7 parts contain unmodeled non-sway combat-stat effects?",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "observed": {
+    "capture": {
+      "id": 13391,
+      "route": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\RPK74M\\RPK74M_WB.ebx",
+      "head": 4892017,
+      "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "raw_sha256": "f7ba614bdd6d02c4c44896d951ece69856c78c35c36714c0eaf0ad9ac4c20df9",
+      "header_status": "ok",
+      "decode_status": "decoded-provisional",
+      "error": null,
+      "object_count": 74,
+      "root_class": "Class_a6e2adec",
+      "warnings_json": "{\"$layoutAmbiguous\":18}",
+      "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+    },
+    "objectIndex": 11,
+    "objectGuid": null,
+    "class": "Class_45930daa",
+    "rawFields": [
+      {
+        "field": "Field_e98a040b",
+        "rawOffset": 5216,
+        "rawBytes": "00000000",
+        "float32": 0.0
+      },
+      {
+        "field": "Field_ee2f6176",
+        "rawOffset": 5220,
+        "rawBytes": "295c8fbc",
+        "float32": -0.017500000074505806
+      },
+      {
+        "field": "Field_9149421e",
+        "rawOffset": 5224,
+        "rawBytes": "0ad7a33c",
+        "float32": 0.019999999552965164
+      }
+    ],
+    "namedAnchors": [
+      {
+        "field": "Field_d396a5f7",
+        "objectGuid": "b521013d-73ca-4667-bff0-a1adc321a763",
+        "capture": {
+          "id": 1491,
+          "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+          "header_status": "ok",
+          "decode_status": "decoded-provisional",
+          "error": null,
+          "object_count": 28807,
+          "root_class": "Class_bec12d4c",
+          "warnings_json": "{\"$layoutAmbiguous\":4750}",
+          "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+        },
+        "objectIndex": 6731,
+        "name": "RPK74M_WB.WeaponModifierDataAssets[131] - Tango Weapon Offset.Modifiers[0] - Weapon Offset for Optics.WeaponModifierDynamicBase.WeaponModifierBase"
+      },
+      {
+        "field": "Field_e8134251",
+        "objectGuid": "12c5527a-8d1f-407d-91d5-4e9435c031f6",
+        "capture": {
+          "id": 1491,
+          "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+          "header_status": "ok",
+          "decode_status": "decoded-provisional",
+          "error": null,
+          "object_count": 28807,
+          "root_class": "Class_bec12d4c",
+          "warnings_json": "{\"$layoutAmbiguous\":4750}",
+          "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+        },
+        "objectIndex": 13730,
+        "name": "RPK74M_WB.WeaponModifierDataAssets[131] - Tango Weapon Offset.Modifiers[0] - Weapon Offset for Optics.WeaponModifierDynamicBase"
+      },
+      {
+        "field": "Field_03e29e14",
+        "objectGuid": "08ed2e1c-65de-4a07-8e0f-e4d0b2d6eb1f",
+        "capture": {
+          "id": 1491,
+          "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+          "header_status": "ok",
+          "decode_status": "decoded-provisional",
+          "error": null,
+          "object_count": 28807,
+          "root_class": "Class_bec12d4c",
+          "warnings_json": "{\"$layoutAmbiguous\":4750}",
+          "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+        },
+        "objectIndex": 3110,
+        "name": "RPK74M_WB.WeaponModifierDataAssets[131] - Tango Weapon Offset.Modifiers[0] - Weapon Offset for Optics"
+      }
+    ],
+    "inference": "Author-named registry path identifies Weapon Offset for Optics; the exact three fields, units and runtime effect are not independently named."
+  },
+  "selectorEvidence": "Saved selector_trace.py resolves this same Tango6T GUID across EF88, VSSM, RPK74M and Tavor7; candidate class selectors are optics/iron sights.",
+  "interpretation": "The RPK74M registry author path explicitly identifies Weapon Offset for Optics. This supports a weapon/optic placement role for Class_45930daa rather than an unexplained recoil/spread multiplier. Exact component names, units and runtime behavior remain unresolved.",
+  "siteProposal": "None for this vector family. Do not replace recoil, spread or ADS values with these floats.",
+  "otherWork": {
+    "bipodBooleanTrace": "Worker-only bipod-chain.json records Class_d79973ba flags but establishes no stat operand. No new proposal; existing deployed capture requirement remains.",
+    "smallClasses": "Worker-only small-class-triage.json is partial triage, not final semantic findings. M18 MagazineCapacity 22 versus nominal site21 is the already-known loaded/nominal ambiguity. Field_7f22bfb4 is registry-named, contrary to the worker initial unmapped label.",
+    "newLead": "M250 Class_8b80c794 local numeric scale transferred to L16 with its own queue question and evidence directory."
+  },
+  "limits": [
+    "No generalized visual-only or no-effect claim for every local class.",
+    "Empty target pointers in EF88 did not exhaust this family: the RPK74M registry-anchor route supplied independent purpose evidence.",
+    "Unreviewed worker notes are leads, not established mappings.",
+    "Source and registry layouts retain ambiguity flags; parent directly decoded RPK74M scalar fields and named anchors from hash-verified raw sources."
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\rpk-optic-offset-parent-review.json",
+      "sha256": "3064b162ad9a133975cbb3c1279abfd1c15744faa96748fae64d150af7fe1a43"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\verify_optic_offset.py",
+      "sha256": "1208c6cc0e3540b92ceb9c8fc914beea315b53330af4c3e0b9641805806761d9"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\class45930-selector-trace.json",
+      "sha256": "11a5505c64bbb3a70d8b08594bca24cd0874715b74609867977122f7346087a0"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\selector_trace.py",
+      "sha256": "370435b2abefa62079850168ee4c651a3877d0c399287bba775d0ceeaf74c18e"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\inventory.json",
+      "sha256": "43c834b794f1cbb4c095fe4dff8066cefb6ed9c1e4f3b60fdb1f6fd4af8ddca8"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\inventory.py",
+      "sha256": "9b99b42c28f1a8db30babead89223ca46a75b63233f2be489a589799e7c60507"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\small-class-triage.json",
+      "sha256": "f95058367aaf028599bdd98f5f890076abd144b730eba942c6d3abd6dd4e9a25"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\bipod-chain.json",
+      "sha256": "33699ff802fe7cc30a77501a207876e860ced8df3cfb67c6d266396a07e10a21"
+    }
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\verify_optic_offset.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\selector_trace.py\""
+  ],
+  "resume": "L16 investigates M250 numeric bipod effect; other local classes require their own bounded site-relevant question before further tracing."
+}

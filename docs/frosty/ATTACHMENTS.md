@@ -681,3 +681,21 @@ The Ability action selects `BurstFireEnabled`; the GS condition is the separate
 composition remain unresolved. Keep the existing rank-9 capture requirement;
 the 0.0006 duration delta alone is too small to identify reliably in normal video.
 No numeric site change is proposed.
+
+## Local non-sway parts (L6, 24 September 2026)
+
+The `Class_45930daa` local-part family uses optic/iron-sight selectors. Its
+three small floats must not be treated as recoil or spread multipliers. A direct
+RPK74M trace resolves the registry author path `Tango Weapon Offset` /
+`Weapon Offset for Optics`; this supports a weapon/optic placement role.
+For Tango6T, the raw values at bytes 5216/5220/5224 are 0, -0.0175 and 0.02.
+Individual component names, units and runtime behavior remain unknown.
+
+EF88's instance has null registry references, but that did not exhaust the
+family: RPK74M's non-null references supply this independent purpose clue.
+No combat-stat change is proposed. [Reviewed trace](../../reference-data/provenance/frosty-2026-09-24-L6-local-optic-offset-scope.json).
+
+The broader local-part inventory remains a source of bounded leads. Bipod flags
+alone do not establish a recoil effect. M18's local MagazineCapacity 22 versus
+the site's nominal 21-round magazine repeats the known chamber/nominal question.
+The separate M250 numeric bipod part is being investigated as L16.
