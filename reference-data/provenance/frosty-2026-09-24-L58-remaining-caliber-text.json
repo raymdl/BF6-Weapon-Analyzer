@@ -1,0 +1,285 @@
+{
+  "lead": "L58",
+  "date": "2026-09-24",
+  "status": "Closed bounded text check",
+  "scope": {
+    "classes": [
+      "Assault Rifle",
+      "Carbine",
+      "SMG",
+      "LMG"
+    ],
+    "siteWeaponCount": 39,
+    "byClass": {
+      "Assault Rifle": 11,
+      "Carbine": 8,
+      "SMG": 10,
+      "LMG": 10
+    },
+    "excludedSiteIds": [
+      "sor300sc"
+    ],
+    "excludedClasses": [
+      "Sidearm",
+      "DMR",
+      "Sniper Rifle",
+      "Shotgun"
+    ]
+  },
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "capture": {
+    "route": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+    "rawSha256": "75111e9a804aebfc05cb19218d75340fac658fd94d9b3109e12af163b5d73e7b",
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "localization": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\xml-overlay\\Common\\Localization\\Languages\\fs_us_loc.strings.tsv",
+    "sha256": "a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9",
+    "encoding": "utf-8",
+    "delimiter": "tab",
+    "keyColumn": 0,
+    "valueColumn": 1
+  },
+  "sourceFacts": {
+    "counts": {
+      "explicitDimension": 9,
+      "explicitCaliberDesignation": 2,
+      "partialCaliberPhrase": 1,
+      "noExplicitTextFound": 27
+    },
+    "candidates": [
+      {
+        "siteId": "m433",
+        "class": "Assault Rifle",
+        "storedCal": "5.56×45mm NATO",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "5.56x45mm",
+        "description": "Chambered in 5.56x45mm, this cutting-edge rifle is best suited at closer ranges due to its above average rate of fire.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "d20def34-1e0d-4610-9742-833b9705e856",
+        "recordLabel": "HK433",
+        "weaponObjectIndex": 142,
+        "descriptionObjectIndex": 229,
+        "descriptionGuid": "6f220057-fdc0-2b50-59c9-600123987294",
+        "descriptionStringId": "604A8B5F",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "tr7",
+        "class": "Assault Rifle",
+        "storedCal": "7.62×51mm NATO",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "7.62x51mm",
+        "description": "Chambered in 7.62x51mm, the compact TR-7 delivers tremendous stopping power but its punishing recoil limits effectiveness beyond close range.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "5a62921f-54e2-4d52-ab33-0b0056b57e74",
+        "recordLabel": "Tavor 7",
+        "weaponObjectIndex": 93,
+        "descriptionObjectIndex": 261,
+        "descriptionGuid": "87153d63-79e4-f47d-d628-e094fc4d6bee",
+        "descriptionStringId": "C82BE7F5",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "nvo228e",
+        "class": "Assault Rifle",
+        "storedCal": "7.62×39mm",
+        "candidateKind": "explicit_caliber_designation",
+        "explicitText": "7.62 Soviet",
+        "description": "This powerful assault rifle chambered in 7.62 Soviet is a reliable weapon designed for mid-range encounters.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "85279391-90ae-4b12-8138-fc8a679a3be2",
+        "recordLabel": "ACE 32",
+        "weaponObjectIndex": 367,
+        "descriptionObjectIndex": 103,
+        "descriptionGuid": "b8d4e825-0d74-6084-de7b-226a9f457d69",
+        "descriptionStringId": "4E2705C0",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "m277",
+        "class": "Carbine",
+        "storedCal": "6.8×51mm",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "6.8x51mm",
+        "description": "Chambered in 6.8x51mm, this newly fielded rifle is intended for overmatch at range at the cost of magazine capacity.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "7d579192-e28a-4bb5-9e91-0dc9c0775895",
+        "recordLabel": "XM7",
+        "weaponObjectIndex": 370,
+        "descriptionObjectIndex": 410,
+        "descriptionGuid": "9287b6a3-b238-4f86-79d7-bf6391c5d6ce",
+        "descriptionStringId": "27E3AF8E",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "ak205",
+        "class": "Carbine",
+        "storedCal": "5.45×39mm",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "5.45x39mm",
+        "description": "With a moderate cyclic rate and 5.45x39mm chambering, this carbine offers best-in-class accuracy.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "0c5c5d71-de08-4659-96b5-7e9eca9c5b02",
+        "recordLabel": "AK205",
+        "weaponObjectIndex": 289,
+        "descriptionObjectIndex": 361,
+        "descriptionGuid": "58236190-34c2-bfb4-ff59-19dd1bea7b89",
+        "descriptionStringId": "893884B5",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "m417a2",
+        "class": "Carbine",
+        "storedCal": "7.62×51mm NATO",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "7.62x51mm",
+        "description": "Chambered in 7.62x51mm, this compact battle rifle offsets its high damage with a steady rate of fire.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "91a7c8e5-73e5-4f69-a18a-5ddc088078e2",
+        "recordLabel": "HK417A2",
+        "weaponObjectIndex": 569,
+        "descriptionObjectIndex": 101,
+        "descriptionGuid": "c31e7324-b89c-e267-7329-1ddc945d889e",
+        "descriptionStringId": "37A7AD94",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "qbz192",
+        "class": "Carbine",
+        "storedCal": "5.8×42mm",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "5.8x42mm",
+        "description": "A modern rifle of East Asian origin chambered in the unique 5.8x42mm. Comes factory with a bipod grip for rapid stabilized shooting.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "9646c570-6add-4cdb-a9f5-c2c951646928",
+        "recordLabel": "QBZ-192",
+        "weaponObjectIndex": 288,
+        "descriptionObjectIndex": 256,
+        "descriptionGuid": "96f25a61-a5b7-ecd6-f9f7-b8bccfb2648c",
+        "descriptionStringId": "CE4170FB",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "sgx",
+        "class": "SMG",
+        "storedCal": "9×19mm",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "9x19mm",
+        "description": "A modern 9x19mm PDW suited for close-range engagements. Can be configured to improve its ranged capabilities.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "c78e8283-30ba-42bd-b909-1e4358e80ccc",
+        "recordLabel": "MPX",
+        "weaponObjectIndex": 333,
+        "descriptionObjectIndex": 150,
+        "descriptionGuid": "a8aa3938-8458-93a9-2bc9-d0d57d052bb8",
+        "descriptionStringId": "34F87CE7",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "pw7a2",
+        "class": "SMG",
+        "storedCal": "4.6×30mm",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "4.6x30mm",
+        "description": "A 4.6x30mm chambering ensures this PDW outperforms at range. Still effective in close quarters due to its high rate of fire.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "f143982f-6e07-4ffc-bcb2-4d77db0a7450",
+        "recordLabel": "MP7A2",
+        "weaponObjectIndex": 128,
+        "descriptionObjectIndex": 364,
+        "descriptionGuid": "6ade2391-9099-62da-7b14-ad5bf412cfee",
+        "descriptionStringId": "B30D3E99",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "scw10",
+        "class": "SMG",
+        "storedCal": "10×25mm",
+        "candidateKind": "explicit_caliber_designation",
+        "explicitText": "10mm",
+        "description": "Chambered in 10mm, this modular modern SMG offers increased stopping power where other PDWs fall short.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "a08b6d7d-21c9-4b14-90a1-1959b7e1fc4d",
+        "recordLabel": "APC10 G Pro",
+        "weaponObjectIndex": 322,
+        "descriptionObjectIndex": 461,
+        "descriptionGuid": "13eab8b8-a22c-5673-2e54-15555eeb7e66",
+        "descriptionStringId": "C1564E47",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "l110",
+        "class": "LMG",
+        "storedCal": "5.56×45mm NATO",
+        "candidateKind": "explicit_dimension",
+        "explicitText": "5.56x45mm",
+        "description": "An all-purpose Squad Automatic Weapon chambered in 5.56x45mm. Well-matched for most engagements.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "f0c3bbd4-3df8-4f10-bd94-f86434ff8362",
+        "recordLabel": "Minimi",
+        "weaponObjectIndex": 527,
+        "descriptionObjectIndex": 495,
+        "descriptionGuid": "4df224c6-f136-74a4-82fe-cc498e6a7a79",
+        "descriptionStringId": "BEA2A275",
+        "weaponLayoutAmbiguous": true
+      },
+      {
+        "siteId": "umg40",
+        "class": "SMG",
+        "storedCal": ".40 S&W",
+        "candidateKind": "partial_caliber_phrase",
+        "explicitText": ".40 caliber",
+        "description": "A renowned polymer SMG with a low rate of fire, chambered in .40 caliber. Outperforms its peers at mid range encounters.",
+        "metadataRoute": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "weaponRecordGuid": "42cd6e1a-b5a8-4f53-8039-7c1e8b912c7a",
+        "recordLabel": "UMP-40",
+        "weaponObjectIndex": 73,
+        "descriptionObjectIndex": 77,
+        "descriptionGuid": "e8a0911b-8453-db1c-00c5-79f4ed7550a0",
+        "descriptionStringId": "9AFAD788",
+        "weaponLayoutAmbiguous": true
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L58-remaining-caliber\\inventory.json",
+      "sha256": "88e8bd0cfc2322e698ac7bd46ca4f60776632accb064d125a7f6911850ac6ce3"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L58-remaining-caliber\\parent-manifest.json",
+      "sha256": "785dbf62ebd62b7e57d4910e0483f107faf5b87febf7d15ca845e465339b219d"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L58-remaining-caliber\\independent-review\\comparison.json",
+      "sha256": "9777ebda35c3b2980edf11c346dec6bdcbfcc9d33bad79f70789f8dd04d9beb1"
+    }
+  ],
+  "reproduce": {
+    "script": "scripts/frosty-selected-chain-check.py",
+    "arguments": [
+      "--manifest",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L58-remaining-caliber\\parent-manifest.json",
+      "--db",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+      "--out",
+      "<new external directory>"
+    ]
+  },
+  "verification": "Independent rerun: 48 assertions, one capture, zero failures. All 39 stored label literals matched current UTF-8 data.",
+  "inference": "Exact wording can support operator-reviewed metadata wording; no label alias or error is established.",
+  "limits": [
+    "Descriptions are text evidence and do not create a typed caliber field.",
+    "Stored labels and source text are reported literally; no alias or cartridge-dimension equivalence is inferred.",
+    "The 12 explicit/partial candidates passed raw metadata and localization checks. Non-candidate rows use the exact prior source mapping report and were not individually raw-checked in this lead.",
+    "No projectile path, gameplay, native, or runtime behavior is asserted."
+  ],
+  "runtimeBehavior": "No typed caliber field, projectile identity, ballistic effect, or runtime use established. Metadata layout ambiguity remains.",
+  "inGameObservations": [],
+  "captureDecision": "No capture: a gameplay capture cannot decide the exact source wording.",
+  "reopenCondition": "New exact localization, typed cartridge mapping, or source metadata change."
+}

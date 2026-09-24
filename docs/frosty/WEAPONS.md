@@ -208,6 +208,13 @@ adds M39 EMR `7.62x51mm` (without `NATO`), SVK-8.6 `8.6x70mm`, and Interdictor
 SV-98 StringIds have no entry in the retained English table; this is a precise
 localization gap, not whole-source absence. Metadata layout warnings remain.
 
+[L58](../../reference-data/provenance/frosty-2026-09-24-L58-remaining-caliber-text.json)
+screens 39 remaining AR/carbine/SMG/LMG descriptions: nine dimension phrases,
+NVO-228E `7.62 Soviet`, SCW-10 `10mm`, and partial UMG-40 `.40 caliber`.
+All 12 candidate chains pass raw checks; the other 27 descriptions contain no
+explicit caliber wording. Text does not establish NATO/S&W suffixes, label
+equivalence, a typed cartridge field, or ballistic behavior.
+
 L50: the exact M87A1 source choices have separate localized `#01 Buckshot` and
 `#00 Buck` names, while its stored `cal` is `12ga (00 Buck)`. Consider removing
 the fixed ammo suffix during operator review; no direct current JS/HTML consumer
@@ -1160,3 +1167,11 @@ independent integration of the same assumed equation. Maximum errors are
 capped at base magazine size. This proxy omits shot delivery, direction and
 attachment effects; it is not a full recoil pattern. No numerical change or new
 capture is proposed. Native recovery remains unresolved.
+
+[L56](../../reference-data/provenance/frosty-2026-09-24-L56-full-recoil-path.json)
+compares actual reset ADS paths for M87A1 (7 shots) and DB-12 (14 shots), including
+25 ms delivery and paired cadence, with finer integration of the same equation.
+Maximum pre-shot point errors are 0.006992° and 0.009645°; adjacent finest results
+differ by less than 2e-12°. All 24 source fields passed raw checks. Seed 0 and zero
+compensation only; neither case overlaps impulses. This is not a native-equation
+validation or an error bound for other loadouts; no new capture is required.

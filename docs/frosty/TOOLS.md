@@ -526,6 +526,10 @@ records the exact arguments and comparison with the earlier scan.
   --dec-exp --time-exp --out`: compares the current decay helper with independent
   integration for selected source-checked aim groups. The scalar sequence is
   capped at base magazine size and does not reproduce the full recoil pattern.
+  `--full-path --full-path-weapons m87a1 db12 --aim ads --seed 0` instead resolves
+  reset attachments and compares actual pre-shot points with independent RK4,
+  including finite delivery and paired cadence. The receipt pins raw checks and
+  records step convergence; use a fresh external `--out` path.
 
 Use `python scripts/<name> --help` and the receipt arguments. Outputs require a
 new external `--out` or `--report-dir`; existing output paths are refused.

@@ -61,14 +61,18 @@ registry, selection, reference and lifetime checks; receipt commands identify th
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
 and the separate `1.4.3.1` directory under this run root.
 
-Checkpoint, 24 September 2026: L54/L55 add four exact caliber-wording options;
-no alias or mechanics correction is established. L57 finds equal catalog records
-for nine additional muzzle operands. L56 is checking full recoil-path numerical
-precision beyond L44's scalar proxy. Existing L45/L53 software proposals remain
-for operator review. Use Luna xhigh for new delegation; the trial did not establish
-a speed or correctness advantage. Next free lead is L58. Require a concrete
-Analyzer link and a new discriminator; do not repeat bounded negatives or neutral
-base scans. Research remains open, local commits only; nothing is pushed.
+Paused at the operator's request, 24 September 2026. Review fixes 1-8 and leads
+L37-L58 are documented and locally committed. L56 closes the two-loadout recoil
+precision check; L58 closes the remaining primary caliber-text screen. No worker
+is still assigned work. No shipped site/data changes or pushes were made.
+
+Resume at **L59**. Read the operator-review proposals below first, especially
+L45 (spread summary) and L53 (zeroing bracket). Prioritize an unsourced input or
+non-neutral selected modifier with a concrete Analyzer consumer and a new source
+discriminator. Loaded magazine state, spotting composition and native mechanics
+remain unresolved; do not repeat neutral scans or bounded catalog negatives.
+Use Luna xhigh if delegating. Receipts pin inputs, hashes, scripts and external
+outputs; use new output paths on reruns. No new capture follows from L56/L58.
 
 ## Active source leads
 
@@ -133,8 +137,9 @@ Work these from source before handing them to the capture plan. Results from the
 | L53 | **Zeroing bracket - Software contradiction verified** | [Raw inputs and 50-case check](../../reference-data/provenance/frosty-2026-09-24-L53-zeroing-bracket.json): VSSM Penetration/Frangible at 500 m zero returns null; the display substitutes zero instead of the same model's +10.73 m at 100 m. | Propose robust bracketing and explicit unavailable output for operator review. No new capture; native zeroing remains unresolved. |
 | L54 | **Vz. 61 caliber text - Source wording verified** | [Exact metadata chain](../../reference-data/provenance/frosty-2026-09-24-L54-sidearm-caliber-text.json) says `.32 ACP`; the stored label is `7.65×17mm`. | Alternative source-backed wording for operator review; this text does not prove alias equivalence or an incorrect stored value. No capture. |
 | L55 | **Rifle caliber text - Partial support** | [Raw text chains](../../reference-data/provenance/frosty-2026-09-24-L55-rifle-caliber-text.json) give M39 `7.62x51mm`, SVK `8.6x70mm`, and Interdictor `10.4x83mm`; two other exact StringIds lack retained English text. | Named aliases and NATO suffix remain unsupported by these texts. Source wording is an operator-review option; no capture. |
-| L56 | **Full recoil-path precision** | In progress: compare actual plotted shot sequences with finer integration, including delivery and overlapping impulses omitted by L44's proxy. | Preserve actual loadouts and magazine limits; numerical agreement cannot establish the native equation. |
+| L56 | **Full recoil-path precision** | Closed: reset ADS M87A1/DB-12 maximum pre-shot errors 0.006992°/0.009645° under the same assumed equation; [receipt](../../reference-data/provenance/frosty-2026-09-24-L56-full-recoil-path.json). | Two loadouts, seed 0, no impulse overlap; reopen for changed integration/loadout or native equation evidence. |
 | L57 | **Muzzle build screen - No candidate** | [Nine additional operand routes](../../reference-data/provenance/frosty-2026-09-24-L57-muzzle-build-screen.json) have equal nonzero catalog SHA1, size and GUID across the recorded builds. | Catalog evidence only; no new raw capture. Reopen on a changed record or concrete field discrepancy. |
+| L58 | **Remaining primary caliber text** | Closed: 39 descriptions screened; 12 exact text candidates raw-verified, including partial UMG-40 wording; [receipt](../../reference-data/provenance/frosty-2026-09-24-L58-remaining-caliber-text.json). | No label equivalence or mechanics claim; reopen for new localization or typed cartridge evidence. |
 
 ## Proposed Analyzer changes
 
