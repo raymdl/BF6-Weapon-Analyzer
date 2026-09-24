@@ -126,24 +126,8 @@ and `fs_us_loc` for the strings.
 
 ## Equipment selection candidates (L12, 24 September 2026)
 
-Release Head 4892017 Equipment roots store an explicit attachment subset in
-`Class_33e63a99.Field_3538f6ad`, separate from the larger availability/progression
-list `Field_844f8184`. Direct descriptor and raw import-pointer checks confirm
-the MPX list: Basic Barrel, RomeoX, FMJ, FlashHiderMPX, Regular magazine,
-Tango Stubby and MissionLight. M4A1 instead lists XPS3, **Short Barrel**,
-M4QDFlashHider, FMJ and Regular magazine. The Analyzer uses Basic Barrel for M4A1.
-
-This is a selected-configuration candidate, not a verified default mapping.
-The added optic/grip/light and M4A1 barrel difference permit a starter-preset
-explanation. `CUST_MPX` directly links the WB and MD assets; those two links
-do not select attachments. Engineer loadout-slot records refer to Equipment_MPX,
-but that reference alone does not prove live class or reset behavior.
-
-[Raw offsets, hashes and reproduction](../../reference-data/provenance/frosty-2026-09-24-L12-equipment-selection-candidates.json).
-The Equipment class retains layout warnings; the listed pointer array was checked
-against raw bytes. The operator clarified on 24 September that site defaults
-intentionally use a bare-weapon baseline for comparison. Therefore the M4A1
-Equipment difference is not a site defect, and no default-loadout capture is
-required. Reuse these source subsets only when an observed unexplained stat
-difference makes selection context relevant. The earlier receipt preserves the
-source observations; its default-change candidate is withdrawn by this clarification.
+[Raw Equipment subset checks](../../reference-data/provenance/frosty-2026-09-24-L12-equipment-selection-candidates.json)
+retain selected lists separately from availability. The default-change candidate
+is withdrawn: site comparisons intentionally use a bare weapon, so the M4A1
+Short/Basic difference is not a defect. Reuse these subsets only to explain a
+specific observed stat difference; no default-loadout capture is needed.
