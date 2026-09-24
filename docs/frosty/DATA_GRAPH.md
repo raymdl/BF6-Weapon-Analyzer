@@ -141,5 +141,9 @@ but that reference alone does not prove live class or reset behavior.
 
 [Raw offsets, hashes and reproduction](../../reference-data/provenance/frosty-2026-09-24-L12-equipment-selection-candidates.json).
 The Equipment class retains layout warnings; the listed pointer array was checked
-against raw bytes. Keep defaults unchanged until selection context is established.
-The capture plan separates fresh/starter, reset and saved configurations.
+against raw bytes. The operator clarified on 24 September that site defaults
+intentionally use a bare-weapon baseline for comparison. Therefore the M4A1
+Equipment difference is not a site defect, and no default-loadout capture is
+required. Reuse these source subsets only when an observed unexplained stat
+difference makes selection context relevant. The earlier receipt preserves the
+source observations; its default-change candidate is withdrawn by this clarification.

@@ -533,25 +533,6 @@ and update the topic page. Remove resolved work from the active list without los
 its dated evidence. Do not request repeats of a usable existing control without a
 specific new uncertainty.
 
-## L12 - Default configuration versus starter preset
-
-Source candidate: [Equipment subsets](../../reference-data/provenance/frosty-2026-09-24-L12-equipment-selection-candidates.json).
-Use M4A1 as the discriminating case and SGX as the control. Record the current
-build, mode, class, unlocked attachments and saved loadout state. Save the full
-current loadout before changes. Capture separately: a newly selected weapon,
-a UI reset-to-default configuration if offered, and a starter/class preset if
-offered. Do not treat an existing saved loadout as a fresh default. If the UI
-cannot expose a fresh state, record that limitation.
-
-Measure the selected barrel, magazine and ammo, plus the optic/grip/light to
-identify a complete preset. Hypothesis A (universal default list) predicts M4A1
-Short Barrel after reset and SGX Basic Barrel; all listed extra attachments should
-also return. Hypothesis B (starter preset) predicts the listed combination only
-in that preset, with reset or base configuration allowed to differ. The current
-Analyzer predicts M4A1 Basic Barrel. If both hypotheses produce the same visible
-state, the capture does not distinguish them. Keep saved-profile and class effects
-separate; repeat on a second loadout slot when available.
-
 ## L14 - Alternate single-fire cadence
 
 Use unmodified M4A1 with its in-game single-fire toggle, if available. Show the
