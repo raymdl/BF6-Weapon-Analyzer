@@ -252,8 +252,9 @@ exported for that review. Mode-like directory names do not prove exclusive use.
 
 The [structural snapshot](../../reference-data/provenance/frosty-audit-coverage-2026-09-23.json)
 and [capture receipt](../../reference-data/provenance/frosty-audit-capture-2026-09-23.json)
-record the first exhaustive-audit checkpoint. Current work and blockers are in the
-[queue](../working/FROSTY_RESEARCH_QUEUE.md#exhaustive-audit-checkpoint).
+record the first exhaustive-audit checkpoint. Later checkpoint counts are in the
+`b3040e7` version of the research queue; current work is in the
+[queue](../working/FROSTY_RESEARCH_QUEUE.md).
 
 ### Descriptor reader
 

@@ -63,6 +63,38 @@ are not all present in a clean checkout. Narrative context is preserved in the
 [research archive](../../docs/archive/README.md); screenshot-audit JSON/workbook and its
 separate validator live in the [attachment audit package](../attachment-audit/README.md).
 
+## Site input audit — 23 September 2026
+
+The 23 September pass compared every site input with 1.4.3.0/1.4.3.1 source.
+Findings live in the [Frosty topic pages](../../docs/frosty/README.md); open work is
+in the [research queue](../../docs/working/FROSTY_RESEARCH_QUEUE.md). Receipts
+follow these naming rules:
+
+- `frosty-site-*`: source/site comparisons for one input family. The ledger of
+  record is [final-v2](frosty-site-input-review-final-v2-2026-09-23.json), with its
+  [validation](frosty-site-input-review-validation-2026-09-23.json) and
+  [input inventory v3](frosty-site-input-inventory-v3-2026-09-23.json).
+- `frosty-audit-*`: catalog scope, capture, decoder and branch-census receipts
+  for the exhaustive audit ledger (see [tools](../../docs/frosty/TOOLS.md#exhaustive-audit-coverage-ledger)).
+  Capture and decode coverage are not semantic review.
+- A `-reviewed` or `-validation` file corrects or checks the same-named initial
+  file. Keep the initial file only where a later receipt cites it. A filename
+  suffix alone does not establish acceptance.
+
+Key site-comparison receipts:
+
+| Family | Receipts |
+|---|---|
+| Spread, recoil, precision | [Spread](frosty-site-spread-reviewed-2026-09-23.json), [recoil](frosty-site-recoil-2026-09-23.json), [precision](frosty-site-precision-2026-09-23.json), [constants](frosty-site-constants-2026-09-23.json), [equations](frosty-site-equations-2026-09-23.json) |
+| Timing and reload | [Timing](frosty-site-timing-2026-09-23.json), [timing leaves](frosty-site-timing-leaves-final-2026-09-23.json), [Recon selector](frosty-site-timing-recon-selector-2026-09-23.json), [ADS Bolt cadence](frosty-site-ads-bolt-cadence-2026-09-23.json), [empty-reload capture](frosty-empty-reload-capture-2026-09-23.json) and its [review](frosty-site-reload-capture-review-2026-09-23.json), [draw](frosty-site-draw-2026-09-23.json) |
+| ADS, spotting, zeroing | [ADS](frosty-site-ads-2026-09-23.json), [spotting](frosty-site-spotting-2026-09-23.json), [spot bases](frosty-spot-range-bases-2026-09-23.json), [zeroing](frosty-site-zeroing-2026-09-23.json) |
+| Attachments | [Muzzle operands](frosty-site-muzzle-operands-2026-09-23.json), [SGX sway lineage](frosty-site-sgx-sway-lineage-2026-09-23.json), [magazines](frosty-site-magazines-2026-09-23.json), [ergonomics](frosty-site-ergos-2026-09-23.json), [grips/sights](frosty-site-grips-sights-effect-review-2026-09-23.json), [barrel ADS spread](frosty-site-barrel-ads-spread-2026-09-23.json) |
+| Ammo and projectiles | [Ammo effects](frosty-site-ammo-effects-2026-09-23.json), [subsonic velocity](frosty-site-ammo-velocity-2026-09-23.json), [projectiles](frosty-site-projectile-2026-09-23.json) |
+| Text and identity | [Tooltips](frosty-site-tooltips-2026-09-23.json), [weapon labels](frosty-site-weapon-labels-2026-09-23.json), [Sym reproduction](frosty-site-sym-reproduction-2026-09-23.json) |
+
+Intermediate iterations of the input review (v2–v4 drafts) that no receipt cited
+were removed after commit `b3040e7`; recover them from that commit if needed.
+
 ## Weapon Attributes — 21 September 2026
 
 Current behavior and evidence links are maintained in the

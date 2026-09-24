@@ -12,9 +12,8 @@ what the hashed fields mean, how the assets link to site values, and what is sti
 | [UI text](UI_TEXT.md) | Strings table, weapon and attachment names, labels, descriptions, site tooltip mapping. |
 | [Tools](TOOLS.md) | FrostyCmd, safety rules, SDK and decoder, export coverage, per-build collection, generators. |
 | [Open questions](OPEN_QUESTIONS.md) | Everything still unresolved, with the suggested test. |
-| [23 September evidence index](AUDIT_EVIDENCE_2026-09-23.md) | Dated audit receipts, grouped by source topic, with supported review and validation links. |
 
-Research status: [prioritized queue, proposals and handoff](../working/FROSTY_RESEARCH_QUEUE.md).
+Research status: [active source leads, proposals and parked questions](../working/FROSTY_RESEARCH_QUEUE.md).
 Capture work: [ranked in-game capture plan](../working/BF6_CAPTURE_PRIORITIES.md).
 
 The current audit starts from every `data/*.json` entry and `sim/*.js` input or

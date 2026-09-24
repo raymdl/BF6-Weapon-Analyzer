@@ -84,6 +84,7 @@ Their original date/snapshot matters; a candidate does not imply current behavio
 | [Manifest second pass](FROSTY_MANIFEST_SECOND_PASS_2026-09-06.md) | Dated graph/dependency investigation, not a runtime manifest. See [architecture](../ARCHITECTURE.md). |
 | [Online blocker review](BLOCKER_ONLINE_REVIEW_2026-09-06.md) | Historical search for evidence on unresolved behavior; no claim of current external re-verification. See [limitations](../MODEL_LIMITATIONS.md). |
 | [Offsets thread review](OFFSETS_THREAD_REVIEW_2026-09-06.md) | Historical native-layout research. Layout candidates do not establish simulator formulas; see [sources](../DATA_SOURCES.md). |
+| [Audit ledger tool review](FROSTY_AUDIT_LEDGER_REVIEW_2026-09-23.md) | Early correctness review of `frosty-audit-coverage.py`. Its findings (unresolved imports, `$badString`, per-run script hash) are addressed in the current ledger; see [tools](../frosty/TOOLS.md#exhaustive-audit-coverage-ledger). |
 | [Portal SDK research](PORTAL_SDK_RESEARCH_2026-09-06.md) | Historical feasibility research, not a shipped Portal integration or current SDK recommendation. See [sources](../DATA_SOURCES.md). |
 
 ## Evidence access and preservation
