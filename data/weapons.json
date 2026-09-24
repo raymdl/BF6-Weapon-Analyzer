@@ -2442,7 +2442,7 @@
     "rpm": 599.999,
     "mag": 31,
     "tacRld": 2.25,
-    "emptyRld": 3.284,
+    "emptyRld": 3.2,
     "bulletVel": 528,
     "recoilV": 0.7416865095483536,
     "recoilDir": -12,
@@ -2582,7 +2582,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Frosty PD_.300BLK_Carbine tweakable damage curve referenced by SCARSC_WB, export label 1.4.2.5.",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.3.1",
+        "buildEvidence": "1.4.3.1 (16 Sep hotfix) raw WB field inventory; in-game capture 2026-09-23",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json#weapons/sor300sc"
+      }
+    }
   },
   {
     "id": "sgx",
@@ -6009,7 +6019,7 @@
     "rpm": 359.999,
     "mag": 21,
     "tacRld": 2.75,
-    "emptyRld": 3.284,
+    "emptyRld": 3.034,
     "bulletVel": 760,
     "recoilV": 1.0594954875124012,
     "recoilDir": -5,
@@ -6129,7 +6139,17 @@
     ],
     "damageStatus": "verified",
     "damageSource": "Frosty PD_556x45mmNATO_Semi tweakable damage curve referenced by MSBSGROTCPS_WB, export label 1.4.2.5.",
-    "reloadSpeed": 1
+    "reloadSpeed": 1,
+    "provenance": {
+      "frosty": {
+        "sourceBuild": "1.4.3.1",
+        "buildEvidence": "1.4.3.1 (16 Sep hotfix) raw WB field inventory; in-game capture 2026-09-23",
+        "fields": [
+          "emptyRld"
+        ],
+        "emptyReloadEvidence": "reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json#weapons/grtcps"
+      }
+    }
   },
   {
     "id": "m2010esr",

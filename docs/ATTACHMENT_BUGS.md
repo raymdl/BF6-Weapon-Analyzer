@@ -11,6 +11,8 @@ Each entry is one of these types:
   weapons. Stats and description are not affected.
 - **Suspected game error**: source or panel behavior is inconsistent across weapons,
   but the intended behavior is not confirmed.
+- **Source data inconsistency**: the source stores conflicting values for a weapon
+  property; in-game timing shows which value the game uses.
 
 Descriptions that leave out an effect that the game applies consistently are not
 errors. They are in [Accepted text](#accepted-text).
@@ -44,6 +46,7 @@ Site status uses one of these values, followed by the value that the site applie
 | 12 | Standard Suppressor | L115 | Game error (source binding omission) | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Does not match game panel: generic hipfire penalty applied |
 | 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
 | 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
+| 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -478,6 +481,44 @@ scope size with another sniper rifle in game before you add an entry.
 **Iron-sight zoom.** All iron sights zoom 1.50× (`Aim_1x50`), more than 1.00× optics.
 The operator confirmed this in game. It is consistent on all weapons, so it is not
 listed as an error. The site shows it as "Iron Sights (1.50x)".
+
+## Source data inconsistencies
+
+### 15. SOR-300SC and GRT-CPS empty reload: stale 3.284 s `ReloadTime`
+
+This is a weapon property, not an attachment effect. It is listed here because it
+is a verified conflict between stored values and in-game behavior.
+
+- **Frosty (1.4.3.1).** In `SCARSC_WB` and `MSBSGROTCPS_WB`,
+  `ReloadInfoArray[1]` stores `ReloadTime` (`Field_85ff24a0`) 3.284 on both
+  weapons. `ReloadTimeBulletsLeft` (`Field_fc66e75e`) is 3.2 and 3.034, and the
+  last entry of the reload phase list (`Field_dc244b57`) matches it. On 56 of 57
+  other weapons with a phase list, all three values agree. The identical 3.284 on
+  two unrelated weapons looks like a copied value.
+- **In-game.** Captured 23 September 2026 at 60 fps: auto-reload after firing the
+  magazine dry, hipfire, default loadouts, four reloads per weapon. Timed from the
+  last shot to the first shot of the new magazine:
+
+  | Weapon | `ReloadTimeBulletsLeft` + one fire interval | Measured | With `ReloadTime` |
+  |---|---:|---:|---:|
+  | M4A1 (control) | 2.634 + 0.067 = 2.701 | 2.700 | 2.701 |
+  | LMR27 (control) | 3.067 + 0.133 = 3.200 | 3.207 | 3.200 |
+  | SOR-300SC | 3.2 + 0.100 = 3.300 | 3.300 | 3.384 |
+  | GRT-CPS | 3.034 + 0.167 = 3.201 | 3.200 | 3.451 |
+
+  The game uses `ReloadTimeBulletsLeft`. The extra fire interval appears on all
+  four weapons and most likely reflects the auto-reload waiting for the next
+  permitted shot.
+- **Site.** `emptyRld` corrected from 3.284 to 3.2 (SOR-300SC) and 3.034 (GRT-CPS)
+  on 23 September. Both `ReloadSpeed` values are 1. The site's reload values
+  follow `ReloadTimeBulletsLeft / ReloadSpeed` for each entry; see
+  [reload values](frosty/WEAPONS.md#reload-values-and-empty-reload-capture-23-september-2026).
+- **Other sources.** Sym's `bf6.json` (1.4.2.0) also lists 3.284 for both weapons;
+  the finding was shared with the Sym team.
+- **Evidence.** [Capture report](../reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json);
+  local-only recordings in `reference-data/Recordings/09232026/Empty Reload/`
+  (ignored, not shipped; the report records their SHA-256 hashes).
+- **Recheck** after a game update that changes either weapon's reload data.
 
 ## Accepted text
 
