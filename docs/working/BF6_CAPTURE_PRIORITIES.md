@@ -537,15 +537,7 @@ at normal test ranges. Keep this below the ranked mechanics captures; an exact
 native velocity/operation trace is stronger evidence for the fractional value and
 ammo/barrel composition.
 
-## Maintenance
-
-Keep the ranks current as source work proceeds. After receiving files, record which
-capture IDs are received, usable, inconclusive or resolved. Link the measured report
-and update the topic page. Remove resolved work from the active list without losing
-its dated evidence. Do not request repeats of a usable existing control without a
-specific new uncertainty.
-
-## L14 - Alternate single-fire cadence
+## L14 - Alternate single-fire cadence (rank 9 follow-up)
 
 Use unmodified M4A1 with its in-game single-fire toggle, if available. Show the
 mode indicator and loadout; record accepted muzzle shots with audio and ammo HUD.
@@ -561,7 +553,7 @@ to reach that interval does not confirm it. VSSM semi-auto near 450 RPM and an
 automatic M4A1 run are timing controls. Keep loadout, frame rate, platform and
 server settings fixed. Capture-only outcomes do not rename any unknown fields.
 
-## L18 follow-up: Buffer visible movement
+## L18 follow-up: Buffer visible movement (optional; no numeric result)
 
 Use one weapon that offers Buffer. Record the selected weapon, build, input type,
 FOV and all attachments. Compare bare baseline and Buffer with the same optic,
@@ -577,7 +569,7 @@ effect; it does not prove global absence. The source 0.75 vector is not a justif
 25% prediction because its target and operation remain unnamed. This test cannot
 alone assign a field name. See the [L18 source limit](../../reference-data/provenance/frosty-2026-09-24-L18-buffer-animation-context.json).
 
-## L17 follow-up: Match Trigger in semi-auto and automatic modes
+## L17 follow-up: Match Trigger in semi-auto and automatic modes (rank 9 follow-up)
 
 Use M433, matching the HK433 source trace. Compare the bare baseline with Match
 Trigger, with all other choices fixed. Show the selected fire mode and attachment.
@@ -601,7 +593,7 @@ no sourced cadence prediction; record timing to control the experiment. Native
 operator order and broader weapon coverage remain separate questions. See
 [L17 evidence](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json).
 
-## L20 follow-up: Pellet direction pilot
+## L20 follow-up: Pellet direction pilot (rank 14)
 
 Use 18.5KS-K with standard ammunition and a fixed bare baseline. Record one shell
 per clean wall area at a measured fixed range, returning to the same stance, aim
@@ -619,7 +611,7 @@ merge or disappear, stop the pilot and retain unavailable pellet statistics.
 The source currently gives no justified numerical direction distribution; this
 test must establish a usable signal before fitting one. See [L20 scope](../../reference-data/provenance/frosty-2026-09-24-L20-pellet-direction-scope.json).
 
-## L22 follow-up: Projectile expiry and range
+## L22 follow-up: Projectile expiry and range (rank 13)
 
 Use KS-18K with a recorded bare-equivalent setup. Change only standard buckshot
 versus Slug. Use a cooperative target at measured 125, 150, 175 and 200 m, with
@@ -636,7 +628,7 @@ can hide impacts. Slug's 2.0 value predicts reach beyond 200 m under the same
 assumptions. Compare repeated confirmed outcomes before changing reachability;
 source units, native equation and lifetime start remain open. See [L22 evidence](../../reference-data/provenance/frosty-2026-09-24-L22-projectile-lifetime.json).
 
-### L25 extension: Subsonic expiry control
+### L25 extension: Subsonic expiry control (rank 13)
 
 Use CZ3A1 with its recorded bare-equivalent barrel, Subsonic ammo, stable ADS and
 single deliberate shots at 240, 255, 270 and 290 m. Current site inputs predict
@@ -649,7 +641,7 @@ Record exact barrel/ammo identity and any velocity-changing effect. Do not start
 with USG-90's near-300 m boundary. [L25 evidence](../../reference-data/provenance/frosty-2026-09-24-L25-selected-projectile-lifetimes.json)
 keeps source lifetimes separate from these conditional distances.
 
-## L27 follow-up: Compact Handstop sprint firing
+## L27 follow-up: Compact Handstop sprint firing (rank 11 follow-up)
 
 Use CZ3A1 with a fixed bare-equivalent setup. Compare no grip and Compact
 Handstop, changing only the grip. Start sustained forward sprint before firing;
@@ -664,7 +656,7 @@ button or camera animation. A timing difference alone does not name the raw
 boolean or establish a general sprint-recovery multiplier. Keep the true source
 boolean, descriptive text and measured behavior separate. [L27 source scope](../../reference-data/provenance/frosty-2026-09-24-L27-handstop-boolean-scope.json).
 
-## L32 follow-up: projectile velocity while strafing
+## L32 follow-up: projectile velocity while strafing (rank 15)
 
 Use a bare B36A4 (BREN3 source), standard ammo, fixed stance and ADS, with a static
 flat target at measured range. Record isolated first shots while stationary,
@@ -705,11 +697,18 @@ an absent HUD indicator; that measurement is unavailable.
 An active accumulating heat gate predicts a reproducible additional pause or
 cadence change after sufficient firing, affected by idle/cooling time. A visual
 heat mechanism can change the weapon image without altering shot timing. Ordinary
-reloads must remain separate. Under a simple zero-start, no-cooling additive
-hypothesis, the source ratio 1 / 0.0025 is about 400 shots; this is not a native
-threshold prediction. Reload cooling may prevent reaching a threshold in normal
-play, so an uninterrupted magazine or a null test alone cannot settle the question.
+reloads must remain separate. Even without cooling, the zero-start source ratio
+1 / 0.0025 is about 400 shots versus a maximum site magazine of 60; a null test
+alone cannot settle native behavior.
 
 The [L35 source scope](../../reference-data/provenance/frosty-2026-09-24-L35-lmg-heat-source-scope.json)
 establishes names and configured values only. No site heat gate is proposed for
 implementation without measured firing effects and operator review.
+
+## Maintenance
+
+Keep the ranks current as source work proceeds. After receiving files, record which
+capture IDs are received, usable, inconclusive or resolved. Link the measured report
+and update the topic page. Remove resolved work from the active list without losing
+its dated evidence. Do not request repeats of a usable existing control without a
+specific new uncertainty.
