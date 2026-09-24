@@ -1022,3 +1022,9 @@ its meaning. All three floats are zero and all three references are null in the
 63 checked primary weapon roots. Thus the references provide no named target;
 they do not prove that the game inherits zero shooter velocity. Keep the site's
 stationary-launch scope and use the L32 capture to test moving-shooter behavior.
+
+The [L34 primary spawn-delay check](../../reference-data/provenance/frosty-2026-09-24-L34-neutral-spawn-delay.json)
+uses the independently named `SpawnDelay` field from that BREN3 anchor. All 63
+checked primary WB values are raw float32 zero. No nonzero base delay is missing
+from current flight timing on this evidence. Native time origin, trigger latency
+and selected runtime overrides remain outside this result.
