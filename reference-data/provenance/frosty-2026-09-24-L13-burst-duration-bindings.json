@@ -1,0 +1,220 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L13",
+  "status": "Questioned site operands supported within verified source-selection scope",
+  "correction": "Current ERGOS.weaponOverrides has five recoil leaves, all recoilDurationAdd=-0.0006; the starting 19-row count is stale. Generic tier fields outside weaponOverrides were not counted as overrides.",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "ledger": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+    "ledgerMode": "SQLite URI mode=ro"
+  },
+  "condition": {
+    "field": "Field_6d011165",
+    "value": "588728fd-2ae7-4424-aa22-45d9b3c82ba0",
+    "resolvedPackageRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/U_WPM_ERG_BurstFireActive",
+    "meaning": "Source registry name identifies BurstFireActive; runtime token generation is not verified.",
+    "packageCapture": {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/U_WPM_ERG_BurstFireActive",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\FireMode\\U_WPM_ERG_BurstFireActive.ebx",
+      "raw_sha256": "ca8777942d7d9eb739ab165aade5f57409515aca5f142ed8299f74c3fb9bce40",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "head": 4892017,
+      "decode_status": "decoded"
+    },
+    "object": {
+      "object_guid": "588728fd-2ae7-4424-aa22-45d9b3c82ba0",
+      "class_name": "Class_bc0062dc",
+      "absolute_offset": 48
+    },
+    "registryName": "U_WPM_ERG_BurstFireActive",
+    "registryId": 698797625
+  },
+  "observed": {
+    "mp5": {
+      "gs": {
+        "id": 17172,
+        "route": "Common/Hardware/weapons/SMG/MP5MLI/GS_MP5MLI",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\SMG\\MP5MLI\\GS_MP5MLI.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "bd80c80c72e6c7759b0a44923a32e47bd6ef8ba69e10948f8ffc3db1caeef57e",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 3,
+        "root_class": "Class_b2468102",
+        "warnings_json": "{\"$layoutAmbiguous\":223}",
+        "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+      },
+      "objectIndex": 2,
+      "bindingPointer": "Field_2296f84f[39]",
+      "binding": {
+        "Field_6d011165": "588728fd-2ae7-4424-aa22-45d9b3c82ba0",
+        "Field_3f680d24": 10000,
+        "Field_2f0e5b83": {
+          "$import": {
+            "fileGuid": "e4291572-063c-47f8-b13b-d0a9e2a859a9",
+            "classGuid": "1643260a-5bba-4e72-a9c0-763892fd44bb"
+          }
+        }
+      },
+      "rawBindingFields": [
+        {
+          "field": "Field_6d011165",
+          "offset": 8832,
+          "kind": 21,
+          "bytes": "fd288758e72a2444aa2245d9b3c82ba0"
+        },
+        {
+          "field": "Field_3f680d24",
+          "offset": 8848,
+          "kind": 15,
+          "bytes": "10270000"
+        },
+        {
+          "field": "Field_2f0e5b83",
+          "offset": 8824,
+          "kind": 3,
+          "bytes": "45000000"
+        }
+      ],
+      "baseAndOperandRawChecks": [
+        {
+          "role": "base",
+          "fieldPath": "Field_c5d1c8fe/Field_7b609515/Field_5a02dd65",
+          "offset": 1024,
+          "float32": 0.02500000037252903,
+          "bytes": "cdcccc3c"
+        },
+        {
+          "role": "base",
+          "fieldPath": "Field_c5d1c8fe/Field_6b84de87/Field_5a02dd65",
+          "offset": 1176,
+          "float32": 0.02500000037252903,
+          "bytes": "cdcccc3c"
+        },
+        {
+          "role": "additive",
+          "fieldPath": "Field_7b609515/Field_5a02dd65/Field_4692836a",
+          "offset": 1100,
+          "float32": -0.0006000000284984708,
+          "bytes": "52491dba"
+        },
+        {
+          "role": "additive",
+          "fieldPath": "Field_6b84de87/Field_5a02dd65/Field_4692836a",
+          "offset": 572,
+          "float32": -0.0006000000284984708,
+          "bytes": "52491dba"
+        }
+      ]
+    },
+    "sharedEffect": {
+      "capture": {
+        "id": 21188,
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/GRM_AutoIdentifier_P00",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\GRM_AutoIdentifier_P00.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "e11d3bd79a94e759879b87813820114693938eae24078f42a486cab03a83a545",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 1,
+        "root_class": "Class_bb838ff6",
+        "warnings_json": "{\"$layoutAmbiguous\":3}",
+        "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+      },
+      "class": "Class_bb838ff6",
+      "objectIndex": 0,
+      "objectGuid": "1643260a-5bba-4e72-a9c0-763892fd44bb",
+      "aimFields": [
+        "Field_7b609515",
+        "Field_6b84de87"
+      ],
+      "target": "Field_5a02dd65 (registry-named RecoilDuration)",
+      "operation": "Field_4692836a additive -0.0006; override disabled and multipliers 1",
+      "units": "Source target is a duration; seconds are consistent with site/source timing conventions, not separately proven by this operand alone."
+    },
+    "remainingWeapons": [
+      {
+        "siteId": "sg553r",
+        "rawSha256": "60d3b4422771fb7a83cf194da821809b4fa9d1fba9e097fcd02a9f48965581fc",
+        "bindingIndex": 47,
+        "base": 0.025
+      },
+      {
+        "siteId": "cz3a1",
+        "rawSha256": "a77960f17538a6324f6d9aef87726dcf2cc02f49aaa453165a3a9621769b2211",
+        "bindingIndex": 39,
+        "base": 0.025
+      },
+      {
+        "siteId": "sl9",
+        "rawSha256": "41820c9d759b8ed7d275e2d69e925e98184ae1f497d3785f57455c8b2981f0c7",
+        "bindingIndex": 38,
+        "base": 0.025
+      },
+      {
+        "siteId": "grtbc",
+        "rawSha256": "3eadad38fab81d424c584d537f234a97671eddfed2aec479ee38d183c3b11086",
+        "bindingIndex": 44,
+        "base": 0.025
+      }
+    ],
+    "fieldNameEvidence": "registry-bindings.jsonl exact MP5 named Recoil.Unzoomed/Zoomed.RecoilDuration associations; 124 associations in current registry receipt strengthen the historical weak-name label."
+  },
+  "site": {
+    "pointers": [
+      "data/attachments.json/ERGOS[id=burst_training]/weaponOverrides/{sg553r,pw5a3,cz3a1}/recoilDurationAdd",
+      "data/attachments.json/ERGOS[id=burst_mode]/weaponOverrides/sl9/recoilDurationAdd",
+      "data/attachments.json/ERGOS[id=grtbc_burst_mode]/weaponOverrides/grtbc/recoilDurationAdd"
+    ],
+    "current": -0.0006,
+    "consumer": "sim/applyAttachments.js adds recoilDurationAdd to both aim recoil groups (lines 534,549-551 at review).",
+    "proposed": "Retain operands. Clarify that the source condition is BurstFireActive, not merely owning/selecting the attachment.",
+    "readyForValueChange": false,
+    "reason": "Source supports current numbers; no numeric correction required."
+  },
+  "inferredBehavior": "When the BurstFireActive condition selects the additive, source base 0.025 plus -0.0006 predicts 0.0244, before any other modifiers.",
+  "unresolved": [
+    "Enabled attachment action and Active state token are distinct. The serialized trace does not prove the native transition, activation during fire, or composition order.",
+    "No new in-game observations. Existing capture rank9 tests activation; this 0.0006 duration difference alone is not a reliable ordinary video signal.",
+    "Shared and GS decoded layouts retain ambiguity warnings; MP5 decisive fields and all four additional GS selection bindings were independently decoded from verified raw files."
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\L13-burst-gs-bindings.json",
+      "sha256": "17d22bf3cb3ca5032185cb539ce7fc290a34834531f6c4e73643f238ad5e3983"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\mp5-raw-reviewed.json",
+      "sha256": "6343d388e9df44fd38de3b48cdca850f2b147db6a0790ea5878132205eebb92b"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\four-gs-parent-verification.json",
+      "sha256": "8b7ebaaee382f3e81ee9eacf35d63740a1fb3d044afea4e9ae9fd18cb234b5ab"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\verify_mp5_raw.py",
+      "sha256": "c16ae87dae7682ea1ae5c86f48aa6af309341a13da1cd88d795e57299fb29f95"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\reproduce_l13_burst_bindings.py",
+      "sha256": "4ee90a0eada14272183ee89570c99b67d6ce768ebd297be403198c0614417c58"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\reproduce_l13_activation.py",
+      "sha256": "bc806fb02a5f58f44165e1d1c18ebc2760f3030774e63eeea3b54bd93e6b95eb"
+    }
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\reproduce_l13_burst_bindings.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\verify_mp5_raw.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\reproduce_l13_activation.py\""
+  ]
+}

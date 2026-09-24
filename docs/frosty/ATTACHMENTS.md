@@ -660,3 +660,24 @@ Evidence: [Tungsten trace](../../reference-data/provenance/sniper-tungsten-recoi
 [paired panels](../../reference-data/provenance/composite-combination-results-2026-09-21.json).
 Dated trace files preserve the status at collection time; the indicator follow-up
 supersedes the earlier pending KS18K production status.
+
+## Burst recoil duration overrides (L13, 24 September 2026)
+
+The current file has five `ERGOS.weaponOverrides` recoil leaves, not the earlier
+19-row starting count. All five store `recoilDurationAdd: -0.0006`: Burst Training
+on SG553R, PW5A3 and CZ3A1; Burst Mode on SL9 and GRT-BC. Their GS records bind
+`GRM_AutoIdentifier_P00` to `U_WPM_ERG_BurstFireActive`
+(`588728fd-2ae7-4424-aa22-45d9b3c82ba0`). The shared modifier adds -0.0006 to
+registry-named `RecoilDuration` for both aim states; all five bases are 0.025.
+
+This supports the existing operands. The source model predicts 0.0244 when the
+condition applies, before other modifiers. MP5 raw checks locate base floats at
+1024/1176 and modifier additive floats at 1100/572. The GS selector and effect
+pointer were also checked against raw bytes; the other four GS bindings were
+independently decoded. [Receipt and reproduction](../../reference-data/provenance/frosty-2026-09-24-L13-burst-duration-bindings.json).
+
+The Ability action selects `BurstFireEnabled`; the GS condition is the separate
+`BurstFireActive` token. Native production of that token, firing activation and
+composition remain unresolved. Keep the existing rank-9 capture requirement;
+the 0.0006 duration delta alone is too small to identify reliably in normal video.
+No numeric site change is proposed.

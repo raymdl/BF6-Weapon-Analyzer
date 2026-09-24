@@ -344,7 +344,7 @@ is name evidence only. Operand meaning and runtime use need their own checks.
 |---|---|
 | `Field_27b15985` | BridgeDelay |
 | `Field_3f680d24` | Priority |
-| `Field_5a02dd65` | RecoilDuration |
+| `Field_5a02dd65` | RecoilDuration; historical weak label strengthened in the current MP5 GS context by [L13](../../reference-data/provenance/frosty-2026-09-24-L13-burst-duration-bindings.json) |
 | `Field_72a2b562` | HeatPerBullet |
 | `Field_aea8977a` | DecreaseOffset |
 | `Field_bf650805` | FirstShotIncreaseMultiplier |
