@@ -1114,3 +1114,13 @@ appears within two shots of the selected 14-round magazine. Raw checks cover
 existing site premises. Propose a peak pre-shot summary for operator review.
 No new capture is needed for this software issue; native recovery and firing
 gates stay open.
+
+## Recoil integration check
+
+[L44](../../reference-data/provenance/frosty-2026-09-24-L44-recoil-integration.json)
+raw-checks 64 decay fields on eight GS roots and compares 16 aim groups with
+independent integration of the same assumed equation. Maximum errors are
+0.002474 degrees for one interval and 0.007623 degrees in a scalar pulse check
+capped at base magazine size. This proxy omits shot delivery, direction and
+attachment effects; it is not a full recoil pattern. No numerical change or new
+capture is proposed. Native recovery remains unresolved.

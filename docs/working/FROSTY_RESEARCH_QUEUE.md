@@ -60,8 +60,8 @@ registry, selection, reference and lifetime checks; receipt commands identify th
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
 and the separate `1.4.3.1` directory under this run root.
 
-Checkpoint, 24 September 2026: L37-L43 are recorded; L44 checks nonlinear
-recoil integration and L45 checks the spread summary against its per-shot table.
+Checkpoint, 24 September 2026: L37-L46 are recorded. L45 adds a software
+spread-summary proposal; L43/L44 add bounded numerical checks without new captures.
 L46 found no changed catalog record in its sample; L47 checks an exact suppressor selector.
 Source facts and software consistency checks do not establish native behavior.
 Reviewed work is committed locally; current checks are in progress. Reuse the
@@ -118,7 +118,7 @@ Work these from source before handing them to the capture plan. Results from the
 | L41 | **VSSM selected operands - source matched** | [Exact selector and raw fields](../../reference-data/provenance/frosty-2026-09-24-L41-vssm-selected-operands.json) support the existing dispersion, variation and recovery values, including factor 76/exponent 1.24 in both aim states. | Keep the native recovery assumption and layout warning; no new capture, and reopen on build divergence or controlled runtime evidence. |
 | L42 | **Caliber description text - corroborated** | [Raw references and localized text](../../reference-data/provenance/frosty-2026-09-24-L42-caliber-text.json) support SOR-300SC `.300 BLK` and M45A1 `.45 ACP` label wording. | No typed caliber or mechanics claim; no capture needed, and reopen on a typed source or changed text. |
 | L43 | **Ballistic calculation consistency - Checked** | [Comparison](../../reference-data/provenance/frosty-2026-09-24-L43-ballistic-consistency.json): 328 selections; scalar/vector time differs by at most 0.00389 ms within TTK charts and 2.786 ms at 300 m. | Distinct model assumptions, not native validation; no change or new capture. Reopen if the supported ranges or equations change. |
-| L44 | **Nonlinear recoil integration** | In progress: compare the site's 1 ms recovery steps with a converged evaluation of the same assumed equation for actual nonlinear weapon groups. | Require an effect on displayed precision or shot residuals before proposing a change; no synthetic-only or native claim. |
+| L44 | **Nonlinear recoil integration - Checked** | [Raw inputs and numerical comparison](../../reference-data/provenance/frosty-2026-09-24-L44-recoil-integration.json): 64 fields, 16 aim groups; maximum one-interval error 0.002474 degrees and bounded scalar-sequence error 0.007623 degrees. | No change or new capture; proxy is not a full pattern or native validation. Reopen if inputs, equations or display precision change. |
 | L45 | **Spread summary - Software contradiction verified** | [Raw inputs and model check](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json): DB-12 hip summary shows 1.44 degrees maximum, but its shot-2 tooltip shows 1.95 degrees. | Propose a peak pre-shot summary for operator review; no new capture. Native equations remain unresolved. |
 | L46 | **Build-change screen - No candidate in sample** | [Reproducible catalog comparison](../../reference-data/provenance/frosty-2026-09-24-L46-site-route-build-screen.json): 534 site-linked routes have equal asset-record SHA1/size/GUID across the two recorded builds. | Catalog evidence only; no new raw trace or capture. Reopen on a changed site-used route or a concrete discrepancy outside this sample. |
 | L47 | **Exact suppressor selection and spotting branch** | In progress: check whether an exact MP attachment selector resolves the ordinary/SP-prefixed ambiguity left by L38. | Require a new selected source link; do not repeat candidate values or claim native activation. |

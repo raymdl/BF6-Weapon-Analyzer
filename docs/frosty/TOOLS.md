@@ -516,6 +516,11 @@ records the exact arguments and comparison with the earlier scan.
   --prior-site-check --out`: compares scalar/vector site travel times over the
   supported chart/view ranges; keeps configured lifetime sensitivity conditional.
 
+- `frosty-recoil-integration.py --repo --source-details --source-details-sha256
+  --dec-exp --time-exp --out`: compares the current decay helper with independent
+  integration for selected source-checked aim groups. The scalar sequence is
+  capped at base magazine size and does not reproduce the full recoil pattern.
+
 Use `python scripts/<name> --help` and the receipt arguments. Outputs require a
 new external `--out` or `--report-dir`; existing output paths are refused.
 These checks reproduce configured source facts, not native runtime behavior.
