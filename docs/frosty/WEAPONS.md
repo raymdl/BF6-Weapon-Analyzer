@@ -197,6 +197,17 @@ links the SOR-300SC `.300 BLK` and M45A1 `.45 ACP` labels to exact localized
 descriptions through raw StringIds. This supports the words, not a typed caliber
 field or ballistic mechanism; both metadata records retain layout warnings.
 
+The [L54 text check](../../reference-data/provenance/frosty-2026-09-24-L54-sidearm-caliber-text.json)
+verifies `.32 ACP` in the exact vz. 61 description. Its stored `7.65×17mm` label
+uses different wording; the text alone does not establish equivalence or an error.
+Exact source wording is an operator-review option, with no mechanics claim.
+
+[L55](../../reference-data/provenance/frosty-2026-09-24-L55-rifle-caliber-text.json)
+adds M39 EMR `7.62x51mm` (without `NATO`), SVK-8.6 `8.6x70mm`, and Interdictor
+`10.4x83mm`. Their named-label equivalence remains unresolved. M2010 ESR and
+SV-98 StringIds have no entry in the retained English table; this is a precise
+localization gap, not whole-source absence. Metadata layout warnings remain.
+
 L50: the exact M87A1 source choices have separate localized `#01 Buckshot` and
 `#00 Buck` names, while its stored `cal` is `12ga (00 Buck)`. Consider removing
 the fixed ammo suffix during operator review; no direct current JS/HTML consumer
@@ -1112,6 +1123,10 @@ those builds: 63 WB roots, 63 GS roots, eight selected modifier routes, and
 64 PD assets, plus ammo attachments and source links. These are catalog records,
 not a new raw-byte audit or a native-behavior claim. No changed route in this
 sample warrants further field comparison.
+
+[L57](../../reference-data/provenance/frosty-2026-09-24-L57-muzzle-build-screen.json)
+adds nine non-overlapping muzzle operand routes with equal catalog records.
+No new raw follow-up is indicated in that sample; the same catalog limits apply.
 
 ## Ballistic calculation consistency
 

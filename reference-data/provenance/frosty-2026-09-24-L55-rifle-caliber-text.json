@@ -1,0 +1,186 @@
+{
+  "lead": "L55",
+  "date": "2026-09-24",
+  "status": "Three explicit text designations verified; two exact retained-TSV gaps verified",
+  "scope": "12 DMR/sniper descriptions triaged; five consequential metadata chains raw-checked. Seven generic descriptions remain triage, not a whole-source absence result.",
+  "build": {
+    "version": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "captures": [
+    {
+      "route": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+      "head": 4892017,
+      "rawSha256": "75111e9a804aebfc05cb19218d75340fac658fd94d9b3109e12af163b5d73e7b",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectCount": 626
+    },
+    {
+      "route": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
+      "head": 4892017,
+      "rawSha256": "7b42ca6d3f07c7f34c19486bd1c08b9b50668a020a485c24c467f2530179b5b2",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "objectCount": 41
+    }
+  ],
+  "localization": {
+    "path": "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/xml/xml-overlay/Common/Localization/Languages/fs_us_loc.strings.tsv",
+    "sha256": "a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9",
+    "encoding": "utf-8",
+    "delimiter": "tab",
+    "keyColumn": 0,
+    "valueColumn": 1
+  },
+  "siteEvidence": {
+    "dataPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\weapons.json",
+    "dataSha256": "17f3335c1f5cbbcc97fc713f1714fb414eb942d1cfbd74966afa94379f70ca0d"
+  },
+  "records": [
+    {
+      "siteId": "m39emr",
+      "siteIndex": 38,
+      "siteName": "M39 EMR",
+      "siteClass": "DMR",
+      "siteCal": "7.62×51mm NATO",
+      "sourceAsset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+      "sourceMetadataGuid": "b494006f-b1b3-471d-9941-cef426428598",
+      "sourceMetadataObjectIndex": 285,
+      "sourceMetadataLabel": "M39 EMR",
+      "descriptionTargetObjectIndex": 274,
+      "descriptionStringId": "3B7BFEAF",
+      "descriptionTextInLeafReview": true,
+      "localizedText": "Chambered in 7.62x51mm, this versatile marksman rifle is a solid addition to any squad arsenal.",
+      "reviewStatus": "sourced-ui-xml",
+      "pointerOffset": 26944,
+      "pointerRawBytes": "88fcffff",
+      "stringIdOffset": 26088,
+      "stringIdRawBytes": "affe7b3b",
+      "layoutAmbiguous": true
+    },
+    {
+      "siteId": "svk86",
+      "siteIndex": 40,
+      "siteName": "SVK-8.6",
+      "siteClass": "DMR",
+      "siteCal": ".338 Lapua Mag",
+      "sourceAsset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+      "sourceMetadataGuid": "f2cfff01-e49b-4122-87ea-79c674886386",
+      "sourceMetadataObjectIndex": 5,
+      "sourceMetadataLabel": "SVCh",
+      "descriptionTargetObjectIndex": 371,
+      "descriptionStringId": "9437EAC6",
+      "descriptionTextInLeafReview": true,
+      "localizedText": "A precision rifle chambered in the powerful 8.6x70mm cartridge. Its lethality is offset by a lower effective rate of fire.",
+      "reviewStatus": "sourced-ui-xml",
+      "pointerOffset": 608,
+      "pointerRawBytes": "a08c0000",
+      "stringIdOffset": 36640,
+      "stringIdRawBytes": "c6ea3794",
+      "layoutAmbiguous": true
+    },
+    {
+      "siteId": "interdictor",
+      "siteIndex": 48,
+      "siteName": "Interdictor",
+      "siteClass": "Sniper Rifle",
+      "siteCal": ".416 Barrett",
+      "sourceAsset": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
+      "sourceMetadataGuid": "f80d8b46-d558-4750-9395-67424cf22216",
+      "sourceMetadataObjectIndex": 15,
+      "sourceMetadataLabel": "DesertTechHTI",
+      "descriptionTargetObjectIndex": 13,
+      "descriptionStringId": "A89AE617",
+      "descriptionTextInLeafReview": true,
+      "localizedText": "Lightweight and compact for its 10.4x83mm chambering, the Interdictor has drawn increasing military interest. Its lethality peaks between 120m and 150m.",
+      "reviewStatus": "sourced-ui-xml",
+      "pointerOffset": 1016,
+      "pointerRawBytes": "18ffffff",
+      "stringIdOffset": 816,
+      "stringIdRawBytes": "17e69aa8",
+      "layoutAmbiguous": true
+    },
+    {
+      "siteId": "m2010esr",
+      "siteIndex": 43,
+      "siteName": "M2010 ESR",
+      "siteClass": "Sniper Rifle",
+      "siteCal": ".300 Win Mag",
+      "sourceAsset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+      "sourceMetadataGuid": "000a5c66-5bf6-4852-9604-b4d7206add87",
+      "sourceMetadataObjectIndex": 268,
+      "sourceMetadataLabel": "M2010ESR",
+      "descriptionTargetObjectIndex": 588,
+      "descriptionStringId": "2DB86D4C",
+      "descriptionTextInLeafReview": false,
+      "localizedText": null,
+      "reviewStatus": "precisely-blocked-source",
+      "pointerOffset": 25568,
+      "pointerRawBytes": "a8730000",
+      "stringIdOffset": 55208,
+      "stringIdRawBytes": "4c6db82d",
+      "layoutAmbiguous": true
+    },
+    {
+      "siteId": "sv98",
+      "siteIndex": 44,
+      "siteName": "SV-98",
+      "siteClass": "Sniper Rifle",
+      "siteCal": "7.62×54mmR",
+      "sourceAsset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+      "sourceMetadataGuid": "738cb003-38be-4d55-9b20-685e18cc4bc6",
+      "sourceMetadataObjectIndex": 8,
+      "sourceMetadataLabel": "SV98M",
+      "descriptionTargetObjectIndex": 183,
+      "descriptionStringId": "E8EA1B59",
+      "descriptionTextInLeafReview": false,
+      "localizedText": null,
+      "reviewStatus": "precisely-blocked-source",
+      "pointerOffset": 1200,
+      "pointerRawBytes": "30430000",
+      "stringIdOffset": 18432,
+      "stringIdRawBytes": "591beae8",
+      "layoutAmbiguous": true
+    }
+  ],
+  "sourceFacts": [
+    "M39 EMR description says 7.62x51mm, supporting the dimensional part of the stored label but not its NATO suffix.",
+    "SVK-8.6 description says 8.6x70mm; Interdictor description says 10.4x83mm. The stored labels are .338 Lapua Mag and .416 Barrett; these texts do not equate the paired notations.",
+    "M2010 ESR StringId 2DB86D4C and SV-98 E8EA1B59 resolve through raw metadata but have zero matches in the exact retained English TSV. This is not a claim that all source localizations lack them."
+  ],
+  "reproduction": {
+    "script": "scripts/frosty-selected-chain-check.py",
+    "scriptSha256": "b496c809c06b7810cff03ed86f58e6226fa5a2366dd04acef955d60aec214fe9",
+    "arguments": [
+      "--manifest",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L55-rifle-caliber\\parent-manifest-v2.json",
+      "--db",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+      "--out",
+      "<new-external-report-directory>"
+    ],
+    "manifest": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L55-rifle-caliber\\parent-manifest-v2.json",
+      "sha256": "48c02846967319757bc29707f21956dfc4d75ba7f553279dd518eb61ccd42a60"
+    },
+    "comparison": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L55-rifle-caliber\\parent-independent-check-v2\\comparison.json",
+      "sha256": "0c230b0bd4c872c9668e8fd416751151975512a6b4df2460b0fa1bc149a1289e"
+    },
+    "inventory": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L55-rifle-caliber\\inventory.json",
+      "sha256": "b67cf7cfbaaafbde90e729c4138ec2f9492c756f671d365d5a9300ee3160df81"
+    },
+    "result": "40 assertions, 2 release captures, 0 failures. Includes raw pointers/StringIds, ambiguity flags, three exact strings and two missing-key assertions.",
+    "missingOperationNegativeControl": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L55-rifle-caliber\\missing-operation-negative-control\\comparison.json",
+      "sha256": "a5347450e613b5714658856642f1a22e1e18d3490b83f5a7e9ece1ef7d578cc7"
+    },
+    "negativeControlResult": "Expected failure: a known-present StringId has matchCount=1 and must not pass localized_missing."
+  },
+  "inference": "Exact dimensional wording is an operator-review alternative to unsourced named labels or suffixes. Not evidence that those aliases are wrong.",
+  "runtime": "All five metadata roots retain layout ambiguity. No typed caliber field, cartridge alias relationship, physics, runtime selection or native behavior is established.",
+  "observations": "No new in-game observation.",
+  "decision": "No site change or capture; keep metadata wording alternatives for operator review.",
+  "reopen": "Independent alias/typed-field evidence, or new exact localized text for the two missing retained-table entries."
+}

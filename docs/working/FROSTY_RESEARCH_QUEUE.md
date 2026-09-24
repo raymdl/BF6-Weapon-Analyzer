@@ -61,14 +61,14 @@ registry, selection, reference and lifetime checks; receipt commands identify th
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
 and the separate `1.4.3.1` directory under this run root.
 
-Checkpoint, 24 September 2026: L37-L53 are recorded. New L53 proposes a
-zeroing solver/fallback correction for operator review; L45's spread-summary
-proposal remains open. L51 found documented display behavior and L52 repeated
-an existing reload result, so neither adds a proposal. Use Luna xhigh for new
-delegation; the trial did not establish a speed or correctness advantage.
-Next free lead is L54. Require a new discriminator and a concrete Analyzer link;
-do not repeat bounded negatives, known proposals or neutral base scans.
-Research remains open; reviewed work is committed locally and nothing is pushed.
+Checkpoint, 24 September 2026: L54/L55 add four exact caliber-wording options;
+no alias or mechanics correction is established. L57 finds equal catalog records
+for nine additional muzzle operands. L56 is checking full recoil-path numerical
+precision beyond L44's scalar proxy. Existing L45/L53 software proposals remain
+for operator review. Use Luna xhigh for new delegation; the trial did not establish
+a speed or correctness advantage. Next free lead is L58. Require a concrete
+Analyzer link and a new discriminator; do not repeat bounded negatives or neutral
+base scans. Research remains open, local commits only; nothing is pushed.
 
 ## Active source leads
 
@@ -87,7 +87,7 @@ Work these from source before handing them to the capture plan. Results from the
 | L8 | **PP-19 and L115 muzzle gaps** | Done. The PP-19 Flash Comp binding omission is confirmed at the byte level (bug #6); L115 is bug #12. Both now follow in-game behavior and are marked as bugged. | None. |
 | L9 | **Zeroing default** | Exhausted. No `WeaponZeroingModifier` instance exists in captured data; the default is probably the first list entry. | Capture rank 7. |
 | L10 | **Tooltip string gaps** | Exhausted. Five IDs are absent from both English tables and three conflict with panel text. No site impact. | None. |
-| L11 | **Blocker triage** | Done. Source-traceable: default selections (189 rows) and ergonomic recoil overrides (originally 19; current five leaves reviewed in L13). Capture only: magazine nominal versus loaded capacity (about 260), spot multipliers (40), collateral index (about 330). No source: caliber labels (62). | Work L12 and L13. |
+| L11 | **Blocker triage** | Done. Source-traceable: default selections (189 rows) and ergonomic recoil overrides (originally 19; current five leaves reviewed in L13). Capture only: magazine nominal versus loaded capacity (about 260), spot multipliers (40), collateral index (about 330). No source: caliber labels (62). | L12/L13 are closed; later text checks are L42, L50, L54 and L55. |
 | L12 | **Equipment subset recorded - Comparison scope clarified** | [Source subsets retained](../../reference-data/provenance/frosty-2026-09-24-L12-equipment-selection-candidates.json): Equipment subsets are source facts, but site defaults intentionally use a bare-weapon baseline; the default-change candidate is withdrawn. | No default audit or capture needed. Reuse only to explain a specific observed stat difference. |
 | L13 | **Burst recoil duration - Site operands supported** | [Reviewed five current override leaves](../../reference-data/provenance/frosty-2026-09-24-L13-burst-duration-bindings.json): All five current override leaves bind RecoilDuration add -0.0006 under BurstFireActive; both aim bases are 0.025. | Retain values; 0.0244 is conditional. Rank 9 capture or a new consumer must settle activation and composition. |
 | L14 | **Single-fire configured cadence - Site behavior supported** | [Reviewed registry/raw check](../../reference-data/provenance/frosty-2026-09-24-L14-single-fire-cadence.json): Registry names RateOfFireForSingleFire; all 14 primary-single site RPMs match, including VSSM 450 versus main 800. | No base RPM correction. Rank 9 follow-up tests M4A1 single 400 versus auto 900; reopen source work for a selected override or consumer. |
@@ -131,6 +131,10 @@ Work these from source before handing them to the capture plan. Results from the
 | L51 | **Damage triage - Intended display** | [Review](../../reference-data/provenance/frosty-2026-09-24-L51-damage-triage.json): the 100-damage plot cap and uncapped underlying values are documented product behavior. | No calculation correction or capture; reopen only for a concrete defect or changed display requirement. |
 | L52 | **Handling triage - Duplicate result** | [Review](../../reference-data/provenance/frosty-2026-09-24-L52-handling-triage.json): the M121 A2 50 Fast 5.550/5.546 s contrast is already documented in the magazine review. | No new finding or capture; reopen only with selection/consumer evidence. |
 | L53 | **Zeroing bracket - Software contradiction verified** | [Raw inputs and 50-case check](../../reference-data/provenance/frosty-2026-09-24-L53-zeroing-bracket.json): VSSM Penetration/Frangible at 500 m zero returns null; the display substitutes zero instead of the same model's +10.73 m at 100 m. | Propose robust bracketing and explicit unavailable output for operator review. No new capture; native zeroing remains unresolved. |
+| L54 | **Vz. 61 caliber text - Source wording verified** | [Exact metadata chain](../../reference-data/provenance/frosty-2026-09-24-L54-sidearm-caliber-text.json) says `.32 ACP`; the stored label is `7.65×17mm`. | Alternative source-backed wording for operator review; this text does not prove alias equivalence or an incorrect stored value. No capture. |
+| L55 | **Rifle caliber text - Partial support** | [Raw text chains](../../reference-data/provenance/frosty-2026-09-24-L55-rifle-caliber-text.json) give M39 `7.62x51mm`, SVK `8.6x70mm`, and Interdictor `10.4x83mm`; two other exact StringIds lack retained English text. | Named aliases and NATO suffix remain unsupported by these texts. Source wording is an operator-review option; no capture. |
+| L56 | **Full recoil-path precision** | In progress: compare actual plotted shot sequences with finer integration, including delivery and overlapping impulses omitted by L44's proxy. | Preserve actual loadouts and magazine limits; numerical agreement cannot establish the native equation. |
+| L57 | **Muzzle build screen - No candidate** | [Nine additional operand routes](../../reference-data/provenance/frosty-2026-09-24-L57-muzzle-build-screen.json) have equal nonzero catalog SHA1, size and GUID across the recorded builds. | Catalog evidence only; no new raw capture. Reopen on a changed record or concrete field discrepancy. |
 
 ## Proposed Analyzer changes
 
@@ -140,6 +144,7 @@ operator approval; none is implemented unless stated.
 | Proposal | Affected data/code | Evidence and remaining validation |
 |---|---|---|
 | **Operator review: zeroing solver and unavailable state (L53)** | `sim/ballistics.js` and `ui/app.js` target projection | The fixed angle bracket rejects two valid selected-model cases; null then becomes zero displacement. [Receipt](../../reference-data/provenance/frosty-2026-09-24-L53-zeroing-bracket.json). Cover valid model roots and keep failures distinct from zero; no native-equation change is established. |
+| **Operator review: source caliber wording (L54/L55)** | `data/weapons.json` caliber metadata | Exact text supplies vz. 61 `.32 ACP`, M39 `7.62x51mm`, SVK `8.6x70mm`, and Interdictor `10.4x83mm`. These are wording options, not proof that stored aliases are wrong; no current direct consumer was found in L50. |
 | **Operator review: M87A1 caliber metadata** | `data/weapons.json` M87A1 `cal` | L50 supports removing fixed `(00 Buck)` from the stored label; selectable #01/#00 names are distinct. No direct current consumer found; remaining gauge text and other weapons need separate source support. |
 | Neutral shooting decay field (L15) - operator review | `data/weapons.json` `recoil.{ads,hip}.shootingDecScale`; `sim/core.js` | All 126 stored values are 1 and core has no reader, consistent with [L15](../../reference-data/provenance/frosty-2026-09-24-L15-neutral-shooting-recoil-scale.json). Either remove the unused field or retain it as documented-neutral; no numeric change proposed and no site edit made. |
 | Non-polar cleanup check (L33) - operator review | `data/`, `sim/`, `ui/`; `sim/core.js:genRecoilPts` | No polar/non-polar flag or alternate branch found by scoped search and recoil-path inspection; core already resolves direction/magnitude through sine/cosine. [L33](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-build-separated.json) supports no current outlier, but does not prove the native equation; no removable site branch identified or changed. |

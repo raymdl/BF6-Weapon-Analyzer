@@ -66,7 +66,7 @@ def main():
      if d['_guid'](te.file_guid).lower()!=imp['fileGuid'].lower():raise ValueError('target raw file GUID differs from import')
      matches.extend((rr['route'],rr['file_guid'],i,o) for i,o in enumerate(to) if o.get('$guid','').lower()==imp['classGuid'].lower())
     r.update({'import':imp,'expectedTarget':target,'resolved':bool(matches),'resolvedFileGuids':[z[1] for z in matches],'targetObjectIndices':[z[2] for z in matches]});r['verified']=len(matches)==1
-   elif x['op']=='localized_text':
+   elif x['op'] in ('localized_text','localized_missing'):
     loc=m['localization']; lp=pathlib.Path(loc['path'])
     if sha(lp).lower()!=loc['sha256'].lower():raise ValueError('localization TSV hash mismatch')
     sid=x['stringId'].upper(); found=[]
@@ -76,8 +76,8 @@ def main():
      cols=line.split('\t', max(loc.get('keyColumn',0),loc.get('valueColumn',1)))
      if len(cols)>max(loc.get('keyColumn',0),loc.get('valueColumn',1)) and cols[loc.get('keyColumn',0)].upper()==sid:found.append(cols[loc.get('valueColumn',1)])
     actual=found[0] if len(found)==1 else None
-    r.update({'stringId':sid,'expectedText':x['expectedText'],'actualText':actual,'contains':x.get('contains'),'matchCount':len(found),'localizationPath':str(lp),'localizationSha256':sha(lp)})
-    r['verified']=len(found)==1 and actual==x['expectedText'] and (x.get('contains') is None or x['contains'] in actual)
+    r.update({'stringId':sid,'expectedText':x.get('expectedText'),'actualText':actual,'contains':x.get('contains'),'matchCount':len(found),'localizationPath':str(lp),'localizationSha256':sha(lp)})
+    r['verified']=(len(found)==0 if x['op']=='localized_missing' else len(found)==1 and actual==x['expectedText'] and (x.get('contains') is None or x['contains'] in actual))
    elif x['op']=='raw_bytes':
     n=len(bytes.fromhex(x['bytes']));actual=e.data[x['offset']:x['offset']+n].hex();r.update({'offset':x['offset'],'expectedBytes':x['bytes'],'actualBytes':actual});r['verified']=actual.lower()==x['bytes'].lower()
    else:raise ValueError('unknown assertion operation '+x['op'])

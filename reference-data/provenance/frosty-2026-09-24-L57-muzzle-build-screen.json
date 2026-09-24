@@ -1,0 +1,311 @@
+{
+  "lead": "L57",
+  "date": "2026-09-24",
+  "status": "No changed or missing catalog record in nine additional muzzle operands",
+  "builds": {
+    "release": {
+      "label": "1.4.3.0",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "catalog": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\asset-catalog.json",
+        "sha256": "815ef184c8530d1d70a7a6d4c4793eb49e2372be6ca54325571e6b419c2addc5"
+      },
+      "descriptorVerifiedSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+    },
+    "hotfix": {
+      "label": "1.4.3.1 user-supplied label",
+      "head": 4892087,
+      "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+      "runtimeDescriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostyEditor\\bin\\Release\\Final\\SharedTypeDescriptors.ebx",
+      "catalog": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L39-build-diff\\parent-hotfix-capture\\asset-catalog.json",
+        "sha256": "d3f9cfdb02bc71b76aa8e4ca49bd0d26eaf2f2ade5eebac436d49762ba6804e1"
+      },
+      "descriptorVerifiedSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+      "runtimeDescriptorVerifiedSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640"
+    }
+  },
+  "scope": "Nine exact muzzle operand assets from retained source records for current-matching Analyzer attachment leaves. Excludes all previously screened L46 routes; catalog identity only, not raw hotfix or native evaluation proof.",
+  "sourceSelection": {
+    "priorLeafReceipt": {
+      "path": "reference-data\\provenance\\frosty-site-muzzle-operands-2026-09-23.json",
+      "sha256": "551833b93134e1f13fd9b35c07c78be7191980e378aff472fc83c46522922668"
+    },
+    "method": "Join retained leaf sitePointer/siteValue to current attachments.json. For matching leaves, take exact sourceRecords and hipCompanionRecords sourceAsset routes. The nine unique routes have no overlap with L46; source links are pinned in the manifest.",
+    "currentMatchingLeafCount": 172,
+    "releaseRawIdentitiesRetainedFromPriorAudit": [
+      {
+        "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_P10",
+        "rawSha256": "01bd63b3cc0b3e45218fe6caf2f78509bb954861283494f175d8c01881595095",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10",
+        "rawSha256": "c66afce008e88e0f8d0c7b712b1c0a6793b2757b12cb778750816752e5ab6432",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+        "rawSha256": "07bc56237a9e07e4539a6a6e5bde85b58c7ca39a8fa80d67466031a53d766bd3",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_P10",
+        "rawSha256": "a26b7b7bd4a77f22ebb939f0eb1e9eb4d665d67a8381b1f984798eab7cb0c77a",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_RecoilConversion_MZL_P10",
+        "rawSha256": "6e837997116a1d17c020555d17c24772f1fadbd909b368cae77e53cfa75451a7",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_MZL_M10",
+        "rawSha256": "0eb47efefd42b3c2dd37422179e985984f010050b7d23c8295dc4a01a9a9eaab",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10",
+        "rawSha256": "acf9fbace9d067707be5ef6b6734352afb756444aee7f40c62d1b244156b45bd",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_Compensator_P10",
+        "rawSha256": "9d3704701c034c8ab1c449fe0be6620b5cd734e40916de564ae00e2a0215cd47",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      {
+        "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_HybridSuppressor03_W30",
+        "rawSha256": "ca5df7057e4a13778d8f3f1a6ae3b1b8863e3dfbfbb5c04e83cdcbf30b0ab13b",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      }
+    ]
+  },
+  "reproduction": {
+    "script": "scripts/frosty-build-compare.py",
+    "arguments": [
+      "--mode",
+      "catalog-screen",
+      "--manifest",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L57-muzzle-build-screen\\manifest.json",
+      "--out",
+      "<new-external-json-path>"
+    ],
+    "manifest": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L57-muzzle-build-screen\\manifest.json",
+      "sha256": "5658161067f195da9914b4dc75912011c428a06fda751c69e9ee5b613d94a5e8"
+    },
+    "output": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L57-muzzle-build-screen\\comparison.json",
+      "sha256": "724587ae43be478b19158136d76bf6d3220933e8617623bcecf082182c4f1db4"
+    },
+    "scriptSha256": "4ddb3959e93436fc1091c96d9fc1290be5454469a6e0ec1aaf8e784e7c7fff3d"
+  },
+  "uniqueRoutes": 9,
+  "changedOrMissing": 0,
+  "catalogRows": [
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_HybridSuppressor03_W30",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_HybridSuppressor03_W30",
+        "guid": "62331b20-74cc-4d57-adaf-8bf1e7fc9fcd",
+        "originalBytes": 1000,
+        "sha1": "05a4e86460a9fa15a994d22c10f25e00a3a36a9b"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/_Muzzle/Suppressor/WPM_MZL_HybridSuppressor03_W30",
+        "guid": "62331b20-74cc-4d57-adaf-8bf1e7fc9fcd",
+        "originalBytes": 1000,
+        "sha1": "05a4e86460a9fa15a994d22c10f25e00a3a36a9b"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_MZL_M10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_MZL_M10",
+        "guid": "ce7f5ce4-ac97-4e38-9f21-8328206e0da7",
+        "originalBytes": 352,
+        "sha1": "dc56fba20111abea85fe95f1d91ca4d0fb67f9f9"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_MZL_M10",
+        "guid": "ce7f5ce4-ac97-4e38-9f21-8328206e0da7",
+        "originalBytes": 352,
+        "sha1": "dc56fba20111abea85fe95f1d91ca4d0fb67f9f9"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10",
+        "guid": "e6569d9a-8ebc-403d-8972-371f3014c668",
+        "originalBytes": 1392,
+        "sha1": "f989103d3278516acdfdf578deac6fb82fec82ab"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_Bolt_P10",
+        "guid": "e6569d9a-8ebc-403d-8972-371f3014c668",
+        "originalBytes": 1392,
+        "sha1": "f989103d3278516acdfdf578deac6fb82fec82ab"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_P10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_P10",
+        "guid": "9eb46807-eae9-4f50-8581-cce2b9db2a78",
+        "originalBytes": 1388,
+        "sha1": "1d65468a8b46e8a2d4f183b90f56d4e6e1be76b9"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_MZL_P10",
+        "guid": "9eb46807-eae9-4f50-8581-cce2b9db2a78",
+        "originalBytes": 1388,
+        "sha1": "1d65468a8b46e8a2d4f183b90f56d4e6e1be76b9"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_RecoilConversion_MZL_P10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_RecoilConversion_MZL_P10",
+        "guid": "09f2e259-ff4c-4408-b928-0dc1002ac9de",
+        "originalBytes": 1398,
+        "sha1": "c80713b87cbb0fcffbe0fbcbc550570a7088e7ab"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_RecoilConversion_MZL_P10",
+        "guid": "09f2e259-ff4c-4408-b928-0dc1002ac9de",
+        "originalBytes": 1398,
+        "sha1": "c80713b87cbb0fcffbe0fbcbc550570a7088e7ab"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10",
+        "guid": "5d5c94f4-add7-48c7-8112-beafc6b4b897",
+        "originalBytes": 1408,
+        "sha1": "2c29f8e03c715502337495875eda7f2182c2ba7f"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_Compensator_P10",
+        "guid": "5d5c94f4-add7-48c7-8112-beafc6b4b897",
+        "originalBytes": 1408,
+        "sha1": "2c29f8e03c715502337495875eda7f2182c2ba7f"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+        "guid": "903861d4-8ad6-4485-b2eb-f0e99b283c7e",
+        "originalBytes": 1396,
+        "sha1": "12483289fb6a0bcac194344fe04be3f0e188b4d9"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoil_P10",
+        "guid": "903861d4-8ad6-4485-b2eb-f0e99b283c7e",
+        "originalBytes": 1396,
+        "sha1": "12483289fb6a0bcac194344fe04be3f0e188b4d9"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_Compensator_P10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_Compensator_P10",
+        "guid": "797bff4a-5818-4a34-8809-90ceaac42faa",
+        "originalBytes": 1412,
+        "sha1": "adc1d68f0022618506d80b8a60aa655c2d58aa68"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_Compensator_P10",
+        "guid": "797bff4a-5818-4a34-8809-90ceaac42faa",
+        "originalBytes": 1412,
+        "sha1": "adc1d68f0022618506d80b8a60aa655c2d58aa68"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    },
+    {
+      "route": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_P10",
+      "groups": [
+        "selected_muzzle_operands"
+      ],
+      "release": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_P10",
+        "guid": "ad8a4035-65c4-491e-b56c-28a207737a2f",
+        "originalBytes": 1400,
+        "sha1": "37a815197b5c2c517e33077718244f0ff17e0978"
+      },
+      "hotfix": {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/SmoothRecoil/GRM_SmoothRecoilBolt_P10",
+        "guid": "ad8a4035-65c4-491e-b56c-28a207737a2f",
+        "originalBytes": 1400,
+        "sha1": "37a815197b5c2c517e33077718244f0ff17e0978"
+      },
+      "presentBoth": true,
+      "sameCatalogRecord": true
+    }
+  ],
+  "hashMeaning": {
+    "release": "sha1 is Frosty asset-record SHA1, not a separately recomputed raw-stream hash; zero hash means unavailable",
+    "hotfix": "sha1 is Frosty asset-record SHA1, not a separately recomputed raw-stream hash; zero hash means unavailable"
+  },
+  "limits": [
+    "Catalog SHA1/size/GUID equality is screening evidence, not independently captured hotfix raw-field equality.",
+    "Release raw SHA256 identities are retained prior-audit evidence; no fresh raw scan or runtime claim in this lead.",
+    "Does not establish whole-build equality, native activation, or composition order."
+  ],
+  "decision": "No candidate for raw follow-up, site change or capture in this nine-route sample.",
+  "reopen": "A changed record or concrete site-field discrepancy in these exact routes."
+}
