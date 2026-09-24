@@ -236,7 +236,7 @@
         "scope": "Five selected GS bindings and recorded burst operands; activation trace remains specialized."
       },
       {
-        "script": "scripts/frosty-audit-registry-bindings.py",
+        "script": "scripts/frosty-registry-association.py",
         "arguments": [
           "--db",
           "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",

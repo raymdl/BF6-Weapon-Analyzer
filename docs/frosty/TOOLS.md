@@ -488,9 +488,9 @@ records the exact arguments and comparison with the earlier scan.
 
 ### Research reproduction methods
 
-- `frosty-audit-registry-bindings.py --manifest`: extends the registry audit with
-  declared owner anchors, raw scalar offsets and bounded linked-group checks;
-  `frosty-registry-association.py` contains that mode. Each receipt pins its manifest.
+- `frosty-registry-association.py --manifest`: extends the registry audit with
+  declared owner anchors, raw scalar offsets and bounded linked-group checks.
+  Each receipt pins its manifest.
 - `frosty-selected-chain-check.py`: checks declared object paths, selected imports
   and raw bytes against exact build/hash identities; `localized_text` links a decoded
   StringId to a hash-pinned TSV entry; `localized_missing` checks that an exact

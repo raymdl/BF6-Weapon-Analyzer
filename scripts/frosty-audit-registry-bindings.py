@@ -10,7 +10,6 @@ import json
 from pathlib import Path
 import runpy
 import sqlite3
-import sys
 
 
 def sha(path):
@@ -117,7 +116,4 @@ def main():
 
 
 if __name__ == '__main__':
-    if '--manifest' in sys.argv[1:]:
-        runpy.run_path(str(Path(__file__).with_name('frosty-registry-association.py')), run_name='__main__')
-    else:
-        main()
+    main()
