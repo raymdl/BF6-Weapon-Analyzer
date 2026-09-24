@@ -210,9 +210,9 @@
     }
   ],
   "supersedes": {
-    "receipt": "frosty-2026-09-24-L33-polar-recoil-base-scope.json",
     "sha256": "f283f5613fba0c5a16e86364d0647f2b7f035710201c059a5e58bbe7e70c1397",
-    "scope": "Evidence storage boundary only. Findings and raw checks are unchanged. Original files and receipt remain immutable."
+    "scope": "Evidence storage boundary only. Findings and raw checks are unchanged; historical receipt SHA-256 retained.",
+    "historicalReceipt": "Removed duplicate; retained in commit 50ed02d as frosty-2026-09-24-L33-polar-recoil-base-scope.json"
   },
   "storageCorrection": "Separate release evidence and excluded KSG hotfix control into their respective build directories. Original mixed detail is retained only as historical pinned evidence.",
   "reproductionNote": "Prior raw-check scripts reproduce the original mixed detail. The two build-specific files are exact lossless splits of its release and separateHotfixControl keys; compare those keys to reproduce the storage split."
