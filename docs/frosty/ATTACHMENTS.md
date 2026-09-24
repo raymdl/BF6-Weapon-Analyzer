@@ -9,7 +9,8 @@ site choice to its modifiers is in the [data graph](DATA_GRAPH.md).
 
 ## Exhaustive source census (1.4.3.0)
 
-The [reviewed primary-root census](../../reference-data/provenance/frosty-audit-branches-reviewed-2026-09-23.json)
+The [reviewed primary-root census summary](../../reference-data/provenance/frosty-audit-branches-summary-2026-09-23.json)
+(full report in the external audit reports directory, pinned by hash)
 covers all 64 candidate base weapon triples: 6,112 referenced branches, 6,111 referenced
 action objects and 14,015 selector references. All branch/action references resolve within
 this set. Its 358 WPM selector lists support 6,007 selector-to-WB joins. The GS pass
