@@ -97,8 +97,15 @@ export function zeroRelativeVerticalOffset(model, distanceM, zeroDistanceM = nul
   let low = -0.1;
   let high = 0.1;
   const lowY = trajectoryAtDistance(model, zeroDistanceM, low)?.yMeters;
-  const highY = trajectoryAtDistance(model, zeroDistanceM, high)?.yMeters;
-  if (!Number.isFinite(lowY) || !Number.isFinite(highY) || lowY > 0 || highY < 0) return null;
+  if (!Number.isFinite(lowY) || lowY > 0) return null;
+  // Slow, high-drag projectiles need more than 0.1 rad at long zeros; widen up to 45°.
+  let highY = trajectoryAtDistance(model, zeroDistanceM, high)?.yMeters;
+  while (!(highY >= 0) && high < Math.PI / 4) {
+    low = high;
+    high = Math.min(high * 2, Math.PI / 4);
+    highY = trajectoryAtDistance(model, zeroDistanceM, high)?.yMeters;
+  }
+  if (!Number.isFinite(highY) || highY < 0) return null;
   for (let i = 0; i < 36; i++) {
     const mid = (low + high) / 2;
     const y = trajectoryAtDistance(model, zeroDistanceM, mid)?.yMeters;

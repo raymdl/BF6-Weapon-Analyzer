@@ -290,7 +290,7 @@ export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, d
   return spread;
 }
 
-/** Effective spread reached across a representative sustained string. */
+/** Peak pre-shot spread reached across a representative sustained string. */
 export function effectiveSpreadMax(w, shots = SPREAD_EFFECTIVE_MAX_SHOTS) {
   const [baseline, sMax] = spreadBounds(w);
   const spreadInc = selectedSpreadIncFor(w);
@@ -298,7 +298,9 @@ export function effectiveSpreadMax(w, shots = SPREAD_EFFECTIVE_MAX_SHOTS) {
   const { firing, notFiring } = spreadRecoveries(w);
   const clamp = value => Math.min(Math.max(value, baseline), sMax);
   let spread = baseline;
+  let peak = baseline;
   for (let index = 0; index < shots; index++) {
+    peak = Math.max(peak, clamp(spread));
     spread = clamp(spread + spreadInc);
     const shotIndex = index + 1;
     const interval = shotIntervalAfter(w, shotIndex);
@@ -310,7 +312,7 @@ export function effectiveSpreadMax(w, shots = SPREAD_EFFECTIVE_MAX_SHOTS) {
       spread = applySpreadRecovery(spread, interval, firing, baseline, sMax);
     }
   }
-  return +clamp(spread).toFixed(3);
+  return +Math.max(peak, clamp(spread)).toFixed(3);
 }
 
 

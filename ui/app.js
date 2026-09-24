@@ -325,7 +325,7 @@ function targetVerticalOffsetMeters(weapon) {
   const key = [weapon.id, model.velocityMps, model.dragPerMeter, model.gravityMps2, state.recoil.distance, zeroDistance ?? 'bore'].join('|');
   if (targetDropCache.has(key)) return targetDropCache.get(key);
   const value = zeroRelativeVerticalOffset(model, state.recoil.distance, zeroDistance);
-  const resolved = Number.isFinite(value) ? value : 0;
+  const resolved = Number.isFinite(value) ? value : null;
   targetDropCache.set(key, resolved);
   return resolved;
 }
@@ -1498,7 +1498,7 @@ function computeTargetBaseFrame(weapons, shotCount) {
   let bottom = frame.bottomY;
   live.forEach(weapon => {
     const { points, spreads } = patternFor(weapon, 0, shotCount);
-    const ballisticOffsetCm = targetVerticalOffsetMeters(weapon) * 100;
+    const ballisticOffsetCm = (targetVerticalOffsetMeters(weapon) ?? 0) * 100;
     points.forEach((point, i) => {
       const spread = spreads[i] ?? spreadBounds(weapon)[0];
       top = Math.max(top, ballisticOffsetCm + cmAtDistance(point.y + spread));
@@ -1750,7 +1750,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   // moves, so shot angles are projected relative to the aim offset.
   const aimOffset = isTargetView ? currentAimOffset() : { x: 0, y: 0 };
   const toX = angleDeg => mapX(isTargetView ? aimOffset.x + cmAtDistance(angleDeg) : angleDeg);
-  const targetImpactYcm = (weapon, angleDeg) => aimOffset.y + cmAtDistance(angleDeg) + targetVerticalOffsetMeters(weapon) * 100;
+  const targetImpactYcm = (weapon, angleDeg) => aimOffset.y + cmAtDistance(angleDeg) + (targetVerticalOffsetMeters(weapon) ?? 0) * 100;
   const toY = (weapon, angleDeg) => mapY(isTargetView ? targetImpactYcm(weapon, angleDeg) : angleDeg);
 
   ctx.fillStyle = '#080d0d'; ctx.fillRect(0, 0, CW, CH);
@@ -2242,7 +2242,10 @@ function renderRecoil({ plotOnly = false } = {}) {
     if (isTarget && w1) {
       const zero = zeroDistanceFor(w1);
       if (w1._projectileModel && zero != null) {
-        aimText.textContent += ` · ${Math.abs(targetVerticalOffsetMeters(w1)).toFixed(2)} m from ${zero} m zero`;
+        const offset = targetVerticalOffsetMeters(w1);
+        aimText.textContent += offset == null
+          ? ` · drop unavailable at ${zero} m zero`
+          : ` · ${Math.abs(offset).toFixed(2)} m from ${zero} m zero`;
       }
     }
   }

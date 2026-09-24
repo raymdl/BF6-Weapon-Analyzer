@@ -16,6 +16,8 @@ const zero100AtZero = zeroRelativeVerticalOffset(model, 100, 100);
 near(zero100AtZero, 0, 0.000001, 'the solved trajectory intersects its selected zero');
 near(zeroRelativeVerticalOffset(model, 0, 100), 0, 0.000001, 'a zeroed trajectory still starts at the bore origin');
 assert.ok(zeroRelativeVerticalOffset(model, 300, 100) < 0, 'a 100 m zero lands lower again beyond zero');
+const slowModel = { velocityMps: 321, dragPerMeter: 0.0035, gravityMps2: -9.81 };
+near(zeroRelativeVerticalOffset(slowModel, 100, 500), 10.727194, 0.0001, 'a slow 500 m zero needing more than 0.1 rad is still solved');
 assert.ok(trajectoryAtDistance(model, 100).yMeters < 0, 'an unzeroed bore-axis trajectory falls below its origin');
 
 const readJson = relative => JSON.parse(readFileSync(new URL(relative, import.meta.url), 'utf8'));
