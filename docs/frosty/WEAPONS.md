@@ -1048,3 +1048,10 @@ Without cooling, a zero-start threshold would take about 400 shots. These are
 conditional calculations, not native behavior. The L35 capture is optional and
 low value unless source evidence shows cooling pauses during fire or another
 penalty mechanism. Initial heat, threshold handling and native use remain unresolved.
+
+The [L36 primary-root scan](../../reference-data/provenance/frosty-2026-09-24-L36-primary-heat-scope.json)
+raw-verifies all five fields on 63 release roots: only DRS-IAR has nonzero
+HeatPerBullet. Its site base magazine is 31; selected capacities are 30-60.
+Even 60 shots without cooling add only about 0.15 heat against threshold 1
+(about 400 shots). No base heat gate is proposed under this conditional model;
+selected overrides and native cooling/penalty rules remain outside the result.

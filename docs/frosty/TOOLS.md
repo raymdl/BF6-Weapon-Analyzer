@@ -471,3 +471,13 @@ baseline.
 | Arrays, damage, draw time, spread | `node --test scripts/source-arrays.test.mjs scripts/damage.test.mjs scripts/draw-time.test.mjs scripts/spread-distribution.test.mjs` | `frosty-array-review-2026-09-09.json`, `frosty-damage-curve-review-2026-09-13.json`, `frosty-draw-time-2026-09-09.json` |
 | Site ammo effect audit | `python scripts/frosty-site-ammo-tier-audit.py --report-dir "<external audit directory>" --out "<new receipt path>"` | `frosty-site-ammo-effects-2026-09-23.json`; research outputs only |
 | Watchlist | `python scripts/frosty-watchlist-merge.py --datamining "<datamining root>"` (dry run; add `--write`) | `reference-data/frosty/asset-watchlist.json` |
+
+### Recorded primary scalar scan
+
+`python scripts/frosty-primary-field-scan.py --help` describes a read-only scan
+of recorded route/object pairs with explicit build identity and scalar paths.
+It verifies descriptor/raw hashes, float32 types, offsets and decoded values.
+`--heat-site-mapping` adds conditional RPM/magazine arithmetic; labels require
+independent naming evidence. Use a new external `--out`; existing files are refused.
+[L36](../../reference-data/provenance/frosty-2026-09-24-L36-primary-heat-scope.json)
+records the exact arguments and comparison with the earlier scan.
