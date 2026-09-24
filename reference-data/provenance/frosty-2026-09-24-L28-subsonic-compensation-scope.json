@@ -175,8 +175,8 @@
         ],
         "manifestSha256": "7cb72e7fb7f55711b5de204116660fd2a22fed6b4db857c4b536d1adbde024ec",
         "comparison": {
-          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-chains-complete\\comparison.json",
-          "sha256": "beff9426b104af4562be39bf212fc99bb47dd57d825932dc0ee3c1d5f484fce6"
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-chains-raw-guid\\comparison.json",
+          "sha256": "9fcca3b3b6abf4a88c6f7906861eb80ac888f8bfb8b9136a66473fa4401ee4f7"
         },
         "recordedInputs": {
           "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-chain\\recorded-source-provenance.json",

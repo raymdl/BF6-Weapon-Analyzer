@@ -62,7 +62,9 @@ def main():
     ipath=[int(z) if isinstance(z,str) and z.isdigit() else z for z in x['path']]; imp=at(objs[x['objectIndex']],ipath)['$import'];target=x['target']; rows=c.execute('select a.route,a.file_guid,cap.raw_path,cap.raw_sha256,cap.descriptor_path,cap.descriptor_sha256 from assets a join captures cap on cap.route=a.route where lower(a.file_guid)=lower(?) and cap.head=? and cap.descriptor_sha256=?',(imp['fileGuid'],head,expdesc)).fetchall();matches=[]
     for rr in rows:
      if rr['route'].lower()!=target['route'].lower() or rr['raw_sha256'].lower()!=target['rawSha256'].lower() or rr['file_guid'].lower()!=imp['fileGuid'].lower():continue
-     _,te,to=load(rr['route'],rr['raw_sha256']);matches.extend((rr['route'],rr['file_guid'],i,o) for i,o in enumerate(to) if o.get('$guid','').lower()==imp['classGuid'].lower())
+     _,te,to=load(rr['route'],rr['raw_sha256'])
+     if d['_guid'](te.file_guid).lower()!=imp['fileGuid'].lower():raise ValueError('target raw file GUID differs from import')
+     matches.extend((rr['route'],rr['file_guid'],i,o) for i,o in enumerate(to) if o.get('$guid','').lower()==imp['classGuid'].lower())
     r.update({'import':imp,'expectedTarget':target,'resolved':bool(matches),'resolvedFileGuids':[z[1] for z in matches],'targetObjectIndices':[z[2] for z in matches]});r['verified']=len(matches)==1
    elif x['op']=='raw_bytes':
     n=len(bytes.fromhex(x['bytes']));actual=e.data[x['offset']:x['offset']+n].hex();r.update({'offset':x['offset'],'expectedBytes':x['bytes'],'actualBytes':actual});r['verified']=actual.lower()==x['bytes'].lower()
