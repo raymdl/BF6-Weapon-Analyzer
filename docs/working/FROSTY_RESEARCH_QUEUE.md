@@ -65,8 +65,8 @@ and the separate `1.4.3.1` directory under this run root.
 Checkpoint, 24 September 2026: L37-L47 are recorded. L45 adds a software
 spread-summary proposal; L43/L44 do not justify numerical changes. L46 found no
 changed catalog record in its sample; L47 strengthens one exact spotting chain.
-Next lead is L48. Prefer a new native selection/priority discriminator, a typed
-loading-state link, or a changed site-used asset. Do not repeat these bounded
+L48/L49 now investigate typed loading rules and spotting eligibility. Prefer
+new discriminators over repeating their existing values. Next free lead is L50. Do not repeat these bounded
 checks or neutral base scans. Source and software checks do not prove native
 behavior. The trial used Luna high on L47 and xhigh on L44/L46: no confirmed
 correctness issue, one L44 convergence-scope clarification. Different tasks and
@@ -128,6 +128,8 @@ Work these from source before handing them to the capture plan. Results from the
 | L45 | **Spread summary - Software contradiction verified** | [Raw inputs and model check](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json): DB-12 hip summary shows 1.44 degrees maximum, but its shot-2 tooltip shows 1.95 degrees. | Propose a peak pre-shot summary for operator review; no new capture. Native equations remain unresolved. |
 | L46 | **Build-change screen - No candidate in sample** | [Reproducible catalog comparison](../../reference-data/provenance/frosty-2026-09-24-L46-site-route-build-screen.json): 534 site-linked routes have equal asset-record SHA1/size/GUID across the two recorded builds. | Catalog evidence only; no new raw trace or capture. Reopen on a changed site-used route or a concrete discrepancy outside this sample. |
 | L47 | **M39 EMR spotting chain - Exact import verified** | [Three raw-backed assertions](../../reference-data/provenance/frosty-2026-09-24-L47-selected-spotting-chain.json) link the WB import through the selector-matching SP wrapper to its recorded WME target. | Strengthens one prior association, not native activation or unique effective selection; keep the site factor and existing rank-1 capture. |
+| L48 | **Loading-state discriminator** | In progress: inspect typed ammo/reload rules for the existing M433, DB-12 and M60 count contrasts. | Require a new loading or chamber link; do not repeat L37 counts or infer loaded state from capacity alone. |
+| L49 | **Spotting package eligibility** | In progress: inspect the exact M39 EMR choice for typed selection conditions beyond L47's import chain. | Separate serialized eligibility/priority from native activation; no prefix-only interpretation. |
 
 ## Proposed Analyzer changes
 
