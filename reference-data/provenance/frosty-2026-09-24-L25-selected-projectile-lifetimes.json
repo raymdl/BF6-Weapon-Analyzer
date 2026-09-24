@@ -1,0 +1,366 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L25",
+  "status": "Conditional range candidates established from exact site projectile identities; native expiry needs capture",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": {
+    "exactSiteProjectiles": 64,
+    "siteAmmoSelections": 328,
+    "loadout": "Bare weapon plus each existing ammo selection; no barrel velocity modifier or game-default loadout assumption."
+  },
+  "sourceLifetimeHistogram": {
+    "2.0": 32,
+    "0.5": 12,
+    "3.0": 7,
+    "6.0": 11,
+    "7.0": 2
+  },
+  "finding": "The lifetime question is not confined to shotguns. Under current site velocity/drag equations and the unverified assumption that source TimeToLive expires flight after that many seconds, 32 current ammo selections have a boundary at or before300 m.",
+  "candidates": [
+    {
+      "siteId": "sg553r",
+      "ammoId": "subsonic",
+      "velocity": 247.29600000000005,
+      "sourceLifetime": 2,
+      "levelBoundary": 287.05548746093905,
+      "vectorBoundary": 286.9622806482312,
+      "vectorTime300": 2.147629211351111
+    },
+    {
+      "siteId": "sg553r",
+      "ammoId": "subsonic_hp",
+      "velocity": 247.29600000000005,
+      "sourceLifetime": 2,
+      "levelBoundary": 287.05548746093905,
+      "vectorBoundary": 286.9622806482312,
+      "vectorTime300": 2.147629211351111
+    },
+    {
+      "siteId": "sgx",
+      "ammoId": "subsonic",
+      "velocity": 241.92000000000004,
+      "sourceLifetime": 2,
+      "levelBoundary": 283.0911962974498,
+      "vectorBoundary": 282.99705228814673,
+      "vectorTime300": 2.1954844179527617
+    },
+    {
+      "siteId": "sgx",
+      "ammoId": "subsonic_hp",
+      "velocity": 241.92000000000004,
+      "sourceLifetime": 2,
+      "levelBoundary": 283.0911962974498,
+      "vectorBoundary": 282.99705228814673,
+      "vectorTime300": 2.1954844179527617
+    },
+    {
+      "siteId": "pw5a3",
+      "ammoId": "subsonic",
+      "velocity": 261.12000000000006,
+      "sourceLifetime": 2,
+      "levelBoundary": 297.0037626707151,
+      "vectorBoundary": 296.91284219493355,
+      "vectorTime300": 2.0336747102463493
+    },
+    {
+      "siteId": "pw5a3",
+      "ammoId": "subsonic_hp",
+      "velocity": 261.12000000000006,
+      "sourceLifetime": 2,
+      "levelBoundary": 297.0037626707151,
+      "vectorBoundary": 296.91284219493355,
+      "vectorTime300": 2.0336747102463493
+    },
+    {
+      "siteId": "umg40",
+      "ammoId": "subsonic",
+      "velocity": 239.10400000000007,
+      "sourceLifetime": 2,
+      "levelBoundary": 280.99250092475273,
+      "vectorBoundary": 280.89785460911116,
+      "vectorTime300": 2.221416291202476
+    },
+    {
+      "siteId": "umg40",
+      "ammoId": "subsonic_hp",
+      "velocity": 239.10400000000007,
+      "sourceLifetime": 2,
+      "levelBoundary": 280.99250092475273,
+      "vectorBoundary": 280.89785460911116,
+      "vectorTime300": 2.221416291202476
+    },
+    {
+      "siteId": "usg90",
+      "ammoId": "subsonic",
+      "velocity": 265.293513,
+      "sourceLifetime": 2,
+      "levelBoundary": 299.94035167756414,
+      "vectorBoundary": 299.85008858143374,
+      "vectorTime300": 2.00161776488905
+    },
+    {
+      "siteId": "usg90",
+      "ammoId": "subsonic_hp",
+      "velocity": 265.293513,
+      "sourceLifetime": 2,
+      "levelBoundary": 299.94035167756414,
+      "vectorBoundary": 299.85008858143374,
+      "vectorTime300": 2.00161776488905
+    },
+    {
+      "siteId": "kv9",
+      "ammoId": "subsonic",
+      "velocity": 231.68000000000004,
+      "sourceLifetime": 2,
+      "levelBoundary": 275.38452799180374,
+      "vectorBoundary": 275.2885182202135,
+      "vectorTime300": 2.2928272286462144
+    },
+    {
+      "siteId": "kv9",
+      "ammoId": "subsonic_hp",
+      "velocity": 231.68000000000004,
+      "sourceLifetime": 2,
+      "levelBoundary": 275.38452799180374,
+      "vectorBoundary": 275.2885182202135,
+      "vectorTime300": 2.2928272286462144
+    },
+    {
+      "siteId": "scw10",
+      "ammoId": "subsonic",
+      "velocity": 254.72000000000006,
+      "sourceLifetime": 2,
+      "levelBoundary": 292.441101548361,
+      "vectorBoundary": 292.349143959882,
+      "vectorTime300": 2.0848850195188504
+    },
+    {
+      "siteId": "scw10",
+      "ammoId": "subsonic_hp",
+      "velocity": 254.72000000000006,
+      "sourceLifetime": 2,
+      "levelBoundary": 292.441101548361,
+      "vectorBoundary": 292.349143959882,
+      "vectorTime300": 2.0848850195188504
+    },
+    {
+      "siteId": "sl9",
+      "ammoId": "subsonic",
+      "velocity": 248.83200000000005,
+      "sourceLifetime": 2,
+      "levelBoundary": 288.1781121014424,
+      "vectorBoundary": 288.08516795238575,
+      "vectorTime300": 2.1343385639275922
+    },
+    {
+      "siteId": "sl9",
+      "ammoId": "subsonic_hp",
+      "velocity": 248.83200000000005,
+      "sourceLifetime": 2,
+      "levelBoundary": 288.1781121014424,
+      "vectorBoundary": 288.08516795238575,
+      "vectorTime300": 2.1343385639275922
+    },
+    {
+      "siteId": "cz3a1",
+      "ammoId": "subsonic",
+      "velocity": 215.04000000000005,
+      "sourceLifetime": 2,
+      "levelBoundary": 262.4001442106893,
+      "vectorBoundary": 262.3008556849072,
+      "vectorTime300": 2.4709661815168054
+    },
+    {
+      "siteId": "cz3a1",
+      "ammoId": "subsonic_hp",
+      "velocity": 215.04000000000005,
+      "sourceLifetime": 2,
+      "levelBoundary": 262.4001442106893,
+      "vectorBoundary": 262.3008556849072,
+      "vectorTime300": 2.4709661815168054
+    },
+    {
+      "siteId": "pp19",
+      "ammoId": "subsonic",
+      "velocity": 227.32800000000006,
+      "sourceLifetime": 2,
+      "levelBoundary": 272.0451819029873,
+      "vectorBoundary": 271.9483453486191,
+      "vectorTime300": 2.336875515065884
+    },
+    {
+      "siteId": "pp19",
+      "ammoId": "subsonic_hp",
+      "velocity": 227.32800000000006,
+      "sourceLifetime": 2,
+      "levelBoundary": 272.0451819029873,
+      "vectorBoundary": 271.9483453486191,
+      "vectorTime300": 2.336875515065884
+    },
+    {
+      "siteId": "m87a1",
+      "ammoId": "buckshot",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "m87a1",
+      "ammoId": "buckshot_00",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "m87a1",
+      "ammoId": "flechette",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "m1014",
+      "ammoId": "buckshot",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "m1014",
+      "ammoId": "buckshot_00",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "m1014",
+      "ammoId": "flechette",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "ks18k",
+      "ammoId": "buckshot",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "ks18k",
+      "ammoId": "buckshot_00",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "ks18k",
+      "ammoId": "flechette",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "db12",
+      "ammoId": "buckshot",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "db12",
+      "ammoId": "buckshot_00",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    },
+    {
+      "siteId": "db12",
+      "ammoId": "flechette",
+      "velocity": 400,
+      "sourceLifetime": 0.5,
+      "levelBoundary": 151.60807173204867,
+      "vectorBoundary": 151.60753882141762,
+      "vectorTime300": 1.327019084166513
+    }
+  ],
+  "remainingSelections": "The other296 selections exceed300 m in the level-horizontal screening model. This is not a universal loadout or native range guarantee.",
+  "semanticEvidence": "frosty-2026-09-24-L22-projectile-lifetime.json directly names TimeToLive in the same release Class_23637dce.",
+  "verification": [
+    "Parent independently verified all64 exact GUIDs, raw/descriptor hashes, descriptor-derived offsets and float32 lifetime values.",
+    "Parent called unchanged resolveAmmoVelocity and flightTimeAtDistance for all328 selections and compared current data/ballistics.json mappings.",
+    "Parent calculated vector-solver boundary for all32 screened candidates with zero launch angle."
+  ],
+  "siteProposal": "Extend L22 capture/proposal to selected subsonic ammunition as well as shotgun pellets; if native expiry is confirmed, evaluate reachability after actual loadout velocity is resolved. Do not turn conditional damage-curve values into zero damage.",
+  "limits": [
+    "Field name and stored values are source facts; seconds, activation, start event, native equation and expiry remain unverified.",
+    "External keys containing Seconds or ttlSecondsConfigured express the conditional seconds assumption, not independently proven source units.",
+    "Site ammo selection mappings were verified against current data; no claim that a particular game session selected them.",
+    "Launch angle, attachment velocity changes and native flight differences can change the boundary.",
+    "No in-game measurements were made."
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\verify_parent.py\"",
+    "node \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\verify_site.mjs\""
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\L25-source-lifetime.json",
+      "sha256": "05400d3bab11415e542e7d944bb121f8d7577ebf21e8c0d158bda892eb43f15b"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\L25-selection-range-check.json",
+      "sha256": "5d99c5c36c3cfbaf9f19b32f34a8acffd4832bb710b8ffdfb627a2f1489a1547"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\parent-raw-check.json",
+      "sha256": "0d775635a55305e0f3b7b3eda7b2d2d49d37e01360056f909789a63030f9032c"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\parent-site-function-check.json",
+      "sha256": "279bf3faf581fccc7fed07be6b78de131ccc1e52c0e732c95712a0cda5a5dba1"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\verify_parent.py",
+      "sha256": "43bd3a7e01750fadf9f2677eadfe7b11fa4996f1b406cd431f2286b96e8a3bae"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\verify_site.mjs",
+      "sha256": "939229c308bf5adf73e26f8eec42c1d36f8d395053455d86cddc9e8fc4a305ef"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\L25-source-lifetime.py",
+      "sha256": "1820ced5891e84b1d75a79b23527876295cd359e45cdc1111126faa9256f46f8"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\L25-selection-range-check.py",
+      "sha256": "0d6227c9b85d875d96c10c5de4a96da69d822c46d8d6c1d7aaae8c2d8a3adfb8"
+    }
+  ]
+}

@@ -979,3 +979,23 @@ The other 30 checked release `Class_bb838ff6` modifiers have neutral operands on
 both targets in both aim states. No additional axis correction is proposed.
 This scope does not cover other classes or different targets such as Match
 Trigger's recovery factor, and does not establish runtime activation.
+
+## Lifetime scope beyond shotguns (L25, 24 September 2026)
+
+The [exact site-projectile check](../../reference-data/provenance/frosty-2026-09-24-L25-selected-projectile-lifetimes.json)
+raw-verifies TimeToLive on all 64 projectile GUIDs currently used by the site.
+Using current bare-weapon velocity plus each ammo treatment, 32 of 328 selections
+have a conditional lifetime boundary within 300 m: 12 buckshot/flechette choices
+on four shotguns and 20 Subsonic/Subsonic HP choices on ten weapons.
+The parent checked the current projectile mappings and called the unchanged site
+velocity and flight-time functions for each selection.
+
+For CZ3A1 Subsonic, source lifetime 2.0 and current velocity 215.04 m/s give about
+262.40 m in the level-horizontal model, or 262.30 m with the vector solver at
+zero launch angle. USG-90 Subsonic is close to the display boundary at about
+299.94 m (299.85 m vector), so it is a poor first capture control. Other barrel
+velocities and launch angles change these predictions. The remaining selections
+pass 300 m in this screening model; this is not a native range guarantee.
+
+The L22 lifetime-units and native-expiry limits still apply. Add a subsonic
+control to the capture before proposing loadout-dependent reachability.

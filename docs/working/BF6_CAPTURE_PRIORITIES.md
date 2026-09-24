@@ -635,3 +635,16 @@ alone cannot confirm expiry because pellet spread, aim error and mark culling
 can hide impacts. Slug's 2.0 value predicts reach beyond 200 m under the same
 assumptions. Compare repeated confirmed outcomes before changing reachability;
 source units, native equation and lifetime start remain open. See [L22 evidence](../../reference-data/provenance/frosty-2026-09-24-L22-projectile-lifetime.json).
+
+### L25 extension: Subsonic expiry control
+
+Use CZ3A1 with its recorded bare-equivalent barrel, Subsonic ammo, stable ADS and
+single deliberate shots at 240, 255, 270 and 290 m. Current site inputs predict
+about 262.3-262.4 m if source lifetime 2.0 means seconds and the flight model is
+applicable. Repeat with Standard ammo as a same-weapon range and aim control.
+Account for drop; record confirmed target health changes or hit confirmation,
+not only wall marks. A confirmed Subsonic hit well beyond the predicted boundary
+rejects the combined expiry/flight assumptions. Misses alone remain inconclusive.
+Record exact barrel/ammo identity and any velocity-changing effect. Do not start
+with USG-90's near-300 m boundary. [L25 evidence](../../reference-data/provenance/frosty-2026-09-24-L25-selected-projectile-lifetimes.json)
+keeps source lifetimes separate from these conditional distances.
