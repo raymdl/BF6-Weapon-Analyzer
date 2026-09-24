@@ -68,7 +68,10 @@ changed catalog record in its sample; L47 strengthens one exact spotting chain.
 Next lead is L48. Prefer a new native selection/priority discriminator, a typed
 loading-state link, or a changed site-used asset. Do not repeat these bounded
 checks or neutral base scans. Source and software checks do not prove native
-behavior. Luna high/xhigh evidence reviews are the current delegation trial.
+behavior. The trial used Luna high on L47 and xhigh on L44/L46: no confirmed
+correctness issue, one L44 convergence-scope clarification. Different tasks and
+incomplete timing prevent a speed comparison. Reviewed work is committed locally;
+research remains open and nothing is pushed.
 
 ## Active source leads
 
