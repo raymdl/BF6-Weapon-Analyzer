@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L31",
+  "status": "Source mask candidate strengthened; bounded independent control exhausted; needs capture",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "sourceFacts": [
+    {
+      "capture": {
+        "id": 3349,
+        "route": "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\HK433\\HK433_WB.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "c02751eac2b054343a2a115dff8f2000bc450548c96185445cd7c3b613030e0a",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 33,
+        "root_class": "Class_a6e2adec",
+        "warnings_json": "{\"$layoutAmbiguous\":17}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 22,
+      "body": {
+        "$class": "Class_9dfbb158",
+        "$guid": null,
+        "Field_6d011165": "15cff9ff-aab0-4230-9a53-5a2bb1606587",
+        "Field_1c85cbb1": 1
+      },
+      "context": "Match Trigger",
+      "maskCandidate": 1,
+      "rawOffset": 5280,
+      "rawBytes": "01000000",
+      "descriptorShape": {
+        "classHash": "9dfbb158",
+        "fields": [
+          {
+            "hash": "4eaf60c3",
+            "offset": 0,
+            "type": 0,
+            "classRef": 2007
+          },
+          {
+            "hash": "1c85cbb1",
+            "offset": 40,
+            "type": 16,
+            "classRef": 65535
+          }
+        ],
+        "bases": [
+          {
+            "classHash": "894f1d72",
+            "fields": [
+              {
+                "hash": "4eaf60c3",
+                "offset": 0,
+                "type": 0,
+                "classRef": 3
+              },
+              {
+                "hash": "6d011165",
+                "offset": 24,
+                "type": 21,
+                "classRef": 65535
+              }
+            ],
+            "bases": [
+              {
+                "classHash": "3d09dcb7",
+                "fields": [],
+                "bases": []
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "capture": {
+        "id": 18169,
+        "route": "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\SMG\\ScorpionEvo3\\ScorpionEvo3_WB.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "9d631a6e49dbe7a632b0db687322252826d917ff052a888bbad9796ba4705bbe",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 55,
+        "root_class": "Class_a6e2adec",
+        "warnings_json": "{\"$layoutAmbiguous\":25}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 36,
+      "body": {
+        "$class": "Class_9dfbb158",
+        "$guid": null,
+        "Field_6d011165": "588728fd-2ae7-4424-aa22-45d9b3c82ba0",
+        "Field_1c85cbb1": 8
+      },
+      "context": "Burst",
+      "maskCandidate": 8,
+      "rawOffset": 6400,
+      "rawBytes": "08000000",
+      "descriptorShape": {
+        "classHash": "9dfbb158",
+        "fields": [
+          {
+            "hash": "4eaf60c3",
+            "offset": 0,
+            "type": 0,
+            "classRef": 2007
+          },
+          {
+            "hash": "1c85cbb1",
+            "offset": 40,
+            "type": 16,
+            "classRef": 65535
+          }
+        ],
+        "bases": [
+          {
+            "classHash": "894f1d72",
+            "fields": [
+              {
+                "hash": "4eaf60c3",
+                "offset": 0,
+                "type": 0,
+                "classRef": 3
+              },
+              {
+                "hash": "6d011165",
+                "offset": 24,
+                "type": 21,
+                "classRef": 65535
+              }
+            ],
+            "bases": [
+              {
+                "classHash": "3d09dcb7",
+                "fields": [],
+                "bases": []
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "sdkClue": {
+    "sdkPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\FrostyToolsuite-battlefield6\\FrostyPlugin\\Sdk\\Bf6-Strings.txt",
+    "sha256": "e0fc9fb74a1b8ad1c51c9b8297db03c208bfd3b565d2d09fb3ac9d0a88108d23",
+    "excerpts": [
+      {
+        "startLine": 6516,
+        "endLine": 6525,
+        "lines": [
+          "1682224380,fltSingleFire",
+          "2408659281,fltSingleFireWithBoltAction",
+          "2444052580,fltAutomaticFire",
+          "2331728117,fltBurstFire",
+          "1141040357,fltHoldAndRelease",
+          "520200719,fltDetonatedFiring",
+          "3985762083,fltCount",
+          "1012061021,fltInvalid",
+          "983105742,FireModeSpecificModifierUnlock",
+          "496990195,FireLogicTypesMask"
+        ]
+      },
+      {
+        "startLine": 60166,
+        "endLine": 60169,
+        "lines": [
+          "983105742",
+          "1",
+          "496990195,FireLogicTypesMask",
+          "4057174116"
+        ]
+      }
+    ],
+    "hypothesis": "Class_9dfbb158 one additional integer member could be FireModeSpecificModifierUnlock.FireLogicTypesMask. Values1 and8 match1<<0 single and1<<3 burst. Independent full-auto selected control still required.",
+    "limit": "SDK numeric name IDs are not decoded field hashes; no hash algorithm or exact field-name assignment inferred.",
+    "additionalBaseClue": {
+      "startLine": 53196,
+      "endLine": 53198,
+      "lines": [
+        "2697731097",
+        "1",
+        "3958294702,UnlockAssetGuid"
+      ],
+      "nameIndexLine": 3352,
+      "nameIndexText": "2697731097,ContextSpecificModifierUnlock",
+      "limit": "ContextSpecificModifierUnlock declares one UnlockAssetGuid member; matches the candidate base shape but is not a GUID-to-class identity mapping."
+    }
+  },
+  "vssmControl": {
+    "captures": [
+      {
+        "id": 11296,
+        "route": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\DMR\\VSSM\\VSSM_WB.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "5c5c2165c31058a94b8476775915260591bb7bbcb49c118e2bdae55115086336",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 49,
+        "root_class": "Class_a6e2adec",
+        "warnings_json": "{\"$layoutAmbiguous\":17}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      {
+        "id": 11193,
+        "route": "Common/Hardware/Weapons/DMR/VSSM/GS_VSSM",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\DMR\\VSSM\\GS_VSSM.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "ae0dc64afb3df7e40bea4d58054266f1fa38146c235786efaa52a27bff94e5b3",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 3,
+        "root_class": "Class_b2468102",
+        "warnings_json": "{\"$layoutAmbiguous\":223}",
+        "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+      },
+      {
+        "id": 21335,
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\FireMode\\WPM_ERG_FullAutoReplaceVSSM_W50.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "663cdca72bcb8813847788ef0f500cdfaf5e40b51a168e388c44d50ef1b3c729",
+        "header_status": "ok",
+        "decode_status": "decoded",
+        "error": null,
+        "object_count": 6,
+        "root_class": "Class_b2468102",
+        "warnings_json": "{}",
+        "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+      }
+    ],
+    "selector": "7e84751b-0f69-456b-b63c-a41aa50c8b2b",
+    "wbChain": [
+      34,
+      27,
+      48
+    ],
+    "conditionClassCounts": {
+      "WB": 0,
+      "selectedWPM": 0
+    },
+    "gsBindings": [
+      "object2/Field_ee32ca16/0",
+      "object2/Field_2296f84f/0"
+    ],
+    "finding": "Fresh decode confirms no Class_9dfbb158 in the exact selected WB or WPM. GS binds the Full Auto selector directly. This route provides no value-4 control."
+  },
+  "inference": "The one-uint32 class above a one-GUID base fits the SDK FireModeSpecificModifierUnlock / ContextSpecificModifierUnlock member shapes. Values 1 and 8 fit 1<<single(0) and 1<<burst(3). This is a candidate meaning, not an independently established field name.",
+  "limits": [
+    "SDK name IDs do not map directly to decoded class or field hashes. No hash algorithm assumed.",
+    "The VSSM route limits a universal condition-record hypothesis; it does not disprove a mask meaning for Class_9dfbb158.",
+    "Provisional decoder layouts remain. Raw value offsets and descriptor shapes were checked for the two condition records; VSSM was independently freshly decoded.",
+    "No native consumer, bit test, engine activation, selected-mode transition, or gameplay result was established."
+  ],
+  "siteConclusion": "Keep Match Trigger unmodeled pending the existing L17 semi-auto versus automatic capture. Retain current Burst/Folding Stock values; no additional numeric change proposed.",
+  "priorReceipts": [
+    "frosty-2026-09-24-L17-match-trigger-indirect-effects.json",
+    "frosty-2026-09-24-L13-burst-duration-bindings.json"
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\verify_parent_records.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\verify_vssm.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\vssm_control.py\""
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\parent-two-record-check.json",
+      "sha256": "4c1c0a62a8522eadecabe454444d76337b7140468119ade3b63728cb80fbc424"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\parent-sdk-candidate.json",
+      "sha256": "7fcf5a11c73acbf74dd34947b04dd4478924c43b43e7ccbd69e89959d6a63f18"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\parent-vssm-fresh-decode.json",
+      "sha256": "4cfc4c5e7f1cf60464562e2722da51d3c2fa91e7c29750e5e18de3c46635ba82"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\verify_parent_records.py",
+      "sha256": "d7411cec32473c659a684c398de0f56624490d053feae7a371e009cdfaad0652"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\verify_vssm.py",
+      "sha256": "8de7d68ed8bdffeef7b7691c8fd0e010069c46b7398481f6df5d9deb45c77d4e"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\vssm_control.json",
+      "sha256": "1198dc2996acf6d4a531562b9d3efd4efe5fba843ecdb3e31c8811464df0ace0"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\vssm_control.py",
+      "sha256": "c7b7c9cfcc0e74276e1985a788ac25180f4e7c125a4fc7a9e9d258dabb2377e1"
+    }
+  ]
+}

@@ -766,3 +766,19 @@ The [L30 owner-registry follow-up](../../reference-data/provenance/frosty-2026-0
 checked both non-null registry anchors on that WB owner and their direct linked
 groups. They provide no child/hash pair for `18774676`. The boolean remains
 unnamed; this negative result does not show that it is unused.
+
+### Indirect fire-mode condition candidate (L31, 24 September 2026)
+
+The [bounded source check](../../reference-data/provenance/frosty-2026-09-24-L31-fire-mode-mask-candidate.json)
+confirms Match Trigger value 1 and Burst value 8 in `Class_9dfbb158.Field_1c85cbb1`.
+The class adds one uint32 above a GUID-only base. SDK member lists for
+`FireModeSpecificModifierUnlock.FireLogicTypesMask` and
+`ContextSpecificModifierUnlock.UnlockAssetGuid` fit that structure. Values 1 and 8
+also fit bit masks for the SDK single-fire and burst enum positions. These are
+independent structural clues, not an exact field-name mapping or native bit test.
+
+The selected VSSM Full Auto WB and WPM contain no instance of this class. Its GS
+instead binds the Full Auto selector directly. This control provides no value 4;
+it rules out a universal record layout across these three selected paths, not the
+candidate mask meaning. Keep the L17 semi/auto capture and existing Burst runtime
+limits. No new numeric site change follows from this result.
