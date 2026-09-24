@@ -334,11 +334,11 @@
       "velocityTreatments": {
         "subsonic": {
           "kind": "subsonic-absolute",
-          "subsonicVelocityMps": 273
+          "subsonicVelocityMps": 273.599203
         },
         "subsonic_hp": {
           "kind": "subsonic-absolute",
-          "subsonicVelocityMps": 273
+          "subsonicVelocityMps": 273.599203
         }
       },
       "effectOverrides": {
@@ -521,7 +521,7 @@
       "velocityTreatments": {
         "subsonic_pen": {
           "kind": "subsonic-tungsten-absolute",
-          "subsonicVelocityMps": 341,
+          "subsonicVelocityMps": 341.567997,
           "combinesWith": "penetration"
         }
       }
@@ -574,11 +574,11 @@
       "velocityTreatments": {
         "subsonic": {
           "kind": "subsonic-absolute",
-          "subsonicVelocityMps": 265
+          "subsonicVelocityMps": 265.293513
         },
         "subsonic_hp": {
           "kind": "subsonic-absolute",
-          "subsonicVelocityMps": 265
+          "subsonicVelocityMps": 265.293513
         }
       },
       "effectOverrides": {

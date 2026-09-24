@@ -1984,7 +1984,7 @@
     "fireMode": "auto",
     "burstRounds": 3,
     "burstRpm": 830,
-    "burstBurstsPerMinute": 240.12729639809058,
+    "burstBurstsPerMinute": 239.998993,
     "spreadDyn": {
       "ads": {
         "inc": 0.304,
@@ -3692,7 +3692,7 @@
     "fireMode": "auto",
     "burstRounds": 2,
     "burstRpm": 771,
-    "burstBurstsPerMinute": 337.5,
+    "burstBurstsPerMinute": 327.272003,
     "spreadDyn": {
       "ads": {
         "inc": 0.28,
