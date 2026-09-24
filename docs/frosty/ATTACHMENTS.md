@@ -761,3 +761,8 @@ The mapped description says the attachment permits firing while sprinting.
 That is a capture hypothesis, not proof of this field's name. Keep numeric tiers
 unchanged. If a controlled capture confirms the utility, consider a utility
 indication instead of interpreting the site's noEffect flag as no gameplay effect.
+
+The [L30 owner-registry follow-up](../../reference-data/provenance/frosty-2026-09-24-L30-handstop-registry-scope.json)
+checked both non-null registry anchors on that WB owner and their direct linked
+groups. They provide no child/hash pair for `18774676`. The boolean remains
+unnamed; this negative result does not show that it is unused.

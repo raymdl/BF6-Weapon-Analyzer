@@ -1,0 +1,163 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L30",
+  "status": "Exact WB registry naming route exhausted; L27 meaning remains unresolved",
+  "reopenBasis": "L27 found the same boolean on the WB owner, which has non-null registry wrappers absent on the modifier. L22 showed direct inherited-wrapper associations can be omitted by generated reports.",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "wbCapture": {
+    "id": 18169,
+    "route": "Common/Hardware/Weapons/SMG/ScorpionEvo3/ScorpionEvo3_WB",
+    "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\SMG\\ScorpionEvo3\\ScorpionEvo3_WB.ebx",
+    "head": 4892017,
+    "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+    "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "raw_sha256": "9d631a6e49dbe7a632b0db687322252826d917ff052a888bbad9796ba4705bbe",
+    "header_status": "ok",
+    "decode_status": "decoded-provisional",
+    "error": null,
+    "object_count": 55,
+    "root_class": "Class_a6e2adec",
+    "warnings_json": "{\"$layoutAmbiguous\":25}",
+    "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+  },
+  "registryCapture": {
+    "id": 1491,
+    "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+    "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.ebx",
+    "head": 4892017,
+    "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+    "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "raw_sha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+    "header_status": "ok",
+    "decode_status": "decoded-provisional",
+    "error": null,
+    "object_count": 28807,
+    "root_class": "Class_bec12d4c",
+    "warnings_json": "{\"$layoutAmbiguous\":4750}",
+    "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+  },
+  "ownerIndex": 13,
+  "targetField": "Field_18774676",
+  "anchors": [
+    {
+      "wrapper": "Field_e563b7a7",
+      "reference": {
+        "fileGuid": "aa45ab92-cc7f-4d20-ab32-ba27da0aa6a0",
+        "classGuid": "7eb897f9-2ff2-47b2-8a62-75085ef9a4d2"
+      },
+      "anchorIndex": 28041,
+      "name": "ScorpionEvo3_WB.WeaponEntityData",
+      "pairedNames": []
+    },
+    {
+      "wrapper": "Field_be157b68",
+      "reference": {
+        "fileGuid": "aa45ab92-cc7f-4d20-ab32-ba27da0aa6a0",
+        "classGuid": "8a9edddd-3d81-4a0b-a03f-80666a985f9b"
+      },
+      "anchorIndex": 24925,
+      "name": "ScorpionEvo3_WB",
+      "pairedNames": []
+    }
+  ],
+  "rawArrayOffsets": [
+    {
+      "anchorIndex": 28041,
+      "fields": {
+        "4471d2f1": 2648904,
+        "080f1aaa": 2648920
+      }
+    },
+    {
+      "anchorIndex": 24925,
+      "fields": {
+        "4471d2f1": 2353960,
+        "080f1aaa": 2353976
+      }
+    }
+  ],
+  "directLinkedChildren": [
+    {
+      "parent": "Field_e563b7a7",
+      "field": "Field_9eef1a86",
+      "index": 11711,
+      "name": "ScorpionEvo3_WB.WeaponEntityData.WeaponFiring"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_9eef1a86",
+      "index": 21733,
+      "name": "ScorpionEvo3_WB.WeaponZoomTransitionIndex"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_9eef1a86",
+      "index": 26500,
+      "name": "ScorpionEvo3_WB.AnimationZoomSettingsIndex"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_9eef1a86",
+      "index": 21299,
+      "name": "ScorpionEvo3_WB.AltAnimationZoomSettingsIndex"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_9eef1a86",
+      "index": 2835,
+      "name": "ScorpionEvo3_WB.SprintSettingsIndex"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_9eef1a86",
+      "index": 3410,
+      "name": "ScorpionEvo3_WB.WeaponHipMoveSpeedMultiplierIndex"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_9eef1a86",
+      "index": 26819,
+      "name": "ScorpionEvo3_WB.WeaponZoomedMoveSpeedMultiplierIndex"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_9eef1a86",
+      "index": 21371,
+      "name": "ScorpionEvo3_WB.WeaponModifierDataAssets[78]"
+    },
+    {
+      "parent": "Field_be157b68",
+      "field": "Field_b8d57bcc",
+      "index": 28041,
+      "name": "ScorpionEvo3_WB.WeaponEntityData"
+    }
+  ],
+  "finding": "Both exact owner anchors have empty direct child/hash arrays. Their directly linked named groups and inherited association provide no pair for18774676 among the six direct-child pairs examined. This source route does not independently name the Handstop boolean.",
+  "methodControl": "L29 same build/descriptor raw GRX CameraRecoilAmount pair and scalar checked successfully; reused without repeating unchanged check.",
+  "priorEvidence": [
+    "frosty-2026-09-24-L27-handstop-boolean-scope.json",
+    "frosty-2026-09-24-L29-dispersion-registry-scope.json"
+  ],
+  "siteConclusion": "Keep L27 utility capture hypothesis and neutral numeric tiers. Do not name the field from its value or description. No additional change proposed.",
+  "limits": [
+    "Only these exact WB owner anchors and direct linked groups were examined; no universal registry absence claim.",
+    "Empty name arrays are not proof that the field is unused.",
+    "Native sprint firing and shared consumer meaning remain unresolved.",
+    "Provisional layout warnings remain; raw and descriptor hashes were checked."
+  ],
+  "reproduction": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L30\\verify_wb_anchors.py\"",
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L30\\wb-anchor-check.json",
+      "sha256": "f608d8c38bc0c71540697d8e325e8330d20e8cc4c26ccabbceb62de2e737e4f5"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L30\\verify_wb_anchors.py",
+      "sha256": "5c87cdfa4d7a6984f19b9196d92ca17ab9fe8d2e863d73a7188e385d83ab6be9"
+    }
+  ]
+}
