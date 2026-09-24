@@ -507,6 +507,13 @@ records the exact arguments and comparison with the earlier scan.
   and descriptors for two recorded builds, then compares the listed bytes.
   It checks catalog Heads and makes no whole-build or runtime claim.
 
+- `frosty-simulation-summary.py --weapons ID,ID --out`: compares spread summaries
+  with per-shot values for bare and software-reset loadouts. Pins the unchanged
+  site modules/data; checks software consistency, not native gameplay.
+- `frosty-projectile-lifetime.py --consistency --root --range-report
+  --prior-site-check --out`: compares scalar/vector site travel times over the
+  supported chart/view ranges; keeps configured lifetime sensitivity conditional.
+
 Use `python scripts/<name> --help` and the receipt arguments. Outputs require a
 new external `--out` or `--report-dir`; existing output paths are refused.
 These checks reproduce configured source facts, not native runtime behavior.

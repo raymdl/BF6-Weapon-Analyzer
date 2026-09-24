@@ -8,6 +8,7 @@ import pathlib
 import sqlite3
 import struct
 import subprocess
+import sys
 
 FIELD_HASH = '5ef7b9a1'
 PROJECTILE_CLASS = 'Class_23637dce'
@@ -199,6 +200,20 @@ def compare_prior(report_dir, prior_dir):
     if not all(checks.values()): raise ValueError('overnight comparison mismatch: '+json.dumps(checks))
 
 def main():
+    if '--consistency' in sys.argv[1:]:
+        cp=argparse.ArgumentParser(description='Compare level-flight timing with vector trajectory helpers for recorded L25 inputs.')
+        cp.add_argument('--consistency',action='store_true',required=True)
+        cp.add_argument('--root',type=pathlib.Path,required=True)
+        cp.add_argument('--range-report',type=pathlib.Path,required=True)
+        cp.add_argument('--prior-site-check',type=pathlib.Path,required=True)
+        cp.add_argument('--out',type=pathlib.Path,required=True)
+        cp.add_argument('--node-helper',type=pathlib.Path,default=pathlib.Path(__file__).with_name('frosty-projectile-site-functions.mjs'))
+        a=cp.parse_args(); root=a.root.resolve(); report=a.range_report.resolve(); prior_site=a.prior_site_check.resolve(); out=a.out.resolve(); helper=a.node_helper.resolve()
+        if out.exists(): raise FileExistsError(f'refusing to overwrite output: {out}')
+        command=['node',str(helper),'--consistency','--root',str(root),'--range-report',str(report),'--prior-site-check',str(prior_site),'--out',str(out)]
+        node=subprocess.run(command,check=True,capture_output=True,text=True)
+        print(json.dumps({'pythonEntrypoint':str(pathlib.Path(__file__).resolve()),'pythonEntrypointSha256':sha(pathlib.Path(__file__).resolve()),'pythonArguments':sys.argv[1:],'nodeHelper':str(helper),'nodeArguments':command[2:],'output':str(out),'nodeResult':node.stdout.strip()},indent=2))
+        return
     ap=argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--analyzer-root',type=pathlib.Path,required=True)
     ap.add_argument('--ledger',type=pathlib.Path,required=True)

@@ -60,13 +60,12 @@ registry, selection, reference and lifetime checks; receipt commands identify th
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
 and the separate `1.4.3.1` directory under this run root.
 
-Handoff, 24 September 2026: L37-L42 are reviewed and recorded below. L39 adds
-fresh paired hotfix raw files; L41 rechecks non-neutral selected operands. No new
-site change or capture is warranted by these results. Next lead number is L43.
-Continue with a concrete site-linked discriminator: typed loading behavior,
-selected modifier activation, or a changed site-used build asset. Reuse the
-recorded plans; do not repeat these bounded counts or neutral base scans.
-All work is committed locally on `main`; nothing is pushed.
+Checkpoint, 24 September 2026: L37-L43 are recorded; L44 checks nonlinear
+recoil integration and L45 checks the spread summary against its per-shot table.
+L46 is reserved for a bounded search for a changed site-used build asset.
+Source facts and software consistency checks do not establish native behavior.
+Reviewed work is committed locally; current checks are in progress. Reuse the
+recorded plans and do not repeat neutral base scans.
 
 ## Active source leads
 
@@ -116,10 +115,11 @@ Work these from source before handing them to the capture plan. Results from the
 | L38 | **Selected spotting operands - branch unresolved** | [Targeted raw recheck](../../reference-data/provenance/frosty-2026-09-24-L38-spotting-candidates.json) confirms ordinary/SP-prefixed 0.14/0.1 candidates for the four previously mapped suppressor choices. | Conditional 21/15 m arithmetic supports existing rank 1; no site replacement or new capture proposed without activation evidence. |
 | L39 | **Release-to-hotfix site fields - three bodies unchanged** | [Fresh paired capture](../../reference-data/provenance/frosty-2026-09-24-L39-paired-build-raw.json) finds identical KORD 6P67 GS/WB/PD bytes across Heads 4892017 and 4892087. | Other weapons, selected modifiers and native behavior remain outside scope; reopen on a changed site-used hash or concrete gameplay difference. |
 | L40 | **Collateral index selection - no new route** | [Prior-evidence review](../../reference-data/provenance/frosty-2026-09-24-L40-collateral-route-review.json) adds no native table-selection link; the operator-confirmed clamp remains separate. | Reopen on a typed link to the selected table/delegate or a discriminating capture; no new capture added. |
-
 | L41 | **VSSM selected operands - source matched** | [Exact selector and raw fields](../../reference-data/provenance/frosty-2026-09-24-L41-vssm-selected-operands.json) support the existing dispersion, variation and recovery values, including factor 76/exponent 1.24 in both aim states. | Keep the native recovery assumption and layout warning; no new capture, and reopen on build divergence or controlled runtime evidence. |
-
 | L42 | **Caliber description text - corroborated** | [Raw references and localized text](../../reference-data/provenance/frosty-2026-09-24-L42-caliber-text.json) support SOR-300SC `.300 BLK` and M45A1 `.45 ACP` label wording. | No typed caliber or mechanics claim; no capture needed, and reopen on a typed source or changed text. |
+| L43 | **Ballistic calculation consistency - Checked** | [Comparison](../../reference-data/provenance/frosty-2026-09-24-L43-ballistic-consistency.json): 328 selections; scalar/vector time differs by at most 0.00389 ms within TTK charts and 2.786 ms at 300 m. | Distinct model assumptions, not native validation; no change or new capture. Reopen if the supported ranges or equations change. |
+| L44 | **Nonlinear recoil integration** | In progress: compare the site's 1 ms recovery steps with a converged evaluation of the same assumed equation for actual nonlinear weapon groups. | Require an effect on displayed precision or shot residuals before proposing a change; no synthetic-only or native claim. |
+| L45 | **Spread summary - Software contradiction verified** | [Raw inputs and model check](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json): DB-12 hip summary shows 1.44 degrees maximum, but its shot-2 tooltip shows 1.95 degrees. | Propose a peak pre-shot summary for operator review; no new capture. Native equations remain unresolved. |
 
 ## Proposed Analyzer changes
 
@@ -131,6 +131,7 @@ operator approval; none is implemented unless stated.
 | Neutral shooting decay field (L15) - operator review | `data/weapons.json` `recoil.{ads,hip}.shootingDecScale`; `sim/core.js` | All 126 stored values are 1 and core has no reader, consistent with [L15](../../reference-data/provenance/frosty-2026-09-24-L15-neutral-shooting-recoil-scale.json). Either remove the unused field or retain it as documented-neutral; no numeric change proposed and no site edit made. |
 | Non-polar cleanup check (L33) - operator review | `data/`, `sim/`, `ui/`; `sim/core.js:genRecoilPts` | No polar/non-polar flag or alternate branch found by scoped search and recoil-path inspection; core already resolves direction/magnitude through sine/cosine. [L33](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-build-separated.json) supports no current outlier, but does not prove the native equation; no removable site branch identified or changed. |
 | Compact Handstop utility indication (L27) | `GRIPS[id=cmpct_handstop].noEffect`; attachment effects display | Current direct numeric tiers are neutral and choice is dimmed. Exact CZ3A1 shared WPM has a true unnamed boolean; description suggests sprint firing. [Evidence](../../reference-data/provenance/frosty-2026-09-24-L27-handstop-boolean-scope.json). Needs controlled sprint-fire capture before a gameplay claim; no numeric recoil or general sprint-recovery change proposed. |
+| Spread cycle maximum (L45) | `sim/core.js` `effectiveSpreadMax`; `ui/app.js` spread summary | **Operator review:** use a peak pre-shot value rather than the recovered sample after shot 50. DB-12 reset hip standing summary 1.44 degrees contradicts its shot-2 tooltip 1.95 degrees; [receipt](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json). No change to the assumed native equation is established or proposed here. |
 | Projectile lifetime and reachability (L22) | `data/ballistics.json` projectile fields; `sim/ballistics.js`; dependent travel/damage display | Current integration guard is not source lifetime. Selected buck/Slug TimeToLive 0.5/2.0 could affect reach within supported range. [Evidence](../../reference-data/provenance/frosty-2026-09-24-L22-projectile-lifetime.json). [L25](../../reference-data/provenance/frosty-2026-09-24-L25-selected-projectile-lifetimes.json) adds subsonic candidates using actual ammo velocity. Needs capture before implementation; show unreachable separately from conditional damage, do not assume zero damage. |
 | Match Trigger in an explicit tested mode (L17) | `ERGOS[id=match_trigger]`, `sim/applyAttachments.js`, recoil/spread calculations | Current choice has no modeled effects. HK433 source selects amount-exponent +3, recovery operand 1.728 and bloom multiplier 0. Candidate M433 model predicts recoil ratio 0.843908625 and recovery factor 124.416 from current inputs; conditional only. [Evidence](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json). [L24](../../reference-data/provenance/frosty-2026-09-24-L24-match-trigger-family.json) confirms shared source targets on all 24 selections, with differing priorities. Needs semi/auto capture and operator/activation validation; no blanket runtime change. |
 | Controller vertical recovery (L19) | `ui/app.js` platform factor; `sim/core.js` `genRecoilPts` | Current factor changes amount only. Candidate separate vertical recovery control follows source 0.8836 multiplier; horizontal source operands are neutral. [Evidence](../../reference-data/provenance/frosty-2026-09-24-L19-controller-recovery-operand.json). Needs capture10/native equation before implementation; not a common decay-factor correction. |

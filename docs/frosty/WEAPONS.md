@@ -1083,3 +1083,26 @@ found byte-identical KORD 6P67 GS, WB and referenced projectile files between
 retained release Head 4892017 and fresh hotfix Head 4892087 captures. This rules
 out serialized changes in those three bodies only; selected modifiers, other
 weapons and native behavior are outside the comparison.
+
+## Ballistic calculation consistency
+
+[L43](../../reference-data/provenance/frosty-2026-09-24-L43-ballistic-consistency.json)
+compares the current scalar travel-time and vector trajectory functions for 328
+recorded weapon/ammo selections. Across 32,378 integer TTK-chart points, the
+largest difference is 0.00389 ms; across 97,088 target-view points it is 2.786 ms
+(CZ3A1 Subsonic, 300 m). The functions use different gravity/drag assumptions;
+this is not evidence of native behavior. No change or new capture is proposed.
+Configured lifetime remains conditional; the existing L25 boundary test remains.
+
+## Spread summary across a shot cycle
+
+[L45](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json)
+finds a software contradiction: the DB-12 reset loadout shows hip standing
+spread **1.44 degrees to 1.44 degrees**, while its shot-2 tooltip shows
+**1.95 degrees**. The summary returns the recovered sample after shot 50,
+which falls after the long gap; it does not return the cycle peak. The difference
+appears within two shots of the selected 14-round magazine. Raw checks cover
+21 dynamic spread/timing operands; the two-shot cycle and baseline remain
+existing site premises. Propose a peak pre-shot summary for operator review.
+No new capture is needed for this software issue; native recovery and firing
+gates stay open.

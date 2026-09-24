@@ -1,0 +1,365 @@
+{
+  "lead": "L43",
+  "date": "2026-09-24",
+  "status": "Bounded software-model comparison; no new Analyzer change proposed",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "priorSourceReceipt": "reference-data/provenance/frosty-2026-09-24-L25-selected-projectile-lifetimes.json",
+  "reproduction": {
+    "script": "scripts/frosty-projectile-lifetime.py",
+    "scriptSha256": "01bc50765ab8ff691cde5145938a4fc1562742953fa0de5bae956db9b5169c07",
+    "helper": "scripts/frosty-projectile-site-functions.mjs",
+    "helperSha256": "592713b19ffb2506905c6f8c7287e3de5f5389b32e494a5d6bf1a1252cba2d4b",
+    "arguments": [
+      "--consistency",
+      "--root",
+      "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer",
+      "--range-report",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\L25-selection-range-check.json",
+      "--prior-site-check",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\parent-site-function-check.json",
+      "--out",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L43-ballistics-consistency\\parent-python-entrypoint-check.json"
+    ],
+    "output": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L43-ballistics-consistency\\parent-python-entrypoint-check.json",
+      "sha256": "6cabdd66a7a0402c490cade402489875edae03e08d3a8452ea6615c4511e89cd"
+    }
+  },
+  "selectionChecks": 328,
+  "comparison": {
+    "method": "For every recorded L25 selected site weapon/ammo case, compare current flightTimeAtDistance(model,d) against trajectoryAtDistance(model,d,0). Verify exact selected route, current resolved velocity, and recorded level time first. Scan integer points 0..current TTK chart cap (90m; 200m for Sniper Rifle) and target-view points 5..300m.",
+    "ttkChart": {
+      "pointCount": 32378,
+      "guardedBy30SecondLimit": 0,
+      "roundedStandaloneFlightMsDifferentPointCount": 7,
+      "maxAbsoluteDifference": {
+        "siteId": "cz3a1",
+        "ammoId": "subsonic",
+        "route": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW",
+        "weaponClass": "SMG",
+        "chartMaxM": 90,
+        "distanceM": 90,
+        "levelSeconds": 0.4919474263352951,
+        "vectorSeconds": 0.4919513163350089,
+        "deltaMilliseconds": 0.0038899997137908926,
+        "roundedLevelFlightMs": 492,
+        "roundedVectorFlightMs": 492
+      },
+      "ttkDisplay": "TTK combines level-flight seconds with firing/ADS terms and rounds the total to integer milliseconds. Report the helper delta and standalone rounded-flight point count; do not infer combined TTK display differences without reproducing those other terms."
+    },
+    "targetView": {
+      "pointCount": 97088,
+      "guardedBy30SecondLimit": 0,
+      "maxAbsoluteDifference": {
+        "siteId": "cz3a1",
+        "ammoId": "subsonic",
+        "route": "Common/Hardware/Weapons/_Bullets/PD_9x19mm_PDW",
+        "weaponClass": "SMG",
+        "targetViewRangeM": [
+          5,
+          300
+        ],
+        "distanceM": 300,
+        "levelSeconds": 2.468180163242936,
+        "vectorSeconds": 2.4709661815168054,
+        "deltaMilliseconds": 2.786018273869484,
+        "roundedLevelFlightMs": 2468,
+        "roundedVectorFlightMs": 2471
+      },
+      "display": "Target view uses vector trajectory/drop and does not display travel time."
+    }
+  },
+  "conditionalLifetimeSensitivity": {
+    "recordedL25CandidateCount": 32,
+    "conditionallyReachableAtTargetViewMax300m": 32,
+    "conditionallyReachableWithinTtkChartRange": 0,
+    "maxRecordedLevelVectorBoundaryDifference": {
+      "siteId": "cz3a1",
+      "ammoId": "subsonic",
+      "sourceLifetimeSeconds": 2,
+      "levelBoundaryMeters": 262.4001442106893,
+      "vectorBoundaryMeters": 262.3008556849072,
+      "deltaMeters": 0.0992885257820717
+    },
+    "filter": "Configured source lifetime seconds compared only with modeled site-function reachability. Boundary is in the supported range only if 5m <= recorded vector boundary <= 300m; TTK-chart filter also requires the boundary <= that weapon class chart maximum. This does not assert runtime expiry."
+  },
+  "inputs": {
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\L25-selection-range-check.json": "5d99c5c36c3cfbaf9f19b32f34a8acffd4832bb710b8ffdfb627a2f1489a1547",
+    "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\parent-site-function-check.json": "279bf3faf581fccc7fed07be6b78de131ccc1e52c0e732c95712a0cda5a5dba1",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\ballistics.js": "1e898ae51313f30863af2ccc78dee012041e92f5ba03548d14308e137c415d67",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\applyAttachments.js": "69f787f8419ceaf3899e51eea12ba5567131d3ff026c2b6887fea5ea3744ffad",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\damage.js": "3c5e0c645c1cc8abc7e34f74a7345d33b284bbda8247c6c3a5e8feafbd857e78",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\ui\\app.js": "94b1d77da781215b8d81f1d55f21dc91143065e2915d361fadfb261257184351",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\weapons.json": "17f3335c1f5cbbcc97fc713f1714fb414eb942d1cfbd74966afa94379f70ca0d",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\ammo.json": "9120140c396f55ae47802f9153180e46133764c7753e40924c66bfb3a5c74970",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\ballistics.json": "d149293cddf25daa0ac65db41acfe170e3d6aaa3b240c3e10979304d90658054",
+    "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-projectile-site-functions.mjs": "592713b19ffb2506905c6f8c7287e3de5f5389b32e494a5d6bf1a1252cba2d4b"
+  },
+  "sourceRawIdentities": [
+    [
+      1895,
+      "8f2fcc8a198f32d5a2e261e91c74d73ba4cc647b8ca20e99290e0275d09f8d66"
+    ],
+    [
+      1897,
+      "a654e9001d8d953286df4d749967e26258f6414b8c86d6c4c7fc4da52626ff56"
+    ],
+    [
+      1898,
+      "412f3e0783d68c665a7c900f0019cb4d707ae2541bba33074d489ea56ab67cb1"
+    ],
+    [
+      1899,
+      "e810c9223cd062f7953d05908e95d04bbfe14d25d38fb72ab2923a46294a6563"
+    ],
+    [
+      1900,
+      "e6000c984978765672624e6702965e8ea9dcf8df326dff512feae35698f25379"
+    ],
+    [
+      1901,
+      "dc0f0e9c8ab8ce044c510fd2c60e9c973ba4a2295d888802ee0c36b7b2b7cae9"
+    ],
+    [
+      1902,
+      "ba63de28bc7b07c75083ea4d07fcc2015f56b03a7870cc487ce5e38dd79c21a4"
+    ],
+    [
+      1903,
+      "a415566eb10eaf3e7c79bdde533de0ca658e1e09cddf3e2f01e72581f4cfe599"
+    ],
+    [
+      1904,
+      "30777163d2e17cb943283db6af889ae0864f4f3e2de3c5f94c836bed836cb766"
+    ],
+    [
+      1905,
+      "c66d4043b3c88b8162a30a7e26b189ae8902b502ddb6b631c1a72473a8baafe7"
+    ],
+    [
+      1906,
+      "5a0e4500a9d48164eb8dbd8b223555f71366584e15b5f7b5f98f3cf0a777df59"
+    ],
+    [
+      1907,
+      "07ab7ed1be2d3d099261d300ac35ceb65428ccfaea790131a2b492cc6562fb3f"
+    ],
+    [
+      1908,
+      "5d685e3cf48356429f42a0d1504146a2f1658f306a2a20427455150909bf371d"
+    ],
+    [
+      1909,
+      "7ef218e21d0c88657b4484fe8aff9c632109cc59335ab281085f196e6a9bcee3"
+    ],
+    [
+      1910,
+      "cccbb21d860dcf7aa4ca5b8cb3b889a5134183b45fd2961b0dd32c252d74de23"
+    ],
+    [
+      1911,
+      "54ce0ad70d6fcebc99003efe18261f7f12b11c7f97c0335292b7fc641e6382df"
+    ],
+    [
+      1912,
+      "e3bcaab03ac1023d17508b3a362442ad8172b9d647f50eae07413184d0a390e7"
+    ],
+    [
+      1913,
+      "984e61563eeb3e3d0d4aab62d0cb0ff279f0034f6ec9b4a561fed954c3849b93"
+    ],
+    [
+      1914,
+      "312d4d616fb3639b473273ae21cd21c898f17f13c685f173a8eb0b1baa85fdd7"
+    ],
+    [
+      1915,
+      "1f72bd41f2a2336367d0a02c6074b60e7e7be441757f85617e29d0dbdf7be0a4"
+    ],
+    [
+      1916,
+      "2791c8d08f80a8ea63680e7e31ca129122fa10d1047ebce342c136e47596afd3"
+    ],
+    [
+      1917,
+      "80aa332243fa6b8eb9e7bea27754a53103d689996c771b6000b55566868bb12b"
+    ],
+    [
+      1918,
+      "96504c896b90457dafa66de2916d111fc7f3997395f076e1df1a7b590e32420f"
+    ],
+    [
+      1919,
+      "ff2e70b85c03191065a1a7ed737310548a0c5762fb56a0a1046fb628b543e148"
+    ],
+    [
+      1920,
+      "d1c5a123c2c3133a2e354303e51bd01704062514166130f456a421383bf467a6"
+    ],
+    [
+      1921,
+      "5f9b7a055279331e84dc6800cc9c9377aa842ec1e59107baf3ad1920685d985c"
+    ],
+    [
+      1922,
+      "1948da3cd67ef0742e25f20ef710e2b81b8fbc510954c75940c70fc19fa78595"
+    ],
+    [
+      1923,
+      "ec36517b09e5a7a0be8e3cd3200ff41b263d416f96f7f9e712dd6c74dfcd4bb3"
+    ],
+    [
+      1924,
+      "d20a859f30842a30cfb48369565f6c489ebaa0b6f4fe5e085c3efbd2039786b4"
+    ],
+    [
+      1925,
+      "08691cd115362ac69e4008c68c11ce8e123a8c541f2160da59b5e78a79caf68f"
+    ],
+    [
+      1926,
+      "b289e6135340ea5b915d2b750a94ba59c312997e8608d71b333acd7dded40c2c"
+    ],
+    [
+      1927,
+      "26cd0b3b4410dd637d27fbd622ce23e64ce4ed25378cb50e9fde369f8513d09f"
+    ],
+    [
+      1928,
+      "78b50481fa01c8624dadb67404704ebbb61c6a40c9ef3bb5f6b40419731ddc84"
+    ],
+    [
+      1929,
+      "4ed2bc524c6496bfbb2d5c0faa6aca4bef1ec7fa59a0f9031b37ba83723c2ca5"
+    ],
+    [
+      1930,
+      "abec5d2f6d94e7fe7fe25c5855c6849a1fa3abf29f3e91716f410e1ed800bff8"
+    ],
+    [
+      1931,
+      "159f5173c329d48cdf515507bbb250901894d8b2e83b937486ab12897aa14612"
+    ],
+    [
+      1932,
+      "61358f220b743e14da577792c74417acca7b18d6a1075370e9c1a62a95013fab"
+    ],
+    [
+      1933,
+      "073d0c73716b827873110bd1536735ff226dc650e3392d13559fec1ae7fd2c26"
+    ],
+    [
+      1934,
+      "b95a26a37f7483d024a3b6cc12edf4e1484be4fa1ecd1792b59b7038338921ed"
+    ],
+    [
+      1935,
+      "8a8abc2217d735a5cc93aa68726182f605229d3fa88e4df65aa1d32db0886791"
+    ],
+    [
+      1936,
+      "6f3d4ed4dfdd563f2dcac4aee4a4923836d11fd3178dcbdfa4ee662120e34f25"
+    ],
+    [
+      1937,
+      "f84c26acddc92050e09788e60d33b12443d89fb79340780ea06ed41b45aa6d44"
+    ],
+    [
+      1938,
+      "8de3921ee00a6cd5cb1f2a2f07b485ca63f0dc32fcea4240cd24face1c1a6dbf"
+    ],
+    [
+      1939,
+      "112bca3d23860231fed5455d20d116a78d8149d3e0a04a275e5ed0942096ad99"
+    ],
+    [
+      1940,
+      "31454d4bc3c828e17d3c048535e0340b0ab819cb2fe1916a3cd3ca688930e3f9"
+    ],
+    [
+      1941,
+      "12555af0d34224436c23fd405bf65faf45bf44a16bd1620d40172e1b9ca607fb"
+    ],
+    [
+      1942,
+      "5cb3eabed5daaff651f06f06a8ca0b2664ee76dda43f9ef91f8fc6ebca5680d8"
+    ],
+    [
+      1943,
+      "8d50e56075a3ec8667ad5ed68c1cd78a9dd350bd366ac55ca5f32f9ee3c72017"
+    ],
+    [
+      1944,
+      "1d5a1dca8d97965422f149c6cf8603cc06cc0d2873a6e957a529f2df852c4703"
+    ],
+    [
+      1945,
+      "d595a068577ea17cfdb70fc07ec12605516fe357884bcac7e7d11bf04aa80a6a"
+    ],
+    [
+      1946,
+      "7c70b46aef31b4e1e98c606da1b3297c9eefa9f9c207c201e45bb5bc471f02e6"
+    ],
+    [
+      1947,
+      "867177b709a4f49cdf354f8bdde58265bf2a3153fbcbc7baeba85793b1baa7d9"
+    ],
+    [
+      1948,
+      "0fdd3f8faee03500af0e9d6a70475e708dd21dc2b6b4875dc238a702ff31323a"
+    ],
+    [
+      1949,
+      "145dac79ba4fa01cb39e846e1ff6b18a557362b8bbfba39cc34292fee5392259"
+    ],
+    [
+      1950,
+      "10a09dddbd6a251b9101a8aade261c57f572626c71698f2e6a62be9821a4ac6e"
+    ],
+    [
+      1951,
+      "ff02ffb6d5c317ce85646c5a417f546f72036bc10c1a4d487105247c8668f4f9"
+    ],
+    [
+      1952,
+      "8f53a7d613a0f524dc03c2e76aca51de0882b71f9f8fa4c06989756ceb828f9b"
+    ],
+    [
+      1953,
+      "144d344c36a8ae1d6b7003fe1c175f5a72dded26504f06784ad2fbe4c0df1e94"
+    ],
+    [
+      1954,
+      "d895ff07fdc68fb5946c21912679e378916acd903894b7448a8a9462727dbf53"
+    ],
+    [
+      1955,
+      "8fc6dcb47d1be7571bda8ada612e4da8fb05eb5f4331adbf7adb381276942743"
+    ],
+    [
+      1956,
+      "793ee7d10e145977871b1a469b30488b0f050834109a0505fc8c0d3fbd0c558a"
+    ],
+    [
+      1957,
+      "9e041a6e6eff4fb6512173d4d511f2ea70fadd8ed4d9cd78be1a0a624af2f925"
+    ],
+    [
+      1958,
+      "2ccdf0e9feb445239ac040f3d3da610992d5d24719ad733dc14eda7b1467769d"
+    ],
+    [
+      1959,
+      "efa20806f1d26f320c33aca275582d6652d5bc25504ef6ce350860b1f7a13a16"
+    ]
+  ],
+  "limitations": [
+    "The scalar helper models exact level-horizontal drag timing; the vector helper includes gravity and total-speed drag. Different outputs reflect distinct model assumptions.",
+    "No runtime loadout, engine travel time, native activation, or expiry operation is established. L25 source TimeToLive remains conditional seconds.",
+    "Null vector solver values at its 30-second guard are excluded from time differences and counted separately."
+  ],
+  "decision": "No new capture or site correction. Reopen for a material change in supported ranges or equations; existing L25 runtime lifetime capture is distinct."
+}
