@@ -1,0 +1,165 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L32",
+  "status": "Exact naming and candidate-reference routes exhausted within scope; needs capture",
+  "question": "Does source establish projectile inheritance of shooter velocity omitted by the current stationary-launch solver?",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "sourceCaptures": [
+    {
+      "id": 7492,
+      "route": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB",
+      "raw_sha256": "5e5c96431ee2b098f459b326f2ee4c208cdadcbd91ed7c6835a9e5313f9cb74f",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\BREN3_WB.ebx"
+    },
+    {
+      "id": 1491,
+      "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+      "raw_sha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.ebx"
+    }
+  ],
+  "directRegistry": {
+    "wrapperReference": {
+      "fileGuid": "aa45ab92-cc7f-4d20-ab32-ba27da0aa6a0",
+      "classGuid": "8a6e76d4-0244-4f3f-a49c-12f5069f7b57"
+    },
+    "anchorIndex": 23879,
+    "anchorName": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot",
+    "directPairs": [
+      {
+        "field": "Field_7e2be65f",
+        "childIndex": 13855,
+        "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.DamagePenetrationMultiplierIndex",
+        "value": 6
+      },
+      {
+        "field": "Field_9ba8b76b",
+        "childIndex": 17440,
+        "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.DamageProtectionMultiplierIndex",
+        "value": 11
+      },
+      {
+        "field": "Field_661b879d",
+        "childIndex": 1998,
+        "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeedVariation",
+        "value": 0.0
+      },
+      {
+        "field": "Field_8dcef541",
+        "childIndex": 715,
+        "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.SpawnDelay",
+        "value": 0.0
+      }
+    ],
+    "linkedInitialSpeedGroup": {
+      "index": 3675,
+      "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed",
+      "pairs": [
+        {
+          "field": "Field_3901db14",
+          "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.x"
+        },
+        {
+          "field": "Field_42fc0f5e",
+          "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.y"
+        },
+        {
+          "field": "Field_32a99b9c",
+          "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z"
+        }
+      ]
+    },
+    "rawControl": {
+      "offset": 432,
+      "bytes": "00000000",
+      "float": 0.0
+    }
+  },
+  "candidateStructure": {
+    "path": "primary firing object/Field_58d70acb/Field_9322c6d2",
+    "class": "Struct_6e22dd6e",
+    "floats": [
+      "Field_695d12a4",
+      "Field_93ed160b",
+      "Field_bf151ef9"
+    ],
+    "references": [
+      "Field_227c7ca4",
+      "Field_6424db8c",
+      "Field_e7e0d099"
+    ],
+    "finding": "All three float values are raw float32 zero and all three encoded references are zero/null on the exact 63 release primary WB roots retained from L23. No referenced target is available to independently name this candidate structure.",
+    "inference": "SDK InheritedWeaponSpeed has Up/Forward/Left members. The three-scalar structure is a shape clue only; it does not map the structure or members to that SDK type."
+  },
+  "result": "The exact BREN3 Shot anchor and linked InitialSpeed group do not name the inherited-velocity setting. The candidate-reference route yields no named target. No configured inherited-velocity value or native operation is established.",
+  "site": {
+    "pointer": "sim/ballistics.js:trajectoryAtDistance initial velocity",
+    "current": "Muzzle speed and launch angle only; no separate shooter velocity input.",
+    "proposal": "No numeric change. Use the L32 capture before claiming or modeling shooter-velocity inheritance. A stationary-shooter baseline remains valid as the scoped calculation."
+  },
+  "limits": [
+    "Missing name associations are not absence of a mechanic.",
+    "Zero candidate values are not proof of zero inherited velocity.",
+    "Native coordinate system, scalar meaning, moving-platform behavior and attachment overrides remain unverified.",
+    "Worker report label shotBlockRawStart refers to the nested candidate structure start; final raw evidence retains per-member absolute offsets. Provisional layout warnings remain."
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\verify_parent.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\verify_structs.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\reproduce_l32_struct_scan.py\""
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\parent-direct-shot-anchor.json",
+      "sha256": "b5299098365698b6db29b58c08ceb30dbd1d87c161fca96ffbb29e53368a07ab"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\parent-63-raw-check.json",
+      "sha256": "ac1b769a00b4921e1522b8b33e1df3b3b4f29420b0bf2f53acca6aebfda76fa5"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\parent-shot-types.json",
+      "sha256": "79e030614fe9cb0d4f0af5b91c554dc29f4458899301ffb62c4f9e84da0248e1"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\parent-sdk-structure-clue.json",
+      "sha256": "c647346f7a393acdc522555f94bbc3ac2c5593f564f83384a0754db2240c8ad5"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\parent-site-scope.json",
+      "sha256": "aa287b88c5688e35c8835c1e4c94b815843cae1d03218b9c008baee6a7769ff3"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\L32-result.json",
+      "sha256": "9c38ba753d3a5afeb449c9cbb4d730ce4efaac75f09566a47795b29822eaa632"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\L32-shot-vector-structure-63.json",
+      "sha256": "124931b6302f0641f41d08817f21a676037a5285ef6d5776b8f32a837daff68b"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\verify_parent.py",
+      "sha256": "67223da8483615a68df2bc7b0ec3cc48eb136a9394c2450fdde3a73c0844cbc8"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\verify_structs.py",
+      "sha256": "bacf03ca75c1d3020bdf30ff5d6be3e2a8e7711887b69320088f948d5479b49b"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\inspect_types.py",
+      "sha256": "372a7a7a326d202e3440dd3e9c33be339f9856f5d8c9a1a4509974351d0286ca"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\reproduce_l32.py",
+      "sha256": "e156e44694b83e485089e900feb98aecdac37b260667fcf4f9b780df08dc310c"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L32\\reproduce_l32_struct_scan.py",
+      "sha256": "4e9f66bf68ea58b0604f4ddf83dc093297cdb09df0db6afb6da61102f8c05684"
+    }
+  ]
+}

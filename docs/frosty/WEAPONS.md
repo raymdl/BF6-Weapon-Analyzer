@@ -1008,3 +1008,17 @@ The SFX local child imports a handheld firing Sound source patch. No independent
 identified lifetime compensation or projectile replacement was found in this
 bounded chain. Unnamed muzzle-effect fields and native compensation remain open;
 this check does not turn the conditional range into a confirmed game limit.
+
+### Shooter-velocity inheritance source limit (L32, 24 September 2026)
+
+The [bounded source check](../../reference-data/provenance/frosty-2026-09-24-L32-inherited-velocity-scope.json)
+read BREN3's exact current Shot registry anchor and its linked InitialSpeed group.
+Neither identifies `InheritedWeaponSpeedAmount`. The independently named
+InitialSpeedVariation control is float32 zero at offset 432.
+
+SDK `InheritedWeaponSpeed` has Up, Forward and Left members. A nested Shot
+structure has three floats and three references, but that shape does not identify
+its meaning. All three floats are zero and all three references are null in the
+63 checked primary weapon roots. Thus the references provide no named target;
+they do not prove that the game inherits zero shooter velocity. Keep the site's
+stationary-launch scope and use the L32 capture to test moving-shooter behavior.

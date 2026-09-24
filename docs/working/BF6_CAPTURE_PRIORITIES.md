@@ -663,3 +663,25 @@ recovery in both setups. Distinguish continued sprint speed from a held sprint
 button or camera animation. A timing difference alone does not name the raw
 boolean or establish a general sprint-recovery multiplier. Keep the true source
 boolean, descriptive text and measured behavior separate. [L27 source scope](../../reference-data/provenance/frosty-2026-09-24-L27-handstop-boolean-scope.json).
+
+## L32 follow-up: projectile velocity while strafing
+
+Use a bare B36A4 (BREN3 source), standard ammo, fixed stance and ADS, with a static
+flat target at measured range. Record isolated first shots while stationary,
+then while moving left and right at matched steady speeds. Fire as the player
+crosses the same marked firing position. Record the aim point and movement at
+shot release. Repeat enough shots to separate a group-center shift from moving
+spread; hold build, range, attachments and aiming method fixed.
+
+Measure each impact relative to the aim ray at release, not the camera position
+after the shot. A reproducible shift that reverses with strafe direction supports
+lateral velocity inheritance; a centered distribution with wider spread supports
+no measurable inherited component in this setup. Camera sway, inconsistent aim,
+movement spread and muzzle offset can confound the result. Repeat at a second
+range before assigning a coefficient. A null result bounds the tested setup; it
+does not prove universal zero inheritance or cover moving platforms.
+
+The [L32 source check](../../reference-data/provenance/frosty-2026-09-24-L32-inherited-velocity-scope.json)
+did not identify the native setting or equation. Do not convert its unnamed zero
+values into a sourced coefficient. Keep the site calculation unchanged pending
+this test and operator review.
