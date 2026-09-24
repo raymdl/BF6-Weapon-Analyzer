@@ -1,0 +1,212 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L33",
+  "status": "Current non-polar outlier hypothesis rejected in the checked base scope",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "target": {
+    "knownName": "UsePolarRecoil",
+    "field": "Field_8bd6dcdd",
+    "owner": "Struct_bcfafb0d",
+    "paths": [
+      "Class_539cff9b/Field_c5d1c8fe/Field_7b609515/Field_8bd6dcdd",
+      "Class_539cff9b/Field_c5d1c8fe/Field_6b84de87/Field_8bd6dcdd"
+    ]
+  },
+  "finding": "All 63 current mapped release GS roots store byte01 in both aim branches. No base non-polar exception is present in this scope. The older True except one documentation statement is not reproduced.",
+  "registryScope": {
+    "rosterCaptureCount": 63,
+    "typedRegistryRows": 124,
+    "registryFalseRows": 0,
+    "registryTrueRows": 124,
+    "registryUncoveredSiteWeapons": [
+      "BREN3"
+    ]
+  },
+  "rawControls": {
+    "BREN3RegistryGap": {
+      "route": "Common/Hardware/Weapons/Carbine/BREN3/GS_BREN3",
+      "head": 4892017,
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\BREN3\\GS_BREN3.ebx",
+      "raw_sha256": "b24946fdf779702d08715cd66b8ba7aa7602ca365d355204753de2b9e7e51617",
+      "rootClass": "Class_539cff9b",
+      "rootGuid": "9d5b80ce-d550-4e75-9689-e3a44a3b2711",
+      "values": {
+        "unzoomed": {
+          "decodedValue": true,
+          "objectIndex": 2,
+          "objectDataOffset": 200,
+          "absoluteByteOffset": 912,
+          "descriptorPath": [
+            {
+              "field": "Field_c5d1c8fe",
+              "offsetInParent": 680,
+              "flags": 32,
+              "classRef": 1787
+            },
+            {
+              "field": "Field_7b609515",
+              "offsetInParent": 0,
+              "flags": 32,
+              "classRef": 1788
+            },
+            {
+              "field": "Field_8bd6dcdd",
+              "offsetInParent": 0,
+              "flags": 160,
+              "classRef": 65535
+            }
+          ],
+          "rawByteHex": "01",
+          "value": true,
+          "rawByte": 1
+        },
+        "zoomed": {
+          "decodedValue": true,
+          "objectIndex": 2,
+          "objectDataOffset": 200,
+          "absoluteByteOffset": 1064,
+          "descriptorPath": [
+            {
+              "field": "Field_c5d1c8fe",
+              "offsetInParent": 680,
+              "flags": 32,
+              "classRef": 1787
+            },
+            {
+              "field": "Field_6b84de87",
+              "offsetInParent": 152,
+              "flags": 32,
+              "classRef": 1788
+            },
+            {
+              "field": "Field_8bd6dcdd",
+              "offsetInParent": 0,
+              "flags": 160,
+              "classRef": 65535
+            }
+          ],
+          "rawByteHex": "01",
+          "value": true,
+          "rawByte": 1
+        }
+      }
+    },
+    "6P67TrueControl": {
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "head": 4892017,
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\GS_6P67.ebx",
+      "raw_sha256": "0e0dc3d71c9a2b74cf5325294ea3ce906366280cb4b239769df0616828293fdb",
+      "rootClass": "Class_539cff9b",
+      "rootGuid": "238a0824-06cd-4292-b95d-edae10a6cda2",
+      "values": {
+        "unzoomed": {
+          "decodedValue": true,
+          "objectIndex": 1,
+          "objectDataOffset": 72,
+          "absoluteByteOffset": 784,
+          "descriptorPath": [
+            {
+              "field": "Field_c5d1c8fe",
+              "offsetInParent": 680,
+              "flags": 32,
+              "classRef": 1787
+            },
+            {
+              "field": "Field_7b609515",
+              "offsetInParent": 0,
+              "flags": 32,
+              "classRef": 1788
+            },
+            {
+              "field": "Field_8bd6dcdd",
+              "offsetInParent": 0,
+              "flags": 160,
+              "classRef": 65535
+            }
+          ],
+          "rawByteHex": "01",
+          "value": true,
+          "rawByte": 1
+        },
+        "zoomed": {
+          "decodedValue": true,
+          "objectIndex": 1,
+          "objectDataOffset": 72,
+          "absoluteByteOffset": 936,
+          "descriptorPath": [
+            {
+              "field": "Field_c5d1c8fe",
+              "offsetInParent": 680,
+              "flags": 32,
+              "classRef": 1787
+            },
+            {
+              "field": "Field_6b84de87",
+              "offsetInParent": 152,
+              "flags": 32,
+              "classRef": 1788
+            },
+            {
+              "field": "Field_8bd6dcdd",
+              "offsetInParent": 0,
+              "flags": 160,
+              "classRef": 65535
+            }
+          ],
+          "rawByteHex": "01",
+          "value": true,
+          "rawByte": 1
+        }
+      }
+    }
+  },
+  "separateHotfixControl": {
+    "head": 4892087,
+    "descriptorSha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+    "route": "Common/Hardware/Weapons/Shotgun/KSG/GS_KSG",
+    "rawSha256": "a01df3898a287cbd66b3539361c5ae2192cf1e416216a78c8652304a5257cb93",
+    "result": "Excluded KSG also has true in both aims. It is not included in the release conclusion or used to imply a build comparison."
+  },
+  "site": {
+    "pointer": "sim/core.js:genRecoilPts sine/cosine impulse",
+    "result": "No base-flag evidence calls for a per-weapon non-polar branch. Keep the current code; source true values do not establish the native angle distribution, impulse, recovery equation or coordinate channel."
+  },
+  "limits": [
+    "Only current mapped base GS roots and the separately identified KSG control; no all-modifier or runtime override claim.",
+    "The historical non-polar identity was not established, so this does not prove a game build change.",
+    "Registry gap on BREN3 is filled by descriptor/raw checks, not by assuming its absence means false.",
+    "Native recoil and camera behavior remain capture-dependent."
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\verify_parent.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\polar_recoil_check.py\""
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\parent-raw-polar-check.json",
+      "sha256": "f9bc3a1e5a1c64554d3e388b17a4529bbb05ba2fab878210bfb3d870580180a0"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\parent-site-scope.json",
+      "sha256": "a986be8558d58265f5823e11c307add428454312bab7f26d54c8732464a91a97"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\polar-recoil-check.json",
+      "sha256": "7a3c6c1e4f3b1f8849e5594a9d0c21b4688629cef5430f319ba6e3010b2eac2e"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\verify_parent.py",
+      "sha256": "bc8658f98ab921dd3c0ffedfeae6de31186dc4a59ed2b458cfe3fcec6315c16b"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\polar_recoil_check.py",
+      "sha256": "b1025c1317aad8550146b4b4e57cc6d3ac0ea51794603a609e4dd292ae2e0523"
+    }
+  ]
+}

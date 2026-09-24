@@ -812,7 +812,7 @@ ADS 433.334 → 366.667 ms.
 |---|---|---|
 | `Recoil.Zoomed.VerticalRecoilMin` / `Max` / `Increase` | 6 / 5 / 2 distinct | Per weapon; not imported. Possible first-shot vertical kick. |
 | `Recoil.Zoomed.HorizontalRecoilLeft` / `Right` | 6 distinct each (±0.2–0.6) | Per-weapon horizontal bounds; relation to direction variation not verified. |
-| `Recoil.Zoomed.MaxVerticalRecoil`, `UsePolarRecoil` | 20 (61) / 90 (3); True except one | Near uniform; one non-polar weapon. |
+| `Recoil.Zoomed.MaxVerticalRecoil`, `UsePolarRecoil` | Historical max values: 20 (61) / 90 (3); current polar flag true on all 63 site weapons | [L33 raw check](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-base-scope.json) supersedes the old non-polar outlier claim; both aim states are true. Native equation remains unresolved. |
 | `IdleDecreaseTargetDuration.StationaryIndex` / `MovingIndex` | 6 distinct in the 63-weapon 1.4.3.0 raw pass | Linked to `IDA_Weapons`; values follow the ADS ladder minus about one frame, and indices match ADS animation indices in 62 of 64 weapons. Native use unresolved ([trace](#idle-duration-table-1430-23-september-2026)). |
 | `ReloadInfoArray[].ReloadThreshold` | 36 distinct (0.72–0.8 common) | Probably the fraction at which ammo is committed. |
 | `ReloadInfoArray[].ReloadDelay` / `PostReloadDelay` | Mostly 0; 6–7 non-zero | Check those reload timings. |
