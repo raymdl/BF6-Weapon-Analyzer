@@ -39,17 +39,22 @@ callers. "Needs a native consumer" is a reason to look for one, not a stopping p
   descriptor `99b49cfd…`) evidence separate. Use hashes, not file versions. The
   `builds/1.4.3.0` folder name is the retained identifier for both.
 
-## Current run
+## Closed run: 23-24 September 2026
 
-- Started: 2026-09-23T23:43:35-04:00; branch `main`; initial working tree and index clean.
-- External evidence: `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-23T234335-0400`. Build and lead subdirectories keep evidence separate.
-- Governing request: full attachment `C:\Users\royal\.codex\attachments\390edbdb-e690-495d-bf11-570030d5c7c9\Pasted text.txt`, including all leads, methods, evidence standards, expansion, persistence, scope, and handoff rules. The active goal is a summary; the full request controls this run.
-- Work L12, L6 extension, L13, L1, L14 and unsourced-input discovery; then continue useful investigations across A–E: unsourced values, omitted mechanics, cross-weapon consistency, unnamed varying fields, and verified build changes. Initial leads or one finding do not complete the run. Continue while useful work and permitted resources remain until a user stop or explicit limit; no invented deadline or token budget.
-- A blocked lead must retain exact scope, outputs and resume/reopen condition; move to other work. Reopen only with new evidence or a materially different route. If all useful routes need unavailable evidence/access, save a complete handoff and report the common blocker, subject to goal-tool rules.
-- Site baseline (operator clarification, 24 September): use a bare weapon for cross-weapon comparisons. Game default attachments need not match site defaults; investigate them only when they can explain an observed unexplained stat difference.
-- Research only: no shipped files; exact proposed site changes require separate user review. Separate observed source facts, inferred meaning, unresolved activation/composition and in-game observations. Preserve build identities and raw hashes. Raw captures and ledger remain read-only.
-- Up to six bounded Luna medium workers may write only their unique external directories; the lead alone writes repository research files and independently verifies consequential claims. Persist partial evidence immediately and update queue checkpoints at least every 30 minutes.
-- Commit reviewed research documentation, final receipts and necessary narrowly tested research scripts locally; preserve unrelated work; never push, amend or rewrite history. No new repository Markdown documents. Use existing topic pages and capture priorities. Keep the proposals table and final handoff usable at each checkpoint.
+Evidence: `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-23T234335-0400`.
+Covered L1, L6 and L12-L35; L36 was left for review and is now closed below.
+Site comparisons use a bare weapon; game-default attachments are relevant only
+when they explain an observed stat difference.
+
+## Current run: 24 September 2026
+
+Review fixes precede new leads L37 onward. Evidence root:
+`C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-24T090117-0400`.
+Research only on `main`; local commits, no push/amend/history rewrite, no new
+Markdown documents or shipped changes. Preserve build identities and raw hashes;
+keep source facts, inference, unresolved runtime behavior and observations separate.
+Update lead checkpoints at least every 30 minutes; use repository scripts with
+new external output paths. Add captures only when arithmetic supports a useful test.
 
 ## Active source leads
 
