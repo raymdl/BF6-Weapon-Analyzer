@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L19",
+  "status": "Finding established: separate source operand; proposed model needs capture",
+  "question": "Does the controller modifier contain a recovery operand distinct from the site amount multiplier?",
+  "capture": {
+    "id": 21109,
+    "route": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_Controller_03",
+    "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_Recoil_Controller_03.ebx",
+    "head": 4892017,
+    "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+    "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "raw_sha256": "c847f914b534484c1a014c2b63ef0451caae86826a256c1b7bf4619574bd8c3f",
+    "header_status": "ok",
+    "decode_status": "decoded-provisional",
+    "error": null,
+    "object_count": 1,
+    "root_class": "Class_bb838ff6",
+    "warnings_json": "{\"$layoutAmbiguous\":3}",
+    "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+  },
+  "objectIndex": 0,
+  "objectOffset": 48,
+  "class": "Class_bb838ff6",
+  "rawRecoveryFields": [
+    {
+      "path": "/7b609515/54ba3947/5695ee1c",
+      "offset": 692,
+      "raw": "9c33623f",
+      "float32": 0.8835999965667725
+    },
+    {
+      "path": "/6b84de87/54ba3947/5695ee1c",
+      "offset": 164,
+      "raw": "9c33623f",
+      "float32": 0.8835999965667725
+    }
+  ],
+  "namedTarget": "VerticalRecoilDecreaseMultiplier",
+  "registryAssociation": [
+    {
+      "captureId": 2147,
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "objectIndex": 1,
+      "pointer": "/Field_c5d1c8fe/Field_7b609515",
+      "wrapper": "Field_2a325077",
+      "anchorGuid": "9a6c9076-f188-4203-b647-29a136dc27dc",
+      "anchorName": "GS_6P67.Recoil.Unzoomed",
+      "arrayIndex": 27,
+      "field": "Field_54ba3947",
+      "name": "GS_6P67.Recoil.Unzoomed.VerticalRecoilDecreaseMultiplier",
+      "childGuid": "414265b3-4ed8-4120-a01d-644b8ac492d5",
+      "status": "equal-scalar",
+      "fieldValue": 1.0,
+      "registryValue": 1.0,
+      "comparedRegistryValue": 1.0,
+      "registryLayoutProvisional": true
+    },
+    {
+      "captureId": 2147,
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "objectIndex": 1,
+      "pointer": "/Field_c5d1c8fe/Field_6b84de87",
+      "wrapper": "Field_2a325077",
+      "anchorGuid": "6a1831a3-c956-412d-bae1-e84ff456e5da",
+      "anchorName": "GS_6P67.Recoil.Zoomed",
+      "arrayIndex": 27,
+      "field": "Field_54ba3947",
+      "name": "GS_6P67.Recoil.Zoomed.VerticalRecoilDecreaseMultiplier",
+      "childGuid": "e788959f-2db2-469a-a1c7-b4545dbdfcfe",
+      "status": "equal-scalar",
+      "fieldValue": 1.0,
+      "registryValue": 1.0,
+      "comparedRegistryValue": 1.0,
+      "registryLayoutProvisional": true
+    }
+  ],
+  "rawRegistryVerification": "Parent redecoded both exact GRX anchor arrays and named children; paired hash at index27 is 0x54ba3947. Child refs are object20010 unzoomed and17798 zoomed.",
+  "operation": {
+    "vertical": "Field_5695ee1c multiplier0.8836; override disabled; add0; second multiplier1",
+    "horizontal": "Field_834a710f operands neutral in both aim states",
+    "amount": "Separate Field_b7e27231 array entry0 has enabled override0.8836; raw values at1196 and1220, enable flags1204 and1228"
+  },
+  "axisOperands": {
+    "Field_7b609515": {
+      "Field_54ba3947": {
+        "Field_bbffe8bc": false,
+        "Field_bbbfe9cc": 0.0,
+        "Field_5695ee1c": 0.8836,
+        "Field_4692836a": 0.0,
+        "Field_98a799ba": 1.0
+      },
+      "Field_834a710f": {
+        "Field_bbffe8bc": false,
+        "Field_bbbfe9cc": 0.0,
+        "Field_5695ee1c": 1.0,
+        "Field_4692836a": 0.0,
+        "Field_98a799ba": 1.0
+      }
+    },
+    "Field_6b84de87": {
+      "Field_54ba3947": {
+        "Field_bbffe8bc": false,
+        "Field_bbbfe9cc": 0.0,
+        "Field_5695ee1c": 0.8836,
+        "Field_4692836a": 0.0,
+        "Field_98a799ba": 1.0
+      },
+      "Field_834a710f": {
+        "Field_bbffe8bc": false,
+        "Field_bbbfe9cc": 0.0,
+        "Field_5695ee1c": 1.0,
+        "Field_4692836a": 0.0,
+        "Field_98a799ba": 1.0
+      }
+    }
+  },
+  "site": {
+    "amount": "ui/app.js CONSOLE_RECOIL_MULT -> sim/core.js selectedRecoilAmountFor",
+    "recovery": "sim/core.js genRecoilPts uses common decF for x and y; platform multiplier does not enter it",
+    "proposal": "Test a separate controller vertical recovery factor while retaining independently configured amount scaling. Do not insert Field_54ba3947 directly into decFactor or apply it to both axes without validation.",
+    "implementationReadiness": "Needs capture/native consumer; no shipped change"
+  },
+  "inference": "Shared hash and aim-branch context support a recovery-target modifier distinct from recoil amount. Exact native relation to the site recovery equation remains unproven.",
+  "limits": [
+    "Field_54ba3947 is distinct from RecoilDecreaseNorm and RecoilDecreaseFactor; the site decay multiplier is only a model analogue.",
+    "Modifier and registry layout ambiguity remain recorded; raw bytes and exact named child/hash pairing are verified.",
+    "Controller activation is not resolved by this trace. Existing binding census remains separate.",
+    "No runtime effect size, operation ordering or recovery equation confirmed."
+  ],
+  "capturePlan": "docs/working/BF6_CAPTURE_PRIORITIES.md section10; compare both axes after matching initial displacement.",
+  "evidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\parent-raw-multiplier-check.json",
+      "sha256": "7c6844f7d5064b84c3756c95e0dc6543347ff86eca9e795ba1e9cdf061fe5141"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\parent-raw-registry-check.json",
+      "sha256": "6f8a42c4e5c2a27a16f057b75d814176ba7dac939c9a6946fd23ac4ba2449e5d"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\parent-axis-operands.json",
+      "sha256": "4c24df712c54a686aa07c98da1072aa61cb9975d616b5023110633a2c8be9799"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\L19-controller-amount-vs-recovery.json",
+      "sha256": "04498dc93fd9171e86b082b9f028b89e564ed63b16eea8d8b02422b2687abf92"
+    }
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\verify_parent.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\reproduce_l19.py\""
+  ]
+}

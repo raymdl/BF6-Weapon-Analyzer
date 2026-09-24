@@ -160,6 +160,15 @@ binding. The raw branch values (53 × 100, 2 × 1001, 1000, 28) are `Int32`, not
 input enum. The site uses 0.8836 as its controller amount multiplier at the operator's
 request; native activation is not decoded.
 
+The [L19 raw and registry check](../../reference-data/provenance/frosty-2026-09-24-L19-controller-recovery-operand.json)
+finds a distinct 0.8836 multiply operand on `Field_54ba3947`, named
+`VerticalRecoilDecreaseMultiplier`, in both aim states. The horizontal counterpart
+has neutral operands. This field is distinct from `RecoilDecreaseNorm` and
+`RecoilDecreaseFactor`. The site platform factor changes amount; its recovery
+calculation uses the same decay factor for both axes. A separate vertical recovery
+effect is a source-backed candidate, not a verified equation. Capture10 now
+compares axis-specific return at matched initial displacement before any change.
+
 ## Weapon metadata
 
 The [current label/source review](../../reference-data/provenance/frosty-site-base-fields-detail-2026-09-23.json)

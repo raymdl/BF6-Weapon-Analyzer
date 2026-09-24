@@ -438,6 +438,18 @@ is a later control because six source sniper records lack the controller binding
 Five groups can reveal a large change; random recoil may require more before a
 small difference can be accepted.
 
+L19 adds a separate recovery question. Record isolated shots and release after
+equal-length bursts. Measure vertical and horizontal return separately from
+weapon-model animation. Compare return rates at matched starting displacement
+and elapsed time; smaller initial kick alone can shorten return time. The current
+amount-only model predicts the same recovery law at matched state. A candidate
+vertical-only factor of 0.8836 predicts a lower vertical recovery rate at matched
+state under that model, with no corresponding horizontal factor. A common
+change in both axes would reject this simple vertical-only interpretation.
+Different aim-assist state, unresolved animation/camera separation or insufficient
+resolution makes the result inconclusive. Do not assume this field multiplies
+the site decFactor. See [L19 evidence](../../reference-data/provenance/frosty-2026-09-24-L19-controller-recovery-operand.json).
+
 ## 11. Fast menu and utility checks
 
 These are useful low-effort additions between higher-ranked tests:
