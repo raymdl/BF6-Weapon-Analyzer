@@ -192,6 +192,11 @@ field or ballistic mechanism; both metadata records retain layout warnings.
 
 ## Regeneration and spotting
 
+The [L38 targeted recheck](../../reference-data/provenance/frosty-2026-09-24-L38-spotting-candidates.json)
+confirms ordinary/SP-prefixed minimap operands of 0.14/0.1 on the existing four
+CQB/Lightened suppressor choices. Their conditional 21/15 m distinction does not
+resolve activation or composition; reuse rank 1 without changing the site factor.
+
 - **Regeneration.** `GRX_Glacier_Soldier` `RegenerationDelay` = 5. Frangible and
   Flechette source operands are 4 and 2 (the prior review covered 58 and 4 choices).
   The [23 September raw review](../../reference-data/provenance/frosty-regen-2026-09-23.json)
