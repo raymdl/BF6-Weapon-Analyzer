@@ -969,3 +969,13 @@ confirms named `Shot.InitialSpeedVariation` (`Field_661b879d`) is 0.0 in all
 checks agree. The site's deterministic initial velocity omits no nonzero value
 from this specific base field. No change is proposed. This does not rule out
 modifier or runtime effects and does not identify a sampling distribution.
+
+## Recovery-axis modifier scope (L26, 24 September 2026)
+
+The [31-object follow-up](../../reference-data/provenance/frosty-2026-09-24-L26-controller-only-axis-sample.json)
+finds only the L19 controller modifier with a non-neutral vertical or horizontal
+recovery-axis operand. It stores vertical multiply 0.8836 in both aim states.
+The other 30 checked release `Class_bb838ff6` modifiers have neutral operands on
+both targets in both aim states. No additional axis correction is proposed.
+This scope does not cover other classes or different targets such as Match
+Trigger's recovery factor, and does not establish runtime activation.
