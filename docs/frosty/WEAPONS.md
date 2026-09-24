@@ -169,6 +169,11 @@ calculation uses the same decay factor for both axes. A separate vertical recove
 effect is a source-backed candidate, not a verified equation. Capture10 now
 compares axis-specific return at matched initial displacement before any change.
 
+The [L21 base check](../../reference-data/provenance/frosty-2026-09-24-L21-neutral-base-recovery-axes.json)
+finds both axis multipliers at 1.0 in each aim state of the 63 release site GS
+sources. Omitting those neutral base fields causes no numeric difference within
+this scope. This does not remove the separate controller-modifier question.
+
 ## Weapon metadata
 
 The [current label/source review](../../reference-data/provenance/frosty-site-base-fields-detail-2026-09-23.json)

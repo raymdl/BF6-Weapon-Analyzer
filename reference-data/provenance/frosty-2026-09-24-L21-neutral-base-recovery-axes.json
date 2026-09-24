@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L21",
+  "status": "Hypothesis rejected within verified base-source scope",
+  "question": "Are omitted non-unit base axis recovery multipliers hidden by the shared site decay factor?",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "sourceScope": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L15\\l15_field_audit.json",
+    "sha256": "39549233250d2f6e8f6a17fceac9433c9d37ca64a80d82f76248660a2a1ca30c",
+    "sourceScope": "Exact 63 baseGS assets from L15; excludes KSG and all hotfix rows."
+  },
+  "fields": {
+    "Field_54ba3947": "VerticalRecoilDecreaseMultiplier",
+    "Field_834a710f": "HorizontalRecoilDecreaseMultiplier",
+    "baseValuesAreScalars": "Each base recoil-axis field is a float; Field_5695ee1c is only the modifier multiply operand, not appended to the base-field pointer."
+  },
+  "observed": "Both vertical and horizontal base decrease multipliers are 1.0 in both aim states of all 63 release site GS sources. No numeric base omission under these values.",
+  "verification": "Reviewed descriptor-offset walker; parent independently verified every raw file SHA and all252 reported float32 byte locations as0000803f.",
+  "control": {
+    "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\GS_6P67.ebx",
+    "rawSha256": "0e0dc3d71c9a2b74cf5325294ea3ce906366280cb4b239769df0616828293fdb",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "objectIndex": 1,
+    "objectGuid": "238a0824-06cd-4292-b95d-edae10a6cda2",
+    "class": "Class_539cff9b",
+    "objectOffset": 104,
+    "decodeStatus": "fresh hash-verified decoder",
+    "values": {
+      "vertical": {
+        "unzoomed": {
+          "value": 1.0,
+          "rawFloat32": 1.0,
+          "rawOffset": 884,
+          "rawHex": "0000803f",
+          "fieldPointer": "/Field_c5d1c8fe/Field_7b609515/Field_54ba3947"
+        },
+        "zoomed": {
+          "value": 1.0,
+          "rawFloat32": 1.0,
+          "rawOffset": 1036,
+          "rawHex": "0000803f",
+          "fieldPointer": "/Field_c5d1c8fe/Field_6b84de87/Field_54ba3947"
+        }
+      },
+      "horizontal": {
+        "unzoomed": {
+          "value": 1.0,
+          "rawFloat32": 1.0,
+          "rawOffset": 880,
+          "rawHex": "0000803f",
+          "fieldPointer": "/Field_c5d1c8fe/Field_7b609515/Field_834a710f"
+        },
+        "zoomed": {
+          "value": 1.0,
+          "rawFloat32": 1.0,
+          "rawOffset": 1032,
+          "rawHex": "0000803f",
+          "fieldPointer": "/Field_c5d1c8fe/Field_6b84de87/Field_834a710f"
+        }
+      }
+    }
+  },
+  "site": {
+    "pointer": "sim/core.js genRecoilPts common x/y decF",
+    "proposal": null
+  },
+  "limits": [
+    "The class/descriptor can be layout ambiguous; findings concern values decoded by the build-matched descriptor and independently checked at its selected raw offsets.",
+    "This establishes configured base values only. It does not establish whether or how either multiplier participates in native recoil recovery.",
+    "No attachment/modifier activation or runtime work was performed.",
+    "Selected controller modifiers remain separate L19; neutral bases do not imply neutral effective runtime state."
+  ],
+  "reopenWhen": "A non-unit or unequal release base value appears in a newly verified site GS asset, or typed/native consumer evidence shows a different site base input is required.",
+  "detail": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L21\\L21-base-recoil-recovery-axis-audit.json",
+    "sha256": "f01f01cd5c9b0488a8c22c53a9e8b6b074039d847938a7298c28164603a51842"
+  },
+  "reproduction": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L21\\reproduce_l21.py\""
+}
