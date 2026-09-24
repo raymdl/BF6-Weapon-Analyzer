@@ -1,0 +1,351 @@
+{
+  "lead": "L48",
+  "date": "2026-09-24",
+  "status": "New varying ammo field; no loaded-state rule established",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "siteLink": "L37 nominal versus source capacities: M433 20/21, DB12 14/16, M60 50/50. No capacity rescan or replacement.",
+  "field": {
+    "path": "/Field_4cc9e2ed/Field_bd024e1d",
+    "containingStruct": "Struct_598cc52c",
+    "fieldOffsetInStruct": 16,
+    "type": "int32",
+    "semanticName": null,
+    "records": [
+      {
+        "route": "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB",
+        "rawSha256": "c02751eac2b054343a2a115dff8f2000bc450548c96185445cd7c3b613030e0a",
+        "objectIndex": 1,
+        "objectClass": "Class_35259f6b",
+        "value": -1,
+        "rawOffset": 976,
+        "rawHex": "ffffffff",
+        "typeCode": 15,
+        "siteWeapon": "m433"
+      },
+      {
+        "route": "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB",
+        "rawSha256": "dc00487d9baab7bbf1d52b7e6f643e953644cd305f504035663cd47db2bfdf2d",
+        "objectIndex": 1,
+        "objectClass": "Class_35259f6b",
+        "value": 2,
+        "rawOffset": 976,
+        "rawHex": "02000000",
+        "typeCode": 15,
+        "siteWeapon": "db12"
+      },
+      {
+        "route": "Common/Hardware/weapons/MG/M60E6/M60E6_WB",
+        "rawSha256": "94af9e27f6b1a7605ac26e5b669d7f1e8d176318b71bf8104c387603b8306093",
+        "objectIndex": 1,
+        "objectClass": "Class_35259f6b",
+        "value": -1,
+        "rawOffset": 976,
+        "rawHex": "ffffffff",
+        "typeCode": 15,
+        "siteWeapon": "m60"
+      },
+      {
+        "route": "Common/Hardware/Weapons/Shotgun/185KSK/185KSK_WB",
+        "rawSha256": "2134fe385283daf3c8360195f3550394ee975050d9d221fa7b81897e94e10a82",
+        "objectIndex": 2,
+        "objectClass": "Class_35259f6b",
+        "value": -1,
+        "rawOffset": 1744,
+        "rawHex": "ffffffff",
+        "typeCode": 15,
+        "siteWeapon": "ks18k"
+      },
+      {
+        "route": "Common/Hardware/weapons/shotgun/M1014/M1014_WB",
+        "rawSha256": "3a6c7f180ab4b47ae2f747a3c85ed03d69aed4978d0b35139ebcf310737a4b88",
+        "objectIndex": 1,
+        "objectClass": "Class_35259f6b",
+        "value": 99,
+        "rawOffset": 976,
+        "rawHex": "63000000",
+        "typeCode": 15,
+        "siteWeapon": "m1014"
+      },
+      {
+        "route": "Common/Hardware/Weapons/Shotgun/590A1/590A1_WB",
+        "rawSha256": "d6d98cecb0c2929268cc2a9cd80f08b509aec4295f410dfc0c7d3b24f5163bca",
+        "objectIndex": 1,
+        "objectClass": "Class_35259f6b",
+        "value": 99,
+        "rawOffset": 976,
+        "rawHex": "63000000",
+        "typeCode": 15,
+        "siteWeapon": "m87a1"
+      }
+    ]
+  },
+  "namingEvidence": {
+    "receipt": {
+      "path": "reference-data\\provenance\\frosty-audit-registry-bindings-2026-09-23.json",
+      "sha256": "f3cac1ce7e16198ba417d4235d3d01d7bff4935cd3a4fe969b47cfada3fb076c"
+    },
+    "namedControlFields": {
+      "Field_7909bca5": {
+        "AutoReplenishMagazine": 63
+      },
+      "Field_db4fa3c2": {
+        "AutoReplenishRounds": 63
+      },
+      "Field_46afa73c": {
+        "AutoReplenishDelay": 63
+      },
+      "Field_c59cc6a8": {
+        "MaxAmmoCountInWeapon": 124
+      },
+      "Field_82265a82": {
+        "MinAmmoCountInWeapon": 124
+      },
+      "Field_6e081af4": {
+        "ReloadType": 124
+      }
+    },
+    "bd024e1dOccurrences": 0,
+    "chamberTextOccurrences": 0,
+    "scope": "Retained registry-binding receipt text only, not all game data or native code."
+  },
+  "otherChecks": {
+    "typedRawFields": 15,
+    "captures": 6,
+    "reloadAssertions": 18,
+    "reloadValues": [
+      {
+        "id": "L48-HK433-reload0-MaxAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_c59cc6a8"
+        ],
+        "value": 61
+      },
+      {
+        "id": "L48-HK433-reload0-MinAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_82265a82"
+        ],
+        "value": 1
+      },
+      {
+        "id": "L48-HK433-reload0-ReloadType registry binding",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_6e081af4"
+        ],
+        "value": 2
+      },
+      {
+        "id": "L48-HK433-reload1-MaxAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_c59cc6a8"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-HK433-reload1-MinAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_82265a82"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-HK433-reload1-ReloadType registry binding",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_6e081af4"
+        ],
+        "value": 2
+      },
+      {
+        "id": "L48-DP12-reload0-MaxAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_c59cc6a8"
+        ],
+        "value": 16
+      },
+      {
+        "id": "L48-DP12-reload0-MinAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_82265a82"
+        ],
+        "value": 1
+      },
+      {
+        "id": "L48-DP12-reload0-ReloadType registry binding",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_6e081af4"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-DP12-reload1-MaxAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_c59cc6a8"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-DP12-reload1-MinAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_82265a82"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-DP12-reload1-ReloadType registry binding",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_6e081af4"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-M60E6-reload0-MaxAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_c59cc6a8"
+        ],
+        "value": 200
+      },
+      {
+        "id": "L48-M60E6-reload0-MinAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_82265a82"
+        ],
+        "value": 1
+      },
+      {
+        "id": "L48-M60E6-reload0-ReloadType registry binding",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          0,
+          "Field_6e081af4"
+        ],
+        "value": 2
+      },
+      {
+        "id": "L48-M60E6-reload1-MaxAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_c59cc6a8"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-M60E6-reload1-MinAmmoCountInWeapon",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_82265a82"
+        ],
+        "value": 0
+      },
+      {
+        "id": "L48-M60E6-reload1-ReloadType registry binding",
+        "path": [
+          "Field_f8822efa",
+          "Field_d15a0c1c",
+          1,
+          "Field_6e081af4"
+        ],
+        "value": 2
+      }
+    ],
+    "scope": "Three L37 WBs: AutoReplenishMagazine/Rounds/Delay and both ReloadInfo entries Min/MaxAmmoCountInWeapon/ReloadType. Three shotgun controls test only the unnamed integer."
+  },
+  "reproduction": [
+    {
+      "script": "scripts/frosty-primary-field-scan.py",
+      "arguments": [
+        "--db",
+        "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/coverage-decoder-v5.sqlite",
+        "--plan",
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\parent-combined-plan-v2.json",
+        "--out",
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\parent-combined-check.json"
+      ],
+      "plan": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\parent-combined-plan-v2.json",
+        "sha256": "4b3b6ed407acfd7d1606036f340f48b12f3112fdf04835dacc9d61464505c3ce"
+      },
+      "output": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\parent-combined-check.json",
+        "sha256": "df2c117f31ae657de014724612a1708e98e583ad2e1d5f92bad9025fc3a1bfea"
+      }
+    },
+    {
+      "script": "scripts/frosty-selected-chain-check.py",
+      "arguments": [
+        "--manifest",
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\manifest-L48-reload.json",
+        "--db",
+        "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/coverage-decoder-v5.sqlite",
+        "--out",
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\parent-reload-check"
+      ],
+      "manifest": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\manifest-L48-reload.json",
+        "sha256": "240f805470d30768951643c9e534cca35231c9f5adf4ed5765c9f11736f4c313"
+      },
+      "output": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L48-loading\\parent-reload-check\\comparison.json",
+        "sha256": "cb0fa5ee038e80d29040a138c678a697b4d00b9cc5fc7f4b3d84a1a7bb832a33"
+      }
+    }
+  ],
+  "inference": "DP12=2 alone does not identify a chamber count. M1014 and M87A1/590A1 both store 99; the meaning of 99 and -1 is unresolved. Named reload bounds/types do not establish loaded-at-spawn or chamber behavior.",
+  "observations": "No new gameplay observation.",
+  "decision": "No site change or new capture. Keep the existing nominal/loaded magazine pilot.",
+  "reopen": "An independent name/consumer or selected modifier that identifies how this ammo field affects loading; do not infer semantics from numerical agreement.",
+  "siteIdentityMapping": {
+    "path": "reference-data\\provenance\\frosty-weapon-identities.json",
+    "sha256": "eb08a671dff2756dc8d65ae9b15927e30a46c983e6c55d51cf02f0d9be7a7711",
+    "limit": "Existing internal-to-site identity mapping, not a loading-state proof."
+  }
+}

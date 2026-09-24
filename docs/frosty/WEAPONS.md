@@ -190,6 +190,12 @@ links the SOR-300SC `.300 BLK` and M45A1 `.45 ACP` labels to exact localized
 descriptions through raw StringIds. This supports the words, not a typed caliber
 field or ballistic mechanism; both metadata records retain layout warnings.
 
+L50: the exact M87A1 source choices have separate localized `#01 Buckshot` and
+`#00 Buck` names, while its stored `cal` is `12ga (00 Buck)`. Consider removing
+the fixed ammo suffix during operator review; no direct current JS/HTML consumer
+was found. This does not establish physical shot size, typed gauge, or a native
+default; the metadata layouts remain ambiguous. [Receipt](../../reference-data/provenance/frosty-2026-09-24-L50-shotgun-caliber-label.json).
+
 ## Regeneration and spotting
 
 The [L38 targeted recheck](../../reference-data/provenance/frosty-2026-09-24-L38-spotting-candidates.json)
@@ -1075,6 +1081,14 @@ retains the pilot's site/source comparisons: M433 20 Fast 20/21, DB-12 14/16 and
 M60 50 Rnd 50/50. Their base ammo structs all store `InitialAmmo = -1`; this is
 not a positive loaded count. Neither the field name nor the differences prove
 chamber, spawn or reload behavior. Keep the existing capture pilot unchanged.
+
+[L48](../../reference-data/provenance/frosty-2026-09-24-L48-loading-fields.json)
+adds a varying ammo integer, `Field_bd024e1d`: DP12 stores 2, M1014 and M87A1
+store 99, and HK433/M60E6/185KSK store -1. No name was found in the retained
+registry-binding receipt. These controls prevent calling the field a chamber
+count from the DP12 value alone. Named replenishment and reload bounds/types
+also do not establish loaded-at-spawn behavior. Keep the existing capture pilot;
+reopen this field only with a name, consumer or relevant selected override.
 
 ## Paired release and hotfix sample
 

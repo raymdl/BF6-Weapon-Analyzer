@@ -446,6 +446,12 @@ existing association; Attachment/AAM identity comes from the prior mapping.
 Native activation and composition remain open, so the existing rank-1 capture
 and site factor stay unchanged.
 
+[L49](../../reference-data/provenance/frosty-2026-09-24-L49-spotting-package-context.json)
+also verifies the ordinary wrapper at WB index 81 with the same selector. Both
+are listed; this does not prove eligibility or a winner. SP metadata priority
+9001 and two opaque false flags supply no verified mode rule. Keep the existing
+spotting test; neither package naming nor priority establishes composition.
+
 VSSM's actual default selects `vssm_suppressed`, whose package imports P35
 (world 0, minimap 0.06); the site gives 0/9 m. PP-19 Flash Hider and Flash Comp
 both bind `WME_SpotRange_3D_P10` (world 0, minimap 1), matching site factors.

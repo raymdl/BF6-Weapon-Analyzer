@@ -62,16 +62,14 @@ registry, selection, reference and lifetime checks; receipt commands identify th
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
 and the separate `1.4.3.1` directory under this run root.
 
-Checkpoint, 24 September 2026: L37-L47 are recorded. L45 adds a software
-spread-summary proposal; L43/L44 do not justify numerical changes. L46 found no
-changed catalog record in its sample; L47 strengthens one exact spotting chain.
-L48/L49 now investigate typed loading rules and spotting eligibility. Prefer
-new discriminators over repeating their existing values. Next free lead is L50. Do not repeat these bounded
-checks or neutral base scans. Source and software checks do not prove native
-behavior. The trial used Luna high on L47 and xhigh on L44/L46: no confirmed
-correctness issue, one L44 convergence-scope clarification. Different tasks and
-incomplete timing prevent a speed comparison. Reviewed work is committed locally;
-research remains open and nothing is pushed.
+Checkpoint, 24 September 2026: L37-L50 are recorded. L45 adds a software
+spread-summary proposal; L50 adds a lower-priority M87A1 metadata proposal.
+L48 does not identify a loaded-state rule; L49 does not establish spotting
+activation. Next free lead is L51; require a new discriminator and a concrete
+Analyzer link. Do not repeat these bounded checks or neutral base scans.
+Luna high and xhigh trials remain inconclusive for speed: different tasks,
+one useful xhigh convergence-scope correction, and one unnecessary xhigh probe.
+Research remains open; reviewed work is committed locally and nothing is pushed.
 
 ## Active source leads
 
@@ -128,8 +126,9 @@ Work these from source before handing them to the capture plan. Results from the
 | L45 | **Spread summary - Software contradiction verified** | [Raw inputs and model check](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json): DB-12 hip summary shows 1.44 degrees maximum, but its shot-2 tooltip shows 1.95 degrees. | Propose a peak pre-shot summary for operator review; no new capture. Native equations remain unresolved. |
 | L46 | **Build-change screen - No candidate in sample** | [Reproducible catalog comparison](../../reference-data/provenance/frosty-2026-09-24-L46-site-route-build-screen.json): 534 site-linked routes have equal asset-record SHA1/size/GUID across the two recorded builds. | Catalog evidence only; no new raw trace or capture. Reopen on a changed site-used route or a concrete discrepancy outside this sample. |
 | L47 | **M39 EMR spotting chain - Exact import verified** | [Three raw-backed assertions](../../reference-data/provenance/frosty-2026-09-24-L47-selected-spotting-chain.json) link the WB import through the selector-matching SP wrapper to its recorded WME target. | Strengthens one prior association, not native activation or unique effective selection; keep the site factor and existing rank-1 capture. |
-| L48 | **Loading-state discriminator** | In progress: inspect typed ammo/reload rules for the existing M433, DB-12 and M60 count contrasts. | Require a new loading or chamber link; do not repeat L37 counts or infer loaded state from capacity alone. |
-| L49 | **Spotting package eligibility** | In progress: inspect the exact M39 EMR choice for typed selection conditions beyond L47's import chain. | Separate serialized eligibility/priority from native activation; no prefix-only interpretation. |
+| L48 | **Loading fields - Meaning unresolved** | [Raw contrast](../../reference-data/provenance/frosty-2026-09-24-L48-loading-fields.json): unnamed ammo integer is 2 on DB12, 99 on M1014/M87A1, and -1 on three controls; named reload fields add no loaded-state rule. | Do not call it chamber count. Keep the existing magazine pilot; reopen with a name, consumer or relevant selected override. |
+| L49 | **Spotting package context - No mode discriminator** | [Exact M39 source check](../../reference-data/provenance/frosty-2026-09-24-L49-spotting-package-context.json): ordinary and SP wrappers are both listed with the same selector; opaque metadata does not name an activation rule. | Keep the existing spotting test and site factor. Reopen with a named condition or evaluation trace; list membership is not eligibility. |
+| L50 | **Shotgun caliber suffix - Operator review** | [M87A1 source choices](../../reference-data/provenance/frosty-2026-09-24-L50-shotgun-caliber-label.json) distinguish #01 Buckshot and #00 Buck; its fixed `cal` suffix says 00 Buck. | Consider removing that suffix; no direct current consumer found. No physical-size, typed-gauge or native-default claim; no new capture. |
 
 ## Proposed Analyzer changes
 
@@ -138,6 +137,7 @@ operator approval; none is implemented unless stated.
 
 | Proposal | Affected data/code | Evidence and remaining validation |
 |---|---|---|
+| **Operator review: M87A1 caliber metadata** | `data/weapons.json` M87A1 `cal` | L50 supports removing fixed `(00 Buck)` from the stored label; selectable #01/#00 names are distinct. No direct current consumer found; remaining gauge text and other weapons need separate source support. |
 | Neutral shooting decay field (L15) - operator review | `data/weapons.json` `recoil.{ads,hip}.shootingDecScale`; `sim/core.js` | All 126 stored values are 1 and core has no reader, consistent with [L15](../../reference-data/provenance/frosty-2026-09-24-L15-neutral-shooting-recoil-scale.json). Either remove the unused field or retain it as documented-neutral; no numeric change proposed and no site edit made. |
 | Non-polar cleanup check (L33) - operator review | `data/`, `sim/`, `ui/`; `sim/core.js:genRecoilPts` | No polar/non-polar flag or alternate branch found by scoped search and recoil-path inspection; core already resolves direction/magnitude through sine/cosine. [L33](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-build-separated.json) supports no current outlier, but does not prove the native equation; no removable site branch identified or changed. |
 | Compact Handstop utility indication (L27) | `GRIPS[id=cmpct_handstop].noEffect`; attachment effects display | Current direct numeric tiers are neutral and choice is dimmed. Exact CZ3A1 shared WPM has a true unnamed boolean; description suggests sprint firing. [Evidence](../../reference-data/provenance/frosty-2026-09-24-L27-handstop-boolean-scope.json). Needs controlled sprint-fire capture before a gameplay claim; no numeric recoil or general sprint-recovery change proposed. |
