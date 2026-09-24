@@ -111,7 +111,7 @@ Work these from source before handing them to the capture plan. Results from the
 
 | L41 | **Selected modifiers on modeled fields** | In progress: seek a non-neutral selected recoil recovery or dispersion operand outside the completed lead scopes. | Require a new source route and a concrete site calculation before expanding the scan. |
 
-| L42 | **Caliber description text** | In progress: verify exact SOR-300SC and M45A1 label text through their UI description references and localization strings. | Label evidence only; do not promote description text into a typed cartridge field or ballistic mechanism. |
+| L42 | **Caliber description text - corroborated** | [Raw references and localized text](../../reference-data/provenance/frosty-2026-09-24-L42-caliber-text.json) support SOR-300SC `.300 BLK` and M45A1 `.45 ACP` label wording. | No typed caliber or mechanics claim; no capture needed, and reopen on a typed source or changed text. |
 
 ## Proposed Analyzer changes
 

@@ -187,6 +187,11 @@ selects `PD_.40SW`. The proposed label is `.40 S&W`. This affects descriptive
 text; the existing projectile binding already supplies its ballistic values.
 No production correction is made by this research pass.
 
+The [L42 text check](../../reference-data/provenance/frosty-2026-09-24-L42-caliber-text.json)
+links the SOR-300SC `.300 BLK` and M45A1 `.45 ACP` labels to exact localized
+descriptions through raw StringIds. This supports the words, not a typed caliber
+field or ballistic mechanism; both metadata records retain layout warnings.
+
 ## Regeneration and spotting
 
 - **Regeneration.** `GRX_Glacier_Soldier` `RegenerationDelay` = 5. Frangible and

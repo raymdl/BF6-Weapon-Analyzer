@@ -490,7 +490,8 @@ records the exact arguments and comparison with the earlier scan.
   declared owner anchors, raw scalar offsets and bounded linked-group checks;
   `frosty-registry-association.py` contains that mode. Each receipt pins its manifest.
 - `frosty-selected-chain-check.py`: checks declared object paths, selected imports
-  and raw bytes against exact build/hash identities. The external plan records
+  and raw bytes against exact build/hash identities; `localized_text` links a decoded
+  StringId to a hash-pinned TSV entry. The external plan records
   expected source facts; unresolved runtime and specialized checks remain explicit.
 - `frosty-reference.py`: `vectors` compares declared Boolean fields in the
   read-only ledger; `controls` raw-checks the recorded bolt controls;
