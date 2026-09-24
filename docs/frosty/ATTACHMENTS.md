@@ -710,3 +710,13 @@ descriptor layout and neutral operands. Their Stinger owner context does not
 identify the effect. Keep release and hotfix records separate. No recoil, sway
 or other numeric site change is supported; reopen with a typed consumer or
 independently named target. Decoder layout ambiguity and runtime limits remain.
+
+### Buffer animation-context limit (L18, 24 September 2026)
+
+The [same-class registry trace](../../reference-data/provenance/frosty-2026-09-24-L18-buffer-animation-context.json)
+finds author paths for secondary-optic proc-firing animation settings. The HTI
+canted-optic example stores a 1.1 vector where Buffer stores 0.75. However, the
+exact registry member arrays name only Priority. They do not name this vector
+or its operation. Buffer has null anchors in both relevant objects. This is a
+purpose clue, not proof of a 25% recoil reduction. Retain the qualitative site
+badge; no numeric change is supported without a typed field or consumer.

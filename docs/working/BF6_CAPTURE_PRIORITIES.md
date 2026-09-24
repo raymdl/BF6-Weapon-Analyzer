@@ -548,3 +548,19 @@ A reproducible interval below 0.150 s rejects the simple single-rate cap; failur
 to reach that interval does not confirm it. VSSM semi-auto near 450 RPM and an
 automatic M4A1 run are timing controls. Keep loadout, frame rate, platform and
 server settings fixed. Capture-only outcomes do not rename any unknown fields.
+
+## L18 follow-up: Buffer visible movement
+
+Use one weapon that offers Buffer. Record the selected weapon, build, input type,
+FOV and all attachments. Compare bare baseline and Buffer with the same optic,
+stance, range and aim point. Record repeated isolated shots and matched short
+bursts in both hip and ADS, with no aim correction. Track weapon-model movement,
+reticle movement, background movement and projectile impacts separately.
+
+If Buffer changes only procedural weapon animation, weapon-model movement should
+change without the same change in background or impact displacement. If it changes
+aim recoil, repeatable impact/aim displacement should also change. If neither
+changes within measurement error, this setup does not demonstrate an active
+effect; it does not prove global absence. The source 0.75 vector is not a justified
+25% prediction because its target and operation remain unnamed. This test cannot
+alone assign a field name. See the [L18 source limit](../../reference-data/provenance/frosty-2026-09-24-L18-buffer-animation-context.json).
