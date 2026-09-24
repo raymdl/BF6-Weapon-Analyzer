@@ -53,22 +53,21 @@ Review fixes precede new leads L37 onward. Evidence root:
 Research only on `main`; local commits, no push/amend/history rewrite, no new
 Markdown documents or shipped changes. Preserve build identities and raw hashes;
 keep source facts, inference, unresolved runtime behavior and observations separate.
-Trial Luna high and xhigh reasoning for delegated work at the operator's request;
-compare total time including corrections and review, not speed alone. Update
-checkpoints at least every 30 minutes; use repository scripts with new external
+Use Luna xhigh for new delegated work at the operator's request (24 September).
+Update checkpoints at least every 30 minutes; use repository scripts with new external
 output paths. Add captures only when arithmetic supports a useful test.
 Review fixes 1-8 are reviewed. Repository methods now reproduce recorded field,
 registry, selection, reference and lifetime checks; receipt commands identify the
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
 and the separate `1.4.3.1` directory under this run root.
 
-Checkpoint, 24 September 2026: L37-L50 are recorded. L45 adds a software
-spread-summary proposal; L50 adds a lower-priority M87A1 metadata proposal.
-L48 does not identify a loaded-state rule; L49 does not establish spotting
-activation. Next free lead is L51; require a new discriminator and a concrete
-Analyzer link. Do not repeat these bounded checks or neutral base scans.
-Luna high and xhigh trials remain inconclusive for speed: different tasks,
-one useful xhigh convergence-scope correction, and one unnecessary xhigh probe.
+Checkpoint, 24 September 2026: L37-L53 are recorded. New L53 proposes a
+zeroing solver/fallback correction for operator review; L45's spread-summary
+proposal remains open. L51 found documented display behavior and L52 repeated
+an existing reload result, so neither adds a proposal. Use Luna xhigh for new
+delegation; the trial did not establish a speed or correctness advantage.
+Next free lead is L54. Require a new discriminator and a concrete Analyzer link;
+do not repeat bounded negatives, known proposals or neutral base scans.
 Research remains open; reviewed work is committed locally and nothing is pushed.
 
 ## Active source leads
@@ -129,6 +128,9 @@ Work these from source before handing them to the capture plan. Results from the
 | L48 | **Loading fields - Meaning unresolved** | [Raw contrast](../../reference-data/provenance/frosty-2026-09-24-L48-loading-fields.json): unnamed ammo integer is 2 on DB12, 99 on M1014/M87A1, and -1 on three controls; named reload fields add no loaded-state rule. | Do not call it chamber count. Keep the existing magazine pilot; reopen with a name, consumer or relevant selected override. |
 | L49 | **Spotting package context - No mode discriminator** | [Exact M39 source check](../../reference-data/provenance/frosty-2026-09-24-L49-spotting-package-context.json): ordinary and SP wrappers are both listed with the same selector; opaque metadata does not name an activation rule. | Keep the existing spotting test and site factor. Reopen with a named condition or evaluation trace; list membership is not eligibility. |
 | L50 | **Shotgun caliber suffix - Operator review** | [M87A1 source choices](../../reference-data/provenance/frosty-2026-09-24-L50-shotgun-caliber-label.json) distinguish #01 Buckshot and #00 Buck; its fixed `cal` suffix says 00 Buck. | Consider removing that suffix; no direct current consumer found. No physical-size, typed-gauge or native-default claim; no new capture. |
+| L51 | **Damage triage - Intended display** | [Review](../../reference-data/provenance/frosty-2026-09-24-L51-damage-triage.json): the 100-damage plot cap and uncapped underlying values are documented product behavior. | No calculation correction or capture; reopen only for a concrete defect or changed display requirement. |
+| L52 | **Handling triage - Duplicate result** | [Review](../../reference-data/provenance/frosty-2026-09-24-L52-handling-triage.json): the M121 A2 50 Fast 5.550/5.546 s contrast is already documented in the magazine review. | No new finding or capture; reopen only with selection/consumer evidence. |
+| L53 | **Zeroing bracket - Software contradiction verified** | [Raw inputs and 50-case check](../../reference-data/provenance/frosty-2026-09-24-L53-zeroing-bracket.json): VSSM Penetration/Frangible at 500 m zero returns null; the display substitutes zero instead of the same model's +10.73 m at 100 m. | Propose robust bracketing and explicit unavailable output for operator review. No new capture; native zeroing remains unresolved. |
 
 ## Proposed Analyzer changes
 
@@ -137,6 +139,7 @@ operator approval; none is implemented unless stated.
 
 | Proposal | Affected data/code | Evidence and remaining validation |
 |---|---|---|
+| **Operator review: zeroing solver and unavailable state (L53)** | `sim/ballistics.js` and `ui/app.js` target projection | The fixed angle bracket rejects two valid selected-model cases; null then becomes zero displacement. [Receipt](../../reference-data/provenance/frosty-2026-09-24-L53-zeroing-bracket.json). Cover valid model roots and keep failures distinct from zero; no native-equation change is established. |
 | **Operator review: M87A1 caliber metadata** | `data/weapons.json` M87A1 `cal` | L50 supports removing fixed `(00 Buck)` from the stored label; selectable #01/#00 names are distinct. No direct current consumer found; remaining gauge text and other weapons need separate source support. |
 | Neutral shooting decay field (L15) - operator review | `data/weapons.json` `recoil.{ads,hip}.shootingDecScale`; `sim/core.js` | All 126 stored values are 1 and core has no reader, consistent with [L15](../../reference-data/provenance/frosty-2026-09-24-L15-neutral-shooting-recoil-scale.json). Either remove the unused field or retain it as documented-neutral; no numeric change proposed and no site edit made. |
 | Non-polar cleanup check (L33) - operator review | `data/`, `sim/`, `ui/`; `sim/core.js:genRecoilPts` | No polar/non-polar flag or alternate branch found by scoped search and recoil-path inspection; core already resolves direction/magnitude through sine/cosine. [L33](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-build-separated.json) supports no current outlier, but does not prove the native equation; no removable site branch identified or changed. |

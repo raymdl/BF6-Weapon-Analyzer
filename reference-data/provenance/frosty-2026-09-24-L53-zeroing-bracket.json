@@ -1,0 +1,252 @@
+{
+  "lead": "L53",
+  "date": "2026-09-24",
+  "status": "Software contradiction verified; native behavior unresolved",
+  "build": {
+    "version": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": "VSSM and M39 EMR available ammo with other attachments at site-reset defaults, all five UI zero settings; 50 cases. No other attachment combinations or native defaults asserted.",
+  "softwareFacts": {
+    "failureCount": 2,
+    "cases": [
+      {
+        "id": "vssm",
+        "ammoId": "penetration",
+        "zeroMeters": 500,
+        "angle": 0.11297325209755515,
+        "comparisonOffsetAt100": 10.72719364289025
+      },
+      {
+        "id": "vssm",
+        "ammoId": "frangible",
+        "zeroMeters": 500,
+        "angle": 0.11297325209755515,
+        "comparisonOffsetAt100": 10.72719364289025
+      }
+    ],
+    "cause": "zeroRelativeVerticalOffset uses [-0.1,+0.1] radians. At VSSM500m the upper endpoint is still below the zero plane, so it returns null. ui/app.js targetVerticalOffsetMeters substitutes 0 for this null.",
+    "uiPath": "Target projection uses the substituted offset. This is source-code/function evidence, not a browser screenshot.",
+    "selectedInputs": {
+      "gravityMps2": -9.81,
+      "dragPerMeter": 0.0035,
+      "guid": "feaf593a-7fc2-47f0-a922-bf8576c75169",
+      "velocityMps": 321
+    },
+    "selectedAttachments": {
+      "sight": "iron",
+      "muzzle": "none",
+      "grip": "none",
+      "laser": "none",
+      "light": "none",
+      "barrel": "vssm_suppressed",
+      "ammo": "penetration",
+      "mag": "20_rnd",
+      "ergo": "none"
+    },
+    "comparisonMethod": "Same trajectory solver, bracket [0,0.2] radians, 44 bisections. No change to drag/gravity assumptions.",
+    "comparisonAtZero": {
+      "timeSeconds": 4.278578460522082,
+      "xMeters": 500,
+      "yMeters": -1.7677317942776938e-12
+    },
+    "offsets": [
+      {
+        "distance": 5,
+        "current": null,
+        "comparison": {
+          "timeSeconds": 0.01581529931050876,
+          "xMeters": 5,
+          "yMeters": 0.5660604105857424
+        }
+      },
+      {
+        "distance": 100,
+        "current": null,
+        "comparison": {
+          "timeSeconds": 0.3758108577674747,
+          "xMeters": 100,
+          "yMeters": 10.72719364289025
+        }
+      },
+      {
+        "distance": 200,
+        "current": null,
+        "comparison": {
+          "timeSeconds": 0.9100076668354697,
+          "xMeters": 200,
+          "yMeters": 19.423212002283982
+        }
+      },
+      {
+        "distance": 300,
+        "current": null,
+        "comparison": {
+          "timeSeconds": 1.6687143367332686,
+          "xMeters": 300,
+          "yMeters": 24.01900578170148
+        }
+      }
+    ],
+    "validation": "All 50 comparison roots have residual < 1e-8 m; 48 finite original results agree at 100 m within 1e-7 m. Exactly two cases return null in the original.",
+    "displayRange": "Samples5,100,200,300m are within current target-view range. The selected zero is500m, an existing UI option."
+  },
+  "reproduction": {
+    "script": "scripts/frosty-projectile-lifetime.py",
+    "arguments": [
+      "--zeroing",
+      "--root",
+      "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer",
+      "--weapons",
+      "vssm,m39emr",
+      "--out",
+      "<new-external-json-path>"
+    ],
+    "output": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L53-zeroing\\site-zeroing-check-v2.json",
+      "sha256": "356df0d5dc2fc1090350eb160578d2aea3083b5aa7c52479a06eaccddcd79398"
+    },
+    "inputs": [
+      {
+        "path": "sim/ballistics.js",
+        "sha256": "1e898ae51313f30863af2ccc78dee012041e92f5ba03548d14308e137c415d67"
+      },
+      {
+        "path": "sim/applyAttachments.js",
+        "sha256": "69f787f8419ceaf3899e51eea12ba5567131d3ff026c2b6887fea5ea3744ffad"
+      },
+      {
+        "path": "sim/loadout.js",
+        "sha256": "a7e4800722aa543cff73148b13a72ef31f56f61b4eb15e75ceb1ac199f70fad4"
+      },
+      {
+        "path": "ui/app.js",
+        "sha256": "94b1d77da781215b8d81f1d55f21dc91143065e2915d361fadfb261257184351"
+      },
+      {
+        "path": "data/weapons.json",
+        "sha256": "17f3335c1f5cbbcc97fc713f1714fb414eb942d1cfbd74966afa94379f70ca0d"
+      },
+      {
+        "path": "data/attachments.json",
+        "sha256": "61019e241dad577209e136e3d84c5eff11ff0b4421e148af9266f9d9c72b944e"
+      },
+      {
+        "path": "data/ammo.json",
+        "sha256": "9120140c396f55ae47802f9153180e46133764c7753e40924c66bfb3a5c74970"
+      },
+      {
+        "path": "data/balance_tables.json",
+        "sha256": "e4b2946ab0aaea54a25a6703029994a824da6f1d49c37072a7e7205faa36a08b"
+      },
+      {
+        "path": "data/hit_zones.json",
+        "sha256": "674faccf63d883cfac5be7c33ac194cc4bbd2ca4af1e3db1620c4885ed3a7132"
+      },
+      {
+        "path": "data/ballistics.json",
+        "sha256": "d149293cddf25daa0ac65db41acfe170e3d6aaa3b240c3e10979304d90658054"
+      },
+      {
+        "path": "scripts/frosty-projectile-lifetime.py",
+        "sha256": "6822add828e8a8556005f3af417703e753b503454bda4d2e76826d1d97b0711e"
+      },
+      {
+        "path": "scripts/frosty-projectile-site-functions.mjs",
+        "sha256": "127af19b26d2c53837a984821d2524701e156700b4c689d6064d0c7b675e064e"
+      }
+    ]
+  },
+  "sourceFacts": {
+    "records": [
+      {
+        "lead": "L53-VSSM-base-velocity",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "route": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\DMR\\VSSM\\VSSM_WB.ebx",
+        "rawSha256": "5c5c2165c31058a94b8476775915260591bb7bbcb49c118e2bdae55115086336",
+        "objectIndex": 1,
+        "objectClass": "Class_35259f6b",
+        "objectGuid": null,
+        "values": [
+          {
+            "name": "VSSM_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeed.z (site data/weapons.json bulletVel)",
+            "fieldPath": "Field_58d70acb/Field_0bf4f62b/Field_32a99b9c",
+            "value": 321.0,
+            "rawOffset": 416,
+            "rawHex": "0080a043",
+            "typeCode": 19
+          }
+        ]
+      },
+      {
+        "lead": "L53-VSSM-base-projectile",
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "route": "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Semi",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Bullets\\PD_9x39mm_Semi.ebx",
+        "rawSha256": "efa20806f1d26f320c33aca275582d6652d5bc25504ef6ce350860b1f7a13a16",
+        "objectIndex": 2,
+        "objectClass": "Class_23637dce",
+        "objectGuid": "feaf593a-7fc2-47f0-a922-bf8576c75169",
+        "values": [
+          {
+            "name": "site data/ballistics.json gravityMps2; source Path Field_d9d33d20",
+            "fieldPath": "Field_d9d33d20",
+            "value": -9.8100004196167,
+            "rawOffset": 656,
+            "rawHex": "c3f51cc1",
+            "typeCode": 19
+          },
+          {
+            "name": "site data/ballistics.json dragPerMeter; source Path Field_30c37c24",
+            "fieldPath": "Field_30c37c24",
+            "value": 0.0035000001080334187,
+            "rawOffset": 664,
+            "rawHex": "4260653b",
+            "typeCode": 19
+          },
+          {
+            "name": "source TimeToLive; semantic field mapping pinned by scripts/frosty-projectile-lifetime.py FIELD_HASH",
+            "fieldPath": "Field_5ef7b9a1",
+            "value": 7.0,
+            "rawOffset": 324,
+            "rawHex": "0000e040",
+            "typeCode": 19
+          }
+        ]
+      }
+    ],
+    "interpretation": "Source velocity is exactly 321 float32. Site gravity/drag -9.81/0.0035 are rounded representations of the raw float32 fields. Configured TimeToLive is 7; the 4.27857846 s modeled zero-plane flight is below it, conditional on a seconds-to-expiry interpretation. Native activation/expiry remains unresolved.",
+    "mappingReceipt": {
+      "path": "reference-data\\provenance\\frosty-site-projectile-2026-09-23.json",
+      "sha256": "259fd3fb61f60932b06b1da5e786afde651be08ba8cf1c63b26070494da8339b"
+    }
+  },
+  "inference": "The existing numerical model has a valid wider-bracket solution, so null is not evidence of zero displacement. Native zeroing angles and lifetime behavior are not established.",
+  "observations": "No new in-game or browser observation.",
+  "proposal": "Operator review: use a bracket that covers valid selected-model roots, and preserve a distinct unavailable state when no solution exists. Do not silently replace unavailable trajectory results with zero.",
+  "capture": "No new capture is needed to establish this software failure. Existing native zeroing/lifetime questions remain separate.",
+  "rawReproduction": {
+    "script": "scripts/frosty-primary-field-scan.py",
+    "arguments": [
+      "--db",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+      "--plan",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L53-zeroing\\L53-VSSM-raw-field-plan.json",
+      "--out",
+      "<new-external-json-path>"
+    ],
+    "plan": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L53-zeroing\\L53-VSSM-raw-field-plan.json",
+      "sha256": "259f3fdf5d6b0b6e7927f582ac48cd307190d747aa75c764d9aac67681f36acd"
+    },
+    "output": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L53-zeroing\\parent-raw-field-check.json",
+      "sha256": "22d510b1f2b78ea657434a12cf8f8d7b3d95da4f67d30f44100eed189617137a"
+    },
+    "checks": "2 captures, 4 typed fields; parent rerun matches agent output SHA-256."
+  }
+}

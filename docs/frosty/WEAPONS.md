@@ -140,6 +140,13 @@ every captured modifier object found no instance of that shape; nothing in captu
 data overrides the default. The engine default is probably the first list entry
 (100 m, the site default); this is not proven.
 
+L53 software check: VSSM Penetration and Frangible with other site defaults
+cannot solve the selected 500 m zero inside the current +/-0.1 rad bracket.
+The helper returns null and the target display substitutes zero offset. The same
+model with a wider bracket solves at 0.112973 rad and gives +10.73 m at 100 m.
+Propose robust bracketing and an explicit unavailable state for operator review;
+this does not establish native zeroing. [Receipt](../../reference-data/provenance/frosty-2026-09-24-L53-zeroing-bracket.json).
+
 ## Collateral
 
 - Base index: named WB `DamagePenetrationMultiplierIndex`. Steps: `Class_d11a23a2`

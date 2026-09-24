@@ -1,0 +1,14 @@
+{
+  "lead": "L52",
+  "date": "2026-09-24",
+  "status": "Closed: duplicate of retained magazine review",
+  "scope": "Selected handling/reload calculation candidate triage, M121 A2 50 Fast only. No new source or runtime finding.",
+  "priorReceipt": {
+    "path": "reference-data/provenance/frosty-site-magazines-2026-09-23.json",
+    "sha256": "ebc5963f4223994a9b96429499bddc5620dd651adf7184ba1cec1a7c90177b6c"
+  },
+  "finding": "ATTACHMENTS.md already records source operand quotient about 5.550s versus site tier result about 5.546018s, the unresolved native activation, and the limited value of ordinary 60fps capture. The delegated candidate adds no new discriminator.",
+  "decision": "Retain prior proposal and limits; no new capture, site change, or duplicate source verification.",
+  "reopen": "New selected-state/menu or native-consumer evidence that determines whether the replacement operands apply.",
+  "reviewNote": "Parent caught duplication after the high-reasoning candidate was returned. No controlled reasoning-speed conclusion."
+}

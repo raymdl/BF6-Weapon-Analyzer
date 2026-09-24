@@ -1,0 +1,29 @@
+{
+  "lead": "L51",
+  "date": "2026-09-24",
+  "status": "Closed: intended display cap, no new calculation defect",
+  "scope": "Bounded damage/TTK candidate triage; no source or native-mechanics claim.",
+  "finding": "The damage chart clamps plotted values to 100 while underlying calculations and some tooltips remain uncapped. USER_GUIDE and DAMAGE_BALLISTICS explicitly document this behavior; archived integration records the user-confirmed cap.",
+  "rejectedCandidate": "Treating capped plot versus uncapped tooltip as a calculation discrepancy would contradict the retained product intent.",
+  "secondaryCheck": "TTK tooltip range uses dataIndex; chart labels are every integer meter from zero, so this is not a range mismatch in the inspected chart.",
+  "inputs": [
+    {
+      "path": "docs/USER_GUIDE.md",
+      "sha256": "b7d2362659989be73f0d4985585743b0f847dd43835a45ad46bc86a1f2d6b0d7"
+    },
+    {
+      "path": "docs/DAMAGE_BALLISTICS.md",
+      "sha256": "48c8b1a7a2a479f2f04c89df7526c9e1a5efd88b32d2487044973d171c50c615"
+    },
+    {
+      "path": "docs/archive/FROSTY_INTEGRATION.md",
+      "sha256": "0521b07700c4aa7d1c8fd5bed50c6e5ea9a89040a9bcb2ccf1094d96c6d95bb4"
+    },
+    {
+      "path": "ui/app.js",
+      "sha256": "94b1d77da781215b8d81f1d55f21dc91143065e2915d361fadfb261257184351"
+    }
+  ],
+  "decision": "No proposal, site change or capture. Reopen on a concrete calculation defect or changed product requirement.",
+  "reviewNote": "Parent rejected the xhigh candidate after checking maintained documentation. No speed or correctness superiority is established by this trial."
+}

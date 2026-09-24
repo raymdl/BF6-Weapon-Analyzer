@@ -516,6 +516,11 @@ records the exact arguments and comparison with the earlier scan.
   --prior-site-check --out`: compares scalar/vector site travel times over the
   supported chart/view ranges; keeps configured lifetime sensitivity conditional.
 
+- `frosty-projectile-lifetime.py --zeroing --root --weapons --out`: checks
+  selected site ammo with other attachments at application defaults, across the
+  five zero settings. Compares the current bracket with a wider bracket in the
+  same trajectory model; records null-to-zero UI fallback, not native behavior.
+
 - `frosty-recoil-integration.py --repo --source-details --source-details-sha256
   --dec-exp --time-exp --out`: compares the current decay helper with independent
   integration for selected source-checked aim groups. The scalar sequence is

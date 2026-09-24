@@ -200,6 +200,18 @@ def compare_prior(report_dir, prior_dir):
     if not all(checks.values()): raise ValueError('overnight comparison mismatch: '+json.dumps(checks))
 
 def main():
+    if '--zeroing' in sys.argv[1:]:
+        ap = argparse.ArgumentParser(description='Check selected site zeroing brackets without changing the model.')
+        ap.add_argument('--zeroing', action='store_true', required=True)
+        ap.add_argument('--root', type=pathlib.Path, required=True)
+        ap.add_argument('--weapons', required=True, help='Comma-separated site IDs')
+        ap.add_argument('--out', type=pathlib.Path, required=True)
+        a = ap.parse_args()
+        if a.out.exists(): raise FileExistsError(f'refusing to overwrite output: {a.out}')
+        helper = pathlib.Path(__file__).with_name('frosty-projectile-site-functions.mjs').resolve()
+        subprocess.run(['node', str(helper), '--zeroing', '--root', str(a.root.resolve()),
+                        '--weapons', a.weapons, '--out', str(a.out.resolve())], check=True)
+        return
     if '--consistency' in sys.argv[1:]:
         cp=argparse.ArgumentParser(description='Compare level-flight timing with vector trajectory helpers for recorded L25 inputs.')
         cp.add_argument('--consistency',action='store_true',required=True)

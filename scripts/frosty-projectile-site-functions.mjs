@@ -3,7 +3,49 @@ import path from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { createHash } from 'node:crypto';
 const argv = process.argv.slice(2);
-if (argv[0] === '--consistency') {
+if (argv[0] === '--zeroing') {
+ const opts={};
+ for(let i=1;i<argv.length;i+=2){if(!['--root','--weapons','--out'].includes(argv[i])||!argv[i+1])throw Error('Invalid zeroing option');opts[argv[i]]=argv[i+1];}
+ for(const key of ['--root','--weapons','--out'])if(!opts[key])throw Error('Missing '+key);
+ const root=path.resolve(opts['--root']),out=path.resolve(opts['--out']);
+ if(fs.existsSync(out))throw Error('Refusing to overwrite '+out);
+ const read=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8'));
+ const {applyAttachments,setAttachmentContext}=await import(pathToFileURL(path.join(root,'sim/applyAttachments.js')));
+ const {resetAttsForWeapon}=await import(pathToFileURL(path.join(root,'sim/loadout.js')));
+ const {trajectoryAtDistance,zeroRelativeVerticalOffset}=await import(pathToFileURL(path.join(root,'sim/ballistics.js')));
+ const weapons=read('data/weapons.json'),attachments=read('data/attachments.json'),ammo=read('data/ammo.json'),balls=read('data/ballistics.json');
+ setAttachmentContext({...attachments,...ammo,...read('data/balance_tables.json'),HIT_ZONES:read('data/hit_zones.json')});
+ const ui=fs.readFileSync(path.join(root,'ui/app.js'),'utf8');
+ if(!ui.includes('const resolved = Number.isFinite(value) ? value : 0;')||!ui.includes('const zeroes = [100, 200, 300, 400, 500];'))throw Error('UI fallback or zero options changed; review probe');
+ const rows=[];
+ for(const id of opts['--weapons'].split(',')){
+  const raw=weapons.find(w=>w.id===id);if(!raw||!['DMR','Sniper Rifle'].includes(raw.cls))throw Error('Not a zeroable site ID: '+id);
+  const defaults={};resetAttsForWeapon(defaults,raw,{...attachments,...ammo});
+  for(const ammoId of Object.keys(ammo.WEAPON_AMMO[id].ammo)){
+   const atts={...defaults,ammo:ammoId},w=applyAttachments(raw,atts);
+   const route=balls.weapons[id].ammo[ammoId];
+   if(!route)throw Error(`Selected UI projectile route missing: ${id}/${ammoId}`);
+   const model={...balls.projectiles[route],velocityMps:w._projectileVelocityMps};
+   for(const zero of [100,200,300,400,500]){
+    const current=zeroRelativeVerticalOffset(model,100,zero);
+    let low=0,high=.2;
+    const highPoint=trajectoryAtDistance(model,zero,high);
+    if(!highPoint||highPoint.yMeters<0)throw Error('Comparison bracket insufficient');
+    for(let i=0;i<44;i++){const mid=(low+high)/2,p=trajectoryAtDistance(model,zero,mid);if(!p)throw Error('Trajectory unavailable');if(p.yMeters<0)low=mid;else high=mid;}
+    const angle=(low+high)/2;
+    rows.push({id,ammoId,siteResetAmmo:defaults.ammo,atts,route,model,zeroMeters:zero,
+     siteBracketHighAtZero:trajectoryAtDistance(model,zero,.1),currentOffsetAt100:current,
+     currentUiOffsetAt100:Number.isFinite(current)?current:0,comparisonAngleRadians:angle,
+     comparisonAtZero:trajectoryAtDistance(model,zero,angle),
+     offsets:[5,100,200,300].map(distance=>({distance,current:zeroRelativeVerticalOffset(model,distance,zero),comparison:trajectoryAtDistance(model,distance,angle)}))});
+   }
+  }
+ }
+ const files=['sim/ballistics.js','sim/applyAttachments.js','sim/loadout.js','ui/app.js','data/weapons.json','data/attachments.json','data/ammo.json','data/balance_tables.json','data/hit_zones.json','data/ballistics.json','scripts/frosty-projectile-lifetime.py','scripts/frosty-projectile-site-functions.mjs'];
+ const report={mode:'zeroing',arguments:argv,rows,failedCases:rows.filter(r=>r.currentOffsetAt100===null).map(r=>({id:r.id,ammoId:r.ammoId,zeroMeters:r.zeroMeters,angle:r.comparisonAngleRadians,comparisonOffsetAt100:r.offsets[1].comparison.yMeters})),inputs:files.map(p=>({path:p,sha256:createHash('sha256').update(fs.readFileSync(path.join(root,p))).digest('hex')})),limits:['Software model and UI fallback check, not native zeroing behavior.','Comparison uses the same trajectory solver with a wider bracket; it does not validate the native gravity/drag equation.','Site reset loadouts are application defaults. Each listed ammo is selected with those other defaults; other attachment combinations are not covered.']};
+ fs.mkdirSync(path.dirname(out),{recursive:true});fs.writeFileSync(out,JSON.stringify(report,null,2)+'\n',{flag:'wx'});
+ console.log(JSON.stringify({out,cases:rows.length,failedCases:report.failedCases}));
+} else if (argv[0] === '--consistency') {
  const opts={};
  for(let i=1;i<argv.length;i++){
   const key=argv[i];
