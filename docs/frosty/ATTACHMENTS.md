@@ -698,4 +698,15 @@ No combat-stat change is proposed. [Reviewed trace](../../reference-data/provena
 The broader local-part inventory remains a source of bounded leads. Bipod flags
 alone do not establish a recoil effect. M18's local MagazineCapacity 22 versus
 the site's nominal 21-round magazine repeats the known chamber/nominal question.
-The separate M250 numeric bipod part is being investigated as L16.
+The separate M250 numeric bipod part is recorded below as L16.
+
+### M250 local bipod scalars (L16, 24 September 2026)
+
+The [reviewed local part](../../reference-data/provenance/frosty-2026-09-24-L16-local-bipod-unmapped.json)
+selects `Class_8b80c794` under `U_M250_Bipod`. Fields `e11a863e` and
+`f9477ebd` are 1.0375; `6a647926` is 1.0. Their targets and operations remain
+unknown. Two hotfix vehicle instances have the same checked class/inherited
+descriptor layout and neutral operands. Their Stinger owner context does not
+identify the effect. Keep release and hotfix records separate. No recoil, sway
+or other numeric site change is supported; reopen with a typed consumer or
+independently named target. Decoder layout ambiguity and runtime limits remain.

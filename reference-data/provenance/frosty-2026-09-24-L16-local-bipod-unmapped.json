@@ -1,0 +1,182 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L16",
+  "status": "Exhausted within recorded scope",
+  "question": "Does the M250 Bipod select an omitted numeric effect relevant to the Analyzer?",
+  "observed": [
+    {
+      "capture": {
+        "id": 12040,
+        "route": "Common/Hardware/Weapons/MG/M250/M250_WB",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\M250\\M250_WB.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "6f877d455867c568d19983c79763ddb99c8ac643aa93dea1638777e2bb9ef2bb",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 51,
+        "root_class": "Class_a6e2adec",
+        "warnings_json": "{\"$layoutAmbiguous\":23}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 22,
+      "objectOffset": 5896,
+      "class": "Class_8b80c794",
+      "rawFields": [
+        {
+          "field": "Field_e11a863e",
+          "offset": 5944,
+          "bytes": "cdcc843f",
+          "float32": 1.037500023841858
+        },
+        {
+          "field": "Field_f9477ebd",
+          "offset": 5960,
+          "bytes": "cdcc843f",
+          "float32": 1.037500023841858
+        },
+        {
+          "field": "Field_6a647926",
+          "offset": 5964,
+          "bytes": "0000803f",
+          "float32": 1.0
+        }
+      ]
+    },
+    {
+      "capture": {
+        "id": 58736,
+        "route": "Common/Hardware/Vehicles/Helicopter/AH64E/VB_VEH_Helicopter_AH64E",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer2-2026-09-23\\raw\\Common\\Hardware\\Vehicles\\Helicopter\\AH64E\\VB_VEH_Helicopter_AH64E.ebx",
+        "head": 4892087,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+        "descriptor_sha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+        "raw_sha256": "371300af99eab2e9b4bef53cec964bdf7edbcb0ef55c6c426eb963c72c2fa555",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 155,
+        "root_class": "Class_b057bb60",
+        "warnings_json": "{\"$layoutAmbiguous\":54}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 82,
+      "objectOffset": 17288,
+      "class": "Class_8b80c794",
+      "rawFields": [
+        {
+          "field": "Field_e11a863e",
+          "offset": 17336,
+          "bytes": "0000803f",
+          "float32": 1.0
+        },
+        {
+          "field": "Field_f9477ebd",
+          "offset": 17352,
+          "bytes": "0000803f",
+          "float32": 1.0
+        },
+        {
+          "field": "Field_6a647926",
+          "offset": 17356,
+          "bytes": "0000803f",
+          "float32": 1.0
+        }
+      ]
+    },
+    {
+      "capture": {
+        "id": 58744,
+        "route": "Common/Hardware/Vehicles/Helicopter/AH6M/VB_VEH_Helicopter_AH6M",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\weapon-dependency-layer2-2026-09-23\\raw\\Common\\Hardware\\Vehicles\\Helicopter\\AH6M\\VB_VEH_Helicopter_AH6M.ebx",
+        "head": 4892087,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors-hotfix-2026-09-16.ebx",
+        "descriptor_sha256": "99b49cfd8bdb5bb6f0181df8ac0d93a0396c1b7f07a1ba3ce8ca1cea45969640",
+        "raw_sha256": "ed3c587a39bf7421e5479e85efb96c5df4dbcc588810d651a0b83e1b9375d098",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 162,
+        "root_class": "Class_b057bb60",
+        "warnings_json": "{\"$layoutAmbiguous\":60}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 93,
+      "objectOffset": 20736,
+      "class": "Class_8b80c794",
+      "rawFields": [
+        {
+          "field": "Field_e11a863e",
+          "offset": 20784,
+          "bytes": "0000803f",
+          "float32": 1.0
+        },
+        {
+          "field": "Field_f9477ebd",
+          "offset": 20800,
+          "bytes": "0000803f",
+          "float32": 1.0
+        },
+        {
+          "field": "Field_6a647926",
+          "offset": 20804,
+          "bytes": "0000803f",
+          "float32": 1.0
+        }
+      ]
+    }
+  ],
+  "selection": {
+    "releaseM250LocalPart": 45,
+    "effectPath": "Field_9690d604/1",
+    "selectorPath": "Field_819acc98",
+    "selectorGuid": "7759ac13-94c4-4d6c-a7f4-64bea2477a89",
+    "selectorName": "U_M250_Bipod",
+    "hotfixLocalParts": {
+      "AH64E": 133,
+      "AH6M": 140
+    },
+    "hotfixSelectorArrays": "empty",
+    "hotfixOwnerContext": "Class_3add1cc5 object12 authored Stinger; surrounding context does not identify effect target"
+  },
+  "comparison": {
+    "descriptorClassAndInheritanceLayoutEqual": true,
+    "scope": "Selected class size/alignment and inherited field hashes/types/offsets only; each raw source and descriptor hash independently verified."
+  },
+  "conclusion": "Two M250 operands are non-unit, but exact target and operation are unresolved. Neutral vehicle instances and Stinger context do not distinguish recoil, sway, presentation or other meanings. No site correction justified.",
+  "site": {
+    "pointers": [
+      "data/attachments.json GRIPS[id=bipod]",
+      "sim/applyAttachments.js"
+    ],
+    "proposal": null
+  },
+  "limits": [
+    "All three effects carry decoder layout ambiguity; field identity is not established by matching descriptor layout.",
+    "Vehicle evidence is hotfix Head4892087; infantry evidence is release Head4892017. Values are not merged.",
+    "No independent target/operation name in the scoped registry search; absence is limited to those records.",
+    "No runtime activation or composition established."
+  ],
+  "reopenWhen": "A typed consumer or independently named same-class target maps the numeric fields and operation. A specific measurable hypothesis is needed before a useful capture can be designed.",
+  "evidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L16\\parent-raw-verification.json",
+      "sha256": "bd8367b1fae0e7c81a9e64c44a2226e5e8f6c2026cf4380a0547f63c2d75d0a9"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L16\\L16-m250-local-bipod.json",
+      "sha256": "0862c6d544d254e72bda9ed2480c69edbf38053fa1b601fe2691ee447ebc3332"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.1\\L16\\L16-hotfix-vehicle-context.json",
+      "sha256": "3f68fda127c107be0fda1844c3b78d665bf5d1003bddbae5a3bce83475a0ce07"
+    }
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L16\\verify_parent.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.1\\L16\\reproduce_l16_hotfix.py\""
+  ]
+}
