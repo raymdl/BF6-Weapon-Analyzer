@@ -1,0 +1,241 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L1",
+  "status": "Exhausted within recorded decoded-release scope",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Can a controlled single-flag difference name the six bolt behavior flags and change modeled scoped cadence?",
+  "observed": {
+    "flagOrder": [
+      "Field_168e57d5",
+      "Field_65310f94",
+      "Field_c2b88435",
+      "Field_85df0c4a",
+      "Field_a60870ff",
+      "Field_3ff462cc"
+    ],
+    "vectors": {
+      "T T F T T T": 57,
+      "T T T T T T": 5,
+      "F F F F F F": 6,
+      "F F T F F F": 1
+    },
+    "onlySingleBitDifference": "Field_c2b88435",
+    "rawControls": [
+      {
+        "capture": {
+          "id": 6211,
+          "route": "Common/Hardware/weapons/BoltAction/MiniFix/MiniFix_WB",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\MiniFix\\MiniFix_WB.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "13c95ce34604212b900be0bcb4b7cdf5b487a78f11ff10ebed7b70c2d7624e93",
+          "header_status": "ok",
+          "decode_status": "decoded-provisional",
+          "error": null,
+          "object_count": 76,
+          "root_class": "Class_a6e2adec",
+          "warnings_json": "{\"$layoutAmbiguous\":21}",
+          "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+        },
+        "objectIndex": 1,
+        "objectGuid": null,
+        "fieldPath": "Field_f8822efa/Field_eebe0fd8",
+        "checks": [
+          {
+            "field": "Field_168e57d5",
+            "rawOffset": 722,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_65310f94",
+            "rawOffset": 723,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_c2b88435",
+            "rawOffset": 724,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_85df0c4a",
+            "rawOffset": 725,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_a60870ff",
+            "rawOffset": 726,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_3ff462cc",
+            "rawOffset": 727,
+            "rawByte": 0,
+            "value": false
+          }
+        ]
+      },
+      {
+        "capture": {
+          "id": 15066,
+          "route": "Common/Hardware/weapons/Secondary/RagingHunter/RagingHunter_WB",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Secondary\\RagingHunter\\RagingHunter_WB.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "c3a3fcabcd2195f57134743de03d89e58f4a0e2fe0f93b5738628ea56690e1d6",
+          "header_status": "ok",
+          "decode_status": "decoded-provisional",
+          "error": null,
+          "object_count": 25,
+          "root_class": "Class_a6e2adec",
+          "warnings_json": "{\"$layoutAmbiguous\":16}",
+          "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+        },
+        "objectIndex": 1,
+        "objectGuid": null,
+        "fieldPath": "Field_f8822efa/Field_eebe0fd8",
+        "checks": [
+          {
+            "field": "Field_168e57d5",
+            "rawOffset": 722,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_65310f94",
+            "rawOffset": 723,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_c2b88435",
+            "rawOffset": 724,
+            "rawByte": 1,
+            "value": true
+          },
+          {
+            "field": "Field_85df0c4a",
+            "rawOffset": 725,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_a60870ff",
+            "rawOffset": 726,
+            "rawByte": 0,
+            "value": false
+          },
+          {
+            "field": "Field_3ff462cc",
+            "rawOffset": 727,
+            "rawByte": 0,
+            "value": false
+          }
+        ]
+      },
+      {
+        "capture": {
+          "id": 5983,
+          "route": "Common/Hardware/Weapons/BoltAction/M2010ESR/M2010ESR_WB",
+          "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\M2010ESR\\M2010ESR_WB.ebx",
+          "head": 4892017,
+          "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+          "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+          "raw_sha256": "39bd961b4e1462ee812d5b5ddb3722daa52e36601dce36bbf79f2c84a044f3ff",
+          "header_status": "ok",
+          "decode_status": "decoded-provisional",
+          "error": null,
+          "object_count": 46,
+          "root_class": "Class_a6e2adec",
+          "warnings_json": "{\"$layoutAmbiguous\":19}",
+          "decoder_sha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4"
+        },
+        "objectIndex": 1,
+        "objectGuid": null,
+        "fieldPath": "Field_f8822efa/Field_eebe0fd8",
+        "checks": [
+          {
+            "field": "Field_168e57d5",
+            "rawOffset": 722,
+            "rawByte": 1,
+            "value": true
+          },
+          {
+            "field": "Field_65310f94",
+            "rawOffset": 723,
+            "rawByte": 1,
+            "value": true
+          },
+          {
+            "field": "Field_c2b88435",
+            "rawOffset": 724,
+            "rawByte": 1,
+            "value": true
+          },
+          {
+            "field": "Field_85df0c4a",
+            "rawOffset": 725,
+            "rawByte": 1,
+            "value": true
+          },
+          {
+            "field": "Field_a60870ff",
+            "rawOffset": 726,
+            "rawByte": 1,
+            "value": true
+          },
+          {
+            "field": "Field_3ff462cc",
+            "rawOffset": 727,
+            "rawByte": 1,
+            "value": true
+          }
+        ]
+      }
+    ],
+    "additionalScope": "All decoded release object bodies with Field_168e57d5, without route or suffix filters. Melee and M320 add no new vector. No vehicle-like route matched in this decoded slice.",
+    "registryRoute": "Current registry-bindings.jsonl has no association row for any of the six flag hashes."
+  },
+  "inference": "Field_c2b88435 can be prioritized for a controlled test; no candidate SDK member name is established.",
+  "rejectedHypothesis": "The observed one-bit vector differences alone identify an ADS or input gate: surrounding timing fields, reference anchors and weapon mechanisms differ.",
+  "siteImpact": "No new scoped-cadence or flag-name correction justified. Existing DLC Bolt source bundle and capture rank6 remain.",
+  "limits": [
+    "No field or vehicle-mechanic absence claim; incomplete/undecoded captures may contain more cases.",
+    "SDK member list is candidate naming evidence only; field-name hashing not attempted.",
+    "All decoded bolt blocks retain layout warnings; three decisive control vectors verified directly from descriptor-backed raw offsets.",
+    "No new runtime observations."
+  ],
+  "reopenWhen": "A new captured same-weapon modifier changes a flag independently, or a native/serialized consumer or typed registry association identifies it.",
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L1\\all_routes_analyze.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L1\\verify_flag_controls.py\""
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L1\\all-routes-evidence.json",
+      "sha256": "f45b27d0794e7906c567697a4ff3c62bf753c90e825532b9ea40e692ce06cdfb"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L1\\flag-controls-raw-reviewed.json",
+      "sha256": "74c935ed975c32afc064344a368f47b15e6288c48872a719ddd411250bcc4e28"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L1\\all_routes_analyze.py",
+      "sha256": "c002e5c74d9bbc4ff8eaaf7b833fdffa76f0a116951cead1242bb1683b737070"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L1\\verify_flag_controls.py",
+      "sha256": "05edd575f10ebb90470386adf948069eaf5d8c1c6dd853e750ec2b5bf7cd4e3d"
+    }
+  ]
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L15",
+  "status": "Hypothesis of a current numeric omission rejected within recorded scope",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Does the unused site shootingDecScale field conceal a non-neutral source modifier affecting recoil simulation?",
+  "site": {
+    "pointer": "data/weapons.json recoil.{ads,hip}.shootingDecScale",
+    "consumer": "sim/core.js has no direct consumer; recovery formula remains modeled, not engine-confirmed.",
+    "current": "Source-backed values 1; recoil recovery does not multiply this field.",
+    "proposed": "No numeric change. Revisit only if a relevant non-unit base or selected non-neutral modifier is found."
+  },
+  "sourceFacts": {
+    "field": "Field_9b46e71d",
+    "name": "ShootingRecoilDecreaseScale from current raw registry association",
+    "base": "All two-aim slots in 63 release weapon GS roots are 1.0.",
+    "modifiers": "All corresponding slots in 31 captured release Class_bb838ff6 effects are neutral.",
+    "neutralOperand": {
+      "Field_bbffe8bc": false,
+      "Field_bbbfe9cc": 0.0,
+      "Field_5695ee1c": 1.0,
+      "Field_4692836a": 0.0,
+      "Field_98a799ba": 1.0
+    },
+    "validation": {
+      "verifiedRawFiles": 94,
+      "verifiedModifierSlots": 62,
+      "verifiedBaseSlots": 126,
+      "neutralOperand": {
+        "Field_bbffe8bc": false,
+        "Field_bbbfe9cc": 0.0,
+        "Field_5695ee1c": 1.0,
+        "Field_4692836a": 0.0,
+        "Field_98a799ba": 1.0
+      },
+      "method": "Fresh decoder pass from hash-verified raw files; all five serialized operand members checked, including Field_98a799ba."
+    },
+    "representativeBase": {
+      "route": "Common/Hardware/Weapons/AssaultRifle/6p67/GS_6P67",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\6p67\\GS_6P67.ebx",
+      "rawSha256": "0e0dc3d71c9a2b74cf5325294ea3ce906366280cb4b239769df0616828293fdb",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "head": 4892017,
+      "occurrences": [
+        {
+          "objectIndex": 1,
+          "objectGuid": "238a0824-06cd-4292-b95d-edae10a6cda2",
+          "class": "Class_539cff9b",
+          "objectOffset": 104,
+          "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_9b46e71d",
+          "value": 1.0
+        },
+        {
+          "objectIndex": 1,
+          "objectGuid": "238a0824-06cd-4292-b95d-edae10a6cda2",
+          "class": "Class_539cff9b",
+          "objectOffset": 104,
+          "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_9b46e71d",
+          "value": 1.0
+        }
+      ]
+    },
+    "representativeModifier": {
+      "route": "Common/Gameplay/InRoundProgression/MountedPlus/GRM_MountedPlusHorizontal",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\InRoundProgression\\MountedPlus\\GRM_MountedPlusHorizontal.ebx",
+      "rawSha256": "ad7ea96aa314422d71c21f14917c485387bfdb9df8a8ad4fcfc0c8a6f3217ddf",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "classIndex": 0,
+      "classGuid": "894143ff-3af1-4acf-ad3d-a21ab17d2293",
+      "classOffset": 48,
+      "fieldPath": "/Field_7b609515/Field_9b46e71d",
+      "operand": {
+        "Field_bbffe8bc": false,
+        "Field_bbbfe9cc": 0.0,
+        "Field_5695ee1c": 1.0,
+        "Field_4692836a": 0.0,
+        "Field_98a799ba": 1.0
+      },
+      "recoilOperand": {
+        "overrideOn": false,
+        "override": 0.0,
+        "mult": 1.0,
+        "add": 0.0
+      }
+    }
+  },
+  "conclusion": "For the checked base GS and recoil-modifier class, applying a multiplicative scale of one would not change a displayed recoil path. The proposed non-neutral omission has no source support in this scope.",
+  "limits": [
+    "This does not validate the native recoil recovery equation or prove that no other class/runtime setting changes the scale.",
+    "No selection traversal was needed because every candidate operand in the scoped class was neutral.",
+    "No runtime behavior or activation claim; descriptor ambiguity warnings remain."
+  ],
+  "reopenWhen": "A newly captured non-unit scale, non-neutral modifier in another relevant class, or consumer establishes a numeric effect.",
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L15\\l15_field_audit.json",
+      "sha256": "39549233250d2f6e8f6a17fceac9433c9d37ca64a80d82f76248660a2a1ca30c"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L15\\parent-raw-neutral-verification.json",
+      "sha256": "4afd07e3afbfd16bda6ce87d9d1677d8438c336df916482249ee87248549db16"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L15\\audit_field.py",
+      "sha256": "4901f7adc353ba821a7763ec4e17406bf812c1017fdb3ef4edb4e00c02f20195"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L15\\verify_neutral.py",
+      "sha256": "540e7779a818a51a9060d4cdfc5ead2fed8c6cb070c067c629d4c240cf0e0d31"
+    }
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L15\\audit_field.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L15\\verify_neutral.py\""
+  ]
+}

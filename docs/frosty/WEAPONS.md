@@ -885,3 +885,32 @@ The Analyzer does not expose a general manual single-fire mode. M4A1's source
 main/single pair (899.999023/399.998993) gives a useful alternate-mode cadence
 test before adding that feature. Keep mode availability, input buffering and
 accepted-shot timing unresolved. [Receipt and reproduction](../../reference-data/provenance/frosty-2026-09-24-L14-single-fire-cadence.json).
+
+## Bolt flag isolation (L1, 24 September 2026)
+
+An all-route decoded-release search adds melee and M320 blocks to the infantry
+comparison but no new flag pattern. Only `Field_c2b88435` differs alone between
+observed six-flag vectors. MiniFix is all false; RagingHunter differs only in that
+bit; M2010ESR is all true. These vectors were checked at raw descriptor offsets.
+The surrounding timings, anchors and weapon mechanisms differ, so this is not
+a controlled semantic mapping. No individual flag name or cadence correction
+follows. The current registry association report also lacks these six hashes.
+
+The search had no path/suffix filter and found no vehicle-like route in the
+decoded release slice. This does not rule out undecoded or uncaptured vehicle
+cases. Retain capture rank6; reopen with a same-weapon isolated modifier or a
+new named consumer. [Scope, raw controls and reproduction](../../reference-data/provenance/frosty-2026-09-24-L1-bolt-flag-contrasts.json).
+
+## Shooting recoil decay scale (L15, 24 September 2026)
+
+The site stores `recoil.shootingDecScale` but does not read it in `sim/core.js`.
+A source check found `ShootingRecoilDecreaseScale` (`Field_9b46e71d`) equal to
+1.0 in both aim states of every release weapon GS, with neutral operands in
+every captured release `Class_bb838ff6` recoil modifier. Fresh decoding from
+hash-verified files confirmed the base values and all five operand members.
+
+Thus an omitted non-neutral multiplier does not explain a recoil difference
+within this scope. No numeric change is proposed. This result does not validate
+the assumed recovery equation or exclude a different runtime setting/class.
+Reopen only with a relevant non-unit value, non-neutral effect or consumer.
+[Evidence and reproduction](../../reference-data/provenance/frosty-2026-09-24-L15-neutral-shooting-recoil-scale.json).
