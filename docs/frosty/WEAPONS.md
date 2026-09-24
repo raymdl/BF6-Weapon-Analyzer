@@ -180,12 +180,10 @@ this scope. This does not remove the separate controller-modifier question.
 
 ## Weapon metadata
 
-The [current label/source review](../../reference-data/provenance/frosty-site-base-fields-detail-2026-09-23.json)
-also identifies a GGH22 caliber-label mismatch: `data/weapons.json` says
-`9×19mm`, while its exact localized description says `.40 caliber` and its WB
-selects `PD_.40SW`. The proposed label is `.40 S&W`. This affects descriptive
-text; the existing projectile binding already supplies its ballistic values.
-No production correction is made by this research pass.
+The [23 September label/source review](../../reference-data/provenance/frosty-site-base-fields-detail-2026-09-23.json)
+identified the GGH22 mismatch: its localized description says `.40 caliber` and
+its WB selects `PD_.40SW`. The site label is now `.40 S&W`; this run does not
+change it or the projectile binding.
 
 The [L42 text check](../../reference-data/provenance/frosty-2026-09-24-L42-caliber-text.json)
 links the SOR-300SC `.300 BLK` and M45A1 `.45 ACP` labels to exact localized
@@ -1064,6 +1062,14 @@ HeatPerBullet. Its site base magazine is 31; selected capacities are 30-60.
 Even 60 shots without cooling add only about 0.15 heat against threshold 1
 (about 400 shots). No base heat gate is proposed under this conditional model;
 selected overrides and native cooling/penalty rules remain outside the result.
+
+## Nominal and loaded magazine counts
+
+The [L37 raw check](../../reference-data/provenance/frosty-2026-09-24-L37-configured-magazine-counts.json)
+retains the pilot's site/source comparisons: M433 20 Fast 20/21, DB-12 14/16 and
+M60 50 Rnd 50/50. Their base ammo structs all store `InitialAmmo = -1`; this is
+not a positive loaded count. Neither the field name nor the differences prove
+chamber, spawn or reload behavior. Keep the existing capture pilot unchanged.
 
 ## Paired release and hotfix sample
 

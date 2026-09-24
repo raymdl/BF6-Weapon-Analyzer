@@ -477,8 +477,10 @@ baseline.
 `python scripts/frosty-primary-field-scan.py --help` describes a read-only scan
 of recorded route/object pairs with explicit build identity and scalar paths.
 It verifies descriptor/raw hashes, float32 types, offsets and decoded values.
-`--plan` also accepts per-record build identities, Boolean fields, expected values
+`--plan` also accepts per-record build identities, Boolean/Int32 fields, expected values
 and recorded offsets/bytes; keep each build in a separate external output.
+Float checks account for the decoder's six-decimal display rounding; raw bytes
+and expected values retain their separate checks.
 `--heat-site-mapping` adds conditional RPM/magazine arithmetic; labels require
 independent naming evidence. Use a new external `--out`; existing files are refused.
 [L36](../../reference-data/provenance/frosty-2026-09-24-L36-primary-heat-scope.json)

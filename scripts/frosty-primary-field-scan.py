@@ -71,7 +71,8 @@ def main():
     if plan:
         typed_results = []
         descriptors = {}
-        type_codes = {'float32': mod['FLOAT32'], 'bool': mod['BOOLEAN']}
+        type_codes = {'float32': mod['FLOAT32'], 'bool': mod['BOOLEAN'],
+                      'int32': mod['INT32']}
         for record in plan['records']:
             captures = db.execute(
                 'select * from captures where route=? collate nocase and head=? '
@@ -105,9 +106,13 @@ def main():
                     assert byte in (0, 1), (record['route'], path, byte)
                     raw = bool(byte); width = 1
                     equal = raw == decoded and raw == spec['expected']
-                else:
+                elif spec['type'] == 'float32':
                     raw = struct.unpack_from('<f', ebx.data, offset)[0]; width = 4
-                    equal = abs(raw - decoded) < 1e-7 and abs(raw - spec['expected']) < 1e-7
+                    # The pinned decoder rounds float32 presentation to six decimals.
+                    equal = round(raw, 6) == decoded and abs(raw - spec['expected']) < 1e-7
+                else:
+                    raw = struct.unpack_from('<i', ebx.data, offset)[0]; width = 4
+                    equal = raw == decoded and raw == spec['expected']
                 raw_hex = ebx.data[offset:offset+width].hex()
                 assert offset == spec.get('expectedRawOffset', offset), (record['route'], path, offset)
                 assert raw_hex == spec.get('expectedRawHex', raw_hex), (record['route'], path, raw_hex)
@@ -122,7 +127,7 @@ def main():
         report = dict(schemaVersion=1, mode='typed-plan', records=typed_results,
             recordCount=len(typed_results), fieldCount=sum(len(x['values']) for x in typed_results),
             planSha256=sha(args.plan), decoderSha256=sha(args.decoder or ROOT / 'scripts/frosty-ebx-decode.py'),
-            limits=['Float32 and one-byte Boolean scalar fields only.',
+            limits=['Float32, signed Int32, and one-byte Boolean scalar fields only.',
                     'No native consumption, activation, SDK naming, or semantic mapping established.',
                     'Pointer-backed arrays and specialized naming checks are not covered.'])
         args.out.parent.mkdir(parents=True, exist_ok=True)
