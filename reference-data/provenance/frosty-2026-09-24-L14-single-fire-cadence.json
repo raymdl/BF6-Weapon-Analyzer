@@ -1,0 +1,216 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L14",
+  "status": "Questioned site behavior supported within verified scope",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "priorEvidence": "reference-data/provenance/frosty-audit-registry-bindings-2026-09-23.json",
+  "corrections": [
+    "Field_be31b12d already has exact current raw registry association RateOfFireForSingleFire; SDK order is not the only evidence.",
+    "Across 63 release primary firing blocks its range is 149.998993 to 1799.999023, not 300 to 450. A stored value does not establish a usable single-fire mode."
+  ],
+  "sourceFacts": {
+    "positiveControl": {
+      "route": "Common/Hardware/Weapons/DMR/VSSM/VSSM_WB",
+      "fileGuid": "6e0a4518-18ed-49cf-8d7b-edd9c1d25efd",
+      "rawSha256": "5c5c2165c31058a94b8476775915260591bb7bbcb49c118e2bdae55115086336",
+      "objectIndex": 1,
+      "objectGuid": null,
+      "path": "Field_f8822efa",
+      "rawFields": [
+        {
+          "field": "Field_14c4a054",
+          "offset": 832,
+          "bytes": "f0ff4744",
+          "value": 799.9990234375,
+          "descriptor": {
+            "hash": "14c4a054",
+            "offset": 176,
+            "flags": 304,
+            "classRef": 65535
+          }
+        },
+        {
+          "field": "Field_be31b12d",
+          "offset": 840,
+          "bytes": "dfffe043",
+          "value": 449.9989929199219,
+          "descriptor": {
+            "hash": "be31b12d",
+            "offset": 184,
+            "flags": 304,
+            "classRef": 65535
+          }
+        },
+        {
+          "field": "Field_16e6fa59",
+          "offset": 888,
+          "bytes": "00000000",
+          "value": 0,
+          "descriptor": {
+            "hash": "16e6fa59",
+            "offset": 232,
+            "flags": 128,
+            "classRef": 543
+          }
+        }
+      ],
+      "registry": {
+        "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+        "rawSha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+        "anchorGuid": "d79caee0-f1af-4e67-a9cc-dc4abce099e6",
+        "arrayIndex": 3,
+        "fieldHash": 3190927661,
+        "name": "VSSM_WB.WeaponEntityData.WeaponFiring.PrimaryFire.FireLogic.RateOfFireForSingleFire",
+        "value": 449.998993
+      }
+    },
+    "modifierCases": "WME_Firerate900_M10 stores main=800 and single=400; VSSM FullAutoReplace part stores main=-1 and single=399.998993. These are separate configured coordinates; runtime relevance depends on selected mode.",
+    "negativeControl": "M240L and other no-single-mode configurations still serialize this field; field presence alone cannot establish mode availability."
+  },
+  "siteComparison": [
+    {
+      "siteId": "ks18k",
+      "siteRpm": 299.999,
+      "sourceSingle": 299.998993,
+      "sourceMain": 299.998993,
+      "delta": 7.000000039170118e-06
+    },
+    {
+      "siteId": "lmr27",
+      "siteRpm": 449.999,
+      "sourceSingle": 449.998993,
+      "sourceMain": 449.998993,
+      "delta": 7.000000039170118e-06
+    },
+    {
+      "siteId": "es57",
+      "siteRpm": 449.999,
+      "sourceSingle": 449.998993,
+      "sourceMain": 449.998993,
+      "delta": 7.000000039170118e-06
+    },
+    {
+      "siteId": "ggh22",
+      "siteRpm": 359.999,
+      "sourceSingle": 359.998993,
+      "sourceMain": 359.998993,
+      "delta": 7.000000039170118e-06
+    },
+    {
+      "siteId": "m1014",
+      "siteRpm": 199.999,
+      "sourceSingle": 199.998993,
+      "sourceMain": 199.998993,
+      "delta": 6.999999982326699e-06
+    },
+    {
+      "siteId": "p18",
+      "siteRpm": 399.999,
+      "sourceSingle": 399.998993,
+      "sourceMain": 399.998993,
+      "delta": 7.000000039170118e-06
+    },
+    {
+      "siteId": "m39emr",
+      "siteRpm": 257.142,
+      "sourceSingle": 257.141998,
+      "sourceMain": 257.141998,
+      "delta": 1.9999999949504854e-06
+    },
+    {
+      "siteId": "m45a1",
+      "siteRpm": 327.272,
+      "sourceSingle": 327.272003,
+      "sourceMain": 327.272003,
+      "delta": -2.999999992425728e-06
+    },
+    {
+      "siteId": "grtcps",
+      "siteRpm": 359.999,
+      "sourceSingle": 359.998993,
+      "sourceMain": 359.998993,
+      "delta": 7.000000039170118e-06
+    },
+    {
+      "siteId": "m44",
+      "siteRpm": 163.636,
+      "sourceSingle": 163.636002,
+      "sourceMain": 163.636002,
+      "delta": -1.9999999949504854e-06
+    },
+    {
+      "siteId": "svk86",
+      "siteRpm": 149.999,
+      "sourceSingle": 149.998993,
+      "sourceMain": 149.998993,
+      "delta": 6.999999982326699e-06
+    },
+    {
+      "siteId": "svdm",
+      "siteRpm": 299.999,
+      "sourceSingle": 299.998993,
+      "sourceMain": 299.998993,
+      "delta": 7.000000039170118e-06
+    },
+    {
+      "siteId": "m357trait",
+      "siteRpm": 224.999,
+      "sourceSingle": 224.998993,
+      "sourceMain": 224.998993,
+      "delta": 6.999999982326699e-06
+    },
+    {
+      "siteId": "vssm",
+      "siteRpm": 449.999,
+      "sourceSingle": 449.998993,
+      "sourceMain": 799.999023,
+      "delta": 7.000000039170118e-06
+    }
+  ],
+  "conclusion": "All 14 source primary-single weapons use the single-fire source value to site precision (<0.00002 RPM). VSSM separates the candidates: site 449.999 agrees with source single 449.998993 rather than main 799.999023. No base semi-auto RPM correction is justified.",
+  "proposal": {
+    "current": "sim/core.js shotIntervalAfter uses effective weapon rpm; sim/applyAttachments.js lines 520-532,582-585 changes modes through ergonomics, not a general manual fire-mode selection.",
+    "candidate": "Consider explicit manual single-fire mode with a separately sourced single-fire RPM for weapons that offer it. M4A1 source main 899.999023 versus single 399.998993 provides a discriminating capture.",
+    "ready": false,
+    "requires": "Verify in-game alternate-mode availability and accepted-shot cadence; do not change auto RPM globally."
+  },
+  "limits": [
+    "Source configuration and registry names do not prove runtime cadence limits or input buffering.",
+    "Raw VSSM fields and registry association independently re-decoded; other primary-semi operands read from ledger and source raw hashes verified.",
+    "No new in-game observations. Duplicate descriptor-layout warnings retained."
+  ],
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\cadence-comparison.json",
+      "sha256": "75528e11efde913d99d9ecda2dbd88a5ea2fea702f26737b5a7f79f7e3c046a9"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\semi-site-comparison.json",
+      "sha256": "f2968dbba2f32ad4cf5d124a7214ae5dc9239427053028c7fdc46966dda8d08e"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\firing-modifier-cases.json",
+      "sha256": "395b36f6ebb48241766cef041bfc3800440cdbd2320103c4c05fcd10b5e5611f"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\vssm-raw-registry-check.json",
+      "sha256": "cbd2402d27d7fda0d02406291b6c7bd9051ffd9dce63ee8a5d5b507f5bf331e0"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\compare_cadence.py",
+      "sha256": "f225843d13d9b0a7306fe59545e88344e795d3b9fff5c84ea04c0c67c67ff607"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\verify_single.py",
+      "sha256": "5d4c2355d239c7da54e8127683b92411d2e09c799bbaaa4329c8e33189d2e1fc"
+    }
+  ],
+  "reproduction": [
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\compare_cadence.py\"",
+    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\verify_single.py\""
+  ]
+}

@@ -551,3 +551,19 @@ in that preset, with reset or base configuration allowed to differ. The current
 Analyzer predicts M4A1 Basic Barrel. If both hypotheses produce the same visible
 state, the capture does not distinguish them. Keep saved-profile and class effects
 separate; repeat on a second loadout slot when available.
+
+## L14 - Alternate single-fire cadence
+
+Use unmodified M4A1 with its in-game single-fire toggle, if available. Show the
+mode indicator and loadout; record accepted muzzle shots with audio and ammo HUD.
+Compare fastest repeated manual single shots with automatic fire. Use several
+short runs and record actual shot intervals, not mouse-click times. Slow manual
+input cannot establish the engine cap; label such a result inconclusive.
+
+Hypothesis A predicts a single-fire minimum interval near 0.150 s (about 400 RPM),
+versus automatic 0.0667 s (about 900 RPM). Hypothesis B (main rate remains the
+limit) permits single-fire intervals near 0.0667 s with sufficiently fast input.
+A reproducible interval below 0.150 s rejects the simple single-rate cap; failure
+to reach that interval does not confirm it. VSSM semi-auto near 450 RPM and an
+automatic M4A1 run are timing controls. Keep loadout, frame rate, platform and
+server settings fixed. Capture-only outcomes do not rename any unknown fields.

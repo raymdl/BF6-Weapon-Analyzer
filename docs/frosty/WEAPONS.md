@@ -864,3 +864,24 @@ ADS movement and moving-ADS dispersion indices, plus sprint-fire permission.
 The 160 current panels match all four displayed values (640 values), including
 12 combined-loadout panels. This is sampled menu validation, not proof of every
 loadout or gameplay behavior. Historical captures remain separate. The site now calculates and displays these bars for both loadouts.
+
+## Single-fire configured rate (L14, 24 September 2026)
+
+`Field_be31b12d` is named `RateOfFireForSingleFire` by the current raw GRX
+child/hash association, beyond the earlier SDK-name hypothesis. A fresh VSSM
+check resolves the exact named child and raw fields: main rate 799.999023 at
+byte 832, single rate 449.998993 at byte 840, primary mode 0 at byte 888.
+The site already uses 449.999 for semi-auto and 799.999 for Folding Stock auto.
+All 14 primary-single weapons agree with their source single rate to the site's
+precision. No base semi-auto RPM correction follows from this review.
+
+The 63 release primary blocks store single-rate values from 149.998993 to
+1799.999023; the earlier 300-450 range was incomplete. Weapons without an
+available single mode also store the field. Fire-rate modifiers can set main
+and single rates separately (800/400 in WME_Firerate900_M10). These facts support
+separate configured coordinates, not a universal runtime limit.
+
+The Analyzer does not expose a general manual single-fire mode. M4A1's source
+main/single pair (899.999023/399.998993) gives a useful alternate-mode cadence
+test before adding that feature. Keep mode availability, input buffering and
+accepted-shot timing unresolved. [Receipt and reproduction](../../reference-data/provenance/frosty-2026-09-24-L14-single-fire-cadence.json).
