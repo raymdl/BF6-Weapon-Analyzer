@@ -92,11 +92,12 @@
       "rk4ResidualDegrees": 1.2093094531720154
     }
   },
-  "conclusion": "The largest single-interval discrepancy is 0.00247 degrees. The capped eight-shot scalar pulse proxy peaks at 0.00763 degrees. Both are below half the plot 0.1-degree axis increment. No numerical change or new capture is proposed. This tests numerical discretization only; it does not validate the native equation or full site recoil pattern.",
+  "conclusion": "The largest single-interval discrepancy is 0.002474 degrees; the capped scalar pulse proxy peaks at 0.007623 degrees. No numerical change or new capture is proposed from this bounded check. This does not validate the native equation or full site recoil pattern.",
   "limits": [
     "The repeated sequence adds one actual site scalar magnitude instantaneously per shot and is capped at stored base magazine. It omits 25 ms uniform delivery, seeded directional variation and attachments.",
     "Native equation and native recovery timing remain unverified.",
-    "DB12 sequence uses its first inter-shot interval repeatedly, not the paired cadence. The sequence is a scalar numerical stress proxy, not a loadout recoil prediction."
+    "DB12 sequence uses its first inter-shot interval repeatedly, not the paired cadence. The sequence is a scalar numerical stress proxy, not a loadout recoil prediction.",
+    "A difference smaller than the label decimal resolution can still change rounding at a boundary; no identical rendered output claim is made."
   ],
   "hashes": [
     {
@@ -129,5 +130,11 @@
     }
   ],
   "date": "2026-09-24",
-  "status": "Bounded numerical check; no change or capture proposed"
+  "status": "Bounded numerical check; no change or capture proposed",
+  "displayReference": {
+    "file": "ui/app.js",
+    "sha256": "94b1d77da781215b8d81f1d55f21dc91143065e2915d361fadfb261257184351",
+    "symbol": "fmtAxisDeg",
+    "fact": "Axis label formatter uses toFixed(1), a 0.1-degree decimal resolution. This is not a fixed tick spacing or a proof of visual equivalence."
+  }
 }
