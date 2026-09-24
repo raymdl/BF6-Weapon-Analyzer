@@ -782,3 +782,12 @@ instead binds the Full Auto selector directly. This control provides no value 4;
 it rules out a universal record layout across these three selected paths, not the
 candidate mask meaning. Keep the L17 semi/auto capture and existing Burst runtime
 limits. No new numeric site change follows from this result.
+
+## VSSM selected dispersion and recovery operands
+
+The [L41 raw check](../../reference-data/provenance/frosty-2026-09-24-L41-vssm-selected-operands.json)
+resolves the Full Auto selector to its GBM/GRM objects and matches ten dispersion,
+two recoil-variation and four recovery operands to the existing Folding Stock
+values. Recovery factor 76 and exponent 1.24 are enabled in both aim states.
+Native evaluation and timing remain unresolved, so the existing assumption note
+stays valid; the GRM layout warning is retained. No new capture is proposed.

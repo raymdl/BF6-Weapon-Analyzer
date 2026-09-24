@@ -1,0 +1,228 @@
+{
+  "lead": "L41",
+  "date": "2026-09-24",
+  "status": "Selected VSSM operands match existing site values",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "siteLink": {
+    "weapon": "vssm",
+    "attachment": "full_auto_vssm (Folding Stock)",
+    "file": {
+      "path": "data/attachments.json",
+      "sha256": "61019e241dad577209e136e3d84c5eff11ff0b4421e148af9266f9d9c72b944e"
+    },
+    "selectorGuid": "7e84751b-0f69-456b-b63c-a41aa50c8b2b"
+  },
+  "sourceChain": {
+    "GS": {
+      "route": "Common/Hardware/Weapons/DMR/VSSM/GS_VSSM",
+      "captureId": 11193,
+      "rawSha256": "ae0dc64afb3df7e40bea4d58054266f1fa38146c235786efaa52a27bff94e5b3",
+      "objectIndex": 2,
+      "objectClass": "Class_539cff9b",
+      "selectorImportPaths": [
+        {
+          "pointer": "/Field_ee32ca16/0",
+          "selectorGuid": "7e84751b-0f69-456b-b63c-a41aa50c8b2b",
+          "modifierRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+          "classGuid": "e7e507b5-f519-44da-9d09-90366cc536e3",
+          "targetObjectGuid": "e7e507b5-f519-44da-9d09-90366cc536e3"
+        },
+        {
+          "pointer": "/Field_2296f84f/0",
+          "selectorGuid": "7e84751b-0f69-456b-b63c-a41aa50c8b2b",
+          "modifierRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+          "classGuid": "080dab1a-fecc-4ee5-a073-4206a54be8bb",
+          "targetObjectGuid": "080dab1a-fecc-4ee5-a073-4206a54be8bb"
+        }
+      ]
+    },
+    "modifiers": [
+      {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GBM_FullAuto_VSSM",
+        "captureId": 21326,
+        "rawSha256": "86169bd687f9edb42c5a8035134a0beb059782bbc2a6a26b71453607633a8007",
+        "objectIndex": 0,
+        "objectGuid": "e7e507b5-f519-44da-9d09-90366cc536e3",
+        "objectClass": "Class_5e5631ff"
+      },
+      {
+        "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/GRM_FullAutoRecoil_VSSM",
+        "captureId": 21327,
+        "rawSha256": "0b1d1b23cff0f543dac7a746b7614da0ba5ddf218bd95a4db6a12291b6e9d3ab",
+        "objectIndex": 0,
+        "objectGuid": "080dab1a-fecc-4ee5-a073-4206a54be8bb",
+        "objectClass": "Class_bb838ff6",
+        "layoutAmbiguous": true
+      }
+    ]
+  },
+  "operands": [
+    {
+      "aimState": "hip",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/hipSpreadDynOverride/inc",
+      "siteValue": 0.736,
+      "rawValue": 0.7360000014305115
+    },
+    {
+      "aimState": "hip",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/hipSpreadDynOverride/firingCoef",
+      "siteValue": 0.5,
+      "rawValue": 0.5
+    },
+    {
+      "aimState": "hip",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/hipSpreadDynOverride/firingOffset",
+      "siteValue": 4.86,
+      "rawValue": 4.860000133514404
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsSpreadDynOverride/inc",
+      "siteValue": 0.409,
+      "rawValue": 0.4090000092983246
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsSpreadDynOverride/firingCoef",
+      "siteValue": 1.2,
+      "rawValue": 1.2000000476837158
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsSpreadDynOverride/firingExp",
+      "siteValue": 2.5,
+      "rawValue": 2.5
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsSpreadDynOverride/firingOffset",
+      "siteValue": 2.7,
+      "rawValue": 2.700000047683716
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsSpreadDynOverride/notFiringOffset",
+      "siteValue": 7.2,
+      "rawValue": 7.199999809265137
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsSpreadDynOverride/idleExp",
+      "siteValue": 0.25,
+      "rawValue": 0.25
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsSpreadDynOverride/idleOffset",
+      "siteValue": 7.5,
+      "rawValue": 7.5
+    },
+    {
+      "aimState": "hip",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/hipRecoilVariationTierMod",
+      "siteValue": -20,
+      "rawValue": -20
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/adsRecoilVariationTierMod",
+      "siteValue": -20,
+      "rawValue": -20
+    },
+    {
+      "aimState": "hip",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/recoilDecreaseFactorOverride",
+      "siteValue": 76,
+      "rawValue": 76.0
+    },
+    {
+      "aimState": "hip",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/recoilDecreaseTimeExponentOverride",
+      "siteValue": 1.24,
+      "rawValue": 1.2400000095367432
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/recoilDecreaseFactorOverride",
+      "siteValue": 76,
+      "rawValue": 76.0
+    },
+    {
+      "aimState": "ads",
+      "sitePointer": "/ERGOS[id=full_auto_vssm]/recoilDecreaseTimeExponentOverride",
+      "siteValue": 1.24,
+      "rawValue": 1.2400000095367432
+    }
+  ],
+  "sourceFacts": [
+    "The exact GS selector imports resolve to the pinned GBM dispersion and GRM recoil modifier objects.",
+    "Ten dispersion, two recoil-variation and four recovery operands agree with existing site values. The typed scan verifies72 fields including enable/control values and recorded offsets/bytes."
+  ],
+  "inference": "These checks support serialized value origin and selection bindings, not native operation or activation.",
+  "runtimeUnknowns": [
+    "Native modifier evaluation, attachment activation and recovery timing remain unresolved.",
+    "The existing assumedFields recovery note remains appropriate; do not remove it from source matching alone."
+  ],
+  "observations": "No new in-game observation.",
+  "limits": [
+    "GRM object retains layoutAmbiguous=true; this check uses the class-GUID-selected descriptor path, not a general schema claim.",
+    "The two raw recoil-variation additions are Int32 -20; they are not float bit reinterpretations."
+  ],
+  "reproduction": {
+    "methods": [
+      {
+        "script": "scripts/frosty-primary-field-scan.py",
+        "arguments": [
+          "--db",
+          "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/coverage-decoder-v5.sqlite",
+          "--plan",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\newroot\\L41-selected-modifiers\\parent-scalar-plan.json",
+          "--out",
+          "<new-external-scalars.json>"
+        ],
+        "plan": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\newroot\\L41-selected-modifiers\\parent-scalar-plan.json",
+          "sha256": "a520710e5e2be1cc0897b56eea17f6c04137c60e067e8534632e5b9fa974be83"
+        },
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\newroot\\L41-selected-modifiers\\parent-scalars-complete.json",
+          "sha256": "cbbc53a66ad20fbf0e7ab861a610cbc3eb617a21d6749d627bacec82e5eac0a6"
+        }
+      },
+      {
+        "script": "scripts/frosty-selected-chain-check.py",
+        "arguments": [
+          "--db",
+          "C:/Users/royal/Documents/BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/coverage-decoder-v5.sqlite",
+          "--manifest",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\newroot\\L41-selected-modifiers\\parent-chain-manifest.json",
+          "--out",
+          "<new-external-chain-directory>"
+        ],
+        "manifest": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\newroot\\L41-selected-modifiers\\parent-chain-manifest.json",
+          "sha256": "6e7c26f21539bbb81e751954664660ef2d5c120dfe791c5f17d78e7ed7595817"
+        },
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\newroot\\L41-selected-modifiers\\parent-chains-complete\\comparison.json",
+          "sha256": "c1e442fa935e27566f71841ba6cf55fcc133b4ed5ee1de28a398b65dd1430e46"
+        }
+      }
+    ],
+    "priorSelectorEvidence": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L31\\vssm_control.json",
+        "sha256": "1198dc2996acf6d4a531562b9d3efd4efe5fba843ecdb3e31c8811464df0ace0"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L17\\L17-evidence.json",
+        "sha256": "e1224a4d2bcc6260d76879a8a51e2fcf7ddacee57699546a9932a330341b8dcf"
+      }
+    ]
+  },
+  "capture": "No new capture; no newly divergent output is proposed.",
+  "reopenCondition": "New build divergence or controlled native activation/recovery evidence changes this source-correlated result."
+}

@@ -58,7 +58,15 @@ new external output paths. Add captures only when arithmetic supports a useful t
 Review fixes 1-8 are reviewed. Repository methods now reproduce recorded field,
 registry, selection, reference and lifetime checks; receipt commands identify the
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
-and the separate `1.4.3.1` directory under this run root. New leads start at L37.
+and the separate `1.4.3.1` directory under this run root.
+
+Handoff, 24 September 2026: L37-L42 are reviewed and recorded below. L39 adds
+fresh paired hotfix raw files; L41 rechecks non-neutral selected operands. No new
+site change or capture is warranted by these results. Next lead number is L43.
+Continue with a concrete site-linked discriminator: typed loading behavior,
+selected modifier activation, or a changed site-used build asset. Reuse the
+recorded plans; do not repeat these bounded counts or neutral base scans.
+All work is committed locally on `main`; nothing is pushed.
 
 ## Active source leads
 
@@ -109,7 +117,7 @@ Work these from source before handing them to the capture plan. Results from the
 | L39 | **Release-to-hotfix site fields - three bodies unchanged** | [Fresh paired capture](../../reference-data/provenance/frosty-2026-09-24-L39-paired-build-raw.json) finds identical KORD 6P67 GS/WB/PD bytes across Heads 4892017 and 4892087. | Other weapons, selected modifiers and native behavior remain outside scope; reopen on a changed site-used hash or concrete gameplay difference. |
 | L40 | **Collateral index selection - no new route** | [Prior-evidence review](../../reference-data/provenance/frosty-2026-09-24-L40-collateral-route-review.json) adds no native table-selection link; the operator-confirmed clamp remains separate. | Reopen on a typed link to the selected table/delegate or a discriminating capture; no new capture added. |
 
-| L41 | **Selected modifiers on modeled fields** | In progress: seek a non-neutral selected recoil recovery or dispersion operand outside the completed lead scopes. | Require a new source route and a concrete site calculation before expanding the scan. |
+| L41 | **VSSM selected operands - source matched** | [Exact selector and raw fields](../../reference-data/provenance/frosty-2026-09-24-L41-vssm-selected-operands.json) support the existing dispersion, variation and recovery values, including factor 76/exponent 1.24 in both aim states. | Keep the native recovery assumption and layout warning; no new capture, and reopen on build divergence or controlled runtime evidence. |
 
 | L42 | **Caliber description text - corroborated** | [Raw references and localized text](../../reference-data/provenance/frosty-2026-09-24-L42-caliber-text.json) support SOR-300SC `.300 BLK` and M45A1 `.45 ACP` label wording. | No typed caliber or mechanics claim; no capture needed, and reopen on a typed source or changed text. |
 
