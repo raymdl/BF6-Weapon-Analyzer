@@ -1,0 +1,110 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L23",
+  "status": "Numeric base speed-variation omission hypothesis rejected within scope",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "finding": "All 63 unique release primary weapon blueprint roots from the L14 source list have Shot.Field_661b879d=0.0. Fresh decoder and raw float32 verification confirms every value; no numeric base omission is supported in this scope. Site ballistic inputs use deterministic bullet velocity. This scalar does not establish a speed distribution or runtime sampling.",
+  "inputList": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L14\\cadence-comparison.json",
+    "sha256": "75528e11efde913d99d9ecda2dbd88a5ea2fea702f26737b5a7f79f7e3c046a9",
+    "rows": 69,
+    "primaryFireRowsSelected": 63,
+    "uniqueRawAssetRoots": 63,
+    "deduplication": "Selected L14 rows whose pointer is exactly /Field_f8822efa (primary fire block), then unique by route+raw SHA; excluded auxiliary rows with empty pointer."
+  },
+  "target": {
+    "currentRegistryFieldName": "Shot.InitialSpeedVariation",
+    "fieldHash": "Field_661b879d",
+    "sourcePointer": "/Field_58d70acb/Field_661b879d",
+    "primaryShotMember": "Field_58d70acb"
+  },
+  "summary": {
+    "uniquePrimaryWBRoots": 63,
+    "rawFilesDecodedAndShaVerified": 63,
+    "zeroSlots": 63,
+    "nonzeroSlots": 0,
+    "nonzeroRoutes": []
+  },
+  "registryEvidence": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\registry-bindings.jsonl",
+    "sha256": "d80a04a6d780e88f4b58917b216ab449bc104a080ebc248cb6a48d11a3718a31",
+    "matchingBREN3Records": [
+      {
+        "line": 2176,
+        "record": {
+          "captureId": 7492,
+          "route": "Common/Hardware/Weapons/Carbine/BREN3/BREN3_WB",
+          "objectIndex": 1,
+          "pointer": "/Field_58d70acb",
+          "wrapper": "Field_83dd01ab",
+          "anchorGuid": "8a6e76d4-0244-4f3f-a49c-12f5069f7b57",
+          "anchorName": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot",
+          "arrayIndex": 2,
+          "field": "Field_661b879d",
+          "name": "BREN3_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.InitialSpeedVariation",
+          "childGuid": "6d4b9c12-b69b-40d4-9777-1c4ef476fd4e",
+          "status": "equal-scalar",
+          "fieldValue": 0.0,
+          "registryValue": 0.0,
+          "comparedRegistryValue": 0.0,
+          "registryLayoutProvisional": true
+        }
+      }
+    ]
+  },
+  "siteComparison": {
+    "files": {
+      "data/weapons.json": {
+        "sha256": "17f3335c1f5cbbcc97fc713f1714fb414eb942d1cfbd74966afa94379f70ca0d",
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\weapons.json"
+      },
+      "sim/applyAttachments.js": {
+        "sha256": "69f787f8419ceaf3899e51eea12ba5567131d3ff026c2b6887fea5ea3744ffad",
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\applyAttachments.js"
+      },
+      "sim/ballistics.js": {
+        "sha256": "1e898ae51313f30863af2ccc78dee012041e92f5ba03548d14308e137c415d67",
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\ballistics.js"
+      },
+      "ui/app.js": {
+        "sha256": "94b1d77da781215b8d81f1d55f21dc91143065e2915d361fadfb261257184351",
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\ui\\app.js"
+      }
+    },
+    "currentBehavior": "Source inspection: `data/weapons.json` stores deterministic `bulletVel`; `sim/applyAttachments.js` uses weapon bulletVel as base projectile velocity; `sim/ballistics.js` evolves a single velocityMps trajectory. No InitialSpeedVariation input or speed distribution is applied in this path.",
+    "limits": [
+      "A nonzero InitialSpeedVariation scalar does not identify whether it is a spread, magnitude, percentage, per-axis or other parameter; no distribution or units inferred.",
+      "Source value and registry name do not establish runtime activation or actual projectile-speed sampling.",
+      "This scope is the 63 release primary-WB roots selected by L14; KSG and hotfix captures are excluded."
+    ]
+  },
+  "verification": "Worker fresh-decoded all 63 roots; parent independently loaded build-matched descriptors, verified raw hashes, recomputed all selected field offsets and checked every float32 word is 00000000.",
+  "limits": [
+    "Only the 63 release primary WB roots are covered; no hotfix KSG, modifier or runtime-wide absence claim.",
+    "Zero source variation does not establish the native random distribution or activation of the field."
+  ],
+  "reopenWhen": "A nonzero selected modifier/base value, new source build or typed consumer changes the model question.",
+  "reproduction": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L23\\verify_parent.py\"",
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L23\\L23-primary-shot-initial-speed-variation.json",
+      "sha256": "5aeede9121be71e432bf141c9bf9d6367d5955893c96e4eef019e3f4ace0c455"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L23\\parent-raw-verification.json",
+      "sha256": "c6cfddd71fdad7877f0837517fcb79a8d147a8a482079fc563336400083ccfa8"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L23\\verify_parent.py",
+      "sha256": "6395116f81532cbae1485ddd552f90fa00ff4185d589c787127e817b3fe42e4d"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L23\\reproduce_l23.py",
+      "sha256": "1279ca1d4b644518dce6745d597adcb7716571e16310b61dcdcab4d6a1f6f9b0"
+    }
+  ]
+}

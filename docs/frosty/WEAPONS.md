@@ -957,3 +957,12 @@ damage-curve value of 32. These calculations do not establish a native range lim
 Seconds, the lifetime start event and runtime expiry need the L22 capture.
 If confirmed, model trajectory reachability separately from damage conditional
 on a hit. Do not infer a zero-damage curve point from an expired projectile.
+
+## Base shot-speed variation (L23, 24 September 2026)
+
+The [release primary-WB check](../../reference-data/provenance/frosty-2026-09-24-L23-neutral-speed-variation.json)
+confirms named `Shot.InitialSpeedVariation` (`Field_661b879d`) is 0.0 in all
+63 checked release primary roots. Fresh decoding and independent descriptor/raw
+checks agree. The site's deterministic initial velocity omits no nonzero value
+from this specific base field. No change is proposed. This does not rule out
+modifier or runtime effects and does not identify a sampling distribution.
