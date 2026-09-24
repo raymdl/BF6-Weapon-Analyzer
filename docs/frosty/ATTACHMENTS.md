@@ -439,6 +439,13 @@ CQB and DRS-IAR/M2010 ESR Lightened. The site uses 0.14 (21 m); a controlling
 without native composition evidence. A prefix alone does not exclude these
 multiplayer-bound packages.
 
+[L47](../../reference-data/provenance/frosty-2026-09-24-L47-selected-spotting-chain.json)
+checks the exact M39 EMR WB import through the selector-matching SP wrapper to
+its recorded WME target. Three raw-backed assertions pass. This strengthens one
+existing association; Attachment/AAM identity comes from the prior mapping.
+Native activation and composition remain open, so the existing rank-1 capture
+and site factor stay unchanged.
+
 VSSM's actual default selects `vssm_suppressed`, whose package imports P35
 (world 0, minimap 0.06); the site gives 0/9 m. PP-19 Flash Hider and Flash Comp
 both bind `WME_SpotRange_3D_P10` (world 0, minimap 1), matching site factors.

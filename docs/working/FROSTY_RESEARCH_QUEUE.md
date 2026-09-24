@@ -53,19 +53,22 @@ Review fixes precede new leads L37 onward. Evidence root:
 Research only on `main`; local commits, no push/amend/history rewrite, no new
 Markdown documents or shipped changes. Preserve build identities and raw hashes;
 keep source facts, inference, unresolved runtime behavior and observations separate.
-Update lead checkpoints at least every 30 minutes; use repository scripts with
-new external output paths. Add captures only when arithmetic supports a useful test.
+Trial Luna high and xhigh reasoning for delegated work at the operator's request;
+compare total time including corrections and review, not speed alone. Update
+checkpoints at least every 30 minutes; use repository scripts with new external
+output paths. Add captures only when arithmetic supports a useful test.
 Review fixes 1-8 are reviewed. Repository methods now reproduce recorded field,
 registry, selection, reference and lifetime checks; receipt commands identify the
 remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
 and the separate `1.4.3.1` directory under this run root.
 
-Checkpoint, 24 September 2026: L37-L46 are recorded. L45 adds a software
-spread-summary proposal; L43/L44 add bounded numerical checks without new captures.
-L46 found no changed catalog record in its sample; L47 checks an exact suppressor selector.
-Source facts and software consistency checks do not establish native behavior.
-Reviewed work is committed locally; current checks are in progress. Reuse the
-recorded plans and do not repeat neutral base scans.
+Checkpoint, 24 September 2026: L37-L47 are recorded. L45 adds a software
+spread-summary proposal; L43/L44 do not justify numerical changes. L46 found no
+changed catalog record in its sample; L47 strengthens one exact spotting chain.
+Next lead is L48. Prefer a new native selection/priority discriminator, a typed
+loading-state link, or a changed site-used asset. Do not repeat these bounded
+checks or neutral base scans. Source and software checks do not prove native
+behavior. Luna high/xhigh evidence reviews are the current delegation trial.
 
 ## Active source leads
 
@@ -121,7 +124,7 @@ Work these from source before handing them to the capture plan. Results from the
 | L44 | **Nonlinear recoil integration - Checked** | [Raw inputs and numerical comparison](../../reference-data/provenance/frosty-2026-09-24-L44-recoil-integration.json): 64 fields, 16 aim groups; maximum one-interval error 0.002474 degrees and bounded scalar-sequence error 0.007623 degrees. | No change or new capture; proxy is not a full pattern or native validation. Reopen if inputs, equations or display precision change. |
 | L45 | **Spread summary - Software contradiction verified** | [Raw inputs and model check](../../reference-data/provenance/frosty-2026-09-24-L45-spread-summary.json): DB-12 hip summary shows 1.44 degrees maximum, but its shot-2 tooltip shows 1.95 degrees. | Propose a peak pre-shot summary for operator review; no new capture. Native equations remain unresolved. |
 | L46 | **Build-change screen - No candidate in sample** | [Reproducible catalog comparison](../../reference-data/provenance/frosty-2026-09-24-L46-site-route-build-screen.json): 534 site-linked routes have equal asset-record SHA1/size/GUID across the two recorded builds. | Catalog evidence only; no new raw trace or capture. Reopen on a changed site-used route or a concrete discrepancy outside this sample. |
-| L47 | **Exact suppressor selection and spotting branch** | In progress: check whether an exact MP attachment selector resolves the ordinary/SP-prefixed ambiguity left by L38. | Require a new selected source link; do not repeat candidate values or claim native activation. |
+| L47 | **M39 EMR spotting chain - Exact import verified** | [Three raw-backed assertions](../../reference-data/provenance/frosty-2026-09-24-L47-selected-spotting-chain.json) link the WB import through the selector-matching SP wrapper to its recorded WME target. | Strengthens one prior association, not native activation or unique effective selection; keep the site factor and existing rank-1 capture. |
 
 ## Proposed Analyzer changes
 
