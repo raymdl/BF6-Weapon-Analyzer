@@ -239,9 +239,9 @@ retained values are software fallback data, not verified effective mechanics.
 The [subsonic velocity review](../../reference-data/provenance/frosty-site-ammo-velocity-2026-09-23.json)
 sources all 26 tier inputs from selected velocity factors and checks the slug ADS
 spread increment (0.05 in both source movement branches for four shotguns).
-Five screenshot-based absolute velocity inputs discard source precision:
+Five prior screenshot-based absolute velocity inputs discarded source precision:
 
-| Weapon / ammo | Site input | Base source velocity × selected factor |
+| Weapon / ammo | Prior site input | Base source velocity × selected factor |
 |---|---:|---:|
 | M417 A2 Subsonic / Subsonic HP | 273 m/s | 560 × 0.488570005 = 273.599203 m/s |
 | PW7A2 Subsonic Tungsten | 341 m/s | 576 × 0.592999995 = 341.567997 m/s |
@@ -249,8 +249,8 @@ Five screenshot-based absolute velocity inputs discard source precision:
 
 Every integer equals the floor of the source-derived candidate. This can explain
 the original menu transcription; it is not evidence that the menu is wrong.
-Propose using the selected source coefficient in the velocity model, while keeping
-ammo/barrel composition as an explicit native-consumer limit. No site value changed.
+The site now retains these source-derived values. Ammo/barrel composition remains
+an explicit native-consumer limit.
 
 ### Recoil operands
 
@@ -275,13 +275,13 @@ Applied follow-ups:
 
 The [current muzzle operand audit](../../reference-data/provenance/frosty-site-muzzle-operands-2026-09-23.json)
 checks 172 recoil/spread/handling leaves: 151 match selected source operands and
-17 are neutral or inactive software fallbacks. Four source questions remain.
+17 are neutral or inactive software fallbacks. The audit recorded four source questions.
 PP-19 Flash Comp has no GS selector binding in the captured body, and its WB package
-contains a spotting effect without a recoil modifier. The site nevertheless applies
-1.2 ADS/hip recovery factors and a 0.05-second duration override. L115 Standard
-Suppressor also lacks the GS hip-spread index binding that would explain the site's
-+1 spread tier (source index -1). These bounded graph results do not prove native
-absence. The capture plan compares these exact choices with their controls.
+contains a spotting effect without a recoil modifier. The site now uses neutral
+ADS/hip recovery factors and no duration override for that choice. L115 Standard
+Suppressor also lacks the GS hip-spread index binding; the site now uses zero tier
+shift. These changes follow the recorded bug observations; the bounded graphs alone
+do not prove native absence. See the attachment-bug records for those observations.
 
 A raw byte search confirms the PP-19 result: `GS_PP19` does not contain the
 `U_WPM_MZL_FlashCompensator_W15` selector GUID, while the `GS_UMP40` control does.
