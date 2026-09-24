@@ -1,0 +1,331 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L12",
+  "status": "Finding established: explicit equipment attachment subsets; default-selection semantics unresolved",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "observed": [
+    {
+      "asset": "Common/Hardware/Weapons/SMG/MPX/Equipment_MPX",
+      "fileGuid": "522b0c11-4ca4-4b55-bd14-b6289d8bab10",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\SMG\\MPX\\Equipment_MPX.ebx",
+      "rawSha256": "1cce2dfc2a667fc5b11c59bf76f5c561c29391a9bc8c9ab260ec52324036895f",
+      "class": "Class_33e63a99",
+      "objectIndex": 0,
+      "field": "Field_3538f6ad",
+      "fieldRawOffset": 192,
+      "type": "array of EBX import pointers",
+      "unit": "attachment references",
+      "items": [
+        {
+          "index": 0,
+          "rawOffset": 24824,
+          "rawPointer": 1521,
+          "objectGuid": "53b1e68f-26d5-4896-9ef9-d216e1bd4be9",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_BRL_BasicBarrel"
+          ]
+        },
+        {
+          "index": 1,
+          "rawOffset": 24832,
+          "rawPointer": 2165,
+          "objectGuid": "3ab4a866-307a-46cf-a76e-979f1cae1343",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_RomeoX"
+          ]
+        },
+        {
+          "index": 2,
+          "rawOffset": 24840,
+          "rawPointer": 1663,
+          "objectGuid": "a1f2465d-4079-4744-a23b-5e3113578c4c",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_AMO_FMJ"
+          ]
+        },
+        {
+          "index": 3,
+          "rawOffset": 24848,
+          "rawPointer": 61,
+          "objectGuid": "ce76eabe-d6a1-489a-97ec-327b77ce7e0f",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_MZL_FlashHiderMPX"
+          ]
+        },
+        {
+          "index": 4,
+          "rawOffset": 24856,
+          "rawPointer": 1569,
+          "objectGuid": "8c3668a1-70e9-413f-9890-1f24528409c2",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_MAG_Regular"
+          ]
+        },
+        {
+          "index": 5,
+          "rawOffset": 24864,
+          "rawPointer": 791,
+          "objectGuid": "f7189041-b271-4cc7-81b4-57288cf97f51",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_BTM_Tango_Stubby"
+          ]
+        },
+        {
+          "index": 6,
+          "rawOffset": 24872,
+          "rawPointer": 2297,
+          "objectGuid": "03fc5ed1-8d44-4807-b3a3-1883ed7f50a3",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_RGT_TL_MissionLight"
+          ]
+        }
+      ],
+      "reverseCallers": [
+        {
+          "id": 53811,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Assault_Loadout1",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/32"
+        },
+        {
+          "id": 53812,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Engineer",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/0"
+        },
+        {
+          "id": 53812,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Engineer",
+          "object_index": 0,
+          "pointer": "/Field_bf67ccc6"
+        },
+        {
+          "id": 53813,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Engineer_ClassLock",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/0"
+        },
+        {
+          "id": 53813,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Engineer_ClassLock",
+          "object_index": 0,
+          "pointer": "/Field_bf67ccc6"
+        },
+        {
+          "id": 53814,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Recon",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/32"
+        },
+        {
+          "id": 53816,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Support",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/32"
+        }
+      ]
+    },
+    {
+      "asset": "Common/Hardware/Weapons/Carbine/M4A1/Equipment_M4A1",
+      "fileGuid": "bff83eaf-dfb4-40e0-bf1d-f667b0defede",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\Equipment_M4A1.ebx",
+      "rawSha256": "57b758f96b461aaf48a6b2d78fbbb1b260f94183d6d29b1ce0c0f3a2ba02bb27",
+      "class": "Class_33e63a99",
+      "objectIndex": 0,
+      "field": "Field_3538f6ad",
+      "fieldRawOffset": 192,
+      "type": "array of EBX import pointers",
+      "unit": "attachment references",
+      "items": [
+        {
+          "index": 0,
+          "rawOffset": 25120,
+          "rawPointer": 641,
+          "objectGuid": "a3df6d9c-8ea2-4178-8c4c-88a1e95a6b66",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_XPS3"
+          ]
+        },
+        {
+          "index": 1,
+          "rawOffset": 25128,
+          "rawPointer": 2307,
+          "objectGuid": "55e99476-cef6-4669-a6c0-b0fce7a954e1",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_BRL_ShortBarrel"
+          ]
+        },
+        {
+          "index": 2,
+          "rawOffset": 25136,
+          "rawPointer": 1481,
+          "objectGuid": "0dbe7e3e-f0f8-4705-81bf-029470c8a80e",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MZL_M4QDFlashHider"
+          ]
+        },
+        {
+          "index": 3,
+          "rawOffset": 25144,
+          "rawPointer": 2567,
+          "objectGuid": "f9925850-8b7d-4a38-9c98-ec3693cc07d2",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_AMO_FMJ"
+          ]
+        },
+        {
+          "index": 4,
+          "rawOffset": 25152,
+          "rawPointer": 1843,
+          "objectGuid": "d29857ac-c085-4fce-b75c-757dfba09d4a",
+          "targetRoutes": [
+            "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_MAG_Regular"
+          ]
+        }
+      ],
+      "reverseCallers": [
+        {
+          "id": 53793,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget1_Assault",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/14"
+        },
+        {
+          "id": 53793,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget1_Assault",
+          "object_index": 0,
+          "pointer": "/Field_af6144b2/0/Field_d6d44989/7"
+        },
+        {
+          "id": 53794,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget1_Assault_Loadout3",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/13"
+        },
+        {
+          "id": 53794,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget1_Assault_Loadout3",
+          "object_index": 0,
+          "pointer": "/Field_af6144b2/0/Field_d6d44989/7"
+        },
+        {
+          "id": 53801,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget2_Assault",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/13"
+        },
+        {
+          "id": 53801,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget2_Assault",
+          "object_index": 0,
+          "pointer": "/Field_af6144b2/0/Field_d6d44989/7"
+        },
+        {
+          "id": 53802,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget2_Assault_Loadout3",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/13"
+        },
+        {
+          "id": 53802,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Gadget2_Assault_Loadout3",
+          "object_index": 0,
+          "pointer": "/Field_af6144b2/0/Field_d6d44989/7"
+        },
+        {
+          "id": 53810,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Assault_ClassLock",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/8"
+        },
+        {
+          "id": 53811,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Assault_Loadout1",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/11"
+        },
+        {
+          "id": 53812,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Engineer",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/12"
+        },
+        {
+          "id": 53813,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Engineer_ClassLock",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/3"
+        },
+        {
+          "id": 53814,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Recon",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/11"
+        },
+        {
+          "id": 53815,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Recon_ClassLock",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/5"
+        },
+        {
+          "id": 53816,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Support",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/12"
+        },
+        {
+          "id": 53817,
+          "route": "Common/Gameplay/Loadouts/EquipmentSlot_Primary_Support_ClassLock",
+          "object_index": 0,
+          "pointer": "/Field_0a2f2eab/3"
+        }
+      ]
+    }
+  ],
+  "inference": "Field_3538f6ad is a selected configuration candidate, distinct from the large availability/progression list Field_844f8184. No independent semantic name or native caller establishes reset-to-base default semantics.",
+  "unresolved": [
+    "Starter/class preset versus universal per-slot defaults.",
+    "Live selection, server overrides and unlocked/account loadout effects.",
+    "Equipment class has provisional layout warnings; only this pointer array was checked directly."
+  ],
+  "siteComparison": {
+    "data/attachments.json/WEAPON_ATTS/m4a1/barrelDef": {
+      "current": "basic",
+      "sourceCandidate": "Attachment_M4A1_BRL_ShortBarrel",
+      "proposed": "Retain current value pending default-versus-preset capture; change to short only if actual reset semantics agree."
+    },
+    "data/attachments.json/WEAPON_ATTS/sgx/barrelDef": {
+      "current": "basic",
+      "sourceCandidate": "Attachment_MPX_BRL_BasicBarrel",
+      "conclusion": "consistent by candidate identity, not independently proven default semantics"
+    }
+  },
+  "reproduction": {
+    "script": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\trace_mpx.py",
+    "commands": [
+      "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\trace_mpx.py\" 17585",
+      "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\trace_mpx.py\" 7948"
+    ],
+    "access": "SQLite mode=ro; raw source files read only"
+  },
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\mpx-trace.json",
+      "sha256": "d1a9e641bf704ceb99259f2f5d6d734dc300ed4f39da64d9f5299b7d39b9de41"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\equipment-7948-trace.json",
+      "sha256": "8ad6b296e8731f3eefdf2295f28d751856eae0642ee053a7415fce9286b9cd9c"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\trace_mpx.py",
+      "sha256": "1c12fa2cac0af14973c3e9694744ddf00cb7e65b14021cb3b0fa8145f58f5663"
+    }
+  ],
+  "nextSourceRoute": "Inspect named default-loadout/override records reached by EquipmentSlot_Primary_Engineer and M4A1 reverse callers; distinguish class preset and reset configuration before expanding to all weapons."
+}
