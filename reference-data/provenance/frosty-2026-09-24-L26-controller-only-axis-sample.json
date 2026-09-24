@@ -35,7 +35,31 @@
     "The descriptor marks the shared class hash ambiguous; raw reads use the build-matched class layout selected by each asset GUID and are checked against fresh decoder values.",
     "The site models a common x/y decay factor; source values do not by themselves prove the native recovery equation or runtime axis behavior."
   ],
-  "reproduction": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L26\\verify_parent.py\"",
+  "reproduction": {
+    "methods": [
+      {
+        "script": "scripts/frosty-primary-field-scan.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--plan",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-scalars\\scalar-scan-plan-release-expanded.json",
+          "--out",
+          "<new-external-release-scalars.json>"
+        ],
+        "planSha256": "d94d7e0258690f4542076e2e412e17f7662fba3f3e344ca4617ebfa528917967",
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-scalars.json",
+          "sha256": "2c6772d862c3927f36a5e2833c1729d38d26e5d47080a4f6552c747ef632b6d3"
+        },
+        "scope": "L26 recorded release scalar/Boolean fields; source naming and runtime behavior are not inferred.",
+        "recordedComparison": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-scalar-comparison.json",
+          "sha256": "28f9b240a33b686084e3689217bf47ff41cd9e799032cfc547c2d6e7192246ff"
+        }
+      }
+    ]
+  },
   "externalEvidence": [
     {
       "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L26\\L26-recoil-axis-modifier-audit.json",

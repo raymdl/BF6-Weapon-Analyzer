@@ -325,10 +325,26 @@
     "Launch angle, attachment velocity changes and native flight differences can change the boundary.",
     "No in-game measurements were made."
   ],
-  "reproduction": [
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\verify_parent.py\"",
-    "node \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\verify_site.mjs\""
-  ],
+  "reproduction": {
+    "script": "scripts/frosty-projectile-lifetime.py",
+    "arguments": [
+      "--analyzer-root",
+      ".",
+      "--ledger",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+      "--usage",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\projectile-site-usage.jsonl",
+      "--prior-dir",
+      "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0",
+      "--report-dir",
+      "<new-external-report-directory>"
+    ],
+    "comparison": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-lifetime\\comparison-report.json",
+      "sha256": "1db1f4ddf3bdbafcfaa6ace458b1f449a5e84f79f7f9e82c64ba2788d2014196"
+    },
+    "scope": "64 raw lifetimes, 328 selections, 32 conditional candidates and both L22 sample cases; actual site functions called unchanged."
+  },
   "externalEvidence": [
     {
       "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L25\\L25-source-lifetime.json",

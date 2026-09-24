@@ -55,14 +55,10 @@ Markdown documents or shipped changes. Preserve build identities and raw hashes;
 keep source facts, inference, unresolved runtime behavior and observations separate.
 Update lead checkpoints at least every 30 minutes; use repository scripts with
 new external output paths. Add captures only when arithmetic supports a useful test.
-Review checkpoint (24 September, 09:32 EDT): fixes 1-3 and 5-8 are committed;
-fix 4 is in progress. Repository-path reruns passed for reference, lifetime,
-registry and selected-chain methods; receipt updates are not yet committed.
-Detailed output is in `1.4.3.0/reproduction-*` under this run root; candidate
-plans are in `reproducer-*` (review remains in progress). Resume with the scalar
-plan, including all L15 bases/operand members and separate L33 release/hotfix
-outputs, then finalize receipt commands, exceptions and the fix-4 commit.
-Part 2 has not started.
+Review fixes 1-8 are reviewed. Repository methods now reproduce recorded field,
+registry, selection, reference and lifetime checks; receipt commands identify the
+remaining specialized external checks. Results are in `1.4.3.0/reproduction-*`
+and the separate `1.4.3.1` directory under this run root. New leads start at L37.
 
 ## Active source leads
 

@@ -183,10 +183,48 @@
     "Registry gap on BREN3 is filled by descriptor/raw checks, not by assuming its absence means false.",
     "Native recoil and camera behavior remain capture-dependent."
   ],
-  "reproduction": [
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\verify_parent.py\"",
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\polar_recoil_check.py\""
-  ],
+  "reproduction": {
+    "methods": [
+      {
+        "script": "scripts/frosty-primary-field-scan.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--plan",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-scalars\\scalar-scan-plan-release-expanded.json",
+          "--out",
+          "<new-external-release-scalars.json>"
+        ],
+        "planSha256": "d94d7e0258690f4542076e2e412e17f7662fba3f3e344ca4617ebfa528917967",
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-scalars.json",
+          "sha256": "2c6772d862c3927f36a5e2833c1729d38d26e5d47080a4f6552c747ef632b6d3"
+        },
+        "scope": "L33 recorded release scalar/Boolean fields; source naming and runtime behavior are not inferred.",
+        "recordedComparison": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-scalar-comparison.json",
+          "sha256": "28f9b240a33b686084e3689217bf47ff41cd9e799032cfc547c2d6e7192246ff"
+        }
+      },
+      {
+        "script": "scripts/frosty-primary-field-scan.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--plan",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-scalars\\L33\\Head-4892087\\manifest.json",
+          "--out",
+          "<new-external-hotfix-scalars.json>"
+        ],
+        "planSha256": "50f27ac7ed8281e2b730aa9657c1dde5940aa4f1cbae69b2ae5a8d54aac5563e",
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.1\\reproduction-L33-hotfix.json",
+          "sha256": "ee7a0b2756812ee34e4902591d90d9181db2cf1db9800efbc64e7c9478b297e2"
+        },
+        "scope": "Separate excluded hotfix KSG control only; never combined with release inference."
+      }
+    ]
+  },
   "externalEvidence": [
     {
       "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L33\\release-only-polar-raw-check.json",
@@ -215,5 +253,5 @@
     "historicalReceipt": "Removed duplicate; retained in commit 50ed02d as frosty-2026-09-24-L33-polar-recoil-base-scope.json"
   },
   "storageCorrection": "Separate release evidence and excluded KSG hotfix control into their respective build directories. Original mixed detail is retained only as historical pinned evidence.",
-  "reproductionNote": "Prior raw-check scripts reproduce the original mixed detail. The two build-specific files are exact lossless splits of its release and separateHotfixControl keys; compare those keys to reproduce the storage split."
+  "reproductionNote": "Current repository scalar plans reproduce all release roots and the excluded hotfix control in separate outputs; old external script entries are historical evidence."
 }

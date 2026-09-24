@@ -148,8 +148,57 @@
       "sha256": "04498dc93fd9171e86b082b9f028b89e564ed63b16eea8d8b02422b2687abf92"
     }
   ],
-  "reproduction": [
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\verify_parent.py\"",
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\reproduce_l19.py\""
-  ]
+  "reproduction": {
+    "methods": [
+      {
+        "script": "scripts/frosty-audit-registry-bindings.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--manifest",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\review-reproducer-inventory\\inventory-73697718a71c4847a804e3fdb0e15b3e\\registry-candidate-20260924\\manifest-v8.json",
+          "--out",
+          "<new-external-registry.json>"
+        ],
+        "manifestSha256": "a147741ab01ea1acb16d9ab2b9da86fcaf5bd240f81bbe22ea1d3ad4b73a84df",
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-registry-complete.json",
+          "sha256": "61c1ca37a27b5a17066ab02f6e8e7cc7971ee395286efd2e567ec57f3a90fdb4"
+        },
+        "scope": "Two exact vertical recovery multiplier name associations and raw registry values."
+      },
+      {
+        "script": "scripts/frosty-primary-field-scan.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--plan",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-scalars\\scalar-scan-plan-release-expanded.json",
+          "--out",
+          "<new-external-release-scalars.json>"
+        ],
+        "planSha256": "d94d7e0258690f4542076e2e412e17f7662fba3f3e344ca4617ebfa528917967",
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-scalars.json",
+          "sha256": "2c6772d862c3927f36a5e2833c1729d38d26e5d47080a4f6552c747ef632b6d3"
+        },
+        "scope": "L19 recorded release scalar/Boolean fields; source naming and runtime behavior are not inferred.",
+        "recordedComparison": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-scalar-comparison.json",
+          "sha256": "28f9b240a33b686084e3689217bf47ff41cd9e799032cfc547c2d6e7192246ff"
+        }
+      }
+    ],
+    "externalSpecialized": {
+      "reason": "Pointer-backed controller amount override array and operation context",
+      "commands": [
+        "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L19\\reproduce_l19.py\""
+      ]
+    },
+    "comparison": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\review-reproducer-inventory\\inventory-73697718a71c4847a804e3fdb0e15b3e\\registry-candidate-20260924\\comparison-report-v6.json",
+      "sha256": "be621ffe881ec22ee2a8c4d718693733683fbd0d87d7d1f6ad676560af41aada",
+      "note": "Repository-path rerun matches all candidate cases; scoped source comparisons retained here."
+    }
+  }
 }

@@ -306,12 +306,34 @@
     }
   },
   "reproduction": {
-    "script": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\trace_mpx.py",
-    "commands": [
-      "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\trace_mpx.py\" 17585",
-      "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L12\\trace_mpx.py\" 7948"
+    "script": "scripts/frosty-reference.py",
+    "argumentLists": [
+      [
+        "trace-array",
+        "--db",
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+        "--decoder",
+        "scripts/frosty-ebx-decode.py",
+        "--head",
+        "4892017",
+        "--descriptor-sha",
+        "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "--ids",
+        "17585",
+        "7948",
+        "--field-hash",
+        "3538f6ad",
+        "--object-index",
+        "0",
+        "--out",
+        "<new-external-arrays.json>"
+      ]
     ],
-    "access": "SQLite mode=ro; raw source files read only"
+    "comparison": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-reference\\parent-comparison.json",
+      "sha256": "6efd398f09503c18a0a287abd4aac1698f82d6a9426fa0ab30cd8a224a7de3b3"
+    },
+    "scope": "Both recorded Equipment raw import arrays; preset meaning remains unresolved"
   },
   "externalEvidence": [
     {

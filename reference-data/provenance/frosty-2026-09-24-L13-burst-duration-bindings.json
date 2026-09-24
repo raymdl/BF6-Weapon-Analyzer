@@ -212,9 +212,56 @@
       "sha256": "bc806fb02a5f58f44165e1d1c18ebc2760f3030774e63eeea3b54bd93e6b95eb"
     }
   ],
-  "reproduction": [
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\reproduce_l13_burst_bindings.py\"",
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\verify_mp5_raw.py\"",
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\reproduce_l13_activation.py\""
-  ]
+  "reproduction": {
+    "methods": [
+      {
+        "script": "scripts/frosty-selected-chain-check.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--manifest",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-chains-plan-complete.json",
+          "--out",
+          "<new-external-chain-report-directory>"
+        ],
+        "manifestSha256": "7cb72e7fb7f55711b5de204116660fd2a22fed6b4db857c4b536d1adbde024ec",
+        "comparison": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-chains-complete\\comparison.json",
+          "sha256": "beff9426b104af4562be39bf212fc99bb47dd57d825932dc0ee3c1d5f484fce6"
+        },
+        "recordedInputs": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-chain\\recorded-source-provenance.json",
+          "sha256": "141c96601a8928b6502a31f504fd3886838af4ebee55ed56eefba5506d208601"
+        },
+        "scope": "Five selected GS bindings and recorded burst operands; activation trace remains specialized."
+      },
+      {
+        "script": "scripts/frosty-audit-registry-bindings.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--manifest",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\review-reproducer-inventory\\inventory-73697718a71c4847a804e3fdb0e15b3e\\registry-candidate-20260924\\manifest-v8.json",
+          "--out",
+          "<new-external-registry.json>"
+        ],
+        "manifestSha256": "a147741ab01ea1acb16d9ab2b9da86fcaf5bd240f81bbe22ea1d3ad4b73a84df",
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-registry-complete.json",
+          "sha256": "61c1ca37a27b5a17066ab02f6e8e7cc7971ee395286efd2e567ec57f3a90fdb4"
+        },
+        "scope": "Recorded target-name pairs and raw registry scalar values; L13 both base durations, L17 bloom/exponent/recovery targets.",
+        "comparison": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\review-reproducer-inventory\\inventory-73697718a71c4847a804e3fdb0e15b3e\\registry-candidate-20260924\\l13-l17-comparison.json",
+          "sha256": "d14a9299d96392090cba524e12bd9d8bccf47484e1e59f846c59c3c7fdfd3499"
+        }
+      }
+    ],
+    "externalSpecialized": {
+      "reason": "Activation-related source graph and class/enum interpretation",
+      "commands": [
+        "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L13\\reproduce_l13_activation.py\""
+      ]
+    }
+  }
 }

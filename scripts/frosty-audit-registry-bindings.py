@@ -10,6 +10,7 @@ import json
 from pathlib import Path
 import runpy
 import sqlite3
+import sys
 
 
 def sha(path):
@@ -34,6 +35,9 @@ def main():
     ap.add_argument('--details', type=Path, required=True)
     ap.add_argument('--out', type=Path, required=True)
     args = ap.parse_args()
+    for output in (args.details, args.out):
+        if output.exists():
+            ap.error(f'Output exists: {output}')
     reader_path = Path(__file__).with_name('frosty-ebx-decode.py')
     reader = runpy.run_path(str(reader_path))
     inventory = json.loads(args.inventory.read_text(encoding='utf-8'))
@@ -113,4 +117,7 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    if '--manifest' in sys.argv[1:]:
+        runpy.run_path(str(Path(__file__).with_name('frosty-registry-association.py')), run_name='__main__')
+    else:
+        main()

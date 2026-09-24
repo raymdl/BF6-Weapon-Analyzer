@@ -477,7 +477,29 @@ baseline.
 `python scripts/frosty-primary-field-scan.py --help` describes a read-only scan
 of recorded route/object pairs with explicit build identity and scalar paths.
 It verifies descriptor/raw hashes, float32 types, offsets and decoded values.
+`--plan` also accepts per-record build identities, Boolean fields, expected values
+and recorded offsets/bytes; keep each build in a separate external output.
 `--heat-site-mapping` adds conditional RPM/magazine arithmetic; labels require
 independent naming evidence. Use a new external `--out`; existing files are refused.
 [L36](../../reference-data/provenance/frosty-2026-09-24-L36-primary-heat-scope.json)
 records the exact arguments and comparison with the earlier scan.
+
+### Research reproduction methods
+
+- `frosty-audit-registry-bindings.py --manifest`: extends the registry audit with
+  declared owner anchors, raw scalar offsets and bounded linked-group checks;
+  `frosty-registry-association.py` contains that mode. Each receipt pins its manifest.
+- `frosty-selected-chain-check.py`: checks declared object paths, selected imports
+  and raw bytes against exact build/hash identities. The external plan records
+  expected source facts; unresolved runtime and specialized checks remain explicit.
+- `frosty-reference.py`: `vectors` compares declared Boolean fields in the
+  read-only ledger; `controls` raw-checks the recorded bolt controls;
+  `trace-array` verifies imported file/object GUIDs at raw array offsets.
+  L1 and L12 receipts give exact build arguments and external comparison reports.
+- `frosty-projectile-lifetime.py`: verifies exact projectile GUIDs, typed raw
+  lifetimes and conditional site reachability; its Node helper calls the current
+  site functions unchanged. L22/L25 inputs and comparisons remain external.
+
+Use `python scripts/<name> --help` and the receipt arguments. Outputs require a
+new external `--out` or `--report-dir`; existing output paths are refused.
+These checks reproduce configured source facts, not native runtime behavior.

@@ -166,9 +166,37 @@
       "sha256": "33699ff802fe7cc30a77501a207876e860ced8df3cfb67c6d266396a07e10a21"
     }
   ],
-  "reproduction": [
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\verify_optic_offset.py\"",
-    "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\selector_trace.py\""
-  ],
+  "reproduction": {
+    "methods": [
+      {
+        "script": "scripts/frosty-audit-registry-bindings.py",
+        "arguments": [
+          "--db",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+          "--manifest",
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\review-reproducer-inventory\\inventory-73697718a71c4847a804e3fdb0e15b3e\\registry-candidate-20260924\\manifest-v8.json",
+          "--out",
+          "<new-external-registry.json>"
+        ],
+        "manifestSha256": "a147741ab01ea1acb16d9ab2b9da86fcaf5bd240f81bbe22ea1d3ad4b73a84df",
+        "result": {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-registry-complete.json",
+          "sha256": "61c1ca37a27b5a17066ab02f6e8e7cc7971ee395286efd2e567ec57f3a90fdb4"
+        },
+        "scope": "Three optic-offset named anchors and three local raw operands; selector inventory remains external."
+      }
+    ],
+    "externalSpecialized": {
+      "reason": "Inventory-backed optic selector traversal",
+      "commands": [
+        "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L6\\selector_trace.py\""
+      ]
+    },
+    "comparison": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\review-reproducer-inventory\\inventory-73697718a71c4847a804e3fdb0e15b3e\\registry-candidate-20260924\\comparison-report-v6.json",
+      "sha256": "be621ffe881ec22ee2a8c4d718693733683fbd0d87d7d1f6ad676560af41aada",
+      "note": "Repository-path rerun matches all candidate cases; scoped source comparisons retained here."
+    }
+  },
   "resume": "L16 investigates M250 numeric bipod effect; other local classes require their own bounded site-relevant question before further tracing."
 }
