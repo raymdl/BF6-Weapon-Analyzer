@@ -648,3 +648,18 @@ rejects the combined expiry/flight assumptions. Misses alone remain inconclusive
 Record exact barrel/ammo identity and any velocity-changing effect. Do not start
 with USG-90's near-300 m boundary. [L25 evidence](../../reference-data/provenance/frosty-2026-09-24-L25-selected-projectile-lifetimes.json)
 keeps source lifetimes separate from these conditional distances.
+
+## L27 follow-up: Compact Handstop sprint firing
+
+Use CZ3A1 with a fixed bare-equivalent setup. Compare no grip and Compact
+Handstop, changing only the grip. Start sustained forward sprint before firing;
+record input, muzzle events/ammo decrement and movement against fixed distance
+markers. Include standing fire and sprint-release-then-fire controls. Repeat
+trials with the same sprint mode, class and field upgrades.
+
+The description-based hypothesis predicts firing while sprint remains active
+with Handstop. The alternative is that firing exits sprint or waits for sprint
+recovery in both setups. Distinguish continued sprint speed from a held sprint
+button or camera animation. A timing difference alone does not name the raw
+boolean or establish a general sprint-recovery multiplier. Keep the true source
+boolean, descriptive text and measured behavior separate. [L27 source scope](../../reference-data/provenance/frosty-2026-09-24-L27-handstop-boolean-scope.json).

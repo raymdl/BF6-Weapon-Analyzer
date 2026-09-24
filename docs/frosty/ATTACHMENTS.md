@@ -747,3 +747,17 @@ array, local references, embedded identifier and both GS imports. Source priorit
 values differ between weapons. Shared targets extend source coverage; they do
 not establish universal activation, stacking or a single final multiplier.
 Keep the L17 capture requirement and each weapon's base values.
+
+### Compact Handstop utility candidate (L27, 24 September 2026)
+
+The [current CZ3A1 trace](../../reference-data/provenance/frosty-2026-09-24-L27-handstop-boolean-scope.json)
+follows the exact progression, Ability action and selector into the shared
+Handstop WPM imported by the WB. Its `Class_a00773e3/Field_18774676` is true at
+raw offset 216; the same field is false in the base WB at offset 4676. No typed
+name or native consumer is established. A different local Burst Mode selector
+in the same WB must not be attributed to Handstop.
+
+The mapped description says the attachment permits firing while sprinting.
+That is a capture hypothesis, not proof of this field's name. Keep numeric tiers
+unchanged. If a controlled capture confirms the utility, consider a utility
+indication instead of interpreting the site's noEffect flag as no gameplay effect.
