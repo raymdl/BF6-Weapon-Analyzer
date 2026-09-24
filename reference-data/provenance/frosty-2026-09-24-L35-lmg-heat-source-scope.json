@@ -1,0 +1,289 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-24",
+  "lead": "L35",
+  "status": "Heat configuration and current field names established; active heat gate unresolved",
+  "build": {
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "sharedHeatClass": "92d07f08",
+  "targets": [
+    {
+      "capture": {
+        "id": 12040,
+        "route": "Common/Hardware/Weapons/MG/M250/M250_WB",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\M250\\M250_WB.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "6f877d455867c568d19983c79763ddb99c8ac643aa93dea1638777e2bb9ef2bb",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 51,
+        "root_class": "Class_a6e2adec",
+        "warnings_json": "{\"$layoutAmbiguous\":23}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 2,
+      "heatClass": "92d07f08",
+      "values": [
+        {
+          "field": "72a2b562",
+          "offset": 1856,
+          "bytes": "00000000",
+          "float32": 0.0
+        },
+        {
+          "field": "e6120d22",
+          "offset": 1860,
+          "bytes": "cdcc4c3e",
+          "float32": 0.20000000298023224
+        },
+        {
+          "field": "3b078489",
+          "offset": 1868,
+          "bytes": "00000000",
+          "float32": 0.0
+        },
+        {
+          "field": "3ad34fcc",
+          "offset": 1872,
+          "bytes": "00004040",
+          "float32": 3.0
+        },
+        {
+          "field": "37a30bd2",
+          "offset": 1876,
+          "bytes": "cdcc4c3f",
+          "float32": 0.800000011920929
+        }
+      ]
+    },
+    {
+      "capture": {
+        "id": 12527,
+        "route": "Common/Hardware/weapons/MG/M60E6/M60E6_WB",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\M60E6\\M60E6_WB.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "94af9e27f6b1a7605ac26e5b669d7f1e8d176318b71bf8104c387603b8306093",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 40,
+        "root_class": "Class_a6e2adec",
+        "warnings_json": "{\"$layoutAmbiguous\":21}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 1,
+      "heatClass": "92d07f08",
+      "values": [
+        {
+          "field": "72a2b562",
+          "offset": 1088,
+          "bytes": "00000000",
+          "float32": 0.0
+        },
+        {
+          "field": "e6120d22",
+          "offset": 1092,
+          "bytes": "cdcc4c3e",
+          "float32": 0.20000000298023224
+        },
+        {
+          "field": "3b078489",
+          "offset": 1100,
+          "bytes": "00000000",
+          "float32": 0.0
+        },
+        {
+          "field": "3ad34fcc",
+          "offset": 1104,
+          "bytes": "00004040",
+          "float32": 3.0
+        },
+        {
+          "field": "37a30bd2",
+          "offset": 1108,
+          "bytes": "cdcc4c3f",
+          "float32": 0.800000011920929
+        }
+      ]
+    },
+    {
+      "capture": {
+        "id": 13154,
+        "route": "Common/Hardware/Weapons/MG/Minimi/Minimi_WB",
+        "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\Minimi\\Minimi_WB.ebx",
+        "head": 4892017,
+        "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+        "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+        "raw_sha256": "b20bda11defe5ec5acfdef9287af049625c37b728c949ffdad005fddbf1f83be",
+        "header_status": "ok",
+        "decode_status": "decoded-provisional",
+        "error": null,
+        "object_count": 37,
+        "root_class": "Class_a6e2adec",
+        "warnings_json": "{\"$layoutAmbiguous\":21}",
+        "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+      },
+      "objectIndex": 1,
+      "heatClass": "92d07f08",
+      "values": [
+        {
+          "field": "72a2b562",
+          "offset": 1088,
+          "bytes": "00000000",
+          "float32": 0.0
+        },
+        {
+          "field": "e6120d22",
+          "offset": 1092,
+          "bytes": "cdcc4c3e",
+          "float32": 0.20000000298023224
+        },
+        {
+          "field": "3b078489",
+          "offset": 1100,
+          "bytes": "00000000",
+          "float32": 0.0
+        },
+        {
+          "field": "3ad34fcc",
+          "offset": 1104,
+          "bytes": "00004040",
+          "float32": 3.0
+        },
+        {
+          "field": "37a30bd2",
+          "offset": 1108,
+          "bytes": "cdcc4c3f",
+          "float32": 0.800000011920929
+        }
+      ]
+    }
+  ],
+  "namingControl": {
+    "capture": {
+      "id": 12277,
+      "route": "Common/Hardware/Weapons/MG/M27IAR/M27IAR_WB",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\MG\\M27IAR\\M27IAR_WB.ebx",
+      "head": 4892017,
+      "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "raw_sha256": "d8c6f84273d08bae08d4d97eff582f05b9145c1fd99190456f2d585707f8a00e",
+      "header_status": "ok",
+      "decode_status": "decoded-provisional",
+      "error": null,
+      "object_count": 35,
+      "root_class": "Class_a6e2adec",
+      "warnings_json": "{\"$layoutAmbiguous\":17}",
+      "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+    },
+    "grxCapture": {
+      "id": 1491,
+      "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+      "raw_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.ebx",
+      "head": 4892017,
+      "descriptor_path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "descriptor_sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "raw_sha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+      "header_status": "ok",
+      "decode_status": "decoded-provisional",
+      "error": null,
+      "object_count": 28807,
+      "root_class": "Class_bec12d4c",
+      "warnings_json": "{\"$layoutAmbiguous\":4750}",
+      "decoder_sha256": "893e919a576fc2cb0b53b4792cdc71534ea32cba37b0833c6061e7f70dfca558"
+    },
+    "reference": {
+      "fileGuid": "aa45ab92-cc7f-4d20-ab32-ba27da0aa6a0",
+      "classGuid": "ba9d132f-45a0-4fe4-a266-d47c14ec5bfe"
+    },
+    "anchorIndex": 5155,
+    "name": "M27IAR_WB.WeaponEntityData.WeaponFiring.PrimaryFire.OverHeat",
+    "pairs": [
+      {
+        "field": "e6120d22",
+        "name": "M27IAR_WB.WeaponEntityData.WeaponFiring.PrimaryFire.OverHeat.HeatDropPerSecond",
+        "childIndex": 7515,
+        "registryValue": 0.2,
+        "rawOffset": 1092,
+        "bytes": "cdcc4c3e",
+        "float32": 0.20000000298023224
+      },
+      {
+        "field": "72a2b562",
+        "name": "M27IAR_WB.WeaponEntityData.WeaponFiring.PrimaryFire.OverHeat.HeatPerBullet",
+        "childIndex": 13872,
+        "registryValue": 0.0025,
+        "rawOffset": 1088,
+        "bytes": "0ad7233b",
+        "float32": 0.0024999999441206455
+      },
+      {
+        "field": "3b078489",
+        "name": "M27IAR_WB.WeaponEntityData.WeaponFiring.PrimaryFire.OverHeat.OverHeatDropDelay",
+        "childIndex": 1385,
+        "registryValue": 0.0,
+        "rawOffset": 1100,
+        "bytes": "00000000",
+        "float32": 0.0
+      },
+      {
+        "field": "3ad34fcc",
+        "name": "M27IAR_WB.WeaponEntityData.WeaponFiring.PrimaryFire.OverHeat.OverHeatPenaltyTime",
+        "childIndex": 3645,
+        "registryValue": 0.0,
+        "rawOffset": 1104,
+        "bytes": "00000000",
+        "float32": 0.0
+      },
+      {
+        "field": "37a30bd2",
+        "name": "M27IAR_WB.WeaponEntityData.WeaponFiring.PrimaryFire.OverHeat.OverHeatThreshold",
+        "childIndex": 11127,
+        "registryValue": 1.0,
+        "rawOffset": 1108,
+        "bytes": "0000803f",
+        "float32": 1.0
+      }
+    ]
+  },
+  "finding": "The exact M27IAR OverHeat registry anchor independently names five scalar fields. In the same descriptor class, M250, M60E6 and Minimi HeatPerBullet is raw zero; their other values are HeatDropPerSecond about0.2, threshold about0.8, drop delay0 and penalty3. M27IAR differs: HeatPerBullet about0.0025, threshold1 and penalty0.",
+  "siteMapping": {
+    "M250": "m250 / M250",
+    "M60E6": "m60 / M/60",
+    "Minimi": "l110 / L110",
+    "M27IAR": "drsiar / DRS-IAR"
+  },
+  "site": {
+    "pointer": "sim/core.js:shotIntervalAfter",
+    "current": "No heat state or heat-dependent firing gap.",
+    "proposal": "No new heat gate is supported for the three zero-accumulation base samples. Preserve DRS-IAR as a nonzero source candidate and require measured timing/heat behavior before adding a gate."
+  },
+  "limits": [
+    "The source names and values do not establish native accumulation, cooling while firing, initial heat, threshold comparison, or whether heat affects firing rather than presentation.",
+    "Unnamed booleans and effect references in the same block remain unresolved.",
+    "A zero penalty does not by itself prove no gate, and zero HeatPerBullet does not rule out another heat source or selected override.",
+    "Only three selected LMG bases plus the exact naming control were checked. No all-LMG or all-weapon heat claim."
+  ],
+  "reproduction": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L35\\verify_parent.py\"",
+  "externalEvidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L35\\parent-heat-raw-check.json",
+      "sha256": "e23bf86ced2286de2f535c7b1f308d8b1272be8814955938da407f3430178f1d"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L35\\verify_parent.py",
+      "sha256": "6bbc4f49ceca1e8be3c859fc6706f94dbb880625528d175d8a461faab8531c7b"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-23T234335-0400\\1.4.3.0\\L35\\parent-site-scope.json",
+      "sha256": "fd260fce383c7f16645e4f6b1651a5202a2a0ed178047a51008b4fbb92adae13"
+    }
+  ]
+}

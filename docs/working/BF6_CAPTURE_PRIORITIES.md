@@ -685,3 +685,24 @@ The [L32 source check](../../reference-data/provenance/frosty-2026-09-24-L32-inh
 did not identify the native setting or equation. Do not convert its unnamed zero
 values into a sourced coefficient. Keep the site calculation unchanged pending
 this test and operator review.
+
+## L35 follow-up: DRS-IAR heat configuration
+
+Use DRS-IAR (M27IAR source), standard ammo and a documented magazine. Record a
+cold first-magazine baseline, then repeated sustained firing with the same build,
+stance, aim state and attachments. Record shots, reload intervals and any forced
+pause while ammo remains. Use a clearly longer idle interval as a reset control,
+and M250 as the zero-HeatPerBullet source comparison. Do not infer zero heat from
+an absent HUD indicator; that measurement is unavailable.
+
+An active accumulating heat gate predicts a reproducible additional pause or
+cadence change after sufficient firing, affected by idle/cooling time. A visual
+heat mechanism can change the weapon image without altering shot timing. Ordinary
+reloads must remain separate. Under a simple zero-start, no-cooling additive
+hypothesis, the source ratio 1 / 0.0025 is about 400 shots; this is not a native
+threshold prediction. Reload cooling may prevent reaching a threshold in normal
+play, so an uninterrupted magazine or a null test alone cannot settle the question.
+
+The [L35 source scope](../../reference-data/provenance/frosty-2026-09-24-L35-lmg-heat-source-scope.json)
+establishes names and configured values only. No site heat gate is proposed for
+implementation without measured firing effects and operator review.

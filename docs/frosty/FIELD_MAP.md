@@ -345,13 +345,13 @@ is name evidence only. Operand meaning and runtime use need their own checks.
 | `Field_27b15985` | BridgeDelay |
 | `Field_3f680d24` | Priority |
 | `Field_5a02dd65` | RecoilDuration; historical weak label strengthened in the current MP5 GS context by [L13](../../reference-data/provenance/frosty-2026-09-24-L13-burst-duration-bindings.json) |
-| `Field_72a2b562` | HeatPerBullet |
+| `Field_72a2b562` | HeatPerBullet; historical weak label strengthened by the current raw M27IAR registry pair in [L35](../../reference-data/provenance/frosty-2026-09-24-L35-lmg-heat-source-scope.json) |
 | `Field_aea8977a` | DecreaseOffset |
 | `Field_bf650805` | FirstShotIncreaseMultiplier |
 | `Field_cee5ebfe` | StationaryZoomedMinAnglesArrayIndex |
 | `Field_d14921ea` | DecreaseCoefficient |
 | `Field_d9d33d20` | Gravity |
-| `Field_e6120d22` | HeatDropPerSecond |
+| `Field_e6120d22` | HeatDropPerSecond; current raw M27IAR registry pair verified in L35 |
 | `Field_f7a76bcf` | DecreaseExponent |
 
 31 further leaves hold constant values shared by several fields and are not named; see `ambiguousLeaves` in the evidence file.

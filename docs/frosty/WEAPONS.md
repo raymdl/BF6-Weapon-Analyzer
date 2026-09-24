@@ -1028,3 +1028,20 @@ uses the independently named `SpawnDelay` field from that BREN3 anchor. All 63
 checked primary WB values are raw float32 zero. No nonzero base delay is missing
 from current flight timing on this evidence. Native time origin, trigger latency
 and selected runtime overrides remain outside this result.
+
+### LMG heat configuration (L35, 24 September 2026)
+
+The [current raw registry check](../../reference-data/provenance/frosty-2026-09-24-L35-lmg-heat-source-scope.json)
+independently names HeatPerBullet, HeatDropPerSecond, OverHeatThreshold,
+OverHeatDropDelay and OverHeatPenaltyTime on the M27IAR primary firing block.
+The same descriptor class on M250, M/60 (M60E6) and L110 (Minimi) stores
+HeatPerBullet 0, drop rate about 0.2, threshold about 0.8, delay 0 and penalty 3.
+These base values do not support adding per-bullet heat accumulation to those
+three site weapons.
+
+The naming control is different: DRS-IAR (M27IAR source) stores HeatPerBullet
+about 0.0025, threshold 1 and penalty 0. This is a source candidate, not proof of
+an active firing gate. Cooling during fire, initial heat, threshold handling,
+unnamed booleans and native use remain unresolved. Keep the cadence model
+unchanged until a controlled capture distinguishes a firing restriction from
+visual heat and ordinary reload pauses.
