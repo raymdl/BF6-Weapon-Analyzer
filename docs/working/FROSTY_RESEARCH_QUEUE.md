@@ -41,22 +41,25 @@ callers. "Needs a native consumer" is a reason to look for one, not a stopping p
 
 ## Active source leads
 
-Work these from source before handing them to the capture plan. Each lead lists
-what was already established so it is not repeated.
+Work these from source before handing them to the capture plan. Results from the
+23 September pass are in the [receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json). Each row says what is established and what is next.
 
-| # | Lead | Already established | Next source step |
+| # | Lead | Established | Next source step |
 |---|---|---|---|
-| L1 | **ADS Bolt consumer** | `ads_bolt` choices on M2010, SV-98, PSR and L115 select `WME_ADSBoltRechamber_P25` (class `Class_20a02ed5`, selector `ebf5fb27…`). The only operand is a one-byte true flag at `Field_68c40b57`; there is no numeric timing operand. The site treats it as `noEffect`. [Receipt](../../reference-data/provenance/frosty-site-ads-bolt-cadence-2026-09-23.json) | Find every other asset of `Class_20a02ed5` and every reader of selector `ebf5fb27…`. Check whether any other modifier sets `Field_68c40b57`. Look for the soldier/weapon state field that the flag gates. |
-| L2 | **Mini Scout and Interdictor rechamber behavior** | Both are used as base-behavior controls; neither offers `ads_bolt`. | Check whether either base WB/GS already carries an ADS-rechamber flag or an equivalent selector, so the capture controls are known in advance. |
-| L3 | **Bolt zoom completion fraction** | `Field_21f2d4ee` is 0.8–0.875 on the six bolt rifles. Two readings remain: it gates firing, or it gates ADS re-entry. | Compare the field across all scoped and non-bolt weapons. Look for a weapon where the two readings predict different menu RPM or where Sym's value distinguishes them. |
-| L4 | **Recon second bolt block (`time = -1`)** | The owner chain and exact `WM_ReconTrait` selector (`89c5e29e…`) are confirmed for all six rifles. Inheritance of the unset time is a hypothesis. | Survey every `-1` float in timing blocks across all 64 WB bodies. Check whether other trait-bound blocks use `-1` as "inherit" where the resulting value is observable or matches Sym. |
-| L5 | **Burst cadence for six burst weapons** | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9 and CZ3A1 share `WPM_ERG_BurstFireEnabled_W10`. The site stores rounds but no burst rate, so it adds no pause between bursts. This affects TTK. DB-12's burst rate reproduces from its firing and cycle fields. | Apply the DB-12 derivation to these six weapons' firing/cycle fields. Trace the enum scalar and array under the selector to find burst count and inter-burst delay. |
-| L6 | **SGX Light Suppressor override** | The local `0.975282` factor is linked by the exact ConditionalExtended selector to CQB and Long. Long's `1.462923` is `0.975282 × 1.5`. Proposal: move Light's override to CQB. [Receipt](../../reference-data/provenance/frosty-site-sgx-sway-lineage-2026-09-23.json) | Check the same suppressor-family selector pattern on every other weapon with Light/CQB/Long suppressors for the same stale-override shape. |
-| L7 | **Spot-on-fire base consumer** | Per-weapon WB `Field_5ebda408` holds world `Field_9918e670` and minimap `Field_31022dc5`. 61 weapons are 54/150; M45A1 and Skorpion are 27/64.29; KSG is 75/150. [Receipt](../../reference-data/provenance/frosty-spot-range-bases-2026-09-23.json) | Find readers of `Field_5ebda408` or its owning class. Trace the Subsonic and suppressor spotting effects to the same operands to establish product versus minimum composition. |
-| L8 | **PP-19 Flash Comp and L115 Standard Suppressor gaps** | The exact selected WB/GS graphs do not supply the site's assumed PP-19 recovery multipliers or duration override, or L115's hip-spread tier. [Receipt](../../reference-data/provenance/frosty-site-muzzle-operands-2026-09-23.json) | Search for the assumed values by float32 across the PP-19 and L115 dependency sets, including the alternate cache payloads for their muzzle records. |
-| L9 | **Zeroing default selection** | All 63 lists are checked; the 12 selectable lists match the site. 51 lists have a single value. | Find the field that selects the default entry and whether single-value lists imply fixed zero. |
-| L10 | **Tooltip string gaps** | 18 exact choices still use screenshot descriptions because their bound English IDs are absent or conflicting. [Receipt](../../reference-data/provenance/frosty-site-tooltips-2026-09-23.json) | Check other localization tables and the 1.4.3.1 string export for these IDs before accepting the text found at other IDs. |
-| L11 | **Blocker triage** | The [final input ledger](../../reference-data/provenance/frosty-site-input-review-final-v2-2026-09-23.json) has 748 source-blocker rows and 428 candidate rows with blockers. | Split these by next evidence: *source-traceable* (a field, caller or value search can still narrow them) or *capture-only*. Add the source-traceable groups to this table as leads. |
+| L1 | **ADS Bolt consumer** | The DLC Bolt effect overrides the WB bolt-action block's booleans. It sets six flags false, giving the four rifles Mini Scout's bolt behavior. Prediction: ADS stays up while rechambering, and the bolt cycle is unchanged. | Assign names to the six flags. Look for a weapon or modifier where one flag differs alone. |
+| L2 | **Mini Scout and Interdictor** | Done. Mini Scout already has the DLC Bolt pattern; Interdictor has the leave-ADS pattern. | None; use them as capture controls. |
+| L3 | **Bolt completion fractions** | Pumps separate the readings. M87A1 has hip fraction 0.6 and zoom fraction 1.0, and its site RPM equals the full cycle (94.74; a fraction gate would give 138.46). | Capture only: M87A1 hipfire maximum cadence. |
+| L4 | **Recon `-1` time** | All nine `Class_582cbe36` instances use `-1` for fields they do not override, which supports inheritance. Recon also sets speed and both fractions. | Native activation is capture rank 6. |
+| L5 | **Burst cadence** | Done. Bursts per minute, rounds per burst and the fire-mode enum are sourced. The six burst weapons store no BPM. GRT-BC and SL9 BPM corrected. | Capture rank 9 checks for a native pause. |
+| L6 | **Stale or missing local sway overrides** | SGX corrected. GGH22, Mini Scout and BROD3 barrels carry unmodeled local sway overrides. | Check whether local overrides of other effect classes (recoil, spread, ADS) are bound to shared conditional selectors. |
+| L7 | **Spot-on-fire base consumer** | Exhausted. No serialized reader exists; `SimEx_WeaponFireSpotting` reads only the duration and allowed flags. | Capture rank 1. |
+| L8 | **PP-19 and L115 muzzle gaps** | Done. The PP-19 Flash Comp binding omission is confirmed at the byte level (bug #16); L115 is bug #12. | Panel or firing check. |
+| L9 | **Zeroing default** | Exhausted. No `WeaponZeroingModifier` instance exists in captured data; the default is probably the first list entry. | Capture rank 7. |
+| L10 | **Tooltip string gaps** | Exhausted. Five IDs are absent from both English tables and three conflict with panel text. No site impact. | None. |
+| L11 | **Blocker triage** | Done. Source-traceable: default selections (189 rows) and ergonomic recoil overrides (19). Capture only: magazine nominal versus loaded capacity (about 260), spot multipliers (40), collateral index (about 330). No source: caliber labels (62). | Work L12 and L13. |
+| L12 | **Default attachment selection** | Branch `Field_7c137a8a` is list order, not a default flag. | Search the customization and default-loadout assets (`CUST`, Equipment) for per-slot defaults. |
+| L13 | **Ergonomic recoil overrides** | 19 `ERGOS` override rows have a source graph without a typed mapping. | Map each selected WME class and field, as done for sway. |
+| L14 | **`Field_be31b12d`** | 300 to 450 on every weapon and changed by fire-rate modifiers; it is not the burst rate. The SDK lists `RateOfFireForSingleFire`. | Compare with semi-auto cadence on weapons where it differs from the rate of fire. |
 
 ## Proposed Analyzer changes
 
@@ -65,12 +68,14 @@ operator approval; none is implemented unless stated.
 
 | Proposal | Affected data/code | Evidence and remaining validation |
 |---|---|---|
-| Model burst pause for the six burst weapons (L5) | `data/weapons.json`, timing in `sim/core.js` | Current TTK assumes no pause between bursts. Needs source derivation (L5) or the rank-9 capture. |
-| Model sustained fully-ADS bolt-rifle cadence | Sniper RPM, shot spacing, TTK | Separate next accepted shot from next fully-ADS shot. [Candidate table](../frosty/WEAPONS.md#ads-bolt-and-scoped-shot-cadence-23-september-2026). Needs L1–L4 and capture rank 6. |
-| Move SGX Light Suppressor sway override to CQB (L6) | `data/attachments.json` | Subject to native activation; paired predictions in capture rank 8. |
+| Burst pause | `data/weapons.json` | **Applied 23 September:** GRT-BC and SL9 BPM now use source 239.998993 and 327.272003. The six burst weapons store no BPM, so no change; rank 9 checks for a native pause. |
+| Model sustained fully-ADS bolt-rifle cadence | Sniper RPM, shot spacing, TTK | DLC Bolt and Mini Scout keep ADS through rechambering (L1); other snipers add ADS exit and entry. Separate next accepted shot from next fully-ADS shot. [Candidate table](../frosty/WEAPONS.md#ads-bolt-and-scoped-shot-cadence-23-september-2026). Needs capture rank 6 for overlap. |
+| Move SGX Light Suppressor sway override to CQB (L6) | `data/attachments.json` | **Applied 23 September.** Native activation still open; paired predictions in capture rank 8. |
 | Generate per-weapon spot bases from WB | `sim/applyAttachments.js`, spotting display | M45A1 and Skorpion would differ from the current 54/150. Needs L7 and capture rank 1. [Official 1.2.1.0 context](../../reference-data/provenance/frosty-spotting-patch-context-2026-09-23.json) corroborates 54 m and 21 m. |
+| Add barrel sway for GGH22, Mini Scout and BROD3 (L6) | `data/attachments.json`, `sim/applyAttachments.js` | Local WB overrides: GGH22 Short and Extended 0.850746, Mini Scout Short 1.033862, BROD3 Short 1.016938 and 1.024638 (composition unknown). The site has no barrel sway input yet. |
+| Decide PP-19 Flash Comp treatment (bug #16) | `data/attachments.json` | Source has no recoil binding; the site applies the generic effect. Decide together with L115 bug #12. |
 | Correct GGH22 caliber label to `.40 S&W` | `data/weapons.json` `cal` | The localized description says `.40 caliber` and the WB selects `PD_.40SW`. Label only; ballistics already use this projectile. |
-| Keep source precision for subsonic velocities | `data/attachments.json` | M417 A2 273.599203, PW7A2 341.567997 and USG-90 265.293513 m/s, versus integer menu values. [Receipt](../../reference-data/provenance/frosty-site-ammo-velocity-2026-09-23.json) |
+| Keep source precision for subsonic velocities | `data/ammo.json` | **Applied 23 September:** M417 A2 273.599203, PW7A2 341.567997 and USG-90 265.293513 m/s. [Receipt](../../reference-data/provenance/frosty-site-ammo-velocity-2026-09-23.json) |
 | Test whether the idle-duration table controls ADS-entry spread timing | Not idle recovery in `sim/core.js` | The first eight values match the ADS ladder minus one 60 Hz frame; indices follow the ADS animation index on 62 of 64 weapons. Use the VSSM capture first. |
 | Per-weapon deployed comparison using actual bipod operands | `sim/attachments.js`, `sim/core.js` | Deployment conditions and stacking unresolved; no mounted recoil reduction established. |
 | Keep GS ADS tier and WB timing as separate coordinates | Handling data | Prevents VSSM double counting. |
@@ -79,7 +84,7 @@ operator approval; none is implemented unless stated.
 | Zeroing/Rangefinder aim-point correction | `sim/ballistics.js` | Needs L9 and capture rank 7. |
 | Keep class and mode context in damage/regen comparisons | Provenance, scenario controls | Shared defaults are not universal match rules. |
 
-Already applied: SOR-300SC and GRT-CPS empty reloads are 3.2 s and 3.034 s,
+Also applied: SOR-300SC and GRT-CPS empty reloads are 3.2 s and 3.034 s,
 from the [23 September capture](../../reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json).
 
 ## Parked questions

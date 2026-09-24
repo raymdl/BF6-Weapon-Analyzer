@@ -134,6 +134,12 @@ solver, base velocity and standard projectile. They omit sight height and do not
 establish native correction. Controlled impacts can distinguish the tested
 behaviors; they cannot prove which serialized field the engine consumes.
 
+The SDK defines `WeaponZeroingModifier` with `Modes` and `DefaultZeroingDistance`,
+so a default would come from a modifier, not the WB block. A structural search of
+every captured modifier object found no instance of that shape; nothing in captured
+data overrides the default. The engine default is probably the first list entry
+(100 m, the site default); this is not proven.
+
 ## Collateral
 
 - Base index: named WB `DamagePenetrationMultiplierIndex`. Steps: `Class_d11a23a2`
@@ -237,6 +243,13 @@ inactive. The patch notes do not resolve Subsonic combinations or effect priorit
 The old 0.014 candidate remains a composition question. The
 [ranked capture plan](../working/BF6_CAPTURE_PRIORITIES.md) puts spotting and
 regeneration first because they can test current displayed assumptions.
+
+No serialized reader of the per-weapon base was found. Only the 119 WB roots hold
+`Field_5ebda408` and its two range fields; no modifier class carries them.
+`SimEx_WeaponFireSpotting` reads `SpotOnFireDuration` (0.4) from `GRX_Glacier_Soldier`,
+`SpottingAllowed` from `MUT_UI` and the weapon fire event state, but not the range.
+The range is therefore read natively, and product-versus-minimum composition can only
+be settled by the rank-1 capture ([receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json)).
 
 ### Shared soldier settings (1.4.3.0, 23 September 2026)
 
@@ -635,6 +648,37 @@ ADS-bolt-rechamber effect with a one-byte true flag, but no numeric speed operan
 Only M2010, SV-98, PSR and L115 expose this choice. Mini Scout and Interdictor are
 base-behavior controls, not inferred attachment users.
 
+**What the flag changes.** `WME_ADSBoltRechamber_P25` (`Class_20a02ed5`) reuses the
+boolean field hashes of the WB bolt-action block (`/Field_f8822efa/Field_eebe0fd8`).
+It sets `Field_68c40b57` true and six flags false. Those six flags are true on the
+four DLC Bolt rifles and Interdictor, and false on Mini Scout:
+
+| Bolt-block booleans (decoded order) | Pattern |
+|---|---|
+| M2010, SV-98, PSR, L115, Interdictor | `T F T T T T T T F F` |
+| Mini Scout | `T F F F F F F F F F` |
+| `WME_ADSBoltRechamber_P25` | `T F F F F F F F F` |
+| Pump shotguns (KS18K, M87A1, KSG) | all false |
+
+So DLC Bolt gives these rifles Mini Scout's bolt behavior. The SDK's `BoltActionData`
+member list includes `UnZoomOnBoltAction`, `ReturnToZoomAfterBoltAction`,
+`HoldBoltActionUntilFireRelease` and `HoldBoltActionUntilZoomRelease`; which hash is
+which is not established. The in-game text is "Enables rechambering while aiming down
+sights." Prediction: with DLC Bolt the rifle stays in ADS while rechambering, as
+Mini Scout does, and the mechanical bolt cycle is unchanged. Mini Scout is the
+stay-in-ADS control; Interdictor is the leave-ADS control.
+
+**Completion fractions.** Pump shotguns separate the two readings of the fractions:
+M87A1 has hip fraction 0.6 and zoom fraction 1.0. Its site 94.737 RPM equals the
+full cycle; a hip-fraction firing gate would give 138.46 RPM. The zoom fraction is
+1.0 on every weapon whose flags never leave ADS, which fits a zoom-return role.
+
+**Recon block `-1`.** All nine `Class_582cbe36` firing-override objects use `-1` on
+float fields they do not override (for example `WME_Firerate900_M10` sets only the
+rate of fire). This supports "inherit" for the Recon block's time. The Recon blocks
+do set speed and both fractions; L115 and Interdictor use M2010's 0.75/0.859155.
+[Receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json).
+
 | Weapon / source identity | Current RPM | Zoom fraction | RPM if fraction gates firing | RPM if Recon speed replaces base speed | Default modeled ADS-in (ms) |
 |---|---:|---:|---:|---:|---:|
 | Mini Scout / MiniFix | 47.093 | 0.875 | 52.640 | 51.429 | 250 |
@@ -706,13 +750,25 @@ cycle fields. The two rounds per cycle must not be generalized to unrelated
 weapons from the same field value alone.
 
 KORD 6P67, SG 553R, PW5A3, UMG-40, KV9 and CZ3A1 use the shared
-`WPM_ERG_BurstFireEnabled_W10` selector. Its captured enum scalar and array do not
-establish each weapon's burst count or pause. The Analyzer stores two or three
-rounds but no burst rate for these six; its timing function therefore adds no
-inter-burst pause. This could change calculated TTK. Retain the current values as
-unverified inputs until the [rank-9 cadence test](../working/BF6_CAPTURE_PRIORITIES.md#9-burst-mode-activation)
-measures accepted shots and the pause. Source field names and selector presence
-do not establish native cadence.
+`WPM_ERG_BurstFireEnabled_W10` selector. Its `Class_032c7d25` effect only switches
+fire modes: `Field_7313f5d3` sets the primary mode to 3 and `Field_2a5a28ee` sets the
+alternates. The mode values follow the SDK `FireLogicType` enum order
+(`fltSingleFire` 0, `fltSingleFireWithBoltAction` 1, `fltAutomaticFire` 2,
+`fltBurstFire` 3), which also explains the WB primary mode `Field_16e6fa59`: semi 0,
+bolt and pump 1, auto 2, burst 3.
+
+**Bursts per minute.** The registry-named `BurstsPerMinute` (`Field_2320e742`) is
+224.999 on M16A3, 239.998993 on GRT-BC and 327.272003 on SL9, and 0 on the six
+weapons above. No other class contains the field, so no modifier supplies a rate.
+The site's no-pause timing for the six matches source; the rank-9 test can still
+check for a native pause. The site's earlier GRT-BC 240.127 and SL9 337.5 predated
+Frosty and were replaced with the source values on 23 September.
+
+**Rounds per burst.** `Field_58d70acb/Field_ca2ec42a` matches the site's
+`burstRounds` on all nine burst weapons: 2 on KORD 6P67, SL9, UMG-40 and KV9, 3 on the
+others. It is 3 on most other weapons and 1 on sixteen. The SDK's `ShotConfigData`
+lists `NumberOfBulletsPerBurst`, so the name is probable.
+[Receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json).
 
 ## Class weapon traits
 

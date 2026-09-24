@@ -47,6 +47,7 @@ Site status uses one of these values, followed by the value that the site applie
 | 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
 | 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
+| 16 | Flash Comp | PP-19 | Suspected game error (source binding omission) | The PP-19 GS has no binding for the shared Flash Compensator selector, so the recoil recovery and duration effects bound on the other 39 Flash Comp weapons are absent. Panel and firing behavior not yet checked. | Generic effect applied: recovery ×1.2 and 0.05 s duration |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -382,6 +383,21 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   [burst panel trace](../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
   Local measurement artifacts are under `outputs/burst-factorial-analysis/`
   and `outputs/burst-cadence-comparison/`; these ignored outputs are not shipped.
+
+### 16. PP-19 Flash Comp has no recoil binding
+
+- **Source trace (1.4.3.0).** `Attachment_PP19_MZL_VityazFlashComp` links through
+  PP-19 ability action `25f310f4-64ca-44da-82e0-75bc33ea44b0` to
+  `U_WPM_MZL_FlashCompensator_W15`, selector `f7996b55-b276-4cf1-acf5-37a0d08628d9`.
+  The WB package supplies only a spotting effect; the recoil changes are GS bindings.
+  `GS_PP19` does not contain the selector GUID in its raw bytes, while `GS_UMP40`
+  does. 39 of the 40 site weapons with Flash Comp bind it.
+- **Site.** The shared Flash Comp record applies ADS and hip recovery ×1.2 and a
+  0.05 s recoil duration override to PP-19 as well.
+- **Status.** Same shape as #12. Not yet checked on the game panel or in firing; the
+  recoil bar may not show recovery changes.
+- **Evidence.** [Source-leads receipt](../reference-data/provenance/frosty-source-leads-2026-09-23.json)
+  and the [muzzle operand audit](../reference-data/provenance/frosty-site-muzzle-operands-2026-09-23.json).
 
 ## Description errors
 

@@ -256,6 +256,16 @@ record the first exhaustive-audit checkpoint. Later checkpoint counts are in the
 `b3040e7` version of the research queue; current work is in the
 [queue](../working/FROSTY_RESEARCH_QUEUE.md).
 
+### SDK strings file
+
+`FrostyToolsuite-battlefield6/FrostyPlugin/Sdk/Bf6-Strings.txt` lists engine type
+names with their member lists (a type hash line, a member count, then the members)
+and enum values in declaration order. Use it for candidate member names and enum
+order, for example `FireLogicType` and `BoltActionData`. Its hashes are not the
+`Field_` hashes in decoded EBX, so it does not map a hash to a name; confirm a name
+with values or structure. The engine lists can be older than BF6: `BoltActionData`
+has ten members there and sixteen fields in BF6.
+
 ### Descriptor reader
 
 The exhaustive pass added eight-byte delegate type references to the shared reader.

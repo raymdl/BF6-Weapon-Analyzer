@@ -315,6 +315,14 @@ support a scoped cadence change; unchanged intervals with different zoom continu
 would support a capability change without a measured RPM change. Keep the Recon
 trait comparison separate so a class modifier cannot be mistaken for DLC Bolt.
 
+**Source update (23 September).** The DLC Bolt effect gives the four rifles Mini
+Scout's bolt flags ([weapons](../frosty/WEAPONS.md#ads-bolt-and-scoped-shot-cadence-23-september-2026)),
+so Mini Scout is the stay-in-ADS control and Interdictor the leave-ADS control.
+Predicted: with DLC Bolt, the scope stays up through rechambering and the
+accepted-shot interval is unchanged. A cheaper fraction test: fire M87A1 from the hip
+as fast as it accepts shots. The full cycle predicts 94.74 RPM (0.633 s); a
+hip-fraction firing gate predicts 138.46 RPM (0.433 s).
+
 ## 7. Zeroing and Rangefinder
 
 First record the zeroing HUD immediately after a fresh spawn, before any zeroing

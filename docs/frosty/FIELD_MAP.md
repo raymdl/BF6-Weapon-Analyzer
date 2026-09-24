@@ -97,6 +97,9 @@ not known.
 | `WME_DynamicPivot` | `Field_f235e44f`, `Field_a4f104cc` | X/Y/Z multipliers (M10 1.333333, P10 0.75, P20 0.5625) | Probable |
 | `WME_*` muzzle velocity | `Field_6a5c4efd` | Velocity tier factor 0.8^n | Value |
 | `WME_Firerate*` | `Field_14c4a054`, `Field_be31b12d` | Rate of fire values (P90 Heavy Recoil Spring 800 / 400) | Probable |
+| `Class_20a02ed5` (`WME_ADSBoltRechamber_P25`) | Bolt-block boolean hashes | DLC Bolt override: sets `Field_68c40b57` true and the six leave-ADS flags false (Mini Scout's pattern) | Structure, Value |
+| `Class_582cbe36` | `Field_14c4a054`, `Field_a1abbce8`, `Field_1c57216a`, fractions | Firing/bolt override; `-1` on every float it does not override (nine instances) | Value |
+| `Class_032c7d25` (`WPM_ERG_BurstFire*`, `FullAutoReplace*`) | `Field_7313f5d3` / `Field_2a5a28ee` | Primary / alternate fire mode (`FireLogicType`) | Value |
 
 ## Weapon stats (GS and WB)
 
@@ -114,6 +117,10 @@ not known.
 | `Field_52a8ad43` | WB | Constant 0.067 (four frames) on every weapon | Value |
 | `Field_5b6caeda/Struct_038e6367` | GS | Idle-duration block: `Field_6138f58f` = `StationaryIndex`, `Field_54a69c98` = `MovingIndex`; pointers `Field_fdc3ebd3` and `Field_d9d776d4` target `IDA_Weapons` | Names resolved by current raw GRX child/hash arrays in 62 anchors; native indexing and runtime use unresolved ([review](../../reference-data/provenance/frosty-audit-registry-bindings-2026-09-23.json)) |
 | `Class_35259f6b/Field_58d70acb/Struct_29ea5d2b/Field_808dd66c` | WB | Primary projectile selection | Structure |
+| `Class_35259f6b/Field_58d70acb/Field_ca2ec42a` | WB shot block | Rounds per burst (`NumberOfBulletsPerBurst` in SDK `ShotConfigData`); matches site `burstRounds` on all nine burst weapons | Value, Probable name |
+| `Field_f8822efa/Field_16e6fa59` | WB fire logic | Primary fire mode, SDK `FireLogicType` order: 0 single, 1 single with bolt action (bolt and pump), 2 automatic, 3 burst | Value |
+| `Field_f8822efa/Field_9b956c3d` | WB fire logic | Alternate fire modes, same enum (`[3,0]` = burst, single) | Value |
+| `Field_f8822efa/Field_eebe0fd8` booleans `Field_68c40b57` … `Field_7e9e4ae5` | WB bolt action | Ten bolt-behavior flags. Six (`Field_168e57d5`, `Field_65310f94`, `Field_c2b88435`, `Field_85df0c4a`, `Field_a60870ff`, `Field_3ff462cc`) are true on the five leave-ADS snipers and false on Mini Scout and pumps; SDK candidates include `UnZoomOnBoltAction` and `ReturnToZoomAfterBoltAction` | Value; individual names unassigned |
 | `Struct_739f3ac5.Field_32a99b9c` | WB | Muzzle velocity (`Shot.InitialSpeed.z`) | Value |
 | `Field_d9d33d20` / `Field_30c37c24` | Projectile | Gravity (−9.81) / drag (0.0035) | Named, Value |
 | `Class_6aa794ef.Field_c52d90b8` | Material grid relation | Collateral multiplier array (raw offset 24) | Value |

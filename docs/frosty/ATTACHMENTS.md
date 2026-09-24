@@ -283,6 +283,11 @@ Suppressor also lacks the GS hip-spread index binding that would explain the sit
 +1 spread tier (source index -1). These bounded graph results do not prove native
 absence. The capture plan compares these exact choices with their controls.
 
+A raw byte search confirms the PP-19 result: `GS_PP19` does not contain the
+`U_WPM_MZL_FlashCompensator_W15` selector GUID, while the `GS_UMP40` control does.
+It is bound on 39 of the 40 Flash Comp weapons. This is the same kind of binding
+omission as the L115 suppressor; see [attachment bugs](../ATTACHMENT_BUGS.md) #16.
+
 ### Current grip and barrel field review (1.4.3.0, 23 September 2026)
 
 The [grip/sight leaf review](../../reference-data/provenance/frosty-site-grips-sights-effect-review-2026-09-23.json)
@@ -586,9 +591,24 @@ factor `1.5`; keep it as a source-compatible composition candidate. Current raw
 hashes and exact attachment XML identities were checked separately from the older
 13 September provenance. Native selector activation and multiplication remain
 unproved. The local wrapper also lists a second selector; a shared selector alone
-does not establish whether either or both are required. No production value was
-changed. The paired capture is listed under
-[optic framing](../working/BF6_CAPTURE_PRIORITIES.md#8-optic-framing-and-pip).
+does not establish whether either or both are required. The override was moved
+from Light to CQB Suppressor on 23 September; Long is unchanged. The paired capture
+is listed under [optic framing](../working/BF6_CAPTURE_PRIORITIES.md#8-optic-framing-and-pip).
+
+**Same pattern on barrels.** Local WB sway overrides bound to the shared
+`U_WPM_ANY_ConditionalShort`/`ConditionalExtended` selectors exist on three more
+weapons, all on barrels:
+
+| Weapon | Barrel choices | Local sway factor |
+|---|---|---|
+| GGH22 | Short and Extended | 0.850746 |
+| Mini Scout | Short | 1.033862 |
+| BROD3 | Short | Two parts: 1.016938 and 1.024638 |
+
+No shared barrel package imports a sway effect, and the site models
+`weaponSwayMult` only on muzzles and magazines, so these are unmodeled. How BROD3's
+two parts combine is not known.
+[Receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json).
 
 ## Evidence
 
