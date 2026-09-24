@@ -104,6 +104,15 @@ Work these from source before handing them to the capture plan. Results from the
 | L35 | **LMG heat configuration - Capture optional / low value** | [Raw source check](../../reference-data/provenance/frosty-2026-09-24-L35-lmg-heat-source-scope.json): M250/M60E6/Minimi HeatPerBullet is 0; DRS-IAR has 0.0025, drop 0.2, threshold 1, delay 0 and penalty 0. | Simple additive/continuous-cooling model: 0.0025 * 771.428 / 60 = 0.03214 heat/s < 0.2 drop; zero penalty supplies no timed lockout, and no-cooling threshold takes about 400 shots. Native behavior is unresolved; prioritize capture only with source evidence of paused cooling or another penalty mechanism. |
 | L36 | **Primary heat scope - Hypothesis rejected in scope** | [Raw 63-root scan](../../reference-data/provenance/frosty-2026-09-24-L36-primary-heat-scope.json): only DRS-IAR has nonzero HeatPerBullet; conditional gain 0.03214/s is below cooling 0.2/s, penalty is 0, and 60 rounds add only 0.15 without cooling against threshold 1. | No base heat gate proposed; native behavior remains unresolved. Reopen with paused cooling, another penalty mechanism, or a selected heat modifier that can affect site cadence. |
 
+| L37 | **Loaded magazine capacity** | In progress: compare the site's magazine values with selected magazine and chamber source fields. | Require a typed binding that distinguishes nominal from loaded capacity; do not infer a chamber rule from a matching count. |
+| L38 | **Selected spotting operands** | In progress: check whether selected non-neutral operands constrain the site's spotting multipliers beyond L7/M1. | Keep source operands separate from native activation and stacking. |
+| L39 | **Release-to-hotfix site fields** | In progress: establish exact same-route capture overlap, then compare fields used by the site. | Raw-verify changes with separate build descriptors; missing overlap is a coverage gap. |
+| L40 | **Collateral index selection - no new route** | [Prior-evidence review](../../reference-data/provenance/frosty-2026-09-24-L40-collateral-route-review.json) adds no native table-selection link; the operator-confirmed clamp remains separate. | Reopen on a typed link to the selected table/delegate or a discriminating capture; no new capture added. |
+
+| L41 | **Selected modifiers on modeled fields** | In progress: seek a non-neutral selected recoil recovery or dispersion operand outside the completed lead scopes. | Require a new source route and a concrete site calculation before expanding the scan. |
+
+| L42 | **Caliber description text** | In progress: verify exact SOR-300SC and M45A1 label text through their UI description references and localization strings. | Label evidence only; do not promote description text into a typed cartridge field or ballistic mechanism. |
+
 ## Proposed Analyzer changes
 
 These proposals come from completed source work. They need product review and

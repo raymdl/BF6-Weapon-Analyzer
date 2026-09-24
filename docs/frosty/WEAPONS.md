@@ -152,6 +152,10 @@ data overrides the default. The engine default is probably the first list entry
 - Rule: base plus steps, clamped to 0..9 (operator confirmed). M121 A2 Tungsten:
   6 + 3 + 1 = 10 → 9 → 1.00. `scripts/frosty-collateral.py` generates all 328 values.
 
+The [L40 prior-evidence review](../../reference-data/provenance/frosty-2026-09-24-L40-collateral-route-review.json)
+found no new link from the named index to native table selection. Keep the
+operator-confirmed clamp separate from that unresolved source route.
+
 ## Controller recoil
 
 `GRM_Recoil_Controller_03` holds 0.8836 (`Field_bbbfe9cc`, enabled) in both aim states,

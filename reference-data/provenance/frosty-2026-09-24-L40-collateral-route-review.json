@@ -1,0 +1,59 @@
+{
+  "lead": "L40",
+  "date": "2026-09-24",
+  "result": "bounded no-new-route",
+  "question": "Can current typed Frosty evidence discriminate native collateral table selection or native index composition for the Analyzer collateral output?",
+  "buildIdentity": {
+    "priorTrace": "frosty-global-compiled-trace-2026-09-13.json does not record a build descriptor or Head; retain as historical source trace with build identity unresolved",
+    "currentRegistryCheck": {
+      "build": "1.4.3.0",
+      "head": 4892017,
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "note": "Registry reproduction contains a named BREN3 DamagePenetrationMultiplierIndex (6); it does not connect native table selection or composition."
+    }
+  },
+  "sourceFacts": [
+    "Historical XML trace: CollateralMultiplierAttributeDelegate has a named Int32 DamagePenetrationMultiplierIndex argument; resource FB59FAF31E5E634B has 10 values matching the recorded material table.",
+    "Table material record Class_6aa794ef.Field_c52d90b8 at raw offset 24 records [0,0.166667,0.25,0.333334,0.500001,0.571429,0.666667,0.750001,0.833334,1].",
+    "The historical trace leaves the M121 A2 sum 6+3+1=10 unresolved; later operator confirmation supports the clamped site rule but does not expose native code.",
+    "Current 1.4.3.0 registry reproduction verifies the name/value pair for BREN3 index 6, but no route from that operand to delegate invocation or a selected material-table entry."
+  ],
+  "analyzerLink": {
+    "site": "sim/applyAttachments.js:447",
+    "precedence": "COLLATERAL_MULT_OVERRIDE[weapon][ammo] first, then ammoType.collateralMult[weapon class], else null",
+    "generator": "scripts/frosty-collateral.py",
+    "caution": "Do not run generator: it writes data/balance_tables.json."
+  },
+  "inference": "No new typed source route was found that distinguishes native table selection or proves native addition/clamping. The existing docs and L11 blocker are accurate within their stated scope. This is a bounded negative finding, not proof that no such route exists.",
+  "unresolvedRuntime": "Whether native code composes the WB base index and modifier steps by addition, how it selects the projectile/body material table, and how out-of-range values behave remain unresolved; operator-confirmed clamp is not independent source/runtime proof.",
+  "evidence": [
+    {
+      "path": "reference-data\\provenance\\frosty-global-compiled-trace-2026-09-13.json",
+      "sha256": "dd80daaa7f703148ec1f7116cadb71d1c17f50147076b5b9f783f119d18b515c",
+      "scope": "named argument, resource/table values, explicitly unresolved native route; no build descriptor/Head recorded"
+    },
+    {
+      "path": "reference-data\\provenance\\frosty-source-leads-2026-09-23.json",
+      "sha256": "31eb5156806f09ae31c241b7681e20733f4ad3524c51a7e6366a68fcef2b94ed",
+      "scope": "L11 source/capture blocker triage: collateral native table selection remains capture-only"
+    },
+    {
+      "path": "sim\\applyAttachments.js",
+      "sha256": "69f787f8419ceaf3899e51eea12ba5567131d3ff026c2b6887fea5ea3744ffad",
+      "scope": "Analyzer value precedence/override consumer"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\1.4.3.0\\reproduction-registry-complete.json",
+      "sha256": "61c1ca37a27b5a17066ab02f6e8e7cc7971ee395286efd2e567ec57f3a90fdb4",
+      "scope": "Current build registry evidence; BREN3 index name/value and route/hash; not native consumer/table selection"
+    }
+  ],
+  "reproduction": {
+    "repoScript": "none",
+    "arguments": [],
+    "reason": "No new raw source values were asserted; reviewed existing trace and registry reproduction only."
+  },
+  "reopenCondition": "Reopen only if a typed source reference links the named index to a specific material-grid/delegate invocation or establishes native composition/selection, or a discriminating controlled in-game capture can distinguish candidate indices/material contexts.",
+  "scope": "Review of the listed prior source receipts and current registry reproduction, not a new catalog or native-code search.",
+  "observations": "Existing WEAPONS documentation records operator-confirmed clamping; this run collected no new in-game observation."
+}
