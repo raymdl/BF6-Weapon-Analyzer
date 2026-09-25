@@ -2126,6 +2126,10 @@ function renderAttachmentStats(loadouts) {
     if (kinds.has('tier')) return 'Tier steps differ in size and the ladder has fixed ends, so the rows do not add up to the net.';
     return 'These attachments interact, so the rows do not add up to the net.';
   };
+  const bloomScaledRecoveryField = {
+    'ADS Spread Recovery': 'adsSpreadFiringDecCoefMult',
+    'Hip Spread Recovery': 'hipSpreadFiringDecCoefMult',
+  };
   const colorFor = (m, d) => (Math.abs(d) < 0.0005 ? 'var(--muted)'
     : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
   // A chip whose hover/tap popover lists each attachment's own contribution.
@@ -2194,6 +2198,10 @@ function renderAttachmentStats(loadouts) {
       const delta = +(curVal - baseVal).toFixed(Math.max(m.dec, 3));
       const fmt = d => signed(+d.toFixed(Math.max(m.dec, 3)), m.unit, m.dec);
       const { rows, footer } = breakdown(m, m.val, fmt, delta);
+      // Recovery that scales with current bloom has no single value, so it is a footnote.
+      const coefField = bloomScaledRecoveryField[m.lbl];
+      const coef = coefField && contributions.reduce((p, c) => p * (c.record?.[coefField] ?? 1), 1);
+      if (coef && Math.abs(coef - 1) > 0.0005) footer.push({ note: `Recovery that scales with current bloom is ×${+coef.toFixed(2)}, not included above.` });
       // A net of zero still shows when attachments cancel each other out.
       if (Math.abs(delta) < 0.0005 && !rows.length) return;
       const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
