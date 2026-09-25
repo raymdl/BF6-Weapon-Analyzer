@@ -72,7 +72,8 @@ statistics. The attachment-effects breakdown compares values with the bare weapo
 no barrel, the default ammunition, and the default magazine without its handling
 shifts. The default barrel and magazine therefore show their own effects, such as
 Basic's faster ADS time and the standard magazine's faster draw. Hover or tap a chip
-to see each attachment's own contribution, its tier step or multiplier, and the net.
+to see each attachment's own contribution with its tier step or multiplier, and the
+net when more than one attachment contributes.
 When the parts do not add up to the net (multiplied factors, or a tier ladder that
 stops at its end), the breakdown says so. A stat whose contributions cancel shows
 ±0 in grey. Favorable indicators follow each stat's direction: higher damage/velocity,

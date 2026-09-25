@@ -718,7 +718,7 @@ function renderOverview() {
   grid.innerHTML = '';
   const fields = [
     { lbl: 'Base Dmg',    compute: w => damagePerShotAtRange(w, 0),      unit: '',    fmt: v => v != null ? v.toFixed(1) : '—',       higherBetter: true,
-      tooltip: 'Damage dealt by one unarmored chest shot at 0m before range falloff. Shotgun totals assume all pellets hit. REDSEC armor is not modeled.' },
+      tooltip: 'Damage of one torso hit at close range, before damage drops off with distance. Shotgun values assume every pellet hits.' },
     // Two multipliers in one card, each carrying its own grey ×. Paired stats
     // like this drop the comparison badge — there is no single number to diff.
     { lbl: 'HS Mult',     compute: w => ({ hs: w?._hsMult, limb: w?._limbMult }), unit: '',
@@ -727,41 +727,41 @@ function renderOverview() {
         return `${cell(obj?.hs)}<span class="sunit"> / </span>${cell(obj?.limb)}`;
       },
       noDiff: true,
-      tooltip: 'Headshot and limb (arm, leg, abdomen) damage multipliers. They vary by weapon and ammo.' },
+      tooltip: 'Damage multipliers for a headshot and for a limb hit (arm, leg or abdomen), compared with a torso hit. They vary by weapon and ammo.' },
     { lbl: 'Fire Rate',   compute: w => w.fireMode === 'pump' && w.burstRounds > 1 && w.burstBurstsPerMinute ? w.burstRounds * w.burstBurstsPerMinute : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
-      tooltip: 'Weapon fire rate in rounds per minute.' },
+      tooltip: 'Rounds fired per minute (RPM). Higher fires faster.' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
-      tooltip: 'Muzzle velocity. Subsonic ammunition is much slower. Higher reduces travel time and lead.' },
+      tooltip: 'How fast the bullet leaves the barrel. Faster bullets reach distant targets sooner and drop less, so you lead targets less. Subsonic ammo is much slower. Higher is better.' },
     { lbl: 'Mag Size',    k: 'mag',                                      unit: 'Rds', fmt: v => v,                                   higherBetter: true,
-      tooltip: 'Rounds available per magazine.' },
+      tooltip: 'Rounds per magazine. Higher is better.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
-      tooltip: 'Time to reload with rounds left in the magazine. Lower is faster.' },
+      tooltip: 'Time to reload when rounds are still left in the magazine. Lower is faster.' },
     { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
-      tooltip: 'Damage multiplier for bullets that pass through a target or surface. It varies by weapon and ammo.' },
+      tooltip: 'Damage a bullet keeps after passing through a target or a thin surface. It varies by weapon and ammo. Higher is better.' },
     { lbl: 'ADS Time',    compute: w => w._adsTimeMs,                    unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true, group: 'mobility',
-      tooltip: 'Time to aim down sights. Lower is faster.' },
+      tooltip: 'Time to raise the sights when aiming down sights (ADS). Lower is faster.' },
     { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: formatMovementMultiplier,      higherBetter: true, group: 'mobility',
-      tooltip: 'Movement speed multiplier while aiming down sights. Higher is faster.' },
+      tooltip: 'Movement speed while aiming down sights (ADS), as a fraction of normal speed. Higher is faster.' },
     { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
-      tooltip: 'Time to equip the weapon when switching to it. Lower is faster.' },
+      tooltip: 'Time to pull out the weapon when you switch to it. Lower is faster.' },
     { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true,
-      tooltip: 'Delay after sprinting before the weapon can fire. Lower is faster.' },
+      tooltip: 'Delay after you stop sprinting before you can fire. Lower is faster.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
-      tooltip: 'Vertical kick per shot while aiming down sights. Lower is easier to control.' },
+      tooltip: 'How far the weapon kicks upward with each shot while aiming down sights (ADS). Lower is easier to control.' },
     { lbl: 'Recoil Dir',  k: 'recoilDir',                                unit: '°',   fmt: v => ((-v) >= 0 ? '+' : '') + (-v),       absDiff: true, group: 'recoil',
-      tooltip: 'Average recoil direction from vertical. Positive values pull right; negative values pull left.' },
+      tooltip: 'Average sideways lean of the kick. Positive pulls right, negative pulls left, 0 is straight up.' },
     { lbl: 'ADS Spread', compute: w => ({ stand: w.spread.adsStand[0], move: w.spread.adsMove[0] }), unit: '',
       fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true, group: 'spread',
-      tooltip: 'Minimum spread while aiming down sights: standing / moving. Lower is more accurate.' },
+      tooltip: 'Smallest bullet spread while aiming down sights (ADS): standing / moving. Lower is more accurate.' },
     { lbl: 'Hipfire Spread', compute: w => ({ stand: w.spread?.hipStand?.[0], move: w.spread?.hipMove?.[0] }), unit: '',
       fmt: obj => { const s = obj?.stand != null ? `${obj.stand.toFixed(2)}<span class="sunit">°</span>` : '—'; const m = obj?.move != null ? `${obj.move.toFixed(2)}<span class="sunit">°</span>` : '—'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true, group: 'spread',
-      tooltip: 'Minimum hipfire spread: standing / moving. Lower is more accurate.' },
+      tooltip: 'Smallest bullet spread when firing without aiming: standing / moving. Lower is more accurate.' },
     { lbl: '3D/Map Spot', compute: w => ({ spot: w._worldSpot, minimap: w._minimapSpot }), unit: '',
       fmt: obj => { const s = obj && obj.spot > 0 ? `${Math.round(obj.spot)}<span class="sunit">m</span>` : '–'; const m = obj && obj.minimap > 0 ? `${Math.round(obj.minimap)}<span class="sunit">m</span>` : '–'; return `${s}<span class="sunit"> / </span>${m}`; },
       noDiff: true,
-      tooltip: 'Range within which firing marks you in the world / shows you on the enemy minimap. "–" means firing never does. Shorter is better.' },
+      tooltip: 'When you fire, enemies within this range see a marker on you: in the world / on their minimap. "–" means firing never reveals you. Lower is better.' },
   ];
   const overviewLabels = {
     'Base Dmg': 'Base Damage',
@@ -783,7 +783,7 @@ function renderOverview() {
     fmt: v => v.toFixed(1),
     lowerBetter: true,
     group: 'recoil',
-    tooltip: 'Random left/right variation in each shot\'s kick while aiming down sights. Lower is more consistent.',
+    tooltip: 'How much each shot\'s kick strays randomly left or right while aiming down sights (ADS). Lower is more predictable.',
   });
   fields.splice(fields.findIndex(f => f.lbl === 'ADS Spread'), 0, {
     lbl: 'Spread Inc/Shot',
@@ -792,7 +792,7 @@ function renderOverview() {
     fmt: v => v.toFixed(2),
     lowerBetter: true,
     group: 'spread',
-    tooltip: 'Spread added per shot while aiming down sights. Lower builds spread more slowly.',
+    tooltip: 'How much bullet spread grows with each shot while aiming down sights (ADS). Lower keeps sustained fire tighter.',
   });
 
   const cardValueHtml = f => {
@@ -2000,28 +2000,28 @@ function renderAttachmentStats(loadouts) {
   };
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
   const metrics = [
-    { lbl: 'ADS Time',            val: w => w._adsTimeMs,                   unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights. Lower is faster.' },
-    { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights. Higher is faster.' },
-    { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Delay after sprinting before the weapon can fire. Lower is faster.' },
-    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip the weapon when switching to it. Lower is faster.' },
-    { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Muzzle velocity. Subsonic ammunition is much slower. Higher reduces travel time and lead.' },
-    { lbl: 'Bullet Drag',         val: w => w._projectileModel?.dragPerMeter, unit: '/m', dec: 4, lowerBetter: true, tooltip: 'Projectile drag per metre. Lower drag preserves velocity longer and reduces long-range travel time and drop.' },
-    { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
-    { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Time to reload with rounds left in the magazine. Lower is faster.' },
-    { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Vertical kick per shot while aiming down sights. Lower is easier to control.' },
-    { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'Random left/right variation in each shot\'s kick while aiming down sights. Lower is more consistent.' },
-    { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: 'x',   dec: 2, higherBetter: true, tooltip: 'Multiplier on how fast the aim returns after each kick while aiming down sights. Higher returns faster.' },
-    { lbl: 'Recoil Duration',     val: w => w.recoil?.ads?.duration != null ? w.recoil.ads.duration * 1000 : null, unit: 'ms', dec: 0, higherBetter: true, tooltip: 'How long the kick from each shot takes to play out. A longer duration spreads the same kick over more time, so the reticle moves more smoothly and is easier to keep on a moving target. The kick itself is not smaller.' },
-    { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Spread added by each shot while aiming down sights. Lower builds spread more slowly.' },
-    { lbl: 'Hip Spread/Shot',     val: w => w.spreadDyn?.hip?.inc,            unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Spread added by each hipfire shot. Lower builds spread more slowly.' },
-    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat rate at which spread shrinks while firing and aiming down sights. Higher clears spread faster.' },
-    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat rate at which hipfire spread shrinks while firing. Lights also reduce spread added per shot and speed up recovery as spread grows, so this value alone does not show their full effect.' },
-    { lbl: 'Mov Spread',          val: w => w.spread?.adsMove?.[0],        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum spread while moving and aiming down sights. Lower is more accurate.' },
-    { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Minimum hipfire spread while standing. Lower is more accurate.' },
-    { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Range within which firing marks your position in the world for enemies. Shorter is better; 0 m never marks you.' },
-    { lbl: 'Minimap Spot',        val: w => w._minimapSpot,                  unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Range within which firing shows you on the enemy minimap. Shorter is better; 0 m never shows you.' },
-    { lbl: 'HS Mult',             val: w => w._hsMult,                       unit: '×',   dec: 2, higherBetter: true, tooltip: 'Headshot damage multiplier. Higher increases headshot damage.' },
-    { lbl: 'Collateral Mult',    val: w => w._collateralMult,               unit: '×',   dec: 2, higherBetter: true, tooltip: 'Damage multiplier for bullets that pass through a target or surface. It varies by weapon and ammo.' },
+    { lbl: 'ADS Time',            val: w => w._adsTimeMs,                   unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to raise the sights when aiming down sights (ADS). Lower is faster.' },
+    { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed while aiming down sights (ADS), as a fraction of normal speed. Higher is faster.' },
+    { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Delay after you stop sprinting before you can fire. Lower is faster.' },
+    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to pull out the weapon when you switch to it. Lower is faster.' },
+    { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'How fast the bullet leaves the barrel. Faster bullets reach distant targets sooner and drop less. Subsonic ammo is much slower. Higher is better.' },
+    { lbl: 'Bullet Drag',         val: w => w._projectileModel?.dragPerMeter, unit: '/m', dec: 4, lowerBetter: true, tooltip: 'How quickly the bullet slows down in flight. Lower keeps it faster at long range, with less travel time and drop.' },
+    { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds per magazine. Higher is better.' },
+    { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Time to reload when rounds are still left in the magazine. Lower is faster.' },
+    { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'How far the weapon kicks upward with each shot while aiming down sights (ADS). Lower is easier to control.' },
+    { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'How much each shot\'s kick strays randomly left or right while aiming down sights (ADS). Lower is more predictable.' },
+    { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: '×',   dec: 2, higherBetter: true, tooltip: 'How quickly your aim settles back after each kick while aiming down sights (ADS), as a multiplier. Higher settles faster.' },
+    { lbl: 'Recoil Duration',     val: w => w.recoil?.ads?.duration != null ? w.recoil.ads.duration * 1000 : null, unit: 'ms', dec: 0, higherBetter: true, tooltip: 'How long each shot\'s kick takes to play out. A longer kick is smoother and easier to follow, but not smaller. Longer is better.' },
+    { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'How much bullet spread grows with each shot while aiming down sights (ADS). Lower keeps sustained fire tighter.' },
+    { lbl: 'Hip Spread/Shot',     val: w => w.spreadDyn?.hip?.inc,            unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'How much bullet spread grows with each shot when firing without aiming. Lower keeps sustained hipfire tighter.' },
+    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'How fast bullet spread shrinks back while you keep firing and aiming down sights (ADS). Higher is better.' },
+    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'How fast bullet spread shrinks back while you keep firing without aiming. Lights also cut the spread each shot adds and speed up recovery when spread is large, so this number alone understates them. Higher is better.' },
+    { lbl: 'Mov Spread',          val: w => w.spread?.adsMove?.[0],        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Smallest bullet spread while moving and aiming down sights (ADS). Lower is more accurate.' },
+    { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Smallest bullet spread when standing and firing without aiming. Lower is more accurate.' },
+    { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'When you fire, enemies within this range see a marker on you in the world. 0 m means firing never reveals you. Lower is better.' },
+    { lbl: 'Minimap Spot',        val: w => w._minimapSpot,                  unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'When you fire, enemies within this range see you on their minimap. 0 m means firing never reveals you. Lower is better.' },
+    { lbl: 'HS Mult',             val: w => w._hsMult,                       unit: '×',   dec: 2, higherBetter: true, tooltip: 'Headshot damage compared with a torso hit. Higher is better.' },
+    { lbl: 'Collateral Mult',    val: w => w._collateralMult,               unit: '×',   dec: 2, higherBetter: true, tooltip: 'Damage a bullet keeps after passing through a target or a thin surface. It varies by weapon and ammo. Higher is better.' },
   ];
   const estimatedFieldsForMetric = {
     'ADS Time': ['adsTimeTierMod', 'adsTimeTierShift'],
@@ -2083,12 +2083,12 @@ function renderAttachmentStats(loadouts) {
     'Weapon Sway': [['weaponSwayMult', 'mult']],
   };
   const utilityTooltips = {
-    'Fire while Sprinting': 'The weapon can fire while sprinting.',
-    'Gadget Draw Speed': 'Mounts an underbarrel launcher for a faster gadget draw.',
-    'Flashlight': 'A flashlight that can blind enemies. Shows when it is on: toggled by the player, automatically while aiming (ADS), or automatically in hipfire.',
+    'Fire while Sprinting': 'You can fire while sprinting.',
+    'Gadget Draw Speed': 'Mounts an underbarrel grenade launcher so the gadget is drawn faster.',
+    'Flashlight': 'A light that can blind enemies. Shows when it is on: switched by you (Toggleable), automatically while aiming down sights (ADS), or automatically when firing without aiming (Hipfire).',
     'Auto-Zeroing': 'Sets the scope zeroing to the distance at the crosshair.',
-    'Reload in ADS': 'Reloading does not leave aim down sights.',
-    'Rechamber in ADS': 'Cycling the bolt does not leave aim down sights.',
+    'Reload in ADS': 'You can reload without leaving aim down sights.',
+    'Rechamber in ADS': 'You can cycle the bolt without leaving aim down sights.',
   };
   const plainName = rec => Loadout.attDisplayName({ ...rec, assumed: false, assumedFields: {} });
   const stepText = (rec, lbl, weapon) => (stepFieldsForMetric[lbl] ?? []).map(([field, kind]) => {
@@ -2109,8 +2109,11 @@ function renderAttachmentStats(loadouts) {
     : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
   // A chip whose hover/tap popover lists each attachment's own contribution.
   const chipHtml = ({ label, value, color, desc, rows = [], footer = [] }) => {
-    const body = rows.map(r => `<div class="rc-tt-row"><span>${r.name}</span><span><span style="color:${r.color}">${r.value}</span>${r.step ? ` <span class="att-tt-step">${escAttr(r.step)}</span>` : ''}</span></div>`).join('')
-      + footer.map(f => `<div class="rc-tt-row rc-tt-eff"><span>${f.name}</span><span style="color:${f.color ?? 'inherit'}">${f.value}</span></div>`).join('');
+    const cells = (r, cls = '') => `<span class="${cls}">${r.name}</span>`
+      + `<span class="att-tt-val ${cls}" style="color:${r.color ?? 'inherit'}">${r.value}</span>`
+      + `<span class="att-tt-step ${cls}">${r.step ? escAttr(r.step) : ''}</span>`;
+    const body = rows.length ? `<div class="att-tt-grid">${rows.map(r => cells(r)).join('')}`
+      + footer.map(f => cells(f, f.total ? 'att-tt-total' : 'att-tt-note')).join('') + '</div>' : '';
     const aria = escAttr(`${label.replace(/<[^>]+>/g, '')}: ${value}. ${desc}`);
     return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>`
       + `<div class="rc-tt att-tt"><div class="att-tt-desc">${escAttr(desc)}</div>${body}</div></div>`;
@@ -2151,9 +2154,9 @@ function renderAttachmentStats(loadouts) {
       const footer = [];
       const sum = rows.reduce((t, r) => t + r.d, 0);
       if (rows.length > 1 && Math.abs(sum - net) > Math.max(0.5 * 10 ** -m.dec, 0.0005)) {
-        footer.push({ name: `Sum of parts (${combineNote(m.lbl)})`, value: fmt(sum), color: 'var(--muted)' });
+        footer.push({ name: `Sum of parts (${combineNote(m.lbl)})`, value: fmt(sum) });
       }
-      if (rows.length) footer.push({ name: 'Net', value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
+      if (rows.length > 1) footer.push({ name: 'Net', total: true, value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
       return { rows, footer };
     };
     const chips = [];
@@ -2179,7 +2182,7 @@ function renderAttachmentStats(loadouts) {
       const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments, weapon) ? '*' : ''}${bugMark('Weapon Sway')}`;
       chips.push(chipHtml({ label, value: Math.abs(swayVal) < 0.05 ? '±0%' : signed(swayVal, '%', 1),
         color: colorFor(swayMetric, swayVal), rows: sway.rows, footer: sway.footer,
-        desc: 'Weapon sway while aiming, compared with the bare weapon. Factors multiply. Camera sway is not included. Lower is better.' }));
+        desc: 'How much the sights drift while aiming down sights (ADS), compared with the bare weapon. Sway modifiers multiply together. Camera sway is not included. Lower is better.' }));
     }
     const sourceRow = (c, value, color) => ({ name: escAttr(c.name), value, color });
     const vrVal = cur._visualRecoil ?? 0;
@@ -2187,7 +2190,7 @@ function renderAttachmentStats(loadouts) {
       const reduced = vrVal < 0;
       const label = `Visual Recoil${hasEstimatedEffect(['visualRecoil'], selectedAttachments, weapon) ? '*' : ''}`;
       const value = reduced ? 'Decreased' : 'Increased', color = reduced ? 'var(--green)' : 'var(--red)';
-      chips.push(chipHtml({ label, value, color, desc: 'Visual recoil (camera kick) from the selected attachment. Its size is not modelled.',
+      chips.push(chipHtml({ label, value, color, desc: 'Camera shake when firing. How much it changes is not modelled.',
         rows: contributions.filter(c => c.record?.visualRecoil).map(c => sourceRow(c, value, color)) }));
     }
     const regenDelayDelta = (cur._healthRegenDelayS ?? 0) - (base._healthRegenDelayS ?? 0);
@@ -2195,14 +2198,14 @@ function renderAttachmentStats(loadouts) {
       const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayAddS'], selectedAttachments, weapon) ? '*' : ''}`;
       const value = signed(regenDelayDelta, 's', 0), color = regenDelayDelta > 0 ? 'var(--green)' : 'var(--red)';
       chips.push(chipHtml({ label, value, color,
-        desc: `Delay before an enemy you hit starts regenerating health: ${cur._healthRegenDelayS}s, compared with ${base._healthRegenDelayS}s for the default ammo. Longer is better.`,
+        desc: `How long an enemy you hit waits before regenerating health: ${cur._healthRegenDelayS}s, compared with ${base._healthRegenDelayS}s for the default ammo. Longer is better.`,
         rows: contributions.filter(c => c.slot === 'ammo').map(c => sourceRow(c, value, color)) }));
     }
     if (cur._laserVisible != null) {
       const visible = cur._laserVisible;
       const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments, weapon) ? '*' : ''}`;
       const value = visible ? 'Visible' : 'Not Visible', color = visible ? 'var(--red)' : 'var(--green)';
-      chips.push(chipHtml({ label, value, color, desc: 'Whether enemies can see the selected laser.',
+      chips.push(chipHtml({ label, value, color, desc: 'Whether enemies can see your laser beam.',
         rows: contributions.filter(c => c.record?.laserVisible != null).map(c => sourceRow(c, value, color)) }));
     }
     Object.entries(cur._utilities ?? {}).forEach(([lbl, value]) => {
