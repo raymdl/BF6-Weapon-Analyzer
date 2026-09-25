@@ -53,6 +53,7 @@ stat and adds a footnote with the intended effect.
 | 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
 | 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Not modelled: the site applies no iron-sight sway on any weapon |
+| 17 | Iron Sights | M2010 ESR, SV-98, PSR, Mini Scout | Description error | The description states reduced weapon sway. These bolt-action iron sights have no sway package, which is intended for their design. L115 and Interdictor use the no-glint text instead. | Matches source data: no iron-sight sway |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -433,6 +434,19 @@ weapon's default magazine. All values are source-generated. Not checked in game.
 | Weapon | Magazine | In-game text | Relative to default | Incorrect part |
 |---|---|---|---|---|
 | KTS100 MK8 | 50 Rnd (default 60 Rnd) | "Wide magazine for improved handling at the cost of capacity." | Reload +1, sway ×0.667; ADS, draw and ADS movement unchanged | "improved handling" (only reload and sway improve) |
+
+### 17. Bolt-action iron sights claim reduced sway
+
+- **In-game text.** "Basic sights with reduced weapon sway." on M2010 ESR, SV-98,
+  PSR and Mini Scout.
+- **Conflict.** None of the six bolt-action rifles imports `WPM_Sway_IronSights_P05`,
+  and the operator considers that intended for their design (see #16). L115 and
+  Interdictor use "Basic sights without any scope glint." instead, which matches.
+  The other four keep the sway text of the non-sniper iron sights.
+- **Site.** No iron-sight sway on any weapon.
+- **Status.** Operator classification from the source trace and tooltip strings
+  (`0BB6AC0B` versus `80E096AF` in `data/attachment-tooltips.json`). Not checked in game.
+- **Evidence.** [L62 reverse coverage](../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json).
 
 ## Visual errors
 
