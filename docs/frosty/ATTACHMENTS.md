@@ -824,7 +824,17 @@ in source and checked whether the site models it
 In ERGOS, GRIPS, MUZZLES, LASERS and magazines, every effect is modeled or
 already known (Match Trigger, the PP-19 and L115 bugs), except one. Site laser
 and grip spread steps sit in per-weapon `frostyModifiers` with the source sign
-negated. Sights, barrels, lights and ammo are not swept yet.
+negated.
+
+The 25 September sweep of sights, barrels, lights and ammo found no new effect
+([receipt](../../reference-data/provenance/frosty-2026-09-25-L60-reverse-coverage-remaining.json)).
+Sights bind only `GCR_*` camera recoil. Barrel, light and ammo operands all match
+the site, apart from ADS idle-recovery offsets (idle state is not modeled). The
+Mini Scout penetration −7 is the sum of `GRM_Recoil_AMO_M10` −1 and
+`GRM_Recoil_AMO_Bolt_M10` −6. `GS_MiniFix` binds each light selector to two
+identical hip modifiers (`GBM_Increase_Hip_S1` and `_A40`); if both apply, the
+bloom factor is 0.444 rather than 0.667. That changes no displayed value, because
+the bloom recovers in about 0.07 s against a 1.27 s shot interval.
 
 The exception is the +2 hip dispersion step bound by bipods and grip pods
 (`GDM_Array_HipDispersion_BTM_P20`, 142 weapon/choice pairs), which the site

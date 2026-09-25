@@ -74,15 +74,21 @@ remain unresolved; do not repeat neutral scans or bounded catalog negatives.
 Use Luna xhigh if delegating. Receipts pin inputs, hashes, scripts and external
 outputs; use new output paths on reruns. No new capture follows from L56/L58.
 
-## Current run: 24 September 2026 (evening)
+## Closed run: 24 September 2026 (evening)
+
+Evidence: `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-24T185356-0400`.
+Covered L59, L61 and the first four L60 slot groups.
+
+## Current run: 25 September 2026
 
 Claude selects leads and reviews results; bounded checks go to Codex CLI workers
 (GPT-6 Luna, xhigh), launched with `~/.claude/codex-bridge/run_worker.py`; every
 brief starts with the shared preamble [frosty-worker-brief.txt](frosty-worker-brief.txt). Evidence root:
-`C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-24T185356-0400`.
+`C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-25T001054-0400`.
 Lead selection rule: a lead needs a plausible route to change a displayed site number
 or expose a site calculation defect. Skip self-consistency checks, catalog screens
-and label wording unless requested. L59 and L61 are closed; L60 covered four slot groups. Next: sweep the remaining slots (L60), then the next unsourced site inputs.
+and label wording unless requested. L60 is closed. L62 (reverse coverage of handling,
+velocity and sway) is running as extract-only slot-group tasks.
 
 ## Active source leads
 
@@ -150,7 +156,8 @@ Work these from source before handing them to the capture plan. Results from the
 | L57 | **Muzzle build screen - No candidate** | [Nine additional operand routes](../../reference-data/provenance/frosty-2026-09-24-L57-muzzle-build-screen.json) have equal nonzero catalog SHA1, size and GUID across the recorded builds. | Catalog evidence only; no new raw capture. Reopen on a changed record or concrete field discrepancy. |
 | L58 | **Remaining primary caliber text** | Closed: 39 descriptions screened; 12 exact text candidates raw-verified, including partial UMG-40 wording; [receipt](../../reference-data/provenance/frosty-2026-09-24-L58-remaining-caliber-text.json). | No label equivalence or mechanics claim; reopen for new localization or typed cartridge evidence. |
 | L59 | **A3 Receiver and burst recoil tiers - Sourced** | [34 leaves matched](../../reference-data/provenance/frosty-2026-09-24-L59-ergo-recoil-tiers.json): A3 `GRM_Recoil_ERG_M10` amount −1; burst effects under `BurstFireActive` give variation +3 and amount sums 0 / +1 (GRT-BC). | No change. Sums assume additive composition; activation unresolved. |
-| L60 | **Reverse coverage - Partial, no new effect** | [ERGOS, GRIPS, MUZZLES, LASERS, magazines](../../reference-data/provenance/frosty-2026-09-24-L60-reverse-coverage.json): every selected recoil/bloom/dispersion effect is modeled or already known, except the bipod step (L61). | Sweep SIGHTS, BARRELS, LIGHTS and AMMO as extract-only tasks and join against the site. |
+| L60 | **Reverse coverage - Complete, no new effect** | [ERGOS, GRIPS, MUZZLES, LASERS, magazines](../../reference-data/provenance/frosty-2026-09-24-L60-reverse-coverage.json) and [sights, barrels, lights, ammo](../../reference-data/provenance/frosty-2026-09-25-L60-reverse-coverage-remaining.json): every selected recoil/bloom/dispersion effect is modeled or known (bipod step L61, idle state A16, camera recoil). Mini Scout lights bind two identical hip modifiers; no displayed change. | None. Reopen on a changed binding or a new site consumer (idle recovery, camera recoil). |
+| L62 | **Reverse coverage of handling, velocity and sway - Running** | L60's method applied to WPM-imported `WME_*` effects and `GID_*` GS modifiers (ADS time, draw/deploy, sprint recovery, ADS move speed, reload, sway, velocity). | Extract-only workers by slot group (grips; muzzles; magazines and ammo; then barrels/ergos and lasers/lights), joined against the site. |
 | L61 | **Bipod hip dispersion - Consistent with game** | [Assets differ only in `Field_b574fa40`](../../reference-data/provenance/frosty-2026-09-24-L61-bipod-hip-dispersion.json); EF88 panels show lasers change Hipfire but bipods/grip pods do not. | No change; deployed behavior stays with W1. |
 
 ## Proposed Analyzer changes
