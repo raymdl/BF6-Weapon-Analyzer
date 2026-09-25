@@ -869,6 +869,17 @@ is the site's default sight, so any optic would show +50% weapon sway. The site'
 reason for leaving out optic effects, that a category cannot identify one optic,
 does not apply to these uniform effects. Both are proposals; activation is unproved.
 
+### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
+
+The WB part lists of these two weapons, and no others, import
+`Game/KingstonLegacy/Mica` attachment parts
+([receipt](../../reference-data/provenance/frosty-2026-09-25-L64-legacy-wb-parts.json)).
+`WM_Foregrip` is keyed to the current Classic Vertical selector and holds 0.85/0.85
+and 1.15/1.15 in `Class_d209d775` and `Class_be3e57cd`. `WM_Bipod` holds 0.75/1.25
+under a key no current choice uses; the other legacy parts are empty. Neither class
+occurs in any current asset, and the registry names none of their fields. No effect
+or site change follows; reopen only with a consumer for either class.
+
 
 The [L41 raw check](../../reference-data/provenance/frosty-2026-09-24-L41-vssm-selected-operands.json)
 resolves the Full Auto selector to its GBM/GRM objects and matches ten dispersion,
