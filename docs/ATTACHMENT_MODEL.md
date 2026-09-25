@@ -264,12 +264,24 @@ entries outside that complete supported map. Regeneration uses the source 5 s ba
 Frangible +4 s and Flechette +2 s. Collateral and regeneration are displayed values. TTK excludes penetration and
 healing simulation.
 
-Weapon sway displays the percentage change from muzzle and magazine source
-factors against the bare weapon. Factors multiply: 1.5 means +50%, 0.6666667
-means about -33.3%, and 0.4444444 means about -55.6%. Weapon-specific muzzle
-exceptions are retained. Generic optic categories cannot select an exact source
-optic, so optic and camera sway are excluded from this percentage. The old iron
-sight and signed sway tags are no longer used.
+Weapon sway displays the percentage change from sight, muzzle, magazine and
+barrel source factors against the bare weapon. Factors multiply: 1.5 means +50%,
+0.6666667 means about -33.3%, and 0.4444444 means about -55.6%. Weapon-specific
+muzzle exceptions are retained. Iron sights carry ×0.6666667 through
+`SIGHTS[iron].weaponSwayMultByWeapon` on the 56 weapons whose iron sights import
+`WPM_Sway_IronSights_P05`; bolt-action rifles have none by design, and BROD 3 has
+none in game (bug 16). Optics carry no sway factor. Camera sway is not modelled.
+The iron-sight factor is marked assumed until a sway measurement confirms it.
+
+Variable High and Thermal sights set `adsMoveSpeedTierShift: 1` (one ADS-move tier
+slower, source `WME_ADSMoveSpeed_M05`), marked assumed until a Mobility capture.
+
+Capabilities without a numeric stat are stored as `utilities` (label → value) and
+shown as green chips: Fire while Sprinting (Compact Handstop), Gadget Draw Speed
+(Underslung Mount), Flashlight with its activation (Toggleable, ADS or Hipfire; combo
+lights are Toggleable), Auto-Zeroing (Range Finder), Reload in ADS (Magwell Flare)
+and Rechamber in ADS (DLC Bolt). They do not change the simulation. Bipod and Match
+Trigger remain `noEffect` until deployed and semi-auto states are modelled.
 
 Ergonomics can change fire mode. Auto takes precedence over burst and clears burst
 metadata; a configured `autoRpm` can change cadence, as with VSSM Folding Stock's

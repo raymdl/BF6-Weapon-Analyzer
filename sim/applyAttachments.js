@@ -33,6 +33,7 @@ import { resolveHitMultipliers } from './damage.js';
 // ── ATTACHMENT CONTEXT ────────────────────────────────────────────────────────
 
 let _ctx = {
+  SIGHTS: [], SIGHTS_BY_ID: {},
   MUZZLES: [], BARRELS: [], GRIPS: [], LASERS: [], LIGHTS: [],
   AMMO: [], ERGOS: [], WEAPON_MAG: {}, WEAPON_ERGO: {}, WEAPON_AMMO: {},
   MUZZLES_BY_ID: {}, BARRELS_BY_ID: {}, GRIPS_BY_ID: {}, LASERS_BY_ID: {}, LIGHTS_BY_ID: {},
@@ -282,6 +283,7 @@ export function resolveReloadTiming({
 
 export function setAttachmentContext(updates) {
   Object.assign(_ctx, updates);
+  if (updates.SIGHTS) _ctx.SIGHTS_BY_ID = byId(_ctx.SIGHTS);
   if (updates.MUZZLES) _ctx.MUZZLES_BY_ID = byId(_ctx.MUZZLES);
   if (updates.BARRELS) _ctx.BARRELS_BY_ID = byId(_ctx.BARRELS);
   if (updates.GRIPS) _ctx.GRIPS_BY_ID = byId(_ctx.GRIPS);
@@ -300,13 +302,13 @@ const MAG_HANDLING_FIELDS = new Set(['adsTimeTierShift', 'adsMoveSpeedTierShift'
   'sprintRecoveryTierShift', 'deployTimeTierShift', 'movingAdsSpreadTierMod', 'weaponSwayMult']);
 
 /**
- * The weapon with no attachment modifiers: no barrel, the default ammunition,
- * and the default magazine without its handling shifts. The default loadout's
- * other slots are already neutral. This is the attachment effects baseline, so
- * default barrels and magazines show their own effects.
+ * The weapon with no attachment modifiers: no sight or barrel, the default
+ * ammunition, and the default magazine without its handling shifts. The default
+ * loadout's other slots are already neutral. This is the attachment effects
+ * baseline, so default sights, barrels and magazines show their own effects.
  */
 export function applyBareWeapon(w, defaultAtts) {
-  return applyAttachments(w, { ...defaultAtts, barrel: 'none' }, { neutralMagazine: true });
+  return applyAttachments(w, { ...defaultAtts, sight: 'none', barrel: 'none' }, { neutralMagazine: true });
 }
 
 /**
@@ -324,7 +326,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
 
   const {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
-    MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
+    SIGHTS_BY_ID, MUZZLES_BY_ID, BARRELS_BY_ID, GRIPS_BY_ID, LASERS_BY_ID, AMMO_BY_ID, ERGOS_BY_ID,
     RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
     COLLATERAL_MULT_OVERRIDE, HIT_ZONES,
     MOVING_ACC_TIERS,
@@ -332,6 +334,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     DRAW_TIME_TABLES,
   } = _ctx;
 
+  // Sight categories carry only effects that are uniform across their optics.
+  const sightData = SIGHTS_BY_ID[atts.sight] ?? null;
   const muzzleBase = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
   const muz = { ...muzzleBase, ...muzzleBase.weaponOverrides?.[w.id] };
   const barrelBase = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
@@ -385,10 +389,11 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // ── Weapon sway ───────────────────────────────────────────────────────────────
   const selectedMag = magRecord(WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def]);
   // Source amount factors for muzzle/magazine effects, plus weapon-local barrel
-  // overrides. Generic optic categories cannot select the game's individual
-  // optic and camera-sway configurations.
+  // and iron-sight factors. Optic categories carry no weapon sway; camera sway
+  // is not modelled.
   const weaponSwayMult = (muz.weaponSwayMult ?? 1) * (selectedMag?.weaponSwayMult ?? 1)
-    * (barrelBase.weaponSwayMultByWeapon?.[w.id] ?? 1);
+    * (barrelBase.weaponSwayMultByWeapon?.[w.id] ?? 1)
+    * (sightData?.weaponSwayMultByWeapon?.[w.id] ?? 1);
 
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
   // Catalog shifts have the opposite sign to Frosty's source index modifiers.
@@ -511,7 +516,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     const amsIdx = Math.max(0, Math.min(ADS_MOVE_TIERS.length - 1,
       wm.defAms - magAdsMoveSpeedTierShift
       - (grp.adsMoveSpeedTierShift ?? 0)
-      - (ammoType.adsMoveSpeedTierShift ?? 0)));
+      - (ammoType.adsMoveSpeedTierShift ?? 0)
+      - (sightData?.adsMoveSpeedTierShift ?? 0)));
     _adsTimeMs       = ADS_SPD_TIERS[adsIdx];
     _adsMoveSpeedMult = ADS_MOVE_TIERS[amsIdx];
     const timingAttachments = [magData, grp, ergoData, bar, muz, las, lit, ammoType];
@@ -590,6 +596,9 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     _weaponSwayMult:         weaponSwayMult,
     _visualRecoil:           ergoData.visualRecoil ?? 0,
     _laserVisible:           las.laserVisible ?? null,
+    // Yes/no capabilities (e.g. Fire while Sprinting) keyed by display label.
+    _utilities:              Object.assign({}, ...[sightData, muz, bar, grp, las, lit, magData, ergoData]
+      .map(att => att?.utilities)),
     _movingAdsSpreadTierMod: movingAdsSpreadTierMod,
     _adsTimeTierMod:         combinedAdsTimeTierMod,
     _adsTimeMs, _sprintRecoveryMs, _adsMoveSpeedMult, _deployTimeMs, _undeployTimeMs,

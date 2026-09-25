@@ -74,8 +74,10 @@ shifts. The default barrel and magazine therefore show their own effects, such a
 Basic's faster ADS time and the standard magazine's faster draw. Favorable indicators follow each stat's direction: higher damage/velocity,
 or lower reload time/dispersion. They apply to individual stats only.
 
-**Weapon Sway** shows the percentage change from muzzle and magazine effects
-relative to the bare weapon. It excludes optic and camera sway. **Hip Spread/Shot**
+**Weapon Sway** shows the percentage change from sight, muzzle, barrel and magazine
+effects relative to the bare weapon. Iron sights reduce sway on most weapons; optics
+do not. Camera sway is excluded. Green **Yes** chips show capabilities such as Fire
+while Sprinting, Reload in ADS or a flashlight's activation. **Hip Spread/Shot**
 shows spread added by each hipfire shot. A light can reduce that increase while
 also reducing the flat **Hip Spread Recovery** value; the recovery value alone
 does not describe the light's overall effect.

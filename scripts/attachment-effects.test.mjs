@@ -43,11 +43,12 @@ test('screenshot-backed sidearm brakes retain their name with source-specific co
     assert.equal(getAttPts(brake, w), 10);
     assert.equal(computeAttPts(loadout(w, { muzzle: 'sp_brake' }), w, data)
       - computeAttPts(loadout(w, { muzzle: 'none' }), w, data), 10);
-    assert.equal(build(w, { muzzle: 'sp_brake' })._weaponSwayMult, 1);
+    // Optics carry no sway factor, isolating the muzzle's.
+    assert.equal(build(w, { sight: 'std_optic', muzzle: 'sp_brake' })._weaponSwayMult, 1);
   }
   const w = weapon('m4a1');
   assert.equal(getAttPts(attachments.MUZZLES.find(a => a.id === 'sp_brake'), w), 5);
-  assert.equal(build(w, { muzzle: 'sp_brake' })._weaponSwayMult, 1.5);
+  assert.equal(build(w, { sight: 'std_optic', muzzle: 'sp_brake' })._weaponSwayMult, 1.5);
   assert.equal(availableAttachments(weapon('qbz192'), 'ergo', data).some(a => a.id === 'buffer'), false);
   const codec = createShareCodec({ ...data, defaultAttsForWeapon: defaults });
   const qbz = weapon('qbz192');
@@ -225,11 +226,12 @@ test('Frosty collateral table matches ES 5.7 panels and clamps M121 A2 Tungsten'
 
 test('source sway factors retain compact-magazine strength and combine with muzzle effects', () => {
   const w = weapon('m4a1');
-  assert.equal(build(w)._weaponSwayMult, 1);
-  assert.equal(build(w, { muzzle: 'long_supp' })._weaponSwayMult, 1.5);
-  assert.equal(build(w, { mag: '20_fast' })._weaponSwayMult, 0.6666667);
-  assert.equal(build(w, { mag: '20_rnd' })._weaponSwayMult, 0.4444444);
-  assert.ok(Math.abs(build(w, { mag: '20_fast', muzzle: 'long_supp' })._weaponSwayMult - 1) < 0.000001);
+  const optic = changes => build(w, { sight: 'std_optic', ...changes })._weaponSwayMult;
+  assert.equal(optic({}), 1);
+  assert.equal(optic({ muzzle: 'long_supp' }), 1.5);
+  assert.equal(optic({ mag: '20_fast' }), 0.6666667);
+  assert.equal(optic({ mag: '20_rnd' }), 0.4444444);
+  assert.ok(Math.abs(optic({ mag: '20_fast', muzzle: 'long_supp' }) - 1) < 0.000001);
 });
 
 test('source spotting factors combine suppressor and subsonic without a special-case range', () => {

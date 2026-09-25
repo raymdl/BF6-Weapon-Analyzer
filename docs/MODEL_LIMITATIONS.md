@@ -120,7 +120,8 @@ clamped to 0..9, following the operator's confirmation of table bounds. M121 A2
 Tungsten therefore uses index 9 and multiplier 1. The collateral stat is displayed without simulating material traversal.
 Spotting now multiplies source factors using the existing 54/150 m bases; the
 bases and composition are inferred from site/source agreement. Sway percentages
-cover source muzzle/magazine amount factors, excluding optic/camera effects.
+cover source sight, muzzle, barrel and magazine amount factors, excluding camera sway;
+the iron-sight factor is unmeasured.
 Light operands are source-backed; their activation and operation are modeled as
 described above.
 

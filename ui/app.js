@@ -256,7 +256,7 @@ setSimContext({
   platformRecoilMultFn: selectedPlatformRecoilMult,
 });
 setAttachmentContext({
-  MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, WEAPON_MAG, WEAPON_ERGO,
   AMMO, WEAPON_AMMO, WEAPON_ATTS,
   RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES,
   COLLATERAL_MULT_OVERRIDE, HIT_ZONES: _hitZones,
@@ -2092,8 +2092,8 @@ function renderAttachmentStats(loadouts) {
     const swayVal = ((cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1) - 1) * 100;
     if (Math.abs(swayVal) >= 0.05) {
       const decreased = swayVal < 0;
-      const tip = escAttr('Weapon sway amount from muzzle, magazine and barrel modifiers, compared with the bare weapon. Optic and camera sway are not included. Lower is better.');
-      const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments) ? '*' : ''}`;
+      const tip = escAttr('Weapon sway amount from sight, muzzle, magazine and barrel modifiers, compared with the bare weapon. Iron sights reduce sway; optics do not. Camera sway is not included. Lower is better.');
+      const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments) ? '*' : ''}${bugMark('Weapon Sway')}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${signed(swayVal, '%', 1)}</div></div>`);
     }
     const vrVal = cur._visualRecoil ?? 0;
@@ -2115,6 +2115,10 @@ function renderAttachmentStats(loadouts) {
       const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${visible ? 'var(--red)' : 'var(--green)'}">${visible ? 'Visible' : 'Not Visible'}</div></div>`);
     }
+    Object.entries(cur._utilities ?? {}).forEach(([lbl, value]) => {
+      const tip = escAttr(`${lbl}: a capability added by the selected attachment.`);
+      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${escAttr(lbl)}</div><div class="att-chip-val" style="color:var(--green)">${escAttr(value)}</div></div>`);
+    });
     if (!chips.length && !bugs.length) return;
     rendered = true;
     const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${escAttr(bug.note)} Stats show the in-game behavior.</div>`).join('');

@@ -3,7 +3,68 @@
     {
       "id": "iron",
       "name": "Iron Sights",
-      "pts": 5
+      "pts": 5,
+      "weaponSwayMultByWeapon": {
+        "m433": 0.6666667,
+        "b36a4": 0.6666667,
+        "sor556": 0.6666667,
+        "ak4d": 0.6666667,
+        "tr7": 0.6666667,
+        "kord6p67": 0.6666667,
+        "nvo228e": 0.6666667,
+        "l85a3": 0.6666667,
+        "vcr2": 0.6666667,
+        "m16a4": 0.6666667,
+        "m4a1": 0.6666667,
+        "m277": 0.6666667,
+        "ak205": 0.6666667,
+        "m417a2": 0.6666667,
+        "grtbc": 0.6666667,
+        "qbz192": 0.6666667,
+        "sg553r": 0.6666667,
+        "sor300sc": 0.6666667,
+        "sgx": 0.6666667,
+        "pw5a3": 0.6666667,
+        "pw7a2": 0.6666667,
+        "umg40": 0.6666667,
+        "usg90": 0.6666667,
+        "kv9": 0.6666667,
+        "scw10": 0.6666667,
+        "sl9": 0.6666667,
+        "cz3a1": 0.6666667,
+        "pp19": 0.6666667,
+        "l110": 0.6666667,
+        "drsiar": 0.6666667,
+        "m60": 0.6666667,
+        "rpkm": 0.6666667,
+        "m123k": 0.6666667,
+        "m250": 0.6666667,
+        "kts100": 0.6666667,
+        "m240l": 0.6666667,
+        "m121a2": 0.6666667,
+        "rpk74m": 0.6666667,
+        "m39emr": 0.6666667,
+        "lmr27": 0.6666667,
+        "svk86": 0.6666667,
+        "svdm": 0.6666667,
+        "grtcps": 0.6666667,
+        "m87a1": 0.6666667,
+        "m1014": 0.6666667,
+        "ks18k": 0.6666667,
+        "db12": 0.6666667,
+        "p18": 0.6666667,
+        "es57": 0.6666667,
+        "m45a1": 0.6666667,
+        "m44": 0.6666667,
+        "ggh22": 0.6666667,
+        "m357trait": 0.6666667,
+        "vz61": 0.6666667,
+        "ef88": 0.6666667,
+        "vssm": 0.6666667
+      },
+      "assumedFields": {
+        "weaponSwayMult": "Source iron-sight sway package (WPM_Sway_IronSights_P05, weapon and camera sway x0.666667; L62). Not measured in game; the menu shows no sway value. Absent on bolt-action rifles by design and on BROD 3 (bug 16)."
+      }
     },
     {
       "id": "std_optic",
@@ -20,14 +81,20 @@
     {
       "id": "var_high",
       "name": "Variable High",
-      "noEffect": true,
-      "pts": 25
+      "pts": 25,
+      "adsMoveSpeedTierShift": 1,
+      "assumedFields": {
+        "adsMoveSpeedTierShift": "Every optic in this category imports WME_ADSMoveSpeed_M05 (one ADS-move tier slower; L62). Not yet confirmed by a menu Mobility capture."
+      }
     },
     {
       "id": "thermal",
       "name": "Thermal",
-      "noEffect": true,
-      "pts": 25
+      "pts": 25,
+      "adsMoveSpeedTierShift": 1,
+      "assumedFields": {
+        "adsMoveSpeedTierShift": "Every optic in this category imports WME_ADSMoveSpeed_M05 (one ADS-move tier slower; L62). Not yet confirmed by a menu Mobility capture."
+      }
     },
     {
       "id": "therm_hyb",
@@ -910,7 +977,9 @@
       "adsRecoilTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "pts": 10,
-      "noEffect": true,
+      "utilities": {
+        "Fire while Sprinting": "Yes"
+      },
       "frostyModifiers": {
         "cz3a1": {
           "adsTimeTierMod": 0,
@@ -5229,7 +5298,9 @@
       "adsRecoilTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "pts": 10,
-      "noEffect": true,
+      "utilities": {
+        "Gadget Draw Speed": "Yes"
+      },
       "frostyModifiers": {
         "b36a4": {
           "adsTimeTierMod": 0,
@@ -7782,6 +7853,9 @@
       "hipSpreadIdleDecOffsetMult": 0.666667,
       "laserVisible": false,
       "pts": 20,
+      "utilities": {
+        "Flashlight": "Yes (Toggleable)"
+      },
       "frostyModifiers": {
         "es57": {
           "hipSpreadTierMod": -1,
@@ -7831,6 +7905,9 @@
       "hipSpreadIdleDecOffsetMult": 0.666667,
       "laserVisible": true,
       "pts": 20,
+      "utilities": {
+        "Flashlight": "Yes (Toggleable)"
+      },
       "frostyModifiers": {
         "es57": {
           "hipSpreadTierMod": -2,
@@ -7885,12 +7962,17 @@
       "id": "ads_taclight",
       "name": "Taclight - Aimed",
       "pts": 5,
-      "noEffect": true
+      "utilities": {
+        "Flashlight": "Yes (ADS)"
+      }
     },
     {
       "id": "flashlight",
       "name": "Flashlight",
       "pts": 10,
+      "utilities": {
+        "Flashlight": "Yes (Toggleable)"
+      },
       "hipSpreadIncMult": 0.666667,
       "hipSpreadFiringDecCoefMult": 1.837117,
       "hipSpreadFiringDecOffsetMult": 0.666667,
@@ -7901,6 +7983,9 @@
       "id": "hip_taclight",
       "name": "Taclight - Hipfire",
       "pts": 15,
+      "utilities": {
+        "Flashlight": "Yes (Hipfire)"
+      },
       "hipSpreadIncMult": 0.666667,
       "hipSpreadFiringDecCoefMult": 1.837117,
       "hipSpreadFiringDecOffsetMult": 0.666667,
@@ -7911,7 +7996,9 @@
       "id": "range_finder",
       "name": "Range Finder",
       "pts": 15,
-      "noEffect": true
+      "utilities": {
+        "Auto-Zeroing": "Yes"
+      }
     }
   ],
   "ERGOS": [
@@ -7931,7 +8018,9 @@
       "id": "mag_flare",
       "name": "Magwell Flare",
       "pts": 10,
-      "noEffect": true
+      "utilities": {
+        "Reload in ADS": "Yes"
+      }
     },
     {
       "id": "mag_catch",
@@ -7949,7 +8038,9 @@
       "id": "ads_bolt",
       "name": "DLC Bolt",
       "pts": 30,
-      "noEffect": true
+      "utilities": {
+        "Rechamber in ADS": "Yes"
+      }
     },
     {
       "id": "buffer",
@@ -17184,6 +17275,20 @@
         "Hipfire Spread"
       ],
       "note": "The description lists a hipfire accuracy penalty, but the game doesn't apply it on the L115."
+    },
+    {
+      "ref": "16",
+      "slot": "sight",
+      "attachments": [
+        "iron"
+      ],
+      "weapons": [
+        "brod3"
+      ],
+      "metrics": [
+        "Weapon Sway"
+      ],
+      "note": "The description promises reduced weapon sway, but the game doesn't apply it on the BROD 3."
     }
   ]
 }

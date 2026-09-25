@@ -337,7 +337,7 @@ L115A3. Its exact selector binds `WPM_ERG_DLCBolt_W25`, which imports
 25% speed bonus. Mini Scout and Interdictor are not in this attachment's current
 four-weapon choice set; their base behavior needs separate comparison.
 
-The Analyzer stores `noEffect=true` and does not apply an ADS Bolt cadence branch.
+The Analyzer shows a Rechamber in ADS utility and does not apply an ADS Bolt cadence branch.
 The proposed output must distinguish the next accepted shot from the next shot
 with ADS fully restored. Without the attachment, ADS exit, rechambering and ADS
 entry may affect the latter. Their overlap and the meaning of the zoom completion
@@ -379,9 +379,9 @@ expanding FX or material graphs.
 
 206 weapon-sway and 3 camera-sway objects. Shared P05/M05/P10 factors are
 0.6666667/1.5/0.4444444. The site shows muzzle and magazine amount changes as a
-percentage against the default loadout (magazine strengths include −33.3% and −55.6%;
-adverse muzzle factor 1.5 gives +50%). Optic and camera sway are not shown, because the
-site's six sight categories do not identify one source optic. `WME_DynamicPivot` uses
+percentage against the bare weapon (magazine strengths include −33.3% and −55.6%;
+adverse muzzle factor 1.5 gives +50%). Iron-sight weapon sway (L62) is shown; camera
+sway is not. `WME_DynamicPivot` uses
 `Field_f235e44f`/`Field_a4f104cc` multipliers; canted iron sights set only
 `Field_f235e44f` (2.5 or 3).
 
@@ -867,7 +867,8 @@ on all 56 weapons imports `WME_ADSMoveSpeed_M05` (one ADS-move tier slower; AK20
 rifles imports `WPM_Sway_IronSights_P05` (weapon and camera sway ×0.666667). Iron
 is the site's default sight, so any optic would show +50% weapon sway. The site's
 reason for leaving out optic effects, that a category cannot identify one optic,
-does not apply to these uniform effects. Both are proposals; activation is unproved.
+does not apply to these uniform effects. Both were applied on 25 September, marked
+assumed; activation is unproved. BROD 3's missing iron-sight package is bug 16.
 
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 

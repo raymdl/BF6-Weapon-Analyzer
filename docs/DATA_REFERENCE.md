@@ -98,7 +98,8 @@ weapon's availability map. Supported effect families are:
 | `recoilDurationOverride`, `recoilDurationAdd` | Seconds of impulse delivery. Selected Smooth source overrides duration to 0.05 or 0.066667, then ergonomics adds its adjustment; the result clamps at zero. Recovery acts during delivery. Native operation/order remain model assumptions. |
 | `visualRecoil`, `laserVisible` | Qualitative/display behavior; no separate camera, sway, visibility or aim-assist simulation. |
 | `suppressor`, `worldSpotMult`, `minimapSpotMult` | Suppression selection and multiplicative spot-on-fire range factors. Zero is meaningful. |
-| `weaponSwayMult` | Muzzle/magazine sway amount factor, displayed relative to the default build; no optic/camera sway simulation. |
+| `weaponSwayMult` | Muzzle/magazine sway amount factor, displayed relative to the bare weapon; no camera sway simulation. Barrels and iron sights use per-weapon `weaponSwayMultByWeapon`. |
+| `utilities` | Label → value map of non-numeric capabilities (e.g. `"Fire while Sprinting": "Yes"`), shown as green chips in Attachment Effects. |
 | `collateralMult`, `healthRegenDelayAddS` | Legacy collateral fallback and source regeneration-delay addition. All supported collateral values instead resolve through the generated per-weapon map. No penetration/regen event simulation. |
 
 `WEAPON_ATTS[id]` supplies category ID arrays, `barrelDef`, optional `sightPoints`,
@@ -196,6 +197,6 @@ presentation/model settings in [ui/app.js](../ui/app.js) and
 [sim/target.js](../sim/target.js); they have no datamined-ladder provenance. The fixed share-field order
 and token catalogs are documented in [architecture](ARCHITECTURE.md).
 
-`weaponSwayMult` stores source muzzle/magazine amount factors. The UI displays
-their combined percentage change from the bare weapon; optic/camera effects
-are excluded.
+`weaponSwayMult` stores source muzzle/magazine amount factors; barrels and iron
+sights use `weaponSwayMultByWeapon`. The UI displays their combined percentage
+change from the bare weapon. Camera sway is excluded.

@@ -52,7 +52,7 @@ stat and adds a footnote with the intended effect.
 | 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
 | 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
-| 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Not modelled: the site applies no iron-sight sway on any weapon |
+| 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Matches source data: no iron-sight sway on BROD 3 (marked †) |
 | 17 | Iron Sights | M2010 ESR, SV-98, PSR, Mini Scout | Description error | The description states reduced weapon sway. These bolt-action iron sights have no sway package, which is intended for their design. L115 and Interdictor use the no-glint text instead. | Matches source data: no iron-sight sway |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
@@ -398,8 +398,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Not a bug on bolt-action rifles.** M2010 ESR, SV-98, PSR, Mini Scout, L115 and
   Interdictor also lack the package. The operator considers this intended for
   their weapon design.
-- **Site.** No iron-sight sway is modelled on any weapon (L62 proposal), so the site
-  shows no difference between BROD 3 and the other weapons.
+- **Site.** Since 25 September, iron sights reduce weapon sway ×0.667 on the 56
+  source-bound weapons (marked *). BROD 3 follows the source with no reduction, and its
+  iron sights are marked † with this note.
 - **Status.** Operator classification from the source trace. Not checked in game;
   the menu shows no sway value.
 - **Evidence.** [L62 reverse coverage](../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json),
@@ -443,7 +444,7 @@ weapon's default magazine. All values are source-generated. Not checked in game.
   and the operator considers that intended for their design (see #16). L115 and
   Interdictor use "Basic sights without any scope glint." instead, which matches.
   The other four keep the sway text of the non-sniper iron sights.
-- **Site.** No iron-sight sway on any weapon.
+- **Site.** No iron-sight sway on these rifles, matching the source.
 - **Status.** Operator classification from the source trace and tooltip strings
   (`0BB6AC0B` versus `80E096AF` in `data/attachment-tooltips.json`). Not checked in game.
 - **Evidence.** [L62 reverse coverage](../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json).
