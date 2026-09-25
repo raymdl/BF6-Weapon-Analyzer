@@ -872,6 +872,11 @@ confirmed in game the same day: M4A1 menu captures show ADS move 0.82 → 0.75 w
 Variable High/Thermal, and M4A1 recordings show reduced iron-sight sway (ratio 0.67)
 ([captures](../../reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json)).
 BROD 3's missing iron-sight package is bug 16.
+The BREN3 `AAM_BREN3` lists one primary `Iron Sights` attachment and a separate
+`CantedIronSights` optic accessory. The WSE0231 skin has regular and folded iron-sight
+art assets alongside a handguard variant, but no second primary iron-sight attachment
+or handguard-specific sway selector appears in the 1.4.3.0 source trace. These model
+variants do not change the site's BROD 3 sight effect.
 
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 

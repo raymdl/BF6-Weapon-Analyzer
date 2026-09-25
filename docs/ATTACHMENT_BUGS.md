@@ -394,6 +394,10 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   `WPM_Sway_IronSights_P05`, which imports `WME_WSway_P05` and `WME_CSway_P05`
   (weapon and camera sway ×0.666667). The BROD 3 iron sights use the same text but
   do not import the package.
+- **Skin variants (1.4.3.0).** BREN3 has one primary iron-sight attachment; canted
+  iron sights are a separate optic accessory. The WSE0231 skin includes regular and
+  folded iron-sight art with a handguard variant, but no separate primary sight effect
+  or handguard-specific sway selector was found. The site's BROD 3 effect is unchanged.
 - **Not a bug on bolt-action rifles.** M2010 ESR, SV-98, PSR, Mini Scout, L115 and
   Interdictor also lack the package. The operator considers this intended for
   their weapon design. In game (operator check, 25 September), all six show "Basic
