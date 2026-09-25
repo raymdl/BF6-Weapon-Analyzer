@@ -2109,11 +2109,13 @@ function renderAttachmentStats(loadouts) {
     : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
   // A chip whose hover/tap popover lists each attachment's own contribution.
   const chipHtml = ({ label, value, color, desc, rows = [], footer = [] }) => {
+    // Columns: attachment | source step | value, so the value sits on the right.
     const cells = (r, cls = '') => `<span class="${cls}">${r.name}</span>`
-      + `<span class="att-tt-val ${cls}" style="color:${r.color ?? 'inherit'}">${r.value}</span>`
-      + `<span class="att-tt-step ${cls}">${r.step ? escAttr(r.step) : ''}</span>`;
+      + `<span class="att-tt-step ${cls}">${r.step ? escAttr(r.step) : ''}</span>`
+      + `<span class="att-tt-val ${cls}" style="color:${r.color ?? 'inherit'}">${r.value}</span>`;
     const body = rows.length ? `<div class="att-tt-grid">${rows.map(r => cells(r)).join('')}`
-      + footer.map(f => cells(f, f.total ? 'att-tt-total' : 'att-tt-note')).join('') + '</div>' : '';
+      + footer.map(f => (f.total ? '<div class="att-tt-rule"></div>' + cells(f, 'att-tt-total') : cells(f, 'att-tt-note'))).join('')
+      + '</div>' : '';
     const aria = escAttr(`${label.replace(/<[^>]+>/g, '')}: ${value}. ${desc}`);
     return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>`
       + `<div class="rc-tt att-tt"><div class="att-tt-desc">${escAttr(desc)}</div>${body}</div></div>`;
@@ -2156,7 +2158,7 @@ function renderAttachmentStats(loadouts) {
       if (rows.length > 1 && Math.abs(sum - net) > Math.max(0.5 * 10 ** -m.dec, 0.0005)) {
         footer.push({ name: `Sum of parts (${combineNote(m.lbl)})`, value: fmt(sum) });
       }
-      if (rows.length > 1) footer.push({ name: 'Net', total: true, value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
+      if (rows.length > 1) footer.push({ name: `Net ${m.lbl}`, total: true, value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
       return { rows, footer };
     };
     const chips = [];
