@@ -465,6 +465,14 @@ These are useful low-effort additions between higher-ranked tests:
   locked entries. A combined Subsonic Frangible entry would resolve an availability
   question; absence on one weapon does not establish absence on all 15 source branches.
 
+- Optic Mobility (L62): on one weapon with all other slots bare (for example
+  AK205), screenshot the Weapon Attributes panel with iron sights, one standard
+  optic, one variable-high optic and one thermal optic. Source predicts Mobility
+  2 lower for the variable-high and thermal optics than for iron or the standard
+  optic (one ADS-move tier; AK205 0.67 → 0.60). Equal Mobility across all four
+  rejects an active penalty in the panel. See the
+  [L62 receipt](../../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json).
+
 Include the weapon name and selected slot in each screenshot. Hover text alone
 does not prove that an attachment is equipped or active.
 

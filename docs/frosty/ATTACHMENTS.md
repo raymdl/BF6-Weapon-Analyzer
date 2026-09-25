@@ -849,7 +849,26 @@ step therefore does not apply when the attachment is fitted; it most likely
 requires a bipod or deployed state. The site omission matches the panel. Deployed
 behavior stays with parked question W1.
 
-## VSSM selected dispersion and recovery operands
+### Reverse coverage of handling, velocity and sway (L62, 25 September 2026)
+
+L62 repeated L60 for WME imports and `GID_*` bindings: ADS time, draw/deploy,
+sprint recovery, ADS move speed, reload, sway and muzzle velocity
+([receipt](../../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json)).
+Grips, muzzles, barrels, ergos, magazines and ammo agree with the site throughout.
+ADS time keeps the source sign on grips and barrels and is negated on magazines;
+draw, sprint and ADS-move shifts are negated everywhere. The only barrel exceptions
+are GS-only `GID_ADSTime_BRL` +1 bindings on EF88 Extended, BROD3 Extended and the
+VSSM barrels, where the site follows the WB (0). EF88 panels read Mobility 52 for
+Basic and 48 for Extended, matching the WB-only index, which supports W2.
+
+Sights carry category-wide effects the site omits. Every var_high and thermal optic
+on all 56 weapons imports `WME_ADSMoveSpeed_M05` (one ADS-move tier slower; AK205
+0.67 → 0.60, Mobility −2). Every iron sight except BROD3 and the six bolt-action
+rifles imports `WPM_Sway_IronSights_P05` (weapon and camera sway ×0.666667). Iron
+is the site's default sight, so any optic would show +50% weapon sway. The site's
+reason for leaving out optic effects, that a category cannot identify one optic,
+does not apply to these uniform effects. Both are proposals; activation is unproved.
+
 
 The [L41 raw check](../../reference-data/provenance/frosty-2026-09-24-L41-vssm-selected-operands.json)
 resolves the Full Auto selector to its GBM/GRM objects and matches ten dispersion,
