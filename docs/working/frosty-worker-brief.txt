@@ -1,0 +1,25 @@
+You are doing one bounded, read-only source-tracing task for the BF6 Weapon Analyzer research project.
+(Shared preamble for Codex worker briefs. Prepend it to each lead brief. Update the site conventions and known cases as leads close.)
+
+RULES
+- Write outputs ONLY under your current working directory (a lead folder under the current run root in C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\). Do not modify anything under C:\Users\royal\Documents\BF6 Weapon Analyzer (the repo, read it freely) or under ...\BF6 Datamining\builds\ . Never run git write commands. Existing output files must not be overwritten; use new paths.
+- Evidence: release 1.4.3.0 only (Head 4892017, descriptor sha256 91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2). Decoder DB: C:\Users\royal\Documents\BF6 Datamining\builds\1.4.3.0\reports\exhaustive-audit-2026-09-23\coverage-decoder-v5.sqlite . Raw EBX: C:\Users\royal\Documents\BF6 Datamining\builds\1.4.3.0\capture\collection\raw\ . Cached XML overlay and graph builder: repo scripts/frosty-configuration.py (attachment_graph). Other repo tools: scripts/frosty-selected-chain-check.py, scripts/frosty-registry-association.py, scripts/frosty-ebx-decode.py; see docs/frosty/TOOLS.md "Research reproduction methods". Run repo scripts with new --out paths under your cwd.
+- Operand meanings: repo docs/frosty/FIELD_MAP.md (Field_4692836a add; Field_5695ee1c multiply; Field_bbffe8bc enable + Field_bbbfe9cc override value; Field_98a799ba multiply; Field_9540bd8e signed tier step). Name targets by exact GRX_Weapons registry child/hash pairs as in the worked example repo reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json (read its reproduction section) and docs/frosty/ATTACHMENTS.md "Match Trigger indirect effects (L17)".
+- Raw-verify every consequential operand: raw file path, raw sha256, byte offset, bytes hex, decoded value.
+- Keep separate: serialized source facts; inferred meaning; unresolved runtime activation/composition. A byte or name match does not prove runtime use. Do not state native behavior.
+- Record every command you run (script, arguments, output path, output sha256) and the sha256 of any helper script you write (keep helpers under your cwd).
+- If you cannot finish, write partial results with exact blockers and what remains.
+- Reuse before rebuilding: check sibling lead folders under ..\ and earlier run roots (e.g. 2026-09-24T185356-0400\1.4.3.0\L59\l59-raw-decoded.json, ...\L60\l60-result.json) and the exhaustive-audit reports for existing decodes or joins before decoding again.
+- Controls: when the brief names a known-answer control, report it first. If the control is not reproduced, stop and report that your route is wrong; do not report negatives from that route.
+
+ENVIRONMENT (Windows)
+- Write files and run queries with Python scripts saved under your cwd, not inline PowerShell one-liners. Write text as UTF-8 WITHOUT a BOM (PowerShell Set-Content/Out-File add a BOM that repo scripts reject); read other tools' JSON with encoding='utf-8-sig'.
+- rg is not installed; use Python or Select-String for searches.
+
+SITE CONVENTIONS (use these whenever you compare with site data)
+- Attachment values can be choice-level fields OR per-weapon under <choice>.frostyModifiers.<siteWeaponId>.<field>; the per-weapon value takes precedence. Check both before calling anything unmodeled.
+- Spread/handling tier steps: the site stores the NEGATED source Field_9540bd8e step (source +2 -> site hipSpreadTierMod -2).
+- Recoil tiers: amount = amount * amountMult^(amountExp + sum RecoilTierMods); variation = dirVar * dirVarMult^(dirVarExp + sum VariationTierMods). A site recoil tier mod equals the source ADDITIVE operand on RecoilAmountMultiplierExponent (Field_22ce7cf3) / RecoilDirectionVariationMultiplierExponent (Field_02433593), SAME sign; several bound operands may sum to one site value (L59).
+- GS modifier bindings may be keyed by the attachment's selector GUID OR by a separate condition token (e.g. U_WPM_ERG_BurstFireActive 588728fd-2ae7-4424-aa22-45d9b3c82ba0, as in L13/L59). Search both.
+- Class_743a3ce0 dispersion steps with Field_b574fa40 = true (bipod/grip pod HipDispersion_BTM_P20) do not apply when merely fitted (L61); the site omits them deliberately.
+- Known cases, list but do not count as new: Match Trigger unmodeled effects (L17/L24); PP-19 Flash Comp and L115 Standard Suppressor are game bugs the site follows deliberately; burst RecoilDuration -0.0006 (L13); controller 0.8836 (L19) is not an attachment.

@@ -77,7 +77,8 @@ outputs; use new output paths on reruns. No new capture follows from L56/L58.
 ## Current run: 24 September 2026 (evening)
 
 Claude selects leads and reviews results; bounded checks go to Codex CLI workers
-(GPT-6 Luna, xhigh). Evidence root:
+(GPT-6 Luna, xhigh), launched with `~/.claude/codex-bridge/run_worker.py`; every
+brief starts with the shared preamble [frosty-worker-brief.txt](frosty-worker-brief.txt). Evidence root:
 `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-24T185356-0400`.
 Lead selection rule: a lead needs a plausible route to change a displayed site number
 or expose a site calculation defect. Skip self-consistency checks, catalog screens
