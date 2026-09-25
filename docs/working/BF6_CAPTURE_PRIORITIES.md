@@ -612,8 +612,8 @@ operator order and broader weapon coverage remain separate questions. See
 **Done 25 September; L63 rejected.** The bare VSSM hip reticle widened 68 → 121 px
 over 10 shots, so keep its 0.398° increase. The bare M433 in semi showed no bloom,
 with or without Match Trigger. The recorder stalls for the first ~2.5 s of every
-clip, so start recording a few seconds before the first shot. A clean VSSM clip
-would give per-shot growth to compare with the site curve. See the
+clip, so start recording a few seconds before the first shot. A second, clean VSSM
+clip matches the site's hip curve within 0.05° and both recovery rates. See the
 [capture receipt](../../reference-data/provenance/frosty-2026-09-25-L63-L17-semi-bloom-captures.json).
 
 Use a bare VSSM (no Folding Stock), standing, hip fire, with the spread indicator

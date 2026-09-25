@@ -493,7 +493,10 @@ The same condition makes the bare semi baseline in the L17 Match Trigger test la
 bloom. [Receipt](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json).
 **Captured the same day:** the bare VSSM hip reticle widens from 68 to 121 px over 10
 shots, so the condition is not active in its default semi mode and the site keeps
-0.398°. The bare M433 in manually selected semi shows no widening across 10 hip
+0.398°. A second, clean VSSM clip matches the site's hip curve within 0.05° over four
+shots at the 133 ms cap, and its slow and fast recovery rates match the firing and
+not-firing offsets (1.82 and 12.96°/s); fast recovery starts about one shot interval
+after each shot. The bare M433 in manually selected semi shows no widening across 10 hip
 shots, consistent with the condition being active after a mode switch
 ([capture receipt](../../reference-data/provenance/frosty-2026-09-25-L63-L17-semi-bloom-captures.json)).
 

@@ -10,6 +10,7 @@
     "folder": "reference-data/Recordings/09252026/Semi Auto",
     "files": [
       {"path": "VSSM_Bare.mp4", "sha256": "015ff298323c40116c07a912e2139eb0bdbf586441421c6253ea76ffdaef960b", "video": "2560x1440, variable rate, ~120 fps after the stall", "setup": "bare VSSM, standing, hip fire, default semi (no fire-mode selector on HUD)"},
+      {"path": "VSSM_Bare_2.mp4", "sha256": "a06350b02d2e0d262f11380cffbf41b9348ec9848d58b078e44290769ab56aa1", "video": "2560x1440, ~120 fps after the stall; the reticle itself updates about every 33 ms in 2 px steps", "setup": "bare VSSM, standing, hip fire, default semi; full magazine 21 -> 0, 15 shots after the stall in groups at the 133 ms cap"},
       {"path": "M433_Bare.mp4", "sha256": "f949b9bb3ded8cc19a873048fc9e204a2d9f4fd755ed1de983274abf80e2fcbf", "video": "1920x1080, ~60 fps after the stall", "setup": "bare M433, standing, hip fire, semi selected (single-round HUD icon)"},
       {"path": "M433_Match_Trigger.mp4", "sha256": "f0a8bdf30c613720b4cf67129a03921a3d62b3f095c7c4793ad9ee38483873fb", "video": "1920x1080, ~60 fps after the stall", "setup": "M433 with Match Trigger, standing, hip fire, semi selected"}
     ],
@@ -21,6 +22,13 @@
       "shots": "10 (ammo 21 -> 11), all inside the stalled section",
       "gapPx": {"rest": 68, "byFrame": [[5, 1401.6, 84], [6, 1662.4, 95], [7, 1928.8, 105], [8, 2195.0, 113], [9, 2458.1, 121], [12, 2734.0, 119]], "backToRest": "67-68 px by 2968 ms, about 0.25 s after the last shot"},
       "frameFormat": "[frame, ms, gap px]"
+    },
+    "VSSM_Bare_2": {
+      "calibration": "Assumes the gap is proportional to spread: rest 67 px = site hipStand minimum 1.804 degrees, so 37.14 px per degree. Gap resolution is 2 px (0.05 degrees).",
+      "preShotGroupsPx": {"2617-3017 ms": [67, 71, 77, 83], "3184-3452 ms": [73, 77, 83], "3785-3918 ms": [67, 71], "4151-4551 ms": [67, 71, 77, 83]},
+      "preShotFromRestDeg": {"measured": [1.804, 1.912, 2.073, 2.235], "siteSimulateSpread": [1.804, 1.958, 2.11, 2.258]},
+      "perShotJumpPx": "10-14 at the first update after a shot (0.27-0.38 degrees, after up to 33 ms of recovery); site increase 0.398",
+      "recovery": {"firingPxPerS": "about 60 (1.6 degrees/s); site firingOffset 1.8225 plus the bloom-scaled term", "notFiringPxPerS": "about 480 (12.9 degrees/s); site notFiringOffset 12.96", "switch": "the fast drop starts 117-150 ms after a shot, consistent with a firing window of 60/rpm = 133 ms"}
     },
     "M433_Bare": {
       "shots": "10 (ammo 18 -> 8); 8 in the steady 60 fps section, 133-167 ms apart",
@@ -39,9 +47,10 @@
   },
   "interpretation": {
     "L63": "The semi no-bloom condition is not active for the VSSM's default semi mode. Keep spreadDyn.hip.inc 0.398. The proposal to zero it is rejected.",
+    "vssmCurve": "VSSM_Bare_2 matches the site's VSSM hip model within 0.05 degrees (one or two gap steps) over four shots at the 133 ms cap, and both recovery rates match the site's firing and not-firing offsets. In game the firing recovery lasts about one shot interval (60/rpm) after each shot and not-firing recovery follows; the site applies that split only to burst gaps, which gives the same result at the cap cadence it simulates.",
     "semiCondition": "On the M433 the condition is consistent with being active in manually selected semi. This bears on L14 (selectable single-fire modes) for the 39 other weapons that bind the key.",
     "L17": "Match Trigger shows no bloom, but neither does the bare semi baseline, so the zero-increase operand cannot be isolated. Its recoil (0.843908625 ratio) and recovery (124.416) predictions remain untested."
   },
-  "limits": "The reticle gap is not calibrated to degrees, so these are growth-or-no-growth results. VSSM shot timing is not resolvable because its shots fall in the recorder stall. Moving and ADS runs, and a VSSM Folding Stock control, were not captured.",
+  "limits": "The degree values assume the reticle gap is proportional to spread and anchor it at the site's own minimum, so they test the model's shape and rates, not an independent angle calibration. VSSM_Bare's shots fall in the recorder stall; VSSM_Bare_2 does not. Moving and ADS runs, and a VSSM Folding Stock control, were not captured.",
   "worker": "none; analyzed by Claude"
 }
