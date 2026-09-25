@@ -481,6 +481,18 @@ This is a source condition graph, not proof that the group sets `15cff9ff` or th
 all its branches combine in a particular way. Native evaluation remains unresolved.
 The site has one fixed fire mode per weapon and no deployed state.
 
+**VSSM default semi-auto (L63, 25 September 2026).** `CMU_SemiAuto` holds key
+`ba7bb6a2` with mask 1. The 40 GS files that bind it cover every weapon with a
+selectable semi mode (except EF88 and BREN3), plus VSSM and Skorpion. The other five
+DMRs, bolt rifles, shotguns and other sidearms do not bind it. VSSM is the only site
+weapon whose default mode is semi-auto that binds it: `GS_VSSM` binds
+`GBM_NoIncrease_Semi_P00` (×0 in hip and ADS) at priority 100. The site keeps its
+0.398° hip increase per shot. If the condition is active in default semi fire, bare
+VSSM hip spread stays at 1.804° instead of rising to 3.004° by shot 10 (peak 3.679°).
+The same condition makes the bare semi baseline in the L17 Match Trigger test lack
+bloom. [Receipt](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json);
+the capture is in the plan's L63 follow-up.
+
 The same review establishes the following configuration in the M4A1 trace:
 
 - `GBM_NoIncrease_ERG_P00`: four `Field_0084b1d1` blocks have multiplier

@@ -585,13 +585,34 @@ between paired trials. A missing/censored indicator is unavailable, not zero.
 
 If all source operands act under the current model, the M433 candidate predicts
 a per-shot recoil ratio of 0.843908625, a recovery factor of 124.416 instead of 72,
-and zero added bloom with unchanged minimum spread. If the attachment acts only
+and zero added bloom with unchanged minimum spread. `GS_HK433` also binds the
+semi-mode no-bloom modifier ([L63](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json)),
+so the bare semi baseline may already show no bloom. In that case the bloom
+comparison cannot isolate Match Trigger; the recoil and recovery comparisons still can. If the attachment acts only
 in semi-auto, the automatic control should lack those changes. If no differences
 are resolved, the result is inconclusive about activation and global absence.
 A different direction or magnitude can reject this simple composition. There is
 no sourced cadence prediction; record timing to control the experiment. Native
 operator order and broader weapon coverage remain separate questions. See
 [L17 evidence](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json).
+
+## L63 follow-up: VSSM default semi-auto hip bloom (rank 9 follow-up)
+
+Use a bare VSSM (no Folding Stock), standing, hip fire, with the spread indicator
+visible. Fire 10 shots at the fastest steady semi-auto rate (about 450 RPM,
+0.133 s) and record shot times and indicator width. Repeat with the Folding Stock
+in automatic fire as the within-weapon control, and repeat the bare run while
+moving.
+
+The site predicts standing hip spread growing from 1.804° to 3.004° by shot 10
+(peak 3.679°; moving 2.255° to a 4.130° peak). The source candidate
+(`GBM_NoIncrease_Semi_P00` under `CMU_SemiAuto`) predicts no growth in the bare
+runs, while the Folding Stock control should still bloom. Growth in the bare runs
+rejects an active semi condition for the VSSM default mode. No growth with a
+blooming control supports it. Also run the unmodified M433 in manual semi and
+automatic modes; it binds the same key and gives the fire-mode control for the
+L17 test. A missing or censored indicator is unavailable, not zero. See the
+[L63 receipt](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json).
 
 ## L20 follow-up: Pellet direction pilot (rank 14)
 

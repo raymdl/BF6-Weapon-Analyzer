@@ -1,0 +1,63 @@
+{
+  "lead": "L63",
+  "date": "2026-09-25",
+  "status": "Source candidate; needs capture. VSSM, the only site weapon whose default mode is semi-auto and whose GS binds the semi-mode no-bloom modifier, keeps 0.398 degree hip bloom per shot on the site.",
+  "build": {
+    "version": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Do any GS binding keys that are not attachment selectors select an effect on a weapon's default site configuration that the site omits?",
+  "method": "Census of every Field_6d011165 key in the 64 weapon GS XML files, resolved to the declaring asset. Keys that are not attachment selectors were checked against docs/frosty. For the semi-auto condition, the binding weapons were compared with site default fire modes. Operands were decoded by Claude from raw EBX with scripts/frosty-ebx-decode.py and the build descriptors, and the effect was modeled with the site's own sim/core.js.",
+  "censusResult": "240 keys: 167 U_WPM selectors or condition tokens, 64 per-weapon keys (mounted and controller recoil), 9 unresolved in the weapon tree (MountedPlus, Match Trigger 15cff9ff, CMU_SemiAuto ba7bb6a2, Support and Engineer class traits, three single-player or single-optic keys). All were already documented except the site consequence below.",
+  "sourceFacts": [
+    {
+      "fact": "CMU_SemiAuto is Class_9dfbb158 with key Field_6d011165 = ba7bb6a2-22ed-462f-b701-badece5a4a6c and mask Field_1c85cbb1 = 1 (the fire-mode mask shape of L31).",
+      "rawCheck": {"path": "Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\CMU_SemiAuto.ebx", "sha256": "ce54ccd736ff01fa2ed423b0415cd7ac334f503ae0e9e25321a8b17ed842b289", "decoder": "frosty-ebx-decode.py", "decodedValue": {"Field_6d011165": "ba7bb6a2-22ed-462f-b701-badece5a4a6c", "Field_1c85cbb1": 1}}
+    },
+    {
+      "fact": "GBM_NoIncrease_Semi_P00 (object f3c1e2de-f13e-446f-9294-6048c6ce2cdf) multiplies IncreasePerShot (Field_0084b1d1/Field_5695ee1c) by 0 in hip (Field_7b609515) and ADS (Field_6b84de87), both stance sub-branches; every other operand is neutral.",
+      "rawCheck": {"path": "Common\\Hardware\\Weapons\\_WeaponModifiers\\DispersionIncrease\\GBM_NoIncrease_Semi_P00.ebx", "sha256": "71f3d764208ea84b8c4ab9d9c2f3d88f6f636af47f84af9163632b30757ccb6d", "decoder": "frosty-ebx-decode.py", "decodedValue": 0.0}
+    },
+    {
+      "fact": "GS_VSSM binds GBM_NoIncrease_Semi_P00 at Field_ee32ca16[3], key ba7bb6a2, priority 100.",
+      "rawCheck": {"path": "Common\\Hardware\\Weapons\\DMR\\VSSM\\GS_VSSM.ebx", "sha256": "ae0dc64afb3df7e40bea4d58054266f1fa38146c235786efaa52a27bff94e5b3", "decoder": "frosty-ebx-decode.py", "object": "objects[2]/Field_ee32ca16[3]"}
+    },
+    {
+      "fact": "The key is bound in 40 GS files: every site AR except EF88, every carbine except BREN3, every SMG and LMG, VSSM and Skorpion. It is absent from the other five DMRs, all bolt rifles, shotguns and other sidearms. VSSM_WB lists CMU_SemiAuto in condition group object 0x30 with the mounted and bipod conditions; EF88, BREN3 and MSBSGROTCPS WBs also reference CMU_SemiAuto but their GS files do not bind the key.",
+      "source": "gs-key-census.json; xml-overlay GS_*.xml and *_WB.xml"
+    }
+  ],
+  "siteFacts": {
+    "vssm": "data/weapons.json vssm fireMode semi, rpm 449.999; spreadDyn.hip.inc 0.398 and spreadDyn.ads.inc 0 (both match the source base GS values). The Folding Stock replaces both through its own overrides (hip 0.736, ADS 0.409) and sets auto.",
+    "otherWeapons": "Weapons with a selectable semi mode are modeled only in their site default mode (auto or burst), so the key has no current site consumer for them (see the L14 single-fire proposal)."
+  },
+  "inference": "If ba7bb6a2 is active whenever the weapon fires in semi-auto, as the mask value and the binding pattern suggest, bare VSSM hip fire has no per-shot bloom. The mask meaning and native condition evaluation are not established (L31, W6). The same condition would zero bloom on the 39 other bound weapons in semi mode, which also confounds the L17 Match Trigger semi test: the bare semi baseline may already show no bloom.",
+  "siteModelComparison": {
+    "script": "vssm_hip_spread.mjs (site sim/core.js simulateSpread and effectiveSpreadMax)",
+    "hipStanding": {"current10Shots": [1.804, 1.958, 2.11, 2.258, 2.402, 2.539, 2.669, 2.79, 2.902, 3.004], "currentPeak": 3.679, "noBloomPeak": 1.804},
+    "hipMoving": {"currentPeak": 4.13, "noBloomPeak": 2.255}
+  },
+  "measurability": "At 450 RPM (0.133 s) the site predicts hip spread growing from 1.804 to 3.004 degrees by shot 10 (standing); the candidate predicts no growth. The Folding Stock in auto (hip increase 0.736) is a within-weapon control that should bloom under both explanations. The outcomes separate 'semi condition active' from 'inactive' for the VSSM.",
+  "unresolved": "Native meaning of the mask and evaluation of the condition group; whether the default fire mode sets the condition without a mode switch; ordering with other Field_ee32ca16 bindings.",
+  "siteImpact": "Candidate only: VSSM default hip bloom 0.398 -> 0 and hip peak 3.679 -> 1.804 degrees standing. No site change until the capture supports it.",
+  "evidence": {
+    "root": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-25T001054-0400\\1.4.3.0",
+    "files": [
+      {"path": "L63-census\\key_census.py", "sha256": "8e30d5e345cc9503e1f7e384c9e26abed8681d37ec666c86b14aa74f4cf6c694"},
+      {"path": "L63-census\\gs-key-census.json", "sha256": "13ee5a4f4dc4e53cb4ecbb78438f221ca45c8b17c7c6b80bdf8b9dcff25803b7"},
+      {"path": "L63-vssm-semi\\semi-decoded.json", "sha256": "f20d9930baae1cfe5ec00c84dc0c6a49a712650f4739322b516e105ecd55d120"},
+      {"path": "L63-vssm-semi\\cmu-semiauto-decoded.json", "sha256": "34236414f53b06ff53a30a457da1f0b86d3a09e2634eed5bebc126b3bb1dd335"},
+      {"path": "L63-vssm-semi\\vssm_hip_spread.mjs", "sha256": "a1f1e91d0ecf4e7288159b30f7eb25fdaa100493fb5055726af35f4a237309c0"},
+      {"path": "L63-vssm-semi\\vssm-hip-spread.json", "sha256": "dc539c2d1f046f5c19f982f606f3604143010bca7bf87955d348ca9460bd76b0"}
+    ],
+    "commands": [
+      "python key_census.py (cwd L63-census)",
+      "python scripts/frosty-ebx-decode.py --descriptors <build>\\capture\\toolchain\\SharedTypeDescriptors.ebx --ebx <raw>\\...\\GBM_NoIncrease_Semi_P00.ebx --ebx <raw>\\...\\GS_VSSM.ebx --root <raw> --out semi-decoded.json",
+      "python scripts/frosty-ebx-decode.py --descriptors <same> --ebx <raw>\\...\\CMU_SemiAuto.ebx --root <raw> --out cmu-semiauto-decoded.json",
+      "node vssm_hip_spread.mjs > vssm-hip-spread.json"
+    ],
+    "repoInputs": {"scripts/frosty-ebx-decode.py": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f", "data/weapons.json": "17f3335c1f5cbbcc97fc713f1714fb414eb942d1cfbd74966afa94379f70ca0d", "sim/core.js": "fac3f61294d0b3e45400877fdb86b9091cf5d843a489c3940628e4afb7119ab2"}
+  },
+  "worker": "none; traced and decoded by Claude"
+}

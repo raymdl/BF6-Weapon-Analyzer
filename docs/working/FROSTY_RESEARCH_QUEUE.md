@@ -87,8 +87,9 @@ brief starts with the shared preamble [frosty-worker-brief.txt](frosty-worker-br
 `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-25T001054-0400`.
 Lead selection rule: a lead needs a plausible route to change a displayed site number
 or expose a site calculation defect. Skip self-consistency checks, catalog screens
-and label wording unless requested. L60 is closed. L62 (reverse coverage of handling,
-velocity and sway) is running as extract-only slot-group tasks.
+and label wording unless requested. L60 is closed. L63 (VSSM semi bloom) is a
+capture candidate. L62 (reverse coverage of handling, velocity and sway) is running
+as extract-only slot-group tasks.
 
 ## Active source leads
 
@@ -157,8 +158,9 @@ Work these from source before handing them to the capture plan. Results from the
 | L58 | **Remaining primary caliber text** | Closed: 39 descriptions screened; 12 exact text candidates raw-verified, including partial UMG-40 wording; [receipt](../../reference-data/provenance/frosty-2026-09-24-L58-remaining-caliber-text.json). | No label equivalence or mechanics claim; reopen for new localization or typed cartridge evidence. |
 | L59 | **A3 Receiver and burst recoil tiers - Sourced** | [34 leaves matched](../../reference-data/provenance/frosty-2026-09-24-L59-ergo-recoil-tiers.json): A3 `GRM_Recoil_ERG_M10` amount −1; burst effects under `BurstFireActive` give variation +3 and amount sums 0 / +1 (GRT-BC). | No change. Sums assume additive composition; activation unresolved. |
 | L60 | **Reverse coverage - Complete, no new effect** | [ERGOS, GRIPS, MUZZLES, LASERS, magazines](../../reference-data/provenance/frosty-2026-09-24-L60-reverse-coverage.json) and [sights, barrels, lights, ammo](../../reference-data/provenance/frosty-2026-09-25-L60-reverse-coverage-remaining.json): every selected recoil/bloom/dispersion effect is modeled or known (bipod step L61, idle state A16, camera recoil). Mini Scout lights bind two identical hip modifiers; no displayed change. | None. Reopen on a changed binding or a new site consumer (idle recovery, camera recoil). |
-| L62 | **Reverse coverage of handling, velocity and sway - Running** | L60's method applied to WPM-imported `WME_*` effects and `GID_*` GS modifiers (ADS time, draw/deploy, sprint recovery, ADS move speed, reload, sway, velocity). | Extract-only workers by slot group (grips; muzzles; magazines and ammo; then barrels/ergos and lasers/lights), joined against the site. |
 | L61 | **Bipod hip dispersion - Consistent with game** | [Assets differ only in `Field_b574fa40`](../../reference-data/provenance/frosty-2026-09-24-L61-bipod-hip-dispersion.json); EF88 panels show lasers change Hipfire but bipods/grip pods do not. | No change; deployed behavior stays with W1. |
+| L62 | **Reverse coverage of handling, velocity and sway - Running** | L60's method applied to WPM-imported `WME_*` effects and `GID_*` GS modifiers (ADS time, draw/deploy, sprint recovery, ADS move speed, reload, sway, velocity). | Extract-only workers by slot group (grips; muzzles; magazines and ammo; then barrels/ergos and lasers/lights), joined against the site. |
+| L63 | **VSSM default semi hip bloom - Source candidate; needs capture** | [Key census and raw decode](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json): `GS_VSSM` binds `GBM_NoIncrease_Semi_P00` (IncreasePerShot ×0) to `CMU_SemiAuto` (mask 1). VSSM is the only site weapon whose default mode is semi that binds it; the site keeps 0.398° hip bloom (peak 3.679° vs 1.804°). | Capture: plan's L63 follow-up (bare VSSM hip taps, Folding Stock control). The same key confounds the L17 semi bloom comparison. |
 
 ## Proposed Analyzer changes
 
@@ -167,6 +169,7 @@ operator approval; none is implemented unless stated.
 
 | Proposal | Affected data/code | Evidence and remaining validation |
 |---|---|---|
+| VSSM semi-auto hip bloom (L63) | `data/weapons.json` vssm `spreadDyn.hip.inc`, or a semi-mode rule in `sim/applyAttachments.js` | Source binds IncreasePerShot ×0 under the semi-mode key on VSSM; the site's 0.398 would become 0 for the bare VSSM (Folding Stock unaffected). [Evidence](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json). Needs the L63 capture; also relevant to any future selectable single-fire mode (L14) on the 39 other bound weapons. |
 | Zeroing solver and unavailable state (L53) | `sim/ballistics.js` and `ui/app.js` target projection | **Applied 24 September:** the launch-angle bracket widens up to 45° (VSSM Penetration/Frangible at 500 m zero now solve), and an unsolved zero shows "drop unavailable" instead of 0 m. [Receipt](../../reference-data/provenance/frosty-2026-09-24-L53-zeroing-bracket.json). No native-equation change. |
 | **Operator review: source caliber wording (L54/L55)** | `data/weapons.json` caliber metadata | Exact text supplies vz. 61 `.32 ACP`, M39 `7.62x51mm`, SVK `8.6x70mm`, and Interdictor `10.4x83mm`. These are wording options, not proof that stored aliases are wrong; no current direct consumer was found in L50. |
 | **Operator review: M87A1 caliber metadata** | `data/weapons.json` M87A1 `cal` | L50 supports removing fixed `(00 Buck)` from the stored label; selectable #01/#00 names are distinct. No direct current consumer found; remaining gauge text and other weapons need separate source support. |
