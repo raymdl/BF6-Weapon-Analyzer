@@ -1,0 +1,47 @@
+{
+  "leads": ["L63", "L17"],
+  "date": "2026-09-25",
+  "status": "Capture result. Bare VSSM hip fire in its default semi mode blooms, so the semi no-bloom condition is not active there; the site's 0.398 degree VSSM hip increase stands. Bare M433 hip fire in manually selected semi shows no bloom, consistent with GBM_NoIncrease_Semi_P00 under CMU_SemiAuto being active after a mode switch. Match Trigger's bloom effect cannot be isolated because its semi baseline already has none.",
+  "sourceReceipts": [
+    "frosty-2026-09-25-L63-vssm-semi-bloom.json",
+    "frosty-2026-09-24-L17-match-trigger-indirect-effects.json"
+  ],
+  "captures": {
+    "folder": "reference-data/Recordings/09252026/Semi Auto",
+    "files": [
+      {"path": "VSSM_Bare.mp4", "sha256": "015ff298323c40116c07a912e2139eb0bdbf586441421c6253ea76ffdaef960b", "video": "2560x1440, variable rate, ~120 fps after the stall", "setup": "bare VSSM, standing, hip fire, default semi (no fire-mode selector on HUD)"},
+      {"path": "M433_Bare.mp4", "sha256": "f949b9bb3ded8cc19a873048fc9e204a2d9f4fd755ed1de983274abf80e2fcbf", "video": "1920x1080, ~60 fps after the stall", "setup": "bare M433, standing, hip fire, semi selected (single-round HUD icon)"},
+      {"path": "M433_Match_Trigger.mp4", "sha256": "f0a8bdf30c613720b4cf67129a03921a3d62b3f095c7c4793ad9ee38483873fb", "video": "1920x1080, ~60 fps after the stall", "setup": "M433 with Match Trigger, standing, hip fire, semi selected"}
+    ],
+    "recorderStall": "Every file's first 10 frame intervals are 230-290 ms (11 frames in about 2.4-2.7 s), then the rate is steady. Audio is continuous and the stalled frames are mostly non-key frames, so the recorder was starved at start-up; the files were not trimmed. The handler names (VideoHandle/SoundHandle) indicate a Windows Media Foundation recorder such as Xbox Game Bar."
+  },
+  "method": "OpenCV 4.13 decode of every frame. Reticle gap = pixels between the inner edges of the left and right magenta hip-reticle bars (mask R>150, B>150, G<110) in a horizontal band through the reticle. Shots located by ammo-counter changes, read from per-frame crops. Fire mode read from the HUD selector icon.",
+  "measurements": {
+    "VSSM_Bare": {
+      "shots": "10 (ammo 21 -> 11), all inside the stalled section",
+      "gapPx": {"rest": 68, "byFrame": [[5, 1401.6, 84], [6, 1662.4, 95], [7, 1928.8, 105], [8, 2195.0, 113], [9, 2458.1, 121], [12, 2734.0, 119]], "backToRest": "67-68 px by 2968 ms, about 0.25 s after the last shot"},
+      "frameFormat": "[frame, ms, gap px]"
+    },
+    "M433_Bare": {
+      "shots": "10 (ammo 18 -> 8); 8 in the steady 60 fps section, 133-167 ms apart",
+      "shotFrames": [[8, 1939.9], [9, 2178.0], [13, 2451.5], [21, 2584.2], [29, 2717.3], [38, 2867.4], [47, 3017.8], [57, 3184.5], [65, 3317.6], [74, 3467.5]],
+      "gapPx": {"allFrames": "67-69", "threeFramesAfterEachShot": "67-69"}
+    },
+    "M433_Match_Trigger": {
+      "shots": "11 (ammo 31 -> 20); 3 in the steady section",
+      "gapPx": {"allFrames": "67-69", "threeFramesAfterEachShot": "67-68"}
+    }
+  },
+  "controls": {
+    "reticleResponds": "The VSSM reticle widens 68 -> 121 px over 10 shots with the same HUD, so the reticle reflects hip bloom.",
+    "m433Automatic": "Operator has repeatedly observed the M433 hip reticle widening in automatic fire; not recorded here.",
+    "cadence": "Without a zero increase, the site model adds 0.648 degrees per M433 hip shot and recovers about 0.08 degrees in one 60 fps frame, so the frame after each shot would show widening. None appears."
+  },
+  "interpretation": {
+    "L63": "The semi no-bloom condition is not active for the VSSM's default semi mode. Keep spreadDyn.hip.inc 0.398. The proposal to zero it is rejected.",
+    "semiCondition": "On the M433 the condition is consistent with being active in manually selected semi. This bears on L14 (selectable single-fire modes) for the 39 other weapons that bind the key.",
+    "L17": "Match Trigger shows no bloom, but neither does the bare semi baseline, so the zero-increase operand cannot be isolated. Its recoil (0.843908625 ratio) and recovery (124.416) predictions remain untested."
+  },
+  "limits": "The reticle gap is not calibrated to degrees, so these are growth-or-no-growth results. VSSM shot timing is not resolvable because its shots fall in the recorder stall. Moving and ADS runs, and a VSSM Folding Stock control, were not captured.",
+  "worker": "none; analyzed by Claude"
+}

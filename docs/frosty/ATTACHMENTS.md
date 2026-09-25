@@ -753,6 +753,11 @@ model gives recoil ratio 0.945^3 = 0.843908625, recovery factor 72*1.728 = 124.4
 and no added per-shot bloom; minimum spread remains. These are conditional model
 predictions, not runtime measurements. No cadence change or game bug is established.
 
+The 25 September capture shows no hip bloom on M433 in semi with or without Match
+Trigger. The bare semi baseline already lacks bloom (the L63 semi condition), so the
+zero-increase operand cannot be isolated; recoil and recovery remain untested
+([capture receipt](../../reference-data/provenance/frosty-2026-09-25-L63-L17-semi-bloom-captures.json)).
+
 The [L24 family check](../../reference-data/provenance/frosty-2026-09-24-L24-match-trigger-family.json)
 confirms the same exact GBM and GRM targets for all 24 current Match Trigger
 selections. The parent fresh-decoded each WB and GS and checked the selector

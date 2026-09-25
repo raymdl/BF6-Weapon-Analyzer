@@ -490,8 +490,12 @@ weapon whose default mode is semi-auto that binds it: `GS_VSSM` binds
 0.398° hip increase per shot. If the condition is active in default semi fire, bare
 VSSM hip spread stays at 1.804° instead of rising to 3.004° by shot 10 (peak 3.679°).
 The same condition makes the bare semi baseline in the L17 Match Trigger test lack
-bloom. [Receipt](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json);
-the capture is in the plan's L63 follow-up.
+bloom. [Receipt](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json).
+**Captured the same day:** the bare VSSM hip reticle widens from 68 to 121 px over 10
+shots, so the condition is not active in its default semi mode and the site keeps
+0.398°. The bare M433 in manually selected semi shows no widening across 10 hip
+shots, consistent with the condition being active after a mode switch
+([capture receipt](../../reference-data/provenance/frosty-2026-09-25-L63-L17-semi-bloom-captures.json)).
 
 The same review establishes the following configuration in the M4A1 trace:
 

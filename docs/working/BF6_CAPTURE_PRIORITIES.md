@@ -579,6 +579,9 @@ alone assign a field name. See the [L18 source limit](../../reference-data/prove
 
 ## L17 follow-up: Match Trigger in semi-auto and automatic modes (rank 9 follow-up)
 
+**Bloom done 25 September:** no bloom in semi with or without Match Trigger, so the
+bloom operand cannot be isolated. Recoil and recovery comparisons are still open.
+
 Use M433, matching the HK433 source trace. Compare the bare baseline with Match
 Trigger, with all other choices fixed. Show the selected fire mode and attachment.
 Run manually selected semi-auto first, then automatic as a condition control;
@@ -605,6 +608,13 @@ operator order and broader weapon coverage remain separate questions. See
 [L17 evidence](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json).
 
 ## L63 follow-up: VSSM default semi-auto hip bloom (rank 9 follow-up)
+
+**Done 25 September; L63 rejected.** The bare VSSM hip reticle widened 68 → 121 px
+over 10 shots, so keep its 0.398° increase. The bare M433 in semi showed no bloom,
+with or without Match Trigger. The recorder stalls for the first ~2.5 s of every
+clip, so start recording a few seconds before the first shot. A clean VSSM clip
+would give per-shot growth to compare with the site curve. See the
+[capture receipt](../../reference-data/provenance/frosty-2026-09-25-L63-L17-semi-bloom-captures.json).
 
 Use a bare VSSM (no Folding Stock), standing, hip fire, with the spread indicator
 visible. Fire 10 shots at the fastest steady semi-auto rate (about 450 RPM,
