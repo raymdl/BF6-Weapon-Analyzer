@@ -1,0 +1,68 @@
+{
+  "lead": "L59",
+  "date": "2026-09-24",
+  "status": "All 34 site recoil tier leaves for A3 Receiver and the three burst choices match serialized source operands; activation and composition unresolved",
+  "build": {
+    "version": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Which source operands produce the site ERGOS[7] full_auto (A3 Receiver), ERGOS[10] burst_training, ERGOS[11] burst_mode and ERGOS[12] grtbc_burst_mode recoil amount and variation tier mods, which the 23 September ergos audit left as 'semantic field mapping unresolved'?",
+  "siteTransform": "sim/applyAttachments.js: amount = amount * amountMult^(amountExp + sum RecoilTierMods); variation = dirVar * dirVarMult^(dirVarExp + sum VariationTierMods). A site tier mod equals an additive source operand (Field_4692836a) on RecoilAmountMultiplierExponent (Field_22ce7cf3) or RecoilDirectionVariationMultiplierExponent (Field_02433593), same sign.",
+  "sourceFacts": {
+    "a3Receiver": {
+      "weapon": "m16a4 / M16A3",
+      "route": "Attachment_M16A3_ERG_FullAuto selector -> GS binding -> GRM_Recoil_ERG_M10",
+      "operands": [
+        {"target": "GS_M16A3.Recoil.Zoomed.RecoilAmountMultiplierExponent", "operation": "add", "value": -1, "rawOffset": 616, "bytesHex": "ffffffff"},
+        {"target": "GS_M16A3.Recoil.Unzoomed.RecoilAmountMultiplierExponent", "operation": "add", "value": -1, "rawOffset": 1144, "bytesHex": "ffffffff"}
+      ],
+      "rawSha256": "0b1787d113d6d7c66ff8c6217eeebd0f9e7d984661668c1d95cfb2e631433e6a",
+      "site": "adsRecoilTierMod -1, hipRecoilTierMod -1",
+      "agreement": "match"
+    },
+    "burst": {
+      "condition": "GS modifier bindings keyed by condition token U_WPM_ERG_BurstFireActive 588728fd-2ae7-4424-aa22-45d9b3c82ba0 (21 bindings across 8 weapons, all in GS Field_2296f84f). The burst WPM selector GUIDs 3502c54f-4376-4994-8330-de5bae22abf5 and 236ac8d4-be05-4576-b9ee-11b8a8170fa5 are not GS binding keys.",
+      "effects": [
+        {
+          "asset": "GRM_RecoilConversion_ERG_P10",
+          "rawSha256": "3cc1485b6832f2324a84bc87cdeb8533e12d7e630b387e7897612e279c0282ef",
+          "operands": [
+            {"target": "Recoil.Zoomed.RecoilDirectionVariationMultiplierExponent", "operation": "add", "value": 3, "rawOffset": 612, "bytesHex": "03000000"},
+            {"target": "Recoil.Unzoomed.RecoilDirectionVariationMultiplierExponent", "operation": "add", "value": 3, "rawOffset": 1140, "bytesHex": "03000000"},
+            {"target": "Recoil.Zoomed.RecoilAmountMultiplierExponent", "operation": "add", "value": -1, "rawOffset": 616, "bytesHex": "ffffffff"},
+            {"target": "Recoil.Unzoomed.RecoilAmountMultiplierExponent", "operation": "add", "value": -1, "rawOffset": 1144, "bytesHex": "ffffffff"}
+          ],
+          "boundOn": ["kord6p67", "sg553r", "pw5a3", "umg40", "kv9", "cz3a1", "sl9", "grtbc"]
+        },
+        {"asset": "GRM_Recoil_ERG_P10", "rawSha256": "125cadf2a2d1c75bf331bfc2d1cbd14212c30bb03127181ec8706054dae2678c", "operands": "add +1 on RecoilAmountMultiplierExponent, both aim states", "boundOn": ["kord6p67", "sg553r", "pw5a3", "umg40", "kv9", "cz3a1", "sl9"]},
+        {"asset": "GRM_Recoil_ERG_P20", "rawSha256": "8524118890816db4cdb3db4377a18d5ec781394d4e472e63ae0d3c37c83c394b", "operands": "add +2 on RecoilAmountMultiplierExponent, both aim states", "boundOn": ["grtbc"]},
+        {"asset": "GRM_AutoIdentifier_P00", "operands": "add -0.0006 on RecoilDuration (L13 control)", "boundOn": ["sg553r", "pw5a3", "cz3a1", "sl9", "grtbc"]}
+      ],
+      "comparison": [
+        {"leaf": "ads/hipRecoilVariationTierMod", "site": 3, "source": "+3 (RecoilConversion_P10)", "weapons": 8, "agreement": "match"},
+        {"leaf": "ads/hipRecoilTierMod", "site": 0, "source": "-1 (RecoilConversion_P10) + +1 (Recoil_ERG_P10) = 0", "weapons": 7, "agreement": "match as a sum"},
+        {"leaf": "ads/hipRecoilTierMod", "site": 1, "source": "-1 (RecoilConversion_P10) + +2 (Recoil_ERG_P20) = +1", "weapons": ["grtbc"], "agreement": "match as a sum"}
+      ],
+      "control": "L13 RecoilDuration -0.0006 reproduced on exactly the five selections that carry a site recoilDurationAdd override, and absent on kord6p67, umg40 and kv9, which carry none."
+    }
+  },
+  "inference": [
+    "The site encodes each burst selection's summed amount-exponent adds as one tier value. This equals the source sum only if the game composes the bound additive operands by addition.",
+    "The first L59 pass searched only bindings keyed by each attachment's own selector and reported no burst operands; that negative was a route limitation, superseded by the BurstFireActive route."
+  ],
+  "unresolved": [
+    "Native production of BurstFireActive, runtime activation and modifier composition order.",
+    "Why the six Burst Training weapons differ in whether they carry the duration add."
+  ],
+  "siteImpact": "No numeric change. The 34 leaves (site-input review status precisely-blocked-source) now have exact source operands and registry-named targets.",
+  "evidence": {
+    "root": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T185356-0400",
+    "l59Result": {"path": "1.4.3.0\\L59\\l59-result.json", "sha256": "466f8b3ed0274e4326ba83c45b50661b3b114220b9b363b500b36b83d2521345"},
+    "l59bResult": {"path": "1.4.3.0\\L59b\\l59b-result.json", "sha256": "6e10dde3f99e2d2ab04254710de6bc6254faa5add06bcfff27f599cdc3ff16eb"},
+    "briefs": {"L59": "a0cda2031fada65510f25ddb66e012c7347836ba57dbff97c028f06f885745a5", "L59b": "e14151e5b7624a348764b7613ed67f98d72390fa623745b87a3e6f2f4e7586a2"},
+    "reproduction": "Each result file lists the exact commands (scripts/frosty-configuration.py attachment_graph, scripts/frosty-ebx-decode.py, scripts/frosty-registry-association.py with the recorded manifests) and helper-script hashes.",
+    "independentCheck": "Claude re-read the four GRM_RecoilConversion_ERG_P10 operand offsets from the raw file; sha256 and values matched."
+  },
+  "worker": {"model": "gpt-6-luna", "effort": "xhigh", "l59Minutes": 39, "l59bMinutes": 46}
+}

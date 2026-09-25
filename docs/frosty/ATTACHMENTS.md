@@ -796,6 +796,46 @@ it rules out a universal record layout across these three selected paths, not th
 candidate mask meaning. Keep the L17 semi/auto capture and existing Burst runtime
 limits. No new numeric site change follows from this result.
 
+### A3 Receiver and burst recoil tiers (L59, 24 September 2026)
+
+All 34 site recoil tier values for A3 Receiver and the three burst choices now
+have exact source operands ([receipt](../../reference-data/provenance/frosty-2026-09-24-L59-ergo-recoil-tiers.json)).
+A site tier value equals an additive operand on `RecoilAmountMultiplierExponent`
+or `RecoilDirectionVariationMultiplierExponent`, same sign.
+
+- **A3 Receiver (M16A4):** `GRM_Recoil_ERG_M10` adds −1 to the amount exponent in
+  both aim states, matching the site's −1.
+- **Burst Training, Burst Mode and GRT-BC Burst Mode:** the effects are bound in
+  each GS under the `BurstFireActive` condition token, not the attachment selector
+  (as for L13's duration add). `GRM_RecoilConversion_ERG_P10` adds +3 to the
+  variation exponent (site +3 on all eight weapons) and −1 to the amount exponent.
+  A second effect adds +1 (`GRM_Recoil_ERG_P10`, seven weapons) or +2
+  (`GRM_Recoil_ERG_P20`, GRT-BC) to the amount exponent. The sums, 0 and +1,
+  equal the site amount tiers.
+
+The site values match only if the game adds these operands; activation and
+composition remain unresolved. No numeric change.
+
+### Reverse coverage of recoil and spread effects (L60–L61, 24 September 2026)
+
+L60 listed every recoil, bloom and dispersion effect that a site choice selects
+in source and checked whether the site models it
+([receipt](../../reference-data/provenance/frosty-2026-09-24-L60-reverse-coverage.json)).
+In ERGOS, GRIPS, MUZZLES, LASERS and magazines, every effect is modeled or
+already known (Match Trigger, the PP-19 and L115 bugs), except one. Site laser
+and grip spread steps sit in per-weapon `frostyModifiers` with the source sign
+negated. Sights, barrels, lights and ammo are not swept yet.
+
+The exception is the +2 hip dispersion step bound by bipods and grip pods
+(`GDM_Array_HipDispersion_BTM_P20`, 142 weapon/choice pairs), which the site
+omits. L61 ([receipt](../../reference-data/provenance/frosty-2026-09-24-L61-bipod-hip-dispersion.json))
+found it identical to the `_NoBipod` copy that Canted Vertical binds, except one
+boolean, `Field_b574fa40` (true on P20). Current EF88 panels show lasers raising
+Hipfire from 40 to 47/54/62, while bipod and all grip pods stay at 40. The flagged
+step therefore does not apply when the attachment is fitted; it most likely
+requires a bipod or deployed state. The site omission matches the panel. Deployed
+behavior stays with parked question W1.
+
 ## VSSM selected dispersion and recovery operands
 
 The [L41 raw check](../../reference-data/provenance/frosty-2026-09-24-L41-vssm-selected-operands.json)

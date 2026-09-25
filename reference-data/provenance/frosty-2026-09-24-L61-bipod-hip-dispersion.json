@@ -1,0 +1,46 @@
+{
+  "lead": "L61",
+  "date": "2026-09-24",
+  "status": "Bipod and grip pod +2 hip dispersion step does not show on the equipped-attachment panel; site omission consistent with the game",
+  "build": {
+    "version": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Bipods and grip pods (site GRIPS bipod, bipod_sr, ptt_grip_pod, qd_grip_pod, qd_grip_pod_sr, classic_grip_pod, classic_grip_pod_sr; 142 weapon/choice rows in L60) bind a +2 hip dispersion step the site does not model. Does it apply when the attachment is fitted?",
+  "sourceFacts": {
+    "binding": "Each choice binds GDM_Array_HipDispersion_BTM_P20 (modifier 06e4b5c7-588a-45c7-8c24-3a91aef8468c) in GS Field_b53510be under its own U_WPM attachment selector (bipod: a5578cf4-546c-44ef-9a79-b84021406c17), the same selector pattern Canted Vertical uses. The same selectors also key GRM_BipodDeployed_BTM_P50 / GRM_GripPodDeployed_BTM_P30. Checked on ak4d/G3A4, m4a1/M4A1 and sor556/SCARL (12 bindings; 80 chain assertions, 0 failures).",
+    "assetComparison": {
+      "P20": {"rawSha256": "6ee13b01ff20d13c4ea7f44f05632e2d3ad1bada3af6f8b3628a523d2a243b2c", "bytes": 352},
+      "P20_NoBipod": {"rawSha256": "1c2ecf2174b4664b17606af69b3df99417655b052e97bd5671f974ee9c9cedf8", "bytes": 360, "usedBy": "Canted Vertical (site hipSpreadTierMod -2)"},
+      "sameClass": "Class_743a3ce0",
+      "sameOperands": "target enum Field_94752c29 = 0 (offset 80); step Field_9540bd8e/Struct_d204f959/Field_4692836a = +2 (offset 96)",
+      "onlyDataDifference": "Field_b574fa40: raw byte 87 = 0x01 in P20, 0x00 in P20_NoBipod (Claude raw diff; remaining differences are header sizes, GUID, name and string-table offsets)"
+    }
+  },
+  "observation": {
+    "source": "reference-data/provenance/composite-ef88-current-2026-09-21.json (current-panel EF88 captures, menu attachment previews)",
+    "hipfire": {
+      "base and all vertical/stubby/angled grips": 40,
+      "bipod, ptt_grip_pod, qd_grip_pod, classic_grip_pod": 40,
+      "5mw_red (source step +1)": 47,
+      "5mw_green, 50mw_blue (+2)": 54,
+      "50mw_green, 120mw_blue (+3)": 62
+    },
+    "siteMatches": "Site predictions equal every reading above.",
+    "limit": "Menu preview panels, not firing or deployed-state tests; captures are not hash-pinned to release 1.4.3.0."
+  },
+  "inference": [
+    "The panel reflects attachment hip dispersion steps (lasers), but the P20-bound bipods and grip pods leave Hipfire unchanged, while the flag-false NoBipod copy on Canted Vertical is modeled. Field_b574fa40 = true therefore most likely restricts the step to a bipod/deployed state.",
+    "Field_b574fa40 has no registry name; 'requires bipod/deployed state' is a candidate meaning only."
+  ],
+  "unresolved": ["Whether the step applies while deployed and its runtime effect; covered by parked question W1 (bipod/mounted modifiers)."],
+  "siteImpact": "No change. Omitting the step matches the fitted-attachment panel.",
+  "evidence": {
+    "root": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T185356-0400",
+    "result": {"path": "1.4.3.0\\L61\\l61-result.json", "sha256": "882fa15b26b4ef9dea8fac101c7137256928d119a90dc0e65b08ec5c2651c12e"},
+    "brief": "eef91aad425659661f02b409bc994d6e8e237e0fcd191146327681a4df670bb1",
+    "reproduction": "l61-result.json lists commands (scripts/frosty-selected-chain-check.py manifest and output) and helper hashes."
+  },
+  "worker": {"model": "gpt-6-luna", "effort": "xhigh", "minutes": 31, "totalTokens": 5329493}
+}
