@@ -406,7 +406,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Capture check (25 September 2026).** Stationary ADS recordings at the same range
   compare iron sights with the ROX sight (same 1.50x magnification) on BROD 3 and, as a
   control with the iron-sight package, M4A1, each with the 20 Rnd and 30 Rnd magazines.
-  `scripts/sway-recording-track.py` tracks a fixed white range target left of the sight
+  `scripts/sway-recording-track.py` tracks (sub-pixel) a fixed white range target left of the sight
   in each 1920×1080 video, from 1.5 seconds after the start to 0.5 seconds before the end.
   Vertical target displacement relative to the screen-centred sight is a proxy for
   apparent ADS sway; it does not separate weapon sway from camera sway. Horizontal
@@ -415,18 +415,20 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 
   | Setup | Frames | Vertical SD (px) | Vertical 5th–95th span (px) |
   | --- | ---: | ---: | ---: |
-  | BROD 3 iron sights, 20 Rnd | 404 | 0.88 | 2 |
-  | BROD 3 ROX, 20 Rnd | 405 | 1.01 | 3 |
-  | BROD 3 iron sights, 30 Rnd | 375 | 2.14 | 6 |
-  | BROD 3 ROX, 30 Rnd | 487 | 2.19 | 6 |
-  | M4A1 iron sights, 20 Rnd | 315 | 0.50 | 1 |
-  | M4A1 ROX, 20 Rnd | 514 | 0.95 | 3 |
-  | M4A1 iron sights, 30 Rnd | 560 | 1.40 | 4 |
-  | M4A1 ROX, 30 Rnd | 442 | 2.09 | 6 |
+  | BROD 3 iron sights, 20 Rnd | 404 | 0.91 | 3 |
+  | BROD 3 ROX, 20 Rnd | 405 | 0.93 | 3 |
+  | BROD 3 iron sights, 30 Rnd | 375 | 2.13 | 6 |
+  | BROD 3 ROX, 30 Rnd | 487 | 2.16 | 6 |
+  | M4A1 iron sights, 20 Rnd | 315 | 0.58 | 2 |
+  | M4A1 ROX, 20 Rnd | 514 | 0.91 | 3 |
+  | M4A1 iron sights, 30 Rnd | 560 | 1.43 | 4 |
+  | M4A1 ROX, 30 Rnd | 442 | 2.10 | 6 |
 
-  On BROD 3, iron sights sway about as much as ROX with either magazine. On M4A1, iron
-  sights reduce the motion; with the 30 Rnd magazine (no magazine sway factor) the ratio
-  is 0.67, matching the source ×0.667. One short recording per setup does not give an
+  On BROD 3, iron sights sway about as much as ROX with either magazine (ratio 0.99 with
+  30 Rnd). On M4A1, iron sights reduce the motion; with the 30 Rnd magazine (no magazine
+  sway factor) the ratio is 0.68, matching the source ×0.667. The 20 Rnd magazine gives
+  0.43 on both weapons (source ×0.444), and M4A1 iron + 20 Rnd against ROX + 30 Rnd gives
+  0.28, matching the multiplied factors (0.296). One short recording per setup does not give an
   exact in-game multiplier. The recordings are local
   (`reference-data/Recordings/09252026/Iron Sight Sway/`) and ignored by git; they are
   not shipped. [Capture receipt](../reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json).

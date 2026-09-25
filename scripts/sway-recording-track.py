@@ -1,6 +1,6 @@
 """Track the fixed white range target left of the sight in ADS sway recordings.
 
-Integer-pixel template matching of the target patch from the first analysed
+Template matching (parabolic sub-pixel peak) of the target patch from the first analysed
 frame (1.5 s after start) through 0.5 s before the end, by timestamp.
 """
 import sys, json, hashlib, pathlib
@@ -30,7 +30,15 @@ def track(path):
         win = g[sy:Y0 + H + SEARCH, sx:X0 + W + SEARCH]
         res = cv2.matchTemplate(win, tpl, cv2.TM_CCOEFF_NORMED)
         _, score, _, loc = cv2.minMaxLoc(res)
-        xs.append(sx + loc[0]); ys.append(sy + loc[1]); scores.append(score)
+        x, y = loc
+        dy = dx = 0.0
+        if 0 < y < res.shape[0] - 1:  # parabolic sub-pixel refinement
+            a, b, c = res[y - 1, x], res[y, x], res[y + 1, x]
+            dy = 0.5 * (a - c) / (a - 2 * b + c) if a - 2 * b + c else 0.0
+        if 0 < x < res.shape[1] - 1:
+            a, b, c = res[y, x - 1], res[y, x], res[y, x + 1]
+            dx = 0.5 * (a - c) / (a - 2 * b + c) if a - 2 * b + c else 0.0
+        xs.append(sx + x + dx); ys.append(sy + y + dy); scores.append(score)
     xs, ys = np.array(xs, float), np.array(ys, float)
     span = lambda a: float(np.percentile(a, 95) - np.percentile(a, 5))
     return {
