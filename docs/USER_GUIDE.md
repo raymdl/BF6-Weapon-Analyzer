@@ -68,12 +68,14 @@ cards, and hover for its input explanation. These are game ratings, not percenta
 See the [model guide](WEAPON_ATTRIBUTES_MODEL.md) for calculation and validation limits.
 
 Overview groups combat, ammunition, mobility, recoil, spread, and concealment
-statistics. The attachment-effects breakdown compares values with the default
-build. Favorable indicators follow each stat's direction: higher damage/velocity,
+statistics. The attachment-effects breakdown compares values with the bare weapon:
+no barrel, the default ammunition, and the default magazine without its handling
+shifts. The default barrel and magazine therefore show their own effects, such as
+Basic's faster ADS time and the standard magazine's faster draw. Favorable indicators follow each stat's direction: higher damage/velocity,
 or lower reload time/dispersion. They apply to individual stats only.
 
 **Weapon Sway** shows the percentage change from muzzle and magazine effects
-relative to the default build. It excludes optic and camera sway. **Hip Spread/Shot**
+relative to the bare weapon. It excludes optic and camera sway. **Hip Spread/Shot**
 shows spread added by each hipfire shot. A light can reduce that increase while
 also reducing the flat **Hip Spread Recovery** value; the recovery value alone
 does not describe the light's overall effect.

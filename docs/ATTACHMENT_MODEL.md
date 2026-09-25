@@ -265,7 +265,7 @@ Frangible +4 s and Flechette +2 s. Collateral and regeneration are displayed val
 healing simulation.
 
 Weapon sway displays the percentage change from muzzle and magazine source
-factors against the default loadout. Factors multiply: 1.5 means +50%, 0.6666667
+factors against the bare weapon. Factors multiply: 1.5 means +50%, 0.6666667
 means about -33.3%, and 0.4444444 means about -55.6%. Weapon-specific muzzle
 exceptions are retained. Generic optic categories cannot select an exact source
 optic, so optic and camera sway are excluded from this percentage. The old iron

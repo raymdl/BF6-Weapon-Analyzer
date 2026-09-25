@@ -10,7 +10,7 @@ import {
   spreadBounds, spreadDynamics, weaponRpm, validateWeaponSimulation, sampleSpreadRadius, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
   simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
-import { setAttachmentContext, applyAttachments, wLabel } from '../sim/applyAttachments.js';
+import { setAttachmentContext, applyAttachments, applyBareWeapon, wLabel } from '../sim/applyAttachments.js';
 import { captureView, captureFilename } from './capture.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange, zoneMultiplierForWeapon, resolveHitMultipliers } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
@@ -387,6 +387,16 @@ function defaultAppliedWeapon(weapon) {
   if (!cached) {
     cached = applyAttachments(weapon, defaultAttsForWeapon(weapon));
     defaultAppliedWeaponCache.set(weapon.id, cached);
+  }
+  return cached;
+}
+const bareAppliedWeaponCache = new Map();
+function bareAppliedWeapon(weapon) {
+  if (!weapon) return null;
+  let cached = bareAppliedWeaponCache.get(weapon.id);
+  if (!cached) {
+    cached = applyBareWeapon(weapon, defaultAttsForWeapon(weapon));
+    bareAppliedWeaponCache.set(weapon.id, cached);
   }
   return cached;
 }
@@ -2054,8 +2064,9 @@ function renderAttachmentStats(loadouts) {
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
   loadouts.filter(x => x.weapon).forEach(({ weapon, atts, build, colClass }) => {
-    const baseAtts = defaultAttsForWeapon(weapon);
-    const baseWeapon = defaultAppliedWeapon(weapon);
+    // Baseline is the bare weapon, so the default barrel and magazine show their effects.
+    const baseAtts = { ...defaultAttsForWeapon(weapon), barrel: 'none' };
+    const baseWeapon = bareAppliedWeapon(weapon);
     const curWeapon = build ?? applyAttachments(weapon, atts);
     const base = { ...baseWeapon, _projectileModel: projectileModelFor(baseWeapon, baseAtts) };
     const cur = { ...curWeapon, _projectileModel: projectileModelFor(curWeapon, atts) };
@@ -2081,7 +2092,7 @@ function renderAttachmentStats(loadouts) {
     const swayVal = ((cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1) - 1) * 100;
     if (Math.abs(swayVal) >= 0.05) {
       const decreased = swayVal < 0;
-      const tip = escAttr('Weapon sway amount from muzzle, magazine and barrel modifiers, compared with the default loadout. Optic and camera sway are not included. Lower is better.');
+      const tip = escAttr('Weapon sway amount from muzzle, magazine and barrel modifiers, compared with the bare weapon. Optic and camera sway are not included. Lower is better.');
       const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${signed(swayVal, '%', 1)}</div></div>`);
     }

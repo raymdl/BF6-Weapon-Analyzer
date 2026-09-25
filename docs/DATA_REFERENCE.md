@@ -197,5 +197,5 @@ presentation/model settings in [ui/app.js](../ui/app.js) and
 and token catalogs are documented in [architecture](ARCHITECTURE.md).
 
 `weaponSwayMult` stores source muzzle/magazine amount factors. The UI displays
-their combined percentage change from the default loadout; optic/camera effects
+their combined percentage change from the bare weapon; optic/camera effects
 are excluded.

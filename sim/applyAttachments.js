@@ -294,14 +294,33 @@ export function setAttachmentContext(updates) {
 
 // ── CORE FUNCTION ─────────────────────────────────────────────────────────────
 
+// Magazine fields that modify handling. A bare weapon keeps its default
+// magazine's capacity and reload but none of these.
+const MAG_HANDLING_FIELDS = new Set(['adsTimeTierShift', 'adsMoveSpeedTierShift',
+  'sprintRecoveryTierShift', 'deployTimeTierShift', 'movingAdsSpreadTierMod', 'weaponSwayMult']);
+
+/**
+ * The weapon with no attachment modifiers: no barrel, the default ammunition,
+ * and the default magazine without its handling shifts. The default loadout's
+ * other slots are already neutral. This is the attachment effects baseline, so
+ * default barrels and magazines show their own effects.
+ */
+export function applyBareWeapon(w, defaultAtts) {
+  return applyAttachments(w, { ...defaultAtts, barrel: 'none' }, { neutralMagazine: true });
+}
+
 /**
  * Return a new weapon object with all attachment effects applied.
  * `w` is a raw weapon from weapons.json; `atts` is the selected attachment set.
+ * `neutralMagazine` drops the selected magazine's handling fields.
  * Does NOT mutate `w`.
  */
-export function applyAttachments(w, atts) {
+export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   if (!w || !atts) return w;
   atts = normalizeAttachments(atts, w, _ctx);
+  const magRecord = mag => (neutralMagazine && mag
+    ? Object.fromEntries(Object.entries(mag).filter(([field]) => !MAG_HANDLING_FIELDS.has(field)))
+    : mag);
 
   const {
     MUZZLES, BARRELS, GRIPS, LASERS, AMMO, ERGOS, WEAPON_MAG, WEAPON_ERGO,
@@ -364,7 +383,7 @@ export function applyAttachments(w, atts) {
   const combinedAdsTimeTierMod = (grp.adsTimeTierMod ?? 0) + (bar.adsTimeTierMod ?? 0);
 
   // ── Weapon sway ───────────────────────────────────────────────────────────────
-  const selectedMag = WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def];
+  const selectedMag = magRecord(WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def]);
   // Source amount factors for muzzle/magazine effects, plus weapon-local barrel
   // overrides. Generic optic categories cannot select the game's individual
   // optic and camera-sway configurations.
@@ -450,7 +469,7 @@ export function applyAttachments(w, atts) {
   // ── Magazine stats ────────────────────────────────────────────────────────────
   const wm       = WEAPON_MAG[w.id] ?? null;
   const magId    = atts.mag ?? wm?.def ?? null;
-  const magData  = wm?.mags?.[magId] ?? null;
+  const magData  = magRecord(wm?.mags?.[magId]) ?? null;
   const magAdsTimeTierShift       = magData?.adsTimeTierShift       ?? 0;
   const magAdsMoveSpeedTierShift  = magData?.adsMoveSpeedTierShift  ?? 0;
 
