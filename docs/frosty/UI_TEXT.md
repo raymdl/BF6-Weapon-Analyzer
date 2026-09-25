@@ -251,7 +251,10 @@ all 63 weapons (3,030 tooltips in total). The site shows the iron-sight name as
 "Iron Sights (1.50x)" ([Attachments](ATTACHMENTS.md#optic-render-fov-and-zoom)).
 
 - **Iron-sight defaults.** M16A4 (Classic) and UMG-40 (basic aperture) are user-selected.
-  L115 and Interdictor use their no-scope-glint description. Four missing iron UI links
+  L115 and Interdictor use their no-scope-glint description. In game, M2010 ESR,
+  SV-98, PSR and Mini Scout show the same no-glint text (operator check, 25 September),
+  but their source `AD_*` descriptors link `0BB6AC0B` (reduced sway); the site still
+  shows the linked text pending approved panel captures. Four missing iron UI links
   use the weapon's `AD_<weapon>_Sight`. M121 A2 uses
   `Common/Hardware/Weapons/MG/MG5/AD_MG5_IronSights` (description `0BB6AC0B`).
 - **Panel text.** 18 approved panels supply tooltips. 15 replace missing strings; three
