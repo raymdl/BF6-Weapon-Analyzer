@@ -2752,6 +2752,19 @@ function setLoadoutOverlay(open) {
 // a floating bubble, and tapping a recoil-stat row pins its rich breakdown popup.
 // Desktop hover behavior is untouched (gated on `hover: none`).
 
+// Attachment chip popovers open rightward; flip one leftward when it would pass
+// the window edge. The grid's column count varies with width, so this is measured.
+function flipChipTooltip(chip) {
+  const tt = chip?.querySelector('.att-tt');
+  if (!tt) return;
+  chip.classList.remove('tt-flip');
+  if (tt.getBoundingClientRect().right > document.documentElement.clientWidth - 8) chip.classList.add('tt-flip');
+}
+['mouseover', 'focusin'].forEach(type => document.addEventListener(type, e => {
+  const chip = e.target.closest?.('.att-chip');
+  if (chip && !chip.contains(e.relatedTarget)) flipChipTooltip(chip);
+}));
+
 function initMobileTooltips() {
   const tip = document.createElement('div');
   tip.className = 'm-tip';
@@ -2780,7 +2793,7 @@ function initMobileTooltips() {
     if (row && row.querySelector('.rc-tt')) {
       hideBubble();
       if (openRow === row) { closeRow(); }
-      else { closeRow(); row.classList.add('tt-open'); openRow = row; }
+      else { closeRow(); row.classList.add('tt-open'); openRow = row; flipChipTooltip(row); }
       return;
     }
 
