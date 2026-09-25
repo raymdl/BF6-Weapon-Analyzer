@@ -2091,14 +2091,33 @@ function renderAttachmentStats(loadouts) {
     'Rechamber in ADS': 'You can cycle the bolt without leaving aim down sights.',
   };
   const plainName = rec => Loadout.attDisplayName({ ...rec, assumed: false, assumedFields: {} });
-  const stepText = (rec, lbl, weapon) => (stepFieldsForMetric[lbl] ?? []).map(([field, kind]) => {
+  // Source steps as numbers: tiers add, multipliers and reload speeds multiply,
+  // percentage boosts add.
+  const stepParts = (rec, lbl, weapon) => (stepFieldsForMetric[lbl] ?? []).map(([field, kind]) => {
     const v = rec?.[field] ?? rec?.[`${field}ByWeapon`]?.[weapon.id];
     if (!Number.isFinite(v)) return null;
-    if (kind === 'tier') return v ? `${Math.abs(v)} tier${Math.abs(v) === 1 ? '' : 's'}` : null;
-    if (kind === 'reloadTier') return v ? `×${_balance.RELOAD_SPEED_MULTIPLIERS[v]} speed` : null;
-    if (kind === 'pct') return v ? `+${+(v * 100).toFixed(1)}%` : null;
-    return v !== 1 ? `×${+v.toFixed(3)}` : null;
-  }).filter(Boolean).join(', ');
+    if (kind === 'tier') return v ? { kind, v: Math.abs(v) } : null;
+    if (kind === 'reloadTier') return v ? { kind: 'speed', v: _balance.RELOAD_SPEED_MULTIPLIERS[v] } : null;
+    if (kind === 'pct') return v ? { kind, v } : null;
+    if (lbl === 'Tac Reload') return v !== 1 ? { kind: 'speed', v } : null;
+    return v !== 1 ? { kind, v } : null;
+  }).filter(Boolean);
+  const stepString = parts => parts.map(({ kind, v }) => (kind === 'tier' ? `${v} tier${v === 1 ? '' : 's'}`
+    : kind === 'pct' ? `${v >= 0 ? '+' : '−'}${+(Math.abs(v) * 100).toFixed(1)}%`
+      : `×${+v.toFixed(3)}${kind === 'speed' ? ' speed' : ''}`)).join(', ');
+  // The net row's step: signed tier total (a row's sign follows whether it helps),
+  // product of factors, sum of boosts.
+  const netStep = rows => {
+    const byKind = {};
+    for (const r of rows) for (const part of r.parts) {
+      const acc = byKind[part.kind];
+      if (part.kind === 'tier') byKind.tier = (acc ?? 0) + part.v * (r.better ? 1 : -1);
+      else if (part.kind === 'pct') byKind.pct = (acc ?? 0) + part.v;
+      else byKind[part.kind] = (acc ?? 1) * part.v;
+    }
+    // Cancelling steps still show (0 tiers, ×1) so the net explains itself.
+    return stepString(Object.entries(byKind).map(([kind, v]) => ({ kind, v: kind === 'tier' ? Math.abs(v) : v })));
+  };
   // Why the rows do not add up to the net. Multiplied factors need no note:
   // the steps show them. Uneven or clamped tier ladders and overrides do.
   const combineNote = lbl => {
@@ -2154,13 +2173,15 @@ function renderAttachmentStats(loadouts) {
         const d = b - a;
         if (Math.abs(d) < 0.0005) return null;
         return { d, name: escAttr(c.name) + rowMarks(c, m.lbl, estimatedFieldsForMetric[m.lbl]),
-          value: fmt(d), color: colorFor(m, d), step: stepText(c.record, m.lbl, weapon) };
+          value: fmt(d), color: colorFor(m, d), parts: stepParts(c.record, m.lbl, weapon),
+          better: (m.higherBetter && d > 0) || (m.lowerBetter && d < 0) };
       }).filter(Boolean);
+      rows.forEach(r => { r.step = stepString(r.parts); });
       const footer = [];
       const sum = rows.reduce((t, r) => t + r.d, 0);
       const note = rows.length > 1 && Math.abs(sum - net) > Math.max(0.5 * 10 ** -m.dec, 0.0005) && combineNote(m.lbl);
       if (note) footer.push({ note });
-      if (rows.length > 1) footer.push({ name: `Net ${m.lbl}`, total: true, value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
+      if (rows.length > 1) footer.push({ name: `Net ${m.lbl}`, total: true, step: netStep(rows), value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
       return { rows, footer };
     };
     const chips = [];
