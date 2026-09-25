@@ -2015,7 +2015,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'Spread Inc/Shot',     val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Bloom added per shot while ADS. Lower keeps sustained fire tighter.' },
     { lbl: 'Hip Spread/Shot',     val: w => w.spreadDyn?.hip?.inc,            unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Bloom added per hipfire shot. Lower keeps sustained hipfire tighter.' },
     { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'How fast ADS bloom recovers while you keep firing.' },
-    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'How fast hipfire bloom recovers while you keep firing. Excludes a light\'s extra recovery at high bloom.' },
+    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'How fast hipfire bloom recovers while you keep firing.' },
     { lbl: 'Mov Spread',          val: w => w.spread?.adsMove?.[0],        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving. Lower is more accurate.' },
     { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Minimum standing hipfire spread. Lower is more accurate.' },
     { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Spot-on-fire range for the in-world marker: enemies within it see you when you shoot. 0 m means firing never spots you.' },
