@@ -68,7 +68,7 @@ flowchart TB
     I["RUN · shotIntervalAfter<br/>ordinary interval or split burst gap"]:::run
     R["RUN · recover toward minimum<br/>firing / not-firing branch as applicable"]:::run
     O["RUN · per-shot pre-shot spreads"]:::run
-    E["OUT · effectiveSpreadMax<br/>50-shot recovered display endpoint"]:::out
+    E["OUT · effectiveSpreadMax<br/>one-magazine peak pre-shot spread"]:::out
     A["ASM · recovery equation, branch timing,<br/>selected lights active, idle omitted · A09"]:::asm
     B --> S
     D --> S
@@ -103,8 +103,8 @@ apply the corresponding source hipfire factors. Lights are modeled as active;
 separately selected light and combo factors multiply. Recording-checked on the
 AK4D Heavy barrel ([evidence](../archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md)).
 
-The effective maximum shown by contextual statistics is a **50-shot simulated,
-recovered endpoint**, rounded for display (A12). Idle fields and `firstShotMul`
+The effective maximum shown by contextual statistics is the **peak simulated
+pre-shot spread across one magazine**, rounded for display (A12). Idle fields and `firstShotMul`
 are not executed (A16).
 
 ## Outputs and sampling

@@ -185,8 +185,8 @@ These are model contexts; they do not add crouch, prone, player skill, or aim-as
 
 Spread-circle samples offer growth, early-shot, all-shot, and custom selections.
 Custom examples: `1,2,5-8`, `every 3`, or `all`; `every 3` begins at shot 1.
-The effective-spread statistic is the final value of a bounded 50-shot calculation,
-not the highest transient spread or a proven infinite-fire equilibrium.
+The effective-spread statistic is the peak pre-shot spread across one magazine of
+sustained fire, not the highest transient spread or a proven infinite-fire equilibrium.
 The [recoil guide](RECOIL_SPREAD_MODEL.md) explains each layer and the per-shot sequence.
 
 Recoil is delivered over the selected weapon/attachment duration while recovery

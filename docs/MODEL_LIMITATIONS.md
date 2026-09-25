@@ -138,7 +138,7 @@ The usual 0.5 gives uniform area. M39 settled hipfire supports this interpretati
 other states and native field consumption remain unverified. The
 scatter layer contains ten fixed samples, not a statistical confidence band.
 Recoil control subtracts only the expected vector; console scaling does not simulate
-aim assist or controller input. Effective spread is a bounded 50-shot endpoint.
+aim assist or controller input. Effective spread is the peak pre-shot value across one magazine (50 shots if the size is unknown).
 
 Target shape and zones are approximate. Individual pellets are not simulated;
 shotgun target hit/damage/lethality statistics are therefore suppressed. Ordinary

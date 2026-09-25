@@ -290,8 +290,12 @@ export function applySpreadRecovery(spread, seconds, recovery, baseline, sMax, d
   return spread;
 }
 
-/** Peak pre-shot spread reached across a representative sustained string. */
-export function effectiveSpreadMax(w, shots = SPREAD_EFFECTIVE_MAX_SHOTS) {
+/**
+ * Peak pre-shot spread across one magazine. `shots` counts spread increases, and
+ * the value after the last one is the next shot's, so a magazine of N takes N - 1.
+ * Falls back to 50 increases when the magazine size is unknown.
+ */
+export function effectiveSpreadMax(w, shots = w.mag > 0 ? w.mag - 1 : SPREAD_EFFECTIVE_MAX_SHOTS) {
   const [baseline, sMax] = spreadBounds(w);
   const spreadInc = selectedSpreadIncFor(w);
   if (spreadInc === 0) return baseline;

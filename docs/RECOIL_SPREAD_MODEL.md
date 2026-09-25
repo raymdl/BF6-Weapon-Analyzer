@@ -107,7 +107,7 @@ deterministic for the selected state and loadout. These 40-shot sequences omit
 reloads to expose the sustained balance. The plotted plateaus describe pre-shot values for these settings. They exclude
 within-shot peaks and differ from the spread hard maximum. Pauses, rate of fire,
 attachments, and control settings change them. The UI's `effectiveSpreadMax()` uses its
-own 50-increase calculation, described below.
+own one-magazine calculation, described below.
 
 ## Recoil recovery and shot timing
 
@@ -259,9 +259,9 @@ the shotgun shift crosses into a separate range. VSSM now uses source index 4
 HUD comparison. Its moving value follows the source row. See
 [stat ladders and indexing](STAT_LADDERS.md).
 
-`effectiveSpreadMax()` uses 50 shot increases and recovery intervals, including
-recovery after its last increase, then returns the final clamped value rounded
-to three decimals. This finite-run endpoint does not establish the largest transient value or the
+`effectiveSpreadMax()` runs one magazine of shot increases and recovery intervals
+(50 increases when the magazine size is unknown) and returns the peak pre-shot
+value, rounded to three decimals. This finite-run endpoint does not establish the largest transient value or the
 mathematical steady state.
 The shared display axis is 12 degrees.
 
