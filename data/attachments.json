@@ -17188,7 +17188,7 @@
         "pp19"
       ],
       "metrics": [
-        "Weapon Draw Speed"
+        "Deploy Speed"
       ],
       "note": "The description promises faster weapon draw, but the game doesn't apply it."
     },
