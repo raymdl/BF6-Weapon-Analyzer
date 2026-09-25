@@ -87,9 +87,9 @@ brief starts with the shared preamble [frosty-worker-brief.txt](frosty-worker-br
 `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-25T001054-0400`.
 Lead selection rule: a lead needs a plausible route to change a displayed site number
 or expose a site calculation defect. Skip self-consistency checks, catalog screens
-and label wording unless requested. L60 is closed. L63 (VSSM semi bloom) is a
-capture candidate. L62 (reverse coverage of handling, velocity and sway) is running
-as extract-only slot-group tasks.
+and label wording unless requested. L60 and L62 (reverse coverage of attachment
+effects) are closed; L62 left two sight proposals. L63 (VSSM semi bloom) is a
+capture candidate.
 
 ## Active source leads
 
