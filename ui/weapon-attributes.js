@@ -1,8 +1,8 @@
 const attributes = [
-  { key: 'hipfire', label: 'Hipfire', cards: ['Hipfire Spread'], text: 'Game rating based on standing hipfire spread and whether attachments reduce the spread each hipfire shot adds. Shotguns also include pellet spread.' },
-  { key: 'precision', label: 'Precision', cards: ['Recoil Amount', 'Recoil Variation', 'Fire Rate', 'Spread Inc/Shot'], text: 'Game rating looked up from recoil amount and variation, fire rate, ADS spread added per shot, recoil duration and recoil recovery.' },
-  { key: 'control', label: 'Control', cards: ['Recoil Amount', 'Recoil Variation'], text: 'Game rating based on recoil amount and variation. Higher is easier to control.' },
-  { key: 'mobility', label: 'Mobility', cards: ['ADS Time', 'Strafe Speed', 'Deploy Speed', 'Sprint Recovery', 'ADS Spread'], text: 'Game rating based on draw speed, sprint recovery, ADS speed, ADS movement speed, moving ADS spread and whether the weapon can fire while sprinting.' },
+  { key: 'hipfire', label: 'Hipfire', cards: ['Hipfire Spread'], text: 'In-game rating from standing hipfire spread and whether attachments reduce hipfire bloom per shot. Shotguns also include pellet spread.' },
+  { key: 'precision', label: 'Precision', cards: ['Recoil Amount', 'Recoil Variation', 'Fire Rate', 'Spread Inc/Shot'], text: 'In-game rating looked up from recoil amount and variation, fire rate, ADS bloom per shot, recoil duration and recoil recovery.' },
+  { key: 'control', label: 'Control', cards: ['Recoil Amount', 'Recoil Variation'], text: 'In-game rating from recoil amount and variation. Higher is easier to control.' },
+  { key: 'mobility', label: 'Mobility', cards: ['ADS Time', 'Strafe Speed', 'Deploy Speed', 'Sprint Recovery', 'ADS Spread'], text: 'In-game rating from draw time, sprint-to-fire, ADS speed, ADS movement speed, moving ADS spread and whether the weapon can fire while sprinting.' },
 ];
 let selected = null;
 const style = document.createElement('style');
