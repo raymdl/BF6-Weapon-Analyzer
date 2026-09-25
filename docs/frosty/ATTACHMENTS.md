@@ -832,9 +832,12 @@ Sights bind only `GCR_*` camera recoil. Barrel, light and ammo operands all matc
 the site, apart from ADS idle-recovery offsets (idle state is not modeled). The
 Mini Scout penetration −7 is the sum of `GRM_Recoil_AMO_M10` −1 and
 `GRM_Recoil_AMO_Bolt_M10` −6. `GS_MiniFix` binds each light selector to two
-identical hip modifiers (`GBM_Increase_Hip_S1` and `_A40`); if both apply, the
-bloom factor is 0.444 rather than 0.667. That changes no displayed value, because
-the bloom recovers in about 0.07 s against a 1.27 s shot interval.
+identical hip modifiers (`GBM_Increase_Hip_S1` and `_A40`). A screen of all GS
+files finds same-family double bindings only there. The penetration pair stacks
+in game ([bug 13](../ATTACHMENT_BUGS.md#13-sniper-tungsten-core-recoil-penalties-are-inconsistent)),
+so the light pair probably does too, giving 0.444 rather than 0.667. No displayed
+value changes: the bloom recovers in about 0.07 s against a 1.27 s shot interval,
+and the panel Hipfire factor does not depend on the size of the change.
 
 The exception is the +2 hip dispersion step bound by bipods and grip pods
 (`GDM_Array_HipDispersion_BTM_P20`, 142 weapon/choice pairs), which the site

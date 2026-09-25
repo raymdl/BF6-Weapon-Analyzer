@@ -31,6 +31,10 @@
       "source": "xml-overlay Common/Hardware/Weapons/BoltAction/MiniFix/GS_MiniFix.xml lines 2907-2936"
     },
     {
+      "fact": "A screen of all 64 weapon GS files for one selector bound to two assets of the same modifier family in one owner array finds only GS_MiniFix: the two light selectors above and the Tungsten Core selector 68ba8281 (GRM_Recoil_AMO_Bolt_M10 and GRM_Recoil_AMO_M10).",
+      "source": "gs-same-family-duplicates.json (see evidence.screen)"
+    },
+    {
       "fact": "Bolt-rifle penetration: GRM_Recoil_AMO_Bolt_M10 Field_22ce7cf3/Field_4692836a = -6 in both aim branches.",
       "rawCheck": {"path": "Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_Recoil_AMO_Bolt_M10.ebx", "offsets": [616, 1144], "bytesHex": "faffffff", "decodedValue": -6, "reReadBy": "Claude"}
     },
@@ -47,7 +51,7 @@
       "rawCheck": {"path": "Common\\Hardware\\Weapons\\_WeaponModifiers\\DispersionIncrease\\GBM_Increase_ADS_30_BRL_P10.ebx", "offset": 456, "bytesHex": "b0aa2a3f", "decodedValue": 0.666667, "reReadBy": "Claude"}
     }
   ],
-  "inference": "If the game multiplies both Mini Scout light modifiers, its light hip IncreasePerShot is 0.444 instead of 0.667. Under the site's pre-shot spread model this changes no displayed value: at 47.09 RPM (1.27 s between shots) a 0.63 or 0.42 degree bloom recovers in about 0.07 s either way.",
+  "inference": "The Mini Scout Tungsten Core pair does stack in game: its panel reads Control 17, which matches seven steps (ATTACHMENT_BUGS.md #13). By analogy both light modifiers probably apply, giving hip IncreasePerShot 0.444 instead of 0.667. Neither site display changes: at 47.09 RPM (1.27 s between shots) a 0.63 or 0.42 degree bloom recovers in about 0.07 s under the pre-shot spread model, and the Weapon Attributes Hipfire factor is binary (sqrt(1.2) whenever increase differs from base).",
   "unresolved": "Native composition of the Mini Scout double binding and of additive ammo recoil operands. Idle recovery (A16) and camera recoil (GCR_*) remain unmodeled by design. Activation of the selected effects is not established.",
   "siteImpact": "No numeric change. No capture proposed: the Mini Scout difference is not measurable at its cadence.",
   "evidence": {
@@ -66,7 +70,9 @@
     ],
     "scripts": [
       {"path": "1.4.3.0\\L60-join\\join.py", "sha256": "013ed22b5e0225319c10c9bf6b4c04fb20a999ce45d85e343f000b835092de18", "usage": "python join.py <barrels|lights|ammo> <extract.json> <out.json>"},
-      {"path": "1.4.3.0\\L60-join\\lights_leftrail_fill.py", "sha256": "ba531f4d0203e138cd3c54b8abf6a24d9f12f2b140bc5ff20d320e8677ad5e59"}
+      {"path": "1.4.3.0\\L60-join\\lights_leftrail_fill.py", "sha256": "ba531f4d0203e138cd3c54b8abf6a24d9f12f2b140bc5ff20d320e8677ad5e59"},
+      {"path": "1.4.3.0\\L60-join\\gs_duplicate_bindings.py", "sha256": "a570c9fc4577c5bd2c496537d0d50539aad38a4d9d44e2fea8fb2bd8f8e52832", "output": {"path": "gs-duplicate-bindings.json", "sha256": "ca1f0f2f3c855dbf3796f9613d15de06db3175b2baf41d58a26d5afd2a311d0a"}},
+      {"path": "1.4.3.0\\L60-join\\same_family.py", "sha256": "0f32e4c0e198a67118e18da3f5524362a68b1034f9afe0fceee20ad7503ba68a", "output": {"path": "gs-same-family-duplicates.json", "sha256": "64da69b1523799575b488756bcb5dce6d553518c8d0cbd996e4fc7e597d3b551"}}
     ],
     "briefs": {
       "sights": "982287bed026f45b1ed51a6036aa6bd78b1d495659f71189431589f5d1e44770",
