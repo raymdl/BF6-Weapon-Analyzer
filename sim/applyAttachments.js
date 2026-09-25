@@ -312,6 +312,47 @@ export function applyBareWeapon(w, defaultAtts) {
 }
 
 /**
+ * Each selected attachment's own effect, for the attachment effects breakdown:
+ * the bare weapon with only that attachment added. A choice that depends on
+ * another selection (normalization would drop it on its own) is measured by
+ * removing it from the full build instead. Returns [{ slot, mode, record, build, base }];
+ * the contribution to a stat is stat(build) - stat(base).
+ */
+export function attachmentContributions(w, atts, defaultAtts) {
+  if (!w || !atts) return [];
+  atts = normalizeAttachments(atts, w, _ctx);
+  const bareAtts = { ...defaultAtts, sight: 'none', barrel: 'none' };
+  const bare = applyBareWeapon(w, defaultAtts);
+  const full = applyAttachments(w, atts);
+  const picks = [];
+  if (atts.sight && atts.sight !== 'none') picks.push(['sight', { sight: atts.sight }, { sight: 'none' }]);
+  for (const slot of ['muzzle', 'barrel', 'ergo']) {
+    if (atts[slot] && atts[slot] !== 'none') picks.push([slot, { [slot]: atts[slot] }, { [slot]: 'none' }]);
+  }
+  if (atts.ammo && atts.ammo !== defaultAtts.ammo) picks.push(['ammo', { ammo: atts.ammo }, { ammo: defaultAtts.ammo }]);
+  if (atts.rail) picks.push([atts.rail.type, { rail: atts.rail }, { rail: null }]);
+  for (const slot of ['grip', 'laser', 'light']) {
+    if (atts[slot] && atts[slot] !== 'none') picks.push([slot, { [slot]: atts[slot] }, { [slot]: 'none' }]);
+  }
+  const out = [];
+  for (const [slot, only, without] of picks) {
+    const soloAtts = { ...bareAtts, ...only };
+    const normalized = normalizeAttachments(soloAtts, w, _ctx);
+    const kept = Object.entries(only).every(([k, v]) => JSON.stringify(normalized[k]) === JSON.stringify(v));
+    const record = full._resolved[slot];
+    out.push(kept
+      ? { slot, mode: 'solo', record, build: applyAttachments(w, soloAtts, { neutralMagazine: true }), base: bare }
+      : { slot, mode: 'without', record, build: full, base: applyAttachments(w, { ...atts, ...without }) });
+  }
+  // The magazine is always present: measure the selected one against the
+  // default magazine without its handling shifts.
+  if (atts.mag) {
+    out.push({ slot: 'mag', mode: 'solo', record: full._resolved.mag, build: applyAttachments(w, { ...bareAtts, mag: atts.mag }), base: bare });
+  }
+  return out;
+}
+
+/**
  * Return a new weapon object with all attachment effects applied.
  * `w` is a raw weapon from weapons.json; `atts` is the selected attachment set.
  * `neutralMagazine` drops the selected magazine's handling fields.
@@ -596,6 +637,9 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     _weaponSwayMult:         weaponSwayMult,
     _visualRecoil:           ergoData.visualRecoil ?? 0,
     _laserVisible:           las.laserVisible ?? null,
+    // Effective per-slot records, for the attachment effects breakdown.
+    _resolved: { sight: sightData, muzzle: muz, barrel: bar, grip: grp, laser: las, light: lit,
+      ammo: ammoType, mag: magData ? { ...magData, id: magId } : null, ergo: ergoData },
     // Yes/no capabilities (e.g. Fire while Sprinting) keyed by display label.
     _utilities:              Object.assign({}, ...[sightData, muz, bar, grp, las, lit, magData, ergoData]
       .map(att => att?.utilities)),

@@ -10,7 +10,7 @@ import {
   spreadBounds, spreadDynamics, weaponRpm, validateWeaponSimulation, sampleSpreadRadius, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
   simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
-import { setAttachmentContext, applyAttachments, applyBareWeapon, wLabel } from '../sim/applyAttachments.js';
+import { setAttachmentContext, applyAttachments, applyBareWeapon, attachmentContributions, wLabel } from '../sim/applyAttachments.js';
 import { captureView, captureFilename } from './capture.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange, zoneMultiplierForWeapon, resolveHitMultipliers } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
@@ -2000,27 +2000,27 @@ function renderAttachmentStats(loadouts) {
   };
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
   const metrics = [
-    { lbl: 'ADS Time',            val: w => w._adsTimeMs,                   unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights after magazine, barrel, and grip effects. Lower is faster.' },
-    { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights after magazine, grip, and ammo effects. Higher is faster.' },
-    { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire recovery time after attachment effects. Lower is faster.' },
-    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip/switch to the weapon in milliseconds after attachment effects. Lower is faster.' },
-    { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Projectile velocity after barrel and ammunition effects. Subsonic loads fire markedly slower. Higher reduces travel time and lead.' },
+    { lbl: 'ADS Time',            val: w => w._adsTimeMs,                   unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights. Lower is faster.' },
+    { lbl: 'ADS Move',            val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while aiming down sights. Higher is faster.' },
+    { lbl: 'Sprint-to-Fire Speed', val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Delay after sprinting before the weapon can fire. Lower is faster.' },
+    { lbl: 'Weapon Draw Speed',   val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Time to equip the weapon when switching to it. Lower is faster.' },
+    { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Muzzle velocity. Subsonic ammunition is much slower. Higher reduces travel time and lead.' },
     { lbl: 'Bullet Drag',         val: w => w._projectileModel?.dragPerMeter, unit: '/m', dec: 4, lowerBetter: true, tooltip: 'Projectile drag per metre. Lower drag preserves velocity longer and reduces long-range travel time and drop.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds in the selected magazine.' },
-    { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Tactical reload time with selected magazine and Mag Catch when applicable. Lower is faster.' },
-    { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS vertical recoil per shot after ADS recoil-tier attachment effects. Lower is easier to control.' },
-    { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'ADS recoil direction variation after attachment effects. Lower is more consistent.' },
-    { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: 'x',   dec: 2, higherBetter: true, tooltip: 'ADS recoil recovery/decay multiplier applied to the weapon recoil decay factor. Higher returns to center faster.' },
+    { lbl: 'Tac Reload',          val: w => w.tacRld,                        unit: 's',   dec: 3, lowerBetter:  true, tooltip: 'Time to reload with rounds left in the magazine. Lower is faster.' },
+    { lbl: 'ADS Recoil/Shot',     val: w => w.recoilV,                       unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Vertical kick per shot while aiming down sights. Lower is easier to control.' },
+    { lbl: 'ADS Recoil Variation', val: w => w.recoilVar,                    unit: '°',   dec: 1, lowerBetter:  true, tooltip: 'Random left/right variation in each shot\'s kick while aiming down sights. Lower is more consistent.' },
+    { lbl: 'Recoil Recovery',     val: adsRecoilDecay,                     unit: 'x',   dec: 2, higherBetter: true, tooltip: 'Multiplier on how fast the aim returns after each kick while aiming down sights. Higher returns faster.' },
     { lbl: 'Recoil Duration',     val: w => w.recoil?.ads?.duration != null ? w.recoil.ads.duration * 1000 : null, unit: 'ms', dec: 0, higherBetter: true, tooltip: 'How long the kick from each shot takes to play out. A longer duration spreads the same kick over more time, so the reticle moves more smoothly and is easier to keep on a moving target. The kick itself is not smaller.' },
-    { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'ADS spread increase per shot after attachment effects. Lower builds spread more slowly.' },
-    { lbl: 'Hip Spread/Shot',     val: w => w.spreadDyn?.hip?.inc,            unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Hipfire spread increase per shot after light effects. Lower builds spread more slowly.' },
-    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat ADS spread recovery per second while firing after muzzle and barrel effects. Higher clears spread faster.' },
-    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat hipfire spread recovery per second while firing. Lights also reduce spread added per shot and increase the non-linear recovery component; this value alone does not describe their overall effect.' },
-    { lbl: 'Mov Spread',          val: w => w.spread?.adsMove?.[0],        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum ADS spread while moving after moving-ADS accuracy modifiers. Lower is more accurate.' },
-    { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Standing hipfire minimum spread after hipfire spread-tier modifiers. Lower is more accurate.' },
-    { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes your 3D world position. None or shorter is better.' },
-    { lbl: 'Minimap Spot',        val: w => w._minimapSpot,                  unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Distance at which firing exposes you on the minimap. None or shorter is better.' },
-    { lbl: 'HS Mult',             val: w => w._hsMult,                       unit: '×',   dec: 2, higherBetter: true, tooltip: 'Headshot damage multiplier after ammo effects. Higher increases headshot damage.' },
+    { lbl: 'Spread/Shot',         val: w => w.recoilIncAds,                  unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Spread added by each shot while aiming down sights. Lower builds spread more slowly.' },
+    { lbl: 'Hip Spread/Shot',     val: w => w.spreadDyn?.hip?.inc,            unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Spread added by each hipfire shot. Lower builds spread more slowly.' },
+    { lbl: 'ADS Spread Recovery', val: adsSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat rate at which spread shrinks while firing and aiming down sights. Higher clears spread faster.' },
+    { lbl: 'Hip Spread Recovery', val: hipSpreadRecovery,                    unit: '°/s', dec: 2, higherBetter: true, tooltip: 'Flat rate at which hipfire spread shrinks while firing. Lights also reduce spread added per shot and speed up recovery as spread grows, so this value alone does not show their full effect.' },
+    { lbl: 'Mov Spread',          val: w => w.spread?.adsMove?.[0],        unit: '°',   dec: 2, lowerBetter:  true, tooltip: 'Minimum spread while moving and aiming down sights. Lower is more accurate.' },
+    { lbl: 'Hipfire Spread',      val: w => w.spread?.hipStand?.[0],         unit: '°',   dec: 3, lowerBetter:  true, tooltip: 'Minimum hipfire spread while standing. Lower is more accurate.' },
+    { lbl: '3D Spot',             val: w => w._worldSpot,                    unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Range within which firing marks your position in the world for enemies. Shorter is better; 0 m never marks you.' },
+    { lbl: 'Minimap Spot',        val: w => w._minimapSpot,                  unit: 'm',   dec: 0, lowerBetter:  true, tooltip: 'Range within which firing shows you on the enemy minimap. Shorter is better; 0 m never shows you.' },
+    { lbl: 'HS Mult',             val: w => w._hsMult,                       unit: '×',   dec: 2, higherBetter: true, tooltip: 'Headshot damage multiplier. Higher increases headshot damage.' },
     { lbl: 'Collateral Mult',    val: w => w._collateralMult,               unit: '×',   dec: 2, higherBetter: true, tooltip: 'Damage multiplier applied to bullets that pass through a target or surface. Varies by ammo type and weapon class.' },
   ];
   const estimatedFieldsForMetric = {
@@ -2061,19 +2061,101 @@ function renderAttachmentStats(loadouts) {
   };
   const hasEstimatedEffect = (fields, records, weapon) => (fields ?? []).some(field => records.some(att =>
     Loadout.isAssumedField(att, field, weapon.id)));
+  // Source steps shown beside each attachment's contribution in the breakdown.
+  const stepFieldsForMetric = {
+    'ADS Time': [['adsTimeTierMod', 'tier'], ['adsTimeTierShift', 'tier']],
+    'ADS Move': [['adsMoveSpeedTierShift', 'tier']],
+    'Sprint-to-Fire Speed': [['sprintRecoveryTierShift', 'tier']],
+    'Weapon Draw Speed': [['deployTimeTierShift', 'tier']],
+    'Bullet Vel': [['velTierMod', 'tier']],
+    'Tac Reload': [['reloadSpeedTier', 'reloadTier'], ['reloadSpeedMult', 'mult']],
+    'ADS Recoil/Shot': [['adsRecoilTierMod', 'tier']],
+    'ADS Recoil Variation': [['adsRecoilVariationTierMod', 'tier']],
+    'Recoil Recovery': [['adsRecoilDecayMult', 'mult']],
+    'Spread/Shot': [['adsSpreadIncMult', 'mult']],
+    'Hip Spread/Shot': [['hipSpreadIncMult', 'mult']],
+    'ADS Spread Recovery': [['adsSpreadFiringDecOffsetMult', 'mult'], ['adsSpreadDecayBoost', 'pct']],
+    'Hip Spread Recovery': [['hipSpreadFiringDecOffsetMult', 'mult']],
+    'Mov Spread': [['movingAdsSpreadTierMod', 'tier']],
+    'Hipfire Spread': [['hipSpreadTierMod', 'tier']],
+    '3D Spot': [['worldSpotMult', 'mult']],
+    'Minimap Spot': [['minimapSpotMult', 'mult']],
+    'Weapon Sway': [['weaponSwayMult', 'mult']],
+  };
+  const utilityTooltips = {
+    'Fire while Sprinting': 'The weapon can fire while sprinting.',
+    'Gadget Draw Speed': 'Mounts an underbarrel launcher for a faster gadget draw.',
+    'Flashlight': 'A flashlight that can blind enemies. Shows when it is on: toggled by the player, automatically while aiming (ADS), or automatically in hipfire.',
+    'Auto-Zeroing': 'Sets the scope zeroing to the distance at the crosshair.',
+    'Reload in ADS': 'Reloading does not leave aim down sights.',
+    'Rechamber in ADS': 'Cycling the bolt does not leave aim down sights.',
+  };
+  const plainName = rec => Loadout.attDisplayName({ ...rec, assumed: false, assumedFields: {} });
+  const stepText = (rec, lbl, weapon) => (stepFieldsForMetric[lbl] ?? []).map(([field, kind]) => {
+    const v = rec?.[field] ?? rec?.[`${field}ByWeapon`]?.[weapon.id];
+    if (!Number.isFinite(v)) return null;
+    if (kind === 'tier') return v ? `${Math.abs(v)} tier${Math.abs(v) === 1 ? '' : 's'}` : null;
+    if (kind === 'reloadTier') return v ? `×${_balance.RELOAD_SPEED_MULTIPLIERS[v]} speed` : null;
+    if (kind === 'pct') return v ? `+${+(v * 100).toFixed(1)}%` : null;
+    return v !== 1 ? `×${+v.toFixed(3)}` : null;
+  }).filter(Boolean).join(', ');
+  const combineNote = lbl => {
+    const kinds = new Set((stepFieldsForMetric[lbl] ?? []).map(([, kind]) => kind));
+    if (kinds.has('mult')) return 'factors multiply';
+    if (kinds.has('tier')) return 'tiers stop at the end of the ladder';
+    return 'effects interact';
+  };
+  const colorFor = (m, d) => (Math.abs(d) < 0.0005 ? 'var(--muted)'
+    : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
+  // A chip whose hover/tap popover lists each attachment's own contribution.
+  const chipHtml = ({ label, value, color, desc, rows = [], footer = [] }) => {
+    const body = rows.map(r => `<div class="rc-tt-row"><span>${r.name}</span><span><span style="color:${r.color}">${r.value}</span>${r.step ? ` <span class="att-tt-step">${escAttr(r.step)}</span>` : ''}</span></div>`).join('')
+      + footer.map(f => `<div class="rc-tt-row rc-tt-eff"><span>${f.name}</span><span style="color:${f.color ?? 'inherit'}">${f.value}</span></div>`).join('');
+    const aria = escAttr(`${label.replace(/<[^>]+>/g, '')}: ${value}. ${desc}`);
+    return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>`
+      + `<div class="rc-tt att-tt"><div class="att-tt-desc">${escAttr(desc)}</div>${body}</div></div>`;
+  };
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
   loadouts.filter(x => x.weapon).forEach(({ weapon, atts, build, colClass }) => {
-    // Baseline is the bare weapon, so the default barrel and magazine show their effects.
-    const baseAtts = { ...defaultAttsForWeapon(weapon), barrel: 'none' };
+    // Baseline is the bare weapon, so default sights, barrels and magazines show their effects.
+    const defaults = defaultAttsForWeapon(weapon);
     const baseWeapon = bareAppliedWeapon(weapon);
     const curWeapon = build ?? applyAttachments(weapon, atts);
-    const base = { ...baseWeapon, _projectileModel: projectileModelFor(baseWeapon, baseAtts) };
-    const cur = { ...curWeapon, _projectileModel: projectileModelFor(curWeapon, atts) };
+    const withProjectile = (w, ammo) => ({ ...w, _projectileModel: projectileModelFor(w, { ammo }) });
+    const base = withProjectile(baseWeapon, defaults.ammo);
+    const cur = withProjectile(curWeapon, atts.ammo ?? defaults.ammo);
+    const contributions = attachmentContributions(weapon, atts, defaults).map(c => ({
+      ...c,
+      name: plainName(c.record),
+      // Pair each build with its own ammunition so projectile drag compares like with like.
+      build: withProjectile(c.build, c.mode === 'solo' && c.slot !== 'ammo' ? defaults.ammo : atts.ammo ?? defaults.ammo),
+      base: withProjectile(c.base, c.mode === 'solo' || c.slot === 'ammo' ? defaults.ammo : atts.ammo ?? defaults.ammo),
+    }));
     const selectedAttachments = selectedAttachmentRecords(weapon, atts);
     const bugs = Loadout.selectedGameBugs(atts, LOADOUT_DATA, weapon);
     const bugMetrics = new Set(bugs.flatMap(bug => bug.metrics));
     const bugMark = lbl => bugMetrics.has(lbl) ? Loadout.GAME_BUG_MARK : '';
+    const rowMarks = (c, lbl, fields) => `${(fields ?? []).some(f => Loadout.isAssumedField(c.record, f, weapon.id)) ? '*' : ''}`
+      + `${bugs.some(b => b.slot === c.slot && b.attachments.includes(c.record?.id) && b.metrics.includes(lbl)) ? Loadout.GAME_BUG_MARK : ''}`;
+    // Rows for one numeric stat: each attachment's own change, then the net.
+    const breakdown = (m, valueOf, fmt, net) => {
+      const rows = contributions.map(c => {
+        const a = valueOf(c.base), b = valueOf(c.build);
+        if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
+        const d = b - a;
+        if (Math.abs(d) < 0.0005) return null;
+        return { d, name: escAttr(c.name) + rowMarks(c, m.lbl, estimatedFieldsForMetric[m.lbl]),
+          value: fmt(d), color: colorFor(m, d), step: stepText(c.record, m.lbl, weapon) };
+      }).filter(Boolean);
+      const footer = [];
+      const sum = rows.reduce((t, r) => t + r.d, 0);
+      if (rows.length > 1 && Math.abs(sum - net) > Math.max(0.5 * 10 ** -m.dec, 0.0005)) {
+        footer.push({ name: `Sum of parts (${combineNote(m.lbl)})`, value: fmt(sum), color: 'var(--muted)' });
+      }
+      if (rows.length) footer.push({ name: 'Net', value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
+      return { rows, footer };
+    };
     const chips = [];
     metrics.forEach(m => {
       const baseVal = m.val(base), curVal = m.val(cur);
@@ -2082,42 +2164,51 @@ function renderAttachmentStats(loadouts) {
         return;
       }
       const delta = +(curVal - baseVal).toFixed(Math.max(m.dec, 3));
-      if (Math.abs(delta) < 0.0005) return;
-      const better = (m.higherBetter && delta > 0) || (m.lowerBetter && delta < 0);
-      const color = better ? 'var(--green)' : 'var(--red)';
+      const fmt = d => signed(+d.toFixed(Math.max(m.dec, 3)), m.unit, m.dec);
+      const { rows, footer } = breakdown(m, m.val, fmt, delta);
+      // A net of zero still shows when attachments cancel each other out.
+      if (Math.abs(delta) < 0.0005 && !rows.length) return;
       const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
-      const tip = escAttr(m.tooltip ?? m.lbl);
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${signed(delta, m.unit, m.dec)}</div></div>`);
+      chips.push(chipHtml({ label, value: Math.abs(delta) < 0.0005 ? `±0${m.unit}` : signed(delta, m.unit, m.dec),
+        color: colorFor(m, delta), desc: m.tooltip ?? m.lbl, rows, footer }));
     });
+    const swayMetric = { lbl: 'Weapon Sway', lowerBetter: true, dec: 1 };
     const swayVal = ((cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1) - 1) * 100;
-    if (Math.abs(swayVal) >= 0.05) {
-      const decreased = swayVal < 0;
-      const tip = escAttr('Weapon sway amount from sight, muzzle, magazine and barrel modifiers, compared with the bare weapon. Iron sights reduce sway; optics do not. Camera sway is not included. Lower is better.');
+    const sway = breakdown(swayMetric, w => (w._weaponSwayMult ?? 1) * 100, d => signed(d, '%', 1), swayVal);
+    if (Math.abs(swayVal) >= 0.05 || sway.rows.length) {
       const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments, weapon) ? '*' : ''}${bugMark('Weapon Sway')}`;
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${signed(swayVal, '%', 1)}</div></div>`);
+      chips.push(chipHtml({ label, value: Math.abs(swayVal) < 0.05 ? '±0%' : signed(swayVal, '%', 1),
+        color: colorFor(swayMetric, swayVal), rows: sway.rows, footer: sway.footer,
+        desc: 'Weapon sway while aiming, compared with the bare weapon. Factors multiply. Camera sway is not included. Lower is better.' }));
     }
+    const sourceRow = (c, value, color) => ({ name: escAttr(c.name), value, color });
     const vrVal = cur._visualRecoil ?? 0;
     if (vrVal !== 0) {
       const reduced = vrVal < 0;
-      const tip = escAttr('Visual recoil from selected attachments. Reduced is better; increased is worse.');
       const label = `Visual Recoil${hasEstimatedEffect(['visualRecoil'], selectedAttachments, weapon) ? '*' : ''}`;
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Decreased' : 'Increased'}</div></div>`);
+      const value = reduced ? 'Decreased' : 'Increased', color = reduced ? 'var(--green)' : 'var(--red)';
+      chips.push(chipHtml({ label, value, color, desc: 'Visual recoil (camera kick) from the selected attachment. Its size is not modelled.',
+        rows: contributions.filter(c => c.record?.visualRecoil).map(c => sourceRow(c, value, color)) }));
     }
     const regenDelayDelta = (cur._healthRegenDelayS ?? 0) - (base._healthRegenDelayS ?? 0);
     if (regenDelayDelta !== 0) {
-      const tip = escAttr(`Delay before a hit enemy begins regenerating health: ${cur._healthRegenDelayS}s, compared with ${base._healthRegenDelayS}s for the default ammo.`);
       const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayAddS'], selectedAttachments, weapon) ? '*' : ''}`;
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${regenDelayDelta > 0 ? 'var(--green)' : 'var(--red)'}">${signed(regenDelayDelta, 's', 0)}</div></div>`);
+      const value = signed(regenDelayDelta, 's', 0), color = regenDelayDelta > 0 ? 'var(--green)' : 'var(--red)';
+      chips.push(chipHtml({ label, value, color,
+        desc: `Delay before an enemy you hit starts regenerating health: ${cur._healthRegenDelayS}s, compared with ${base._healthRegenDelayS}s for the default ammo. Longer is better.`,
+        rows: contributions.filter(c => c.slot === 'ammo').map(c => sourceRow(c, value, color)) }));
     }
     if (cur._laserVisible != null) {
       const visible = cur._laserVisible;
-      const tip = escAttr('Whether the selected laser is visible to enemies.');
       const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments, weapon) ? '*' : ''}`;
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${visible ? 'var(--red)' : 'var(--green)'}">${visible ? 'Visible' : 'Not Visible'}</div></div>`);
+      const value = visible ? 'Visible' : 'Not Visible', color = visible ? 'var(--red)' : 'var(--green)';
+      chips.push(chipHtml({ label, value, color, desc: 'Whether enemies can see the selected laser.',
+        rows: contributions.filter(c => c.record?.laserVisible != null).map(c => sourceRow(c, value, color)) }));
     }
     Object.entries(cur._utilities ?? {}).forEach(([lbl, value]) => {
-      const tip = escAttr(`${lbl}: a capability added by the selected attachment.`);
-      chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${escAttr(lbl)}</div><div class="att-chip-val" style="color:var(--green)">${escAttr(value)}</div></div>`);
+      chips.push(chipHtml({ label: escAttr(lbl), value: escAttr(value), color: 'var(--green)',
+        desc: utilityTooltips[lbl] ?? `${lbl}: a capability added by the selected attachment.`,
+        rows: contributions.filter(c => c.record?.utilities?.[lbl]).map(c => sourceRow(c, escAttr(c.record.utilities[lbl]), 'var(--green)')) }));
     });
     if (!chips.length && !bugs.length) return;
     rendered = true;
@@ -2657,7 +2748,7 @@ function initMobileTooltips() {
   document.addEventListener('click', e => {
     if (!matchMedia('(hover: none)').matches) return;
 
-    const row = e.target.closest('.rc-row');
+    const row = e.target.closest('.rc-row, .att-chip');
     if (row && row.querySelector('.rc-tt')) {
       hideBubble();
       if (openRow === row) { closeRow(); }
@@ -2665,7 +2756,7 @@ function initMobileTooltips() {
       return;
     }
 
-    const info = e.target.closest('.scard[title], .att-chip[title], .wbadge[title], .wbadge-burst[title]');
+    const info = e.target.closest('.scard[title], .wbadge[title], .wbadge-burst[title]');
     if (info) {
       closeRow();
       const text = info.getAttribute('title');

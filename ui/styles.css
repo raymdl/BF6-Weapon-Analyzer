@@ -399,7 +399,14 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .att-name{font-size:0.68rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-name.c1{color:var(--accent)} .att-name.c2{color:var(--accent2)}
 .att-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:4px}
-.att-chip{background:var(--bg3);border-radius:4px;padding:5px 6px;min-width:0}
+.att-chip{background:var(--bg3);border-radius:4px;padding:5px 6px;min-width:0;position:relative}
+.att-chip:hover .att-tt,.att-chip:focus-visible .att-tt,.att-chip.tt-open .att-tt{display:block}
+.att-tt{left:0;min-width:230px;max-width:320px}
+/* Right-column chips open leftward so the popover stays on screen. */
+.att-grid .att-chip:nth-child(2n) .att-tt{left:auto;right:0}
+.att-tt-desc{font-size:0.67rem;line-height:1.45;color:var(--text);margin-bottom:5px;white-space:normal}
+.att-tt .rc-tt-row{white-space:nowrap}
+.att-tt-step{color:var(--muted);font-weight:400}
 .att-chip-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-chip-val{font-size:0.72rem;font-weight:700;white-space:nowrap;letter-spacing:.3px}
 .att-empty{font-size:0.68rem;color:var(--muted);background:var(--bg3);border-radius:4px;padding:7px 8px}
@@ -511,6 +518,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
   .rc-tab{flex:1 1 0;padding-inline:8px}
   .rc-viewbar .rc-range{flex:1 1 70px}
   .rc-tt{position:static;min-width:0;margin-top:4px;box-shadow:none}
+  .att-tt{max-width:none}
+  .att-tt .rc-tt-row{white-space:normal}
   .att-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   .footer{align-items:flex-start;flex-direction:column;padding:7px 10px;gap:4px}
 }

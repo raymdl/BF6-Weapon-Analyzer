@@ -71,7 +71,11 @@ Overview groups combat, ammunition, mobility, recoil, spread, and concealment
 statistics. The attachment-effects breakdown compares values with the bare weapon:
 no barrel, the default ammunition, and the default magazine without its handling
 shifts. The default barrel and magazine therefore show their own effects, such as
-Basic's faster ADS time and the standard magazine's faster draw. Favorable indicators follow each stat's direction: higher damage/velocity,
+Basic's faster ADS time and the standard magazine's faster draw. Hover or tap a chip
+to see each attachment's own contribution, its tier step or multiplier, and the net.
+When the parts do not add up to the net (multiplied factors, or a tier ladder that
+stops at its end), the breakdown says so. A stat whose contributions cancel shows
+±0 in grey. Favorable indicators follow each stat's direction: higher damage/velocity,
 or lower reload time/dispersion. They apply to individual stats only.
 
 **Weapon Sway** shows the percentage change from sight, muzzle, barrel and magazine
