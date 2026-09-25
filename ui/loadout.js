@@ -138,6 +138,8 @@ export function renderAttachmentSection({
 
     if (visible.length <= (isBarrel ? 0 : 1)) {
       const single = visible[0];
+      // A slot the weapon cannot use is left out rather than shown as a greyed "None".
+      if (!single || single.id === 'none') return;
       appendSelectRow(container, {
         label,
         value: single?.id ?? '',
@@ -179,7 +181,7 @@ export function renderAttachmentSection({
       }),
       onChange: value => handleChange('ammo', value),
     });
-  } else {
+  } else if (!weapon) {
     appendSelectRow(container, {
       label: 'Ammo',
       value: 'standard',
@@ -203,7 +205,7 @@ export function renderAttachmentSection({
       })),
       onChange: value => handleChange('mag', value),
     });
-  } else {
+  } else if (!weapon) {
     appendSelectRow(container, {
       label: 'Mag',
       value: 'none',
@@ -228,7 +230,7 @@ export function renderAttachmentSection({
       })),
       onChange: value => handleChange('ergo', value),
     });
-  } else {
+  } else if (!weapon) {
     appendSelectRow(container, {
       label: 'Ergo',
       value: 'none',
