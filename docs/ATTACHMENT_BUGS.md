@@ -403,8 +403,29 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Site.** Since 25 September, iron sights reduce weapon sway ×0.667 on the 56
   source-bound weapons (marked *). BROD 3 follows the source with no reduction, and its
   iron sights are marked † with this note.
-- **Status.** Operator classification from the source trace. Not checked in game;
-  the menu shows no sway value.
+- **Capture check (25 September 2026).** Four stationary ADS recordings at the
+  same range compare iron sights with the ROX sight (same 1.50x magnification),
+  each with the 20 Rnd and 30 Rnd magazines. A fixed white range target left of
+  the sight was tracked in each 1920×1080 video, from 1.5 seconds after the start
+  to 0.5 seconds before the end. Vertical target displacement relative to the
+  screen-centred sight is a proxy for apparent ADS sway; it does not separate
+  weapon sway from camera sway. Horizontal motion is omitted: the sway moves left
+  and right in turn, so over recordings of different lengths its spread depends on
+  where each recording stops.
+
+  | Setup | Frames | Vertical SD (px) | Vertical 5th–95th span (px) |
+  | --- | ---: | ---: | ---: |
+  | Iron sights, 20 Rnd | 370 | 1.04 | 3 |
+  | ROX, 20 Rnd | 372 | 0.88 | 2 |
+  | Iron sights, 30 Rnd | 344 | 2.17 | 6 |
+  | ROX, 30 Rnd | 451 | 2.17 | 6 |
+
+  Vertical sway with iron sights is no smaller than with ROX for either magazine,
+  so no iron-sight reduction is visible. The 20 Rnd magazine (sway ×0.444) reduces
+  the motion with both sights. One short recording per setup does not give an exact
+  in-game multiplier. The recordings are local (`reference-data/Recordings/09252026/BROD 3 Iron Sight Sway/`)
+  and ignored by git; they are not shipped.
+- **Status.** Source trace and in-game capture agree. The menu shows no sway value.
 - **Evidence.** [L62 reverse coverage](../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json),
   [Frosty sway notes](frosty/ATTACHMENTS.md#reverse-coverage-of-handling-velocity-and-sway-l62-25-september-2026).
 
