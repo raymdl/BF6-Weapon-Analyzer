@@ -185,8 +185,18 @@ export function getAttPts(a, weapon) {
   return a.weaponOverrides?.[weapon?.id]?.pts ?? a.pts ?? 0;
 }
 
-export function isAssumedAtt(a) {
-  return !!(a?.assumed || (a?.assumedFields && Object.keys(a.assumedFields).length));
+/**
+ * Whether one assumed field applies to this weapon. A field stored as a
+ * per-weapon map (`<field>ByWeapon`) is assumed only on weapons the map covers.
+ */
+export function isAssumedField(a, field, weaponId = null) {
+  if (!Object.hasOwn(a?.assumedFields ?? {}, field)) return false;
+  const byWeapon = a[`${field}ByWeapon`];
+  return weaponId == null || !byWeapon || Object.hasOwn(byWeapon, weaponId);
+}
+
+export function isAssumedAtt(a, weaponId = null) {
+  return !!(a?.assumed || Object.keys(a?.assumedFields ?? {}).some(field => isAssumedField(a, field, weaponId)));
 }
 
 export function computeAttPts(atts, weapon, data) {
@@ -211,8 +221,8 @@ export function computeAttPts(atts, weapon, data) {
 // which shouts next to every other title-cased option. The data keeps its name.
 const displayName = a => a.name.replace(/\bBUCK\b/g, 'Buck');
 
-export function attDisplayName(a) {
-  return isAssumedAtt(a) ? `${displayName(a)}*` : displayName(a);
+export function attDisplayName(a, weaponId = null) {
+  return isAssumedAtt(a, weaponId) ? `${displayName(a)}*` : displayName(a);
 }
 
 // Marks a choice whose in-game effect differs from its description. The site
@@ -261,5 +271,5 @@ export function hasSelectedAssumedAtt(atts, data, weapon = null) {
     lookups.ERGOS[atts.ergo],
     wm?.mags?.[atts.mag ?? wm.def],
   ];
-  return selected.some(isAssumedAtt);
+  return selected.some(a => isAssumedAtt(a, weapon?.id));
 }

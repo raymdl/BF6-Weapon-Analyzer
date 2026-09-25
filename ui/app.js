@@ -2059,8 +2059,8 @@ function renderAttachmentStats(loadouts) {
       wm?.mags?.[atts.mag ?? wm.def],
     ].filter(Boolean);
   };
-  const hasEstimatedEffect = (fields, records) => (fields ?? []).some(field => records.some(att =>
-    Object.hasOwn(att.assumedFields ?? {}, field)));
+  const hasEstimatedEffect = (fields, records, weapon) => (fields ?? []).some(field => records.some(att =>
+    Loadout.isAssumedField(att, field, weapon.id)));
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
   loadouts.filter(x => x.weapon).forEach(({ weapon, atts, build, colClass }) => {
@@ -2085,7 +2085,7 @@ function renderAttachmentStats(loadouts) {
       if (Math.abs(delta) < 0.0005) return;
       const better = (m.higherBetter && delta > 0) || (m.lowerBetter && delta < 0);
       const color = better ? 'var(--green)' : 'var(--red)';
-      const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments) ? '*' : ''}${bugMark(m.lbl)}`;
+      const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
       const tip = escAttr(m.tooltip ?? m.lbl);
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${signed(delta, m.unit, m.dec)}</div></div>`);
     });
@@ -2093,26 +2093,26 @@ function renderAttachmentStats(loadouts) {
     if (Math.abs(swayVal) >= 0.05) {
       const decreased = swayVal < 0;
       const tip = escAttr('Weapon sway amount from sight, muzzle, magazine and barrel modifiers, compared with the bare weapon. Iron sights reduce sway; optics do not. Camera sway is not included. Lower is better.');
-      const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments) ? '*' : ''}${bugMark('Weapon Sway')}`;
+      const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments, weapon) ? '*' : ''}${bugMark('Weapon Sway')}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${decreased ? 'var(--green)' : 'var(--red)'}">${signed(swayVal, '%', 1)}</div></div>`);
     }
     const vrVal = cur._visualRecoil ?? 0;
     if (vrVal !== 0) {
       const reduced = vrVal < 0;
       const tip = escAttr('Visual recoil from selected attachments. Reduced is better; increased is worse.');
-      const label = `Visual Recoil${hasEstimatedEffect(['visualRecoil'], selectedAttachments) ? '*' : ''}`;
+      const label = `Visual Recoil${hasEstimatedEffect(['visualRecoil'], selectedAttachments, weapon) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${reduced ? 'var(--green)' : 'var(--red)'}">${reduced ? 'Decreased' : 'Increased'}</div></div>`);
     }
     const regenDelayDelta = (cur._healthRegenDelayS ?? 0) - (base._healthRegenDelayS ?? 0);
     if (regenDelayDelta !== 0) {
       const tip = escAttr(`Delay before a hit enemy begins regenerating health: ${cur._healthRegenDelayS}s, compared with ${base._healthRegenDelayS}s for the default ammo.`);
-      const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayAddS'], selectedAttachments) ? '*' : ''}`;
+      const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayAddS'], selectedAttachments, weapon) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${regenDelayDelta > 0 ? 'var(--green)' : 'var(--red)'}">${signed(regenDelayDelta, 's', 0)}</div></div>`);
     }
     if (cur._laserVisible != null) {
       const visible = cur._laserVisible;
       const tip = escAttr('Whether the selected laser is visible to enemies.');
-      const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments) ? '*' : ''}`;
+      const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments, weapon) ? '*' : ''}`;
       chips.push(`<div class="att-chip" title="${tip}" aria-label="${tip}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${visible ? 'var(--red)' : 'var(--green)'}">${visible ? 'Visible' : 'Not Visible'}</div></div>`);
     }
     Object.entries(cur._utilities ?? {}).forEach(([lbl, value]) => {

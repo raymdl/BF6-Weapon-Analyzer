@@ -141,8 +141,8 @@ export function renderAttachmentSection({
       appendSelectRow(container, {
         label,
         value: single?.id ?? '',
-        options: [{ id: single?.id ?? '', text: single ? attDisplayName(single) : noWeaponText,
-          description: single && tooltipFor(key === 'rail' ? single.type : key, single.id), assumed: isAssumedAtt(single),
+        options: [{ id: single?.id ?? '', text: single ? attDisplayName(single, weapon?.id) : noWeaponText,
+          description: single && tooltipFor(key === 'rail' ? single.type : key, single.id), assumed: isAssumedAtt(single, weapon?.id),
           bugs: single ? bugsFor(key === 'rail' ? single.type : key, single.id) : [] }],
         onChange: () => {},
         disabled: true,
@@ -155,9 +155,9 @@ export function renderAttachmentSection({
       value: key === 'rail' ? (atts.rail ? `${atts.rail.type}:${atts.rail.id}` : 'none') : atts[key],
       options: visible.map(a => {
         const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a, weapon);
-        const name = attDisplayName(a);
+        const name = attDisplayName(a, weapon?.id);
         return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name,
-          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a),
+          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a, weapon?.id),
           bugs: bugsFor(key === 'rail' ? a.type : key, a.id) };
       }),
       onChange: value => handleChange(key, value),
@@ -172,9 +172,9 @@ export function renderAttachmentSection({
       value: atts.ammo ?? wAmmo.def,
       options: ammoList.map(a => {
         const pts = wAmmo.ammo[a.id] ?? 0;
-        const name = attDisplayName(a);
+        const name = attDisplayName(a, weapon?.id);
         return { id: a.id, text: pts > 0 ? `${name} [${pts}]` : name,
-          description: tooltipFor('ammo', a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a),
+          description: tooltipFor('ammo', a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a, weapon?.id),
           bugs: bugsFor('ammo', a.id) };
       }),
       onChange: value => handleChange('ammo', value),
@@ -196,9 +196,9 @@ export function renderAttachmentSection({
       value: atts.mag ?? wm.def,
       options: availableAttachments(weapon, 'mag', data, atts).map(m => ({
         id: m.id,
-        text: m.pts > 0 ? `${attDisplayName(m)} [${m.pts}]` : attDisplayName(m),
+        text: m.pts > 0 ? `${attDisplayName(m, weapon?.id)} [${m.pts}]` : attDisplayName(m, weapon?.id),
         description: tooltipFor('mag', m.id),
-        assumed: isAssumedAtt(m),
+        assumed: isAssumedAtt(m, weapon?.id),
         bugs: bugsFor('mag', m.id),
       })),
       onChange: value => handleChange('mag', value),
@@ -220,10 +220,10 @@ export function renderAttachmentSection({
         value: atts.ergo ?? 'none',
         options: visibleErgos.map(e => ({
         id: e.id,
-        text: e.pts > 0 ? `${attDisplayName(e)} [${e.pts}]` : attDisplayName(e),
+        text: e.pts > 0 ? `${attDisplayName(e, weapon?.id)} [${e.pts}]` : attDisplayName(e, weapon?.id),
         description: tooltipFor('ergo', e.id),
         noEffect: e.noEffect,
-        assumed: isAssumedAtt(e),
+        assumed: isAssumedAtt(e, weapon?.id),
         bugs: bugsFor('ergo', e.id),
       })),
       onChange: value => handleChange('ergo', value),
