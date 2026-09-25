@@ -11,12 +11,14 @@ RULES
 - If you cannot finish, write partial results with exact blockers and what remains.
 - Reuse before rebuilding: check sibling lead folders under ..\ and earlier run roots (e.g. 2026-09-24T185356-0400\1.4.3.0\L59\l59-raw-decoded.json, ...\L60\l60-result.json) and the exhaustive-audit reports for existing decodes or joins before decoding again.
 - Controls: when the brief names a known-answer control, report it first. If the control is not reproduced, stop and report that your route is wrong; do not report negatives from that route.
+- Deliverables: besides your result file and short summary, write draft-receipt.json in your cwd with keys lead, status, build, question, sourceFacts (with raw checks), inference, unresolved, siteImpact, evidence (paths + sha256 + commands). The lead reviews and commits it; do not write to the repo.
 
 ENVIRONMENT (Windows)
 - Write files and run queries with Python scripts saved under your cwd, not inline PowerShell one-liners. Write text as UTF-8 WITHOUT a BOM (PowerShell Set-Content/Out-File add a BOM that repo scripts reject); read other tools' JSON with encoding='utf-8-sig'.
 - rg is not installed; use Python or Select-String for searches.
 
 SITE CONVENTIONS (use these whenever you compare with site data)
+- The site intentionally models a bare-weapon baseline. Game default loadouts matter only when they explain a concrete stat discrepancy.
 - Attachment values can be choice-level fields OR per-weapon under <choice>.frostyModifiers.<siteWeaponId>.<field>; the per-weapon value takes precedence. Check both before calling anything unmodeled.
 - Spread/handling tier steps: the site stores the NEGATED source Field_9540bd8e step (source +2 -> site hipSpreadTierMod -2).
 - Recoil tiers: amount = amount * amountMult^(amountExp + sum RecoilTierMods); variation = dirVar * dirVarMult^(dirVarExp + sum VariationTierMods). A site recoil tier mod equals the source ADDITIVE operand on RecoilAmountMultiplierExponent (Field_22ce7cf3) / RecoilDirectionVariationMultiplierExponent (Field_02433593), SAME sign; several bound operands may sum to one site value (L59).
