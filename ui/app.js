@@ -2099,11 +2099,13 @@ function renderAttachmentStats(loadouts) {
     if (kind === 'pct') return v ? `+${+(v * 100).toFixed(1)}%` : null;
     return v !== 1 ? `×${+v.toFixed(3)}` : null;
   }).filter(Boolean).join(', ');
+  // Why the rows do not add up to the net. Multiplied factors need no note:
+  // the steps show them. Uneven or clamped tier ladders and overrides do.
   const combineNote = lbl => {
     const kinds = new Set((stepFieldsForMetric[lbl] ?? []).map(([, kind]) => kind));
-    if (kinds.has('mult')) return 'factors multiply';
-    if (kinds.has('tier')) return 'tiers stop at the end of the ladder';
-    return 'effects interact';
+    if (kinds.has('mult')) return null;
+    if (kinds.has('tier')) return 'Tier steps differ in size and the ladder has fixed ends, so the rows do not add up to the net.';
+    return 'These attachments interact, so the rows do not add up to the net.';
   };
   const colorFor = (m, d) => (Math.abs(d) < 0.0005 ? 'var(--muted)'
     : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
@@ -2114,7 +2116,8 @@ function renderAttachmentStats(loadouts) {
       + `<span class="att-tt-step ${cls}">${r.step ? escAttr(r.step) : ''}</span>`
       + `<span class="att-tt-val ${cls}" style="color:${r.color ?? 'inherit'}">${r.value}</span>`;
     const body = rows.length ? `<div class="att-tt-grid">${rows.map(r => cells(r)).join('')}`
-      + footer.map(f => (f.total ? '<div class="att-tt-rule"></div>' + cells(f, 'att-tt-total') : cells(f, 'att-tt-note'))).join('')
+      + footer.map(f => (f.total ? '<div class="att-tt-rule"></div>' + cells(f, 'att-tt-total')
+        : `<span class="att-tt-note">${escAttr(f.note)}</span>`)).join('')
       + '</div>' : '';
     const aria = escAttr(`${label.replace(/<[^>]+>/g, '')}: ${value}. ${desc}`);
     return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>`
@@ -2155,9 +2158,8 @@ function renderAttachmentStats(loadouts) {
       }).filter(Boolean);
       const footer = [];
       const sum = rows.reduce((t, r) => t + r.d, 0);
-      if (rows.length > 1 && Math.abs(sum - net) > Math.max(0.5 * 10 ** -m.dec, 0.0005)) {
-        footer.push({ name: `Sum of parts (${combineNote(m.lbl)})`, value: fmt(sum) });
-      }
+      const note = rows.length > 1 && Math.abs(sum - net) > Math.max(0.5 * 10 ** -m.dec, 0.0005) && combineNote(m.lbl);
+      if (note) footer.push({ note });
       if (rows.length > 1) footer.push({ name: `Net ${m.lbl}`, total: true, value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
       return { rows, footer };
     };

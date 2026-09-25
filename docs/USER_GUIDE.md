@@ -74,8 +74,8 @@ shifts. The default barrel and magazine therefore show their own effects, such a
 Basic's faster ADS time and the standard magazine's faster draw. Hover or tap a chip
 to see each attachment's own contribution with its tier step or multiplier, and the
 net when more than one attachment contributes.
-When the parts do not add up to the net (multiplied factors, or a tier ladder that
-stops at its end), the breakdown says so. A stat whose contributions cancel shows
+Multiplied factors show their × step. When tier steps of different sizes keep
+the rows from adding up to the net, the breakdown says so. A stat whose contributions cancel shows
 ±0 in grey. Favorable indicators follow each stat's direction: higher damage/velocity,
 or lower reload time/dispersion. They apply to individual stats only.
 

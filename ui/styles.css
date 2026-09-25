@@ -411,7 +411,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .att-tt-step{color:var(--muted);font-weight:400;opacity:.8}
 .att-tt-rule{grid-column:1/-1;border-top:1px solid var(--border);margin:3px 0 2px}
 .att-tt-total{color:var(--text);font-weight:700}
-.att-tt-note{font-style:italic}
+.att-tt-grid>.att-tt-note{grid-column:1/-1;font-style:italic;white-space:normal;line-height:1.4;margin-top:2px}
 .att-chip-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-chip-val{font-size:0.72rem;font-weight:700;white-space:nowrap;letter-spacing:.3px}
 .att-empty{font-size:0.68rem;color:var(--muted);background:var(--bg3);border-radius:4px;padding:7px 8px}
