@@ -61,9 +61,6 @@
         "vz61": 0.6666667,
         "ef88": 0.6666667,
         "vssm": 0.6666667
-      },
-      "assumedFields": {
-        "weaponSwayMult": "Source iron-sight sway package (WPM_Sway_IronSights_P05, weapon and camera sway x0.666667; L62). Not measured in game; the menu shows no sway value. Absent on bolt-action rifles by design and on BROD 3 (bug 16)."
       }
     },
     {
@@ -82,19 +79,13 @@
       "id": "var_high",
       "name": "Variable High",
       "pts": 25,
-      "adsMoveSpeedTierShift": 1,
-      "assumedFields": {
-        "adsMoveSpeedTierShift": "Every optic in this category imports WME_ADSMoveSpeed_M05 (one ADS-move tier slower; L62). Not yet confirmed by a menu Mobility capture."
-      }
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "thermal",
       "name": "Thermal",
       "pts": 25,
-      "adsMoveSpeedTierShift": 1,
-      "assumedFields": {
-        "adsMoveSpeedTierShift": "Every optic in this category imports WME_ADSMoveSpeed_M05 (one ADS-move tier slower; L62). Not yet confirmed by a menu Mobility capture."
-      }
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "therm_hyb",

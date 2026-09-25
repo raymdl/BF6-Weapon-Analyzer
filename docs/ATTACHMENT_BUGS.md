@@ -401,30 +401,35 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   PSR and Mini Scout tooltips link the generic sway text (`0BB6AC0B`) through their
   source `AD_*` descriptors; that is a site text-link error, not a game error.
 - **Site.** Since 25 September, iron sights reduce weapon sway ×0.667 on the 56
-  source-bound weapons (marked *). BROD 3 follows the source with no reduction, and its
+  source-bound weapons. BROD 3 follows the source with no reduction, and its
   iron sights are marked † with this note.
-- **Capture check (25 September 2026).** Four stationary ADS recordings at the
-  same range compare iron sights with the ROX sight (same 1.50x magnification),
-  each with the 20 Rnd and 30 Rnd magazines. A fixed white range target left of
-  the sight was tracked in each 1920×1080 video, from 1.5 seconds after the start
-  to 0.5 seconds before the end. Vertical target displacement relative to the
-  screen-centred sight is a proxy for apparent ADS sway; it does not separate
-  weapon sway from camera sway. Horizontal motion is omitted: the sway moves left
-  and right in turn, so over recordings of different lengths its spread depends on
-  where each recording stops.
+- **Capture check (25 September 2026).** Stationary ADS recordings at the same range
+  compare iron sights with the ROX sight (same 1.50x magnification) on BROD 3 and, as a
+  control with the iron-sight package, M4A1, each with the 20 Rnd and 30 Rnd magazines.
+  `scripts/sway-recording-track.py` tracks a fixed white range target left of the sight
+  in each 1920×1080 video, from 1.5 seconds after the start to 0.5 seconds before the end.
+  Vertical target displacement relative to the screen-centred sight is a proxy for
+  apparent ADS sway; it does not separate weapon sway from camera sway. Horizontal
+  motion is omitted: the sway moves left and right in turn, so over recordings of
+  different lengths its spread depends on where each recording stops.
 
   | Setup | Frames | Vertical SD (px) | Vertical 5th–95th span (px) |
   | --- | ---: | ---: | ---: |
-  | Iron sights, 20 Rnd | 370 | 1.04 | 3 |
-  | ROX, 20 Rnd | 372 | 0.88 | 2 |
-  | Iron sights, 30 Rnd | 344 | 2.17 | 6 |
-  | ROX, 30 Rnd | 451 | 2.17 | 6 |
+  | BROD 3 iron sights, 20 Rnd | 404 | 0.88 | 2 |
+  | BROD 3 ROX, 20 Rnd | 405 | 1.01 | 3 |
+  | BROD 3 iron sights, 30 Rnd | 375 | 2.14 | 6 |
+  | BROD 3 ROX, 30 Rnd | 487 | 2.19 | 6 |
+  | M4A1 iron sights, 20 Rnd | 315 | 0.50 | 1 |
+  | M4A1 ROX, 20 Rnd | 514 | 0.95 | 3 |
+  | M4A1 iron sights, 30 Rnd | 560 | 1.40 | 4 |
+  | M4A1 ROX, 30 Rnd | 442 | 2.09 | 6 |
 
-  Vertical sway with iron sights is no smaller than with ROX for either magazine,
-  so no iron-sight reduction is visible. The 20 Rnd magazine (sway ×0.444) reduces
-  the motion with both sights. One short recording per setup does not give an exact
-  in-game multiplier. The recordings are local (`reference-data/Recordings/09252026/BROD 3 Iron Sight Sway/`)
-  and ignored by git; they are not shipped.
+  On BROD 3, iron sights sway about as much as ROX with either magazine. On M4A1, iron
+  sights reduce the motion; with the 30 Rnd magazine (no magazine sway factor) the ratio
+  is 0.67, matching the source ×0.667. One short recording per setup does not give an
+  exact in-game multiplier. The recordings are local
+  (`reference-data/Recordings/09252026/Iron Sight Sway/`) and ignored by git; they are
+  not shipped. [Capture receipt](../reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json).
 - **Status.** Source trace and in-game capture agree. The menu shows no sway value.
 - **Evidence.** [L62 reverse coverage](../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json),
   [Frosty sway notes](frosty/ATTACHMENTS.md#reverse-coverage-of-handling-velocity-and-sway-l62-25-september-2026).

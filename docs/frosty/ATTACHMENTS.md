@@ -867,8 +867,11 @@ on all 56 weapons imports `WME_ADSMoveSpeed_M05` (one ADS-move tier slower; AK20
 rifles imports `WPM_Sway_IronSights_P05` (weapon and camera sway ×0.666667). Iron
 is the site's default sight, so any optic would show +50% weapon sway. The site's
 reason for leaving out optic effects, that a category cannot identify one optic,
-does not apply to these uniform effects. Both were applied on 25 September, marked
-assumed; activation is unproved. BROD 3's missing iron-sight package is bug 16.
+does not apply to these uniform effects. Both were applied on 25 September and
+confirmed in game the same day: M4A1 menu captures show ADS move 0.82 → 0.75 with
+Variable High/Thermal, and M4A1 recordings show reduced iron-sight sway (ratio 0.67)
+([captures](../../reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json)).
+BROD 3's missing iron-sight package is bug 16.
 
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 

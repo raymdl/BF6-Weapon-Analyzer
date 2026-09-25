@@ -271,10 +271,12 @@ muzzle exceptions are retained. Iron sights carry ×0.6666667 through
 `SIGHTS[iron].weaponSwayMultByWeapon` on the 56 weapons whose iron sights import
 `WPM_Sway_IronSights_P05`; bolt-action rifles have none by design, and BROD 3 has
 none in game (bug 16). Optics carry no sway factor. Camera sway is not modelled.
-The iron-sight factor is marked assumed until a sway measurement confirms it.
+M4A1 recordings show the reduction (vertical sway ratio 0.67 against ROX) and BROD 3
+recordings show none ([captures](../reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json)).
 
 Variable High and Thermal sights set `adsMoveSpeedTierShift: 1` (one ADS-move tier
-slower, source `WME_ADSMoveSpeed_M05`), marked assumed until a Mobility capture.
+slower, source `WME_ADSMoveSpeed_M05`). M4A1 menu captures confirm it: ADS move
+0.82 → 0.75 and Mobility 74 → 72; no other optic changes a menu stat.
 
 Capabilities without a numeric stat are stored as `utilities` (label → value) and
 shown as green chips: Fire while Sprinting (Compact Handstop), Gadget Draw Speed
