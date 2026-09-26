@@ -611,9 +611,13 @@ stored component ratios only, not intensity, size, distance, angle, or
 rendered-glint percentages. The Interdictor WB and coating WPM resolve to the
 same serialized `WeaponLensFlareData_DesertTechHTI_AG` file/object; this source
 equality does not establish runtime effect. Runtime activation and composition
-remain unknown. No numeric site change is supported, and a descriptive utility
-entry is deferred pending direct localization. Reopen for a typed field
-name/consumer or a measurement of a defined glint quantity.
+remain unknown. No numeric site change is supported. The
+[L96–L98 follow-up receipt](../../reference-data/provenance/frosty-2026-09-26-L96-L98-optic-accessories.json)
+raw-verifies the shared description's StringId `3E3CC230`: “Reduces visible cone
+of scope glint with an anti-reflective coating.” This supports a descriptive
+utility label. It does not identify the tuple's units or establish a cone-angle
+percentage. Reopen the numeric question for a typed field name/consumer or a
+measurement of a defined glint quantity.
 
 ### SGX suppressor sway identity (1.4.3.0, 23 September 2026)
 
@@ -668,18 +672,67 @@ site on 26 September (operator approval); the menu descriptions for CQB and the
 Mini Scout 12" SBR mention no sway, while Long keeps its shared ×1.5.
 [L94 receipt](../../reference-data/provenance/frosty-2026-09-26-L94-optic-accessory-and-local-sight-sway.json).
 
-### Optic Accessory effects (L94, 26 September 2026)
+### Optic Accessory effects (L94, L96–L98, 26 September 2026)
 
 Of the 355 SCA ability entries, the only GS bindings are `GCR_*` camera recoil,
 which is unmodeled. The shared `WPM_SCA_*` parts import visuals, PiP zoom, lens
 flare (AGCoating) and `WME_HighZoom_Magnifier_P00`. Inline `Class_104c2294` stores
 16 on canted irons and the variable magnifiers, 0 on canted/offset red dots and 24
 on the G43. Ordinary optics store 8–72 in the same field, so here it is an
-unresolved optic setting, not an ADS tier step. Inline optic sway (`e77336c8`=1)
-is neutral. Canted-iron sway locals (×0.84–1.21 per weapon, `e77336c8`=2) apply
-while aiming through the canted irons, a state the site does not model.
-`Class_bfd4f199` ×1.1 on 10 canted-red-dot weapon bodies is unnamed. No SCA
-choice changes a stat the site displays for the primary sight.
+unresolved optic setting, not an ADS tier step. The L94 WB inline optic sway
+records (`e77336c8`=1) store 1. The separate shared Piggyback Reflex package
+stores `Field_90fd0310=0.9990040064` with `e77336c8=-1`; this is not a verified
+general sway reduction. Canted-iron sway locals (0.84–1.21 per weapon, `e77336c8`=2) are
+associated with the canted-iron selector. This supports a sight-state
+interpretation; native activation and selector composition remain unproved.
+`Class_bfd4f199` stores three 1.1 values in 10 canted-red-dot records across five weapon bodies.
+Its operation is unknown; the values do not establish a recoil multiplier.
+This source pass establishes no additional numeric correction to the site's
+primary-sight statistics.
+
+The [L96–L98 receipt](../../reference-data/provenance/frosty-2026-09-26-L96-L98-optic-accessories.json)
+closes the scoped non-AG source pass against Head 4892017. All 301 captured
+attachment identities and costs match the earlier catalog. These are source
+records, not proof that each choice is available in the current game.
+
+| Source accessory family | Captured records | Point cost |
+|---|---:|---:|
+| Canted Iron Sights | 56 | 5 |
+| Canted Reflex, including one separate MG5 slanted record | 56 | 10 |
+| Piggyback Reflex (`OffsetRedDot`) | 56 | 10 |
+| G43 Magnifier | 53 | 10 |
+| Adjustable Magnification 2x / 3x / 4x | 12 each | 10 |
+| SecondarySight empty choice | 44 | 0 |
+
+The XML set adds KSG canted irons and Piggyback Reflex without captured raw
+attachment files. Keep these two entries unverified. Some G43/variable labels
+lack exact AAM joins; retain their source IDs without guessing names. The 257
+compatibility rules use exact weapon and primary-optic identities. The site's
+broad sight categories cannot express all these requirements.
+
+Of the 44 SecondarySight entries, 43 have a resolved route to
+`U_DPF_SecondarySight_Empty`. Ultimax's current ability branch confirms its
+progression and secondary-sight choice, but not this empty-selector edge.
+M27IAR has a separate missing join in the reused branch index. These gaps do
+not establish an absent gameplay effect or an unavailable choice.
+
+L97 covers 31 non-AG `WPM_SCA`/`U_WPM_SCA` packages plus G43. Five common
+magnifier packages each contain a PiP effect and a separate
+`WME_HighZoom_Magnifier_P00` import. Selector and effect arrays are preserved;
+index correspondence alone does not prove pairing or simultaneous activation.
+The HighZoom field stores −1, with its operation unresolved. No direct
+`WME_DynamicPivot` reference occurs in this fixed package scope.
+
+L98 records the four unnamed `Variable_Any` classes in five optic packages.
+`Class_daaa7328.Field_1261cdf1` stores a 1.1 triplet in each. The selected GCR
+targets use the named camera-recoil fields in the
+[existing ladder](WEAPONS.md#camera-recoil-ladder); their values are not recoil
+percentages. The canted-red-dot author label places its triplet in a secondary
+optic firing-animation context, but does not name the operation. No numeric
+site effect is established for these unnamed fields. An accessory model would
+need exact optic compatibility and active sight state before these routes could
+be applied. Research is paused after this source pass; native activation,
+composition and unresolved field meanings remain open.
 
 ## Evidence
 

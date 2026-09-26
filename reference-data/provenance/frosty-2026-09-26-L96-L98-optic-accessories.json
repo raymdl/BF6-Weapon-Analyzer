@@ -1,0 +1,801 @@
+{
+  "lead": "L96-L98 with L95 localization follow-up",
+  "status": "Scoped source pass complete; paused at operator request. Native behavior remains unresolved.",
+  "build": {
+    "release": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Finish Anti Glare and remaining Optic Accessory source traces for Analyzer decisions; exclude further gadget work.",
+  "sourceFacts": {
+    "antiGlareDescription": {
+      "build": {
+        "head": 4892017,
+        "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+      },
+      "control": "passed first",
+      "checks": [
+        {
+          "role": "knownNameControl",
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\AAM_DesertTechHTI.ebx",
+          "sha256": "f0ff82dd6d55a638db89b65baf17a34707c0ce5ab57072e51b127b85218acab3",
+          "offset": 12904,
+          "bytesHex": "d25caab8",
+          "unsignedStringId": "B8AA5CD2",
+          "localized": {
+            "line": 78867,
+            "text": "Anti-Glare Coating"
+          }
+        },
+        {
+          "role": "description",
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\UI\\Static\\Metadata\\Attachments\\Shared\\AD_Shared_SCA_AGCoating.ebx",
+          "sha256": "ca371570203ab66db25d9da2b0c606948a8c8d9d4312ecbd8980e5219849d824",
+          "offset": 248,
+          "bytesHex": "30c23c3e",
+          "unsignedStringId": "3E3CC230",
+          "localized": {
+            "line": 26950,
+            "text": "Reduces visible cone of scope glint with an anti-reflective coating."
+          }
+        }
+      ],
+      "localization": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\xml\\Common\\Localization\\Languages\\fs_us_loc.strings.tsv",
+        "sha256": "1ec449fa2a12bc3d307bfa5878ee7d8c56af14fae65ea1f6c6286e85d98e7392"
+      },
+      "scope": "Exact named AAM/AD text route already linked by L65-catalog-a for DesertTechHTI, L115A3 and M2010ESR. Reuses that source identity mapping; independently rereads the raw StringId words and exact TSV rows.",
+      "limit": "Source description supports visible-cone wording only. It does not map the unnamed flare tuple to angle or establish a percentage, runtime effect, or Interdictor benefit.",
+      "command": {
+        "executable": "C:\\Users\\royal\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "argv": [
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\parent_ag_text_check.py"
+        ],
+        "cwd": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer"
+      },
+      "helperSha256": "edf979316de3d3bf7360da537e3c4bfceaca305bf0edd4ae19d738fe0ec851d3"
+    },
+    "catalog": {
+      "capturedNonAgRows": 301,
+      "overlayRows": 303,
+      "families": [
+        {
+          "accessoryType": "CantedIronSights",
+          "rawCaptureRows": 56,
+          "xmlOverlayRows": 57,
+          "pointCosts": {
+            "5": 56
+          },
+          "resolvedNames": {
+            "Canted Iron Sights": 56
+          },
+          "nameUnsetRows": 0,
+          "ambiguousLocalizedIdentityRows": [],
+          "compatibilityRuleRows": 56,
+          "requiredOpticChoicesPerRule": {
+            "min": 16,
+            "max": 29
+          }
+        },
+        {
+          "accessoryType": "CantedReflex",
+          "rawCaptureRows": 55,
+          "xmlOverlayRows": 55,
+          "pointCosts": {
+            "10": 55
+          },
+          "resolvedNames": {
+            "Canted Reflex": 55
+          },
+          "nameUnsetRows": 0,
+          "ambiguousLocalizedIdentityRows": [],
+          "compatibilityRuleRows": 55,
+          "requiredOpticChoicesPerRule": {
+            "min": 12,
+            "max": 22
+          }
+        },
+        {
+          "accessoryType": "CantedReflexSlanted",
+          "rawCaptureRows": 1,
+          "xmlOverlayRows": 1,
+          "pointCosts": {
+            "10": 1
+          },
+          "resolvedNames": {
+            "Canted Reflex": 1
+          },
+          "nameUnsetRows": 0,
+          "ambiguousLocalizedIdentityRows": [],
+          "compatibilityRuleRows": 1,
+          "requiredOpticChoicesPerRule": {
+            "min": 17,
+            "max": 17
+          }
+        },
+        {
+          "accessoryType": "G43Magnifier",
+          "rawCaptureRows": 53,
+          "xmlOverlayRows": 53,
+          "pointCosts": {
+            "10": 53
+          },
+          "resolvedNames": {
+            "Adjustable Magnification 3.00x": 20,
+            "Magnifier": 13
+          },
+          "nameUnsetRows": 20,
+          "ambiguousLocalizedIdentityRows": [
+            {
+              "sourceAttachmentPath": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCA_G43Magnifier",
+              "name": "Adjustable Magnification 3.00x",
+              "status": "ambiguous AAM label; localized identity agrees"
+            },
+            {
+              "sourceAttachmentPath": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCA_G43Magnifier",
+              "name": "Adjustable Magnification 3.00x",
+              "status": "ambiguous AAM label; localized identity agrees"
+            }
+          ],
+          "compatibilityRuleRows": 53,
+          "requiredOpticChoicesPerRule": {
+            "min": 5,
+            "max": 8
+          }
+        },
+        {
+          "accessoryType": "OffsetRedDot",
+          "rawCaptureRows": 56,
+          "xmlOverlayRows": 57,
+          "pointCosts": {
+            "10": 56
+          },
+          "resolvedNames": {
+            "Piggyback Reflex": 56
+          },
+          "nameUnsetRows": 0,
+          "ambiguousLocalizedIdentityRows": [],
+          "compatibilityRuleRows": 56,
+          "requiredOpticChoicesPerRule": {
+            "min": 5,
+            "max": 6
+          }
+        },
+        {
+          "accessoryType": "SecondarySight",
+          "rawCaptureRows": 44,
+          "xmlOverlayRows": 44,
+          "pointCosts": {
+            "0": 44
+          },
+          "resolvedNames": {
+            "[EMPTY]": 44
+          },
+          "nameUnsetRows": 0,
+          "ambiguousLocalizedIdentityRows": [],
+          "compatibilityRuleRows": 0,
+          "requiredOpticChoicesPerRule": {
+            "min": 0,
+            "max": 0
+          }
+        },
+        {
+          "accessoryType": "Variable2x",
+          "rawCaptureRows": 12,
+          "xmlOverlayRows": 12,
+          "pointCosts": {
+            "10": 12
+          },
+          "resolvedNames": {
+            "Adjustable Magnification 2.00x": 11
+          },
+          "nameUnsetRows": 1,
+          "ambiguousLocalizedIdentityRows": [],
+          "compatibilityRuleRows": 12,
+          "requiredOpticChoicesPerRule": {
+            "min": 5,
+            "max": 5
+          }
+        },
+        {
+          "accessoryType": "Variable3x",
+          "rawCaptureRows": 12,
+          "xmlOverlayRows": 12,
+          "pointCosts": {
+            "10": 12
+          },
+          "resolvedNames": {
+            "Adjustable Magnification 3.00x": 12
+          },
+          "nameUnsetRows": 0,
+          "ambiguousLocalizedIdentityRows": [
+            {
+              "sourceAttachmentPath": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCA_Variable3x",
+              "name": "Adjustable Magnification 3.00x",
+              "status": "ambiguous AAM label; localized identity agrees"
+            },
+            {
+              "sourceAttachmentPath": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCA_Variable3x",
+              "name": "Adjustable Magnification 3.00x",
+              "status": "ambiguous AAM label; localized identity agrees"
+            }
+          ],
+          "compatibilityRuleRows": 12,
+          "requiredOpticChoicesPerRule": {
+            "min": 5,
+            "max": 5
+          }
+        },
+        {
+          "accessoryType": "Variable4x",
+          "rawCaptureRows": 12,
+          "xmlOverlayRows": 12,
+          "pointCosts": {
+            "10": 12
+          },
+          "resolvedNames": {
+            "Adjustable Magnification 4.00x": 11
+          },
+          "nameUnsetRows": 1,
+          "ambiguousLocalizedIdentityRows": [],
+          "compatibilityRuleRows": 12,
+          "requiredOpticChoicesPerRule": {
+            "min": 5,
+            "max": 5
+          }
+        }
+      ],
+      "exactOpticCompatibilityRules": 257,
+      "secondarySight": {
+        "rawRows": 44,
+        "cost": {
+          "0": 44
+        },
+        "localizedName": "[EMPTY]",
+        "selectorRoute": "Common/Hardware/Weapons/_Attachments/_Shared/DefaultRails/U_DPF_SecondarySight_Empty",
+        "selectorGuid": "08b31f4e-bc65-4a93-933f-e76900bb242a",
+        "fixedRouteRows": 43,
+        "routeUnresolvedRows": [
+          {
+            "sourceWeapon": "Ultimax",
+            "sourceAttachmentPath": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCA_SecondarySight",
+            "catalogLead": "L65-catalog-b",
+            "catalogRowLine": 107,
+            "selectorCandidates": [],
+            "candidateDpfRoutes": []
+          }
+        ],
+        "interpretation": "43 catalog rows have reused selector evidence for the shared empty DPF. Ultimax current Ability XML confirms its SecondarySight branch/progression and slot category, but no direct shared-empty-DPF edge is serialized in that branch; its selector route remains unresolved. M27IAR is separately absent from the pinned branches-reviewed index. Neither gap establishes zero effect."
+      },
+      "coverageGaps": {
+        "sourceNameUnsetCount": 22,
+        "xmlOnlyCaptureGaps": [
+          "KSG CantedIronSights",
+          "KSG OffsetRedDot"
+        ],
+        "branchReviewUnresolved": [
+          {
+            "sourceAttachmentPath": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCA_SecondarySight",
+            "accessoryType": "SecondarySight",
+            "lead": "L65-catalog-a",
+            "reason": "expected one reviewed branch, found 0",
+            "progressionPath": "Common/Hardware/Weapons/MG/M27IAR/U_PRG_M27IAR_SecondarySight"
+          }
+        ],
+        "secondarySightRouteUnresolved": [
+          {
+            "sourceWeapon": "Ultimax",
+            "sourceAttachmentPath": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCA_SecondarySight",
+            "catalogLead": "L65-catalog-b",
+            "catalogRowLine": 107,
+            "selectorCandidates": [],
+            "candidateDpfRoutes": []
+          }
+        ],
+        "details": "Exact source identities and unresolved rows retained in the pinned L96 result."
+      },
+      "rawReviewScope": {
+        "fileHashesMatchedRows": 301,
+        "typedAttachmentIdByteChecks": 144,
+        "typedPointCostByteChecks": 144,
+        "typedAttachmentIdOffsets": {
+          "80": 144
+        },
+        "typedPointCostOffsets": {
+          "104": 20,
+          "128": 124
+        },
+        "typedCheckScope": "rechecked existing L65-catalog-a row receipts at each stored absoluteRawOffset; L65-catalog-b rows have no typed operand offsets in their row records"
+      },
+      "priorCatalogIndexRefs": [
+        {
+          "lead": "L65-catalog-a",
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-25T1100-0400\\1.4.3.0\\L65-catalog-a\\rows.jsonl",
+          "sha256": "869bec31e821311fe0b32bcb8942c129c68aa7492760663a3ebfe0537a6ec4a0",
+          "rows": 147
+        },
+        {
+          "lead": "L65-catalog-b",
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-25T1100-0400\\1.4.3.0\\L65-catalog-b\\rows.jsonl",
+          "sha256": "d97f818ae9991f90b36f0ba5d8213a4f8061043cc7fcec885ecc85906eba75fc",
+          "rows": 160
+        }
+      ]
+    },
+    "sharedPackages": {
+      "coverage": {
+        "selectedPackages": 32,
+        "releasePrefixRows": 38,
+        "AGRowsExcluded": 7,
+        "selectedNonAGPrefixRows": 31,
+        "directImportEdges": 49,
+        "uniqueDirectImportFileGuids": 15,
+        "scopedRawValuesRechecked": 37,
+        "scopedImportEdgesRechecked": 49,
+        "rawFilesHashed": 23,
+        "missingDecodedPackageFiles": []
+      },
+      "inlineOpticSetting": "Class_104c2294.Field_9540bd8e stores 16 on canted iron/variable packages and 24 on G43; not established ADS tiers.",
+      "magnifiers": "Five generic magnifier packages include PiP and WME_HighZoom_Magnifier_P00 references. Parallel selector/effect arrays do not establish same-index pairing or runtime composition.",
+      "highZoom": {
+        "field": "Class_2f74f085.Field_ea1ef162",
+        "interpretation": "Separate imported WME asset; serialized value -1.0. Operation, consumer and runtime contribution unresolved.",
+        "rawCheck": {
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/Magnifier/WME_HighZoom_Magnifier_P00",
+          "objectClass": "Class_2f74f085",
+          "fieldPath": "objects[1]/Field_ea1ef162",
+          "value": -1.0,
+          "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Magnifier\\WME_HighZoom_Magnifier_P00.ebx",
+          "rawSha256": "a118e69ed98971ba72d6bf1802b3c2254d37f3ee079dc8791b1f1d7274ad2a81",
+          "offset": 152,
+          "size": 4,
+          "bytesHex": "00 00 80 bf",
+          "objectIndex": 1,
+          "objectGuid": "a873f93f-f712-468d-9718-e6fb1939a8d4",
+          "objectLayoutAmbiguous": true,
+          "flags": {
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false
+          }
+        }
+      },
+      "offsetSway": {
+        "field": "Class_2fea847d.Field_90fd0310",
+        "interpretation": "L94 identifies this field as a weapon-sway multiplier; source value only, runtime use unproven.",
+        "rawChecks": [
+          {
+            "route": "Common/Hardware/Weapons/_Attachments/Offset/RedDot/WPM_SCA_OffsetRedDot",
+            "objectIndex": 6,
+            "objectClass": "Class_2fea847d",
+            "fieldPath": "objects[6]/Field_90fd0310",
+            "value": 0.9990040063858032,
+            "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\Offset\\RedDot\\WPM_SCA_OffsetRedDot.ebx",
+            "rawSha256": "8a76d99848fb565bf9f001bea5c9879aa860c7bb1a083916bdccc0ca160dd83a",
+            "offset": 1412,
+            "size": 4,
+            "bytesHex": "ba be 7f 3f"
+          }
+        ],
+        "offsetRedDotException": {
+          "route": "Common/Hardware/Weapons/_Attachments/Offset/RedDot/WPM_SCA_OffsetRedDot",
+          "objectIndex": 6,
+          "objectClass": "Class_2fea847d",
+          "objectLayoutAmbiguous": false,
+          "flags": {
+            "Field_9ca063e9": false,
+            "Field_96eb74f6": false
+          },
+          "multiplier": {
+            "route": "Common/Hardware/Weapons/_Attachments/Offset/RedDot/WPM_SCA_OffsetRedDot",
+            "objectIndex": 6,
+            "objectClass": "Class_2fea847d",
+            "fieldPath": "objects[6]/Field_90fd0310",
+            "value": 0.9990040063858032,
+            "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\Offset\\RedDot\\WPM_SCA_OffsetRedDot.ebx",
+            "rawSha256": "8a76d99848fb565bf9f001bea5c9879aa860c7bb1a083916bdccc0ca160dd83a",
+            "offset": 1412,
+            "size": 4,
+            "bytesHex": "ba be 7f 3f"
+          },
+          "selectorField": {
+            "route": "Common/Hardware/Weapons/_Attachments/Offset/RedDot/WPM_SCA_OffsetRedDot",
+            "objectIndex": 6,
+            "objectClass": "Class_2fea847d",
+            "fieldPath": "objects[6]/Field_e77336c8",
+            "value": -1,
+            "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\Offset\\RedDot\\WPM_SCA_OffsetRedDot.ebx",
+            "rawSha256": "8a76d99848fb565bf9f001bea5c9879aa860c7bb1a083916bdccc0ca160dd83a",
+            "offset": 1408,
+            "size": 4,
+            "bytesHex": "ff ff ff ff"
+          },
+          "interpretation": "Stored multiplier 0.999004 is not neutral; bytes and adjacent selector value are independently raw-checked. Native consumer/runtime effect unresolved."
+        }
+      },
+      "offsetSwayContext": "Object 6 stores Field_e77336c8=-1. Do not merge this shared package with L94 WB inline e77336c8=1 records.",
+      "dynamicPivot": "No direct WME_DynamicPivot reference in this fixed package/import scope; indirect WB/GS routes not disproved."
+    },
+    "weaponLocalAndGs": {
+      "cantedRedDot": {
+        "instanceCount": 10,
+        "weaponBodyCount": 5,
+        "field": "Class_bfd4f199.Field_3b707594",
+        "storedTriplet": [
+          1.100000023841858,
+          1.100000023841858,
+          1.100000023841858
+        ],
+        "meaning": "Secondary-optic proc-firing animation context from L18 author label; vector operation unresolved."
+      },
+      "variableAny": {
+        "packageCount": 5,
+        "classes": [
+          "Class_83584c75",
+          "Class_87421347",
+          "Class_c42bd53b",
+          "Class_daaa7328"
+        ],
+        "field": "Class_daaa7328.Field_1261cdf1",
+        "storedTriplet": [
+          1.100000023841858,
+          1.100000023841858,
+          1.100000023841858
+        ],
+        "meaning": "Field and class semantics remain unresolved; no numerical site modifier established."
+      },
+      "gcrTargets": [
+        {
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_1x00_P00",
+          "enabledOperands": [
+            {
+              "field": "Field_9532eb28",
+              "enabled": true,
+              "value": -0.5
+            },
+            {
+              "field": "Field_7f1bb9d4",
+              "enabled": true,
+              "value": -0.5
+            }
+          ]
+        },
+        {
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_1x50_P00",
+          "enabledOperands": [
+            {
+              "field": "Field_9532eb28",
+              "enabled": true,
+              "value": -0.084472
+            },
+            {
+              "field": "Field_7f1bb9d4",
+              "enabled": true,
+              "value": -0.084472
+            }
+          ]
+        },
+        {
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_2x00_P00",
+          "enabledOperands": [
+            {
+              "field": "Field_9532eb28",
+              "enabled": true,
+              "value": 0.138476
+            },
+            {
+              "field": "Field_7f1bb9d4",
+              "enabled": true,
+              "value": 0.138476
+            }
+          ]
+        },
+        {
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_3x00_P00",
+          "enabledOperands": [
+            {
+              "field": "Field_9532eb28",
+              "enabled": true,
+              "value": 0.377135
+            },
+            {
+              "field": "Field_7f1bb9d4",
+              "enabled": true,
+              "value": 0.377135
+            }
+          ]
+        },
+        {
+          "route": "Common/Hardware/Weapons/_WeaponModifiers/CameraRecoil/GCR_Variable_4x00_P00",
+          "enabledOperands": [
+            {
+              "field": "Field_9532eb28",
+              "enabled": true,
+              "value": 0.505185
+            },
+            {
+              "field": "Field_7f1bb9d4",
+              "enabled": true,
+              "value": 0.505185
+            }
+          ]
+        }
+      ],
+      "gcrLimit": "Named camera-recoil source targets only; no native equation or physical recoil percentage is established."
+    }
+  },
+  "parentReview": {
+    "status": "PASS",
+    "rawChecks": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Shotgun\\185KSK\\Attachment_185KSK_SCA_CantedIronSights.ebx",
+        "sha256": "655da13f0675970ff09cc73f5165a24429d28e5814f93e4340ecb9ce72d03172",
+        "offset": 128,
+        "bytesHex": "05000000",
+        "decoded": [
+          5
+        ],
+        "sourceFact": "L96 185KSK CantedIronSights source point cost 5",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Shotgun\\185KSK\\Attachment_185KSK_SCA_CantedReflex.ebx",
+        "sha256": "d172df5f9f0f90ab78cb678ee835191cb17cb0feca07d1f1764ef9edfbbd389e",
+        "offset": 128,
+        "bytesHex": "0a000000",
+        "decoded": [
+          10
+        ],
+        "sourceFact": "L96 185KSK CantedReflex source point cost 10",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Shotgun\\185KSK\\Attachment_185KSK_SCA_SecondarySight.ebx",
+        "sha256": "08f5f5b52120fb8db102b8d8b4f03be6ce20b30ea1c28bc6f8315fa68dd0c2ee",
+        "offset": 104,
+        "bytesHex": "00000000",
+        "decoded": [
+          0
+        ],
+        "sourceFact": "L96 185KSK SecondarySight source point cost 0",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\Magnifier\\EOTechG43\\WPM_G43Magnifier.ebx",
+        "sha256": "9ac21ce5eea5ae1d650d207331a8b1ad6a4f2506c37020b721d15412f7ae4a16",
+        "offset": 2744,
+        "bytesHex": "18000000",
+        "decoded": [
+          24
+        ],
+        "sourceFact": "L97 Common/Hardware/Weapons/_Attachments/Magnifier/EOTechG43/WPM_G43Magnifier objects[11]/Field_9540bd8e",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Magnifier\\WME_HighZoom_Magnifier_P00.ebx",
+        "sha256": "a118e69ed98971ba72d6bf1802b3c2254d37f3ee079dc8791b1f1d7274ad2a81",
+        "offset": 152,
+        "bytesHex": "000080bf",
+        "decoded": [
+          -1.0
+        ],
+        "sourceFact": "L97 Common/Hardware/Weapons/_WeaponModifiers/Magnifier/WME_HighZoom_Magnifier_P00 objects[1]/Field_ea1ef162",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\Offset\\RedDot\\WPM_SCA_OffsetRedDot.ebx",
+        "sha256": "8a76d99848fb565bf9f001bea5c9879aa860c7bb1a083916bdccc0ca160dd83a",
+        "offset": 1412,
+        "bytesHex": "babe7f3f",
+        "decoded": [
+          0.9990040063858032
+        ],
+        "sourceFact": "L97 Common/Hardware/Weapons/_Attachments/Offset/RedDot/WPM_SCA_OffsetRedDot objects[6]/Field_90fd0310",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\Offset\\RedDot\\WPM_SCA_OffsetRedDot.ebx",
+        "sha256": "8a76d99848fb565bf9f001bea5c9879aa860c7bb1a083916bdccc0ca160dd83a",
+        "offset": 1408,
+        "bytesHex": "ffffffff",
+        "decoded": [
+          -1
+        ],
+        "sourceFact": "L97 Common/Hardware/Weapons/_Attachments/Offset/RedDot/WPM_SCA_OffsetRedDot objects[6]/Field_e77336c8",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\DesertTechHTI_WB.ebx",
+        "sha256": "f6c269d06a65c296bbc03f0accd09d314ad1987f31d0fa08c4de9b9b70b2e889",
+        "offset": 3568,
+        "bytesHex": "cdcc8c3fcdcc8c3fcdcc8c3f",
+        "decoded": [
+          1.100000023841858,
+          1.100000023841858,
+          1.100000023841858
+        ],
+        "sourceFact": "L98 Class_bfd4f199.Field_3b707594 stored triplet; operation unknown",
+        "status": "PASS"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\MidZoom\\NX81\\WPM_SCA_Variable_NX8-1.ebx",
+        "sha256": "01cd350f003cb4701a1990ca8331c61da8dfdf5ac848b4b0e1771da1000f7fb4",
+        "offset": 1344,
+        "bytesHex": "cdcc8c3f",
+        "float32": 1.100000023841858
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\MidZoom\\NX81\\WPM_SCA_Variable_NX8-1.ebx",
+        "sha256": "01cd350f003cb4701a1990ca8331c61da8dfdf5ac848b4b0e1771da1000f7fb4",
+        "offset": 1348,
+        "bytesHex": "cdcc8c3f",
+        "float32": 1.100000023841858
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\MidZoom\\NX81\\WPM_SCA_Variable_NX8-1.ebx",
+        "sha256": "01cd350f003cb4701a1990ca8331c61da8dfdf5ac848b4b0e1771da1000f7fb4",
+        "offset": 1352,
+        "bytesHex": "cdcc8c3f",
+        "float32": 1.100000023841858
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\CameraRecoil\\GCR_Variable_1x00_P00.ebx",
+        "sha256": "d7939d2b84cee5310fb19cb7a537e4e5bb3c5f42526e32cf1a064ecd0527fd0a",
+        "offset": 196,
+        "bytesHex": "000000bf",
+        "float32": -0.5
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\CameraRecoil\\GCR_Variable_1x00_P00.ebx",
+        "sha256": "d7939d2b84cee5310fb19cb7a537e4e5bb3c5f42526e32cf1a064ecd0527fd0a",
+        "offset": 296,
+        "bytesHex": "000000bf",
+        "float32": -0.5
+      }
+    ],
+    "reviewCorrections": [
+      "G43 representative raw check corrected from a Variable_4x row to actual G43 offset2744.",
+      "Parallel selector/effect arrays retained without claiming proven pairwise activation.",
+      "Canted 1.1 count corrected to ten records across five weapon bodies.",
+      "WB inline sway and shared OffsetRedDot 0.999004 contexts kept separate.",
+      "Catalog review required inherited per-row cost offsets; uniform offset128 cannot verify SecondarySight costs.",
+      "The final L96 result gives 144 non-AG typed ID checks and 144 typed cost checks: offset104 on20 rows and128 on124 rows. The worker summary retained prefilter127 at128; that text is superseded by these computed result counts. All301 current raw file hashes match the prior catalog."
+    ],
+    "commands": [
+      {
+        "executable": "C:\\Users\\royal\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "argv": [
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\parent_review.py"
+        ]
+      },
+      {
+        "executable": "C:\\Users\\royal\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "argv": [
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\parent_local_review.py"
+        ]
+      },
+      {
+        "executable": "C:\\Users\\royal\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "argv": [
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\parent_ag_text_check.py"
+        ],
+        "cwd": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer"
+      }
+    ]
+  },
+  "inference": [
+    "Anti Glare visible-cone wording is supported by localization. L95 tuple ratios of33.3/50/53.3 percent remain stored-component comparisons, not a gameplay percentage.",
+    "Exact source accessory identities/costs can support a future catalog. Live availability and runtime effects require separate evidence."
+  ],
+  "unresolved": [
+    "Unknown field meanings/units and native selector activation, ordering and composition.",
+    "Live menu availability and exact unmatched optic labels; KSG XML-only attachment captures.",
+    "No measured glint angle/intensity/distance reduction or blanket all-zoom behavior.",
+    "Source route/index exceptions retained in the catalog result; no global absence inference."
+  ],
+  "siteImpact": {
+    "changed": false,
+    "proposal": "Use a descriptive Anti Glare visible-cone label if the accessory slot is added. Do not publish a numeric glint percentage from these tuples.",
+    "modelRequirements": "Optional Optic Accessory support needs exact primary-optic compatibility and active sight state. Existing broad sight categories are insufficient.",
+    "numericProposal": "None from L95-L98; do not map inline16/24 to ADS tiers or unknown1.1 triplets to recoil multipliers.",
+    "inspectedFiles": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\data\\attachments.json",
+        "sha256": "d6ae4a9814cd1163b6108bd099c62df5554ddb397511a2c788ee5334ec8128cb"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\sim\\applyAttachments.js",
+        "sha256": "18244f1e93f95b4557992754b2ba5a16998135446f64f47ba06838839bfab1fd"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\docs\\ATTACHMENT_MODEL.md",
+        "sha256": "a00c9d7a7b675c7f03c4740e00a8dba7a803f131fefea80bd16cab9e0b311ab1"
+      }
+    ]
+  },
+  "evidence": {
+    "workerArtifacts": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L96\\draft-receipt.json",
+        "sha256": "a933581042ad9b4270f1a15fe549ea59a5a4a7bc4dbcb89dd809ed7fa9dd6dde"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L96\\result.json",
+        "sha256": "7a350e21629a5e4970f2e57bfa4f94abf52a236f7d16cbe5be180f4469c2d355"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L96\\summary.md",
+        "sha256": "239eeb565b36ab8d0648b2ef7ffbd488d41edf78a9b3faab0dff3ca7bb04883f"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L97\\draft-receipt.json",
+        "sha256": "8631eef3016381d7deb1844c63e417cb5e16083eb82709687927d0725767c1d3"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L97\\result.json",
+        "sha256": "66160a51443c232c4d20cde8d16d57ba8868964d4247c3b66d828d73491d2cd4"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L97\\summary.md",
+        "sha256": "53ec0f19c9e9667ebb477f2f13a5a1676544e7f0fc3153e724936e80b653427b"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L98\\draft-receipt.json",
+        "sha256": "17c8ded6bae283c11432d1ca7c636cea0ba7c5be27fa79e10ed49046e5efe457"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L98\\result.json",
+        "sha256": "97c07feb28ec0205c68c3b518ce8f93e2e6344201b71352896aabb91e12c30d8"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\L98\\summary.md",
+        "sha256": "21071f59bb67588c2e200ba10f1fbc6cee545df1beab22690d40e82b4b02c42d"
+      }
+    ],
+    "parentArtifacts": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\parent-ag-text-check.json",
+        "sha256": "59fde54c3cb6f3436b3eec743d4fa8ce9af86b4fa5e3dd5d48ccf7cf16e2f4b0"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\parent-raw-review.json",
+        "sha256": "bb67ce7f19bc4c0f9ab12f31bdf91bbc87db299088722889fac8ae0e3925458f"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\parent-local-review.json",
+        "sha256": "b9f05c1beec022971c753a89808279a17bc5c26114b44a929aa479844d9ccd4b"
+      }
+    ],
+    "priorReceipts": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-26-L95-anti-glare-coating.json",
+        "sha256": "e82a05d36543e046c7072fbbbcc70c281c46e2aa10d4495a18f1c2640553b6a8"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-26-L94-optic-accessory-and-local-sight-sway.json",
+        "sha256": "39f07af9a2e87df595503cd03863dcac7300773ed796244fcfbf915f26b4c03c"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-24-L18-buffer-animation-context.json",
+        "sha256": "beab34bb9789d9282b4dfb6893bcf2b173e7e848a760855769301ba01290a8ab"
+      }
+    ],
+    "reproduction": "Worker artifacts pin source files, raw operands, reused indexes and command/helper hashes. Parent artifacts contain exact commands and raw checks.",
+    "integrationCommand": {
+      "executable": "C:\\Users\\royal\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "argv": [
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\integrate_review.py"
+      ]
+    },
+    "integrationHelperSha256": "bcea259036faca5335a78abd17c34f6cce3dfba7f2b653d8ec03fc08b907f276",
+    "finalParentReview": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\finalize_parent_review.py",
+      "sha256": "228d995dd993670e549217fae7c943d8459f4e1071c9c1c3d447bb918c487aea",
+      "command": {
+        "executable": "C:\\Users\\royal\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+        "argv": [
+          "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-optic-accessories\\1.4.3.0\\finalize_parent_review.py"
+        ]
+      }
+    }
+  }
+}

@@ -85,7 +85,7 @@ not known.
 |---|---|---|---|
 | `Class_743a3ce0` (`GDM_Array_*Dispersion_*`) | `Field_94752c29` → `Field_84e57075`; `Field_9540bd8e/Struct_d204f959/Field_4692836a` | Target array; signed index step (`0xffffffff` = −1) | Value |
 | `Class_743a3ce0` | `Field_b574fa40` | Boolean; true on bipod/grip pod `HipDispersion_BTM_P20`, false on `_NoBipod`. Probably limits the step to a bipod/deployed state ([L61](../../reference-data/provenance/frosty-2026-09-24-L61-bipod-hip-dispersion.json)) | Inferred |
-| `Class_104c2294` / `Class_016623ac` | `Field_9540bd8e` | ADS time step (FOV / animation) | Value |
+| `Class_104c2294` / `Class_016623ac` | `Field_9540bd8e` | ADS time step on named `WME_ADSTime_FOV_*` / `WME_ADSTime_Anim_*` packages; inline optic settings remain unresolved ([L94](../../reference-data/provenance/frosty-2026-09-26-L94-optic-accessory-and-local-sight-sway.json)) | Value; optic interpretation unresolved |
 | `Class_4aac041b` / `Class_03db7a68` | `Field_9540bd8e` | Draw step (deploy / sprint) | Value |
 | `Class_303a33cc` (`WME_ADSMoveSpeed_*`) | `Field_c427eabf` | ADS movement step (`M05` = −1, `P10` = 2) | Value |
 | `Class_9705264b` (`WME_ReloadSpeedRegular_P10`) | `Field_348b8cd1` | Reload multiplier 1.13 | Value |
