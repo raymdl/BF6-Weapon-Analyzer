@@ -59,7 +59,7 @@ Active investigations with their own files:
 | Question | Suggested test |
 |---|---|
 | Lights: native on/off activation and idle recovery | Same 6P67 build without a light, light off and light on; stationary and moving hip growth and recovery; ADS as a control. |
-| SGX Light/CQB Suppressor sway identity and Long composition | [Exact selector review](ATTACHMENTS.md#sgx-suppressor-sway-identity-1430-23-september-2026) proposes moving the 0.975282 override from Light to CQB. Rank-8 paired traces test activation; the small difference needs measurement uncertainty below 2.47%. |
+| SGX CQB/Long and Mini Scout Short sway: source gates the site values on canted iron sights ([L94](../../reference-data/provenance/frosty-2026-09-26-L94-optic-accessory-and-local-sight-sway.json)); removal proposed | Optional: SGX CQB versus no muzzle with an optic, ADS sway pair. |
 | Sway and ADS: camera versus aim motion; VSSM regular barrel has a GS +1 ADS binding but no WB effect (site 250 ms on both barrels) | [23 September source review](ATTACHMENTS.md#vssm-barrel-ads-follow-up-1430-23-september-2026) keeps the two paths separate. Measure regular/ASM barrel ADS with factory optic and fixed magazine, or decode the native GS consumer. |
 | Sniper Tungsten: intended balance across weapons remains unknown; source-specific −6/−1/−7 steps are now implemented and panel-checked | Further gameplay captures can test shot behavior; they cannot establish design intent. |
 | Slim Angled on L115, Mini Scout, Interdictor: does the second `GID_ADSTime_BTM_P10` binding stack? | Panels show one ADS tier ([bug 1a](../ATTACHMENT_BUGS.md#1a-sniper-rifles-full-angled-package-selected)). |

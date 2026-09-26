@@ -628,6 +628,33 @@ Extended barrels are not offered in game. BROD3 is deferred: how its two parts c
 is not known.
 [Receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json).
 
+**Superseded by L94 (26 September): these locals are sight-gated.** The second
+selector on the SGX wrapper is `U_WPM_SCA_CantedIronSights`, and the object's
+`Field_e77336c8` is 2. That value appears only on the 60 canted-iron locals;
+optic parts use 1 and unconditional sway effects use −1. Mini Scout Short 1.033862
+and BROD 3 1.016938 have the same canted + ConditionalShort pairing. GGH-22's
+0.850746 and BROD 3's 1.024638 pair with `U_WPM_IronSights`. Every weapon also has
+an unconditional iron-sight local (1.05–1.22), which the 25 September recordings
+do not show as a general ADS multiplier. The M4A1 iron/ROX ratios of 0.642 and
+0.684 fit the shared ×0.667 package, not ×0.729, and BROD 3's 0.978 and 0.987 fit
+1.0, not 1.076. The site's SGX CQB/Long and Mini Scout Short values therefore
+likely apply only while aiming through canted irons. The proposal to remove them
+is in the research queue.
+[L94 receipt](../../reference-data/provenance/frosty-2026-09-26-L94-optic-accessory-and-local-sight-sway.json).
+
+### Optic Accessory effects (L94, 26 September 2026)
+
+Of the 355 SCA ability entries, the only GS bindings are `GCR_*` camera recoil,
+which is unmodeled. The shared `WPM_SCA_*` parts import visuals, PiP zoom, lens
+flare (AGCoating) and `WME_HighZoom_Magnifier_P00`. Inline `Class_104c2294` stores
+16 on canted irons and the variable magnifiers, 0 on canted/offset red dots and 24
+on the G43. Ordinary optics store 8–72 in the same field, so here it is an
+unresolved optic setting, not an ADS tier step. Inline optic sway (`e77336c8`=1)
+is neutral. Canted-iron sway locals (×0.84–1.21 per weapon, `e77336c8`=2) apply
+while aiming through the canted irons, a state the site does not model.
+`Class_bfd4f199` ×1.1 on 10 canted-red-dot weapon bodies is unnamed. No SCA
+choice changes a stat the site displays for the primary sight.
+
 ## Evidence
 
 - [frosty-attachment-handling-generated.json](../../reference-data/provenance/frosty-attachment-handling-generated.json),
@@ -929,7 +956,9 @@ branch: `P90_Ability` SC_Ergonomic entry → `U_PRG_P90_Improved_Recoil_Spring_B
 which said it had none. No `Attachment_P90_ERG_*` asset or English string
 references it, and the 7 September menu shows 900 RPM for every USG-90 ergo
 choice (None, Improved Mag Catch, Aftermarket Buffer). Keep the site's 899.999
-RPM and ergo list. No non-ammo attachment selects an unmodeled multiplayer
+RPM and ergo list. The operator treats it as a probable in-development
+attachment whose values may change before any release; do not pursue it
+unless it appears in a live menu. No non-ammo attachment selects an unmodeled multiplayer
 damage, penetration, fire-rate or velocity effect.
 
 ### M4A1 M320 HE/AT serialized source profile (L71, 26 September 2026)
