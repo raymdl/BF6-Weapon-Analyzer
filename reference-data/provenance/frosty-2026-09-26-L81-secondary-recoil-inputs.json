@@ -1,0 +1,539 @@
+{
+  "date": "2026-09-26",
+  "lead": "L81",
+  "title": "Ordinary M4A1 selected M26/M320 HE secondary recoil inputs",
+  "status": "accepted-serialized-source-inputs",
+  "build": {
+    "release": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "descriptorPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx"
+  },
+  "question": "What source recoil amount/direction inputs are on the ordinary M4A1 selected M26DB and M320 HE GunSway owners?",
+  "sourceFacts": {
+    "knownAnswerControl": {
+      "route": "Common/Hardware/Weapons/Carbine/M4A1/GS_M4A1",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\GS_M4A1.ebx",
+      "rawSha256": "12d448446554821b223d9341701cc17641c705459e261fa5aedeee6c98c52674",
+      "objectIndex": 1,
+      "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+      "recordCount": 2,
+      "fieldCount": 14,
+      "rawChecks": [
+        {
+          "name": "hip.RecoilAmount",
+          "decodedValue": 0.7102000117301941,
+          "rawOffset": 804,
+          "rawHex": "abcf353f",
+          "typeCode": 19
+        },
+        {
+          "name": "hip.RecoilAmountMultiplier",
+          "decodedValue": 0.9424999952316284,
+          "rawOffset": 808,
+          "rawHex": "ae47713f",
+          "typeCode": 19
+        },
+        {
+          "name": "hip.RecoilAmountMultiplierExponent",
+          "decodedValue": -3,
+          "rawOffset": 812,
+          "rawHex": "fdffffff",
+          "typeCode": 15
+        },
+        {
+          "name": "hip.RecoilDirection",
+          "decodedValue": -18.0,
+          "rawOffset": 788,
+          "rawHex": "000090c1",
+          "typeCode": 19
+        },
+        {
+          "name": "hip.RecoilDirectionVariation",
+          "decodedValue": 30.700000762939453,
+          "rawOffset": 792,
+          "rawHex": "9a99f541",
+          "typeCode": 19
+        },
+        {
+          "name": "hip.RecoilDirectionVariationMultiplier",
+          "decodedValue": 0.9212049841880798,
+          "rawOffset": 796,
+          "rawHex": "17d46b3f",
+          "typeCode": 19
+        },
+        {
+          "name": "hip.RecoilDirectionVariationMultiplierExponent",
+          "decodedValue": 0,
+          "rawOffset": 800,
+          "rawHex": "00000000",
+          "typeCode": 15
+        }
+      ]
+    },
+    "sharedSchemaIdentity": {
+      "rawOwnerTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+      "rootDescriptorClassIndex": 1774,
+      "rootDescriptor": {
+        "hash": "539cff9b",
+        "fieldIndex": 11475,
+        "fieldCount": 33,
+        "type": 48,
+        "size": 1784,
+        "alignment": 8
+      },
+      "outerField": {
+        "hash": "c5d1c8fe",
+        "classRefIndex": 1787,
+        "descriptorTypeHash": "22f197b3"
+      },
+      "hipField": "Field_7b609515",
+      "adsField": "Field_6b84de87",
+      "hipDescriptor": {
+        "classRefIndex": 1788,
+        "hash": "bcfafb0d",
+        "fieldIndex": 11583,
+        "fieldCount": 34,
+        "type": 32,
+        "size": 152,
+        "alignment": 8
+      },
+      "adsDescriptor": {
+        "classRefIndex": 1788,
+        "hash": "bcfafb0d",
+        "fieldIndex": 11583,
+        "fieldCount": 34,
+        "type": 32,
+        "size": 152,
+        "alignment": 8
+      },
+      "targetSchemaComparisons": [
+        {
+          "target": "M26DB selected",
+          "rootTypeKeyEqualsM4A1": true,
+          "rootDescriptorIndexEqualsM4A1": true,
+          "outerFieldClassRefIndexEqualsM4A1": true,
+          "hipStructClassRefEqualsM4A1": true,
+          "adsStructClassRefEqualsM4A1": true,
+          "hipStructRecordEqualsM4A1": true,
+          "adsStructRecordEqualsM4A1": true
+        },
+        {
+          "target": "M320 HE selected",
+          "rootTypeKeyEqualsM4A1": true,
+          "rootDescriptorIndexEqualsM4A1": true,
+          "outerFieldClassRefIndexEqualsM4A1": true,
+          "hipStructClassRefEqualsM4A1": true,
+          "adsStructClassRefEqualsM4A1": true,
+          "hipStructRecordEqualsM4A1": true,
+          "adsStructRecordEqualsM4A1": true
+        }
+      ],
+      "layoutAmbiguous": {
+        "M4A1 ordinary control": true,
+        "M26DB selected": true,
+        "M320 HE selected": true
+      },
+      "nameBasis": "The seven per-aim names follow prior FIELD_MAP/source-recoil evidence; L81 adds no local registry name join."
+    },
+    "selectedTargets": [
+      {
+        "label": "M26DB selected",
+        "route": "Common/Hardware/Gadgets/Underbarrels/M26Mass00Buck/GS_M26Mass",
+        "captureId": 1867,
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Underbarrels\\M26Mass00Buck\\GS_M26Mass.ebx",
+        "rawSha256": "f31d17adeb7f8d86a8015597f4c78677c68c832a3dedd4185faa2e16d418a83b",
+        "objectIndex": 2,
+        "objectClass": "Class_539cff9b",
+        "objectGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78",
+        "rawOwnerTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+        "rootDescriptorClassIndex": 1774,
+        "layoutAmbiguous": true,
+        "selectionLink": {
+          "sourceRoute": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB",
+          "sourceRawSha256": "51512469ae7c1760bfdb9b055160c12aa34b0de0b79427efa17215c0ee39dc82",
+          "sourceObjectIndex": 16,
+          "selectedFieldPath": [
+            "Field_775480e0"
+          ],
+          "import": {
+            "fileGuid": "7cc274f1-adcf-4af3-a70a-4a5eb96a5798",
+            "classGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78"
+          },
+          "targetObjectIndex": 2,
+          "targetObjectGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78",
+          "selectionControl": {
+            "comparisonSha256": "000fcb4c84a71143a74cd0bd876ac7a95c0c8b7dc7211dd5bce64c23131bf708",
+            "assertions": 12,
+            "failures": 0
+          },
+          "edgeEvidence": "decoded path and exact import GUID resolved by existing selection-control comparison",
+          "rawPointerByteCheck": false
+        },
+        "exactSchemaMatchToM4A1": true,
+        "rawChecks": [
+          {
+            "name": "hip.RecoilAmount",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_22810b21",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 3.0,
+            "rawOffset": 932,
+            "rawHex": "00004040"
+          },
+          {
+            "name": "hip.RecoilAmountMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_50b8fd5b",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 936,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "hip.RecoilAmountMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_22ce7cf3",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 940,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "hip.RecoilDirection",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_f888cb38",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": -10.0,
+            "rawOffset": 916,
+            "rawHex": "000020c1"
+          },
+          {
+            "name": "hip.RecoilDirectionVariation",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_865174fa",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 12.0,
+            "rawOffset": 920,
+            "rawHex": "00004041"
+          },
+          {
+            "name": "hip.RecoilDirectionVariationMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_7404fa33",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 924,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "hip.RecoilDirectionVariationMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_02433593",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 928,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "ads.RecoilAmount",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_22810b21",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 3.0,
+            "rawOffset": 1084,
+            "rawHex": "00004040"
+          },
+          {
+            "name": "ads.RecoilAmountMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_50b8fd5b",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 1088,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "ads.RecoilAmountMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_22ce7cf3",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 1092,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "ads.RecoilDirection",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_f888cb38",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": -10.0,
+            "rawOffset": 1068,
+            "rawHex": "000020c1"
+          },
+          {
+            "name": "ads.RecoilDirectionVariation",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_865174fa",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 12.0,
+            "rawOffset": 1072,
+            "rawHex": "00004041"
+          },
+          {
+            "name": "ads.RecoilDirectionVariationMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_7404fa33",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 1076,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "ads.RecoilDirectionVariationMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_02433593",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 1080,
+            "rawHex": "00000000"
+          }
+        ]
+      },
+      {
+        "label": "M320 HE selected",
+        "route": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+        "captureId": 1833,
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Launchers\\M320\\GS_M320HE.ebx",
+        "rawSha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+        "objectIndex": 2,
+        "objectClass": "Class_539cff9b",
+        "objectGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+        "rawOwnerTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+        "rootDescriptorClassIndex": 1774,
+        "layoutAmbiguous": true,
+        "selectionLink": {
+          "sourceRoute": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE",
+          "sourceRawSha256": "335a66ff6664d12042abe064e24aad61a9d008009b1248b7f0455d50fce656b3",
+          "sourceObjectIndex": 10,
+          "selectedFieldPath": [
+            "Field_775480e0"
+          ],
+          "import": {
+            "fileGuid": "9184d5a6-e55a-4596-8769-7f7709a1ae8a",
+            "classGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1"
+          },
+          "targetObjectIndex": 2,
+          "targetObjectGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+          "selectionControl": {
+            "comparisonSha256": "61c8bc12efd662461b72a255b3e28c06799c22ae5fc44f871ea4022b66934d79",
+            "assertions": 8,
+            "failures": 0
+          },
+          "edgeEvidence": "decoded path and exact import GUID resolved by existing selection-control comparison",
+          "rawPointerByteCheck": false
+        },
+        "exactSchemaMatchToM4A1": true,
+        "rawChecks": [
+          {
+            "name": "hip.RecoilAmount",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_22810b21",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 5.0,
+            "rawOffset": 932,
+            "rawHex": "0000a040"
+          },
+          {
+            "name": "hip.RecoilAmountMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_50b8fd5b",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 936,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "hip.RecoilAmountMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_22ce7cf3",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 940,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "hip.RecoilDirection",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_f888cb38",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 0.0,
+            "rawOffset": 916,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "hip.RecoilDirectionVariation",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_865174fa",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 0.0,
+            "rawOffset": 920,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "hip.RecoilDirectionVariationMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_7404fa33",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 924,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "hip.RecoilDirectionVariationMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_7b609515/Field_02433593",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 928,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "ads.RecoilAmount",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_22810b21",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 2.0,
+            "rawOffset": 1084,
+            "rawHex": "00000040"
+          },
+          {
+            "name": "ads.RecoilAmountMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_50b8fd5b",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 1088,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "ads.RecoilAmountMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_22ce7cf3",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 1092,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "ads.RecoilDirection",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_f888cb38",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 0.0,
+            "rawOffset": 1068,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "ads.RecoilDirectionVariation",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_865174fa",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 0.0,
+            "rawOffset": 1072,
+            "rawHex": "00000000"
+          },
+          {
+            "name": "ads.RecoilDirectionVariationMultiplier",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_7404fa33",
+            "type": "float32",
+            "typeCode": 19,
+            "decodedValue": 1.0,
+            "rawOffset": 1076,
+            "rawHex": "0000803f"
+          },
+          {
+            "name": "ads.RecoilDirectionVariationMultiplierExponent",
+            "fieldPath": "/Field_c5d1c8fe/Field_6b84de87/Field_02433593",
+            "type": "int32",
+            "typeCode": 15,
+            "decodedValue": 0,
+            "rawOffset": 1080,
+            "rawHex": "00000000"
+          }
+        ]
+      }
+    ]
+  },
+  "inference": [
+    "The saved M4A1 WPM selection checks resolve WPM_UBL_M26DB object 16 and WPM_UBL_M320HE object 10 through Field_775480e0 imports to the exact GunSway file/object GUIDs above.",
+    "These are possible optional secondary recoil inputs. The current rifle-primary recoil model is not shown wrong."
+  ],
+  "unresolved": [
+    "Both target decoder records retain layoutAmbiguous=true.",
+    "The saved selection links are decoded-path/import evidence; rawPointerByteCheck is false for both.",
+    "Native activation, attachment selection behavior, recoil composition or stacking, units, and final recoil remain unresolved."
+  ],
+  "siteImpact": {
+    "classification": "possible optional secondary recoil inputs only",
+    "primaryModelDefectShown": false,
+    "numericImplementationProposed": false,
+    "captureProposed": false
+  },
+  "reproduction": {
+    "commandHashIndex": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\command-hash-index.json",
+      "sha256": "f1137695d320f01492bc2d4786a93218982bccaeaae8e4a3f06624c4f98ff766"
+    },
+    "commandReproductionAddendum": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\command-reproduction-addendum.json",
+      "sha256": "f5fb121855a08e93d10f6a50e5ac44fc8db053e4c12f5c13a968329f8c5fcbfd",
+      "successfulCommandCount": 14,
+      "commandRepresentation": "14 concrete reconstructions from the frozen command index, helper arguments and saved paths; original shell transcript was not retained.",
+      "processLimits": [
+        "not accepted; the preliminary custom traversal did not reliably resolve the nested inline recoil path; its exact low-level cause and diagnostics were not retained. The existing decoder, v2 schema plan, established typed scanner and exact descriptor comparison supplied the corrected evidence.",
+        "initial plan declared the four aim-specific multiplier-exponent operands as float32; the initial scan attempt failed its type check; v2 types the exponent fields as int32 and the 14/14 control passes. Exact initial stdout/stderr was not retained.",
+        "four packaging-only runs stopped before writing final receipts; final packaging succeeded. Intermediate diagnostics and helper snapshots were not retained."
+      ]
+    },
+    "parentRawReview": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l81-raw-review.json",
+      "sha256": "9f955bfdbe1aba59fbd9b05bbc309a28433bd510a7884dcd6ba5ec50a7b0dab8",
+      "note": "Astra directly reread the selected amount operands from the target raw bytes."
+    }
+  },
+  "evidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\result.json",
+      "sha256": "54f8b2025a1d287ef10585c3caade1a843b0d68f3f52c7ae164eeae60bb8914c"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\target-gs-raw-check.json",
+      "sha256": "fd532137bcc74926def6d07ffaa4e1484f9c16f4e5f118aa1906af8f96a29ea6"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\schema-identity-comparison.json",
+      "sha256": "c31bfc1e1ce8719a635c94c5854170e4cbc7ee8c48cfe98fe27a0fbf1bc5c6f4"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\selection-path-check-v2.json",
+      "sha256": "dda9ce6a4f86060c3577635ad514202630d904a0ed41a4b3febb4f3e14f6cfee"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\m4a1-control-scan-v2.json",
+      "sha256": "aab4664d559da10373c06a3a967ecea24ee397bd2f33ff48474812c3921e9cdb"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\command-hash-index.json",
+      "sha256": "f1137695d320f01492bc2d4786a93218982bccaeaae8e4a3f06624c4f98ff766"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L81\\command-reproduction-addendum.json",
+      "sha256": "f5fb121855a08e93d10f6a50e5ac44fc8db053e4c12f5c13a968329f8c5fcbfd"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l81-raw-review.json",
+      "sha256": "9f955bfdbe1aba59fbd9b05bbc309a28433bd510a7884dcd6ba5ec50a7b0dab8"
+    }
+  ]
+}
