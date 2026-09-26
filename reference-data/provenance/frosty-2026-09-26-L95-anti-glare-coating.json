@@ -1,0 +1,454 @@
+{
+  "lead": "L95",
+  "date": "2026-09-26",
+  "status": "bounded_source_pass_complete_numeric_effect_unresolved",
+  "parents": [
+    "L65",
+    "L66",
+    "L94"
+  ],
+  "build": {
+    "release": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Can the six sniper Anti Glare choices support a named glint reduction percentage on the Analyzer?",
+  "controls": {
+    "NoFlare": {
+      "status": "passed",
+      "asset": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\FX\\Weapons\\LensFlareData\\WeaponLensFlareData_NoFlare.ebx",
+      "rawSha256": "418210e2a53bfe069bc7c63082a7e9cea27baff3d274bc43c8daef48abd9f0af",
+      "objectClass": "Class_cfb19bdc",
+      "objectGuid": "da180ccb-757b-495f-beba-98681debcc4f",
+      "field": "Field_3062d390",
+      "decodedValue": [],
+      "rawChecks": [
+        {
+          "offset": 160,
+          "bytesHex": "40000000",
+          "meaning": "array pointer"
+        },
+        {
+          "offset": 220,
+          "bytesHex": "00000000",
+          "decodedUint32LE": 0,
+          "meaning": "array count"
+        }
+      ]
+    },
+    "M2010IronSelectedRoute": {
+      "status": "passed",
+      "rawGuidAndCountChecks": 9,
+      "receipt": "selection/control-check.json"
+    }
+  },
+  "selectedRoutes": [
+    {
+      "weapon": "M2010ESR",
+      "baseline": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_M2010ESR",
+        "fileGuid": "cf47381b-bed1-4c11-99b8-48d5ca39c28e",
+        "classGuid": "f9c1b38a-3f4d-4c35-9ae6-43f0b14e8b9e",
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c"
+      },
+      "coatingOverride": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_M2010ESR_AG",
+        "fileGuid": "6e8b3816-f6f1-49fc-8988-bc0196444633",
+        "classGuid": "6b63f500-84da-4722-b09b-b8fab70582be",
+        "fieldPath": "$.Field_d9effc5c"
+      },
+      "abilitySelector": {
+        "asset": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_AGCoating",
+        "guid": "8e55fcac-6efe-4843-a2a1-81beae8f6824"
+      },
+      "wbMembership": {
+        "sourceXml": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/WPM_SCA_AGCoating_M2010ESR.xml",
+        "guid": "3ef122d4-3b4d-4822-b5bb-e09eb906f191"
+      }
+    },
+    {
+      "weapon": "MiniFix",
+      "baseline": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_MiniFix",
+        "fileGuid": "f9580691-0bda-4e98-9efc-cdfcb06de481",
+        "classGuid": "61e04874-2cbe-4f0c-bd7e-0b4b12035af8",
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c"
+      },
+      "coatingOverride": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_MiniFix_AG",
+        "fileGuid": "b3bc4297-2231-474d-a359-2d8129b2a855",
+        "classGuid": "ff2a11f4-8a83-42e6-8000-0f19ebc738e0",
+        "fieldPath": "$.Field_d9effc5c"
+      },
+      "abilitySelector": {
+        "asset": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_AGCoating",
+        "guid": "8e55fcac-6efe-4843-a2a1-81beae8f6824"
+      },
+      "wbMembership": {
+        "sourceXml": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/WPM_SCA_AGCoating_MiniFix.xml",
+        "guid": "fe24760b-a371-4169-bacf-0e5892c5c9c0"
+      }
+    },
+    {
+      "weapon": "MRAD",
+      "baseline": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_MRAD",
+        "fileGuid": "28e4e1eb-2bd4-41b7-8e47-dfc2384d5f70",
+        "classGuid": "09e5ebd3-c623-4233-b820-5b0c542c7b0f",
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c"
+      },
+      "coatingOverride": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_MRAD_AG",
+        "fileGuid": "99e80c44-8af4-44a8-a7f1-e2ac34f12830",
+        "classGuid": "31cbde54-4203-4d2f-a371-20809481ea74",
+        "fieldPath": "$.Field_d9effc5c"
+      },
+      "abilitySelector": {
+        "asset": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_AGCoating",
+        "guid": "8e55fcac-6efe-4843-a2a1-81beae8f6824"
+      },
+      "wbMembership": {
+        "sourceXml": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/WPM_SCA_AGCoating_MRAD.xml",
+        "guid": "086d1fdb-dabd-4970-ae28-638f9755fd17"
+      }
+    },
+    {
+      "weapon": "SV98M",
+      "baseline": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_SV98M",
+        "fileGuid": "ccae0478-fbea-4e00-ba77-c1d2f370e9b1",
+        "classGuid": "105f86b4-05d4-4cdf-bf72-ca42a2cdd5de",
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c"
+      },
+      "coatingOverride": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_SV98M_AG",
+        "fileGuid": "573a04e3-b048-43a1-939b-b40057a35bee",
+        "classGuid": "33ac9d0c-e5c9-409e-9898-564ae1488472",
+        "fieldPath": "$.Field_d9effc5c"
+      },
+      "abilitySelector": {
+        "asset": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_AGCoating",
+        "guid": "8e55fcac-6efe-4843-a2a1-81beae8f6824"
+      },
+      "wbMembership": {
+        "sourceXml": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/WPM_SCA_AGCoating_SV98M.xml",
+        "guid": "db3dceb9-6593-4281-8921-e870d4c13fd1"
+      }
+    },
+    {
+      "weapon": "L115A3",
+      "baseline": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_L115A3",
+        "fileGuid": "70c7cbe4-798b-426b-895e-274a25f87094",
+        "classGuid": "5b50cf01-39c9-4454-92cc-4a626fe9a72b",
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c"
+      },
+      "coatingOverride": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_MRAD_AG",
+        "fileGuid": "99e80c44-8af4-44a8-a7f1-e2ac34f12830",
+        "classGuid": "31cbde54-4203-4d2f-a371-20809481ea74",
+        "fieldPath": "$.Field_d9effc5c"
+      },
+      "abilitySelector": {
+        "asset": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_AGCoating",
+        "guid": "8e55fcac-6efe-4843-a2a1-81beae8f6824"
+      },
+      "wbMembership": {
+        "sourceXml": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/WPM_SCA_AGCoating_L115A3.xml",
+        "guid": "b0c0f15d-eb5d-4443-bbb6-3630905db821"
+      }
+    },
+    {
+      "weapon": "DesertTechHTI",
+      "baseline": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_DesertTechHTI_AG",
+        "fileGuid": "2c6318b3-7ce0-42a6-9561-ed5ba92eae0b",
+        "classGuid": "469e9fac-bdbe-44e9-8cc5-c826966333fb",
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c"
+      },
+      "coatingOverride": {
+        "path": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_DesertTechHTI_AG",
+        "fileGuid": "2c6318b3-7ce0-42a6-9561-ed5ba92eae0b",
+        "classGuid": "469e9fac-bdbe-44e9-8cc5-c826966333fb",
+        "fieldPath": "$.Field_d9effc5c"
+      },
+      "abilitySelector": {
+        "asset": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/U_WPM_SCA_AGCoating",
+        "guid": "8e55fcac-6efe-4843-a2a1-81beae8f6824"
+      },
+      "wbMembership": {
+        "sourceXml": "Common/Hardware/Weapons/_Attachments/_Shared/VariableZoom/WPM_SCA_AGCoating_DesertTechHTI.xml",
+        "guid": "1bc3579d-ce11-4b3d-bc51-6c124dcd5176"
+      }
+    }
+  ],
+  "descriptorTypes": {
+    "ownerClass": "Class_cfb19bdc",
+    "elementClass": "Class_4a5244d7",
+    "arrayField": {
+      "hash": "Field_3062d390",
+      "elementDescriptorIndex": 787
+    },
+    "fields": {
+      "Field_2e15621f": {
+        "kind": "INT64",
+        "kindCode": 18,
+        "category": 0,
+        "elementOffset": 200,
+        "classRef": 65535
+      },
+      "Field_c998527d": {
+        "kind": "STRUCT",
+        "kindCode": 2,
+        "category": 0,
+        "elementOffset": 208,
+        "classRef": 655,
+        "structClass": "Class_39ab6941",
+        "structSize": 8,
+        "structAlignment": 4,
+        "components": [
+          {
+            "hash": "Field_3901db14",
+            "kind": "FLOAT32",
+            "kindCode": 19,
+            "offset": 0
+          },
+          {
+            "hash": "Field_42fc0f5e",
+            "kind": "FLOAT32",
+            "kindCode": 19,
+            "offset": 4
+          }
+        ]
+      }
+    }
+  },
+  "componentPattern": [
+    {
+      "record": 0,
+      "base": [
+        0.015,
+        0.015
+      ],
+      "coating": [
+        0.007,
+        0.007
+      ],
+      "approximateStoredComponentReductionPercent": [
+        53.3333,
+        53.3333
+      ]
+    },
+    {
+      "record": 1,
+      "base": [
+        0.03,
+        0.015
+      ],
+      "coating": [
+        0.015,
+        0.01
+      ],
+      "approximateStoredComponentReductionPercent": [
+        50,
+        33.3333
+      ]
+    },
+    {
+      "record": 2,
+      "base": [
+        0.06,
+        0.015
+      ],
+      "coating": [
+        0.03,
+        0.01
+      ],
+      "approximateStoredComponentReductionPercent": [
+        50,
+        33.3333
+      ]
+    },
+    {
+      "record": 3,
+      "base": [
+        0.06,
+        0.06
+      ],
+      "coating": [
+        0.03,
+        0.03
+      ],
+      "approximateStoredComponentReductionPercent": [
+        50,
+        50
+      ]
+    }
+  ],
+  "comparisonScope": {
+    "fourPriorPairs": [
+      "M2010ESR",
+      "MiniFix",
+      "MRAD",
+      "SV98M"
+    ],
+    "additionalActualPair": "L115A3 -> MRAD_AG",
+    "MiniFixRecords": 3,
+    "otherComparedRecords": 4,
+    "changedFields": [
+      "Field_3062d390[*].Field_2e15621f (INT64)",
+      "Field_3062d390[*].Field_c998527d (two FLOAT32 components)"
+    ],
+    "Interdictor": "WB flare field and coating WPM reference the same DesertTechHTI_AG file and object. This is not evidence of zero gameplay benefit."
+  },
+  "parentReview": {
+    "float32WordsReadDirectly": 60,
+    "criticalPointerWordsReadDirectly": 4,
+    "criticalImportGuidSequencesReadDirectly": 8,
+    "criticalReferences": [
+      {
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\DesertTechHTI_WB.ebx",
+        "sha256": "f6c269d06a65c296bbc03f0accd09d314ad1987f31d0fa08c4de9b9b70b2e889",
+        "objectIndex": 15,
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c",
+        "pointerOffset": 7064,
+        "pointerBytes": "2b010000",
+        "fileGuidOffset": 21486,
+        "objectGuidOffset": 21502,
+        "fileGuid": "2c6318b3-7ce0-42a6-9561-ed5ba92eae0b",
+        "objectGuid": "469e9fac-bdbe-44e9-8cc5-c826966333fb",
+        "targetRoute": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_DesertTechHTI_AG"
+      },
+      {
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\L115A3\\L115A3_WB.ebx",
+        "sha256": "0ea5ee85a866abb9ba4d6a2cb20cabc07f0fb2a59983c2bdd318160a814e9024",
+        "objectIndex": 15,
+        "fieldPath": "$.Field_d9effc5c.Field_d9effc5c",
+        "pointerOffset": 7064,
+        "pointerBytes": "85010000",
+        "fileGuidOffset": 23512,
+        "objectGuidOffset": 23528,
+        "fileGuid": "70c7cbe4-798b-426b-895e-274a25f87094",
+        "objectGuid": "5b50cf01-39c9-4454-92cc-4a626fe9a72b",
+        "targetRoute": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_L115A3"
+      },
+      {
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\_Shared\\VariableZoom\\WPM_SCA_AGCoating_DesertTechHTI.ebx",
+        "sha256": "616cebebab6de384951e4047f5817b256e5b4e9e82c2f74b852ae2a53cd4720f",
+        "objectIndex": 1,
+        "fieldPath": "$.Field_d9effc5c",
+        "pointerOffset": 152,
+        "pointerBytes": "01000000",
+        "fileGuidOffset": 554,
+        "objectGuidOffset": 570,
+        "fileGuid": "2c6318b3-7ce0-42a6-9561-ed5ba92eae0b",
+        "objectGuid": "469e9fac-bdbe-44e9-8cc5-c826966333fb",
+        "targetRoute": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_DesertTechHTI_AG"
+      },
+      {
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\_Shared\\VariableZoom\\WPM_SCA_AGCoating_L115A3.ebx",
+        "sha256": "51a7953079f97670fd23196fdd7f9244ea933c3149055e75aabe6c81cd64c15b",
+        "objectIndex": 1,
+        "fieldPath": "$.Field_d9effc5c",
+        "pointerOffset": 152,
+        "pointerBytes": "01000000",
+        "fileGuidOffset": 548,
+        "objectGuidOffset": 564,
+        "fileGuid": "99e80c44-8af4-44a8-a7f1-e2ac34f12830",
+        "objectGuid": "31cbde54-4203-4d2f-a371-20809481ea74",
+        "targetRoute": "Common/FX/Weapons/LensFlareData/WeaponLensFlareData_MRAD_AG"
+      }
+    ],
+    "acceptance": "Accepted serialized routes, field types, operand differences and bounded naming limit. No native or numeric glint conclusion accepted."
+  },
+  "namingScope": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-sdk-field-types.json",
+    "sha256": "8d60d86fcf470429c8623e108fedfe830ee6556db8873e8e5221a6bbc53b86ed",
+    "hashesQueried": [
+      "2e15621f",
+      "c998527d",
+      "39ab6941"
+    ],
+    "exactHitCount": 0
+  },
+  "limits": [
+    "INT64 purpose and the two FLOAT32 component meanings and units remain unnamed. The curated SDK map search is bounded; it does not show that names are unavailable everywhere.",
+    "Component ratios are not established size, intensity, distance, angle, visibility or rendered-glint percentages. No averaging or area calculation is justified.",
+    "Runtime activation, composition, optic/zoom coverage and rendered outcome remain unresolved. WB root layout warnings remain in the decoded evidence.",
+    "L115 and Interdictor have new raw field-pointer and full import-pair checks. Other four selected routes use decoded EBX and reused L66 direct-call evidence; not every route edge has a new pointer-word check.",
+    "Direct localization, game observation and decoy behavior were not added in this pass. No site data, simulation or UI changes."
+  ],
+  "siteDecision": {
+    "numericEffect": null,
+    "proposal": "Leave the numeric glint effect unset. No uniform glint reduction percentage is supported.",
+    "descriptiveUtility": "Deferred; no direct localization was accepted in this pass.",
+    "Interdictor": "Retain as a source exception for later verification; do not label it a gameplay bug or 0% effect."
+  },
+  "reopenWhen": [
+    "A typed field definition or consumer establishes what Field_c998527d and its components control.",
+    "A measurement defines and tests a specific glint quantity and activation state.",
+    "The selected source assets change."
+  ],
+  "evidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\fields\\draft-receipt.json",
+      "sha256": "e34a7aea91620b74001834cac5ff3c63ef7bbfdd46160043714065dfed832edf",
+      "note": "Field receipt and exact commands/helper hashes"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\fields\\result.json",
+      "sha256": "fd40e50aa2a9da8d5a02bf2d70dc1a0ff2228a034c1a1c845a4cd3f4ed090824",
+      "note": "Four pairs with raw field checks and exact float32 values"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\fields\\l115-actual-route-comparison.json",
+      "sha256": "5467124de7d4c8595aafd6f02a13ca6c5c9e9f06316a347d63b44575a5e45f2a",
+      "note": "Actual selected L115 pair; 24 changed-leaf raw checks"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\fields\\semantic-name-check.json",
+      "sha256": "9feab58a8d8e5beb5ac00386566f81f3471dc051acdf4d68a50d4e2493a078dd",
+      "note": "Bounded SDK name search"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\fields\\command-ledger.json",
+      "sha256": "c5c9a20bcd28414fa1abd81d015597ad4df28b9507be0c7f89750c885a81f3d3",
+      "note": "Field extraction command provenance"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\selection\\draft-receipt.json",
+      "sha256": "6138ed0aa9acdd43577b1f60fe40c94979d35c15b5c3234908a8ca19e68ef1a8",
+      "note": "Six selected routes, command and helper provenance"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\selection\\result.json",
+      "sha256": "869dad9e705e078ed9ebaf45f6b5a5cbf7b47c4d7bdf08efb080227938f4ac89",
+      "note": "Route details and critical raw checks"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\selection\\control-check.json",
+      "sha256": "a99c40a360f40acd40fb09078863284483d9bee4f6546104ee09733795879cff",
+      "note": "M2010 iron/NoFlare control"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\parent-float32-review.json",
+      "sha256": "37553b0cb4bfef7f65d219452e6ae47fd95547e4e9775303d72918f6259e9869",
+      "note": "Independent direct FLOAT32 reads"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\parent-pointer-review.json",
+      "sha256": "2ecad254844d854c487c73d8ae8347a44bb2c77dfa26c99f171cdefe727c54f3",
+      "note": "Independent critical pointer and GUID reads"
+    }
+  ],
+  "assembly": {
+    "command": {
+      "executable": "C:\\Users\\royal\\AppData\\Local\\Programs\\Python\\Python312\\python.exe",
+      "argv": [
+        "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-antiglare\\1.4.3.0\\L95\\finalize_receipt.py"
+      ],
+      "cwd": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer"
+    },
+    "helperSha256": "c13afcdec6e0045a9d853076b25e70cee80ff4af8bf29814a9ed78bafed1fdef"
+  }
+}

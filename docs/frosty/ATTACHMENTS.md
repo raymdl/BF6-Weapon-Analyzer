@@ -590,6 +590,31 @@ their individual names and native application are not established. The
 [weapon zeroing blocks](WEAPONS.md#zeroing-source-configuration-1430-23-september-2026)
 provide named scalar limits and raw integer lists, with separate runtime limits.
 
+### Anti Glare coating flare fields (1.4.3.0, 26 September 2026)
+
+The [L95 source receipt](../../reference-data/provenance/frosty-2026-09-26-L95-anti-glare-coating.json)
+records six selected sniper routes. Four same-weapon pairs and the actual
+L115A3 baseline → MRAD_AG route change only per-record INT64
+`Field_2e15621f` and a two-FLOAT32 `Field_c998527d` structure. The INT64 is not
+an EBX resource reference. Both fields lack verified semantic names; the tuple's
+components are `Field_3901db14` and `Field_42fc0f5e`.
+
+| Record | Component 1: base → coating | Stored reduction | Component 2: base → coating | Stored reduction |
+|---:|---:|---:|---:|---:|
+| 0 | 0.015 → 0.007 | 53.3% | 0.015 → 0.007 | 53.3% |
+| 1 | 0.03 → 0.015 | 50.0% | 0.015 → 0.01 | 33.3% |
+| 2 | 0.06 → 0.03 | 50.0% | 0.015 → 0.01 | 33.3% |
+| 3 | 0.06 → 0.03 | 50.0% | 0.06 → 0.03 | 50.0% |
+
+MiniFix has three records; the other numeric comparisons have four. These are
+stored component ratios only, not intensity, size, distance, angle, or
+rendered-glint percentages. The Interdictor WB and coating WPM resolve to the
+same serialized `WeaponLensFlareData_DesertTechHTI_AG` file/object; this source
+equality does not establish runtime effect. Runtime activation and composition
+remain unknown. No numeric site change is supported, and a descriptive utility
+entry is deferred pending direct localization. Reopen for a typed field
+name/consumer or a measurement of a defined glint quantity.
+
 ### SGX suppressor sway identity (1.4.3.0, 23 September 2026)
 
 The [current SGX lineage review](../../reference-data/provenance/frosty-site-sgx-sway-lineage-2026-09-23.json)
