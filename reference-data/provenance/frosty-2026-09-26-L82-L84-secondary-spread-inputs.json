@@ -1,0 +1,251 @@
+{
+  "date": "2026-09-26",
+  "lead": "L82/L84",
+  "title": "Ordinary M4A1 selected M26/M320 HE secondary spread inputs",
+  "status": "accepted-serialized-source-inputs",
+  "build": {"release":"1.4.3.0","archiveHead":4892017,"descriptorSha256":"91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2","descriptorPath":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx"},
+  "question": "Which serialized HDA/ZDA selector candidates, per-shot increments and local MinAngle/MaxAngle values are present on the ordinary M4A1-selected M26DB and M320 HE secondary owners?",
+  "sourceFacts": {
+    "selectedOwners": [
+      {
+        "profile": "M26DB",
+        "gsRoute": "Common/Hardware/Gadgets/Underbarrels/M26Mass00Buck/GS_M26Mass",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Underbarrels\\M26Mass00Buck\\GS_M26Mass.ebx",
+        "rawSha256": "f31d17adeb7f8d86a8015597f4c78677c68c832a3dedd4185faa2e16d418a83b",
+        "captureId": 1867,
+        "objectIndex": 2,
+        "objectGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78",
+        "class": "Class_539cff9b",
+        "rootTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+        "rootDescriptorIndex": 1774,
+        "layoutAmbiguous": true,
+        "selectedWpmImport": {"sourceRoute":"Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB","sourceRawSha256":"51512469ae7c1760bfdb9b055160c12aa34b0de0b79427efa17215c0ee39dc82","sourceObjectIndex":16,"selectionFieldPath":["Field_775480e0"],"import":{"fileGuid":"7cc274f1-adcf-4af3-a70a-4a5eb96a5798","classGuid":"3df09255-db7e-4fcf-9006-254ec32fdc78"},"rawPointerByteCheck":false}
+      },
+      {
+        "profile": "M320 HE",
+        "gsRoute": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Launchers\\M320\\GS_M320HE.ebx",
+        "rawSha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+        "captureId": 1833,
+        "objectIndex": 2,
+        "objectGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+        "class": "Class_539cff9b",
+        "rootTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+        "rootDescriptorIndex": 1774,
+        "layoutAmbiguous": true,
+        "selectedWpmImport": {"sourceRoute":"Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE","sourceRawSha256":"335a66ff6664d12042abe064e24aad61a9d008009b1248b7f0455d50fce656b3","sourceObjectIndex":10,"selectionFieldPath":["Field_775480e0"],"import":{"fileGuid":"9184d5a6-e55a-4596-8769-7f7709a1ae8a","classGuid":"33f78a74-f833-409c-97b3-9df15bdea3b1"},"rawPointerByteCheck":false}
+      }
+    ],
+    "selectorRawWords": [
+      {"profile":"M26DB","gsRoute":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Underbarrels\\M26Mass00Buck\\GS_M26Mass.ebx","gsRawSha256":"f31d17adeb7f8d86a8015597f4c78677c68c832a3dedd4185faa2e16d418a83b","field":"Field_fe708077","descriptorType":"UINT32","fieldFlags":256,"debugTypeCode":16,"rawOffset":1856,"bytesHex":"00000000","value":0},
+      {"profile":"M26DB","gsRoute":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Underbarrels\\M26Mass00Buck\\GS_M26Mass.ebx","gsRawSha256":"f31d17adeb7f8d86a8015597f4c78677c68c832a3dedd4185faa2e16d418a83b","field":"Field_d94fe6ad","descriptorType":"UINT32","fieldFlags":256,"debugTypeCode":16,"rawOffset":1888,"bytesHex":"00000000","value":0},
+      {"profile":"M320 HE","gsRoute":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Launchers\\M320\\GS_M320HE.ebx","gsRawSha256":"f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7","field":"Field_fe708077","descriptorType":"UINT32","fieldFlags":256,"debugTypeCode":16,"rawOffset":1856,"bytesHex":"00000000","value":0},
+      {"profile":"M320 HE","gsRoute":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Launchers\\M320\\GS_M320HE.ebx","gsRawSha256":"f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7","field":"Field_d94fe6ad","descriptorType":"UINT32","fieldFlags":256,"debugTypeCode":16,"rawOffset":1888,"bytesHex":"00000000","value":0}
+    ],
+    "candidateTableAssociation": {
+      "basis": "For each selected GS owner, both descriptor-typed UINT32 selectors store list index 0. The L82 association matches that number to element 0 of the separately identified shared HDA/ZDA arrays. This is a candidate table association; it is not a direct GS import, effective GS reference or runtime selection.",
+      "tables": [
+        {
+          "candidateTable": "HDA_Weapons",
+          "route": "Common/Hardware/Common/Arrays/DispersionHip/HDA_Weapons",
+          "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Common\\Arrays\\DispersionHip\\HDA_Weapons.ebx",
+          "rawSha256": "b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012",
+          "arrayReferenceField": "Field_d37c6521",
+          "arrayOwnerObjectIndex": 0,
+          "arrayOwnerGuid": "7bd4f96a-76a2-4564-b478-74b4129232c1",
+          "arrayCount": 18,
+          "selectorField": "Field_d37c6521",
+          "selectorValue": 0,
+          "candidateListIndex": 0,
+          "rowCandidateObjectIndex": 7,
+          "rowCandidateGuid": "46eb3c69-6c5c-4cf5-9925-86fad1603a93",
+          "rowCandidateClass": "Class_d37c6521",
+          "controlIndex": 3,
+          "controlRowObjectIndex": 8,
+          "controlRowGuid": "9df09683-7383-42cb-ac0f-f0083da9ac3d",
+          "controlRowClass": "Class_d37c6521",
+          "sameRowClassDescriptor": true,
+          "field": "Field_1867639b",
+          "candidateName": "hipStandingCandidate",
+          "symField": "HIPStandBaseMin",
+          "type": "FLOAT32",
+          "value": 7.400000095367432,
+          "rawOffset": 608,
+          "bytesHex": "cdccec40"
+        },
+        {
+          "candidateTable": "HDA_Weapons",
+          "route": "Common/Hardware/Common/Arrays/DispersionHip/HDA_Weapons",
+          "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Common\\Arrays\\DispersionHip\\HDA_Weapons.ebx",
+          "rawSha256": "b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012",
+          "arrayReferenceField": "Field_d37c6521",
+          "arrayOwnerObjectIndex": 0,
+          "arrayOwnerGuid": "7bd4f96a-76a2-4564-b478-74b4129232c1",
+          "arrayCount": 18,
+          "selectorField": "Field_d37c6521",
+          "selectorValue": 0,
+          "candidateListIndex": 0,
+          "rowCandidateObjectIndex": 7,
+          "rowCandidateGuid": "46eb3c69-6c5c-4cf5-9925-86fad1603a93",
+          "rowCandidateClass": "Class_d37c6521",
+          "controlIndex": 3,
+          "controlRowObjectIndex": 8,
+          "controlRowGuid": "9df09683-7383-42cb-ac0f-f0083da9ac3d",
+          "controlRowClass": "Class_d37c6521",
+          "sameRowClassDescriptor": true,
+          "field": "Field_c5401fc2",
+          "candidateName": "hipMovingCandidate",
+          "symField": "HIPStandMoveMin",
+          "type": "FLOAT32",
+          "value": 9.25,
+          "rawOffset": 612,
+          "bytesHex": "00001441"
+        },
+        {
+          "candidateTable": "ZDA_Moving_Weapons",
+          "route": "Common/Hardware/Common/Arrays/DispersionADS/ZDA_Moving_Weapons",
+          "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Common\\Arrays\\DispersionADS\\ZDA_Moving_Weapons.ebx",
+          "rawSha256": "24f8a82f7deb2b642310f818170a670b71b2f0e56b4aaf46e9857bb8e67625c6",
+          "arrayReferenceField": "Field_ed5a92bf",
+          "arrayOwnerObjectIndex": 0,
+          "arrayOwnerGuid": "a6dfab2f-b73e-4f91-ad65-ee129fcafe59",
+          "arrayCount": 7,
+          "selectorField": "Field_ed5a92bf",
+          "selectorValue": 0,
+          "candidateListIndex": 0,
+          "rowCandidateObjectIndex": 5,
+          "rowCandidateGuid": "e60b45bf-2d00-4bab-816d-22e65706b309",
+          "rowCandidateClass": "Class_ed5a92bf",
+          "controlIndex": 3,
+          "controlRowObjectIndex": 3,
+          "controlRowGuid": "ce4cb78c-51a2-48b7-95fa-c34b82d52838",
+          "controlRowClass": "Class_ed5a92bf",
+          "sameRowClassDescriptor": true,
+          "field": "Field_6c73f45b",
+          "candidateName": "adsMovingStandingCandidate",
+          "symField": "ADSStandMoveMin",
+          "type": "FLOAT32",
+          "value": 0.6800000071525574,
+          "rawOffset": 392,
+          "bytesHex": "7b142e3f"
+        }
+      ],
+      "nameCrosswalk": {
+        "basis": "Hash-to-candidate and candidate-to-Sym dictionaries in the existing audit. Numeric equality was not used to assign the source field names.",
+        "explicitSourceMapping": [{"table":"HDA_Weapons","field":"Field_1867639b","candidateName":"hipStandingCandidate","symField":"HIPStandBaseMin"},{"table":"HDA_Weapons","field":"Field_c5401fc2","candidateName":"hipMovingCandidate","symField":"HIPStandMoveMin"},{"table":"ZDA_Moving_Weapons","field":"Field_6c73f45b","candidateName":"adsMovingStandingCandidate","symField":"ADSStandMoveMin"}],
+        "mappingScriptSha256": "35480168f8b89f93aef6630fee7a513f5735c21e9a0eee0864da8de3aec6454b",
+        "mappingScriptPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-site-constants-audit.py",
+        "namedSymAuditPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-constants-live-byte-sym-audit-2026-09-23.json",
+        "namedSymAuditSha256": "15fd2aef2c395b8308279407fbcd983e003186aab24f1650606e09f85672e282",
+        "candidateWarning": ["H1-H5 labels remain provisional; the raw HDA fields and per-weapon indices are reported without claiming gameplay state consumption.","ZDA row is selected by the direct source ref-list order and per-weapon GS Field_d94fe6ad, not by sorting values.","The Analyzer exposes standing/moving spread bounds; crouch/prone HDA candidates and prone ADS candidate are not current displayed site fields."]
+      }
+    },
+    "stationaryIncreasePerShot": [{"profile":"M26DB","aim":"hip","fieldPath":"Field_0a5922e0/Field_7b609515/Field_0a160c57/Field_0084b1d1","type":"FLOAT32","value":1.0,"rawOffset":568,"bytesHex":"0000803f"},{"profile":"M26DB","aim":"ads","fieldPath":"Field_0a5922e0/Field_6b84de87/Field_0a160c57/Field_0084b1d1","type":"FLOAT32","value":1.0,"rawOffset":736,"bytesHex":"0000803f"},{"profile":"M320 HE","aim":"hip","fieldPath":"Field_0a5922e0/Field_7b609515/Field_0a160c57/Field_0084b1d1","type":"FLOAT32","value":0.5,"rawOffset":568,"bytesHex":"0000003f"},{"profile":"M320 HE","aim":"ads","fieldPath":"Field_0a5922e0/Field_6b84de87/Field_0a160c57/Field_0084b1d1","type":"FLOAT32","value":0.5,"rawOffset":736,"bytesHex":"0000003f"}],
+    "localMinMaxDispersion": [
+      {
+        "asset": "M26DB selected",
+        "route": "Common/Hardware/Gadgets/Underbarrels/M26Mass00Buck/GS_M26Mass",
+        "captureId": 1867,
+        "objectIndex": 2,
+        "objectGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Underbarrels\\M26Mass00Buck\\GS_M26Mass.ebx",
+        "rawSha256": "f31d17adeb7f8d86a8015597f4c78677c68c832a3dedd4185faa2e16d418a83b",
+        "rootTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+        "rootDescriptorIndex": 1774,
+        "layoutAmbiguous": true,
+        "array": {"fieldPath":"/Field_a1ec29c4","pointerByteOffset":256,"pointerBytesHex":"08070000","resolvedArrayOffset":2024,"arrayDataAbsoluteOffset":2056,"arrayCount":60},
+        "rows": [
+          {"row":0,"context":"hipStand","min":{"fieldPath":"/Field_a1ec29c4/0/Field_7baf4297","value":1.5,"rawOffset":2056,"bytesHex":"0000c03f"},"max":{"fieldPath":"/Field_a1ec29c4/0/Field_60e4e484","value":1.5,"rawOffset":2060,"bytesHex":"0000c03f"}},
+          {"row":1,"context":"hipMove","min":{"fieldPath":"/Field_a1ec29c4/1/Field_7baf4297","value":2.0,"rawOffset":2072,"bytesHex":"00000040"},"max":{"fieldPath":"/Field_a1ec29c4/1/Field_60e4e484","value":2.0,"rawOffset":2076,"bytesHex":"00000040"}},
+          {"row":9,"context":"adsStand","min":{"fieldPath":"/Field_a1ec29c4/9/Field_7baf4297","value":0.5,"rawOffset":2200,"bytesHex":"0000003f"},"max":{"fieldPath":"/Field_a1ec29c4/9/Field_60e4e484","value":0.5,"rawOffset":2204,"bytesHex":"0000003f"}},
+          {"row":10,"context":"adsMove","min":{"fieldPath":"/Field_a1ec29c4/10/Field_7baf4297","value":1.2000000476837158,"rawOffset":2216,"bytesHex":"9a99993f"},"max":{"fieldPath":"/Field_a1ec29c4/10/Field_60e4e484","value":1.2000000476837158,"rawOffset":2220,"bytesHex":"9a99993f"}}
+        ]
+      },
+      {
+        "asset": "M320 HE selected",
+        "route": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+        "captureId": 1833,
+        "objectIndex": 2,
+        "objectGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+        "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Launchers\\M320\\GS_M320HE.ebx",
+        "rawSha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+        "rootTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+        "rootDescriptorIndex": 1774,
+        "layoutAmbiguous": true,
+        "array": {"fieldPath":"/Field_a1ec29c4","pointerByteOffset":256,"pointerBytesHex":"08070000","resolvedArrayOffset":2024,"arrayDataAbsoluteOffset":2056,"arrayCount":60},
+        "rows": [
+          {"row":0,"context":"hipStand","min":{"fieldPath":"/Field_a1ec29c4/0/Field_7baf4297","value":1.0,"rawOffset":2056,"bytesHex":"0000803f"},"max":{"fieldPath":"/Field_a1ec29c4/0/Field_60e4e484","value":7.0,"rawOffset":2060,"bytesHex":"0000e040"}},
+          {"row":1,"context":"hipMove","min":{"fieldPath":"/Field_a1ec29c4/1/Field_7baf4297","value":1.5,"rawOffset":2072,"bytesHex":"0000c03f"},"max":{"fieldPath":"/Field_a1ec29c4/1/Field_60e4e484","value":7.0,"rawOffset":2076,"bytesHex":"0000e040"}},
+          {"row":9,"context":"adsStand","min":{"fieldPath":"/Field_a1ec29c4/9/Field_7baf4297","value":0.10000000149011612,"rawOffset":2200,"bytesHex":"cdcccc3d"},"max":{"fieldPath":"/Field_a1ec29c4/9/Field_60e4e484","value":0.30000001192092896,"rawOffset":2204,"bytesHex":"9a99993e"}},
+          {"row":10,"context":"adsMove","min":{"fieldPath":"/Field_a1ec29c4/10/Field_7baf4297","value":0.30000001192092896,"rawOffset":2216,"bytesHex":"9a99993e"},"max":{"fieldPath":"/Field_a1ec29c4/10/Field_60e4e484","value":0.699999988079071,"rawOffset":2220,"bytesHex":"3333333f"}}
+        ]
+      }
+    ],
+    "controls": {
+      "L82": {
+        "status": "pass",
+        "knownAnswer": "M433/HK433 selector and named spread-minimum control; stationary hip/ADS IncreasePerShot source/site controls.",
+        "controlValues": {"hipIncreasePerShot":0.648,"adsIncreasePerShot":0.36,"hipStanding":2.432,"hipMoving":3.04,"adsMoving":0.32},
+        "selectorWords": [{"field":"Field_fe708077","declaringClass":"Class_539cff9b","rawInstanceClassRef":2,"rootDescriptorIndex":1774,"fieldFlags":256,"debugTypeCode":16,"descriptorType":"UINT32","descriptorMemberOffset":1624,"rawOffset":1856,"bytesHex":"03000000","decodedUint32":3,"selectedTable":"HDA_Weapons","referenceField":"Field_d37c6521","arrayLength":18,"indexInRange":true},{"field":"Field_d94fe6ad","declaringClass":"Class_539cff9b","rawInstanceClassRef":2,"rootDescriptorIndex":1774,"fieldFlags":256,"debugTypeCode":16,"descriptorType":"UINT32","descriptorMemberOffset":1656,"rawOffset":1888,"bytesHex":"03000000","decodedUint32":3,"selectedTable":"ZDA_Moving_Weapons","referenceField":"Field_ed5a92bf","arrayLength":7,"indexInRange":true}],
+        "namedMinimumRawChecks": [
+          {"label":"hipStandingCandidate","path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Common\\Arrays\\DispersionHip\\HDA_Weapons.ebx","sha256":"b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012","objectIndex":8,"objectGuid":"9df09683-7383-42cb-ac0f-f0083da9ac3d","fieldPath":"HDA rows/Field_1867639b","byteOffset":688,"bytesHex":"e3a51b40","decoded":2.431999921798706,"type":"f32"},
+          {"label":"hipMovingCandidate","path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Common\\Arrays\\DispersionHip\\HDA_Weapons.ebx","sha256":"b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012","objectIndex":8,"objectGuid":"9df09683-7383-42cb-ac0f-f0083da9ac3d","fieldPath":"HDA rows/Field_c5401fc2","byteOffset":692,"bytesHex":"5c8f4240","decoded":3.0399999618530273,"type":"f32"},
+          {"label":"adsMovingStandingCandidate","path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Common\\Arrays\\DispersionADS\\ZDA_Moving_Weapons.ebx","sha256":"24f8a82f7deb2b642310f818170a670b71b2f0e56b4aaf46e9857bb8e67625c6","objectIndex":3,"objectGuid":"ce4cb78c-51a2-48b7-95fa-c34b82d52838","fieldPath":"ZDA moving ADS rows/Field_6c73f45b","byteOffset":264,"bytesHex":"0ad7a33e","decoded":0.3199999928474426,"type":"f32"}
+        ],
+        "stationaryIncreasePerShotRawChecks": {
+          "hip": {"siteField":"spreadDyn.hip.inc","path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\HK433\\GS_HK433.ebx","sha256":"66caca0e667d17fdf03f9fb4f620b9c5842aa1fd8de0221128ad4862895eed51","objectIndex":2,"objectGuid":"824bbec4-abae-4f7b-bfe7-018f0e2b0cb8","fieldPath":"/Field_0a5922e0/Field_7b609515/Field_0a160c57/Field_0084b1d1","registryName":"GS_HK433.DispersionBehavior.Unzoomed.Stationary.IncreasePerShot","byteOffset":568,"bytesHex":"54e3253f","rawFloat32":0.6480000019073486,"siteValue":0.648},
+          "ads": {"siteField":"spreadDyn.ads.inc","path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\AssaultRifle\\HK433\\GS_HK433.ebx","sha256":"66caca0e667d17fdf03f9fb4f620b9c5842aa1fd8de0221128ad4862895eed51","objectIndex":2,"objectGuid":"824bbec4-abae-4f7b-bfe7-018f0e2b0cb8","fieldPath":"/Field_0a5922e0/Field_6b84de87/Field_0a160c57/Field_0084b1d1","registryName":"GS_HK433.DispersionBehavior.Zoomed.Stationary.IncreasePerShot","byteOffset":736,"bytesHex":"ec51b83e","rawFloat32":0.36000001430511475,"siteValue":0.36}
+        },
+        "commonOwnerSchema": {"rootClass":"Class_539cff9b","rootTypeKey":"1db15dc58e7cbe6b406d78236eb07b68","rootDescriptorIndex":1774,"descriptorHash":"539cff9b","targetsMatchM4A1RootAndNestedDescriptors":true},
+        "hk433RootTypeIdentity": {"route":"Common/Hardware/Weapons/AssaultRifle/HK433/GS_HK433","rawSha256":"66caca0e667d17fdf03f9fb4f620b9c5842aa1fd8de0221128ad4862895eed51","objectIndex":2,"rawInstanceClassRef":2,"rootTypeKey":"1db15dc58e7cbe6b406d78236eb07b68","rootDescriptorIndex":1774,"rootDescriptorHash":"539cff9b"}
+      },
+      "L84": {
+        "status": "passed",
+        "asset": {"route":"Common/Hardware/Weapons/Carbine/M4A1/GS_M4A1","captureId":7949,"objectIndex":1,"objectGuid":"16c5eb00-a36c-495c-bbf6-e6a62368404a","rootClass":"Class_539cff9b","rawPath":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\GS_M4A1.ebx","rawSha256":"12d448446554821b223d9341701cc17641c705459e261fa5aedeee6c98c52674","rawOwnerTypeKey":"1db15dc58e7cbe6b406d78236eb07b68","localClassRef":1,"rootDescriptorIndex":1774,"layoutAmbiguous":true},
+        "array": {"fieldPath":"/Field_a1ec29c4","elementDescriptorIndex":1777,"elementDescriptorHash":"0efdda3f","elementSize":16,"elementAlignment":8,"pointerByteOffset":128,"pointerBytesHex":"88070000","pointerRelativeOffset":1928,"resolvedArrayOffset":2024,"arrayDataAbsoluteOffset":2056,"arrayCount":60},
+        "knownAnswerWords": [
+          {"rowIndex":0,"fieldPath":"/Field_a1ec29c4/0/Field_60e4e484","decodedValue":6.0,"rawFloat32":6.0,"rawBytesHex":"0000c040","byteOffset":2060,"priorSourceMeaning":"GS MinMaxDispersion MaxAngle","priorSitePointer":"/10/spread/hipStand/1","priorSiteValue":6},
+          {"rowIndex":1,"fieldPath":"/Field_a1ec29c4/1/Field_60e4e484","decodedValue":7.0,"rawFloat32":7.0,"rawBytesHex":"0000e040","byteOffset":2076,"priorSourceMeaning":"GS MinMaxDispersion MaxAngle","priorSitePointer":"/10/spread/hipMove/1","priorSiteValue":7},
+          {"rowIndex":9,"fieldPath":"/Field_a1ec29c4/9/Field_7baf4297","decodedValue":0.05,"rawFloat32":0.05000000074505806,"rawBytesHex":"cdcc4c3d","byteOffset":2200,"priorSourceMeaning":"GS MinMaxDispersion.Zoomed.Standing.Stationary.MinAngle","priorSitePointer":"/10/spread/adsStand/0","priorSiteValue":0.05},
+          {"rowIndex":9,"fieldPath":"/Field_a1ec29c4/9/Field_60e4e484","decodedValue":6.0,"rawFloat32":6.0,"rawBytesHex":"0000c040","byteOffset":2204,"priorSourceMeaning":"GS MinMaxDispersion MaxAngle","priorSitePointer":"/10/spread/adsStand/1","priorSiteValue":6},
+          {"rowIndex":10,"fieldPath":"/Field_a1ec29c4/10/Field_60e4e484","decodedValue":7.0,"rawFloat32":7.0,"rawBytesHex":"0000e040","byteOffset":2220,"priorSourceMeaning":"GS MinMaxDispersion MaxAngle","priorSitePointer":"/10/spread/adsMove/1","priorSiteValue":7}
+        ],
+        "nameTransferEvidence": {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-spread-base-504-perleaf-2026-09-23.jsonl","sha256":"5f46317abc7ea0377b81f6f0e792fc8da9aa80b395847a93f0367def218956bc","recordCount":5,"claim":"Names are transferred only from exact M4A1 per-leaf source rows; MaxAngle report labels are generic, and the single MinAngle row carries Zoomed.Standing.Stationary meaning."},
+        "assertion": "All five supplied M4A1 known-answer words matched descriptor-based pointer-array traversal and direct raw float32 reads at the supplied byte offsets.",
+        "initialFailureDisclosure": {"knownAnswerStatus":"passed","assertion":"All five supplied M4A1 known-answer words matched descriptor-based pointer-array traversal and direct raw float32 reads at the supplied byte offsets.","firstStrictComparison":"Failed only because the decoded display rounded 0.05000000074505806 to 0.05; the exact source word is bytes cdcc4c3d at byte offset 2200.","correction":"The passing guard checks the supplied exact raw bytes and byte offset, and allows the established decoder rounding tolerance. The failed attempt read no target data.","progressPath":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L84\\progress.md","progressSha256":"f0c23bc03fc22fdda0adaab0cf55dd99e5a97ad16af3842a38019b094228c06b"}
+      }
+    },
+    "independentRawReviews": [
+      {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l82-raw-review.json","sha256":"8676fca975ba8ab1a9cd5931825c4a66ac1154b8a89565ae8e3850bd334803f3","buildHead":4892017,"descriptorSha256":"91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2","method":"Independent direct source byte reads at fixed reviewed offsets; hashes and expected hex asserted. Parent did not use worker decoder outputs as byte source.","checkCount":11,"scope":"11 independent fixed-offset reads of selectors, stationary increments and selected HDA/ZDA candidate words; expected bytes and raw hashes asserted."},
+      {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l84-raw-review.json","sha256":"fa6c0de6f291af1e2ef7d03803e18b004233efb74b45cd715ca041588ff7852d","buildHead":4892017,"descriptorSha256":"91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2","method":"Independent raw source reads at eight fixed reviewed row0/row9 min/max offsets with hash and hex guards.","checkCount":8,"scope":"Eight independent fixed-offset target reads for MinAngle/MaxAngle in local rows 0 and 9. The worker result separately records all 16 requested words."}
+    ],
+    "l82ProcessDisclosure": {"status":"process-addendum","failedPackagingAttempts":2,"interimControlOutput":"Removed before the successful final package. Its bytes and hash were not retained or reconstructed.","failedSourceCheck":"The target-root plan treated selectors as INT32, but the pinned descriptor declares UINT32 (debug code 16). The check failed closed and did not produce raw-check output.","commandHistoryLimit":"Earlier interpreter and working-directory details are absent from the index and are not reconstructed."}
+  },
+  "inference": ["The common-table HDA hip-standing minimum candidate 7.400000095 is greater than the local row-0 hip MaxAngle: 1.5 for M26DB and 7 for M320 HE. This conflict blocks any precedence or effective-range claim. Do not merge the values or select either as the runtime value.","The L82 common HDA/ZDA candidates and L84 local MinAngle/MaxAngle words are separate serialized inputs. M26DB stationary hip/ADS IncreasePerShot is 1.0/1.0; M320 HE is 0.5/0.5."],
+  "unresolved": ["No direct GS-to-HDA/ZDA table import or native consumer is established. The list-index association is not an effective GS reference.","Native activation, table/local precedence, posture binding, composition and effective secondary spread remain unresolved.","Both selected WPM-to-GS import edges use decoded paths and exact import GUIDs; rawPointerByteCheck is false.","Both target GS layouts remain ambiguous. No primary-weapon defect or numeric correction is established."],
+  "siteImpact": {"status":"optional-underbarrel-source-inputs-only","finding":"The optional-feature classification comes from the Astra code review, which found no underbarrel selector. L82/L84 show no defect in primary weapon values and support no numeric site change.","siteComparison":"No target-to-current-primary numeric comparison was performed.","review":{"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-underbarrel-site-review.json","sha256":"330ba41287d436932254ad3fbf8d00d01b8f27948a263799d78bd240a9f5ea5a","role":"bounded Analyzer underbarrel feature review"}},
+  "reproduction": {"method":"Provenance integration only. No raw-source queries or source reruns. Source commands and artifact hashes remain in the referenced L82/L84 command indexes."},
+  "evidence": [
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L82\\result.json","sha256":"eebe0089abb92b9ab60ae53de49965660f9243f6a5aae337c9e10cb175820f58","role":"accepted L82 serialized source result"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L82\\draft-receipt.json","sha256":"74b11b84c28cb4b1400e2db3f91ebb04aa2cea9073bb51eea74fcd98a62501a0","role":"accepted L82 compact source receipt"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L82\\command-hash-index.json","sha256":"a8cc3669fdc8357750724dbed92faf5e2e2be205434923259b484b492d9b5a05","role":"L82 command and output hash index"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L82\\process-addendum.json","sha256":"ba81aa5ae2e8ed90e28de2ab5bd032acf39924b8de97c185086379576ecc2836","role":"mandatory L82 packaging and command-history disclosure"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L82\\selector-metadata-clarification-v3.json","sha256":"2aeafd412451819980c9be1ced2df0375353e47cb5fb0ddbe116661dc6a88c1d","role":"UINT32 selector metadata and additive clarification"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L82\\hk433-root-type-metadata.json","sha256":"4d5834ec24cee0e296bbf4127134feaa732305928d0001206739cbe7d6498b9b","role":"direct HK433 root type identity"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L82\\control-check-final.json","sha256":"06b5ca5759947d752949344c18dcf1ae6960562236428735cda3852db61d79e5","role":"passing M433/HK433 selector, named-minimum and per-shot control"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l82-raw-review.json","sha256":"8676fca975ba8ab1a9cd5931825c4a66ac1154b8a89565ae8e3850bd334803f3","role":"independent raw review of 11 L82 target/table words"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L84\\result.json","sha256":"0c558fe0934b9354307785f881a8582cba275c30eb8d626d0ac19443a681ab15","role":"accepted L84 serialized source result"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L84\\draft-receipt.json","sha256":"2e9e15f6f746f07f359c855cf5d5df11340911fd76cd85c67f450df1601daf99","role":"accepted L84 compact source receipt"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L84\\command-hash-index.json","sha256":"60c517120ed28477d518f9d58b25cca35faa6f05cc8314d8ef5d81666d42b16c","role":"L84 command and artifact hash index"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L84\\control-result.json","sha256":"fccafc26e84c881897ef0f59974a017cab7b463a012716a75c39a06d4943715a","role":"passing M4A1 descriptor and raw-byte known-answer control"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l84-raw-review.json","sha256":"fa6c0de6f291af1e2ef7d03803e18b004233efb74b45cd715ca041588ff7852d","role":"independent raw review of eight row-0/row-9 target words"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L84\\progress.md","sha256":"f0c23bc03fc22fdda0adaab0cf55dd99e5a97ad16af3842a38019b094228c06b","role":"control correction and target-check history"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-site-constants-audit.py","sha256":"35480168f8b89f93aef6630fee7a513f5735c21e9a0eee0864da8de3aec6454b","role":"HDA/ZDA source-field-to-Sym mapping script"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-constants-2026-09-23.json","sha256":"335e36fe596f496dc88d2a01f1d162fb0f327b2adf83cae78a02c8b2bef10020","role":"prior named source crosswalk receipt"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-constants-live-byte-sym-audit-2026-09-23.json","sha256":"15fd2aef2c395b8308279407fbcd983e003186aab24f1650606e09f85672e282","role":"named Sym crosswalk path and digest as recorded in the accepted L82 result"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-spread-base-504-perleaf-2026-09-23.jsonl","sha256":"5f46317abc7ea0377b81f6f0e792fc8da9aa80b395847a93f0367def218956bc","role":"per-leaf M4A1 MinMaxDispersion name and row context report"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-26-L81-secondary-recoil-inputs.json","sha256":"b12f79bbc8191c4e21bbd815a9debc6032cf99ccd35d937934d1950df658b633","role":"prior exact selected-import identities; pointer-byte checks remain false"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-underbarrel-site-review.json","sha256":"330ba41287d436932254ad3fbf8d00d01b8f27948a263799d78bd240a9f5ea5a","role":"bounded Analyzer underbarrel feature review"},
+    {"path":"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L84\\summary.txt","sha256":"faade6b612ce419717289df5ec114e440bd064340fa53c06871c6a00529153ea","role":"compact L84 source summary"}
+  ]
+}
