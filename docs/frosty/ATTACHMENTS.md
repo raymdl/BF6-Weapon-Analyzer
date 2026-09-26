@@ -908,6 +908,30 @@ other damage mechanisms or establish runtime activation. Broader L68A/B route
 reviews remain partial. Existing barrel handling, recoil and sway were not
 re-audited, and no site change is proposed.
 
+### M4A1 M320 HE/AT serialized source profile (L71, 26 September 2026)
+
+The [L71 receipt](../../reference-data/provenance/frosty-2026-09-26-L71-m320-he-at-source-profile.json)
+records ordinary M4A1 HE and AT selector paths. The HE projectile stores
+`InitialSpeed=250` and `TimeToLive=15`. L71B joins projectile object 1 to its
+serialized Explosion object 7 (`Class_9966532d`), with `BlastDamage=120` and
+`DamageMultiplier=1`; its layout remains ambiguous. L71C finds seven common
+effect-class signatures and two AT-only classes, including a sound reference
+and unnamed fields. This is source structure only: it does not establish
+effective launch speed, HE/AT damage equivalence, native precedence or runtime
+behavior. The separate [L75 receipt](../../reference-data/provenance/frosty-2026-09-26-L75-m320-explosion-naming-limit.json)
+records the bounded field-naming result below.
+
+### M320 HE Explosion field-naming limit (L75, 26 September 2026)
+
+The `BlastDamage` hash/value control reproduces on the actual M320 owner. In
+the pinned `GRX_Gadgets_Glacier` capture, two other hashes have 24 exact name
+pairs each (`BlastRadius` and `ShockwaveRadius`), all on non-M320 anchors. No
+paired owner body matches the pinned Head and descriptor, so L75 does not
+independently transfer either name to M320. Those two mappings already appear in
+`FIELD_MAP.md`; L75 did not discover them. The third tested hash has no pair in
+this registry and remains unnamed. No units, falloff relationship, runtime
+effect or site value is established.
+
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 
 The WB part lists of these two weapons, and no others, import
