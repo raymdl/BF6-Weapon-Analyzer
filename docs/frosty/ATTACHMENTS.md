@@ -971,6 +971,10 @@ records the passing HE `BlastDamage=120` control and zero pairs for
 anchors, 5,726 entries). The ambiguous TB Explosion owner has raw pointers to
 `Class_afbfd124` and `Class_920ff0be`; names, curve units, equations and runtime behavior remain unresolved.
 
+### M320 HE/TB ShockwaveDamage local fields (L85, 26 September 2026)
+
+The [L85 receipt](../../reference-data/provenance/frosty-2026-09-26-L85-m320-shockwave-input.json) records existing FIELD_MAP.md member `Field_3ef01f58` as FLOAT32 `1.0` on the selected HE and TB Explosion owners, raw-checked at offsets 1776 and 1824 as `0000803f`. The name already maps to `ShockwaveDamage` on `Class_9966532d`; it is not a new same-owner name association. Each exact GRX_Gadgets owner anchor has seven child/hash pairs and no pair for this hash. Both layouts remain ambiguous. This bounded local result supplies no global name-absence claim, directly paired registry value, extra-damage/addition equation, precedence, activation, composition, or native behavior; the prior TB part/effect hop has no independent raw-pointer check. No current primary defect, numeric site change, or capture is proposed.
+
 ### M4A1 ordinary M26DB secondary source profile (L73, 26 September 2026)
 
 The [L73 receipt](../../reference-data/provenance/frosty-2026-09-26-L73-m26db-source-profile.json)
