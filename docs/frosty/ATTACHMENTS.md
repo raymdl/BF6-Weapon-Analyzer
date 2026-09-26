@@ -975,6 +975,12 @@ anchors, 5,726 entries). The ambiguous TB Explosion owner has raw pointers to
 
 The [L85 receipt](../../reference-data/provenance/frosty-2026-09-26-L85-m320-shockwave-input.json) records existing FIELD_MAP.md member `Field_3ef01f58` as FLOAT32 `1.0` on the selected HE and TB Explosion owners, raw-checked at offsets 1776 and 1824 as `0000803f`. The name already maps to `ShockwaveDamage` on `Class_9966532d`; it is not a new same-owner name association. Each exact GRX_Gadgets owner anchor has seven child/hash pairs and no pair for this hash. Both layouts remain ambiguous. This bounded local result supplies no global name-absence claim, directly paired registry value, extra-damage/addition equation, precedence, activation, composition, or native behavior; the prior TB part/effect hop has no independent raw-pointer check. No current primary defect, numeric site change, or capture is proposed.
 
+### M4A1 M26/M320 HE secondary spread roots and Shot inputs (L86/L87, 26 September 2026)
+
+The [L86/L87 receipt](../../reference-data/provenance/frosty-2026-09-26-L86-L87-secondary-spread-protection.json) records exact direct-index links from M4A1 GS to the pinned HDA_Weapons and ZDA_Moving_Weapons roots. The captured index contains 63 caller files and 126 direct sites; caller bodies were not expanded. Raw checks show both selected secondary GS owners have null words at both root fields, and the exact incoming index has no direct rows for either owner. This does not establish native nonuse, fallback, effective association or precedence.
+
+The same receipt records the named DP12 Shot index control and matching root/Shot descriptor identities for the selected M26DB and M320 HE owners. Their signed INT32 values are 0 and -1 at offsets 1168 and 592. The inspected direct Shot registry references are null; no target-local Shot name anchor was established. The control name transfers by exact descriptor identity, but no target-local name, table mapping, numeric meaning or runtime behavior is claimed. No site change follows.
+
 ### M4A1 ordinary M26DB secondary source profile (L73, 26 September 2026)
 
 The [L73 receipt](../../reference-data/provenance/frosty-2026-09-26-L73-m26db-source-profile.json)
