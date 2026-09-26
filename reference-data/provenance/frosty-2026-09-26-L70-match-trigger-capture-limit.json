@@ -28,7 +28,7 @@
       "offset": 1144,
       "bytesHex": "03000000",
       "int32": 3,
-      "command": "PowerShell: Get-FileHash -Algorithm SHA256 -LiteralPath $record.path; $record = Get-Content -Raw -LiteralPath $reviewPath | ConvertFrom-Json; $sourceBytes = [IO.File]::ReadAllBytes($record.path); $record | Add-Member -NotePropertyName int32 -NotePropertyValue ([BitConverter]::ToInt32($sourceBytes,1144)); if ($record.int32 -ne 3) { throw 'Unexpected integer operand' }; save astra-l70-source-review.json as UTF-8 without BOM.",
+      "command": "$sourcePath = 'C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_MatchTrigger_ERG_P15.ebx'; $expectedSha256 = 'd7785a0b638a8d238c906d772481639137b244181f26dacb46f45c0461e32fa1'; $actualSha256 = (Get-FileHash -Algorithm SHA256 -LiteralPath $sourcePath).Hash.ToLowerInvariant(); if ($actualSha256 -ne $expectedSha256) { throw \"Raw source SHA256 mismatch: $actualSha256\" }; $sourceBytes = [IO.File]::ReadAllBytes($sourcePath); $bytesHex = (($sourceBytes[1144..1147] | ForEach-Object { $_.ToString('x2') }) -join ''); if ($bytesHex -ne '03000000') { throw \"Raw source bytes mismatch: $bytesHex\" }; $int32 = [BitConverter]::ToInt32($sourceBytes, 1144); if ($int32 -ne 3) { throw \"Raw source int32 mismatch: $int32\" }; [pscustomobject]@{ sha256 = $actualSha256; offset = 1144; bytesHex = $bytesHex; int32 = $int32 } | ConvertTo-Json -Compress",
       "reviewArtifact": {
         "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l70-source-review.json",
         "sha256": "2b419e1f1158aae9570c6e6555dd18f00cd58ab6077d4bf8d8b11ae7e4947aeb"
