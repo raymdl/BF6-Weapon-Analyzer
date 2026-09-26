@@ -1,0 +1,144 @@
+{
+  "lead": "L72",
+  "date": "2026-09-26",
+  "status": "bounded_direct_registry_naming_route_unresolved",
+  "scope": "DP12 primary Shot direct GRX_Weapons child/hash association and the selected Slug and #00 Buck modifier captures only.",
+  "build": {
+    "release": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "finding": "The tested direct GRX_Weapons naming route does not name the candidate Field_db0fcea2 on the DP12 primary Shot anchor. This is a bounded naming limit only: it does not identify an operator, reject pellet interpretation, establish runtime behavior, or support site changes.",
+  "ownerAnchor": {
+    "route": "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB",
+    "rawSha256": "dc00487d9baab7bbf1d52b7e6f643e953644cd305f504035663cd47db2bfdf2d",
+    "objectIndex": 1,
+    "class": "Class_35259f6b",
+    "registry": {
+      "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+      "rawSha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+      "referencePath": ["Field_58d70acb", "Field_83dd01ab", "Field_6b28f68f"],
+      "fileGuid": "aa45ab92-cc7f-4d20-ab32-ba27da0aa6a0",
+      "classGuid": "56e389a9-c28d-4de3-a473-5bdf5de70211",
+      "objectIndex": 18935,
+      "objectName": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot",
+      "childHashPairCount": 4,
+      "candidateFieldHash": "db0fcea2",
+      "candidateFieldPairFound": false
+    }
+  },
+  "knownAnswerControl": {
+    "fieldHash": "9ba8b76b",
+    "childName": "DP12_WB.WeaponEntityData.WeaponFiring.PrimaryFire.Shot.DamageProtectionMultiplierIndex",
+    "registryValue": 0,
+    "registryValueOffset": 1742380,
+    "registryValueBytesHex": "00000000",
+    "ownerFieldPath": "Field_58d70acb/Field_9ba8b76b",
+    "ownerRawSha256": "dc00487d9baab7bbf1d52b7e6f643e953644cd305f504035663cd47db2bfdf2d",
+    "ownerOffset": 640,
+    "ownerWidthBytes": 4,
+    "ownerStorage": "int32",
+    "ownerBytesHex": "00000000",
+    "ownerValue": 0
+  },
+  "candidateBaseWord": {
+    "fieldPath": "Field_58d70acb/Field_db0fcea2",
+    "label": "unresolved by tested direct registry association",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\DP12_WB.ebx",
+    "rawSha256": "dc00487d9baab7bbf1d52b7e6f643e953644cd305f504035663cd47db2bfdf2d",
+    "offset": 580,
+    "widthBytes": 2,
+    "storage": "int16",
+    "bytesHex": "1000",
+    "value": 16
+  },
+  "selectedModifierWords": [
+    {
+      "siteChoice": "slugs",
+      "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/Slugs/WPM_AMO_Slugs_DP12_W40",
+      "selectorGuid": "6eb50b6b-c6c7-435b-8af5-defcf355d527",
+      "modifierGuid": "49741959-1b1d-4ff8-bb23-c6098540dd05",
+      "effectObjectGuid": "cda09f5f-cfc0-4f8e-b28b-9b6db13dc053",
+      "class": "Class_ef0525cd",
+      "fieldHash": "db0fcea2",
+      "rawSha256": "3c467b6895fff60616241a9f0ad92e999770a726ac62fb85d937bc2b6e3a3e96",
+      "offset": 312,
+      "widthBytes": 4,
+      "storage": "int32",
+      "bytesHex": "01000000",
+      "value": 1,
+      "directGRXWeaponsImport": false
+    },
+    {
+      "siteChoice": "buckshot_00",
+      "sourceAsset": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/_Shotgun/No00Buckshot/WPM_AMO_No00Buckshot_DP12_W20",
+      "selectorGuid": "5052758d-af50-45c4-9c00-111c122bca5d",
+      "modifierGuid": "2f4a4097-ba7a-400f-a5f6-9a4f3d3996fc",
+      "effectObjectGuid": "db658716-368b-4a73-80b0-6cc83083c9fa",
+      "class": "Class_ef0525cd",
+      "fieldHash": "db0fcea2",
+      "rawSha256": "df866e834d720af1b40cbc9e53679f65156bb5f4b7ff32ba7251bb95db4b71ee",
+      "offset": 152,
+      "widthBytes": 4,
+      "storage": "int32",
+      "bytesHex": "08000000",
+      "value": 8,
+      "directGRXWeaponsImport": false
+    }
+  ],
+  "interpretationLimits": [
+    "The four tested Shot child/hash pairs contain no named Field_db0fcea2 association; this does not establish field absence from other registries, SDK data, or native consumers.",
+    "The selected modifier words are unnamed values. Matching 16, 1, or 8 to a site count does not identify an operator or override behavior.",
+    "L72 does not establish runtime activation, composition, damage-per-shell behavior, or a #00 Buck site-count value."
+  ],
+  "siteImpact": "None. Keep current base 16 and Slug 1 site counts; L72 makes no #00 Buck site-count claim.",
+  "reopenWhen": "An independent typed target/operator association or a native consumer trace identifies the candidate field. Repeating numeric equality is insufficient.",
+  "evidence": {
+    "workerArtifacts": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\result.json",
+        "sha256": "0c81e3a66baad443cd79046c23ad57905ee0496830e57e25c00f2f58ec143135"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\draft-receipt.json",
+        "sha256": "3fcdf3a479a5f982f3a24fb2b861e790481480623a2880ca4d020fa761440fb4"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\commands.json",
+        "sha256": "3579a491c532e70186c7eb50e406b942847ce1b001645d11711e75f33d20501b"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\raw_operands.json",
+        "sha256": "b4e101ee6d31fd2a4e69b78832dda8f7f4d7dce5a9ebe893861807a4ceb4678e"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\modifier_anchor_check.json",
+        "sha256": "68b8300a3b9b27e09ab442a7afdb4ad30ca81206a545ba7318b89ca75f5a8a06"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l72-raw-review.json",
+        "sha256": "0f7242647f5143f2e65e4496af6e963c86bc35009c903e3e87384946b08d3540"
+      }
+    ],
+    "controlAssociation": {
+      "command": "python \"C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-registry-association.py\" --db \"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite\" --manifest \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\control_manifest_v2.json\" --out \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\control_registry_v2.json\"",
+      "scriptSha256": "d70f65bd25afed4ae3ca72800a6203e238d26af440c962753a41431ad6dac271",
+      "manifestSha256": "64b2dafc699a68d50fa3940e5c6a9778055c81e375659378a06befe0f19e94b4",
+      "outputSha256": "13b0e08ef4ed4d7a7a9f1ffdc6326dd893fd7d51cbbd790e414eeb67bfb7b0ee"
+    },
+    "candidateAssociation": {
+      "command": "python \"C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-registry-association.py\" --db \"C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite\" --manifest \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\candidate_manifest.json\" --out \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\candidate_registry.json\"",
+      "scriptSha256": "d70f65bd25afed4ae3ca72800a6203e238d26af440c962753a41431ad6dac271",
+      "manifestSha256": "a3c0c3b9105c789604c854fbec1d391a8690c44ef77ffe5c7eb572b49c402d69",
+      "outputSha256": "312fff403384e648a90dbdb5e25a06b3641f975bc2f7411dcb6fe8ea3d914a56"
+    },
+    "rawModifierCheck": {
+      "command": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L72\\verify_modifiers.py\"",
+      "scriptSha256": "1f8c6937479b1fc53ef179b6ee0595d45ab40ee99d75be70e4c68d8e3db11b2a",
+      "rawOperandsSha256": "b4e101ee6d31fd2a4e69b78832dda8f7f4d7dce5a9ebe893861807a4ceb4678e",
+      "modifierAnchorCheckSha256": "68b8300a3b9b27e09ab442a7afdb4ad30ca81206a545ba7318b89ca75f5a8a06"
+    },
+    "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+    "decoderDatabaseSha256": "1fac4aa159b11741943eaf6ae94f64e63928b9fa0f866ca4a1d191897718cf10"
+  }
+}

@@ -1028,6 +1028,23 @@ Keep the existing unavailable pellet-impact statistics until a typed consumer or
 controlled impact result supports a model. The single direction plotted per shell
 is not a pellet simulation. No random-only runtime mechanism is established.
 
+## DB-12 pellet-field naming limit (L72, 26 September 2026)
+
+The [L72 bounded direct-registry check](../../reference-data/provenance/frosty-2026-09-26-L72-pellet-field-naming-limit.json)
+reproduces the same-owner `Shot.DamageProtectionMultiplierIndex` control (`int32`
+0, `00000000`, DP12_WB offset 640). The primary `Shot` anchor at GRX_Weapons
+object 18935 has four child/hash pairs, but none names `Field_db0fcea2`. The base
+DP12_WB candidate word is `int16` 16 (`1000`, offset 580). Selected Slug and #00
+Buck modifier captures store the hash in `Class_ef0525cd` as `int32` 1
+(`01000000`, offset 312) and `int32` 8 (`08000000`, offset 152); neither directly
+imports `GRX_Weapons`.
+
+This limits the tested naming route. It does not identify a modifier operation,
+reject pellet interpretation, or establish runtime activation or composition.
+Keep the current base 16 and Slug 1 site counts; L72 establishes no #00 Buck site
+count. Reopen only with an independent typed target/operator association or a
+native consumer trace.
+
 ## Projectile lifetime and reachability (L22, 24 September 2026)
 
 The [current raw registry check](../../reference-data/provenance/frosty-2026-09-24-L22-projectile-lifetime.json)
