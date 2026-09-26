@@ -758,6 +758,18 @@ Trigger. The bare semi baseline already lacks bloom (the L63 semi condition), so
 zero-increase operand cannot be isolated; recoil and recovery remain untested
 ([capture receipt](../../reference-data/provenance/frosty-2026-09-25-L63-L17-semi-bloom-captures.json)).
 
+The 26 September existing-clip pilot verifies the paired video hashes and near-60 Hz
+post-stall timing. The Trigger clip has three post-stall shots, but only two valid
+steady event/baseline pairs because the first baseline crosses the recorder stall.
+Static-background tracking measures camera/view motion, not isolated weapon recoil.
+Without an input trace, established cross-clip framing, known FOV, and evidence for
+the live capture build, these clips cannot test the conditional L17 recoil ratio.
+This is a capture-sufficiency limit, not a negative finding about Match Trigger;
+the L17 prediction remains open. The reticle-gap control differs by one pixel
+between direct empty-pixel and prior inner-edge conventions; it is not recoil. See
+the [L70 capture-limit receipt](../../reference-data/provenance/frosty-2026-09-26-L70-match-trigger-capture-limit.json).
+Source release evidence and the unverified live capture build remain separate.
+
 The [L24 family check](../../reference-data/provenance/frosty-2026-09-24-L24-match-trigger-family.json)
 confirms the same exact GBM and GRM targets for all 24 current Match Trigger
 selections. The parent fresh-decoded each WB and GS and checked the selector
