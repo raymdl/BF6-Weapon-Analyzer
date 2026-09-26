@@ -911,6 +911,27 @@ other damage mechanisms or establish runtime activation. Broader L68A/B route
 reviews remain partial. Existing barrel handling, recoil and sway were not
 re-audited, and no site change is proposed.
 
+### Non-ammo damage, fire-rate and velocity effects (L93, 26 September 2026)
+
+The [L93 receipt](../../reference-data/provenance/frosty-2026-09-26-L93-non-ammo-damage-effect-screen.json)
+screens the whole weapon catalog rather than L68's four weapons. The shared
+`HeadShotDamage` (protection), `Penetration` and subsonic `MuzzleVelocity`
+effects are selected only by `_Ammo` parts. Barrel `WME_MuzzleVelocity_P05`/`M05`
+(1.25/0.8) match the site's barrel `velMult`. The 33 inline projectile-replacement
+and protection-index objects in 20 weapon bodies all sit on single-player owner
+selectors (`7672760d` Player, `6d45cd64` Enemy, `e67ab0f5` Squad) that swap in
+`PD_SP_*` bullets, so they are out of scope.
+
+The one non-ammo, non-velocity hit is the P90 Heavy Recoil Spring
+(`WME_Firerate900_M10`: RateOfFire 800, single 400). It does have an ability
+branch: `P90_Ability` SC_Ergonomic entry → `U_PRG_P90_Improved_Recoil_Spring_Base_900`
+→ `U_WPM_ERG_HeavyRecoilSpring900_W10`. That corrects the 13 September note,
+which said it had none. No `Attachment_P90_ERG_*` asset or English string
+references it, and the 7 September menu shows 900 RPM for every USG-90 ergo
+choice (None, Improved Mag Catch, Aftermarket Buffer). Keep the site's 899.999
+RPM and ergo list. No non-ammo attachment selects an unmodeled multiplayer
+damage, penetration, fire-rate or velocity effect.
+
 ### M4A1 M320 HE/AT serialized source profile (L71, 26 September 2026)
 
 The [L71 receipt](../../reference-data/provenance/frosty-2026-09-26-L71-m320-he-at-source-profile.json)
