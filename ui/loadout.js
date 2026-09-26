@@ -113,7 +113,34 @@ export function renderAttachmentSection({
       label: mounts.rail.accepts.map(type => type[0].toUpperCase() + type.slice(1)).join(' / ') }];
     return mounts[slot.key] ? [slot] : [];
   });
-  slots.forEach(({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
+  // The slot appears only on weapons with Optic Accessory choices. The sight
+  // category decides which choices fit; the note names its optics that do not.
+  const appendAccessoryRow = () => {
+    const accessoryData = weapon ? data.WEAPON_ACCESSORY?.[weapon.id] : null;
+    if (accessoryData) {
+      const sight = atts.sight ?? 'iron';
+      const options = availableAttachments(weapon, 'accessory', data, atts);
+      const fitting = [...new Set((wa?.dependencies ?? []).filter(rule => rule.slot === 'accessory')
+        .flatMap(rule => rule.requiresAny.map(required => required.attachment)))]
+        .map(id => data.SIGHTS.find(s => s.id === id)?.name ?? id);
+      appendSelectRow(container, {
+        label: 'OPT ACC',
+        value: atts.accessory ?? 'none',
+        options: options.map(a => {
+          const excluded = accessoryData.excludedSights?.[a.id]?.[sight];
+          const hint = a.id === 'none' && options.length === 1 ? `Optic Accessories need one of: ${fitting.join(', ')}.` : null;
+          return {
+            id: a.id,
+            text: a.pts > 0 ? `${attDisplayName(a, weapon.id)} [${a.pts}]` : attDisplayName(a, weapon.id),
+            description: [a.description, excluded && `Not with: ${excluded.join(', ')}.`, hint].filter(Boolean).join('\n\n'),
+          };
+        }),
+        onChange: value => handleChange('accessory', value),
+      });
+    }
+  };
+
+  const renderSlot = ({ key, label, dataKey, noWeaponText, isBarrel = false }) => {
     const source = attDataSource[dataKey];
     if (!weapon || !source) {
       appendSelectRow(container, {
@@ -164,6 +191,10 @@ export function renderAttachmentSection({
       }),
       onChange: value => handleChange(key, value),
     });
+  };
+  slots.forEach(slot => {
+    renderSlot(slot);
+    if (slot.key === 'sight') appendAccessoryRow();
   });
 
   const wAmmo = weapon ? (data.WEAPON_AMMO[weapon.id] ?? null) : null;
@@ -237,31 +268,6 @@ export function renderAttachmentSection({
       options: [{ id: 'none', text: 'None' }],
       onChange: () => {},
       disabled: true,
-    });
-  }
-
-  // The slot appears only on weapons with Optic Accessory choices. The sight
-  // category decides which choices fit; the note names its optics that do not.
-  const accessoryData = weapon ? data.WEAPON_ACCESSORY?.[weapon.id] : null;
-  if (accessoryData) {
-    const sight = atts.sight ?? 'iron';
-    const options = availableAttachments(weapon, 'accessory', data, atts);
-    const fitting = [...new Set((wa?.dependencies ?? []).filter(rule => rule.slot === 'accessory')
-      .flatMap(rule => rule.requiresAny.map(required => required.attachment)))]
-      .map(id => data.SIGHTS.find(s => s.id === id)?.name ?? id);
-    appendSelectRow(container, {
-      label: 'OPT ACC',
-      value: atts.accessory ?? 'none',
-      options: options.map(a => {
-        const excluded = accessoryData.excludedSights?.[a.id]?.[sight];
-        const hint = a.id === 'none' && options.length === 1 ? `Optic Accessories need one of: ${fitting.join(', ')}.` : null;
-        return {
-          id: a.id,
-          text: a.pts > 0 ? `${attDisplayName(a, weapon.id)} [${a.pts}]` : attDisplayName(a, weapon.id),
-          description: [a.description, excluded && `Not with: ${excluded.join(', ')}.`, hint].filter(Boolean).join('\n\n'),
-        };
-      }),
-      onChange: value => handleChange('accessory', value),
     });
   }
 
