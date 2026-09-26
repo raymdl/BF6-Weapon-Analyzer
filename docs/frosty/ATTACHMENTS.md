@@ -981,6 +981,12 @@ The [L86/L87 receipt](../../reference-data/provenance/frosty-2026-09-26-L86-L87-
 
 The same receipt records the named DP12 Shot index control and matching root/Shot descriptor identities for the selected M26DB and M320 HE owners. Their signed INT32 values are 0 and -1 at offsets 1168 and 592. The inspected direct Shot registry references are null; no target-local Shot name anchor was established. The control name transfers by exact descriptor identity, but no target-local name, table mapping, numeric meaning or runtime behavior is claimed. No site change follows.
 
+### Ordinary M26DB and M320 HE configured ammunition counts (L88, 26 September 2026)
+
+The [L88 receipt](../../reference-data/provenance/frosty-2026-09-26-L88-m26-m320-configured-ammo-counts.json) records the DP12_WB known-answer control and matching root/Ammo descriptor identities for the ordinary selected M26DB and M320 HE owners. The configured counts are M26DB capacity 5 and magazines 2; M320 HE capacity 1 and magazines 2. Names use the accepted L37 control/field basis; cached decodes agree with the raw words, while both nested Ammo layouts remain ambiguous.
+
+These serialized values are possible inputs for an optional secondary display profile only. The Analyzer has no secondary selector. Runtime activation, composition, native magazine behavior, loaded/chamber/reserve totals, and primary-count behavior remain unestablished. No site change follows.
+
 ### M4A1 ordinary M26DB secondary source profile (L73, 26 September 2026)
 
 The [L73 receipt](../../reference-data/provenance/frosty-2026-09-26-L73-m26db-source-profile.json)

@@ -1,0 +1,327 @@
+{
+  "schemaVersion": 1,
+  "lead": "L88",
+  "date": "2026-09-26",
+  "title": "Ordinary M26/M320 HE configured ammunition counts",
+  "status": "Recorded bounded serialized inputs; runtime meaning unresolved",
+  "build": {
+    "release": "1.4.3.0",
+    "head": 4892017,
+    "sharedTypeDescriptorsSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "rawRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw",
+    "currentReaderPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+    "currentReaderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+    "historicalDatabaseDecoderSha256": "a414e4d460736d1f0361df85cb3c5450222f4e0b232e65623ac5c8ee693d46b4",
+    "historicalDecoderIsNotCurrentReader": true
+  },
+  "question": "What configured MagazineCapacity and NumberOfMagazines are serialized in the ordinary selected M4A1 M26DB and M320 HE firing records?",
+  "scope": "Two configured count fields only, for a possible optional secondary display profile; no selector or runtime operation is asserted.",
+  "descriptorIdentity": {
+    "localClassKey": "503dde81ed5cf4d154423f8a5b58e439",
+    "rootDescriptorGlobalIndex": 515,
+    "rootClassHash": "35259f6b",
+    "rootField": {
+      "fieldHash": "4cc9e2ed",
+      "kindCode": 2,
+      "flags": 32,
+      "offsetInRoot": 800,
+      "classRefGlobalIndex": 547
+    },
+    "ammoNestedDescriptor": {
+      "globalIndex": 547,
+      "hash": "598cc52c",
+      "type": 32,
+      "size": 128,
+      "alignment": 8
+    },
+    "note": "Control and both target owners have matching non-null root and nested Ammo identities before field-name transfer."
+  },
+  "fieldNameBasis": {
+    "fieldMapPath": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-24-L37-configured-magazine-counts.json",
+    "fieldMapSha256": "a7e144cc4fd880d9a6c11ac26968532fb103c2b1841f04a0b38598c6002dd0c9",
+    "priorPlanPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-scalars\\plan-L37-complete.json",
+    "priorPlanSha256": "e8a456a3c32bd7e8c4df49b77cd5656e5f89f8d36f60bb91091d6fbdfeafc57a",
+    "parentVerifiedPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L37-magazine\\parent-verified.json",
+    "parentVerifiedSha256": "2f9602849c09e70730e4087a70872e9542a15fad024770acf1f6036c96c8ee0c",
+    "basis": "Accepted DP12 control and prior L37 configured-count labels only; no fresh global name scan or new local registry name pair."
+  },
+  "owners": [
+    {
+      "role": "known-answer control",
+      "path": "Common/Hardware/Weapons/Shotgun/DP12/DP12_WB",
+      "objectIndex": 1,
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Shotgun\\DP12\\DP12_WB.ebx",
+      "rawSha256": "dc00487d9baab7bbf1d52b7e6f643e953644cd305f504035663cd47db2bfdf2d",
+      "fields": [
+        {
+          "name": "MagazineCapacity",
+          "field": "Field_4cc9e2ed/Field_7f22bfb4",
+          "type": "signed INT32",
+          "typeCode": 15,
+          "offset": 960,
+          "bytesHex": "10000000",
+          "value": 16
+        },
+        {
+          "name": "NumberOfMagazines",
+          "field": "Field_4cc9e2ed/Field_4614adfe",
+          "type": "signed INT32",
+          "typeCode": 15,
+          "offset": 964,
+          "bytesHex": "06000000",
+          "value": 6
+        }
+      ]
+    },
+    {
+      "role": "selected ordinary M26DB secondary owner",
+      "path": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB",
+      "objectIndex": 7,
+      "guid": "ddfda54c-1cb8-4c6d-aab6-66fb62b37a15",
+      "objectStart": 688,
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_BottomRail\\Gadgets\\WPM_UBL_M26DB.ebx",
+      "rawSha256": "51512469ae7c1760bfdb9b055160c12aa34b0de0b79427efa17215c0ee39dc82",
+      "cachedDecodePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L77\\m26db-decoded.json",
+      "cachedDecodeSha256": "069fff9fc185a7d6486c15180f15f0f5df4e88c46e754bd575ec39dbf993ce40",
+      "cachedAmmoLayoutAmbiguous": true,
+      "fields": [
+        {
+          "name": "MagazineCapacity",
+          "field": "Field_4cc9e2ed/Field_7f22bfb4",
+          "type": "signed INT32",
+          "typeCode": 15,
+          "offset": 1488,
+          "bytesHex": "05000000",
+          "value": 5,
+          "cachedValue": 5
+        },
+        {
+          "name": "NumberOfMagazines",
+          "field": "Field_4cc9e2ed/Field_4614adfe",
+          "type": "signed INT32",
+          "typeCode": 15,
+          "offset": 1492,
+          "bytesHex": "02000000",
+          "value": 2,
+          "cachedValue": 2
+        }
+      ]
+    },
+    {
+      "role": "selected ordinary M320 HE primary-fire owner",
+      "path": "Common/Hardware/Gadgets/Launchers/M320HE/PrimaryFire_M320",
+      "objectIndex": 1,
+      "guid": "8727447a-6810-46e9-8534-8c84517fc3a5",
+      "objectStart": 112,
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Launchers\\M320HE\\PrimaryFire_M320.ebx",
+      "rawSha256": "31c69c52177fc06d1514b48e6ca613358e382134f0f34a55ae71f2115f8b9e8f",
+      "cachedDecodePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L76\\m320-primaryfire-decoded.json",
+      "cachedDecodeSha256": "8aec15078267dd3017327355f859a7d0aa735aa738809c0b4714184bf94fd145",
+      "cachedAmmoLayoutAmbiguous": true,
+      "fields": [
+        {
+          "name": "MagazineCapacity",
+          "field": "Field_4cc9e2ed/Field_7f22bfb4",
+          "type": "signed INT32",
+          "typeCode": 15,
+          "offset": 912,
+          "bytesHex": "01000000",
+          "value": 1,
+          "cachedValue": 1
+        },
+        {
+          "name": "NumberOfMagazines",
+          "field": "Field_4cc9e2ed/Field_4614adfe",
+          "type": "signed INT32",
+          "typeCode": 15,
+          "offset": 916,
+          "bytesHex": "02000000",
+          "value": 2,
+          "cachedValue": 2
+        }
+      ]
+    }
+  ],
+  "selectionRoutes": [
+    {
+      "route": "ordinary M4A1 M26DB",
+      "receiptPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L73\\draft-receipt.json",
+      "receiptSha256": "11bb5652429453647c5bdeac400fab848425bd4f3e7a4290ce7f30893c88d75f",
+      "manifestPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L73\\selection-control-manifest.json",
+      "manifestSha256": "39a661d50143636ca400c4b3e1da536cc3cf4b78bc1cf622b5f57a68e64c76a1",
+      "assertions": 12,
+      "failures": 0,
+      "scope": "Ordinary M26DB part; Reload excluded."
+    },
+    {
+      "route": "ordinary M4A1 M320HE to PrimaryFire_M320",
+      "receiptPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L71\\draft-receipt.json",
+      "receiptSha256": "efba6584cbcec397dc67412ff26f850c03d07d462804d0b474e30de7b3bcde7e",
+      "comparisonPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L71\\m4a1-he-route-control-check-v3\\comparison.json",
+      "comparisonSha256": "61c8bc12efd662461b72a255b3e28c06799c22ae5fc44f871ea4022b66934d79",
+      "assertions": 8,
+      "failures": 0,
+      "scope": "Existing selected M320HE route; route not rerun."
+    }
+  ],
+  "inference": [
+    "Configured values are M26DB 5 capacity / 2 magazines and M320 HE 1 capacity / 2 magazines.",
+    "These are serialized candidates for an optional secondary display profile only."
+  ],
+  "limits": [
+    "The Analyzer has no current secondary selector.",
+    "Nested Ammo layouts remain ambiguous despite direct current-reader descriptor identities and raw-word checks.",
+    "No runtime activation, composition, native magazine behavior, loaded/chambered/reserve interpretation, total-ammo multiplication, or primary-count behavior is established.",
+    "No primary defect, numeric proposal, or site change follows."
+  ],
+  "commandProvenance": {
+    "commandIndexPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\commands-hash-index-v2.json",
+    "commandIndexSha256": "3e4dfa9c76ab5e6d7a0d293c8e1274c49f312abbdb892905ff4db505dbee2d5c",
+    "recordCount": 24,
+    "clarificationPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\command-invocation-clarification.json",
+    "clarificationSha256": "b55415140657f56cbb2dee15efe1d1a161a4003a9a34117e81a2a23b13d83f21",
+    "history": "The exact expanded historical PowerShell source strings were not retained. Clarification records normalized executable/argument arrays and working directory; its quoted PowerShell display is reconstructed, not verbatim history.",
+    "decisiveHelperHashesAtRun": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\reproduce_control.py",
+        "sha256": "894b87aec3341f91dd5b88315b5e715790e6ef62e4ba653ceaad20b5edef8936"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\resolve_ammo_identities_and_words.py",
+        "sha256": "cb301ab1e271bc6ce164b5eb2d333b0b1f54cf7fadce2960a03e151f24f761e6"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\write_complete_package.py",
+        "sha256": "68734b66d84ba84f65e41542571c4fd241fc03d01ca5efd56984806bc2c6198c"
+      }
+    ],
+    "reconstructedHelperRevision": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\resolve_ammo_identities_and_words.py",
+      "sha256": "d61572b8767d9cbedbc27e5ba3ee4830a0824f0e17d7cc561f4aa3b33d5c457f",
+      "status": "Reconstructed from documented later edits; not a command-time hash and original revision is unavailable."
+    },
+    "sourceReruns": false
+  },
+  "package": {
+    "resultPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\result-final.md",
+    "resultSha256": "7ab35bad332d44ee34de31f9c8af93d7b2c975720b05f749dab33ee7959b6f7a",
+    "draftReceiptPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\draft-receipt-v2.json",
+    "draftReceiptSha256": "92afdc9cb5102bcc476d8e31c72dca2cf88d035752842b30ddde4cd4de8bff86",
+    "rawReviewPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l88-raw-review.json",
+    "rawReviewSha256": "6d2e369b0b1fa8c2009962ebdd3f8ec35aa76c2d9045f536ddc7cd5c5d47aab1",
+    "review": "Source findings and classification accepted; package and review artifacts are hash-pinned."
+  },
+  "evidenceArtifacts": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\frosty-worker-brief.txt",
+      "sha256": "cec236c86f4a37d1ee9a5589c321abacbb584ccb6bd62080f268c3b9712e7ae9",
+      "role": "shared instructions, copied verbatim"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\lead.txt",
+      "sha256": "8bbbd08a09a8a9b658a5229c8f30023df26ed2fb3ee76a165cb46b4062d54e32",
+      "role": "lead assignment"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\control-reproduction.json",
+      "sha256": "9888bc97fe7b3c84c89b41a6a20d82ee2fd77c146d370dddca5be864b7b26cdf",
+      "role": "known-answer raw control"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\identity-and-word-results-v2.json",
+      "sha256": "bad425cd4c386a95272953bd3bd32f50fcf58f88375838bcdfe627f649f5e99f",
+      "role": "current-reader identity and four raw words"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\control-inputs-summary.json",
+      "sha256": "fa7f37b9288299248373ca7b124831a33e8df7f0652ddb96294e51f44c497f1d",
+      "role": "control source hashes and database inventory"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L77\\m26db-decoded.json",
+      "sha256": "069fff9fc185a7d6486c15180f15f0f5df4e88c46e754bd575ec39dbf993ce40",
+      "role": "reused cached M26DB decode"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L76\\m320-primaryfire-decoded.json",
+      "sha256": "8aec15078267dd3017327355f859a7d0aa735aa738809c0b4714184bf94fd145",
+      "role": "reused cached M320HE decode"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L73\\draft-receipt.json",
+      "sha256": "11bb5652429453647c5bdeac400fab848425bd4f3e7a4290ce7f30893c88d75f",
+      "role": "existing M26DB selection receipt"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L73\\selection-control-manifest.json",
+      "sha256": "39a661d50143636ca400c4b3e1da536cc3cf4b78bc1cf622b5f57a68e64c76a1",
+      "role": "existing M26DB selection manifest"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L71\\m4a1-he-route-control-check-v3\\comparison.json",
+      "sha256": "61c8bc12efd662461b72a255b3e28c06799c22ae5fc44f871ea4022b66934d79",
+      "role": "existing M320HE route comparison"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-24-L37-configured-magazine-counts.json",
+      "sha256": "a7e144cc4fd880d9a6c11ac26968532fb103c2b1841f04a0b38598c6002dd0c9",
+      "role": "accepted field-name/control basis"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\reproducer-scalars\\plan-L37-complete.json",
+      "sha256": "e8a456a3c32bd7e8c4df49b77cd5656e5f89f8d36f60bb91091d6fbdfeafc57a",
+      "role": "prior configured-count plan"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-24T090117-0400\\L37-magazine\\parent-verified.json",
+      "sha256": "2f9602849c09e70730e4087a70872e9542a15fad024770acf1f6036c96c8ee0c",
+      "role": "prior raw and type verification"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+      "sha256": "1fac4aa159b11741943eaf6ae94f64e63928b9fa0f866ca4a1d191897718cf10",
+      "role": "read-only decoder database"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+      "sha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+      "role": "current identity reader"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\toolchain\\SharedTypeDescriptors.ebx",
+      "sha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "role": "pinned type descriptor source"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\commands-hash-index-v2.json",
+      "sha256": "3e4dfa9c76ab5e6d7a0d293c8e1274c49f312abbdb892905ff4db505dbee2d5c",
+      "role": "complete command and helper hash index"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\result-final.md",
+      "sha256": "7ab35bad332d44ee34de31f9c8af93d7b2c975720b05f749dab33ee7959b6f7a",
+      "role": "accepted final source result"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\draft-receipt-v2.json",
+      "sha256": "92afdc9cb5102bcc476d8e31c72dca2cf88d035752842b30ddde4cd4de8bff86",
+      "role": "accepted detailed raw receipt"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L88\\command-invocation-clarification.json",
+      "sha256": "b55415140657f56cbb2dee15efe1d1a161a4003a9a34117e81a2a23b13d83f21",
+      "role": "immutable invocation-history clarification"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l88-raw-review.json",
+      "sha256": "6d2e369b0b1fa8c2009962ebdd3f8ec35aa76c2d9045f536ddc7cd5c5d47aab1",
+      "role": "independent raw-word review"
+    }
+  ],
+  "siteImpact": {
+    "primaryDefectEstablished": false,
+    "siteFilesChanged": false,
+    "numericProposal": false,
+    "note": "No Analyzer implementation change is proposed."
+  }
+}
