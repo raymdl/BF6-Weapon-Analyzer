@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-26",
+  "lead": "L68D",
+  "title": "VSSM FullAutoReplace field naming limit",
+  "status": "accepted bounded naming-route limit; unresolved",
+  "build": {
+    "release": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "scope": "Two fields on the selected VSSM FullAutoReplace source and their names in one pinned GRX_Weapons paired-array route; this is not the broader L68 damage review.",
+  "selection": {
+    "route": "Common/Hardware/Weapons/_WeaponModifiers/_Ergo/FireMode/WPM_ERG_FullAutoReplaceVSSM_W50",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_Ergo\\FireMode\\WPM_ERG_FullAutoReplaceVSSM_W50.ebx",
+    "rawSha256": "663cdca72bcb8813847788ef0f500cdfaf5e40b51a168e388c44d50ef1b3c729",
+    "selectorGuid": "7e84751b-0f69-456b-b63c-a41aa50c8b2b",
+    "partObject": 4,
+    "partGuid": "ccd39ed4-8ee4-4919-9dbe-53ff3fcb8c0b"
+  },
+  "control": {
+    "status": "pass",
+    "name": "PD_556x45mmNATO_Carbine.BulletEntityData.StartDamage",
+    "hash": "94869d67",
+    "value": 25.0,
+    "registryCaptureId": 1491,
+    "selectedRouteAssertions": "9/9 pass",
+    "controlReportSha256": "cfa705b5b6a6752ca736451e6b2957b21a37c66d554d507109b090890ee8b03d"
+  },
+  "fields": [
+    {"object": 2, "objectGuid": "34f6bba9-7f76-4b7c-bec0-05e5f52bd464", "class": "Class_10390971", "typeKey": "fb4ae9c43d23147a76a44c2fcaa31ad2", "hash": "503c0ef4", "type": "BOOLEAN", "value": true, "offset": 272, "bytesHex": "01"},
+    {"object": 5, "objectGuid": "cffa3bee-210c-495d-8f1b-e64d4a9486cc", "class": "Class_6c33e3a8", "typeKey": "979728c3c887f6731430f0aa0a7ab7cd", "hash": "1180f1ee", "type": "ENUM", "value": 1, "offset": 496, "bytesHex": "01000000"}
+  ],
+  "boundedSearch": {
+    "route": "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\GameSetup\\Tweakables\\GameRemixer\\GRX_Weapons.ebx",
+    "captureId": 1491,
+    "rawSha256": "98897bb375d5116300b05134042d4bac9849cc9d73064eb0b309966e98afa7c7",
+    "pairedAnchors": 4750,
+    "malformedAnchors": 0,
+    "targetPairCounts": {"503c0ef4": 0, "1180f1ee": 0},
+    "reportSha256": "abb812f09b0fe0fd7617b817ddf4b7917cf52526351a83177756c452165f8db6"
+  },
+  "limits": [
+    "The two hashes have no child/name pair in this pinned GRX_Weapons scan only.",
+    "No enum domain, damage classification, field meaning, runtime activation, or effect absence is established; the broader L68 review remains open."
+  ],
+  "reproduction": [
+    {"command": "frosty-selected-chain-check.py", "helperSha256": "eade558fbe0cc24f31eb8711c2a384fdaa04b1a9dc73e33db5af418d223c082b", "output": "control_reproduction.json/comparison.json", "outputSha256": "7b318abfa4ba0dc529395752a94c0e566708435bbd89d0c744af746309f07a8f"},
+    {"command": "frosty-registry-association.py", "helperSha256": "d70f65bd25afed4ae3ca72800a6203e238d26af440c962753a41431ad6dac271", "output": "startdamage_control_registry.json", "outputSha256": "e16506dd7a07d78096cc5d1a6dfe136489329586c478967010ada5b1fffdb633"},
+    {"command": "python raw_check_targets.py", "helperSha256": "e03924b79c5a5026a41ccb1662982cec28e5495b0d49c201deec9eca862638c0", "output": "vssm_target_raw_checks.json", "outputSha256": "fe205c41580d0ce2a3e4802ddfae8a47e9aa1bfd3345150e00568bebad18e582"},
+    {"command": "python lookup_grx_fixed_hashes.py", "helperSha256": "482f9ae9129f2b9f497aadb81ac751d64db6d93a9bfc69e90fffae6faadfa5f8", "output": "grx_fixed_hash_child_lookup.json", "outputSha256": "abb812f09b0fe0fd7617b817ddf4b7917cf52526351a83177756c452165f8db6"},
+    {"command": "python assemble_result.py", "helperSha256": "fa9d6298ff8b2495c80fe70b004503b7602df4e2124690149d5a13217675e0c8", "output": "result.json", "outputSha256": "a2dcd8c45c91e505ddd874a768e6a0bcfddb231a8c05634c029982e49005cf8e"}
+  ],
+  "helperHashesAtCommandTime": {
+    "frosty-ebx-decode.py": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+    "frosty-registry-association.py": "d70f65bd25afed4ae3ca72800a6203e238d26af440c962753a41431ad6dac271"
+  },
+  "evidence": [
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68D\\result.json", "sha256": "a2dcd8c45c91e505ddd874a768e6a0bcfddb231a8c05634c029982e49005cf8e"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68D\\draft-receipt.json", "sha256": "bf40f3cd8a810cdcf1a837367d4362b35441a669f2b0b7e7f0dde8d76e5adf6e"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l68d-raw-review.json", "sha256": "589f2212ad5a35b7200ebabb7246d9510ff813bdca3031cf08007cfa12978c69"}
+  ]
+}

@@ -318,6 +318,9 @@ its inverse representation because the resolver subtracts the shift. Mag Catch's
 `1.063` maps to `Class_9705264b/Field_348b8cd1` in `WME_ReloadSpeedSmall_P05`.
 VSSM automatic RPM maps to the WB's `799.999` RateOfFire, distinct from its single
 shot rate and the Folding Stock's separate single-fire modifier.
+The [L68D receipt](../../reference-data/provenance/frosty-2026-09-26-L68D-vssm-full-auto-replace-naming-limit.json)
+records `Field_503c0ef4=true` and `Field_1180f1ee=1`; neither hash pairs with a
+child name in the scoped pinned `GRX_Weapons` scan after the `StartDamage=25` control. This does not establish the enum domain, damage meaning, or runtime activation.
 
 Buffer's `visualRecoil=-1` only selects the site's "Decreased" badge. Do not read
 it as a measured magnitude or a native `-1` operand. The selected package contains
@@ -962,6 +965,11 @@ value 1). The M4A1 HE control reproduces at 120/1. The part-to-effect hop is a
 decoded-path assertion without raw pointer bytes in the reused receipt. These
 serialized values do not establish precedence, runtime activation, total damage,
 or blast/burn behavior; no site value change is proposed.
+The [L79 receipt](../../reference-data/provenance/frosty-2026-09-26-L79-m320-explosion-name-limits.json)
+records the passing HE `BlastDamage=120` control and zero pairs for
+`Field_0df20cb3` and `Field_920ff0be` in one pinned `GRX_Gadgets` scan (1,618
+anchors, 5,726 entries). The ambiguous TB Explosion owner has raw pointers to
+`Class_afbfd124` and `Class_920ff0be`; names, curve units, equations and runtime behavior remain unresolved.
 
 ### M4A1 ordinary M26DB secondary source profile (L73, 26 September 2026)
 
@@ -980,10 +988,12 @@ omission. The [L73 child GUID correction](../../reference-data/provenance/frosty
 records the four exported GUIDs; the supported names and values are unchanged.
 
 These source names and values do not establish native scalar fallback or curve
-precedence. No distance units are established. Eight top-level ECR_M26Incendiary
-scalars remain unnamed. No direct hit operation, burn behavior, duration, tick
-rate or site change is established. Keep the M26 profiles separate from M4A1
-rifle-primary damage.
+precedence. No distance units are established. The [L73D receipt](../../reference-data/provenance/frosty-2026-09-26-L73D-ecr-m26-incendiary-naming-limit.json)
+bounds three ECR_M26Incendiary hashes to one pinned `GRX_Gadgets` route; none has
+a pair there after the positive `BlastDamage=120` control. This does not establish
+global name absence or field meaning. No direct hit operation, burn behavior,
+duration, tick rate or site change is established. Keep the M26 profiles separate
+from M4A1 rifle-primary damage.
 
 The [L77/L77B timing receipt](../../reference-data/provenance/frosty-2026-09-26-L77-m26db-secondary-timing.json) records two prior-name-basis fire-logic rate fields at 1799.999 RPM and a conditional 88.078 RPM result from applying the existing full-cycle formula to the exact matched nested bolt descriptor. Its one reload-info row has prior-name-basis `ReloadSpeed=1` and `ReloadTimeBulletsLeft=3`; this bounded result assigns no names to the other row members and does not establish native mode, completion, ADS overlap, reload selection, or a separate runtime profile.
 
