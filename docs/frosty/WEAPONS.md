@@ -436,6 +436,29 @@ have this cross-weapon support; H1 has no corresponding named Sym minimum and
 remains provisional. These checks establish table values and associations, not
 the native movement-state consumer.
 
+### Crouch and prone candidate inputs (L69, 26 September 2026)
+
+The selected HDA hip rows contain crouch and prone minima for stationary and
+moving states. The selected ZDA moving ADS row contains crouch and prone moving
+minima. The 33 raw words and six HDA/ZDA selector-to-row mappings pass checks;
+the current hip standing/moving and ADS-moving minima match the site. Values are
+in degrees.
+
+| Weapon (source) | Hip crouch stationary | Hip crouch moving | Hip prone stationary | Hip prone moving | ADS crouch moving | ADS prone moving |
+|---|---:|---:|---:|---:|---:|---:|
+| M433 (HK433) | 1.824 | 2.432 | 1.216 | 1.824 | 0.32 | 0.32 |
+| M39 EMR (M39EMR) | 2.514 | 3.352 | 1.676 | 2.514 | 0.32 | 0.32 |
+| DB-12 (DP12) | 1.824 | 2.432 | 1.216 | 1.824 | 0.32 | 0.32 |
+
+Posture labels follow the constants audit's named Sym crosswalk for HDA H2-H5
+and the selected ZDA crouch/prone fields, including `Field_97ff0ca4`; equal
+numeric values alone do not establish a posture label. These source minima
+support an omitted-feature proposal, not native behavior or a claim that current
+standing values are wrong. The selected rows expose no posture-specific maxima,
+and no stationary ADS posture minima were established. DB-12 pellet-direction
+statistics remain unavailable. See
+the [L69 provenance](../../reference-data/provenance/frosty-2026-09-26-L69-posture-spread.json).
+
 ### Recovery law
 
 Per branch (aim × stationary/moving), GS `DispersionBehavior` values follow one design:

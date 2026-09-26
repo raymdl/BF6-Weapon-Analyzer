@@ -1,0 +1,453 @@
+{
+  "lead": "L69",
+  "date": "2026-09-26",
+  "status": "Scoped source candidate and omitted-feature proposal only; not native behavior and not evidence that current standing values are incorrect.",
+  "build": {
+    "release": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Which source-supported crouch/prone settled spread inputs are omitted by the site standing/moving-only selection for bare M433/HK433, M39 EMR, and DB-12/DP12?",
+  "method": "For bare M433/HK433, M39 EMR/M39EMR and DB-12/DP12, resolved each GS HDA/ZDA selector through serialized reference-list order to the audited selected row. Rechecked 33 source words against raw files and site control minima. The parent also made three direct byte reads independent of the worker decoder.",
+  "sourceFacts": {
+    "rawSourceRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw",
+    "tableFiles": {
+      "HDA_Weapons": {
+        "path": "Common/Hardware/Common/Arrays/DispersionHip/HDA_Weapons.ebx",
+        "sha256": "b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012"
+      },
+      "ZDA_Moving_Weapons": {
+        "path": "Common/Hardware/Common/Arrays/DispersionADS/ZDA_Moving_Weapons.ebx",
+        "sha256": "24f8a82f7deb2b642310f818170a670b71b2f0e56b4aaf46e9857bb8e67625c6"
+      }
+    },
+    "controlGate": {
+      "status": "pass",
+      "rawWordsChecked": 33,
+      "rawHashesBytesAndDecodedValuesMatch": true,
+      "sixHdaAndZdaSelectorRowsResolveToAuditedRows": true,
+      "currentHipStandingMovingAndAdsMovingMinimaMatchSite": true,
+      "adsStandingMinimum": "0.05 degrees; its independent route is outside the HDA/ZDA control gate."
+    },
+    "weapons": [
+      {
+        "siteWeapon": "M433",
+        "siteId": "m433",
+        "sourceWeapon": "HK433",
+        "gsRaw": {
+          "path": "Common/Hardware/Weapons/AssaultRifle/HK433/GS_HK433.ebx",
+          "sha256": "66caca0e667d17fdf03f9fb4f620b9c5842aa1fd8de0221128ad4862895eed51"
+        },
+        "selectedRows": {
+          "HDA": {
+            "gsSelectorField": "Field_fe708077",
+            "selectorValue": 3,
+            "referenceField": "Field_d37c6521",
+            "serializedListElement": 3,
+            "resolvedRowObjectIndex": 8,
+            "resolvedRowObjectGuid": "9df09683-7383-42cb-ac0f-f0083da9ac3d",
+            "matchesPriorAudit": true
+          },
+          "ZDA": {
+            "gsSelectorField": "Field_d94fe6ad",
+            "selectorValue": 3,
+            "referenceField": "Field_ed5a92bf",
+            "serializedListElement": 3,
+            "resolvedRowObjectIndex": 3,
+            "resolvedRowObjectGuid": "ce4cb78c-51a2-48b7-95fa-c34b82d52838",
+            "matchesPriorAudit": true
+          }
+        },
+        "siteControls": {
+          "hipStand": {
+            "sourceMinimumDeg": 2.432,
+            "siteMinimumDeg": 2.432,
+            "matches": true
+          },
+          "hipMove": {
+            "sourceMinimumDeg": 3.04,
+            "siteMinimumDeg": 3.04,
+            "matches": true
+          },
+          "adsMove": {
+            "sourceMinimumDeg": 0.32,
+            "siteMinimumDeg": 0.32,
+            "matches": true
+          }
+        },
+        "hipCandidates": {
+          "HIPCrouchBaseMin": {
+            "field": "Field_b3ab862b",
+            "symCrosswalkName": "HIPCrouchBaseMin",
+            "minimumDeg": 1.824,
+            "byteOffset": 700,
+            "bytesHex": "d578e93f"
+          },
+          "HIPCrouchMoveMin": {
+            "field": "Field_1ef3a223",
+            "symCrosswalkName": "HIPCrouchMoveMin",
+            "minimumDeg": 2.432,
+            "byteOffset": 704,
+            "bytesHex": "e3a51b40"
+          },
+          "HIPProneBaseMin": {
+            "field": "Field_553bcee0",
+            "symCrosswalkName": "HIPProneBaseMin",
+            "minimumDeg": 1.216,
+            "byteOffset": 708,
+            "bytesHex": "e3a59b3f"
+          },
+          "HIPProneMoveMin": {
+            "field": "Field_39b31415",
+            "symCrosswalkName": "HIPProneMoveMin",
+            "minimumDeg": 1.824,
+            "byteOffset": 712,
+            "bytesHex": "d578e93f"
+          }
+        },
+        "adsMovingCandidates": {
+          "ADSCrouchMoveMin": {
+            "field": "Field_624b1a88",
+            "symCrosswalkName": "ADSCrouchMoveMin",
+            "minimumDeg": 0.32,
+            "byteOffset": 268,
+            "bytesHex": "0ad7a33e"
+          },
+          "ADSProneMoveMin": {
+            "field": "Field_97ff0ca4",
+            "symCrosswalkName": "ADSProneMoveMin",
+            "minimumDeg": 0.32,
+            "byteOffset": 272,
+            "bytesHex": "0ad7a33e"
+          }
+        }
+      },
+      {
+        "siteWeapon": "M39 EMR",
+        "siteId": "m39emr",
+        "sourceWeapon": "M39EMR",
+        "gsRaw": {
+          "path": "Common/Hardware/Weapons/DMR/M39EMR/GS_M39EMR.ebx",
+          "sha256": "c1d943cf12cf33a5ab703bf2324ba6f177d15d602b36e177c4017350399db58e"
+        },
+        "selectedRows": {
+          "HDA": {
+            "gsSelectorField": "Field_fe708077",
+            "selectorValue": 2,
+            "referenceField": "Field_d37c6521",
+            "serializedListElement": 2,
+            "resolvedRowObjectIndex": 6,
+            "resolvedRowObjectGuid": "836d3366-24c9-4cef-bb05-2f9948ce69bc",
+            "matchesPriorAudit": true
+          },
+          "ZDA": {
+            "gsSelectorField": "Field_d94fe6ad",
+            "selectorValue": 3,
+            "referenceField": "Field_ed5a92bf",
+            "serializedListElement": 3,
+            "resolvedRowObjectIndex": 3,
+            "resolvedRowObjectGuid": "ce4cb78c-51a2-48b7-95fa-c34b82d52838",
+            "matchesPriorAudit": true
+          }
+        },
+        "siteControls": {
+          "hipStand": {
+            "sourceMinimumDeg": 3.352,
+            "siteMinimumDeg": 3.352,
+            "matches": true
+          },
+          "hipMove": {
+            "sourceMinimumDeg": 4.19,
+            "siteMinimumDeg": 4.19,
+            "matches": true
+          },
+          "adsMove": {
+            "sourceMinimumDeg": 0.32,
+            "siteMinimumDeg": 0.32,
+            "matches": true
+          }
+        },
+        "hipCandidates": {
+          "HIPCrouchBaseMin": {
+            "field": "Field_b3ab862b",
+            "symCrosswalkName": "HIPCrouchBaseMin",
+            "minimumDeg": 2.514,
+            "byteOffset": 540,
+            "bytesHex": "60e52040"
+          },
+          "HIPCrouchMoveMin": {
+            "field": "Field_1ef3a223",
+            "symCrosswalkName": "HIPCrouchMoveMin",
+            "minimumDeg": 3.352,
+            "byteOffset": 544,
+            "bytesHex": "2b875640"
+          },
+          "HIPProneBaseMin": {
+            "field": "Field_553bcee0",
+            "symCrosswalkName": "HIPProneBaseMin",
+            "minimumDeg": 1.676,
+            "byteOffset": 548,
+            "bytesHex": "2b87d63f"
+          },
+          "HIPProneMoveMin": {
+            "field": "Field_39b31415",
+            "symCrosswalkName": "HIPProneMoveMin",
+            "minimumDeg": 2.514,
+            "byteOffset": 552,
+            "bytesHex": "60e52040"
+          }
+        },
+        "adsMovingCandidates": {
+          "ADSCrouchMoveMin": {
+            "field": "Field_624b1a88",
+            "symCrosswalkName": "ADSCrouchMoveMin",
+            "minimumDeg": 0.32,
+            "byteOffset": 268,
+            "bytesHex": "0ad7a33e"
+          },
+          "ADSProneMoveMin": {
+            "field": "Field_97ff0ca4",
+            "symCrosswalkName": "ADSProneMoveMin",
+            "minimumDeg": 0.32,
+            "byteOffset": 272,
+            "bytesHex": "0ad7a33e"
+          }
+        }
+      },
+      {
+        "siteWeapon": "DB-12",
+        "siteId": "db12",
+        "sourceWeapon": "DP12",
+        "gsRaw": {
+          "path": "Common/Hardware/Weapons/Shotgun/DP12/GS_DP12.ebx",
+          "sha256": "4b69300cc2e9459292ef78009e2c4fbb5f3a4d872ff0b21dfce617c98f8bed3c"
+        },
+        "selectedRows": {
+          "HDA": {
+            "gsSelectorField": "Field_fe708077",
+            "selectorValue": 3,
+            "referenceField": "Field_d37c6521",
+            "serializedListElement": 3,
+            "resolvedRowObjectIndex": 8,
+            "resolvedRowObjectGuid": "9df09683-7383-42cb-ac0f-f0083da9ac3d",
+            "matchesPriorAudit": true
+          },
+          "ZDA": {
+            "gsSelectorField": "Field_d94fe6ad",
+            "selectorValue": 3,
+            "referenceField": "Field_ed5a92bf",
+            "serializedListElement": 3,
+            "resolvedRowObjectIndex": 3,
+            "resolvedRowObjectGuid": "ce4cb78c-51a2-48b7-95fa-c34b82d52838",
+            "matchesPriorAudit": true
+          }
+        },
+        "siteControls": {
+          "hipStand": {
+            "sourceMinimumDeg": 2.432,
+            "siteMinimumDeg": 2.432,
+            "matches": true
+          },
+          "hipMove": {
+            "sourceMinimumDeg": 3.04,
+            "siteMinimumDeg": 3.04,
+            "matches": true
+          },
+          "adsMove": {
+            "sourceMinimumDeg": 0.32,
+            "siteMinimumDeg": 0.32,
+            "matches": true
+          }
+        },
+        "hipCandidates": {
+          "HIPCrouchBaseMin": {
+            "field": "Field_b3ab862b",
+            "symCrosswalkName": "HIPCrouchBaseMin",
+            "minimumDeg": 1.824,
+            "byteOffset": 700,
+            "bytesHex": "d578e93f"
+          },
+          "HIPCrouchMoveMin": {
+            "field": "Field_1ef3a223",
+            "symCrosswalkName": "HIPCrouchMoveMin",
+            "minimumDeg": 2.432,
+            "byteOffset": 704,
+            "bytesHex": "e3a51b40"
+          },
+          "HIPProneBaseMin": {
+            "field": "Field_553bcee0",
+            "symCrosswalkName": "HIPProneBaseMin",
+            "minimumDeg": 1.216,
+            "byteOffset": 708,
+            "bytesHex": "e3a59b3f"
+          },
+          "HIPProneMoveMin": {
+            "field": "Field_39b31415",
+            "symCrosswalkName": "HIPProneMoveMin",
+            "minimumDeg": 1.824,
+            "byteOffset": 712,
+            "bytesHex": "d578e93f"
+          }
+        },
+        "adsMovingCandidates": {
+          "ADSCrouchMoveMin": {
+            "field": "Field_624b1a88",
+            "symCrosswalkName": "ADSCrouchMoveMin",
+            "minimumDeg": 0.32,
+            "byteOffset": 268,
+            "bytesHex": "0ad7a33e"
+          },
+          "ADSProneMoveMin": {
+            "field": "Field_97ff0ca4",
+            "symCrosswalkName": "ADSProneMoveMin",
+            "minimumDeg": 0.32,
+            "byteOffset": 272,
+            "bytesHex": "0ad7a33e"
+          }
+        }
+      }
+    ],
+    "postureIdentity": "The named Sym crosswalk supports HDA H2-H5 and the selected ZDA crouch/prone associations, including Field_97ff0ca4. Do not assign posture labels by equal numeric values alone; Sym labels do not name GRX registry children."
+  },
+  "siteImpact": {
+    "currentModel": "The UI offers Standing and Moving only; spread bounds select aim plus Stand/Move.",
+    "proposal": "Consider an optional posture dimension separate from motion for crouch/prone after operator review and native state/composition evidence. Keep current standing values.",
+    "siteEvidence": [
+      "index.html:148-149",
+      "ui/app.js:1360-1361",
+      "sim/core.js:195-200"
+    ]
+  },
+  "unresolved": [
+    "Native activation and composition of posture-specific values.",
+    "No posture-specific maximum fields on the selected HDA or ZDA rows.",
+    "No stationary ADS crouch/prone input established.",
+    "H1 jump/sprint interpretation is outside this scope.",
+    "DB-12 pellet-direction statistics remain unavailable."
+  ],
+  "evidence": {
+    "runRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra",
+    "workerArtifacts": [
+      {
+        "path": "1.4.3.0/L69/draft-receipt.json",
+        "sha256": "e2abfc21f5647dc92a588111503ff0061b1f5f654dbd8ce9a8adb4b0d5d5fde7"
+      },
+      {
+        "path": "1.4.3.0/L69/result.json",
+        "sha256": "8d7ec05783d2abe6fb4c72e05cf97f80710ba3a8d180513d2eb67a165d0b9550"
+      },
+      {
+        "path": "1.4.3.0/L69/raw-checks.json",
+        "sha256": "e26a1ef71ac98e07ed622286d66f4fa8dc64e1c7566ddff852333c01c1ec95b6"
+      },
+      {
+        "path": "1.4.3.0/L69/ordered-refs.json",
+        "sha256": "e1d031ad89cac26857575433605fea9c6b6eed5adf874ce5a36bfdf13310d784"
+      },
+      {
+        "path": "1.4.3.0/L69/selected-row-schema.json",
+        "sha256": "4fa685d70d08e35efd060b1996b8fcd76a500e8d3af1c60077ffb7c19a3d91c0"
+      }
+    ],
+    "priorCrosswalk": {
+      "auditDetail": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-constants-live-byte-sym-audit-2026-09-23.json",
+        "sha256": "15fd2aef2c395b8308279407fbcd983e003186aab24f1650606e09f85672e282"
+      },
+      "auditReceipt": {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-site-constants-2026-09-23.json",
+        "sha256": "335e36fe596f496dc88d2a01f1d162fb0f327b2adf83cae78a02c8b2bef10020"
+      },
+      "symSnapshotSha256": "3a04f1670fb208d78debc57cb2c54646ac5cb2d7f362b0a1febc419105c364b9"
+    },
+    "workerCommands": [
+      {
+        "command": "python \"1.4.3.0/L69/l69_verify.py\"",
+        "script": "1.4.3.0/L69/l69_verify.py",
+        "scriptSha256": "94a4be66c7779a97f111c137278e8c99d56d7d1558fffc2d7590350c67195e32",
+        "arguments": [],
+        "outputs": [
+          {
+            "path": "1.4.3.0/L69/raw-checks.json",
+            "sha256": "e26a1ef71ac98e07ed622286d66f4fa8dc64e1c7566ddff852333c01c1ec95b6"
+          }
+        ]
+      },
+      {
+        "command": "python \"1.4.3.0/L69/ordered_refs.py\"",
+        "script": "1.4.3.0/L69/ordered_refs.py",
+        "scriptSha256": "3d426b335b678752c57f4d21cddb75ce9309de9e032af073ff678bc2441c0085",
+        "arguments": [],
+        "outputs": [
+          {
+            "path": "1.4.3.0/L69/ordered-refs.json",
+            "sha256": "e1d031ad89cac26857575433605fea9c6b6eed5adf874ce5a36bfdf13310d784"
+          }
+        ]
+      },
+      {
+        "command": "python \"1.4.3.0/L69/row_schema.py\"",
+        "script": "1.4.3.0/L69/row_schema.py",
+        "scriptSha256": "0e224d65e53f373493557ec5c6bef5c47dae975dcdd99c7b15318aec54f411ae",
+        "arguments": [],
+        "outputs": [
+          {
+            "path": "1.4.3.0/L69/selected-row-schema.json",
+            "sha256": "4fa685d70d08e35efd060b1996b8fcd76a500e8d3af1c60077ffb7c19a3d91c0"
+          }
+        ]
+      },
+      {
+        "command": "python \"1.4.3.0/L69/finalize.py\"",
+        "script": "1.4.3.0/L69/finalize.py",
+        "scriptSha256": "84fc29ccf79320532a22c894b0f98334ae2a2cb6d3b8373a697214156f19bf3c",
+        "arguments": [],
+        "outputs": [
+          {
+            "path": "1.4.3.0/L69/result.json",
+            "sha256": "8d7ec05783d2abe6fb4c72e05cf97f80710ba3a8d180513d2eb67a165d0b9550"
+          }
+        ]
+      }
+    ],
+    "parentIndependentRawReview": {
+      "command": "python \"astra-l69-raw-review.py\" (from the run root)",
+      "script": "astra-l69-raw-review.py",
+      "scriptSha256": "76f820da388be485cebe0c924292aa6652688da6752930fde82d8b4290c6185f",
+      "output": "astra-l69-raw-review.json",
+      "outputSha256": "f29a545f38fecd0043c3531ace88a2c2fe49f94b9c88849ff47cbe3f2ea00567",
+      "method": "Direct byte reads independent of the worker decoder; field and posture identity still depend on the separately reviewed source mapping.",
+      "rows": [
+        {
+          "label": "M433 hip row selector",
+          "sourceRelativePath": "Common/Hardware/Weapons/AssaultRifle/HK433/GS_HK433.ebx",
+          "rawSha256": "66caca0e667d17fdf03f9fb4f620b9c5842aa1fd8de0221128ad4862895eed51",
+          "byteOffset": 1856,
+          "bytesHex": "03000000",
+          "decodedValue": 3
+        },
+        {
+          "label": "M433 selected HDA crouch stationary candidate",
+          "sourceRelativePath": "Common/Hardware/Common/Arrays/DispersionHip/HDA_Weapons.ebx",
+          "rawSha256": "b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012",
+          "byteOffset": 700,
+          "bytesHex": "d578e93f",
+          "decodedValue": 1.8240000009536743
+        },
+        {
+          "label": "M433 selected HDA prone stationary candidate",
+          "sourceRelativePath": "Common/Hardware/Common/Arrays/DispersionHip/HDA_Weapons.ebx",
+          "rawSha256": "b17420840ff04f49661bce2c6b88f8106a82e0d88cd57e0b803fdb21533c0012",
+          "byteOffset": 708,
+          "bytesHex": "e3a59b3f",
+          "decodedValue": 1.215999960899353
+        }
+      ]
+    },
+    "provenanceWriter": {
+      "command": "python \"integration/write_compact_l69_provenance.py\"",
+      "script": "integration/write_compact_l69_provenance.py",
+      "scriptSha256": "f53ea4e950df3bb663882ac5da20c4f7b340fed6dd06ca13330c4696853c7f80"
+    }
+  }
+}
