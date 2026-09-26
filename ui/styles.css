@@ -422,7 +422,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 /* Attachments sidebar */
 .att-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
 .att-row{display:flex;align-items:center;gap:5px;margin-bottom:4px}
-.att-lbl{font-size:0.6rem;color:var(--muted);width:40px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
+.att-lbl{font-size:0.6rem;color:var(--muted);width:42px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
 .att-sel{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-size:0.7rem;padding:2px 3px;border-radius:3px;cursor:pointer;min-width:0;outline:none}
 .att-sel:focus{border-color:var(--accent)}
 .att-sel option{background:var(--bg2)}

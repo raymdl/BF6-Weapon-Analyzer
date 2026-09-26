@@ -8131,6 +8131,32 @@
       "hipRecoilVariationTierMod": -20
     }
   ],
+  "ACCESSORIES": [
+    {
+      "id": "none",
+      "name": "None",
+      "pts": 0
+    },
+    {
+      "id": "canted_irons",
+      "name": "Canted Iron Sights",
+      "pts": 5,
+      "description": "Angled backup iron sights. Adds points only; aiming through them is not modelled."
+    },
+    {
+      "id": "secondary_optic",
+      "name": "Secondary Optic",
+      "pts": 10,
+      "description": "Canted Reflex, Piggyback Reflex, G43 Magnifier or Adjustable Magnification. They cost the same and change no modelled stat."
+    },
+    {
+      "id": "ag_coating",
+      "name": "Anti-Glare Coating",
+      "pts": 10,
+      "scopeGlint": "reduced",
+      "description": "Reduces visible cone of scope glint with an anti-reflective coating."
+    }
+  ],
   "WEAPON_ATTS": {
     "m433": {
       "muzzle": [
@@ -8205,7 +8231,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "b36a4": {
       "muzzle": [
@@ -8283,7 +8339,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "sor556": {
       "muzzle": [
@@ -8361,7 +8447,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "ak4d": {
       "muzzle": [
@@ -8437,7 +8553,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "tr7": {
       "muzzle": [
@@ -8508,7 +8654,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "kord6p67": {
       "muzzle": [
@@ -8575,7 +8751,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "nvo228e": {
       "muzzle": [
@@ -8650,7 +8856,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "l85a3": {
       "muzzle": [
@@ -8729,7 +8965,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "vcr2": {
       "muzzle": [
@@ -8804,7 +9070,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m16a4": {
       "muzzle": [
@@ -8883,7 +9179,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m4a1": {
       "muzzle": [
@@ -8959,7 +9285,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m277": {
       "muzzle": [
@@ -9037,7 +9393,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "ak205": {
       "muzzle": [
@@ -9104,6 +9490,34 @@
         }
       },
       "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
         {
           "slot": "ergo",
           "attachment": "buffer",
@@ -9327,7 +9741,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "grtbc": {
       "muzzle": [
@@ -9392,7 +9836,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "qbz192": {
       "muzzle": [
@@ -9457,7 +9931,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "sg553r": {
       "muzzle": [
@@ -9526,7 +10030,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "sor300sc": {
       "muzzle": [
@@ -9599,7 +10133,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "sgx": {
       "muzzle": [
@@ -9664,7 +10228,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "pw5a3": {
       "muzzle": [
@@ -9728,7 +10322,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "pw7a2": {
       "muzzle": [
@@ -9792,7 +10416,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "umg40": {
       "muzzle": [
@@ -9859,7 +10513,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "usg90": {
       "muzzle": [
@@ -9916,7 +10600,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "kv9": {
       "muzzle": [
@@ -9980,7 +10694,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "scw10": {
       "muzzle": [
@@ -10044,7 +10788,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "sl9": {
       "muzzle": [
@@ -10109,7 +10883,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "cz3a1": {
       "muzzle": [
@@ -10173,7 +10977,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "pp19": {
       "muzzle": [
@@ -10236,6 +11070,34 @@
         }
       },
       "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
         {
           "slot": "grip",
           "attachment": "6h64_vert",
@@ -10574,7 +11436,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "drsiar": {
       "muzzle": [
@@ -10651,7 +11543,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m60": {
       "muzzle": [
@@ -10726,7 +11648,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "rpkm": {
       "muzzle": [
@@ -10804,6 +11756,34 @@
         }
       },
       "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
         {
           "slot": "ergo",
           "attachment": "buffer",
@@ -10970,7 +11950,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m250": {
       "muzzle": [
@@ -11044,7 +12054,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "kts100": {
       "muzzle": [
@@ -11116,7 +12156,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m240l": {
       "muzzle": [
@@ -11187,7 +12257,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m121a2": {
       "muzzle": [
@@ -11260,7 +12360,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "rpk74m": {
       "muzzle": [
@@ -11337,6 +12467,34 @@
         }
       },
       "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
         {
           "slot": "ergo",
           "attachment": "buffer",
@@ -11522,7 +12680,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "lmr27": {
       "muzzle": [
@@ -11597,7 +12785,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "svk86": {
       "muzzle": [
@@ -11669,7 +12887,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "svdm": {
       "muzzle": [
@@ -11743,7 +12991,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "grtcps": {
       "muzzle": [
@@ -11818,7 +13096,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m2010esr": {
       "muzzle": [
@@ -11882,7 +13190,59 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "ag_coating",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_high"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_low"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "sv98": {
       "muzzle": [
@@ -11943,7 +13303,59 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "ag_coating",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_high"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_low"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "psr": {
       "muzzle": [
@@ -12005,7 +13417,59 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "ag_coating",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_high"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_low"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "miniscout": {
       "muzzle": [
@@ -12071,7 +13535,59 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "ag_coating",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_high"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_low"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "interdictor": {
       "muzzle": [
@@ -12127,7 +13643,55 @@
       },
       "sightPoints": {
         "iron": 15
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "ag_coating",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_high"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "l115": {
       "muzzle": [
@@ -12190,7 +13754,59 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "ag_coating",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_high"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_low"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m87a1": {
       "muzzle": [
@@ -12248,7 +13864,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "m1014": {
       "muzzle": [
@@ -12306,7 +13952,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "ks18k": {
       "muzzle": [
@@ -12365,7 +14041,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "db12": {
       "muzzle": [
@@ -12421,7 +14127,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "p18": {
       "muzzle": [
@@ -12782,7 +14518,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "ef88": {
       "muzzle": [
@@ -12862,7 +14628,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     },
     "vssm": {
       "muzzle": [],
@@ -12919,7 +14715,37 @@
             "light"
           ]
         }
-      }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
     }
   },
   "WEAPON_ERGO": {
@@ -13261,6 +15087,1444 @@
         "mag_catch",
         "full_auto_vssm"
       ]
+    }
+  },
+  "WEAPON_ACCESSORY": {
+    "ak205": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "ak4d": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "b36a4": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "brod3": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "cz3a1": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "db12": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "drsiar": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "ef88": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "grtbc": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "grtcps": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "interdictor": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "kord6p67": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "ks18k": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "kts100": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "kv9": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "l110": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "l115": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ],
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "l85a3": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "lmr27": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "m1014": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 4.50x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m121a2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m123k": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m16a4": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m2010esr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ],
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "m240l": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m250": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m277": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m39emr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "m417a2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m433": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m4a1": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m60": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m87a1": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 2.50x",
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 4.00x",
+            "Scope 4.50x",
+            "Sight 1.00x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 1.50x "
+          ]
+        }
+      }
+    },
+    "miniscout": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ],
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 1.50x ",
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "nvo228e": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "pp19": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "psr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ],
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "pw5a3": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 4.50x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "pw7a2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "qbz192": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "rpk74m": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "rpkm": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "scw10": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sg553r": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sgx": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sl9": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sor300sc": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sor556": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sv98": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ],
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "svdm": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "svk86": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "tr7": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "umg40": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 4.50x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Scope 4.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "usg90": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "vcr2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "vssm": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x",
+            "Scope 8.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
     }
   },
   "WEAPON_MAG": {

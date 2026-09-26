@@ -48,8 +48,10 @@ separately reads physical slot assignments from root-listed ability branches and
 prerequisite attachment IDs from `Equipment_*` records. Its
 [evidence](../reference-data/provenance/frosty-attachment-compatibility.json)
 covers 1,391 offered mount choices and 285 dependency entries: 22 rules map to
-offered attachments on four weapons; 263 secondary-sight entries are not offered
-or lack a reviewed site identity. The PP-19 30/53-round screenshots corroborate
+offered attachments on four weapons. The 263 Optic Accessory entries become 118
+`accessory` rules on 56 weapons. They name individual optics, so a site sight
+category qualifies when it holds at least one permitted optic; the category's
+other optics are listed in `WEAPON_ACCESSORY.excludedSights` for the tooltip. The PP-19 30/53-round screenshots corroborate
 the dependency interpretation. Native hashed enum semantics and live overrides
 are not inferred. The [Frosty collection records](frosty/DATA_GRAPH.md#slots-and-prerequisites)
 retain asset findings and collection/recheck requirements.

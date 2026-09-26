@@ -10,7 +10,8 @@
     "frosty-barrel-ads-2026-09-13.json": "3d70508699dc150633b17ac095510c07689a8bee5199327835c1ceb794accd2c",
     "frosty-attachment-handling-generated.json": "325da504f4dcdd9c24cec6ec5bd8ee8e0857f5ecde51438d0c86535f1c51e213",
     "frosty-attachment-identity-followup-2026-09-13.json": "889995ae3b64ca1e0d9cf4b6cdd98ea9eb4030f4f9b80a70654ca63ed70af963",
-    "frosty-weapon-identities.json": "eb08a671dff2756dc8d65ae9b15927e30a46c983e6c55d51cf02f0d9be7a7711"
+    "frosty-weapon-identities.json": "eb08a671dff2756dc8d65ae9b15927e30a46c983e6c55d51cf02f0d9be7a7711",
+    "frosty-optic-category-mapping-2026-09-15.json": "2b482cd02c2e173623a2a70352dac500e5fca89b4351154c5565217965bf8e98"
   },
   "sourceFiles": {
     "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_BTM_FAB_TFS.xml": "444c3b2c50ae00589499b475c334cd56462d37c86abc55e43f025392f26840f1",
@@ -1354,7 +1355,7 @@
     "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_BTM_LMDPEIR1.xml": "b87cc8a4a66ce4b4736d69d7a149062e53de91406b3a3fb728d091863d0c5c3e",
     "Common/Hardware/Weapons/Secondary/FiveSeven/Attachment_FiveSeven_BTM_SFX300.xml": "964e1bbe2d458fad9af727b99e1e289fc359096c4ba39fb59d941638371fb9af",
     "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_CMR201.xml": "7538d0aaa53d2d1af17150ffea8dcbdb37fa2bed19bfec16f8522c5308262eab",
-    "Common/Hardware/Weapons/Secondary/M45A1/M45A1_Ability.xml": "98444d811d41d4d543c3bf954a5bf3f4db9dfe27c607eccdf0f82d0cf7b6d68f",
+    "Common/Hardware/Weapons/Secondary/M45A1/M45A1_Ability.xml": "f53ba717fd621ab6e567020e647ebb7812093d4b002b4382c823685282b37f81",
     "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_Holosun_RMLt.xml": "0ac38ca24a7ca253222807bfd05600448e2bd06fad64680f85c917aa4c24870f",
     "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_SFX400.xml": "fdaa59bb5bd0138ce7295a981a3aa69f83af46f4bafb8ce407adb04dc7333a0e",
     "Common/Hardware/Weapons/Secondary/M45A1/Attachment_M45A1_BTM_X5L_G3.xml": "75659d419b9fff8a371a890d13bbe47c29412609490e24464e91a5c7c306a321",
@@ -1370,7 +1371,7 @@
     "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BTM_LMDPEIR1.xml": "2562ff6ff062827e5e07e776ed22df95b6195d9fbc30dda9efcdd4247fc9dc9a",
     "Common/Hardware/Weapons/Secondary/G22/Attachment_G22_BTM_SFX300.xml": "e6671ab3b3d40fdf24840326c6c18c999003bbd816920eafc150f66c2c9422c2",
     "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_BTM_CMR201.xml": "00d579f80427bc8d284ce7340945c0f3cadd5a09e2b5a1869221d3c459f087aa",
-    "Common/Hardware/Weapons/Secondary/TRR8/TRR8_Ability.xml": "b66e652bad2a52b49d30d7145b5fca818dc12d387d89964b0fa5214efa46a81c",
+    "Common/Hardware/Weapons/Secondary/TRR8/TRR8_Ability.xml": "4c72a6da5cd9d912f11557e0dc447f96f7e12372fa6ef53c64ba65f549a4f595",
     "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_BTM_Holosun_RMLt.xml": "bb8226a72873eacd1dfb8fa30cc934c375628138cbac3465ac15765430792daf",
     "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_BTM_SFX400.xml": "d3ece251dc53b0964280c4575ad1884596c1f39b2f87221b56be7ab4a03aa741",
     "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_BTM_X5L_G3.xml": "77c2e2234d3d0bfeb30707d1ef73f9cd3a7eaf81185821980081873e7d895318",
@@ -2341,7 +2342,7 @@
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_ELCANLDS.xml": "58946c94d0da3911c4efd5d6cdcca050f24fd68ac8ba5d66c5902563aea4561b",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_HISSHD.xml": "ffaabf389ad86b5db322dc7a9e818e35cd5480fea72244d94a4c60776ca2c172",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_HolosunDRSTH.xml": "997abbf92ef71bff0b5e19e0591db10426c99a3e57ab13b36ac6ef7a91896bb3",
-    "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_IronSights.xml": "b2c65e2496009d960681d1008b979a52687c296f894af0e9f1fd88d3eb50dde7",
+    "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_IronSights.xml": "2714da1647dc20655b3e55a5d2caf9941b7bbfe7d5ccc67be17f2c3d19a43df2",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_M145MGO.xml": "e1958511b07ddeb1983a36e0b26060c7d6b8f85a156b51e924f2e051533b8fd3",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_M7Xi.xml": "f32e7f68451151848f618ea7fa49aa9124a29742530cdbdfc61e016b30de8ec3",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_MarchFFPShorty.xml": "41dea5cae28759f92c1426c70f2fe04d192e374be6dd24a8963de75a0098af5e",
@@ -3883,12 +3884,12 @@
     "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_TrijiconVCOG.xml": "a078ae1e749f4382283068ff8da1f827bdd0dafaceca9573fbc7eea2f58b861e",
     "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_VZOR3.xml": "fa62297bc8d4089433f9d8547cc4712dd34d21448cc1f754ee2d2dc3d10b67e4",
     "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_XPS3.xml": "3fe9e22545ff4be3a82a486e3a41facd5f7517bba7cae789e986188b41191a39",
-    "Common/Hardware/Weapons/Melee/CombatKnife/Equipment_Melee_CombatKnife.xml": "933ba8bf21c5ac6b5cce9ba0905d8f9fd5c99d0d9b22d0be36d3e728fa6e0377",
-    "Common/Hardware/Weapons/Melee/DinoMachete/Equipment_Melee_DinoMachete.xml": "6817099626f4c6ad82f79df7431b4bffad55833ee0b434e30e615fb2794f08de",
-    "Common/Hardware/Weapons/Melee/EODArm/Equipment_Melee_EODArm.xml": "071d334bcd43dbc899ef7bce115162cc0f0203591b9f69ced786287b6878cdf5",
-    "Common/Hardware/Weapons/Melee/GekoKnife/Equipment_GekoKnife.xml": "2899b8d0db795c8da26225128d75d3d7af7d6d0d12bed58b0624c53349d86356",
-    "Common/Hardware/Weapons/Melee/iceclimbingaxe/Equipment_IceClimbingAxe.xml": "f5fd45f0157b644de715f282024d43792ada8831d8e97a252927d271aa2a0b40",
-    "Common/Hardware/Weapons/Melee/SledgeHammer/Equipment_Melee_Sledgehammer.xml": "fa15957e068c00a8f86639fbec4c00f95a9edbba4bab7d582282e4dc9bbc6293",
+    "Common/Hardware/Weapons/Melee/CombatKnife/Equipment_Melee_CombatKnife.xml": "119f3aff6ea1975755205a3366b071330c1a452fac4f563a52f0454c9ff13273",
+    "Common/Hardware/Weapons/Melee/DinoMachete/Equipment_Melee_DinoMachete.xml": "56d9b505c5a72837d71a0d168c48193effed0b6f44516dc6b01c44518f2ebeed",
+    "Common/Hardware/Weapons/Melee/EODArm/Equipment_Melee_EODArm.xml": "ac5c002aca83a1166e89945491cbbc8dfcc54d3505a1659af152c0f5ef61067f",
+    "Common/Hardware/Weapons/Melee/GekoKnife/Equipment_GekoKnife.xml": "2092ffb08cb875a4b731d824cf73166b087448d5e327df480604edf121eb424a",
+    "Common/Hardware/Weapons/Melee/iceclimbingaxe/Equipment_IceClimbingAxe.xml": "2a3271b6f021aa1700ec5338d66253c03c382db1b1851346679efd9aee2ddf80",
+    "Common/Hardware/Weapons/Melee/SledgeHammer/Equipment_Melee_Sledgehammer.xml": "826a3a8222ec624fe7f0accc4398ad8103c2190650949de04045d68186c109ce",
     "Common/Hardware/Weapons/MG/M240L/Equipment_M240L.xml": "3164e08c8743a75fabdaedf4e60ead89021c120f43e08a6c07ae5fa26fc68008",
     "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_AMO_FMJ.xml": "750d5935f4b83996b3ce6a68232c78b1a0e90ae4a041658f3a5c68d29eccb306",
     "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_AMO_Frangible.xml": "85ef27ee2aa13c80b8c605a518fdbdabcc3f1bc444aebaed983f8e313544e9aa",
@@ -5492,7 +5493,26 @@
     "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_TrijiconSRO.xml": "7f07cc195e9318e48bf67f53d1689d0a9db1f0d392599edbff390c62c2f230f5",
     "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_VZOR3.xml": "94003f7f279dfee419c38df1d29e275ceab6ef2f758a69ac99212248024206db",
     "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_XPS3.xml": "271836051654a7786b6740951fbba8bbc9f7d0d75952c38d21c9da27e9d5f3c1",
-    "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_TOP_TopRail.xml": "469892e522da15722fa3b015de0896b3c5c95329f148e5e03c8d880e79e6cba5"
+    "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_TOP_TopRail.xml": "469892e522da15722fa3b015de0896b3c5c95329f148e5e03c8d880e79e6cba5",
+    "Common/Hardware/weapons/AssaultRifle/G3A4/Attachment_G3A4_SCA_CantedIronSights.xml": "621df45dffbe4432b7eb434a6b048d7cb48f00d68f575bf8426f57caf6b1e279",
+    "Common/Hardware/weapons/AssaultRifle/G3A4/Attachment_G3A4_SCA_G43Magnifier.xml": "289019dd02f4fbff74391c4199fa1e9b3160b0d8e9caffde3799418e97a2456e",
+    "Common/Hardware/weapons/AssaultRifle/L85A3/Attachment_L85A3_SCA_G43Magnifier.xml": "acd8b72389b15252687bcc16cb1ea21e7e4cd845ae4eaba3e884da6964a0dff2",
+    "Common/Hardware/weapons/AssaultRifle/Tavor7/Attachment_Tavor7_SCA_G43Magnifier.xml": "94f79b96930a70b894614ffc3dd663187c295c9ab04ca1dbc7f9f94d1f4064aa",
+    "Common/Hardware/weapons/BoltAction/MRAD/Attachment_MRAD_SCA_AGCoating.xml": "cb1ddf43a0a5dc723ca7a7ab16083ab691cd8f77f94a344b919e25fcfb5a152e",
+    "Common/Hardware/weapons/BoltAction/MRAD/Attachment_MRAD_SCA_Variable3x.xml": "78ea603351f2613af816a495f549973431103a54aa78c07676e7536898e07c10",
+    "Common/Hardware/weapons/Carbine/SCARSC/Attachment_SCARSC_SCA_G43Magnifier.xml": "6ec3a478b8206dbe6a384e67d4cfa4a6c21d6a323b5800b76ec1caa59f6fa5e1",
+    "Common/Hardware/weapons/Carbine/SIG553R/Attachment_SIG553R_SCA_G43Magnifier.xml": "edcacb0adedcf67ee7bd588c69d1f9f6e70919390ef9ad1c1e8c382ef91a9519",
+    "Common/Hardware/weapons/Carbine/XM7/Attachment_XM7_SCA_G43Magnifier.xml": "3ca17197d13c3867324a4b7573de04b60808bf33150e9356c435dccabf8e7dce",
+    "Common/Hardware/weapons/MG/M60E6/Attachment_M60E6_SCA_G43Magnifier.xml": "9373c99318777a7eeb12a5e4743203ff7d582359431a6e2c649dcb9a1f6197ce",
+    "Common/Hardware/weapons/MG/MG4K/Attachment_MG4K_SCA_G43Magnifier.xml": "4faff9145c7202353c4aa83efad96644f86216b71cbc107b057f7c39115944ac",
+    "Common/Hardware/weapons/MG/RPKM/Attachment_RPKM_SCA_G43Magnifier.xml": "6863575c150744d1431ff98169bab51b7d3964e590edef78607751bb0937ed99",
+    "Common/Hardware/weapons/shotgun/M1014/Attachment_M1014_SCA_G43Magnifier.xml": "38a7e3b634a8a5eeb73ac4535b376f332f2bd9eaccd0bd22f7ef00b09fb13178",
+    "Common/Hardware/weapons/SMG/APC10/Attachment_APC10_SCA_G43Magnifier.xml": "06c047ece9bd6c997781cdeff86095fa73b494abd4f75d468f9a821355564c9c",
+    "Common/Hardware/weapons/SMG/APDW/Attachment_APDW_SCA_G43Magnifier.xml": "195b6ba6844d1710a616f7043b4e60f76a997d6f42a3a91fe1ffd820e80cb9ca",
+    "Common/Hardware/weapons/SMG/MP5MLI/Attachment_MP5MLI_SCA_G43Magnifier.xml": "e8cf14e45f8272418f76cee11e54f617f4a5e10b2745a7c469897e2d4f370fea",
+    "Common/Hardware/weapons/SMG/P90/Attachment_P90_SCA_G43Magnifier.xml": "4b02938a5227ea47a2deb6527fd92f852eeed2bc922fc63148b55b358563f6ed",
+    "Common/Hardware/weapons/SMG/UMP40/Attachment_UMP40_SCA_G43Magnifier.xml": "b6d1c4101a44d4ffe157a8d8bf1cfcd706a5c1845f8eeaf880b3b2d4ebcfdbce",
+    "Common/Hardware/weapons/SMG/Vector/Attachment_Vector_SCA_G43Magnifier.xml": "73eec29277c4e89e8b0f5f5e12af9c9307427b55c806a1b9c97707142faa6077"
   },
   "physicalSlots": [
     {
@@ -18083,8 +18103,14 @@
           "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kord6p67",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Equipment_6P67.xml",
@@ -18194,8 +18220,14 @@
           "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kord6p67",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Equipment_6P67.xml",
@@ -18281,8 +18313,14 @@
           "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kord6p67",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/6p67/Equipment_6P67.xml",
@@ -18316,8 +18354,14 @@
           "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kord6p67",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Equipment_ACE32.xml",
@@ -18359,8 +18403,14 @@
           "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "nvo228e",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Equipment_ACE32.xml",
@@ -18470,8 +18520,14 @@
           "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "nvo228e",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Equipment_ACE32.xml",
@@ -18557,8 +18613,14 @@
           "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "nvo228e",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/ACE32/Equipment_ACE32.xml",
@@ -18592,8 +18654,14 @@
           "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "nvo228e",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Equipment_EF88.xml",
@@ -18699,8 +18767,14 @@
           "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ef88",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Equipment_EF88.xml",
@@ -18742,8 +18816,14 @@
           "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ef88",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Equipment_EF88.xml",
@@ -18829,8 +18909,14 @@
           "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ef88",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/EF88/Equipment_EF88.xml",
@@ -18864,8 +18950,14 @@
           "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ef88",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Equipment_G36.xml",
@@ -18971,8 +19063,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "b36a4",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Equipment_G36.xml",
@@ -19054,8 +19152,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "b36a4",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Equipment_G36.xml",
@@ -19089,8 +19193,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "b36a4",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G36/Equipment_G36.xml",
@@ -19132,8 +19242,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "b36a4",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Equipment_G3A4.xml",
@@ -19239,8 +19355,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak4d",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Equipment_G3A4.xml",
@@ -19274,8 +19396,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak4d",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Equipment_G3A4.xml",
@@ -19357,8 +19485,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak4d",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/G3A4/Equipment_G3A4.xml",
@@ -19400,8 +19534,14 @@
           "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_CompM5b.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak4d",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Equipment_HK433.xml",
@@ -19507,8 +19647,14 @@
           "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m433",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Equipment_HK433.xml",
@@ -19590,8 +19736,14 @@
           "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m433",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Equipment_HK433.xml",
@@ -19625,8 +19777,14 @@
           "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m433",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/HK433/Equipment_HK433.xml",
@@ -19668,8 +19826,14 @@
           "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m433",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Equipment_L85A3.xml",
@@ -19775,8 +19939,14 @@
           "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l85a3",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Equipment_L85A3.xml",
@@ -19858,8 +20028,14 @@
           "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l85a3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Equipment_L85A3.xml",
@@ -19893,8 +20069,14 @@
           "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l85a3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/L85A3/Equipment_L85A3.xml",
@@ -19936,8 +20118,14 @@
           "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l85a3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Equipment_M16A3.xml",
@@ -20019,8 +20207,14 @@
           "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m16a4",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Equipment_M16A3.xml",
@@ -20102,8 +20296,14 @@
           "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m16a4",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Equipment_M16A3.xml",
@@ -20137,8 +20337,14 @@
           "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m16a4",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/M16A3/Equipment_M16A3.xml",
@@ -20180,8 +20386,14 @@
           "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m16a4",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Equipment_SCARL.xml",
@@ -20287,8 +20499,14 @@
           "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor556",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Equipment_SCARL.xml",
@@ -20370,8 +20588,14 @@
           "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor556",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Equipment_SCARL.xml",
@@ -20405,8 +20629,14 @@
           "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor556",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/SCARL/Equipment_SCARL.xml",
@@ -20448,8 +20678,14 @@
           "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor556",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Equipment_Tavor7.xml",
@@ -20555,8 +20791,14 @@
           "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "tr7",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Equipment_Tavor7.xml",
@@ -20638,8 +20880,14 @@
           "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "tr7",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Equipment_Tavor7.xml",
@@ -20673,8 +20921,14 @@
           "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "tr7",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/Tavor7/Equipment_Tavor7.xml",
@@ -20716,8 +20970,14 @@
           "Common/Hardware/Weapons/AssaultRifle/Tavor7/Attachment_Tavor7_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "tr7",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Equipment_VHS2.xml",
@@ -20823,8 +21083,14 @@
           "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vcr2",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Equipment_VHS2.xml",
@@ -20906,8 +21172,14 @@
           "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vcr2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Equipment_VHS2.xml",
@@ -20941,8 +21213,14 @@
           "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vcr2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/AssaultRifle/VHS2/Equipment_VHS2.xml",
@@ -20984,8 +21262,14 @@
           "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vcr2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21111,8 +21395,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21210,8 +21500,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21245,8 +21541,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21288,8 +21590,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21319,8 +21627,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21350,8 +21664,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21381,8 +21701,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Equipment_DesertTechHTI.xml",
@@ -21528,8 +21854,14 @@
           "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_ACROP2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "interdictor",
+          "slot": "accessory",
+          "attachment": "ag_coating"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Equipment_L115A3.xml",
@@ -21647,8 +21979,14 @@
           "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l115",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Equipment_L115A3.xml",
@@ -21730,8 +22068,14 @@
           "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_NX8-4.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l115",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Equipment_L115A3.xml",
@@ -21761,8 +22105,14 @@
           "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_Spitfire.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l115",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Equipment_L115A3.xml",
@@ -21792,8 +22142,14 @@
           "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l115",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Equipment_L115A3.xml",
@@ -21823,8 +22179,14 @@
           "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l115",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Equipment_L115A3.xml",
@@ -21854,8 +22216,14 @@
           "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l115",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/L115A3/Equipment_L115A3.xml",
@@ -22005,8 +22373,14 @@
           "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_ACROP2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l115",
+          "slot": "accessory",
+          "attachment": "ag_coating"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22124,8 +22498,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22211,8 +22591,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22242,8 +22628,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22393,8 +22785,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_ELCANDR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "ag_coating"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22424,8 +22822,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22455,8 +22859,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22486,8 +22896,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/M2010ESR/Equipment_M2010ESR.xml",
@@ -22529,8 +22945,14 @@
           "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m2010esr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -22648,8 +23070,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -22735,8 +23163,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -22766,8 +23200,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -22797,8 +23237,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -22948,8 +23394,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_ELCANDR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "ag_coating"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -22979,8 +23431,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -23010,8 +23468,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MiniFix/Equipment_MiniFix.xml",
@@ -23053,8 +23517,14 @@
           "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "miniscout",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Equipment_MRAD.xml",
@@ -23172,8 +23642,14 @@
           "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "psr",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Equipment_MRAD.xml",
@@ -23259,8 +23735,14 @@
           "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_TrijiconSDO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "psr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Equipment_MRAD.xml",
@@ -23290,8 +23772,14 @@
           "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_TrijiconSDO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "psr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Equipment_MRAD.xml",
@@ -23441,8 +23929,14 @@
           "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_ELCANDR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "psr",
+          "slot": "accessory",
+          "attachment": "ag_coating"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Equipment_MRAD.xml",
@@ -23472,8 +23966,14 @@
           "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "psr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Equipment_MRAD.xml",
@@ -23503,8 +24003,14 @@
           "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "psr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/MRAD/Equipment_MRAD.xml",
@@ -23534,8 +24040,14 @@
           "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "psr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Equipment_SV98M.xml",
@@ -23653,8 +24165,14 @@
           "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sv98",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Equipment_SV98M.xml",
@@ -23736,8 +24254,14 @@
           "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sv98",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Equipment_SV98M.xml",
@@ -23767,8 +24291,14 @@
           "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sv98",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Equipment_SV98M.xml",
@@ -23918,8 +24448,14 @@
           "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_ELCANDR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sv98",
+          "slot": "accessory",
+          "attachment": "ag_coating"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Equipment_SV98M.xml",
@@ -23949,8 +24485,14 @@
           "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sv98",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Equipment_SV98M.xml",
@@ -23980,8 +24522,14 @@
           "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sv98",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/BoltAction/SV98M/Equipment_SV98M.xml",
@@ -24011,8 +24559,14 @@
           "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sv98",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/AK205/Equipment_AK205.xml",
@@ -24197,8 +24751,14 @@
           "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak205",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/AK205/Equipment_AK205.xml",
@@ -24357,8 +24917,14 @@
           "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak205",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/AK205/Equipment_AK205.xml",
@@ -24444,8 +25010,14 @@
           "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak205",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/AK205/Equipment_AK205.xml",
@@ -24479,8 +25051,14 @@
           "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ak205",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Equipment_BREN3.xml",
@@ -24522,8 +25100,14 @@
           "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "brod3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Equipment_BREN3.xml",
@@ -24633,8 +25217,14 @@
           "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "brod3",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Equipment_BREN3.xml",
@@ -24720,8 +25310,14 @@
           "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "brod3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/BREN3/Equipment_BREN3.xml",
@@ -24755,8 +25351,14 @@
           "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "brod3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Equipment_HK417A2.xml",
@@ -24858,8 +25460,14 @@
           "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_ACROP2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m417a2",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Equipment_HK417A2.xml",
@@ -24901,8 +25509,14 @@
           "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m417a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Equipment_HK417A2.xml",
@@ -24988,8 +25602,14 @@
           "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m417a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/HK417A2/Equipment_HK417A2.xml",
@@ -25023,8 +25643,14 @@
           "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m417a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Equipment_M4A1.xml",
@@ -25126,8 +25752,14 @@
           "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_ACROP2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m4a1",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Equipment_M4A1.xml",
@@ -25205,8 +25837,14 @@
           "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m4a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Equipment_M4A1.xml",
@@ -25236,8 +25874,14 @@
           "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m4a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/M4A1/Equipment_M4A1.xml",
@@ -25279,8 +25923,14 @@
           "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m4a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Equipment_MSBSGROTB.xml",
@@ -25382,8 +26032,14 @@
           "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_PG350.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtbc",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Equipment_MSBSGROTB.xml",
@@ -25461,8 +26117,14 @@
           "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_PG350.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtbc",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Equipment_MSBSGROTB.xml",
@@ -25492,8 +26154,14 @@
           "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtbc",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Equipment_MSBSGROTB.xml",
@@ -25535,8 +26203,14 @@
           "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtbc",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Equipment_QBZ192.xml",
@@ -25638,8 +26312,14 @@
           "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "qbz192",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Equipment_QBZ192.xml",
@@ -25717,8 +26397,14 @@
           "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "qbz192",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Equipment_QBZ192.xml",
@@ -25748,8 +26434,14 @@
           "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "qbz192",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/QBZ192/Equipment_QBZ192.xml",
@@ -25791,8 +26483,14 @@
           "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "qbz192",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Equipment_SCARSC.xml",
@@ -25894,8 +26592,14 @@
           "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor300sc",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Equipment_SCARSC.xml",
@@ -25973,8 +26677,14 @@
           "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor300sc",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Equipment_SCARSC.xml",
@@ -26004,8 +26714,14 @@
           "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_TrijiconSDO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor300sc",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SCARSC/Equipment_SCARSC.xml",
@@ -26047,8 +26763,14 @@
           "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sor300sc",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Equipment_SIG553R.xml",
@@ -26150,8 +26872,14 @@
           "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sg553r",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Equipment_SIG553R.xml",
@@ -26229,8 +26957,14 @@
           "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sg553r",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Equipment_SIG553R.xml",
@@ -26260,8 +26994,14 @@
           "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sg553r",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/SIG553R/Equipment_SIG553R.xml",
@@ -26303,8 +27043,14 @@
           "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sg553r",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/XM7/Equipment_XM7.xml",
@@ -26406,8 +27152,14 @@
           "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m277",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/XM7/Equipment_XM7.xml",
@@ -26485,8 +27237,14 @@
           "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m277",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/XM7/Equipment_XM7.xml",
@@ -26516,8 +27274,14 @@
           "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m277",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Carbine/XM7/Equipment_XM7.xml",
@@ -26559,8 +27323,14 @@
           "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m277",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Equipment_ARADMR.xml",
@@ -26678,8 +27448,14 @@
           "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_Mark4M5A2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "lmr27",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Equipment_ARADMR.xml",
@@ -26765,8 +27541,14 @@
           "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "lmr27",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Equipment_ARADMR.xml",
@@ -26796,8 +27578,14 @@
           "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "lmr27",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Equipment_ARADMR.xml",
@@ -26827,8 +27615,14 @@
           "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "lmr27",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Equipment_ARADMR.xml",
@@ -26858,8 +27652,14 @@
           "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "lmr27",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Equipment_ARADMR.xml",
@@ -26889,8 +27689,14 @@
           "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "lmr27",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/ARADMR/Equipment_ARADMR.xml",
@@ -26932,8 +27738,14 @@
           "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "lmr27",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Equipment_M39EMR.xml",
@@ -27055,8 +27867,14 @@
           "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_SBPMII.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m39emr",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Equipment_M39EMR.xml",
@@ -27142,8 +27960,14 @@
           "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m39emr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Equipment_M39EMR.xml",
@@ -27173,8 +27997,14 @@
           "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m39emr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Equipment_M39EMR.xml",
@@ -27204,8 +28034,14 @@
           "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m39emr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Equipment_M39EMR.xml",
@@ -27235,8 +28071,14 @@
           "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m39emr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Equipment_M39EMR.xml",
@@ -27266,8 +28108,14 @@
           "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m39emr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/M39EMR/Equipment_M39EMR.xml",
@@ -27309,8 +28157,14 @@
           "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m39emr",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Equipment_MSBSGROTCPS.xml",
@@ -27428,8 +28282,14 @@
           "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtcps",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Equipment_MSBSGROTCPS.xml",
@@ -27515,8 +28375,14 @@
           "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_NX8-4.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtcps",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Equipment_MSBSGROTCPS.xml",
@@ -27546,8 +28412,14 @@
           "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_Spitfire.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtcps",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Equipment_MSBSGROTCPS.xml",
@@ -27577,8 +28449,14 @@
           "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtcps",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Equipment_MSBSGROTCPS.xml",
@@ -27608,8 +28486,14 @@
           "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtcps",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Equipment_MSBSGROTCPS.xml",
@@ -27639,8 +28523,14 @@
           "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtcps",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Equipment_MSBSGROTCPS.xml",
@@ -27682,8 +28572,14 @@
           "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "grtcps",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVCh/Equipment_SVCh.xml",
@@ -27801,8 +28697,14 @@
           "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svk86",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVCh/Equipment_SVCh.xml",
@@ -27888,8 +28790,14 @@
           "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svk86",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVCh/Equipment_SVCh.xml",
@@ -27919,8 +28827,14 @@
           "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svk86",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVCh/Equipment_SVCh.xml",
@@ -27950,8 +28864,14 @@
           "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svk86",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVCh/Equipment_SVCh.xml",
@@ -27981,8 +28901,14 @@
           "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svk86",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVCh/Equipment_SVCh.xml",
@@ -28012,8 +28938,14 @@
           "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svk86",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVCh/Equipment_SVCh.xml",
@@ -28055,8 +28987,14 @@
           "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svk86",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVDM/Equipment_SVDM.xml",
@@ -28174,8 +29112,14 @@
           "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_ACROP2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svdm",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVDM/Equipment_SVDM.xml",
@@ -28261,8 +29205,14 @@
           "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svdm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVDM/Equipment_SVDM.xml",
@@ -28292,8 +29242,14 @@
           "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svdm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVDM/Equipment_SVDM.xml",
@@ -28323,8 +29279,14 @@
           "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svdm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVDM/Equipment_SVDM.xml",
@@ -28354,8 +29316,14 @@
           "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svdm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVDM/Equipment_SVDM.xml",
@@ -28385,8 +29353,14 @@
           "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_NFATACR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svdm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/SVDM/Equipment_SVDM.xml",
@@ -28428,8 +29402,14 @@
           "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "svdm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/VSSM/Equipment_VSSM.xml",
@@ -28551,8 +29531,14 @@
           "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vssm",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/VSSM/Equipment_VSSM.xml",
@@ -28650,8 +29636,14 @@
           "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_M145MGO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vssm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/VSSM/Equipment_VSSM.xml",
@@ -28685,8 +29677,14 @@
           "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vssm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/VSSM/Equipment_VSSM.xml",
@@ -28716,8 +29714,14 @@
           "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_Mark4M5A2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vssm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/VSSM/Equipment_VSSM.xml",
@@ -28747,8 +29751,14 @@
           "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_Mark4M5A2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vssm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/VSSM/Equipment_VSSM.xml",
@@ -28778,8 +29788,14 @@
           "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_Mark4M5A2.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vssm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/DMR/VSSM/Equipment_VSSM.xml",
@@ -28821,8 +29837,14 @@
           "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "vssm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M240L/Equipment_M240L.xml",
@@ -28924,8 +29946,14 @@
           "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m240l",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M240L/Equipment_M240L.xml",
@@ -29003,8 +30031,14 @@
           "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m240l",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M240L/Equipment_M240L.xml",
@@ -29034,8 +30068,14 @@
           "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m240l",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M240L/Equipment_M240L.xml",
@@ -29077,8 +30117,14 @@
           "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m240l",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M250/Equipment_M250.xml",
@@ -29180,8 +30226,14 @@
           "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m250",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M250/Equipment_M250.xml",
@@ -29259,8 +30311,14 @@
           "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m250",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M250/Equipment_M250.xml",
@@ -29290,8 +30348,14 @@
           "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m250",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M250/Equipment_M250.xml",
@@ -29333,8 +30397,14 @@
           "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m250",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M27IAR/Equipment_M27IAR.xml",
@@ -29440,8 +30510,14 @@
           "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "drsiar",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M27IAR/Equipment_M27IAR.xml",
@@ -29523,8 +30599,14 @@
           "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "drsiar",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M27IAR/Equipment_M27IAR.xml",
@@ -29558,8 +30640,14 @@
           "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_QMK171A.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "drsiar",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M27IAR/Equipment_M27IAR.xml",
@@ -29601,8 +30689,14 @@
           "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "drsiar",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M60E6/Equipment_M60E6.xml",
@@ -29704,8 +30798,14 @@
           "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m60",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M60E6/Equipment_M60E6.xml",
@@ -29783,8 +30883,14 @@
           "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m60",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M60E6/Equipment_M60E6.xml",
@@ -29814,8 +30920,14 @@
           "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_Bravo3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m60",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/M60E6/Equipment_M60E6.xml",
@@ -29857,8 +30969,14 @@
           "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m60",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG4K/Equipment_MG4K.xml",
@@ -29960,8 +31078,14 @@
           "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m123k",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG4K/Equipment_MG4K.xml",
@@ -30039,8 +31163,14 @@
           "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m123k",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG4K/Equipment_MG4K.xml",
@@ -30070,8 +31200,14 @@
           "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_TrijiconSDO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m123k",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG4K/Equipment_MG4K.xml",
@@ -30113,8 +31249,14 @@
           "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m123k",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG5/Equipment_MG5.xml",
@@ -30216,8 +31358,14 @@
           "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m121a2",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG5/Equipment_MG5.xml",
@@ -30247,8 +31395,14 @@
           "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_SCP_Spitfire.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m121a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG5/Equipment_MG5.xml",
@@ -30326,8 +31480,14 @@
           "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m121a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/MG5/Equipment_MG5.xml",
@@ -30369,8 +31529,14 @@
           "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m121a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/Minimi/Equipment_Minimi.xml",
@@ -30472,8 +31638,14 @@
           "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l110",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/Minimi/Equipment_Minimi.xml",
@@ -30551,8 +31723,14 @@
           "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l110",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/Minimi/Equipment_Minimi.xml",
@@ -30582,8 +31760,14 @@
           "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l110",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/Minimi/Equipment_Minimi.xml",
@@ -30625,8 +31809,14 @@
           "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "l110",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPK74M/Equipment_RPK74M.xml",
@@ -30728,8 +31918,14 @@
           "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpk74m",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPK74M/Equipment_RPK74M.xml",
@@ -30771,8 +31967,14 @@
           "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpk74m",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPK74M/Equipment_RPK74M.xml",
@@ -30993,8 +32195,14 @@
           "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpk74m",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPK74M/Equipment_RPK74M.xml",
@@ -31024,8 +32232,14 @@
           "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_SCP_Spitfire.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpk74m",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPKM/Equipment_RPKM.xml",
@@ -31127,8 +32341,14 @@
           "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpkm",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPKM/Equipment_RPKM.xml",
@@ -31206,8 +32426,14 @@
           "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpkm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPKM/Equipment_RPKM.xml",
@@ -31237,8 +32463,14 @@
           "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_Bravo3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpkm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPKM/Equipment_RPKM.xml",
@@ -31362,8 +32594,14 @@
           "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "rpkm",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/RPKM/Equipment_RPKM.xml",
@@ -31510,8 +32748,14 @@
           "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_TrijiconSRO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kts100",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/Ultimax/Equipment_Ultimax.xml",
@@ -31589,8 +32833,14 @@
           "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kts100",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/Ultimax/Equipment_Ultimax.xml",
@@ -31620,8 +32870,14 @@
           "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kts100",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/MG/Ultimax/Equipment_Ultimax.xml",
@@ -31663,8 +32919,14 @@
           "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kts100",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Equipment_185KSK.xml",
@@ -31766,8 +33028,14 @@
           "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ks18k",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Equipment_185KSK.xml",
@@ -31833,8 +33101,14 @@
           "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ks18k",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Equipment_185KSK.xml",
@@ -31864,8 +33138,14 @@
           "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ks18k",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/185KSK/Equipment_185KSK.xml",
@@ -31907,8 +33187,14 @@
           "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "ks18k",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Equipment_590A1.xml",
@@ -31982,8 +33268,14 @@
           "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m87a1",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Equipment_590A1.xml",
@@ -32041,8 +33333,14 @@
           "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m87a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Equipment_590A1.xml",
@@ -32072,8 +33370,14 @@
           "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m87a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/590A1/Equipment_590A1.xml",
@@ -32103,8 +33407,14 @@
           "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m87a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Equipment_DP12.xml",
@@ -32206,8 +33516,14 @@
           "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "db12",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Equipment_DP12.xml",
@@ -32285,8 +33601,14 @@
           "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "db12",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Equipment_DP12.xml",
@@ -32316,8 +33638,14 @@
           "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_Spitfire.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "db12",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/DP12/Equipment_DP12.xml",
@@ -32359,8 +33687,14 @@
           "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "db12",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Equipment_M1014.xml",
@@ -32454,8 +33788,14 @@
           "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m1014",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Equipment_M1014.xml",
@@ -32529,8 +33869,14 @@
           "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m1014",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Equipment_M1014.xml",
@@ -32560,8 +33906,14 @@
           "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m1014",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/Shotgun/M1014/Equipment_M1014.xml",
@@ -32603,8 +33955,14 @@
           "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "m1014",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APC10/Equipment_APC10.xml",
@@ -32706,8 +34064,14 @@
           "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_RomeoX.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "scw10",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APC10/Equipment_APC10.xml",
@@ -32785,8 +34149,14 @@
           "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_XPS3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "scw10",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APC10/Equipment_APC10.xml",
@@ -32816,8 +34186,14 @@
           "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_TrijiconSDO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "scw10",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APC10/Equipment_APC10.xml",
@@ -32859,8 +34235,14 @@
           "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "scw10",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APDW/Equipment_APDW.xml",
@@ -32962,8 +34344,14 @@
           "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_CompM5b.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sl9",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APDW/Equipment_APDW.xml",
@@ -33041,8 +34429,14 @@
           "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_TrijiconSDO.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sl9",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APDW/Equipment_APDW.xml",
@@ -33072,8 +34466,14 @@
           "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sl9",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/APDW/Equipment_APDW.xml",
@@ -33115,8 +34515,14 @@
           "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_CompM5b.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sl9",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP5MLI/Equipment_MP5MLI.xml",
@@ -33210,8 +34616,14 @@
           "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_RomeoX.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw5a3",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP5MLI/Equipment_MP5MLI.xml",
@@ -33273,8 +34685,14 @@
           "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw5a3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP5MLI/Equipment_MP5MLI.xml",
@@ -33304,8 +34722,14 @@
           "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_Bravo3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw5a3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP5MLI/Equipment_MP5MLI.xml",
@@ -33347,8 +34771,14 @@
           "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw5a3",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP7A2/Equipment_MP7A2.xml",
@@ -33450,8 +34880,14 @@
           "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_RomeoX.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw7a2",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP7A2/Equipment_MP7A2.xml",
@@ -33529,8 +34965,14 @@
           "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw7a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP7A2/Equipment_MP7A2.xml",
@@ -33560,8 +35002,14 @@
           "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw7a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MP7A2/Equipment_MP7A2.xml",
@@ -33603,8 +35051,14 @@
           "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pw7a2",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MPX/Equipment_MPX.xml",
@@ -33702,8 +35156,14 @@
           "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_RomeoX.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sgx",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MPX/Equipment_MPX.xml",
@@ -33773,8 +35233,14 @@
           "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sgx",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MPX/Equipment_MPX.xml",
@@ -33804,8 +35270,14 @@
           "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sgx",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/MPX/Equipment_MPX.xml",
@@ -33847,8 +35319,14 @@
           "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "sgx",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/P90/Equipment_P90.xml",
@@ -33950,8 +35428,14 @@
           "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_RomeoX.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "usg90",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/P90/Equipment_P90.xml",
@@ -34025,8 +35509,14 @@
           "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "usg90",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/P90/Equipment_P90.xml",
@@ -34056,8 +35546,14 @@
           "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "usg90",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/P90/Equipment_P90.xml",
@@ -34099,8 +35595,14 @@
           "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "usg90",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/PP19/Equipment_PP19.xml",
@@ -34642,8 +36144,14 @@
           "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pp19",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/PP19/Equipment_PP19.xml",
@@ -34721,8 +36229,14 @@
           "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pp19",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/PP19/Equipment_PP19.xml",
@@ -34752,8 +36266,14 @@
           "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_SCP_Spitfire.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pp19",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/PP19/Equipment_PP19.xml",
@@ -34795,8 +36315,14 @@
           "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "pp19",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/PP19/Equipment_PP19.xml",
@@ -34938,8 +36464,14 @@
           "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "cz3a1",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Equipment_ScorpionEvo3.xml",
@@ -35017,8 +36549,14 @@
           "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_SCP_ANPAS35.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "cz3a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Equipment_ScorpionEvo3.xml",
@@ -35048,8 +36586,14 @@
           "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_SCP_Spitfire.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "cz3a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Equipment_ScorpionEvo3.xml",
@@ -35091,8 +36635,14 @@
           "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_SCP_Romeo4T.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "cz3a1",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/UMP40/Equipment_UMP40.xml",
@@ -35186,8 +36736,14 @@
           "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_RomeoX.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "umg40",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/UMP40/Equipment_UMP40.xml",
@@ -35253,8 +36809,14 @@
           "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_CompM5B.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "umg40",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/UMP40/Equipment_UMP40.xml",
@@ -35284,8 +36846,14 @@
           "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "umg40",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/UMP40/Equipment_UMP40.xml",
@@ -35327,8 +36895,14 @@
           "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_CompM5B.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "umg40",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/Vector/Equipment_Vector.xml",
@@ -35430,8 +37004,14 @@
           "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kv9",
+          "slot": "accessory",
+          "attachment": "canted_irons"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/Vector/Equipment_Vector.xml",
@@ -35509,8 +37089,14 @@
           "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_TrijiconREAPIR.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kv9",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/Vector/Equipment_Vector.xml",
@@ -35540,8 +37126,14 @@
           "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_COD2M.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kv9",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     },
     {
       "equipmentXml": "Common/Hardware/Weapons/SMG/Vector/Equipment_Vector.xml",
@@ -35583,15 +37175,21 @@
           "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_VZOR3.xml"
         ]
       ],
-      "siteChoices": [],
-      "status": "not offered or no reviewed identity"
+      "siteChoices": [
+        {
+          "weapon": "kv9",
+          "slot": "accessory",
+          "attachment": "secondary_optic"
+        }
+      ],
+      "status": "generated"
     }
   ],
   "unresolvedSlots": [],
   "counts": {
     "slotChoices": 1391,
     "dependencyEntries": 285,
-    "generatedRules": 22,
-    "weaponsWithDependencies": 4
+    "generatedRules": 140,
+    "weaponsWithDependencies": 56
   }
 }

@@ -14,6 +14,13 @@ import xml.etree.ElementTree as ET
 
 REPO = Path(__file__).resolve().parents[1]
 MOUNTS = ('grip', 'laser', 'light')
+# Source Optic Accessory families grouped into site choices. On the site the
+# canted/offset reflexes and magnifiers differ only by name.
+ACCESSORY_FAMILIES = {
+    'CantedIronSights': 'canted_irons', 'AGCoating': 'ag_coating',
+    **{f: 'secondary_optic' for f in ('CantedReflex', 'CantedReflexSlanted', 'OffsetRedDot',
+                                      'G43Magnifier', 'Variable2x', 'Variable3x', 'Variable4x')},
+}
 EXTERNAL = re.compile(r'\[Ebx\] (.+) \[([0-9a-f-]{36})\]', re.I)
 
 
@@ -72,6 +79,7 @@ def main():
                 by_path[path.lower()].add(key)
 
     slot_rows, dependency_rows, unresolved = [], [], []
+    accessories = {}
     # Slot definitions are generated only with complete, unambiguous coverage.
     for weapon, wa in catalog['WEAPON_ATTS'].items():
         categories = defaultdict(set)
@@ -182,10 +190,60 @@ def main():
                     generated[weapon].append(rule)
             row['status'] = 'generated'
             dependency_rows.append(row)
+    # Optic Accessory (SCA) choices. Their prerequisites name individual optics;
+    # the site offers a choice with a sight category when the category holds at
+    # least one permitted optic, and lists the category's other optics as exclusions.
+    optic_map_path = REPO / 'reference-data/provenance/frosty-optic-category-mapping-2026-09-15.json'
+    reviews[optic_map_path.name] = hashlib.sha256(optic_map_path.read_bytes()).hexdigest()
+    optic_members, optic_by_path = defaultdict(dict), defaultdict(set)
+    for category in json.loads(optic_map_path.read_text(encoding='utf-8'))['categories']:
+        for member in category['members']:
+            key = (category['weapon'], category['attachment'])
+            optic_members[key][member['source'].lower()] = member['label']
+            optic_by_path[member['source'].lower()].add(key)
+    permitted_optics = defaultdict(set)
+    for row in dependency_rows:
+        family = re.search(r'_SCA_(\w+)\.xml$', row['sourceAttachment'])
+        if not family:
+            continue
+        if family[1] not in ACCESSORY_FAMILIES:
+            raise ValueError(f'Unknown Optic Accessory family: {row["sourceAttachment"]}')
+        accessory = ACCESSORY_FAMILIES[family[1]]
+        pts = int(read(row['sourceAttachment'])[0].findtext('Field_6ee865a5'), 16)
+        expected = next(a['pts'] for a in catalog['ACCESSORIES'] if a['id'] == accessory)
+        if pts != expected:
+            raise ValueError(f'{row["sourceAttachment"]}: cost {pts}, site {expected}')
+        weapons = set()
+        for paths in row['requiredSourceAttachments']:
+            for path in paths:
+                for weapon, category in optic_by_path.get(path.lower(), ()):
+                    permitted_optics[weapon, accessory].add(path.lower())
+                    weapons.add(weapon)
+        row['siteChoices'] = [dict(weapon=w, slot='accessory', attachment=accessory) for w in sorted(weapons)]
+        row['status'] = 'generated' if weapons else 'not offered or no reviewed identity'
+    for (weapon, accessory), permitted in sorted(permitted_optics.items()):
+        wa = catalog['WEAPON_ATTS'].get(weapon)
+        if wa is None:
+            continue
+        categories = sorted(c for (w, c), members in optic_members.items()
+                            if w == weapon and permitted & members.keys())
+        generated[weapon].append(dict(slot='accessory', attachment=accessory,
+            requiresAny=[dict(slot='sight', attachment=c) for c in categories]))
+        accessories.setdefault(weapon, {}).setdefault('avail', []).append(accessory)
+        for category in categories:
+            labels = sorted({label for path, label in optic_members[weapon, category].items()
+                             if path not in permitted})
+            if labels:
+                accessories[weapon].setdefault('excludedSights', {}).setdefault(accessory, {})[category] = labels
     for weapon, wa in catalog['WEAPON_ATTS'].items():
         wa.pop('dependencies', None)
         if generated[weapon]:
             wa['dependencies'] = sorted(generated[weapon], key=lambda r: (r['slot'], r['attachment']))
+
+    order = [a['id'] for a in catalog['ACCESSORIES']]
+    for entry in accessories.values():
+        entry['avail'].sort(key=order.index)
+    catalog['WEAPON_ACCESSORY'] = dict(sorted(accessories.items()))
 
     output = json.dumps(catalog, indent=2, ensure_ascii=False) + '\n'
     report = dict(schemaVersion=1, source='Frosty ability slot categories and equipment dependency IDs',

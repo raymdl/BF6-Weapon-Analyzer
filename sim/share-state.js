@@ -21,8 +21,10 @@ export function createShareCodec({
   LIGHTS = [],
   AMMO = [],
   ERGOS = [],
+  ACCESSORIES = [],
   WEAPON_MAG = {},
   WEAPON_ERGO = {},
+  WEAPON_ACCESSORY = {},
   WEAPON_ATTS = {},
   WEAPON_AMMO = {},
   defaultAttsForWeapon,
@@ -31,8 +33,8 @@ export function createShareCodec({
     throw new TypeError('createShareCodec requires defaultAttsForWeapon');
   }
 
-  const data = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
-    WEAPON_MAG, WEAPON_ERGO, WEAPON_ATTS, WEAPON_AMMO };
+  const data = { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS, ACCESSORIES,
+    WEAPON_MAG, WEAPON_ERGO, WEAPON_ACCESSORY, WEAPON_ATTS, WEAPON_AMMO };
   const allowed = (weapon, key, id) => availableAttachments(weapon,
     attachmentSlots(weapon, data).rail?.accepts.includes(key) ? 'rail' : key, data).some(a => a.id === id);
   const catIdx = (arr, id) => arr.findIndex(item => item.id === id);
@@ -58,6 +60,7 @@ export function createShareCodec({
     if (atts.light !== defaults.light) emit('T', LIGHTS, atts.light);
     if (atts.ammo !== defaults.ammo) emit('A', AMMO, atts.ammo);
     if (atts.ergo !== defaults.ergo) emit('E', ERGOS, atts.ergo);
+    if ((atts.accessory ?? 'none') !== (defaults.accessory ?? 'none')) emit('O', ACCESSORIES, atts.accessory);
     if ((atts.mag ?? '') !== (defaults.mag ?? '')) {
       const index = magKeysFor(weapon).indexOf(atts.mag);
       if (index >= 0) out.push('K' + index);
@@ -100,6 +103,7 @@ export function createShareCodec({
       else if (key === 'T') set(LIGHTS, index, 'light');
       else if (key === 'A') set(AMMO, index, 'ammo');
       else if (key === 'E') set(ERGOS, index, 'ergo');
+      else if (key === 'O') set(ACCESSORIES, index, 'accessory');
       else if (key === 'K' && magKeys[index]) atts.mag = magKeys[index];
     }
     return normalizeAttachments(atts, weapon, data);

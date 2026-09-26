@@ -110,6 +110,7 @@ function getLookups(data) {
       LIGHTS: byId(data.LIGHTS),
       AMMO: byId(data.AMMO),
       ERGOS: byId(data.ERGOS),
+      ACCESSORIES: byId(data.ACCESSORIES),
     };
     lookupCache.set(data, lookups);
   }
@@ -127,6 +128,7 @@ export function blankAtts() {
     ammo: 'standard',
     mag: null,
     ergo: 'none',
+    accessory: 'none',
   };
 }
 
@@ -145,6 +147,7 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.ammo = data.WEAPON_AMMO[weapon?.id]?.def ?? 'standard';
   atts.mag = data.WEAPON_MAG[weapon?.id]?.def ?? null;
   atts.ergo = 'none';
+  atts.accessory = 'none';
   const normalized = normalizeAttachments(atts, weapon, data);
   for (const key of ['grip', 'laser', 'light']) if (!Object.hasOwn(normalized, key)) delete atts[key];
   Object.assign(atts, normalized);
@@ -169,6 +172,8 @@ function attachmentOptions(weapon, key, data) {
     Object.hasOwn(data.WEAPON_AMMO?.[weapon.id]?.ammo ?? {}, a.id));
   if (key === 'ergo') return (data.ERGOS ?? []).filter(a =>
     a.id === 'none' || data.WEAPON_ERGO?.[weapon.id]?.avail?.includes(a.id));
+  if (key === 'accessory') return (data.ACCESSORIES ?? []).filter(a =>
+    a.id === 'none' || data.WEAPON_ACCESSORY?.[weapon.id]?.avail?.includes(a.id));
   const slot = ATTACHMENT_SLOT_KEYS.find(slot => slot.key === key);
   if (!slot) return [];
   let source = data[slot.dataKey] ?? [];
@@ -207,6 +212,7 @@ export function computeAttPts(atts, weapon, data) {
   const wm = data.WEAPON_MAG[wid] ?? null;
   const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
   const ergoPts = lookups.ERGOS[atts.ergo ?? 'none']?.pts ?? 0;
+  const accessoryPts = lookups.ACCESSORIES[atts.accessory ?? 'none']?.pts ?? 0;
   const mounts = resolveMountAttachments(atts, weapon, data);
   return (data.WEAPON_ATTS[wid]?.sightPoints?.[atts.sight ?? 'iron'] ?? getAttPts(lookups.SIGHTS[atts.sight ?? 'iron']))
     + getAttPts(lookups.MUZZLES[atts.muzzle], weapon)
@@ -214,7 +220,8 @@ export function computeAttPts(atts, weapon, data) {
     + Object.values(mounts).reduce((sum, item) => sum + getAttPts(item), 0)
     + (data.WEAPON_AMMO[wid]?.ammo?.[atts.ammo ?? 'standard'] ?? 0)
     + magPts
-    + ergoPts;
+    + ergoPts
+    + accessoryPts;
 }
 
 // Display-only casing fix: the corpus stores buckshot as "#01 BUCK"/"#00 BUCK",

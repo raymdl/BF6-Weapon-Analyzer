@@ -66,13 +66,13 @@ const { RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_IN
         ADS_SPD_TIERS, ADS_MOVE_TIERS,
         DRAW_TIME_TABLES } = _balance;
 
-const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
-        WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG } = _atts;
+const { SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, ACCESSORIES,
+        WEAPON_ATTS, WEAPON_ERGO, WEAPON_ACCESSORY, WEAPON_MAG } = _atts;
 const { AMMO, WEAPON_AMMO } = _ammo;
 
 const LOADOUT_DATA = {
-  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS,
-  WEAPON_ATTS, WEAPON_ERGO, WEAPON_MAG,
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, ERGOS, ACCESSORIES,
+  WEAPON_ATTS, WEAPON_ERGO, WEAPON_ACCESSORY, WEAPON_MAG,
   AMMO, WEAPON_AMMO, WEAPON_ATTS,
   ATTACHMENT_TOOLTIPS: _attachmentTooltips,
   GAME_BUGS: _atts.GAME_BUGS ?? [],
@@ -92,6 +92,7 @@ const ATT_BY_ID = {
   LIGHTS:  byId(LIGHTS),
   AMMO:    byId(AMMO),
   ERGOS:   byId(ERGOS),
+  ACCESSORIES: byId(ACCESSORIES),
 };
 
 // ── CONSTANTS ─────────────────────────────────────────────────────────────────
@@ -376,8 +377,8 @@ function defaultAttsForWeapon(weapon) {
   return atts;
 }
 const shareCodec = createShareCodec({
-  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS,
-  WEAPON_MAG, WEAPON_ERGO, WEAPON_ATTS, WEAPON_AMMO,
+  SIGHTS, MUZZLES, BARRELS, GRIPS, LASERS, LIGHTS, AMMO, ERGOS, ACCESSORIES,
+  WEAPON_MAG, WEAPON_ERGO, WEAPON_ACCESSORY, WEAPON_ATTS, WEAPON_AMMO,
   defaultAttsForWeapon,
 });
 const defaultAppliedWeaponCache = new Map();
@@ -422,7 +423,7 @@ let _urlSyncTimer = null;
 // Attachments are encoded as <key><catalogIndex> tokens (e.g. "M5B3K2"), and only
 // slots that differ from the weapon's default are written — keeping share URLs short.
 // Keys: S sight, M muzzle, B barrel, G grip, A ammo, E ergo, K mag, T light,
-// L laser; R/H = a grip/light occupying a combined laser slot (VZ.61, sidearms).
+// L laser, O optic accessory; R/H = a grip/light occupying a combined laser slot (VZ.61, sidearms).
 // NOTE: this relies on the catalog arrays being append-only (never reorder/remove
 // existing entries) so previously shared links keep resolving to the same item.
 function encodeState() {
@@ -2240,6 +2241,14 @@ function renderAttachmentStats(loadouts) {
       const value = visible ? 'Visible' : 'Not Visible', color = visible ? 'var(--red)' : 'var(--green)';
       chips.push(chipHtml({ label, value, color, desc: 'Whether enemies can see your laser.',
         rows: contributions.filter(c => c.record?.laserVisible != null).map(c => sourceRow(c, value, color)) }));
+    }
+    const accessory = ATT_BY_ID.ACCESSORIES[atts.accessory ?? 'none'];
+    if (accessory?.scopeGlint === 'reduced') {
+      // The source gives no defined glint quantity, so only the direction is shown.
+      const value = 'Reduced', color = 'var(--green)';
+      chips.push(chipHtml({ label: 'Scope Glint', value, color,
+        desc: 'How visible your scope glint is to enemies. The coating reduces the visible cone of glint; the size of the change is not modelled.',
+        rows: [{ name: escAttr(accessory.name), value, color }] }));
     }
     Object.entries(cur._utilities ?? {}).forEach(([lbl, value]) => {
       chips.push(chipHtml({ label: escAttr(lbl), value: escAttr(value), color: 'var(--green)',
