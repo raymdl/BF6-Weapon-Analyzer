@@ -91,6 +91,12 @@ and label wording unless requested. L60 and L62 (reverse coverage of attachment
 effects) are closed; L62 left two sight proposals. L63 (VSSM semi bloom) was
 rejected by capture; the M433 semi capture left L17 bloom unisolated.
 
+## Current run: 26 September 2026
+
+Evidence root: `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-26-astra`; release evidence is under `1.4.3.0`, with existing-video analysis under `capture`. Active checks: L68 selected damage routes; L69 posture spread tables; L70 M433 paired-video recoil feasibility; L71 M4A1 HE/AT underbarrel projectile profiles.
+
+Raw-source checks and controls are underway; no conclusions are accepted yet. After blocked or exhausted leads, work may extend overnight to new site-relevant weapon or attachment paths. Claim each lead and reproduce its controls. Research only; commit locally, and propose site changes for review.
+
 ## Active source leads
 
 Work these from source before handing them to the capture plan. Results from the
