@@ -692,7 +692,8 @@ primary-sight statistics.
 
 The [L96–L98 receipt](../../reference-data/provenance/frosty-2026-09-26-L96-L98-optic-accessories.json)
 closes the scoped non-AG source pass against Head 4892017. All 301 captured
-attachment identities and costs match the earlier catalog. These are source
+attachment identities and costs match the 25 September L65-catalog-a/b rows
+(`2026-09-25T1100-0400/1.4.3.0`). These are source
 records, not proof that each choice is available in the current game.
 
 | Source accessory family | Captured records | Point cost |
@@ -707,7 +708,9 @@ records, not proof that each choice is available in the current game.
 The XML set adds KSG canted irons and Piggyback Reflex without captured raw
 attachment files. Keep these two entries unverified. Some G43/variable labels
 lack exact AAM joins; retain their source IDs without guessing names. The 257
-compatibility rules use exact weapon and primary-optic identities. The site's
+compatibility rules use exact weapon and primary-optic identities. With the six
+AGCoating rules they make up the 263 optic-accessory entries among the 285 in
+`frosty-attachment-compatibility.json` ([DATA_GRAPH](DATA_GRAPH.md)). The site's
 broad sight categories cannot express all these requirements.
 
 Of the 44 SecondarySight entries, 43 have a resolved route to
@@ -721,7 +724,11 @@ magnifier packages each contain a PiP effect and a separate
 `WME_HighZoom_Magnifier_P00` import. Selector and effect arrays are preserved;
 index correspondence alone does not prove pairing or simultaneous activation.
 The HighZoom field stores −1, with its operation unresolved. No direct
-`WME_DynamicPivot` reference occurs in this fixed package scope.
+`WME_DynamicPivot` reference occurs in this fixed package scope. The 25
+September queue entry listing `WME_DynamicPivot` on canted irons recorded no
+source route; the canted-sight WB sway locals carry Pivot components but are a
+different class. Treat that earlier entry as unsupported; indirect WB/GS routes
+are not disproved.
 
 L98 records the four unnamed `Variable_Any` classes in five optic packages.
 `Class_daaa7328.Field_1261cdf1` stores a 1.1 triplet in each. The selected GCR
