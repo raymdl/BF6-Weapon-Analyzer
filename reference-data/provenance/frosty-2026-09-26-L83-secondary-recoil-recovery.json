@@ -1,0 +1,200 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-26",
+  "lead": "L83",
+  "title": "M26/M320 HE selected recoil recovery and duration inputs",
+  "status": "accepted serialized optional secondary inputs; runtime behavior unresolved",
+  "build": {"release": "1.4.3.0","archiveHead": 4892017,"descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"},
+  "scope": "Five FLOAT32 fields in hip and ADS on only the selected GS_M26Mass and GS_M320HE owners established by L81. No other recoil, spread, trait, modifier, capture, or native equation scope.",
+  "sourceLinks": [
+    {
+      "target": "M26DB selected secondary",
+      "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M26DB",
+      "wpmRawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_BottomRail\\Gadgets\\WPM_UBL_M26DB.ebx",
+      "wpmRawSha256": "51512469ae7c1760bfdb9b055160c12aa34b0de0b79427efa17215c0ee39dc82",
+      "sourceObject": 16,
+      "importField": "Field_775480e0",
+      "importedFileGuid": "7cc274f1-adcf-4af3-a70a-4a5eb96a5798",
+      "importedClassGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78",
+      "selectedRouteAssertions": "12/12 pass (reused L73)",
+      "selectionComparisonSha256": "000fcb4c84a71143a74cd0bd876ac7a95c0c8b7dc7211dd5bce64c23131bf708",
+      "edgeBasis": "decoded path and exact import GUID",
+      "rawPointerByteCheck": false
+    },
+    {
+      "target": "M320 HE selected secondary",
+      "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_BottomRail/Gadgets/WPM_UBL_M320HE",
+      "wpmRawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\_BottomRail\\Gadgets\\WPM_UBL_M320HE.ebx",
+      "wpmRawSha256": "335a66ff6664d12042abe064e24aad61a9d008009b1248b7f0455d50fce656b3",
+      "sourceObject": 10,
+      "importField": "Field_775480e0",
+      "importedFileGuid": "9184d5a6-e55a-4596-8769-7f7709a1ae8a",
+      "importedClassGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+      "selectedRouteAssertions": "8/8 pass (reused L71)",
+      "selectionComparisonSha256": "61c8bc12efd662461b72a255b3e28c06799c22ae5fc44f871ea4022b66934d79",
+      "edgeBasis": "decoded path and exact import GUID",
+      "rawPointerByteCheck": false
+    }
+  ],
+  "sharedType": {
+    "ownerClass": "Class_539cff9b",
+    "rootTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+    "layoutAmbiguous": true,
+    "targetRootAndNestedDescriptorsMatchM4A1Control": true,
+    "aimStructPaths": {"hip": "/Field_c5d1c8fe/Field_7b609515","ads": "/Field_c5d1c8fe/Field_6b84de87"}
+  },
+  "fields": [
+    {"name": "RecoilDuration","hash": "5a02dd65","type": "FLOAT32","typeCode": 19,"offsetWithinAimStruct": 112},
+    {"name": "RecoilDecreaseFactor","hash": "28df1cde","type": "FLOAT32","typeCode": 19,"offsetWithinAimStruct": 84},
+    {"name": "RecoilDecreaseExponent","hash": "9045ba17","type": "FLOAT32","typeCode": 19,"offsetWithinAimStruct": 88},
+    {"name": "RecoilDecreaseTimeExponent","hash": "1d04f0f6","type": "FLOAT32","typeCode": 19,"offsetWithinAimStruct": 108},
+    {"name": "RecoilDecreaseOffset","hash": "04490b34","type": "FLOAT32","typeCode": 19,"offsetWithinAimStruct": 104}
+  ],
+  "knownAnswerControl": {
+    "status": "pass; 10/10 words across hip and ADS",
+    "route": "Common/Hardware/Weapons/Carbine/M4A1/GS_M4A1",
+    "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\Carbine\\M4A1\\GS_M4A1.ebx",
+    "rawSha256": "12d448446554821b223d9341701cc17641c705459e261fa5aedeee6c98c52674",
+    "objectIndex": 1,
+    "objectGuid": "16c5eb00-a36c-495c-bbf6-e6a62368404a",
+    "objectClass": "Class_539cff9b",
+    "fieldOrder": ["5a02dd65","28df1cde","9045ba17","1d04f0f6","04490b34"],
+    "rawWords": {
+      "hip": [
+        [896,"cdcccc3c",0.02500000037252903],
+        [868,"00006442",57.0],
+        [872,"0000803f",1.0],
+        [892,"8fc2853f",1.0449999570846558],
+        [888,"8fc2753d",0.05999999865889549]
+      ],
+      "ads": [
+        [1048,"cdcccc3c",0.02500000037252903],
+        [1020,"00006442",57.0],
+        [1024,"0000803f",1.0],
+        [1044,"8fc2853f",1.0449999570846558],
+        [1040,"8fc2753d",0.05999999865889549]
+      ]
+    },
+    "scanSha256": "867c8c37a758f0103640e9c659eacded98823f258ed6d2f85b4f7afe54b01873"
+  },
+  "targets": [
+    {
+      "label": "M26DB selected GS owner",
+      "route": "Common/Hardware/Gadgets/Underbarrels/M26Mass00Buck/GS_M26Mass",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Underbarrels\\M26Mass00Buck\\GS_M26Mass.ebx",
+      "rawSha256": "f31d17adeb7f8d86a8015597f4c78677c68c832a3dedd4185faa2e16d418a83b",
+      "objectIndex": 2,
+      "objectGuid": "3df09255-db7e-4fcf-9006-254ec32fdc78",
+      "objectClass": "Class_539cff9b",
+      "rootTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+      "layoutAmbiguous": true,
+      "fieldOrder": ["5a02dd65","28df1cde","9045ba17","1d04f0f6","04490b34"],
+      "rawWords": {
+        "hip": [
+          [1024,"00000000",0.0],
+          [996,"00008c42",70.0],
+          [1000,"9a99193f",0.6000000238418579],
+          [1020,"00004040",3.0],
+          [1016,"6f12833a",0.0010000000474974513]
+        ],
+        "ads": [
+          [1176,"00000000",0.0],
+          [1148,"00008c42",70.0],
+          [1152,"9a99193f",0.6000000238418579],
+          [1172,"00004040",3.0],
+          [1168,"6f12833a",0.0010000000474974513]
+        ]
+      }
+    },
+    {
+      "label": "M320 HE selected GS owner",
+      "route": "Common/Hardware/Gadgets/Launchers/M320/GS_M320HE",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Gadgets\\Launchers\\M320\\GS_M320HE.ebx",
+      "rawSha256": "f66ff9d51eac0ba234e2ca4b3771712c3b199fc2fe53eab9b321304f267658b7",
+      "objectIndex": 2,
+      "objectGuid": "33f78a74-f833-409c-97b3-9df15bdea3b1",
+      "objectClass": "Class_539cff9b",
+      "rootTypeKey": "1db15dc58e7cbe6b406d78236eb07b68",
+      "layoutAmbiguous": true,
+      "fieldOrder": ["5a02dd65","28df1cde","9045ba17","1d04f0f6","04490b34"],
+      "rawWords": {
+        "hip": [
+          [1024,"00000000",0.0],
+          [996,"66666640",3.5999999046325684],
+          [1000,"cdcc4c3f",0.800000011920929],
+          [1020,"00000040",2.0],
+          [1016,"6f12833a",0.0010000000474974513]
+        ],
+        "ads": [
+          [1176,"00000000",0.0],
+          [1148,"66666640",3.5999999046325684],
+          [1152,"cdcc4c3f",0.800000011920929],
+          [1172,"00000040",2.0],
+          [1168,"6f12833a",0.0010000000474974513]
+        ]
+      }
+    }
+  ],
+  "nameBasis": {
+    "kind": "prior evidence only",
+    "basis": "FIELD_MAP.md labels on the exact L81-matched descriptor; RecoilDuration also uses the prior L13 duration association.",
+    "freshLocalRegistryNameJoin": false,
+    "fieldMapSha256": "55679b3937420742daf7d6763220565d9655c92eb9d1434bf6dbecb7efd808d3",
+    "l13ReceiptSha256": "6281e9da8826159167391177025fd7c73e29c928a557551de1639e3fe389ab33"
+  },
+  "interpretationLimits": [
+    "Zero stored RecoilDuration does not establish an instantaneous impulse, inherited duration, disablement, fallback, native timing, or native equation.",
+    "These are optional secondary serialized inputs only; they do not show the rifle-primary model is wrong and do not support numeric implementation or a capture proposal.",
+    "WPM selection edges use decoded paths and exact imported GUIDs; their raw pointer bytes were not checked."
+  ],
+  "commands": {
+    "index": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83\\executed-command-hash-index.json",
+      "sha256": "c76a15923c803a6aa4b23b34c52eafbba2d952b042d5870ae4d3f72efbc16f08",
+      "recordingLimit": "Read-only PowerShell wrappers are summarized; their inline wrapper source was not saved as a separate .ps1 or transcript."
+    },
+    "scans": [
+      {
+        "command": "python 'C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-primary-field-scan.py' --db 'C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite' --decoder 'C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py' --plan 'C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83\\l83-m4a1-control-plan-v2.json' --out 'C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83\\l83-control-scan.json'",
+        "scannerSha256": "6df272b54dfef1957951e345cd36bb463569ee009e66f8e1e6b533e8db627082",
+        "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+        "planSha256": "960672f9421396814f75324fe2eb259cec016213c7f7f2c4f0f82fba5795d2a1",
+        "outputPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83\\l83-control-scan.json",
+        "outputSha256": "867c8c37a758f0103640e9c659eacded98823f258ed6d2f85b4f7afe54b01873"
+      },
+      {
+        "command": "python 'C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-primary-field-scan.py' --db 'C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite' --decoder 'C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py' --plan 'C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83\\l83-target-gs-plan.json' --out 'C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83\\l83-target-scan.json'",
+        "scannerSha256": "6df272b54dfef1957951e345cd36bb463569ee009e66f8e1e6b533e8db627082",
+        "decoderSha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f",
+        "planSha256": "cd2c09b657e17d818b69f3cf3e1ef57d9027c66d7bcf0eac880ac1fa5b8cae11",
+        "outputPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83\\l83-target-scan.json",
+        "outputSha256": "9b0b385fa294d67d4fadac27b61a63551b0697f7b3e30f0c871b1b383996c82b"
+      }
+    ],
+    "packaging": {
+      "finalizerSha256": "18dfc3e85d330c0f0ee39295a1d5b4e2dea2280925f9057450d79caee09d8fe7",
+      "indexWriterSha256": "e7524596b58f9f147887fccd0a32f25b764d1003df8f6cbd0e0a35b2a3b33aea",
+      "failures": [
+        {"sequence": 25,"error": "StopIteration at line 149 while matching a schema comparison label by route substring; stopped before writing result, receipt, progress, or index."},
+        {"sequence": 26,"error": "PowerShell inline source-fragment replacement did not find its expected source fragment; no corrected finalizer or package output was written."},
+        {"sequence": 27,"error": "Finalizer v2 wrote result, receipt, and progress, then failed at line 327 with NameError: patcher was undefined while assembling shell_operations; no scan data changed. The parent accepted the result and receipt; a separate index writer later recorded the commands."}
+      ],
+      "scanDataFailures": 0
+    }
+  },
+  "evidence": {
+    "artifactRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L83",
+    "files": [
+      {"path": "result.json","sha256": "1d6ce79748e065dce91651808b388920f8a2d229717db2071e2d2038a4bc2d01","pathBase": "artifactRoot"},
+      {"path": "draft-receipt.json","sha256": "03903afdb21986e49f71a60aea332d88230c1b715e4b20c5a7fc5e14c45f6024","pathBase": "artifactRoot"},
+      {"path": "l83-control-scan.json","sha256": "867c8c37a758f0103640e9c659eacded98823f258ed6d2f85b4f7afe54b01873","pathBase": "artifactRoot"},
+      {"path": "l83-target-scan.json","sha256": "9b0b385fa294d67d4fadac27b61a63551b0697f7b3e30f0c871b1b383996c82b","pathBase": "artifactRoot"},
+      {"path": "schema-field-types.json","sha256": "034e74cd31cdbf6c1a26911786253bda3932acd08dd92ad22d32ee3a195bf569","pathBase": "artifactRoot"},
+      {"path": "executed-command-hash-index.json","sha256": "c76a15923c803a6aa4b23b34c52eafbba2d952b042d5870ae4d3f72efbc16f08","pathBase": "artifactRoot"},
+      {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l83-raw-review.json","sha256": "adf73caa8d5033f8066eda9385dd197cdc616411ff15cb499447b0443c29ae81","pathBase": "absolute"},
+      {"path": "reference-data/provenance/frosty-2026-09-26-L81-secondary-recoil-inputs.json","sha256": "b12f79bbc8191c4e21bbd815a9debc6032cf99ccd35d937934d1950df658b633","pathBase": "repositoryRoot"},
+      {"path": "reference-data/provenance/frosty-2026-09-24-L13-burst-duration-bindings.json","sha256": "6281e9da8826159167391177025fd7c73e29c928a557551de1639e3fe389ab33","pathBase": "repositoryRoot"},
+      {"path": "docs/frosty/FIELD_MAP.md","sha256": "55679b3937420742daf7d6763220565d9655c92eb9d1434bf6dbecb7efd808d3","pathBase": "repositoryRoot"}
+    ]
+  }
+}

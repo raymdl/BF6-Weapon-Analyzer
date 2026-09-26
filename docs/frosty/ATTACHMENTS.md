@@ -1005,6 +1005,8 @@ The [L80 receipt](../../reference-data/provenance/frosty-2026-09-26-L80-m26db-tr
 
 The [L81 receipt](../../reference-data/provenance/frosty-2026-09-26-L81-secondary-recoil-inputs.json) records raw-checked hip/ADS recoil inputs for the ordinary selected M26DB and M320 HE GunSway owners. Their exact root and nested descriptors match the M4A1 control; the seven field names follow prior `FIELD_MAP/source-recoil` evidence. M26 amount/direction/variation are 3/-10/12 for both aims. M320 HE stores amount 5 hip and 2 ADS, with direction and variation zero; multipliers are 1 and exponents are 0. Both target decoder `layoutAmbiguous` flags remain. Saved WPM imports resolve to the exact object GUIDs, but their pointer bytes were not checked. These are possible optional secondary inputs only: units, native activation/composition and final recoil remain unresolved. The rifle-primary model is not shown wrong; no numeric implementation or capture is proposed.
 
+The [L83 receipt](../../reference-data/provenance/frosty-2026-09-26-L83-secondary-recoil-recovery.json) records zero `RecoilDuration` in both aims for the selected M26 and M320 HE owners. M26 factor/exponent/time-exponent/offset are 70/0.6/3/0.001; M320 HE values are 3.6/0.8/2/0.001. Names use the prior `FIELD_MAP`/L13 basis and exact L81 descriptor match. Zero duration does not establish an instantaneous impulse, disablement, inheritance, fallback, or native timing; these remain optional secondary source inputs only.
+
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 
 The WB part lists of these two weapons, and no others, import
