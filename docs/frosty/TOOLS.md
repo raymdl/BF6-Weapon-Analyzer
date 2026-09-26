@@ -490,7 +490,9 @@ records the exact arguments and comparison with the earlier scan.
 
 - `frosty-registry-association.py --manifest`: extends the registry audit with
   declared owner anchors, raw scalar offsets and bounded linked-group checks.
-  Each receipt pins its manifest.
+  Each receipt pins its manifest. Exported child GUIDs come from the 16 raw bytes
+  before the object start; fields-only body dictionaries do not contain GUID
+  metadata, so a null from such a lookup does not show that the raw GUID is absent.
 - `frosty-selected-chain-check.py`: checks declared object paths, selected imports
   and raw bytes against exact build/hash identities; `localized_text` links a decoded
   StringId to a hash-pinned TSV entry; `localized_missing` checks that an exact

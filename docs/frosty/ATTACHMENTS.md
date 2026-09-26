@@ -975,6 +975,10 @@ have four matching FLOAT32 hashes. The M4A1 owner control associates them with
 and 25 on the base profile, and 5, 2.5, 5 and 15 on Dragon's Breath. Both
 curve pointers are raw-null.
 
+The previous null child GUIDs on the M4A1 registry control were a reporting
+omission. The [L73 child GUID correction](../../reference-data/provenance/frosty-2026-09-26-L73-registry-child-guid-reporting-correction.json)
+records the four exported GUIDs; the supported names and values are unchanged.
+
 These source names and values do not establish native scalar fallback or curve
 precedence. No distance units are established. Eight top-level ECR_M26Incendiary
 scalars remain unnamed. No direct hit operation, burn behavior, duration, tick

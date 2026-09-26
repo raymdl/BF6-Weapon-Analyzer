@@ -94,7 +94,7 @@ def main():
                         formats={decoder['ENUM']:'<i',decoder['INT8']:'<b',decoder['UINT8']:'<B',decoder['INT16']:'<h',decoder['UINT16']:'<H',decoder['INT32']:'<i',decoder['UINT32']:'<I',decoder['INT64']:'<q',decoder['UINT64']:'<Q',decoder['FLOAT32']:'<f',decoder['FLOAT64']:'<d'}
                         fmt=formats.get(valueType)
                         if fmt: rawDecoded=struct.unpack_from(fmt,re.data,vOff)[0]
-                pairs.append({'arrayIndex':i,'fieldHash':hx,'field':'Field_'+hx,'childIndex':childix,'childGuid':cb.get('$guid'),'childName':name,'registryValue':val,'namedAssociation':name is not None,'valueOffset':vOff,'valueBytes':vBytes,'rawTypeCode':valueType,'rawDecodedValue':rawDecoded})
+                pairs.append({'arrayIndex':i,'fieldHash':hx,'field':'Field_'+hx,'childIndex':childix,'childGuid':decoder['_guid'](re.data[cstart-16:cstart]) if isinstance(childix,int) and re.instances[childix]['exported'] else None,'childName':name,'registryValue':val,'namedAssociation':name is not None,'valueOffset':vOff,'valueBytes':vBytes,'rawTypeCode':valueType,'rawDecodedValue':rawDecoded})
             linkedEvidence=[]
             queue=[]
             follow=[x.removeprefix('Field_') for x in spec.get('followFields',[])]
