@@ -518,6 +518,25 @@ from the raw curve alone.
 
 ## 12. Underbarrel trait comparison
 
+### Optional M320 HE launch-speed observation (L76/L76B; conditional candidate)
+
+Only attempt this if the ordinary M4A1 M320 HE setup is available in the live
+menu. Show a measured 20 m range, stationary shooter, exact loadout/class/trait
+state, live build, and verified recording FPS. Frame the direct muzzle launch
+and projectile transit endpoint or first collision. Bound and report uncertainty
+for both event times; do not use explosion time as projectile arrival.
+
+The [L76 source receipt](../../reference-data/provenance/frosty-2026-09-26-L76-m320-he-firing-inputs.json)
+records the separate firing-vector and projectile values. The [L76B calculation](../../reference-data/provenance/frosty-2026-09-26-L76B-m320-he-capture-feasibility.json)
+assumes those serialized values 63 and 250 are m/s, no drag, constant horizontal
+velocity, a level-to-5-degree launch, gravity −9.81 m/s² for vertical sensitivity
+only, 60 fps, and ±2 frames per timing. At 20 m
+the resulting intervals have a conditional minimum gap of 10.229 frames. This
+does not establish native units or which value controls the shot, and it does
+not promise that the launch or first collision can be observed clearly. Treat
+the capture as inconclusive if the live build, range, FPS, event frames, or
+uncertainty cannot be established.
+
 Use one weapon with an M320 underbarrel that your current menu offers. Show the
 weapon, underbarrel variant, class, specialization and active in-round traits.
 First record ammunition immediately after a fresh spawn, before resupply or pickups.

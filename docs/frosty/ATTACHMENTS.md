@@ -932,6 +932,25 @@ independently transfer either name to M320. Those two mappings already appear in
 this registry and remains unnamed. No units, falloff relationship, runtime
 effect or site value is established.
 
+### M4A1 M320 HE firing inputs and capture feasibility (L76/L76B, 26 September 2026)
+
+The [L76 receipt](../../reference-data/provenance/frosty-2026-09-26-L76-m320-he-firing-inputs.json)
+records the selected ordinary M4A1 firing record's `Shot.InitialSpeed` as
+`[0, 0, 63]`; its object and FireLogic layouts remain ambiguous. The primary
+M4A1 control names `Shot.InitialSpeed.z` at 590, matching the current site
+bullet velocity. The stored projectile value 250 and TTL 15 are separate. The
+FireLogic value 0 is labelled single only by `FIELD_MAP`; stored rates are
+100/550/-1. One reload row and three phase values are recorded, but reload
+activation, cadence, launch precedence and phase composition remain unresolved.
+
+The [L76B receipt](../../reference-data/provenance/frosty-2026-09-26-L76B-m320-he-capture-feasibility.json)
+contains arithmetic only. If 63 and 250 are treated as m/s under its explicit
+stationary, no-drag, 60 fps and ±2-frame assumptions, the 20 m transit-time
+intervals do not overlap; the minimum gap is 10.229 frames with the 0–5°
+launch-angle sensitivity included. This does not identify the active native
+speed, establish units, or promise that the launch and collision events are
+observable in a live capture.
+
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 
 The WB part lists of these two weapons, and no others, import

@@ -1,0 +1,38 @@
+{
+  "date": "2026-09-26",
+  "lead": "L76B",
+  "title": "Conditional M320 HE projectile-transit capture feasibility",
+  "status": "accepted arithmetic-only feasibility candidate",
+  "build": {"release": "1.4.3.0", "archiveHead": 4892017, "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"},
+  "question": "Would an observed 20 m projectile-transit interval separate the serialized M320 Shot.InitialSpeed.z value from the distinct projectile InitialSpeed value under explicit idealized assumptions?",
+  "inputs": {
+    "hypotheticalSpeedValues_m_per_s": [63.0, 250.0],
+    "sourceBasis": "M320 PrimaryFire_M320 Shot.InitialSpeed.z raw value 63 and PB_NS_M320HE InitialSpeed raw value 250. These are conditional numerical hypotheses only; serialized units and native precedence are not established.",
+    "assumptions": {"stationaryShooter": true, "constantHorizontalVelocity": true, "drag": "none", "launchElevationDegrees": [0, 5], "gravity_m_per_s2": -9.81, "fps": 60, "timingUncertainty_eachTiming_frames": 2},
+    "gravityUse": "Vertical displacement sensitivity only; no projectile trajectory or native physics claim."
+  },
+  "knownAnswerControl": {"distance_m": 20, "speedHypothesis_m_per_s": 100, "expectedTime_s": 0.2, "expectedVerticalDisplacement_m": -0.1962, "expectedFrames_at_60fps": 12, "actualTime_s": 0.2, "actualVerticalDisplacement_m": -0.1962, "actualFrames_at_60fps": 12, "passed": true, "tolerance": "abs_tol=1e-12, rel_tol=0"},
+  "twentyMeterPredictions": [
+    {"hypothesis_m_per_s": 63, "nominalTime_s": 0.317460317, "nominalFrames_at_60fps": 19.047619048, "timingInterval_s_with_assumptions": [0.284126984, 0.352006298]},
+    {"hypothesis_m_per_s": 250, "nominalTime_s": 0.08, "nominalFrames_at_60fps": 4.8, "timingInterval_s_with_assumptions": [0.046666667, 0.11363892]}
+  ],
+  "separation": {"nominalSeconds": 0.237460317, "nominalFrames_at_60fps": 14.247619048, "intervalsOverlap": false, "minimumGapSeconds": 0.170488064, "minimumGapFrames_at_60fps": 10.22928384},
+  "captureCandidate": [
+    "Use the ordinary M4A1 M320 HE configuration only if the menu offers it; document the exact weapon, attachment, class, specialization and active traits.",
+    "Measure 20 m, keep the shooter stationary, identify the live build, and verify recording FPS.",
+    "Frame the direct muzzle-launch event and projectile transit endpoint or first collision. Record bounded frame uncertainty for both events; the calculated intervals assume plus/minus 2 frames per timing at 60 fps.",
+    "Do not use explosion time as projectile arrival; arming or fuse delay could add an unrelated interval.",
+    "These are candidate conditions only. The arithmetic does not promise that either event can be observed or framed in the live game."
+  ],
+  "limits": ["Arithmetic only; no live capture or measurement was made.", "No native speed units, active value, launch precedence, drag, effective trajectory, or gameplay behavior is established.", "No site values were reviewed or changed."],
+  "reproduction": {"command": "python \"C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\capture\\L76B\\l76b_arithmetic.py\"", "helperPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\capture\\L76B\\l76b_arithmetic.py", "helperSha256": "7ed79d872676cbe74feb829db17455771258ff33cdd3326f9d5de1ac58f17ac7", "commandSha256": "5ac8bb2273ae3aaf2311b04306f5b34abe4ab3954b2799b5a52acf0e04dec5eb"},
+  "evidence": [
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\capture\\L76B\\result.json", "sha256": "776b8ebf3721d2c6133319c073c4c3b6a29e71436e33f75afa36cca8ab105a0a"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\capture\\L76B\\draft-receipt.json", "sha256": "e4859c5d1ca4e07fddda9a36dd766764b52b7386c64420122ae8152566a48ea8"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\capture\\L76B\\brief.txt", "sha256": "0c5d46fc7a0ae583e9c6d92d8a1da48b95d2bccd38c8dc25880d0d0aa94c86f8"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L76\\result.json", "sha256": "9ddedb4f2637d77fe7ca27f9e0d162bade419438c7a25b1ec64acd59bc0f6638"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L76\\draft-receipt.json", "sha256": "732e1be28ba06971ea500d9452ca6522ecf022c1fbd604e95e7ace54cfe5dd91"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l76-raw-review.json", "sha256": "9ff3a5a27f13cf181a4a3845a2982ac6b2346aedb75d7205c0f2fbbb401b119b"},
+    {"path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-26-L70-match-trigger-capture-limit.json", "sha256": "0f98cbbd87143421cacb56eb4fb0060998c8f7f1d9077f935123590fb1123131"}
+  ]
+}
