@@ -952,6 +952,17 @@ bounded to support that duration uncertainty. This does not identify the active
 native speed, establish units, or promise that the launch and collision events
 are observable in a live capture.
 
+### M4A1 M320 thermobaric Explosion fields (L78, 26 September 2026)
+
+The [L78 receipt](../../reference-data/provenance/frosty-2026-09-26-L78-m320tb-explosion-profile.json)
+records the ordinary M4A1 selector-to-`WPM_UBL_M320TB` route and its selected
+projectile's `Class_9966532d` Explosion owner. Direct registry associations name
+local `BlastDamage=30` (registry value 50) and `DamageMultiplier=1` (registry
+value 1). The M4A1 HE control reproduces at 120/1. The part-to-effect hop is a
+decoded-path assertion without raw pointer bytes in the reused receipt. These
+serialized values do not establish precedence, runtime activation, total damage,
+or blast/burn behavior; no site value change is proposed.
+
 ### M4A1 ordinary M26DB secondary source profile (L73, 26 September 2026)
 
 The [L73 receipt](../../reference-data/provenance/frosty-2026-09-26-L73-m26db-source-profile.json)
