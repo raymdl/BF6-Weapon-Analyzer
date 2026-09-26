@@ -64,7 +64,7 @@ def main():
      if rr['route'].lower()!=target['route'].lower() or rr['raw_sha256'].lower()!=target['rawSha256'].lower() or rr['file_guid'].lower()!=imp['fileGuid'].lower():continue
      _,te,to=load(rr['route'],rr['raw_sha256'])
      if d['_guid'](te.file_guid).lower()!=imp['fileGuid'].lower():raise ValueError('target raw file GUID differs from import')
-     matches.extend((rr['route'],rr['file_guid'],i,o) for i,o in enumerate(to) if o.get('$guid','').lower()==imp['classGuid'].lower())
+     matches.extend((rr['route'],rr['file_guid'],i,o) for i,o in enumerate(to) if (o.get('$guid') or '').lower()==imp['classGuid'].lower())
     r.update({'import':imp,'expectedTarget':target,'resolved':bool(matches),'resolvedFileGuids':[z[1] for z in matches],'targetObjectIndices':[z[2] for z in matches]});r['verified']=len(matches)==1
    elif x['op'] in ('localized_text','localized_missing'):
     loc=m['localization']; lp=pathlib.Path(loc['path'])
