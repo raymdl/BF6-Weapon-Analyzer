@@ -638,8 +638,9 @@ an unconditional iron-sight local (1.05–1.22), which the 25 September recordin
 do not show as a general ADS multiplier. The M4A1 iron/ROX ratios of 0.642 and
 0.684 fit the shared ×0.667 package, not ×0.729, and BROD 3's 0.978 and 0.987 fit
 1.0, not 1.076. The site's SGX CQB/Long and Mini Scout Short values therefore
-likely apply only while aiming through canted irons. The proposal to remove them
-is in the research queue.
+likely apply only while aiming through canted irons. They were removed from the
+site on 26 September (operator approval); the menu descriptions for CQB and the
+Mini Scout 12" SBR mention no sway, while Long keeps its shared ×1.5.
 [L94 receipt](../../reference-data/provenance/frosty-2026-09-26-L94-optic-accessory-and-local-sight-sway.json).
 
 ### Optic Accessory effects (L94, 26 September 2026)

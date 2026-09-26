@@ -377,9 +377,6 @@
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "recoilDecreaseTimeExponentAdd": -0.5
-        },
-        "sgx": {
-          "weaponSwayMult": 1.462923
         }
       },
       "pts": 25,
@@ -444,11 +441,6 @@
       "suppressor": true,
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
-      "weaponOverrides": {
-        "sgx": {
-          "weaponSwayMult": 0.975282
-        }
-      },
       "pts": 30,
       "worldSpotMult": 0,
       "minimapSpotMult": 0.14
@@ -633,9 +625,6 @@
         "svk86": 1,
         "tr7": 1,
         "vcr2": 1
-      },
-      "weaponSwayMultByWeapon": {
-        "miniscout": 1.033862
       }
     },
     {
