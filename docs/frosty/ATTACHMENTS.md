@@ -985,6 +985,8 @@ scalars remain unnamed. No direct hit operation, burn behavior, duration, tick
 rate or site change is established. Keep the M26 profiles separate from M4A1
 rifle-primary damage.
 
+The [L77/L77B timing receipt](../../reference-data/provenance/frosty-2026-09-26-L77-m26db-secondary-timing.json) records two prior-name-basis fire-logic rate fields at 1799.999 RPM and a conditional 88.078 RPM result from applying the existing full-cycle formula to the exact matched nested bolt descriptor. Its one reload-info row has prior-name-basis `ReloadSpeed=1` and `ReloadTimeBulletsLeft=3`; this bounded result assigns no names to the other row members and does not establish native mode, completion, ADS overlap, reload selection, or a separate runtime profile.
+
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 
 The WB part lists of these two weapons, and no others, import
