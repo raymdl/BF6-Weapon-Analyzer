@@ -945,11 +945,30 @@ activation, cadence, launch precedence and phase composition remain unresolved.
 
 The [L76B receipt](../../reference-data/provenance/frosty-2026-09-26-L76B-m320-he-capture-feasibility.json)
 contains arithmetic only. If 63 and 250 are treated as m/s under its explicit
-stationary, no-drag, 60 fps and ±2-frame assumptions, the 20 m transit-time
+stationary, no-drag, 60 fps and ±2-frame transit-duration assumptions, the 20 m
 intervals do not overlap; the minimum gap is 10.229 frames with the 0–5°
-launch-angle sensitivity included. This does not identify the active native
-speed, establish units, or promise that the launch and collision events are
-observable in a live capture.
+launch-angle sensitivity included. Capture endpoint errors must be measured and
+bounded to support that duration uncertainty. This does not identify the active
+native speed, establish units, or promise that the launch and collision events
+are observable in a live capture.
+
+### M4A1 ordinary M26DB secondary source profile (L73, 26 September 2026)
+
+The [L73 receipt](../../reference-data/provenance/frosty-2026-09-26-L73-m26db-source-profile.json)
+records the ordinary M4A1 `WPM_UBL_M26DB` internal M26 buckshot base and
+Dragon's Breath replacement-projectile paths. These are profiles inside the
+package, not necessarily separate menu choices. Both exact projectile owners
+have four matching FLOAT32 hashes. The M4A1 owner control associates them with
+`StartDamage`, `EndDamage`, `DamageFalloffStartDistance` and
+`DamageFalloffEndDistance`. Their stored values, in that order, are 8.4, 2, 6
+and 25 on the base profile, and 5, 2.5, 5 and 15 on Dragon's Breath. Both
+curve pointers are raw-null.
+
+These source names and values do not establish native scalar fallback or curve
+precedence. No distance units are established. Eight top-level ECR_M26Incendiary
+scalars remain unnamed. No direct hit operation, burn behavior, duration, tick
+rate or site change is established. Keep the M26 profiles separate from M4A1
+rifle-primary damage.
 
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 
