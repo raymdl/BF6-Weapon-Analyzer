@@ -1,0 +1,158 @@
+{
+  "lead": "L68C",
+  "date": "2026-09-26",
+  "status": "completed_bounded_selected_family_check",
+  "build": {
+    "release": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "Do the exact selected effects for the five specified Interdictor and VSSM barrels contain either of the two known projectile-replacement or protection-index families?",
+  "scope": {
+    "selectedChoices": [
+      {
+        "weapon": "Interdictor",
+        "choice": "basic",
+        "attachmentRoute": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_BasicBarrel.xml",
+        "attachmentRawSha256": "dd5ef12bddab04cf2bdfd7cf1a78b37d4ee912559150a7197b306f13a16ffeeb",
+        "selectorRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Basic_W10",
+        "selectorGuid": "f7b59868-d8c2-489e-927b-6f5bb375245f",
+        "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Basic_W10",
+        "wpmRawSha256": "265ddbec14b859227ed9e4d27bc08e14416f68a1bdd16f52696b6da0b5630a1a",
+        "selectedEffectReferences": 2
+      },
+      {
+        "weapon": "Interdictor",
+        "choice": "extended",
+        "attachmentRoute": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_ExtendedBarrel.xml",
+        "attachmentRawSha256": "44c426d89074c68188a5274387b7b402a77f3f628090ea7fdd01e49a56f9f3c3",
+        "selectorRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Extended_W05",
+        "selectorGuid": "49b8a26a-3e70-4837-8c06-30edd0e523cf",
+        "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Extended_W05",
+        "wpmRawSha256": "710cca7d1b79e7b5915028aebd4d38d4f9ec2f0514aa38fa281d804c06f936ee",
+        "selectedEffectReferences": 1
+      },
+      {
+        "weapon": "Interdictor",
+        "choice": "light",
+        "attachmentRoute": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_BRL_LightBarrel.xml",
+        "attachmentRawSha256": "03e74b0fdb7c1c53b5f52f3aa1c95dc4aea7be27d49a8f2b96af5bd130ab38a8",
+        "selectorRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_Fluted_W20",
+        "selectorGuid": "eb5b8519-a150-4b88-b85c-5de6f8bec73c",
+        "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_Fluted_W20",
+        "wpmRawSha256": "7d9219260047f90320a68c1abe53acdbd228855d3e156cae1182c0525144851d",
+        "selectedEffectReferences": 3
+      },
+      {
+        "weapon": "VSSM",
+        "choice": "regular",
+        "siteChoiceId": "vssm_suppressed",
+        "attachmentRoute": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_BRL_VSSMBarrel.xml",
+        "attachmentRawSha256": "6b97cbe799ff2e3fc5c9dc12fb4a8760a1f6e51715c74e60caeb671fdc861877",
+        "selectorRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_VSSMBasic_W10",
+        "selectorGuid": "2d77eab2-17a5-48bb-b917-3a35913e0dd4",
+        "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_VSSMBasic_W10",
+        "wpmRawSha256": "093d4eeeb4c64fe6bc47cff3b26ace1f3b8a2235891e19b0f42c15d222e5e22f",
+        "selectedEffectReferences": 4
+      },
+      {
+        "weapon": "VSSM",
+        "choice": "ASM",
+        "siteChoiceId": "vssm_suppressed_asm",
+        "attachmentRoute": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_BRL_VSSMASM.xml",
+        "attachmentRawSha256": "a460cda4acfc91b362f491d8cac52724698b03c51b4aeee18f60f7e5d61afac9",
+        "selectorRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/U_WPM_BRL_VSSMNoPort_W10",
+        "selectorGuid": "55b40763-27b2-4749-96bb-0797f71d0096",
+        "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Barrel/WPM_BRL_VSSMNoPort_W10",
+        "wpmRawSha256": "f0614e71002b07d99470616f08d27a261b393ec88364291edea36cedb3d62087",
+        "selectedEffectReferences": 4
+      }
+    ],
+    "selectedEffectReferenceCount": 14,
+    "selectionInputs": {
+      "selectedAttachmentGraphPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68B\\selected_attachment_graph.json",
+      "selectedAttachmentGraphSha256": "70e8748f2b206b12131fe132d151609cb24ab4efc9a5365c491ca3a051e15e25",
+      "siteRouteScopePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68B\\selected_site_route_scope.json",
+      "siteRouteScopeSha256": "be95a815d94fe569e97978f487dc875f2498120a2e3bbc1cd92d47bafcb504b5"
+    }
+  },
+  "rawChecks": {
+    "captureCount": 30,
+    "assertionCount": 124,
+    "failureCount": 0,
+    "familyAbsenceAssertionCount": 28,
+    "familyResults": {
+      "Class_b1afeb65.Field_808dd66c": 0,
+      "Class_e85fff64.Field_fbfacac9": 0
+    },
+    "knownFamilyAnchors": {
+      "projectileReplacement": {
+        "class": "Class_b1afeb65",
+        "member": "Field_808dd66c",
+        "control": "DP12 Slug selected WPM_AMO_Slugs_DP12_W40, raw import token at offset 152 is 01000000 and targets PD_12gaSlug275_Pump.",
+        "wpmRawSha256": "3c467b6895fff60616241a9f0ad92e999770a726ac62fb85d937bc2b6e3a3e96",
+        "targetRawSha256": "08691cd115362ac69e4008c68c11ce8e123a8c541f2160da59b5e78a79caf68f"
+      },
+      "protectionIndex": {
+        "class": "Class_e85fff64",
+        "member": "Field_fbfacac9",
+        "control": "M433 Hollow Point selects WME_Protection_P10; its Field_fbfacac9 value is 1, with raw bytes 01000000 at offset 152.",
+        "wpmRoute": "Common/Hardware/Weapons/_WeaponModifiers/_Ammo/HollowPoint/WPM_AMO_JHP_W10",
+        "effectRoute": "Common/Hardware/Weapons/_WeaponModifiers/HeadShotDamage/WME_Protection_P10",
+        "effectRawSha256": "efd148cc65c539a48913b2f6c50765f2ac05262509f616f810ce2d2779682c50"
+      }
+    },
+    "interdictorBasicSelectorCheck": {
+      "route": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/GS_DesertTechHTI",
+      "rawPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\BoltAction\\DesertTechHTI\\GS_DesertTechHTI.ebx",
+      "rawSha256": "c7f19c774fe975d1b596e0f64d6f20eda82199520482bf21a3d82af73f4a3391",
+      "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+      "offset": 7032,
+      "widthBytes": 16,
+      "bytesHex": "6898b5f7c2d89e48927b6f5bb375245f",
+      "selectorGuid": "f7b59868-d8c2-489e-927b-6f5bb375245f"
+    }
+  },
+  "reusedControls": {
+    "assertionCount": 9,
+    "failureCount": 0,
+    "l68ResultSha256": "562aade51aaa1341da699d6e9c76b8cc45273370ace16d22733ecee0dd23b293",
+    "l68ResultPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68\\result.json",
+    "controlManifestSha256": "56f67b93ef88add33f463742a91b6ef7eb525efb4280ac886edb416ddc1376a9",
+    "controlManifestPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68\\control_manifest.json",
+    "comparisonSha256": "7b318abfa4ba0dc529395752a94c0e566708435bbd89d0c744af746309f07a8f",
+    "comparisonPath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\integration\\l68-selected-chain-positive\\comparison.json"
+  },
+  "limits": [
+    "This is absence evidence for only the two tested families in the enumerated selected WPM/effect bodies for the five stated choices. It does not exclude other damage classes or mechanisms, or establish absence across all selected attachments.",
+    "The Interdictor basic GS token was independently matched to its selector GUID, but these checks do not establish GS condition evaluation, native activation, or runtime composition.",
+    "Existing barrel handling, recoil, and sway findings were not re-audited."
+  ],
+  "siteImpact": "No site damage change is supported by these two tested families for these five choices. This result does not close broader L68 work and makes no site proposal.",
+  "evidence": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68C\\result.json",
+      "sha256": "dd562ba6974d5ecaf32557c605e38f1d623c085824a93179ab806cd6ba65cd13"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68C\\draft-receipt.json",
+      "sha256": "c1a9823e13a264ef2214edf06410ffd4cdd321509789f7e8c0a3ce712e7e2668"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68C\\selected_chain_manifest.json",
+      "sha256": "acebf66998368bca2979e4bceb49abcf0fc9ee60f86a1f11a4299bde47f54cc9"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\1.4.3.0\\L68C\\selected-chain-verification\\comparison.json",
+      "sha256": "80d85fbfb7c8d2cdc6a49ef5d52f87b0764c4d916ed24df1f1199da7b62c82a3"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\integration\\l68-selected-chain-positive\\comparison.json",
+      "sha256": "7b318abfa4ba0dc529395752a94c0e566708435bbd89d0c744af746309f07a8f"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-26-astra\\astra-l68c-raw-review.json",
+      "sha256": "8d8b4fdf727a206ca0ffecc5a0718523f7bd9f3a53446a094e5e3e124e4eb5ca"
+    }
+  ]
+}

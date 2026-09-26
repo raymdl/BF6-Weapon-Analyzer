@@ -895,6 +895,19 @@ art assets alongside a handguard variant, but no second primary iron-sight attac
 or handguard-specific sway selector appears in the 1.4.3.0 source trace. These model
 variants do not change the site's BROD 3 sight effect.
 
+### Selected barrel damage-family check (L68C, 26 September 2026)
+
+The [L68C receipt](../../reference-data/provenance/frosty-2026-09-26-L68C-selected-barrel-damage-families.json)
+checks selected Interdictor basic, extended and light barrels, and VSSM regular
+and ASM barrels. Nine reused controls pass. The selected-chain check covers 30
+captures and 14 selected WPM effect references; all 124 assertions pass. Neither
+the tested `Class_b1afeb65/Field_808dd66c` projectile-replacement family nor
+`Class_e85fff64/Field_fbfacac9` protection-index family appears in those checked
+paths. This is bounded to two families and five choices; it does not rule out
+other damage mechanisms or establish runtime activation. Broader L68A/B route
+reviews remain partial. Existing barrel handling, recoil and sway were not
+re-audited, and no site change is proposed.
+
 ### Legacy parts in KORD 6P67 and M250 blueprints (L64, 25 September 2026)
 
 The WB part lists of these two weapons, and no others, import
