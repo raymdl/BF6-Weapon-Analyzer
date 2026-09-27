@@ -1,6 +1,6 @@
 # Data-flow atlas
 
-[HTML viewer](https://raymdl.github.io/BF6-Weapon-Analyzer/docs/data-flow/) · [Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
+[HTML viewer](https://raymdl.github.io/BF6-Weapon-Analyzer/docs/data-flow/) · [GitHub repo](https://github.com/raymdl/BF6-Weapon-Analyzer) · [Documentation index](../README.md) · [Data sources](../DATA_SOURCES.md) · [Maintenance](../../MAINTENANCE.md)
 
 A map of the BF6 Weapon Analyzer: where each value comes from, which script or
 person maintains it, how the browser calculates results, and which parts are
