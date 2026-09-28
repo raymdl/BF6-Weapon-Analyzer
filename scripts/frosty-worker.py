@@ -4,7 +4,7 @@ crosswalk  --run-root R                 write R/weapon-crosswalk.json from the p
 check-site --pointer P [--pointer P..]  resolve site values before naming them as a control
 assemble   --lead-dir D --sections a,b [--control-site P ..] [--out-name brief.txt]
                                         preamble + chosen convention sections + D/lead.txt -> D/brief.txt
-prior-work --terms a,b                  search repo docs and receipts for earlier work on these names
+prior-work --terms a b (or a,b)          search repo docs and receipts for earlier work on these names
 review     --lead-dir D [--reread N]    check a worker result against the result schema, re-read raw bytes
 
 Site pointers look like data/attachments.json:/SIGHTS/[id=iron]/weaponSwayMultByWeapon/m39emr
@@ -92,7 +92,7 @@ def cmd_assemble(a):
                       'preambleSha256': sha(PREAMBLE.read_bytes()), 'conventionsSha256': sha(CONVENTIONS.read_bytes())}))
 
 def cmd_prior_work(a):
-    terms = [t.lower() for t in a.terms.split(',') if t]
+    terms = [t.lower() for arg in a.terms for t in arg.split(',') if t]
     files = [*ROOT.glob('docs/**/*.md'), *ROOT.glob('docs/working/*.txt'),
              *ROOT.glob('reference-data/provenance/*.json'), ROOT / 'reference-data/frosty/asset-findings.json']
     for f in sorted(set(files)):
@@ -158,7 +158,7 @@ def main():
     s = sub.add_parser('check-site'); s.add_argument('--pointer', action='append', required=True); s.set_defaults(f=cmd_check_site)
     s = sub.add_parser('assemble'); s.add_argument('--lead-dir', required=True); s.add_argument('--sections', default='')
     s.add_argument('--control-site', action='append'); s.add_argument('--out-name', default='brief.txt'); s.set_defaults(f=cmd_assemble)
-    s = sub.add_parser('prior-work'); s.add_argument('--terms', required=True); s.add_argument('--lines', type=int, default=2)
+    s = sub.add_parser('prior-work'); s.add_argument('--terms', nargs='+', required=True); s.add_argument('--lines', type=int, default=2)
     s.set_defaults(f=cmd_prior_work)
     s = sub.add_parser('review'); s.add_argument('--lead-dir', required=True); s.add_argument('--result')
     s.add_argument('--reread', type=int, default=2); s.add_argument('--seed', type=int, default=0); s.set_defaults(f=cmd_review)
