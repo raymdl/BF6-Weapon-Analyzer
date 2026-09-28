@@ -2,7 +2,7 @@
  "lead": "L100-L104 (class weapon traits)",
  "date": "2026-09-28",
  "status": "sourced_enhancement_proposal",
- "tracedBy": "Codex workers gpt-6-luna xhigh (L100 3,003 s / 11.5M tokens; L101 3,818 s / 10.6M; L102 2,882 s / 9.1M; L104 2,972 s / 10.6M; L103 see recon section); reviewed and raw re-checked by Claude",
+ "tracedBy": "Codex workers gpt-6-luna xhigh (L100 3,003 s / 11.5M tokens; L101 3,818 s / 10.6M; L102 2,882 s / 9.1M; L104 2,972 s / 10.6M; L103 first run 1,014 s / 2.8M stopped on a bad lead-named control, relaunch 3,527 s / 17.3M); reviewed and raw re-checked by Claude",
  "build": {
   "release": "1.4.3.0",
   "archiveHead": 4892017,
@@ -20,63 +20,245 @@
   ]
  },
  "knownAnswerControls": [
-  {"lead": "L100", "description": "L62 EF88 Extended GS-only GID_ADSTime_BRL_P10 add +1", "rawCheck": {"path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10.ebx", "rawSha256": "f2c451ad270650a07ace48ef4bcbcc7d27ff30433e2713fefcfe513252b2ea82", "offset": 96, "type": "i32", "bytesHex": "01000000", "value": 1}, "passed": true},
-  {"lead": "L101", "description": "Canted Vertical grip Class_743a3ce0 step +2 -> site hipSpreadTierMod -2 (row convention)", "rawCheck": {"offset": 96, "type": "i32", "bytesHex": "02000000", "value": 2}, "passed": true},
-  {"lead": "L102", "description": "WME_Draw_Sprint_P05 +1 -> site fast_deploy sprintRecoveryTierShift -1; M433 index 5 -> 6 = 166.667 ms", "rawCheck": {"offset": 152, "type": "i32", "bytesHex": "01000000", "value": 1}, "passed": true},
-  {"lead": "L104", "description": "Anti Glare description StringId 3E3CC230 from AD_Shared_SCA_AGCoating offset 248", "rawCheck": {"offset": 248, "bytesHex": "30c23c3e"}, "passed": true}
+  {
+   "lead": "L100",
+   "description": "L62 EF88 Extended GS-only GID_ADSTime_BRL_P10 add +1",
+   "rawCheck": {
+    "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/GID_ADSTime_BRL_P10.ebx",
+    "rawSha256": "f2c451ad270650a07ace48ef4bcbcc7d27ff30433e2713fefcfe513252b2ea82",
+    "offset": 96,
+    "type": "i32",
+    "bytesHex": "01000000",
+    "value": 1
+   },
+   "passed": true
+  },
+  {
+   "lead": "L101",
+   "description": "Canted Vertical grip Class_743a3ce0 step +2 -> site hipSpreadTierMod -2 (row convention)",
+   "rawCheck": {
+    "offset": 96,
+    "type": "i32",
+    "bytesHex": "02000000",
+    "value": 2
+   },
+   "passed": true
+  },
+  {
+   "lead": "L102",
+   "description": "WME_Draw_Sprint_P05 +1 -> site fast_deploy sprintRecoveryTierShift -1; M433 index 5 -> 6 = 166.667 ms",
+   "rawCheck": {
+    "offset": 152,
+    "type": "i32",
+    "bytesHex": "01000000",
+    "value": 1
+   },
+   "passed": true
+  },
+  {
+   "lead": "L104",
+   "description": "Anti Glare description StringId 3E3CC230 from AD_Shared_SCA_AGCoating offset 248",
+   "rawCheck": {
+    "offset": 248,
+    "bytesHex": "30c23c3e"
+   },
+   "passed": true
+  },
+  {
+   "lead": "L103",
+   "description": "M39 EMR iron sight imports WPM_Sway_IronSights_P05; WME_WSway_P05 Field_90fd0310 = site SIGHTS iron weaponSwayMultByWeapon.m39emr 0.6666667 (first-run control named L115, which has no site entry)",
+   "rawCheck": {
+    "path": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_P05.ebx",
+    "rawSha256": "1c1ee8a317d68074d2979949b11a01e1771f7f6ffab7836fd7391bd9ef221504",
+    "offset": 156,
+    "type": "f32",
+    "bytesHex": "abaa2a3f",
+    "value": 0.6666666865348816
+   },
+   "passed": true
+  }
  ],
  "sourceFacts": {
   "inventory": "Ability_<Class>Trait and U_Ability_<Class>Trait for Assault, Engineer, Recon, Support (catalog/XML overlay, no raw EBX). Selector GUIDs: Assault f6c9a31f-37fb-4236-b5dc-ce4b31a5ef78, Engineer b85e04b4-73b6-4958-9f15-c042b4409329, Recon ed907eff-ac94-47c2-81e0-e17a00d427b2, Support 38ec9e87-16c1-479b-ac17-5ce8bb3ff870 (L104). No trait for Carbine, DMR, Shotgun or Sidearm. No localized trait text found in the pinned English table.",
   "assault": {
    "membership": "WB of exactly the 11 site Assault Rifles imports WM_AssaultTrait (file a6718862-0809-4d48-8920-c12170654bc6, object 17efbf76-5f2a-4daf-ae99-99ac330b375c); no other site weapon.",
    "rawChecks": [
-    {"path": "Common/Gameplay/InRoundProgression/WeaponTraits/Assault/WM_AssaultTrait.ebx", "rawSha256": "43581673c4e6fd4c2d89788c09c55f92d9e5de41a4a6ec819b3a1cb68a6c04dc", "offset": 152, "type": "i32", "bytesHex": "01000000", "value": 1, "field": "sprint recovery Class_03db7a68 Field_9540bd8e (WME_Draw_Sprint_P05)"},
-    {"path": "Common/Gameplay/InRoundProgression/WeaponTraits/Assault/WM_AssaultTrait.ebx", "rawSha256": "43581673c4e6fd4c2d89788c09c55f92d9e5de41a4a6ec819b3a1cb68a6c04dc", "offset": 296, "type": "i32", "bytesHex": "01000000", "value": 1, "field": "deploy Class_4aac041b Field_9540bd8e (WME_Draw_Deploy_P05)"},
-    {"path": "Common/Gameplay/InRoundProgression/WeaponTraits/Assault/WM_AssaultTrait.ebx", "rawSha256": "43581673c4e6fd4c2d89788c09c55f92d9e5de41a4a6ec819b3a1cb68a6c04dc", "offset": 356, "type": "guid", "value": "522998ef-a940-480c-9550-b5712f737064", "field": "Field_819acc98[0] selector"}
+    {
+     "path": "Common/Gameplay/InRoundProgression/WeaponTraits/Assault/WM_AssaultTrait.ebx",
+     "rawSha256": "43581673c4e6fd4c2d89788c09c55f92d9e5de41a4a6ec819b3a1cb68a6c04dc",
+     "offset": 152,
+     "type": "i32",
+     "bytesHex": "01000000",
+     "value": 1,
+     "field": "sprint recovery Class_03db7a68 Field_9540bd8e (WME_Draw_Sprint_P05)"
+    },
+    {
+     "path": "Common/Gameplay/InRoundProgression/WeaponTraits/Assault/WM_AssaultTrait.ebx",
+     "rawSha256": "43581673c4e6fd4c2d89788c09c55f92d9e5de41a4a6ec819b3a1cb68a6c04dc",
+     "offset": 296,
+     "type": "i32",
+     "bytesHex": "01000000",
+     "value": 1,
+     "field": "deploy Class_4aac041b Field_9540bd8e (WME_Draw_Deploy_P05)"
+    },
+    {
+     "path": "Common/Gameplay/InRoundProgression/WeaponTraits/Assault/WM_AssaultTrait.ebx",
+     "rawSha256": "43581673c4e6fd4c2d89788c09c55f92d9e5de41a4a6ec819b3a1cb68a6c04dc",
+     "offset": 356,
+     "type": "guid",
+     "value": "522998ef-a940-480c-9550-b5712f737064",
+     "field": "Field_819acc98[0] selector"
+    }
    ]
   },
   "support": {
    "membership": "GS of exactly the 10 site LMGs binds GID_ADSTime_Trait_P10 with key 8430ed47-bd90-4c7f-9e3a-b2ba4697cd9b, priority 1000; the same 10 WB roots import WPM_SupportTrait; no other site weapon.",
    "rawChecks": [
-    {"path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/GID_ADSTime_Trait_P10.ebx", "rawSha256": "87822e24da33ac43d42d7146378f05d26efb1e6598810f27ede79fe28f0ecfb6", "offset": 96, "type": "i32", "bytesHex": "01000000", "value": 1, "field": "Field_003a3ed7/Field_4692836a add"},
-    {"path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/GID_ADSTime_Trait_P10.ebx", "rawSha256": "87822e24da33ac43d42d7146378f05d26efb1e6598810f27ede79fe28f0ecfb6", "offset": 100, "type": "i32", "bytesHex": "01000000", "value": 1, "field": "Field_78e680a6/Field_4692836a add"},
-    {"path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.ebx", "rawSha256": "c574e062b8a698c4ac3057bdf99613922959d130c179d729598e565ab2adb8bd", "offset": 152, "type": "i32", "bytesHex": "01000000", "value": 1, "field": "Class_016623ac Field_9540bd8e (animation step)"},
-    {"path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.ebx", "rawSha256": "26a2bf0f43292ab2887513215b893cf4955b54c20f31a5daeb1cdec82f83fee0", "offset": 152, "type": "i32", "bytesHex": "01000000", "value": 1, "field": "Class_104c2294 Field_9540bd8e (FOV step)"}
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/GID_ADSTime_Trait_P10.ebx",
+     "rawSha256": "87822e24da33ac43d42d7146378f05d26efb1e6598810f27ede79fe28f0ecfb6",
+     "offset": 96,
+     "type": "i32",
+     "bytesHex": "01000000",
+     "value": 1,
+     "field": "Field_003a3ed7/Field_4692836a add"
+    },
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/GID_ADSTime_Trait_P10.ebx",
+     "rawSha256": "87822e24da33ac43d42d7146378f05d26efb1e6598810f27ede79fe28f0ecfb6",
+     "offset": 100,
+     "type": "i32",
+     "bytesHex": "01000000",
+     "value": 1,
+     "field": "Field_78e680a6/Field_4692836a add"
+    },
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.ebx",
+     "rawSha256": "c574e062b8a698c4ac3057bdf99613922959d130c179d729598e565ab2adb8bd",
+     "offset": 152,
+     "type": "i32",
+     "bytesHex": "01000000",
+     "value": 1,
+     "field": "Class_016623ac Field_9540bd8e (animation step)"
+    },
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.ebx",
+     "rawSha256": "26a2bf0f43292ab2887513215b893cf4955b54c20f31a5daeb1cdec82f83fee0",
+     "offset": 152,
+     "type": "i32",
+     "bytesHex": "01000000",
+     "value": 1,
+     "field": "Class_104c2294 Field_9540bd8e (FOV step)"
+    }
    ],
    "note": "The exact GRX child/hash names of the two GID add fields were not established."
   },
   "engineer": {
    "membership": "GS of exactly the 10 site SMGs binds GDM_Array_HipDispersion_TRAIT with key d821968e-4846-44f7-abcc-0e4183fe7a27, priority 100; no other site weapon. No WM/WPM trait file. GDM_Array_ADSMoveDispersion_TRAIT is catalog-only (no raw EBX) and unbound among the 63 GS roots.",
    "rawChecks": [
-    {"path": "Common/Hardware/Weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TRAIT.ebx", "rawSha256": "e501b8aa5d3fb8be73b4ece6b5cf342aa728c3568f9465a7e75568353a0e78ad", "offset": 96, "type": "i32", "bytesHex": "01000000", "value": 1, "field": "Class_743a3ce0 Field_9540bd8e/Field_4692836a hip step"},
-    {"path": "Common/Hardware/Weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TRAIT.ebx", "rawSha256": "e501b8aa5d3fb8be73b4ece6b5cf342aa728c3568f9465a7e75568353a0e78ad", "offset": 87, "type": "bool", "bytesHex": "00", "value": false, "field": "Field_b574fa40 (true on fitted-only bipod steps, L61)"}
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TRAIT.ebx",
+     "rawSha256": "e501b8aa5d3fb8be73b4ece6b5cf342aa728c3568f9465a7e75568353a0e78ad",
+     "offset": 96,
+     "type": "i32",
+     "bytesHex": "01000000",
+     "value": 1,
+     "field": "Class_743a3ce0 Field_9540bd8e/Field_4692836a hip step"
+    },
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_TRAIT.ebx",
+     "rawSha256": "e501b8aa5d3fb8be73b4ece6b5cf342aa728c3568f9465a7e75568353a0e78ad",
+     "offset": 87,
+     "type": "bool",
+     "bytesHex": "00",
+     "value": false,
+     "field": "Field_b574fa40 (true on fitted-only bipod steps, L61)"
+    }
    ]
   },
-  "recon": "Pending L103 relaunch; see WEAPONS.md and queue row L103."
+  "recon": {
+   "membership": "WB of exactly the 6 site Sniper Rifles (interdictor, l115, m2010esr, miniscout, psr, sv98) imports both WM_ReconTrait and WPM_SwayPenalty; no DMR or other site weapon.",
+   "WM_ReconTrait": "Selector 89c5e29e-fc24-495b-9435-d30f7403e993 (also the bolt-timing key, not retraced). Imports WME_WSway_P10 and camera P10: seven same-valued float fields each, 0.4444444.",
+   "WPM_SwayPenalty": "Empty Field_819acc98 selector array (decoded body). Imports WME_WSway_M10 and camera M10: seven same-valued float fields each, 2.25. Raw file sha256 c54cbd97dbda932c99801b27aa3a791355b0df18eddd776bd747a5719e4dce15.",
+   "rawChecks": [
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_P10.ebx",
+     "rawSha256": "bf1e0e851ce433ed864fbe0b415fde7965254a5f54b36d8c921c71c1c9d78acb",
+     "offset": 156,
+     "type": "f32",
+     "bytesHex": "378ee33e",
+     "value": 0.4444443881511688,
+     "field": "Field_90fd0310 weapon sway"
+    },
+    {
+     "path": "Common/Hardware/Weapons/_WeaponModifiers/Sway/WME_WSway_M10.ebx",
+     "rawSha256": "57bd9eacc37badfe6b855c90527a46e3cafa6b7c8a570835e65d4b1cdec7e062",
+     "offset": 156,
+     "type": "f32",
+     "bytesHex": "00001040",
+     "value": 2.25,
+     "field": "Field_90fd0310 weapon sway"
+    }
+   ],
+   "workerRawChecks": "All 28 P10/M10 fields with offsets and bytes are in l103-result-r2.json."
+  }
  },
  "conditionalSiteValues": {
   "convention": "Bare weapon, current site ladders (docs/STAT_LADDERS.md). Hip steps negated (index = base - mod), draw/sprint shifts negated, ADS animation step same sign. Deploy and undeploy share one index.",
   "assault": "All 11 ARs base index 5 -> 6: deploy 633.334 -> 533.334 ms, undeploy 233.334 -> 200.001 ms, sprint recovery 200.001 -> 166.667 ms.",
   "support": "defAds 1 -> 2 (433.334 -> 366.667 ms): L110, M/60, M121 A2, M123K, M240L, M250. defAds 2 -> 3 (366.667 -> 300.0 ms): DRS-IAR, KTS100, RPK-74M, RPKM.",
-  "engineer": "All 10 SMGs hip row 4 -> 5: standing 1.804 -> 1.352 deg, moving 2.255 -> 1.690 deg; increase/decay unchanged."
+  "engineer": "All 10 SMGs hip row 4 -> 5: standing 1.804 -> 1.352 deg, moving 2.255 -> 1.690 deg; increase/decay unchanged.",
+  "recon": "Six snipers, default optic (site sway factor 1.0): with the trait P10 alone 0.4444; P10 x M10 = 0.99999987; M10 alone (non-Recon, if the penalty is unconditional) 2.25. Camera sway has no site field."
  },
  "inference": [
   "The GS GID index and the WB animation step are separate coordinates (as VSSM, W2); the displayed ADS time follows the WB animation index, so one ladder step is the site-relevant change.",
-  "Membership, source operands and the official class guide agree for Assault, Engineer and Support."
+  "Membership, source operands and the official class guide agree for Assault, Engineer and Support.",
+  "The P10 trait exactly cancels the M10 penalty (2.25 x 0.4444 = 1.0), and EA says Recon has decreased scope sway. Reading: snipers carry x2.25 weapon and camera sway for every class except Recon. The sway ladder is x1.5 per five points (P05 = 1/1.5)."
  ],
  "unresolved": [
   "Native activation and composition (class plus signature weapon per EA; not decoded).",
   "The official Support 'no sprint speed penalty' and Assault 'sprint time': no operand in these assets (lead L106).",
-  "Recon sway and breath operands (L103)."
+  "Whether the selectorless WPM_SwayPenalty is always active (empty selector array semantics); needs a capture: same sniper, ADS sway as Recon versus another class.",
+  "Breath-control operands (not in these assets)."
  ],
- "siteImpact": "Enhancement proposal for operator review: an optional class-trait toggle. No current site value is wrong; the site does not model traits.",
+ "siteImpact": "Enhancement proposal for operator review: an optional class-trait toggle. For snipers the capture could also change the default: if the penalty is unconditional, non-Recon sniper weapon sway is x2.25 of the site's current 1.0.",
  "evidence": {
   "runRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-28T1435-0400",
-  "weaponCrosswalk": {"path": "weapon-crosswalk.json", "sha256": "5bc458ca9d78a8442b8a1f7f34df011b669658ff179a76e32a65819e7ecb3caa"},
-  "L100": {"result": "e6888c099c3e7b62507082577622ec0ef17cd5973647301fc88fb6678e5c74c2", "draftReceipt": "d6cb20f6f064919fcafd1369145cecdf5e0e0a62df69d785c54c318f43d327f7", "summary": "9b141fca9c1e1b9128eccc25fb5e9d06290de7b01569d0053192c2cae17fdf47", "brief": "f2241ab02a428a17c3fe31332bb710dc33993b2ab252f8c48c33e665783226a4"},
-  "L101": {"result": "5a9188ea11afe8b732e090d84e499a5ba146a300e856fefbf0ec39328aa39164", "draftReceipt": "9a0085c994072f420d1aa8759b13cfd0f57b6654ff44441acd39938c3840a454", "summary": "e8b63b47b8cb4ac89d3bea498da69b4f3351e2121475cdb50d30b6501b3161c7", "brief": "7b7056d3616a2c007834ea55e9608a85744527a5d7c5162168f5460a41023a49"},
-  "L102": {"result": "a9d666993c69dcbec877e5f3d648751d89570de5b8dee55b3a3175430197e881", "draftReceipt": "78289a231c7d7da495ce4f82139404b4955d8719f6cb0e674f2014eae81c3f35", "summary": "ffbfc901cafd90cad007901c26f29e57c4113041bbf165cda784f4fe7c9bfc51", "brief": "a1072316466722c9a98cbed49a214fc0cdc07d968800b54a980d4078e1468d67"},
-  "L104": {"result": "5339a684315bb5b87bc20c04cec82307010de91fc4ef630255a52df2b11c2caf", "draftReceipt": "f66ed3471693ef4680a545fd25d97be0d80aee216ae555e6c58866bdd24f7337", "summary": "c8674ea9642fe4abc0d68373b6c9911e0aef867feb5f55194d2ee7635ca28d79", "brief": "07ec62b460d75fb817f868ee0718dc51768423167587e9fa83f78cf23b9cf06d"},
-  "leadRecheck": "python scripts/frosty-raw-check.py --path <asset> --offset <offset> --type i32 --expect 1 for each rawChecks entry above (all matched); site ladders from data/balance_tables.json ADS_SPD_TIERS / HIP_SPREAD_TABLE and data/attachments.json WEAPON_MAG."
+  "weaponCrosswalk": {
+   "path": "weapon-crosswalk.json",
+   "sha256": "5bc458ca9d78a8442b8a1f7f34df011b669658ff179a76e32a65819e7ecb3caa"
+  },
+  "L100": {
+   "result": "e6888c099c3e7b62507082577622ec0ef17cd5973647301fc88fb6678e5c74c2",
+   "draftReceipt": "d6cb20f6f064919fcafd1369145cecdf5e0e0a62df69d785c54c318f43d327f7",
+   "summary": "9b141fca9c1e1b9128eccc25fb5e9d06290de7b01569d0053192c2cae17fdf47",
+   "brief": "f2241ab02a428a17c3fe31332bb710dc33993b2ab252f8c48c33e665783226a4"
+  },
+  "L101": {
+   "result": "5a9188ea11afe8b732e090d84e499a5ba146a300e856fefbf0ec39328aa39164",
+   "draftReceipt": "9a0085c994072f420d1aa8759b13cfd0f57b6654ff44441acd39938c3840a454",
+   "summary": "e8b63b47b8cb4ac89d3bea498da69b4f3351e2121475cdb50d30b6501b3161c7",
+   "brief": "7b7056d3616a2c007834ea55e9608a85744527a5d7c5162168f5460a41023a49"
+  },
+  "L102": {
+   "result": "a9d666993c69dcbec877e5f3d648751d89570de5b8dee55b3a3175430197e881",
+   "draftReceipt": "78289a231c7d7da495ce4f82139404b4955d8719f6cb0e674f2014eae81c3f35",
+   "summary": "ffbfc901cafd90cad007901c26f29e57c4113041bbf165cda784f4fe7c9bfc51",
+   "brief": "a1072316466722c9a98cbed49a214fc0cdc07d968800b54a980d4078e1468d67"
+  },
+  "L104": {
+   "result": "5339a684315bb5b87bc20c04cec82307010de91fc4ef630255a52df2b11c2caf",
+   "draftReceipt": "f66ed3471693ef4680a545fd25d97be0d80aee216ae555e6c58866bdd24f7337",
+   "summary": "c8674ea9642fe4abc0d68373b6c9911e0aef867feb5f55194d2ee7635ca28d79",
+   "brief": "07ec62b460d75fb817f868ee0718dc51768423167587e9fa83f78cf23b9cf06d"
+  },
+  "leadRecheck": "python scripts/frosty-raw-check.py --path <asset> --offset <offset> --type i32 --expect 1 for each rawChecks entry above (all matched); site ladders from data/balance_tables.json ADS_SPD_TIERS / HIP_SPREAD_TABLE and data/attachments.json WEAPON_MAG.",
+  "L103": {
+   "firstRunResult": "f98aadb269949903b20d482aa25d0e4923729bd2aa49b8d3ceb0b10acc449140",
+   "result": "f095c638343fdbcb0e993bfb8784747fe97364f48e556cd7318f7e9698fe7dc8",
+   "draftReceipt": "9dace36bc67c2157facbd1c7d4c1208e6571cdeaa585f514a6789abf94e18d1e",
+   "summary": "687a2ff9378cd74326843efafd6b81bca3ef738c7f5c448d427dc74aa5f814db",
+   "brief": "afe7756b90d48bdc0529d0dbd1db26a5f3745cbc701b59f3cd44f64f192e70fd"
+  }
  }
 }
