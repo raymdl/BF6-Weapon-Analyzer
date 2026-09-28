@@ -74,6 +74,22 @@ The dated Sym disagreement count does not establish a build change by itself.
   and the material-grid inventory
   ([frosty-material-grid-inventory-2026-09-14.json](../../reference-data/provenance/frosty-material-grid-inventory-2026-09-14.json)).
 
+### Hit capsules and target zones (L99, 27 September 2026)
+
+`GlacierSoldierBoneCollision` (imported by `Glacier_Soldier`) holds 11 hit
+capsules: Head (material 24), Neck (115), Spine (25) and eight limb bones (26),
+with no hands or feet. Each stores an offset and two floats read as length and
+radius, for example Head 0.06/0.14, Neck 0.005/0.225 and Spine 0.25/0.22. The
+chest multiplier 1.0 comes from material 115 on all 328 selections. Spine uses
+the abdomen value, which equals limb.
+
+Placed on the `SKE_Soldier_3P` bind pose, the head capsule is larger than the
+target artwork's head (about 760 vs 539 cm², top about 186 vs 178 cm). The Spine
+capsule, not the chest capsule, covers the centre line from 108 to 136 cm. The
+site draws that band, including its default chest aim point, as chest.
+This holds under both offset readings; it is a candidate until an in-game
+damage-number test. [Receipt](../../reference-data/provenance/frosty-2026-09-27-L99-soldier-hit-capsules.json).
+
 ## Projectiles and ballistics
 
 - All 63 base projectiles have gravity −9.81 (`Field_d9d33d20`) and drag 0.0035

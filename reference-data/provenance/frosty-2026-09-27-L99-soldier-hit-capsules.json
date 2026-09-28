@@ -1,0 +1,116 @@
+{
+  "lead": "L99 (with worker sub-lead L99B)",
+  "date": "2026-09-27",
+  "status": "source_candidate_needs_capture",
+  "tracedBy": "Claude (geometry, raw checks, site comparison); L99B material-grid lookup by Codex worker gpt-6-luna xhigh, reviewed by Claude",
+  "build": {
+    "release": "1.4.3.0",
+    "archiveHead": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
+    "buildNote": "The 1.4.3.1 catalog check changed only two non-gameplay assets; the installed client on 27 Sep 2026 is still 1.4.3.1 (bf6.exe 95c61904...)."
+  },
+  "question": "Do the source soldier hit-detection capsules and their damage materials agree with the site target view's artwork zones (sim/target.js head/chest/stomach/arms/legs partitions and PNG alpha mask), which feed the displayed target impact zone counts and first-lethal hit?",
+  "siteTarget": {
+    "fields": ["sim/target.js TARGET_HEIGHT_CM, targetZoneAt boundaries (view units 33/84/113, torso half-widths), soldier-target.png alpha mask", "sim/damage.js zoneMultiplierForWeapon (chest 1, stomach/arms/legs limb)"],
+    "displayed": "Target view impact stats: hits per zone, damage, first-lethal shot/hit (ui/target-stats.js)",
+    "register": "docs/data-flow/REGISTER.md A10 names native hitbox extraction as the missing evidence."
+  },
+  "knownAnswerControls": [
+    {"check": "BoneCollision Head length/radius raw bytes", "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\Soldier\\GlacierSoldierBoneCollision.ebx", "sha256": "25783c206f30be4eec02e56df8a42a94572a4027926de8cfb3d30e6351997342", "offset": 1696, "bytesHex": "8fc2753d295c0f3e", "value": [0.06, 0.14], "result": "reproduced; all 11 entries re-read at stride 112 match the decode (raw-checks.json)"},
+    {"check": "Skeleton model pose = composition of local pose", "result": "max translation error 2e-6 m; third transform array is the inverse model pose (error 1.4e-6)"},
+    {"check": "L99B: AK-205 base ammo head/limb via the hit-zone grid route", "result": "reproduced exactly: material 276, index 11, head 1.4 (array bytes at grid offset 9575420), limb 0.84, as data/hit_zones.json"}
+  ],
+  "sourceFacts": {
+    "boneCollisionAsset": {
+      "route": "Common/Gameplay/Soldier/GlacierSoldierBoneCollision",
+      "importedBy": "Common/Gameplay/Soldier/Glacier_Soldier (only importer in the decoder DB)",
+      "entryLayout": "112-byte entries from raw offset 1648: packed MaterialDecl pair at +8, offset vec3 at +32, two floats at +48, RGBA-like vec4 at +64 (alpha 0.5)",
+      "entries": [
+        {"bone": "Head", "material": 24, "offset": [0.005, 0.02, 0.0], "lengthRadius": [0.06, 0.14]},
+        {"bone": "Neck", "material": 115, "offset": [-0.03, -0.135, -0.02], "lengthRadius": [0.005, 0.225]},
+        {"bone": "Spine", "material": 25, "offset": [0.0, -0.03, 0.0], "lengthRadius": [0.25, 0.22]},
+        {"bone": "LeftArm/RightArm", "material": 26, "offset": [0, 0, 0], "lengthRadius": [0.22, 0.085]},
+        {"bone": "LeftForeArm/RightForeArm", "material": 26, "offset": [0.01, 0, 0], "lengthRadius": [0.3, 0.06]},
+        {"bone": "LeftUpLeg/RightUpLeg", "material": 26, "offset": [0, 0, 0], "lengthRadius": [0.35, 0.11]},
+        {"bone": "LeftLeg/RightLeg", "material": 26, "offset": [0, 0, 0], "lengthRadius": [0.45, 0.1]}
+      ],
+      "absent": "No hand, foot, hips or Spine1/Spine2 entries.",
+      "targetDummyVariant": "GlacierSoldierBoneCollision_TargetDummy (XML overlay only): Head length 0.08, Neck length 0.001, different high bits in the second material word; radii and offsets equal."
+    },
+    "skeleton": {
+      "route": "Common/Characters/_Soldier/SKE_Soldier_3P",
+      "rawSha256": "d47a59a93066e479b86b0bc87ca58034d072a68579a3e6315155460a3b8182d7",
+      "bones": 291,
+      "headModelTranslation": {"offset": 26240, "yOffset": 26244, "yBytesHex": "1b58d33f", "value": [0.0, 1.65113, 0.0308], "neighbours": "Neck1 y 1.5823 before, HeadEnd y 1.8207 after"},
+      "boneAxes": "For all 11 hit bones the local +X row points at the child bone; the soldier faces +Z."
+    },
+    "materialGrid": {
+      "summary": "L99B: material 115 (Neck) returns a single value 1.0 for all 63 weapons and 328 ammo selections in both MP_Abbasid and MP_Badlands grids; abdomen material 25 (Spine) equals the limb value in all 328.",
+      "neckControlRecord": {"lookup": "276->115", "grid": "mp_abbasid materialgrid_win32.ebx (aa93a111c7ee6443ef00e0df63834433672ff72dbbb3e3d6c10efc72f38c3de7)", "valuesArrayRawOffset": 9571044, "bytesHex": "0000803f", "value": 1.0, "recheckedBy": "Claude"}
+    }
+  },
+  "inference": {
+    "fieldMeanings": "The two floats are read as capsule length and radius, and the vec4 as a debug colour (Head red, Spine blue, Neck orange, limbs cyan/magenta). Basis: anatomical consistency (radius gives 44 cm torso, 22 cm thigh, 12 cm forearm; lengths track bone lengths). Field-name hashes are not reversible, so these are structure/value inferences.",
+    "zoneMapping": "Material 115 (Neck capsule) is the source of the site's chest multiplier 1.0; material 25 (Spine capsule) is the site's reduced stomach/abdomen zone.",
+    "geometry": "Capsules are placed on the bind pose along local +X. The offset frame is unresolved, so both local-axis and model-axis offsets were evaluated.",
+    "siteComparison": {
+      "agreements": "Head/torso boundary about 151-152 cm and torso/leg boundary about 78-82 cm match the site within a few cm.",
+      "differences": [
+        "Centre line 108-136 cm (includes the site's default chest aim point, 121.98 cm): the site shows chest (1.0); source shows the Spine capsule (limb multiplier) under both offset conventions. Chest (115) appears from 140 cm (model-axis offsets) or 148 cm (local-axis offsets).",
+        "Head: source front area 739-775 cm2 vs site 539 cm2; top 185.5-187 cm vs 178 cm; half-width 14 cm vs about 11.5-12.5 cm.",
+        "Uniform disc of radius 10 cm at the chest aim point: site 100% chest (1.0); source 100% Spine/abdomen under both conventions. Radius 15 cm at the head aim point: site head 75.3%, miss 22.5%; source head 75-86%, chest (115) 14-20%, miss 0-5%.",
+        "Example: M433 at 0-21 m does 26.05 per chest hit (4 hits to kill) but 21.88 per abdomen/limb hit (0.84, 5 hits)."
+      ],
+      "notComparable": "Arms: the bind pose holds the arms out and down, not in the weapon-holding pose."
+    }
+  },
+  "unresolved": [
+    "Runtime use: whether native hit detection uses these capsules with front-most-surface selection, and any projectile collision radius (no named field found).",
+    "Offset frame (local vs model axes) and the in-game standing/aiming pose; only the bind pose is serialized in the skeleton.",
+    "Whether other soldier variants or modes use different collision (only Glacier_Soldier imports this asset in the decoder DB)."
+  ],
+  "siteImpact": "Candidate only; no site change. Replacing the artwork partitions with the source capsule projection would move the default chest-aim spray from chest (1.0) to abdomen (limb multiplier) and enlarge the head zone. Per the operator rule, a source-versus-game difference needs in-game evidence first. The site's chest multiplier 1 is now traced to material 115 (1.0 on all 328 selections).",
+  "captureProposal": {
+    "test": "Stationary standing target at 10 m (helper, not the range dummy, whose collision asset differs); M433 single ADS shots with damage numbers on, stepping up the centre line from belt to collarbone (about 100, 115, 125, 135, 145 cm), then 3-6 cm above the top of the helmet.",
+    "discriminates": "Site: 26 damage from about 107 cm up, and misses above the helmet. Source (either convention): about 22 damage up to 136 cm, 26 only from 140-148 cm, and headshots 3-6 cm above the helmet.",
+    "measurability": "Single shots with standing ADS spread; 4 vs 5 shots to kill and 26 vs 22 damage numbers are distinct at a glance; aim height is judged against the helper's shoulders and helmet in a scope screenshot."
+  },
+  "evidence": {
+    "runRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-27T2130-0400",
+    "L99": {
+      "folder": "L99-hitbox",
+      "decoder": "scripts/frosty-ebx-decode.py (sha256 190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f) --descriptors <build>\\capture\\toolchain\\SharedTypeDescriptors.ebx --ebx <raw .ebx> --out <folder>\\*.json; run from the repo root",
+      "files": {
+        "bonecollision-decoded.json": "05c8abaca62bcde085cbdd063ca65eac9159f66e0dead4a8e4ebd88183567cf2",
+        "ske-soldier-3p-decoded.json": "259ccabd2b39ce8aef25a7d91d172592a8b11cf6f13a43f6204cc71e6cbe70ba",
+        "raw-checks.json": "8d35d0082d756978fd1b5265064289b77233ac50b5bf71573bf00276153c5136",
+        "capsules.json (local-axis offsets)": "da12b42668358e7e591e623212fdfbf8d482556aac646f9d3d76e5dee40f7488",
+        "capsules-model-offset.json": "a1d3ce763d72ed7812414d3f475e534389b5ed3cd387e1a80fb12d28d71fa7dd",
+        "compare-result-local-offset.json": "5234179f07c3f64668d6b2228bbe7793f4cbd6f14bff9b978fba96fcdecba1ac",
+        "compare-result-model-offset.json": "a2e59e2773c14b2270023bf02b6425f1d6bdaf54298a2ae077f5854240ab64a4",
+        "centerline-result.json": "7f1cd41cdba83023a9b2fb47e6dda8f645c264b07dc83bf2f473c36e559b4c40"
+      },
+      "helpers": {
+        "skel.py": "20560919f798ed3ae47ea642d80314d248a26526db5474a72f6970b1a5c32cc8",
+        "capsules.py": "96015f0f065201ff6c79284368566b716191d8764c5a53929a3e861fcc3a49bb",
+        "capsules_model_offset.py": "671196b0a546187a1da24aa6f66b2ae79361ac3fcfbdd93d65c08b7f5c41428f",
+        "compare.py": "56e9335a38d7a4d01d56b0ca8065695d36a7889dffec8a5575355523a68c5032",
+        "compare_model_offset.py": "d4f6a39410ee8b7b04aaa9b1628d3388d012c736594a7c6edf162ed138725426",
+        "centerline.py": "923e629358e635a861656fbb08b53747b849dc5656c85ce34ca0839c91360ff2",
+        "rawcheck.py": "09b7b4e8485e6c78dbf63094f75f1877d6bfca417c9180e728d46eda86685e32"
+      },
+      "siteInputs": {"assets/soldier-target.png": "aa680791498dbf4abe7bbd4a76538b7f25d793feedd38b3d037be4cc038e56e1", "sim/target.js": "2ab9e293115c4c59ed25cfaeddc6a94060cce1bcd5652fca885d4edbf7265f32"},
+      "commands": "python <helper> run with cwd = L99-hitbox, in the order skel.py, capsules.py, capsules_model_offset.py, compare.py, compare_model_offset.py, centerline.py, rawcheck.py (reconstructed from the session; no arguments)."
+    },
+    "L99B": {
+      "folder": "L99B-neck-material",
+      "files": {
+        "l99b-result.json": "9b815f9394701a27b2d1097e3567abb16dfcc7ea98580bea23fbc9bccb656e86",
+        "l99b-control.json": "79175c9cb7774fa4871327e471a92d1ab1eee29e3339c32c1fc6a26618593d8c",
+        "l99b_neck_material.py": "f3164e3a2ab416f85eb867ee33e783e5710b0939f807ae3cf6a956f78c7d7849",
+        "draft-receipt.json": "068cea5400681c7fd67d742fb3bcf0c0b87ef663dc66dcde53d7542e68d8e0a9"
+      },
+      "method": "Imports scripts/frosty-hit-zones.py as a module and reuses its MaterialGrid reader and weapon/ammo resolution with explicit outputs under the lead folder; exact commands are in the folder's draft-receipt.json."
+    }
+  }
+}
