@@ -879,8 +879,11 @@ bolt and pump 1, auto 2, burst 3.
 **Bursts per minute.** The registry-named `BurstsPerMinute` (`Field_2320e742`) is
 224.999 on M16A3, 239.998993 on GRT-BC and 327.272003 on SL9, and 0 on the six
 weapons above. No other class contains the field, so no modifier supplies a rate.
-The site's no-pause timing for the six matches source; the rank-9 test can still
-check for a native pause. The site's earlier GRT-BC 240.127 and SL9 337.5 predated
+The site's no-pause timing for the six matches source and the operator's
+recordings (no burst delay; [28 September](../../reference-data/provenance/frosty-2026-09-28-burst-cadence.json)). M16A4 and GRT-BC show the
+predicted ~33 ms extra delay after each burst; SL9's earlier mismatch came from
+rounded 60 fps timing. The site stores rounded within-burst rates for GRT-BC (830)
+and SL9 (771); source is 830.769 and 771.428 (operator review). The site's earlier GRT-BC 240.127 and SL9 337.5 predated
 Frosty and were replaced with the source values on 23 September.
 
 **Rounds per burst.** `Field_58d70acb/Field_ca2ec42a` matches the site's

@@ -17,9 +17,8 @@ outcome. Otherwise record the limit as unresolved; do not add a capture.
 
 | # | Capture | Why | People / format |
 |---|---|---|---|
-| 1 | Burst-mode cadence and recoil (GRT-BC, KORD 6P67) | 2-round-burst TTK spans several bursts; the site assumes no gap between bursts and applies burst recoil tiers the menu does not show. Operator feedback on bursts pending | Solo; high frame rate video |
-| 2 | Match Trigger semi vs auto (M433; L17) | Site shows no effect; source binds about 16% less recoil and faster recovery on 24 weapons, probably semi-only | Solo; video, repeated groups |
-| 3 | Optional: hit-capsule boundary (M433; L99) | Target-view chest/abdomen split; M433 chest aim 4 → 5 hits if the source capsules hold. Target view is already labelled approximate | Enemy helper standing still; damage numbers |
+| 1 | Match Trigger semi vs auto (M433; L17) | Site shows no effect; source binds about 16% less recoil and faster recovery on 24 weapons, probably semi-only | Solo; video, repeated groups |
+| 2 | Optional: hit-capsule boundary (M433; L99) | Target-view chest/abdomen split; M433 chest aim 4 → 5 hits if the source capsules hold. Target view is already labelled approximate | Enemy helper standing still; damage numbers |
 
 ## Record once per session
 
@@ -40,48 +39,7 @@ outcome. Otherwise record the limit as unresolved; do not add a capture.
 - Report missing or hidden indicators as unavailable. Do not treat them as zero.
   Record failed or ambiguous trials as well as successful ones.
 
-## 1. Burst-mode activation
-
-Use GRT-BC if its current menu offers the burst option. Show the selected attachment
-and firing-mode indicator. Record five fully recovered bursts without recoil input,
-then comparable short automatic groups with the same other attachments. If the
-burst-equipped weapon still offers automatic fire, include that as a separate
-condition; record only modes that the current weapon offers.
-
-Keep optic, stance, range and target fixed. Preserve audio and individual shot
-timing. A change in shot spacing can change recovery between shots, so group height
-alone cannot establish a recoil multiplier. Existing hover/equipped panel captures
-already show unchanged values; another panel screenshot alone will not resolve
-runtime activation. Retain the video even if the groups appear similar.
-
-The [23 September timing audit](../../reference-data/provenance/frosty-site-timing-leaves-final-2026-09-23.json)
-adds a cadence test. The six shared Burst Training options bind to
-`WPM_ERG_BurstFireEnabled_W10`. Its enum fields select a mode; they do not directly
-supply a verified burst length or pause rate. The site stores two or three rounds
-but no bursts-per-minute value for these six, so `sim/core.js` repeats the normal
-shot interval with no added pause.
-
-Record trigger holds and separate trigger presses at 240 fps or higher if available,
-with the ammo counter visible. Measure accepted rounds per burst, intervals within
-each burst and the interval from its last shot to the next burst's first shot.
-The current site predicts these intervals repeat with no extra gap:
-
-| Weapon | Site burst rounds | Repeated interval |
-|---|---:|---:|
-| KORD 6P67 | 2 | 66.667 ms |
-| SG 553R | 3 | 83.333 ms |
-| PW5A3 | 3 | 77.778 ms |
-| UMG-40 | 2 | 94.444 ms |
-| KV9 | 2 | 55.556 ms |
-| CZ3A1 | 3 | 61.111 ms |
-
-For comparison, the site predicts within-burst / last-to-next-burst intervals of
-72.289 / 105.289 ms for GRT-BC, 77.821 / 99.957 ms for SL9,
-77.778 / 111.112 ms for M16A4, and 166.667 / 633.335 ms for DB-12.
-A recording can test effective cadence and round count. It cannot identify the
-native meaning of an unnamed enum field or prove its execution path.
-
-## 2. Match Trigger in semi-auto and automatic modes (L17)
+## 1. Match Trigger in semi-auto and automatic modes (L17)
 
 **Why it matters.** Match Trigger can be selected on 24 weapons, and the site shows it
 with no effect. On all 24, source binds recoil tier +3 (M433 per-shot recoil
@@ -122,7 +80,7 @@ no sourced cadence prediction; record timing to control the experiment. Native
 operator order and broader weapon coverage remain separate questions. See
 [L17 evidence](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json).
 
-## 3. Optional: hit-capsule boundary (L99)
+## 2. Optional: hit-capsule boundary (L99)
 
 M433 single shots up the centre line of a standing helper in MP at 10 m. Record
 loadout, target orientation, aim position and per-shot damage. Damage numbers
@@ -138,6 +96,7 @@ Full text of the removed sections is in git history (`git show ab9ca9c:docs/work
 
 | Former item | Decision and reason |
 |---|---|
+| Burst cadence and recoil (kept briefly on 28 Sep) | Closed without a recording: source BPM plus operator recordings support the site model (no delay on the six BPM-0 weapons, ~33 ms on M16A4/GRT-BC); the recoil part only served the cadence question. [Receipt](../../reference-data/provenance/frosty-2026-09-28-burst-cadence.json). |
 | 1 Spot-on-fire ranges; 2 health regeneration | Not necessary (operator). |
 | 3 VSSM barrel ADS; Interdictor grips | Stat screen is accurate and the site matches it (Mobility checker agrees on all captured panels, including 43 VSSM panels). The extra GS index likely feeds ADS-entry spread settling, which is not displayed. |
 | 4 Idle recovery and recoil return | The site already uses Sym's firing/not-firing spread model and continuous recoil recovery; the missing Idle state (A16) only acts after long pauses. A video cannot pin the recovery equation. |
