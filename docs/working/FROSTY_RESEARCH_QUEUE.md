@@ -37,6 +37,9 @@ callers. "Needs a native consumer" is a reason to look for one, not a stopping p
   `reference-data/frosty/asset-findings.json`, and values/hashes in a new dated JSON
   under `reference-data/provenance/`. Do not create per-investigation Markdown docs.
   Update this queue's lead list rather than appending progress narrative.
+- Captures: follow the four-part rule at the top of the
+  [capture plan](BF6_CAPTURE_PRIORITIES.md). Ask the operator before requesting a
+  recording; an unresolved runtime question is recorded as a limit, not a capture.
 - Keep 1.4.3.0 (Head 4892017, descriptor `91c9ea7c…`) and 1.4.3.1 (Head 4892087,
   descriptor `99b49cfd…`) evidence separate. Use hashes, not file versions. The
   `builds/1.4.3.0` folder name is the retained identifier for both.

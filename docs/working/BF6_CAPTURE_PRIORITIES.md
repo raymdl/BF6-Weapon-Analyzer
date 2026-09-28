@@ -6,6 +6,15 @@ is treated as accurate) or the screenshot audit. Everything else was removed; se
 [Removed captures](#removed-captures-28-september-2026). Source questions remain in
 [open questions](../frosty/OPEN_QUESTIONS.md).
 
+**Capture rule (operator, 28 September 2026).** Request a recording only when all
+four hold: (1) its result would change a displayed site number or decide a pending
+enhancement proposal; (2) the source, the in-game stat screen (treated as accurate),
+the screenshot audit, official EA text, Sym and the operator's own in-game knowledge
+cannot answer it (ask the operator before requesting a recording); (3) the predicted
+difference is large enough to see in a recording; (4) it is the smallest test: one
+weapon and loadout, a stated prediction, and what changes on the site for each
+outcome. Otherwise record the limit as unresolved; do not add a capture.
+
 | # | Capture | Why | People / format |
 |---|---|---|---|
 | 1 | Burst-mode cadence and recoil (GRT-BC, KORD 6P67) | 2-round-burst TTK spans several bursts; the site assumes no gap between bursts and applies burst recoil tiers the menu does not show. Operator feedback on bursts pending | Solo; high frame rate video |
