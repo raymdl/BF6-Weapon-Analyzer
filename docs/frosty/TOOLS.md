@@ -533,6 +533,26 @@ records the exact arguments and comparison with the earlier scan.
   including finite delivery and paired cadence. The receipt pins raw checks and
   records step convergence; use a fresh external `--out` path.
 
+- Site data precision audit (L107, 28 September 2026). Rule and criterion: a stored
+  float is full precision when it parses to the source float32
+  (`struct.unpack('<f', struct.pack('<f', site))[0] == source`); the shortest
+  round-trip decimal counts (830.769 for 830.768982), integers must be equal, a
+  unit conversion must equal float64(float32) x factor, and a derived value must
+  equal its formula in float64 from the float32 operands. Method: enumerate every
+  numeric leaf of `data/*.json`, join it to the site-input ledger by file and JSON
+  pointer, compare the raw operand bytes the ledger row records (never its rounded
+  `sourceValue`), re-decode arrays that carry only 6-decimal copies with an unrounded
+  subclass of `frosty-ebx-decode.py`, and run controls first (one known violation and
+  one known exact value). The scripts live in the external run folder and are pinned
+  by SHA-256 in the
+  [receipt](../../reference-data/provenance/frosty-2026-09-28-L107-precision-audit.json);
+  the receipt also lists the 48 `frosty-raw-check.py` reads. Display impact is
+  checked by driving `sim/` over every weapon and single selection with unmodified
+  and patched copies of `data/`, and comparing the strings the UI formatters
+  produce. Two couplings to remember when changing a stored value: the Fire Rate
+  row looks the stored rpm up in `IN_GAME_RPM_BY_SYM` by `toFixed(8)` (a changed rpm
+  needs its key migrated), and `tacRldOverrideMs` must stay an integer.
+
 Use `python scripts/<name> --help` and the receipt arguments. Outputs require a
 new external `--out` or `--report-dir`; existing output paths are refused.
 These checks reproduce configured source facts, not native runtime behavior.
