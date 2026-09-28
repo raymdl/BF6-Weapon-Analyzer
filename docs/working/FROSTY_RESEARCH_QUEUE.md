@@ -116,6 +116,23 @@ Pause as requested; no site data or simulation changes were made. Reopen only
 with a new operator request. The next source targets are the recorded identity
 gaps and typed field/consumer evidence, not another full catalog scan.
 
+## Closed run: 27 September 2026 (evening)
+
+Evidence: `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-27T2130-0400`.
+No lead met the selection rule. Every open queue row waits on a capture, a
+native consumer or operator review. The candidate pass found no open site
+assumption: one `assumedFields` entry (VSSM recovery, L41), no estimated
+weapons, and blocked site-input rows are all capture or runtime questions.
+A single-choice Weapon Attributes sweep (3,098 loadouts) returned no
+unavailable score. The installed client is still 1.4.3.1 (`bf6.exe` `95c61904…`),
+whose catalog differs from 1.4.3.0 only in two non-gameplay assets.
+
+### Awaiting operator
+
+- Source tracing has no qualifying lead. Recommend a capture next: rank 1
+  (spot-on-fire; tests the hardcoded 54/150 m bases where M45A1 and vz. 61 store
+  different WB values) or the L17 Match Trigger semi/auto follow-up.
+
 ## Active source leads
 
 Work these from source before handing them to the capture plan. Results from the
