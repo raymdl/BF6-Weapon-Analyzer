@@ -218,10 +218,10 @@
  "unresolved": [
   "Native activation and composition (class plus signature weapon per EA; not decoded).",
   "The official Support 'no sprint speed penalty' and Assault 'sprint time': no operand in these assets (lead L106).",
-  "Whether the selectorless WPM_SwayPenalty is always active (empty selector array semantics); needs a capture: same sniper, ADS sway as Recon versus another class.",
-  "Breath-control operands (not in these assets)."
+  "Breath-control operands (not in these assets).",
+  "Native activation of the selectorless WPM_SwayPenalty is not decoded; the operator confirmed on 28 Sep 2026 that snipers sway more on non-Recon classes (in-game observation, no capture), so no capture is requested."
  ],
- "siteImpact": "Enhancement proposal for operator review: an optional class-trait toggle. For snipers the capture could also change the default: if the penalty is unconditional, non-Recon sniper weapon sway is x2.25 of the site's current 1.0.",
+ "siteImpact": "Enhancement proposal for operator review: an optional class-trait toggle. The site's current sniper sway (1.0) is the Recon value; non-Recon snipers would be x2.25.",
  "evidence": {
   "runRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-28T1435-0400",
   "weaponCrosswalk": {

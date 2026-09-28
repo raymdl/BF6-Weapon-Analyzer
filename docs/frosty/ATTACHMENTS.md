@@ -347,7 +347,7 @@ entry may affect the latter. Their overlap and the meaning of the zoom completio
 fraction are unresolved, so adding three full durations is not yet justified.
 Keep Recon's separate bolt-speed modifier fixed during the attachment comparison.
 See [weapon timing](WEAPONS.md#timing-fields) and
-[capture rank 6](../working/BF6_CAPTURE_PRIORITIES.md#6-reload-timing).
+the former capture rank 6 ([removed 28 September](../working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026)).
 
 ## Lights
 
@@ -638,7 +638,7 @@ hashes and exact attachment XML identities were checked separately from the olde
 unproved. The local wrapper also lists a second selector; a shared selector alone
 does not establish whether either or both are required. The override was moved
 from Light to CQB Suppressor on 23 September; Long is unchanged. The paired capture
-is listed under [optic framing](../working/BF6_CAPTURE_PRIORITIES.md#8-optic-framing-and-pip).
+was [removed 28 September](../working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026).
 
 **Same pattern on barrels.** Local WB sway overrides bound to the shared
 `U_WPM_ANY_ConditionalShort`/`ConditionalExtended` selectors exist on three more

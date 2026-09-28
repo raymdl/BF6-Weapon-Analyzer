@@ -819,8 +819,8 @@ sum is too large; the full stored bolt duration might already include a transiti
 Compare next accepted shot and next fully-ADS shot separately. `Ain` above is the
 Analyzer's default attachment-adjusted result, not a raw or measured universal
 transition. `Aout` is unknown. IDA's ADS-ladder-minus-one-frame relation does not
-establish ADS-out timing. [Capture rank 6](../working/BF6_CAPTURE_PRIORITIES.md#6-reload-timing)
-tests phase overlap, attachment behavior and Recon separately before a model change.
+establish ADS-out timing. The phase-overlap capture was [removed 28 September](../working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026); Recon rechambering is
+now part of the class-trait proposal.
 
 ### Reload values and empty-reload capture (23 September 2026)
 
@@ -907,7 +907,7 @@ site does not model traits.
 | Assault | 11 Assault Rifles | WB imports `WM_AssaultTrait`: `WME_Draw_Deploy_P05` +1, `WME_Draw_Sprint_P05` +1 (selector `522998ef…`) | Deploy 633 → 533 ms, undeploy 233 → 200 ms, sprint recovery 200 → 167 ms (index 5 → 6, all 11) | Faster draw and sprint recovery; also "sprint time" (no operand traced; sprint speed is not on the site) |
 | Support | 10 LMGs | GS binds `GID_ADSTime_Trait_P10` (two ADS index adds +1; key `8430ed47…`, priority 1000); WB imports `WPM_SupportTrait` → `WME_ADSTime_Anim_P10` +1 and `WME_ADSTime_FOV_P10` +1 | ADS 433 → 367 ms (L110, M/60, M121 A2, M123K, M240L, M250) or 367 → 300 ms (DRS-IAR, KTS100, RPK-74M, RPKM) | Faster ADS; also no sprint-speed penalty (no operand in these assets) |
 | Engineer | 10 SMGs | GS binds `GDM_Array_HipDispersion_TRAIT` (`Class_743a3ce0` step +1, `Field_b574fa40` false; key `d821968e…`, priority 100). No WM/WPM file | Hip spread minimum row 4 → 5: standing 1.804° → 1.352°, moving 2.255° → 1.690°. Increase and decay unchanged | Improved hip-fire control |
-| Recon | 6 Sniper Rifles | WB imports `WM_ReconTrait` (selector `89c5e29e…`, also the bolt-timing key): `WME_WSway_P10`/camera P10 ×0.4444. The same six WB roots also import selectorless `WPM_SwayPenalty`: `WME_WSway_M10`/camera M10 ×2.25 | If the penalty applies to every class: weapon sway ×2.25 without the trait and ×1.0 with it (2.25 × 0.4444). Site currently shows 1.0 | Hold breath, faster rechambering (help article); less scope sway (class article) |
+| Recon | 6 Sniper Rifles | WB imports `WM_ReconTrait` (selector `89c5e29e…`, also the bolt-timing key): `WME_WSway_P10`/camera P10 ×0.4444. The same six WB roots also import selectorless `WPM_SwayPenalty`: `WME_WSway_M10`/camera M10 ×2.25 | Weapon sway ×2.25 without the trait, ×1.0 with it (2.25 × 0.4444; operator-confirmed direction). Site currently shows 1.0 | Hold breath, faster rechambering (help article); less scope sway (class article) |
 
 The Support GS index and WB animation step are separate coordinates, as with
 VSSM (W2); the site's ADS time follows the WB animation index, so the displayed
@@ -915,10 +915,10 @@ change is one ladder step. The FOV step is a `Class_104c2294` step of +1, not
 the unresolved optic 16/24 setting (L94). `GDM_Array_ADSMoveDispersion_TRAIT`
 is in the catalog but has no raw capture and no binding among the 63 GS roots.
 The sway ladder is ×1.5 per five points: P05 = 1/1.5 (iron sights, L62), P10 = 1/2.25,
-M10 = 2.25. `WPM_SwayPenalty` has an empty selector array; the source does not
-show whether that means always active, so the sniper penalty needs a capture
-(same sniper, ADS sway as Recon and as another class). Breath-control operands
-were not in these assets.
+M10 = 2.25. `WPM_SwayPenalty` has an empty selector array. The operator confirms (28 September)
+that snipers sway more on non-Recon classes, which fits an always-active ×2.25
+penalty cancelled by the trait; the site's current sniper value 1.0 is the Recon
+case. Breath-control operands were not in these assets.
 
 Other in-round weapon modifiers (`WM_Killshot`, `WM_MountedPlusHorizontal/Vertical`,
 `WM_WeaponSwap`) are inventory candidates only.
