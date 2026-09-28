@@ -549,6 +549,10 @@ The same review establishes the following configuration in the M4A1 trace:
   validation before a deployed comparison can use them.
 - `GRM_MountedVertical` and `GRM_MountedHorizontal`: identity scalar operands and
   zero tier deltas. Different condition flags do not establish a recoil reduction.
+  The `GRM_MountedPlus*` variants are non-neutral (+3 / -2, L108), and
+  `GRM_BipodDeployed_Bolt_BTM_P50` is +30 / -5 beside the +10 / -4 above; the root
+  booleans differ only in the state flag (`Field_93dd77b9` Vertical, `Field_b0057325`
+  Horizontal, `Field_b574fa40` bipod).
 - Mounted ADS reload packages are in WB `Field_0cd9f20f[109:111]`. They contain
   state selectors and boolean effects. Their `Field_3f680d24` values 11/12 are not
   established operation codes or reload speeds; the general field map calls that
@@ -923,8 +927,27 @@ that snipers sway more on non-Recon classes, which fits an always-active ×2.25
 penalty cancelled by the trait; the site's current sniper value 1.0 is the Recon
 case. Breath-control operands were not in these assets.
 
-Other in-round weapon modifiers (`WM_Killshot`, `WM_MountedPlusHorizontal/Vertical`,
-`WM_WeaponSwap`) are inventory candidates only.
+**Sprint speed (L106, 28 September).** No per-weapon sprint-speed operand exists in the
+weapon assets. Sprint speed is soldier-level: `GRX_Glacier_Soldier` records
+`DefaultStandSprintTopSpeedMultiplier` 1.857 and `FastSprintTopSpeedMultiplier` 2.05
+(raw-checked); `MSA_Hip_Weapons` is [1] and the per-weapon sprint settings
+(`SSA_Weapons` -> `SprintSettings_T00-T11`) store only recovery times. The Assault trait's
+sprint entry is a recovery step and the Support trait carries ADS animation/FOV only;
+an import-set scan of all 63 roots finds no other LMG-only asset. The official
+"no sprint speed penalty" therefore has no source operand; it is probably native or
+animation-driven. [Receipt](../../reference-data/provenance/frosty-2026-09-28-L106-L111-orchestrator-trial.json).
+
+**Other in-round modifiers (L108/L109, 28 September).** `WM_WeaponSwap` is one draw step
+(+1, faster) imported by 60 of 63 weapon bodies (not CZ3A1, DB-12, Vz. 61); its selector
+`7727fe65…` has no owning asset in the collection. `WM_Killshot` is one unnamed boolean
+(`Class_e218a1ca.Field_8d6d2bc1` true, no other operand) on the six Sniper Rifles under
+`U_Ability_Killshot`. `GRM_MountedPlusVertical/Horizontal` add recoil amount exponent +3
+and direction-variation exponent -2 in both aim states under selector
+`U_Ability_MountedPlus` (`b9e5e8e5…`, entry indices 1003/1002, bound identically on all 63
+weapons). Conditional site arithmetic (additive composition assumed): amount x0.800-0.855,
+variation x1.161-1.223. The matching `WM_MountedPlus*` files also carry unnamed
+camera/visual vectors (0.67, 0.33, 0.5/0.4/0.7) that were not decoded. Native activation
+is unresolved. [Receipt](../../reference-data/provenance/frosty-2026-09-28-L106-L111-orchestrator-trial.json).
 
 ## Named GS/WB fields the site does not use
 
@@ -932,9 +955,9 @@ Other in-round weapon modifiers (`WM_Killshot`, `WM_MountedPlusHorizontal/Vertic
 
 | Field family | Spread | Assessment |
 |---|---|---|
-| `Recoil.Zoomed.VerticalRecoilMin` / `Max` / `Increase` | 6 / 5 / 2 distinct | Per weapon; not imported. Possible first-shot vertical kick. |
+| `Recoil.Zoomed.VerticalRecoilMin` / `Max` / `Increase` | 6 / 5 / 2 distinct | Per-weapon archetype constants (0.578, 0.42, 0.35, 0.43, or 0.6 with Max 0 and Increase 0.6), not tracking RecoilAmount; not imported. [L111](../../reference-data/provenance/frosty-2026-09-28-L106-L111-orchestrator-trial.json) extracted all 882 values; with `UsePolarRecoil` true they probably belong to a non-polar path. |
 | `Recoil.Zoomed.HorizontalRecoilLeft` / `Right` | 6 distinct each (±0.2–0.6) | Per-weapon horizontal bounds; relation to direction variation not verified. |
-| `Recoil.Zoomed.MaxVerticalRecoil`, `UsePolarRecoil` | Historical max values: 20 (61) / 90 (3); current polar flag true on all 63 site weapons | [L33 raw check](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-build-separated.json) supersedes the old non-polar outlier claim; both aim states are true. Native equation remains unresolved. |
+| `Recoil.Zoomed.MaxVerticalRecoil`, `UsePolarRecoil` | Current raw values (L111): 20 on 60 weapons, 90 on ES57, GGH22 and P18; the site's full-magazine vertical climb peaks at 8.6 degrees (DB-12), so the cap is never reached. Polar flag true on all 63 site weapons | [L33 raw check](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-build-separated.json) supersedes the old non-polar outlier claim; both aim states are true. Native equation remains unresolved. |
 | `IdleDecreaseTargetDuration.StationaryIndex` / `MovingIndex` | 6 distinct in the 63-weapon 1.4.3.0 raw pass | Linked to `IDA_Weapons`; values follow the ADS ladder minus about one frame, and indices match ADS animation indices in 62 of 64 weapons. Native use unresolved ([trace](#idle-duration-table-1430-23-september-2026)). |
 | `ReloadInfoArray[].ReloadThreshold` | 36 distinct (0.72–0.8 common) | Probably the fraction at which ammo is committed. |
 | `ReloadInfoArray[].ReloadDelay` / `PostReloadDelay` | 7 nonzero entries on 4 weapons ([L105](../../reference-data/provenance/frosty-2026-09-28-L105-reload-delays.json)) | M87A1, DB-12 and M1014 tactical reloads already add both delays; their empty entries are not displayed. RPK-74M empty reload 3.1 s omits `PostReloadDelay` 0.084 s (3.184 s if counted; operator review). Native timing unresolved. |
@@ -1210,6 +1233,17 @@ registry-binding receipt. These controls prevent calling the field a chamber
 count from the DP12 value alone. Named replenishment and reload bounds/types
 also do not establish loaded-at-spawn behavior. Keep the existing capture pilot;
 reopen this field only with a name, consumer or relevant selected override.
+
+[L110](../../reference-data/provenance/frosty-2026-09-28-L106-L111-orchestrator-trial.json) extracts the ammo struct for all 63 weapon bodies and 125 magazine WPMs
+(`InitialAmmo` -1 on every row). Base `MagazineCapacity` equals the site `mag` on all 63
+weapons (31 for the 30-round HK433 default), while site magazine choices store the menu
+nominal. Joined through the Ability object and selector list, source capacity exceeds the
+nominal by 1 on every non-LMG row (171 of 182 magazine-WPM rows and 94 of 107 default
+rows), by 0 on large belt LMG magazines (45-200 rounds) and the two revolvers, and by 2 on
+the DB-12. That fits a chambered round on closed-bolt weapons; the rule for when the game
+loads it stays unresolved. `NumberOfMagazines` also varies with the magazine choice (M4A1
+20 Rnd 21x10, 36 Rnd 37x6, 40 Rnd 41x6), so carried rounds differ by choice; whether the
+count includes the loaded magazine is unresolved.
 
 ## Paired release and hotfix sample
 
