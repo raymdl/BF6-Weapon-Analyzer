@@ -59,7 +59,7 @@ test('reviewed handling decisions and Frosty damage curves are pinned', () => {
   const brod = byId('brod3');
   const ef = byId('ef88');
   const vssm = byId('vssm');
-  assert.equal(brod.rpm, 10800 / 13);
+  assert.equal(brod.rpm, 830.769); // Frosty RateOfFire 830.768982 as its shortest float32 decimal; replaces the 10800/13 estimate.
   assert.equal(ef.rpm, 674.999); // Frosty WB and named registry; replaces the older panel-derived rate.
   assert.equal(brod.recoilDir, -16);
   assert.equal(ef.recoilDir, 11);

@@ -237,7 +237,7 @@ test('source sway factors retain compact-magazine strength and combine with muzz
 test('source spotting factors combine suppressor and subsonic without a special-case range', () => {
   const w = weapon('pw5a3');
   assert.equal(build(w)._minimapSpot, 150);
-  assert.equal(build(w, { ammo: 'subsonic' })._minimapSpot, 64.28571);
+  assert.equal(build(w, { ammo: 'subsonic' })._minimapSpot, 64.285714);
   assert.equal(build(w, { ammo: 'subsonic' })._worldSpot, 27);
   const combined = build(w, { ammo: 'subsonic', muzzle: 'std_supp' });
   assert.ok(Math.abs(combined._minimapSpot - 9) < 0.00001);
@@ -638,7 +638,8 @@ test('manual-cycle cadence and shell reloads follow Frosty 1.4.2.5 and the in-ga
     ['miniscout', 1, 0.9310338, 47], ['l115', 1.133334, 1.03, 46], ['interdictor', 1.68, 1, null],
   ]) {
     const rpm = cycleRpm(time, speed, 0, 299.999);
-    assert.ok(Math.abs(weapon(id).rpm - rpm) < 1e-9, id);
+    // Stored rpm is the shortest decimal of the float32-operand result; the decimal operands here agree within float32 resolution.
+    assert.ok(Math.abs(weapon(id).rpm - rpm) / rpm < 2e-7, id);
     if (panel != null) assert.equal(Math.floor(rpm), panel, `${id} panel RPM`);
   }
   const m87a1 = weapon('m87a1');

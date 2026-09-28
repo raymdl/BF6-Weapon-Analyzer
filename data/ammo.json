@@ -138,7 +138,7 @@
         "Sidearm": 0.5
       },
       "worldSpotMult": 0.5,
-      "minimapSpotMult": 0.4285714
+      "minimapSpotMult": 0.42857143
     },
     {
       "id": "subsonic_hp",
@@ -153,7 +153,7 @@
         "Sidearm": 0.5
       },
       "worldSpotMult": 0.5,
-      "minimapSpotMult": 0.4285714
+      "minimapSpotMult": 0.42857143
     },
     {
       "id": "subsonic_pen",
@@ -168,7 +168,7 @@
         "Sidearm": 0.75
       },
       "worldSpotMult": 0.5,
-      "minimapSpotMult": 0.4285714
+      "minimapSpotMult": 0.42857143
     },
     {
       "id": "range_pen",
