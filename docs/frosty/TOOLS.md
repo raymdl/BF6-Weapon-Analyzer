@@ -536,9 +536,11 @@ records the exact arguments and comparison with the earlier scan.
 - Site data precision audit (L107, 28 September 2026). Rule and criterion: a stored
   float is full precision when it parses to the source float32
   (`struct.unpack('<f', struct.pack('<f', site))[0] == source`); the shortest
-  round-trip decimal counts (830.769 for 830.768982), integers must be equal, a
-  unit conversion must equal float64(float32) x factor, and a derived value must
-  equal its formula in float64 from the float32 operands. Method: enumerate every
+  round-trip decimal counts (830.769 for 830.768982), integers must be equal, and a
+  converted or derived value passes when it parses back to the same float32 after
+  inverting the conversion or equals the formula on the float32 operands within
+  float32 resolution (the audit's `sub-f32` class passes; `beyond-f32` fails).
+  Method: enumerate every
   numeric leaf of `data/*.json`, join it to the site-input ledger by file and JSON
   pointer, compare the raw operand bytes the ledger row records (never its rounded
   `sourceValue`), re-decode arrays that carry only 6-decimal copies with an unrounded

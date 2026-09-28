@@ -1,7 +1,7 @@
 {
  "lead": "L107",
  "date": "2026-09-28",
- "status": "audit complete; 127 fixes proposed, 55 held and 10 blocked for operator decision; no data/, sim/ or ui/ change made",
+ "status": "audit complete; 38 beyond-f32 fixes applied 28 Sep (commit 88bc25d, operator approval); remaining groups declined, held or blocked",
  "build": {
   "head": 4892017,
   "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2",
@@ -13,7 +13,8 @@
   "direct": "Full precision when struct.unpack(\"<f\", struct.pack(\"<f\", site)) equals the source float32. The shortest decimal that round-trips is full precision (830.769 for 830.768982). Integers must be equal.",
   "conversion": "Full precision when site equals float64(source float32) * factor (or the shortest repr of that double). Rounded conversions are violations; the error is reported, and class sub-f32 means site/factor still parses to the source float32.",
   "derived": "Stored derived values (tacRld = ReloadTimeBulletsLeft / ReloadSpeed, bolt-cycle rpm, ADS ladder, overrides) are compared with the formula evaluated in float64 from the float32 source operands. When the formula reduces to one float32 operand (divisor exactly 1.0) the direct rule applies. sub-f32 means f32(site) equals f32(formula); beyond-f32 means it does not.",
-  "outOfScope": "Leaves with no source field (software contracts, project metadata, observations, schema versions, labels) are counted by ledger review status only."
+  "outOfScope": "Leaves with no source field (software contracts, project metadata, observations, schema versions, labels) are counted by ledger review status only.",
+  "amendment": "Lead/operator clarification (28 Sep): converted and derived values pass on float32 equivalence (parse back to the same float32 after inverting the conversion, or match the formula on the float32 operands within float32 resolution). The sub-f32 class passes; only beyond-f32 values are violations. The float64 statements above are the stricter first-pass screen."
  },
  "method": [
   "Enumerate every numeric non-Boolean leaf of the 11 data/*.json files (data/provenance/ and Boolean/string leaves excluded).",
@@ -2418,7 +2419,7 @@
    "pointer": "data/weapons.json /60/rpm"
   },
   {
-   "finding": "light_supp and cqb_supp store minimapSpotMult 0.14, but the source effect factor is 0.10 for DRSIAR and M2010ESR (2 of 54 selections each; ledger status candidate-mismatch). Weapon-specific data question, not precision.",
+   "finding": "Known case, not new: light_supp and cqb_supp store minimapSpotMult 0.14 while the source factor is 0.10 for DRSIAR and M2010ESR (queue L38/L47 spotting candidates; the site factor is deliberate pending evidence).",
    "pointer": "data/attachments.json /MUZZLES/12 and /MUZZLES/13 minimapSpotMult"
   },
   {
@@ -2436,5 +2437,265 @@
   "Exact status of the ledger-matched leaves rests on raw bytes recorded by the 23 September audit plus 48 fresh reads; it does not re-derive every field path.",
   "Display checks cover single-selection builds over the formatters in ui/app.js and ui/format.js, not every combination and not the canvas drawings.",
   "Source values are serialized configuration; runtime consumption is out of scope."
- ]
+ ],
+ "applied": {
+  "commit": "88bc25d",
+  "date": "2026-09-28",
+  "count": 38,
+  "rows": [
+   [
+    "data/weapons.json",
+    "/4/tacRld",
+    2.4,
+    2.4000015
+   ],
+   [
+    "data/weapons.json",
+    "/4/emptyRld",
+    3.367,
+    3.3670034
+   ],
+   [
+    "data/weapons.json",
+    "/6/tacRld",
+    2.5,
+    2.5000026
+   ],
+   [
+    "data/weapons.json",
+    "/6/emptyRld",
+    3.0,
+    3.0000021
+   ],
+   [
+    "data/weapons.json",
+    "/7/tacRld",
+    2.767,
+    2.7670002
+   ],
+   [
+    "data/weapons.json",
+    "/7/emptyRld",
+    2.834,
+    2.8340023
+   ],
+   [
+    "data/weapons.json",
+    "/8/tacRld",
+    2.434,
+    2.434001
+   ],
+   [
+    "data/weapons.json",
+    "/8/emptyRld",
+    3.117,
+    3.117003
+   ],
+   [
+    "data/weapons.json",
+    "/10/tacRld",
+    2.2,
+    2.2000017
+   ],
+   [
+    "data/weapons.json",
+    "/11/tacRld",
+    2.384,
+    2.3840022
+   ],
+   [
+    "data/weapons.json",
+    "/11/emptyRld",
+    2.55,
+    2.5500004
+   ],
+   [
+    "data/weapons.json",
+    "/12/tacRld",
+    2.484,
+    2.484001
+   ],
+   [
+    "data/weapons.json",
+    "/12/emptyRld",
+    2.917,
+    2.9170008
+   ],
+   [
+    "data/weapons.json",
+    "/14/burstRpm",
+    830,
+    830.769
+   ],
+   [
+    "data/weapons.json",
+    "/16/tacRld",
+    2.5,
+    2.5000026
+   ],
+   [
+    "data/weapons.json",
+    "/16/emptyRld",
+    2.934,
+    2.934001
+   ],
+   [
+    "data/weapons.json",
+    "/19/emptyRld",
+    3.0,
+    3.0000021
+   ],
+   [
+    "data/weapons.json",
+    "/20/tacRld",
+    2.184,
+    2.184001
+   ],
+   [
+    "data/weapons.json",
+    "/20/emptyRld",
+    3.067,
+    3.0670028
+   ],
+   [
+    "data/weapons.json",
+    "/22/tacRld",
+    3,
+    3.0000021
+   ],
+   [
+    "data/weapons.json",
+    "/22/emptyRld",
+    3.284,
+    3.2840025
+   ],
+   [
+    "data/weapons.json",
+    "/24/tacRld",
+    2.6,
+    2.6000006
+   ],
+   [
+    "data/weapons.json",
+    "/24/emptyRld",
+    3.117,
+    3.117003
+   ],
+   [
+    "data/weapons.json",
+    "/25/tacRld",
+    2.65,
+    2.6500003
+   ],
+   [
+    "data/weapons.json",
+    "/25/burstRpm",
+    771,
+    771.428
+   ],
+   [
+    "data/weapons.json",
+    "/27/tacRld",
+    2.467,
+    2.4670012
+   ],
+   [
+    "data/weapons.json",
+    "/30/tacRld",
+    7.35,
+    7.350003
+   ],
+   [
+    "data/weapons.json",
+    "/30/emptyRld",
+    8.15,
+    8.150001
+   ],
+   [
+    "data/weapons.json",
+    "/35/tacRld",
+    4.25,
+    4.250002
+   ],
+   [
+    "data/weapons.json",
+    "/43/rpm",
+    43.90240199281473,
+    43.90241
+   ],
+   [
+    "data/weapons.json",
+    "/45/rpm",
+    38.663458649662005,
+    38.663456
+   ],
+   [
+    "data/weapons.json",
+    "/60/rpm",
+    830.7692307692307,
+    830.769
+   ],
+   [
+    "data/weapon_attributes.json",
+    "/tables/psr/rows/0/rpm",
+    43.90246,
+    43.902462
+   ],
+   [
+    "data/weapon_attributes.json",
+    "/tables/miniscout/rows/0/rpm",
+    56.24995,
+    56.249947
+   ],
+   [
+    "data/weapon_attributes.json",
+    "/tables/interdictor/rows/0/rpm",
+    43.90241,
+    43.902412
+   ],
+   [
+    "data/ammo.json",
+    "/AMMO/11/minimapSpotMult",
+    0.4285714,
+    0.42857143
+   ],
+   [
+    "data/ammo.json",
+    "/AMMO/12/minimapSpotMult",
+    0.4285714,
+    0.42857143
+   ],
+   [
+    "data/ammo.json",
+    "/AMMO/13/minimapSpotMult",
+    0.4285714,
+    0.42857143
+   ]
+  ],
+  "rowFormat": "[file, pointer, old, new]; new = shortest decimal that round-trips to the float32 result",
+  "uiChange": "ui/app.js IN_GAME_RPM_BY_SYM: 43.90240199 -> 43.90241000, 38.66345865 -> 38.66345600, 830.76923077 removed (830.76900000 already present)",
+  "testsUpdated": [
+   "estimated-weapons.test.mjs: BROD 3 rpm 830.769",
+   "attachment-effects.test.mjs: minimap spot 64.285714; bolt-cycle rpm tolerance 2e-7 relative"
+  ],
+  "headerDate": "index.html 28 SEP 2026",
+  "checks": {
+   "validate-data": "passed",
+   "tests": "112 of 112 pass",
+   "validate-ship-surface": "passed"
+  },
+  "impactAfterApply": {
+   "builds": 1687,
+   "displayedFieldChanges": "Fire Rate and all other formatted fields unchanged; TTK only: GRT-BC burst mode -1 ms at BTK 3/6/9/12 (reachable, max BTK 14) and higher unreachable BTKs; PSR BTK 18 (unreachable, max BTK 4)"
+  }
+ },
+ "declined": {
+  "DRAW_TIME_TABLES": 66,
+  "ADS_SPD_TIERS": "8 (out of scope for precision fixes: menu-matching convention, two-frame formula unproven)",
+  "subsonicVelocityMps": 5,
+  "subF32RpmTacRldEmptyRld": "sub-f32 no-ops",
+  "burstBurstsPerMinute db12": 1,
+  "recoilV": "55 unchanged (validator tie)",
+  "tacRldOverrideMs": "10 unchanged (integer contract)"
+ }
 }

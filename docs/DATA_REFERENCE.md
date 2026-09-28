@@ -11,10 +11,11 @@ consuming modules define the remaining contracts.
 Stored precision (operator rule, 28 September 2026): data files keep the full source
 precision of every value that has a Frosty source; only UI display rounds. A stored
 value passes when it parses to the same float32 as its source (the shortest
-round-trip decimal is fine), unit conversions equal float64(float32) times the
-factor, and derived values equal their formula in float64 from the float32
-operands. The [L107 audit](../reference-data/provenance/frosty-2026-09-28-L107-precision-audit.json)
-lists the leaves that do not pass and the fixes awaiting approval. Tier indices,
+round-trip decimal is fine). A converted or derived value passes when it matches the
+float32 result: it parses back to the same float32 after inverting the conversion, or
+equals the formula on the float32 operands within float32 resolution. The
+[L107 audit](../reference-data/provenance/frosty-2026-09-28-L107-precision-audit.json)
+lists the leaves that do not pass; the beyond-float32 ones were fixed on 28 September. Tier indices,
 counts and other integers must be equal to the source.
 
 ## File ownership
