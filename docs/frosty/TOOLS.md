@@ -536,3 +536,26 @@ records the exact arguments and comparison with the earlier scan.
 Use `python scripts/<name> --help` and the receipt arguments. Outputs require a
 new external `--out` or `--report-dir`; existing output paths are refused.
 These checks reproduce configured source facts, not native runtime behavior.
+
+### Worker run helpers
+
+Added 28 September 2026 for Codex worker runs. They check process, not meaning.
+
+- `frosty-raw-check.py --path --offset --type [--expect]` (or `--manifest`):
+  reads a typed little-endian value at a raw EBX offset and prints the path,
+  file SHA-256, bytes and value; exits 1 when an expectation fails. Workers use
+  it for every consequential operand.
+- `frosty-worker.py crosswalk --run-root`: writes `weapon-crosswalk.json` (site
+  ID, class, internal name, GS/WB/Ability raw paths and hashes) from the pinned
+  roster, once per run.
+- `frosty-worker.py check-site --pointer` and `assemble --lead-dir --sections
+  --control-site`: confirm that a control's site value exists, then build
+  `brief.txt` from the preamble, the chosen sections of
+  `docs/working/frosty-worker-conventions.txt` and the lead's `lead.txt`.
+  Assembly refuses a missing control value or an existing brief.
+- `frosty-worker.py prior-work --terms`: searches topic pages, working docs and
+  receipts for earlier work on the named assets before a lead is chosen.
+- `frosty-worker.py review --lead-dir`: checks a result against the worker
+  result schema (control, scope counts, raw checks, receipt keys) and re-reads
+  the control operand and two sampled operands from raw bytes. The lead still
+  checks comparisons against the site's actual encoding.

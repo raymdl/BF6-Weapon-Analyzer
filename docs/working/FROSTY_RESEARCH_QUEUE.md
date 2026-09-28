@@ -83,7 +83,13 @@ Covered L59, L61 and the first four L60 slot groups.
 
 Claude selects leads and reviews results; bounded checks go to Codex CLI workers
 (GPT-6 Luna, xhigh), launched with `~/.claude/codex-bridge/run_worker.py`; every
-brief starts with the shared preamble [frosty-worker-brief.txt](frosty-worker-brief.txt). Evidence root:
+brief starts with the shared preamble [frosty-worker-brief.txt](frosty-worker-brief.txt)
+(worker-facing text only) plus the sections of
+[frosty-worker-conventions.txt](frosty-worker-conventions.txt) that fit the lead;
+update those sections and the known cases as leads close. Per lead: run
+`frosty-worker.py prior-work` before choosing it, check the control with
+`check-site`, build the brief with `assemble`, and run `review` on the result
+before reading it ([worker run helpers](../frosty/TOOLS.md#worker-run-helpers)). Evidence root:
 `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-25T001054-0400`.
 Lead selection rule: a lead needs a plausible route to change a displayed site number
 or expose a site calculation defect. Skip self-consistency checks, catalog screens
@@ -136,6 +142,15 @@ L99 opens the soldier hit-capsule line (register A10).
   and materials). Keep site geometry unchanged pending the result.
 - Otherwise capture rank 1 (spot-on-fire; M45A1 and vz. 61 store different WB
   bases from the hardcoded 54/150 m) or the L17 Match Trigger follow-up.
+
+## Current run: 28 September 2026
+
+Evidence: `C:\Users\royal\Documents\BF6 Datamining\reports\weapon-analyzer-research\2026-09-28T1435-0400`
+(one folder per lead). Six Luna xhigh workers in parallel (operator allowance, 28 Sep).
+New line: class weapon traits (L100–L104). The site does not model them; they
+would change displayed ADS time, hip spread, deploy/sprint recovery and sway for
+whole weapon classes. The 13 September trait table was never raw-verified in
+1.4.3.0 or joined to site IDs. L105 checks the nonzero reload delays.
 
 ## Active source leads
 
