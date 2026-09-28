@@ -1,0 +1,58 @@
+{
+ "lead": "L105",
+ "date": "2026-09-28",
+ "status": "source_checked_minor_proposal",
+ "tracedBy": "Codex worker gpt-6-luna xhigh (L105-0928, 2,496 s, 4.63M tokens); reviewed and raw re-checked by Claude",
+ "build": {
+  "release": "1.4.3.0",
+  "archiveHead": 4892017,
+  "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+ },
+ "question": "Which of the 63 site WB ReloadInfoArray entries have a nonzero ReloadDelay (Field_c0c7c72f) or PostReloadDelay (Field_b480c17a), and does the displayed site reload include those delays?",
+ "knownAnswerControls": [
+  {
+   "description": "M433 tacRld 2.384 = ReloadTimeBulletsLeft / ReloadSpeed from HK433_WB entry bytes",
+   "rawChecks": [
+    {"path": "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB.ebx", "rawSha256": "c02751eac2b054343a2a115dff8f2000bc450548c96185445cd7c3b613030e0a", "offset": 14152, "type": "f32", "bytesHex": "75931840", "value": 2.384000062942505},
+    {"path": "Common/Hardware/Weapons/AssaultRifle/HK433/HK433_WB.ebx", "rawSha256": "c02751eac2b054343a2a115dff8f2000bc450548c96185445cd7c3b613030e0a", "offset": 14136, "type": "f32", "bytesHex": "0000803f", "value": 1.0}
+   ],
+   "passed": true
+  }
+ ],
+ "sourceFacts": {
+  "scope": "63 site WB roots (roster frosty-audit-roster-2026-09-23.json); 7 entries on 4 weapons have a nonzero delay.",
+  "entries": [
+   {"siteId": "m87a1", "entry": 0, "reloadDelay": 0.267, "postReloadDelay": 0.367, "reloadTime": 1.2, "reloadTimeBulletsLeft": 0.7, "threshold": 0.9, "site": "tacRld 1.334 = (0.7 + 0.267 + 0.367) / 1; delays included"},
+   {"siteId": "m87a1", "entry": 1, "reloadDelay": 1.184, "postReloadDelay": 0.767, "reloadTime": 2.3666, "reloadTimeBulletsLeft": 0.7, "threshold": 0.58, "site": "emptyRld null (not displayed)"},
+   {"siteId": "db12", "entry": 0, "reloadDelay": 0.716, "postReloadDelay": 0.766, "reloadTime": 0.866, "reloadTimeBulletsLeft": 0.866, "threshold": 0.9, "site": "tacRld 2.348 = (0.866 + 0.716 + 0.766) / 1; delays included"},
+   {"siteId": "db12", "entry": 1, "reloadDelay": 0.9, "postReloadDelay": 0.716, "reloadTime": 0.866, "reloadTimeBulletsLeft": 0.866, "threshold": 0.9, "site": "emptyRld null (not displayed)"},
+   {"siteId": "m1014", "entry": 0, "reloadDelay": 0.534, "postReloadDelay": 0.85, "reloadTime": 1.067, "reloadTimeBulletsLeft": 0.4, "threshold": 0.86, "site": "tacRld 1.784 = (0.4 + 0.534 + 0.85) / 1; delays included"},
+   {"siteId": "m1014", "entry": 1, "reloadDelay": 1.334, "postReloadDelay": 0.75, "reloadTime": 1.1, "reloadTimeBulletsLeft": 0.4, "threshold": 0.86, "site": "emptyRld null (not displayed)"},
+   {"siteId": "rpk74m", "entry": 1, "reloadDelay": 0.0, "postReloadDelay": 0.084, "reloadTime": 3.1, "reloadTimeBulletsLeft": 3.1, "threshold": 0.78, "phaseList": [0.816, 1.583, 2.55, 3.1], "site": "emptyRld 3.1 = 3.1 / 1; PostReloadDelay excluded"}
+  ],
+  "leadRawRecheck": [
+   {"path": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.ebx", "rawSha256": "f7ba614bdd6d02c4c44896d951ece69856c78c35c36714c0eaf0ad9ac4c20df9", "offset": 17700, "type": "f32", "bytesHex": "3108ac3d", "value": 0.08399999886751175, "field": "entry[1] Field_b480c17a PostReloadDelay"},
+   {"path": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.ebx", "rawSha256": "f7ba614bdd6d02c4c44896d951ece69856c78c35c36714c0eaf0ad9ac4c20df9", "offset": 17696, "type": "f32", "bytesHex": "66664640", "value": 3.0999999046325684, "field": "entry[1] Field_fc66e75e ReloadTimeBulletsLeft"},
+   {"path": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.ebx", "rawSha256": "f7ba614bdd6d02c4c44896d951ece69856c78c35c36714c0eaf0ad9ac4c20df9", "offset": 17688, "type": "f32", "bytesHex": "00000000", "value": 0.0, "field": "entry[1] Field_c0c7c72f ReloadDelay"},
+   {"path": "Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB.ebx", "rawSha256": "f7ba614bdd6d02c4c44896d951ece69856c78c35c36714c0eaf0ad9ac4c20df9", "offset": 17680, "type": "f32", "bytesHex": "0000803f", "value": 1.0, "field": "entry[1] Field_1c533b56 ReloadSpeed"}
+  ],
+  "relatedException": "RPK-74M 95-round tactical override 2950 ms (reload-exceptions.json) = 2.784 / 0.943728 from its WPM; unrelated to entry[1]."
+ },
+ "inference": [
+  "The shell-fed shotgun tacRld values already add both delays, so no shotgun change follows; adding them again would double-count.",
+  "RPK-74M is the only displayed reload whose entry carries a delay the site omits. Counting it would be consistent with the shotgun treatment."
+ ],
+ "unresolved": [
+  "Native timing: whether PostReloadDelay extends the time before the weapon can fire, overlaps the animation, or is skipped.",
+  "No reload capture exists for M87A1, DB-12, M1014 or RPK-74M, so no capture-minus-source comparison was possible."
+ ],
+ "siteImpact": "Operator review only: RPK-74M empty reload 3.100 s -> 3.184 s (+0.084 s) if PostReloadDelay is counted as the shotgun formula counts it. No other displayed reload changes.",
+ "evidence": {
+  "runRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-28T1435-0400\\L105",
+  "brief": {"path": "brief.txt"},
+  "workerResult": {"path": "l105-result.json", "sha256": "e89e57dd195864141cf759e125faf82c6acda61878a4db4815ba7b52dffb31cc"},
+  "workerDraftReceipt": {"path": "draft-receipt.json", "sha256": "5027666f3d4c04fc60ab3fc7466e995aadd8be4f7eefd72250910e8e2d72d26c", "note": "carries all per-entry raw checks, commands and helper hashes"},
+  "workerSummary": {"path": "summary.md", "sha256": "7972b12d9cd36076b350c08b28fbd28d97f188ff9b048d9cd338a2ba8e6143f6"},
+  "leadRecheckCommand": "python scripts/frosty-raw-check.py --path Common/Hardware/Weapons/MG/RPK74M/RPK74M_WB --offset 17700 --type f32 --expect 0.084 (and offsets 17696, 17688, 17680)"
+ }
+}

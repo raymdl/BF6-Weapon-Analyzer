@@ -891,20 +891,31 @@ lists `NumberOfBulletsPerBurst`, so the name is probable.
 
 ## Class weapon traits
 
-Selectors are in `Common/Gameplay/InRoundProgression/WeaponTraits/<Class>/U_Ability_<Class>Trait`.
-Weapon files do not reference them; the class activates them. Native activation rules
-are not decoded, and the site does not model traits.
+Raw-verified in release 1.4.3.0 on 28 September 2026 ([receipt](../../reference-data/provenance/frosty-2026-09-28-L100-L104-class-traits.json)).
+Each class has an `Ability_<Class>Trait` and a `U_Ability_<Class>Trait` selector
+(catalog/XML overlay only; no raw EBX) under
+`Common/Gameplay/InRoundProgression/WeaponTraits/<Class>/`. Carbines, DMRs,
+shotguns and sidearms have no trait. Membership was checked against all 63 site
+roots: each trait reaches exactly the site weapons of its class, with no
+exceptions. The official class guide (EA Help, "How do classes work in
+Battlefield 6?") says the bonus applies when that class equips its signature
+weapon; most modes use open weapons. Native activation is not decoded, and the
+site does not model traits.
 
-| Trait | Weapons | Effect | Route |
-|---|---|---|---|
-| Assault | 11 ARs (6P67, ACE32, EF88, G36, G3A4, HK433, L85A3, M16A3, SCARL, Tavor7, VHS2) | Deploy tier +1 and sprint-recovery tier +1 | WB `WM_AssaultTrait` |
-| Support | 10 LMGs (M240L, M250, M27IAR, M60E6, MG4K, MG5, Minimi, RPK74M, RPKM, Ultimax) | ADS time +1 (animation and FOV) | GS `GID_ADSTime_Trait_P10` (priority 1000), WB `WPM_SupportTrait` |
-| Engineer | 10 SMGs (APC10, APDW, MP5MLI, MP7A2, MPX, P90, PP19, ScorpionEvo3, UMP40, Vector) | Hip spread row +1 | GS `GDM_Array_HipDispersion_TRAIT` |
-| Recon | 6 bolt-actions (DesertTechHTI, L115A3, M2010ESR, MRAD, MiniFix, SV98M) | Weapon and camera sway P10; `WPM_SwayPenalty` M10 | WB `WM_ReconTrait` |
+| Trait | Site weapons | Source operands | Conditional site values (bare) | Official description |
+|---|---|---|---|---|
+| Assault | 11 Assault Rifles | WB imports `WM_AssaultTrait`: `WME_Draw_Deploy_P05` +1, `WME_Draw_Sprint_P05` +1 (selector `522998ef…`) | Deploy 633 → 533 ms, undeploy 233 → 200 ms, sprint recovery 200 → 167 ms (index 5 → 6, all 11) | Faster draw and sprint recovery; also "sprint time" (no operand traced; sprint speed is not on the site) |
+| Support | 10 LMGs | GS binds `GID_ADSTime_Trait_P10` (two ADS index adds +1; key `8430ed47…`, priority 1000); WB imports `WPM_SupportTrait` → `WME_ADSTime_Anim_P10` +1 and `WME_ADSTime_FOV_P10` +1 | ADS 433 → 367 ms (L110, M/60, M121 A2, M123K, M240L, M250) or 367 → 300 ms (DRS-IAR, KTS100, RPK-74M, RPKM) | Faster ADS; also no sprint-speed penalty (no operand in these assets) |
+| Engineer | 10 SMGs | GS binds `GDM_Array_HipDispersion_TRAIT` (`Class_743a3ce0` step +1, `Field_b574fa40` false; key `d821968e…`, priority 100). No WM/WPM file | Hip spread minimum row 4 → 5: standing 1.804° → 1.352°, moving 2.255° → 1.690°. Increase and decay unchanged | Improved hip-fire control |
+| Recon | 6 Sniper Rifles | See L103 below | See L103 below | Hold breath, faster rechambering (help article); less scope sway (class article) |
 
-`GDM_Array_ADSMoveDispersion_TRAIT` (operand 2) has no GS binding. Examples: M433
-sprint/deploy base 5 → 6 gives 166.667/533.334 ms instead of 200.001/633.334 ms; L110
-ADS 433.334 → 366.667 ms.
+The Support GS index and WB animation step are separate coordinates, as with
+VSSM (W2); the site's ADS time follows the WB animation index, so the displayed
+change is one ladder step. The FOV step is a `Class_104c2294` step of +1, not
+the unresolved optic 16/24 setting (L94). `GDM_Array_ADSMoveDispersion_TRAIT`
+is in the catalog but has no raw capture and no binding among the 63 GS roots.
+Other in-round weapon modifiers (`WM_Killshot`, `WM_MountedPlusHorizontal/Vertical`,
+`WM_WeaponSwap`) are inventory candidates only.
 
 ## Named GS/WB fields the site does not use
 
@@ -917,7 +928,7 @@ ADS 433.334 → 366.667 ms.
 | `Recoil.Zoomed.MaxVerticalRecoil`, `UsePolarRecoil` | Historical max values: 20 (61) / 90 (3); current polar flag true on all 63 site weapons | [L33 raw check](../../reference-data/provenance/frosty-2026-09-24-L33-polar-recoil-build-separated.json) supersedes the old non-polar outlier claim; both aim states are true. Native equation remains unresolved. |
 | `IdleDecreaseTargetDuration.StationaryIndex` / `MovingIndex` | 6 distinct in the 63-weapon 1.4.3.0 raw pass | Linked to `IDA_Weapons`; values follow the ADS ladder minus about one frame, and indices match ADS animation indices in 62 of 64 weapons. Native use unresolved ([trace](#idle-duration-table-1430-23-september-2026)). |
 | `ReloadInfoArray[].ReloadThreshold` | 36 distinct (0.72–0.8 common) | Probably the fraction at which ammo is committed. |
-| `ReloadInfoArray[].ReloadDelay` / `PostReloadDelay` | Mostly 0; 6–7 non-zero | Check those reload timings. |
+| `ReloadInfoArray[].ReloadDelay` / `PostReloadDelay` | 7 nonzero entries on 4 weapons ([L105](../../reference-data/provenance/frosty-2026-09-28-L105-reload-delays.json)) | M87A1, DB-12 and M1014 tactical reloads already add both delays; their empty entries are not displayed. RPK-74M empty reload 3.1 s omits `PostReloadDelay` 0.084 s (3.184 s if counted; operator review). Native timing unresolved. |
 | `Ammo.NumberOfMagazines` | 12 distinct | Reserve ammo; not a TTK input. |
 | `StanceChangePenalties.*` | 9 weapons, identical | Uniform stance-change penalty; low value. |
 | `CameraRecoil.Spring*`, `UseTimeSinceLastShot` | Near uniform | Camera recoil is not modeled. |
