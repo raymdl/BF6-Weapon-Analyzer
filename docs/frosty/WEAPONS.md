@@ -84,7 +84,8 @@ chest multiplier 1.0 comes from material 115 on all 328 selections. Spine uses
 the abdomen value, which equals limb.
 
 Placed on the `SKE_Soldier_3P` bind pose, the head capsule is larger than the
-target artwork's head (about 760 vs 539 cm², top about 186 vs 178 cm). The Spine
+target artwork's head (about 760 vs 539 cm², top about 186 vs 178 cm); this
+compares with the artwork, not the in-game helmet or animated pose. The Spine
 capsule, not the chest capsule, covers the centre line from 108 to 136 cm. The
 site draws that band, including its default chest aim point, as chest.
 This holds under both offset readings; it is a candidate until an in-game

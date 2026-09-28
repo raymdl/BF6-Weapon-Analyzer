@@ -139,7 +139,7 @@
         }
       ],
       "absent": "No hand, foot, hips or Spine1/Spine2 entries.",
-      "targetDummyVariant": "GlacierSoldierBoneCollision_TargetDummy (XML overlay only): Head length 0.08, Neck length 0.001; radii and offsets equal. Damage materials differ: Head 24, Spine 25 and most limbs 26 as the soldier, but Neck 637 and LeftArm 115. The MP grids hold no 276->637 record (dummy-materials.json), so the dummy's chest value is an engine default not read here."
+      "targetDummyVariant": "GlacierSoldierBoneCollision_TargetDummy (XML overlay only): Head length 0.08, Neck length 0.001; radii and offsets equal. Damage materials differ: Head 24, Spine 25 and most limbs 26 as the soldier, but Neck 637 and LeftArm 115. The two queried MP grids hold no 276->637 record (dummy-materials.json). The dummy's chest value is unresolved: the Firing Range grid and the engine's behaviour for a missing record were not established."
     },
     "skeleton": {
       "route": "Common/Characters/_Soldier/SKE_Soldier_3P",
@@ -192,10 +192,10 @@
   ],
   "siteImpact": "Candidate only; no site change. Replacing the artwork partitions with the source capsule projection would move the default chest-aim spray from chest (1.0) to abdomen (limb multiplier) and enlarge the head zone. Per the operator rule, a source-versus-game difference needs in-game evidence first. The site's chest multiplier 1 is now traced to material 115 (1.0 on all 328 selections).",
   "captureProposal": {
-    "test": "Stationary standing target at 10 m (helper, not the range dummy, whose collision asset differs); M433 single ADS shots with damage numbers on, stepping up the centre line from belt to collarbone (about 100, 115, 125, 135, 145 cm), then 3-6 cm above the top of the helmet.",
-    "discriminates": "Site: 26 damage from about 107 cm up, and misses above the helmet. Source (either convention): about 22 damage up to 136 cm, 26 only from 140-148 cm, and headshots 3-6 cm above the helmet.",
-    "measurability": "Single shots with standing ADS spread; 4 vs 5 shots to kill and 26 vs 22 damage numbers are distinct at a glance; aim height is judged against the helper's shoulders and helmet in a scope screenshot.",
-    "dummyPilot": "Optional solo pilot on the Firing Range dummy: head size (shots above the helmet, Head 24) and the Spine (25) boundary are testable, but the dummy chest material 637 and LeftArm 115 differ from the soldier and the range level grid was not read. The chest multiplier test needs a standing helper in MP."
+    "test": "Stationary standing helper in MP at 10 m (not the range dummy, whose collision asset and materials differ); M433 single ADS shots with damage numbers on, stepping up the centre line from belt to collarbone (about 100, 115, 125, 135, 145 cm). Record the loadout, target orientation, each shot's aim position (scope screenshot) and per-shot damage. Optional exploratory shots just above the helmet.",
+    "discriminates": "Centre line: the site predicts 26 damage from about 107 cm up; source capsules (either offset convention, bind pose) predict about 22 damage up to 136 cm and 26 only from 140-148 cm. Above-helmet shots are exploratory only: the capsule top (185.5-187 cm) was compared with the site artwork, not located against the in-game helmet or animated skeleton, so no above-helmet headshot prediction is established.",
+    "measurability": "Single shots with standing ADS spread; 4 vs 5 shots to kill and 26 vs 22 damage numbers are distinct at a glance; aim height is judged against the helper's belt, shoulders and collarbone in each scope screenshot.",
+    "dummyPilot": "Not a validation target. The dummy's head capsule length (0.08 vs 0.06), chest material (637) and LeftArm material (115) differ from the soldier, and the range grid was not read, so a dummy result cannot directly validate soldier head size or torso multipliers."
   },
   "evidence": {
     "runRoot": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-27T2130-0400",

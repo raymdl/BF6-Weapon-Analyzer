@@ -129,10 +129,11 @@ L99 opens the soldier hit-capsule line (register A10).
 ### Awaiting operator
 
 - L99 capture (recommended next): M433 single shots up the centre line of a
-  standing helper at 10 m, plus shots just above the helmet. Damage numbers (26
-  vs about 22) decide the chest/abdomen boundary and head size before any
-  target-view change. Use a helper in MP: the range dummy's chest material differs
-  (637, no MP grid record); a solo dummy pilot can still test head size.
+  standing helper in MP at 10 m; record loadout, target orientation, aim position
+  and per-shot damage. Damage numbers (26 vs about 22) decide the chest/abdomen
+  boundary before any target-view change. Shots above the helmet are exploratory
+  only, and the range dummy is not a validation target (different head length
+  and materials). Keep site geometry unchanged pending the result.
 - Otherwise capture rank 1 (spot-on-fire; M45A1 and vz. 61 store different WB
   bases from the hardcoded 54/150 m) or the L17 Match Trigger follow-up.
 
