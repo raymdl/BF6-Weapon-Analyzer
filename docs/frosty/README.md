@@ -14,6 +14,24 @@ what the hashed fields mean, how the assets link to site values, and what is sti
 | [Open questions](OPEN_QUESTIONS.md) | Everything still unresolved, with the suggested test. |
 
 Research status: [active source leads, proposals and parked questions](../working/FROSTY_RESEARCH_QUEUE.md).
+
+## What is already known, and where
+
+Check these before starting new tracing. `python scripts/frosty-worker.py prior-work --terms <names>`
+searches all of the Markdown and JSON layers below except the external ledger.
+
+| Question | Where the answer lives |
+|---|---|
+| Is this site value sourced, and from what? | The site-input ledger: every `data/*.json` leaf and `sim/*.js` input with a review status and evidence receipt ([summary receipt](../../reference-data/provenance/frosty-site-input-review-final-v2-2026-09-23.json); rows in the external `site-input-reviewed.jsonl`). It is a 23 September snapshot; later data changes are in dated receipts. |
+| Has this asset been traced, for what question, and with what result? | [`asset-findings.json`](../../reference-data/frosty/asset-findings.json) (per-asset question, result and conclusion). |
+| What does this hashed field mean? | [Field map](FIELD_MAP.md). |
+| How does this mechanic work, and what does the site do with it? | The topic pages above. |
+| What exactly was measured, from which bytes? | Dated receipts in `reference-data/provenance/` ([index](../../reference-data/provenance/README.md)). |
+| Is it being worked on, proposed, or waiting on the operator? | The [research queue](../working/FROSTY_RESEARCH_QUEUE.md); closed leads and past runs are in [FROSTY_QUEUE_CLOSED.md](../archive/FROSTY_QUEUE_CLOSED.md). |
+| Was it captured or decoded at all? | The coverage ledger (`coverage-decoder-v5.sqlite`, see [Tools](TOOLS.md)). Capture and decoding are not semantic review. |
+
+A lead is not closed until its topic page, receipt, `asset-findings.json` entries and queue
+row are updated.
 Capture work: [ranked in-game capture plan](../working/BF6_CAPTURE_PRIORITIES.md).
 
 The current audit starts from every `data/*.json` entry and `sim/*.js` input or
