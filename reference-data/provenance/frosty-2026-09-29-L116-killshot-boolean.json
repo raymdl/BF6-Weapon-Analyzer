@@ -1,0 +1,68 @@
+{
+  "date": "2026-09-29",
+  "title": "Killshot boolean on the six Sniper Rifles",
+  "record": {
+    "v": 1,
+    "kind": "lead",
+    "date": "2026-09-29",
+    "build": "1.4.3.0-release",
+    "leads": [
+      {
+        "id": "L116",
+        "title": "Killshot boolean on the six Sniper Rifles",
+        "status": "exhausted",
+        "summary": "WM_Killshot's single true boolean (Field_8d6d2bc1, raw bool 01 at offset 216) has no text, name or captured consumer: the Ability_Killshot record is an ability-category entry with no effect payload, the English label Killshot (string 7F1B63AA) is referenced by no captured raw asset, and the related names (animation parameter MM.KillshotKilled.Bool, soldier KillshotSuppressionResistance 0.25) describe kill feedback or suppression at soldier level, not a weapon stat. No site number or comparison follows.",
+        "reopenWhen": "Reopen if a consumer of U_Ability_Killshot or the MM.KillshotKilled.Bool animation parameter is captured, or localized Killshot text appears in a trait or ability description.",
+        "statusNote": "Exhausted within recorded scope (29 Sep)",
+        "searched": [
+          "Coverage ledger (coverage-decoder-v5.sqlite) routes containing killshot, kill_shot or killstreak: 67 routes; the Killshot ones are WM_Killshot, U_Ability_Killshot, Ability_Killshot and Animations/Common/MM.KillshotKilled.Bool (animation parameter; not captured raw); the rest are VO, radio and UI assets",
+          "English strings table fs_us_loc.strings.tsv (109,195 rows) searched for kill shot, killshot, after/on/upon a kill and elimination with rechamber or reload wording: only the label \"Killshot\" (7F1B63AA), \"Precision kill.\" lines and one Assault trait challenge text",
+          "Little- and big-endian byte scan of all 70,202 captured raw EBX files (275 MB, builds/1.4.3.0/capture/*/raw) for StringId 7F1B63AA: 0 hits",
+          "XML overlays of Ability_Killshot and U_Ability_Killshot: an ability-category record (category asset, kill switch, four unnamed one-hot structs) and a selector record; no effect operand",
+          "Raw re-read of WM_Killshot Field_8d6d2bc1 (bool at offset 216 = 01) reproduces the L109 value"
+        ]
+      }
+    ],
+    "binding": "research",
+    "assets": [
+      {
+        "path": "Common/Gameplay/InRoundProgression/Killshot/WM_Killshot",
+        "format": "raw-ebx",
+        "sha256": "049f729947b006a8543597cb5094a1a2b9e0b557faa077bb31c2c3ed3900491b",
+        "question": "What does the Killshot weapon modifier contain?",
+        "result": "inconclusive",
+        "conclusion": "One unnamed boolean Field_8d6d2bc1 is true (bool 01 at offset 216) and every other leaf is neutral; no text or consumer names its effect."
+      },
+      {
+        "path": "Common/Gameplay/InRoundProgression/Killshot/Ability_Killshot",
+        "format": "raw-ebx",
+        "sha256": "1caddc23eec9b44616789da9139c89ba9900f8a9f95a06a492e56cf61a3e9824",
+        "question": "Does the Killshot ability record carry an effect operand or text?",
+        "result": "useful",
+        "conclusion": "It is an ability-category entry referencing U_Ability_Killshot with a kill switch; no effect payload."
+      },
+      {
+        "path": "Common/Gameplay/InRoundProgression/Killshot/U_Ability_Killshot",
+        "format": "raw-ebx",
+        "sha256": "aea54ce5ae542f1170ac0935249bee383142712accd5836ba05d8572b69f44ba",
+        "question": "Which asset owns the selector c9ac1d21-bc55-48ae-a825-90f3b15d6817?",
+        "result": "useful",
+        "conclusion": "It owns selector c9ac1d21-bc55-48ae-a825-90f3b15d6817 and holds no effect operand."
+      }
+    ]
+  },
+  "lead": "L116",
+  "question": "What does the single unnamed boolean in WM_Killshot (imported by the six site Sniper Rifles) enable, and does it bear on any displayed weapon number?",
+  "sourceFacts": [
+    "WM_Killshot (raw sha256 049f729947b006a8543597cb5094a1a2b9e0b557faa077bb31c2c3ed3900491b): Field_8d6d2bc1 = true, raw bool 01 at offset 216 (re-read with scripts/frosty-raw-check.py); every other leaf neutral; imported by interdictor, l115, m2010esr, miniscout, psr and sv98 (L109).",
+    "Ability_Killshot and U_Ability_Killshot are an ability-category entry and its selector (c9ac1d21-bc55-48ae-a825-90f3b15d6817); neither carries an effect payload or text.",
+    "The English strings table has the label \"Killshot\" (7F1B63AA); no captured raw asset references that StringId.",
+    "Related names elsewhere: animation parameter Animations/Common/MM.KillshotKilled.Bool (catalog only) and the soldier registry KillshotSuppressionResistance 0.25 (bounds 0.1/0.5, L109)."
+  ],
+  "inference": "By name only, Killshot concerns kill feedback (animation or suppression state) rather than a weapon stat. No operand, text or consumer supports any effect on cadence, recoil or spread.",
+  "unresolved": [
+    "What the boolean enables at runtime; whether it links to KillshotSuppressionResistance or MM.KillshotKilled.Bool."
+  ],
+  "siteImpact": "None. No displayed number changes and no enhancement proposal follows.",
+  "workers": "none (answered directly by the orchestrator)"
+}

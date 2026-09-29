@@ -574,7 +574,9 @@ Added 28 September 2026 for Codex worker runs. They check process, not meaning.
   --control-site`: confirm that a control's site value exists, then build
   `brief.txt` from the preamble, the chosen sections of
   `docs/working/frosty-worker-conventions.txt` and the lead's `lead.txt`.
-  Assembly refuses a missing control value or an existing brief.
+  Assembly refuses a missing control value or an existing brief. In Git Bash, write
+  pointers as `data/file.json#/path`: Git Bash rewrites `:/` into a Windows path
+  (or set `MSYS_NO_PATHCONV=1`).
 - `frosty-worker.py prior-work --terms`: searches topic pages, working docs,
   receipts and the generated lead index and site evidence for earlier work on the
   named assets before a lead is chosen.
@@ -626,4 +628,7 @@ matter). New receipts embed a top-level `record`.
 `binding` is `site` when a site file (`data/`, `sim/`, `ui/`, `scripts/*.mjs`) pins
 the receipt's hash or names it by path, else `research`. Site pointers accept
 `[key=value]*` to name every matching list element (`frosty-worker.py check-site`
-does not).
+does not). `frosty-records.py new` writes a skeleton record; `--searched` (repeat)
+fills an exhausted lead's search list and `--asset path|format|sha256` (repeat) adds
+assets whose question and conclusion start as `TODO`. `check` rejects any `TODO`
+left in a record.

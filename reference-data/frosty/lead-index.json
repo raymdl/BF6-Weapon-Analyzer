@@ -1524,6 +1524,97 @@
       "summary": "Inventory v4 lists 66,736 data leaves; a delta ledger classifies the 1,739 data leaves that drifted since the 23 September ledger (109 changed, 80 removed, 1,550 new; 66 groups, each tied to the data commits and receipts that explain it). Files: reference-data/provenance/frosty-site-input-inventory-v4-2026-09-28.json (the delta artifact is external, next to the v2 review folder).",
       "reopenWhen": "Re-review sim/*.js when a lead needs it (7 files drifted from the 23 September lines; ledger-drift reports the changed blocks), and repeat ledger-drift after the next data change.",
       "refs": []
+    },
+    "L114": {
+      "id": "L114",
+      "title": "ADS-out time per weapon",
+      "status": "proposal",
+      "statusNote": "Sourced conditionally; enhancement proposal (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L114-ads-out-transition.json"
+      ],
+      "summary": "All 63 weapon bodies select an FZT General_10 tier through the same WeaponZoomTransitionIndex as the site ADS-in index (defAds matches 63 of 63), giving an ADS-out candidate of 400, 333.334, 266.667, 233.334, 200, 166.667, 133.334 or 100 ms per weapon; the ladder differs from ADS-in at every index, and no ADS-time modifier of the 55 traced M4A1 and Sniper choices references FZT directly, so attachment shifts of ADS-out are unresolved.",
+      "reopenWhen": "Establish the exact target of the GID_ADSTime add slots or capture runtime ADS-out to settle whether the selector drives ADS-out and whether attachments shift it.",
+      "refs": []
+    },
+    "L115": {
+      "id": "L115",
+      "title": "WeaponSwap selector owner and exemptions",
+      "status": "exhausted",
+      "statusNote": "Exhausted within recorded scope (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L115-weaponswap-selector.json"
+      ],
+      "summary": "The WeaponSwap selector 7727fe65-6ddd-4d10-aeb8-e2d1e59c9054 appears in exactly one of 109,593 captured raw and XML files (WM_WeaponSwap itself, as a list member), so it has no captured owner, unlike the Killshot selector whose owner U_Ability_Killshot exists. The import counts reproduce (60 of 63 weapon bodies, not CZ3A1, DB-12, Vz. 61) and the three exempt bodies differ from the members only by that import and weapon-specific assets; no shared structural property explains the exemption. The modifier is a uniform +1 draw step, so weapon comparisons among the 60 do not change.",
+      "reopenWhen": "Reopen if the owner of the selector 7727fe65 is captured, or native swap or equip behavior shows which weapons activate it.",
+      "refs": []
+    },
+    "L116": {
+      "id": "L116",
+      "title": "Killshot boolean on the six Sniper Rifles",
+      "status": "exhausted",
+      "statusNote": "Exhausted within recorded scope (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L116-killshot-boolean.json"
+      ],
+      "summary": "WM_Killshot's single true boolean (Field_8d6d2bc1, raw bool 01 at offset 216) has no text, name or captured consumer: the Ability_Killshot record is an ability-category entry with no effect payload, the English label Killshot (string 7F1B63AA) is referenced by no captured raw asset, and the related names (animation parameter MM.KillshotKilled.Bool, soldier KillshotSuppressionResistance 0.25) describe kill feedback or suppression at soldier level, not a weapon stat. No site number or comparison follows.",
+      "reopenWhen": "Reopen if a consumer of U_Ability_Killshot or the MM.KillshotKilled.Bool animation parameter is captured, or localized Killshot text appears in a trait or ability description.",
+      "refs": []
+    },
+    "L117": {
+      "id": "L117",
+      "title": "Attachment effects on the bolt and pump cycle",
+      "status": "rejected",
+      "statusNote": "No numeric cycle modifier on the 8 weapons (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json"
+      ],
+      "summary": "All 282 site choices of the six Sniper Rifles and two pump shotguns were resolved on release 1.4.3.0: only the DLC Bolt (ads_bolt) boolean rechamber modifier appears (M2010 ESR, SV-98, PSR, L115) and no choice carries a numeric modifier on the bolt or pump cycle fields, so no displayed sniper or pump RPM changes; the catalog-wide scan adds only WME_Firerate900_M10 (the known orphan USG-90 Heavy Recoil Spring, L93) and the VSSM full-auto package, both outside these weapons.",
+      "reopenWhen": "Reopen if a release-pinned selector trace adds a numeric target on a scoped weapon cycle field, or a runtime capture changes the activation or composition of the DLC Bolt boolean.",
+      "refs": []
+    },
+    "L118": {
+      "id": "L118",
+      "title": "Controller aim-assist assets and weapon/optic links",
+      "status": "finding",
+      "statusNote": "No per-weapon or per-optic variation (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L118-aim-assist-links.json"
+      ],
+      "summary": "All 63 site weapon blueprints import one shared soldier aim-assist object, and the 27 release-pinned aiming controllers reference one NoAssist object (55 attachment parts import 21 of them), so the captured aim-assist source does not vary by weapon or optic; runtime activation is unresolved and no site number or proposal follows.",
+      "reopenWhen": "Capture release raw for the 17 aim-assist routes without it and native controller behavior before modeling weapon versus optic composition.",
+      "refs": []
+    },
+    "L119": {
+      "id": "L119",
+      "title": "Named GS/WB field triage",
+      "status": "finding",
+      "statusNote": "Triage complete (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L119-gs-wb-field-triage.json"
+      ],
+      "summary": "Of the 272 named GS/WB registry suffixes on the 63 weapons (release 1.4.3.0, values from the pinned raw inventory), 179 feed a documented site value and 93 are candidates: 47 uniform, 46 varying, of which 11 have no earlier explanation (the CameraRecoil.IdleSpring family: visual camera settling, native use unresolved). The StanceChangePenalties family varies by class (MinAngleOffset 0.2-7.0 degrees, Duration 0.6-0.9 s), contradicting the earlier note that it is identical across weapons, and seeds L120.",
+      "reopenWhen": "Trace the camera idle-spring consumer and selectors before any camera-settling statistic is added; StanceChangePenalties is followed in L120.",
+      "refs": []
+    },
+    "L120": {
+      "id": "L120",
+      "title": "StanceChangePenalties per weapon",
+      "status": "proposal",
+      "statusNote": "Sourced; enhancement proposal, activation unresolved (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L120-stance-change-penalties.json"
+      ],
+      "summary": "Every weapon body stores 24 StanceChangePenalties leaves (Zoomed/Unzoomed x six stance transitions x MinAngleOffset in degrees and Duration in seconds; 1,512 raw reads over 63 weapons, control reproduced on M433): prone transitions are 6 degrees over 0.9 s on 54 weapons, with class outliers (7 degrees or 3 degrees, 0.6 to 0.8 s; sidearms 0.5 to 6), and eight crouch/stand leaves carry 0.2 to 1 degree over 0.3 s under a candidate name-to-slot join. No site choice or verified release modifier targets these leaves (101 M4A1 and DB-12 choices, 895 pinned modifier bodies; 93 catalog routes lack pinned raw). What the transient does at runtime is unresolved, and no site number changes.",
+      "reopenWhen": "Join the eight crouch/stand leaves to the raw owner layout, obtain pinned raw for the 93 uncovered modifier routes, and capture stance changes into ADS to settle activation and composition before showing angle and duration beside the static spread minima.",
+      "refs": []
     }
   }
 }

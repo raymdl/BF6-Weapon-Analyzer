@@ -33,7 +33,7 @@ searches all of the Markdown and JSON layers below except the external ledger.
 | Was it captured or decoded at all? | The coverage ledger (`coverage-decoder-v5.sqlite`, see [Tools](TOOLS.md)). Capture and decoding are not semantic review. |
 
 A lead is closed when its record passes `python scripts/frosty-records.py check`: a
-receipt with a `record`, the topic page edited in place, and the queue row removed.
+receipt with a `record`, the topic page edited in place, and its queue row removed (a lead answered directly may have none).
 Capture work: [ranked in-game capture plan](../working/BF6_CAPTURE_PRIORITIES.md).
 
 The current audit starts from every `data/*.json` entry and `sim/*.js` input or

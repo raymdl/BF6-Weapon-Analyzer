@@ -718,6 +718,97 @@
         "value": "basic"
       }
     ],
+    "data/attachments.json:/WEAPON_ERGO/l115/avail": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          "mag_catch",
+          "ads_bolt"
+        ]
+      }
+    ],
+    "data/attachments.json:/WEAPON_ERGO/m2010esr/avail": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          "ads_bolt"
+        ]
+      }
+    ],
+    "data/attachments.json:/WEAPON_ERGO/psr/avail": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          "mag_catch",
+          "ads_bolt"
+        ]
+      }
+    ],
+    "data/attachments.json:/WEAPON_ERGO/sv98/avail": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          "mag_catch",
+          "ads_bolt"
+        ]
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/ak205/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/ak4d/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/b36a4/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/brod3/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/cz3a1/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/db12/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
     "data/attachments.json:/WEAPON_MAG/db12/mags/7_rnd/mag": [
       {
         "receipt": "frosty-2026-09-24-L37-configured-magazine-counts.json",
@@ -730,6 +821,222 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": 14
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/drsiar/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/ef88/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/es57/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 6
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/ggh22/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/grtbc/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/grtcps/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/interdictor/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 0
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/kord6p67/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/ks18k/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/kts100/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/kv9/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/l110/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/l115/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/l85a3/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/lmr27/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m1014/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m121a2/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m123k/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m16a4/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m2010esr/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m240l/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m250/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m277/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m357trait/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m39emr/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m417a2/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m433/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
       }
     ],
     "data/attachments.json:/WEAPON_MAG/m433/mags/20_fast/mag": [
@@ -746,6 +1053,38 @@
         "value": 20
       }
     ],
+    "data/attachments.json:/WEAPON_MAG/m44/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m45a1/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m4a1/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m60/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
     "data/attachments.json:/WEAPON_MAG/m60/mags/50_rnd/mag": [
       {
         "receipt": "frosty-2026-09-24-L37-configured-magazine-counts.json",
@@ -758,6 +1097,231 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": 50
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m87a1/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/miniscout/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/nvo228e/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/p18/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/pp19/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/psr/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/pw5a3/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/pw7a2/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/qbz192/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/rpk74m/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/rpkm/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/scw10/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/sg553r/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/sgx/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/sl9/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/sor300sc/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/sor556/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/sv98/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/svdm/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 2
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/svk86/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/tr7/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/umg40/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/usg90/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/vcr2/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 3
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/vssm/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 4
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/vz61/defAds": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
+    "data/balance_tables.json:/ADS_SPD_TIERS": [
+      {
+        "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          500.0,
+          433.334,
+          366.667,
+          300.0,
+          250.0,
+          200.0,
+          166.667,
+          133.334
+        ]
       }
     ],
     "data/balance_tables.json:/ADS_SPD_TIERS/0": [
@@ -1704,6 +2268,17 @@
         "value": 359.999
       }
     ],
+    "data/weapons.json:/[id=db12]/spread/adsMove": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          0.32,
+          5
+        ]
+      }
+    ],
     "data/weapons.json:/[id=db12]/spread/adsMove/0": [
       {
         "receipt": "frosty-2026-09-26-L69-posture-spread.json",
@@ -1712,12 +2287,45 @@
         "value": 0.32
       }
     ],
+    "data/weapons.json:/[id=db12]/spread/adsStand": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          0.05,
+          5
+        ]
+      }
+    ],
+    "data/weapons.json:/[id=db12]/spread/hipMove": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          3.04,
+          5
+        ]
+      }
+    ],
     "data/weapons.json:/[id=db12]/spread/hipMove/0": [
       {
         "receipt": "frosty-2026-09-26-L69-posture-spread.json",
         "date": "2026-09-26",
         "relation": "supports",
         "value": 3.04
+      }
+    ],
+    "data/weapons.json:/[id=db12]/spread/hipStand": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          2.432,
+          5
+        ]
       }
     ],
     "data/weapons.json:/[id=db12]/spread/hipStand/0": [
@@ -1813,6 +2421,14 @@
         "value": "5.56×45mm NATO"
       }
     ],
+    "data/weapons.json:/[id=l115]/rpm": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": 46.14231275806206
+      }
+    ],
     "data/weapons.json:/[id=lmr27]/rpm": [
       {
         "receipt": "frosty-2026-09-24-L14-single-fire-cadence.json",
@@ -1843,6 +2459,14 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": ".300 Win Mag"
+      }
+    ],
+    "data/weapons.json:/[id=m2010esr]/rpm": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": 43.90241
       }
     ],
     "data/weapons.json:/[id=m277]/cal": [
@@ -1947,6 +2571,17 @@
         "value": 1
       }
     ],
+    "data/weapons.json:/[id=m433]/spread/adsMove": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          0.32,
+          8
+        ]
+      }
+    ],
     "data/weapons.json:/[id=m433]/spread/adsMove/0": [
       {
         "receipt": "frosty-2026-09-26-L69-posture-spread.json",
@@ -1961,6 +2596,28 @@
         "value": 0.32
       }
     ],
+    "data/weapons.json:/[id=m433]/spread/adsStand": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          0.05,
+          7
+        ]
+      }
+    ],
+    "data/weapons.json:/[id=m433]/spread/hipMove": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          3.04,
+          8
+        ]
+      }
+    ],
     "data/weapons.json:/[id=m433]/spread/hipMove/0": [
       {
         "receipt": "frosty-2026-09-26-L69-posture-spread.json",
@@ -1973,6 +2630,17 @@
         "date": "2026-09-26",
         "relation": "supports",
         "value": 3.04
+      }
+    ],
+    "data/weapons.json:/[id=m433]/spread/hipStand": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          2.432,
+          7
+        ]
       }
     ],
     "data/weapons.json:/[id=m433]/spread/hipStand/0": [
@@ -2037,12 +2705,34 @@
         "value": 590
       }
     ],
+    "data/weapons.json:/[id=m4a1]/spread/adsMove": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          0.32,
+          7
+        ]
+      }
+    ],
     "data/weapons.json:/[id=m4a1]/spread/adsMove/1": [
       {
         "receipt": "frosty-2026-09-26-L82-L84-secondary-spread-inputs.json",
         "date": "2026-09-26",
         "relation": "supports",
         "value": 7
+      }
+    ],
+    "data/weapons.json:/[id=m4a1]/spread/adsStand": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          0.05,
+          6
+        ]
       }
     ],
     "data/weapons.json:/[id=m4a1]/spread/adsStand/0": [
@@ -2061,12 +2751,34 @@
         "value": 6
       }
     ],
+    "data/weapons.json:/[id=m4a1]/spread/hipMove": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          2.255,
+          7
+        ]
+      }
+    ],
     "data/weapons.json:/[id=m4a1]/spread/hipMove/1": [
       {
         "receipt": "frosty-2026-09-26-L82-L84-secondary-spread-inputs.json",
         "date": "2026-09-26",
         "relation": "supports",
         "value": 7
+      }
+    ],
+    "data/weapons.json:/[id=m4a1]/spread/hipStand": [
+      {
+        "receipt": "frosty-2026-09-29-L120-stance-change-penalties.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": [
+          1.804,
+          6
+        ]
       }
     ],
     "data/weapons.json:/[id=m4a1]/spread/hipStand/1": [
@@ -2129,6 +2841,14 @@
         "date": "2026-09-24",
         "relation": "supports",
         "value": 399.999
+      }
+    ],
+    "data/weapons.json:/[id=psr]/rpm": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": 38.663456
       }
     ],
     "data/weapons.json:/[id=pw7a2]/cal": [
@@ -2214,6 +2934,14 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": "7.62×54mmR"
+      }
+    ],
+    "data/weapons.json:/[id=sv98]/rpm": [
+      {
+        "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
+        "date": "2026-09-29",
+        "relation": "context",
+        "value": 38.20751292717492
       }
     ],
     "data/weapons.json:/[id=svdm]/rpm": [

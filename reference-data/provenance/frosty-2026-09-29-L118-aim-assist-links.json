@@ -1,0 +1,603 @@
+{
+  "lead": "L118",
+  "status": "complete",
+  "build": {
+    "release": "1.4.3.0",
+    "head": 4892017,
+    "descriptorSha256": "91c9ea7c3dd830e34a78123c8bb7485e80eefdb18fc9c7ee41117971d23565c2"
+  },
+  "question": "What controller aim-assist configuration exists per weapon and optic, and what varies?",
+  "sourceFacts": [
+    {
+      "fact": "Known-answer controller recoil modifier is cataloged and decoded; raw f32 is 0.8836 at offset 1196.",
+      "rawChecks": [
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_WeaponModifiers\\Recoil\\GRM_Recoil_Controller_03.ebx",
+          "rawSha256": "c847f914b534484c1a014c2b63ef0451caae86826a256c1b7bf4619574bd8c3f",
+          "offset": 1196,
+          "type": "f32",
+          "bytesHex": "9c33623f",
+          "value": 0.8835999965667725
+        }
+      ]
+    },
+    {
+      "fact": "49 aim-assist catalog routes examined; 32 have release-pinned raw EBX, 17 do not.",
+      "rawChecks": [],
+      "detail": {
+        "inventory": "final-release/inventory-release.json"
+      }
+    },
+    {
+      "fact": "All 63 site WBs import one AimAssistSoliderOnly object at unnamed Field_c3a2561e.",
+      "rawChecks": [
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\weapons\\AssaultRifle\\G3A4\\G3A4_WB.ebx",
+          "rawSha256": "10f8e57f830d249eaf63025e28369021feb8533fd24bddfc34a216c2c5e9f4bd",
+          "offset": 25176,
+          "type": "guid",
+          "bytesHex": "681d8175e209f84a81eb68367133ee6a",
+          "value": "75811d68-09e2-4af8-81eb-68367133ee6a"
+        },
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\weapons\\AssaultRifle\\G3A4\\G3A4_WB.ebx",
+          "rawSha256": "10f8e57f830d249eaf63025e28369021feb8533fd24bddfc34a216c2c5e9f4bd",
+          "offset": 25192,
+          "type": "guid",
+          "bytesHex": "b18a48a6d8aa0d42943e9f00ebd4e4f2",
+          "value": "a6488ab1-aad8-420d-943e-9f00ebd4e4f2"
+        }
+      ],
+      "detail": {
+        "links": "link-evidence-release.json",
+        "targetObjectGuid": "a6488ab1-aad8-420d-943e-9f00ebd4e4f2"
+      }
+    },
+    {
+      "fact": "27 release-pinned aiming controllers import one NoAssist object; 55 release-pinned WPM assets import 21 of those controllers.",
+      "rawChecks": [
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Hardware\\Weapons\\_Attachments\\Reflex\\EotechELFX\\WPM_SCP_EotechEFLX_LowRiser.ebx",
+          "rawSha256": "ab6b5aff2b2b95143ac235fa3a4d8b16441c2cd8c5be9a0f9ebb8c772478559d",
+          "offset": 4004,
+          "type": "guid",
+          "bytesHex": "5497b1a35d273a42ad63cda6abfec451",
+          "value": "a3b19754-275d-423a-ad63-cda6abfec451"
+        },
+        {
+          "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\raw\\Common\\Gameplay\\AimingControllers\\WeaponsGadgets\\Aim_01x00_PiP.ebx",
+          "rawSha256": "7a337859a9a24b4e56fb7ca1c280b52385c39671609c7f452177bf85f94849c6",
+          "offset": 740,
+          "type": "guid",
+          "bytesHex": "c0b5cec655fda44d8895132305c498cf",
+          "value": "c6ceb5c0-fd55-4da4-8895-132305c498cf"
+        }
+      ],
+      "detail": {
+        "links": "optic-link-evidence-release.json",
+        "targetObjectGuid": "c6ceb5c0-fd55-4da4-8895-132305c498cf"
+      }
+    }
+  ],
+  "inference": "The pinned release captures show one shared aim-assist target across all 63 site WBs and one NoAssist target across the 27 release-pinned aiming controllers in scope. Other aiming fields and runtime composition remain unresolved.",
+  "unresolved": [
+    "Serialized import links do not establish native activation, WB versus optic-controller precedence, or controller aim-assist behavior.",
+    "Seventeen aim-assist routes lack release-pinned raw EBX; eight have incompatible hotfix-only captures in the mixed ledger and were excluded from value/class claims.",
+    "Several pinned decoded bodies are provisional. Unnamed scalar meanings and any optical runtime composition remain unresolved."
+  ],
+  "siteImpact": "No Analyzer displayed value changes from this source trace. Its controller recoil factor 0.8836 is a separate modifier. The shared WB and optic-controller links can inform a future aim-assist research proposal, subject to runtime capture.",
+  "evidence": {
+    "sources": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\catalog\\ebx_manifest.csv",
+        "sha256": "ba698b619bb180595bdb5f28d76bf90dbdcfeb5f0435cfb94f3fbf0429097ba2"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\capture\\collection\\asset-catalog.json",
+        "sha256": "815ef184c8530d1d70a7a6d4c4793eb49e2372be6ca54325571e6b419c2addc5"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\coverage-decoder-v5.sqlite",
+        "sha256": "1fac4aa159b11741943eaf6ae94f64e63928b9fa0f866ca4a1d191897718cf10"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\..\\weapon-crosswalk.json",
+        "sha256": "3c6c732fc592a28a2d6a43fa68352a3eddb19ec68b38504ccab8847efe7ab485"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\docs\\frosty\\FIELD_MAP.md",
+        "sha256": "7e29347bdbf13bd60a5b910dfe33b7de29e609ffbd86870fc6da000167a816ac"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-grx-field-names-2026-09-13.json",
+        "sha256": "050ba2d0c18755c342cc6d42abc9bfc61e95fcd31360fcffd1ad4841c0e5f4c8"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-2026-09-24-L19-controller-recovery-operand.json",
+        "sha256": "39b4f46d36dbbe931cde65d4d9b55bfa89d6a62bfb37b2310148119d4056f397"
+      }
+    ],
+    "outputs": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\control-raw.json",
+        "sha256": "c6aef62f5d13bcdc44c8af494587cf7ca71f3d27de6853d8eba0a472866b8c1c"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\link-guid-raw.json",
+        "sha256": "0f247a98ce5227712e769747a3867f81dfbb681eaa2d5267eb5acc960ca6d1da"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\link-object-raw.json",
+        "sha256": "609643e5d1c87ef89cba4c28c8ce20698312d9c1676e795ef73e0a1c0a6abd84"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\optic-part-raw.json",
+        "sha256": "6cb1acf6b035ca79f08141693c24aa31fb6d80d0664976430891112de09ab942"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\aim-controller-raw.json",
+        "sha256": "1d5a578f4044270f3a4ad24793a7c3eeadbaea6c4735b8bb12013f6a53850cfe"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\final-release\\inventory-release.json",
+        "sha256": "0cf844f65a0e831420495384f2bd72c48a247f2223247fb54a4ffbf50257c24f"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\link-evidence-release.json",
+        "sha256": "bb606570e3fac27907523160908a1fbaf2bc017d488e7f573f2274bcbb358b70"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\optic-link-evidence-release.json",
+        "sha256": "9b37f57f900c172831c2ce7f832972a48028111cd6663d1f35c195f73b49dba0"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\final-release\\l118-result.json",
+        "sha256": "e2e70d749701a0f39a2e7e6fd2e09810a701b115b0de00a0dd7c1facd4484503"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\final-release\\summary.md",
+        "sha256": "d919565e2fbbb96be09be7a8d26419594590829c0bb5f5bc9e51aeb638bc0d1f"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\final-release\\command-ledger.json",
+        "sha256": "a0db10a2fe817b25cb42c4567f47c44cec3e325fc5880adeed99a2fbf0a48523"
+      }
+    ],
+    "helpers": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\inspect_sources.py",
+        "sha256": "79c54d6cc412e16e3ea616920e03c217e9f254e70e9cf72637477ea4d68fab65"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\inventory.py",
+        "sha256": "f05f327439033dcbe0bee9c5fcc77cda43779ff829bb87aa7fdb2e10a4e50518"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\inspect_inventory.py",
+        "sha256": "b8089781ef4df7577d6322f850b9a8cada9a4ee328caa475c7b97eee62afab1d"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\inspect_links.py",
+        "sha256": "e704c3acea7553ceb33dd793490049921849518a3c8a3df57ca33526a03ec428"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\inspect_bodies.py",
+        "sha256": "d178f12960afd54e2bc0df88114ac71dc52dbd28cad84a781aa87975053c2366"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\link_summary.py",
+        "sha256": "4a96821c8e6c8be880c1db1849a3185c00ebc143f6118a03abb8f3d4168149ec"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\optic_links.py",
+        "sha256": "ac1fbf1c6b5c1633e032e2591bdcbf3f53988bc6be86daf66527a917a2e3e468"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\optic_links-v1-reconstructed.py",
+        "sha256": "dd56ce56947484f8cc8871f969793bee234774d976f75cdb15c45998c12a3394"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\locate_sample.py",
+        "sha256": "0e8e19dfc8bf8d810531bd2d057cb1c320cc1af7e57bb35e306d2884bce726f9"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\build_outputs.py",
+        "sha256": "5a4a3136523e69cab5621e15ca5bb5cf68c12f5a76e78d9e204ad631ab250271"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\finalize_outputs.py",
+        "sha256": "22c2b44e9450a31338bb9a2a2dc46b164f80b34afa68a277363dd2c0538afce8"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\verify_pin.py",
+        "sha256": "663c4a63ecdbb25bed4c8258719c75f78e85d7e221fcb5f0c494182f977b8380"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\verify_pin_details.py",
+        "sha256": "d933cd9bfd6a2c4a89c8ecfc6857f644c8f885f02e70b955e459a5d84f0de294"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\locate_release.py",
+        "sha256": "19c320997e15268d6e11969b666c6fb2ca4358837cde6d85af6407498512c720"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\check_collection_release.py",
+        "sha256": "f418f8e316048d1f10a38f2de2d09cd0ac1469cac1176fc68d52cb824d091b89"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\verify_links_pin.py",
+        "sha256": "d885652a6c980e63ab97894f3912b52c2dd04f9c48f93692ed4dc91050cdbe0c"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\release_links.py",
+        "sha256": "e1f6a836a71195494c2e828947e46379f1e1af56fce08e98091a3c56273dac9b"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\find_release_copies.py",
+        "sha256": "04dfe10da5013280fe9a055a96f4416157eeb7a831d63473514b756fadb94eaf"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\build_release_final.py",
+        "sha256": "0b95284b60f4193f20bd1cbbbeaa7b1e257ecbec0f955e601f5108af6d4314ed"
+      }
+    ],
+    "repoScripts": [
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-worker.py",
+        "sha256": "52f0f67accb16a6215d7607c196e9e7155bd0d50a9dc66ab46f1c2af2c2b87c1"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-raw-check.py",
+        "sha256": "05c2425c008df81635a3f24f5d7c302bf60fa70f6428dc6c11cf1adf04e8ef76"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-records.py",
+        "sha256": "b37d33bf3f69bb62a18e7dfafae25d52f3464842e1bb624d53cef182eeb04dcc"
+      },
+      {
+        "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\scripts\\frosty-ebx-decode.py",
+        "sha256": "190f7d51cd7b20daf3fb5dc7f2c69688b28f0322e0f2eb0a45b16bc3c4a3098f"
+      }
+    ],
+    "commands": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118\\final-release\\command-ledger.json",
+      "sha256": "a0db10a2fe817b25cb42c4567f47c44cec3e325fc5880adeed99a2fbf0a48523",
+      "workingDirectory": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400\\L118"
+    },
+    "helperRevisionNote": "optic_links-v1-reconstructed.py is a byte reconstruction of the first invoked helper revision; its original file was edited before hashing.",
+    "releasePinAudit": {
+      "catalogRoutes": 49,
+      "releaseRaw": 32,
+      "catalogOnly": 17,
+      "excludedHotfixRoutes": [
+        "Common/Gameplay/AimAssist/AimAssistTypes/SoldierAimAssistData_Win_Xbox_Vehicle_Only",
+        "Common/Gameplay/AimAssist/AimAssistTypes/VehicleAimAssistData_Win_Xbox_Solider_Only",
+        "Common/Gameplay/AimAssist/AimAssistTypes/VehicleAimAssistData_Win_Xbox_Vehicle_Only",
+        "Common/Gameplay/AimAssist/ControllerAimingCurves/VehicleControllerAimingCurves_PCXbox",
+        "Common/Gameplay/AimAssist/ControllerAimingCurves/VehicleControllerAimingCurves_PCXbox__Zoom",
+        "Common/Gameplay/AimAssist/SharedAimAssist/AimAssistVehicleOnly",
+        "Common/Gameplay/AimAssist/SharedAimAssist/AimAssistVehicleTargetingDistanceSettings",
+        "Common/Gameplay/AimAssist/SharedAimAssist/NoAimAssist"
+      ]
+    }
+  },
+  "record": {
+    "v": 1,
+    "kind": "lead",
+    "date": "2026-09-29",
+    "build": "1.4.3.0-release",
+    "binding": "research",
+    "leads": [
+      {
+        "id": "L118",
+        "title": "Controller aim-assist assets and weapon/optic links",
+        "status": "finding",
+        "summary": "All 63 site weapon blueprints import one shared soldier aim-assist object, and the 27 release-pinned aiming controllers reference one NoAssist object (55 attachment parts import 21 of them), so the captured aim-assist source does not vary by weapon or optic; runtime activation is unresolved and no site number or proposal follows.",
+        "reopenWhen": "Capture release raw for the 17 aim-assist routes without it and native controller behavior before modeling weapon versus optic composition.",
+        "statusNote": "No per-weapon or per-optic variation (29 Sep)"
+      }
+    ],
+    "assets": [
+      {
+        "path": "Common/GameSetup/Options/Gameplay/OptionAimAssistSoldierAttractAndSlowdown",
+        "format": "raw-ebx",
+        "sha256": "d6824900066af977cf7b30e07e6626b526c1b0c0d4e975b8355198aeb6d262a0",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "global controller option; decoded owner Class_921071e8."
+      },
+      {
+        "path": "Common/GameSetup/Options/Gameplay/OptionAimAssistSoldierSlowdown",
+        "format": "raw-ebx",
+        "sha256": "b452a7d2f6f774ac34464d42a8527882ecfd3505c04cf6f625c01c4635083a48",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "global controller option; decoded owner Class_921071e8."
+      },
+      {
+        "path": "Common/GameSetup/Options/Gameplay/OptionAimAssistSoldierSnapZoom",
+        "format": "raw-ebx",
+        "sha256": "f79b0492affabc1781d5d98259fac078675b7c3b6886ca54f2788c8e00153260",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "global controller option; decoded owner Class_921071e8."
+      },
+      {
+        "path": "Common/GameSetup/Options/Gameplay/OptionAimAssistVehicleAttractAndSlowdown",
+        "format": "raw-ebx",
+        "sha256": "b2b69d9cbb8d9b8997dd073e99f9d931bb3fc0b41fcb45795d93696dc4e9d24d",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "global controller option; decoded owner Class_921071e8."
+      },
+      {
+        "path": "Common/GameSetup/Options/Gameplay/OptionAimAssistVehicleSlowdown",
+        "format": "raw-ebx",
+        "sha256": "01e6d2460369ed1da11e9c1877a2fd7befd6e1113d563d6b09c4718a326295d6",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "global controller option; decoded owner Class_921071e8."
+      },
+      {
+        "path": "Common/GameSetup/Options/Gameplay/OptionAimAssistVehicleSnapZoom",
+        "format": "raw-ebx",
+        "sha256": "a58f3ddd7522da116235055a0803c1dda5c932500538f69cff157f87fe97c0c8",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "global controller option; decoded owner Class_921071e8."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/AccelerationPresets/ControllerAccelerationPreset_BF1",
+        "format": "raw-ebx",
+        "sha256": "a1f5985b8365856276f5c81e5602f2bc0778a62cd09abbbbc088239a5fa1040f",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller acceleration preset; decoded owner Class_652257c4."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/AccelerationPresets/ControllerAccelerationPreset_BF2042_BFV",
+        "format": "raw-ebx",
+        "sha256": "40f0469b77be6fe56fb941cb3b7a5e416144e76f4c91e0d4cca28faa7e4b0608",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller acceleration preset; decoded owner Class_652257c4."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/AccelerationPresets/ControllerAccelerationPreset_BF4_BF3_BFBC_NoAcceleration",
+        "format": "raw-ebx",
+        "sha256": "4c2aa8cc78759a6421b816c2460c2d0da0c82ea8488e85c5a412b639384a9225",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller acceleration preset; decoded owner Class_652257c4."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/AccelerationPresets/ControllerAccelerationPreset_BFBC2",
+        "format": "raw-ebx",
+        "sha256": "bd3d8cab93c4908739ee6278f78eeb43e912cb131211116b0bb489791b16ce7d",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller acceleration preset; decoded owner Class_652257c4."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/AccelerationPresets/ControllerAccelerationPreset_Standard",
+        "format": "raw-ebx",
+        "sha256": "7479cfc85d1a998f26efd20fe206ac99bcb04150626048b4f409d0072d23c661",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller acceleration preset; decoded owner Class_652257c4."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/AimAssistTypes/NoAssistSoldierAimAssistData_Win_Xbox",
+        "format": "raw-ebx",
+        "sha256": "9d7b196dec6f1af4744a4fa96455719bd2fab8c809770ac870c2139bdbff3faf",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared soldier or vehicle aim-assist profile; decoded owner Class_0d3ca2f4."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/AimAssistTypes/SoldierAimAssistData_Win_Xbox_Solider_Only",
+        "format": "raw-ebx",
+        "sha256": "59531cb2ff9c8ab87947d92f59237d2e288c13fb2cbc4da3caa81c38da7bca6f",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared soldier or vehicle aim-assist profile; decoded owner Class_0d3ca2f4."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BF1_Win32_X1__BF4_All",
+        "format": "raw-ebx",
+        "sha256": "1d2e07a6c77dba68778939a4757400ed89bb74e369c49bac621d9c57c34b965c",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_64be3902."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BF2042_All__BFV_PS4",
+        "format": "raw-ebx",
+        "sha256": "3405f31373060d290db200b134bb55f850ac134819d0c154021c67b800c2263c",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_98b17710."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BF2042_All__BFV_PS4__Zoom",
+        "format": "raw-ebx",
+        "sha256": "86d14ac107fa1c7a25486ce45b9b39fe538675644447cb6e89805cead225ca75",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_98b17710."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BF3_All",
+        "format": "raw-ebx",
+        "sha256": "421b31c8f9a2d657af2f3096b6faf3828286589e52cceceb3e1e34dd53989be4",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_64be3902."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BFBC2_All",
+        "format": "raw-ebx",
+        "sha256": "a475e651832978ef31a540d7dfed0a2512cc03d842b0360043b24e33b2545d62",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_64be3902."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BFBC2_All__Zoom",
+        "format": "raw-ebx",
+        "sha256": "f4ccf26a4dc86523f48db9a2729144ad03c6c8a824bf6d439cc8f902f0351ac6",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_64be3902."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BFBC_All",
+        "format": "raw-ebx",
+        "sha256": "368fe8c410c3ea4fdbb1a2de041312d58c92dcc039c4fb525d0863160d5350ce",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_64be3902."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BFV_Win32_X1",
+        "format": "raw-ebx",
+        "sha256": "fbc428c83a91f9b3741e90448508220f13f358f1641ada56d523361dc8087165",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_98b17710."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_BFV_Win32_X1__Zoom",
+        "format": "raw-ebx",
+        "sha256": "c19a35e01e490eab9ffe886f15b52ca88ea264940a287c60d2ce5c63d9fd82c8",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_98b17710."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_DynamicPolynomial",
+        "format": "raw-ebx",
+        "sha256": "82de7e29cdfa85675a9735b9a6eb094f4e2e6427acf4ddf8636f9b17eb78e9c5",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_64be3902."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_Linear",
+        "format": "raw-ebx",
+        "sha256": "f6e468858bccb9520a7e483efd7a235a3342cecd57b897751bcb8418e5fec1bf",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_98b17710."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurve_StandardPolynomial",
+        "format": "raw-ebx",
+        "sha256": "e8607c1f610a9f6de8af84d5d352b81cf4a07eac9425234778f68510803af509",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_64be3902."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurves_PCXbox",
+        "format": "raw-ebx",
+        "sha256": "c9e5f252dbb5a6a2e99b12697a5ba2edacaccc8d782c5be3f0bc4880ca6bbc06",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_85e5b53c."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/ControllerAimingCurves_PCXbox__Zoom",
+        "format": "raw-ebx",
+        "sha256": "a21fcc67953549a2f413f52ade4804c70aa9a7deef79df2c1eda6f2fa50109ed",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_85e5b53c."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/SoldierControllerAimingCurves_PCXbox",
+        "format": "raw-ebx",
+        "sha256": "8ce18d4d8b33cd70872ff0a6e6d8c0af00751d5cec9d29e220922d8371f0680a",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_b60ca071."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/ControllerAimingCurves/SoldierControllerAimingCurves_PCXbox__Zoom",
+        "format": "raw-ebx",
+        "sha256": "e657534ab879be82c827772b6601b3e4fdc6ef95f1db203b5dea76018aa2495f",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared controller aiming curve; decoded owner Class_b60ca071."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/SharedAimAssist/AimAssistSoldierTargetingDistanceSettings",
+        "format": "raw-ebx",
+        "sha256": "ba436c0244ada56a26899b51058187bfbda65a7c67d29fa252b6d131f1643f8d",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared aim-assist or distance configuration; decoded owner Class_0fb3a213."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/SharedAimAssist/AimAssistSoliderOnly",
+        "format": "raw-ebx",
+        "sha256": "59cda1bcfca683e09cbedbb0a5575ca9c20300590dfe1b4d6fbcfce300a3a1b8",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared aim-assist or distance configuration; decoded owner Class_bc77edf2."
+      },
+      {
+        "path": "Common/Gameplay/AimAssist/SharedAimAssist/NoAimAssistDistanceSettings",
+        "format": "raw-ebx",
+        "sha256": "a3609ea51c944920b4a721142adfebe7d0645dbc4e94cb00f3d99cef32475114",
+        "question": "What aim-assist route/class is captured and how does it link?",
+        "result": "useful",
+        "conclusion": "shared aim-assist or distance configuration; decoded owner Class_0fb3a213."
+      },
+      {
+        "path": "Common/Hardware/Weapons/_WeaponModifiers/Recoil/GRM_Recoil_Controller_03",
+        "format": "raw-ebx",
+        "sha256": "c847f914b534484c1a014c2b63ef0451caae86826a256c1b7bf4619574bd8c3f",
+        "question": "Does the sampled link or control exist in raw bytes?",
+        "result": "useful",
+        "conclusion": "Known-answer control: f32 0.8836 at offset 1196."
+      },
+      {
+        "path": "Common/Hardware/weapons/AssaultRifle/G3A4/G3A4_WB",
+        "format": "raw-ebx",
+        "sha256": "10f8e57f830d249eaf63025e28369021feb8533fd24bddfc34a216c2c5e9f4bd",
+        "question": "Does the sampled link or control exist in raw bytes?",
+        "result": "useful",
+        "conclusion": "Sample site WB imports the shared aim-assist object."
+      },
+      {
+        "path": "Common/Hardware/Weapons/_Attachments/Reflex/EotechELFX/WPM_SCP_EotechEFLX_LowRiser",
+        "format": "raw-ebx",
+        "sha256": "ab6b5aff2b2b95143ac235fa3a4d8b16441c2cd8c5be9a0f9ebb8c772478559d",
+        "question": "Does the sampled link or control exist in raw bytes?",
+        "result": "useful",
+        "conclusion": "Sample optic WPM imports an aiming controller."
+      },
+      {
+        "path": "Common/Gameplay/AimingControllers/WeaponsGadgets/Aim_01x00_PiP",
+        "format": "raw-ebx",
+        "sha256": "7a337859a9a24b4e56fb7ca1c280b52385c39671609c7f452177bf85f94849c6",
+        "question": "Does the sampled link or control exist in raw bytes?",
+        "result": "useful",
+        "conclusion": "Sample aiming controller imports NoAssist."
+      }
+    ],
+    "run": {
+      "root": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-29T0005-0400",
+      "orchestrator": "sonnet-5.5",
+      "workers": [
+        {
+          "lead": "L118",
+          "model": "gpt-6-sol medium",
+          "minutes": 12.6,
+          "tokensM": 4.25
+        }
+      ]
+    }
+  }
+}

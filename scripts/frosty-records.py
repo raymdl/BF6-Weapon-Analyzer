@@ -14,7 +14,7 @@ Roots: --site-root (data/, sim/, ui/; pointers resolve here), --research-root (r
 Receipts committed before the cutover carry their `record` in reference-data/provenance/records-legacy.json,
 keyed by file name with the receipt's sha256 (CRLF read as LF, the form git stores); a committed receipt is never edited, only superseded.
 """
-import argparse, collections, datetime, difflib, hashlib, json, re, runpy, sys
+import argparse, collections, datetime, difflib, hashlib, json, os, re, runpy, sys
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[1]
@@ -67,6 +67,9 @@ record:
       reopenWhen: one sentence; becomes "Next source step"
       searched: [what was searched]       # required when status is exhausted (fields, value searches, catalog scope, callers)
       statusNote: optional free text shown after the title in the closed-leads table
+      # status needs a matching doc row (check warns otherwise): proposal -> a row naming the lead in the queue's
+      # Proposed Analyzer changes table; needs-capture -> an entry naming the lead in docs/working/BF6_CAPTURE_PRIORITIES.md
+      # (ask the operator first); exhausted -> searched. A source-only limit that awaits no capture is finding or exhausted.
   assets:                                 # optional; becomes asset-findings.json entries
     - path: internal Frosty path, no .ebx/.xml
       format: {' | '.join(FORMATS)}
@@ -112,11 +115,14 @@ class Receipt:
 
 class Ctx:
     def __init__(self, a):
-        self.site = Path(a.site_root or REPO).resolve()
         self.research = Path(a.research_root or REPO).resolve()
+        # A research checkout (no index.html) defaults to the sibling site repo; FROSTY_SITE_ROOT overrides.
+        default_site = self.research if (self.research / 'index.html').exists() else self.research.parent / 'BF6 Weapon Analyzer'
+        self.site = Path(a.site_root or os.environ.get('FROSTY_SITE_ROOT') or default_site).resolve()
+        self.split = self.site != self.research
         self.dm = Path(a.datamining_root).resolve() if a.datamining_root else self.research.parent / 'BF6 Datamining'
+        # The research repo holds every receipt; a split site repo keeps byte-equal copies of the site-bound ones.
         self.prov_dirs = [self.research / 'reference-data/provenance']
-        if self.site != self.research: self.prov_dirs.append(self.site / 'reference-data/provenance')
         self.frosty = self.research / 'reference-data/frosty'
         self._receipts = self._resolver = None
         self.problems = []  # (severity, category, message)
@@ -162,7 +168,7 @@ class Ctx:
     def resolve_all(self, pointer):
         """Values for a pointer; a `[key=value]*` step expands to every matching list element."""
         fn = self.pointer_resolver()
-        file, _, path = pointer.partition(':')
+        file, path = fn.__globals__['split_pointer'](pointer)
         parts = [p for p in path.split('/') if p]
         for i, part in enumerate(parts):
             m = re.fullmatch(r'\[(\w+)=(.+)\]\*', part)
@@ -179,10 +185,25 @@ class Ctx:
 
 # ---------------------------------------------------------------- record validation
 
+def generic_assets(rec):
+    """Warning text when a draft lists a broad scan asset by asset (L117, L118)."""
+    from collections import Counter
+    assets = [a for a in rec.get('assets', []) if isinstance(a, dict)]
+    def shape(a):  # wording with the asset's own name, hashes and numbers blanked out
+        text = f"{a.get('question')}|{a.get('conclusion')}"
+        path = str(a.get('path') or '')
+        for name in {path, path.rsplit('/', 1)[-1]} - {''}: text = text.replace(name, '<asset>')
+        return re.sub(r'[0-9a-f]{64}|\d+(\.\d+)?', '#', text)
+    top = Counter(map(shape, assets)).most_common(1)
+    if len(assets) > 30 or (top and top[0][1] > 5):
+        return (f'{len(assets)} assets, {top[0][1] if top else 0} with the same wording apart from their own name; '
+                'list only assets with their own finding and describe the scan scope in the receipt body')
+
 def validate_record(rec, name_dt=None):
     """Structural errors for one record object (list of strings)."""
     if not isinstance(rec, dict): return ['record is not an object']
     e = [f'unknown key {k}' for k in sorted(set(rec) - RECORD_KEYS)]
+    if '"TODO"' in json.dumps(rec): e.append('a "TODO" placeholder from `new` is still unfilled')
     if rec.get('v') != 1: e.append('v must be 1')
     if rec.get('kind') not in KINDS: e.append(f'kind must be one of {KINDS}')
     d = rec.get('date')
@@ -365,6 +386,22 @@ def build_site_evidence(recs):
         if sr: ptrs[f'{name}:{sr["rows"]}'] = [{'receipt': name, 'date': rec['date'], 'relation': 'context', 'siteRows': sr}]
     return {'v': 1, 'generated': NOTE, 'pointers': {p: sorted(ptrs[p], key=lambda r: (r['date'], r['receipt'])) for p in sorted(ptrs)}}
 
+INTERFACE = ('reference-data/frosty/lead-index.json', 'reference-data/frosty/site-evidence.json')
+
+def split_copy_checks(ctx, binding):
+    """With separate repos: site-bound receipts must exist byte-equal (LF) in the site repo; shared scripts must match."""
+    if not ctx.split: return
+    site_prov = ctx.site / 'reference-data/provenance'
+    for n, b in sorted(binding.items()):
+        if b != 'site': continue
+        p = site_prov / n
+        if not p.exists(): ctx.err('site-copy', f'{n}: site-bound receipt missing from {site_prov}')
+        elif canon_sha(p.read_bytes()) != canon_sha(ctx.receipts[n].raw): ctx.err('site-copy', f'{n}: site copy differs from the research receipt')
+    for p in sorted((ctx.research / 'scripts').glob('frosty-*.py')):
+        q = ctx.site / 'scripts' / p.name
+        if q.exists() and canon_sha(q.read_bytes()) != canon_sha(p.read_bytes()):
+            ctx.warn('shared-script', f'scripts/{p.name}: research and site copies differ; copy the intended version across')
+
 def generate(ctx, recs):
     """relative path (from --research-root) -> generated text."""
     index = index_leads(recs)
@@ -449,6 +486,7 @@ def cmd_schema(a, ctx=None): print(SCHEMA_TEXT)
 def run_checks(ctx, external=False):
     recs = load_records(ctx)
     binding = derive_binding(ctx)
+    split_copy_checks(ctx, binding)
     ids = {l['id'] for _, rec, _ in recs for l in rec.get('leads', [])}
     # generated outputs
     if not any(c in ('receipt', 'record', 'sidecar') for _, c, _ in ctx.problems):
@@ -459,6 +497,9 @@ def run_checks(ctx, external=False):
             for rel, text in gen.items():
                 p = ctx.research / rel
                 if not p.exists() or norm(p.read_text(encoding='utf-8-sig')) != text: ctx.err('generated', f'{rel}: out of date; run build')
+                q = ctx.site / rel
+                if ctx.split and rel in INTERFACE and (not q.exists() or norm(q.read_text(encoding='utf-8-sig')) != text):
+                    ctx.err('generated', f'site {rel}: out of date; run build (it writes the site interface files too)')
     # consistency warnings
     for name, rec, where in recs:
         if 'binding' in rec and rec['binding'] != binding[name]: ctx.warn('binding', f'{name}: record says {rec["binding"]}, the pin/reference scan says {binding[name]}')
@@ -560,6 +601,7 @@ def cmd_check_receipt(a, ctx):
     errs = validate_record(obj['record'], name_date(p.name))
     if not errs:
         r = obj['record']
+        if generic_assets(r): print(f'WARNING {generic_assets(r)}')
         for s in r.get('site', []):
             try: ctx.resolve_all(s['pointer'])
             except (KeyError, IndexError, ValueError, OSError) as e: print(f'WARNING site pointer: {e}')
@@ -580,7 +622,12 @@ def cmd_build(a, ctx):
         p = ctx.research / rel
         if p.exists() and norm(p.read_text(encoding='utf-8-sig')) == text: continue
         p.write_text(text, encoding='utf-8', newline='\n'); changed.append(rel)
-    print('changed: ' + (', '.join(changed) if changed else 'nothing'))
+    for rel in INTERFACE if ctx.split else ():
+        p = ctx.site / rel
+        if p.exists() and norm(p.read_text(encoding='utf-8-sig')) == gen[rel]: continue
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(gen[rel], encoding='utf-8', newline='\n'); changed.append(f'site repo {rel}')
+    print('changed: ' + (', '.join(changed) + ' (stage these with the lead commit)' if changed else 'nothing'))
 
 def cmd_status(a, ctx):
     recs, drift = run_checks(ctx)
@@ -613,7 +660,7 @@ def cmd_status(a, ctx):
     files, dr = file_drift(ctx)
     lines.append(f'Site-input ledger: {len(dr)} of {len(files)} pinned files changed since the 23 Sep inventory (' + '; '.join(f'{d} {sum(1 for r, _ in dr if r.startswith(d + "/"))}' for d in ('data', 'sim')) + '); ledger-drift lists the leaves')
     stale = sum(1 for s, c, m in ctx.problems if c == 'stale-pointer')
-    lines.append(f'Stale site pointers in records: {stale}. Close-out: receipt with a record, topic page, remove the queue row, then build && check.')
+    lines.append(f'Stale site pointers in records: {stale}. Close-out: receipt with a record, topic page, remove the queue row if the lead has one, then build && check.')
     print('\n'.join(lines[:59]))
 
 def artifact_path(ctx, d, suffix):
@@ -713,10 +760,17 @@ def cmd_new(a, ctx):
     leads = [{'id': i, 'title': a.title or 'TODO', 'status': a.status, 'summary': a.summary or 'TODO', 'reopenWhen': a.reopen_when or 'TODO'} for i in ids]
     if a.status_note: [l.update(statusNote=a.status_note) for l in leads]
     rec = {'v': 1, 'kind': a.kind, 'date': date, 'build': a.build, 'leads': leads, 'binding': 'research'}
-    if a.status == 'exhausted': [l.update(searched=['TODO']) for l in leads]
+    if a.searched: [l.update(searched=list(a.searched)) for l in leads]
+    elif a.status == 'exhausted': [l.update(searched=['TODO']) for l in leads]
+    assets = []
+    for spec in a.asset or []:
+        path, fmt, digest = (spec.split('|') + ['', '', ''])[:3]
+        assets.append({'path': path, 'format': fmt, 'sha256': digest, 'question': 'TODO', 'result': 'useful', 'conclusion': 'TODO'})
+    if assets: rec['assets'] = assets
     body = {'date': date, 'title': a.title or 'TODO', 'record': rec}
     if a.note: body['note'] = a.note
-    errs = validate_record(rec, date)
+    # Unfilled TODO placeholders are allowed here and rejected by check until edited.
+    errs = [x for x in validate_record(rec, date) if 'TODO' not in x]
     if errs: raise SystemExit('; '.join(errs))
     out = Path(a.out) if a.out else ctx.prov_dirs[0] / f'frosty-{date}-{a.kind}-{"-".join(ids)}.json'
     if out.exists(): raise SystemExit(f'refusing existing output: {out}')
@@ -734,7 +788,9 @@ def main():
     s = sub.add_parser('ledger-drift'); s.add_argument('--out'); s.set_defaults(f=cmd_ledger_drift)
     s = sub.add_parser('new'); s.add_argument('--kind', choices=['decision', 'lead'], default='decision'); s.add_argument('--lead', action='append')
     s.add_argument('--status', choices=STATUSES, default='parked'); s.add_argument('--title'); s.add_argument('--summary'); s.add_argument('--reopen-when')
-    s.add_argument('--date'); s.add_argument('--build', choices=list(BUILDS), default='site-only'); s.add_argument('--status-note'); s.add_argument('--note'); s.add_argument('--out'); s.set_defaults(f=cmd_new)
+    s.add_argument('--date'); s.add_argument('--build', choices=list(BUILDS), default='site-only'); s.add_argument('--status-note'); s.add_argument('--note'); s.add_argument('--out')
+    s.add_argument('--searched', action='append', help='one searched route (repeat); required content for exhausted')
+    s.add_argument('--asset', action='append', help='path|format|sha256 (repeat); question and conclusion start as TODO'); s.set_defaults(f=cmd_new)
     sys.stdout.reconfigure(encoding='utf-8')
     a = ap.parse_args(); a.f(a, Ctx(a))
 

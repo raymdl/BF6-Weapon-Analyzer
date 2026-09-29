@@ -24,8 +24,16 @@ def write_new(p, text):
     if p.exists(): raise SystemExit(f'refusing existing output: {p}')
     p.write_text(text, encoding='utf-8'); return sha(text.encode('utf-8'))
 
+def split_pointer(pointer):
+    """'file.json:/path' or 'file.json#/path' (the '#' form survives Git Bash path conversion)."""
+    m = re.fullmatch(r'([^:#;]+)[:#](.*)', pointer)
+    if m: return m[1], m[2]
+    if ';' in pointer:
+        raise KeyError(f'{pointer}: Git Bash rewrote ":/" into ";<path>"; write file.json#/path or set MSYS_NO_PATHCONV=1')
+    raise KeyError(f'{pointer}: expected file.json:/path')
+
 def resolve_pointer(pointer):
-    file, _, path = pointer.partition(':')
+    file, path = split_pointer(pointer)
     node = load_json(ROOT / file)
     for part in [p for p in path.split('/') if p]:
         m = re.fullmatch(r'\[(\w+)=(.+)\]', part)

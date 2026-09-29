@@ -202,6 +202,15 @@ finds both axis multipliers at 1.0 in each aim state of the 63 release site GS
 sources. Omitting those neutral base fields causes no numeric difference within
 this scope. This does not remove the separate controller-modifier question.
 
+**Aim assist (L118, 29 September).** The catalog has 49 aim-assist routes (32 with
+release-pinned raw EBX). All 63 site weapon bodies import one shared soldier aim-assist
+object at the unnamed `Field_c3a2561e`, and the 27 release-pinned aiming controllers
+reference one NoAssist object (55 attachment parts import 21 of them), so the captured aim
+assist does not vary by weapon or optic. The controller recoil control above reproduces
+(0.8836 at offset 1196). Runtime activation and precedence between weapon and optic
+settings are unresolved; no site value follows.
+[Receipt](../../reference-data/provenance/frosty-2026-09-29-L118-aim-assist-links.json).
+
 ## Weapon metadata
 
 The [23 September label/source review](../../reference-data/provenance/frosty-site-base-fields-detail-2026-09-23.json)
@@ -476,6 +485,24 @@ and no stationary ADS posture minima were established. DB-12 pellet-direction
 statistics remain unavailable. See
 the [L69 provenance](../../reference-data/provenance/frosty-2026-09-26-L69-posture-spread.json).
 
+### Stance change penalties (L120, 29 September 2026)
+
+Every weapon body's GS stores 24 `StanceChangePenalties` leaves: Zoomed and Unzoomed, six
+stance transitions (StandToCrouch, CrouchToStand, CrouchToProne, ProneToCrouch,
+StandToProne, ProneToStand), each with `MinAngleOffset` (degrees, the unit of the spread
+minima) and `Duration` (seconds). [L120](../../reference-data/provenance/frosty-2026-09-29-L120-stance-change-penalties.json)
+read all 1,512 values from raw bytes (control: M433 CrouchToProne 6 degrees / 0.9 s at raw
+offsets 3216/3220). Prone transitions are 6 degrees over 0.9 s on 54 weapons; outliers are
+Carbine/LMG/Shotgun/Sidearm bodies with 7 degrees or 0.6-0.8 s (one per class, for
+example DB-12: 7 degrees / 0.6 s on CrouchToProne, 3 degrees / 0.8 s on ProneToStand),
+and sidearms mostly 3 degrees (0.5 degrees on one). Eight crouch/stand leaves carry 0.2-1
+degree over 0.3 s under a candidate name-to-slot join (the exact offsets are not joined).
+No site choice and none of 895 verified release modifier bodies targets these leaves; 93
+catalog routes lack pinned raw. Their runtime meaning is unresolved: the names suggest a
+transient spread floor after a stance change, but composition with the static minima is
+unknown. The 13 September "identical on 9 weapons" note described the nine directly named
+registry owners and does not hold for the 63 raw owners.
+
 ### Recovery law
 
 Per branch (aim × stationary/moving), GS `DispersionBehavior` values follow one design:
@@ -614,6 +641,17 @@ opaque field's meaning and the two-frame adjustment are unproven. Do not turn
 this relationship into a confirmed native ADS equation. The separate SSA sprint
 array directly reproduces all 12 sprint timings after seconds-to-milliseconds
 conversion, and its exact WB selectors agree for all 63 weapons.
+
+**ADS-out (L114, 29 September).** Each weapon body's raw `WeaponZoomTransitionIndex`
+(GRX child `<Weapon>_WB.WeaponZoomTransitionIndex.Index`) equals the site's ADS-in index
+(`defAds`) on 63 of 63 weapons and also selects an entry of the shared `FZT_Weapons`
+array (`Field_e2c9902e`) that pairs a General_01 and a General_10 zoom-transition array.
+The General_10 durations by index are 400, 333.334, 266.667, 233.334, 200, 166.667,
+133.334 and 100 ms (ADS-in: 500 to 133.334 ms), so ADS-out is a separate ladder at the same
+index. If the selector drives ADS-out, that gives a per-weapon baseline `Aout`. None of the 55
+traced ADS-relevant choice routes of the M4A1 and the six Sniper Rifles references FZT
+directly and the `GID_ADSTime` add target is unresolved, so attachment shifts of ADS-out
+are not established. [Receipt](../../reference-data/provenance/frosty-2026-09-29-L114-ads-out-transition.json).
 
 Three representative XML/raw index checks passed, including BREN3's null anchor.
 Do not use the parent GRX `[1,0]` array or `Field_8cf424e7` registry values as weapon
@@ -817,6 +855,15 @@ inherits `T` into the selected block's `-1` time and substitutes its speed; nati
 inheritance and activation remain unresolved. The zoom fraction may instead mark
 when ADS can resume, with firing still gated by the full bolt cycle.
 
+**Attachment effects on the cycle (L117, 29 September).** All 282 site choices of the six
+Sniper Rifles and the two pump shotguns (M87A1, DB-12) resolve on release 1.4.3.0 with no
+numeric modifier on the bolt or pump cycle fields: the only modifier of that class is the
+DLC Bolt boolean rechamber effect on M2010 ESR, SV-98, PSR and L115. The catalog-wide
+reverse scan adds only `WME_Firerate900_M10` (the USG-90 Heavy Recoil Spring, an asset no
+attachment references) and the VSSM full-auto package, both outside these weapons.
+The site's base-cycle RPM is therefore unaffected by attachment choices in source
+([receipt](../../reference-data/provenance/frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json)).
+
 Propose a separate sustained fully-ADS cadence calculation. If exit, bolt and
 entry are serial, its interval would be `Aout + B + Ain`. If phases overlap, that
 sum is too large; the full stored bolt duration might already include a transition.
@@ -939,9 +986,19 @@ animation-driven. [Receipt](../../reference-data/provenance/frosty-2026-09-28-L1
 
 **Other in-round modifiers (L108/L109, 28 September).** `WM_WeaponSwap` is one draw step
 (+1, faster) imported by 60 of 63 weapon bodies (not CZ3A1, DB-12, Vz. 61); its selector
-`7727fe65…` has no owning asset in the collection. `WM_Killshot` is one unnamed boolean
+`7727fe65…` has no owning asset in the collection (L115, 29 September: the GUID occurs only
+inside `WM_WeaponSwap` across 109,593 captured raw and XML files, and the three exempt
+bodies differ from the members only by that import and weapon-specific assets, so no
+structural cause of the exemption is visible; a uniform +1 draw step does not change
+comparisons among the 60; [receipt](../../reference-data/provenance/frosty-2026-09-29-L115-weaponswap-selector.json)). `WM_Killshot` is one unnamed boolean
 (`Class_e218a1ca.Field_8d6d2bc1` true, no other operand) on the six Sniper Rifles under
-`U_Ability_Killshot`. `GRM_MountedPlusVertical/Horizontal` add recoil amount exponent +3
+`U_Ability_Killshot`. L116 (29 September) found no text, name or captured consumer for it:
+`Ability_Killshot` is an ability-category record without an effect payload, the English
+label "Killshot" (string `7F1B63AA`) is referenced by no captured raw asset, and the
+related names (animation parameter `MM.KillshotKilled.Bool`, soldier
+`KillshotSuppressionResistance` 0.25) point at kill feedback or suppression, not a weapon
+stat; no site number follows ([receipt](../../reference-data/provenance/frosty-2026-09-29-L116-killshot-boolean.json)).
+`GRM_MountedPlusVertical/Horizontal` add recoil amount exponent +3
 and direction-variation exponent -2 in both aim states under selector
 `U_Ability_MountedPlus` (`b9e5e8e5…`, entry indices 1003/1002, bound identically on all 63
 weapons). Conditional site arithmetic (additive composition assumed): amount x0.800-0.855,
@@ -951,7 +1008,14 @@ is unresolved. [Receipt](../../reference-data/provenance/frosty-2026-09-28-L106-
 
 ## Named GS/WB fields the site does not use
 
-109 of 170 GRX leaf names under GS/WB paths are not used by the site (13 September).
+109 of 170 GRX leaf names under GS/WB paths are not used by the site (13 September; a
+1.4.2.5 snapshot whose grouping is not reproducible). [L119](../../reference-data/provenance/frosty-2026-09-29-L119-gs-wb-field-triage.json)
+recounted on 1.4.3.0 (29 September): 272 distinct full suffixes on the 63 weapons (166 after
+collapsing aim and movement-state components); 179 feed a documented site value and 93 are
+candidates, of which 47 are uniform and 46 vary. Of the varying candidates only the
+`CameraRecoil.IdleSpring*` family (visual camera settling, 11 fields) has no earlier
+explanation. The 13 September table below is otherwise still current except for
+`StanceChangePenalties`.
 
 | Field family | Spread | Assessment |
 |---|---|---|
@@ -962,7 +1026,7 @@ is unresolved. [Receipt](../../reference-data/provenance/frosty-2026-09-28-L106-
 | `ReloadInfoArray[].ReloadThreshold` | 36 distinct (0.72–0.8 common) | Probably the fraction at which ammo is committed. |
 | `ReloadInfoArray[].ReloadDelay` / `PostReloadDelay` | 7 nonzero entries on 4 weapons ([L105](../../reference-data/provenance/frosty-2026-09-28-L105-reload-delays.json)) | M87A1, DB-12 and M1014 tactical reloads already add both delays; their empty entries are not displayed. RPK-74M empty reload 3.1 s omits `PostReloadDelay` 0.084 s (3.184 s if counted; operator review). Native timing unresolved. |
 | `Ammo.NumberOfMagazines` | 12 distinct | Reserve ammo; not a TTK input. |
-| `StanceChangePenalties.*` | 9 weapons, identical | Uniform stance-change penalty; low value. |
+| `StanceChangePenalties.*` | Varies by class on 1.4.3.0 (L119): `MinAngleOffset` 0.2-7.0 degrees and `Duration` 0.6-0.9 s per transition, zoomed and unzoomed | The 13 September note that it is identical across weapons is superseded; see [Stance change penalties](#stance-change-penalties-l120-29-september-2026). |
 | `CameraRecoil.Spring*`, `UseTimeSinceLastShot` | Near uniform | Camera recoil is not modeled. |
 | `RecoilFadeOut*`, `FirstShotMultiplierVerticalRecoil`, `AutoReplenish*`, `BridgeDelay` | One value | Uniform configured values; native use is unresolved. Neutral values do not prove absence or inactivity. |
 
