@@ -430,6 +430,7 @@ create a new document per investigation:
 - **`reference-data/frosty/asset-findings.json`** — per-asset conclusions, with the question asked, the build
   inspected, the evidence pointer and the conditions that would require a revisit. Add a
   superseding finding rather than deleting an old one; mark blocked results
-  `blocked-by-decoding` and supersede them when they are unblocked.
+  `blocked-by-decoding` and supersede them when they are unblocked. The file is generated:
+  add findings as `record.assets` in a new receipt, then run `python scripts/frosty-records.py build`.
 - **`reference-data/frosty/asset-watchlist.json`** — routes to capture next time, with dependencies.
 - **`reference-data/provenance/`** — the dated report a finding points at.

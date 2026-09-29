@@ -1,5 +1,12 @@
 # Source and review evidence index
 
+This page is a hand-kept index of the earlier families and stops growing. Every
+receipt now carries a structured `record`, and `../frosty/lead-index.json` lists each
+lead with its receipts, status and what would reopen it (`python scripts/frosty-records.py status`
+summarises it); do not add receipt links here. Receipts written before 28 September 2026
+are byte-frozen, because other files pin their SHA-256; their records are in
+`records-legacy.json`. A committed receipt is superseded by a new one, never edited.
+
 ## Current September 13 evidence
 
 | Accepted family | Evidence and limits |

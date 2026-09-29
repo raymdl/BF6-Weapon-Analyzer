@@ -33,10 +33,18 @@ callers. "Needs a native consumer" is a reason to look for one, not a stopping p
   establish meaning. Source presence does not establish runtime use.
 - Follow a dependency only when it can affect an Analyzer value. Broad catalog
   expansion (tasks E1–E4 in the [23 September snapshot](#history)) stays deferred.
-- Record findings in the `docs/frosty/` topic pages, per-asset conclusions in
-  `reference-data/frosty/asset-findings.json` (required; see L112), and values/hashes in a new dated JSON
-  under `reference-data/provenance/`. Do not create per-investigation Markdown docs.
-  Update this queue's lead list rather than appending progress narrative.
+- Closing a lead has three steps: (1) a new dated receipt in
+  `reference-data/provenance/` with a `record` (lead status, assets, site pointers;
+  `python scripts/frosty-records.py schema` prints the fields), (2) the `docs/frosty/`
+  topic page, edited in place (current understanding only; history lives in
+  receipts), (3) delete the lead's row from this queue. Then
+  `python scripts/frosty-records.py build && python scripts/frosty-records.py check`
+  must pass before committing. `asset-findings.json`, `lead-index.json`,
+  `site-evidence.json` and the archive's Closed leads table are generated; do not
+  hand-edit them. Do not create per-investigation Markdown docs or append progress
+  narrative to this queue.
+- Start every run with `python scripts/frosty-records.py status` instead of reading
+  this queue and the archive whole.
 - Captures: follow the four-part rule at the top of the
   [capture plan](BF6_CAPTURE_PRIORITIES.md). Ask the operator before requesting a
   recording; an unresolved runtime question is recorded as a limit, not a capture.
@@ -79,7 +87,8 @@ were fixed on 28 September (commit `88bc25d`); the sub-f32 groups are passes.
 Only open leads are listed here. Closed leads, past run blocks and applied proposals are in
 [FROSTY_QUEUE_CLOSED.md](../archive/FROSTY_QUEUE_CLOSED.md); search them with
 `python scripts/frosty-worker.py prior-work --terms ...` rather than reading the archive.
-When a run closes a lead, move its row there.
+When a run closes a lead, delete its row here; `frosty-records.py build` adds it to the
+archive's generated Closed leads table from its record.
 
 Work these from source before handing them to the capture plan. The capture plan was rescoped on 28 September; "capture rank N" in older rows refers to the previous plan and most of those captures were [removed](BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026). Results from the
 23 September pass are in the [receipt](../../reference-data/provenance/frosty-source-leads-2026-09-23.json). Each row says what is established and what is next.
@@ -89,8 +98,6 @@ Work these from source before handing them to the capture plan. The capture plan
 | L17 | **Match Trigger indirect effects - Source finding; needs capture** | [Raw selected-path review](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json): HK433 selected chain binds bloom multiply 0, recoil exponent add 3 and recovery second-multiply 1.728. | Kept in the [capture plan](BF6_CAPTURE_PRIORITIES.md) (#2) with justification; the site shows no effect on 24 weapons, source suggests about 16% less recoil, probably semi-only. |
 | L24 | **Match Trigger family - Shared source targets established; needs capture** | [Independent 24-WB/24-GS check](../../reference-data/provenance/frosty-2026-09-24-L24-match-trigger-family.json): All 24 selected Match Trigger WB/GS chains use the two reviewed effect imports; priorities differ. | Extends L17 coverage, not runtime proof. Capture activation/composition before any family-wide implementation. |
 | L99 | **Soldier hit capsules vs target zones - Source candidate; needs capture (Claude, 27 Sep)** | [Receipt](../../reference-data/provenance/frosty-2026-09-27-L99-soldier-hit-capsules.json): 11 raw-verified capsules; chest 1.0 is material 115 (Neck) on all 328 selections, and the abdomen material is the Spine capsule. On the bind pose the Spine capsule covers the centre line from 108 to 136 cm, where the site draws chest, and the head capsule is about 40% larger than the artwork head. | Would change target-view zone counts and first-lethal hits (M433 chest aim 4 → 5 hits). Needs the Awaiting-operator capture; reopen geometry for a typed offset frame or an in-game pose. |
-| L112 | **Backfill asset-findings.json - Open (28 Sep)** | `reference-data/frosty/asset-findings.json` (the per-asset "what was traced" index; 465 assets) was last updated on 23 September. None of L37-L111 added entries (e.g. no `WM_AssaultTrait`, `GRM_MountedPlusVertical`, `GlacierSoldierBoneCollision`), although the working rules require it. | From each receipt since 23 September, add or update one entry per traced asset (question, result, conclusion, receipt path, raw hash) following the file's policy block. Mechanical; one Sonnet session or split receipts across Luna workers. |
-| L113 | **Refresh the site-input ledger - Open (28 Sep)** | The ledger that classifies every site data leaf is a 23 September snapshot; data changed since (L94 sway, L62 sights, Optic Accessory slot, L107 precision). | Re-run `scripts/frosty-site-input-review.py` (and its inventory step) with new external outputs, record a new summary receipt, and report newly unclassified or changed leaves. |
 
 ## Proposed Analyzer changes
 
@@ -153,15 +160,23 @@ runtime question is not evidence that the source asset is unused.
 
 ## Where things are
 
+- **Records.** `python scripts/frosty-records.py status` summarises live leads,
+  what awaits the operator, the latest closed leads, ledger drift and stale
+  pointers. The [lead index](../../reference-data/frosty/lead-index.json) lists every
+  recorded lead with its status, receipts and what would reopen it;
+  [site evidence](../../reference-data/frosty/site-evidence.json) maps site pointers
+  to the receipts that bear on them; the [asset findings](../../reference-data/frosty/asset-findings.json)
+  are generated from the frozen base plus each record's assets.
 - **Site-input ledger.** The [input inventory](../../reference-data/provenance/frosty-site-input-inventory-v3-2026-09-23.json)
-  covers every `data/*.json` leaf and `sim/*.js` line. The
+  covers every `data/*.json` leaf and `sim/*.js` line as of 23 September; [inventory v4 and its delta ledger](../../reference-data/provenance/frosty-site-input-inventory-v4-2026-09-28.json)
+  (28 September) classify the 1,739 data leaves that changed since (sim drift is reported by `frosty-records.py ledger-drift`, not re-reviewed). The
   [final review](../../reference-data/provenance/frosty-site-input-review-final-v2-2026-09-23.json)
   classifies each one, and its [validation](../../reference-data/provenance/frosty-site-input-review-validation-2026-09-23.json)
   checks it. Use the review's blocker and next-step fields for L11.
 - **Topic results.** Spread, recoil, precision, timing, ADS, zeroing, projectiles and
   spotting results are in [weapons](../frosty/WEAPONS.md) and
-  [attachments](../frosty/ATTACHMENTS.md). Receipts are listed in the
-  [provenance index](../../reference-data/provenance/README.md#site-input-audit--23-september-2026).
+  [attachments](../frosty/ATTACHMENTS.md). Receipts are in
+  `reference-data/provenance/`; the lead index above links each lead to its receipts.
 - **Catalog audit ledger.** `../BF6 Datamining/builds/1.4.3.0/reports/exhaustive-audit-2026-09-23/coverage-decoder-v5.sqlite`,
   used by `scripts/frosty-audit-coverage.py`. See [tools](../frosty/TOOLS.md#exhaustive-audit-coverage-ledger).
   Capture and decode coverage are not semantic review.

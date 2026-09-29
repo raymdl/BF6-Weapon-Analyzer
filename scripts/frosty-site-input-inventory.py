@@ -5,6 +5,7 @@ Large, lossless inventories stay in the supplied external output directory.
 """
 import argparse
 from collections import Counter, defaultdict
+import datetime
 import hashlib
 import json
 from pathlib import Path
@@ -32,6 +33,7 @@ def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument('--out-dir', type=Path, required=True)
     ap.add_argument('--summary', type=Path, required=True)
+    ap.add_argument('--date', default=datetime.date.today().isoformat(), help='date recorded in the summary (default: today)')
     args = ap.parse_args()
     repo = Path(__file__).resolve().parents[1]
     args.out_dir.mkdir(parents=True, exist_ok=True)
@@ -119,7 +121,7 @@ def main():
                           'examples': [{'value': json.loads(v), 'count': n} for v, n in group['values'].most_common(3)],
                           'category': group['category'], 'reviewStatus': 'pending-review'})
     group_path.write_text(json.dumps(summaries, indent=2) + '\n')
-    result = {'schemaVersion': 1, 'date': '2026-09-23', 'scope': 'All top-level data/*.json and sim/*.js in the current working tree',
+    result = {'schemaVersion': 1, 'date': args.date, 'scope': 'All top-level data/*.json and sim/*.js in the current working tree',
               'siteWeaponCount': len(ids), 'sourceReferenceCount': len(roster['roots']),
               'identityMap': mapped, 'identityReceipt': {'path': str(roster_path), 'sha256': sha(roster_path)},
               'files': files, 'dataRowsByCategory': dict(counts), 'dataGroups': len(summaries),

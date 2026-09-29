@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-09-28",
+  "scope": "Inventory v4 of data/*.json and sim/*.js, plus the delta ledger classifying the data leaves that changed since the 23 September ledger",
+  "siteWeaponCount": 63,
+  "sourceReferenceCount": 64,
+  "identityMap": {
+    "ks18k": "185KSK",
+    "m87a1": "590A1",
+    "kord6p67": "6P67",
+    "nvo228e": "ACE32",
+    "ak205": "AK205",
+    "scw10": "APC10",
+    "sl9": "APDW",
+    "lmr27": "ARADMR",
+    "brod3": "BREN3",
+    "db12": "DP12",
+    "interdictor": "DesertTechHTI",
+    "ef88": "EF88",
+    "es57": "FiveSeven",
+    "ggh22": "G22",
+    "b36a4": "G36",
+    "ak4d": "G3A4",
+    "m417a2": "HK417A2",
+    "m433": "HK433",
+    "l115": "L115A3",
+    "l85a3": "L85A3",
+    "m1014": "M1014",
+    "m16a4": "M16A3",
+    "p18": "M18",
+    "m2010esr": "M2010ESR",
+    "m240l": "M240L",
+    "m250": "M250",
+    "drsiar": "M27IAR",
+    "m39emr": "M39EMR",
+    "m45a1": "M45A1",
+    "m4a1": "M4A1",
+    "m60": "M60E6",
+    "m123k": "MG4K",
+    "m121a2": "MG5",
+    "pw5a3": "MP5MLI",
+    "pw7a2": "MP7A2",
+    "sgx": "MPX",
+    "psr": "MRAD",
+    "grtbc": "MSBSGROTB",
+    "grtcps": "MSBSGROTCPS",
+    "miniscout": "MiniFix",
+    "l110": "Minimi",
+    "usg90": "P90",
+    "pp19": "PP19",
+    "qbz192": "QBZ192",
+    "rpk74m": "RPK74M",
+    "rpkm": "RPKM",
+    "m44": "RagingHunter",
+    "sor556": "SCARL",
+    "sor300sc": "SCARSC",
+    "sg553r": "SIG553R",
+    "sv98": "SV98M",
+    "svk86": "SVCh",
+    "svdm": "SVDM",
+    "cz3a1": "ScorpionEvo3",
+    "vz61": "Skorpion",
+    "m357trait": "TRR8",
+    "tr7": "Tavor7",
+    "umg40": "UMP40",
+    "kts100": "Ultimax",
+    "vcr2": "VHS2",
+    "vssm": "VSSM",
+    "kv9": "Vector",
+    "m277": "XM7"
+  },
+  "identityReceipt": {
+    "path": "C:\\Users\\royal\\Documents\\BF6 Weapon Analyzer\\reference-data\\provenance\\frosty-audit-roster-2026-09-23.json",
+    "sha256": "b3ed9a9e659ee2dcd716b654df193d111e11ad42a2cfcbc39426e5bdbc9a9b32"
+  },
+  "files": [
+    {
+      "path": "data/ammo.json",
+      "sha256": "22ee50432d2326aeb35df4aeb7680f0d6f7cd8b611d10c89093c7538c1ccf381",
+      "inventoryRows": 799
+    },
+    {
+      "path": "data/attachment-tooltips.json",
+      "sha256": "af2a8e5fd86db94025e636b9a34250302f5a4df4675607f518d2122f72f2f698",
+      "inventoryRows": 3478
+    },
+    {
+      "path": "data/attachments.json",
+      "sha256": "8ddebf944fa7e844acbc28de6f653dac6172144801c45901dd336322385274eb",
+      "inventoryRows": 12644
+    },
+    {
+      "path": "data/balance_tables.json",
+      "sha256": "e4b2946ab0aaea54a25a6703029994a824da6f1d49c37072a7e7205faa36a08b",
+      "inventoryRows": 679
+    },
+    {
+      "path": "data/ballistics.json",
+      "sha256": "d149293cddf25daa0ac65db41acfe170e3d6aaa3b240c3e10979304d90658054",
+      "inventoryRows": 652
+    },
+    {
+      "path": "data/hit_zones.json",
+      "sha256": "674faccf63d883cfac5be7c33ac194cc4bbd2ca4af1e3db1620c4885ed3a7132",
+      "inventoryRows": 912
+    },
+    {
+      "path": "data/recoil_decay.json",
+      "sha256": "db4498a72839083981cba2479abb8d0875427a16b4ee145e7c59257c5b35a5d6",
+      "inventoryRows": 135
+    },
+    {
+      "path": "data/reload-exceptions.json",
+      "sha256": "bb456d5c1ce40dfdee2b2a223f27d7ffaca1dc980fc80285a738c7cc3897187b",
+      "inventoryRows": 33
+    },
+    {
+      "path": "data/weapon-role-tags.json",
+      "sha256": "366ffdef822db0bfeb854c1ba493375675d569f6d2985b904df72bbf2a2dc237",
+      "inventoryRows": 884
+    },
+    {
+      "path": "data/weapon_attributes.json",
+      "sha256": "92551d5cb15c4285d56987a7bd3d966e8f751dd6da42c42df2829f9d4aaf48b4",
+      "inventoryRows": 39958
+    },
+    {
+      "path": "data/weapons.json",
+      "sha256": "22d2d83eb65c0f7f69cad6efff077d8b1435d08827c1a1a3633976f87266eb7f",
+      "inventoryRows": 6562
+    },
+    {
+      "path": "sim/applyAttachments.js",
+      "sha256": "18244f1e93f95b4557992754b2ba5a16998135446f64f47ba06838839bfab1fd",
+      "inventoryRows": 500,
+      "reviewed": false
+    },
+    {
+      "path": "sim/attachments.js",
+      "sha256": "5652d0e783c1b69d60779a5c43782394914692ac249175b48112d95d0e48fd7a",
+      "inventoryRows": 8,
+      "reviewed": false
+    },
+    {
+      "path": "sim/ballistics.js",
+      "sha256": "1294dde059d4259694e1de74a93fbaac3cb2b97aea7314eaa828e34c5a71d1f3",
+      "inventoryRows": 92,
+      "reviewed": false
+    },
+    {
+      "path": "sim/core.js",
+      "sha256": "f945887066b7e2b754f6df337d901fc4fd3038b5d8c0ad91a9407040882a4706",
+      "inventoryRows": 297,
+      "reviewed": false
+    },
+    {
+      "path": "sim/damage.js",
+      "sha256": "3c5e0c645c1cc8abc7e34f74a7345d33b284bbda8247c6c3a5e8feafbd857e78",
+      "inventoryRows": 71,
+      "reviewed": false
+    },
+    {
+      "path": "sim/loadout.js",
+      "sha256": "ced0986dc7773476f5d99f5dd9bcd1d83f882e4837de8f4bad057c70a3a67f5a",
+      "inventoryRows": 235,
+      "reviewed": false
+    },
+    {
+      "path": "sim/required-data.js",
+      "sha256": "6af219a5fdfc085c780783182740d3dfa9d396416fe018cafdfa30a3ed0b62ab",
+      "inventoryRows": 19,
+      "reviewed": false
+    },
+    {
+      "path": "sim/share-state.js",
+      "sha256": "9c1ca3a99d4c36fc8f4fe7709d64518190d2e195ec9b345a61e2ad1f197546c1",
+      "inventoryRows": 198,
+      "reviewed": false
+    },
+    {
+      "path": "sim/target.js",
+      "sha256": "2ab9e293115c4c59ed25cfaeddc6a94060cce1bcd5652fca885d4edbf7265f32",
+      "inventoryRows": 142,
+      "reviewed": false
+    },
+    {
+      "path": "sim/weapon-attributes.js",
+      "sha256": "88c4ffe461054b94a41975a9d0c69dfea2c47da44cda1de010c482c802411316",
+      "inventoryRows": 116,
+      "reviewed": false
+    }
+  ],
+  "dataRowsByCategory": {
+    "data-value": 64797,
+    "provenance-or-schema": 887,
+    "retained-reference": 1052
+  },
+  "dataGroups": 1827,
+  "artifacts": [
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-inventory-v4-2026-09-28\\site-input-leaves.jsonl",
+      "sha256": "c796d7e00965eb6391e1e1a35530ccd10feb369866ad91a5f1b26c45df4fe6dc"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-inventory-v4-2026-09-28\\site-simulation-lines.jsonl",
+      "sha256": "36d2c5a66ca4b65c0627cb83c4fd3bf7540610c30fc629b1896c3174c601d688"
+    },
+    {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-inventory-v4-2026-09-28\\site-input-groups.json",
+      "sha256": "e908ab72c72d312bb1352c0e63acc012981f3f1fb78c922bbfe41e7a97108ff3"
+    }
+  ],
+  "complete": false,
+  "limits": [
+    "Enumeration is complete for this file snapshot; source research is not complete.",
+    "Pending review is not a precise blocker and does not satisfy the goal completion condition.",
+    "Retained references and metadata are included; they must not be counted as active gameplay inputs.",
+    "Simulation code is indexed by exact line, not parsed; numeric candidates can include strings or trailing comments.",
+    "KSG is a source reference only; its proven campaign-only roots do not extend the multiplayer site roster.",
+    "sim/*.js is inventoried at v4 but its lines are not re-reviewed; the sim baseline stays the 23 September v3 inventory (files marked reviewed: false)."
+  ],
+  "scriptSha256": "baf08a6374acac8175fa008e8b393d0da2cf1cc761a6a7676fc7081093bb9b7e",
+  "baseline": {
+    "inventory": "frosty-site-input-inventory-v3-2026-09-23.json",
+    "reviewedLedger": "frosty-site-input-review-final-v2-2026-09-23.json",
+    "method": "v4 leaves compared with the v3 leaf list by JSON pointer (changed, removed, new); groups keyed by ledger shape and the data commits that touched the leaf"
+  },
+  "delta": {
+    "artifact": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-delta-2026-09-28\\site-input-delta.jsonl",
+      "sha256": "e1f1b135af1cfc6d58ebb5fc97d02eb1303341a5961faa2dc8fb4b988713dee7"
+    },
+    "groupClassification": {
+      "path": "C:\\Users\\royal\\Documents\\BF6 Datamining\\builds\\1.4.3.0\\reports\\exhaustive-audit-2026-09-23\\site-input-delta-2026-09-28\\group-classification.json",
+      "sha256": "70feb7e0f8377cd2ed26aecd1676140984da1857aafa8de72d6d37d3e8e5a485"
+    },
+    "counts": {
+      "changed": 109,
+      "new": 1550,
+      "removed": 80
+    },
+    "byChangeAndReviewStatus": {
+      "changed:precisely-blocked-source": 1,
+      "changed:source-model-candidate": 39,
+      "changed:sourced-configuration": 69,
+      "new:observation-context": 9,
+      "new:observation-provenance-metadata": 46,
+      "new:site-label-metadata": 4,
+      "new:software-contract": 1411,
+      "new:software-record-identity": 13,
+      "new:source-model-candidate": 61,
+      "new:sourced-configuration": 3,
+      "new:sourced-ui-xml": 3,
+      "removed:None": 80
+    },
+    "groups": 66,
+    "commitsCovered": [
+      "3b5a30c",
+      "007d3a7",
+      "e48ab75",
+      "6cc22b4",
+      "c0fca79",
+      "d514bef",
+      "567593d",
+      "9f3c43d",
+      "88bc25d"
+    ],
+    "note": "Removed leaves carry reviewStatus null. Dependency-list removals/changes/new leaves are one rewrite (Optic Accessory slot, 9f3c43d); pointer indexes shifted."
+  },
+  "lead": "L113",
+  "title": "Site-input ledger refresh: inventory v4 and delta ledger",
+  "record": {
+    "v": 1,
+    "kind": "audit",
+    "date": "2026-09-28",
+    "build": "1.4.3.0-release",
+    "binding": "research",
+    "leads": [
+      {
+        "id": "L113",
+        "title": "Refresh the site-input ledger",
+        "status": "finding",
+        "statusNote": "Closed as a delta ledger (28 Sep)",
+        "summary": "Inventory v4 lists 66,736 data leaves; a delta ledger classifies the 1,739 data leaves that drifted since the 23 September ledger (109 changed, 80 removed, 1,550 new; 66 groups, each tied to the data commits and receipts that explain it). Files: reference-data/provenance/frosty-site-input-inventory-v4-2026-09-28.json (the delta artifact is external, next to the v2 review folder).",
+        "reopenWhen": "Re-review sim/*.js when a lead needs it (7 files drifted from the 23 September lines; ledger-drift reports the changed blocks), and repeat ledger-drift after the next data change."
+      }
+    ],
+    "supersedes": [
+      "frosty-site-input-inventory-v3-2026-09-23.json"
+    ],
+    "run": {
+      "root": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-28T2200-0400-L112-L113",
+      "orchestrator": "sonnet-5.5",
+      "workers": [
+        {
+          "lead": "L113-W1",
+          "model": "gpt-6-sol medium",
+          "minutes": 7.0,
+          "tokensM": 2.39
+        },
+        {
+          "lead": "L113-W2",
+          "model": "gpt-6-sol medium",
+          "minutes": 5.8,
+          "tokensM": 1.69
+        },
+        {
+          "lead": "L113-W3",
+          "model": "gpt-6-sol medium",
+          "minutes": 7.4,
+          "tokensM": 2.53
+        }
+      ]
+    }
+  }
+}

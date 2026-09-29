@@ -5,7 +5,7 @@ check-site --pointer P [--pointer P..]  resolve site values before naming them a
 assemble   --lead-dir D --sections a,b [--control-site P ..] [--out-name brief.txt]
                                         preamble + chosen convention sections + D/lead.txt -> D/brief.txt
 prior-work --terms a b (or a,b)          search repo docs and receipts for earlier work on these names
-review     --lead-dir D [--reread N]    check a worker result against the result schema, re-read raw bytes
+review     --lead-dir D [--reread N]    check a worker result against the result schema and the draft receipt's `record`, re-read raw bytes
 
 Site pointers look like data/attachments.json:/SIGHTS/[id=iron]/weaponSwayMultByWeapon/m39emr
 (`[key=value]` selects the list element whose key equals value).
@@ -94,7 +94,8 @@ def cmd_assemble(a):
 def cmd_prior_work(a):
     terms = [t.lower() for arg in a.terms for t in arg.split(',') if t]
     files = [*ROOT.glob('docs/**/*.md'), *ROOT.glob('docs/working/*.txt'),
-             *ROOT.glob('reference-data/provenance/*.json'), ROOT / 'reference-data/frosty/asset-findings.json']
+             *ROOT.glob('reference-data/provenance/*.json'), *(ROOT / 'reference-data/frosty' / n for n in
+             ('asset-findings.json', 'lead-index.json', 'site-evidence.json'))]
     for f in sorted(set(files)):
         text = f.read_text(encoding='utf-8-sig', errors='replace')
         low = text.lower()
@@ -106,7 +107,7 @@ def cmd_prior_work(a):
 
 RESULT_KEYS = ['lead', 'status', 'control', 'scope', 'rows', 'siteImpact', 'unresolved', 'outOfScopeNotes']
 RAW_KEYS = ['path', 'rawSha256', 'offset', 'type', 'bytesHex', 'value']
-RECEIPT_KEYS = ['lead', 'status', 'build', 'question', 'sourceFacts', 'inference', 'unresolved', 'siteImpact', 'evidence']
+RECEIPT_KEYS = ['lead', 'status', 'build', 'question', 'sourceFacts', 'inference', 'unresolved', 'siteImpact', 'evidence', 'record']
 
 def raw_checks(node):
     if isinstance(node, dict):
@@ -133,7 +134,12 @@ def cmd_review(a):
     rows_without = sum(1 for r in res.get('rows', []) if isinstance(r, dict) and not list(raw_checks(r)))
     receipt = lead_dir / 'draft-receipt.json'
     if not receipt.exists(): issues.append('draft-receipt.json missing')
-    else: issues += [f'receipt missing key {k}' for k in RECEIPT_KEYS if k not in load_json(receipt)]
+    else:
+        draft = load_json(receipt)
+        issues += [f'receipt missing key {k}' for k in RECEIPT_KEYS if k not in draft]
+        if 'record' in draft:  # same structural check as `frosty-records.py check-receipt`
+            validate = runpy.run_path(str(ROOT / 'scripts/frosty-records.py'))['validate_record']
+            issues += [f'record: {m}' for m in validate(draft['record'])]
     if not (lead_dir / 'summary.md').exists(): issues.append('summary.md missing')
     reader = runpy.run_path(str(ROOT / 'scripts/frosty-raw-check.py'))['read']
     good = [c for c in checks if c not in bad]

@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-26",
+  "title": "VSSM Folding Stock single-fire cadence",
+  "record": {
+    "v": 1,
+    "kind": "decision",
+    "date": "2026-09-26",
+    "build": "1.4.3.0-release",
+    "leads": [
+      {
+        "id": "L74",
+        "title": "VSSM Folding Stock single-fire cadence",
+        "status": "duplicate",
+        "summary": "The [L14 receipt](../../reference-data/provenance/frosty-2026-09-24-L14-single-fire-cadence.json) already records VSSM FullAutoReplace main=-1 and single=399.998993, and says the stored single field does not establish an available mode. L74 adds no changed source basis. Keep current auto 800; no new site proposal.",
+        "reopenWhen": "Reopen only with changed selection, a changed consumer, or controlled mode evidence.",
+        "statusNote": "Duplicate of L14; no new investigation"
+      }
+    ],
+    "binding": "research"
+  },
+  "note": "Duplicate of L14; no new investigation (row is undated; 26 Sep 2026 taken from L71-L88, the same Astra run)."
+}

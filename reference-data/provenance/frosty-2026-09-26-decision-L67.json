@@ -1,0 +1,22 @@
+{
+  "date": "2026-09-26",
+  "title": "Sniper Decoy anti-glint",
+  "record": {
+    "v": 1,
+    "kind": "decision",
+    "date": "2026-09-26",
+    "build": "1.4.3.0-hotfix",
+    "leads": [
+      {
+        "id": "L67",
+        "title": "Sniper Decoy anti-glint",
+        "status": "parked",
+        "summary": "Existing hotfix trace records WPM_DecoyNoScopeGlint → NoFlare and the affector route. No further gadget work in this pass.",
+        "reopenWhen": "Reopen only if gadget scope is requested; owner, radius, duration and deployed conditions remain unresolved.",
+        "statusNote": "Parked; outside current site scope (operator, 26 Sep)"
+      }
+    ],
+    "binding": "research"
+  },
+  "note": "Parked by the operator on 26 Sep 2026: gadget scope is outside the current site scope. Existing hotfix trace only; no new investigation."
+}

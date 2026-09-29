@@ -19,19 +19,21 @@ Research status: [active source leads, proposals and parked questions](../workin
 
 Check these before starting new tracing. `python scripts/frosty-worker.py prior-work --terms <names>`
 searches all of the Markdown and JSON layers below except the external ledger.
+`python scripts/frosty-records.py status` summarises the current state in under 60 lines.
 
 | Question | Where the answer lives |
 |---|---|
-| Is this site value sourced, and from what? | The site-input ledger: every `data/*.json` leaf and `sim/*.js` input with a review status and evidence receipt ([summary receipt](../../reference-data/provenance/frosty-site-input-review-final-v2-2026-09-23.json); rows in the external `site-input-reviewed.jsonl`). It is a 23 September snapshot; later data changes are in dated receipts. |
-| Has this asset been traced, for what question, and with what result? | [`asset-findings.json`](../../reference-data/frosty/asset-findings.json) (per-asset question, result and conclusion). |
+| Is this site value sourced, and from what? | The site-input ledger: every `data/*.json` leaf and `sim/*.js` input with a review status and evidence receipt ([summary receipt](../../reference-data/provenance/frosty-site-input-review-final-v2-2026-09-23.json); rows in the external `site-input-reviewed.jsonl`). It is a 23 September snapshot; the [inventory v4 and delta ledger](../../reference-data/provenance/frosty-site-input-inventory-v4-2026-09-28.json) (28 September) classify the data leaves changed since, `frosty-records.py ledger-drift` lists later changes, and [`site-evidence.json`](../../reference-data/frosty/site-evidence.json) maps site pointers to the receipts recorded since. |
+| Has this asset been traced, for what question, and with what result? | [`asset-findings.json`](../../reference-data/frosty/asset-findings.json), generated from the frozen 23 September base plus each record's assets (per-asset question, result and conclusion). The 28 September backfill (67 receipts, 281 findings) covers the 24-28 September lead receipts; receipts that record no per-asset hash are found through the lead index. |
 | What does this hashed field mean? | [Field map](FIELD_MAP.md). |
 | How does this mechanic work, and what does the site do with it? | The topic pages above. |
-| What exactly was measured, from which bytes? | Dated receipts in `reference-data/provenance/` ([index](../../reference-data/provenance/README.md)). |
-| Is it being worked on, proposed, or waiting on the operator? | The [research queue](../working/FROSTY_RESEARCH_QUEUE.md); closed leads and past runs are in [FROSTY_QUEUE_CLOSED.md](../archive/FROSTY_QUEUE_CLOSED.md). |
+| Was this lead investigated, what did it find, and what would reopen it? | [`lead-index.json`](../../reference-data/frosty/lead-index.json): every recorded lead with status, receipts, summary and reopen condition. |
+| What exactly was measured, from which bytes? | Dated receipts in `reference-data/provenance/`, found through the lead index. |
+| Is it being worked on, proposed, or waiting on the operator? | `frosty-records.py status`, then the [research queue](../working/FROSTY_RESEARCH_QUEUE.md); closed leads (a generated table) and past runs are in [FROSTY_QUEUE_CLOSED.md](../archive/FROSTY_QUEUE_CLOSED.md). |
 | Was it captured or decoded at all? | The coverage ledger (`coverage-decoder-v5.sqlite`, see [Tools](TOOLS.md)). Capture and decoding are not semantic review. |
 
-A lead is not closed until its topic page, receipt, `asset-findings.json` entries and queue
-row are updated.
+A lead is closed when its record passes `python scripts/frosty-records.py check`: a
+receipt with a `record`, the topic page edited in place, and the queue row removed.
 Capture work: [ranked in-game capture plan](../working/BF6_CAPTURE_PRIORITIES.md).
 
 The current audit starts from every `data/*.json` entry and `sim/*.js` input or

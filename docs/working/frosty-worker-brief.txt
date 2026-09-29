@@ -20,7 +20,8 @@ DELIVERABLES (the lead checks these mechanically)
   rows [one object per scoped item; include rawChecks where a value is claimed];
   siteImpact (text; conditional site numbers go here); unresolved [..]; outOfScopeNotes [..].
   Every rawChecks entry: {path, rawSha256, offset, type, bytesHex, value}.
-- summary.md (short) and draft-receipt.json with keys lead, status, build, question, sourceFacts (with raw checks), inference, unresolved, siteImpact, evidence (paths + sha256 + commands). The lead reviews and commits it; do not write to the repo.
+- summary.md (short) and draft-receipt.json with keys lead, status, build, question, sourceFacts (with raw checks), inference, unresolved, siteImpact, evidence (paths + sha256 + commands), record. The lead reviews and commits it; do not write to the repo.
+- record is the structured header the repo indexes. Print its fields with `python "C:\Users\royal\Documents\BF6 Weapon Analyzer\scripts\frosty-records.py" schema`. Draft kind, date, build, leads (id, title, status, one-sentence summary, reopenWhen; searched when exhausted), assets you actually traced (path, format, sha256 of the inspected bytes, question, result, conclusion) and site pointers you compared (pointer, value, relation). The lead edits summary and status. Before you finish, run `python "C:\Users\royal\Documents\BF6 Weapon Analyzer\scripts\frosty-records.py" check-receipt draft-receipt.json` (read-only) and fix every error it prints.
 
 DECODING CAUTIONS
 - Registry wrapper classes are not the actual source owner class. Resolve the owner's direct registry wrapper/import and compare actual owner descriptor/type identities before transferring names across owners. Cross-build candidate bodies cannot complete a pinned-build typed join (L71/L75).

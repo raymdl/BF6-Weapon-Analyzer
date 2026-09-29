@@ -1,0 +1,120 @@
+{
+  "date": "2026-09-28",
+  "lead": "L112",
+  "title": "Asset findings backfill for the lead receipts of 23-28 September",
+  "method": [
+    "A script extracted (asset path, sha256) candidates and data/*.json mentions from each of the 92 lead and audit receipts.",
+    "Six GPT-6 Sol workers (batches of 14-20 receipts grouped by topic) indexed what each receipt claims: assets with a recorded hash, and site pointers; they did not decode game data.",
+    "Batches B2-B5 first compared Sol high (B2, B4) with Sol medium (B3, B5), each carrying the L17 known-answer control; B1 and B6 then ran at medium.",
+    "Fragments were validated against the record schema and the receipt text (each sha256 and path must be recorded in the receipt), then merged into records-legacy.json; generated asset-findings.json grew from 547 to 828 findings (465 to 578 assets)."
+  ],
+  "control": "L17 (five assets with their sha256 values plus data/attachments.json:/ERGOS/[id=match_trigger]/noEffect): 5/5 and the pointer in all four workers that carried it (B2, B3, B4, B5).",
+  "batches": [
+    {
+      "batch": "B1",
+      "effort": "medium",
+      "receipts": 16,
+      "assets": 26,
+      "site": 28
+    },
+    {
+      "batch": "B2",
+      "effort": "high",
+      "receipts": 15,
+      "assets": 18,
+      "site": 65
+    },
+    {
+      "batch": "B3",
+      "effort": "medium",
+      "receipts": 19,
+      "assets": 44,
+      "site": 6
+    },
+    {
+      "batch": "B4",
+      "effort": "high",
+      "receipts": 14,
+      "assets": 45,
+      "site": 49
+    },
+    {
+      "batch": "B5",
+      "effort": "medium",
+      "receipts": 19,
+      "assets": 73,
+      "site": 11
+    },
+    {
+      "batch": "B6",
+      "effort": "medium",
+      "receipts": 8,
+      "assets": 70,
+      "site": 149
+    }
+  ],
+  "limits": [
+    "Receipts that record no per-asset hash (whole-root scans such as L23, L25, L34, L36, L43) contribute no asset findings; their leads stay findable through lead-index.json.",
+    "The L107 receipt contributes precision-recheck samples as asset findings; they say a sample operand was rechecked, not what it means.",
+    "Findings state what the receipt claims for the stated question; they are not new source verification."
+  ],
+  "record": {
+    "v": 1,
+    "kind": "lead",
+    "date": "2026-09-28",
+    "build": "1.4.3.0-release",
+    "binding": "research",
+    "leads": [
+      {
+        "id": "L112",
+        "title": "Backfill asset findings",
+        "status": "finding",
+        "statusNote": "Closed (28 Sep)",
+        "summary": "The per-asset index now covers the lead and audit receipts of 24-28 September (92 read, 67 with asset findings): 281 asset findings (547 to 828 in the generated asset-findings.json, 465 to 578 assets) and 309 site pointers merged into records-legacy.json. Six Sol batches, checked against the L17 known-answer control and the record schema.",
+        "reopenWhen": "Receipts that record no per-asset hash stay unindexed at asset level (whole-root scans such as L23, L25, L34, L36); index them when a lead touches those assets."
+      }
+    ],
+    "run": {
+      "root": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-28T2200-0400-L112-L113",
+      "orchestrator": "sonnet-5.5",
+      "workers": [
+        {
+          "lead": "L112-B2",
+          "model": "gpt-6-sol high",
+          "minutes": 15.7,
+          "tokensM": 8.24
+        },
+        {
+          "lead": "L112-B4",
+          "model": "gpt-6-sol high",
+          "minutes": 12.4,
+          "tokensM": 5.06
+        },
+        {
+          "lead": "L112-B3",
+          "model": "gpt-6-sol medium",
+          "minutes": 6.3,
+          "tokensM": 2.6
+        },
+        {
+          "lead": "L112-B5",
+          "model": "gpt-6-sol medium",
+          "minutes": 8.1,
+          "tokensM": 3.73
+        },
+        {
+          "lead": "L112-B1",
+          "model": "gpt-6-sol medium",
+          "minutes": 4.9,
+          "tokensM": 1.46
+        },
+        {
+          "lead": "L112-B6",
+          "model": "gpt-6-sol medium",
+          "minutes": 8.4,
+          "tokensM": 2.58
+        }
+      ]
+    }
+  }
+}

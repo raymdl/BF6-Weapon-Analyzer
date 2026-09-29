@@ -575,9 +575,55 @@ Added 28 September 2026 for Codex worker runs. They check process, not meaning.
   `brief.txt` from the preamble, the chosen sections of
   `docs/working/frosty-worker-conventions.txt` and the lead's `lead.txt`.
   Assembly refuses a missing control value or an existing brief.
-- `frosty-worker.py prior-work --terms`: searches topic pages, working docs and
-  receipts for earlier work on the named assets before a lead is chosen.
+- `frosty-worker.py prior-work --terms`: searches topic pages, working docs,
+  receipts and the generated lead index and site evidence for earlier work on the
+  named assets before a lead is chosen.
 - `frosty-worker.py review --lead-dir`: checks a result against the worker
-  result schema (control, scope counts, raw checks, receipt keys) and re-reads
-  the control operand and two sampled operands from raw bytes. The lead still
-  checks comparisons against the site's actual encoding.
+  result schema (control, scope counts, raw checks, receipt keys, the draft
+  receipt's `record`) and re-reads the control operand and two sampled operands
+  from raw bytes. The lead still checks comparisons against the site's actual
+  encoding.
+
+### Frosty records
+
+Added 28 September 2026. `python scripts/frosty-records.py` (standard library only)
+keeps one structured `record` per receipt, so a lead's title, status, assets and
+site pointers live in one place instead of five hand-kept lists. Roots:
+`--site-root`, `--research-root` (both default to the repo) and `--datamining-root`.
+
+- `schema` prints the record header workers copy into `draft-receipt.json`.
+  `check-receipt FILE` validates one draft (read-only); `frosty-worker.py review`
+  runs the same check.
+- `status` prints under 60 lines for orchestrators at run start: live leads,
+  what awaits the operator, the latest closed leads, ledger drift and stale pointers.
+- `check` exits 1 only on structural errors: every receipt parses and has exactly
+  one record, each legacy sidecar hash matches its receipt (committed receipts are
+  superseded, never edited), records follow the schema, and the generated files are
+  byte-identical to a fresh `build`. Cross-document rules are warnings for now:
+  stale or changed site pointers, lead titles and status changes, queue and
+  proposal or capture-plan membership, binding disagreements and ledger drift.
+  `--external` adds raw asset hashes and the ledger artifacts in BF6 Datamining.
+- `build` regenerates `reference-data/frosty/asset-findings.json` (the frozen
+  `asset-findings-base.json` plus `record.assets`), `lead-index.json`,
+  `site-evidence.json` and the Closed leads table between the `<!-- generated -->`
+  markers in `docs/archive/FROSTY_QUEUE_CLOSED.md`. Output is sorted and has no dates.
+- `ledger-drift [--out F]` lists the data and sim files that differ from the pinned
+  site-input ledger and, with the external JSONL, the changed, removed and new
+  data leaves with their old review status.
+- `new --kind decision --lead L67 ...` writes a skeleton decision record for a
+  parked, duplicate or operator-decided lead.
+
+The site-input ledger baseline is the newest `frosty-site-input-inventory-v*.json`
+that lists a file as reviewed: data files are pinned by v4 (28 September, with its delta
+ledger classifying the 1,739 leaves changed since v3), while sim files stay on the v3
+baseline because v4 marks them `reviewed: false`. `frosty-site-input-inventory.py`
+takes `--date` for the next inventory.
+
+Receipts committed before this tool carry their record in
+`reference-data/provenance/records-legacy.json`, keyed by file name with the receipt's
+sha256 (CRLF read as LF, the form git stores, so a checkout's line endings do not
+matter). New receipts embed a top-level `record`.
+`binding` is `site` when a site file (`data/`, `sim/`, `ui/`, `scripts/*.mjs`) pins
+the receipt's hash or names it by path, else `research`. Site pointers accept
+`[key=value]*` to name every matching list element (`frosty-worker.py check-site`
+does not).
