@@ -1,8 +1,13 @@
 name: Validate Data
 
 on:
+  # Documentation-only pushes (research notes, topic pages, Python research
+  # tooling) cannot affect the validators or tests. reference-data/ is not
+  # ignored because tests read it.
   pull_request:
+    paths-ignore: ['docs/**', '**/*.md', 'scripts/*.py']
   push:
+    paths-ignore: ['docs/**', '**/*.md', 'scripts/*.py']
 
 jobs:
   validate-data:
