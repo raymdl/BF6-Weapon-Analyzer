@@ -14,7 +14,7 @@ assumption IDs here instead of repeating the limits.
 |---|---|---|
 | `weapons.json`: roster, IDs, class, base scalars | **CUR**, mixed-source field-level promotion. | Reviewed edits from accepted Sym/Frosty/panel evidence. No single importer owns the file. Consumed by UI and resolver. |
 | `weapons.json`: `name`, `description` | **CUR**, reviewed Frosty localization promotion. | Candidate description extractor supports review. |
-| `weapons[].dmg`, `damageSource` | **CUR**, accepted Frosty curves and reviewed discontinuities. | [Curve review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json); range and target damage. |
+| `weapons[].dmg`, `damageSource` | **CUR**, accepted Frosty curves and reviewed discontinuities. | [Curve review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json); range and target damage. |
 | `weapons[].recoil.ads/hip`, `spread`, `spreadDyn` | **CUR**, reviewed source literals and retained operands. | Resolver and `core.js`; some fields are stored but not executed (see below). |
 | `attachments.json`: catalogs, IDs, order, points, offered availability/defaults | **CUR**, source/panel/menu review. | Loadout menus, points and share codec. Catalog order and magazine key order are compatibility-sensitive. |
 | `BARRELS[].adsTimeTierModByWeapon` | **GEN**, current XML + curated identities/routes. | `frosty-barrel-ads.py`; effective ADS coordinate. |
@@ -100,7 +100,7 @@ gives the recording standard.
 | **A14** | Low (current data has full coverage) | None; code policy. | |
 | **A15** | Low | Repository setting if a gated deployment is wanted. | |
 | **A16** | Medium (tap fire, idle recovery) | Idle and first-shot recordings. | Fields stored, not executed. |
-| **A17** | Medium (four headline scores) | Panel captures of extreme combined builds, zero-variation Control, other burst weapons equipped. | [Weapon Attributes model › Evidence](../WEAPON_ATTRIBUTES_MODEL.md#evidence-and-confidence), [open questions](../frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up). |
+| **A17** | Medium (four headline scores) | Panel captures of extreme combined builds, zero-variation Control, other burst weapons equipped. | [Weapon Attributes model › Evidence](../WEAPON_ATTRIBUTES_MODEL.md#evidence-and-confidence), [open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up). |
 
 ## Missing data and fallbacks
 

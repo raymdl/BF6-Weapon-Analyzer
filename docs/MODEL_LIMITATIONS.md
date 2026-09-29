@@ -30,7 +30,7 @@ are removed. This does not validate burst cadence or the native recovery equatio
 The additional -0.0006-second duration operand is applied on five burst weapons
 after the muzzle duration override. Activation and composition remain model
 choices; see the
-[field review](../reference-data/provenance/frosty-assumption-review.json).
+[field review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-assumption-review.json).
 
 L110/M123K 200-round boxes have no modeled moving-ADS spread penalty. Matched
 HUD screenshots and the missing source modifier support removing the old estimate.
@@ -88,8 +88,8 @@ Hipfire and spread minima are unchanged; the idle operand remains unused. See th
 [recording comparison](archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md).
 Light/combo-light modifiers now apply source hipfire increase, firing coefficient,
 and firing/not-firing offset factors in the existing recovery equation. Their
-[target-name trace](../reference-data/provenance/frosty-light-field-names-2026-09-13.json)
-matches 248 named source states. The [implementation trace](../reference-data/provenance/frosty-light-implementation-2026-09-13.json)
+[target-name trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-light-field-names-2026-09-13.json)
+matches 248 named source states. The [implementation trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-light-implementation-2026-09-13.json)
 covers all 137 supported selections. Selecting a light treats it as active;
 there is no on/off, aim-trigger or native modifier-order simulation. Separate
 selected light and combo-laser factors multiply. The idle operand remains unused.
@@ -108,7 +108,7 @@ mapping/activation questions, including angled-grip mappings and native composit
 stat consumers ([composite stats findings](archive/COMPOSITE_STATS_FINDINGS.md)). Check those dated findings against the current implementation.
 Magazine capacity alone cannot resolve attachment identity.
 
-**Global estimates.** The [Frosty weapon notes](frosty/WEAPONS.md)
+**Global estimates.** The [Frosty weapon notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md)
 found a controller modifier with 0.8836 operands on 57 weapons; the six sniper
 rifles have no matching GS binding. Its native activation and operation remain
 unresolved. The analyzer now uses the source value 0.8836 in its existing platform
@@ -173,4 +173,4 @@ Precision returns unavailable for missing or ambiguous table rows. The Hipfire
 conditional factor and some native arithmetic remain inferred. The score-only
 L115 suppressor and PP19 Flash Comp exceptions do not correct their physical
 simulator cards. See the [current model](WEAPON_ATTRIBUTES_MODEL.md) and
-[open native questions](frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up).
+[open native questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up).

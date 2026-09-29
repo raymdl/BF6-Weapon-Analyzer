@@ -37,7 +37,7 @@ resolve the initial lookup gaps. Current behavior and limits are maintained in
 ## Files
 
 - [Current model](../WEAPON_ATTRIBUTES_MODEL.md)
-- [Coverage evidence](../../reference-data/provenance/weapon-attributes-pair-coverage-2026-09-21.json)
+- [Coverage evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/weapon-attributes-pair-coverage-2026-09-21.json)
 - `sim/weapon-attributes.js`, `scripts/weapon-attributes.test.mjs`
 - Reproducible local pair scan: `outputs/check-attribute-pairs.mjs` (not shipped).
 - Source operands: `reference-data/provenance/frosty-assumption-review.json`.
@@ -54,7 +54,7 @@ selected RPM and all other attachments. Firing simulation remains unchanged.
 The repeated 71,166-build pair scan now has zero missing Precision results.
 The five SL9 gaps listed above are resolved by this input rule. Native-provider
 confirmation, full-combination coverage and formula assumptions remain open.
-Evidence: [burst panels](../../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
+Evidence: [burst panels](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/burst-panel-inputs-2026-09-21.json).
 
 ## Burst Training follow-up
 

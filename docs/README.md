@@ -17,11 +17,11 @@ Linear Comp/burst recoil and belt-box description mismatches. Native arithmetic 
 The 14 September compatibility update generates physical mount slots and equipment
 dependencies from Frosty. See the [user controls](USER_GUIDE.md#build-and-compare-loadouts),
 [data contract](DATA_REFERENCE.md), [regeneration commands](../MAINTENANCE.md#regenerate-attachment-modifiers),
-and [Frosty data graph](frosty/DATA_GRAPH.md#slots-and-prerequisites).
+and [Frosty data graph](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites).
 
-The [UI text notes](frosty/UI_TEXT.md#current-site-mapping)
+The [UI text notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
 documents attachment tooltips and the 18 approved panel-text exceptions. The
-[unmatched-record inventory](archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)
+[unmatched-record inventory](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)
 groups extra Frosty records by what is known about their menu identity.
 
 ## Folder roles
@@ -49,7 +49,7 @@ any remaining questions into an active handoff, and archive the completed record
 | [Stat ladders](STAT_LADDERS.md) | Model maintainers: complete finite tables, geometric factors, index signs, bounds, examples. |
 | [Weapon Attributes model](WEAPON_ATTRIBUTES_MODEL.md) | Research/model maintainers: Hipfire, Precision, Control and Mobility formulas, game naming, source inputs, preview rules and validation limits. Includes the current site integration. |
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
-| [Frosty game data](frosty/README.md) | Data maintainers: Frosty exports, field meanings, asset links, source findings and open questions. |
+| [Frosty game data](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/README.md) | Data maintainers: Frosty exports, field meanings, asset links, source findings and open questions. |
 | [Attachment bugs and mismatches](ATTACHMENT_BUGS.md) | All readers: attachment game data bugs, description errors and fixed site data errors, with evidence and status. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
 | [Recoil and spread](RECOIL_SPREAD_MODEL.md) | Model readers: per-shot equations, recovery, sampling, calibration, visual interpretation. |
@@ -71,7 +71,7 @@ recording analyses and implementation handoffs are in the
 [archive index](archive/README.md), with links back to current guides.
 
 Open Frosty questions are collected in one list:
-[Frosty open questions](frosty/OPEN_QUESTIONS.md).
+[Frosty open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md).
 
 The [Weapon Attributes model](WEAPON_ATTRIBUTES_MODEL.md) is the current guide for
 Hipfire, Precision, Control and Mobility. Completed findings and the A/B capture
@@ -79,7 +79,7 @@ plan are in the [archive](archive/README.md#weapon-attributes--21-september-2026
 Remaining native-data questions are in the Frosty open questions page above.
 
 Weapon descriptions, role tags, composite-stat UI assets and setting labels are in
-the [UI text notes](frosty/UI_TEXT.md).
+the [UI text notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md).
 
 ## Authority and historical material
 
@@ -91,7 +91,7 @@ current implementation. Native engine arithmetic remains unverified where stated
 from dated investigations, with links to their current replacements. Historical records retain their original proposals and superseded checkpoints.
 The archive index identifies their status and current replacements.
 
-[Evidence index](../reference-data/provenance/README.md) locates source snapshots
+[Evidence index](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/README.md) locates source snapshots
 and review outputs. The [attachment audit](../reference-data/attachment-audit/README.md)
 is a separately maintained reference package. Neither is fetched by the browser.
 Frozen published sites live in `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/`;

@@ -1,7 +1,0 @@
-{
-  "checkedFiles": 23970,
-  "skippedOver2MB": 5,
-  "bytesRead": 99572940,
-  "matches": [],
-  "limits": "Binary UUID prefilter only; decode matches to distinguish self identity/import references. Captured roots are partial, not a full game reverse-reference index."
-}

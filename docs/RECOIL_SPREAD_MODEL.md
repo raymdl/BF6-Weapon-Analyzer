@@ -241,7 +241,7 @@ unchanged in form when spread above the minimum is scaled by k, so the equation
 above, with `delta` measured from the minimum, is the one these values were built
 for. The engine also defines an idle state after `IdleTime` (0.4 s ADS, 0.6 s hip)
 that is not simulated. See the
-[formula evidence](frosty/WEAPONS.md#spread).
+[formula evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md#spread).
 
 The stance and aim state select `adsStand`, `adsMove`, `hipStand` or `hipMove`.
 Moving ADS starts with the weapon's stored `spread.adsMove[0]`. Attachment changes
@@ -314,7 +314,7 @@ the laser slot. Current Frosty slot assignments prevent selecting a separate lig
 alongside a combo laser; a shared-slot device contributes its light factors once.
 Selection treats the light as active. Native
 switching and the modifier operation order have not been decoded. See the
-[source/selection trace](../reference-data/provenance/frosty-light-implementation-2026-09-13.json).
+[source/selection trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-light-implementation-2026-09-13.json).
 
 This replaces the old +15% firing-offset estimate. Evaluate the lower flat recovery offset together with the reduced per-shot
 spread and increased nonlinear recovery coefficient. The attachment panel shows both hip

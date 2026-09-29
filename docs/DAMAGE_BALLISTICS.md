@@ -25,7 +25,7 @@ gradual falloff with steps. Sniper sweet spots can increase damage with distance
 shotgun curves can contain short linear transitions.
 
 Every base curve is the Frosty 1.4.2.5 projectile curve named in `damageSource`
-([review](../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
+([review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
 Only sniper rifles and shotguns ramp. All other curves are stepped, and
 `scripts/damage.test.mjs` requires every sampled range to land on a tier value.
 A raw Frosty curve can list a segment between two different ranges that the game

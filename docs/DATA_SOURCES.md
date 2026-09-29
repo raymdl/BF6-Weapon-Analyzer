@@ -20,8 +20,8 @@ Reproduction uses [projectile extraction](../scripts/frosty-ballistics.py),
 [collateral generation](../scripts/frosty-collateral.py). The collateral generator
 reads the retained compiled trace, not a new XML export. Source paths, hashes,
 field identities and comparison evidence are indexed in
-[provenance](../reference-data/provenance/README.md). The
-[Frosty weapon notes](frosty/WEAPONS.md) record the decisions;
+[provenance](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/README.md). The
+[Frosty weapon notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md) record the decisions;
 [model limitations](MODEL_LIMITATIONS.md) separates configuration from native proof.
 
 
@@ -35,7 +35,7 @@ supply identities and source joins, not replacement numeric values. Generated
 reports retain field paths, GUIDs and hashes. The burst review follows nested
 fire-mode selectors; field source status and simulation support are separate.
 
-The [Frosty attachment notes](frosty/ATTACHMENTS.md#generated-site-values)
+The [Frosty attachment notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#generated-site-values)
 records 233 unique barrel selections, 1,487 handling selections, 16 sniper brake
 pairs and 53 Linear Comp/burst pairs. Two belt-box description mismatches remain recorded as possible bugs; their
 unsupported spread penalties were removed after matched screenshot review. The
@@ -53,22 +53,22 @@ offered attachments on four weapons. The 263 Optic Accessory entries become 118
 category qualifies when it holds at least one permitted optic; the category's
 other optics are listed in `WEAPON_ACCESSORY.excludedSights` for the tooltip. The PP-19 30/53-round screenshots corroborate
 the dependency interpretation. Native hashed enum semantics and live overrides
-are not inferred. The [Frosty collection records](frosty/DATA_GRAPH.md#slots-and-prerequisites)
+are not inferred. The [Frosty collection records](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites)
 retain asset findings and collection/recheck requirements.
 
 ## What the current baseline means
 
 Attachment tooltip text is maintained separately from mechanics. The
-[display-name and description audit](frosty/UI_TEXT.md#current-site-mapping)
+[display-name and description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
 records 2,952 choices with resolved Frosty text, 15 with explicitly approved
 game-panel text, and 45 still missing text. Panel transcriptions preserve the
 original unresolved Frosty pointers and do not populate other weapons. The
-[reverse inventory](archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) separates
+[reverse inventory](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) separates
 known attachment types, possible matches, and records with no known menu counterpart.
 
 [data/weapon-role-tags.json](../data/weapon-role-tags.json) keeps the three Frosty
 loadout role tags for each weapon as reference data. The UI does not load it. The
-[UI text notes](frosty/UI_TEXT.md) records the
+[UI text notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md) records the
 source records, the Mini Scout range conflict and the related description findings.
 
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json) identifies
@@ -104,9 +104,9 @@ The baseline's `damageStatus: verified` records project acceptance. Frosty is th
 authoritative damage source: every `damageSource` names the Frosty 1.4.2.5 projectile curve
 that supplies `dmg`. The 59 curves formerly labelled Sym were compared with Frosty and
 kept their values; the M45A1 keeps an in-game-confirmed step at 75 m
-([damage curve review](../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
+([damage curve review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json)).
 Weapon display names use the in-game spelling from Frosty localization
-([method](frosty/UI_TEXT.md#weapon-names)).
+([method](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#weapon-names)).
 No weapon is estimated or uses donor values. BROD 3, EF88 and VSSM, which Sym does
 not publish, use Frosty 1.4.2.5 values. Fitted attachment effects and source-composition questions remain documented in
 field-level provenance and [limitations](MODEL_LIMITATIONS.md). The acceptance
@@ -121,7 +121,7 @@ directory is `FrostyEditor\bin\Release\Final` beneath this tools root.
 
 Since 16 September 2026, each data build is a snapshot folder under
 `C:\Users\royal\Documents\BF6 Datamining\builds\<build>\` (`xml\`, `capture\`,
-`reports\`), managed by `scripts/frosty-build.py` ([Frosty tools](frosty/TOOLS.md#build-snapshots)).
+`reports\`), managed by `scripts/frosty-build.py` in the [research repo](https://github.com/raymdl/BF6-Frosty-Research) ([Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#build-snapshots)).
 The 1.4.2.5 XML export root is:
 
 ```text
@@ -173,7 +173,7 @@ and implemented behavior; they do not measure the game.
 ## Frosty review pipeline
 
 Frosty game-data knowledge (tools, field meanings, asset links and findings) is in
-[`docs/frosty/`](frosty/README.md). This section covers how that data reaches the site.
+[`docs/frosty/`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/README.md). This section covers how that data reaches the site.
 
 [scripts/frosty-configuration.py](../scripts/frosty-configuration.py) reads a supplied
 local export and compares configuration without writing live data. Its semantic
@@ -215,14 +215,14 @@ checked limb values.
 | [AK4D Heavy analysis](archive/AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md) | Basic/Heavy HUD measurements, source ADS factor comparison, and limits on cross-weapon transfer. |
 | [Array review](../reference-data/provenance/frosty-array-review-2026-09-09.json) | Source row order, hashed columns, base indices, tier factors, 187 input hashes. Its site-comparison hashes describe the pre-integration snapshot. |
 | [Draw-time review](../reference-data/provenance/frosty-draw-time-2026-09-09.json) | Sprint/deploy/undeploy source seconds, exact millisecond tables, base indices and source hashes. |
-| [Magazine identity](../reference-data/provenance/frosty-magazine-identity-review-2026-09-07.json) and [model update](../reference-data/provenance/frosty-magazine-model-update-2026-09-07.json) | Mapping decisions, normalization, reviewed handling/reload changes. |
-| [Attachment boundary](../reference-data/provenance/frosty-all-attachment-effect-boundary.json) and [approved changes](../reference-data/provenance/frosty-approved-attachment-updates-2026-09-06.json) | Exact linked effects versus implemented/deferred model behavior. |
-| [Shotgun ammo](../reference-data/provenance/frosty-shotgun-ammo.json), [ammo drag](../reference-data/provenance/frosty-1.4.2.5-ammo-drag.json) | Pellet/slug curves and projectile coefficients. |
-| [Generated ballistics](../data/ballistics.json) and [current hit-zone trace](../reference-data/provenance/frosty-hit-zones-2026-09-13.json) | Current projectile hashes and explicit weapon/ammo selections; generated by `scripts/frosty-ballistics.py`. |
-| [Global operand audit](../reference-data/provenance/frosty-global-operands-2026-09-13.json) | Attachment kill-switch defaults, controller bindings, sway/spotting/ADS/regeneration operands and material-table candidates. Values do not establish native composition. |
+| [Magazine identity](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-magazine-identity-review-2026-09-07.json) and [model update](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-magazine-model-update-2026-09-07.json) | Mapping decisions, normalization, reviewed handling/reload changes. |
+| [Attachment boundary](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-all-attachment-effect-boundary.json) and [approved changes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-approved-attachment-updates-2026-09-06.json) | Exact linked effects versus implemented/deferred model behavior. |
+| [Shotgun ammo](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-shotgun-ammo.json), [ammo drag](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-1.4.2.5-ammo-drag.json) | Pellet/slug curves and projectile coefficients. |
+| [Generated ballistics](../data/ballistics.json) and [current hit-zone trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-hit-zones-2026-09-13.json) | Current projectile hashes and explicit weapon/ammo selections; generated by `scripts/frosty-ballistics.py`. |
+| [Global operand audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-global-operands-2026-09-13.json) | Attachment kill-switch defaults, controller bindings, sway/spotting/ADS/regeneration operands and material-table candidates. Values do not establish native composition. |
 | [Attachment audit](../reference-data/attachment-audit/README.md) | Canonical screenshot review JSON and derived workbook; raw capture library is local-only. |
 
-The [evidence index](../reference-data/provenance/README.md) covers the remaining
+The [evidence index](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/README.md) covers the remaining
 families. Original narrative investigations are in the [archive](archive/README.md).
 Their checkpoint counts and proposed next steps describe the recorded date.
 Check current guides before treating those items as unresolved work.

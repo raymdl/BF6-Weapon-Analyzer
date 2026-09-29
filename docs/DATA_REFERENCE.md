@@ -14,7 +14,7 @@ value passes when it parses to the same float32 as its source (the shortest
 round-trip decimal is fine). A converted or derived value passes when it matches the
 float32 result: it parses back to the same float32 after inverting the conversion, or
 equals the formula on the float32 operands within float32 resolution. The
-[L107 audit](../reference-data/provenance/frosty-2026-09-28-L107-precision-audit.json)
+[L107 audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-2026-09-28-L107-precision-audit.json)
 lists the leaves that do not pass; the beyond-float32 ones were fixed on 28 September. Tier indices,
 counts and other integers must be equal to the source.
 
@@ -45,7 +45,7 @@ The runtime file contains text and lookups, not raw images or mechanics override
 
 | Fields | Meaning / use |
 |---|---|
-| `id`, `name`, `cls`, `cal` | Stable join key, displayed name (in-game spelling from Frosty localization; see [weapon display names](frosty/UI_TEXT.md#weapon-names)), class and caliber. Class drives menus, some policy and presentation. |
+| `id`, `name`, `cls`, `cal` | Stable join key, displayed name (in-game spelling from Frosty localization; see [weapon display names](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#weapon-names)), class and caliber. Class drives menus, some policy and presentation. |
 | `rpm`, `fireMode`, `burstRounds`, `burstRpm`, `burstBurstsPerMinute` | Precise fire timing inputs. Display RPM may be rounded separately. Burst fields describe within/between-burst cadence; DB-12 uses them for its two-round pump cycle. Bolt and single-round pump `rpm` is the effective Frosty manual-cycle rate. |
 | `mag`, `tacRld`, `emptyRld`, `reloadSpeed` | Base ammunition capacity and reload data. `mag` can include a chambered round; selected magazine capacity overrides it. `tacRld` is composed by the reload resolver; for shell-fed shotguns it is one shell with start and end delays. `emptyRld` and `reloadSpeed` are retained and not independently multiplied into tactical reload. |
 | `bulletVel` | Base projectile velocity. There is no stored ADS-time field; ADS time comes only from the indexed ADS table. |

@@ -140,7 +140,7 @@ be generalized to every weapon or aim state.
 | Camera recoil, spring, idle, and switch inputs | Separate retained camera inventory | Research fitting considered camera response. It is not added to projectile offsets. M4A1 spring values 1500/200 and switch times about 0.0833/0.0333 s do not establish a 400 ms sway onset. |
 | Smooth raw duration/factor targets | 0.05 and 1.2 in both reviewed aim branches | Now used as estimated override/multiplier; equipped activation across all eight catalog entries and stacking order remain source-based assumptions. |
 
-The [Smooth provenance](../../reference-data/provenance/frosty-smooth-recoil-review.json)
+The [Smooth provenance](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-smooth-recoil-review.json)
 retains raw target IDs, operation fields, selector evidence, and source hashes,
 with the approved model decision recorded separately from that raw evidence.
 Existing amount/variation

@@ -12,7 +12,7 @@ modeled as active, and idle recovery remains unused.
 The dated capture measurements and fitted hypotheses below remain research
 evidence. Earlier model-dependent comparisons describe the implementation at
 capture time. Use the [model guide](../RECOIL_SPREAD_MODEL.md) and
-[Frosty weapon notes](../frosty/WEAPONS.md) for current behavior.
+[Frosty weapon notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md) for current behavior.
 
 
 Updated 12 September 2026. This is the active research handoff. Completed
@@ -119,7 +119,7 @@ not independent validation.
 ## Standing recording conditions — operator confirmed 11 September 2026
 
 For new captures requested on or after 23 September, the
-[ranked capture plan](BF6_CAPTURE_PRIORITIES.md) supersedes the carry-forward rule
+[ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md) supersedes the carry-forward rule
 below. Record the actual current build and settings once per session. The older
 confirmed conditions remain valid metadata for the earlier recordings; they are
 not assumed for new 1.4.3.0 comparisons.
@@ -198,7 +198,7 @@ repeating existing controls or recording a full series before a visibility check
 These items extend beyond the recording program. Track current behavior in
 [model limitations](../MODEL_LIMITATIONS.md) and the
 [attachment audit](../../reference-data/attachment-audit/README.md).
-The [dated site review](../archive/FROSTY_SITE_REVIEW_2026-09-07.md) is evidence,
+The [dated site review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_SITE_REVIEW_2026-09-07.md) is evidence,
 not a current defect list: several proposed changes have since shipped.
 
 Remaining areas include PP-19 Flash Comp modifier mapping; light/combined-device
@@ -256,7 +256,7 @@ one stationary hipfire series. Retain the full indicator path through each pause
 ### Scenario 4 capture plan with source predictions (13 September 2026)
 
 Source values and the equation form are in
-[Frosty weapon notes](../frosty/WEAPONS.md#spread).
+[Frosty weapon notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md#spread).
 The AK4D hipfire tail already matched flat not-firing recovery (0.199 s predicted,
 about 0.21 s measured). These captures test the parts that remain open.
 

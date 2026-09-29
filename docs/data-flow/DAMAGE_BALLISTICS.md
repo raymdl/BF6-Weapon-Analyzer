@@ -36,7 +36,7 @@ them. The Interdictor curve is from the 1.4.3.0 build; the others are from
 1.4.2.5. Selected ammo can replace the curve and pellet count; eight retained
 override curves cover the four shotguns'
 00-buck/slug alternatives. See [weapons.json](../../data/weapons.json),
-[ammo.json](../../data/ammo.json), and the [curve review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
+[ammo.json](../../data/ammo.json), and the [curve review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
 
 `dmg[]` keeps nondecreasing range order. Repeated ranges encode a discontinuity;
 collapsing them into a unique-key map would change the model. Between distinct

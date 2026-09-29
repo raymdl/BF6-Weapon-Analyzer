@@ -9,7 +9,7 @@ Check their statuses before promotion.
 
 The current generated hit-zone values match the 321 reviewed ammo-panel readings.
 Later light effects use decoded Frosty fields, not rounded panel percentages; see
-the [current provenance index](../provenance/README.md) for that separate evidence.
+the [current provenance index](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/README.md) for that separate evidence.
 
 ## Contents
 
@@ -46,7 +46,7 @@ remain in `Old` folders. The research input is
 [`composite-remaining-panels-2026-09-21.json`](composite-remaining-panels-2026-09-21.json).
 Its Precision check uses the versioned 1.4.3.0 table; its Control check uses the
 source-traced sniper Tungsten Core operands. Results and hashes are in
-[`composite-remaining-results-2026-09-21.json`](../provenance/composite-remaining-results-2026-09-21.json).
+[`composite-remaining-results-2026-09-21.json`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-remaining-results-2026-09-21.json).
 The canonical JSON is updated; the workbook is not regenerated.
 
 ```powershell

@@ -165,7 +165,7 @@ whether the nested selector fails during firing.
 
 ## Frosty attachment trace
 
-The [saved Frosty assumption trace](../../reference-data/provenance/frosty-assumption-review.json)
+The [saved Frosty assumption trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-assumption-review.json)
 records exported 1.4.2.5 modifier inputs and source hashes. Its GRT-BC Burst Mode
 row starts at `Attachment_MSBSGROTB_ERG_BurstFireEnable.xml`. The weapon blueprint
 `MSBSGROTB_WB.xml` has a nested fire-mode selector with ID
@@ -203,7 +203,7 @@ Local corrected analysis: `outputs/burst-direction-review/analyze.py` and `model
 The source detections, masks and hashes remain in the four original `outputs/burst-*`
 folders. These local images and scripts are ignored, not clean-clone dependencies.
 The numerical results and modeled cases are retained in
-[the provenance record](../../reference-data/provenance/grtbc-direction-review-2026-09-21.json).
+[the provenance record](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/grtbc-direction-review-2026-09-21.json).
 Current model: [Weapon Attributes](../WEAPON_ATTRIBUTES_MODEL.md).
 
 ## Screenshot archive (local only)
@@ -224,7 +224,7 @@ Firing tests. Each report shows its original screenshots (`original-0.png` to
 
 Menu panels, in
 `reference-data/attachment-audit/Weapon Attachments/Loadout A-B Testing/Burst Panel Inputs/`.
-Hashes: [panel provenance record](../../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
+Hashes: [panel provenance record](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/burst-panel-inputs-2026-09-21.json).
 
 | Weapon | Files |
 |---|---|

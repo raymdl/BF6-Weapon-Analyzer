@@ -2,7 +2,7 @@
 
 > Archived 21 September 2026. This is a completed research record, not the current implementation specification.
 > Use the [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md) for current behavior and
-> [Frosty open questions](../frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up) for remaining research.
+> [Frosty open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up) for remaining research.
 > Earlier hold/pending statements and capture instructions below are historical. The runtime now matches 640 values from 160 current panels.
 
 
@@ -37,7 +37,7 @@ Frosty calls them **Weapon Attributes**:
 
 "Gunsmith Panel" is a Companion Battlefield label, not a game name. The older
 Firepower/Accuracy/Range/Handling `NumericalStatKey` values are archetype templates
-and are not these stats ([UI strings review](../frosty/UI_TEXT.md#numerical-stat-block--do-not-use)).
+and are not these stats ([UI strings review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#numerical-stat-block--do-not-use)).
 
 ## Status
 
@@ -126,7 +126,7 @@ Difference groups (14 SEP observations; each is resolved or reclassified in the 
 Candidate: `96 / (1.1 * R * sin(V) / V + 0.75)^2.25 + 4`, R = effective ADS recoil
 amount, V = recoil variation in radians. Rounded to the nearest integer.
 
-- Evidence: [control candidate](../../reference-data/provenance/composite-control-candidate-2026-09-06.json):
+- Evidence: [control candidate](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-control-candidate-2026-09-06.json):
   four rifle baselines and two shotgun holdouts; M433 grips 20/20.
 - `ControlAttributeDelegate1` arguments: `RecoilAmount`, `RecoilVariation`, `RateOfFire`.
   The older `ControlAttributeDelegate` takes only `RecoilAmount`.
@@ -153,7 +153,7 @@ Candidate: `D + 4*A + S + 2*M + 4*Z + 4*canFireWhileSprinting`, with index input
 D = `WeaponDeployTimeIndex`, A = `AnimationZoomSettingsIndex`, S = `SprintSettingsIndex`,
 M = `WeaponZoomedMoveSpeedMultiplierIndex`, Z = `MovingZoomedMinAnglesIndex`.
 
-- Evidence: [mobility inputs](../../reference-data/provenance/composite-mobility-inputs-2026-09-06.json):
+- Evidence: [mobility inputs](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-mobility-inputs-2026-09-06.json):
   delegate operands support the weights; M433 attachment deltas 20/20.
 - Open: the deploy index and `CanFireWhileSprinting` sourcing; a -10 cluster on carbine screenshots.
 
@@ -162,11 +162,11 @@ M = `WeaponZoomedMoveSpeedMultiplierIndex`, Z = `MovingZoomedMinAnglesIndex`.
 - The weapon-customization UI bindings (`NumericalStatsDBD`, `IconizedAttributesDBD`)
   receive finished name, value and delta. They contain no weights.
 - Label ids for the four stats are not referenced in the exported UI, Portal or
-  GameSetup assets ([string scan](../frosty/UI_TEXT.md#string-usage-scan)).
+  GameSetup assets ([string scan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#string-usage-scan)).
 - Companion Battlefield bundles the same Precision tables, a Control table and a
-  Hipfire table ([summary](../frosty/UI_TEXT.md#companion-battlefield-composite-models)).
+  Hipfire table ([summary](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#companion-battlefield-composite-models)).
   Treat it as third-party evidence.
-- Earlier record: [composite category stat investigation](../archive/FROSTY_LIVE_REVIEW_2026-09-06.md#composite-category-stat-investigation).
+- Earlier record: [composite category stat investigation](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_LIVE_REVIEW_2026-09-06.md#composite-category-stat-investigation).
 
 ## Files and commands
 
@@ -194,7 +194,7 @@ which lists the asset as stale). Live data: `data/` at `a5d8227` (VSSM and L115 
 1.4.3.0 on 16 SEP; the VSSM change only rescales `recoilV`, so the tier keys are unchanged).
 Audit: `frosty-panel-audit-2026-09-07.json` (3,347 records). The 14 SEP counts above are
 historical observations, not targets. Machine-readable result:
-[frosty-precision-check-2026-09-17.json](../../reference-data/provenance/frosty-precision-check-2026-09-17.json).
+[frosty-precision-check-2026-09-17.json](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-precision-check-2026-09-17.json).
 
 ### Baseline and result
 
@@ -301,7 +301,7 @@ the 6 SEP evidence.
 `scripts/frosty-composite-check.mjs` resolves every mapped record, applies the ledgers, and tests
 Control and Hipfire absolutely and all three as deltas against the same-slot None/default capture
 (the delta test needs no Mobility base inputs). Result file:
-[frosty-composite-check-2026-09-17.json](../../reference-data/provenance/frosty-composite-check-2026-09-17.json).
+[frosty-composite-check-2026-09-17.json](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-composite-check-2026-09-17.json).
 
 | Stat | Absolute match | Delta match | Main remaining families |
 |---|---|---|---|
@@ -485,7 +485,7 @@ fix KTS100 Classic Grip Pod mislabeled as Ribbed Vertical, and the 60 Fast magaz
 to the default drum. Correct values must be compared with the attachment actually shown.
 
 The research checkers now load these ledgers. Rules and limits are recorded in
-[panel rule evidence](../../reference-data/provenance/composite-panel-rules-2026-09-21.json):
+[panel rule evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-panel-rules-2026-09-21.json):
 
 - Shotguns retain resolved ammunition shifts and add the WB firing-dispersion angle.
 - Burst ergonomics preview non-burst recoil for Control, as already observed for Precision.
@@ -496,7 +496,7 @@ The research checkers now load these ledgers. Rules and limits are recorded in
 
 ### L115 Standard Suppressor: missing hipfire binding
 
-The [versioned trace](../../reference-data/provenance/l115-standard-suppressor-hipfire-2026-09-21.json)
+The [versioned trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/l115-standard-suppressor-hipfire-2026-09-21.json)
 links the L115 Bushwacker attachment through its ability branch to selector
 `276be3b0-2455-46b7-a85e-52c37aa5b3b8` (`U_WPM_MZL_Suppressor01_W20`). The WB includes the
 shared modifier, which provides suppression effects. The separate `GS_L115A3` hip-dispersion
@@ -533,7 +533,7 @@ preserves previous records, original filenames, current filenames and image hash
 Direct execution of both research checkers against the [current panel input](../../reference-data/attachment-audit/composite-current-panels-2026-09-21.json)
 matched **131/131 Hipfire, 131/131 Precision, 131/131 Control and 131/131 Mobility**.
 This covers 65 EF88, 64 BROD 3 and 2 KTS100 detail panels; it excludes the two overviews.
-[Results and input hashes](../../reference-data/provenance/composite-current-results-2026-09-21.json).
+[Results and input hashes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-current-results-2026-09-21.json).
 
 Luna helped with visual transcription. Primary review corrected transcription and identity
 mapping errors before integration. In particular, BROD 3 Flashlight reads Hipfire 51,
@@ -564,7 +564,7 @@ The 1.4.3.0 Precision table matches all 17 new panels, including the three VSSM
 grips at 83. This resolves those current observations, not every historical VSSM
 capture. Hipfire also matches 17/17.
 
-The [two-version Tungsten Core trace](../../reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json)
+The [two-version Tungsten Core trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json)
 shows selector `68ba8281-7079-48a3-b53a-ff5bf30c63da` bound to
 `GRM_Recoil_AMO_Bolt_M10` on M2010 ESR, PSR (`MRAD`) and SV-98 (`SV98M`).
 Its ADS and hip recoil amount operands are signed **-6** (`0xfffffffa`), with
@@ -584,7 +584,7 @@ Do not apply this to all sniper rifles: L115 binds the normal one-step modifier;
 EF88 does too. MiniFix contains both modifiers under different masks and needs
 separate activation review. Production ammo data remains unchanged.
 
-The [current results](../../reference-data/provenance/composite-remaining-results-2026-09-21.json)
+The [current results](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-remaining-results-2026-09-21.json)
 leave six Mobility differences: five L115 panels and 18.5KS-K Slim Angled.
 The earlier 131-panel batch still matches Hipfire, Control and Mobility after
 the research input correction. General composed loadouts and native provider
@@ -653,7 +653,7 @@ not all combinations or gameplay activation. KS's other binding field remains
 unresolved. Production composite integration remains on hold.
 
 [Readings and loadouts](../../reference-data/attachment-audit/composite-combination-panels-2026-09-21.json)
-and [results with source hashes](../../reference-data/provenance/composite-combination-results-2026-09-21.json).
+and [results with source hashes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-combination-results-2026-09-21.json).
 
 ### 18.5KS-K ADS indicator follow-up (21 September)
 

@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Ownership register](REGISTER.md) · [Source policy](../DATA_SOURCES.md) · [Game update guide](../GAME_UPDATE_GUIDE.md)
 
-Checked against `b3e67bf` on 22 September 2026.
+Checked against `b3e67bf` on 22 September 2026. Frosty research tooling moved to the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo on 29 September 2026. Commands for `scripts/frosty-*.py` files that are not in this repo run from a checkout of that repo (beside this one; see its README).
 
 ## Source authority is field-specific
 
@@ -43,13 +43,13 @@ flowchart LR
 
 **Damage source:** `weapons[].damageSource` names Frosty projectile curves for
 every weapon. The M45A1 keeps the reviewed 75 m discontinuity. See the
-[damage review](../../reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
+[damage review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
 
 ## Build snapshots
 
 Each Frosty data build is kept as `BF6 Datamining\builds\<build>\` (`xml\`,
 `capture\`, `reports\`) with `BUILD.json` and a SHA-256 `MANIFEST.tsv`.
-[`frosty-build.py`](../../scripts/frosty-build.py) records new exports, refuses
+[`frosty-build.py`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/scripts/frosty-build.py) records new exports, refuses
 changes to existing files, seals old builds and guards against exporting from the
 wrong installed client.
 
@@ -97,7 +97,7 @@ flowchart TB
 
 The steps follow stages 0–9 of the [Game update guide](../GAME_UPDATE_GUIDE.md).
 The 1.4.3.0 run is the worked example
-([update plan](../archive/FROSTY_1.4.3.0_UPDATE_PLAN.md)).
+([update plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md)).
 
 ## From local exports to an accepted change
 
@@ -229,7 +229,7 @@ gravity/drag from current XML. It never substitutes a generic projectile. Both
 generated files cover all weapon/ammo selections.
 
 [`frosty-collateral.py`](../../scripts/frosty-collateral.py) reads the retained
-[global compiled trace](../../reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json),
+[global compiled trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json),
 not fresh XML. It applies base plus shifts, clamps once to source rows 0–9 and
 writes the complete per-weapon/ammo map. A new build needs a refreshed trace as
 well as a rerun.
@@ -283,10 +283,10 @@ creates descriptions and `byWeapon[weapon][slot][attachment]` lookups. Approved
 other weapons' missing text. As of 22 September 2026 the tooltip file covers
 2,966 of 3,011 non-optic selections (2,948 Frosty text, 18 approved panel
 transcriptions; 45 deferred), plus Iron Sights on all 63 weapons. See the
-[current mapping audit](../frosty/UI_TEXT.md#current-site-mapping).
+[current mapping audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping).
 
 Weapon names and descriptions are promoted separately;
-[`frosty-descriptions.py`](../../scripts/frosty-descriptions.py) produces
+[`frosty-descriptions.py`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/scripts/frosty-descriptions.py) produces
 candidates. `data/weapon-role-tags.json` is reference-only. A tooltip never
 applies an effect.
 

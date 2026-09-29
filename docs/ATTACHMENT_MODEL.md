@@ -84,7 +84,7 @@ values stop generation. [Generated evidence](../reference-data/provenance/frosty
 retains source references and hashes. The current export has 234 source records
 for 233 unique selections, because KTS100 Short has two agreeing source records.
 M4A1 Basic remains 200 ms; both VSSM barrels remain 250 ms with other defaults.
-See the [generated attachment values](frosty/ATTACHMENTS.md#generated-site-values)
+See the [generated attachment values](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#generated-site-values)
 for further source-generation candidates and limits.
 
 Grip handling and laser spread use per-weapon `frostyModifiers` in their catalog
@@ -141,7 +141,7 @@ Training has net amount +1 and variation +3. These source-backed fields replace
 the old whole-record assumption flags; the newly applied hip effects do not
 change the established ADS effects or burst cadence.
 
-[Field evidence](../reference-data/provenance/frosty-assumption-review.json)
+[Field evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-assumption-review.json)
 records operation, source status, simulation support, XML path, GUID, field path,
 raw operand, and hashes separately. The existing burst cadence and the native
 recoil/recovery equation are not proved by this modifier trace. `GRM_AutoIdentifier_P00` adds -0.0006 seconds to recoil duration in both aim
@@ -273,7 +273,7 @@ muzzle exceptions are retained. Iron sights carry ×0.6666667 through
 none in game (bug 16). Optics carry no sway factor. Camera sway is not modelled.
 M4A1 recordings show the reduction (vertical sway ratio 0.68 against ROX) and BROD 3
 recordings show none. The same recordings support multiplication: M4A1 iron sights with
-the 20 Rnd magazine give 0.28 against ROX with 30 Rnd, where 0.667 × 0.444 = 0.296 ([captures](../reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json)).
+the 20 Rnd magazine give 0.28 against ROX with 30 Rnd, where 0.667 × 0.444 = 0.296 ([captures](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json)).
 
 Variable High and Thermal sights set `adsMoveSpeedTierShift: 1` (one ADS-move tier
 slower, source `WME_ADSMoveSpeed_M05`). M4A1 menu captures confirm it: ADS move
@@ -315,7 +315,7 @@ recoil model. VSSM Folding Stock retains its marker. Heavy, Heavy Extended, Cryo
 Flashlight, Hipfire Taclight, Combo Red/Green, Linear Comp and the three burst
 entries no longer carry that marker. In-game tooltip descriptions are a separate
 display layer and do not add or change attachment effects. See the
-[description audit](frosty/UI_TEXT.md#current-site-mapping) for the
+[description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping) for the
 18 approved panel-text exceptions and remaining missing descriptions.
 
 
@@ -333,10 +333,10 @@ add -1 to the moving-ADS spread row index. These are per-weapon effects. The
 operator approved these source composition choices. On the five sniper rifles the
 Slim Angled action selects the Full Angled `FastBOLT01_W05` package, which carries
 the dispersion binding. Interdictor and Mini Scout HUD captures and matching Mobility
-panels support the penalty ([captures](../reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json)).
+panels support the penalty ([captures](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json)).
 M2010 ESR Slim Angled selects `FastBOLT02_W15` and has no penalty.
 KS18K Slim Angled uses zero moving-ADS penalty. Its similarly named GDM modifier
 belongs to `Field_b30a73ed`, not moving-ADS collection `Field_2ffeb6ac`.
-The [21 September indicator captures](../reference-data/provenance/ks18k-ads-indicator-2026-09-21.json)
+The [21 September indicator captures](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/ks18k-ads-indicator-2026-09-21.json)
 support the retained zero; the other collection's effect and pellet distribution
-remain unresolved. See the [attachment trace](frosty/ATTACHMENTS.md#weapon-attributes-attachment-tracing-21-september-2026).
+remain unresolved. See the [attachment trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#weapon-attributes-attachment-tracing-21-september-2026).

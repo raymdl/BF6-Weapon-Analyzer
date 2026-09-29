@@ -9,7 +9,7 @@
 Some evidence links refer to local recordings, screenshots, or working audit files
 that are not included in the published repository.
 
-The [September 13 audit status](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
+The [September 13 audit status](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md)
 records the subsequent hit-zone, projectile, collateral, distribution and light
 integrations. Old uniform-radius and estimated light-recovery descriptions below
 do not describe the current model.
@@ -37,18 +37,18 @@ completed analysis does not mean every native mechanic is known.
 | [Recoil implementation validation](RECOIL_MODEL_VALIDATION_2026-09-11.md) | Completed implementation and recording comparison; current formulas and exceptions are in the recoil/spread guide. |
 | [AK4D Heavy analysis](AK4D_HEAVY_BARREL_RECORDING_ANALYSIS_2026-09-11.md) | Completed comparison and accepted source-factor correction. Transfer and idle questions remain in the active handoff. |
 | [VSSM analysis](VSSM_RECORDING_ANALYSIS_2026-09-11.md) | Completed recording/screenshot analysis and accepted index-4 correction. Transition and angular-calibration limits remain open. |
-| [Stored-spread source handoff](HANDOFF_FROSTY_SPREAD_2026-09-10.md) | Stored moving-ADS correction completed; later VSSM correction accepted. Current table rules are in stat ladders. |
-| [Site Frosty review](FROSTY_SITE_REVIEW_2026-09-07.md) | Dated mixed review; some findings later implemented. Current open source/audit areas are summarized in the active handoff. |
+| [Stored-spread source handoff](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/HANDOFF_FROSTY_SPREAD_2026-09-10.md) | Stored moving-ADS correction completed; later VSSM correction accepted. Current table rules are in stat ladders. |
+| [Site Frosty review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_SITE_REVIEW_2026-09-07.md) | Dated mixed review; some findings later implemented. Current open source/audit areas are summarized in the active handoff. |
 
 ## Completed implementation and change records
 
 | Historical record | Status / present reference |
 |---|---|
 | [Code review remediation plan](CODE_REVIEW_REMEDIATION_PLAN.md) | August implementation completed through Stage 8 according to its ledger. Old unchecked task/publication boxes are historical, not current work orders. Replaced by [architecture](../ARCHITECTURE.md), [maintenance](../../MAINTENANCE.md), and [tests](../TESTS.md). |
-| [Draw-time model](FROSTY_DRAW_TIME_MODEL.md) | Retained source/integration checkpoint; current equations, precision, table selection and bounds are in [stat ladders](../STAT_LADDERS.md). |
-| [Array review and implementation](FROSTY_ARRAY_REVIEW_2026-09-09.md) | Contains a pre-integration comparison followed by implemented changes. Early references to old arrays are superseded by [stat ladders](../STAT_LADDERS.md) and [data reference](../DATA_REFERENCE.md). |
-| [Magazine model update](FROSTY_MAGAZINE_MODEL_UPDATE_2026-09-07.md) | Completed reviewed update and bounded investigation. Current composition is in [attachment model](../ATTACHMENT_MODEL.md); timing uncertainties remain in [limitations](../MODEL_LIMITATIONS.md). |
-| [Site data fixes](FROSTY_SITE_DATA_FIXES_2026-09-07.md) | Completed correction record. Consult maintained `data/` and [sources](../DATA_SOURCES.md) for the live contract. |
+| [Draw-time model](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_DRAW_TIME_MODEL.md) | Retained source/integration checkpoint; current equations, precision, table selection and bounds are in [stat ladders](../STAT_LADDERS.md). |
+| [Array review and implementation](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_ARRAY_REVIEW_2026-09-09.md) | Contains a pre-integration comparison followed by implemented changes. Early references to old arrays are superseded by [stat ladders](../STAT_LADDERS.md) and [data reference](../DATA_REFERENCE.md). |
+| [Magazine model update](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_MAGAZINE_MODEL_UPDATE_2026-09-07.md) | Completed reviewed update and bounded investigation. Current composition is in [attachment model](../ATTACHMENT_MODEL.md); timing uncertainties remain in [limitations](../MODEL_LIMITATIONS.md). |
+| [Site data fixes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_SITE_DATA_FIXES_2026-09-07.md) | Completed correction record. Consult maintained `data/` and [sources](../DATA_SOURCES.md) for the live contract. |
 
 ### Moved from `working/` on 16 September 2026
 
@@ -57,17 +57,17 @@ completed analysis does not mean every native mechanic is known.
 | [Claude session handoff, 12 September](CLAUDE_SESSION_HANDOFF_2026-09-12.md) | Merged through PR #29 and PR #31. Open recording questions are in the [active handoff](../working/BF6_RECOIL_SPREAD_RECORDING_HANDOFF.md). |
 | [Recording reuse analysis](RECORDING_REUSE_ANALYSIS_2026-09-12.md) | Completed analysis. Its measured results stand; its model descriptions are superseded by the [recoil/spread guide](../RECOIL_SPREAD_MODEL.md). |
 | [Runtime data validation audit](FALLBACK_AUDIT_2026-09-14.md) | Implemented: strict data validation and the error notification (`ui/data-errors.js`). See [tests](../TESTS.md). |
-| [PP-19 53-round compatibility trace](PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) | Implemented for all weapons by `scripts/frosty-attachment-compatibility.py`. See the [Frosty data graph](../frosty/DATA_GRAPH.md#slots-and-prerequisites). |
-| [Interdictor 1.4.3.0 check](INTERDICTOR_1.4.3.0_CHECK.md) | Completed. Its unchecked boxes were done in the [1.4.3.0 update plan](FROSTY_1.4.3.0_UPDATE_PLAN.md) (damage curve, limb 1.0, iron sights 15 points). |
-| [Frosty 1.4.3.0 update plan](FROSTY_1.4.3.0_UPDATE_PLAN.md) | Completed; the operator closed it on 16 September. Its last open box (attachment bug recheck) is covered by the [1.4.3.0 recheck](../ATTACHMENT_BUGS.md#1430-recheck-15-september-2026). Use the [game update guide](../GAME_UPDATE_GUIDE.md) for the next update. |
-| [Weapon display names and description audit](FROSTY_DISPLAY_NAMES.md) | Merged into [UI text](../frosty/UI_TEXT.md). |
-| [UI strings review](FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) | Merged into [UI text](../frosty/UI_TEXT.md); the Precision provider question is in [open questions](../frosty/OPEN_QUESTIONS.md). |
-| [Global-candidates audit](FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) | Accepted results are in [Frosty weapons](../frosty/WEAPONS.md) and [attachments](../frosty/ATTACHMENTS.md); remaining validation is in [open questions](../frosty/OPEN_QUESTIONS.md). Early checkpoints are historical. |
-| [Stat discovery](FROSTY_STAT_DISCOVERY_2026-09-13.md) | Merged into [Frosty weapons](../frosty/WEAPONS.md) (recovery law, traits, unused fields). The operator decided to document these without model changes. |
-| [Attachment generation review](FROSTY_ATTACHMENT_GENERATION_2026-09-13.md) | Merged into [Frosty attachments](../frosty/ATTACHMENTS.md#generated-site-values). Its comparison counts describe the pre-change snapshot. |
-| [Unmatched Frosty records, 13 September](FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) | Dated reverse inventory. Its open items are in [open questions](../frosty/OPEN_QUESTIONS.md#attachments). |
-| [Frosty docs consolidation](FROSTY_DOCS_CONSOLIDATION.md) | Completed plan for the move to [`docs/frosty/`](../frosty/README.md). |
-| [Optics from Frosty data plan](OPTIC_FROSTY_SOURCE_PLAN.md) | Completed. Stage 3 used `frosty-optic-category-mapping-2026-09-15.json`; `scripts/optic-costs.test.mjs` checks the result. |
+| [PP-19 53-round compatibility trace](PP19_53_ROUND_COMPATIBILITY_2026-09-14.md) | Implemented for all weapons by `scripts/frosty-attachment-compatibility.py`. See the [Frosty data graph](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites). |
+| [Interdictor 1.4.3.0 check](INTERDICTOR_1.4.3.0_CHECK.md) | Completed. Its unchecked boxes were done in the [1.4.3.0 update plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md) (damage curve, limb 1.0, iron sights 15 points). |
+| [Frosty 1.4.3.0 update plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md) | Completed; the operator closed it on 16 September. Its last open box (attachment bug recheck) is covered by the [1.4.3.0 recheck](../ATTACHMENT_BUGS.md#1430-recheck-15-september-2026). Use the [game update guide](../GAME_UPDATE_GUIDE.md) for the next update. |
+| [Weapon display names and description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_DISPLAY_NAMES.md) | Merged into [UI text](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md). |
+| [UI strings review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_UI_STRINGS_REVIEW_2026-09-13.md) | Merged into [UI text](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md); the Precision provider question is in [open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md). |
+| [Global-candidates audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_GLOBAL_CANDIDATES_2026-09-13.md) | Accepted results are in [Frosty weapons](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md) and [attachments](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md); remaining validation is in [open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md). Early checkpoints are historical. |
+| [Stat discovery](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_STAT_DISCOVERY_2026-09-13.md) | Merged into [Frosty weapons](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md) (recovery law, traits, unused fields). The operator decided to document these without model changes. |
+| [Attachment generation review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_ATTACHMENT_GENERATION_2026-09-13.md) | Merged into [Frosty attachments](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#generated-site-values). Its comparison counts describe the pre-change snapshot. |
+| [Unmatched Frosty records, 13 September](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md) | Dated reverse inventory. Its open items are in [open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md#attachments). |
+| [Frosty docs consolidation](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_DOCS_CONSOLIDATION.md) | Completed plan for the move to [`docs/frosty/`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/README.md). |
+| [Optics from Frosty data plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/OPTIC_FROSTY_SOURCE_PLAN.md) | Completed. Stage 3 used `frosty-optic-category-mapping-2026-09-15.json`; `scripts/optic-costs.test.mjs` checks the result. |
 
 ## Dated investigations and mixed progress logs
 
@@ -76,15 +76,15 @@ Their original date/snapshot matters; a candidate does not imply current behavio
 
 | Historical record | Scope / current reference |
 |---|---|
-| [Frosty integration log](FROSTY_INTEGRATION.md) | Long chronological integration/research trail with superseded checkpoints. Use [data sources](../DATA_SOURCES.md), [attachment model](../ATTACHMENT_MODEL.md) and [limitations](../MODEL_LIMITATIONS.md). |
-| [Live review](FROSTY_LIVE_REVIEW_2026-09-06.md) | Capture/composite-stat and animation investigation; unresolved native arithmetic remains evidence, not implemented functionality. See [limitations](../MODEL_LIMITATIONS.md). |
-| [Attachment comparison](FROSTY_ATTACHMENT_COMPARISON_2026-09-06.md) | Mixed correction/deferment ledger. Current aim-state effects and retained approximations are documented in [attachment model](../ATTACHMENT_MODEL.md). |
-| [Attachment review details](FROSTY_ATTACHMENT_REVIEW_DETAILS_2026-09-06.md) | Detailed supporting records for the comparison; source instances are not a current defect count. See [evidence index](../../reference-data/provenance/README.md). |
-| [Magazine identity review](FROSTY_MAGAZINE_IDENTITY_REVIEW_2026-09-07.md) | Identity decisions feeding the subsequent model update; original provisional statuses stay preserved. See [data sources](../DATA_SOURCES.md). |
-| [Manifest second pass](FROSTY_MANIFEST_SECOND_PASS_2026-09-06.md) | Dated graph/dependency investigation, not a runtime manifest. See [architecture](../ARCHITECTURE.md). |
+| [Frosty integration log](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_INTEGRATION.md) | Long chronological integration/research trail with superseded checkpoints. Use [data sources](../DATA_SOURCES.md), [attachment model](../ATTACHMENT_MODEL.md) and [limitations](../MODEL_LIMITATIONS.md). |
+| [Live review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_LIVE_REVIEW_2026-09-06.md) | Capture/composite-stat and animation investigation; unresolved native arithmetic remains evidence, not implemented functionality. See [limitations](../MODEL_LIMITATIONS.md). |
+| [Attachment comparison](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_ATTACHMENT_COMPARISON_2026-09-06.md) | Mixed correction/deferment ledger. Current aim-state effects and retained approximations are documented in [attachment model](../ATTACHMENT_MODEL.md). |
+| [Attachment review details](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_ATTACHMENT_REVIEW_DETAILS_2026-09-06.md) | Detailed supporting records for the comparison; source instances are not a current defect count. See [evidence index](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/README.md). |
+| [Magazine identity review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_MAGAZINE_IDENTITY_REVIEW_2026-09-07.md) | Identity decisions feeding the subsequent model update; original provisional statuses stay preserved. See [data sources](../DATA_SOURCES.md). |
+| [Manifest second pass](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_MANIFEST_SECOND_PASS_2026-09-06.md) | Dated graph/dependency investigation, not a runtime manifest. See [architecture](../ARCHITECTURE.md). |
 | [Online blocker review](BLOCKER_ONLINE_REVIEW_2026-09-06.md) | Historical search for evidence on unresolved behavior; no claim of current external re-verification. See [limitations](../MODEL_LIMITATIONS.md). |
 | [Offsets thread review](OFFSETS_THREAD_REVIEW_2026-09-06.md) | Historical native-layout research. Layout candidates do not establish simulator formulas; see [sources](../DATA_SOURCES.md). |
-| [Audit ledger tool review](FROSTY_AUDIT_LEDGER_REVIEW_2026-09-23.md) | Early correctness review of `frosty-audit-coverage.py`. Its findings (unresolved imports, `$badString`, per-run script hash) are addressed in the current ledger; see [tools](../frosty/TOOLS.md#exhaustive-audit-coverage-ledger). |
+| [Audit ledger tool review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_AUDIT_LEDGER_REVIEW_2026-09-23.md) | Early correctness review of `frosty-audit-coverage.py`. Its findings (unresolved imports, `$badString`, per-run script hash) are addressed in the current ledger; see [tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#exhaustive-audit-coverage-ledger). |
 | [Portal SDK research](PORTAL_SDK_RESEARCH_2026-09-06.md) | Historical feasibility research, not a shipped Portal integration or current SDK recommendation. See [sources](../DATA_SOURCES.md). |
 
 ## Evidence access and preservation
@@ -109,7 +109,7 @@ predictions of the current model. Frozen published site versions are separate:
 
 The twelve KS18K ADS-indicator captures support the zero moving-ADS penalty now
 used by the site. Its alternate native field remains unidentified. Remaining
-questions are tracked in [Frosty open questions](../frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up).
+questions are tracked in [Frosty open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up).
 The active recording handoff remains in `docs/working/`; it is not complete.
 
 - [Weapon Attributes release check](WEAPON_ATTRIBUTES_RELEASE_CHECK.md): archived

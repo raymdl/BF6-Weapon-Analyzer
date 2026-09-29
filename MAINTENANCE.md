@@ -70,7 +70,7 @@ For generation, omit `--check` on the first three; replace it with `--apply` on
 the assumption review. Inspect catalog and evidence diffs together. Keep
 per-weapon overrides, source base coordinates and magazine shifts consistent.
 Do not promote unresolved fields or source-only attachment availability.
-The [Frosty attachment notes](docs/frosty/ATTACHMENTS.md#generated-site-values)
+The [Frosty attachment notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#generated-site-values)
 records accepted mappings and remaining exceptions.
 
 Regenerate shared rails and attachment dependencies from Frosty rather than
@@ -88,8 +88,8 @@ Keep positional URL tokens stable. Check replacement, empty selection, point
 costs, legacy links, prerequisite changes and weapon switching.
 
 After reviewing compatibility changes, update the
-[Frosty asset findings](docs/frosty/DATA_GRAPH.md#slots-and-prerequisites)
-with source hashes, evidence pointers and limits. Run
+[Frosty asset findings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites)
+with source hashes, evidence pointers and limits. In the [research repo](https://github.com/raymdl/BF6-Frosty-Research), run
 `python scripts/frosty-watchlist-merge.py --datamining <datamining-root>` to review
 collection changes, then add `--write` to save them. Preserve earlier findings.
 
@@ -106,7 +106,7 @@ in-game check; record confirmed cases in
 
 ## Regenerate attachment tooltips
 
-Follow the [description audit commands](docs/frosty/UI_TEXT.md#regeneration-and-verification)
+Follow the [description audit commands](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#regeneration-and-verification)
 to regenerate `data/attachment-tooltips.json` and both mapping reports together.
 Keep `--optic-mapping-json` in the command. The generator requires the original
 local AAM XML, Frosty export, and ignored capture library; the small mapper tests
@@ -173,8 +173,8 @@ processes.
 The local FrostyCmd also has `export-strings` (decode a localization language
 asset to `id<TAB>text`) and `scan-string-usage` (find string ids in EBX assets under
 path prefixes, with level assets skipped and a 12 GB stop). FrostyCmd is not part of
-this repository; [this patch](reference-data/provenance/frostycmd-string-tools-2026-09-13.patch)
-adds both commands. See [weapon display names](docs/frosty/UI_TEXT.md#weapon-names) for
+this repository; [this patch](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frostycmd-string-tools-2026-09-13.patch)
+adds both commands. See [weapon display names](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#weapon-names) for
 the procedure.
 
 ```sh
@@ -204,7 +204,7 @@ fresh XML. After a game update, refresh and review that trace first. It sums bas
 and ammo index shifts, clamps to the ten-row table, and checks roster coverage.
 
 Distribution exponents and light factors have separate source evidence in the
-[evidence index](reference-data/provenance/README.md). Preserve the Interdictor
+[evidence index](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/README.md). Preserve the Interdictor
 moving-ADS exponent and the light target fields. Do not apply the retained idle
 light operand until an idle-state model has been reviewed.
 

@@ -56,7 +56,7 @@ records reviewed text and data conflicts. Source-backed modifiers do not establi
 Attachment tooltips cover 2,966 non-optic selections using Frosty UI descriptions
 and 18 approved game-panel transcriptions, plus Iron Sights on all 63 weapons.
 The remaining 45 non-optic descriptions are
-deferred. See the [description audit](docs/frosty/UI_TEXT.md#current-site-mapping)
+deferred. See the [description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
 for the exact scope and source boundaries.
 
 ## Run locally
@@ -71,6 +71,8 @@ Open <http://localhost:5174/>. Use HTTP rather than opening `index.html` through
 `file://`, because the application fetches its JSON data.
 
 ## Documentation
+
+Frosty source research (research queue, topic pages, dated receipts and research scripts) lives in the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo. This repo keeps the receipts its data and tests pin, the generator scripts listed in MAINTENANCE.md, and the generated `reference-data/frosty/lead-index.json` and `site-evidence.json`.
 
 | Purpose | Read |
 |---|---|

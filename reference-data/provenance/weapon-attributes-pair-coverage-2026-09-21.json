@@ -1,8 +1,0 @@
-{
-  "scope": "Unique normalized builds from every pair of slots on defaults, at most 100 points",
-  "checked": 71166,
-  "missing": [],
-  "groups": {},
-  "date": "2026-09-21",
-  "rule": "GRT-BC and SL9 retain non-burst recoil inputs for menu attributes; selected RPM retained"
-}

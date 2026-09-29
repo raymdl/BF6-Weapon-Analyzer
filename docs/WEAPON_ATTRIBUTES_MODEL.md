@@ -321,11 +321,11 @@ alternate KS dispersion field. No matching bar establishes shot-pattern behavior
 - [Control/Hipfire/Mobility checker](../scripts/frosty-composite-check.mjs)
 - [Precision checker](../scripts/frosty-precision-check.mjs)
 - [Current Precision tables](../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json)
-- [131-panel evidence](../reference-data/provenance/composite-current-results-2026-09-21.json)
-- [17-panel evidence](../reference-data/provenance/composite-remaining-results-2026-09-21.json)
-- [Paired-loadout evidence](../reference-data/provenance/composite-combination-results-2026-09-21.json)
+- [131-panel evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-current-results-2026-09-21.json)
+- [17-panel evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-remaining-results-2026-09-21.json)
+- [Paired-loadout evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-combination-results-2026-09-21.json)
 - [VSSM 43-panel input](../reference-data/attachment-audit/composite-vssm-panels-2026-09-22.json)
-- [Research rules and their confidence](../reference-data/provenance/composite-panel-rules-2026-09-21.json)
+- [Research rules and their confidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-panel-rules-2026-09-21.json)
 - [Mobility source trace](../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
 - [Dated investigation history](archive/COMPOSITE_STATS_FINDINGS.md)
 
@@ -416,7 +416,7 @@ and other attachments. Results match GRT-BC 26/37 and SL9 78/55; Compensated Bra
 hover gives 27/40 and 80/59. The simulator keeps its source burst recoil modifiers.
 This is an observed panel-input rule, not a decoded native provider. The repeated
 71,166-build pair scan returns no missing Precision values.
-See [capture evidence](../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
+See [capture evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/burst-panel-inputs-2026-09-21.json).
 
 ## Burst Training follow-up
 

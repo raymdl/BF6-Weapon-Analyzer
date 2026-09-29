@@ -64,7 +64,7 @@ row values; its native lookup code has not been decoded.
 For example, base index 5 gives 0.571429; adding three steps gives row 8,
 0.833334. A sum above 9 gives 1.0. The generated
 `COLLATERAL_MULT_OVERRIDE` map covers all 63 weapons and 328 ammo selections.
-See the [source table trace](../reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json)
+See the [source table trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json)
 and [generator](../scripts/frosty-collateral.py).
 
 ## ADS-in, ADS movement, and moving ADS spread
@@ -111,7 +111,7 @@ exactly four zoomed non-stationary states: standing, crouching and prone moving
 share one minimum (63 of 64 weapons), and standing jumping/sprinting is larger in
 all 64. The GS values are uniform placeholders (0.35/0.6, or 0.30/0.6), so values
 do not confirm the order. The analyzer uses only the moving minimum; the fourth
-column is not modeled. [GRX name evidence](../reference-data/provenance/frosty-grx-field-names-2026-09-13.json).
+column is not modeled. [GRX name evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-grx-field-names-2026-09-13.json).
 
 M240L 75 Rnd adds one moving-spread index: 0.32 to 0.22 degrees with no other
 spread modifiers. L110/M123K 200 Rnd now use zero magazine spread shift, matching

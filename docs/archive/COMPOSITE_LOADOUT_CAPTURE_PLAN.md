@@ -2,7 +2,7 @@
 
 > Archived 21 September 2026. This is a completed research record, not the current implementation specification.
 > Use the [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md) for current behavior and
-> [Frosty open questions](../frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up) for remaining research.
+> [Frosty open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md#weapon-attributes-follow-up) for remaining research.
 > Earlier hold/pending statements and capture instructions below are historical. The runtime now matches 640 values from 160 current panels.
 
 
@@ -12,7 +12,7 @@ Composite-stat integration into the site is on hold.
 
 **Completed:** all 12 panels match all four composite stats. Actual captures use
 4 Rnd Fast for KS and 200 mm ASM Suppressed for VSSM. KS-B, L-A, L-B, S-B and
-V-B are attachment previews. See [recorded results](../../reference-data/provenance/composite-combination-results-2026-09-21.json).
+V-B are attachment previews. See [recorded results](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-combination-results-2026-09-21.json).
 
 VSSM has two integrated suppressed barrels: **200 mm Factory — 30 points**
 (`vssm_suppressed`) and **200 mm ASM — 20 points** (`vssm_suppressed_asm`).

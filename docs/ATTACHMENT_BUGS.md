@@ -116,7 +116,7 @@ classification was a site interpretation error; see 1b.
   Interdictor None 35, Slim Angled 47, Full Angled 48; Mini Scout None 48, Slim
   Angled 63, Full Angled 63. The grip/None ratio (1.31-1.37) agrees with one ladder
   step, 0.32° to 0.43° (1.34). L115 Slim Angled is not captured.
-  [Capture evidence](../reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json).
+  [Capture evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json).
 - **Site.** −1 moving-ADS spread on Full Angled for all six, and on Slim Angled for
   PSR, SV-98, L115, Mini Scout and Interdictor. L115, Mini Scout and Interdictor
   were added on 14 September; the handling generator preserves these per-weapon
@@ -149,9 +149,9 @@ classification was a site interpretation error; see 1b.
 - **Site.** Corrected `ks18k` Slim Angled to `movingAdsSpreadTierMod: 0`.
   Source collection, panel and indicator evidence agree. Attachment cost remains 25.
   The runtime meaning of `Field_b30a73ed` remains unresolved.
-- **Capture evidence.** [ADS indicator measurements and source hashes](../reference-data/provenance/ks18k-ads-indicator-2026-09-21.json).
+- **Capture evidence.** [ADS indicator measurements and source hashes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/ks18k-ads-indicator-2026-09-21.json).
 - **Evidence.** [Mobility source trace](../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json)
-  and [current panel results](../reference-data/provenance/composite-remaining-results-2026-09-21.json).
+  and [current panel results](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/composite-remaining-results-2026-09-21.json).
 
 ### 2. M121 A2 and M45A1 special ammo keep the FMJ package
 
@@ -275,7 +275,7 @@ classification was a site interpretation error; see 1b.
   matching the game panel. The choice is marked as bugged.
 - **Status.** Missing source binding and unchanged game panel confirmed. Whether the
   omission is intentional is unknown. Actual firing spread has not been tested here.
-- **Evidence.** [Versioned source paths, hashes and selector bindings](../reference-data/provenance/l115-standard-suppressor-hipfire-2026-09-21.json).
+- **Evidence.** [Versioned source paths, hashes and selector bindings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/l115-standard-suppressor-hipfire-2026-09-21.json).
 
 ### 13. Sniper Tungsten Core recoil penalties are inconsistent
 
@@ -300,7 +300,7 @@ classification was a site interpretation error; see 1b.
   were added on 21 September. L115 and Interdictor remain at one step; Mini Scout
   retains its existing seven-step override. For multiplier 0.94, the increases
   are approximately 6.38%, 44.95% and 54.21% for one, six and seven steps.
-- **Source.** [Tungsten Core trace](../reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json).
+- **Source.** [Tungsten Core trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json).
 
 ### 14. Burst attachments: menu omits burst recoil modifiers; firing effect unresolved
 
@@ -383,7 +383,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   Do not treat this open question as a confirmed correction to those
   modifiers or extend it to other weapons from these tests alone.
 - **Evidence files.** Source and panel inputs:
-  [burst panel trace](../reference-data/provenance/burst-panel-inputs-2026-09-21.json).
+  [burst panel trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/burst-panel-inputs-2026-09-21.json).
   Local measurement artifacts are under `outputs/burst-factorial-analysis/`
   and `outputs/burst-cadence-comparison/`; these ignored outputs are not shipped.
 
@@ -435,10 +435,10 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   0.28, matching the multiplied factors (0.296). One short recording per setup does not give an
   exact in-game multiplier. The recordings are local
   (`reference-data/Recordings/09252026/Iron Sight Sway/`) and ignored by git; they are
-  not shipped. [Capture receipt](../reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json).
+  not shipped. [Capture receipt](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json).
 - **Status.** Source trace and in-game capture agree. The menu shows no sway value.
-- **Evidence.** [L62 reverse coverage](../reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json),
-  [Frosty sway notes](frosty/ATTACHMENTS.md#reverse-coverage-of-handling-velocity-and-sway-l62-25-september-2026).
+- **Evidence.** [L62 reverse coverage](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json),
+  [Frosty sway notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#reverse-coverage-of-handling-velocity-and-sway-l62-25-september-2026).
 
 ## Description errors
 
@@ -474,8 +474,8 @@ weapon's default magazine. All values are source-generated. Not checked in game.
 
 Found on 16 September 2026 in the 1.4.3.0 data. Full values, method and asset
 hashes are in the
-[optic render FOV report](../reference-data/provenance/frosty-optic-render-fov-2026-09-16.json)
-and the [Frosty attachment notes](frosty/ATTACHMENTS.md#optic-render-fov-and-zoom).
+[optic render FOV report](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-optic-render-fov-2026-09-16.json)
+and the [Frosty attachment notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#optic-render-fov-and-zoom).
 Render FOV is visual only. It does not change projectile mechanics or the stats on
 this site.
 
@@ -569,7 +569,7 @@ is a verified conflict between stored values and in-game behavior.
 - **Site.** `emptyRld` corrected from 3.284 to 3.2 (SOR-300SC) and 3.034 (GRT-CPS)
   on 23 September. Both `ReloadSpeed` values are 1. The site's reload values
   follow `ReloadTimeBulletsLeft / ReloadSpeed` for each entry; see
-  [reload values](frosty/WEAPONS.md#reload-values-and-empty-reload-capture-23-september-2026).
+  [reload values](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md#reload-values-and-empty-reload-capture-23-september-2026).
 - **Other sources.** Sym's `bf6.json` (1.4.2.0) also lists 3.284 for both weapons;
   the finding was shared with the Sym team.
 - **Evidence.** [Capture report](../reference-data/provenance/frosty-empty-reload-capture-2026-09-23.json);

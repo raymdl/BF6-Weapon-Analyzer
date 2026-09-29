@@ -3,13 +3,15 @@
 What to do when Battlefield 6 updates: how to capture the new build, decide what really
 changed, decode it correctly, and carry the result into the Analyzer.
 
+Frosty research tooling moved to the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo on 29 September 2026. Commands for `scripts/frosty-*.py` files that are not in this repo run from a checkout of that repo (beside this one; see its README).
+
 This is the durable procedure. The 1.4.3.0 run is the worked example and is kept as a
-one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](archive/FROSTY_1.4.3.0_UPDATE_PLAN.md);
+one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md);
 read it for the specific paths, counts and decisions of that update, not as the procedure.
 
-Tool commands are in [Frosty tools](frosty/TOOLS.md), field meanings in the
-[field map](frosty/FIELD_MAP.md), and the asset watchlist and per-asset findings in
-[`reference-data/frosty/`](../reference-data/frosty/README.md). Update them as you learn
+Tool commands are in [Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md), field meanings in the
+[field map](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/FIELD_MAP.md), and the asset watchlist and per-asset findings in
+[`reference-data/frosty/`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/frosty/README.md). Update them as you learn
 things, in the same session ([Recording what you learn](#recording-what-you-learn)).
 
 ---
@@ -19,7 +21,7 @@ things, in the same session ([Recording what you learn](#recording-what-you-lear
 Each data build lives in `BF6 Datamining\builds\<build>\` (`xml\`, `capture\`,
 `reports\`) with `BUILD.json` (identity, client versions, state) and `MANIFEST.tsv` (size
 and SHA-256 of every file). `scripts/frosty-build.py` manages them
-([Frosty tools](frosty/TOOLS.md#build-snapshots)).
+([Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#build-snapshots)).
 
 | State | Meaning | Rule |
 |---|---|---|
@@ -136,7 +138,7 @@ powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -Game
 ```
 
 Then XML-export the changed subset into `builds/<build>/xml/` with the batch command, and
-export strings. Full command lines are in [Frosty tools](frosty/TOOLS.md#frostycmd).
+export strings. Full command lines are in [Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#frostycmd).
 
 Write the text catalog files from the captured catalog:
 
@@ -422,11 +424,11 @@ For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
 Every reusable fact goes into the shared pages in the session you find it. Do not
 create a new document per investigation:
 
-- **[`docs/frosty/`](frosty/README.md)** — the topic pages: new field meanings in the
-  [field map](frosty/FIELD_MAP.md), asset links in the [data graph](frosty/DATA_GRAPH.md),
-  results in [weapons](frosty/WEAPONS.md), [attachments](frosty/ATTACHMENTS.md) or
-  [UI text](frosty/UI_TEXT.md), tool changes in [tools](frosty/TOOLS.md), and open items in
-  [open questions](frosty/OPEN_QUESTIONS.md).
+- **[`docs/frosty/`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/README.md)** — the topic pages: new field meanings in the
+  [field map](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/FIELD_MAP.md), asset links in the [data graph](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md),
+  results in [weapons](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md), [attachments](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md) or
+  [UI text](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md), tool changes in [tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md), and open items in
+  [open questions](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/OPEN_QUESTIONS.md).
 - **`reference-data/frosty/asset-findings.json`** — per-asset conclusions, with the question asked, the build
   inspected, the evidence pointer and the conditions that would require a revisit. Add a
   superseding finding rather than deleting an old one; mark blocked results
