@@ -162,6 +162,7 @@ def main():
     s.set_defaults(f=cmd_prior_work)
     s = sub.add_parser('review'); s.add_argument('--lead-dir', required=True); s.add_argument('--result')
     s.add_argument('--reread', type=int, default=2); s.add_argument('--seed', type=int, default=0); s.set_defaults(f=cmd_review)
+    sys.stdout.reconfigure(encoding='utf-8')  # Windows consoles default to cp1252; doc lines contain wider characters
     a = ap.parse_args(); a.f(a)
 
 if __name__ == '__main__':
