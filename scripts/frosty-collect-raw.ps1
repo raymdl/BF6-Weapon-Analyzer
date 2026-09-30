@@ -1,6 +1,9 @@
 <#
 Capture the full EBX catalog and selected raw EBX/resource streams without object decoding.
-Use a new OutputDirectory per build. Catalog-only runs omit RoutesFile.
+Use a new OutputDirectory per build. Catalog-only runs pass -Catalog and omit RoutesFile.
+The full catalog (about 110 MB) is written only with -Catalog: use it for build captures,
+hotfix checks and tools that read a capture's asset list (frosty-audit-coverage
+--collection-dir, frosty-audit-capture-review). Every run writes capture-identity.json.
 Existing raw files are not overwritten. Use a new directory for each capture.
 ResourceIdsFile is optional and contains one 16-digit hexadecimal resource ID per line.
 ResourceMetadataOnly records those IDs' SDK metadata without reading resource bodies.
@@ -17,6 +20,7 @@ param(
     [switch]$ResourceMetadataOnly,
     [string]$BundleRoutesFile,
     [string]$CacheVariantRequestsFile,
+    [switch]$Catalog,
     [long]$MaxBytes = 33554432
 )
 $ErrorActionPreference = 'Stop'
@@ -56,6 +60,15 @@ try {
     }
 
 
+    $identityPath = Join-Path $outputRoot 'capture-identity.json'
+    if (Test-Path -LiteralPath $identityPath) {
+        $identity = Get-Content -LiteralPath $identityPath -Raw | ConvertFrom-Json
+        if ([uint32]$identity.gameHead -ne $fileSystem.Head) { throw 'Existing capture identity does not match the installed archive revision; use a new output directory' }
+        if ([uint32]$identity.sdkVersion -ne [FrostySdk.TypeLibrary]::GetSdkVersion()) { throw 'Existing capture identity does not match the SDK revision; use a new output directory' }
+    } else {
+        ([ordered]@{schemaVersion=1; capturedUtc=[DateTime]::UtcNow.ToString('o'); gameHead=$fileSystem.Head; sdkVersion=[FrostySdk.TypeLibrary]::GetSdkVersion()} | ConvertTo-Json -Compress) | Set-Content -LiteralPath $identityPath -Encoding UTF8
+    }
+
     $catalogPath = Join-Path $outputRoot 'asset-catalog.json'
     if (Test-Path -LiteralPath $catalogPath) {
         $reader = [IO.File]::OpenText($catalogPath)
@@ -71,7 +84,7 @@ try {
             throw 'Existing catalog does not match the SDK revision; use a new output directory'
         }
     }
-    if (!(Test-Path -LiteralPath $catalogPath)) {
+    if ($Catalog -and !(Test-Path -LiteralPath $catalogPath)) {
         [void][Reflection.Assembly]::LoadFrom((Join-Path $FrostyDirectory 'Newtonsoft.Json.dll'))
         Add-Type -ReferencedAssemblies @((Join-Path $FrostyDirectory 'FrostySdk.dll'), (Join-Path $FrostyDirectory 'Newtonsoft.Json.dll')) -TypeDefinition @"
 using System;

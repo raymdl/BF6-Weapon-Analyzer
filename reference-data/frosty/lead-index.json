@@ -1615,6 +1615,1387 @@
       "summary": "Every weapon body stores 24 StanceChangePenalties leaves (Zoomed/Unzoomed x six stance transitions x MinAngleOffset in degrees and Duration in seconds; 1,512 raw reads over 63 weapons, control reproduced on M433): prone transitions are 6 degrees over 0.9 s on 54 weapons, with class outliers (7 degrees or 3 degrees, 0.6 to 0.8 s; sidearms 0.5 to 6), and eight crouch/stand leaves carry 0.2 to 1 degree over 0.3 s under a candidate name-to-slot join. No site choice or verified release modifier targets these leaves (101 M4A1 and DB-12 choices, 895 pinned modifier bodies; 93 catalog routes lack pinned raw). What the transient does at runtime is unresolved, and no site number changes.",
       "reopenWhen": "Join the eight crouch/stand leaves to the raw owner layout, obtain pinned raw for the 93 uncovered modifier routes, and capture stance changes into ADS to settle activation and composition before showing angle and duration beside the static spread minima.",
       "refs": []
+    },
+    "L121": {
+      "id": "L121",
+      "title": "ADS-time modifier targets",
+      "status": "exhausted",
+      "statusNote": "Receiving field not named in the captured chain (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L121-ads-time-modifier-targets.json"
+      ],
+      "summary": "The release chains of all 55 M4A1 and Sniper Rifle attachment routes and the ten Support-trait LMG bindings are traced (WME step Field_9540bd8e in WPM Field_9690d604 entries; GID step Field_4692836a in GS Field_4d248d91 bindings, key 8430ed47 priority 1000), but neither serialized step names the GRX_Weapons field that receives it, so whether ADS-time attachments shift the WeaponZoomTransitionIndex that selects the ADS-out row is unresolved; if they do, the six M4A1 choices checked move index 4 to 5 (General_01 200 ms, General_10 166.667 ms).",
+      "reopenWhen": "Reopen when pinned-build source or a controlled capture names the receiving field and composition for the WME and GID paths.",
+      "refs": []
+    },
+    "L122": {
+      "id": "L122",
+      "title": "StanceChangePenalties activation route",
+      "status": "exhausted",
+      "statusNote": "No activation link in the captured data (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L122-stance-activation-route.json"
+      ],
+      "summary": "No captured source links the GS StanceChangePenalties array to a stance transition: its sibling families on the GS owner are dispersion, recoil and idle-duration fields with no activation condition, and of 2,316 named registry entries (1,336 scalar values raw-checked) 491 float32 values equal a penalty duration or angle, 216 of them inside the family itself and 275 by value only, with soldier and animation route names as candidates but no decoded consumer.",
+      "reopenWhen": "Trace a release-pinned consumer from a stance-transition route (soldier movement or animation asset) to the GS penalty array, or capture the transient in game.",
+      "refs": []
+    },
+    "L123": {
+      "id": "L123",
+      "title": "Reload phases and threshold position",
+      "status": "finding",
+      "statusNote": "Site reload totals verified 63/63; threshold semantics unresolved (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L123-reload-phases.json"
+      ],
+      "summary": "All 124 ReloadInfoArray entries of the 63 weapons were raw-read (1,352 checks) and the documented formulas reproduce every site tactical reload (63 of 63) and every non-null empty reload (60 of 60; three shell-fed shotguns are null); ReloadThreshold x ReloadTimeBulletsLeft falls between phase indices 1 and 2 on 29 of 57 phase-bearing empty entries and nearest the penultimate phase on 47 of 57, with class medians of 0.62 to 0.88 of the reload; what the threshold and phases mean at runtime is unresolved.",
+      "reopenWhen": "Reopen if a controlled capture shows how ReloadThreshold or ReloadTimerArray maps to ammo transfer or interruption, or if the pinned source or site reload formulas change.",
+      "refs": []
+    },
+    "L124": {
+      "id": "L124",
+      "title": "StanceChangePenalties crouch/stand leaf join",
+      "status": "finding",
+      "statusNote": "Exact index join (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L124-stance-leaf-join.json"
+      ],
+      "summary": "The 24 StanceChangePenalties leaves are elements of a 200-slot array (Field_fc724c05, 16 bytes per element) indexed 10 x from + to for Stand=0, Crouch=1, Prone=2, plus 100 for Zoomed; the sixteen directly named leaves fix that rule, so the eight crouch/stand leaves are exact (StandToCrouch at index 1/101, CrouchToStand at 10/110) and both directions hold identical values on all 63 weapons (0.3 s; 1.0 degree unzoomed with 0.2 and 0.5 exceptions, 0.2 degree zoomed), so the L120 values stand.",
+      "reopenWhen": "Reopen if a later build changes the array length or index rule.",
+      "refs": []
+    },
+    "L125": {
+      "id": "L125",
+      "title": "FZT General_01 values match the site ADS-in ladder",
+      "status": "finding",
+      "statusNote": "Matching values and paired entries; runtime roles unresolved (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L125-fzt-general01-ads-in.json"
+      ],
+      "summary": "The eight FZTT_General_01 tiers (f32 at raw offset 100: 0.5, 0.433334, 0.366667, 0.3, 0.25, 0.2, 0.166667, 0.133334 s) match the site ADS_SPD_TIERS within 1.2e-5 ms. FZT_Weapons pairs General_01 and General_10 entries at the same index. This supports candidate ADS-in/ADS-out roles, but does not establish runtime transition directions or exclude a contribution from AZTT; the AZTT-plus-two-frames relation remains a numeric candidate.",
+      "reopenWhen": "Reopen if the site ADS-in ladder changes or a pinned source consumer or controlled capture resolves the transition directions or AZTT's contribution.",
+      "refs": []
+    },
+    "L126": {
+      "id": "L126",
+      "title": "Base traits and soldier features inventory",
+      "status": "finding",
+      "statusNote": "Partial: 54 of 67 routes uncaptured at release (29 Sep)",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L126-basetraits-soldier-features.json"
+      ],
+      "summary": "Of the 67 catalog routes under InRoundProgression/_BaseTraits (35) and Soldier/Features (32), only 13 have release captures (Head 4892017); none of the 13 carries a weapon-stat operand, and the one weapon-imported feature, CorpseDropFeatures/DroppedPrimaryWeapon (imported by 56 site weapon Ability roots, not the seven sidearms), holds no reviewed weapon modifier field. All 35 base traits lack release raw (22 hotfix-only), so their effects on weapons are unresolved.",
+      "reopenWhen": "Capture the 35 _BaseTraits routes (and the 19 uncaptured Soldier feature routes) at release Head 4892017 and inspect their imports and typed operands.",
+      "refs": []
+    },
+    "L127": {
+      "id": "L127",
+      "title": "Camera idle settling source parameters",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L127-camera-idle-spring.json"
+      ],
+      "summary": "Twelve selected GS roots yield 144 verified IdleSpring f32 inputs; 10 fields vary, but no settling-time or visual-rank calculation is established.",
+      "reopenWhen": "Trace the release runtime consumer and equation that map these fields to camera output, units and zoom-transition composition.",
+      "refs": []
+    },
+    "L128": {
+      "id": "L128",
+      "title": "Primary projectile surface penetration",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L128-primary-material-pairs.json"
+      ],
+      "summary": "Six base primary materials have map-matching candidate record presence and f32 differences across 132 cells; labels and effective surface behavior remain unresolved.",
+      "reopenWhen": "Revisit if a pinned field-name association or consuming method identifies how the surface records affect a runtime comparison.",
+      "refs": []
+    },
+    "L129": {
+      "id": "L129",
+      "title": "Absolute aim-sway baselines",
+      "status": "exhausted",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L129-absolute-sway.json"
+      ],
+      "summary": "Twelve selected WB/GS root pairs resolve local selector-owned sway candidates, not an absolute baseline; sight-state context duplicates L94.",
+      "reopenWhen": "Reopen when a pinned-release source route identifies and raw-verifies an absolute sway baseline, its selector, and an explicit operation or base relationship.",
+      "refs": []
+    },
+    "L130": {
+      "id": "L130",
+      "title": "Velocity-conditioned material modifiers",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L130-grid-speed-candidates.json"
+      ],
+      "summary": "Nine Abbasid speed-labeled objects yield two unnamed f32 fields each; the six fixed primary routes establish no direct connection, so no range comparison follows.",
+      "reopenWhen": "Reopen for a concrete pinned-release primary-projectile association and consuming method that identify the fields and a comparison result.",
+      "refs": []
+    },
+    "L131": {
+      "id": "L131",
+      "title": "Tactical weapon movement and handling context",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L131-tactical-movement.json"
+      ],
+      "summary": "The three 1.4.3.0 TacticalWeaponMovement roots expose named mounted/aim channels and exact imports to typed mount settings, but no weapon-dependent aiming/firing-readiness comparison is established.",
+      "reopenWhen": "Reopen if exact-build expression semantics or a runtime/consumer trace binds these settings and channels to a weapon-state, aiming, or firing-readiness comparison.",
+      "refs": []
+    },
+    "L132": {
+      "id": "L132",
+      "title": "Jump and combat-dive source context",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L132-maneuver-source-context.json"
+      ],
+      "summary": "Four release feature/expression roots resolve to three named jump parameters and CombatDiveDuration; twelve f32 slots are raw-verified, while roles, units and execution remain unresolved.",
+      "reopenWhen": "Reopen when a validated expression reader or engine-side source establishes field roles, units, equations and activation for these exact imports.",
+      "refs": []
+    },
+    "L133": {
+      "id": "L133",
+      "title": "Optic input sensitivity references",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L133-optic-input.json"
+      ],
+      "summary": "Four PiP zoom profiles reference distinct per-tier sensitivity options with identical four-field numeric blocks; six controllers share five option imports. No effective input equation is established.",
+      "reopenWhen": "Trace the per-tier and shared option fields to named channels and a serialized input-scale rule, then establish activation/composition before proposing a user-facing comparison.",
+      "refs": []
+    },
+    "L134": {
+      "id": "L134",
+      "title": "Jump-landing movement speed penalty",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L134-landing-speed-penalty.json"
+      ],
+      "summary": "OnGround directly imports three named landing penalty, clamp and recovery GRX children; nine f32 slots are raw-verified, but roles, units and executed formula remain unresolved.",
+      "reopenWhen": "Reopen when a validated compiled-resource and activation trace establishes the formula, units, and semantic roles of the three f32 fields.",
+      "refs": []
+    },
+    "L135": {
+      "id": "L135",
+      "title": "Weapon firing sound comparison",
+      "status": "rejected",
+      "statusNote": "Stopped by operator; outside Analyzer scope",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L135-sound-scope-decision.json"
+      ],
+      "summary": "The operator excluded weapon sound research from Analyzer comparisons; the trace was stopped and no sound finding or proposal was accepted.",
+      "reopenWhen": "Only an explicit operator request to research weapon sound.",
+      "refs": []
+    },
+    "L136": {
+      "id": "L136",
+      "title": "Primary projectile suppression candidates",
+      "status": "finding",
+      "statusNote": "Partial source finding; field roles and primary selection unresolved",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L136-projectile-candidate-fields.json"
+      ],
+      "summary": "Six projectile roots have raw-verified four-field blocks and five-float local links (54 values); WB imports match the candidate families, but this pass establishes neither primary-shot selection nor suppression/near-miss semantics.",
+      "reopenWhen": "Reopen with an independently identified current field or consumer role; reuse existing base-projectile evidence and verify the applicable selected chain before assigning values to weapons.",
+      "refs": []
+    },
+    "L137": {
+      "id": "L137",
+      "title": "Gadget launcher handling and ammunition",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L137-launcher-handling-ammunition.json"
+      ],
+      "summary": "Three multiplayer launcher WB roots have raw-verified ammo, reload and directly imported movement source values suitable for a conditional comparison proposal; native selection and several meanings remain unresolved.",
+      "reopenWhen": "Validate the active multiplayer selector and source stat meanings with game or stat-screen evidence before implementing the comparison.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L138": {
+      "id": "L138",
+      "title": "Placed-mine trigger and deployment comparison",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L138-mine-trigger-source.json"
+      ],
+      "summary": "Three fixed hotfix projectile roots and their source simulation chains are identified, while trigger, distance and lifetime field meanings remain unresolved.",
+      "reopenWhen": "Reopen when a Head 4892087 raw capture and typed field-to-consumer mapping for the shared trigger route or a named activation-distance or lifetime field are available.",
+      "refs": []
+    },
+    "L139": {
+      "id": "L139",
+      "title": "Defibrillator recharge and revive source",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L139-defibrillator-source.json"
+      ],
+      "summary": "The four hotfix roots contain raw-verified typed operands and a static faster-perk selector/effect route, but do not establish a selected revive/recharge number or its runtime meaning.",
+      "reopenWhen": "Reopen when a typed hotfix consumer links the selected defibrillator ability and faster-perk selector to named revive/recharge operands.",
+      "refs": []
+    },
+    "L140": {
+      "id": "L140",
+      "title": "TUGS detection coverage",
+      "status": "finding",
+      "statusNote": "Partial source finding; no gameplay meaning or runtime use is established.",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L140-tugs-detection-source.json"
+      ],
+      "summary": "The three pinned hotfix roots serialize a TUGS owner path to a linked detection graph with f32 values -1, -1 and 75, but their roles and graph execution remain unresolved.",
+      "reopenWhen": "Reopen when the selected expression graph is decoded or a typed consumer identifies the radius, cadence and deployed-lifetime operands.",
+      "refs": []
+    },
+    "L141": {
+      "id": "L141",
+      "title": "Deployable cover durability",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L141-cover-durability-source.json"
+      ],
+      "summary": "The three pinned hotfix roots contain raw-verified float32 damage-zone candidates, but no field role/unit mapping or Ability-to-deployed-object link supports a site durability value.",
+      "reopenWhen": "Reopen when source evidence names the candidate fields and units or resolves the Ability selection path to the exact deployed object.",
+      "refs": []
+    },
+    "L142": {
+      "id": "L142",
+      "title": "Concussion grenade effect envelope",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L142-concussion-effect-envelope.json"
+      ],
+      "summary": "The hotfix projectile imports the named SimEx graph, whose Radius entry has an unresolved type reference and a null boxed value.",
+      "reopenWhen": "Reopen when a Head 4892087 capture of Affector_ConcussionGrenade and a typed link to any radius, duration or throw/fuse operand are available.",
+      "refs": []
+    },
+    "L143": {
+      "id": "L143",
+      "title": "Supply crate ammunition replenishment",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L143-supply-crate-ammunition-source.json"
+      ],
+      "summary": "Five hotfix supply-crate roots and their direct import links were traced, but no typed quantity/cadence role or self-speedup predicate is established.",
+      "reopenWhen": "Reopen if Head 4892087 child captures or field mappings identify a replenishment quantity/cadence role or the callback predicate.",
+      "refs": []
+    },
+    "L144": {
+      "id": "L144",
+      "title": "Tracer dart lock-signature effect",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L144-tracer-dart-lock-source.json"
+      ],
+      "summary": "PB_NS_TracerDart imports SimEx_TracerDart, which contains two direct references to Affector_LockingSignatureMultiplier_TracerDart; its nested operand is Float32 11.0 beside Boolean false, while application and units remain unresolved.",
+      "reopenWhen": "Reopen when a typed consumer or runtime trace establishes the operand role, units, duration, and active composition.",
+      "refs": []
+    },
+    "L145": {
+      "id": "L145",
+      "title": "Spawn beacon availability and placed-object comparison",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L145-spawn-beacon-source.json"
+      ],
+      "summary": "Four hotfix roots and three direct imported children were traced; five VEH f32 label candidates match across the two variants, but exact meanings and multiplayer selection remain unresolved.",
+      "reopenWhen": "Reopen when an exact descriptor-key field map and the multiplayer selector/activation route establish the candidate fields’ roles, units, and selected beacon variant.",
+      "refs": []
+    },
+    "L146": {
+      "id": "L146",
+      "title": "Smoke grenade coverage and persistence source",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L146-smoke-grenade-source.json"
+      ],
+      "summary": "The pinned hotfix roots contain raw-verified hash-only float fields and serialized import links, but do not establish smoke coverage or persistence roles, units, or runtime selection.",
+      "reopenWhen": "Reopen when a typed consumer or selector names the hash-only fields and establishes their units and projectile/effect activation route.",
+      "refs": []
+    },
+    "L147": {
+      "id": "L147",
+      "title": "Adrenaline Shot effect and duration",
+      "status": "finding",
+      "statusNote": "This is a source-only finding; activation, composition, and native use remain unresolved.",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L147-adrenaline-shot-source.json"
+      ],
+      "summary": "Head 4892087 SimEx_TriggerAdrenalineShot directly imports the three named affector assets, but the scoped Ability/U chain does not establish trigger selection and the raw payload operands have no resolved roles or units.",
+      "reopenWhen": "Reopen when pinned source evidence links the Ability or its direct U asset to the trigger, or owner-specific schema evidence assigns roles and units to the affector payload members.",
+      "refs": []
+    },
+    "L148": {
+      "id": "L148",
+      "title": "Frag and Mini V40 blast source comparison",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L148-frag-miniv40-blast-source.json"
+      ],
+      "summary": "Selected hotfix WB-to-PBNS-to-blast chains expose mapped BlastDamage 100/40 and distinct falloff point lists for Frag/Mini V40; they support a conditional comparison proposal, not effective runtime damage.",
+      "reopenWhen": "Validate field units, falloff interpolation and effective damage composition before implementing the blast-profile comparison.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L149": {
+      "id": "L149",
+      "title": "PLD marking and spotting source",
+      "status": "exhausted",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L149-pld-marking-source.json"
+      ],
+      "summary": "The five PLD roots and their direct lock/spotting imports contain raw-verified Float32 candidates but establish no selected field role, units, or comparison-ready PLD magnitude, range, or duration.",
+      "reopenWhen": "Reopen only if a selected consumer and typed field semantics or units make a PLD lock or spotting operand directly comparable with Tracer Dart.",
+      "refs": []
+    },
+    "L150": {
+      "id": "L150",
+      "title": "Anti-Tank Grenade blast profile versus Frag",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L150-antitank-blast-source.json"
+      ],
+      "summary": "The selected Anti-Tank Grenade blast object stores mapped BlastDamage 50 and BlastRadius 1.5, supporting a conditional source-profile comparison with Frag; its four-row child and runtime damage remain unresolved.",
+      "reopenWhen": "Map the linked Class_afbfd124 rows and validate units and effective damage composition before implementing a full Anti-Tank Grenade comparison.",
+      "refs": []
+    },
+    "L151": {
+      "id": "L151",
+      "title": "C4 selected blast profile",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L151-c4-blast-source.json"
+      ],
+      "summary": "The selected C4 WB-to-projectile-to-blast chain stores mapped BlastDamage 100, BlastRadius 3 and an eight-point falloff list, supporting a conditional source-profile comparison with Frag and Mini V40.",
+      "reopenWhen": "Validate units, curve interpolation and effective damage composition before implementing the C4 blast-profile comparison.",
+      "refs": []
+    },
+    "L152": {
+      "id": "L152",
+      "title": "RPG-7, MBT-LAW and M136 AT4 projectile source",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L152-launcher-projectile-source.json"
+      ],
+      "summary": "Three launcher WBs select exact primary projectiles whose matching blast owners store mapped BlastDamage 70/80/70 and BlastRadius 6/4/5, supporting a conditional extension of the L137 source-profile comparison.",
+      "reopenWhen": "Resolve projectile scalar names, blast units and effective damage composition before implementing launcher projectile gameplay stats.",
+      "refs": []
+    },
+    "L153": {
+      "id": "L153",
+      "title": "AT Mine and M4 SLAM selected blast source versus Frag",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L153-mine-blast-source.json"
+      ],
+      "summary": "AT Mine and M4 SLAM projectile roots directly select blast objects with mapped BlastDamage 300/100 and BlastRadius 2/1; this supports a conditional source-profile comparison with Frag, not effective runtime damage.",
+      "reopenWhen": "Validate units and effective damage composition before implementing the mine blast-profile comparison.",
+      "refs": []
+    },
+    "L154": {
+      "id": "L154",
+      "title": "Incendiary Grenade selected fire and damage source",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L154-incendiary-source.json"
+      ],
+      "summary": "The WB selects PBNS object 2 and its Class_9966532d child with raw-verified blast operands, while SimEx and its damage affectors remain separate candidates.",
+      "reopenWhen": "Reopen if a direct selected edge reaches the fire-radius expression or damage-affector chain, or runtime evidence resolves units and damage composition.",
+      "refs": []
+    },
+    "L155": {
+      "id": "L155",
+      "title": "Flashbang effect source versus Concussion",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L155-flashbang-effect-source.json"
+      ],
+      "summary": "Flashbang_WB imports two PBNS_Flashbang exports, but the captured scoped data does not establish a selected primary projectile or typed effect operands for comparison.",
+      "reopenWhen": "Reopen only when the WB-selected projectile-to-effect route and descriptor-resolved effect operand roles and units are established.",
+      "refs": []
+    },
+    "L156": {
+      "id": "L156",
+      "title": "Throwing Knife selected projectile profile",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L156-throwing-knife-source.json"
+      ],
+      "summary": "The multiplayer Throwing Knife WB selects a v2 projectile with mapped StartDamage/EndDamage 50/50, falloff start/end 5/15, InitialSpeed 350 and TimeToLive 10, supporting a conditional serialized gadget profile.",
+      "reopenWhen": "Validate units, hit-damage composition and trajectory behavior before implementing gameplay-stat displays.",
+      "refs": []
+    },
+    "L157": {
+      "id": "L157",
+      "title": "Supply Pouch ammunition and healing operands",
+      "status": "exhausted",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L157-supply-pouch-source.json"
+      ],
+      "summary": "The hotfix Supply Pouch WB and supply sphere directly reference the named ammunition and healing affectors. Their 57 raw-checked typed leaves have no established quantity, cadence, or unit roles. No Pouch-versus-Crate loadout comparison is supported, closing the support-resupply line after L143.",
+      "reopenWhen": "Reopen only if a build-pinned field mapping supplies quantity/cadence units or a raw-verified direct path connects the Supply Pouch root to PRJ_SimEx_SupplyPouch.",
+      "refs": []
+    },
+    "L158": {
+      "id": "L158",
+      "title": "Proximity detection source values",
+      "status": "exhausted",
+      "statusNote": "Partial source finding; no site comparison or native detection/spotting behavior is established.",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L158-proximity-source.json"
+      ],
+      "summary": "Four hotfix Proximity roots contain a candidate SimEx node with raw-verified 75/-1/-1 floats; roles, units, and selection remain unresolved. No detection comparison follows L140, so the detection line closes for this run.",
+      "reopenWhen": "Reopen when a typed consumer maps these fields and units, or source evidence establishes the selected PBNS/SimEx route or referenced resource contents.",
+      "refs": []
+    },
+    "L159": {
+      "id": "L159",
+      "title": "Breaching Dart selected projectile and gas variant",
+      "status": "proposal",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L159-breaching-dart-source.json"
+      ],
+      "summary": "DrillGL_WB selects the standard Breaching Dart body, whose direct blast child stores mapped BlastDamage 40 and BlastRadius 1, plus InnerBlastRadius 1, ShockwaveDamage 1 and ShockwaveRadius 7. The gas path is a separate candidate with the same mapped fields; propose only a conditional serialized source profile.",
+      "reopenWhen": "Validate field units, selected multiplayer configuration, and effective blast/direct-hit composition before implementing a gadget comparison.",
+      "refs": []
+    },
+    "L160": {
+      "id": "L160",
+      "title": "Gas Mask selected protection source",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L160-gas-mask-source.json"
+      ],
+      "summary": "The Gas Mask Ability selects U_GasMask_ClassGadget, and a separate SimEx graph imports the removal affector. No selected Ability/WB route to that graph or mapped magnitude/duration is established; no loadout comparison is supported.",
+      "reopenWhen": "Reopen when a compatible source route ties the class-gadget Ability/WB chain to SimEx and a typed role/unit mapping identifies any protection magnitude or duration field.",
+      "refs": []
+    },
+    "L161": {
+      "id": "L161",
+      "title": "Adrenaline Shot and PTKM1R handling/ammunition",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L161-gadget-handling-source.json"
+      ],
+      "summary": "Both hotfix WBs directly reference their deploy-time children and store mapped MagazineCapacity 1, NumberOfMagazines 1, and ReloadTime 0. The child tuples differ but have no mapped roles or units, so no available-use or swap-time comparison is supported.",
+      "reopenWhen": "Reopen only if authoritative member-role/unit mapping or a consumer/selection route establishes the meaning needed for a site comparison.",
+      "refs": []
+    },
+    "L162": {
+      "id": "L162",
+      "title": "Stinger and IGLA selected source profiles",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L162-stinger-igla-source.json"
+      ],
+      "summary": "Stinger/IGLA select their scoped NS projectiles: MagazineCapacity 1/1, NumberOfMagazines 3/3, ReloadTime 3.4/3.4, ReloadTimeBulletsLeft 3.66/2.33 and BlastDamage/BlastRadius 100/5 in both; units and native composition remain unresolved.",
+      "reopenWhen": "New consumer or runtime evidence proves effective reload phases, units or damage composition.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L163": {
+      "id": "L163",
+      "title": "Airburst Incendiary selected source profile",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L163-airburst-incendiary-source.json"
+      ],
+      "summary": "Airburst Incendiary selects its primary PB and blast object: MagazineCapacity 1, NumberOfMagazines 3, ReloadTime and ReloadTimeBulletsLeft 2.53, BlastDamage 1 and BlastRadius 3; lingering selection and fire behavior remain unresolved.",
+      "reopenWhen": "A checked consumer edge connects the selected source route to the scoped lingering body.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L164": {
+      "id": "L164",
+      "title": "Claymore selected damage source profile",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L164-claymore-blast-source.json"
+      ],
+      "summary": "Claymore WB selects its scoped projectile and blast object 20: InnerBlastRadius 2.5, BlastDamage 1, BlastRadius 5, ShockwaveDamage 1 and ShockwaveRadius 7.5; effective mine damage and fragment composition remain unresolved.",
+      "reopenWhen": "A concrete consumer or runtime damage composition evidence is available.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L165": {
+      "id": "L165",
+      "title": "PTKM1R combat projectile source profile",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L165-ptkm1r-projectile-source.json"
+      ],
+      "summary": "PTKM1R WB selects the deployed VB, but no scoped forward edge selects CombatElement; CombatElement imports targeting and EFP, whose BlastDamage 160 and BlastRadius 4 remain candidate values.",
+      "reopenWhen": "A checked deployed-to-CombatElement consumer edge permits selection proof.",
+      "refs": []
+    },
+    "L166": {
+      "id": "L166",
+      "title": "Throwable ammunition and launch source profiles",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L166-throwable-ammo-launch-source.json"
+      ],
+      "summary": "Frag/Mini V40/Anti-Tank/C4/Incendiary/Throwing Knife WBs store NumberOfMagazines 1/2/2/3/1/5 and mapped Shot.InitialSpeed.z 25/35/25/9.5/25/44.973999; carried uses, timer units and physical launch behavior remain unresolved.",
+      "reopenWhen": "Review display meanings and native consumer evidence before publishing resource or launch behavior.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L167": {
+      "id": "L167",
+      "title": "Javelin launcher source profile",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L167-javelin-source.json"
+      ],
+      "summary": "Javelin WB selects PB_Javelin: MagazineCapacity 1, NumberOfMagazines 3, both reload fields -1, BlastDamage 125 and BlastRadius 4; laser-guided and runtime behavior remain unresolved.",
+      "reopenWhen": "Exact consumer evidence is needed for laser-guided selection, effective reload phases, curve use or multiplayer availability.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L168": {
+      "id": "L168",
+      "title": "Panzerfaust3 ammunition variants",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L168-panzerfaust3-source.json"
+      ],
+      "summary": "Panzerfaust3 baseline/DM32 selectors select distinct projectiles: BlastDamage 130/230, BlastRadius 5/5, ammo 1/3/-1 and reload fields 4.96; DM12A1 fallback/default and runtime composition remain unresolved.",
+      "reopenWhen": "Inspect runtime selection/composition or explicit availability evidence before asserting a default, effective damage, or current equip availability.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L169": {
+      "id": "L169",
+      "title": "Deployable Mortar selected firing and payload source profiles",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L169-mortar-source.json"
+      ],
+      "summary": "Mortar deployment selects VB firing profiles for M720A1/M722: ammo 1/-1/-1 versus 1/3/0, ReloadTime 4 in both, blast damage/radius 60/7.622 versus 0/5; native composition remains unresolved.",
+      "reopenWhen": "A proven runtime consumer or availability route permits effective behavior or current multiplayer availability claims.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L170": {
+      "id": "L170",
+      "title": "Recon drone and Lancet selected payload sources",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L170-drone-payload-source.json"
+      ],
+      "summary": "Recon WB selects VEH_Drone deployment and a separate PayloadDrone branch; selected payload bomb blast damage/radius 100/5 is mapped, while Lancet explosion 25/4 remains a compiled-consumer candidate.",
+      "reopenWhen": "An exact compiled Lancet spawn consumer or selected semantic health/speed/range mapping is available.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L171": {
+      "id": "L171",
+      "title": "MPAPS and EIDOS protection source routes",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L171-mpaps-eidos-resource-source.json"
+      ],
+      "summary": "MPAPS/EIDOS WBs select deployed vehicles and exact mapped resource owners: ammo 1/1/-1 in both, ReloadTime 0/0.5 and ReloadTimeBulletsLeft 0/0; protection behavior remains unresolved.",
+      "reopenWhen": "Trace the selected native protection consumer and bind typed graph inputs to envelope/resource fields.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L172": {
+      "id": "L172",
+      "title": "EOD Bot selected demolition and mine source profiles",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L172-eodbot-payload-source.json"
+      ],
+      "summary": "EOD Bot deployment selects demolition/mine weapon features and direct blast profiles: damage/radius 5/4 versus 150/2; mapped ammunition differs, while cluster execution/composition remain unresolved.",
+      "reopenWhen": "Decode the generic cluster compiled consumer conditions before stating submunition spawning or effective composition.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L173": {
+      "id": "L173",
+      "title": "Mobile Jammer resource and effect selection",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L173-mobile-jammer-source.json"
+      ],
+      "summary": "Mobile Jammer WB stores ammo 1/1/-1, AutoReplenishMagazine true, AutoReplenishRounds -1 and AutoReplenishDelay 45; selected forward effect references do not prove native jamming behavior.",
+      "reopenWhen": "A checked compiled SimEx consumer or native caller route assigns selected jamming operand roles and runtime composition.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L174": {
+      "id": "L174",
+      "title": "Repair Tool selected firing source",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L174-repair-tool-source.json"
+      ],
+      "summary": "Repair Tool WB selects local Class_23637dce projectile with mapped StartDamage/EndDamage 13/13 and falloff start/end 100/200; repair rate and compiled damage-affector execution remain unresolved.",
+      "reopenWhen": "An exact compiled repair/damage consumer connects selected SimEx operands to runtime application.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L175": {
+      "id": "L175",
+      "title": "Minigun battle-pickup firing profile",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L175-minigun-source.json"
+      ],
+      "summary": "Minigun WB selects its captured projectile: magazine 250, NumberOfMagazines 1, fire-rate field about 1799.999 and reload fields about 6.7/5.83; effective cadence, curve composition and availability remain unresolved.",
+      "reopenWhen": "Exact gadget consumer semantics or native activation evidence becomes available.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L176": {
+      "id": "L176",
+      "title": "Nonlethal throwable resource and launch profiles",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L176-utility-throwable-resource-source.json"
+      ],
+      "summary": "Concussion, Flashbang, Smoke and Proximity selected WB source profiles store NumberOfMagazines 1/1/2/1 and Shot.InitialSpeed.z 25 in all; timing, resource and launch behavior remain unresolved.",
+      "reopenWhen": "Review display meanings and native consumer evidence before publishing resource or launch behavior.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L177": {
+      "id": "L177",
+      "title": "Vehicle Supply Crate deployment and utility sources",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L177-vehicle-supply-crate-source.json"
+      ],
+      "summary": "Vehicle Supply Crate WB deployment selects its VB and gameplay chain; mapped ammo 1/1/-1 and reload fields 1000/1000 are source-only, while refill/repair consumer remains unresolved.",
+      "reopenWhen": "A typed selected construction/utility consumer or compiled resource decoder supplies exact receiving semantics.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L178": {
+      "id": "L178",
+      "title": "Ladder selected deployment source profile",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L178-ladder-deployment-source.json"
+      ],
+      "summary": "Ladder actor component selects the deployed Ladder and separate mesh/physics/LadderConfig references; active WB Shot and Ability activation remain unresolved.",
+      "reopenWhen": "Obtain checked WB/Ability selected consumer and owner-specific field mapping before deriving Ladder gameplay values.",
+      "refs": []
+    },
+    "L179": {
+      "id": "L179",
+      "title": "Soft/Ceramic armor selected source profiles",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L179-armor-resource-joins.json"
+      ],
+      "summary": "Soft/Ceramic Armor Ability and affector imports select distinct resource owners with shared channel GUID pairs; WB selection, protection meanings and runtime use remain unresolved.",
+      "reopenWhen": "Inspect exact shared channel members and named protection consumer selection.",
+      "refs": []
+    },
+    "L180": {
+      "id": "L180",
+      "title": "Railgun selected firing source profile",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L180-railgun-source.json"
+      ],
+      "summary": "Railgun WB selects PD_Railgun: ammo 1/11/-1, RateOfFire about 299.99, ReloadTime about 4.266, direct StartDamage/EndDamage 150/150; effective behavior remains unresolved.",
+      "reopenWhen": "Exact native gadget consumer semantics or availability evidence is provided.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L181": {
+      "id": "L181",
+      "title": "Squad Revive selected sources",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L181-squad-revive-channel-joins.json"
+      ],
+      "summary": "Squad Revive Ability/value-expression imports select six exact named revive channels; selected compiled resource execution and health/time/distance effects remain unresolved.",
+      "reopenWhen": "Obtain selected compiled resource 859005a3c80cf7f7 execution or typed consumer evidence for numeric revive values.",
+      "refs": []
+    },
+    "L182": {
+      "id": "L182",
+      "title": "MP NVG resource and effect source profile",
+      "status": "proposal",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L182-nvg-resource-source.json"
+      ],
+      "summary": "MP NVG WB Ammo fields store -1 sentinels and AutoReplenishMagazine false; Ability and client graph imports resolve, while battery/vision behavior remains unresolved.",
+      "reopenWhen": "Establish named resource and compiled effect consumers for the selected NVG graph; do not infer battery behavior from sentinels or unnamed numbers.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L183": {
+      "id": "L183",
+      "title": "Gadget registry semantic anchor limits",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L183-hotfix-gadget-registry-anchors.json"
+      ],
+      "summary": "Fresh hotfix gadget registry is byte-identical to L78; six named projectile/utility anchors do not resolve different projectile owners or utility consumer semantics.",
+      "reopenWhen": "Obtain exact typed source-owner/member or consumer joins for the blocked meanings.",
+      "refs": []
+    },
+    "L184": {
+      "id": "L184",
+      "title": "All-gadget coverage gaps",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L184-gadget-coverage-gaps.json"
+      ],
+      "summary": "66 unreviewed gadget catalog prefixes classified after root correction: 29 have gameplay source candidates, 25 art-only within the listed prefix, two art/UI/ambiguous and ten shared/ambiguous; none is complete mechanic coverage.",
+      "reopenWhen": "Trace selected root consumer routes and exact aliases before semantic or availability claims.",
+      "refs": []
+    },
+    "L185": {
+      "id": "L185",
+      "title": "Repair Tool vehicle-health consumer",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L185-repair-utility-consumer.json"
+      ],
+      "summary": "Repair SimEx selects VehicleRepair affector whose first effect joins exact named repair amount owner and VehicleRepair wrapper; raw 40/0/250 member roles, health receiver and effective rate remain unresolved.",
+      "reopenWhen": "Establish repair parameter/value-slot meanings and vehicle-health receiver; decode selected compiled graph for activation/composition.",
+      "refs": []
+    },
+    "L186": {
+      "id": "L186",
+      "title": "Supply Crate selected utility consumer route",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L186-supply-utility-consumer.json"
+      ],
+      "summary": "Supply Crate WB/projectile/feature/expression chain and ammo affector selector joins verified; selected compiled body is present, but health/ammo receiver amounts and cadence remain unresolved.",
+      "reopenWhen": "Require a verified grammar/typed consumer for selected RID 2fccf1c1ece25719 or an exact selected owner join to a named health/ammunition receiver.",
+      "refs": []
+    },
+    "L187": {
+      "id": "L187",
+      "title": "Defibrillator revive function consumers",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L187-defibrillator-revive-consumer.json"
+      ],
+      "summary": "Defibrillator selected Ability arrays assign named IsReviving, CanReviveTeam and ManuallyEquipped channels; charge/rank ports and ReviverPlayerId join verified, restored-health formula unresolved.",
+      "reopenWhen": "Obtain a validated reader for the selected compiled expression graph and a typed affector receiver.",
+      "refs": []
+    },
+    "L188": {
+      "id": "L188",
+      "title": "Assault Ladder interaction and configuration",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L188-assault-ladder-interaction.json"
+      ],
+      "summary": "AssaultLadderConfig selects gadget/LadderTop interaction graphs; LadderTop imports exact action, climbing-delay, melee and stance channels, while condition grammar remains unresolved.",
+      "reopenWhen": "A validated parser for the three exact selected compiled resources can establish condition/callback grammar and execution dependencies.",
+      "refs": []
+    },
+    "L189": {
+      "id": "L189",
+      "title": "Deployable Cover selected protection consumer",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L189-deployable-cover-protection-consumer.json"
+      ],
+      "summary": "Deployable Cover selected WB configuration joins deployed vehicle, damage zones, shared Vehicle_Health and FeatureEx/SimEx resources; health/protection meanings and native behavior remain unresolved.",
+      "reopenWhen": "Obtain the frozen SerializedExpressionNodeGraph grammar and exact node/channel/member identity mapping for selected cover FeatureEx and SimEx bodies.",
+      "refs": []
+    },
+    "L190": {
+      "id": "L190",
+      "title": "Utility compiled graph reader gate",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L190-utility-compiled-reader-gate.json"
+      ],
+      "summary": "Three selected utility compiled resource pins pass; scoped SDK/plugin/editor source route exposes raw retrieval, without an established graph reader, matching registration or operation control.",
+      "reopenWhen": "An existing graph reader plus an independently verifiable operation control becomes available.",
+      "refs": []
+    },
+    "L191": {
+      "id": "L191",
+      "title": "UAV Overwatch utility consumers",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L191-uav-overwatch-utility-consumer.json"
+      ],
+      "summary": "UAV Overwatch Ability joins its resource and DiceFeature, which selects CallIns SimEx; MQ9 gameplay/spotting defaults remain candidates without deployment selection or effective spotting proof.",
+      "reopenWhen": "A bounded deployment join and validated compiled graph reader permit selected consumer tracing.",
+      "refs": []
+    },
+    "L192": {
+      "id": "L192",
+      "title": "Supply Drop and Mobile Respawn selected logistics source",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L192-logistics-utility-consumer.json"
+      ],
+      "summary": "Supply Drop and Mobile Respawn WB source chains select exact marker/vehicle gameplay expressions and captured resources; configuration-to-WB binding, resupply/respawn conditions and native execution remain unresolved.",
+      "reopenWhen": "Establish configuration-to-WB binding and decode selected expression consumers with a passing compiled reader control.",
+      "refs": []
+    },
+    "L193": {
+      "id": "L193",
+      "title": "Decoy and Sniper Decoy utility sources",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L193-decoy-utility-consumer.json"
+      ],
+      "summary": "Decoy selects exact projectile and sound-patch consumer; Sniper Decoy selects deployment feature expressions, while compiled conditions, sound range, spotting benefits and activation remain unresolved.",
+      "reopenWhen": "Use a validated compiled-expression reader for Decoy and Sniper Decoy source conditions; further catalog or float inventories do not resolve activation.",
+      "refs": []
+    },
+    "L194": {
+      "id": "L194",
+      "title": "MedicCrate healing selected parents",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L194-medic-crate-healing-consumer.json"
+      ],
+      "summary": "Supply Crate blueprint variants and ActiveMedic graph bindings reference exact MedicCrate healing affector; Ignore_Damage selector is configuration context, and healing amounts/execution remain unresolved.",
+      "reopenWhen": "A passing graph-reader control or exact typed restoration receiver establishes healing roles and execution.",
+      "refs": []
+    },
+    "L195": {
+      "id": "L195",
+      "title": "M320 Smoke selection and utility",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L195-m320-smoke-selection.json"
+      ],
+      "summary": "M320 Smoke Equipment/Ability/CUST selects shared WB_M320 and MD_M320GL_Smoke; WB offers standard and Hemostatic_TEMP payload entries, while active/default variant and utility behavior remain unresolved.",
+      "reopenWhen": "Provide an exact configuration-to-WB variant selector and verified selected utility consumer.",
+      "refs": []
+    },
+    "L196": {
+      "id": "L196",
+      "title": "Smoke Screen call-in selection",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L196-smoke-screen-callin-consumer.json"
+      ],
+      "summary": "Smoke Screen normal/MP Ability select distinct U roots and shared feature; deploy graph imports four marker candidates, whose Rotation1 source reaches smoke utility expression, while branch execution and concealment remain unresolved.",
+      "reopenWhen": "Use a passing graph-reader control to prove selected branch and utility consumer execution.",
+      "refs": []
+    },
+    "L197": {
+      "id": "L197",
+      "title": "Laser Designator distinct configuration tokens",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L197-laser-designator-configuration-joins.json"
+      ],
+      "summary": "Laser Designator normal, SmokeScreen and Artillery MD configurations join distinct U tokens; selected targeting/support consumer, numeric mechanics and availability remain unresolved.",
+      "reopenWhen": "Provide an exact pinned caller/import chain from these token GUID pairs to the selected targeting/support consumer.",
+      "refs": []
+    },
+    "L198": {
+      "id": "L198",
+      "title": "Artillery and Mortar call-in source selection",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L198-artillery-mortar-callin-selection.json"
+      ],
+      "summary": "Artillery, Mortar and MP CUST variants select shared LTLMII WB with distinct modifier contexts; targeting port schema is verified, while selected payload/compiled utility execution remains unresolved.",
+      "reopenWhen": "Establish an exact selected typed gameplay consumer from the shared WB/entity chain or pass the selected simulation compiled-operation control.",
+      "refs": []
+    },
+    "L199": {
+      "id": "L199",
+      "title": "Air Strike and JAGM source selection",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L199-air-jagm-callin-selection.json"
+      ],
+      "summary": "Air Strike and JAGM CUST select shared LTLMII WB/MD, whose offered selector entries include both U roots; category/UI references are metadata, without active deployment or payload selection.",
+      "reopenWhen": "Supply an exact selected gameplay marker/payload consumer and validated compiled execution route.",
+      "refs": []
+    },
+    "L200": {
+      "id": "L200",
+      "title": "Kinetic and PsyGas strike source selection",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L200-kinetic-gas-targeting-consumer.json"
+      ],
+      "summary": "Kinetic/PsyGas CUST select exact weapon/marker contexts; shared target/validation expressions expose named target/zone dependencies, without native eligibility or gas-effect rules.",
+      "reopenWhen": "Provide a controlled compiled graph reader for exact target RIDs or identify a selected gas-effect receiving owner.",
+      "refs": []
+    },
+    "L201": {
+      "id": "L201",
+      "title": "Remaining M26 payload roots and incoming selection limits",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L201-m26-remaining-payload-route-limit.json"
+      ],
+      "summary": "Five remaining M26 payload/state roots raw-verified; three ordinary candidate parents select ordinary/Dragonbreath sources, without remaining-payload joins; hotfix owner identities block automatic historical field-name transfer.",
+      "reopenWhen": "A distinct pinned incoming selected/offered route to a remaining payload GUID or matching hotfix semantic context becomes available.",
+      "refs": []
+    },
+    "L202": {
+      "id": "L202",
+      "title": "Dual Primary loadout utility",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L202-dual-primary-configuration-loop.json"
+      ],
+      "summary": "Dual Primary Ability and modifier join the same resource token and exact CT configuration child; registry address returns to that child, without a selected weapon-slot consumer.",
+      "reopenWhen": "Resolve the selected CT registry index to a named loadout slot or channel consumer with current typed evidence.",
+      "refs": []
+    },
+    "L203": {
+      "id": "L203",
+      "title": "Data Extraction Tablet utility configuration",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L203-data-extraction-tablet-configuration.json"
+      ],
+      "summary": "Data Extraction Tablet modifier joins exact resource token; inspected roots establish configuration identity without selected intel consumer, mechanics or availability.",
+      "reopenWhen": "An exact selected intel consumer or bounded incoming owner with pinned hotfix bytes is supplied.",
+      "refs": []
+    },
+    "L204": {
+      "id": "L204",
+      "title": "Recon Drone TrackAndDestroy utility",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L204-recon-drone-tracking-source.json"
+      ],
+      "summary": "Drone vehicle selects Ability collection and TrackAndDestroy source chain; exact named registry/channel dependencies are proved, while physical fields and compiled target/state operations remain unresolved.",
+      "reopenWhen": "A passing compiled expression reader/control proves selected state and target consumer operations.",
+      "refs": []
+    },
+    "L205": {
+      "id": "L205",
+      "title": "Shared drone utility consumers",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L205-drone-utility-source-consumers.json"
+      ],
+      "summary": "Drone vehicle selects generated lifetime, thermal and boundary expression exports; spotting, owner-state and range sources remain candidates without incoming selection.",
+      "reopenWhen": "An independent compiled-reader control or exact incoming selection for candidate utilities is available.",
+      "refs": []
+    },
+    "L206": {
+      "id": "L206",
+      "title": "SP Payload Drone deployment utility",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L206-sp-payload-drone-deployment-source.json"
+      ],
+      "summary": "Exact SP drone owner, Ability collection and gameplay imports select unit, deployment array, Ability and state configuration; member semantics and native deployment remain unresolved.",
+      "reopenWhen": "A validated typed consumer or compiled reader can establish deployment and feature field roles.",
+      "refs": []
+    },
+    "L207": {
+      "id": "L207",
+      "title": "Naval mine and torpedo gadget dependencies",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L207-naval-gadget-dependency-source.json"
+      ],
+      "summary": "PatrolBoat equipment Shot imports select exact torpedo/mine projectiles, whose features select simulation/presentation and water-interaction source dependencies.",
+      "reopenWhen": "A verified compiled reader or runtime availability/activation evidence is available.",
+      "refs": []
+    },
+    "L208": {
+      "id": "L208",
+      "title": "Special Mask state and channel dependencies",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L208-special-mask-duration-channel-source.json"
+      ],
+      "summary": "GasMask simulation selects exact duration affector/removal and captured resource; separate BlockingChannels root references sixteen named soldier channels without a proved simulation-to-channel binding.",
+      "reopenWhen": "A passing compiled graph reader/control and exact state/protection receiving owner establish execution.",
+      "refs": []
+    },
+    "L209": {
+      "id": "L209",
+      "title": "Corpse Drop Ammo resupply utility",
+      "status": "finding",
+      "statusNote": "GPT-6.1 Sol, 29 Sep; source only",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L209-corpse-drop-ammo-utility-source.json"
+      ],
+      "summary": "Corpse Drop Ammo projectile selects exact simulation expression and ammo affector, which imports resource token; dropped-ammo owner, recipient/refill semantics and native execution remain unresolved.",
+      "reopenWhen": "Inspect the exact U_CorpseDropAmmo selected exported object and establish compiled consumer grammar/control plus exact incoming dropped-ammo owner.",
+      "refs": []
+    },
+    "L3000": {
+      "id": "L3000",
+      "title": "Vehicle functional census and capture availability",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3000-vehicle-census.json"
+      ],
+      "summary": "Catalog census retains 41 family/candidate rows and 46 functional blueprint roots with separate capture Head identities.",
+      "reopenWhen": "Trace fixed family groups; verify cosmetic roles and unresolved mode availability separately.",
+      "refs": []
+    },
+    "L3001": {
+      "id": "L3001",
+      "title": "Shared vehicle health and damage source routes",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3001-vehicle-health.json"
+      ],
+      "summary": "Same-build hotfix joins name CB90 MaxHealth1000 and RepairRateModifier1 receiving fields and seven health/armor/wreck/damage-state channels.",
+      "reopenWhen": "Trace CB90 selected damage-zone fields and exact named health/repair consumer equations; resolve units and modifier composition.",
+      "refs": []
+    },
+    "L3002": {
+      "id": "L3002",
+      "title": "AH64E and F16 functional source pilot",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3002-vehicle-air-pilot.json"
+      ],
+      "summary": "Two hotfix vehicle roots select 11 weapon owners with exact WF and Ability instance joins; functional consumers remain partial.",
+      "reopenWhen": "Continue the precise damage-zone, mobility, projectile warhead, entry/loadout and AI/mode consumer limits.",
+      "refs": []
+    },
+    "L3003": {
+      "id": "L3003",
+      "title": "Remaining aircraft functional source routes",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3003-vehicle-aircraft.json"
+      ],
+      "summary": "Nine aircraft roots have typed selected entity/component links and candidate armament owner joins; MH47 roots lack capture.",
+      "reopenWhen": "Trace named health/mobility/entry/equipment consumers and capture exact MH47 Insertion/SP variants.",
+      "refs": []
+    },
+    "L3004": {
+      "id": "L3004",
+      "title": "Ground vehicle selected source routes",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3004-vehicle-ground.json"
+      ],
+      "summary": "Fourteen captured base families select50 labelled weapon-owner alternatives and34 entry-owner instances with400 checked profile operands;16-family profiles remain partial.",
+      "reopenWhen": "Continue as L3010 with fresh AAV7A1/TheBeast/SP/CarChase roots, exact shared-health GRX owner method and three input targets under a new bounded budget.",
+      "refs": []
+    },
+    "L3005": {
+      "id": "L3005",
+      "title": "Watercraft stationary and drone selected functional profiles",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3005-vehicle-water-stationary.json"
+      ],
+      "summary": "Ten pinned hotfix roots retain selected entity/component and reachable weapon/Ability routes with400 raw checks; functional comparison profiles remain partial.",
+      "reopenWhen": "Complete typed movement/damage/entry/projectile consumer joins and selected functional variants, with expanded CB90 asset budget if needed.",
+      "refs": []
+    },
+    "L3006": {
+      "id": "L3006",
+      "title": "Retained vehicle role candidates",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3006-vehicle-roles.json"
+      ],
+      "summary": "C17/MD530/Abrams prop are selected model branches; Cheetah retains functional Gepard customization, antenna is a vehicle-authored mission objective, and TRV150 model is an alias.",
+      "reopenWhen": "Resolve exact antenna compiled/state-graph consumer semantics and Cheetah gameplay selection; do not reopen excluded artwork without an independent functional owner.",
+      "refs": []
+    },
+    "L3007": {
+      "id": "L3007",
+      "title": "AH64E and F16 selected functional consumers",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3007-vehicle-air-pilot-continuation.json"
+      ],
+      "summary": "AH64E/F16 selected zones, entries, projectile consumers, WMD actions and AI targets are traced; named receiver/native activation limits are exact.",
+      "reopenWhen": "An exact receiving member/schema map for movement, zone, warhead or firing-modifier fields, or a default-selector activation consumer becomes available.",
+      "refs": []
+    },
+    "L3008": {
+      "id": "L3008",
+      "title": "Aircraft selected functional source profiles",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3008-vehicle-aircraft-continuation.json"
+      ],
+      "summary": "Fifteen exact aircraft functional root variants across ten families have selected input/armament routes, supported health fields and precise terminal owner/member/availability limits.",
+      "reopenWhen": "Obtain exact SP owner naming and motion/zone/projectile member semantics for stronger comparison statistics.",
+      "refs": []
+    },
+    "L3009": {
+      "id": "L3009",
+      "title": "Watercraft stationary and drone functional consumer continuation",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3009-vehicle-water-stationary-continuation.json"
+      ],
+      "summary": "Ten vehicle families now retain raw-proved nested seat/Shot/warhead/modifier and selected functional expression routes, with precise typed and compiled-source limits.",
+      "reopenWhen": "Obtain typed effective movement/damage/default-slot semantics or a validated SerializedExpressionNodeGraph operation grammar and known-answer control; retrieval gaps are closed.",
+      "refs": []
+    },
+    "L3010": {
+      "id": "L3010",
+      "title": "Ground source profiles and selected consumers",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3010-vehicle-ground-continuation.json"
+      ],
+      "summary": "All16 ground roots are captured;52 base weapon alternatives/37 entry owners,13 own named health-threshold joins,14 shared-type health-word profiles and13 selected PD profiles have400 new checked operands.",
+      "reopenWhen": "Continue available selected curve/projectile/warhead branches in L3013; retain distinct current-type naming inference and exact selected mobility/ability/AI source followups.",
+      "refs": []
+    },
+    "L3011": {
+      "id": "L3011",
+      "title": "Vehicle exact root and functional source coverage gate",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3011-vehicle-coverage-gate.json"
+      ],
+      "summary": "46 exact root profiles and five roles reconciled against reviewed source passes, with seven selected global config bodies deferred and exact semantic/reader/native limits retained.",
+      "reopenWhen": "A same-owner field map, registered compiled reader with independent operation control, or newly proved selected functional target can close a named remaining boundary.",
+      "refs": []
+    },
+    "L3012": {
+      "id": "L3012",
+      "title": "Selected vehicle compiled-resource body and reader boundary",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3012-vehicle-resource-reader-gate.json"
+      ],
+      "summary": "Five exact selected resource bodies are pinned; unchanged scoped local source has no established semantic reader/operation control.",
+      "reopenWhen": "A matching validated semantic reader and independently known operation control become available.",
+      "refs": []
+    },
+    "L3013": {
+      "id": "L3013",
+      "title": "Ground selected projectile curves and consumers",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3013-vehicle-ground-projectile-curves.json"
+      ],
+      "summary": "21 scoped source profiles closed; six selected PD curve pairs/seven null pairs, seven PB routes and one MBT local payload.212 meaningful words retained,194 new/18 reused. No functional capture gap remains.",
+      "reopenWhen": "A validated current-owner field name/unit or native consumer operation/interpolation/control grammar permits interpretation beyond these exact typed points and selected graph identities.",
+      "refs": []
+    },
+    "L3014": {
+      "id": "L3014",
+      "title": "AA and MBT selected equipment source consumers",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3014-vehicle-aa-mbt-equipment.json"
+      ],
+      "summary": "Seventeen selected equipment roots reach exact tags, associated Ability owners, passive/affector and compiled resource source boundaries; effective mechanics remain unproved.",
+      "reopenWhen": "A validated matching compiled graph reader/known operation control or exact receiving-name/units/native admission mapping becomes available.",
+      "refs": []
+    },
+    "L3015": {
+      "id": "L3015",
+      "title": "Ground selected equipment receiver and tag consumers",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3015-vehicle-ifv-aav-apc-tag-consumers.json"
+      ],
+      "summary": "17 exact vehicle U owners select local receiver schemas; 16 choose three exact damage-tag children and one has an empty selected array.",
+      "reopenWhen": "A same-owner field-name/schema binding or validated native dispatch consumer explains the receiver/tag operation and unnamed words.",
+      "refs": []
+    },
+    "L3016": {
+      "id": "L3016",
+      "title": "Selected ground MD source roles",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3016-vehicle-ground-md-roles.json"
+      ],
+      "summary": "Sixteen exact MD selectors and exported owners are raw verified; typed slot/bone/default associations establish source role and exact unmapped physics/motion receiver boundaries.",
+      "reopenWhen": "Obtain same-owner grammar/physical receiver naming or an explicit selected physics/motion consumer beyond these association bodies.",
+      "refs": []
+    },
+    "L3017": {
+      "id": "L3017",
+      "title": "Ground selected damage entry and AI consumers",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L3017-vehicle-ground-damage-entry-ai.json"
+      ],
+      "summary": "16 ground families and two variants have exact selected consumer graphs; two additional selected compiled bodies are pinned with a scoped reader/control limit.",
+      "reopenWhen": "A matching validated semantic reader and independent operation control, or exact named native receiver schema, becomes available.",
+      "refs": []
     }
   }
 }

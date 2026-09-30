@@ -32,10 +32,14 @@ A build stays open while it is installed, so later investigations can add new Fr
 paths. It is sealed when the game updates, before the first export from the new client.
 
 A client hotfix is not always a new data build. If `client-check` finds identical type
-layouts and the catalog comparison shows no added, removed or gameplay-relevant changed
-assets, add the client version to the open build. Otherwise seal the open build and create a
-new one. The 16 September 2026 hotfix of 1.4.3.0 qualified: identical layouts, and only 2 of
-467,208 assets changed (a store UI button group and `Systems/Gameplay/DataVersion`).
+layouts, the catalog comparison shows no added or removed assets, and neither the catalog nor
+the raw SHA-256 comparison of the watched routes shows a gameplay-relevant change, add the
+client version to the open build. Otherwise seal the open build and create a new one. The
+16 September 2026 hotfix of 1.4.3.0 was accepted on the catalog alone: identical layouts,
+and only 2 of 467,208 assets changed (a store UI button group and
+`Systems/Gameplay/DataVersion`). A raw capture of 1.4.3.1 on 29 September confirmed it at
+the byte level: of 23,554 watched routes, only `Systems/Gameplay/DataVersion` differs from
+the 1.4.3.0 capture (`BUILD.json` `rawCheck`).
 
 **Updates arrive without notice.** The EA app installs updates and hotfixes automatically;
 the 16 September hotfix was found only because the executable hash had changed. Start every
@@ -47,8 +51,10 @@ This is the only irreversible part. Once the game files update, an unexported as
 old build is gone. Keep the open build complete while it is installed:
 
 - Capture the full catalog and the raw EBX for every watched route with
-  `scripts/frosty-collect-raw.ps1`. Keep the route list: reusing it on the next build is
-  what makes raw hashes directly comparable.
+  `scripts/frosty-collect-raw.ps1 -Catalog`. Keep the route list: reusing it on the next build is
+  what makes raw hashes directly comparable. When a hotfix client is added to the open
+  build, capture the watched routes again on that client; otherwise the next comparison
+  runs against an older client and mixes two updates.
 - Keep `Profiles/BF6SDK.dll`, `FrostySdk.dll` and **`SharedTypeDescriptors.ebx`** in the
   open build's `capture\toolchain\`. Frosty rewrites the runtime descriptor file when it
   first loads a new game version, so after an update the old file can no longer be copied.
@@ -95,13 +101,16 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    SDK is the normal case and it breaks Frosty's decoding** (Stage 4). A changed file with
    identical layouts, as in the 16 September hotfix, only reorders type entries.
 
-4. **Compare the asset catalog** (for a suspected hotfix). Capture a catalog-only run (no `-RoutesFile`) of
-   `frosty-collect-raw.ps1` into the open build's `reports\` folder and compare paths,
-   GUIDs, sizes and Frosty record hashes with `capture\collection\asset-catalog.json`.
-   Record the result in the client entry (`catalogCheck`).
+4. **Compare the asset catalog and the raw watched routes** (for a suspected hotfix). Run
+   `frosty-collect-raw.ps1 -Catalog` with the open build's `capture\raw-routes.txt` as
+   `-RoutesFile` into a new folder under the open build's `reports\`. Compare paths, GUIDs,
+   sizes and Frosty record hashes with the latest catalog, and the recomputed raw SHA-256 of
+   each watched route with the latest raw capture of the same routes. The catalog alone is
+   not enough: record hashes can stay the same when the bytes change (Stage 3). Record both
+   results in the client entry (`catalogCheck`, `rawCheck`).
 
 5. **Decide.**
-   - **Hotfix (identical layouts; no added, removed or gameplay-relevant changed assets):** copy the runtime
+   - **Hotfix (identical layouts; no added or removed assets; no gameplay-relevant change in the catalog or raw hashes):** copy the runtime
      `SharedTypeDescriptors.ebx` into the open build's `capture\toolchain\` under a dated
      name, add the entry that `client-check` printed to `BUILD.json` `clients`, and continue
      with that build.
@@ -134,7 +143,7 @@ Run `guard <build> --game "<game>"` before every export from now on.
 Reuse the previous build's route list so the two captures are comparable.
 
 ```bash
-powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -GamePath <game> -OutputDirectory builds/<build>/capture/collection -RoutesFile builds/<build>/capture/raw-routes.txt
+powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -GamePath <game> -OutputDirectory builds/<build>/capture/collection -Catalog -RoutesFile builds/<build>/capture/raw-routes.txt
 ```
 
 Then XML-export the changed subset into `builds/<build>/xml/` with the batch command, and
