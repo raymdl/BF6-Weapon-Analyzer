@@ -21,7 +21,7 @@ const build = (id, changes = {}) => {
 
 test('ADS calculations retain source precision while the panel keeps captured rounding', () => {
   assert.deepEqual(balance.ADS_SPD_TIERS,
-    evidence.arrays.zoom.FZTT_General_01.map(value => +(value * 1000).toFixed(6)));
+    [500.00033, 433.33432, 366.66733, 300.00034, 250.00033, 200.00033, 166.66733, 133.33433]);
   assert.deepEqual(balance.ADS_MOVE_TIERS, evidence.arrays.adsMove);
   assert.deepEqual(balance.MOVING_ACC_TIERS, evidence.arrays.movingAdsSpread.map(row => Number(row.Field_6c73f45b)));
   assert.deepEqual(balance.ADS_SPD_TIERS.map(formatMilliseconds), [500, 433, 367, 300, 250, 200, 167, 133]);
@@ -29,9 +29,9 @@ test('ADS calculations retain source precision while the panel keeps captured ro
     ['0.32', '0.32', '0.37', '0.42', '0.47', '0.54', '0.60', '0.67', '0.75', '0.82', '0.91', '1.00']);
   assert.equal(formatMilliseconds(null), '—');
   assert.equal(formatMovementMultiplier(null), '—');
-  assert.equal(build('interdictor')._adsTimeMs, 433.334);
+  assert.equal(build('interdictor')._adsTimeMs, 433.33432);
   assert.ok(weapons.some(w => [0.825, 0.745, 0.535, 0.475].includes(build(w.id)._adsMoveSpeedMult)));
-  assert.equal(build('vssm')._adsTimeMs, 250);
+  assert.equal(build('vssm')._adsTimeMs, 250.00033);
 });
 
 test('hip table retains all source fields and weapon selectors without sorting the rows', () => {

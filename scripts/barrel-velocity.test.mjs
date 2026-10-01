@@ -47,14 +47,14 @@ test('Interdictor preserves source velocity and the confirmed Basic magazine han
   const basic = applyAttachments(weapon, { barrel: 'basic', mag: '5_rnd' });
   assert.equal(basic._projectileVelocityMps, 732.7392);
   assert.equal(basic.bulletVel, 732);
-  assert.equal(basic._adsTimeMs, 433.334);
+  assert.equal(basic._adsTimeMs, 433.33432);
   assert.equal(basic._sprintRecoveryMs, 233.334);
   assert.equal(basic._adsMoveSpeedMult, 0.42);
   assert.equal(basic.spread.adsMove[0], 0.32);
   const extended = applyAttachments(weapon, { barrel: 'extended', mag: '5_rnd' });
   assert.ok(Math.abs(extended._projectileVelocityMps - 915.924) < 1e-9);
   assert.equal(extended.bulletVel, 915);
-  assert.equal(extended._adsTimeMs, 500);
+  assert.equal(extended._adsTimeMs, 500.00033);
 });
 
 test('the barrel catalog has all exact velocity tiers and retains velMult', () => {

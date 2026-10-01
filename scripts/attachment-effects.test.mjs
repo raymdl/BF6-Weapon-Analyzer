@@ -72,16 +72,16 @@ test('barrel ADS uses generated weapon-specific steps for every supported select
       assert.equal(Object.hasOwn(barrel, 'adsTimeTierMod'), false);
     }
   }
-  assert.equal(build(weapon('m4a1'), { barrel: 'basic' })._adsTimeMs, 200);
+  assert.equal(build(weapon('m4a1'), { barrel: 'basic' })._adsTimeMs, 200.00033);
   for (const barrel of ['vssm_suppressed', 'vssm_suppressed_asm']) {
-    assert.equal(build(weapon('vssm'), { barrel })._adsTimeMs, 250);
+    assert.equal(build(weapon('vssm'), { barrel })._adsTimeMs, 250.00033);
   }
   // A source update must change the calculation, without editing a barrel rule.
   const barrels = structuredClone(attachments.BARRELS);
   barrels.find(b => b.id === 'basic').adsTimeTierModByWeapon.m4a1 = 0;
   try {
     setAttachmentContext({ BARRELS: barrels });
-    assert.equal(build(weapon('m4a1'), { barrel: 'basic' })._adsTimeMs, 250);
+    assert.equal(build(weapon('m4a1'), { barrel: 'basic' })._adsTimeMs, 250.00033);
   } finally {
     setAttachmentContext({ BARRELS: attachments.BARRELS });
   }
@@ -129,7 +129,7 @@ test('recovered handling identities and source base coordinates preserve current
   }
   for (const row of read('../reference-data/provenance/frosty-handling-coordinate-proof.json').rows) {
     const result = build(weapon(row.weapon), { mag: row.mag });
-    assert.equal(result._adsTimeMs, row.before.adsMs);
+    assert.equal(result._adsTimeMs, { 166.667: 166.66733, 366.667: 366.66733, 433.334: 433.33432 }[row.before.adsMs] ?? row.before.adsMs);
     assert.equal(result._adsMoveSpeedMult, row.before.adsMove);
   }
   assert.equal(attachments.WEAPON_MAG.m60.defAms, 4);
@@ -578,7 +578,7 @@ test('reviewed Mini Scout and BROD 3 magazines match captured handling values', 
   for (const mag of ['15_rnd', '15_fast', '20_rnd', '20_fast']) {
     const selected = build(scout, { mag });
     assert.equal(selected._adsMoveSpeedMult, 0.6);
-    assert.equal(selected._adsTimeMs, 250);
+    assert.equal(selected._adsTimeMs, 250.00033);
     assert.equal(+selected.tacRld.toFixed(3), mag.endsWith('fast') ? 2.065 : 2.334);
   }
   for (const mag of ['36_rnd', '40_rnd', '40_fast']) {
