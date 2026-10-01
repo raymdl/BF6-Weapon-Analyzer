@@ -181,7 +181,11 @@ function formatInGameRpm(value) {
   if (value == null) return '—';
   const raw = Number(value);
   if (!Number.isFinite(raw)) return value;
-  return IN_GAME_RPM_BY_SYM.get(raw.toFixed(8)) ?? value;
+  // New mode rates retain float32 precision; legacy cycle displays stay unchanged.
+  const sourceDisplay = Math.fround(raw) === raw
+    ? IN_GAME_RPM_BY_SYM.get(Number(raw.toFixed(3)).toFixed(8)) ?? Math.round(raw)
+    : value;
+  return IN_GAME_RPM_BY_SYM.get(raw.toFixed(8)) ?? sourceDisplay;
 }
 
 // ── APP STATE ─────────────────────────────────────────────────────────────────
