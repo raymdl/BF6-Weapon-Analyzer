@@ -5,6 +5,11 @@ changed, decode it correctly, and carry the result into the Analyzer.
 
 Frosty research tooling moved to the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo on 29 September 2026. Commands for `scripts/frosty-*.py` files that are not in this repo run from a checkout of that repo (beside this one; see its README).
 
+Run every raw capture through `scripts/frosty-capture.py`, never the collector
+(`frosty-collect-raw.ps1`) by hand: it enforces one Frosty process at a time, runs `guard`
+and `record`, and fails loudly. The agents' game-update skills (Claude's `bf6-game-update-check`) run
+Stages 0 and 1 in order with these scripts; this guide wins where they differ.
+
 This is the durable procedure. The 1.4.3.0 run is the worked example and is kept as a
 one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md);
 read it for the specific paths, counts and decisions of that update, not as the procedure.
@@ -50,8 +55,15 @@ Frosty session with `guard` (below), not only exports.
 This is the only irreversible part. Once the game files update, an unexported asset of the
 old build is gone. Keep the open build complete while it is installed:
 
-- Capture the full catalog and the raw EBX for every watched route with
-  `scripts/frosty-collect-raw.ps1 -Catalog`. Keep the route list: reusing it on the next build is
+- Capture the full catalog and the raw EBX for every watched route into
+  `capture\pre-update-<client>-<date>\collection` and point the client's
+  `preUpdateCapture` entry in `BUILD.json` at it:
+
+  ```bash
+  python scripts/frosty-capture.py pre-update-<client>-<date> --into capture/pre-update-<client>-<date>/collection --catalog --routes-file "<datamining>/builds/<build>/capture/raw-routes.txt"
+  ```
+
+  Keep the route list: reusing it on the next build is
   what makes raw hashes directly comparable. When a hotfix client is added to the open
   build, capture the watched routes again on that client; otherwise the next comparison
   runs against an older client and mixes two updates.
@@ -85,12 +97,20 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    (`1, 0, 439, 36273` → `1, 0, 437, 12728`) while the hash changed. Use the hash for
    identity and the Frosty archive Head for ordering.
 
-2. **Let Frosty load the new client.** Rename `Caches\bf6.cache` (for example
-   `bf6-<old build>.cache`) so Frosty builds a full cache. Then start Frosty once without
-   writing into `builds\`: open the Frosty Editor, or export one small asset to a scratch
-   folder. This rewrites the runtime `SharedTypeDescriptors.ebx` for the new client.
+2. **Fresh cache.** Rename `Caches\bf6.cache` (for example `bf6-<old client>.cache`) so
+   Frosty builds a full cache. Keep the old file.
 
-3. **Compare the type layouts.**
+3. **Capture the new client.** This is Frosty's first load of the new client, so it also
+   rewrites the runtime `SharedTypeDescriptors.ebx`. Capture the catalog and the open
+   build's watched routes into a new folder under its `reports\`. `--update-check` skips
+   `guard`, which fails on the new client by design, and `record`, which follows the
+   decision:
+
+   ```bash
+   python scripts/frosty-capture.py <client>-check-<date> --into reports/<client>-check-<date>/collection --catalog --routes-file "<datamining>/builds/<build>/capture/raw-routes.txt" --update-check
+   ```
+
+4. **Compare the type layouts.**
 
    ```bash
    python scripts/frosty-build.py --datamining "<datamining>" client-check <open build> --game "<game>" --runtime "<runtime>"
@@ -101,20 +121,24 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    SDK is the normal case and it breaks Frosty's decoding** (Stage 4). A changed file with
    identical layouts, as in the 16 September hotfix, only reorders type entries.
 
-4. **Compare the asset catalog and the raw watched routes** (for a suspected hotfix). Run
-   `frosty-collect-raw.ps1 -Catalog` with the open build's `capture\raw-routes.txt` as
-   `-RoutesFile` into a new folder under the open build's `reports\`. Compare paths, GUIDs,
-   sizes and Frosty record hashes with the latest catalog, and the recomputed raw SHA-256 of
-   each watched route with the latest raw capture of the same routes. The catalog alone is
-   not enough: record hashes can stay the same when the bytes change (Stage 3). Record both
-   results in the client entry (`catalogCheck`, `rawCheck`).
+5. **Compare the asset catalog and the raw watched routes** with the pre-update baseline:
 
-5. **Decide.**
+   ```bash
+   python scripts/frosty-capture-compare.py <baseline collection> <new collection> <check folder>/comparison.json
+   ```
+
+   It compares paths, GUIDs, sizes and Frosty record hashes of the two catalogs, and the
+   recomputed raw SHA-256 of each watched route. The catalog alone is not enough: record
+   hashes can stay the same when the bytes change (Stage 3). It exits 1 when coverage is
+   incomplete (baseline routes missing from the new capture, or new failures); explain each
+   before deciding. Record both results in the client entry (`catalogCheck`, `rawCheck`).
+
+6. **Decide.**
    - **Hotfix (identical layouts; no added or removed assets; no gameplay-relevant change in the catalog or raw hashes):** copy the runtime
      `SharedTypeDescriptors.ebx` into the open build's `capture\toolchain\` under a dated
      name, add the entry that `client-check` printed to `BUILD.json` `clients`, and continue
-     with that build.
-   - **New build (layouts differ, or assets were added, removed or changed in gameplay data):** run `seal <old build>`. Create
+     with that build, then run `record` and `verify`.
+   - **New build (layouts differ, or assets were added, removed or changed in gameplay data):** run `record <old build>` (it adds the step 3 check capture), then `seal <old build>`. Create
      `builds\<new build>\` with a `BUILD.json` like this, copy the runtime descriptors into
      `capture\toolchain\`, and run `record <new build>`:
 
@@ -143,7 +167,7 @@ Run `guard <build> --game "<game>"` before every export from now on.
 Reuse the previous build's route list so the two captures are comparable.
 
 ```bash
-powershell -File scripts/frosty-collect-raw.ps1 -FrostyDirectory <runtime> -GamePath <game> -OutputDirectory builds/<build>/capture/collection -Catalog -RoutesFile builds/<build>/capture/raw-routes.txt
+python scripts/frosty-capture.py collection --build <build> --into capture/collection --catalog --routes-file "<datamining>/builds/<build>/capture/raw-routes.txt"
 ```
 
 Then XML-export the changed subset into `builds/<build>/xml/` with the batch command, and
@@ -408,7 +432,8 @@ For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
 - **Material grids.** Never `export-ebx`, `export-ebx-list` or Editor-export a level
   `materialgrid_win32`. It has reached 49–52 GB and crashed the machine. Use the bounded
   reader. After any failed or slow export, check `Get-Process FrostyCmd` and stop it.
-- **One FrostyCmd at a time.** Do not parallelise exports.
+- **One FrostyCmd at a time.** Do not parallelise exports. `frosty-capture.py` enforces this
+  for raw captures.
 - **Batch, don't loop.** `export-ebx-list` loads the cache once; per-asset `export-ebx`
   costs ~14 s each, almost all cache load.
 - **Never write to a sealed build.** Its files are read-only, and `guard` stops exports

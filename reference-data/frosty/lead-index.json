@@ -2781,6 +2781,436 @@
       "reopenWhen": "Inspect the exact U_CorpseDropAmmo selected exported object and establish compiled consumer grammar/control plus exact incoming dropped-ammo owner.",
       "refs": []
     },
+    "L210": {
+      "id": "L210",
+      "title": "Call-in, battle pickup and intel census",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L210-gadget-callin-census.json"
+      ],
+      "summary": "23 groups reviewed: one shared call-in dependency group and 22 unresolved groups; no explicit multiplayer loadout route is established.",
+      "reopenWhen": "Existing positive multiplayer equipment/loadout route or positive non-multiplayer owner context becomes available.",
+      "refs": []
+    },
+    "L211": {
+      "id": "L211",
+      "title": "Launcher and underbarrel Stage 1 census",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L211-gadget-launcher-census.json"
+      ],
+      "summary": "All 25 supplied groups classified: 24 unresolved and one vehicle equipment shared system; no explicit MP loadout route established.",
+      "reopenWhen": "New explicit hotfix multiplayer equipment selection or availability evidence is supplied.",
+      "refs": []
+    },
+    "L212": {
+      "id": "L212",
+      "title": "Mines charges and throwables coverage census",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L212-gadget-explosive-census.json"
+      ],
+      "summary": "All 22 assigned groups are consolidated: two shared systems and 20 unresolved equipment classifications.",
+      "reopenWhen": "Explicit multiplayer equipment/loadout selection evidence becomes available for unresolved groups.",
+      "refs": []
+    },
+    "L213": {
+      "id": "L213",
+      "title": "Tools and supply coverage census",
+      "status": "finding",
+      "date": "2026-09-29",
+      "receipts": [
+        "frosty-2026-09-29-L213-gadget-tools-supply-census.json"
+      ],
+      "summary": "All 18 assigned groups retain source roots and receipt evidence; explicit multiplayer equipment selection remains unresolved in this batch.",
+      "reopenWhen": "Provide an exact pinned multiplayer loadout selection route or positive owner context for an unresolved group.",
+      "refs": []
+    },
+    "L214": {
+      "id": "L214",
+      "title": "Utility gadget coverage census, first batch",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L214-gadget-utility-census.json"
+      ],
+      "summary": "All 18 assigned utility groups retain source roots and receipts; multiplayer equipment/loadout selection remains unresolved.",
+      "reopenWhen": "Review new explicit multiplayer equipment/loadout selection evidence for an assigned group.",
+      "refs": []
+    },
+    "L215": {
+      "id": "L215",
+      "title": "Utility and drone coverage census, second batch",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L215-gadget-drone-utility-census.json"
+      ],
+      "summary": "Classified all 15 assigned utility/drone groups from existing hotfix receipts while retaining candidate roots and unknown multiplayer availability.",
+      "reopenWhen": "Reopen on explicit MP equipment/loadout selection evidence or an approved downstream source join.",
+      "refs": []
+    },
+    "L216": {
+      "id": "L216",
+      "title": "Deployment resource count source profiles",
+      "status": "proposal",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L216-deployment-resource-count-source.json"
+      ],
+      "summary": "Deployable Cover and TUGS selected configurations expose exact typed Ammo source tuples 1/1/-1; a fresh-loadout count test must confirm deployment-use meanings.",
+      "reopenWhen": "An authoritative consumer route or approved fresh-loadout use-count test resolves count and replenishment semantics.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L217": {
+      "id": "L217",
+      "title": "Support equipment resource count source profiles",
+      "status": "proposal",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L217-support-resource-source.json"
+      ],
+      "summary": "Four selected support WB firing owners match the L137 Ammo identities and retain raw source tuples1/3/-1,1/1/-1,1/3/3 and1/-1/10; native counts remain unproved.",
+      "reopenWhen": "An authoritative count consumer or approved fresh-loadout counter test resolves the count hypotheses and sentinel meanings.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L218": {
+      "id": "L218",
+      "title": "Supply Drop resource source and binding limit",
+      "status": "proposal",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L218-supplydrop-resource-binding.json"
+      ],
+      "summary": "Exact Ability-selected matching-owner CUST binds SupplyDrop_WB, whose selected typed Ammo resource tuple is 1/1/1 with AutoReplenishMagazine false and AutoReplenishRounds -1.",
+      "reopenWhen": "A native fresh-loadout/call-in count test establishes resource accounting, replenish behavior or activation.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L219": {
+      "id": "L219",
+      "title": "Gadget UI metadata and exact linkage audit",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L219-gadget-ui-metadata-linkage.json"
+      ],
+      "summary": "All 78 records were independently resolved; 75 candidate rows match and three description encodings differ; no direct/local blueprint/ability imports were found and Field_1636b8bd is UINT32[].",
+      "reopenWhen": "An exact non-name identity join from the unsigned identifiers or an inbound blueprint/ability metadata reference is authorized and supplied.",
+      "refs": []
+    },
+    "L220": {
+      "id": "L220",
+      "title": "Preset metadata and gadget coverage classification",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L220-gadget-preset-coverage.json"
+      ],
+      "summary": "Two decoded UI files and verified gadget metadata classify121 coverage groups under text-presence policy while preserving407 catalog candidates,904 reviewed roots and unlinked blueprint identities.",
+      "reopenWhen": "A typed consumer joins preset or metadata identifiers to exact gadget blueprint instances.",
+      "refs": []
+    },
+    "L221": {
+      "id": "L221",
+      "title": "Gadget text enrichment and concrete description predictions",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L221-gadget-ui-text-and-checks.json"
+      ],
+      "summary": "121 gadget groups and 39 comparison rows retain unresolved blueprint joins with source-traceable candidate UI text; 63 descriptions have unperformed concrete checks.",
+      "reopenWhen": "Exact metadata-to-selected-gadget identity or separately authorized runtime observations become available.",
+      "refs": []
+    },
+    "L222": {
+      "id": "L222",
+      "title": "Gadget reverse metadata identity route",
+      "status": "exhausted",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L222-gadget-reverse-ui-identity.json"
+      ],
+      "summary": "No exact UI metadata GUID reference occurs in 146 directly verified current revisions; 128 historical-only revisions also have no match.",
+      "reopenWhen": "A different authoritative identity route or missing essential capture is identified.",
+      "refs": []
+    },
+    "L223": {
+      "id": "L223",
+      "title": "Gadget preset numeric gameplay identity",
+      "status": "exhausted",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L223-gadget-preset-numeric-identity.json"
+      ],
+      "summary": "All 24 presets compared with 145 verified current roots and 128 historical-only roots; no numeric equality or exact UI-to-gameplay chain.",
+      "reopenWhen": "An authoritative typed preset consumer or exact identity mapping becomes available.",
+      "refs": []
+    },
+    "L400": {
+      "id": "L400",
+      "title": "Class, training path and perk UI metadata",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L400-class-trait-ui.json"
+      ],
+      "summary": "155 UI records and 32 ordered ability imports across 8 MP source paths are retained; four proficiency descriptions have no direct conflict with L100-L104, while UI activation joins remain unresolved.",
+      "reopenWhen": "Exact UI-to-source class/path/perk mapping, missing signature strings or new-build comparison evidence becomes available.",
+      "refs": []
+    },
+    "L401": {
+      "id": "L401",
+      "title": "Agile Shooter, Weapon Swap and Steady Aim hotfix operands",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L401-class-perk-handling.json"
+      ],
+      "summary": "Hotfix verifies WeaponSwap +1 and MountedPlus +3/-2 and exact Commando Assault_2/MountedPlus Support_2 source progression joins; UI/source identity and runtime remain unverified.",
+      "reopenWhen": "Exact UI-to-source mapping, class/path unlock selection and native stat composition can be established.",
+      "refs": []
+    },
+    "L402": {
+      "id": "L402",
+      "title": "Survival perk source values",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L402-class-perk-survival.json"
+      ],
+      "summary": "Assault_1 slot 2 imports FasterHealing with candidate 30/2.5/0 against named baseline 10/5/0; EVASION TRAINING and HEAVY FLAK source aliases remain unresolved.",
+      "reopenWhen": "An exact training-path/perk ability join or native composition evidence is available.",
+      "refs": []
+    },
+    "L403": {
+      "id": "L403",
+      "title": "Spotting and confirmed-kill perk source cross-check",
+      "status": "proposal",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L403-class-perk-spotting.json"
+      ],
+      "summary": "AdvancedSpot named registry operands agree with perk text; LowProfile and Killshot support game-stated trait information while native consumers remain unresolved.",
+      "reopenWhen": "Validate class/path activation and native consumer semantics before numerical gameplay composition.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L404": {
+      "id": "L404",
+      "title": "Class-trait activation and missing-operand control preflight",
+      "status": "parked",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L404-class-trait-control-preflight.json"
+      ],
+      "summary": "No end-to-end class-path-perk control was established; missing-operand leads were skipped without qualified same-owner controls.",
+      "reopenWhen": "Provide an exact class/path/perk selection consumer or a named same-owner control for one missing perk.",
+      "refs": []
+    },
+    "L405": {
+      "id": "L405",
+      "title": "FasterRegen named field roles",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L405-fasterregen-field-roles.json"
+      ],
+      "summary": "Same-owner exact imports establish rate, delay and amount expression roles; native composition remains unresolved.",
+      "reopenWhen": "Reopen when evidence for native operation and activation is available.",
+      "refs": []
+    },
+    "L500": {
+      "id": "L500",
+      "title": "Weapons site audit census",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L500-weapons-audit-census.json"
+      ],
+      "summary": "Existing field-level reviews carry forward by raw hash; no displayed weapons.json family qualifies for new extraction after the requested exclusions.",
+      "reopenWhen": "A displayed numeric leaf changes without a reviewed receipt, or a cited source asset changes.",
+      "refs": []
+    },
+    "L580": {
+      "id": "L580",
+      "title": "Current selected ammo damage curves (L580-L582) extraction 1",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-curves.json"
+      ],
+      "summary": "328/328 selections compared: 20 exact, 293 precision-only float32-equivalent rows, 11 reviewed function-equivalent representations, four reviewed M45A1 runtime-step deviations; zero new value mismatches.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L581": {
+      "id": "L581",
+      "title": "Current selected ammo damage curves (L580-L582) extraction 2",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-curves.json"
+      ],
+      "summary": "328/328 selections compared: 20 exact, 293 precision-only float32-equivalent rows, 11 reviewed function-equivalent representations, four reviewed M45A1 runtime-step deviations; zero new value mismatches.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L582": {
+      "id": "L582",
+      "title": "Current selected ammo damage curves (L580-L582) extraction 3",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-curves.json"
+      ],
+      "summary": "328/328 selections compared: 20 exact, 293 precision-only float32-equivalent rows, 11 reviewed function-equivalent representations, four reviewed M45A1 runtime-step deviations; zero new value mismatches.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L583": {
+      "id": "L583",
+      "title": "Current selected subsonic velocity treatments (L583)",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-velocity.json"
+      ],
+      "summary": "31/31 treatments compared. All differences are precision-only; maximum conditional speed delta 0.0000128402709265 m/s. No new value mismatch or proposal.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L584": {
+      "id": "L584",
+      "title": "Current selected ammo recoil and spread modifiers (L584-L585) extraction 1",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-recoil-spread.json"
+      ],
+      "summary": "186 selected recoil/spread field comparisons over 74 stored leaves match exactly after source sign and selected-add transforms. All 328 offered choices listed; 137 choices lack a qualified reused operand or full absence proof. Slugs ADS increment 0.05 has no qualified route; no new mismatch or proposal.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L585": {
+      "id": "L585",
+      "title": "Current selected ammo recoil and spread modifiers (L584-L585) extraction 2",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-recoil-spread.json"
+      ],
+      "summary": "186 selected recoil/spread field comparisons over 74 stored leaves match exactly after source sign and selected-add transforms. All 328 offered choices listed; 137 choices lack a qualified reused operand or full absence proof. Slugs ADS increment 0.05 has no qualified route; no new mismatch or proposal.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L586": {
+      "id": "L586",
+      "title": "Current selected ammo points and option identity (L586-L587) extraction 1",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-points-availability.json"
+      ],
+      "summary": "328/328 selected ammo point costs match exactly; identity routes carry forward by matching raw hash. Current runtime defaults/availability remain unresolved. No value mismatch or proposal.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L587": {
+      "id": "L587",
+      "title": "Current selected ammo points and option identity (L586-L587) extraction 2",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-points-availability.json"
+      ],
+      "summary": "328/328 selected ammo point costs match exactly; identity routes carry forward by matching raw hash. Current runtime defaults/availability remain unresolved. No value mismatch or proposal.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L588": {
+      "id": "L588",
+      "title": "Current primary shotgun ammo pellet counts (L588)",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-site-audit-ammo-pellets.json"
+      ],
+      "summary": "16/16 primary shotgun ammo selections match exactly: buckshot and flechette 16, buckshot_00 eight, slugs one. Eight ammo.json override leaves and eight inherited contexts compared; no mismatch or proposal.",
+      "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
+      "refs": []
+    },
+    "L600": {
+      "id": "L600",
+      "title": "AR and Shotgun fire modes",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L600-fire-modes.json"
+      ],
+      "summary": "Fifteen primary owners have raw-verified mode/cadence fields; KORD burst-enable and two M16 mode branches have exact selectors and effects.",
+      "reopenWhen": "Reopen only for new mode-changing source or a concrete runtime consumer.",
+      "refs": []
+    },
+    "L601": {
+      "id": "L601",
+      "title": "Carbine and Sniper fire modes",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L601-fire-modes.json"
+      ],
+      "summary": "Current raw verifies 15 base mode/cadence rows and exact GRT-BC and SG553R burst attachment chains.",
+      "reopenWhen": "New current build bytes or a concrete runtime activation consumer becomes available.",
+      "refs": []
+    },
+    "L602": {
+      "id": "L602",
+      "title": "SMG and DMR fire modes",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L602-fire-modes.json"
+      ],
+      "summary": "Measured base modes and cadence for 16 weapons and exact mode modifier branches at Head 4909002.",
+      "reopenWhen": "Reopen for a concrete native activation or availability question.",
+      "refs": []
+    },
+    "L603": {
+      "id": "L603",
+      "title": "LMG and Sidearm fire modes",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L603-fire-modes.json"
+      ],
+      "summary": "All 17 base mode/cadence owners verified; bounded raw effect checks resolve XML-missing mode coverage, with generic unmatched joins kept unresolved.",
+      "reopenWhen": "New explicit mode-changing effect or activation evidence changes the bounded configuration.",
+      "refs": []
+    },
+    "L604": {
+      "id": "L604",
+      "title": "63-weapon fire-mode source join",
+      "status": "proposal",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L604-fire-mode-selector-data.json"
+      ],
+      "summary": "All 63 weapons supply 110 full-precision mode rows; 12 source mode branches include 10 current site choices.",
+      "reopenWhen": "Operator checks the named fire-mode toggle lists; implement only in a separate authorized feature task.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
     "L3000": {
       "id": "L3000",
       "title": "Vehicle functional census and capture availability",
@@ -2995,6 +3425,198 @@
       ],
       "summary": "16 ground families and two variants have exact selected consumer graphs; two additional selected compiled bodies are pinned with a scoped reader/control limit.",
       "reopenWhen": "A matching validated semantic reader and independent operation control, or exact named native receiver schema, becomes available.",
+      "refs": []
+    },
+    "L3018": {
+      "id": "L3018",
+      "title": "Vehicle saved coverage merge and comparison stat map",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3018-vehicle-stat-map.json"
+      ],
+      "summary": "Merged 46 reviewed root profiles and prepared stat decisions for 38 families; configured health names cover 35 base families, with runtime and exact-owner limits retained.",
+      "reopenWhen": "The operator approves the stat list and the 1.4.3.5 update check establishes receipt reuse; targeted leads must name an approved stat, exact route and passing same-owner control.",
+      "refs": []
+    },
+    "L3019": {
+      "id": "L3019",
+      "title": "Abrams and Leopard configured firing, ammo and launch vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3019-vehicle-configured-stats.json"
+      ],
+      "summary": "Two MBT families select six firing profiles with eight named configured values per profile.",
+      "reopenWhen": "An exact same-owner projectile control or targeted native test is available.",
+      "refs": []
+    },
+    "L3020": {
+      "id": "L3020",
+      "title": "AAV7A1, Bradley and CV90 configured firing, ammo and vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3020-vehicle-configured-stats.json"
+      ],
+      "summary": "Three families retain selected alternatives with 10 named firing profiles and 2 explicit unmatched owner boundaries.",
+      "reopenWhen": "An exact named SP owner control or targeted native test is available.",
+      "refs": []
+    },
+    "L3021": {
+      "id": "L3021",
+      "title": "Gepard configured firing, ammo and vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3021-vehicle-configured-stats.json"
+      ],
+      "summary": "One family retains selected alternatives with 6 named firing profiles and 0 explicit unmatched owner boundaries.",
+      "reopenWhen": "An exact named SP owner control or targeted native test is available.",
+      "refs": []
+    },
+    "L3022": {
+      "id": "L3022",
+      "title": "Flyer60, JLTV, Marauder and Vector configured firing, ammo and vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3022-vehicle-configured-stats.json"
+      ],
+      "summary": "Four families retain selected alternatives with 4 named firing profiles and 0 explicit unmatched owner boundaries.",
+      "reopenWhen": "An exact named SP owner control or targeted native test is available.",
+      "refs": []
+    },
+    "L3023": {
+      "id": "L3023",
+      "title": "Vehicle UI archetype, preset and customization metadata",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3023-vehicle-ui-metadata.json"
+      ],
+      "summary": "Nine archetype cards and fifteen presets resolve selected localized text; all cards retain explicit unlinked family status.",
+      "reopenWhen": "Exact captured vehicle UI metadata intermediaries establish typed card-to-root linkage or seat tests are performed.",
+      "refs": []
+    },
+    "L3024": {
+      "id": "L3024",
+      "title": "AAV7A1, TheBeast and JetSki own-wrapper health naming",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3024-health-own-wrapper-check.json"
+      ],
+      "summary": "Three exact selected owner wrappers are null; no CB90 health/repair names transfer across their different keys.",
+      "reopenWhen": "Exact named own-owner health evidence is available for the three keys.",
+      "refs": []
+    },
+    "L3025": {
+      "id": "L3025",
+      "title": "Jet configured firing, ammo and launch vectors",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3025-vehicle-configured-stats.json"
+      ],
+      "summary": "Six jet families select fourteen exact-controlled firing profiles with eight configured fields each.",
+      "reopenWhen": "A named same-owner projectile control or targeted native validation is available.",
+      "refs": []
+    },
+    "L3026": {
+      "id": "L3026",
+      "title": "Attack helicopter configured firing, ammo and vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3026-vehicle-configured-stats.json"
+      ],
+      "summary": "17 unique matched selected firing profiles; 0 unique unresolved alternatives.",
+      "reopenWhen": "An exact named projectile control or native selection evidence is available.",
+      "refs": []
+    },
+    "L3027": {
+      "id": "L3027",
+      "title": "Boat configured firing, ammo and vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3027-vehicle-configured-stats.json"
+      ],
+      "summary": "Three boat families retain 13 matched selected firing profiles and one no-owner JetSki boundary.",
+      "reopenWhen": "An exact named projectile owner control or new JetSki selected firing evidence is available.",
+      "refs": []
+    },
+    "L3028": {
+      "id": "L3028",
+      "title": "Stationary configured firing, ammo and vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3028-vehicle-configured-stats.json"
+      ],
+      "summary": "8 matched profiles; 0 unmatched owner boundaries; 86 new raw reads; 8 reused stat checks.",
+      "reopenWhen": "Named projectile owner evidence or targeted native evidence becomes available.",
+      "refs": []
+    },
+    "L3029": {
+      "id": "L3029",
+      "title": "Transport helicopter configured firing, ammo and vector",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3029-vehicle-configured-stats.json"
+      ],
+      "summary": "One UH60 matched selected firing profile; MH47 retains its established polymorphic armament boundary with configured values unset.",
+      "reopenWhen": "An exact named projectile control or native selection evidence is available.",
+      "refs": []
+    },
+    "L3030": {
+      "id": "L3030",
+      "title": "Vehicle Stage 2 source map and coverage close-out",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3030-vehicle-stage2-closeout.json"
+      ],
+      "summary": "Merged 69 configured firing profiles across 27 families, retained nine unlinked UI cards and closed the ordered bounded checks.",
+      "reopenWhen": "The update check establishes receipt carry-forward, or approved exact source joins or in-game tests add an unresolved stat.",
+      "refs": []
+    },
+    "L3031": {
+      "id": "L3031",
+      "title": "MAIN BATTLE TANK card to family root",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3031-vehicle-mbt-ui-root-join.json"
+      ],
+      "summary": "Text and metadata import controls pass; no exact card-to-base-root chain passes in the selected MBT route.",
+      "reopenWhen": "An exact metadata lookup consumer or serialized card/category to vehicle root link is supplied.",
+      "refs": []
+    },
+    "L3032": {
+      "id": "L3032",
+      "title": "MAIN BATTLE TANK category to root identity",
+      "status": "exhausted",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3032-vehicle-ui-category-root-join.json"
+      ],
+      "summary": "Exact category source control passes; all15 selected category targets fail to complete a card-to-MBT-root identity chain.",
+      "reopenWhen": "Only new exact serialized card/category consumer-to-blueprint ownership evidence can reopen this line.",
+      "refs": []
+    },
+    "L3033": {
+      "id": "L3033",
+      "title": "Current APHEI owner and carrier restriction",
+      "status": "exhausted",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L3033-vehicle-aphei-current-only.json"
+      ],
+      "summary": "Current cannon control passed, but four selected vehicle UI assets and two named cannon candidates did not establish an exact APHEI owner.",
+      "reopenWhen": "Reopen with a current APHEI text record and an exact serialized owner-selection join.",
       "refs": []
     }
   }

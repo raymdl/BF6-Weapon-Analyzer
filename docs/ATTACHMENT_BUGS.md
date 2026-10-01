@@ -680,6 +680,43 @@ add a `descriptionMismatch` object with a link to the evidence file. When the si
 links wrong text, add a reviewed panel row instead of editing
 `data/attachment-tooltips.json`.
 
+## 1.4.3.5 recheck, 30 September 2026
+
+Source and description status is unchanged for each row below. This retains the
+existing classifications; it does not repeat the earlier in-game measurements.
+The [dated receipt](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-update-1.4.3.5-2026-09-30.json)
+pins `attachment-bug-recheck.json` and `raw-content-review.json` in the open build's
+reports folder. They give the selected source routes and both raw hashes.
+
+| Entry | 1.4.3.5 result |
+|---|---|
+| 1a | No source/text change; sniper selector status retained. |
+| 1b | No source/text change; corrected 18.5KS-K interpretation retained. |
+| 2 | No source/text change; extra FMJ selector status retained. |
+| 3 | No source/text change; absent SMG draw effect retained. |
+| 4 | No source/text change; PP-19 fast-magazine reload status retained. |
+| 5 | No source/text change; sidearm recoil status retained. |
+| 6 | No source/text change; PP-19 smoothing omission retained. |
+| 7 | No source/text change; belt-box moving-ADS status retained. |
+| 8 | No source/text change; PW7A2 text mismatch retained. |
+| 9 | No source/text change; SGX text mismatch retained. |
+| 10 | No source/text change; KTS100 relative-to-default status retained. |
+| 11 | No source change in the 23 retained optic-FOV source assets; visual status retained. The announced PS5 optic-edge change is separate. |
+| 12 | No source/text change; L115 suppressor binding omission retained. |
+| 13 | No source/text change; source-specific tungsten penalties retained. |
+| 14 | No source/text change; burst activation remains open. |
+| 15 | No source/text change; retained reload timing interpretation unchanged. |
+| 16 | No source/text change; BROD 3 iron-sight sway omission retained. |
+
+Current label/description roles were resolved for 1,004 AD assets. Their raw bytes
+and the complete English localization file are unchanged. All AD metadata retains
+layout ambiguity, so unchanged decoded fields alone do not prove correct decoding.
+The multi-package scan returns 15 candidates, not new confirmed bugs. Re-reading
+629 magazine operands supports 287 selections relative to their actual defaults;
+KTS100 50 Rnd and default 60 Rnd match in all five checked handling fields. Reload
+and sway were not newly measured. Three unrelated Blacklight inputs lack current
+raw coverage in the retained selector graph. No site numeric value was changed.
+
 ## 1.4.3.0 recheck, 15 September 2026
 
 **Source side: no entry changed.** Every asset behind entries 1 to 10 is byte-identical

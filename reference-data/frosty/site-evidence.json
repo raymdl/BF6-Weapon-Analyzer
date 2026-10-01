@@ -718,6 +718,12 @@
         "date": "2026-09-29",
         "relation": "context",
         "value": 0.6666667
+      },
+      {
+        "receipt": "frosty-2026-09-30-L401-class-perk-handling.json",
+        "date": "2026-09-30",
+        "relation": "supports",
+        "value": 0.6666667
       }
     ],
     "data/attachments.json:/SIGHTS/[id=thermal]/adsMoveSpeedTierShift": [
@@ -2621,6 +2627,14 @@
         "value": 2.9170008
       }
     ],
+    "data/weapons.json:/[id=ak205]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=ak205]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -2635,6 +2649,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.3
+      }
+    ],
+    "data/weapons.json:/[id=ak4d]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=ak4d]/tacRld": [
@@ -2653,6 +2675,14 @@
         "value": 2.95
       }
     ],
+    "data/weapons.json:/[id=b36a4]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=b36a4]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -2667,6 +2697,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.05
+      }
+    ],
+    "data/weapons.json:/[id=brod3]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=brod3]/tacRld": [
@@ -2685,6 +2723,14 @@
         "value": 2.95
       }
     ],
+    "data/weapons.json:/[id=cz3a1]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=cz3a1]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -2699,6 +2745,14 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": 2
+      }
+    ],
+    "data/weapons.json:/[id=db12]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "pump"
       }
     ],
     "data/weapons.json:/[id=db12]/mag": [
@@ -2829,6 +2883,14 @@
         "value": 2.95
       }
     ],
+    "data/weapons.json:/[id=drsiar]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=drsiar]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -2845,6 +2907,14 @@
         "value": 3.534
       }
     ],
+    "data/weapons.json:/[id=ef88]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=ef88]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -2859,6 +2929,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.2
+      }
+    ],
+    "data/weapons.json:/[id=es57]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=es57]/rpm": [
@@ -2883,6 +2961,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.25
+      }
+    ],
+    "data/weapons.json:/[id=ggh22]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=ggh22]/rpm": [
@@ -2930,6 +3016,14 @@
         "value": 3.35
       }
     ],
+    "data/weapons.json:/[id=grtbc]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=grtbc]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -2944,6 +3038,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.034
+      }
+    ],
+    "data/weapons.json:/[id=grtcps]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=grtcps]/rpm": [
@@ -2978,6 +3080,14 @@
         "value": 4.83
       }
     ],
+    "data/weapons.json:/[id=interdictor]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "bolt"
+      }
+    ],
     "data/weapons.json:/[id=interdictor]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -2994,6 +3104,14 @@
         "value": 3.017
       }
     ],
+    "data/weapons.json:/[id=kord6p67]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=kord6p67]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3008,6 +3126,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.7
+      }
+    ],
+    "data/weapons.json:/[id=ks18k]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=ks18k]/rpm": [
@@ -3034,6 +3160,14 @@
         "value": 3.984
       }
     ],
+    "data/weapons.json:/[id=kts100]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=kts100]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3048,6 +3182,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.9
+      }
+    ],
+    "data/weapons.json:/[id=kv9]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=kv9]/tacRld": [
@@ -3074,6 +3216,14 @@
         "value": 7.734
       }
     ],
+    "data/weapons.json:/[id=l110]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=l110]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3088,6 +3238,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 4.233
+      }
+    ],
+    "data/weapons.json:/[id=l115]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "bolt"
       }
     ],
     "data/weapons.json:/[id=l115]/rpm": [
@@ -3114,6 +3272,14 @@
         "value": 2.8340023
       }
     ],
+    "data/weapons.json:/[id=l85a3]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=l85a3]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3130,6 +3296,14 @@
         "value": 3.067
       }
     ],
+    "data/weapons.json:/[id=lmr27]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
+      }
+    ],
     "data/weapons.json:/[id=lmr27]/rpm": [
       {
         "receipt": "frosty-2026-09-24-L14-single-fire-cadence.json",
@@ -3144,6 +3318,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.034
+      }
+    ],
+    "data/weapons.json:/[id=m1014]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=m1014]/rpm": [
@@ -3176,6 +3358,14 @@
         "value": 7.25
       }
     ],
+    "data/weapons.json:/[id=m121a2]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=m121a2]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3192,6 +3382,14 @@
         "value": 7.434
       }
     ],
+    "data/weapons.json:/[id=m123k]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=m123k]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3206,6 +3404,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.634
+      }
+    ],
+    "data/weapons.json:/[id=m16a4]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "burst"
       }
     ],
     "data/weapons.json:/[id=m16a4]/tacRld": [
@@ -3232,6 +3438,14 @@
         "value": 3.934
       }
     ],
+    "data/weapons.json:/[id=m2010esr]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "bolt"
+      }
+    ],
     "data/weapons.json:/[id=m2010esr]/rpm": [
       {
         "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
@@ -3256,6 +3470,14 @@
         "value": 5.6
       }
     ],
+    "data/weapons.json:/[id=m240l]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=m240l]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3270,6 +3492,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 6.134
+      }
+    ],
+    "data/weapons.json:/[id=m250]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=m250]/tacRld": [
@@ -3296,6 +3526,14 @@
         "value": 2.5500004
       }
     ],
+    "data/weapons.json:/[id=m277]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=m277]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3310,6 +3548,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.067
+      }
+    ],
+    "data/weapons.json:/[id=m357trait]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=m357trait]/rpm": [
@@ -3342,6 +3588,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.85
+      }
+    ],
+    "data/weapons.json:/[id=m39emr]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=m39emr]/rpm": [
@@ -3400,12 +3654,28 @@
         "value": 2.567
       }
     ],
+    "data/weapons.json:/[id=m417a2]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=m417a2]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.467
+      }
+    ],
+    "data/weapons.json:/[id=m433]/bulletVel": [
+      {
+        "receipt": "frosty-2026-09-30-L500-weapons-audit-census.json",
+        "date": "2026-09-30",
+        "relation": "supports",
+        "value": 630
       }
     ],
     "data/weapons.json:/[id=m433]/cal": [
@@ -3422,6 +3692,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.967
+      }
+    ],
+    "data/weapons.json:/[id=m433]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=m433]/mag": [
@@ -3592,6 +3870,14 @@
         "value": 3.4
       }
     ],
+    "data/weapons.json:/[id=m44]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
+      }
+    ],
     "data/weapons.json:/[id=m44]/rpm": [
       {
         "receipt": "frosty-2026-09-24-L14-single-fire-cadence.json",
@@ -3624,6 +3910,14 @@
         "value": 2
       }
     ],
+    "data/weapons.json:/[id=m45a1]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
+      }
+    ],
     "data/weapons.json:/[id=m45a1]/rpm": [
       {
         "receipt": "frosty-2026-09-24-L14-single-fire-cadence.json",
@@ -3654,6 +3948,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.634
+      }
+    ],
+    "data/weapons.json:/[id=m4a1]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=m4a1]/spread/adsMove": [
@@ -3756,6 +4058,14 @@
         "value": 8.150001
       }
     ],
+    "data/weapons.json:/[id=m60]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=m60]/mag": [
       {
         "receipt": "frosty-2026-09-24-L37-configured-magazine-counts.json",
@@ -3778,6 +4088,14 @@
         "date": "2026-09-24",
         "relation": "proposed",
         "value": "12ga (00 Buck)"
+      }
+    ],
+    "data/weapons.json:/[id=m87a1]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "pump"
       }
     ],
     "data/weapons.json:/[id=m87a1]/recoil/ads/decExp": [
@@ -3816,6 +4134,14 @@
         "value": 3.9
       }
     ],
+    "data/weapons.json:/[id=miniscout]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "bolt"
+      }
+    ],
     "data/weapons.json:/[id=miniscout]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3840,6 +4166,14 @@
         "value": 3.0000021
       }
     ],
+    "data/weapons.json:/[id=nvo228e]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=nvo228e]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3854,6 +4188,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.167
+      }
+    ],
+    "data/weapons.json:/[id=p18]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=p18]/rpm": [
@@ -3880,6 +4222,14 @@
         "value": 2.967
       }
     ],
+    "data/weapons.json:/[id=pp19]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=pp19]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3894,6 +4244,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 4.35
+      }
+    ],
+    "data/weapons.json:/[id=psr]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "bolt"
       }
     ],
     "data/weapons.json:/[id=psr]/rpm": [
@@ -3920,6 +4278,14 @@
         "value": 3.0000021
       }
     ],
+    "data/weapons.json:/[id=pw5a3]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=pw5a3]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3942,6 +4308,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.0670028
+      }
+    ],
+    "data/weapons.json:/[id=pw7a2]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=pw7a2]/tacRld": [
@@ -3968,6 +4342,14 @@
         "value": 2.784
       }
     ],
+    "data/weapons.json:/[id=qbz192]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=qbz192]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3988,6 +4370,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.1
+      }
+    ],
+    "data/weapons.json:/[id=rpk74m]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=rpk74m]/mag": [
@@ -4014,6 +4404,14 @@
         "value": 3.284
       }
     ],
+    "data/weapons.json:/[id=rpkm]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=rpkm]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4038,6 +4436,14 @@
         "value": 3.117003
       }
     ],
+    "data/weapons.json:/[id=scw10]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=scw10]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4052,6 +4458,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.934001
+      }
+    ],
+    "data/weapons.json:/[id=sg553r]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=sg553r]/tacRld": [
@@ -4076,6 +4490,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.917
+      }
+    ],
+    "data/weapons.json:/[id=sgx]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=sgx]/tacRld": [
@@ -4115,6 +4537,14 @@
         "value": 3.184
       }
     ],
+    "data/weapons.json:/[id=sl9]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=sl9]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4139,6 +4569,14 @@
         "value": 3.2
       }
     ],
+    "data/weapons.json:/[id=sor300sc]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=sor300sc]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4153,6 +4591,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 2.667
+      }
+    ],
+    "data/weapons.json:/[id=sor556]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=sor556]/tacRld": [
@@ -4179,6 +4625,14 @@
         "value": 3.967
       }
     ],
+    "data/weapons.json:/[id=sv98]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "bolt"
+      }
+    ],
     "data/weapons.json:/[id=sv98]/rpm": [
       {
         "receipt": "frosty-2026-09-29-L117-bolt-pump-cycle-attachments.json",
@@ -4201,6 +4655,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.45
+      }
+    ],
+    "data/weapons.json:/[id=svdm]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
       }
     ],
     "data/weapons.json:/[id=svdm]/rpm": [
@@ -4235,6 +4697,14 @@
         "value": 4.217
       }
     ],
+    "data/weapons.json:/[id=svk86]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "semi"
+      }
+    ],
     "data/weapons.json:/[id=svk86]/rpm": [
       {
         "receipt": "frosty-2026-09-24-L14-single-fire-cadence.json",
@@ -4267,6 +4737,14 @@
         "value": 3.3670034
       }
     ],
+    "data/weapons.json:/[id=tr7]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=tr7]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4291,6 +4769,14 @@
         "value": 2.917
       }
     ],
+    "data/weapons.json:/[id=umg40]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=umg40]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4307,6 +4793,14 @@
         "value": 3.2840025
       }
     ],
+    "data/weapons.json:/[id=usg90]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=usg90]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4321,6 +4815,14 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 3.117003
+      }
+    ],
+    "data/weapons.json:/[id=vcr2]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
       }
     ],
     "data/weapons.json:/[id=vcr2]/tacRld": [
@@ -4351,6 +4853,12 @@
       {
         "receipt": "frosty-2026-09-25-L63-vssm-semi-bloom.json",
         "date": "2026-09-25",
+        "relation": "context",
+        "value": "semi"
+      },
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
         "relation": "context",
         "value": "semi"
       }
@@ -4409,6 +4917,14 @@
         "value": 2.833
       }
     ],
+    "data/weapons.json:/[id=vz61]/fireMode": [
+      {
+        "receipt": "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "value": "auto"
+      }
+    ],
     "data/weapons.json:/[id=vz61]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -4426,6 +4942,84 @@
           "file": 0,
           "pointer": 1,
           "rows": "/proposedFixes/rows",
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-09-30-site-audit-ammo-curves.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-09-30-site-audit-ammo-curves.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-09-30-site-audit-ammo-pellets.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-09-30-site-audit-ammo-pellets.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-09-30-site-audit-ammo-points-availability.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-09-30-site-audit-ammo-points-availability.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-09-30-site-audit-ammo-recoil-spread.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-09-30-site-audit-ammo-recoil-spread.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-09-30-site-audit-ammo-type-modifiers.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-09-30-site-audit-ammo-type-modifiers.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-09-30-site-audit-ammo-velocity.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-09-30-site-audit-ammo-velocity.json",
+        "date": "2026-09-30",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
           "value": 2
         }
       }

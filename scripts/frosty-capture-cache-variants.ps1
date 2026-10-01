@@ -61,8 +61,9 @@ try {
                 try { $stream.CopyTo($output) } finally { $output.Dispose() }
                 Move-Item -LiteralPath ($target + '.partial') -Destination $target
             } finally { if ($null -ne $stream) { $stream.Dispose() } }
-            $item.status='success'; $item.file=$relative; $item.bytes=(Get-Item -LiteralPath $target).Length
+            $item.file=$relative; $item.bytes=(Get-Item -LiteralPath $target).Length
             $item.sha256=(Get-FileHash -LiteralPath $target -Algorithm SHA256).Hash.ToLowerInvariant()
+            $item.status='success'
         } catch { $item.reason=$_.Exception.Message }
         $writer.WriteLine(($item | ConvertTo-Json -Compress)); $writer.Flush()
     }

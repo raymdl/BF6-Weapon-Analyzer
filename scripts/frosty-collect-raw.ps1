@@ -24,6 +24,8 @@ param(
     [long]$MaxBytes = 33554432
 )
 $ErrorActionPreference = 'Stop'
+Import-Module (Join-Path $PSHOME 'Modules\Microsoft.PowerShell.Utility\Microsoft.PowerShell.Utility.psd1') -ErrorAction Stop
+Get-Command Get-FileHash -ErrorAction Stop | Out-Null
 if ($ResourceMetadataOnly -and -not $ResourceIdsFile) { throw 'ResourceMetadataOnly requires ResourceIdsFile' }
 $outputRoot = [IO.Path]::GetFullPath((New-Item -ItemType Directory -Force -Path $OutputDirectory).FullName)
 Push-Location -LiteralPath $FrostyDirectory
@@ -150,9 +152,10 @@ public static class CatalogCapture {
                             Move-Item -LiteralPath $temp -Destination $target
                         } finally { $stream.Dispose() }
                     }
-                    $item.status='success'; $item.file=$relative
+                    $item.file=$relative
                     $item.bytes=(Get-Item -LiteralPath $target).Length
                     $item.sha256=(Get-FileHash -LiteralPath $target -Algorithm SHA256).Hash.ToLowerInvariant()
+                    $item.status='success'
                 } catch { $item.reason=$_.Exception.Message }
                 $statusWriter.WriteLine(($item | ConvertTo-Json -Compress))
                 $statusWriter.Flush()
@@ -223,9 +226,10 @@ public static class CatalogCapture {
                         try { $stream.CopyTo($output) } finally { $output.Dispose() }
                         Move-Item -LiteralPath $temp -Destination $target
                     } finally { $stream.Dispose() }
-                    $item.status='success'; $item.file=$relative
+                    $item.file=$relative
                     $item.bytes=(Get-Item -LiteralPath $target).Length
                     $item.sha256=(Get-FileHash -LiteralPath $target -Algorithm SHA256).Hash.ToLowerInvariant()
+                    $item.status='success'
                 } catch { $item.reason=$_.Exception.Message }
                 $writer.WriteLine(($item | ConvertTo-Json -Compress)); $writer.Flush()
             }
