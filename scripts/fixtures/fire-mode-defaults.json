@@ -1,0 +1,371 @@
+{
+  "baseCommit": "9dbd390",
+  "description": "Implicit defaults: mode, nine shot intervals (TTK cadence), ten-shot spread/recoil in ADS/hip standing/moving; seed 0.",
+  "cases": [
+    {
+      "weapon": "m433",
+      "ergo": "none",
+      "sha256": "3c85aecc1f68375e8be57bfc8d9bcbc407a65e319de7186c24545bdd8296aa4f"
+    },
+    {
+      "weapon": "b36a4",
+      "ergo": "none",
+      "sha256": "d70f5a6169c0b2f7b886f25dee4b6ee6bdc053b07ca6c98cf61617b0c0acccde"
+    },
+    {
+      "weapon": "sor556",
+      "ergo": "none",
+      "sha256": "b78365bc8bf83cbf1ffbdfdb55be2e484d460ec2c49fe2e195ea45d24ba9e5f9"
+    },
+    {
+      "weapon": "ak4d",
+      "ergo": "none",
+      "sha256": "2cf06cb2ed662c5adb378e418ce0595e587714bb847b36b6ec3d3877728fe4e2"
+    },
+    {
+      "weapon": "tr7",
+      "ergo": "none",
+      "sha256": "81f5373a709a5628f5cb48b55f3166c2644a0eb4d287da3102e311f01eb95933"
+    },
+    {
+      "weapon": "kord6p67",
+      "ergo": "none",
+      "sha256": "1784eb0300e6c28742f5206324d8cc0e2cb506c985b44cea32400a51a85a9b6b"
+    },
+    {
+      "weapon": "kord6p67",
+      "ergo": "burst_training",
+      "sha256": "828d037cfffc1eafec7bab9d7c202887a82d602c2a21aa2873847dea7dd342c4"
+    },
+    {
+      "weapon": "nvo228e",
+      "ergo": "none",
+      "sha256": "7284decaf0a3a61357de5e1054a95c6867ff01f361aa96c6abea08e9f26667d9"
+    },
+    {
+      "weapon": "l85a3",
+      "ergo": "none",
+      "sha256": "802b759a2d0139ffd9d03e16f9f0ed04c11427104d08d0c683a4c56ff894cf4b"
+    },
+    {
+      "weapon": "vcr2",
+      "ergo": "none",
+      "sha256": "370670ca6c3300eaef6f5e9dc82b9ad457fbe906b2d678c5c25c852864593fa1"
+    },
+    {
+      "weapon": "m16a4",
+      "ergo": "none",
+      "sha256": "83da52ed0b165cc389a774f7fde59f91e104a0bfe6471aac8f66ee2f606c0cb5"
+    },
+    {
+      "weapon": "m16a4",
+      "ergo": "full_auto",
+      "sha256": "bacd862f30c04883f29eb9963d9a7ecc938fc3b59650da715da0a67e0b5f15c6"
+    },
+    {
+      "weapon": "m4a1",
+      "ergo": "none",
+      "sha256": "75f54e8c84099674f36232d96dfb3726fc70428c0750c667d18718a5b6c64a29"
+    },
+    {
+      "weapon": "m277",
+      "ergo": "none",
+      "sha256": "c5cc56bb73430450ef0ea621ff8edb395034812e3f08a5795543b51620d6c98c"
+    },
+    {
+      "weapon": "ak205",
+      "ergo": "none",
+      "sha256": "ec35fb1c4c82a12777c786de344cf6332be0988410beb19a24f08e8c09a43f2f"
+    },
+    {
+      "weapon": "m417a2",
+      "ergo": "none",
+      "sha256": "3b83ba496dc123c3ab7469c69a68acefc1a1ac100508967b8595742b8167308a"
+    },
+    {
+      "weapon": "grtbc",
+      "ergo": "none",
+      "sha256": "9812bb1b1724cedee018aa95322455be24b5fdd4f6cae799e0ab5f0c668042bd"
+    },
+    {
+      "weapon": "grtbc",
+      "ergo": "grtbc_burst_mode",
+      "sha256": "39bc9becaca6f6ebe57491bac9e8eb2c9e386c4c9479ec62a655e6b45b22480b"
+    },
+    {
+      "weapon": "qbz192",
+      "ergo": "none",
+      "sha256": "e088e53ee804a413cdc2f5d858b0a6640c3e4c87012cfb940986171f2aa17e16"
+    },
+    {
+      "weapon": "sg553r",
+      "ergo": "none",
+      "sha256": "11249626202bcdac74c5d8c1432895eef4dede44c524da439cc72d0f9d77ebc6"
+    },
+    {
+      "weapon": "sg553r",
+      "ergo": "burst_training",
+      "sha256": "4e8e7d31b9cca821ec279c40b92d8442211b74d6485de45a2bbd3a7cffddbc21"
+    },
+    {
+      "weapon": "sor300sc",
+      "ergo": "none",
+      "sha256": "74807f48c27feb3c30cbe4be48367ceea19263469583bc2bb74fb4722ff345ac"
+    },
+    {
+      "weapon": "sgx",
+      "ergo": "none",
+      "sha256": "bc99e2b5cb42bec6047da822aad20b262ff4d5a74157671f3c60500b9c9dd67c"
+    },
+    {
+      "weapon": "pw5a3",
+      "ergo": "none",
+      "sha256": "a668f8780aaee7dd81aaf700ae1aa14da8a96e2f56de59e87b9f963e0d795659"
+    },
+    {
+      "weapon": "pw5a3",
+      "ergo": "burst_training",
+      "sha256": "f01dec94f89d369f66b2f2a65ed6f7eb9a1e8f0f3a1fdf8f112e5749a3362ddd"
+    },
+    {
+      "weapon": "pw7a2",
+      "ergo": "none",
+      "sha256": "9d86a2607239e0c9a6132c7e39b11177a02b5d0c5a0290e49ff4df50674378be"
+    },
+    {
+      "weapon": "umg40",
+      "ergo": "none",
+      "sha256": "7def03d6d2df1a2751fcda08b56aa531995f88bd12de364c2a2feaeccc3bdbc5"
+    },
+    {
+      "weapon": "umg40",
+      "ergo": "burst_training",
+      "sha256": "788b137aba810e1069d1ac205a780cee4ab68cd23b151499614cda76d0e553e4"
+    },
+    {
+      "weapon": "usg90",
+      "ergo": "none",
+      "sha256": "f3a0d60430e426afbe0cd62c29b757e6902234cf454dcb7b81aa3ba727a5f7e0"
+    },
+    {
+      "weapon": "kv9",
+      "ergo": "none",
+      "sha256": "3ffa7f1cca7817ff98ff11da04e47a090fcaf1ceba5b6e2e39b73b3ebe0d83cc"
+    },
+    {
+      "weapon": "kv9",
+      "ergo": "burst_training",
+      "sha256": "3ad25fa3e51422e66eebff0f243f2f7b7326d9d5ae3d3c8e7d28508a6a92d7c2"
+    },
+    {
+      "weapon": "scw10",
+      "ergo": "none",
+      "sha256": "d80ef5a99f1abe01e63d934bd45ff5f15e85fb0ab3f8121ee2122591583dab24"
+    },
+    {
+      "weapon": "sl9",
+      "ergo": "none",
+      "sha256": "2257491b530cbb9e969f9d9042e122fb8e493ddc2416c387c885659dbbd8e9c6"
+    },
+    {
+      "weapon": "sl9",
+      "ergo": "burst_mode",
+      "sha256": "5884310755c09db69930ab5c5c11bf7feae43023d35c70acc8c0dbef5f4268cf"
+    },
+    {
+      "weapon": "cz3a1",
+      "ergo": "none",
+      "sha256": "3d57f2616909a0547b2d7bad72c8fa484180328ce457298f045554d9f776b714"
+    },
+    {
+      "weapon": "cz3a1",
+      "ergo": "burst_training",
+      "sha256": "edc7c1eb68ef990942bd0227f4a833d121c06d421c0b9e33e6f71f0e9ed6b11d"
+    },
+    {
+      "weapon": "pp19",
+      "ergo": "none",
+      "sha256": "ef40cbc14f87ccd85f0451ed7d0e67761a7c00009518a583f229902eb5909ad1"
+    },
+    {
+      "weapon": "l110",
+      "ergo": "none",
+      "sha256": "169f216ca52692170f8312ff4b15b80d5f9f5924226c52d0630a88cc7d20223a"
+    },
+    {
+      "weapon": "drsiar",
+      "ergo": "none",
+      "sha256": "ae5156db7495e24c813b7ef34922b7b6992d328ca598740ec1149c77be02aac3"
+    },
+    {
+      "weapon": "m60",
+      "ergo": "none",
+      "sha256": "3da73076ee2322aa0189b472ce9a2c9183abeb2696b03941e1fce1f244c495f6"
+    },
+    {
+      "weapon": "rpkm",
+      "ergo": "none",
+      "sha256": "a6d5c5e6f37ad6f14174e9652fe29c38b659a6d398dbfc39781ffa20501c473b"
+    },
+    {
+      "weapon": "m123k",
+      "ergo": "none",
+      "sha256": "add98f56d4269148993918ba150df136c5be9cb42cdabd115c7b258ad51a5611"
+    },
+    {
+      "weapon": "m250",
+      "ergo": "none",
+      "sha256": "3eb97b261c6b3668ba58691d4ac0b765cd184049043c3c51381d7c0f862083b2"
+    },
+    {
+      "weapon": "kts100",
+      "ergo": "none",
+      "sha256": "5c06e0bed300b0c1f986cec610f3fcd20a2c6399353de3542f08a3b6fff69287"
+    },
+    {
+      "weapon": "m240l",
+      "ergo": "none",
+      "sha256": "a77db91de0f361e3f6932e4133f459bc881986364c65c2fd2520bbfe0da1d82f"
+    },
+    {
+      "weapon": "m121a2",
+      "ergo": "none",
+      "sha256": "b4020dfd5c0bb522014ccb14097a2f2e95e995d9012abf811d25b5987260e6a9"
+    },
+    {
+      "weapon": "rpk74m",
+      "ergo": "none",
+      "sha256": "2c6694a4dbbbeea427444cf89cb8b3e32a2d69e49d31c10150c2909178e76f87"
+    },
+    {
+      "weapon": "m39emr",
+      "ergo": "none",
+      "sha256": "18fb4516a713676f0a5ebd32c5236724c18fc77490611914f31f6aeb9fac6a57"
+    },
+    {
+      "weapon": "lmr27",
+      "ergo": "none",
+      "sha256": "48644c2340ee9a1ddf302af3f5018d910c3e78ecab09394b9dabb56f2375edad"
+    },
+    {
+      "weapon": "svk86",
+      "ergo": "none",
+      "sha256": "f8549c53c5bb8c76bd517a25c5a57097bd63dbcc87864e6dc5ef6b8e7493d0aa"
+    },
+    {
+      "weapon": "svdm",
+      "ergo": "none",
+      "sha256": "d950cb6683c39d1443e9fe64847dbd6ce3386231f98dac169ab8da61c2dd57b5"
+    },
+    {
+      "weapon": "grtcps",
+      "ergo": "none",
+      "sha256": "650c20e5b9b681835cae5636937fb9df33b55eb9d5945c8f385e1dce757b9dc4"
+    },
+    {
+      "weapon": "m2010esr",
+      "ergo": "none",
+      "sha256": "92d2764eea64ca836dd769fa3df2c51b26a8840ec4764f4dc358f71aa40fa08e"
+    },
+    {
+      "weapon": "sv98",
+      "ergo": "none",
+      "sha256": "401e0acf138a0d99b83898ba45c4831c695611798cbde7b1042125e08bfd2fb3"
+    },
+    {
+      "weapon": "psr",
+      "ergo": "none",
+      "sha256": "6b809d0d4c2e9d7580748d9155bfab895811102be7601eb0e292425e366aa2f4"
+    },
+    {
+      "weapon": "miniscout",
+      "ergo": "none",
+      "sha256": "0766b604fd4a2dacbccc6145ce972996e2f18bb9a0d9a561773d820f7ae4bda0"
+    },
+    {
+      "weapon": "l115",
+      "ergo": "none",
+      "sha256": "5b6d84fa9304182841afe88f05eb43f8a41c336ad8a8357e205831fea0d89970"
+    },
+    {
+      "weapon": "interdictor",
+      "ergo": "none",
+      "sha256": "5fde19b19b37ce5f425bb4e3b1aa98b2eff6e0e861f810a263b68f25e3a26584"
+    },
+    {
+      "weapon": "m87a1",
+      "ergo": "none",
+      "sha256": "99515037eaf10dd92d1503c82e316cc1c822cd96bc0b78b97b3750a57bc530ca"
+    },
+    {
+      "weapon": "m1014",
+      "ergo": "none",
+      "sha256": "68b6397e751fb3e76ae72b7ec74305feb0f0af2aac3ea8679eadbedbe83a9e76"
+    },
+    {
+      "weapon": "ks18k",
+      "ergo": "none",
+      "sha256": "bdeaf7d55b9250740172414398877e2d2acaeefad174afd9b23db65ccf6b6ca8"
+    },
+    {
+      "weapon": "db12",
+      "ergo": "none",
+      "sha256": "501b28934e18da52becd8e6060d25e96f422cd69349f683d66b15ffac499f1ef"
+    },
+    {
+      "weapon": "p18",
+      "ergo": "none",
+      "sha256": "cf33d3f450cfea8474766ea1637bc7fad96b962e4c4b5fb07d8d9a027386113d"
+    },
+    {
+      "weapon": "es57",
+      "ergo": "none",
+      "sha256": "f9bbd896510ecc5ce72da53aad58d700172331806e2705a91584c8c90e390c4c"
+    },
+    {
+      "weapon": "m45a1",
+      "ergo": "none",
+      "sha256": "cd1ed5b07058d74af294f99f2781a377d303856290ffb0e2679c9064eca7c2f0"
+    },
+    {
+      "weapon": "m44",
+      "ergo": "none",
+      "sha256": "6f9b31a1e981cf80f3ecbdc133526a721fe45527fd2b238640492e59ddfba1bc"
+    },
+    {
+      "weapon": "ggh22",
+      "ergo": "none",
+      "sha256": "9311281197ffb00aad33c1470e6c7922240fdb3c688facd0ee011531965d80d1"
+    },
+    {
+      "weapon": "m357trait",
+      "ergo": "none",
+      "sha256": "ebd559d573e92dc39aaedc901002ad4e9b576effd2ee6e3d4d3d2a3d7d510261"
+    },
+    {
+      "weapon": "vz61",
+      "ergo": "none",
+      "sha256": "4371942e5096e5bb264a1b1fd2d83ee869184f94ba076038aa0f44f0a8927b8b"
+    },
+    {
+      "weapon": "brod3",
+      "ergo": "none",
+      "sha256": "6d726796e2ba7e7931d4a2b8a708b3b8b29194d94ab799ff6e83c06e2e07bb11"
+    },
+    {
+      "weapon": "ef88",
+      "ergo": "none",
+      "sha256": "30df36067366bca057f9719f5c0efd53e3756bb44f08484abf3b431d2a9e9061"
+    },
+    {
+      "weapon": "vssm",
+      "ergo": "none",
+      "sha256": "4695203adfd33e2937e5101ec78ae6f86efa1295c05ba331453deb28a5386e92"
+    },
+    {
+      "weapon": "vssm",
+      "ergo": "full_auto_vssm",
+      "sha256": "ceaaa0d8d501c62a1ac2c82004ee7f16ac3cb2efaa0e01f58f660b6a19afe80c"
+    }
+  ]
+}
