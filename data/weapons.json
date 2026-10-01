@@ -6859,7 +6859,7 @@
   {
     "id": "interdictor",
     "name": "Interdictor",
-    "description": "Lightweight and compact for its 10.4x83mm chambering, the Interdictor has drawn increasing military interest. Its lethality peaks between 120m and 150m.",
+    "description": "Lightweight and compact for its 10.4x83mm chambering, the Interdictor has drawn increasing military interest. Its lethality peaks between 120m and 160m.",
     "cls": "Sniper Rifle",
     "cal": ".416 Barrett",
     "rpm": 31.914882299649403,
