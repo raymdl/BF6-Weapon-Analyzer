@@ -52,6 +52,14 @@ test('source bases plus equipped magazines preserve sprint and correct deploy ti
   }
 });
 
+test('M433 holster speed is 200 ms with the default 30 Rnd magazine and 167 ms with 20 Rnd', () => {
+  assert.equal(attachments.WEAPON_MAG.m433.def, '30_rnd');
+  assert.equal(Math.round(build('m433').undeployT * 1000), 200);
+  const smallMag = build('m433', { mag: '20_rnd' });
+  assert.equal(Math.round(smallMag.undeployT * 1000), 167);
+  assert.equal(Math.round(smallMag.deployT * 1000), 467);
+});
+
 test('Speed Holster and Gunslinger change sprint, deploy and undeploy', () => {
   const base = build('ggh22');
   const fast = build('ggh22', { ergo: 'fast_deploy' });

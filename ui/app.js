@@ -744,6 +744,8 @@ function renderOverview() {
       tooltip: 'Movement speed multiplier while ADS.' },
     { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
       tooltip: 'Draw time when switching to the weapon.' },
+    { lbl: 'Holster Spd', k: 'undeployT',                                unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
+      tooltip: "Time to put the weapon away. This is the weapon's holster setting, not total swap time." },
     { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true,
       tooltip: 'Sprint-to-fire delay: how long after sprinting before you can shoot.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
@@ -770,6 +772,7 @@ function renderOverview() {
     'Mag Size': 'Magazine Size',
     'Strafe Spd': 'ADS Move Speed',
     'Deploy Spd': 'Deploy Speed',
+    'Holster Spd': 'Holster Speed',
     'Sprint Rec': 'Sprint Recovery',
     'Recoil/Shot': 'Recoil Amount',
     'Recoil Dir': 'Recoil Direction',
@@ -837,12 +840,12 @@ function renderOverview() {
   const SEC_OF = {
     'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
     'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
-    'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Sprint Rec': 'mobility',
+    'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Holster Spd': 'mobility', 'Sprint Rec': 'mobility',
     'Recoil/Shot': 'recoil', 'Recoil Variation': 'recoil', 'Recoil Dir': 'recoil',
     'Spread Inc/Shot': 'spread', 'ADS Spread': 'spread', 'Hipfire Spread': 'spread',
     '3D/Map Spot': 'conceal',
   };
-  // Split so both rows carry the same number of cards (9 and 9) rather than
+  // Split the cards across two rows rather than
   // grouping by theme alone, which left the first row noticeably longer.
   const STAT_ROWS = [
     [
@@ -2004,6 +2007,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Move Speed',      val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while ADS.' },
     { lbl: 'Sprint Recovery',     val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire delay: how long after sprinting before you can shoot.' },
     { lbl: 'Deploy Speed',        val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Draw time when switching to the weapon.' },
+    { lbl: 'Holster Speed',       val: w => w.undeployT != null ? w.undeployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: "Time to put the weapon away. This is the weapon's holster setting, not total swap time." },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Muzzle velocity. Faster bullets have less travel time and drop at range.' },
     { lbl: 'Bullet Drag',         val: w => w._projectileModel?.dragPerMeter, unit: '/m', dec: 4, lowerBetter: true, tooltip: 'Projectile drag. Lower keeps the bullet faster at range, with less travel time and drop.' },
     { lbl: 'Mag Size',            val: w => w.mag,                           unit: '',    dec: 0, higherBetter: true, tooltip: 'Rounds per magazine.' },
@@ -2028,6 +2032,7 @@ function renderAttachmentStats(loadouts) {
     'ADS Move Speed': ['adsMoveSpeedTierShift'],
     'Sprint Recovery': ['sprintRecoveryTierShift', 'adsTimeTierShift'],
     'Deploy Speed': ['deployTimeTierShift', 'deployBaseIndex', 'deployTimeTable'],
+    'Holster Speed': ['deployTimeTierShift', 'deployBaseIndex', 'deployTimeTable'],
     'Bullet Vel': ['velMult', 'velTierMod'],
     'Bullet Drag': ['dragPerMeter'],
     'Mag Size': ['mag'],
@@ -2067,6 +2072,7 @@ function renderAttachmentStats(loadouts) {
     'ADS Move Speed': [['adsMoveSpeedTierShift', 'tier']],
     'Sprint Recovery': [['sprintRecoveryTierShift', 'tier']],
     'Deploy Speed': [['deployTimeTierShift', 'tier']],
+    'Holster Speed': [['deployTimeTierShift', 'tier']],
     'Bullet Vel': [['velTierMod', 'tier']],
     'Tac Reload': [['reloadSpeedTier', 'reloadTier'], ['reloadSpeedMult', 'mult']],
     'ADS Recoil/Shot': [['adsRecoilTierMod', 'tier']],
