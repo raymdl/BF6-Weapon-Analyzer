@@ -1,3 +1,4 @@
+import { applySelectedFireMode } from './fire-modes.js';
 import { requireNumber } from './required-data.js';
 import { baseRecoilGroup } from './core.js';
 import { normalizeAttachments, resolveMountAttachments } from './loadout.js';
@@ -618,7 +619,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     }]))
     : w.recoil;
 
-  return {
+  const modified = {
     ...w,
     ...(projectile ? { pellets: projectile.pellets, dmg: projectile.dmg } : {}),
     _label:                  allTags.length ? `${w.name} (${allTags.join(' · ')})` : w.name,
@@ -675,6 +676,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     mag:    magMag ?? w.mag,
     tacRld: reloadResolution.tacRld,
   };
+  return applySelectedFireMode(modified, w, atts);
 }
 
 

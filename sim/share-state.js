@@ -116,6 +116,8 @@ export function createShareCodec({
       params.set('w', first.weapon.id);
       const atts = encodeAtts(first.weapon, first.atts);
       if (atts) params.set('a', atts);
+      const mode = normalizeAttachments(first.atts, first.weapon, data).fireMode;
+      if (mode) params.set('fm', mode);
     }
     if (state.comparing) {
       params.set('cmp', '1');
@@ -124,6 +126,8 @@ export function createShareCodec({
         params.set('w2', second.weapon.id);
         const atts = encodeAtts(second.weapon, second.atts);
         if (atts) params.set('a2', atts);
+        const mode = normalizeAttachments(second.atts, second.weapon, data).fireMode;
+        if (mode) params.set('fm2', mode);
       }
     }
     if (state.chart.mode !== 'dmg') params.set('cm', state.chart.mode);
@@ -165,7 +169,8 @@ export function createShareCodec({
     if (first) {
       state.slots[0].cls = first.cls;
       state.slots[0].weapon = first;
-      state.slots[0].atts = decodeAtts(first, params.get('a'));
+      state.slots[0].atts = normalizeAttachments({ ...decodeAtts(first, params.get('a')),
+        fireMode: params.get('fm') }, first, data);
     }
     if (params.get('cmp') === '1') {
       state.comparing = true;
@@ -173,7 +178,8 @@ export function createShareCodec({
       if (second) {
         state.slots[1].cls = second.cls;
         state.slots[1].weapon = second;
-        state.slots[1].atts = decodeAtts(second, params.get('a2'));
+        state.slots[1].atts = normalizeAttachments({ ...decodeAtts(second, params.get('a2')),
+          fireMode: params.get('fm2') }, second, data);
       }
     }
     const chartMode = params.get('cm');

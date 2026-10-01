@@ -15,6 +15,21 @@
     "recoilVar": 41.4,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 830.7689819335938
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -146,6 +161,21 @@
     "recoilVar": 28,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -277,6 +307,21 @@
     "recoilVar": 12.7,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 568.4210205078125
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -408,6 +453,21 @@
     "recoilVar": 20,
     "recoilIncAds": 0.523,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 359.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 514.2849731445312
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.523,
@@ -539,6 +599,21 @@
     "recoilVar": 40.8,
     "recoilIncAds": 0.523,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 359.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.523,
@@ -680,6 +755,37 @@
     "recoilVar": 28.9,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 899.9990234375
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 899.9990234375,
+        "burstRounds": 2,
+        "burstBurstsPerMinute": 0.0
+      }
+    },
+    "fireModeAttachments": {
+      "burst_training": {
+        "modes": [
+          "burst",
+          "auto",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 2,
     "spreadDyn": {
       "ads": {
@@ -812,6 +918,21 @@
     "recoilVar": 28.9,
     "recoilIncAds": 0.409,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 654.5449829101562
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.409,
@@ -973,6 +1094,21 @@
     "recoilVar": 22.8,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 635.2940063476562
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -1114,6 +1250,21 @@
     "recoilVar": 50.3,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 899.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -1255,6 +1406,36 @@
     "recoilVar": 37.5,
     "recoilIncAds": 0.36,
     "fireMode": "burst",
+    "availableFireModes": [
+      "burst",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 771.427978515625
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 771.427978515625,
+        "burstRounds": 3,
+        "burstBurstsPerMinute": 224.99899291992188
+      }
+    },
+    "fireModeAttachments": {
+      "full_auto": {
+        "modes": [
+          "auto",
+          "single"
+        ],
+        "default": "auto"
+      }
+    },
     "burstRounds": 3,
     "burstBurstsPerMinute": 224.999,
     "spreadDyn": {
@@ -1388,6 +1569,21 @@
     "recoilVar": 30.7,
     "recoilIncAds": 0.304,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 899.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.304,
@@ -1549,6 +1745,21 @@
     "recoilVar": 34.4,
     "recoilIncAds": 0.409,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 359.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.409,
@@ -1680,6 +1891,21 @@
     "recoilVar": 7.4,
     "recoilIncAds": 0.239,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.239,
@@ -1831,6 +2057,21 @@
     "recoilVar": 15.4,
     "recoilIncAds": 0.409,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 654.5449829101562
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.409,
@@ -1982,6 +2223,36 @@
     "recoilVar": 26.1,
     "recoilIncAds": 0.304,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 830.7689819335938
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 830.7689819335938,
+        "burstRounds": 3,
+        "burstBurstsPerMinute": 239.99899291992188
+      }
+    },
+    "fireModeAttachments": {
+      "grtbc_burst_mode": {
+        "modes": [
+          "burst",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 3,
     "burstRpm": 830.769,
     "burstBurstsPerMinute": 239.998993,
@@ -2136,6 +2407,21 @@
     "recoilVar": 19.9,
     "recoilIncAds": 0.304,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 771.427978515625
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.304,
@@ -2287,6 +2573,37 @@
     "recoilVar": 35.8,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 719.9990234375,
+        "burstRounds": 3,
+        "burstBurstsPerMinute": 0.0
+      }
+    },
+    "fireModeAttachments": {
+      "burst_training": {
+        "modes": [
+          "burst",
+          "auto",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 3,
     "spreadDyn": {
       "ads": {
@@ -2449,6 +2766,21 @@
     "recoilVar": 15.8,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 599.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -2610,6 +2942,21 @@
     "recoilVar": 31.7,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 830.7689819335938
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.28,
@@ -2761,6 +3108,37 @@
     "recoilVar": 28.3,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 771.427978515625
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 771.427978515625,
+        "burstRounds": 3,
+        "burstBurstsPerMinute": 0.0
+      }
+    },
+    "fireModeAttachments": {
+      "burst_training": {
+        "modes": [
+          "burst",
+          "auto",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 3,
     "spreadDyn": {
       "ads": {
@@ -2923,6 +3301,21 @@
     "recoilVar": 27.8,
     "recoilIncAds": 0.221,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 947.3679809570312
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.221,
@@ -3064,6 +3457,37 @@
     "recoilVar": 13,
     "recoilIncAds": 0.304,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 635.2940063476562
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 635.2940063476562,
+        "burstRounds": 2,
+        "burstBurstsPerMinute": 0.0
+      }
+    },
+    "fireModeAttachments": {
+      "burst_training": {
+        "modes": [
+          "burst",
+          "auto",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 2,
     "spreadDyn": {
       "ads": {
@@ -3216,6 +3640,21 @@
     "recoilVar": 35.5,
     "recoilIncAds": 0.239,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 899.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.239,
@@ -3377,6 +3816,37 @@
     "recoilVar": 50,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 1079.9990234375
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 1079.9990234375,
+        "burstRounds": 2,
+        "burstBurstsPerMinute": 0.0
+      }
+    },
+    "fireModeAttachments": {
+      "burst_training": {
+        "modes": [
+          "burst",
+          "auto",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 2,
     "spreadDyn": {
       "ads": {
@@ -3529,6 +3999,21 @@
     "recoilVar": 33.5,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 799.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -3690,6 +4175,36 @@
     "recoilVar": 13,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 674.9990234375
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 771.427978515625,
+        "burstRounds": 2,
+        "burstBurstsPerMinute": 327.2720031738281
+      }
+    },
+    "fireModeAttachments": {
+      "burst_mode": {
+        "modes": [
+          "burst",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 2,
     "burstRpm": 771.428,
     "burstBurstsPerMinute": 327.272003,
@@ -3854,6 +4369,37 @@
     "recoilVar": 50.8,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 981.8179931640625
+      },
+      "burst": {
+        "mechanism": "burst",
+        "rpm": 981.8179931640625,
+        "burstRounds": 3,
+        "burstBurstsPerMinute": 0.0
+      }
+    },
+    "fireModeAttachments": {
+      "burst_training": {
+        "modes": [
+          "burst",
+          "auto",
+          "single"
+        ],
+        "default": "burst"
+      }
+    },
     "burstRounds": 3,
     "spreadDyn": {
       "ads": {
@@ -4006,6 +4552,21 @@
     "recoilVar": 18,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.28,
@@ -4167,6 +4728,15 @@
     "recoilVar": 31,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto"
+    ],
+    "fireModes": {
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -4298,6 +4868,21 @@
     "recoilVar": 29.3,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 771.427978515625
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -4429,6 +5014,15 @@
     "recoilVar": 29.9,
     "recoilIncAds": 0.523,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto"
+    ],
+    "fireModes": {
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 514.2849731445312
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.523,
@@ -4570,6 +5164,21 @@
     "recoilVar": 17.5,
     "recoilIncAds": 0.409,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 553.8460083007812
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.409,
@@ -4721,6 +5330,15 @@
     "recoilVar": 47.7,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto"
+    ],
+    "fireModes": {
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 830.7689819335938
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -4852,6 +5470,21 @@
     "recoilVar": 35.9,
     "recoilIncAds": 0.409,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 327.2720031738281,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 674.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.409,
@@ -4968,6 +5601,21 @@
     "recoilVar": 9.5,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 514.2849731445312
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -5099,6 +5747,15 @@
     "recoilVar": 34.5,
     "recoilIncAds": 0.523,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto"
+    ],
+    "fireModes": {
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 599.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.523,
@@ -5240,6 +5897,15 @@
     "recoilVar": 31.8,
     "recoilIncAds": 0.523,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto"
+    ],
+    "fireModes": {
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 654.5449829101562
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.523,
@@ -5371,6 +6037,21 @@
     "recoilVar": 16.1,
     "recoilIncAds": 0.28,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 685.7139892578125
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.28,
@@ -5502,6 +6183,16 @@
     "recoilVar": 8,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 257.1419982910156,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -5633,6 +6324,16 @@
     "recoilVar": 11,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -5764,6 +6465,16 @@
     "recoilVar": 20,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 149.99899291992188,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -5895,6 +6606,16 @@
     "recoilVar": 10,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -6026,6 +6747,16 @@
     "recoilVar": 8,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 359.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -6167,6 +6898,16 @@
     "recoilVar": 10,
     "recoilIncAds": 0,
     "fireMode": "bolt",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "bolt",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -6307,6 +7048,16 @@
     "recoilVar": 10,
     "recoilIncAds": 0,
     "fireMode": "bolt",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "bolt",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -6452,6 +7203,16 @@
     "recoilVar": 12,
     "recoilIncAds": 0,
     "fireMode": "bolt",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "bolt",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -6592,6 +7353,16 @@
     "recoilVar": 5,
     "recoilIncAds": 0,
     "fireMode": "bolt",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "bolt",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -6727,6 +7498,16 @@
     "recoilVar": 4,
     "recoilIncAds": 0,
     "fireMode": "bolt",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "bolt",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -6872,6 +7653,16 @@
     "recoilVar": 10.0,
     "recoilIncAds": 0.0,
     "fireMode": "bolt",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "bolt",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.0,
@@ -7020,6 +7811,16 @@
     "recoilVar": 12,
     "recoilIncAds": 0.001,
     "fireMode": "pump",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "pump",
+        "rpm": 1799.9990234375,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.001,
@@ -7184,6 +7985,16 @@
     "recoilVar": 15,
     "recoilIncAds": 0.001,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 199.99899291992188,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.001,
@@ -7340,6 +8151,16 @@
     "recoilVar": 12,
     "recoilIncAds": 0.001,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.001,
@@ -7472,6 +8293,16 @@
     "recoilVar": 15,
     "recoilIncAds": 0.001,
     "fireMode": "pump",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "pump",
+        "rpm": 359.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.001,
@@ -7632,6 +8463,16 @@
     "recoilVar": 15,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -7783,6 +8624,16 @@
     "recoilVar": 15,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -7934,6 +8785,16 @@
     "recoilVar": 12,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 327.2720031738281,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -8095,6 +8956,16 @@
     "recoilVar": 12,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 163.63600158691406,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -8249,6 +9120,16 @@
     "recoilVar": 12,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 359.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -8400,6 +9281,16 @@
     "recoilVar": 15,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 224.99899291992188,
+        "hipNoBloomOnSwitch": false
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,
@@ -8564,6 +9455,21 @@
     "recoilVar": 18.4,
     "recoilIncAds": 0.209,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 818.1810302734375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.209,
@@ -8715,6 +9621,21 @@
     "recoilVar": 24.3,
     "recoilIncAds": 0.304,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": false
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 830.7689819335938
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.304,
@@ -8913,6 +9834,21 @@
     "recoilVar": 26.1,
     "recoilIncAds": 0.36,
     "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": false
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 674.9990234375
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0.36,
@@ -9091,6 +10027,32 @@
     "recoilVar": 45.4,
     "recoilIncAds": 0,
     "fireMode": "semi",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 449.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 799.9990234375
+      }
+    },
+    "fireModeAttachments": {
+      "full_auto_vssm": {
+        "modes": [
+          "auto",
+          "single"
+        ],
+        "default": "auto",
+        "rpmOverrides": {
+          "single": 399.9989929199219
+        }
+      }
+    },
     "spreadDyn": {
       "ads": {
         "inc": 0,

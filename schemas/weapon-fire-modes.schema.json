@@ -1,0 +1,166 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "BF6 weapon fire-mode fields",
+  "description": "Source precision is retained. An omitted loadout selection preserves legacy default output, including bolt/pump cycle timing.",
+  "type": "object",
+  "required": [
+    "fireMode",
+    "availableFireModes",
+    "fireModes"
+  ],
+  "properties": {
+    "fireMode": {
+      "enum": [
+        "auto",
+        "burst",
+        "semi",
+        "bolt",
+        "pump"
+      ]
+    },
+    "availableFireModes": {
+      "$ref": "#/$defs/modeList"
+    },
+    "fireModes": {
+      "type": "object",
+      "minProperties": 1,
+      "properties": {
+        "auto": {
+          "$ref": "#/$defs/mode"
+        },
+        "burst": {
+          "$ref": "#/$defs/mode"
+        },
+        "single": {
+          "$ref": "#/$defs/mode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "fireModeAttachments": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object",
+        "required": [
+          "modes",
+          "default"
+        ],
+        "properties": {
+          "modes": {
+            "$ref": "#/$defs/modeList"
+          },
+          "default": {
+            "enum": [
+              "auto",
+              "burst",
+              "single"
+            ]
+          },
+          "rpmOverrides": {
+            "type": "object",
+            "properties": {
+              "auto": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "burst": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              },
+              "single": {
+                "type": "number",
+                "exclusiveMinimum": 0
+              }
+            },
+            "additionalProperties": false
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "$defs": {
+    "modeList": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 3,
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "auto",
+          "burst",
+          "single"
+        ]
+      }
+    },
+    "mode": {
+      "type": "object",
+      "required": [
+        "mechanism",
+        "rpm"
+      ],
+      "properties": {
+        "mechanism": {
+          "enum": [
+            "auto",
+            "burst",
+            "semi",
+            "bolt",
+            "pump"
+          ]
+        },
+        "rpm": {
+          "type": "number",
+          "exclusiveMinimum": 0
+        },
+        "burstRounds": {
+          "type": "integer",
+          "minimum": 2
+        },
+        "burstBurstsPerMinute": {
+          "type": "number",
+          "minimum": 0
+        },
+        "hipNoBloomOnSwitch": {
+          "type": "boolean"
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "mechanism": {
+                "const": "burst"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "burstRounds",
+              "burstBurstsPerMinute"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "mechanism": {
+                "enum": [
+                  "semi",
+                  "bolt",
+                  "pump"
+                ]
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "hipNoBloomOnSwitch"
+            ]
+          }
+        }
+      ],
+      "additionalProperties": false
+    }
+  }
+}

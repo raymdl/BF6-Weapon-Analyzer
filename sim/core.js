@@ -211,6 +211,7 @@ export function spreadDynamics(w, aimState = _ctx.aimState) {
       'notFiringOffset', 'distExp'], `${w.id} spreadDyn.${aimState}`);
   if (dyn.distExpMove != null) requireNumber(dyn.distExpMove, `${w.id} spreadDyn.${aimState}.distExpMove`);
   if (aimState === 'ads') return { ...dyn, inc: w.recoilIncAds == null ? dyn.inc : requireNumber(w.recoilIncAds, `${w.id} recoilIncAds`) };
+  if (w._manualSingleNoBloom) return { ...dyn, inc: 0 };
   return dyn;
 }
 

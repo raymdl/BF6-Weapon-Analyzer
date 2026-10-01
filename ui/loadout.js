@@ -1,3 +1,4 @@
+import { fireModeConfiguration, selectedFireMode } from '../sim/fire-modes.js';
 import { ATTACHMENT_SLOT_KEYS } from '../sim/attachments.js';
 import { availableAttachments, attachmentSlots, normalizeAttachments, computeAttPts, getAttPts, attDisplayName, isAssumedAtt, gameBugsFor, GAME_BUG_MARK } from '../sim/loadout.js';
 
@@ -68,7 +69,7 @@ export function renderAttachmentSection({
   if (!container) return;
   const normalizeSelection = () => {
     const normalized = normalizeAttachments(atts, weapon, data);
-    for (const key of ['grip', 'laser', 'light', 'rail']) {
+    for (const key of ['grip', 'laser', 'light', 'rail', 'fireMode']) {
       if (!Object.hasOwn(normalized, key)) delete atts[key];
     }
     Object.assign(atts, normalized);
@@ -98,13 +99,27 @@ export function renderAttachmentSection({
       atts[key] = value;
     }
     normalizeSelection();
-    if (wa?.dependencies?.length) {
+    if (key === 'ergo' || key === 'fireMode' || wa?.dependencies?.length) {
       renderAttachmentSection({ containerId, container, atts, weapon, data, onChange });
     } else {
       updateAttTotal(containerId, atts, weapon, data);
     }
     onChange({ key, value });
   };
+
+  if (weapon) {
+    const modes = fireModeConfiguration(weapon, atts).modes;
+    appendSelectRow(container, {
+      label: 'Fire mode',
+      value: selectedFireMode(weapon, atts),
+      options: modes.map(id => ({ id, text: id === 'auto' ? 'Auto'
+        : id === 'burst' ? `${weapon.fireModes.burst.burstRounds}-round Burst`
+        : weapon.fireModes?.single?.mechanism === 'bolt' ? 'Single (bolt)'
+        : weapon.fireModes?.single?.mechanism === 'pump' ? 'Single (pump)' : 'Single' })),
+      disabled: modes.length === 1,
+      onChange: value => handleChange('fireMode', value),
+    });
+  }
 
   const mounts = attachmentSlots(weapon, data);
   const slots = ATTACHMENT_SLOT_KEYS.flatMap(slot => {

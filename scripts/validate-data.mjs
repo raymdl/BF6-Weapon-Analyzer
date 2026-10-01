@@ -87,6 +87,40 @@ for (const weapon of weapons) {
   for (const key of ['name', 'cls', 'cal', 'fireMode']) {
     if (weapon[key] == null) fail(`${weapon.id}: missing ${key}`);
   }
+  const modes = weapon.fireModes;
+  const selectorDefault = ['semi', 'bolt', 'pump'].includes(weapon.fireMode) ? 'single' : weapon.fireMode;
+  const validModeList = list => Array.isArray(list) && list.length >= 1 && list.length <= 3
+    && new Set(list).size === list.length && list.every(mode => modes?.[mode]);
+  if (!modes || !validModeList(weapon.availableFireModes)
+      || !weapon.availableFireModes.includes(selectorDefault)) {
+    fail(`${weapon.id}: availableFireModes must include the default and reference fireModes`);
+  }
+  for (const [mode, record] of Object.entries(modes ?? {})) {
+    const mechanisms = mode === 'single' ? ['semi', 'bolt', 'pump'] : [mode];
+    if (!['auto', 'burst', 'single'].includes(mode) || !mechanisms.includes(record.mechanism)
+        || !Number.isFinite(record.rpm) || record.rpm <= 0 || Math.fround(record.rpm) !== record.rpm) {
+      fail(`${weapon.id}: fireModes.${mode} must have its mechanism and full source float32 RPM`);
+    }
+    if (mode === 'burst' && (!Number.isInteger(record.burstRounds) || record.burstRounds < 2
+        || !Number.isFinite(record.burstBurstsPerMinute) || record.burstBurstsPerMinute < 0
+        || Math.fround(record.burstBurstsPerMinute) !== record.burstBurstsPerMinute)) {
+      fail(`${weapon.id}: burst mode needs full-precision bursts per minute and rounds`);
+    }
+    if (mode === 'single' && typeof record.hipNoBloomOnSwitch !== 'boolean') {
+      fail(`${weapon.id}: single mode needs hipNoBloomOnSwitch`);
+    }
+  }
+  for (const [attachment, config] of Object.entries(weapon.fireModeAttachments ?? {})) {
+    if (!attachments.WEAPON_ERGO?.[weapon.id]?.avail?.includes(attachment)
+        || !validModeList(config.modes) || !config.modes.includes(config.default)) {
+      fail(`${weapon.id}: invalid fire-mode attachment ${attachment}`);
+    }
+    for (const [mode, rpm] of Object.entries(config.rpmOverrides ?? {})) {
+      if (!config.modes.includes(mode) || !Number.isFinite(rpm) || rpm <= 0 || Math.fround(rpm) !== rpm) {
+        fail(`${weapon.id}/${attachment}: invalid full-precision ${mode} rate override`);
+      }
+    }
+  }
   if (Object.hasOwn(weapon, 'deployT')) {
     fail(`${weapon.id}: legacy deployT must be absent after the draw-time cutover`);
   }

@@ -1,4 +1,5 @@
 import { ATTACHMENT_SLOT_KEYS } from './attachments.js';
+import { normalizeFireMode } from './fire-modes.js';
 
 const MOUNT_CATALOGS = { grip: 'GRIPS', laser: 'LASERS', light: 'LIGHTS' };
 
@@ -75,7 +76,7 @@ export function normalizeAttachments(atts, weapon, data) {
     }
     if (!changed) break;
   }
-  return result;
+  return normalizeFireMode(result, weapon);
 }
 
 /** The single source of selected grip/laser/light records for all consumers. */
@@ -139,6 +140,7 @@ export function resetAttsForWeapon(atts, weapon, data) {
   atts.laser = 'none';
   atts.light = 'none';
   delete atts.rail;
+  delete atts.fireMode;
   const wa = weapon ? (data.WEAPON_ATTS[weapon.id] ?? null) : null;
   // A new weapon may have a reviewed base record before its in-game barrel
   // coverage exists. Keep that state fail-closed instead of silently applying
