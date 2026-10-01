@@ -3041,6 +3041,126 @@
       "reopenWhen": "A displayed numeric leaf changes without a reviewed receipt, or a cited source asset changes.",
       "refs": []
     },
+    "L520": {
+      "id": "L520",
+      "title": "Independent current raw weapons sample check",
+      "status": "site-supported",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "Current 1.4.3.5 raw confirms the L500 review base by a fixed-seed sample: 1,129 matches and 43 L107 precision-only values among 1,172 values; zero mismatches.",
+      "reopenWhen": "A sampled or displayed site leaf changes without reviewed evidence, a relevant raw asset changes, or a specific source mapping is contradicted.",
+      "refs": []
+    },
+    "L521": {
+      "id": "L521",
+      "title": "Assault Rifle current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "148 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 142 matches, 6 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L522": {
+      "id": "L522",
+      "title": "Carbine current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "151 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 145 matches, 6 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L523": {
+      "id": "L523",
+      "title": "DMR current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "142 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 137 matches, 5 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L524": {
+      "id": "L524",
+      "title": "LMG current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "148 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 143 matches, 5 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L525": {
+      "id": "L525",
+      "title": "SMG current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "153 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 147 matches, 6 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L526": {
+      "id": "L526",
+      "title": "Shotgun current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "144 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 139 matches, 5 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L527": {
+      "id": "L527",
+      "title": "Sidearm current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "144 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 140 matches, 4 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L528": {
+      "id": "L528",
+      "title": "Sniper Rifle current raw sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L520-weapons-sample-check.json"
+      ],
+      "summary": "142 sampled values extracted in sequential chunks of at most 30; class control and parent review passed. Parent join: 136 matches, 6 L107 precision-only differences, zero mismatches.",
+      "reopenWhen": "A scoped raw hash/typed field mapping changes or the corresponding site leaf changes without reviewed evidence.",
+      "refs": []
+    },
+    "L540": {
+      "id": "L540",
+      "title": "Anti-Glare Coating owner point costs",
+      "status": "site-supported",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-site-audit-attachments-accessories-pts-2026-10-01.json"
+      ],
+      "summary": "All six offered AG Coating Attachment point costs are 10 in current raw and match the site.",
+      "reopenWhen": "Recheck if the Attachment raw bytes or owner descriptor change.",
+      "refs": []
+    },
     "L580": {
       "id": "L580",
       "title": "Current selected ammo damage curves (L580-L582) extraction 1",
@@ -3149,6 +3269,30 @@
       "reopenWhen": "Reopen when selected source values or reviewed runtime evidence change.",
       "refs": []
     },
+    "L589": {
+      "id": "L589",
+      "title": "Current selected ammo modifier route completion (L589)",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-site-audit-ammo-recoil-spread.json"
+      ],
+      "summary": "Complete current selected source graph for 185 choices on 32 weapons; recoil/spread and type operands joined against ammo.json without new non-precision mismatches.",
+      "reopenWhen": "Reopen when selected raw operands or qualified receiver/runtime evidence change.",
+      "refs": []
+    },
+    "L590": {
+      "id": "L590",
+      "title": "Current selected ammo modifier route completion (L590)",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-site-audit-ammo-recoil-spread.json"
+      ],
+      "summary": "Complete current selected source graph for 143 choices on 31 weapons; recoil/spread and type operands joined against ammo.json without new non-precision mismatches.",
+      "reopenWhen": "Reopen when selected raw operands or qualified receiver/runtime evidence change.",
+      "refs": []
+    },
     "L600": {
       "id": "L600",
       "title": "AR and Shotgun fire modes",
@@ -3199,17 +3343,1172 @@
     },
     "L604": {
       "id": "L604",
-      "title": "63-weapon fire-mode source join",
-      "status": "proposal",
-      "date": "2026-09-30",
+      "title": "Operator toggle check confirms fire-mode predictions",
+      "status": "finding",
+      "date": "2026-10-01",
       "receipts": [
-        "frosty-2026-09-30-L604-fire-mode-selector-data.json"
+        "frosty-2026-09-30-L604-fire-mode-selector-data.json",
+        "frosty-2026-10-01-decision-L604-toggle-check.json"
       ],
-      "summary": "All 63 weapons supply 110 full-precision mode rows; 12 source mode branches include 10 current site choices.",
-      "reopenWhen": "Operator checks the named fire-mode toggle lists; implement only in a separate authorized feature task.",
+      "summary": "Operator confirmed in game (no recording) that all 11 named loadout toggle predictions from L604 match: M4A1 bare auto/single; M16A4 bare burst/single and A3 Receiver auto/single; KORD 6P67 Burst Training burst/auto/single; GRT-BC and SL9 Burst Mode burst/single; VSSM bare single and Folding Stock auto/single; GRT-CPS bare single; vz. 61 bare auto/single; M2010 ESR bare bolt single. The per-weapon mode table in fire-modes.json is accepted as the selector's mode source.",
+      "reopenWhen": "A game update changes a weapon's WB mode lists or a mode-changing attachment.",
       "refs": [
         "queue-proposals"
       ]
+    },
+    "L640": {
+      "id": "L640",
+      "title": "Gadget and vehicle field transfer census",
+      "status": "finding",
+      "date": "2026-09-30",
+      "receipts": [
+        "frosty-2026-09-30-L640-transfer-census.json"
+      ],
+      "summary": "Confirmed infantry field meaning transfers only through the same owner class, descriptor key and field; effective gadget and vehicle behavior remains separate.",
+      "reopenWhen": "A named unconfirmed field receives exact schema and independent semantic evidence.",
+      "refs": []
+    },
+    "L641": {
+      "id": "L641",
+      "title": "Draft vehicle weapon profiles",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L641-weapon-shape-profiles.json"
+      ],
+      "summary": "15 configured firing profiles extracted with 11 exact infantry-owner gravity/drag pairs; reload and dmg remain partial.",
+      "reopenWhen": "Exact reload selector/state and selected tweakable damage representation are independently established.",
+      "refs": []
+    },
+    "L642": {
+      "id": "L642",
+      "title": "Draft vehicle weapon profiles",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L642-weapon-shape-profiles.json"
+      ],
+      "summary": "Fifteen vehicle firing profiles retain exact configured rate, magazine and launch data; two selected projectiles share infantry gravity/drag and one retains a health curve.",
+      "reopenWhen": "Exact vehicle reload selectors or supported different-class projectile field identities are established.",
+      "refs": []
+    },
+    "L643": {
+      "id": "L643",
+      "title": "Vehicle weapon draft profiles",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L643-weapon-shape-profiles.json"
+      ],
+      "summary": "Fifteen vehicle firing owners expose verified configured rate, magazine and launch-vector fields; effective reload and projectile fields remain partial.",
+      "reopenWhen": "Resolve exact selected projectile owners and reload selectors.",
+      "refs": []
+    },
+    "L644": {
+      "id": "L644",
+      "title": "Draft vehicle firing profiles",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L644-weapon-shape-profiles.json"
+      ],
+      "summary": "All 12 scoped firing profiles retain full precision configured values and explicit projectile and reload limits.",
+      "reopenWhen": "Exact projectile curve typed identities or reload selector source joins are established.",
+      "refs": []
+    },
+    "L645": {
+      "id": "L645",
+      "title": "Weapon-like gadget profiles",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L645-weapon-shape-profiles.json"
+      ],
+      "summary": "Extracted 11 firing owners with raw precision and source limits.",
+      "reopenWhen": "Exact missing projectile joins and reload selectors are established.",
+      "refs": []
+    },
+    "L646": {
+      "id": "L646",
+      "title": "Official EA gadget and vehicle statements",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L646-ea-stated-numbers.json"
+      ],
+      "summary": "Read 12 official updates; source statements retain date, mode and version limits.",
+      "reopenWhen": "Exact version-matched selected source operands are available.",
+      "refs": []
+    },
+    "L647": {
+      "id": "L647",
+      "title": "Official EA gadget and vehicle statements",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L647-ea-stated-numbers.json"
+      ],
+      "summary": "Read 11 official updates; source statements retain date, mode and version limits.",
+      "reopenWhen": "Exact version-matched selected source operands are available.",
+      "refs": []
+    },
+    "L648": {
+      "id": "L648",
+      "title": "Supplemental weapon-like gadget profiles",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L648-supplemental-gadget-profiles.json"
+      ],
+      "summary": "15 existing exact typed firing owners provide configured fields; effective reload and runtime composition remain unresolved.",
+      "reopenWhen": "Resolve source selection or native activation for the explicit coverage limits.",
+      "refs": []
+    },
+    "L649": {
+      "id": "L649",
+      "title": "UI numeric statements and selected WF coverage",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L649-ui-statements-and-selection-coverage.json"
+      ],
+      "summary": "17 stated UI mechanic quantities retain unlinked identity limits, and all 69 selected firing owners remain visible against the 73-WF map.",
+      "reopenWhen": "Existing exact UI-root to selected typed source owner linkage is established.",
+      "refs": []
+    },
+    "L650": {
+      "id": "L650",
+      "title": "AA and scout weapon baseline before Season 5",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L650-aa-scout-preupdate-baseline.json"
+      ],
+      "summary": "12 configured firing owners retained, changes in Season 5; no validation claim.",
+      "reopenWhen": "Season 5 captures are available for a source diff.",
+      "refs": []
+    },
+    "L651": {
+      "id": "L651",
+      "title": "Transfer census scope and typed-owner supplement",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L651-transfer-census-supplement.json"
+      ],
+      "summary": "Retain named receipt owner identities, reload boundaries, selected curve identity and corrected Season 5 baseline scope.",
+      "reopenWhen": "Exact missing utility owner identities or effective semantics are independently established.",
+      "refs": []
+    },
+    "L700": {
+      "id": "L700",
+      "title": "Remaining site data census",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L700-tables-audit-census.json"
+      ],
+      "summary": "69 numeric or Boolean CUR field families have prior reviews; all three changed table leaves are L107-applied. Three GEN input raw-hash checks remain.",
+      "reopenWhen": "An in-scope displayed leaf changes without a reviewed receipt or its source raw hash changes.",
+      "refs": []
+    },
+    "L701": {
+      "id": "L701",
+      "title": "Ballistics generator input raw hashes",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L701-ballistics-input-hashes.json"
+      ],
+      "summary": "4276/4286 recorded raw inputs equal 1.4.3.5; seven Killswitch hashes differ and 3 historical hashes are unavailable. No displayed-value proposal.",
+      "reopenWhen": "Comparable historical raw hashes become available, or the operator requests generator/input refresh. Displayed-value tracing is outside this hash-only lead.",
+      "refs": []
+    },
+    "L702": {
+      "id": "L702",
+      "title": "Hit-zone generator input raw hash freshness",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L702-hit-zones-input-hashes.json"
+      ],
+      "summary": "4278/4288 recorded raw inputs equal 1.4.3.5; seven Killswitch hashes differ and 3 historical hashes are unavailable. No displayed-value proposal. Both original grid streams match; descriptor raw hashes differ.",
+      "reopenWhen": "Comparable historical raw hashes become available, or the operator requests generator/input refresh. Displayed-value tracing is outside this hash-only lead.",
+      "refs": []
+    },
+    "L703": {
+      "id": "L703",
+      "title": "Tooltip generator input freshness",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L703-tooltips-input-hashes.json"
+      ],
+      "summary": "7614/7628 recorded raw inputs equal 1.4.3.5; seven Killswitch hashes differ and 7 historical hashes are unavailable. No displayed-value proposal. Localization TSV differs; all 1067 supplemental AAM/descriptor raw inputs match.",
+      "reopenWhen": "Comparable historical raw hashes become available, or the operator requests generator/input refresh. Displayed-value tracing is outside this hash-only lead.",
+      "refs": []
+    },
+    "L704": {
+      "id": "L704",
+      "title": "Used tooltip localization text comparison",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L704-used-tooltip-text.json"
+      ],
+      "summary": "All 413 localized string IDs used by the site have identical old and 1.4.3.5 text; 18 screenshot override keys are outside the TSV comparison.",
+      "reopenWhen": "A used localization ID changes text or becomes unavailable, or the site adds a localization ID.",
+      "refs": []
+    },
+    "L740": {
+      "id": "L740",
+      "title": "Interdictor description peak-range conflict",
+      "status": "proposal",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L740-interdictor-range-description.json"
+      ],
+      "summary": "Current selected curve and EA 1.4.3.0 peak through 160 m; site and retained localized description end at150 m. Site numerical curve matches current raw.",
+      "reopenWhen": "Review description policy against the current curve; new curve/localization or native evidence changes the finding.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L780": {
+      "id": "L780",
+      "title": "WB typed field atlas, first32 weapons",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L780-root-field-atlas.json"
+      ],
+      "summary": "All32 WB roots have exact typed field inventory and current-raw outward import joins; field roles and site mappings remain contextual.",
+      "reopenWhen": "Trace ranked unexamined scalar or linked-owner families with exact identity and same-owner controls.",
+      "refs": []
+    },
+    "L781": {
+      "id": "L781",
+      "title": "WB typed field atlas, second partition",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L781-root-field-atlas.json"
+      ],
+      "summary": "31 WB roots yielded 1301 exact typed field families and 5785 direct import edges; source/model roles remain conditional.",
+      "reopenWhen": "Use the parent Stage 2 frontier to trace selected unknown families and obtain missing Blacklight raw by an authorized capture.",
+      "refs": []
+    },
+    "L782": {
+      "id": "L782",
+      "title": "Typed GS atlas for 32 weapons",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L782-root-field-atlas.json"
+      ],
+      "summary": "All 32 GS roots yield 563 typed families with explicit known role/site joins and 105 exact outward target assets; unknown roles remain open.",
+      "reopenWhen": "Trace selected unknown fields or exact imported owners from the saved atlas and graph.",
+      "refs": []
+    },
+    "L783": {
+      "id": "L783",
+      "title": "31 GS roots typed field atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L783-root-field-atlas.json"
+      ],
+      "summary": "581 typed field families across 31 roots, with exact outward import edges and bounded reviewed recoil mappings.",
+      "reopenWhen": "Use the atlas to select a bounded semantic or selected-graph trace.",
+      "refs": []
+    },
+    "L784": {
+      "id": "L784",
+      "title": "Full optical linked-owner field atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L784-optic-field-atlas.json"
+      ],
+      "summary": "All158 optic candidates plus114 exact supplemental owners yield731 typed families, including all seven L787 discovered aim controllers; unknown roles remain explicit.",
+      "reopenWhen": "Trace a ranked unknown family with concrete native or site consumer evidence, or an exact unexamined setting owner.",
+      "refs": []
+    },
+    "L785": {
+      "id": "L785",
+      "title": "Projectile linked-owner typed atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L785-projectile-field-atlas.json"
+      ],
+      "summary": "87 PD candidates yield170 typed families;63 current primary joins and895 outward imports are exact while unknown roles and selected-ammo runtime use stay unresolved.",
+      "reopenWhen": "Use the parent semantic frontier to trace ranked unknown fields with new consumer evidence; do not repeat the completed typed inventory.",
+      "refs": []
+    },
+    "L786": {
+      "id": "L786",
+      "title": "260 ammo candidates typed atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L786-ammo-field-atlas.json"
+      ],
+      "summary": "Complete typed atlas separates132 selectors,125 ammo value owners and3 effect-only WPMs;182 current magazine-choice associations verified.",
+      "reopenWhen": "Select a bounded unexplained-field or effect-owner consumer trace from the atlas.",
+      "refs": []
+    },
+    "L787": {
+      "id": "L787",
+      "title": "Linked weapon-balance typed field atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L787-weapon-balance-field-atlas.json"
+      ],
+      "summary": "All201 candidate source files have typed field inventories; registry naming is restricted to exact weapon-specific source owners and serialized imports remain conditional.",
+      "reopenWhen": "Trace ranked unknown source families or reported exact optic/configuration edges with selected-owner controls.",
+      "refs": []
+    },
+    "L788": {
+      "id": "L788",
+      "title": "Ability branch typed field atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L788-ability-field-atlas.json"
+      ],
+      "summary": "63 Ability roots yield150 typed field families and33883 imports with exact branch/action control; profiles and effect activation remain separate.",
+      "reopenWhen": "Use the parent frontier to classify the23 new direct owner candidates and trace unknown families with consumer evidence; missing raw requires an authorized capture.",
+      "refs": []
+    },
+    "L789": {
+      "id": "L789",
+      "title": "5546 attachment records typed atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L789-attachment-record-field-atlas.json"
+      ],
+      "summary": "5542 current attachment records inventoried with185 checkpoints,4 explicit raw gaps and4522 revalidated current serialized cost-choice associations.",
+      "reopenWhen": "Parent obtains the4 missing current raws or selects a bounded unexplained-field/consumer trace.",
+      "refs": []
+    },
+    "L790": {
+      "id": "L790",
+      "title": "Attachment modifier full owner atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L790-attachment-modifier-field-atlas.json"
+      ],
+      "summary": "All128 packages plus102 effect owners yield2157 concrete-owner-qualified families; Blacklight current capture is included and15 outgoing imports have9 current raw gaps.",
+      "reopenWhen": "Supply the9 missing exact raw target files or trace a ranked unknown family with a selected consumer.",
+      "refs": []
+    },
+    "L791": {
+      "id": "L791",
+      "title": "Selection-wrapper typed atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L791-selection-wrapper-field-atlas.json"
+      ],
+      "summary": "7728 current wrappers have exact typed inventories; 1951 current raw gaps remain explicit across the 9679-item scope.",
+      "reopenWhen": "Qualified current captures or an exact source consumer can resolve the recorded gaps and opaque field roles.",
+      "refs": []
+    },
+    "L792": {
+      "id": "L792",
+      "title": "Qualified owner-gap reconciliation and supplemental atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L792-supplemental-owner-field-atlas.json"
+      ],
+      "summary": "256 qualified current supplemental owner files fully typed; 30,392 occurrences, 2,558 families, 1,019 exact outgoing imports. No qualified current capture gaps remain.",
+      "reopenWhen": "Exact qualified consumer/body proof or field semantics and native activation evidence.",
+      "refs": []
+    },
+    "L793": {
+      "id": "L793",
+      "title": "Normalized Stage1 field atlas and comparison frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L793-combined-field-atlas.json"
+      ],
+      "summary": "11687 source contexts retain 5014 exact family identities; scalar weapon counts and occurrence semantic scopes remain separate.",
+      "reopenWhen": "Trace ranked never-examined or source-traced non-site fields through exact selected consumers; qualified finite-scope gaps remain explicit.",
+      "refs": []
+    },
+    "L794": {
+      "id": "L794",
+      "title": "Optic FOV and PiP fixed numeric field role batch",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L794-optic-fov-pip-frontier.json"
+      ],
+      "summary": "125 fixed owners plus3 exact option/reset supplements provide2155 numeric occurrences and99 typed families. Controls and4182 raw rereads pass; no new effective numeric gameplay stat is justified.",
+      "reopenWhen": "An exact named schema/consumer resolves a listed unknown field, or a selected per-weapon optic route and precedence establish effective render FOV.",
+      "refs": []
+    },
+    "L795": {
+      "id": "L795",
+      "title": "Glint, zeroing and breath source families",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L795-optic-glint-zeroing-frontier.json"
+      ],
+      "summary": "Current exact glint/zeroing families and breath expression channel/resource joins are traced with explicit native-consumer limits.",
+      "reopenWhen": "Exact compiled/native consumer evidence resolves the stored glint tuples, zeroing controls or breath resource.",
+      "refs": []
+    },
+    "L796": {
+      "id": "L796",
+      "title": "Current camera amount and spring source frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L796-camera-frontier.json"
+      ],
+      "summary": "25 exact named GS camera fields across all 63 weapons; 19 scalar families vary. Control and 4,676 unique source/registry/field-hash reads pass. No new camera-output comparison stat is established; three compact dead-end routes retained.",
+      "reopenWhen": "Concrete same-release camera consumer or validated output/composition mapping for exact fields.",
+      "refs": []
+    },
+    "L797": {
+      "id": "L797",
+      "title": "Optical visual composition field binding batch",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L797-optic-composition-frontier.json"
+      ],
+      "summary": "41 composition roots plus2 exact resource-backed leaves yield11251 typed occurrences,8081 scalar occurrences and292 numeric families. All consequential raw reads pass; named tokens lack exact numeric binding.",
+      "reopenWhen": "Supply an exact named same-owner schema, engine/shader consumer or existing confirmation that binds a listed member to an optical effect.",
+      "refs": []
+    },
+    "L798": {
+      "id": "L798",
+      "title": "GS spread and recovery source frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L798-spread-recovery-frontier.json"
+      ],
+      "summary": "128exactGSspread/recoverypaths on63weapons;83vary. Current selected HDA/ZDA189site minima match; rawGSroute differences remain separate. Controls and19915rawreads pass; four compact native limits, no new stat.",
+      "reopenWhen": "Exact same-release selected-state consumer or confirmed weapon-side recovery/cache/sampling meaning.",
+      "refs": []
+    },
+    "L799": {
+      "id": "L799",
+      "title": "Projectile and ammo varying source families",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L799-projectile-ammo-frontier.json"
+      ],
+      "summary": "Current variation, exact owner registry names and selected source context are traced; no new native comparison stat.",
+      "reopenWhen": "Exact typed/native consumer or independent controlled stat-panel evidence resolves unassigned fields.",
+      "refs": []
+    },
+    "L800": {
+      "id": "L800",
+      "title": "Current WB handling and indexed source-consumer frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L800-handling-source-frontier.json"
+      ],
+      "summary": "63 WB roots, 441 default index/table joins, 39 target owners and 22 unchanged modifier contexts; 756 site comparisons match or retain explicit null. Seven varying firing siblings remain unqualified; no site correction proposed.",
+      "reopenWhen": "Exact same-owner native receiver/field role/unit/selection proof or a changed current serialized operand.",
+      "refs": []
+    },
+    "L801": {
+      "id": "L801",
+      "title": "Current ballistic recoil source frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L801-ballistic-recoil-frontier.json"
+      ],
+      "summary": "60exactGSrecoilpaths all63weapons;32vary. 1764siteinputs agree and11221rawreads pass. Sixcompactnative limits; no new stat.",
+      "reopenWhen": "Exact same-release native branch/equation/axis/cap consumer or independently confirmed weapon-side meaning.",
+      "refs": []
+    },
+    "L802": {
+      "id": "L802",
+      "title": "Optical frontier exact family reconciliation",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L802-optic-consumer-residual-frontier.json"
+      ],
+      "summary": "3289 candidate families and224 ranked IDs reconciled; all100 optical ranked entries retain exact proofs.22 property-name identifiers established;24 direct target objects qualified, no missing owner request. No new numeric effect statistic.",
+      "reopenWhen": "Exact same-owner schema or engine consumer resolves an unknown optical member.",
+      "refs": []
+    },
+    "L803": {
+      "id": "L803",
+      "title": "Remaining projectile ammo modifier scalar reconciliation",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L803-projectile-ammo-residual-frontier.json"
+      ],
+      "summary": "229 exact current scalar families reconciled;189 new operands passed; no new native comparison stat.",
+      "reopenWhen": "Exact native consumer or selected/stat-panel operation evidence resolves source-only scalar families.",
+      "refs": []
+    },
+    "L804": {
+      "id": "L804",
+      "title": "Qualified modifier residual scalar families",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L804-modifier-residual-frontier.json"
+      ],
+      "summary": "42 assigned identities retain exact current schema and operand/local-owner proof; no new native comparison stat.",
+      "reopenWhen": "Exact field-specific native consumer or independently confirmed selected/stat-panel operation resolves source-only members.",
+      "refs": []
+    },
+    "L805": {
+      "id": "L805",
+      "title": "Bounded current GS/WB residual field role audit",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L805-gs-wb-array-residual-frontier.json"
+      ],
+      "summary": "150 exact families accounted: 28 completed-source exclusions and 122 current representative proofs; 119 compact new descriptor/path role limits; no new site statistic.",
+      "reopenWhen": "Exact same-owner field role/unit and selected consumer proof or changed current source operands.",
+      "refs": []
+    },
+    "L806": {
+      "id": "L806",
+      "title": "Ability residual field source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L806-weapon-ability-residual-frontier.json"
+      ],
+      "summary": "103 exact Ability families raw/schema-qualified; two source structural roles,101 role/native-consumer limits; no new numeric stat.",
+      "reopenWhen": "Exact native consumer or current same-descriptor alias and selected operation proof.",
+      "refs": []
+    },
+    "L807": {
+      "id": "L807",
+      "title": "Qualified extra laser and flashlight owner residual",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L807-laser-light-source-frontier.json"
+      ],
+      "summary": "150 assigned identities /158 remaining contexts checked;157 consequential reads pass. Exact roles remain unknown; no new numeric stat.",
+      "reopenWhen": "Exact same-owner semantic schema or native consumer binds a remaining field.",
+      "refs": []
+    },
+    "L808": {
+      "id": "L808",
+      "title": "WB residual field source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L808-wb-source-residual-frontier.json"
+      ],
+      "summary": "200 exact WB families/397 remaining contexts;338 raw checks passed. Existing primary modes qualified63/63. No new numeric stat.",
+      "reopenWhen": "Exact selected/native receiver or operation proof for remaining unnamed fields.",
+      "refs": []
+    },
+    "L809": {
+      "id": "L809",
+      "title": "Mixed optic and weapon owner residual source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L809-mixed-optic-source-frontier.json"
+      ],
+      "summary": "150 assigned identities /362 remaining contexts checked;420 raw operands pass;92 declared parent containers proved. Unknown native roles remain open; no new numeric stat.",
+      "reopenWhen": "Exact same-owner schema/consumer maps a field to established units/operator/displayed behavior.",
+      "refs": []
+    },
+    "L810": {
+      "id": "L810",
+      "title": "Combined GS scalar variation count correction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L810-gs-scalar-variation-correction.json"
+      ],
+      "summary": "Include both GS inventory halves in exact scalar weapon variation summaries.",
+      "reopenWhen": "A source profile or selected-body qualification changes.",
+      "refs": []
+    },
+    "L811": {
+      "id": "L811",
+      "title": "Remaining GS-only typed comparison families",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L811-gs-source-residual-frontier.json"
+      ],
+      "summary": "267 assigned GS identities retain exact current source/container proof;52 representative contexts have exact current registry names, but no new native comparison statistic.",
+      "reopenWhen": "Exact current field-specific native consumer or independently confirmed selected/stat-panel operation with displayed effect and validation prediction.",
+      "refs": []
+    },
+    "L812": {
+      "id": "L812",
+      "title": "Mixed optic and weapon owner residual source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L812-mixed-optic-container-frontier.json"
+      ],
+      "summary": "200 assigned identities /847 remaining contexts checked;917 raw operands pass;372 declared parent containers proved. Unknown native roles remain open; no new numeric stat.",
+      "reopenWhen": "Exact same-owner schema/consumer maps a field to established units/operator/displayed behavior.",
+      "refs": []
+    },
+    "L813": {
+      "id": "L813",
+      "title": "Remaining WB-only field source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L813-wb-bolt-heat-source-frontier.json"
+      ],
+      "summary": "162 exact WB families/319 remaining contexts;248 raw checks pass. Ten occurrence-local named families; no new native numeric stat.",
+      "reopenWhen": "Exact selected native receiver/operation proof for remaining limited fields.",
+      "refs": []
+    },
+    "L814": {
+      "id": "L814",
+      "title": "Mixed optic and weapon owner residual source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L814-optic-sway-source-frontier.json"
+      ],
+      "summary": "111 assigned identities /491 remaining contexts checked;625 raw operands pass;351 declared parent containers proved. Unknown native roles remain open; no new numeric stat.",
+      "reopenWhen": "Exact same-owner schema/consumer maps a field to established units/operator/displayed behavior.",
+      "refs": []
+    },
+    "L815": {
+      "id": "L815",
+      "title": "Mixed optic and weapon owner residual source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L815-remaining-extra-owner-frontier.json"
+      ],
+      "summary": "242 assigned identities /268 remaining contexts checked;287 raw operands pass;112 declared parent containers proved. Unknown native roles remain open; no new numeric stat.",
+      "reopenWhen": "Exact same-owner schema/consumer maps a field to established units/operator/displayed behavior.",
+      "refs": []
+    },
+    "L816": {
+      "id": "L816",
+      "title": "Mixed-owner remaining field source qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L816-remaining-mixed-owner-frontier.json"
+      ],
+      "summary": "260 identities/560 distinct source contexts;635 raw reads,7 controls pass; no new numeric stat or native-role transfer.",
+      "reopenWhen": "Exact native receiver/selected condition/operator/unit and validation prediction for remaining comparison candidates.",
+      "refs": []
+    },
+    "L817": {
+      "id": "L817",
+      "title": "Selection and container source frontier limits",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L817-selection-reference-source-frontier.json"
+      ],
+      "summary": "831 exact identities retain source/type/pointer proof and numeric child candidates; three positive linked metadata owners are parent-captured for L822.",
+      "reopenWhen": "Concrete selected property/native consumer or L822 linked metadata field/RID audit; no native semantic completeness claim.",
+      "refs": []
+    },
+    "L818": {
+      "id": "L818",
+      "title": "Current breath compiled resource capture and grammar qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L818-compiled-breath-resource-frontier.json"
+      ],
+      "summary": "Exact current224byte target and1984byte control verified; neutral source owner edge established. Checked bounded SDK/source scope supplies no valid graph grammar. No mechanic finding.",
+      "reopenWhen": "Exact type7dd4cc89 specialized grammar validated with an independently known current graph, or native compiled-consumer/source contract. No further capture requested without qualified new targets.",
+      "refs": []
+    },
+    "L819": {
+      "id": "L819",
+      "title": "Exact frontier context reconciliation and current atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L819-current-weapon-field-atlas.json"
+      ],
+      "summary": "5351 exact identities and 12168 contexts reconciled; original source archive preserved;299 scalar summaries corrected; native limits retained.",
+      "reopenWhen": "Exact same-owner field/schema/consumer evidence establishes meaning, units, selection or native composition.",
+      "refs": []
+    },
+    "L820": {
+      "id": "L820",
+      "title": "Final qualifying route and comparison proposal audit",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L820-weapon-stat-route-audit.json"
+      ],
+      "summary": "23 completed packets across 63 weapons/seven groups checked; 34 stale exact target gaps resolved; seven compact source/consumer boundaries retained; no new qualified capture or numeric stat.",
+      "reopenWhen": "Positive exact selected owner/consumer route plus independently confirmed player comparison meaning, or changed current source evidence.",
+      "refs": []
+    },
+    "L821": {
+      "id": "L821",
+      "title": "Remaining exact WB/balance/attachment source-context qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L821-exact-shared-context-frontier.json"
+      ],
+      "summary": "129 identities/190 assigned contexts; 220 independent operands and 39 parent pointer reads pass; no native role/whole-family transfer or new stat.",
+      "reopenWhen": "Exact assigned source/context selected consumer with established role/unit/operation and validation prediction.",
+      "refs": []
+    },
+    "L822": {
+      "id": "L822",
+      "title": "Linked laser and FX metadata owner atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L822-linked-optical-fx-owner-frontier.json"
+      ],
+      "summary": "Seven metadata owners have465 exact typed families; all14 EBX pointers resolve. Resource grammar candidates remain open.",
+      "reopenWhen": "Qualified current downstream body/resource grammar plus exact native comparison consumer.",
+      "refs": []
+    },
+    "L823": {
+      "id": "L823",
+      "title": "Baseline exact-context JOIN completeness audit",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L823-field-atlas-actual-join-audit.json"
+      ],
+      "summary": "All 5,014 identities and 11,687 contexts audited: exact census asset joins cover 7,052 contexts, exact site/consumer dispositions cover 318, and earlier receipt field bridges cover 143. Missing bridges remain explicit.",
+      "reopenWhen": "Exact source/context site operator, earlier receipt or census-input bridge becomes available; no alias/native-effect transfer.",
+      "refs": []
+    },
+    "L824": {
+      "id": "L824",
+      "title": "Installed compiled resource handler qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L824-compiled-resource-handler-frontier.json"
+      ],
+      "summary": "Positive Texture and breath RID controls pass;19current assemblies checked with bounded metadata routes. No validated expression graph handler; native implementation unknown.",
+      "reopenWhen": "An independently valid type7dd4cc89 specialized grammar with a current known-answer graph semantic control, or an exact native expression consumer/source contract. Metadata names alone do not qualify decoding.",
+      "refs": []
+    },
+    "L825": {
+      "id": "L825",
+      "title": "Emitter and Atlas exact resource parser boundaries",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L825-emitter-atlas-resource-frontier.json"
+      ],
+      "summary": "Three current owners verified. Atlas dedicated source parser candidate needs independent current validation; emitter grammar remains unsupported under bounded routes. No new stats.",
+      "reopenWhen": "Exact specialized grammar plus current independent semantic control/native consumer contract.",
+      "refs": []
+    },
+    "L826": {
+      "id": "L826",
+      "title": "Atlas current known-answer control availability",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L826-atlas-resource-control-frontier.json"
+      ],
+      "summary": "Positive Atlas source route retained; checked existing evidence lacks independent current semantic control. No typed promotion or capture request.",
+      "reopenWhen": "Provide an independently known current AtlasTexture957c32b1 semantic control (DDS export/header plus exact resource/chunk identity, validated fixture or trusted same-resource consumer contract). Then validate dedicated source grammar and exact chunk join before typing current target. Candidate Atlas plugin source remains positive; route is pending control availability, not closed.",
+      "refs": []
+    },
+    "L827": {
+      "id": "L827",
+      "title": "Current MeshSet parser and control frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L827-mesh-resource-control-frontier.json"
+      ],
+      "summary": "CurrentMeshSet body/sourceRID verified. DedicatedBF6 source parser candidate found; independentcurrentsemanticcontrol unresolved. No typedpayload/newstat.",
+      "reopenWhen": "Independent current same-type mesh control with exact resource/chunk identities and known bounds/LODs/section/vertex or trusted consumer facts, plus validation of dedicated BF6 reader branch. Source parser candidate stays actionable; no older-game or byte-position field transfer.",
+      "refs": []
+    },
+    "L828": {
+      "id": "L828",
+      "title": "Final ranked source route boundary audit",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L828-ranked-source-route-audit.json"
+      ],
+      "summary": "133 exact ranked identities and347 contexts have current source/schema/actual consumer/prior/child proof pointers and individual reopen controls. No new local qualified target or comparison stat.",
+      "reopenWhen": "Specific same-owner native receiver/selected-state/unit/composition or independently valid current type-specific grammar control; native meanings remain open.",
+      "refs": []
+    },
+    "L829": {
+      "id": "L829",
+      "title": "Late exact-context JOIN completeness audit",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L829-late-context-actual-joins.json"
+      ],
+      "summary": "All 481 late contexts received actual site, prior and census attempt dispositions. No exact positive bridge or new qualified target; explicit limits remain.",
+      "reopenWhen": "Exact same-source field/operator, independent earlier receipt or compatible census asset evidence becomes available.",
+      "refs": []
+    },
+    "L840": {
+      "id": "L840",
+      "title": "Soldier UI atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L840-soldier-ui-atlas.json"
+      ],
+      "summary": "All 155 text records in four pinned UI owners retained with current StringId checks; runtime activation remains unjoined.",
+      "reopenWhen": "Trace exact GUID consumers or obtain missing localized StringId sources.",
+      "refs": []
+    },
+    "L841": {
+      "id": "L841",
+      "title": "Soldier movement structural atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L841-movement-owner-atlas.json"
+      ],
+      "summary": "Current controls pass and three owners supply a structural movement atlas with bounded operands and candidate caller routes.",
+      "reopenWhen": "Inspect current raw receivers for ranked named movement routes; require same-owner named controls and preserve runtime limits.",
+      "refs": []
+    },
+    "L842": {
+      "id": "L842",
+      "title": "Soldier survival structural atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L842-survival-owner-atlas.json"
+      ],
+      "summary": "Control-qualified atlas resolves three current owners and exact survival imports; one requested owner has a capture gap and the requested GRX_Mutators path is invalid.",
+      "reopenWhen": "Trace the exact survival consumers and reviewed mode receiver/registry candidates in a separately briefed Stage 2.",
+      "refs": []
+    },
+    "L843": {
+      "id": "L843",
+      "title": "Class and perk gameplay atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L843-class-perk-owner-atlas.json"
+      ],
+      "summary": "Eight training path owners and 12 exact captured descendants retained; missing current targets and uncontrolled fields limit interpretation.",
+      "reopenWhen": "Exact current missing targets and same-owner typed consumer controls become available.",
+      "refs": []
+    },
+    "L844": {
+      "id": "L844",
+      "title": "Soldier field atlas and frontier coverage",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L844-soldier-field-atlas.json"
+      ],
+      "summary": "Bounded atlas retains 29 owners, 423 owner-family entries and 155 UI records; coverage classification is explicit and frontier remains open.",
+      "reopenWhen": "Continue ranked mechanic traces and extend owner closure; recheck after source or descriptor changes.",
+      "refs": []
+    },
+    "L845": {
+      "id": "L845",
+      "title": "Movement expression receivers and firing local",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L845-movement-receivers.json"
+      ],
+      "summary": "Four current movement owners exactly import sprint/slide/swim settings and RootLayerLogic declares named firing multiplier local; compiled equations remain unresolved.",
+      "reopenWhen": "Use exact selected compiled resources with an independent operation control, or join Commando output to the firing multiplier local by exact typed identity.",
+      "refs": []
+    },
+    "L846": {
+      "id": "L846",
+      "title": "Recovery revive and fall consumer frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L846-recovery-revive-fall.json"
+      ],
+      "summary": "Exact healing/revive channel joins and post-revive delay-slot association extend source roles; compiled gates and fall field meanings remain unresolved.",
+      "reopenWhen": "Trace exact fall damage-definition targets or acquire a qualified expression grammar/reader.",
+      "refs": []
+    },
+    "L847": {
+      "id": "L847",
+      "title": "Class effect frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L847-class-effect-frontier.json"
+      ],
+      "summary": "Five class effect groups traced through exact current selections; guide text supports displays while additional numeric roles and composition remain limited.",
+      "reopenWhen": "Exact family controls and missing selector/receiver joins become available.",
+      "refs": []
+    },
+    "L848": {
+      "id": "L848",
+      "title": "Detection suppression and mode settings frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L848-detection-suppression-mode.json"
+      ],
+      "summary": "Ten owners retain30 named definitions, exact suppression presentation and mode expression inputs; active standard MP assignments remain unresolved.",
+      "reopenWhen": "Provide exact caller inputs and supported compiled RES evaluator with same-owner control.",
+      "refs": []
+    },
+    "L849": {
+      "id": "L849",
+      "title": "Weapon movement and handling selections",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L849-weapon-class-handling.json"
+      ],
+      "summary": "All63 current ADS/sprint/DTA source indices match site bases; current default model differs from bases and supports a separate source holster setting, not total swap time.",
+      "reopenWhen": "Use exact soldier speed baseline and weapon transition animation/state consumers to establish absolute movement or total swap composition.",
+      "refs": []
+    },
+    "L850": {
+      "id": "L850",
+      "title": "Fall and Featherweight selector frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L850-fall-featherweight-selectors.json"
+      ],
+      "summary": "Six fall U definitions and exact Assault Featherweight U selection resolve typed outgoing CT children; numeric damage and landing roles remain unresolved.",
+      "reopenWhen": "Trace exact CT child identities and value-registry consumers under a new bounded owner budget.",
+      "refs": []
+    },
+    "L851": {
+      "id": "L851",
+      "title": "Stance ladder landing and hit source frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L851-stance-ladder-hit-reaction.json"
+      ],
+      "summary": "Twelve current owners retain54 scoped operands, exact stance channel/default imports and controlled expression families; active equations and flinch remain unresolved.",
+      "reopenWhen": "Establish exact active caller selection and a supported compiled evaluator or native gameplay consumer for named/hash-only fields.",
+      "refs": []
+    },
+    "L852": {
+      "id": "L852",
+      "title": "Remaining class identities and armor applicability",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L852-remaining-class-soldier-effects.json"
+      ],
+      "summary": "Four soldier mechanisms traced within16 owners; exact current UI and LowProfile/Engineer routes retained, with damage roles and MP armor gating unresolved.",
+      "reopenWhen": "Exact next affector/class/UI consumers and same-owner numeric controls become available.",
+      "refs": []
+    },
+    "L853": {
+      "id": "L853",
+      "title": "Soldier compiled resources and reader qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L853-soldier-resource-reader.json"
+      ],
+      "summary": "Seven same-Head EBX/RES identities and raw preambles pass. No qualified equation evaluator in the inspected local source route.",
+      "reopenWhen": "A reader/specification or independently validated operation control provides reproducible equation meaning.",
+      "refs": []
+    },
+    "L854": {
+      "id": "L854",
+      "title": "Fall and Featherweight CT child bindings",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L854-fall-featherweight-ct-roles.json"
+      ],
+      "summary": "Six exact CT children resolve names and value-registry address round trips; Featherweight U selects a CT child named U_Ability_FasterHealing without native effect proof.",
+      "reopenWhen": "Find a qualified execution consumer or exact effect binding for the six completed configuration addresses.",
+      "refs": []
+    },
+    "L855": {
+      "id": "L855",
+      "title": "Soldier frontier coverage gap audit",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L855-soldier-frontier-gap-audit.json"
+      ],
+      "summary": "All 32 class slots and 34 mechanic groups were audited; 20 distinct control-qualified source targets remain open.",
+      "reopenWhen": "Complete residual Ability target source classification and receiver controls, then extend the atlas from finished owner artifacts.",
+      "refs": []
+    },
+    "L856": {
+      "id": "L856",
+      "title": "LowProfile operand roles and Engineer config",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L856-lowprofile-engineer-source.json"
+      ],
+      "summary": "Exact current regen-family match qualifies -1/3.5/-1 slots; spotting operands and Engineer config applicability retain specific receiver limits.",
+      "reopenWhen": "Exact sentinel/spotting receivers and Engineer class signature assignment are connected.",
+      "refs": []
+    },
+    "L857": {
+      "id": "L857",
+      "title": "Assault and Support exact Ability configuration frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L857-assault-support-selections.json"
+      ],
+      "summary": "Nine exact selected Ability routes resolve current named CT configuration-address round trips; downstream effect bodies remain qualified frontier.",
+      "reopenWhen": "Read exact U/FL bodies and qualify an effect receiver in a separate bounded stage; do not reuse CT addresses as native effect values.",
+      "refs": []
+    },
+    "L858": {
+      "id": "L858",
+      "title": "Recon and Engineer class effect source frontiers",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L858-residual-recon-engineer-source.json"
+      ],
+      "summary": "Ten exact selected abilities close at configuration loops, six compiled graph gates, and a narrowly excluded UAV call-in branch; effect consumers remain exact next routes.",
+      "reopenWhen": "Decode retained exact consumer targets under a new bounded lead.",
+      "refs": []
+    },
+    "L859": {
+      "id": "L859",
+      "title": "Current soldier typed-family frontier atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L859-soldier-atlas-extension.json"
+      ],
+      "summary": "Four structural rows retain 104 inspected owners, 14 captured-only owners and all32 class slots.",
+      "reopenWhen": "Use completed pending class continuations or exact missing body inventories; require a qualified operation/receiver control before effective values.",
+      "refs": []
+    },
+    "L860": {
+      "id": "L860",
+      "title": "Assault and Support U/FL source effect limits",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L860-assault-support-effect-closure.json"
+      ],
+      "summary": "Exact U configuration variants, two compiled active graphs and two Class_6bbe0eba soldier affector identities qualify source selection while numeric effect roles remain unresolved.",
+      "reopenWhen": "Find same-owner Class_6bbe0eba role controls or a passing exact compiled-resource execution consumer; preserve gadget exclusions and separate control branches.",
+      "refs": []
+    },
+    "L861": {
+      "id": "L861",
+      "title": "Soldier route limits and display proposals, batch 1",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L861-limits-proposals-batch1.json"
+      ],
+      "summary": "14 compact qualified source limits and six proposals with non-recording validation predictions. Residual source routes remain open.",
+      "reopenWhen": "Each batch entry names the exact role/evaluator/consumer control required to reopen its source limit.",
+      "refs": []
+    },
+    "L862": {
+      "id": "L862",
+      "title": "Spotting OverlayPicker presentation source",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L862-spotting-overlay-source.json"
+      ],
+      "summary": "Exact spotting receiver and five named presentation ports qualified; compiled outgoing bindings leave mode selection and gameplay detection unresolved.",
+      "reopenWhen": "Qualify exact outgoing soldier/channel imports or compiled graph grammar.",
+      "refs": []
+    },
+    "L863": {
+      "id": "L863",
+      "title": "Residual class effect receiver roles",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L863-residual-class-affector-roles.json"
+      ],
+      "summary": "Five exact affector owners retain hash-only roles; two exact named soldier GRX scalar children are qualified.",
+      "reopenWhen": "Same-owner role control or compiled receiver proof becomes available.",
+      "refs": []
+    },
+    "L864": {
+      "id": "L864",
+      "title": "Soldier source atlas captured-gap closure",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L864-final-typed-soldier-atlas.json"
+      ],
+      "summary": "All14 typed-body gaps close;132 scoped source owners and all32 class slots retained with independent native limits.",
+      "reopenWhen": "Integrate L865 selected receiver source fields; require a qualified native operation/selection control before effective behavior.",
+      "refs": []
+    },
+    "L865": {
+      "id": "L865",
+      "title": "Selected spotting presentation configuration",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L865-spotting-receiver-settings.json"
+      ],
+      "summary": "Exact overlay registry, two channels and named options qualified across12 target files; presentation settings do not establish detection or MP branch activation.",
+      "reopenWhen": "Exact unresolved identities or graph operation controls become available.",
+      "refs": []
+    },
+    "L866": {
+      "id": "L866",
+      "title": "Soldier frontier controlled source closeout and limits batch 2",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L866-soldier-frontier-closeout.json"
+      ],
+      "summary": "132 core inspected owners,1899 families,32 slots/28 targets and34 dispositions; no qualified pending source target, with explicit native and three file-index limits.",
+      "reopenWhen": "Exact missing file identity, named consumer/role control, validated compiled-operation reader, or source update.",
+      "refs": []
+    },
+    "L867": {
+      "id": "L867",
+      "title": "Spotting option reset and WaterState enum source boundaries",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L867-spotting-option-enum-boundaries.json"
+      ],
+      "summary": "Seven exact incoming bindings close at five Int reset exports and one enum root/five member definitions; active MP semantics remain limited.",
+      "reopenWhen": "Exact active option assignment or validated operation/enum consumer control.",
+      "refs": []
     },
     "L3000": {
       "id": "L3000",
@@ -3617,6 +4916,78 @@
       ],
       "summary": "Current cannon control passed, but four selected vehicle UI assets and two named cannon candidates did not establish an exact APHEI owner.",
       "reopenWhen": "Reopen with a current APHEI text record and an exact serialized owner-selection join.",
+      "refs": []
+    },
+    "L3034": {
+      "id": "L3034",
+      "title": "Vehicle health, regeneration, damage-zone and disable raw baseline",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3034-vehicle-baseline.json"
+      ],
+      "summary": "All 46 current VB roots have typed hash-only baseline coverage and 27,473 raw checks; source meaning remains unconfirmed.",
+      "reopenWhen": "Exact receiving schema or native implementation can establish field meaning, composition and activation.",
+      "refs": []
+    },
+    "L3035": {
+      "id": "L3035",
+      "title": "Current selected vehicle firing and projectile source frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3035-vehicle-frontier.json"
+      ],
+      "summary": "73 selected WF routes inventoried, with 72 current local firing owners (69 have the exact control key) and exact typed scalar checks; projectile and wrapper boundaries remain explicit.",
+      "reopenWhen": "Add exact same-owner key controls for the three alternate-key firing owners and unsupported projectile owner classes.",
+      "refs": []
+    },
+    "L3036": {
+      "id": "L3036",
+      "title": "Selected vehicle motion and station field atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3036-vehicle-frontier.json"
+      ],
+      "summary": "All 46 VB roots examined. 78 exact selected MM/MD assets, 33364 local owners and 7195338 typed operand reads retained. Controls passed. Candidate source labels and exact descriptor fields do not establish speed units, handling equations, turret traverse or usable seats. 0 missing routes; 0 compact decode dead ends.",
+      "reopenWhen": "Exact same-owner operation naming and current runtime/units receiver evidence is available.",
+      "refs": []
+    },
+    "L3037": {
+      "id": "L3037",
+      "title": "Vehicle Ability and loadout forward field frontier",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3037-vehicle-frontier.json"
+      ],
+      "summary": "All 46 current roots have selected typed consumers and forward source fields recorded; 3271 owners and 118985 raw reads are verified, with no named current raw gap and exact channel/native limits retained.",
+      "reopenWhen": "Exact missing exported/channel identities or typed native-operation definitions become available.",
+      "refs": []
+    },
+    "L3038": {
+      "id": "L3038",
+      "title": "Converged vehicle typed field-family atlas",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3038-vehicle-frontier.json"
+      ],
+      "summary": "Current typed atlas covers 1607 frontier owner files, 983 schemas and 5540 exact declaring-key/member families. CB90 control passed. Status counts: {'traced but not mapped': 5517, 'in stat map': 9, 'known limit': 14}. Supplemental evidence covers 171 current source files and 684 field families with exact raw value provenance; MM/MD payloads are reused. Forward import candidates do not prove activation.",
+      "reopenWhen": "An exact same-owner field/operation control or runtime receiver establishes the unresolved names, units and composition.",
+      "refs": []
+    },
+    "L3039": {
+      "id": "L3039",
+      "title": "Ranked vehicle community source traces",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3039-vehicle-frontier.json"
+      ],
+      "summary": "All 22 ranked vehicle items have exact current source-owner associations, reviewed controls and explicit native/UI/slot limits; no community value or validation claim is imported.",
+      "reopenWhen": "A field-specific same-owner control, exact native receiver or an operator test resolves a named mechanic.",
       "refs": []
     }
   }

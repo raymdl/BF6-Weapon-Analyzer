@@ -74,6 +74,21 @@
         "value": 265.2935125529766
       }
     ],
+    "data/attachment-tooltips.json:/descriptions": [
+      {
+        "receipt": "frosty-2026-10-01-L704-used-tooltip-text.json",
+        "date": "2026-10-01",
+        "relation": "context"
+      }
+    ],
+    "data/attachments.json:/ACCESSORIES/[id=ag_coating]/pts": [
+      {
+        "receipt": "frosty-site-audit-attachments-accessories-pts-2026-10-01.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 10
+      }
+    ],
     "data/attachments.json:/BARRELS/1/adsTimeTierModByWeapon/l115": [
       {
         "receipt": "frosty-2026-09-29-L121-ads-time-modifier-targets.json",
@@ -1145,6 +1160,22 @@
         "value": 3
       }
     ],
+    "data/attachments.json:/WEAPON_MAG/m433/defAms": [
+      {
+        "receipt": "frosty-2026-10-01-L849-weapon-class-handling.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 6
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m433/deployBaseIndex": [
+      {
+        "receipt": "frosty-2026-10-01-L849-weapon-class-handling.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 5
+      }
+    ],
     "data/attachments.json:/WEAPON_MAG/m433/mags/20_fast/mag": [
       {
         "receipt": "frosty-2026-09-24-L37-configured-magazine-counts.json",
@@ -1157,6 +1188,14 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": 20
+      }
+    ],
+    "data/attachments.json:/WEAPON_MAG/m433/sprintRecoveryBaseIndex": [
+      {
+        "receipt": "frosty-2026-10-01-L849-weapon-class-handling.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 5
       }
     ],
     "data/attachments.json:/WEAPON_MAG/m44/defAds": [
@@ -1451,6 +1490,53 @@
         "date": "2026-09-29",
         "relation": "supports",
         "value": 5
+      }
+    ],
+    "data/balance_tables.json:/": [
+      {
+        "receipt": "frosty-2026-10-01-L841-movement-owner-atlas.json",
+        "date": "2026-10-01",
+        "relation": "context"
+      }
+    ],
+    "data/balance_tables.json:/ADS_MOVE_TIERS": [
+      {
+        "receipt": "frosty-2026-10-01-L845-movement-receivers.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "value": [
+          0.325,
+          0.325,
+          0.37,
+          0.42,
+          0.475,
+          0.535,
+          0.6,
+          0.67,
+          0.745,
+          0.825,
+          0.91,
+          1.0
+        ]
+      },
+      {
+        "receipt": "frosty-2026-10-01-L849-weapon-class-handling.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": [
+          0.325,
+          0.325,
+          0.37,
+          0.42,
+          0.475,
+          0.535,
+          0.6,
+          0.67,
+          0.745,
+          0.825,
+          0.91,
+          1.0
+        ]
       }
     ],
     "data/balance_tables.json:/ADS_SPD_TIERS": [
@@ -2125,6 +2211,14 @@
         "value": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO"
       }
     ],
+    "data/ballistics.json:/weapons/sor300sc/base": [
+      {
+        "receipt": "frosty-2026-10-01-L785-projectile-field-atlas.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine"
+      }
+    ],
     "data/hit_zones.json:/weapons/ak205/headshot": [
       {
         "receipt": "frosty-2026-09-27-L99-soldier-hit-capsules.json",
@@ -2259,6 +2353,34 @@
         "date": "2026-09-29",
         "relation": "context",
         "value": 11
+      }
+    ],
+    "data/weapon_attributes.json:/": [
+      {
+        "receipt": "frosty-2026-10-01-L841-movement-owner-atlas.json",
+        "date": "2026-10-01",
+        "relation": "context"
+      }
+    ],
+    "data/weapon_attributes.json:/mobilityInputs": [
+      {
+        "receipt": "frosty-2026-10-01-L845-movement-receivers.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "value": {
+          "l115": {
+            "animationZoomBaseIndex": 2,
+            "zoomTransitionBaseIndex": 1,
+            "movingAdsGripShifts": {
+              "qd_grip_pod_sr": 0
+            }
+          },
+          "ks18k": {
+            "movingAdsGripShifts": {
+              "slim_angled": 0
+            }
+          }
+        }
       }
     ],
     "data/weapon_attributes.json:/tables/interdictor/rows/0/rpm": [
@@ -3072,6 +3194,20 @@
         "value": ".416 Barrett"
       }
     ],
+    "data/weapons.json:/[id=interdictor]/description": [
+      {
+        "receipt": "frosty-2026-10-01-L740-interdictor-range-description.json",
+        "date": "2026-10-01",
+        "relation": "contradicts"
+      }
+    ],
+    "data/weapons.json:/[id=interdictor]/dmg": [
+      {
+        "receipt": "frosty-2026-10-01-L740-interdictor-range-description.json",
+        "date": "2026-10-01",
+        "relation": "supports"
+      }
+    ],
     "data/weapons.json:/[id=interdictor]/emptyRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3502,6 +3638,14 @@
         "value": "auto"
       }
     ],
+    "data/weapons.json:/[id=m250]/mag": [
+      {
+        "receipt": "frosty-2026-10-01-L781-root-field-atlas.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 50
+      }
+    ],
     "data/weapons.json:/[id=m250]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3712,6 +3856,12 @@
       {
         "receipt": "frosty-2026-09-28-L106-L111-orchestrator-trial.json",
         "date": "2026-09-28",
+        "relation": "supports",
+        "value": 31
+      },
+      {
+        "receipt": "frosty-2026-10-01-L780-root-field-atlas.json",
+        "date": "2026-10-01",
         "relation": "supports",
         "value": 31
       }
@@ -5015,6 +5165,45 @@
       {
         "receipt": "frosty-2026-09-30-site-audit-ammo-velocity.json",
         "date": "2026-09-30",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-10-01-L520-weapons-sample-check.json:/siteComparisons": [
+      {
+        "receipt": "frosty-2026-10-01-L520-weapons-sample-check.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteComparisons",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-10-01-site-audit-ammo-recoil-spread.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-10-01-site-audit-ammo-recoil-spread.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/siteRows",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-10-01-site-audit-ammo-type-modifiers.json:/siteRows": [
+      {
+        "receipt": "frosty-2026-10-01-site-audit-ammo-type-modifiers.json",
+        "date": "2026-10-01",
         "relation": "context",
         "siteRows": {
           "rows": "/siteRows",
