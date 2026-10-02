@@ -10,12 +10,9 @@
  * Three details that are not obvious:
  *   - <canvas> content does not survive cloneNode, so each live canvas is
  *     swapped for an <img> of its toDataURL() before serialising.
- *   - The capture root is a <div>, so `body { … }` rules never match it. The
- *     computed body typography is mirrored onto the root, otherwise the shot
- *     renders in the default serif with black text on a near-black panel.
- *   - Media queries inside a <foreignObject> resolve against the SVG's width,
- *     not the browser viewport. That is what lets a phone emit the desktop
- *     layout: build the SVG at CAPTURE_WIDTH and the wide rules simply apply.
+ *   - The capture body receives the live body's computed typography.
+ *   - Media queries use the browser viewport width. The output is cropped to
+ *     the main column's width, excluding the sidebar and its scrollbar.
  */
 
 // Attribution stamped into the top-right of every shared image, where the
@@ -30,20 +27,6 @@ const SITE_URL = 'raymdl.github.io/BF6-Weapon-Analyzer';
 
 /** Controls are meaningless in a static image. .loadout-btn is mobile-only. */
 const CHROME_SELECTOR = '.share-wrap,.panel-toggle,.rc-popout-btn,.loadout-btn';
-
-/**
- * Every capture is emitted at this width, whatever the live viewport is. A
- * phone would otherwise share a 12:1 ribbon of stacked panels, and a maximised
- * 2560 desktop would share the same content spread over twice the pixels.
- * Fixing it means one loadout produces one image regardless of who shot it.
- *
- * 1238 is what the main column measures on a 1440 desktop. The floor that
- * matters is 1078 — below it the overview stat cards wrap inside their groups
- * (nine 108px cards plus gaps in the first row). Anything from 1078 up is
- * safe; this leaves 160px of slack. Note that a stat field missing from
- * SEC_OF in ui/app.js falls through to Combat, which would raise that floor.
- */
-const CAPTURE_WIDTH = 1280;
 
 /**
  * Sizes a canvas bitmap to the box the capture layout gives it.
@@ -105,16 +88,16 @@ function snapshotCanvases(source, clone) {
  *
  * @returns {{height:number, slots:{width:number,height:number}[]}}
  */
-function measureCapture(markup, css, rootCss, width, aspects) {
+function measureCapture(markup, css, rootCss, width, viewportWidth, aspects) {
   const frame = document.createElement('iframe');
   frame.setAttribute('aria-hidden', 'true');
-  frame.style.cssText = `position:fixed;left:-99999px;top:0;width:${width}px;height:100px;border:0`;
+  frame.style.cssText = `position:fixed;left:-99999px;top:0;width:${viewportWidth}px;height:100px;border:0`;
   document.body.appendChild(frame);
   try {
     const doc = frame.contentDocument;
     doc.open();
     doc.write(`<style>*{margin:0;padding:0;box-sizing:border-box}</style><style>${css}</style>`
-      + `<div style="width:${width}px;${rootCss}">${markup}</div>`);
+      + `<body style="width:${width}px;${rootCss};height:auto;min-height:0;overflow:visible;display:block">${markup}</body>`);
     doc.close();
     // Reading a rect forces layout synchronously. The bitmaps are out of flow,
     // so every wrap is measured on the surrounding layout alone.
@@ -152,10 +135,9 @@ function buildHeader() {
 
 /**
  * Renders header + main column at full scroll height.
- * @param {number} scale Device-pixel multiplier for the output bitmap.
  * @returns {Promise<Blob>} PNG blob.
  */
-export async function captureView({ scale = 2 } = {}) {
+export async function captureView() {
   const main = document.getElementById('main');
   if (!main) throw new Error('nothing to capture');
 
@@ -172,11 +154,9 @@ export async function captureView({ scale = 2 } = {}) {
     new Promise(r => setTimeout(r, 150)),
   ]);
 
-  // Fixed, in both directions: a phone widens to it and a maximised desktop
-  // narrows to it. Note the capture has no viewport but its own width, which is
-  // why CAPTURE_WIDTH has to clear the 1279px breakpoint on its own for the
-  // wide rules to apply inside the foreignObject.
-  const width = CAPTURE_WIDTH;
+  // clientWidth includes the main padding, but excludes its scrollbar.
+  const width = main.clientWidth;
+  const viewportWidth = window.innerWidth;
   let svg;
   try {
     const mainClone = main.cloneNode(true);
@@ -205,16 +185,16 @@ export async function captureView({ scale = 2 } = {}) {
     // Measured with the bitmaps out of flow, then re-serialised with the boxes
     // that measurement produced. The SVG has to carry the sized form.
     const { height, slots } = measureCapture(
-      new XMLSerializer().serializeToString(shot), css, rootCss, width, aspects);
+      new XMLSerializer().serializeToString(shot), css, rootCss, width, viewportWidth, aspects);
     shot.querySelectorAll('img[data-cap-slot]').forEach((img, i) => {
       img.style.cssText = canvasBoxCss(slots[i], aspects[i]);
     });
     const markup = new XMLSerializer().serializeToString(shot);
 
-    svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}">`
+    svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${viewportWidth}" height="${height}">`
       + '<foreignObject width="100%" height="100%">'
-      + `<div xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;${rootCss}">`
-      + `<style>${css}</style>${markup}</div></foreignObject></svg>`;
+      + `<body xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;${rootCss};height:auto;min-height:0;overflow:visible;display:block">`
+      + `<style>${css}</style>${markup}</body></foreignObject></svg>`;
 
     const image = new Image();
     await new Promise((resolve, reject) => {
@@ -224,12 +204,12 @@ export async function captureView({ scale = 2 } = {}) {
     });
 
     const canvas = document.createElement('canvas');
-    canvas.width = Math.round(width * scale);
-    canvas.height = Math.round(height * scale);
+    canvas.width = width;
+    canvas.height = height;
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = getComputedStyle(document.body).backgroundColor;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(image, 0, 0, width, height, 0, 0, width, height);
     return await new Promise((resolve, reject) => {
       canvas.toBlob(b => (b ? resolve(b) : reject(new Error('could not encode the image'))), 'image/png');
     });

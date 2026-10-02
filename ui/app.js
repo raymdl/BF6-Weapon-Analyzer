@@ -742,10 +742,13 @@ function renderOverview() {
       tooltip: 'Time to aim down sights.' },
     { lbl: 'Strafe Spd',  k: '_adsMoveSpeedMult',                        unit: '×',   fmt: formatMovementMultiplier,      higherBetter: true, group: 'mobility',
       tooltip: 'Movement speed multiplier while ADS.' },
-    { lbl: 'Deploy Spd',  k: 'deployT',                                  unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
-      tooltip: 'Draw time when switching to the weapon.' },
-    { lbl: 'Holster Spd', k: 'undeployT',                                unit: 'ms',  fmt: v => v != null ? Math.round(v * 1000) : '—', lowerBetter: true,
-      tooltip: "Time to put the weapon away. This is the weapon's holster setting, not total swap time." },
+    { lbl: 'DRAW/HOLSTER SPEED', compute: w => ({ draw: w.deployT, holster: w.undeployT }), unit: '',
+      fmt: obj => {
+        const cell = v => v != null ? `${Math.round(v * 1000)}<span class="sunit">ms</span>` : '—';
+        return `${cell(obj?.draw)}<span class="sunit"> / </span>${cell(obj?.holster)}`;
+      },
+      noDiff: true,
+      tooltip: 'Draw / holster time in milliseconds. These are separate weapon settings, not total swap time.' },
     { lbl: 'Sprint Rec',  k: '_sprintRecoveryMs',                        unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true,
       tooltip: 'Sprint-to-fire delay: how long after sprinting before you can shoot.' },
     { lbl: 'Recoil/Shot', k: 'recoilV',                                  unit: '°',   fmt: v => v.toFixed(2),                        lowerBetter: true, group: 'recoil',
@@ -771,8 +774,6 @@ function renderOverview() {
     'Bullet Vel': 'Bullet Velocity',
     'Mag Size': 'Magazine Size',
     'Strafe Spd': 'ADS Move Speed',
-    'Deploy Spd': 'Deploy Speed',
-    'Holster Spd': 'Holster Speed',
     'Sprint Rec': 'Sprint Recovery',
     'Recoil/Shot': 'Recoil Amount',
     'Recoil Dir': 'Recoil Direction',
@@ -840,7 +841,7 @@ function renderOverview() {
   const SEC_OF = {
     'Base Dmg': 'combat', 'HS Mult': 'combat', 'Fire Rate': 'combat', 'Bullet Vel': 'combat',
     'Mag Size': 'ammo', 'Tac Reload': 'ammo', 'Collateral Mult': 'ammo',
-    'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'Deploy Spd': 'mobility', 'Holster Spd': 'mobility', 'Sprint Rec': 'mobility',
+    'ADS Time': 'mobility', 'Strafe Spd': 'mobility', 'DRAW/HOLSTER SPEED': 'mobility', 'Sprint Rec': 'mobility',
     'Recoil/Shot': 'recoil', 'Recoil Variation': 'recoil', 'Recoil Dir': 'recoil',
     'Spread Inc/Shot': 'spread', 'ADS Spread': 'spread', 'Hipfire Spread': 'spread',
     '3D/Map Spot': 'conceal',
@@ -2006,7 +2007,7 @@ function renderAttachmentStats(loadouts) {
     { lbl: 'ADS Time',            val: w => w._adsTimeMs,                   unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Time to aim down sights.' },
     { lbl: 'ADS Move Speed',      val: w => w._adsMoveSpeedMult == null ? null : Number(formatMovementMultiplier(w._adsMoveSpeedMult)),             unit: '×',   dec: 2, higherBetter: true, tooltip: 'Movement speed multiplier while ADS.' },
     { lbl: 'Sprint Recovery',     val: w => w._sprintRecoveryMs,            unit: 'ms',  dec: 0, lowerBetter:  true, tooltip: 'Sprint-to-fire delay: how long after sprinting before you can shoot.' },
-    { lbl: 'Deploy Speed',        val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Draw time when switching to the weapon.' },
+    { lbl: 'Deploy Speed', displayLabel: 'Draw Speed', val: w => w.deployT != null ? w.deployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: 'Draw time when switching to the weapon.' },
     { lbl: 'Holster Speed',       val: w => w.undeployT != null ? w.undeployT * 1000 : null, unit: 'ms', dec: 0, lowerBetter: true, tooltip: "Time to put the weapon away. This is the weapon's holster setting, not total swap time." },
     { lbl: 'Bullet Vel',          val: w => w.bulletVel,                     unit: 'm/s', dec: 0, higherBetter: true, tooltip: 'Muzzle velocity. Faster bullets have less travel time and drop at range.' },
     { lbl: 'Bullet Drag',         val: w => w._projectileModel?.dragPerMeter, unit: '/m', dec: 4, lowerBetter: true, tooltip: 'Projectile drag. Lower keeps the bullet faster at range, with less travel time and drop.' },
@@ -2191,14 +2192,14 @@ function renderAttachmentStats(loadouts) {
       const sum = rows.reduce((t, r) => t + r.d, 0);
       const note = rows.length > 1 && Math.abs(sum - net) > Math.max(0.5 * 10 ** -m.dec, 0.0005) && combineNote(m.lbl);
       if (note) footer.push({ note });
-      if (rows.length > 1) footer.push({ name: `Net ${m.lbl}`, total: true, step: netStep(rows), value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
+      if (rows.length > 1) footer.push({ name: `Net ${m.displayLabel ?? m.lbl}`, total: true, step: netStep(rows), value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
       return { rows, footer };
     };
     const chips = [];
     metrics.forEach(m => {
       const baseVal = m.val(base), curVal = m.val(cur);
       if (!Number.isFinite(baseVal) || !Number.isFinite(curVal)) {
-        chips.push(`<div class="att-chip"><div class="att-chip-lbl">${m.lbl}</div><div class="att-chip-val" title="Data unavailable">—</div></div>`);
+        chips.push(`<div class="att-chip"><div class="att-chip-lbl">${m.displayLabel ?? m.lbl}</div><div class="att-chip-val" title="Data unavailable">—</div></div>`);
         return;
       }
       const delta = +(curVal - baseVal).toFixed(Math.max(m.dec, 3));
@@ -2210,7 +2211,7 @@ function renderAttachmentStats(loadouts) {
       if (coef && Math.abs(coef - 1) > 0.0005) footer.push({ note: `Recovery that scales with current bloom is ×${+coef.toFixed(2)}, not included above.` });
       // A net of zero still shows when attachments cancel each other out.
       if (Math.abs(delta) < 0.0005 && !rows.length) return;
-      const label = `${m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
+      const label = `${m.displayLabel ?? m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
       chips.push(chipHtml({ label, value: Math.abs(delta) < 0.0005 ? `±0${m.unit}` : signed(delta, m.unit, m.dec),
         color: colorFor(m, delta), desc: m.tooltip ?? m.lbl, rows, footer }));
     });

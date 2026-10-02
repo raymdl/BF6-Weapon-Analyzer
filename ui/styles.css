@@ -147,18 +147,11 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
    border-box, so the flex basis above has to carry it. Keep the three in
    step with the .sgroup and .sgrid rules that consume them.
 
-   The cards stop growing once the row reaches the width it gets in a shared
-   image, so a maximised desktop shows the same card widths the screenshot
-   does rather than drifting ever wider. --scard-max is what a card measures
-   at that width; the max-width stops the groups themselves there too, which
-   the track cap alone would not — they would keep growing and leave dead
-   space inside each group. --capture-width mirrors CAPTURE_WIDTH in
-   ui/capture.js, and --sgroups-inset is the padding between the main column
-   and this row, which the capture carries too. */
+   The overview rows stop growing at 1400px. Each card also has its own
+   maximum width; the row cap limits the space distributed across groups. */
 .sgroups{display:flex;flex-direction:column;gap:11px;
-  --scard-min:108px;--scard-max:127px;--sgrid-gap:5px;--sgroup-chrome:12px;
-  --capture-width:1280px;--sgroups-inset:34px;
-  max-width:calc(var(--capture-width) - var(--sgroups-inset))}
+  --scard-min:103px;--scard-max:180px;--sgrid-gap:6px;--sgroup-chrome:12px;
+  max-width:1400px}
 .sgrow{display:flex;align-items:start;gap:20px;flex-wrap:wrap}
 /* renderStatCards sets --n to the card count. The group then reproduces the
    width it had when cards were pinned at --scard-min, and grows from there in
@@ -179,7 +172,7 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .scard{max-width:var(--scard-max);background:var(--bg3);box-shadow:inset 0 0 0 1px rgba(132,158,158,.08);border-radius:4px;padding:4px 8px;letter-spacing:-0.03em}
 .scard.stat-group{background:#202929}
 .sgrid .sval,.sgrid .scmp-row{white-space:nowrap}
-.slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:1px;white-space:nowrap}
+.slbl{font-size:0.64rem;color:#9aa8a8;text-transform:uppercase;letter-spacing:0.2px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:clip}
 .sval{font-size:0.9rem;font-weight:700}
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
 .sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
@@ -201,7 +194,7 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:grid;grid-template-columns:clamp(240px,calc(100% - 778px),496px) minmax(375px,1fr) minmax(375px,1fr);column-gap:14px;align-items:start;position:relative}
+.rc-layout{display:grid;grid-template-columns:clamp(240px,calc(100% - 738px),496px) minmax(355px,1fr) minmax(355px,1fr);column-gap:14px;align-items:start;position:relative}
 .rc-head{grid-column:1/-1;margin-bottom:9px}
 .rc-plot{min-width:0}
 .rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
