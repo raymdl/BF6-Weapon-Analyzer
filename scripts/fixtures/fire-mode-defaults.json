@@ -1,5 +1,5 @@
 {
-  "baseCommit": "9dbd390",
+  "baseCommit": "0c667f8",
   "description": "Implicit defaults: mode, nine shot intervals (TTK cadence), ten-shot spread/recoil in ADS/hip standing/moving; seed 0.",
   "cases": [
     {
