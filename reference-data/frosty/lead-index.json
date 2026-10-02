@@ -3020,6 +3020,102 @@
       "reopenWhen": "Exact typed consumer evidence on an already selected owner establishes active heat selection and units.",
       "refs": []
     },
+    "L229": {
+      "id": "L229",
+      "title": "Gadget regeneration and healing effect schemas, enum keys and health ancestry",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L229-gadget-regen-healing-effect-schemas.json"
+      ],
+      "summary": "Regeneration and healing effects use distinct schemas; the exact regeneration enum-key typed-field census reproduces in current and historical descriptors with one entry owner each; the Pouch/Crate Boolean difference stays unnamed; Cover and CB90 each declare their own MaxHealth field.",
+      "reopenWhen": "A same-owner operation control (add/replace/multiply) or a typed reader for the enum and Boolean values.",
+      "refs": []
+    },
+    "L230": {
+      "id": "L230",
+      "title": "Gadget projectile and explosion source values (IGLA, Stinger, TracerDart, Airburst, Incendiary)",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L230-gadget-projectile-explosion-values.json"
+      ],
+      "summary": "IGLA own Damage 100, Drag 0, MaxSpeed 640, InitialSpeed 500, TimeToLive 40; gadget Stinger controlled-schema Damage 100/Drag 0/MaxSpeed 400 with inherited 350/18; TracerDart projectile inherited 350/20; Airburst primary 250/0.25 and lingering 0/5; Incendiary primary 300/10 with own DamageMultiplier 1. Own wrappers zero for Stinger.",
+      "reopenWhen": "An own-name control for the Stinger own wrapper, the Airburst/Incendiary effect operation, or a capture of the fire duration.",
+      "refs": []
+    },
+    "L231": {
+      "id": "L231",
+      "title": "Gadget source selection chains (Lancet/HSS, Claymore, AT Mine, drone, Proximity/T-UGS, Airburst, L154)",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L231-gadget-selection-chains.json"
+      ],
+      "summary": "Exact source selection chains: Lancet/HSS Equipment-Ability-Feature-TrackAndDestroy (historical and current Head 4909002), Claymore projectile to SimEx_ClaymoreFrag, historical AT Mine chains, two drone chains, Proximity unknown-role Shot dependency, T-UGS/Proximity parameter comparison, Airburst and L154 routes to the lingering/FireRadius exports.",
+      "reopenWhen": "A UI join, an activation owner or a typed operation consumer for any chain (all runtime behaviour is unproved).",
+      "refs": []
+    },
+    "L232": {
+      "id": "L232",
+      "title": "Repair Tool, Defibrillator and Squad Revive configured values and UI/EA statements",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L232-repair-defibrillator-squad-revive.json"
+      ],
+      "summary": "Repair Tool range 2/0/10, repair/damage interval 0.1/0.01/1 and operand 40/0/250; Defibrillator curve and revive affectors; Squad revive total time 4.72 s (Support 2.2 s); the stored 40 is not verified health per second. No qualified utility operation reader exists in the inspected inventory (L190 stays blocked).",
+      "reopenWhen": "The registered query/list/health/rank/time/repair receivers, an independently known same-format operation control with held-out validation, the Squad file d0a2de18-a7b2-4c3c-9e87-aff6ddc8a180, or the FasterRecharge selector owner aeb43f2c-3c7b-4056-a8f6-f965da671da3.",
+      "refs": []
+    },
+    "L233": {
+      "id": "L233",
+      "title": "Supply Pouch, Supply Crate, Medic and ActiveMedic descriptions, wiring and dated statements",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L233-healing-resupply-functional-dossiers.json"
+      ],
+      "summary": "Five gadget descriptions and three ability descriptions retained as attributed UI text with selected wiring: Pouch selects five effect entries, Crate pickup reaches enable and callback graphs, ActiveMedic is selected by both Support paths; Vehicle Supply Crate lifecycle inputs named. Excludes Granite/BR material.",
+      "reopenWhen": "The source operation and input binding for the VSC interval and construction, exact pouch health/timing/consumption and resource-priority receivers, the crate spatial query and pickup predicate, the ActiveMedic timed state, or a relevant MP caller for Supply Drop.",
+      "refs": []
+    },
+    "L234": {
+      "id": "L234",
+      "title": "Deployable Cover, MP-APS, EIDOS, smoke, Hemostatic, flash/concussion and mask descriptions and source values",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L234-protection-concealment-functional-report.json"
+      ],
+      "summary": "MP-APS and EIDOS select logic SimEx through a deployed-vehicle feature (serialized association only; compiled boundaries opaque); AliveTimer 5/0/50 and MaxIntercepts 3/1/10 match the UI \"up to 3\"; Hemostatic stores 12.5/2.5/0.0 matching UI 12.5 hp/s after 2.5 s; Deployable Cover has four 200.0 operands.",
+      "reopenWhen": "The dispatch from deployment to the selected volume and the compiled feature operations (RIDs 3ca94ebf63445fbd and ff4984bf5104a851), projectile predicates, units, the VL-7 blocking operation, or the cover health/zone operation.",
+      "refs": []
+    },
+    "L235": {
+      "id": "L235",
+      "title": "Spawn Beacon, Ladder, drones, EOD Bot and NVG lifecycle statements and configured values",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L235-deployment-lifecycle-functional-handoff.json"
+      ],
+      "summary": "UI-stated Beacon spawn-use rules, Ladder bridge/ramp use, EOD objective completion and self-destruction, drone lifetime and explosive interfaces, and NVG mutator values (MaxDuration 51/1/99, Degradation_Start 0.25/0/1, MaxExposureOffset -2/-10/0); effective timing, distance and lifecycle operations remain unresolved.",
+      "reopenWhen": "The native spawn-point registration/permission operations, ladder interaction and mesh interpretation, drone deploy/control/boundary operations with an incoming MP owner, EOD control and objective operations, or the NVG receiver.",
+      "refs": []
+    },
+    "L236": {
+      "id": "L236",
+      "title": "T-UGS, MTN-55, jammer, drone disruption, designator, Tracer Dart and decoy statements and configured values",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L236-detection-designation-functional-result.json"
+      ],
+      "summary": "T-UGS stores radius 15 / duration 2 / pulse delay 1.5 and MTN-55 radius 7 / pulse 1 / duration 2, which match the UI scan-once-per-second and two-second mark statements as a correspondence only; dated EA statements and designation timings are retained as separate classes. Audio rows are excluded.",
+      "reopenWhen": "Query-ID mappings, the owner selection for MTN-55 and Proximity, the acquisition/recipient/expiry operations, the lock and break receivers, or an incoming selected owner for AimSpotting.",
+      "refs": []
+    },
     "L400": {
       "id": "L400",
       "title": "Class, training path and perk UI metadata",
@@ -6046,6 +6142,66 @@
       ],
       "summary": "166 unchanged slot variants; 79 of 151 options have exact seat owners. Root recipe applicability and default activation remain unresolved.",
       "reopenWhen": "Exact root/context-to-preset applicability, activation owner or additional typed option consumer is available.",
+      "refs": []
+    },
+    "L3300": {
+      "id": "L3300",
+      "title": "Vehicle projectile and gun own-wrapper source values",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L3300-vehicle-projectile-own-values.json"
+      ],
+      "summary": "Stored own-wrapper values for about 50 selected vehicle projectile, gun and explosion owners (missiles, rockets, bombs, mortars, naval, guns, helicopter, Gepard, coax/RWS) at Head 4909002; 54 of 55 selected owners have scoped review and none has full functional coverage.",
+      "reopenWhen": "A control (own-name qualification, effect reader or runtime capture) turns a stored value into units, an operation or an effective stat.",
+      "refs": []
+    },
+    "L3301": {
+      "id": "L3301",
+      "title": "Vehicle projectile schema-controlled receivers and guided-missile stored settings",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L3301-vehicle-receiver-supplements.json"
+      ],
+      "summary": "Schema-qualified receiver cells added for AGM84, AGM88, AIM54, AIM7, R73, RBS70, Torped47, six missiles, rockets, reduced rockets, bombs, guided variants and CB90 mortars; own-name stops are kept as stops, not absences.",
+      "reopenWhen": "An own-name or declaring-schema control for a role recorded as an own-slot stop, or a typed reader for the GuidanceMethod enum (numeric 3 has no readable label).",
+      "refs": []
+    },
+    "L3302": {
+      "id": "L3302",
+      "title": "Inherited InitialSpeed and TimeToLive on selected vehicle Missile owners",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L3302-inherited-projectile-speed-lifetime.json"
+      ],
+      "summary": "The 30 selected vehicle Missile owners store the inherited InitialSpeed/TimeToLive pair at Class_990616ac offsets 144/148 (file offsets 336/340): 350 on 20 owners (every air-guided, ground-guided and Hellfire owner plus AAHighVelocity and the vehicle Stinger), 250/1.35 on the five APKWS, APKWS-reduced, Hydra, Hydra-reduced and Zuni owners, 0/30 on the five CB90 mortars. Inherited declared defaults; not shown to be the effective launch speed or lifetime.",
+      "reopenWhen": "A control showing how the inherited pair is consumed (an effective launch-speed or lifetime read, or a runtime capture), or a reason it differs from the own-wrapper MaxSpeed.",
+      "refs": []
+    },
+    "L3303": {
+      "id": "L3303",
+      "title": "Vehicle root-to-weapon caller and lifecycle selection chains",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L3303-vehicle-selection-and-caller-chains.json"
+      ],
+      "summary": "Exact current vehicle root/component/armament paths to the selected WF weapon exports for Gepard, coax/RWS (26 paths) and the five CB90 mortars; CB90 root-to-motion and Vehicle Supply Crate root-to-feature selections; NavalMine and CRAM wrapper-pointer audits.",
+      "reopenWhen": "An active-loadout or default-selection owner for a path, or a typed consumer that shows the selected lifecycle feature operating.",
+      "refs": []
+    },
+    "L3304": {
+      "id": "L3304",
+      "title": "RWS AGL damage/splash source case and vehicle firing and utility findings",
+      "status": "finding",
+      "date": "2026-10-02",
+      "receipts": [
+        "frosty-2026-10-02-L3304-vehicle-stats-agl-firing-utility.json"
+      ],
+      "summary": "Selected Bradley and CV90 RWS AGL chains with own direct/explosion names: direct StartDamage/EndDamage 32/32 (falloff 15 to 350), primary BlastDamage 70, InnerBlastRadius 1, BlastRadius 4, ShockwaveDamage 1 (radius 7.5), dud blast 0 radius 5; plus reload discriminator members, CB90 MaxHealth 1000 and Bradley IFV missile Damage 250; no composed damage, units or equation established.",
+      "reopenWhen": "The exact validated runtime or compiled receiver operations listed in VEHICLE_FINDINGS.md and AGL_EVIDENCE_TABLE.md (a new tuple, route name or matching number alone does not reopen a route).",
       "refs": []
     }
   }
