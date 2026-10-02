@@ -1283,7 +1283,8 @@ function parseSpreadBulletSpec(spec, shotCount) {
     const rng = part.match(/^(\d+)\s*-\s*(\d+)$/);
     if (rng) {
       const a = Math.round(Number(rng[1])), b = Math.round(Number(rng[2]));
-      for (let v = Math.min(a, b); v <= Math.max(a, b); v++) out.push(v);
+      // Clip to the displayed shots before expanding so a huge endpoint cannot stall the page.
+      for (let v = Math.max(1, Math.min(a, b)); v <= Math.min(shotCount, Math.max(a, b)); v++) out.push(v);
       return;
     }
     const v = Math.round(Number(part));
@@ -1435,18 +1436,23 @@ function snapTargetDistance(distance) {
   const step = clamped <= 20 ? 1 : clamped <= 60 ? 2 : clamped <= 150 ? 5 : 10;
   return Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(clamped / step) * step));
 }
+/** Every distance the Soldier Target slider can select; the slider indexes this list so each key press moves one stop. */
+const TARGET_DISTANCE_LADDER = Array.from({ length: TARGET_DISTANCE_MAX - TARGET_DISTANCE_MIN + 1 }, (_, i) => TARGET_DISTANCE_MIN + i)
+  .filter(d => snapTargetDistance(d) === d);
+function targetDistanceIndex(distance) {
+  let best = 0;
+  TARGET_DISTANCE_LADDER.forEach((d, i) => { if (Math.abs(d - distance) < Math.abs(TARGET_DISTANCE_LADDER[best] - distance)) best = i; });
+  return best;
+}
 function syncTargetDistance() {
   if (state.recoil.view === 'target' && state.recoil.magnification == null) {
     state.recoil.magnification = currentMagnification();
   }
   const el = document.getElementById('rcDistanceRange');
   const raw = +(el?.value ?? 0);
-  const distance = state.recoil.view === 'target'
-    ? TARGET_DISTANCE_MIN * Math.pow(TARGET_DISTANCE_MAX / TARGET_DISTANCE_MIN, Math.max(0, Math.min(100, raw)) / 100)
-    : raw;
   state.recoil.distance = state.recoil.view === 'target'
-    ? snapTargetDistance(distance)
-    : Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(Number.isFinite(distance) ? distance : TARGET_DEFAULT_DISTANCE)));
+    ? TARGET_DISTANCE_LADDER[Math.max(0, Math.min(TARGET_DISTANCE_LADDER.length - 1, Math.round(raw)))]
+    : Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(Number.isFinite(raw) ? raw : TARGET_DEFAULT_DISTANCE)));
   renderRecoil();
 }
 function syncZoomFromSlider() {
@@ -2414,13 +2420,13 @@ function renderRecoil({ plotOnly = false } = {}) {
   const distanceReadout = document.getElementById('rcDistanceReadout');
   if (distanceRange) {
     if (isTarget) {
-      distanceRange.min = 0; distanceRange.max = 100; distanceRange.step = 1;
-      const distance = Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, state.recoil.distance));
-      distanceRange.value = Math.log(distance / TARGET_DISTANCE_MIN) / Math.log(TARGET_DISTANCE_MAX / TARGET_DISTANCE_MIN) * 100;
+      distanceRange.min = 0; distanceRange.max = TARGET_DISTANCE_LADDER.length - 1; distanceRange.step = 1;
+      distanceRange.value = targetDistanceIndex(state.recoil.distance);
     } else {
       distanceRange.min = TARGET_DISTANCE_MIN; distanceRange.max = TARGET_DISTANCE_MAX; distanceRange.step = 5;
       distanceRange.value = Math.max(TARGET_DISTANCE_MIN, state.recoil.distance);
     }
+    distanceRange.setAttribute('aria-valuetext', `${state.recoil.distance} m`);
     paintRange(distanceRange);
   }
   if (distanceReadout) distanceReadout.textContent = `${state.recoil.distance} m`;
