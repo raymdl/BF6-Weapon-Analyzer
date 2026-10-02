@@ -1406,13 +1406,17 @@ function setRecoilView(view) {
   if (next === 'target') requestTargetImage();
 }
 /**
- * Ctrl+click mirrors what the player actually does: point somewhere and fire a
- * fresh burst. So it both places the aim point and rolls a new spray sample.
+ * Soldier Target Ctrl+click places the aim point and fires a fresh sample.
+ * Angle Plot only redraws the sample, keeping its origin at (0, 0).
  */
 function fireAtAimPoint(worldX, worldY) {
   state.recoil.customAim = { x: worldX, y: worldY };
   state.recoil.targetAim = 'custom';
-  state.recoil.refSeed = (Math.random() * 0x100000000) >>> 0;
+  redrawRecoilSample();
+}
+function redrawRecoilSample() {
+  const seed = (Math.random() * 0x100000000) >>> 0;
+  state.recoil.refSeed = seed === state.recoil.refSeed ? (seed + 1) >>> 0 : seed;
   renderRecoil();
 }
 function currentAimOffset() {
@@ -2395,8 +2399,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   const hint = document.getElementById('rcHint');
   if (hint) {
     hint.textContent = isTarget
-      ? 'Ctrl + click to aim · Shift + drag to pan · Shift + scroll to zoom'
-      : 'Shift + drag to pan · Shift + scroll to zoom';
+      ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom'
+      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom';
   }
   const aimReadout = document.getElementById('rcAimReadout');
   if (aimReadout) aimReadout.hidden = !isTarget;
@@ -3137,7 +3141,7 @@ function bindEvents() {
   const CLICK_SLOP = 4;
   let recoilDrag = null;
   // Both plot gestures are modifier-gated, and the cursor names whichever one
-  // is armed: Shift to pan or zoom, Ctrl to place the aim point.
+  // is armed: Shift to pan or zoom, Ctrl to aim in Soldier Target.
   const setPanReady = on => recoilCanvas.classList.toggle('panready', on);
   const setAimReady = on => recoilCanvas.classList.toggle('aiming', on && state.recoil.view === 'target');
   const syncModifiers = e => { setPanReady(e.shiftKey); setAimReady(e.ctrlKey || e.metaKey); };
@@ -3170,10 +3174,11 @@ function bindEvents() {
     const wasClick = !recoilDrag.moved && !recoilDrag.pan;
     recoilDrag = null;
     recoilCanvas.classList.remove('dragging');
-    // Ctrl+click places the aim point, so an ordinary click on the plot never
-    // moves it by accident. Shift stays reserved for panning.
-    if (e.type !== 'pointerup' || !wasClick || state.recoil.view !== 'target') return;
+    // Ctrl+click redraws in both views and also aims in Soldier Target.
+    // Ordinary clicks do nothing; Shift stays reserved for panning.
+    if (e.type !== 'pointerup' || !wasClick) return;
     if (!(e.ctrlKey || e.metaKey)) return;
+    if (state.recoil.view !== 'target') { redrawRecoilSample(); return; }
     const world = canvasToWorld(e.clientX, e.clientY, recoilCanvas);
     if (world) fireAtAimPoint(world.x, world.y);
   };
