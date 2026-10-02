@@ -2955,6 +2955,71 @@
       "reopenWhen": "An authoritative typed preset consumer or exact identity mapping becomes available.",
       "refs": []
     },
+    "L224": {
+      "id": "L224",
+      "title": "Gadget candidate support classification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L224-display-stat-support.json"
+      ],
+      "summary": "Classified all 39 comparison rows, 28 current proposals and 78 metadata records with separate configured and effective support.",
+      "reopenWhen": "A named same-owner consumer route or authoritative semantic source can settle effective composition.",
+      "refs": []
+    },
+    "L225": {
+      "id": "L225",
+      "title": "High-impact gadget semantic boundaries",
+      "status": "exhausted",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L225-display-stat-support.json"
+      ],
+      "summary": "Twelve named mechanic groups retain source or dated EA meanings without a new effective numeric consumer mapping.",
+      "reopenWhen": "Provide a specific frozen legacy own-wrapper with full declaring key/member identity for the requested mechanic, an exact selected typed consumer mapping, or a dated primary mechanic statement.",
+      "refs": []
+    },
+    "L226": {
+      "id": "L226",
+      "title": "Proposed gadget page stat schema",
+      "status": "finding",
+      "statusNote": "Completed research schema. Future site implementation remains proposed and requires separate authorization.",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L226-gadget-stat-schema.json",
+        "frosty-2026-10-01-gadget-vehicle-display-close-audit.json"
+      ],
+      "summary": "All 39 candidate rows map to a schema separating exact configured fields, attributed UI/EA statements and unresolved effective stats.",
+      "reopenWhen": "Implement only within separately authorized site work; establish the named source contracts before populating effective values.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L227": {
+      "id": "L227",
+      "title": "Gadget proposal named-field support",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L227-gadget-proposal-stat-support.json",
+        "frosty-2026-10-01-gadget-vehicle-display-close-audit.json"
+      ],
+      "summary": "Audited all 28 proposal rows at named-field level and mapped repeated fields to L224 with missing configured support explicit.",
+      "reopenWhen": "A saved exact selected channel or authoritative mechanic statement resolves a named missing field.",
+      "refs": []
+    },
+    "L228": {
+      "id": "L228",
+      "title": "Configured selected gadget heat operands",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L228-gadget-heat-meaning.json"
+      ],
+      "summary": "130 exact named configured operands on 26 selected gadget and underbarrel owners; all original raw hashes match current copies and effective heat/cooldown remain unresolved.",
+      "reopenWhen": "Exact typed consumer evidence on an already selected owner establishes active heat selection and units.",
+      "refs": []
+    },
     "L400": {
       "id": "L400",
       "title": "Class, training path and perk UI metadata",
@@ -3159,6 +3224,150 @@
       ],
       "summary": "All six offered AG Coating Attachment point costs are 10 in current raw and match the site.",
       "reopenWhen": "Recheck if the Attachment raw bytes or owner descriptor change.",
+      "refs": []
+    },
+    "L541": {
+      "id": "L541",
+      "title": "Independent current raw attachment sample check",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "Seed 20261001541: 1100 selected values, 456 matches, 66 float32-equivalent, 564 documented model/deviation cases, 14 source limits and no new proven mismatch.",
+      "reopenWhen": "A displayed leaf changes without reviewed evidence, a relevant current raw asset changes or a specific source-route limit is resolved.",
+      "refs": []
+    },
+    "L542": {
+      "id": "L542",
+      "title": "ACCESSORIES current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "2 selected leaves examined; parent disposition 2 match, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L543": {
+      "id": "L543",
+      "title": "BARRELS current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "56 selected leaves examined; parent disposition 15 documented intentional deviation, 29 match, 8 precision only, 4 unresolved source route, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L544": {
+      "id": "L544",
+      "title": "ERGOS current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "32 selected leaves examined; parent disposition 1 unresolved source route, 19 match, 12 precision only, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L545": {
+      "id": "L545",
+      "title": "GRIPS current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "472 selected leaves examined; parent disposition 152 match, 313 documented intentional deviation, 7 unresolved source route, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L546": {
+      "id": "L546",
+      "title": "LASERS current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "114 selected leaves examined; parent disposition 62 match, 42 documented intentional deviation, 10 precision only, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L547": {
+      "id": "L547",
+      "title": "LIGHTS current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "12 selected leaves examined; parent disposition 10 precision only, 2 match, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L548": {
+      "id": "L548",
+      "title": "MUZZLES current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "43 selected leaves examined; parent disposition 23 match, 12 precision only, 6 documented intentional deviation, 2 unresolved source route, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L549": {
+      "id": "L549",
+      "title": "SIGHTS current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "10 selected leaves examined; parent disposition 6 precision only, 4 match, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L550": {
+      "id": "L550",
+      "title": "WEAPON_ATTS current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "2 selected leaves examined; parent disposition 2 match, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L551": {
+      "id": "L551",
+      "title": "WEAPON_MAG current raw attachment sample extraction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "357 selected leaves examined; parent disposition 161 match, 188 documented intentional deviation, 8 precision only, 0 mismatch.",
+      "reopenWhen": "A corresponding site leaf, raw hash, exact selector mapping or documented model boundary changes.",
+      "refs": []
+    },
+    "L552": {
+      "id": "L552",
+      "title": "Attachment residual source-route check",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L541-attachments-sample-check.json"
+      ],
+      "summary": "All 47 residual leaves reviewed across 993 mapped selection checks: five exact route leaves retain override/state limits; 42 remain bounded missing routes.",
+      "reopenWhen": "An exact typed comparable scalar route appears, a cited source hash changes or deployed-state applicability is established.",
       "refs": []
     },
     "L580": {
@@ -3573,6 +3782,102 @@
       "refs": [
         "queue-proposals"
       ]
+    },
+    "L741": {
+      "id": "L741",
+      "title": "Water-target damage route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-damage-qualification.json"
+      ],
+      "summary": "Exact projectile selection and swimming traversal identities are different owners. No exact water-target damage consumer or same-owner known-answer water damage operation control is available in the inspected retained evidence.",
+      "reopenWhen": "Exact selected projectile/material or soldier receiver caller chain reaches a named water-damage operation with an independently known same-owner semantic control.",
+      "refs": []
+    },
+    "L742": {
+      "id": "L742",
+      "title": "Fatal-damage precision route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-damage-qualification.json"
+      ],
+      "summary": "Regeneration control qualifies regeneration imports only. Healing-state and Fall_Death_Damage labels do not identify incoming bullet damage accumulation, rounding or lethal comparison operation. Same-owner fatal-resolution semantic control is missing.",
+      "reopenWhen": "Exact incoming weapon damage caller reaches the soldier health/death comparison operation, with same-owner known-answer surviving/lethal comparison or precision control.",
+      "refs": []
+    },
+    "L743": {
+      "id": "L743",
+      "title": "Attachment weight route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-equipment-qualification.json"
+      ],
+      "summary": "No exact infantry attachment weight owner/receiver and semantic weight control was established.",
+      "reopenWhen": "Exact weight owner/receiver and independently known same-owner weight control.",
+      "refs": []
+    },
+    "L744": {
+      "id": "L744",
+      "title": "Weapon package functional-selection route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-equipment-qualification.json"
+      ],
+      "summary": "Exact Season 2 package labels are raw-checked; no fitted-choice/budget consumer and control was established.",
+      "reopenWhen": "Exact functional consumer of package token IDs, or independently known fitted-choice chain with a budget control.",
+      "refs": []
+    },
+    "L745": {
+      "id": "L745",
+      "title": "Melee damage and cadence route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-soldier-qualification.json"
+      ],
+      "summary": "Exact identity chain reaches ambiguous hash-only payload and compiled delay expressions. L846 has raw field inventory but no supported damage role control. No damage or attack interval is claimed.",
+      "reopenWhen": "A known-answer same-owner damage/cadence control and exact normal-hit/state selection; do not transfer roles from equal values or array order.",
+      "refs": []
+    },
+    "L746": {
+      "id": "L746",
+      "title": "Destructible-cover damage route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-damage-qualification.json"
+      ],
+      "summary": "Material record Boolean/f32 layout controls cannot qualify cover health, damage or destruction semantics. No exact chosen cover owner, bullet/melee receiver and same-owner known-answer damage/health control is available in inspected retained evidence.",
+      "reopenWhen": "Identify one exact infantry-damageable cover asset and its receiver/health/destruction operation with a same-owner known-answer damage or health control.",
+      "refs": []
+    },
+    "L747": {
+      "id": "L747",
+      "title": "Ping timing route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-soldier-qualification.json"
+      ],
+      "summary": "Messaging/voice port identities are not classifier or latency roles. No 0.333/0.15 number search or combined latency was used.",
+      "reopenWhen": "Exact named input classifier or delay declaration with field role and EA known-answer control; reverse its actual input/receiver.",
+      "refs": []
+    },
+    "L748": {
+      "id": "L748",
+      "title": "Sneaking audibility route qualification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-gunfight-ranked-soldier-qualification.json"
+      ],
+      "summary": "Named movement states and earshot port names do not label attenuation/gain/radius fields. Exact shared patch body has hash-only node fields. No audibility radius or gain is claimed.",
+      "reopenWhen": "Exact same-owner named stance attenuation/gain/radius setting and its recipient control, or a validated consumer reader with a known-answer state.",
+      "refs": []
     },
     "L780": {
       "id": "L780",
@@ -4510,6 +4815,270 @@
       "reopenWhen": "Exact active option assignment or validated operation/enum consumer control.",
       "refs": []
     },
+    "L900": {
+      "id": "L900",
+      "title": "Weapon UI text census and exact source edges",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L900-weapon-ui-census.json"
+      ],
+      "summary": "Ten scoped metadata owners contain 1183 localized text objects and 1607 raw-checked exact pointer/import edges; selected weapon owner joins remain unresolved.",
+      "reopenWhen": "An exact selected weapon owner GUID/pointer edge is available; preserve current text census and layout limits.",
+      "refs": []
+    },
+    "L901": {
+      "id": "L901",
+      "title": "Attachment UI metadata census",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L901-attachment-ui-census.json"
+      ],
+      "summary": "L901 complete. Control passed. Examined 1003 of 1003 AD owners. Preserved 2317 text-object occurrences and 2195 direct import edges with raw checks. Numeric roles and units remain unresolved. No site changes or runtime claims.",
+      "reopenWhen": "Exact field semantics or reviewed site identity joins become available.",
+      "refs": []
+    },
+    "L902": {
+      "id": "L902",
+      "title": "Current Weapon Attributes normalization and stat UI binding",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L902-weapon-attributes-ui.json"
+      ],
+      "summary": "Current delegate bytes and Precision settings retain the reviewed four-bar source candidates; exact UI100/1 slots connect to anonymous inner normalization nodes, with no qualified new atlas meaning transfer.",
+      "reopenWhen": "An exact mapped normalization operator or selected provider ties the declared bar input to the precise native receiver context.",
+      "refs": []
+    },
+    "L903": {
+      "id": "L903",
+      "title": "Exact attachment selection to UI description chain",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L903-ui-selection-edges.json"
+      ],
+      "summary": "Current AAM->AD pointer control passes; source selection/property receiver identity remains unresolved across63 scoped source entries.",
+      "reopenWhen": "Typed receiver or selected progression/attachment export proves the source-id/property-key lookup into AAM.",
+      "refs": []
+    },
+    "L904": {
+      "id": "L904",
+      "title": "Metadata roots, slot labels and direct description closure",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L904-ui-metadata-closure.json"
+      ],
+      "summary": "39metadata containers,3extensions and1319catalog dispositions are covered;1260text occurrences include827excluded cosmetic package strings and2extraMG5AD strings.",
+      "reopenWhen": "An exact gameplay/stat consumer connects retained UI metadata to weapon or attachment source values.",
+      "refs": []
+    },
+    "L905": {
+      "id": "L905",
+      "title": "Weapon description conflicts and quantitative statement comparison",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L905-weapon-ui-statements.json"
+      ],
+      "summary": "Four requested discrepancies resolve to two comparison decoding errors and two screenshot-backed missing IDs; five ranges and one cylinder count match exact source operands.",
+      "reopenWhen": "New exact localization, confirmed selected curve/capacity change or native consumer evidence changes one scoped statement.",
+      "refs": []
+    },
+    "L906": {
+      "id": "L906",
+      "title": "Attachment statement ID and quantity classification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L906-attachment-ui-statements.json"
+      ],
+      "summary": "All 2317 text occurrences and their numerical tokens are classified through exact localized-ID site references with source-domain limits retained.",
+      "reopenWhen": "Exact source operand chains supply displayed effect and validation predictions for unmapped quantities.",
+      "refs": []
+    },
+    "L907": {
+      "id": "L907",
+      "title": "Integrated player-facing weapon UI census",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L907-weapons-ui-frontier-census.json"
+      ],
+      "summary": "All 1,319 metadata catalog paths have scope dispositions; numbers, bars, limits and exact source boundaries are retained without an atlas rebuild.",
+      "reopenWhen": "Exact selected gameplay/UI provider or independently controlled arithmetic/operand role evidence becomes available.",
+      "refs": []
+    },
+    "L1000": {
+      "id": "L1000",
+      "title": "Exact name hash reader controls",
+      "status": "exhausted",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1000-name-hash-qualification.json"
+      ],
+      "summary": "Three exact current GRX source-pair controls passed; no hypothesis in the finite 24-variant source-derived hash matrix qualified.",
+      "reopenWhen": "Reopen only with a local source call path or exact transformation/seed that reproduces all three current raw GRX pairs, then passes at least one independently held-out exact pair and a separately grounded type-name control before atlas application.",
+      "refs": []
+    },
+    "L1001": {
+      "id": "L1001",
+      "title": "Exact descriptor enum reader",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1001-descriptor-enum-reader.json"
+      ],
+      "summary": "Corrected current fire control and three atlas adapters pass; 1320 enum identities qualify, but no new named semantic entries are established.",
+      "reopenWhen": "Trace exact same-owner named zeroing, stance/state or spotting records to their enum values before assigning new meanings.",
+      "refs": []
+    },
+    "L1002": {
+      "id": "L1002",
+      "title": "Curve and table controlled static reader",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1002-curve-table-reader.json"
+      ],
+      "summary": "52 current raw reads and actual site controls pass; 23 exact atlas field entries permit structural reading, with zero native or site meaning upgrades.",
+      "reopenWhen": "An exact native interpolation or row-consumer control becomes available for the current typed owner.",
+      "refs": []
+    },
+    "L1003": {
+      "id": "L1003",
+      "title": "Resource reader semantic control gate",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1003-resource-grammar-qualification.json"
+      ],
+      "summary": "Four current shipped bodies verify metadata identities and bounded structural correlations; no same-format semantic control passes.",
+      "reopenWhen": "Provide independent current same-format semantic control plus held-out samples for Emitter, AtlasTexture or MeshSet.",
+      "refs": []
+    },
+    "L1004": {
+      "id": "L1004",
+      "title": "Compiled-expression differential reader qualification",
+      "status": "exhausted",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1004-compiled-expression-qualification.json"
+      ],
+      "summary": "Nine current bodies and authored EBX metadata pass identity checks; no independent compiled result validates operation grammar. Zero semantic promotions.",
+      "reopenWhen": "A static opcode/container specification and confirmed input/output control validates the reader on a held-out current body.",
+      "refs": []
+    },
+    "L1005": {
+      "id": "L1005",
+      "title": "Inverse initial-seed qualification",
+      "status": "exhausted",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1005-inverse-seed-hash-control.json"
+      ],
+      "summary": "Synthetic seed recovery and current source-pair controls passed; all 36 scoped recurrence/encoding/case variants have empty shared-seed intersection.",
+      "reopenWhen": "Reopen only for an evidenced change to recurrence, input representation or source-pair identity; a shared seed must then pass an independent held-out raw field pair and a separately grounded type-name control before atlas naming.",
+      "refs": []
+    },
+    "L1006": {
+      "id": "L1006",
+      "title": "Authored-name state ordinal control",
+      "status": "rejected",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1006-authored-state-enum-control.json"
+      ],
+      "summary": "Independent exact typed/raw name associations pass; the named-state ordinal method is rejected without any new semantic role.",
+      "reopenWhen": "An exact authored grammar independently defines field b6657270 enum852 roles or state ordinals.",
+      "refs": []
+    },
+    "L1007": {
+      "id": "L1007",
+      "title": "Emitter prefix source input control gate",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1007-emitter-input-schema-control.json"
+      ],
+      "summary": "Exact authored numeric source IDs compared with two current candidate resource prefixes; semantic input table control remains unavailable.",
+      "reopenWhen": "Provide exact independently authored complete input identifiers/types/counts for these resource bodies.",
+      "refs": []
+    },
+    "L1008": {
+      "id": "L1008",
+      "title": "Exact UI choice-value method",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1008-ui-enum-binding-control.json"
+      ],
+      "summary": "Current zeroing presentation and spotting reset identities pass; selected artifacts provide no named UI choice/value semantic contract, so no meaning is promoted.",
+      "reopenWhen": "Exact current authored zeroing or spotting UI choice/value tables bind labels and numbers to selected typed enum owners.",
+      "refs": []
+    },
+    "L1100": {
+      "id": "L1100",
+      "title": "Public community gunfight lead map",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1100-community-gunfight-map.json"
+      ],
+      "summary": "All six creator identity controls pass; 21 dated primary metadata items rank 11 mechanic groups, while tested/spoken results and four direct topic gaps remain unverified.",
+      "reopenWhen": "Inspect targeted accessible primary text or authorized test material for result gaps, then date its test conditions against verified patch release dates.",
+      "refs": []
+    },
+    "L1101": {
+      "id": "L1101",
+      "title": "Scoped damage hit multipliers cadence and ballistics source cross-check",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1101-gunfight-damage-ballistics.json"
+      ],
+      "summary": "Four ranked groups checked across three exact selected base examples; source/site values agree with current operators, while native execution and Match active choice composition stay open.",
+      "reopenWhen": "New exact active consumer/semantic control or a consequential current source/site disagreement appears.",
+      "refs": []
+    },
+    "L1102": {
+      "id": "L1102",
+      "title": "Current M433 spread and recoil source/site cross-check",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1102-gunfight-spread-recoil.json"
+      ],
+      "summary": "Two mechanic groups checked on M433; 93 fresh raw reads pass and 69 current site inputs agree; native equations remain unresolved.",
+      "reopenWhen": "Exact same-owner native sampler/state/recovery/delivery consumer with independent known-answer control.",
+      "refs": []
+    },
+    "L1103": {
+      "id": "L1103",
+      "title": "Handling and movement source/site cross-check",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1103-gunfight-handling-movement.json"
+      ],
+      "summary": "Selected M433 source handling tables and modifiers support current software policy; native sprint readiness, swap scheduling and jump shooting remain limited.",
+      "reopenWhen": "Exact same-owner native receiver and active-state known-answer controls qualify effective handling and movement composition.",
+      "refs": []
+    },
+    "L1104": {
+      "id": "L1104",
+      "title": "Hit registration suppression and flinch named-route limit audit",
+      "status": "exhausted",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L1104-gunfight-native-consumer-limits.json"
+      ],
+      "summary": "Three named route groups have no qualifying same-owner semantic control; current owner hashes and site contracts are pinned without numeric trace or absence claims.",
+      "reopenWhen": "Exact network/health or typed suppression/flinch gameplay caller and same-owner known-answer semantic operation control becomes available.",
+      "refs": []
+    },
     "L3000": {
       "id": "L3000",
       "title": "Vehicle functional census and capture availability",
@@ -4988,6 +5557,495 @@
       ],
       "summary": "All 22 ranked vehicle items have exact current source-owner associations, reviewed controls and explicit native/UI/slot limits; no community value or validation claim is imported.",
       "reopenWhen": "A field-specific same-owner control, exact native receiver or an operator test resolves a named mechanic.",
+      "refs": []
+    },
+    "L3040": {
+      "id": "L3040",
+      "title": "Vehicle candidate support classification",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3040-display-stat-support.json"
+      ],
+      "summary": "All 17 shared rows, 47 role extras, 3 proposals, 38 family candidates and 9 UI statements classified using saved pre-Season 5 evidence.",
+      "reopenWhen": "A field-specific same-owner semantic control or exact selected receiver resolves a configured/effective boundary.",
+      "refs": []
+    },
+    "L3041": {
+      "id": "L3041",
+      "title": "High-impact vehicle semantic boundaries",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3041-display-stat-support.json"
+      ],
+      "summary": "Exact health/repair source names and dated name-matched EA mechanics retained; no effective vehicle stat established.",
+      "reopenWhen": "Provide one of the exact owner-name/unit/selected operation contracts enumerated per mechanic in high-impact-findings.json.",
+      "refs": []
+    },
+    "L3042": {
+      "id": "L3042",
+      "title": "Exact vehicle OverHeat naming transfer",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3042-vehicle-heat-meaning.json"
+      ],
+      "summary": "M27IAR own-wrapper control confirms five exact names on 72 saved selected vehicle OverHeat owners and 360 unchanged values.",
+      "reopenWhen": "New current typed consumer or active selection evidence establishes heat units or runtime composition.",
+      "refs": []
+    },
+    "L3043": {
+      "id": "L3043",
+      "title": "Proposed vehicle page stat schema",
+      "status": "finding",
+      "statusNote": "Completed research schema. Future site implementation remains proposed and requires separate authorization.",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3043-vehicle-stat-schema.json",
+        "frosty-2026-10-01-gadget-vehicle-display-close-audit.json"
+      ],
+      "summary": "All candidate components map to a schema with exact configured fields, attributed card/EA statements and unresolved effective values.",
+      "reopenWhen": "Implement only within separately authorized site work; obtain the named receiver/unit/composition contracts before populating effective values.",
+      "refs": [
+        "queue-proposals"
+      ]
+    },
+    "L3100": {
+      "id": "L3100",
+      "title": "Exact UH60 and CB90 entry component controls",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3100-vehicle-station-controls.json"
+      ],
+      "summary": "Two exact roots retain five UH60 and two CB90 entry definitions; shared component subtrees select exact exported minigun and mortar WF owners.",
+      "reopenWhen": "Find an exact current owner wrapper with semantic entry index, weapon selector, canFire or exposed field names, then verify its local key and descriptor.",
+      "refs": []
+    },
+    "L3101": {
+      "id": "L3101",
+      "title": "Abrams Leopard Bradley CV90 station containment",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3101-vehicle-seat-map.json"
+      ],
+      "summary": "Four exact roots contain20 station entries (4,4,6,6), with32 station-subtree WF selections and114 exact U/WMD selections; defaults and role semantics remain unresolved.",
+      "reopenWhen": "Exact UI/card-to-root and typed role/issuing/activation joins become available.",
+      "refs": []
+    },
+    "L3102": {
+      "id": "L3102",
+      "title": "AAV7A1 and Gepard exact entry component map",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3102-vehicle-seat-map.json"
+      ],
+      "summary": "Two AAV entry definitions share index zero and Gepard has one; all 79 component imports are raw verified, 60 join exact target owners and 28 are equipment configuration selections.",
+      "reopenWhen": "Resolve remaining imported owners and exact entry role/index/default/permission names with matching current owner key and descriptor; do not infer AAV card relation.",
+      "refs": []
+    },
+    "L3103": {
+      "id": "L3103",
+      "title": "Attack and AH6 helicopter station import identities",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3103-vehicle-seat-map.json"
+      ],
+      "summary": "Six exact helicopter roots retain20 entries with source counts2,4,4,6,2,2 and298 station component imports;218 imported target owners resolved, with84 equipment-configuration references.",
+      "reopenWhen": "Exact card/role/issuing semantic joins or missing current raw exported owners become available.",
+      "refs": []
+    },
+    "L3104": {
+      "id": "L3104",
+      "title": "Transport helicopter exact entry component map",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3104-vehicle-seat-map.json"
+      ],
+      "summary": "MH47 insertion retains 16 configuration entries, MH47 SP one and UH60 five; shared insertion-container imports remain context and exact transport selections remain source-only.",
+      "reopenWhen": "Find exact current entry role, archetype, permission and activation controls; do not infer native usability or MH47 card counts.",
+      "refs": []
+    },
+    "L3105": {
+      "id": "L3105",
+      "title": "Boat station import identities",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3105-vehicle-seat-map.json"
+      ],
+      "summary": "Three exact boat roots retain8 entries with source counts2,2,4 and126 station component imports;86 imported target owners resolved, with34 equipment-configuration references.",
+      "reopenWhen": "Exact card/role/issuing semantic joins or missing current raw exported owners become available.",
+      "refs": []
+    },
+    "L3106": {
+      "id": "L3106",
+      "title": "Light-ground first batch exact entry component map",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3106-vehicle-seat-map.json"
+      ],
+      "summary": "Six exact light-ground roots retain all source entry definitions and component imports; equipment configuration references remain separate from context and unknown references.",
+      "reopenWhen": "Find exact current entry role, archetype, permission and activation controls; do not infer native usability or MH47 card counts.",
+      "refs": []
+    },
+    "L3107": {
+      "id": "L3107",
+      "title": "Second light-ground batch station import identities",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3107-vehicle-seat-map.json"
+      ],
+      "summary": "Six exact light-ground roots retain20 entries with source counts2,4,5,5,2,2 and185 station component imports;121 imported target owners resolved, with10 equipment-configuration references.",
+      "reopenWhen": "Exact card/role/issuing semantic joins or missing current raw exported owners become available.",
+      "refs": []
+    },
+    "L3108": {
+      "id": "L3108",
+      "title": "Jet exact entry component map",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3108-vehicle-seat-map.json"
+      ],
+      "summary": "Seven exact jet roots retain all source entry definitions and component imports; equipment configuration references remain separate from context and unknown references.",
+      "reopenWhen": "Find exact current entry role, archetype, permission and activation controls; do not infer native usability or MH47 card counts.",
+      "refs": []
+    },
+    "L3109": {
+      "id": "L3109",
+      "title": "Stationary station import identities",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3109-vehicle-seat-map.json"
+      ],
+      "summary": "Seven exact stationary roots each retain1 entry definition and153 total station component imports;113 imported target owners resolved, with20 equipment-configuration references.",
+      "reopenWhen": "Exact card/role/issuing semantic joins or missing current raw exported owners become available.",
+      "refs": []
+    },
+    "L3110": {
+      "id": "L3110",
+      "title": "MBT station graph capability refinement",
+      "status": "parked",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3110-station-graph-control.json"
+      ],
+      "summary": "The direct one-edge graph route failed the required UH60minigun/CB90mortar known-answer control; no MBT capability absence or activation result was reported.",
+      "reopenWhen": "A known-answer multi-edge station-to-weapon graph route is reproduced with exact endpoints and raw reads.",
+      "refs": []
+    },
+    "L3111": {
+      "id": "L3111",
+      "title": "Remote/drone supplemental exact entry component map",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3111-vehicle-seat-map.json"
+      ],
+      "summary": "Two exact supplemental census roots retain all source entry definitions and component imports; equipment configuration references remain separate from context and unknown references.",
+      "reopenWhen": "Find exact current entry role, archetype, permission and activation controls; do not infer native usability or MH47 card counts.",
+      "refs": []
+    },
+    "L3112": {
+      "id": "L3112",
+      "title": "Complete vehicle source entry coverage and count reconciliation",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3112-vehicle-seat-map-closeout.json"
+      ],
+      "summary": "All 46 prior roots are mapped with 137 serialized entries; source equipment joins are controlled, but active seat semantics and card agreement remain partial.",
+      "reopenWhen": "An exact current semantic owner/control establishes entry role, card-to-root identity, selected/default capability kind, canFire or exposed; retain variant and shared-context distinctions.",
+      "refs": []
+    },
+    "L3150": {
+      "id": "L3150",
+      "title": "Vehicle UI preset and slot census",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3150-vehicle-default-ui-census.json",
+        "frosty-2026-10-01-L3150-vehicle-ui-preset-census.json"
+      ],
+      "summary": "Four UI roots retain 126 text-bearing rows and exact imports, but do not establish a seat default.",
+      "reopenWhen": "An exact controlled GUID/import/pointer join establishes seat ownership and passes the three default controls.",
+      "refs": []
+    },
+    "L3151": {
+      "id": "L3151",
+      "title": "Selected vehicle UI equipment census and default controls",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3151-vehicle-default-ui-controls.json",
+        "frosty-2026-10-01-L3151-vehicle-ui-equipment-default-controls.json",
+        "frosty-2026-10-01-L3155-vehicle-seat-default-receipt-reconciliation.json"
+      ],
+      "summary": "25 selected UI targets retain 1111 objects, 170 resolved text rows and 456 import pairs. The UH60 minigun text control passes. The direct import route fails all three functional default controls; no seat default finding follows.",
+      "reopenWhen": "An exact serialized seat/slot/default selector reproduces UH60 minigun, RHIB HMG and MBT 120 mm known answers before any finding.",
+      "refs": []
+    },
+    "L3152": {
+      "id": "L3152",
+      "title": "Vehicle UI seat/equipment definitions and customization siblings",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3152-vehicle-default-ui-controls.json",
+        "frosty-2026-10-01-L3152-vehicle-ui-seat-equipment-definitions.json",
+        "frosty-2026-10-01-L3155-vehicle-seat-default-receipt-reconciliation.json"
+      ],
+      "summary": "Six UI definition/customization siblings decode to 74 objects, 39 import pairs and 11 text rows. Exact schema/import reader control passes. Named seat, slot and selection properties are definitions, with no controlled per-seat default assignment.",
+      "reopenWhen": "An exact serialized seat/slot/default selector reproduces UH60 minigun, RHIB HMG and MBT 120 mm known answers before any finding.",
+      "refs": []
+    },
+    "L3153": {
+      "id": "L3153",
+      "title": "Supplemental vehicle UI metadata census",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3153-additional-vehicle-ui-metadata.json"
+      ],
+      "summary": "All six remaining current vehicle UI metadata assets are decoded: 288 objects, 41 text rows and 65 exact import pairs. CB90 mortar text reader control passes. No complete default chain passes the required functional controls.",
+      "reopenWhen": "An exact serialized seat/slot/default selector reproduces UH60 minigun, RHIB HMG and MBT 120 mm known answers before any finding.",
+      "refs": []
+    },
+    "L3154": {
+      "id": "L3154",
+      "title": "Vehicle seat default UI join coverage and ordered seat rows",
+      "status": "exhausted",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3154-vehicle-seat-default-ui-join-coverage.json"
+      ],
+      "summary": "UI route census closed for all 28 catalog vehicle UI metadata assets; 36 exact source roots and 92 entry definitions have ordered seat rows. All 368 default fields remain unresolved because the three required functional default controls fail. The retained 126 weapon configuration selections and 379 equipment configuration references are not active/default loadouts.",
+      "reopenWhen": "An exact serialized seat/slot/default selector reproduces UH60 minigun, RHIB HMG and MBT 120 mm known answers before any finding.",
+      "refs": []
+    },
+    "L3155": {
+      "id": "L3155",
+      "title": "Vehicle seat default receipt reconciliation",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3155-vehicle-seat-default-receipt-reconciliation.json"
+      ],
+      "summary": "Canonical L3151 and L3152 receipts retain the final 25-target and six-sibling UI scopes. Parallel closeouts are preserved and explicitly superseded. Functional default results remain unresolved.",
+      "reopenWhen": "An exact serialized seat/slot/default selector reproduces UH60 minigun, RHIB HMG and MBT 120 mm known answers before any finding.",
+      "refs": []
+    },
+    "L3200": {
+      "id": "L3200",
+      "title": "Selected RPG source damage and channel gate",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3200-tank-weak-spots.json"
+      ],
+      "summary": "Controlled selected RPG and exact own named Damage field are established; tank damage channel and target known-answer equation remain unresolved.",
+      "reopenWhen": "An exact selected damage receiver operation names vehicle damage, direction/zone composition and rounding.",
+      "refs": []
+    },
+    "L3201": {
+      "id": "L3201",
+      "title": "Abrams exact part and selected angle curve chain",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3201-tank-weak-spots.json"
+      ],
+      "summary": "Exact eight part identifier and bone joins plus four angle curve chains are retained; target damage operations remain unresolved.",
+      "reopenWhen": "Provide the exact selected damage consumer and angle/interpolation/composition operations.",
+      "refs": []
+    },
+    "L3202": {
+      "id": "L3202",
+      "title": "Five tank damage weapon source comparison",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3202-tank-weak-spots.json"
+      ],
+      "summary": "Exact selected owners retain separate source fields; directional operation and bypass are not established.",
+      "reopenWhen": "An exact selected receiving damage channel and controlled directional operation become available.",
+      "refs": []
+    },
+    "L3203": {
+      "id": "L3203",
+      "title": "Four vehicle exact damage-part comparison",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3203-tank-weak-spots.json"
+      ],
+      "summary": "Four roots retain eight exact identifier-selected parts; CV90 IFV curves and hash-only part deltas differ from Abrams, while effective damage and mesh collision remain unresolved.",
+      "reopenWhen": "An exact consumer operation and mesh collision identity chain explain composition and hit geometry.",
+      "refs": []
+    },
+    "L3204": {
+      "id": "L3204",
+      "title": "Three selected missile Damage and material contracts",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3204-tank-weak-spots.json"
+      ],
+      "summary": "Named source Damage125/100/250 and controlled material IDs430/651/651 retain separate vehicle receiver limits.",
+      "reopenWhen": "Exact tank collision material and named receiving damage operation are available.",
+      "refs": []
+    },
+    "L3205": {
+      "id": "L3205",
+      "title": "Selected launcher to vehicle material-grid relation",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3205-tank-weak-spots.json"
+      ],
+      "summary": "Both current grids reproduce the M4 Head control and exact vehicle material relations2/2.2/0, while damage composition and lock-on bypass remain unresolved.",
+      "reopenWhen": "An exact source operation links the controlled relation field to vehicle damage and angle composition.",
+      "refs": []
+    },
+    "L3206": {
+      "id": "L3206",
+      "title": "APFSDS and C4 remaining source contracts",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3206-tank-weak-spots.json"
+      ],
+      "summary": "APFSDS source damage150/135, null curves and material431; C4 projectile/explosion materials548/95 retain native limits.",
+      "reopenWhen": "Exact tank collision target material and named receiving damage operation become available.",
+      "refs": []
+    },
+    "L3207": {
+      "id": "L3207",
+      "title": "APFSDS and C4 selected vehicle material relations",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3207-tank-weak-spots.json"
+      ],
+      "summary": "Both controlled grids retain exact APFSDS431 and C4projectile548/explosion95 relation operands2.5/0/3.5, while EA damage composition and bypass remain unresolved.",
+      "reopenWhen": "An exact consumer operation proves composition of selected damage, matrix relation and angle effect.",
+      "refs": []
+    },
+    "L3208": {
+      "id": "L3208",
+      "title": "APFSDS and LAW exact selected Damage defaults",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3208-tank-weak-spots.json"
+      ],
+      "summary": "APFSDS own StartDamage default130 differs from raw150; LAW selected own Damage wrapper is null and raw100 remains source-only.",
+      "reopenWhen": "Controlled serialized default application and exact native vehicle damage composition are available.",
+      "refs": []
+    },
+    "L3250": {
+      "id": "L3250",
+      "title": "Current vehicle gameplay loadout slot census",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3250-vehicle-loadout-slots.json"
+      ],
+      "summary": "All 166 current slot assets, ordered options and separate option references match the 1.4.3.0 probe including raw hashes; seat ownership and activation are separate checks.",
+      "reopenWhen": "Loadout asset bytes or selected fields change.",
+      "refs": []
+    },
+    "L3251": {
+      "id": "L3251",
+      "title": "Vehicle option and seat controls",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3251-vehicle-loadout-slots.json"
+      ],
+      "summary": "Five options join exact U owners to the selected WF owners in the same serialized seat weapon components; RHIB EqSlot control remains unresolved.",
+      "reopenWhen": "An exact RHIB Eq option or EqSlot route, or a runtime preset consumer, becomes available.",
+      "refs": []
+    },
+    "L3252": {
+      "id": "L3252",
+      "title": "Vehicle preset and context selectors",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3252-vehicle-loadout-slots.json"
+      ],
+      "summary": "Exact source mapping covers 26 numbered presets,25 archetype markers and 47 contexts; default preset activation remains unconfirmed.",
+      "reopenWhen": "Inspect an exact owner or caller that selects a preset at runtime.",
+      "refs": []
+    },
+    "L3253": {
+      "id": "L3253",
+      "title": "Vehicle slot and seat source table",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3253-vehicle-loadout-slots.json"
+      ],
+      "summary": "The controlled exact U route joins 74 options to 35 candidate stations and retains 78 unresolved EqSlots; shared slot markers do not establish ownership.",
+      "reopenWhen": "An exact typed owner edge resolves a retained slot or establishes preset activation; do not reuse shared Feature or WMD intersections.",
+      "refs": []
+    },
+    "L3254": {
+      "id": "L3254",
+      "title": "MBT ammo option condition consumer",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3254-vehicle-loadout-slots.json"
+      ],
+      "summary": "Five MBT ammo options bind through exact condition producer tokens to five WMD owners on Abrams and Leopard serialized seat 0 main 120mm components.",
+      "reopenWhen": "Require native evidence for runtime activation or composition; reopen source ownership only if the raw branch changes.",
+      "refs": []
+    },
+    "L3255": {
+      "id": "L3255",
+      "title": "Vehicle recipe applicability correction",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3255-vehicle-loadout-slots.json"
+      ],
+      "summary": "114 of125 station-variant associations have all options matched;11 remain partial and7 selected options cannot be projected onto the associated station; root recipe applicability is unconfirmed.",
+      "reopenWhen": "An exact root or customization-context pointer establishes the applicable preset recipe or the selected option owner.",
+      "refs": []
+    },
+    "L3256": {
+      "id": "L3256",
+      "title": "Remaining vehicle equipment producer chains",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3256-vehicle-loadout-slots.json"
+      ],
+      "summary": "All 72 remaining selected producer branches are captured and typed; no additional controlled seat consumer join is established.",
+      "reopenWhen": "An exact typed consumer or root/context-to-recipe selector identifies applicability outside the controlled component schema.",
+      "refs": []
+    },
+    "L3257": {
+      "id": "L3257",
+      "title": "Final vehicle slots and conditional preset source table",
+      "status": "finding",
+      "date": "2026-10-01",
+      "receipts": [
+        "frosty-2026-10-01-L3257-vehicle-loadout-slots.json"
+      ],
+      "summary": "166 unchanged slot variants; 79 of 151 options have exact seat owners. Root recipe applicability and default activation remain unresolved.",
+      "reopenWhen": "Exact root/context-to-preset applicability, activation owner or additional typed option consumer is available.",
       "refs": []
     }
   }

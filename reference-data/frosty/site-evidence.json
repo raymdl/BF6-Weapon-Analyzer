@@ -121,6 +121,14 @@
         "value": 1
       }
     ],
+    "data/attachments.json:/BARRELS/[id=basic]/adsTimeTierModByWeapon/m433": [
+      {
+        "receipt": "frosty-2026-10-01-L1103-gunfight-handling-movement.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 1
+      }
+    ],
     "data/attachments.json:/BARRELS/[id=ext_light]/velMult": [
       {
         "receipt": "frosty-2026-09-26-L93-non-ammo-damage-effect-screen.json",
@@ -1146,6 +1154,13 @@
         "value": 4
       }
     ],
+    "data/attachments.json:/WEAPON_MAG/m433": [
+      {
+        "receipt": "frosty-2026-10-01-L1103-gunfight-handling-movement.json",
+        "date": "2026-10-01",
+        "relation": "supports"
+      }
+    ],
     "data/attachments.json:/WEAPON_MAG/m433/defAds": [
       {
         "receipt": "frosty-2026-09-29-L114-ads-out-transition.json",
@@ -1569,6 +1584,11 @@
           166.667,
           133.334
         ]
+      },
+      {
+        "receipt": "frosty-2026-10-01-L1002-curve-table-reader.json",
+        "date": "2026-10-01",
+        "relation": "context"
       }
     ],
     "data/balance_tables.json:/ADS_SPD_TIERS/0": [
@@ -1655,6 +1675,20 @@
         "receipt": "frosty-2026-09-28-L107-precision-audit.json",
         "date": "2026-09-28",
         "relation": "proposed"
+      }
+    ],
+    "data/balance_tables.json:/DRAW_TIME_TABLES": [
+      {
+        "receipt": "frosty-2026-10-01-L1103-gunfight-handling-movement.json",
+        "date": "2026-10-01",
+        "relation": "supports"
+      }
+    ],
+    "data/balance_tables.json:/DRAW_TIME_TABLES/primary": [
+      {
+        "receipt": "frosty-2026-10-01-L1002-curve-table-reader.json",
+        "date": "2026-10-01",
+        "relation": "supports"
       }
     ],
     "data/balance_tables.json:/DRAW_TIME_TABLES/primary/deploy/0": [
@@ -2381,6 +2415,14 @@
             }
           }
         }
+      }
+    ],
+    "data/weapon_attributes.json:/sourceVersion": [
+      {
+        "receipt": "frosty-2026-10-01-L902-weapon-attributes-ui.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "value": "1.4.3.0"
       }
     ],
     "data/weapon_attributes.json:/tables/interdictor/rows/0/rpm": [
@@ -3288,6 +3330,14 @@
         "value": 2.75
       }
     ],
+    "data/weapons.json:/[id=kts100]/description": [
+      {
+        "receipt": "frosty-2026-10-01-L905-weapon-ui-statements.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "value": "With low recoil and a steady RPM, this light machine gun’s moderate damage is offset by accurate suppressive fire."
+      }
+    ],
     "data/weapons.json:/[id=kts100]/emptyRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
@@ -3558,12 +3608,28 @@
         "value": 2.2
       }
     ],
+    "data/weapons.json:/[id=m2010esr]/bulletVel": [
+      {
+        "receipt": "frosty-2026-10-01-L1101-gunfight-damage-ballistics.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 760
+      }
+    ],
     "data/weapons.json:/[id=m2010esr]/cal": [
       {
         "receipt": "frosty-2026-09-24-L55-rifle-caliber-text.json",
         "date": "2026-09-24",
         "relation": "context",
         "value": ".300 Win Mag"
+      }
+    ],
+    "data/weapons.json:/[id=m2010esr]/description": [
+      {
+        "receipt": "frosty-2026-10-01-L905-weapon-ui-statements.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "value": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m."
       }
     ],
     "data/weapons.json:/[id=m2010esr]/emptyRld": [
@@ -3820,6 +3886,12 @@
         "date": "2026-09-30",
         "relation": "supports",
         "value": 630
+      },
+      {
+        "receipt": "frosty-2026-10-01-L1101-gunfight-damage-ballistics.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 630
       }
     ],
     "data/weapons.json:/[id=m433]/cal": [
@@ -3828,6 +3900,13 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": "5.56×45mm NATO"
+      }
+    ],
+    "data/weapons.json:/[id=m433]/dmg": [
+      {
+        "receipt": "frosty-2026-10-01-L1002-curve-table-reader.json",
+        "date": "2026-10-01",
+        "relation": "supports"
       }
     ],
     "data/weapons.json:/[id=m433]/emptyRld": [
@@ -4090,6 +4169,14 @@
         "date": "2026-09-26",
         "relation": "supports",
         "value": 590
+      }
+    ],
+    "data/weapons.json:/[id=m4a1]/description": [
+      {
+        "receipt": "frosty-2026-10-01-L905-weapon-ui-statements.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "value": "With its high cyclic rate, extending this carbine’s effective range requires competent recoil management."
       }
     ],
     "data/weapons.json:/[id=m4a1]/emptyRld": [
@@ -4703,6 +4790,14 @@
         "value": 2.6500003
       }
     ],
+    "data/weapons.json:/[id=sor300sc]/bulletVel": [
+      {
+        "receipt": "frosty-2026-10-01-L1101-gunfight-damage-ballistics.json",
+        "date": "2026-10-01",
+        "relation": "supports",
+        "value": 528
+      }
+    ],
     "data/weapons.json:/[id=sor300sc]/cal": [
       {
         "receipt": "frosty-2026-09-24-L42-caliber-text.json",
@@ -4765,6 +4860,14 @@
         "date": "2026-09-24",
         "relation": "context",
         "value": "7.62×54mmR"
+      }
+    ],
+    "data/weapons.json:/[id=sv98]/description": [
+      {
+        "receipt": "frosty-2026-10-01-L905-weapon-ui-statements.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "value": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m."
       }
     ],
     "data/weapons.json:/[id=sv98]/emptyRld": [
@@ -5181,6 +5284,19 @@
         "relation": "context",
         "siteRows": {
           "rows": "/siteComparisons",
+          "file": 0,
+          "pointer": 1,
+          "value": 2
+        }
+      }
+    ],
+    "frosty-2026-10-01-L541-attachments-sample-check.json:/supportedSiteRows": [
+      {
+        "receipt": "frosty-2026-10-01-L541-attachments-sample-check.json",
+        "date": "2026-10-01",
+        "relation": "context",
+        "siteRows": {
+          "rows": "/supportedSiteRows",
           "file": 0,
           "pointer": 1,
           "value": 2
