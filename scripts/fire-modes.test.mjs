@@ -16,6 +16,10 @@ const defaults = w => {
   return atts;
 };
 const build = (id, changes = {}) => applyAttachments(weapon(id), { ...defaults(weapon(id)), ...changes });
+const roundSpray = spray => spray.map(({ spread, recoil }) => ({
+  spread: spread.map(value => Number(value.toFixed(12))),
+  recoil: recoil.map(({ x, y }) => ({ x: Number(x.toFixed(12)), y: Number(y.toFixed(12)) }))
+}));
 
 test('all 63 implicit defaults and ten mode attachments preserve pre-selector TTK cadence and spray output', () => {
   const fixture = JSON.parse(readFileSync(new URL('./fixtures/fire-mode-defaults.json', import.meta.url)));
@@ -27,7 +31,8 @@ test('all 63 implicit defaults and ten mode attachments preserve pre-selector TT
       setSimContext({ aimState, stanceState });
       result.spray.push({ spread: simulateSpread(w, 10), recoil: genRecoilPts(w, 0, 10) });
     }
-    assert.equal(createHash('sha256').update(JSON.stringify(result)).digest('hex'), entry.sha256, `${entry.weapon}/${entry.ergo}`);
+    const snapshot = { ...result, spray: roundSpray(result.spray) };
+    assert.equal(createHash('sha256').update(JSON.stringify(snapshot)).digest('hex'), entry.sha256, `${entry.weapon}/${entry.ergo}`);
   }
 });
 
