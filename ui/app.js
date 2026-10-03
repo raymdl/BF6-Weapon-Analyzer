@@ -3,6 +3,7 @@ import { requireNumber, setDataErrorReporter, invalidData } from '../sim/require
 import { formatMilliseconds, formatMovementMultiplier } from './format.js';
 import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
+import { bindRecoilTouchControls } from './recoil-touch.js';
 import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
@@ -250,6 +251,7 @@ function weaponAriaLabel(w) {
 let dmgChart = null;
 // Held so the observer is not collected while it still has an observation.
 let plotResizeObserver = null;
+let recoilTouchControls = null;
 
 // ── SIM CONTEXT INIT ──────────────────────────────────────────────────────────
 
@@ -1388,6 +1390,7 @@ function requestTargetImage() {
 function setRecoilView(view) {
   const next = view === 'target' ? 'target' : 'angle';
   if (state.recoil.view === next) return;
+  recoilTouchControls?.cancel();
   // Each view remembers its own overlays, so the target view can start without
   // the scatter cloud without discarding the angle plot's setup.
   state.recoil.savedLayers[state.recoil.view] = { ...state.recoil.layers };
@@ -1629,6 +1632,7 @@ function adjustRecoilScale(dir) {
 /** The one reset: return each view to its own framing defaults, aim back to
  *  center chest, and restore the original deterministic spray sample. */
 function resetRecoilView() {
+  recoilTouchControls?.cancel();
   state.recoil.refSeed = 0;
   if (state.recoil.view === 'target') {
     state.recoil.distance = TARGET_DEFAULT_DISTANCE;
@@ -1642,6 +1646,42 @@ function resetRecoilView() {
   }
   state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
   renderRecoil();
+}
+/** Expanded touch reset changes zoom and pan only, preserving distance, aim and seed. */
+function resetRecoilFraming() {
+  recoilTouchControls?.cancel();
+  if (state.recoil.view === 'target') {
+    state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
+    state.recoil.distancePanX = 0; state.recoil.distancePanY = 0;
+  } else {
+    state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
+  }
+  renderRecoil();
+}
+/** Keep the world point under the starting two-finger centroid under its new
+ * centroid. Target zoom stays on the existing optic ladder, like its slider. */
+function transformRecoilTouchView(baseZoom, ratio, anchor, clientX, clientY, canvas) {
+  if (!Number.isFinite(ratio) || ratio <= 0) return;
+  if (state.recoil.view === 'target') {
+    const wanted = baseZoom * ratio;
+    let index = 0;
+    SCOPE_MAGNIFICATIONS.forEach((value, i) => {
+      if (Math.abs(Math.log(value / wanted)) < Math.abs(Math.log(SCOPE_MAGNIFICATIONS[index] / wanted))) index = i;
+    });
+    setMagnificationIndex(index);
+  } else {
+    state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX, baseZoom / ratio));
+  }
+  const point = canvasToWorld(clientX, clientY, canvas);
+  if (!point) return;
+  if (state.recoil.view === 'target') {
+    state.recoil.distancePanX += anchor.x - point.x;
+    state.recoil.distancePanY += anchor.y - point.y;
+  } else {
+    state.recoil.panX += anchor.x - point.x;
+    state.recoil.panY += anchor.y - point.y;
+  }
+  scheduleRecoilPlot();
 }
 function panRecoilView(dir) {
   if (state.recoil.view === 'target') {
@@ -1731,8 +1771,11 @@ function selectedRecoilDirectionFor(w) { return recoilGroup(w).dir; }
  */
 function plotCanvasSize(canvas) {
   const rect = canvas?.getBoundingClientRect();
-  return { width: Math.max(240, Math.round(rect?.width || 430)),
-    height: Math.max(240, Math.round(rect?.height || 430)) };
+  // A short landscape modal must use its actual aspect ratio. Retain the
+  // existing minimum for inline/desktop plots, whose sizing is unchanged.
+  const minimum = canvas?.closest?.('.rc-expanded-plot[open]') ? 40 : 240;
+  return { width: Math.max(minimum, Math.round(rect?.width || 430)),
+    height: Math.max(minimum, Math.round(rect?.height || 430)) };
 }
 function syncPlotCanvasSize(canvas) {
   const size = plotCanvasSize(canvas);
@@ -2397,10 +2440,12 @@ function renderRecoil({ plotOnly = false } = {}) {
   if (zeroCycle) zeroCycle.textContent = `${state.recoil.zeroDistance} m`;
   if (!isTarget) document.getElementById('rcMain')?.classList.remove('aiming');
   const hint = document.getElementById('rcHint');
+  recoilTouchControls?.sync();
   if (hint) {
-    hint.textContent = isTarget
+    const nextHint = recoilTouchControls?.hint() ?? (isTarget
       ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom'
-      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom';
+      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom');
+    if (hint.textContent !== nextHint) hint.textContent = nextHint;
   }
   const aimReadout = document.getElementById('rcAimReadout');
   if (aimReadout) aimReadout.hidden = !isTarget;
@@ -3128,16 +3173,28 @@ function bindEvents() {
   document.getElementById('rcResetView').addEventListener('click', resetRecoilView);
   document.getElementById('rcCrosshairToggle').addEventListener('click', toggleRecoilCrosshair);
   const recoilCanvas = document.getElementById('rcMain');
+  recoilTouchControls = bindRecoilTouchControls({
+    canvas: recoilCanvas, readView: () => state.recoil.view,
+    readZoom: () => state.recoil.view === 'target' ? currentMagnification() : state.recoil.scaleH,
+    worldAt: (x, y) => canvasToWorld(x, y, recoilCanvas),
+    transformView: (...args) => transformRecoilTouchView(...args, recoilCanvas),
+    redraw: redrawRecoilSample, aim: fireAtAimPoint,
+    resetView: resetRecoilFraming, repaint: renderRecoil,
+  });
   // Dragging replaced the pan buttons, so the keyboard needs its own way in.
   recoilCanvas.addEventListener('keydown', e => {
     const pan = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' }[e.key];
     if (pan) { e.preventDefault(); panRecoilView(pan); return; }
     if (e.key === '+' || e.key === '=') { e.preventDefault(); adjustRecoilScale('in'); }
     else if (e.key === '-' || e.key === '_') { e.preventDefault(); adjustRecoilScale('out'); }
-    else if (e.key === '0') { e.preventDefault(); resetRecoilView(); }
+    else if (e.key === '0') {
+      e.preventDefault();
+      if (recoilTouchControls.isExpanded()) resetRecoilFraming();
+      else resetRecoilView();
+    }
   });
-  // Touch is left to the browser so the page still scrolls under a finger;
-  // pointer dragging is for mouse and pen.
+  // Mouse/pen modifier gestures stay unchanged. Touch is handled separately;
+  // inline touches still belong to the browser's page scrolling.
   const CLICK_SLOP = 4;
   let recoilDrag = null;
   // Both plot gestures are modifier-gated, and the cursor names whichever one

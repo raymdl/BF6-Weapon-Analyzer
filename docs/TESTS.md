@@ -48,6 +48,8 @@ All paths in this table are under `scripts/`.
 | [required-data.test.mjs](../scripts/required-data.test.mjs) | Missing/non-finite source fields, strict callers, and non-blocking browser reporting with independent stats preserved. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |
 | [recoil.test.mjs](../scripts/recoil.test.mjs) | Analytic recovery, timed delivery, overlapping impulses, clock reset/burst pauses, compensation, aim-state factors, and deterministic seeds. Attachment tests also cover Smooth duration and receiver composition without base mutation. |
+| [recoil-gestures.test.mjs](../scripts/recoil-gestures.test.mjs) | Desktop modifier-click redraw and Soldier aim, drag/cancel exclusions, and the Angle Plot origin. |
+| [recoil-touch.test.mjs](../scripts/recoil-touch.test.mjs) | Touch/responsive gating, one-tap aim, inline scrolling, expanded gesture interruption and repeated use, focus/close restoration, short-landscape sizing, centroid anchoring and view-only reset. DOM boundaries are mocked; these tests do not verify a real browser or phone. |
 | [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults, every shared-rail option with indexed/legacy tokens, and weapon-specific attachment validation. |
 | [source-arrays.test.mjs](../scripts/source-arrays.test.mjs) | Exact row order/precision, hip/shotgun indexing, moving/ADS arrays and composition boundaries. |
 | [spread-bar-scale.test.mjs](../scripts/spread-bar-scale.test.mjs) | Default and valid single-attachment spread outputs fit the shared axis across aim/stance contexts. |
@@ -121,6 +123,16 @@ switching devices must replace the selection, including restored older links.
 Test link restore (including a legacy target link), Copy/Save Image and failure
 feedback, panel collapse/resize, popout independence and all three historical links.
 PNG capture should keep loadout identity and restore the original overview state.
+
+On a touch-capable phone/tablet (including portrait, short landscape, and a larger
+landscape tablet up to 1440 CSS pixels wide), check Redraw in both plot views,
+one-tap Set aim and its cancellation, and normal page scrolling over the inline
+plot. Expand, pinch around an off-center midpoint, pan with two fingers, add/lift
+a third finger, interrupt a gesture, rotate/resize, and repeat. Aim and sample
+must stay unchanged except for Redraw or a completed armed tap. Confirm view-only
+Reset view, slider fallback, Close and Escape, focus trapping/restoration, and no
+page overflow. Also check a narrow mouse-only viewport, a hybrid touch/mouse
+device, and the existing desktop modifier gestures and keyboard shortcuts.
 
 ## Documentation verification and test discipline
 
