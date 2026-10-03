@@ -204,6 +204,12 @@
                 <button class="rc-tab on" id="rcViewAngle" type="button" role="tab" aria-selected="true" aria-controls="rcMain" title="Plot the pattern in angular degrees, independent of range">Angle Plot</button>
                 <button class="rc-tab" id="rcViewTarget" type="button" role="tab" aria-selected="false" aria-controls="rcMain" title="Project the same pattern onto a soldier-sized target at a chosen range">Soldier Target</button>
               </div>
+              <div class="rc-touch-controls" id="rcTouchControls" hidden>
+                <button class="rc-touch-btn" id="rcRedraw" type="button">Redraw</button>
+                <button class="rc-touch-btn" id="rcSetAim" type="button" aria-pressed="false" hidden>Set aim</button>
+                <button class="rc-touch-btn" id="rcTouchResetView" type="button" title="Reset zoom and pan, keeping your aim and spray sample" hidden>Reset view</button>
+                <button class="rc-touch-btn" id="rcExpandPlot" type="button" aria-haspopup="dialog" aria-controls="rcExpandedPlot">Expand</button>
+              </div>
               <div class="rc-viewbar">
                 <span class="rc-field" id="rcDistanceField" hidden>
                   <span class="rc-field-lbl">Distance</span>
@@ -215,7 +221,7 @@
                   <input class="rc-range" id="rcZoomRange" type="range" min="0" max="100" step="1" value="50" aria-label="Chart zoom">
                   <output class="rc-readout" id="rcZoomReadout" for="rcZoomRange">±5°</output>
                 </span>
-                <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample"><span class="rc-reset-icon">↺</span></button>
+                <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample" aria-label="Reset view, aim and spray sample"><span class="rc-reset-icon" aria-hidden="true">↺</span></button>
               </div>
               <div class="rc-canvas-wrap">
                 <div class="rc-scale-controls">
@@ -223,7 +229,7 @@
                     <svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3.55"/><circle cx="5" cy="5" r="1.25"/><line x1="5" y1="0.25" x2="5" y2="1.45"/><line x1="5" y1="8.55" x2="5" y2="9.75"/><line x1="0.25" y1="5" x2="1.45" y2="5"/><line x1="8.55" y1="5" x2="9.75" y2="5"/></svg>
                   </button>
                 </div>
-                <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and spread pattern plot. Use arrow keys to pan and plus or minus to zoom."></canvas>
+                <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and spread pattern plot. Use arrow keys to pan and plus or minus to zoom." aria-describedby="rcHint"></canvas>
               </div>
               <div class="rc-target-controls" id="rcTargetControls" hidden>
                 <span class="rc-target-group"><span>RESOLUTION</span><input class="rc-target-resolution-input" id="rcTargetWidth" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display width in pixels"><span>×</span><input class="rc-target-resolution-input" id="rcTargetHeight" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display height in pixels"></span><span class="rc-target-group"><span>FOV</span><input class="rc-target-fov-input" id="rcTargetFov" type="number" min="1" max="179" step="1" value="103" inputmode="numeric" aria-label="Horizontal field of view in degrees" title="Horizontal field of view in degrees, matching the in-game FOV setting"></span>
@@ -233,7 +239,7 @@
                 </div>
               </div>
               <div class="rc-viewfoot">
-                <span class="rc-hint" id="rcHint">Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom</span>
+                <span class="rc-hint" id="rcHint" aria-live="polite">Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom</span>
                 <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText">Aim: center chest</span></span>
               </div>
             </div>
@@ -249,6 +255,10 @@
 </div>
 <div class="footer"><span>Data: Frosty v1.4.3.1 (reviewed 16 SEP 2026) &nbsp;·&nbsp; Baseline: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.4.2.0 (18 AUG 2026) &nbsp;·&nbsp; Spread decay model: <a href="https://www.youtube.com/@Dr.SmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a> &nbsp;·&nbsp; Data Validation: <a href="https://www.reddit.com/user/SheetOnMyFace/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SheetOnMyFace</a></span><span>Discord: Raymdl &nbsp;·&nbsp; <a href="https://github.com/raymdl/BF6-Weapon-Analyzer" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">GitHub</a></span></div>
 
+<dialog class="rc-expanded-plot" id="rcExpandedPlot" aria-labelledby="rcExpandedPlotTitle">
+  <div class="rc-expanded-header"><span id="rcExpandedPlotTitle">Recoil / Spread Plot</span><button class="rc-touch-btn" id="rcCloseExpandedPlot" type="button">Close</button></div>
+  <div class="rc-expanded-slot" id="rcExpandedPlotSlot"></div>
+</dialog>
 <script type="module" src="./ui/app.js"></script>
 <!-- Cloudflare Web Analytics -->
 <script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0e1cac698a442b6abd238207d509270"}'></script>

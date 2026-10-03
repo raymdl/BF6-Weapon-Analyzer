@@ -205,6 +205,28 @@ settled-hipfire test. Interdictor moving ADS uses its separate 0.67 exponent.
 The circle still shows the maximum modeled radius, not a region containing a
 fixed percentage of a whole burst.
 
+### Touch controls on phones and tablets
+
+Touch-capable viewports up to 1440 CSS pixels wide show **Redraw** and **Expand**.
+Redraw selects a new spray sample in either view: Angle Plot keeps its origin at
+(0, 0), and Soldier Target keeps the current aim. In Soldier Target, **Set aim**
+arms one tap on the plot to place an aim point and redraw, then turns off. Tap
+**Cancel aim** to leave the aim unchanged. A scroll or two-finger gesture does
+not place an aim point.
+
+**Expand** opens a near-full-screen plot with the same view and controls. Inside
+it, pinch with two fingers to zoom around their midpoint, or move both fingers
+to pan. These gestures keep the aim and spray sample. **Reset view** resets only
+zoom and pan, keeping distance, aim and sample; **Close** returns to the page.
+The inline plot still allows normal page scrolling. The zoom slider remains
+available in both layouts, and target zoom follows its optic-magnification stops.
+
+Keyboard users can operate these buttons, use the existing arrow/plus/minus plot
+controls, and press Enter after Set aim to aim at the plot center. Escape closes
+the expanded plot. The 0 key resets only the view while expanded; the inline
+reset button and 0 key retain their existing full-reset behavior. Touch controls
+do not change mouse/pen modifier gestures. Wider viewports keep the desktop layout.
+
 ### Angle Plot: how far the aim turns
 
 An angle describes a direction change, not a distance on the target. Turning

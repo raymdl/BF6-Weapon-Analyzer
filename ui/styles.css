@@ -280,6 +280,36 @@ canvas.rcv.panready,canvas.rcv.panready.aiming{cursor:grab}
 canvas.rcv.dragging,canvas.rcv.dragging.aiming{cursor:grabbing}
 canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-canvas-wrap{position:relative;line-height:0}
+.rc-touch-controls{display:flex;flex-wrap:wrap;gap:6px;padding:6px 9px;background:#0e1414;border-bottom:1px solid var(--border)}
+.rc-touch-controls[hidden],.rc-touch-controls [hidden]{display:none}
+.rc-touch-btn{min-height:44px;min-width:44px;padding:8px 12px;border:1px solid #2c3838;border-radius:4px;background:#151d1d;color:var(--text);font:inherit;font-size:.75rem;cursor:pointer}
+.rc-touch-btn:hover,.rc-touch-btn[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.rc-touch-layout .rc-tab{min-height:44px}
+.rc-touch-layout .rc-scale-btn{width:44px;height:44px;min-height:44px;flex-shrink:0}
+.rc-touch-layout .rc-viewbar #rcResetView{flex:0 0 44px}
+.rc-touch-layout .rc-range{min-height:44px}
+.rc-touch-layout .rc-range::-webkit-slider-thumb{width:20px;height:20px;margin-top:-8px}
+.rc-touch-layout .rc-range::-moz-range-thumb{width:20px;height:20px}
+.rc-touch-layout .rc-viewfoot{align-items:flex-start;flex-wrap:wrap;padding-block:8px;gap:6px}
+.rc-touch-layout .rc-hint{font-size:.68rem}
+.rc-touch-layout canvas.touch-aiming{cursor:crosshair;outline:2px solid var(--accent);outline-offset:-2px}
+.rc-expanded-plot{width:calc(100vw - 16px);max-width:none;height:calc(100vh - 16px);height:calc(100dvh - 16px);max-height:none;padding:0;border:1px solid var(--border);border-radius:8px;background:#0b1010;color:var(--text);overflow:hidden}
+.rc-expanded-plot:not([open]){display:none}
+.rc-expanded-plot[open]{display:flex;flex-direction:column}
+.rc-expanded-plot::backdrop{background:rgba(0,0,0,.8)}
+.rc-expanded-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;font-size:.8rem;font-weight:600;flex-shrink:0}
+.rc-expanded-slot{display:flex;flex:1;min-height:0;padding:0 8px 8px}
+.rc-expanded-slot .rc-viewport{display:flex;flex-direction:column;flex:1;min-height:0}
+.rc-expanded-slot .rc-canvas-wrap{flex:1;min-height:0}
+.rc-expanded-slot canvas.rcv{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;touch-action:none}
+.rc-expanded-slot .rc-tabstrip,.rc-expanded-slot .rc-touch-controls,.rc-expanded-slot .rc-viewbar,.rc-expanded-slot .rc-viewfoot{flex-shrink:0}
+.rc-expanded-slot #rcResetView,.rc-expanded-slot .rc-target-controls{display:none}
+body.rc-plot-expanded{overflow:hidden}
+@media(max-width:600px){
+  .rc-touch-layout .rc-viewbar{flex-wrap:wrap}
+  .rc-touch-layout .rc-viewbar #rcDistanceField{flex:1 1 100%}
+  .rc-touch-layout .rc-viewbar #rcZoomField{flex:1 1 0}
+}
 .rc-target-controls{display:flex;align-items:center;gap:4px 12px;flex-wrap:wrap;padding:3px 9px;min-height:26px;color:#8fa0a0;font-size:.58rem;line-height:1}
 .rc-target-controls[hidden]{display:none}
 .rc-target-group{display:flex;align-items:center;gap:4px;white-space:nowrap}

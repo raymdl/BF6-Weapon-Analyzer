@@ -40,6 +40,11 @@ function harness(view = 'angle') {
     document: { getElementById: id => id === 'rcMain' ? canvas : null, addEventListener() {} },
     window: { addEventListener() {} },
     renders: 0, renderRecoil: () => { context.renders++; },
+    recoilTouchControls: null,
+    fullResets: 0, framingResets: 0, expanded: false,
+    bindRecoilTouchControls: () => ({ cancel() {}, isExpanded: () => context.expanded }),
+    resetRecoilView: () => { context.fullResets++; },
+    resetRecoilFraming: () => { context.framingResets++; },
     applyViewLayers() {}, requestTargetImage() {}, panRecoilByPixels() {},
     Math: Object.assign(Object.create(Math), { random: () => 0.25 }),
   });
@@ -98,6 +103,15 @@ test('Soldier Target Ctrl-click still aims at the mapped pointer and redraws', (
   assert.equal(context.state.recoil.targetAim, 'custom');
   assert.equal(context.state.recoil.refSeed, 0x40000000);
   assert.equal(context.renders, 1);
+});
+
+test('keyboard 0 retains the full inline reset and uses view-only reset only while expanded', () => {
+  const { context, emit } = harness();
+  emit('keydown', { key: '0' });
+  assert.equal(context.fullResets, 1); assert.equal(context.framingResets, 0);
+  context.expanded = true;
+  emit('keydown', { key: '0' });
+  assert.equal(context.fullResets, 1); assert.equal(context.framingResets, 1);
 });
 
 test('Angle Plot draws its crosshair at (0, 0) after switching from a custom Soldier aim', () => {
