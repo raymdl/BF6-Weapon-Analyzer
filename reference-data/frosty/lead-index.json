@@ -3116,6 +3116,18 @@
       "reopenWhen": "Query-ID mappings, the owner selection for MTN-55 and Proximity, the acquisition/recipient/expiry operations, the lock and break receivers, or an incoming selected owner for AimSpotting.",
       "refs": []
     },
+    "L237": {
+      "id": "L237",
+      "title": "AT Mine current selected-owner continuity",
+      "status": "finding",
+      "date": "2026-10-04",
+      "receipts": [
+        "frosty-2026-10-04-L237-atmine-current-continuity.json"
+      ],
+      "summary": "Ten prior AT Mine selections retain exact bytes, owner keys, declaring members and selected identities at Head 4909067.",
+      "reopenWhen": "A new owner hash, declaring key, selected export or channel target identity changes.",
+      "refs": []
+    },
     "L400": {
       "id": "L400",
       "title": "Class, training path and perk UI metadata",
@@ -6202,6 +6214,19 @@
       ],
       "summary": "Selected Bradley and CV90 RWS AGL chains with own direct/explosion names: direct StartDamage/EndDamage 32/32 (falloff 15 to 350), primary BlastDamage 70, InnerBlastRadius 1, BlastRadius 4, ShockwaveDamage 1 (radius 7.5), dud blast 0 radius 5; plus reload discriminator members, CB90 MaxHealth 1000 and Bradley IFV missile Damage 250; no composed damage, units or equation established.",
       "reopenWhen": "The exact validated runtime or compiled receiver operations listed in VEHICLE_FINDINGS.md and AGL_EVIDENCE_TABLE.md (a new tuple, route name or matching number alone does not reopen a route).",
+      "refs": []
+    },
+    "L3305": {
+      "id": "L3305",
+      "title": "Eleven selected vehicle declarations",
+      "status": "finding",
+      "statusNote": "Source declaration identities and tuples only; roles, units and application unknown. Independently reviewed 4 October 2026.",
+      "date": "2026-10-04",
+      "receipts": [
+        "frosty-2026-10-04-L3305-vehicle-declaration-tuples.json"
+      ],
+      "summary": "Eleven selected vehicle declaration identities and three-field float32 tuples are preserved with exact parent imports and owning-name pointers; roles and runtime effects remain unknown.",
+      "reopenWhen": "Exact controlled consumer evidence establishes tuple roles, units, active selection or runtime application.",
       "refs": []
     }
   }

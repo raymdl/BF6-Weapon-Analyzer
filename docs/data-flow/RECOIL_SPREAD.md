@@ -151,7 +151,7 @@ only (A09). Interdictor's moving-ADS source exponent is `0.67`.
 | Spread circles | Selected pre-shot radius centered on the corresponding recoil point. |
 | Connected envelope | Geometric connection of spread bounds; it is not a fitted probability contour. |
 | Scatter | Ten fixed seeded runs; independent of the main spray reroll. It provides repeated examples, not a computed confidence interval. |
-| Contextual statistics and bars | Aim/stance-specific amount, variation, bounds, increment and recovered endpoint. Bar normalization uses UI scale constants, not extra source parameters. |
+| Contextual statistics and bars | Aim/stance-specific amount, variation, bounds, increment and peak pre-shot spread across one magazine (50 increases when magazine size is unknown). Bar normalization uses UI scale constants, not extra source parameters. |
 | Target impacts | The main reference spray projected into metres/centimetres. Target statistics do not pool the scatter overlay or count the envelope as shots. |
 
 `ui/app.js` caches pattern/sequence results using their relevant inputs. Layer

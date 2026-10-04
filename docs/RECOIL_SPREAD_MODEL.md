@@ -259,9 +259,12 @@ the shotgun shift crosses into a separate range. VSSM now uses source index 4
 HUD comparison. Its moving value follows the source row. See
 [stat ladders and indexing](STAT_LADDERS.md).
 
-`effectiveSpreadMax()` runs one magazine of shot increases and recovery intervals
-(50 increases when the magazine size is unknown) and returns the peak pre-shot
-value, rounded to three decimals. This finite-run endpoint does not establish the largest transient value or the
+`effectiveSpreadMax()` tracks the peak pre-shot spread across one magazine
+(`N - 1` increases for `N` rounds; 50 increases when magazine size is unknown).
+For nonzero spread increments the result is rounded to three decimals; a zero
+increment returns the baseline directly. It includes the baseline and each
+recovered next-shot value, rather than only the final endpoint. This finite
+modeled peak does not establish the largest within-shot transient or the
 mathematical steady state.
 The shared display axis is 12 degrees.
 
