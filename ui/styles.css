@@ -283,7 +283,8 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-touch-controls{display:flex;flex-wrap:wrap;gap:6px;padding:6px 9px;background:#0e1414;border-bottom:1px solid var(--border)}
 .rc-touch-controls[hidden],.rc-touch-controls [hidden]{display:none}
 .rc-touch-btn{min-height:44px;min-width:44px;padding:8px 12px;border:1px solid #2c3838;border-radius:4px;background:#151d1d;color:var(--text);font:inherit;font-size:.75rem;cursor:pointer}
-.rc-touch-btn:hover,.rc-touch-btn[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+.rc-touch-btn[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
+@media (hover:hover){.rc-touch-btn:hover{border-color:var(--accent);color:var(--accent)}}
 .rc-touch-layout .rc-tab{min-height:44px}
 .rc-touch-layout .rc-scale-btn{width:44px;height:44px;min-height:44px;flex-shrink:0}
 .rc-touch-layout .rc-viewbar #rcResetView{flex:0 0 44px}
@@ -563,4 +564,5 @@ body.rc-plot-expanded{overflow:hidden}
 @media (max-width:340px){.sgrid{grid-template-columns:1fr}}
 @media (pointer:coarse){
   .loadout-btn,.cbtn,.wbtn,.mode-btn,.rc-tab,.rc-scale-btn,.loadout-close{min-height:36px}
+  .rc-group-row:not(.seg)>.rc-mode-btn{min-height:22px}
 }
