@@ -6228,6 +6228,1215 @@
       "summary": "Eleven selected vehicle declaration identities and three-field float32 tuples are preserved with exact parent imports and owning-name pointers; roles and runtime effects remain unknown.",
       "reopenWhen": "Exact controlled consumer evidence establishes tuple roles, units, active selection or runtime application.",
       "refs": []
+    },
+    "L3306": {
+      "id": "L3306",
+      "title": "Vehicle stat id to archetype and blueprint links",
+      "status": "finding",
+      "statusNote": "Source links only; display-name association is name-matched and runtime use is unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3306-vehicle-stat-archetype-links.json"
+      ],
+      "summary": "Categorization_Vehicles links 33 vehicle stat ids to hardware-tree nodes, 28 of them to one of 16 archetype nodes (13 under arch_mastery, 3 under arch_mastery_no), and 30 to a saved VB_VEH blueprint by a shared GUID; 539 raw checks pass.",
+      "reopenWhen": "A serialized link from an archetype node to its UI card or display name is found, or a game update changes Categorization_Vehicles or Category_VehicleArchetypes.",
+      "refs": []
+    },
+    "L3307": {
+      "id": "L3307",
+      "title": "Stored values for every vehicle, gadget and vehicle equipment stat entry",
+      "status": "finding",
+      "statusNote": "Source values only; units, runtime use and all name-table joins are unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3307-roster-values.json"
+      ],
+      "summary": "All 167 roster entries traced from stat id to carrier files and stored values; 157 of 167 have at least one stored value, 11854 raw-offset checks matched, and 73 owner properties differ between registry default and own value.",
+      "reopenWhen": "A game update changes a roster, a registry or a carrier file; an in-game test settles registry default against own value; or assets appear for an entry that has none.",
+      "refs": []
+    },
+    "L3308": {
+      "id": "L3308",
+      "title": "Lock-on values for gadget launchers, the laser designator and vehicle missiles",
+      "status": "finding",
+      "statusNote": "Source values only; field names by value equality; units and runtime use unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3308-locking-controllers.json"
+      ],
+      "summary": "106 locking controller objects in 62 gadget and vehicle files store lock time, unlock and release times, minimum range and ray length; 636 raw-offset checks matched. Registry rows agree with own objects except the ray length of air-to-air default controllers.",
+      "reopenWhen": "An in-game lock-time or lock-range measurement on painted and unpainted targets, a type descriptor naming the fields, or a game update that changes a controller.",
+      "refs": []
+    },
+    "L3309": {
+      "id": "L3309",
+      "title": "Spotting and detection values for soldiers, the recon drone, the laser designator and sensors",
+      "status": "finding",
+      "statusNote": "Registry defaults only; meaning from row names; units and runtime use unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3309-spotting-detection.json"
+      ],
+      "summary": "212 registry rows store spotting and detection values: soldier time to spot 0.5, zoomed distance 100, spot duration 5 (vehicle 30, gadget 20); recon drone distance 60 and 160 by zoom with a gadget radius of 40; laser designator distance 80 to 540 by zoom. 212 raw-offset checks matched.",
+      "reopenWhen": "An in-game spotting range or duration measurement, a traced link from a spotting asset to these rows, or a game update that changes a row.",
+      "refs": []
+    },
+    "L3310": {
+      "id": "L3310",
+      "title": "Gadget counts, replenish, cooldown and effect rules in the gadget registry",
+      "status": "finding",
+      "statusNote": "Registry defaults only; meaning from row names; units and runtime use unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3310-gadget-rules.json"
+      ],
+      "summary": "517 gadget registry rows store carried counts, replenish settings, recharge times and effect rules: grenade fuse 1.1 and 1.4 after a bounce, flash durations 3.5 down to 0.2 by angle and range, repair 40 per second, defibrillator charge 0.3 to 1.0, vehicle supply crate 15 supplies every 5. 517 raw-offset checks matched.",
+      "reopenWhen": "An in-game count, timing or duration measurement for one of these gadgets, or a game update that changes a row.",
+      "refs": []
+    },
+    "L3311": {
+      "id": "L3311",
+      "title": "Soldier movement, revive, suppression, mortar and trait values in the soldier registry",
+      "status": "finding",
+      "statusNote": "Registry defaults only; trait links by row name only; units and runtime use unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3311-soldier-rules.json"
+      ],
+      "summary": "171 soldier registry rows store movement, revive, regeneration, suppression, mortar and trait-named values: suppression resistance 0.75, revive 4.72 (Support 2.2), mortar 2 volleys of 2 shells, sprint multipliers 1.857 and 2.05. 171 raw-offset checks matched. No stored class-to-trait link was found.",
+      "reopenWhen": "A traced pointer from a trait or field upgrade asset to one of these rows, an in-game timing of revive, mortar or sprint, or a game update that changes a row.",
+      "refs": []
+    },
+    "L3312": {
+      "id": "L3312",
+      "title": "Vehicle ability timings, passive upgrade effects and radar rules in the vehicle registry",
+      "status": "finding",
+      "statusNote": "Registry defaults only; meaning from row names; units, multiplier direction and runtime use unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3312-vehicle-abilities-passives.json"
+      ],
+      "summary": "185 vehicle registry rows store ability active and recharge times (flares 1.8 / 15, active protection 5 / 32, smoke 8.1 / 16), passive upgrade sizes (damage multiplier 0.85, regeneration 132 after 9.5, enhanced loading 1.35), detection radii and radar rules (max range 700, below-radar 25 and 50). 185 raw-offset checks matched.",
+      "reopenWhen": "An in-game ability timing or upgrade effect measurement, or a game update that changes a row.",
+      "refs": []
+    },
+    "L3313": {
+      "id": "L3313",
+      "title": "Vehicle weapon heat, ammunition, reload and replenish rows in the vehicle registry",
+      "status": "finding",
+      "statusNote": "Registry defaults only; heat scale, units and runtime use unconfirmed; derived figures are inference.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3313-vehicle-weapon-heat-ammo.json"
+      ],
+      "summary": "701 vehicle registry rows store weapon heat, ammunition, rate of fire, reload and automatic replenish values; 16 owners have heat rows (tank coaxial heavy machine gun 0.05 per bullet, 0.5 drop per second). Sustained-fire figures derived from them are inference. 701 raw-offset checks matched.",
+      "reopenWhen": "An in-game shots-to-overheat, cool-down or replenish timing, or a game update that changes a row.",
+      "refs": []
+    },
+    "L3314": {
+      "id": "L3314",
+      "title": "Registry default or asset value: stored links and what changed across updates",
+      "status": "finding",
+      "statusNote": "Which side is live remains unproven; one registry-only change supports the registry.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3314-registry-vs-asset.json"
+      ],
+      "summary": "Registry container rows address asset objects by stored instance GUID (57 of 96 GUIDs found in saved files). Across builds 1.4.2.5 to 1.4.3.5 ten registry rows changed; the VSSM rows changed together with the asset, while the scout helicopter minigun heat row changed in the registry only (0.006667 to 0.008889; asset still 0.006667). 31 raw-offset checks matched.",
+      "reopenWhen": "An in-game shots-to-overheat count for the scout helicopter minigun, an anti-tank mine damage reading, an official note naming one of the differing values, or a new build in which a registry row and its asset change separately.",
+      "refs": []
+    },
+    "L3315": {
+      "id": "L3315",
+      "title": "Flak and damage-resistance effects, with healing and ammunition supply effects",
+      "status": "finding",
+      "statusNote": "Multiplier name from a stored import; damage-kind flags by file name only; stacking and runtime use unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3315-resistance-heal-ammo-effects.json"
+      ],
+      "summary": "Seven damage-resistance effects store a multiplier and damage-kind flags: Flak 0.67, Stance Flak 0.75, adrenaline shot 0.8 (explosive flag), EOD bot 0.65 bullets and 0.6 explosives, tank and IFV durability 0.85 from the registry. The multiplier field is named DamageReceivedMultiplier by a stored registry import. 472 raw-offset checks matched.",
+      "reopenWhen": "An in-game explosive damage comparison with and without flak, a type descriptor naming the flags, or a game update that changes an effect.",
+      "refs": []
+    },
+    "L3316": {
+      "id": "L3316",
+      "title": "How assets are bound to registry rows: value-slot imports and path rows",
+      "status": "finding",
+      "statusNote": "Stored bindings only; runtime precedence for path rows unproven.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3316-registry-bindings.json"
+      ],
+      "summary": "9430 imports in 634 files point from an asset to a registry row: 869 to value rows, where the registry is the stored source, and 8561 to container rows carrying the asset's own name. For all 73 properties where registry and own value differ the owning asset imports its registry container. 549 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading that settles a path row (minigun overheat count or anti-tank mine damage), or a build that changes the binding of a row.",
+      "refs": []
+    },
+    "L3317": {
+      "id": "L3317",
+      "title": "Official 1.4.3.0 note matches a registry-only change: the registry default is the live value for the scout helicopter minigun heat",
+      "status": "finding",
+      "statusNote": "Official statement matched to stored values for one property; no in-game control.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3317-registry-live-official.json"
+      ],
+      "summary": "EA's 1.4.3.0 notes state the AH-6 minigun's overheat per bullet rose by about 33%. Only the registry row changed (0.006667 to 0.008889, ratio 1.3333); the weapon asset still stores 0.006667. For this property the registry default is the value in use; extending that to the other 73 differing properties is inference. 6 raw-offset checks matched.",
+      "reopenWhen": "An in-game shots-to-overheat count or anti-tank mine damage reading, or a later update whose official notes name a value that changed on only one side.",
+      "refs": []
+    },
+    "L3318": {
+      "id": "L3318",
+      "title": "Official numbers follow the registry default, not the asset value, on disputed properties",
+      "status": "finding",
+      "statusNote": "Official statements matched to stored values; item-to-owner joins by name; no in-game control.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3318-registry-official-numbers.json"
+      ],
+      "summary": "EA-stated radii equal the registry default and not the asset's own value for the Hydra 70 (4.75), APKWS (4.75), Zuni (5.25) and tank HE inner radius (2.25); anti-air high velocity damage follows the registry 13 while the asset's 12 reproduces EA's old values. No case was found the other way. The registry default is taken as the live value where the two differ. 22 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading that contradicts a registry default, or an official number that equals an asset's own value where the registry differs.",
+      "refs": []
+    },
+    "L3319": {
+      "id": "L3319",
+      "title": "Proof of the live value for disputed properties without an official number: source search exhausted",
+      "status": "exhausted",
+      "statusNote": "Source search exhausted; working rule is the registry default (L3318).",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3319-registry-live-exhausted.json"
+      ],
+      "summary": "Dead end for source-only research. Registry history across three builds, imports in 31,501 files, row hashes and three sets of EA notes were searched; 7 disputed properties have an official number that follows the registry and 66 have none. No stored field or official statement can settle those; only an in-game reading can.",
+      "reopenWhen": "An in-game damage reading for a disputed property (anti-tank mine 195 or 300), or an official note stating one of the remaining values.",
+      "refs": []
+    },
+    "L3320": {
+      "id": "L3320",
+      "title": "M15 mine official damage follows the registry default; November 2025 recorded test predates the change",
+      "status": "finding",
+      "statusNote": "Official statement matched to stored values with a factor fixed on a sibling mine; joins by name; third-party video is pre-change; no current in-game control.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3320-mine-damage-evidence.json"
+      ],
+      "summary": "EA's 1.3.1.0 notes give the M15 mine 390 against tanks and the EOD Bot mine 300. The EOD Bot mine's only stored blast damage is 150, so tanks take twice a mine's blast damage; twice the M15's registry default 195 is 390, twice its own 300 is 600. A recorded test from 9 November 2025 reads 770 for the M15, 262 to 436 for the SLAM and 476 for the PTKM-1R, all from before that update. 3 raw-offset checks matched.",
+      "reopenWhen": "A current-build damage reading for the M15 mine against a tank, or an official note changing mine damage after 1.3.1.0.",
+      "refs": []
+    },
+    "L3321": {
+      "id": "L3321",
+      "title": "Mine damage against tanks equals stored blast damage times the material-grid value",
+      "status": "finding",
+      "statusNote": "Three official numbers reproduced; target material 119 carried from L3205; operation not proven; joins by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3321-mine-tank-material-grid.json"
+      ],
+      "summary": "The level material grid's Field_674633de for a mine explosion's material against target 119 is 2 for the M15 and EOD Bot mine and 3 for the PTKM-1R. Stored blast damage times that value gives EA's 1.3.1.0 numbers exactly: 300, 390 (from the registry default 195) and 480. Known cells for the RPG (2) and C4 (3.5) were reread as controls. 736 raw reads matched.",
+      "reopenWhen": "A current-build mine damage reading that differs from stored blast damage times the grid value, or an official number that breaks the pattern.",
+      "refs": []
+    },
+    "L3322": {
+      "id": "L3322",
+      "title": "Anti-air damage against aircraft: the material grid stores half of each multiplier",
+      "status": "finding",
+      "statusNote": "Ratio and three official numbers reproduced up to an untraced factor 2; target identities inferred; joins by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3322-anti-air-aircraft-material-grid.json"
+      ],
+      "summary": "For mobile anti-air ammunition the grid's Field_674633de reads 2 and 2.5 (high velocity) and 5 (armour piercing, general purpose) against six aircraft targets. EA's numbers are exactly twice registry StartDamage times these values, with the helicopter to jet ratio 4 to 5 reproduced. The remaining factor 2 is not traced. 629 raw reads matched.",
+      "reopenWhen": "A current-build single-hit damage reading on a helicopter or jet, or a stored field shown to carry the remaining factor 2.",
+      "refs": []
+    },
+    "L3323": {
+      "id": "L3323",
+      "title": "EA's vehicle damage figures follow registry damage times the material-grid value",
+      "status": "finding",
+      "statusNote": "24 official numbers reproduced; hit-quality factor and anti-air factor not traced; joins by name; one grid read.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3323-vehicle-damage-material-grid-rule.json"
+      ],
+      "summary": "For six direct-hit vehicle weapons, registry damage and the material grid reproduce all four EA 1.3.1.0 figures exactly (24 numbers): against tanks the product times 0.75 to 2, against aircraft direct damage times its grid value plus blast damage times its grid value. Three more weapons fit with earlier damage values. Mobile anti-air figures are twice the rule and stay unexplained. 1400 raw reads matched.",
+      "reopenWhen": "A current-build damage reading that differs from the rule, or stored evidence for the hit-quality factor or the anti-air factor 2.",
+      "refs": []
+    },
+    "L3324": {
+      "id": "L3324",
+      "title": "Disputed damage properties: the registry reproduces EA's newest figures, the asset holds older values",
+      "status": "finding",
+      "statusNote": "Official figures matched through the L3323 rule; joins by name; no in-game control.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3324-registry-vs-asset-damage-rule.json"
+      ],
+      "summary": "With the L3323 rule, registry defaults reproduce every EA damage figure for 16 weapons, including five changed in 1.3.3.0. 18 further disputed properties are settled for the registry (25 of 73 with L3317 and L3318); for tank APFSDS and the MBT guided shell the asset's own number gives the figure from before 1.3.3.0. 48 pairs remain without an official figure. 1074 raw reads matched.",
+      "reopenWhen": "A current-build damage reading or an official figure that equals an asset's own value where the registry differs.",
+      "refs": []
+    },
+    "L3325": {
+      "id": "L3325",
+      "title": "Stored carriers of the hit-quality factor and the anti-air factor 2: source search exhausted",
+      "status": "exhausted",
+      "statusNote": "Candidates recorded; mechanism cannot be read from saved data.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3325-vehicle-damage-factor-candidates.json"
+      ],
+      "summary": "Dead end for source-only research. Every projectile stores 0.75, every grid cell stores 2, and only the three mobile anti-air rounds store a flag of 1 where other rounds store 2. These equal the untraced factors of L3322 and L3323, but the first two never vary and the flag is unnamed, so stored data cannot show how the game uses them. 36 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading per hit direction, a build in which one of these values changes together with an official figure, or a name for Field_84b71f89.",
+      "refs": []
+    },
+    "L3326": {
+      "id": "L3326",
+      "title": "In-game reading: RPG on a tank's rear deals 500, the registry prediction",
+      "status": "finding",
+      "statusNote": "First in-game reading for a disputed property; user-reported, single, conditions not recorded.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3326-in-game-rpg-tank-rear.json"
+      ],
+      "summary": "The user reported 500 damage for an RPG hit on a tank's rear. The L3323 rule gives 500 from the registry Damage 125 and 540 from the asset's own 135, so the reading follows the registry. It is one user-reported reading without a recording; build, tank type, range and health were not recorded. 3 raw-offset checks matched.",
+      "reopenWhen": "A recorded repeat that differs from 500, or readings for the front and side.",
+      "refs": []
+    },
+    "L3327": {
+      "id": "L3327",
+      "title": "The damage rule extended to launchers, C-4 and jet bombs",
+      "status": "finding",
+      "statusNote": "26 official numbers reproduced; bomb names crossed; HEI-T low figure and SLAM not reproduced; joins by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3327-damage-rule-launchers-c4-bombs.json"
+      ],
+      "summary": "The L3323 rule reproduces all of EA's 1.3.1.0 figures (26 numbers) for the M136 AT, MBT-LAW, SLM-93A, IGLA, C-4 and both jet bombs; the bomb lines match with the names crossed. PB_Bomb_GBU39 BlastDamage follows the registry (26 of 73 disputed properties). The IFV HEI-T low figure (EA 10, rule 12) and the SLAM (EA 199 to 363, stored 143 to 214) do not fit. 13108 raw reads matched.",
+      "reopenWhen": "An in-game reading for a jet bomb, C-4, the HEI-T round or the SLAM, or a stored link that names which jet carries which bomb file.",
+      "refs": []
+    },
+    "L3328": {
+      "id": "L3328",
+      "title": "Target materials of all vehicles, and grid values against light vehicles",
+      "status": "finding",
+      "statusNote": "Stored materials read for every saved vehicle; rule against non-tank materials unverified; target 313 unread.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3328-vehicle-target-materials.json"
+      ],
+      "summary": "All 37 saved vehicle damage-zone files store a target material: 119 for tanks, IFVs, AAV7A1, Gepard, JLTV, Marauder and the CROWS turret; 121 helicopters; 120 jets; 122, 187 and 123 for light vehicles; 313 for the CB90. Grid values for 33 weapon files were read against each. 13192 raw reads matched.",
+      "reopenWhen": "An in-game reading against an IFV or a light vehicle, or a readable cell for target 313.",
+      "refs": []
+    },
+    "L3329": {
+      "id": "L3329",
+      "title": "Explosive damage to soldiers from the material grid and the flak multipliers",
+      "status": "finding",
+      "statusNote": "Prediction from stored values; one EA statement fits, one does not; no in-game reading.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3329-explosive-soldier-damage.json"
+      ],
+      "summary": "For 26 explosions the grid stores a damage value against the soldier abdomen material only (1 for shells, rockets, C-4 and mines; 0.85 for top-attack warheads; 0.8 for bombs; 0.6 for anti-air missiles; 0.4 for the SLAM body). Blast damage times that value, times the L3315 flak multipliers, is tabulated as a prediction. EA's guided-shell lethal distance of 2 m is reproduced; the HEAT-MP-T lethal radius is not. 13170 raw reads matched.",
+      "reopenWhen": "An in-game blast damage reading on a soldier with and without flak.",
+      "refs": []
+    },
+    "L3330": {
+      "id": "L3330",
+      "title": "Hits to destroy each vehicle, by the damage rule and stored health",
+      "status": "finding",
+      "statusNote": "Arithmetic on stored values under listed assumptions; not measured; not site data.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3330-vehicle-hits-to-kill.json"
+      ],
+      "summary": "A research dataset of 928 rows gives damage per hit and hits to destroy for 32 weapons against 29 vehicles, from the L3323 rule, the vehicles' target materials and their stored root health. Counts for material 119 are given for turret, body, side and rear. The Abrams and Leopard store 1200 health against the 1000 that official figures imply. 13433 raw reads matched.",
+      "reopenWhen": "A counted in-game kill that differs from the table, or evidence for effective vehicle health.",
+      "refs": []
+    },
+    "L3331": {
+      "id": "L3331",
+      "title": "Which jet carries which bomb: stored links agree with the file names, EA's two bomb lines are crossed",
+      "status": "finding",
+      "statusNote": "Link by stored GUID imports; EA figures crossed; no in-game reading.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3331-jet-bomb-identity.json"
+      ],
+      "summary": "Stored imports link the attack jets (F-61V, F-39E) to the Mk82 bomb file and the fighter jets (F-97 Kestrel, Su-57) to the GBU-39 file, so the file names are correct and EA's 1.3.1.0 bomb lines are crossed relative to stored values: the attack jet's Mk82 gives 410 to 535 / 1455 and the fighter's GBU-39 300 to 400 / 1080. 12 raw-offset checks matched.",
+      "reopenWhen": "An in-game bomb damage reading from either jet class.",
+      "refs": []
+    },
+    "L3332": {
+      "id": "L3332",
+      "title": "Blast radius fields of the explosion object, and radii for launchers, C-4 and mines without a registry row",
+      "status": "finding",
+      "statusNote": "Field names by value agreement (19 owners); radii unconfirmed in game.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3332-explosion-radius-fields.json"
+      ],
+      "summary": "Three fields of the explosion object are named by value agreement with registry rows across 19 owners: Field_33f3a8ab blast radius, Field_95e340fe inner blast radius, Field_524836d3 shockwave radius; every exception is an already-recorded disputed pair. This gives stored radii for the M136 AT (5 / 2 m), MBT-LAW (4 / 1), SLM-93A and IGLA (5 / 1), C-4 (3 / 1), the SLAM body, the EOD Bot mine, the PTKM-1R and the IFV MPLD round, which have no registry row. 141 raw-offset checks matched.",
+      "reopenWhen": "An in-game radius reading for a launcher or C-4, or a stored name link for the three fields.",
+      "refs": []
+    },
+    "L3333": {
+      "id": "L3333",
+      "title": "C-4: the registry row PB_C4 belongs to no file in the game catalog; the C-4 weapon imports PNS_C4",
+      "status": "finding",
+      "statusNote": "Settled from the catalog and stored imports; no in-game reading.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3333-c4-registry-row-orphan.json"
+      ],
+      "summary": "The game catalog has no file named PB_C4; the C-4 weapon WB_C4 imports the projectile PNS_C4, which imports no registry row. The registry rows under PB_C4 (BlastDamage 180) are bound to nothing saved, so the asset's own 100 stands, giving EA's 350 against tanks. 7 raw-offset checks matched.",
+      "reopenWhen": "An in-game C-4 reading on a tank other than 350.",
+      "refs": []
+    },
+    "L3334": {
+      "id": "L3334",
+      "title": "EA states tank health 1200 and armoured transport health 800: the stored root health and the shared target material are official",
+      "status": "finding",
+      "statusNote": "Two official numbers equal stored health; angle steps on non-tanks still unverified.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3334-armoured-vehicle-health-official.json"
+      ],
+      "summary": "EA's 1.3.1.0 notes state that tank health is 1200 and armoured transport health 800, and that weapons no longer deal different damage to IFVs, tanks, armoured transports and anti-air vehicles. Both numbers equal the stored root health (Abrams, Leopard 1200; JLTV, Marauder 800), and the shared damage matches the shared target material 119 of L3328. The hits-to-kill dataset of L3330 is right to use 1200 for tanks. 65 raw-offset checks matched.",
+      "reopenWhen": "A counted kill on a tank or IFV that disagrees with 1200 or 1000.",
+      "refs": []
+    },
+    "L3335": {
+      "id": "L3335",
+      "title": "EA's reload, rate of fire, magazine, speed and falloff figures for vehicle weapons against registry rows",
+      "status": "finding",
+      "statusNote": "Official numbers equal registry defaults for most rows; machine gun velocity differs; joins by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3335-official-non-damage-figures.json"
+      ],
+      "summary": "22 registry rows equal the non-damage numbers EA states for vehicle weapons and launchers (IFV reload 2.75 s, rates of fire, magazine sizes, AP shell velocity 445, coaxial machine gun minimum damage and falloff distances, grenade launcher reload, TOW and Glaive speeds, anti-air heat per bullet 3.6 percent, CB90 regeneration). The coaxial machine gun velocity rows (737, 890) do not equal EA's 670 and 760. 26 raw-offset checks matched.",
+      "reopenWhen": "A timed in-game reading for one of these rows, or a stored second source for machine gun velocity.",
+      "refs": []
+    },
+    "L3336": {
+      "id": "L3336",
+      "title": "Dead end: the CB90's target material has no grid value, and no stored number gives EA's low HEI-T figure of 10",
+      "status": "exhausted",
+      "statusNote": "Stored data exhausted for both items.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3336-cb90-cell-and-heit-low-dead-end.json"
+      ],
+      "summary": "The CB90's target material 313 has an empty cell in the material grid for both sources scanned, like every material from 312 to 325, so stored data gives no damage figure for the boat. For HEI-T rounds the registry holds 50 at close range and 40 beyond 120 m; the rule gives 12 or 9 on a tank turret, not EA's 10. 8685 raw-offset checks matched.",
+      "reopenWhen": "A stored default for empty grid cells is found, or an in-game reading for either item.",
+      "refs": []
+    },
+    "L3337": {
+      "id": "L3337",
+      "title": "MinimumBlastDamage is EA's 'minimum explosive damage of 20%': five land vehicle weapons store exactly one fifth of BlastDamage",
+      "status": "finding",
+      "statusNote": "Five owners store exactly 20%; falloff shape between radii not stored; names joined by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3337-minimum-blast-damage-share.json"
+      ],
+      "summary": "EA's 'minimum explosive damage of 20%' for land vehicle weapons is the registry row MinimumBlastDamage: tank HE and MPAT shells, IFV light rockets and both TOW missiles store 20 with BlastDamage 100. Anti-air secondary missiles store 20 of 75, the IFV HE round 15 of 50, and aircraft bombs, missiles and mortars 0. HEMP-T inner radius 2.25 and HEAT-MP-T total radius 5 equal EA's figures; HEAT-MP-T inner radius is 1.0 against EA's lethal radius 1.25. 120 raw-offset checks matched.",
+      "reopenWhen": "An in-game edge-of-blast reading, or a stored falloff curve between the two radii.",
+      "refs": []
+    },
+    "L3338": {
+      "id": "L3338",
+      "title": "Vehicle machine guns: stored damage against soldiers and vehicles, and the tank coaxial bullet files still hold EA's pre-1.3.1.0 minimum damage",
+      "status": "finding",
+      "statusNote": "Stored values and imports read; which minimum damage the coaxial guns use in game is open.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3338-vehicle-machine-gun-damage.json"
+      ],
+      "summary": "Seven vehicle machine-gun bullet files were read. All deal nothing to target material 119 (tanks, IFVs, transports, anti-air), 1.34 times damage to the head and stored damage to the body. The tank coaxial weapons import their own bullet files, which still hold EA's pre-1.3.1.0 minimum damage (HMG 30, LMG 21); the remote weapon station files hold the new 24 and 19. 5633 raw-offset checks matched.",
+      "reopenWhen": "A counted soldier kill with a tank coaxial gun at range.",
+      "refs": []
+    },
+    "L3339": {
+      "id": "L3339",
+      "title": "The damage rule reproduces EA's figures for the tank Aim-Guided Shell in two updates and for the MAS 148 Glaive",
+      "status": "finding",
+      "statusNote": "Ten official numbers reproduced; names joined by name only.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3339-guided-shell-and-glaive-rule.json"
+      ],
+      "summary": "The rule reproduces EA's figures for the tank Aim-Guided Shell in both updates (own Damage 125 gives 1.3.1.0's 235 to 625 and 700; registry 130 gives 1.3.3.0's 244 to 650 and 720) and for the MAS 148 Glaive (registry BlastDamage 155 gives 465, 1007.5 and 1000). The Glaive's direct-hit material has grid value 0, so its vehicle damage is blast only. 834 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading for either item that differs.",
+      "refs": []
+    },
+    "L3340": {
+      "id": "L3340",
+      "title": "Stored blast falloff curves: six curve files give the shape of blast damage with distance for the frag grenade, C-4, the Glaive and vehicle shells",
+      "status": "finding",
+      "statusNote": "Curve points and users read; axes named by three value agreements; point modes not interpreted.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3340-blast-falloff-curves.json"
+      ],
+      "summary": "Six stored curve files give blast damage as a fraction of full damage against distance as a fraction of the blast radius. 18 explosion objects import one through Field_0839b22b: the frag grenade, C-4, the Glaive, and the vehicle shells and missiles EA gave a 20 percent minimum (their curves end at 0.2). The 25 percent vehicle curve times the 5 m radius gives EA's HEAT-MP-T lethal radius of 1.25 m. Launcher rockets, mines, bombs and 40 mm grenades have no curve. 106 raw-offset checks matched.",
+      "reopenWhen": "An in-game blast reading at a measured distance, or a decoded meaning for the point modes and tangents.",
+      "refs": []
+    },
+    "L3341": {
+      "id": "L3341",
+      "title": "The stored source of EA's 75 / 100 / 150 / 200 percent hit steps: the SimplifiedTank angle curves, selected by both tanks, both IFVs and the Gepard",
+      "status": "finding",
+      "statusNote": "Stored steps equal EA's four; users found by byte search of 31,503 saved files; face-set selection not decoded.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3341-simplified-tank-angle-steps.json"
+      ],
+      "summary": "The four hit steps of the vehicle damage rule are stored in six SimplifiedTank angle curves: turret 0.75, top 1.0, sides 1.5 between 70 and 110 degrees, rear 2.0 between 55 and 125 degrees (1.0 outside those windows), bottom 2.0. One schematic, PF_Vehicle_GameplayDamageZones_Tank, assigns them to faces, and the damage-zone files of the Abrams, Leopard, Bradley, CV90 and Gepard reference it. The JLTV and Marauder use a flat 1.0 curve. 86 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading at a measured angle, or a decoded selector for the body's two face sets.",
+      "refs": []
+    },
+    "L3342": {
+      "id": "L3342",
+      "title": "Hand grenades, 40 mm grenades and the mortar shell: stored blast damage against soldiers and vehicles",
+      "status": "finding",
+      "statusNote": "Stored values and grid values read; no official figure or in-game reading; names joined by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3342-grenade-and-mortar-damage.json"
+      ],
+      "summary": "Stored blast damage at full strength: frag grenade 100 to soldiers, aircraft and light vehicles and 0 to armour; 40 mm HE 120 to soldiers and 6 to armour; thermobaric 50 (registry) and 2.5; anti-tank grenade 42.5 to soldiers, 150 to armour, 325 to helicopters and 350 to light vehicles; mortar HE blast 60 with a direct hit worth 100 x 1 on armour. None has an EA figure to compare. 4346 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading for any of these items.",
+      "refs": []
+    },
+    "L3343": {
+      "id": "L3343",
+      "title": "Launcher missile speed, lock time and lock range against EA's 1.3.1.0 figures; the IGLA and SLM-93A missile files still hold the older speeds",
+      "status": "finding",
+      "statusNote": "Six EA figures equal stored values; IGLA and SLM-93A speeds do not; names joined by name only.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3343-launcher-speed-and-lock-values.json"
+      ],
+      "summary": "Missile max speed is Field_1a2b6380 and EA's 'acceleration' is EngineStrength (Field_0f6601e1). The MBT-LAW (300, 100), Glaive (registry 70) and TOW (registry 120 and 90) equal EA's 1.3.1.0 figures; the IGLA file still stores 640 and 65 and no SLM-93A file stores EA's 480. Lock times 1.0 (IGLA) and 1.4 (Glaive), the SLM-93A base lock range 550 and the active protection activation time 0.55 equal EA's figures. Designated lock range is 1.2 times base for IGLA and Glaive but 1.25 times for the SLM-93A. 55 raw-offset checks matched.",
+      "reopenWhen": "A timed missile flight or lock in game, or a stored row holding 480 for the IGLA or SLM-93A.",
+      "refs": []
+    },
+    "L3344": {
+      "id": "L3344",
+      "title": "EA's helicopter rocket radii, Aim-Guided Shell timers and smoke screen cooldown against registry rows",
+      "status": "finding",
+      "statusNote": "Six official numbers equal registry defaults; one differs; joins by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3344-rocket-radius-guided-shell-smoke-rows.json"
+      ],
+      "summary": "Six of seven registry rows equal EA's 1.3.1.0 numbers: helicopter rocket blast radius 4.75 m (Hydra70, APKWS-II) and 5.25 m (Zuni), Aim-Guided Shell time to live 4 s and engine time 1 s, smoke screen cooldown 16 s. The shell's MaxTurnAngle row holds 7.5 against EA's turning rate of 6. 10 raw-offset checks matched.",
+      "reopenWhen": "A later EA note on the shell's turning rate, or a stored property holding 6.",
+      "refs": []
+    },
+    "L3345": {
+      "id": "L3345",
+      "title": "Per-part damage multipliers are 1.0 in every saved damage-zone file except the MQ-9; aircraft and light vehicles store no weak-spot multiplier",
+      "status": "finding",
+      "statusNote": "Values read; field meanings not decoded.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3345-damage-zone-multipliers-flat.json"
+      ],
+      "summary": "In all 38 saved damage-zone files the five multiplier-like fields of every zone object are 1.0, except two zones of the MQ-9 (3.0 and 2.0). Helicopters, jets and light vehicles store no per-part damage multiplier there. The unnamed Field_64b3e9cd varies (mostly 0.7) and remains unnamed. 1272 raw-offset checks matched.",
+      "reopenWhen": "A captured aircraft damage schematic, or an in-game reading that differs between two parts of one aircraft.",
+      "refs": []
+    },
+    "L3346": {
+      "id": "L3346",
+      "title": "Vehicle health regeneration: delay and rate are stored on every vehicle root and equal EA's 12 seconds and 10 percent per second",
+      "status": "finding",
+      "statusNote": "Stored values equal EA's two numbers for seven armoured vehicles; critical slowdown not found.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3346-vehicle-regeneration-values.json"
+      ],
+      "summary": "Vehicle regeneration is stored on the vehicle root: Field_5c9d2d82 is the delay and Field_3233bcbf the rate in health per second, named by the CB90's registry rows. Tanks, IFVs, the Gepard and the armoured transports store 12 s and 10 percent of health per second, EA's 1.3.1.0 values; the AAV7A1 still stores the old 6 s and 5 percent; helicopters and jets store 17.5 s and 10 percent. 117 raw-offset checks matched.",
+      "reopenWhen": "A timed regeneration in game, or a stored critical-health slowdown value.",
+      "refs": []
+    },
+    "L3347": {
+      "id": "L3347",
+      "title": "Vehicle disabled (critical health) thresholds are stored on the vehicle root: two fields named by the CB90's registry rows",
+      "status": "finding",
+      "statusNote": "Fields named as a pair by registry agreement; order within the pair inferred.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3347-vehicle-disabled-thresholds.json"
+      ],
+      "summary": "Two fields on the vehicle root, Field_1a7c18f1 and Field_6497ebc7, are the disabled-state thresholds, named by the CB90 whose registry rows DisabledDamageThreshold and ClearDisabledDamageThreshold hold the same 400. Tanks store 200 and 400, armoured transports and attack helicopters 200 and 300, the UH60 250 and 500. Which of the two is the entry threshold is not stored. 114 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading of the health at which the critical state starts and ends.",
+      "refs": []
+    },
+    "L3348": {
+      "id": "L3348",
+      "title": "Registry rows give one critical-health threshold per vehicle: 400 for tanks, 500 for the UH60, 300 for the rest",
+      "status": "finding",
+      "statusNote": "Registry rows read for all vehicles; registry-versus-own choice for the lower field unverified in game.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3348-vehicle-disabled-threshold-registry-rows.json"
+      ],
+      "summary": "23 vehicles have registry rows DisabledDamageThreshold and ClearDisabledDamageThreshold, always equal to each other and to the own Field_6497ebc7: 400 for the two tanks and the CB90, 500 for the UH60, 300 for all others. The own Field_1a7c18f1 holds a lower number on 19 of them. With registry defaults in use a tank is critical below 400 health, which replaces the 200-and-400 reading offered in L3347. 135 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading of the health at which a vehicle's critical state starts.",
+      "refs": []
+    },
+    "L3349": {
+      "id": "L3349",
+      "title": "Vehicle passive rows in the registry: jammer lock multiplier 0.6 and reactivation 10 s equal EA's figures; full list of non-default passive values",
+      "status": "finding",
+      "statusNote": "Four EA figures equal registry defaults; application of the multiplier not stored; joins by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3349-vehicle-passive-registry-rows.json"
+      ],
+      "summary": "The registry holds 66 vehicle passive rows. The IFV targeting jammer's lock multiplier 0.6 (40 percent resistance) and the 10 s reactivation time for IFV and anti-air equal EA's 1.3.1.0 figures, and 'Mine Sweep Radius' holds EA's 30 m. Aircraft anti-radar passives hold 0.7. The replaced Regeneration passive's rows are still present. All non-default values are listed. 61 raw-offset checks matched.",
+      "reopenWhen": "A timed lock against a jammer-equipped vehicle.",
+      "refs": []
+    },
+    "L3350": {
+      "id": "L3350",
+      "title": "Soldier registry: 163 global rows not yet recorded, with their defaults",
+      "status": "finding",
+      "statusNote": "Registry defaults recorded by name; use in game not established.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3350-soldier-registry-global-rows.json"
+      ],
+      "summary": "163 global rows of the Soldier registry had not been recorded in the docs. They are now in a dataset with default, minimum and maximum; the topic page lists the 51 matching the pattern used for highlights. Registry defaults only, no claim of use. 152 raw-offset checks matched.",
+      "reopenWhen": "A consumer trace or in-game reading for any listed row.",
+      "refs": []
+    },
+    "L3351": {
+      "id": "L3351",
+      "title": "Vehicle registry: 62 global rows not yet recorded, with their defaults",
+      "status": "finding",
+      "statusNote": "Registry defaults recorded by name; use in game not established.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3351-vehicle-registry-global-rows.json"
+      ],
+      "summary": "62 global rows of the Vehicle registry had not been recorded in the docs. They are now in a dataset with default, minimum and maximum; the topic page lists the 31 matching the pattern used for highlights. Registry defaults only, no claim of use. 62 raw-offset checks matched.",
+      "reopenWhen": "A consumer trace or in-game reading for any listed row.",
+      "refs": []
+    },
+    "L3352": {
+      "id": "L3352",
+      "title": "Gadget registry: 187 global rows not yet recorded, with their defaults",
+      "status": "finding",
+      "statusNote": "Registry defaults recorded by name; use in game not established.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3352-gadget-registry-global-rows.json"
+      ],
+      "summary": "187 global rows of the Gadget registry had not been recorded in the docs. They are now in a dataset with default, minimum and maximum; the topic page lists the 52 matching the pattern used for highlights. Registry defaults only, no claim of use. 187 raw-offset checks matched.",
+      "reopenWhen": "A consumer trace or in-game reading for any listed row.",
+      "refs": []
+    },
+    "L3353": {
+      "id": "L3353",
+      "title": "Repair Tool and EOD Bot repair and anti-repair rows, and what they would mean against stored vehicle health",
+      "status": "finding",
+      "statusNote": "Registry defaults recorded; unit unverified.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3353-repair-rate-rows.json"
+      ],
+      "summary": "The registry holds repair 40 and anti-repair 30 per second for both the Repair Tool and the EOD Bot, and 60 / 45 (tool) and 75 / 45 (bot) in an 'ActiveRepair' state; battle royale rows are lower. Read as health per second a tank would take 30 s to repair from empty, slower than its own stored regeneration of 120 per second, so the unit stays unverified. 23 raw-offset checks matched.",
+      "reopenWhen": "A timed repair in game.",
+      "refs": []
+    },
+    "L3354": {
+      "id": "L3354",
+      "title": "Vehicle ability active and recharge times: registry rows for 20 abilities, with the own fields named and the disputed pairs listed",
+      "status": "finding",
+      "statusNote": "Registry defaults and own values read; which applies for disputed abilities unverified.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3354-vehicle-ability-times.json"
+      ],
+      "summary": "The registry holds active and recharge times for 20 vehicle abilities: flares 1.8 s active and 15 s recharge on every aircraft, emergency repair 0.4 s and 24 s, smoke screen 8.1 s and 16 s, thermal smoke 10 s and 16 s, tank active protection 5 s and 32 s. The own fields are Field_143f8e7a (ActiveTime) and Field_bcfe8c70 (RechargeTime); 8 abilities store an own value that differs from the registry. Thermal smoke damage to infantry is stored as 25 initial and 12 per second. 119 raw-offset checks matched.",
+      "reopenWhen": "A timed ability window or cooldown in game.",
+      "refs": []
+    },
+    "L3355": {
+      "id": "L3355",
+      "title": "EA's smoke changes equal registry minus own: for vehicle abilities too the registry default is the current value and the own value the previous one",
+      "status": "finding",
+      "statusNote": "Two official changes equal registry minus own; extension to other abilities inferred.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3355-ability-registry-over-own-confirmed.json"
+      ],
+      "summary": "Two EA statements settle the registry-or-own question for vehicle abilities: the smoke screen's own recharge time is 20 and its registry default 16 (EA: 20 to 16), and thermal smoke's own active time is 7 and its registry default 10 (EA: plus 3 seconds). The registry default is the current value. 6 raw-offset checks matched.",
+      "reopenWhen": "A timed ability in game that matches the own value instead.",
+      "refs": []
+    },
+    "L3356": {
+      "id": "L3356",
+      "title": "Registry default against own value where EA states the old and new number: the registry holds EA's new value in 8 of 8 cases",
+      "status": "finding",
+      "statusNote": "Eight of eight cases favour the registry default; all by EA statement, none by in-game reading.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3356-registry-vs-own-against-ea-changes.json"
+      ],
+      "summary": "In 8 of 8 non-damage cases where EA states a change and the registry default differs from the asset's own value, the registry default is EA's new number. The own value is EA's old number in only 4; in the rest it is an unrelated older figure. Use the registry default wherever a row exists. 16 raw-offset checks matched.",
+      "reopenWhen": "A case where the own value equals EA's new number while a differing registry row exists.",
+      "refs": []
+    },
+    "L3357": {
+      "id": "L3357",
+      "title": "Vehicle cannons, canister rounds and the grenade launcher station: stored damage per hit against soldiers and vehicles",
+      "status": "finding",
+      "statusNote": "Stored values and grid values read; no official figure; pellet counts not read.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3357-vehicle-cannon-damage.json"
+      ],
+      "summary": "Stored damage per hit for seven more vehicle guns: tank canister pellets 50 falling to 30 and IFV canister pellets 15 to 5, both zero against armour; grenade launcher station 32 plus 70 blast; helicopter gunner chaingun 22 by registry (own 50) plus 30 blast; jet cannon 34 with 1.5 times against soldiers; stationary anti-air 30 to 22; 20 mm rotary cannon 10. Values against each vehicle class are in the table. 5625 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading or an EA figure for any of these weapons.",
+      "refs": []
+    },
+    "L3358": {
+      "id": "L3358",
+      "title": "EA's Battle Royale vehicle lines against stored values: tank autospot radius 300 and the UH-79 multiplayer health 1500 match; the Battle Royale overrides have no row",
+      "status": "finding",
+      "statusNote": "Two matches; Battle Royale overrides not stored in the registry.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3358-ea-battle-royale-vehicle-lines.json"
+      ],
+      "summary": "Of six Battle Royale vehicle lines in EA's 1.3.1.0 notes, two meet stored values: the tank autospot radius row holds 300, and the UH-79's stored health 1500 is the figure EA calls its multiplayer health. The Battle Royale overrides (health 1250, minigun flat 20, dispersion 2.4, recon drone cooldown 240) have no registry row. 6 raw-offset checks matched.",
+      "reopenWhen": "A saved Battle Royale mode file with vehicle overrides.",
+      "refs": []
+    },
+    "L3359": {
+      "id": "L3359",
+      "title": "EA's four bolt-action sweet spot ranges are the 100-value stretch of the stored bullet damage curves, own and registry alike",
+      "status": "finding",
+      "statusNote": "Four of four EA ranges equal the stored curves; rifle-to-bullet join by name.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3359-bolt-action-sweet-spot-ranges.json"
+      ],
+      "summary": "EA's 1.3.3.0 sweet spot ranges are stored in the bullet damage curves: the curve of each of the four bullets holds its top value 100 over exactly EA's new range (L115 100-133 m, M2010 ESR 75-100 m, PSR 90-120 m, SV-98 54-75 m), with 80 before it and a fall to 62 after. Own curves, registry defaults and Match ammunition files agree. 68 raw-offset checks matched.",
+      "reopenWhen": "An in-game body-shot damage reading inside and outside a sweet spot.",
+      "refs": []
+    },
+    "L3360": {
+      "id": "L3360",
+      "title": "EA's 1.3.3.0 muzzle velocity table against stored values: 49 of 50 registry defaults equal EA's new figure; the L115 stores 742 against EA's 664",
+      "status": "finding",
+      "statusNote": "49 of 50 exact; L115 explained only by arithmetic.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3360-ea-muzzle-velocity-table.json"
+      ],
+      "summary": "EA's 1.3.3.0 notes list 50 muzzle velocities. The registry default equals EA's new figure for 49 of them. The exception is the L115: stored 742 m/s against EA's 664, and 742 x 0.8^0.5 = 663.7, which suggests EA quotes the L115 with a default barrel penalty. Own values: 50 read, 49 equal EA's new figure, 0 the old one. 100 raw-offset checks matched.",
+      "reopenWhen": "The L115 default barrel's velocity tier is read, or a new EA velocity table.",
+      "refs": []
+    },
+    "L3361": {
+      "id": "L3361",
+      "title": "No stored barrel package turns the L115's 742 m/s into EA's 664: the only velocity factors are 0.8, 0.64, 0.512 and 1.25",
+      "status": "finding",
+      "statusNote": "Hypothesis from L3360 rejected by stored data; difference unexplained.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3361-l115-velocity-barrel-check.json"
+      ],
+      "summary": "The L115's stored muzzle velocity is 742 m/s and its four barrel packages give 742, 742, 593.6 and 927.5; the only stored velocity factors are 0.8, 0.64, 0.512 and 1.25. Nothing stored produces EA's 664, so the default-barrel explanation suggested in L3360 is withdrawn and the difference stays open for an in-game reading. 7 raw-offset checks matched.",
+      "reopenWhen": "An in-game L115 velocity reading or a corrected EA figure.",
+      "refs": []
+    },
+    "L3362": {
+      "id": "L3362",
+      "title": "EA's 1.3.3.0 body-part multipliers are the stored grid arrays: 0.84, 0.91 and 0.67 for stomach and limbs, 1.4 / 1.57 / 1.8 for automatic headshots; the scalar grid value holds the old numbers",
+      "status": "finding",
+      "statusNote": "Arrays equal EA's new values for 18 of 19 materials; the 19th is the Interdictor's.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3362-ea-body-part-multipliers.json"
+      ],
+      "summary": "EA's 1.3.3.0 multipliers are stored in the material grid's per-cell arrays: stomach and limbs 0.84 for automatic-weapon bullets, 0.91 for DMR bullets, 0.67 for bolt-action bullets and 1.0 for sidearms and shotguns, with a head table holding 1.4, 1.57 and 1.8 beside the old 1.34, 1.5 and 1.75. The scalar value in the same cells still holds the old numbers, so soldier figures taken from the scalar in earlier leads need rechecking. 115 raw-offset checks matched.",
+      "reopenWhen": "The armor plate target material is identified, or an in-game limb damage reading.",
+      "refs": []
+    },
+    "L3363": {
+      "id": "L3363",
+      "title": "Recheck of earlier soldier damage figures under the array rule: explosives are unchanged, but vehicle machine gun and tank canister bullets take 0.84 on stomach and limbs",
+      "status": "finding",
+      "statusNote": "Earlier soldier figures rechecked; one correction (0.84 on stomach and limbs for three bullet materials).",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3363-soldier-figures-array-recheck.json"
+      ],
+      "summary": "Under the array rule of L3362, the explosive, cannon and grenade figures against soldiers recorded in L3329, L3342 and L3357 are unchanged: their materials have no array. Vehicle machine gun, tank canister and minigun bullets (materials 288, 289, 621) take 0.84 on stomach and limbs, so the body figures in L3338 and L3357 are chest values. 50 raw-offset checks matched.",
+      "reopenWhen": "The head-table index of a vehicle weapon is read or measured.",
+      "refs": []
+    },
+    "L3364": {
+      "id": "L3364",
+      "title": "Small-arms bullets against vehicles: grid values per vehicle class, two keyed records against helicopters, and the material the Improved Armor passive names",
+      "status": "finding",
+      "statusNote": "Values recorded; selection between the two helicopter records unread.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3364-small-arms-vs-vehicles.json"
+      ],
+      "summary": "Infantry bullets store 0 against armoured vehicles, 0.3 to 0.8 against jets and two keyed values against helicopters (0.16 / 0.56 for pistol calibres up to 0.6 / 1.0 for machine guns). The Improved Armor passive's affector names material 508, against which infantry bullets store 0.5 and vehicle machine guns 1.0. Which helicopter record applies and how the passive combines is left for an in-game reading. 116 raw-offset checks matched.",
+      "reopenWhen": "An in-game damage reading of small arms on a helicopter with and without Improved Armor.",
+      "refs": []
+    },
+    "L3365": {
+      "id": "L3365",
+      "title": "EA's 1.3.3.0 drag change in stored values: multiplayer bullets hold 0.0035 (1.4 x 0.0025), Match bullets 0.002, and the single-player bullets still hold 0.0025",
+      "status": "finding",
+      "statusNote": "Current values read; previous values inferred from EA's percentages and the single-player files.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3365-ea-bullet-drag-change.json"
+      ],
+      "summary": "The stored drag values fit EA's 1.3.3.0 change: multiplayer standard bullets hold 0.0035, which is 1.4 times the 0.0025 still held by the single-player bullet files, and Match bullets hold 0.002, twice an inferred 0.001. Own values and registry defaults agree. 172 raw-offset checks matched.",
+      "reopenWhen": "An older build's bullet files, to confirm 0.0025 and 0.001.",
+      "refs": []
+    },
+    "L3366": {
+      "id": "L3366",
+      "title": "Claymore: a named value of 50 in the projectile's property list equals EA's fragmentation close-range damage; its neighbours 30 and 15 are unnamed",
+      "status": "finding",
+      "statusNote": "Value 50 found and matches EA; meaning by correspondence only.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3366-claymore-fragment-damage-50.json"
+      ],
+      "summary": "The Claymore's projectile file holds three named values, 30, 50 and 15, in a property list separate from its blast object (BlastDamage 1). The 50 equals EA's 1.3.1.0 fragmentation close-range damage; the names are hashes and the other two values are unread. 3 raw-offset checks matched.",
+      "reopenWhen": "The property names are resolved or an in-game Claymore damage reading.",
+      "refs": []
+    },
+    "L3367": {
+      "id": "L3367",
+      "title": "Correction to L3366: the 30 / 50 / 15 values are shared by the AT mine, SLAM, EOD Bot mines, jammer and proximity grenade, so the Claymore's 50 is not its damage; the Claymore damage figure is not found",
+      "status": "exhausted",
+      "statusNote": "Dead end: Claymore fragmentation damage not found in the blast object, registry or property list.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3367-claymore-50-shared-default.json"
+      ],
+      "summary": "The 30 / 50 / 15 values that L3366 read in the Claymore file are also in the AT mine, the M4 SLAM, the EOD Bot mines, the mobile jammer and the proximity grenade, so they are a shared setting and not Claymore damage. L3366's match with EA's figure is withdrawn and the Claymore's damage remains unlocated. 4 raw-offset checks matched.",
+      "reopenWhen": "The property names are resolved, or a Claymore damage reading in game.",
+      "refs": []
+    },
+    "L3368": {
+      "id": "L3368",
+      "title": "The second (key 2) grid record exists only against the helicopter material: 31 bullet materials, each 0.4 above the key 0 value except one",
+      "status": "finding",
+      "statusNote": "Scope of keyed records established; selector still a candidate.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3368-keyed-records-helicopters-only.json"
+      ],
+      "summary": "A scan of 12,838 grid cells finds the second, key 2 record only against the helicopter target material. 31 bullet materials have it, and it is 0.4 higher than the key 0 value in all but one. So the switch between the two values is helicopter-specific; the Improved Armor passive is the candidate. 84 raw-offset checks matched.",
+      "reopenWhen": "An in-game small-arms damage reading on a helicopter with and without Improved Armor.",
+      "refs": []
+    },
+    "L3369": {
+      "id": "L3369",
+      "title": "Vehicle machine guns use head-table index 11: a headshot is 1.4 times, not the 1.34 recorded from the scalar in L3338",
+      "status": "finding",
+      "statusNote": "Registry index read for nine vehicle weapons; own value not read.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3369-vehicle-weapon-head-index.json"
+      ],
+      "summary": "Nine vehicle weapon rows hold DamageProtectionMultiplierIndex 11, the index of 1.4 in the head table. Vehicle machine gun and minigun headshots therefore multiply by 1.4 (coax LMG 49 close, HMG 70), replacing the 1.34 that L3338 took from the cell scalar. 13 raw-offset checks matched.",
+      "reopenWhen": "An in-game vehicle machine gun headshot reading.",
+      "refs": []
+    },
+    "L3370": {
+      "id": "L3370",
+      "title": "The soldier file names two further hit materials, 579 and 587: 579 holds EA's 'chest against armor' values 0.84 / 0.91 / 0.67, 587 is a head table with 2.25 for bolt-action bullets",
+      "status": "finding",
+      "statusNote": "Material 579 holds EA's against-armor values and is named only by the soldier file; what selects it is unread.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3370-soldier-armor-materials-579-587.json"
+      ],
+      "summary": "The soldier file names two hit materials beyond head, chest, abdomen and limb. Material 579 holds 0.84 for automatic bullets, 0.91 for DMR bullets and 0.67 for bolt-action bullets, the values of EA's 1.3.3.0 'chest against armor' lines, and no other target material does. Material 587 is a head table that differs only for bolt-action bullets (2.25). The link to armor is a correspondence. 64 raw-offset checks matched.",
+      "reopenWhen": "An in-game chest or head damage reading on an armored soldier, or the naming fields are resolved.",
+      "refs": []
+    },
+    "L3371": {
+      "id": "L3371",
+      "title": "Vehicle machine gun muzzle velocity: for the heavy machine guns the own value 760 is EA's new figure and the registry default 890 is EA's old one, an exception to the registry-first rule of L3356",
+      "status": "finding",
+      "statusNote": "Own and registry values read for ten files; neither source is shown to be the one in use.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3371-vehicle-mg-velocity-own-vs-registry.json"
+      ],
+      "summary": "For the vehicle heavy machine guns the file's own muzzle velocity is 760, EA's 1.3.1.0 figure, while the registry default is still 890, EA's old figure: the reverse of the registry-first rule of L3356. The light machine guns hold 600 (own) and 737 (registry) against EA's 670. Which applies in a match needs a timing test. 19 raw-offset checks matched.",
+      "reopenWhen": "An in-game bullet flight time for a coaxial machine gun, or a later EA note on these velocities.",
+      "refs": []
+    },
+    "L3372": {
+      "id": "L3372",
+      "title": "Launch speed in file and registry for all 59 vehicle weapon files: seven differ, and only the machine guns have the newer figure in the file",
+      "status": "finding",
+      "statusNote": "Survey complete for launch speed; which source applies for the machine guns and Smart Rockets is unconfirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3372-vehicle-weapon-velocity-own-vs-registry-survey.json"
+      ],
+      "summary": "Across 59 vehicle weapon files the launch speed in the file equals the registry default wherever a row exists, except seven: the IFV AP shell (registry holds EA's new 445), the Attack Helicopter Smart Rockets (180 in file, 360 in registry) and five machine guns (L3371). 18 raw-offset checks matched.",
+      "reopenWhen": "An in-game flight time for Smart Rockets or a machine gun.",
+      "refs": []
+    },
+    "L3373": {
+      "id": "L3373",
+      "title": "Rate of fire, magazine capacity and heat per bullet in file and registry for all vehicle weapons: 11 differences, and all six with an EA figure have the new value in the registry",
+      "status": "finding",
+      "statusNote": "Survey complete; five differences have no EA figure.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3373-vehicle-weapon-own-vs-registry-rate-magazine-heat.json"
+      ],
+      "summary": "Across all vehicle weapon files, rate of fire, magazine capacity and heat per bullet agree between file and registry except in 11 places. The six that EA's notes cover all have EA's new number in the registry and the old one in the file, so the registry-first rule holds for these properties; the machine gun velocity of L3371 is the lone exception. 22 raw-offset checks matched.",
+      "reopenWhen": "An in-game overheat count for the Scout Helicopter minigun.",
+      "refs": []
+    },
+    "L3374": {
+      "id": "L3374",
+      "title": "Dead end: 13 further target materials carry soldier-style multiplier arrays, and no saved file names any of them",
+      "status": "exhausted",
+      "statusNote": "Dead end: no user of the 13 target materials found.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3374-unidentified-soldier-style-target-materials.json"
+      ],
+      "summary": "Thirteen further target materials hold soldier-style multiplier arrays against bullets, but none is named by any of the 47,686 saved files or by the soldier's bone capsules, so what they belong to cannot be read. The player soldier's multipliers are unaffected. 89 raw-offset checks matched.",
+      "reopenWhen": "A captured file names one of these materials.",
+      "refs": []
+    },
+    "L3375": {
+      "id": "L3375",
+      "title": "Portable Mortar: launch vector, reload, heat, ammunition and resupply rows",
+      "status": "finding",
+      "statusNote": "Registry defaults read; own values and the use of the reload multipliers not read.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3375-portable-mortar-profile.json"
+      ],
+      "summary": "The Portable Mortar's shells launch at 57.6 m/s (vector y 48.3, z 31.37), reload in 2.65 s, and carry heat rows too small to matter. HE shells are unlimited, smoke shells hold 3 with one back every 45 s, and the mortar itself returns after 90 s. Three reload multipliers (0.75, 0.835, 0.623) are stored; which applies when needs a timing. 26 raw-offset checks matched.",
+      "reopenWhen": "An in-game timing of mortar reload with and without a Supply Crate.",
+      "refs": []
+    },
+    "L3376": {
+      "id": "L3376",
+      "title": "Reload times of launchers and other reloading gadgets: file and registry agree for all nine with a row; eight more have a file value only",
+      "status": "finding",
+      "statusNote": "Own and registry reload times read; not confirmed in game.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3376-gadget-launcher-reload-times.json"
+      ],
+      "summary": "Stored reload times: RPG-7V2, Stinger, MBT-LAW and IGLA 3.4 s, AT4 3.66 s, Panzerfaust 3 4.96 s, M26 MASS 3.53 s, Tracer Dart 3.38 s. File and registry agree for all nine gadgets with a registry row; the Javelin holds -1. EA states none of these, so they await a timing. 43 raw-offset checks matched.",
+      "reopenWhen": "An in-game launcher reload timing.",
+      "refs": []
+    },
+    "L3377": {
+      "id": "L3377",
+      "title": "Railgun and Panzerfaust 3 under the damage rule: Railgun 150 times 2.5 against tanks; the Panzerfaust 3 shares the RPG's material with a file-only damage of 100",
+      "status": "finding",
+      "statusNote": "Stored values and grid products read; not confirmed in game, Panzerfaust values file-only.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3377-railgun-panzerfaust3-damage-rule.json"
+      ],
+      "summary": "The Railgun stores 150 damage with a tank multiplier of 2.5, giving 375 to a tank's body before the hit factor and 525 to aircraft, at 1029 m/s with 11 single rounds. The Panzerfaust 3 uses the RPG's material with a file-only damage of 100 (200 to a tank's body), which may be stale as it has no registry row. 2089 raw-offset checks matched.",
+      "reopenWhen": "An in-game Railgun or Panzerfaust 3 damage reading on a vehicle.",
+      "refs": []
+    },
+    "L3378": {
+      "id": "L3378",
+      "title": "Call-in strike munitions under the damage rule: JAGM, Mk 82 air strike, 155 mm artillery, kinetic strike, carrier missile and the 40 mm drill grenade (file-only damage values)",
+      "status": "finding",
+      "statusNote": "File values and grid products read; no registry rows; not confirmed in game.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3378-call-in-strike-munitions-damage-rule.json"
+      ],
+      "summary": "Stored damage for the call-in strikes: JAGM 175 direct and 160 blast, Mk 82 air strike bomb 450 and 335, 155 mm shell 330 and 120, kinetic strike and carrier missile 1000 direct. By the rule a direct JAGM hit does about 697 to a tank (350 direct plus 347 blast) and a direct bomb hit more than a tank's health. All are file-only values with no registry row. The artillery strike fires one volley of 18 shells over about 10 s within a 45 m radius. 3877 raw-offset checks matched.",
+      "reopenWhen": "An in-game strike damage reading on a vehicle.",
+      "refs": []
+    },
+    "L3379": {
+      "id": "L3379",
+      "title": "Fire damage is stored as staged affectors: the incendiary grenade holds stages 2 / 0, 15 / 2.5, 10 / 7, 5 / 10 on a 0.1 interval; field names are hashes",
+      "status": "finding",
+      "statusNote": "Stage values located and read; field meanings are candidates.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3379-fire-damage-affector-stages.json"
+      ],
+      "summary": "Fire damage is stored in six affector files as staged lists rather than as blast damage. The incendiary grenade holds stages 15, 10 and 5 with floats 2.5, 7 and 10 on a 0.1 interval; the airburst incendiary holds 10 / 15 on a 0.3 interval and the thermobaric grenade 8 / 2 and 5 / 1.5 on 0.4. The fields are unnamed, so whether these are damage per second by fire age is a candidate that needs one in-game reading. 58 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading of health lost per second in incendiary fire.",
+      "refs": []
+    },
+    "L3380": {
+      "id": "L3380",
+      "title": "Soldier armor is stored as material swaps: armor affectors name the chest material 579 and head material 587 and map them to other materials; this replaces L3370 and withdraws the dead end L3374",
+      "status": "finding",
+      "statusNote": "Swap tables and grid values read; direction of the swap and the amounts are candidates.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3380-armor-upgrade-material-swaps.json"
+      ],
+      "summary": "Soldier armor is stored as material swaps. The soldier file names a chest material 579 (EA's against-armor values 0.84 / 0.91 / 0.67) and a head material 587 (bolt-action 2.25); the ceramic armor affectors map them to 238 and 586 (bolt-action head 1.75), the soft armor affectors leave them. This replaces L3370's statement that nothing else names these materials and withdraws the dead end L3374, whose file search was incomplete. Armor amounts 40 and 80 appear in the vest affectors but are not confirmed. 202 raw-offset checks matched.",
+      "reopenWhen": "An in-game damage reading on an armored soldier.",
+      "refs": []
+    },
+    "L3381": {
+      "id": "L3381",
+      "title": "Damage affector fields named from registry rows (InitialDamage, DamageInterval, DamageToDealPerSecond), with stored melee, defibrillator, gas, thermal smoke and collision damage",
+      "status": "finding",
+      "statusNote": "Three fields named by registry rows; entry selection not read.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3381-damage-affector-fields-and-values.json"
+      ],
+      "summary": "The damage affectors' three main fields are named from registry rows: InitialDamage, DamageInterval and DamageToDealPerSecond. Stored values: melee 35, 60 and 70 with a 1500 takedown; defibrillator 50 to 100 in six steps; gas 24 per second; Thermal Smoke 25 initial and 12 per second against infantry; collision steps 25 to 100. Which entry applies when needs in-game readings. 75 raw-offset checks matched.",
+      "reopenWhen": "An in-game melee, defibrillator or gas damage reading.",
+      "refs": []
+    },
+    "L3382": {
+      "id": "L3382",
+      "title": "Battle Royale vehicle health overrides are stored as affectors: UH-79 1250 (EA's stated value), tank 800, IFV 750; the multiplayer critical-state regeneration affector holds 0.25",
+      "status": "finding",
+      "statusNote": "UH-79 Battle Royale health settled against EA; other fields are candidates.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3382-vehicle-health-override-affectors.json"
+      ],
+      "summary": "The Battle Royale vehicle health overrides are affector files: UH-79 1250, which is the value EA states, tank 800 and IFV 750, each with a second value of 200 that fits a critical threshold. The multiplayer critical-state regeneration affector holds 0.25, close to but not equal to EA's 'slowed by 80%'. 42 raw-offset checks matched.",
+      "reopenWhen": "An in-game critical-health regeneration timing, or EA figures for Battle Royale tank health.",
+      "refs": []
+    },
+    "L3383": {
+      "id": "L3383",
+      "title": "Vehicle upgrade multipliers: 23 affector files read against registry rank rows; six differ (turret traverse 1.2 file / 1.3 registry, lock-on time 0.8 / 0.6 and 0.7, capture speed 1.1 / 1.15, steering 1.02 / 1.03)",
+      "status": "finding",
+      "statusNote": "Values read; pairing is name-only; which side is live is not confirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3383-vehicle-upgrade-multiplier-affectors.json"
+      ],
+      "summary": "23 vehicle upgrade multipliers were read from affector files and 14 paired by name with registry rank rows. Eight agree; six differ, with the registry giving the stronger upgrade in five (turret traverse 1.3 against 1.2, lock-on time 0.6 and 0.7 against 0.8, capture speed 1.15 against 1.1, steering 1.03 against 1.02). Nine have no registry row and are file-only. 36 raw-offset checks matched.",
+      "reopenWhen": "An in-game turret traverse or lock-on timing with and without the upgrade.",
+      "refs": []
+    },
+    "L3384": {
+      "id": "L3384",
+      "title": "Vehicle upgrade multipliers: 23 affector files read against registry rank rows; six differ (turret traverse 1.2 file / 1.3 registry, lock-on time 0.8 / 0.6 and 0.7, capture speed 1.1 / 1.15, steering 1.02 / 1.03)",
+      "status": "finding",
+      "statusNote": "Values read; pairing is name-only; which side is live is not confirmed.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3384-vehicle-upgrade-multiplier-affectors-corrected.json"
+      ],
+      "summary": "23 vehicle upgrade multipliers were read from affector files and 13 paired by name with registry rank rows. Seven agree; six differ, with the registry giving the stronger upgrade in five (turret traverse 1.3 against 1.2, lock-on time 0.6 and 0.7 against 0.8, capture speed 1.15 against 1.1, steering 1.03 against 1.02). Ten have no registry row and are file-only. 36 raw-offset checks matched.",
+      "reopenWhen": "An in-game turret traverse or lock-on timing with and without the upgrade.",
+      "refs": []
+    },
+    "L3385": {
+      "id": "L3385",
+      "title": "Repair Tool and EOD Bot damage to vehicles: seven-entry affector (10, 5, 7.5, 12.5, 15, 17.5, 20) on material 479, with registry rank rows 3 (multiplayer) and 5 (Battle Royale)",
+      "status": "finding",
+      "statusNote": "Entries, material and grid read; entry selection and tick rate are candidates.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3385-repair-tool-vehicle-damage-affector.json"
+      ],
+      "summary": "Repair Tool and EOD Bot damage to vehicles is a seven-entry affector: 10, 5, 7.5, 12.5, 15, 17.5 and 20 per application on material 479, which the grid scales by 1 against tanks, 1.25 against helicopters and 2 against light vehicles. The registry sets the damage rank to 3 in multiplayer and 5 in Battle Royale, pointing at 12.5 and 17.5 if the rank is the entry index. The rate per second needs an in-game reading. 36 raw-offset checks matched.",
+      "reopenWhen": "An in-game reading of Repair Tool damage per second to an enemy vehicle.",
+      "refs": []
+    },
+    "L3386": {
+      "id": "L3386",
+      "title": "Repair Tool affectors: vehicle damage entries, heal entries 2.5 to 20, and a stacking table that scales each of 2 to 8 sources by 0.75 down to 0.25 (replaces L3385)",
+      "status": "finding",
+      "statusNote": "Values read; field meanings and entry selection are candidates.",
+      "date": "2026-10-09",
+      "receipts": [
+        "frosty-2026-10-09-L3386-repair-tool-affectors-and-stacking-table.json"
+      ],
+      "summary": "The Repair Tool's stored values: repair 40 per second (60 upgraded) and 'AntiRepair' 30 (45) in the registry; a vehicle damage rank table 10 to 20 and a heal rank table 2.5 to 20 in affectors; and a stacking table that scales each of 2 to 8 sources by 0.75 down to 0.25, so combined repair tops out near twice one repairer. Which figure is the damage to enemy vehicles is not settled; L3385's statement that the anti-repair rows are not that damage is withdrawn. 81 raw-offset checks matched.",
+      "reopenWhen": "In-game repair timings with one and two repairers, or a Repair Tool damage reading on an enemy vehicle.",
+      "refs": []
+    },
+    "L4000": {
+      "id": "L4000",
+      "title": "Registry default equals the own value on every compared row of the 63 site weapons, their firing data and their bullets (14838 values, 0 differing)",
+      "status": "finding",
+      "statusNote": "No registry-versus-own difference on any site weapon row.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4000-weapon-registry-default-equals-own.json"
+      ],
+      "summary": "Registry defaults were compared with own values for the 63 site weapons' WB and GS files and the site's bullet files: 14838 values over 60 + 206 + 13 row names, 0 differing. The differences the same pass finds are all on gadget, launcher or vehicle owners (74 rows, 40 not in the L3314 census). 1488 raw-offset checks matched.",
+      "reopenWhen": "A game update changes GRX_Weapons or a weapon, GS or bullet file; rerun owncmp.py.",
+      "refs": []
+    },
+    "L4001": {
+      "id": "L4001",
+      "title": "EA's 1.3.3.0 weapon lines against the site: recoil variation equal for 39 of 39; M45A1 and vz. 61 are subsonic by default, as their stored spotting ranges say",
+      "status": "finding",
+      "statusNote": "39 of 39 recoil variation figures equal; spot-base proposal gains an official statement.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4001-ea-1-3-3-0-weapon-lines-against-site.json"
+      ],
+      "summary": "EA's 1.3.3.0 recoil variation table (39 weapons) equals the site's recoilVar on every line. EA says the M45A1 and vz. 61 use subsonic ammunition by default; their stored spotting ranges are 27 and 64.29 against 54 and 150 on most weapons, and the site shows 54 and 150 for them. Automatic head multipliers, the L115 iron sight cost and the RPK-74M 20-point cost agree with the site. 6 raw-offset checks matched.",
+      "reopenWhen": "A new EA note states weapon or attachment numbers, or the spotting test is run.",
+      "refs": []
+    },
+    "L4002": {
+      "id": "L4002",
+      "title": "Dead end: registry row names give no new names for weapon, firing-data or bullet fields, and none for the hashes cited by 116 negative closures",
+      "status": "exhausted",
+      "statusNote": "No new names; earlier naming was complete.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4002-registry-names-add-no-weapon-field-names.json"
+      ],
+      "summary": "Registry rows name 102 weapon, firing-data and bullet fields by value match; 101 were already in FIELD_MAP.md. None of the 15 open-question hashes and none of the 399 hashes cited by 116 negative closures gains a name. Field_440ed7fa is in the FireLogic block and has no registry row. 4 raw-offset checks matched.",
+      "reopenWhen": "A game update adds registry rows for these owners, or a field-name hash function is found.",
+      "refs": []
+    },
+    "L4003": {
+      "id": "L4003",
+      "title": "Site velocity, magazine, drag and limb values equal the stored rows for all 63 weapons; the eight rate-of-fire differences are the single-fire VSSM and seven manually cycled weapons",
+      "status": "finding",
+      "statusNote": "No disagreement that changes a site value.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4003-site-values-against-registry-rows.json"
+      ],
+      "summary": "Site velocity and magazine equal the registry default on 63 of 63 weapons; rate of fire on 55, with the VSSM at its single-fire rate and seven manually cycled weapons at a derived rate. All 64 site projectiles hold drag 0.0035 or 0.002, and all 63 limb multipliers equal the stored arrays. Four bolt-action curves equal the stored curves. No site value changes. 127 raw-offset checks matched.",
+      "reopenWhen": "A game update changes the weapon registry rows, or site base values are regenerated.",
+      "refs": []
+    },
+    "L4004": {
+      "id": "L4004",
+      "title": "Bullet damage curves: registry default equals the own curve on all 63 bullet files that have both; site base curves equal the own curve on 62 of 63 weapons",
+      "status": "finding",
+      "statusNote": "No curve differs; no site change.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4004-bullet-damage-curves-registry-own-site.json"
+      ],
+      "summary": "Registry default damage curves equal the own curves on all 63 bullet files that have both (health and armor). Site base curves equal the base bullet's own health curve on 62 of 63 weapons as float32 values, 3 of them with an added 0 m point; the M45A1 keeps its reviewed step. No site value changes. 101 raw-offset checks matched.",
+      "reopenWhen": "A game update changes a bullet file or the weapon registry.",
+      "refs": []
+    },
+    "L4005": {
+      "id": "L4005",
+      "title": "EA notes 1.1.3.0 to 1.4.3.0: every weapon or attachment figure stated agrees with the site or was superseded by a later note",
+      "status": "finding",
+      "statusNote": "All stated figures agree or are superseded.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4005-ea-other-updates-weapon-lines-against-site.json"
+      ],
+      "summary": "The other saved EA notes state six weapon or attachment figures. Four equal the site (200-round magazine cost 50, spotting 54 m, L115 thermal sight 25, Interdictor curve), one was superseded (Mini Scout 800, now 760) and one gives no absolute figure. No site value changes. 10 raw-offset checks matched.",
+      "reopenWhen": "A new EA note states weapon or attachment numbers.",
+      "refs": []
+    },
+    "L4006": {
+      "id": "L4006",
+      "title": "Parked weapon, optic and soldier questions screened against the registry and EA-note methods: none is reopened; the spotting base gains an official statement",
+      "status": "exhausted",
+      "statusNote": "No parked question reopened.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4006-parked-weapon-questions-against-new-methods.json"
+      ],
+      "summary": "Parked questions W1 to W9, O1 to O3, M1 to M3 and G1 were screened against the registry and EA-note methods. None meets its reopen condition. M1 gains EA's statement that the M45A1 and vz. 61 are subsonic by default. Attachment effect files have no registry rows. 4 raw-offset checks matched.",
+      "reopenWhen": "The condition already recorded for each parked row.",
+      "refs": []
+    },
+    "L4007": {
+      "id": "L4007",
+      "title": "Follow-ups to L4003: head-table index equal on 63 of 63; seven cycle rates reproduced from stored bolt fields; reload sums equal on 48 tactical and 45 of 58 empty values; EA explains the Interdictor limb value and says Match Trigger must not affect automatic fire",
+      "status": "finding",
+      "statusNote": "L4003 follow-ups closed; no site change.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4007-head-index-cycle-rate-reload-and-ea-limb-lines.json"
+      ],
+      "summary": "Head-table index and value equal the site on 63 of 63 weapons. Seven manually cycled rates are reproduced from stored bolt fields. Reload sums equal the site on 48 tactical and 45 of 58 empty values; the rest are reviewed capture values. EA states the Interdictor's limb damage matches chest damage, and that Match Trigger must not affect automatic fire. No site value changes. 166 raw-offset checks matched.",
+      "reopenWhen": "A reload capture or a source consumer explains the frame offsets, or the L17 test is run.",
+      "refs": []
+    },
+    "L4008": {
+      "id": "L4008",
+      "title": "The stat screen shows 27 m and 64 m spot-on-fire ranges for the M45A1 and vz. 61 (0 and 9 m suppressed); the site shows 54 and 150 (0 and 21)",
+      "status": "proposal",
+      "statusNote": "Proposal validated by the stat screen; awaiting operator approval.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4008-stat-screen-confirms-m45a1-vz61-spot-base.json"
+      ],
+      "summary": "The operator's stat-screen screenshots show spot-on-fire ranges of 27 m and 64 m for the M45A1 and vz. 61 on every non-muzzle panel, and 0 and 9 m with a suppressor, against 54, 150 and 0, 21 on the P18. Stored values and EA's 1.3.3.0 note agree. The site uses 54 and 150 for all weapons. Proposed: per-weapon base 27 / 64.285713 for m45a1 and vz61. 6 raw-offset checks matched.",
+      "reopenWhen": "The operator approves or rejects the change, or a game update changes the two weapon files.",
+      "refs": []
+    },
+    "L4009": {
+      "id": "L4009",
+      "title": "Audit of 116 earlier negative closures: 16432 recorded byte checks all still match; ten claims from the 45 leads without byte checks were re-tested and none is contradicted; one consequence (spot base) was wrong",
+      "status": "finding",
+      "statusNote": "Audit complete; no earlier closure reopened apart from L7 (L4008).",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4009-audit-negative-closures-evidence-reread.json"
+      ],
+      "summary": "All 16432 byte checks recorded in the 109 receipts of 116 negative closures match the current files. Of the 45 leads without byte checks, ten claims were re-tested by registry rows, own values or the screenshot audit; none is contradicted. One closure (L7, spot base) drew a wrong consequence, corrected by L4008. 72 raw-offset checks matched.",
+      "reopenWhen": "A new independent source (EA note, screenshot set, Sym data) covers a value closed as 'stored but no consumer found'.",
+      "refs": []
+    },
+    "L4010": {
+      "id": "L4010",
+      "title": "Operator video (M433, bots at 5 m): mid-chest hits do 26, belly and limbs 22, head 36; the capsule rest-pose prediction of 22 at mid-chest is not supported",
+      "status": "finding",
+      "statusNote": "L99 chest prediction not supported in game; site chest zone kept.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4010-l99-operator-video-chest-zone.json"
+      ],
+      "summary": "Operator video, M433 at 5 m against bot soldiers, 56 hits: mid-chest and upper-chest hits do 26, belly, arm and leg hits 22, headshots 36. The 26-to-22 change is at upper-belly height, as the site draws it. The L99 capsule prediction for the chest aim point is not supported; no site change. Headshots register slightly outside the visible helmet. 2 raw-offset checks matched.",
+      "reopenWhen": "A measured test (known heights, upright target or back view) is wanted for the head size or the exact boundary height.",
+      "refs": []
+    },
+    "L4011": {
+      "id": "L4011",
+      "title": "Operator video, all 67 shots: headshots register up to about a third of a helmet width above the helmet, but not beside it; misses just beside the cheek rule out the chest sphere at the bone-axis position",
+      "status": "finding",
+      "statusNote": "Head extent observed, not measured; no site change.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4011-l99-operator-video-head-extent.json"
+      ],
+      "summary": "All 67 shots of the operator video were extracted (53 hits). Headshots register up to about a third of a helmet width above the helmet but not beside it, matching the stored head capsule's shape. Misses just beside the cheek rule out the bone-axis position of the chest sphere and fit the model-axis reading. Native-resolution frames of every shot are kept. 2 raw-offset checks matched.",
+      "reopenWhen": "A measured head test (known distance, stationary upright target) is wanted to redraw the site's head zone.",
+      "refs": []
     }
   }
 }
