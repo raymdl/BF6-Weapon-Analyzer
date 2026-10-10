@@ -496,8 +496,11 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // ── Spot-on-fire ranges ───────────────────────────────────────────────────────
   // Source factors reproduce the existing 54/150 m base-range model, including
   // suppressor + subsonic (150 * 0.14 * 0.4285714, approximately 9 m).
-  const worldSpot = +(54 * (muz.worldSpotMult ?? 1) * (bar.worldSpotMult ?? 1) * (ammoType.worldSpotMult ?? 1)).toFixed(6);
-  const minimapSpot = +(150 * (muz.minimapSpotMult ?? 1) * (bar.minimapSpotMult ?? 1) * (ammoType.minimapSpotMult ?? 1)).toFixed(6);
+  // M45A1 and vz. 61 are subsonic by default (1.3.3.0): their WB files store
+  // 27 / 64.285713 and the stat screen shows 27 m / 64 m (Frosty L4001, L4008).
+  const [worldSpotBase, minimapSpotBase] = (w.id === 'm45a1' || w.id === 'vz61') ? [27, 64.285713] : [54, 150];
+  const worldSpot = +(worldSpotBase * (muz.worldSpotMult ?? 1) * (bar.worldSpotMult ?? 1) * (ammoType.worldSpotMult ?? 1)).toFixed(6);
+  const minimapSpot = +(minimapSpotBase * (muz.minimapSpotMult ?? 1) * (bar.minimapSpotMult ?? 1) * (ammoType.minimapSpotMult ?? 1)).toFixed(6);
 
   // ── Enemy health regeneration delay ───────────────────────────────────────────
   // Time before a hit enemy starts regenerating. The global baseline is the
