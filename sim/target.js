@@ -66,14 +66,14 @@ function torsoHalfWidthAt(y) {
 }
 
 // Head hit capsule in view units: the stored soldier head capsule (radius
-// 14 cm, length 6 cm; Frosty L99) placed on the artwork from 145 cm to 179 cm,
+// 14 cm, length 6 cm; Frosty L99) placed on the artwork from 147.25 cm to 181.25 cm,
 // per the operator's 10 October 2026 video review (L4010, L4011). It is wider
 // than the drawn head and reaches down over the collar.
 const VIEW_UNITS_PER_CM = TARGET_VIEW_HEIGHT / TARGET_HEIGHT_CM;
 const HEAD_CAPSULE = Object.freeze({
   radius: 14 * VIEW_UNITS_PER_CM,
-  topCenterY: (TARGET_HEIGHT_CM - 179 + 14) * VIEW_UNITS_PER_CM,
-  bottomCenterY: (TARGET_HEIGHT_CM - 145 - 14) * VIEW_UNITS_PER_CM,
+  topCenterY: (TARGET_HEIGHT_CM - 181.25 + 14) * VIEW_UNITS_PER_CM,
+  bottomCenterY: (TARGET_HEIGHT_CM - 147.25 - 14) * VIEW_UNITS_PER_CM,
 });
 
 export function inHeadCapsule(x, y) {
@@ -179,11 +179,12 @@ export function drawTarget(ctx, toX, toY) {
       if (!targetAlpha) return null;
       const imageX = Math.floor((toX(point.xCm) - drawLeft) / drawWidth * targetImage.naturalWidth);
       const imageY = Math.floor((toY(point.yCm) - drawTop) / drawHeight * targetImage.naturalHeight);
-      if (imageX < 0 || imageY < 0 || imageX >= targetImage.naturalWidth || imageY >= targetImage.naturalHeight) return null;
       const viewX = (imageX / targetImage.naturalWidth - 0.5) * TARGET_VIEW_HEIGHT * (targetImage.naturalWidth / targetImage.naturalHeight);
       const viewY = imageY / targetImage.naturalHeight * TARGET_VIEW_HEIGHT;
-      // The head capsule counts even where it overhangs the drawn figure.
+      // The head capsule counts even where it overhangs the drawn figure or
+      // the top edge of the image.
       if (inHeadCapsule(viewX, viewY)) return 'head';
+      if (imageX < 0 || imageY < 0 || imageX >= targetImage.naturalWidth || imageY >= targetImage.naturalHeight) return null;
       const alpha = targetAlpha[(imageY * targetImage.naturalWidth + imageX) * 4 + 3];
       if (alpha < 32) return null;
       return targetZoneAt(viewX, viewY);
