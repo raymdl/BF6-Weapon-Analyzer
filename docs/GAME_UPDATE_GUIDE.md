@@ -97,8 +97,9 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    (`1, 0, 439, 36273` → `1, 0, 437, 12728`) while the hash changed. Use the hash for
    identity and the Frosty archive Head for ordering.
 
-2. **Fresh cache.** Rename `Caches\bf6.cache` (for example `bf6-<old client>.cache`) so
-   Frosty builds a full cache. Keep the old file.
+2. **Fresh cache.** Rename or delete `Caches\bf6.cache` so Frosty builds a full cache. The
+   cache is disposable (a full rebuild plus the capture took about 10 minutes on 3 Oct 2026), so
+   do not keep the old file once the decision is recorded.
 
 3. **Capture the new client.** This is Frosty's first load of the new client, so it also
    rewrites the runtime `SharedTypeDescriptors.ebx`. Capture the catalog and the open
@@ -406,16 +407,47 @@ forcing the match.
 Also review changes the notes do **not** mention. Both the SU-230 camera-recoil fix and the
 PiP setting binding were unannounced.
 
-## Stage 8 — Recheck the attachment bug list
+## Stage 8 — Recheck the known-issue lists
+
+Run this stage on every new build, and on a hotfix whose patch notes list fixes.
+
+### Attachment bug list
 
 For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
 
-1. **Source side.** Did any asset behind the entry change? This rests on hashes, not
-   decoding, so it works even when the SDK is stale. If nothing changed, the entry stands.
-2. **Description side.** Compare string sets per Stage 6. If the metadata does not decode
+1. **Patch notes.** Compare every "fixed" or "corrected" line in the notes with the entry.
+   A matching line makes the entry a candidate for resolved; it does not prove it.
+2. **Source side.** Did any asset behind the entry change? This rests on hashes, not
+   decoding, so it works even when the SDK is stale.
+3. **Description side.** Compare string sets per Stage 6. If the metadata does not decode
    with Frosty, decode it per Stage 4 rather than recording the entry as unverified.
-3. Re-run the multi-package scan and the relative-to-default comparison.
-4. Record the result in the document with the date, including "no change" results.
+4. Re-run the multi-package scan and the relative-to-default comparison.
+5. **Decide the status.**
+   - Asset changed and the stored values now agree with the text: mark resolved, with the
+     build and the changed asset.
+   - No asset changed and no patch note matches: the entry stands.
+   - No asset changed but a patch note matches, or the entry's behavior is decided in the
+     executable (no stored value explains it): the data cannot show a fix. Mark it
+     "needs in-game recheck" and list the test. Do not record it as unchanged.
+6. Record the result in the document with the date, including "no change" results.
+
+### Other lists
+
+The attachment list is not the only place a known issue lives. Check each of these the same
+way (patch-note lines first, then changed assets, then status):
+
+| List | Where | What to recheck |
+|---|---|---|
+| Vehicle and gadget discrepancies and working proposals | Research repo `docs/working/VEHICLE_SITE_ADDITIONS.md`, `GADGET_SITE_ADDITIONS.md`; `docs/frosty/VEHICLES.md` and `GADGETS.md` | Rows where a stored value disagrees with UI text or an EA statement |
+| Open questions | Research repo `docs/frosty/OPEN_QUESTIONS.md` | Questions whose cited assets changed |
+| Leads with a reopen condition | `reference-data/frosty/lead-index.json`, field `reopenWhen` | Leads whose condition names a game update, a changed asset or a patch note |
+| Model limits | [MODEL_LIMITATIONS.md](MODEL_LIMITATIONS.md), "What would justify an update" | Limits the update may have removed |
+
+For a lead whose cited raw asset changed, reopen it; a receipt at the previous build does not
+carry forward (hotfixes with no gameplay change excepted, per Stage 1).
+
+Report the outcome to the operator as three lists: resolved, still present, and needs
+in-game recheck.
 
 ## Stage 9 — Update the Analyzer
 

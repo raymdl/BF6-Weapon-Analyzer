@@ -7437,6 +7437,344 @@
       "summary": "All 67 shots of the operator video were extracted (53 hits). Headshots register up to about a third of a helmet width above the helmet but not beside it, matching the stored head capsule's shape. Misses just beside the cheek rule out the bone-axis position of the chest sphere and fit the model-axis reading. Native-resolution frames of every shot are kept. 2 raw-offset checks matched.",
       "reopenWhen": "A measured head test (known distance, stationary upright target) is wanted to redraw the site's head zone.",
       "refs": []
+    },
+    "L4012": {
+      "id": "L4012",
+      "title": "Eleven unexplored UI metadata files hold display text only: no weapon, attachment or soldier mechanic value",
+      "status": "exhausted",
+      "statusNote": "Dead end; text hints only.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4012-ui-metadata-paths-review.json"
+      ],
+      "summary": "Eleven UI metadata files not read before were captured and decoded. They hold display text, icons and references only. Closed as a dead end by the operator on 10 October 2026. 11 raw-offset checks matched.",
+      "reopenWhen": "A UI metadata file is found that stores a number shown on a stat screen.",
+      "refs": []
+    },
+    "L4013": {
+      "id": "L4013",
+      "title": "Melee: the loadout screen's 35 and 60 damage equal melee affector entries 0 and 1, and its 100 / 200 ms hit delay equals one stored firing value for the knives and the Sledgehammer; no stored value gives the knife, defibrillator or repair tool sprint bonus",
+      "status": "finding",
+      "statusNote": "Damage matched; hit delay candidate; sprint bonus not stored.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4013-melee-loadout-values-and-sprint-state.json"
+      ],
+      "summary": "The loadout screen's melee damage (35, Sledgehammer 60) equals melee affector entries 0 and 1, and its hit delay (100 ms, Sledgehammer 200 ms) equals one stored firing value for the knives and the Sledgehammer, though the EOD arm stores 0.15 there. No stored value gives the sprint bonus for knife, defibrillator or repair tool. 24 raw-offset checks matched.",
+      "reopenWhen": "A timed sprint over a fixed distance with a rifle, a knife, the defibrillator and the repair tool, or a decoded field name for the firing block.",
+      "refs": []
+    },
+    "L4014": {
+      "id": "L4014",
+      "title": "Sprint speed: the soldier file stores walk 3.5 and sprint 6.05 m/s for the standing pose, and the FastSprintRequired channel is referenced by exactly the knife-type melee abilities, the defibrillator and the repair tool, not the Sledgehammer",
+      "status": "finding",
+      "statusNote": "Selection traced; size matched by value.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4014-sprint-speed-stored-values-and-fast-sprint-flag.json"
+      ],
+      "summary": "The soldier file stores the published walk (3.5) and gun sprint (6.05 m/s) speeds, and the FastSprintRequired channel is referenced by exactly the knife-type melee abilities, the defibrillator and the repair tool, not the Sledgehammer. The fast speed 7.15 fits 2.05 x 3.5 or 1.1 x 6.5; the equation is not read. 16 raw-offset checks matched.",
+      "reopenWhen": "A current timed sprint with a rifle, an LMG, a knife and the Sledgehammer, or a read of how SoldierMotionMachine uses the channel and the two multipliers.",
+      "refs": []
+    },
+    "L4015": {
+      "id": "L4015",
+      "title": "FastSprintRequired feeds the compiled movement-speed logic beside the two sprint multipliers, the LMG tags and the adrenaline affector; its constant pool holds 1.1, 0.95 and 1.1818 in sequence, matching the adrenaline boost, the LMG penalty and the knife sprint ratio",
+      "status": "finding",
+      "statusNote": "Channel traced to the speed logic; effect sizes matched to compiled constants by value.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4015-move-speed-modifier-inputs-and-constants.json"
+      ],
+      "summary": "FastSprintRequired is input 79 of the compiled movement-speed logic, beside the two sprint multipliers, the LMG tags and the adrenaline affector. The compiled constants 1.1, 0.95 and 1.1818 in sequence reproduce the measured adrenaline, LMG and knife sprint speeds from the stored 6.05. The code itself was not disassembled. 7 raw-offset checks matched.",
+      "reopenWhen": "A disassembly of the SimEx_MoveSpeedModifiers part, or a current timed sprint with rifle, LMG, knife and Sledgehammer.",
+      "refs": []
+    },
+    "L4016": {
+      "id": "L4016",
+      "title": "Movement-speed logic disassembled: FastSprintRequired makes FastSprintActive, which selects the 2.05 sprint top-speed multiplier in place of 1.857 and caps the weapon speed modifier at 1.0; 1.1, 0.95 and 1.1818 are the sprint-affector boost, the LMG penalty and the modifier cap without fast sprint",
+      "status": "finding",
+      "statusNote": "Fast-sprint logic read from compiled code; gun base speed open.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4016-move-speed-modifiers-disassembled.json"
+      ],
+      "summary": "The compiled movement-speed section was disassembled. FastSprintRequired makes FastSprintActive, which selects the sprint top-speed multiplier 2.05 instead of 1.857 and caps the weapon speed modifier at 1.0; without it the cap is 1.1818. The sprint-affector boost is 1.1 and the LMG penalty 0.95. Knife (7.175) and Sledgehammer (6.5) speeds follow; the gun's 6.05 is not explained by this code. 30 raw-offset checks matched.",
+      "reopenWhen": "The source of WeaponMoveSpeedMultiplierInput for guns is found, or a current timed sprint is recorded.",
+      "refs": []
+    },
+    "L4017": {
+      "id": "L4017",
+      "title": "The seven weapon attribute graphs disassembled with named inputs: Control and Mobility match the site formulas term for term, Hipfire's 1.2 factor is selected by a comparison of IncreasePerShotFraction with 1.0, and none of the graphs contains a final clamp",
+      "status": "finding",
+      "statusNote": "Attribute graphs read; site formulas confirmed; no site change proposed.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4017-weapon-attribute-graphs-disassembled.json"
+      ],
+      "summary": "The seven weapon attribute graphs were disassembled with input names matched by hash. Control and Mobility equal the site formulas term for term. Hipfire's 1.2 factor is selected by comparing IncreasePerShotFraction with 1.0, and the graph falls back to the raw MinAngle input when a test on MinAngleIndex fails. No graph clamps its result. Headshot and collateral multipliers are table lookups; rate of fire is the input plus 0.002. 34 raw-offset checks matched.",
+      "reopenWhen": "The two comparison functions are identified, or a panel shows Hipfire above 100.",
+      "refs": []
+    },
+    "L4018": {
+      "id": "L4018",
+      "title": "SimEx_Melee disassembled: the damage entry of Affector_Melee_Damage is chosen by TakedownAttackerMeleeWeaponID (2 selects entry 1 = 60, others entry 0 = 35), a state test selects entry 3 = 70, and takedowns apply entry 2 = 1500",
+      "status": "finding",
+      "statusNote": "Melee damage entry selection read; ID table and the 70-damage state open.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4018-melee-graph-damage-entry.json"
+      ],
+      "summary": "The melee graph picks the damage entry of the shared melee affector: entry 1 (60) for melee weapon ID 2, entry 0 (35) otherwise, entry 3 (70) under a soldier state test, and entry 2 (1500) for takedown victims. Reach is 1.65 or 2.55. 19 raw-offset checks matched.",
+      "reopenWhen": "The melee weapon ID table is found, or an in-game hit shows 70 damage.",
+      "refs": []
+    },
+    "L4019": {
+      "id": "L4019",
+      "title": "Expression-graph corpus: 319 source assets and 256 compiled bodies captured on 1.4.3.5, 679 graphs listed with names; no listed graph writes WeaponMoveSpeedMultiplierInput, and SimEx_DamageReceived holds kill bookkeeping, not damage arithmetic",
+      "status": "finding",
+      "statusNote": "Corpus listed and indexed; reading by topic continues.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4019-expression-graph-corpus-listings.json"
+      ],
+      "summary": "319 graph source assets and 256 compiled bodies were captured on 1.4.3.5 and 679 graphs listed with import, input and soldier-variable names. No listed graph writes the weapon move-speed input, so the gun sprint factor is not set by graph logic. SimEx_DamageReceived is kill bookkeeping only. 3 raw-offset checks matched.",
+      "reopenWhen": "A listed graph is read for a specific mechanic, or the reader is extended to the 32 unread layouts.",
+      "refs": []
+    },
+    "L4020": {
+      "id": "L4020",
+      "title": "Melee target-finding and class trait graphs read: a moving attacker gets +0.3 reach and +5 degrees, takedown angle buckets at 45 and 135 degrees, melee latches of 0.45, 0.1 and 0.25 s, Active Medic radius 7 with a 1 s pulse, Active Attack radius 10",
+      "status": "finding",
+      "statusNote": "Melee targeting and trait graphs read; headline constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4020-melee-targeting-and-trait-graphs.json"
+      ],
+      "summary": "The melee target-finding graphs and about 25 trait graphs were read. A moving attacker (speed threshold 2) gets +0.3 reach and +5 degrees of attack angle; the relative angle is bucketed at 45 and 135 degrees for takedowns, with a back angle of -115 in a moving case; SimEx_Melee holds timed latches of 0.45, 0.1 and 0.25 s. Active Medic uses a radius of 7 and a 1 s pulse, Active Attack a radius of 10. 20 raw-offset checks matched.",
+      "reopenWhen": "A trait row is needed for a claim, or the melee latch triggers are decoded.",
+      "refs": []
+    },
+    "L4021": {
+      "id": "L4021",
+      "title": "Explosive and supply gadget graphs read: Claymore damage is a pellet-density formula with a 0.67 armour factor quantised to steps of 5, the supply crate ticks every 5 s with 4.95 s effects, flash effects add 0.2 s to a direction-and-range duration, and the PTKM1R scans every 0.1 s",
+      "status": "finding",
+      "statusNote": "Explosive and supply gadget graphs read; headline constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4021-explosive-and-supply-gadget-graphs.json"
+      ],
+      "summary": "About 35 gadget simulation graphs were read. Claymore damage is computed from pellet count, distance and stance, multiplied by 0.67 when the target has armour and rounded to steps of 5. The supply crate ticks every 5 s and applies ammunition effects with parameter 4.95. Flashbang and Stun Drill pick one of six durations by front/side/behind and close/far and add 0.2 s. The PTKM1R scans every 0.1 s for moving vehicles inside a range band. 14 raw-offset checks matched.",
+      "reopenWhen": "A gadget row is needed for a claim, or the tunable values are joined to these rules.",
+      "refs": []
+    },
+    "L4022": {
+      "id": "L4022",
+      "title": "Root soldier graph (code 0x10e2c to 0x20060) read: combat dive needs speed above 4.0 x the speed modifier and sprint plus prone input, slide needs a charge built above a speed threshold, both share a cooldown timer, and the vault minimum height is 0.31, 0.51 or 0.7",
+      "status": "finding",
+      "statusNote": "Dive, slide and vault start rules read; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4022-root-graph-dive-slide-vault.json"
+      ],
+      "summary": "The second quarter of the root soldier graph was read. Combat dive: allowed per team, speed above 4.0 x the single-player speed modifier, time since the last dive or slide above a cooldown tunable, on the ground or within 0.134 s of leaving it, then sprint plus prone input. Slide: allowed per team, a charge that builds while speed is above a tunable threshold, the same shared cooldown timer (capped at 10), with a 0.25 buffer value. Vault minimum height is 0.31 for AI, 0.7 above speed 4.0 and 0.51 otherwise. 9 raw-offset checks matched.",
+      "reopenWhen": "The dive and slide cooldown tunable values are joined to these rules, or an in-game timing is recorded.",
+      "refs": []
+    },
+    "L4023": {
+      "id": "L4023",
+      "title": "Man-down and revive graphs read: a downed soldier bleeds out when HealthValue falls below -90 at one of four rates (1.111, 1.667, 2.222, 3.333 per second, or 200 in a fast case), and drag-revive time counts down with a moving modifier outside 0.75 s start and 0.7 s end windows",
+      "status": "finding",
+      "statusNote": "Bleed-out threshold, rates and revive countdown read; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4023-mandown-bleedout-and-revive-graphs.json"
+      ],
+      "summary": "The man-down and revive graphs were read. A downed soldier is flagged bled out when HealthValue drops below -90; the drain rate is one of 1.111, 1.667, 2.222 or 3.333 per second chosen by man-down type, or 200 in a fast case, and is slowed by request-revive and hemostatic smoke tunables. Revive time comes from class and mode tunables with a 0.1 floor; the moving-revive modifier applies only outside the first 0.75 s and last 0.7 s. Completion applies health, regeneration and armour effects. 11 raw-offset checks matched.",
+      "reopenWhen": "The switch instruction is decoded so the rate-to-type mapping can be read, or the revive tunable values are joined.",
+      "refs": []
+    },
+    "L4024": {
+      "id": "L4024",
+      "title": "Traversal graphs read: landing class is picked by vertical speed at -6.2, -13, -15.7, -18.45, -21.23 and -29.5 m/s, slide strength scales from 0.5 at 1.25 s to 1.0 at 2.5 s since the last slide or dive, and on-ground and close-to-ground are distances under 0.1 and 0.3",
+      "status": "finding",
+      "statusNote": "Landing bands, slide scaling and support thresholds read; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4024-traversal-graphs-fall-slide-support.json"
+      ],
+      "summary": "The traversal graphs were read. Landing class 0 to 7 is chosen by vertical speed bands at -6.2, -13, -15.7, -18.45, -21.23 and -29.5; the graph applies no fall damage itself. Slide strength = (clamp(time since last slide or dive, 1.25, 2.5) - 1.25) / 2.5 + 0.5, so 0.5 right after a slide and 1.0 from 2.5 s; slide speed is clamped to 5..100. On ground is a ground distance under 0.1, close to ground under 0.3. 16 raw-offset checks matched.",
+      "reopenWhen": "The fall-damage data is joined to the landing classes, or the slide tunables are joined.",
+      "refs": []
+    },
+    "L4025": {
+      "id": "L4025",
+      "title": "Rest of the root soldier graph read: prone needs the per-team mutator and no zipline or rope, stance changes to and from prone block input for a tunable time, the parachute has a 0.6 s cooldown and an auto-deploy window of -1.5 to +1 around a tunable, vault height is reduced by clamp(height gained since jump, -0.25, 0.67), and slide input follows the crouch option",
+      "status": "finding",
+      "statusNote": "Root soldier graph read end to end at reader level; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4025-root-graph-stance-parachute-vault-input.json"
+      ],
+      "summary": "Parts 1, 3 and 4 of the root soldier graph were read. Prone is allowed only with the per-team mutator and when not on a zipline or rope; changing between prone and standing or crouching blocks input for `TransitionInputBlockTime`. Water depth is classed in five bands (0.2, 0.6, 1.2; legacy 0.25, 0.8, 1.5). The parachute has a 0.6 s cooldown after a cut and auto-deploys inside a window of -1.5 to +1 around a tunable distance. Vault maximum height is reduced by the height gained since the jump, clamped to -0.25..0.67. Slide input depends on the slide-on-crouch option. 18 raw-offset checks matched.",
+      "reopenWhen": "The switch instruction and the geometry operations are decoded, or the tunable values are joined.",
+      "refs": []
+    },
+    "L4026": {
+      "id": "L4026",
+      "title": "Tool and miscellaneous gadget graphs read: defibrillator charge time is the full-charge tunable minus the active-revive reduction with a minimum, its effects use parameters 0.5, 2.0 and 5.0, EIDOS ends on its alive timer or intercept cap and searches every 0.1 s, and the mobile jammer pulses 0.2 effects",
+      "status": "finding",
+      "statusNote": "Tool gadget graphs read; headline constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4026-tool-and-misc-gadget-graphs.json"
+      ],
+      "summary": "The tool and miscellaneous gadget graphs were read. Almost every number is an imported tunable; the graphs hold the rules. Defibrillator charge time = clamp(TimeToFullCharge - ActiveReviveTimeReduction, ChargeTimeMinimum, TimeToFullCharge); its damage, ranked revive and supercharge effects take parameters 0.5, 2.0 and 5.0. EIDOS lasts for its alive timer plus an upgrade extension, or until its intercept cap, and searches every 0.1 s. The mobile jammer applies its effects with parameter 0.2 and its radius is multiplied by an upgrade tunable. 10 raw-offset checks matched.",
+      "reopenWhen": "A gadget row is needed for a claim, or the tunable values are joined to these rules.",
+      "refs": []
+    },
+    "L4027": {
+      "id": "L4027",
+      "title": "Persistence graphs read: they emit stat and experience events and hold almost no amounts; passive mastery experience ticks only within 10 s of firing and is scaled by interval / 60, and battle royale placement experience is a weighted share of a per-mode budget rounded down to 100",
+      "status": "finding",
+      "statusNote": "Persistence graphs read at reader level; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4027-persistence-graphs.json"
+      ],
+      "summary": "The 46 persistence graphs were read (the 2,700-line player graph by section, not line by line). They are event emitters: a gate, then a native call that fires an event. Experience amounts, multipliers and caps are not in them. Two formulas are present: passive mastery experience (per interval, only while firing or within 10 s of the last shot, amount = scalar x interval / 60) and battle royale placement experience (budget x weight for the placement / sum of weights, rounded down to a multiple of 100). 9 raw-offset checks matched.",
+      "reopenWhen": "Experience amounts are needed: join the named tunables, or decode the event argument packs.",
+      "refs": []
+    },
+    "L4028": {
+      "id": "L4028",
+      "title": "Player and feature graphs read: respawn delay is the per-team mode delay times two per-team multipliers with a 150 upper clamp on the redeploy timer, psy gas damages only at hallucination level 2 without a mask and at 35 health or more, suppression above 0.5 spots the suppressor for 5 s, and objective self-unspot uses 5 m (capture point) and 8 m for 30 s (Rush)",
+      "status": "finding",
+      "statusNote": "Player and feature graphs read at reader level; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4028-player-and-feature-graphs.json"
+      ],
+      "summary": "The three player-owner graphs and 51 feature graphs were read; the large player graph and the reward-drop graph are only partly decoded. Respawn delay = per-team mode delay (or the default) x two per-team multipliers, with a Gauntlet bonus subtracted; the redeploy timer is clamped up to 150. Psy gas damage applies only at hallucination level 2, without a mask, at 35 health or more. Suppression above 0.5 spots the suppressor for 5 s. Contract graphs pick tunables by game mode. 12 raw-offset checks matched.",
+      "reopenWhen": "A respawn, gas or spotting number is needed for a claim, or the tunable values are joined.",
+      "refs": []
+    },
+    "L4029": {
+      "id": "L4029",
+      "title": "Game-mode graphs read: mostly plumbing with few numbers; the sabotage gadget arms in 30 s and disables vehicle weapons for 29 s, its projectile effect lasts 26 s, capture rate is a multiplier table indexed by players inside (0 to 4), and battle royale loadout crates are placed at zone radius x random^0.66",
+      "status": "finding",
+      "statusNote": "Game-mode graphs read at reader level; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4029-game-mode-graphs.json"
+      ],
+      "summary": "All 114 game-mode listings were read (development autotests and single-player wrappers skimmed). Most forward to native code or read imported tunables. Solid rules: the sabotage gadget (30 s arming, 0.45 s interact fill, 29 s weapon disable; projectile effect 26 s), capture rate as `CaptureSpeedMultipliers`[players inside, 0 to 4], battle royale airdrop and loadout crate placement, and the Night Raid speed modifier. 13 raw-offset checks matched.",
+      "reopenWhen": "A game-mode rule is needed for a claim, or the capture multiplier table values are joined.",
+      "refs": []
+    },
+    "L4030": {
+      "id": "L4030",
+      "title": "In-round progression and remaining gadget graphs read: passive upgrades re-apply their effect on a timer with duration = period + 0.1, Active Medic uses a 7 m radius, Active Attack ends after 4.9 s, Combat High stacks to 5 on kills within 5 s, and the mortar call-in spawns shells 300 above the target",
+      "status": "finding",
+      "statusNote": "In-round progression and remaining gadget graphs read at reader level; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4030-in-round-progression-and-remaining-gadget-graphs.json"
+      ],
+      "summary": "All 59 listings were read. Passive upgrades re-apply an effect on a timer whose duration is the period plus 0.1, so it never lapses. Active Medic heals and resupplies within 7 m; Active Attack ends after 4.9 s; Combat High raises a stack (to 5) for kills within 5 s of each other; Repeatable Reward stacks to 4. The mortar call-in spawns shells 300 above the target inside a dispersion radius. AI health ping starts below 95 health. 11 raw-offset checks matched.",
+      "reopenWhen": "A field upgrade number is needed for a claim, or the effect assets named here are decoded.",
+      "refs": []
+    },
+    "L4031": {
+      "id": "L4031",
+      "title": "Per-vehicle simulation graphs read: they are driving and flight physics only, with no health, repair or seat logic; they hold speed caps (Abrams 43 forward, 12 reverse; JLTV input fades by 120), boost meter rates, the jet take-off switch at 280 and landing at 270, and helicopter engine spool of 3 s up and 16 s down",
+      "status": "finding",
+      "statusNote": "Vehicle driving graphs read at reader level; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4031-vehicle-driving-graphs.json"
+      ],
+      "summary": "One graph per vehicle class was read in full (JLTV, Abrams, F-16, AH-64) and compared with siblings by imports and constants. They are drivetrain and flight-control physics; health, damage thresholds, repair, seats and countermeasures are not in them. They do hold speed caps, boost meter drain and refill rates, what mobility damage does to control, the jet airborne and grounded switch, and helicopter engine spool times. 41 raw-offset checks matched.",
+      "reopenWhen": "A vehicle speed or boost number is needed for a claim, or the native functions are named.",
+      "refs": []
+    },
+    "L4032": {
+      "id": "L4032",
+      "title": "Shared vehicle graphs read: smoke hides entities inside it from lock-on for a tunable duration, flares fire at 400 per minute and remove the signature for the lockable time minus lock progress, radar range is the maximum range times a range-increase effect and zero against jammed targets, and weapon-slot cycling is one shared wrap-around pattern",
+      "status": "finding",
+      "statusNote": "Shared vehicle graphs read at reader level; constants raw-checked for value.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4032-shared-vehicle-ability-graphs.json"
+      ],
+      "summary": "All 93 shared vehicle listings were read (the five largest in full, the rest through a copy with plain copy instructions removed). Most tuning values are imported tunables. The rules: smoke applies a hide-from-lock-on effect to entities inside it; flares fire at 400 per minute and then remove the signature for the lockable time minus lock progress; radar range scales with an effect and is zero against jammed targets; detected explosives detonate staggered over ten fractions of a maximum delay. 13 raw-offset checks matched.",
+      "reopenWhen": "A vehicle ability number is needed for a claim, or the vehicle tunable file is joined to these rules.",
+      "refs": []
+    },
+    "L4033": {
+      "id": "L4033",
+      "title": "Boat and stationary weapon graphs read: mobility damage forces boat throttle to 0, boat boost starts above the configured threshold x 1.1, the Phalanx aims with lead compensation and alternating burst and cooldown tunables, and the missile battery launches at the 45 degree lob speed sqrt(9.8 r^2 / (r - dz))",
+      "status": "finding",
+      "statusNote": "Boat and stationary graphs read at reader level; constants raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4033-boat-and-stationary-weapon-graphs.json"
+      ],
+      "summary": "The CB90, jet ski, Phalanx and small stationary graphs were read in full and the RHIB compared by imports. They are locomotion and aiming simulations with no health, repair, ammunition or overheat logic. Mobility damage forces boat throttle to 0; boat boost needs sprint input, a driver, throttle and no brake, and starts above threshold x 1.1; the Phalanx leads its target and fires in bursts; the missile battery lobs at 45 degrees. 11 raw-offset checks matched.",
+      "reopenWhen": "A boat or stationary weapon number is needed for a claim, or the vehicle configuration table is decoded.",
+      "refs": []
+    },
+    "L4034": {
+      "id": "L4034",
+      "title": "Tunable defaults joined to the names the expression graphs read: 901 values, including stance input block 0.95 s, vault start height 1.97, revive total time 4.72 s, slide cooldown 1.0 s, defibrillator full charge 1.0 s with a 0.3 s minimum, and EIDOS 5 s with 3 intercepts",
+      "status": "finding",
+      "statusNote": "Defaults joined; cited floats raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4034-tunable-defaults-for-graph-names.json"
+      ],
+      "summary": "The tunables that the expression graphs read by name were joined to their shipped defaults: 901 values in one table. Examples: stance change input block 0.95 s, vault start height 1.97, revive total time 4.72 s, slide cooldown 1.0 s, defibrillator full charge 1.0 s (minimum 0.3 s), EIDOS 5 s and 3 intercepts, spot duration 8 s. These are defaults and can be overridden remotely. 18 raw-offset checks matched.",
+      "reopenWhen": "A game update changes the tunable files, or a default is contradicted by an in-game measurement (which would indicate a live override).",
+      "refs": []
+    },
+    "L4035": {
+      "id": "L4035",
+      "title": "Effect assets named by the graphs decoded: defibrillator revive entries 50 to 100 in steps of 10, flak 0.67 (adrenaline 0.8, giga shield 0.5), Combat High healing 5 to 10 per stack, low profile spot duration x 0.667, and the stored defibrillator minimum charge is 0.3 s against EA's 0.35 s",
+      "status": "finding",
+      "statusNote": "Effect assets decoded; cited values raw-checked.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4035-effect-asset-values-for-graph-effects.json"
+      ],
+      "summary": "The 208 effect assets named by simulation graphs were decoded and tabulated. They hold the amounts the graphs do not: defibrillator revive entries 50 to 100, flak 0.67, Combat High healing 5 to 10, spotting and lock-on multipliers, auto-regeneration values. The stored defibrillator minimum charge is 0.3 s against EA's stated 0.35 s. 52 raw-offset checks matched.",
+      "reopenWhen": "A field name for these classes is recovered, or an in-game measurement contradicts a stored amount.",
+      "refs": []
+    },
+    "L4036": {
+      "id": "L4036",
+      "title": "Seven more native functions named from use; the hipfire graph's comparison is float not-equal, so the 1.2 factor applies whenever IncreasePerShotFraction differs from 1.0",
+      "status": "finding",
+      "statusNote": "Seven functions named; hipfire comparison settled.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4036-native-function-names-and-hipfire-comparison.json"
+      ],
+      "summary": "Function identifiers are not reversible name hashes, so seven functions were named from usage across 1,010 listings: float not-equal and equal, integer not-equal, greater, greater-or-equal, less-or-equal and subtract. The hipfire graph applies float not-equal: factor 1.2 when `IncreasePerShotFraction` differs from 1.0, else 1.0, inside the square root. This matches the site's inferred condition and settles its direction. 3 raw-offset checks matched.",
+      "reopenWhen": "A graph is found where one of these names gives a wrong result against a measured or site-verified value.",
+      "refs": []
+    },
+    "L4037": {
+      "id": "L4037",
+      "title": "Vehicle mobility hit rule read: damage is summed per vehicle and a mobility hit is applied for MobilityHitDuration when the sum reaches a scale x MobilityHitDamageThreshold within MobilityHitTimeFrame; it is removed at full health",
+      "status": "finding",
+      "statusNote": "Mobility hit rule read; scale inferred.",
+      "date": "2026-10-10",
+      "receipts": [
+        "frosty-2026-10-10-L4037-vehicle-mobility-hit-rule.json"
+      ],
+      "summary": "`SimEx_Vehicle_MobilityDamage` was read in full. Each damage event adds to a stored sum; when the sum reaches a scale x `MobilityHitDamageThreshold` (0.5) the mobility damage effect is applied for `MobilityHitDuration` (5 s) and the sum resets. The sum also resets once `MobilityHitTimeFrame` (3 s) has passed since the recorded hit. The effect is removed when normalised health equals 1. The scale is probably maximum health. 2 raw-offset checks matched.",
+      "reopenWhen": "The scale is identified, or an in-game mobility hit contradicts the half-health reading.",
+      "refs": []
     }
   }
 }
