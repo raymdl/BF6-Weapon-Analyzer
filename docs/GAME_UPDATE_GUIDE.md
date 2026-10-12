@@ -74,6 +74,11 @@ old build is gone. Keep the open build complete while it is installed:
 - Export strings (`fs_us_loc`) for the build.
 - Record the executable hash and version, the Frosty archive Head and the SDK version in
   `BUILD.json`.
+- Once the patch notes are out, write a patch-specific checklist in the pre-trace run
+  folder (`update-<version>-checklist.md`): identity and baseline paths, decisions made for
+  this update, one row per expected change (source, file and field, "from", expected "to",
+  result) and anything seen outside the notes. It holds only what is particular to the
+  update and points here for method. Example: `2026-10-12-update-2110-pretrace`.
 
 Write everything to the open build (`builds\<build>\capture\` or `xml\`), then run
 `record` and `verify`. Never write to a sealed build.
@@ -407,6 +412,9 @@ forcing the match.
 Also review changes the notes do **not** mention. Both the SU-230 camera-recoil fix and the
 PiP setting binding were unannounced.
 
+Record each result in the update's checklist (Stage 0): fill in the result column for every
+row, add rows for unannounced changes, and complete its outcome section when the work closes.
+
 ## Stage 8 — Recheck the known-issue lists
 
 Run this stage on every new build, and on a hotfix whose patch notes list fixes.
@@ -458,6 +466,35 @@ in-game recheck.
    Check the site header, footer, page description and `data/provenance/live-baseline.json`
    as well as per-weapon provenance. Verify the changed values in the local browser.
 5. Record the implementation revision and the check results.
+
+## Haiku workers
+
+Stages 0 to 2 are bounded by Frosty (one process at a time; about 10 minutes for a cache
+rebuild plus capture), so workers do not shorten them. From Stage 3 on, most of the time is
+mechanical reading that splits into independent parts. Hand those parts to Haiku workers
+(`haiku-worker` or `haiku-reader`, Medium effort) and keep the decisions in the main session.
+Ready briefs are in the research repo:
+[game-update-haiku-briefs.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/game-update-haiku-briefs.md).
+
+| When | Worker task | Brief |
+|---|---|---|
+| The day before, once the patch notes are out | Locate every "from" value in the files already held, and the same field on other items | B |
+| While the Stage 1 capture runs | Turn the patch notes into a per-item checklist and a list of fixes | A |
+| Stage 3, after the comparison | Cross-check patch summary, catalog hash and raw hash; list disagreements | C |
+| Stage 5 | Diff triage in batches of about 40 changed files: match by GUID, label the noise categories, list the rest | D |
+| Stage 6 | One consistency scan per worker, compared with the previous build's result | E |
+| Stage 7 | Confirm each "to" value at the field located the day before | G |
+| Stage 8 | One known-issue list per worker: which entries cite a changed asset or match a "fixed" line | F |
+
+Launch independent workers together; Stages 5, 6 and 8 can all start as soon as the changed
+route list exists.
+
+Not delegated: any Frosty run, the Stage 1 hotfix or new-build decision, `seal`, `record`,
+`BUILD.json`, decoder changes and their validation (Stage 4), marking a known issue resolved,
+and Stage 9. The 7 October 2026 tests covered Haiku on bounded read-only tasks with a written
+brief and a checkable answer; they did not cover writing to the repos or judging models.
+About one run in four had a disclosed rule slip, so check each result against the files
+before recording it.
 
 ## Hazards
 
