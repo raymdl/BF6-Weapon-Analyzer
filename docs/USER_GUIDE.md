@@ -295,7 +295,8 @@ reconstructs the build and encoded settings; it need not reproduce a rerolled im
 Legacy target links with no stored distance open at 30 metres for compatibility.
 
 **Copy Image / Save Image** captures the current main view with attribution. The
-capture uses a consistent 1280 CSS-pixel layout and a 2× output bitmap. Overview is
+capture uses the layout of the current window width at its full scroll height,
+one image pixel per CSS pixel. Overview is
 expanded temporarily so loadout identity is included. Other collapsed panels remain
 collapsed. **Include sidebar in image** in the same menu, off by default, adds the
 weapon and attachment selections on the left. Unsupported image-copy controls are disabled; a failed clipboard write
