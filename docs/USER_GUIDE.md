@@ -83,9 +83,10 @@ or lower reload time/dispersion. They apply to individual stats only.
 effects relative to the bare weapon. Iron sights reduce sway on most weapons; optics
 do not. Camera sway is excluded. Green **Yes** chips show capabilities such as Fire
 while Sprinting, Reload in ADS or a flashlight's activation. **Hip Spread/Shot**
-shows spread added by each hipfire shot. A light can reduce that increase while
-also reducing the flat **Hip Spread Recovery** value; the recovery value alone
-does not describe the light's overall effect.
+shows spread added by each hipfire shot. A light or Heavy-type barrel that reduces
+the increase scales bloom recovery by the same factor, so bloom stays
+proportionally smaller and clears no slower. The **Spread Recovery** chips leave
+that scaling out and show only real changes, such as a muzzle's recovery boost.
 
 Headshot, limb and collateral values follow the selected weapon and ammo.
 Collateral is displayed as a multiplier; wall penetration is not simulated. Enemy regeneration delay is 5 s normally, 9 s with Frangible,

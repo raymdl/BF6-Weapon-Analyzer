@@ -2050,16 +2050,19 @@ function renderAttachmentStats(loadouts) {
     return ((n > 0 ? '+' : '') + n.toFixed(dec)) + unit;
   };
   const escAttr = s => String(s).replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  // Barrels and lights that scale bloom scale its recovery with it, which is no loss of
+  // recovery. The selected build's factor applies to every row so only real changes show.
+  const bloomScale = { ads: 1, hip: 1 };
   const adsSpreadRecovery = w => {
     const dyn = spreadDynamics(w, 'ads');
     return dyn.firingOffset
-      * (w._adsSpreadFiringDecOffsetMult ?? 1)
+      * bloomScale.ads
       * (1 + (w._adsSpreadDecayBoost ?? 0));
   };
   const hipSpreadRecovery = w => {
     const dyn = spreadDynamics(w, 'hip');
     return dyn.firingOffset
-      * (w._hipSpreadFiringDecOffsetMult ?? 1);
+      * bloomScale.hip;
   };
   const adsRecoilDecay = w => w._adsRecoilDecayMult ?? 1;
   const metrics = [
@@ -2140,8 +2143,7 @@ function renderAttachmentStats(loadouts) {
     'Recoil Recovery': [['adsRecoilDecayMult', 'mult']],
     'Spread Inc/Shot': [['adsSpreadIncMult', 'mult']],
     'Hip Spread/Shot': [['hipSpreadIncMult', 'mult']],
-    'ADS Spread Recovery': [['adsSpreadFiringDecOffsetMult', 'mult'], ['adsSpreadDecayBoost', 'pct']],
-    'Hip Spread Recovery': [['hipSpreadFiringDecOffsetMult', 'mult']],
+    'ADS Spread Recovery': [['adsSpreadDecayBoost', 'pct']],
     'Mov Spread': [['movingAdsSpreadTierMod', 'tier']],
     'Hipfire Spread': [['hipSpreadTierMod', 'tier']],
     '3D Spot': [['worldSpotMult', 'mult']],
@@ -2192,9 +2194,11 @@ function renderAttachmentStats(loadouts) {
     if (kinds.has('tier')) return 'Tier steps differ in size and the ladder has fixed ends, so the rows do not add up to the net.';
     return 'These attachments interact, so the rows do not add up to the net.';
   };
-  const bloomScaledRecoveryField = {
-    'ADS Spread Recovery': 'adsSpreadFiringDecCoefMult',
-    'Hip Spread Recovery': 'hipSpreadFiringDecCoefMult',
+  const bloomScaleNote = {
+    'Spread Inc/Shot': k => `Bloom recovery is scaled to match, so ADS bloom stays at ×${k} or less throughout a burst and clears no slower.`,
+    'Hip Spread/Shot': k => `Bloom recovery is scaled to match, so hipfire bloom stays at ×${k} or less throughout a burst and clears no slower.`,
+    'ADS Spread Recovery': (k, names) => `Not listed: ${names}. Recovery scaled in step with the smaller bloom does not slow recovery.`,
+    'Hip Spread Recovery': (k, names) => `Not listed: ${names}. Recovery scaled in step with the smaller bloom does not slow recovery.`,
   };
   const colorFor = (m, d) => (Math.abs(d) < 0.0005 ? 'var(--muted)'
     : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
@@ -2222,6 +2226,8 @@ function renderAttachmentStats(loadouts) {
     const withProjectile = (w, ammo) => ({ ...w, _projectileModel: projectileModelFor(w, { ammo }) });
     const base = withProjectile(baseWeapon, defaults.ammo);
     const cur = withProjectile(curWeapon, atts.ammo ?? defaults.ammo);
+    bloomScale.ads = cur._adsSpreadFiringDecOffsetMult ?? 1;
+    bloomScale.hip = cur._hipSpreadFiringDecOffsetMult ?? 1;
     const contributions = attachmentContributions(weapon, atts, defaults).map(c => ({
       ...c,
       name: plainName(c.record),
@@ -2264,10 +2270,13 @@ function renderAttachmentStats(loadouts) {
       const delta = +(curVal - baseVal).toFixed(Math.max(m.dec, 3));
       const fmt = d => signed(+d.toFixed(Math.max(m.dec, 3)), m.unit, m.dec);
       const { rows, footer } = breakdown(m, m.val, fmt, delta);
-      // Recovery that scales with current bloom has no single value, so it is a footnote.
-      const coefField = bloomScaledRecoveryField[m.lbl];
-      const coef = coefField && contributions.reduce((p, c) => p * (c.record?.[coefField] ?? 1), 1);
-      if (coef && Math.abs(coef - 1) > 0.0005) footer.push({ note: `Recovery that scales with current bloom is ×${+coef.toFixed(2)}, not included above.` });
+      const scaleNote = bloomScaleNote[m.lbl];
+      const scale = /^Hip/.test(m.lbl) ? bloomScale.hip : bloomScale.ads;
+      if (scaleNote && rows.length && Math.abs(scale - 1) > 0.0005) {
+        const field = /^Hip/.test(m.lbl) ? 'hipSpreadFiringDecOffsetMult' : 'adsSpreadFiringDecOffsetMult';
+        const names = contributions.filter(c => (c.record?.[field] ?? 1) !== 1).map(c => c.name).join(', ');
+        footer.push({ note: scaleNote(+scale.toFixed(2), names) });
+      }
       // A net of zero still shows when attachments cancel each other out.
       if (Math.abs(delta) < 0.0005 && !rows.length) return;
       const label = `${m.displayLabel ?? m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
