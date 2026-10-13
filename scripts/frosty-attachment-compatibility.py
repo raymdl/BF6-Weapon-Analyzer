@@ -20,8 +20,10 @@ ACCESSORY_FAMILIES = {
     **{f: 'secondary_optic' for f in ('CantedReflex', 'CantedReflexSlanted', 'OffsetRedDot',
                                       'G43Magnifier', 'Variable2x', 'Variable3x', 'Variable4x')},
 }
-# Sights the equipment files do not list for an accessory but the game accepts with it
-# (operator in-game check, 2026-10-13, client 2.1.1.0): (weapon, accessory, sight label).
+# Labels kept selectable although one scope with that label is not listed for the accessory:
+# two scopes share the label and the game accepts the other one (Interdictor: the MGO 3.50x
+# blocks canted sights, the SDO 3.50x does not; operator in-game check, 2026-10-13, client
+# 2.1.1.0). (weapon, accessory, sight label).
 OPERATOR_PERMITTED = {
     ('interdictor', 'canted_irons', 'Scope 3.50x'), ('interdictor', 'secondary_optic', 'Scope 3.50x'),
     ('m16a4', 'canted_irons', 'Scope 3.00x'), ('m16a4', 'secondary_optic', 'Scope 3.00x'),

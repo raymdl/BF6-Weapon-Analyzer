@@ -75,7 +75,8 @@ not added to the site's broader sight categories.
 
 Barrel ADS steps are generated per weapon in `BARRELS[].adsTimeTierModByWeapon`.
 Run `python scripts/frosty-barrel-ads.py --root <Frosty-export-root>` to update them,
-or add `--check` to compare the catalog with current XML. The generator follows
+or add `--check` to compare the catalog with current XML ([raw mode](../MAINTENANCE.md#raw-mode)
+replaces `--root` here and in the two commands below). The generator follows
 ability selectors into WB animation/FOV effects and reads the signed index field.
 Equal animation/FOV effects count once; no linked effect contributes zero. It
 does not use the old comparison's numeric values or combine the separate GS route.
@@ -97,7 +98,8 @@ Current-build Control captures confirm tier 3 on all five
 ([review](../reference-data/provenance/qd-grip-pod-screenshot-review-2026-09-13.json)).
 The handling generator keeps these recoil fields when it regenerates.
 Run `python scripts/frosty-attachment-handling.py --root <Frosty-export-root>`;
-`--check` compares without writing and `--review` writes evidence only. The current
+`--check` compares without writing and `--review` writes evidence only
+([raw mode](../MAINTENANCE.md#raw-mode) is also accepted). The current
 conversion generates 5,489 fields and three source base indices. All 1,487 handling
 selections have source identities, with no deferred fields. Two belt-box description
 mismatches are retained as possible game bugs; the
@@ -131,7 +133,8 @@ recovery boost and activates the combo lights' hipfire effect.
 
 `scripts/frosty-assumption-review.py --root <Frosty-export-root> --apply` generates
 four recoil tier fields for Linear Comp and the three burst attachment records.
-Use `--check` to compare without writing. All 53 supported weapon/attachment
+Use `--check` to compare without writing; [raw mode](../MAINTENANCE.md#raw-mode) replaces
+`--root`. All 53 supported weapon/attachment
 pairs are traced from the attachment ability; burst effects additionally follow
 the nested fire-mode selector into that weapon's GS bindings.
 

@@ -391,6 +391,8 @@ check for:
 python scripts/frosty-multi-package-scan.py --root <xml root>
 ```
 
+On a raw capture, replace `--root` with the [raw mode](../MAINTENANCE.md#raw-mode) arguments.
+
 One attachment action normally selects one shared `U_WPM_*` package. Several packages in
 one action can mean an incomplete selector assignment. This found the sniper Slim Angled
 grips (ATTACHMENT_BUGS entry 1a) and the M121 A2 / M45A1 ammo packages (entry 2). Each hit
@@ -597,9 +599,9 @@ the Stage 7 availability census first.
    to [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md).
 
 The readers written for 2.1.1.0 (attachment graph, names, kill switches, the three parts'
-extractors) are in the research repo under `scripts/update-readers-2.1.1.0/` (`A/`, `B/`, `C/`;
-see its README). They are tied to build 2.1.1.0 and keep their working files in the run folder
-`reports\weapon-analyzer-research\2026-10-13-update-2110-post\stage9\`.
+extractors) are in the research repo under `scripts/update-readers/` (`A/`, `B/`, `C/`; see
+its README). For a new build, set the build label and a new working folder in its
+`settings.json`, run `regnames.py`, then the parts.
 
 ## Haiku workers
 

@@ -372,8 +372,15 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
             raise ValueError(f"Screenshot tooltip source changed: {key}")
         if record["sources"][0]["uiLink"] != review["originalUiLink"]:
             raise ValueError(f"Screenshot tooltip UI link changed: {key}")
-        if hashlib.sha256((REPO / review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
-            raise ValueError(f"Screenshot tooltip image changed: {key}")
+        if "screenshot" in review:
+            if hashlib.sha256((REPO / review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
+                raise ValueError(f"Screenshot tooltip image changed: {key}")
+            evidence = {"screenshot": review["screenshot"], "screenshotSha256": review["screenshotSha256"]}
+        elif review.get("operatorConfirmation"):
+            # Text the operator read in game and confirmed, with no saved image.
+            evidence = {"operatorConfirmation": review["operatorConfirmation"]}
+        else:
+            raise ValueError(f"Panel tooltip has neither an image nor an operator confirmation: {key}")
         text = review["observedDescription"]
         if not text.strip():
             raise ValueError(f"Screenshot tooltip is empty: {key}")
@@ -385,8 +392,7 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
         record.pop("reviewStatus", None)
         record["tooltipDescriptionKey"] = description_key
         record["tooltipSource"] = {
-            "kind": "user-reviewed-game-panel", "screenshot": review["screenshot"],
-            "screenshotSha256": review["screenshotSha256"],
+            "kind": "user-reviewed-game-panel", **evidence,
             "originalFrostyStringIds": sorted({r["descriptionStringId"] for r in review["pointerEvidence"]}),
             "note": "Panel text approved for this choice only. Original Frosty UI links and missing English IDs are retained in sources.",
         }
