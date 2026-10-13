@@ -78,7 +78,8 @@ old build is gone. Keep the open build complete while it is installed:
   folder (`update-<version>-checklist.md`): identity and baseline paths, decisions made for
   this update, one row per expected change (source, file and field, "from", expected "to",
   result) and anything seen outside the notes. It holds only what is particular to the
-  update and points here for method. Example: `2026-10-12-update-2110-pretrace`.
+  update and points here for method; its run-order table lists the stages with a tick
+  column and that update's paths, without repeating the steps. Example: `2026-10-12-update-2110-pretrace`.
 
 Write everything to the open build (`builds\<build>\capture\` or `xml\`), then run
 `record` and `verify`. Never write to a sealed build.
@@ -134,9 +135,24 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    ```
 
    It compares paths, GUIDs, sizes and Frosty record hashes of the two catalogs, and the
-   recomputed raw SHA-256 of each watched route. The catalog alone is not enough: record
+   raw SHA-256 of each watched route as recorded in `raw-status.jsonl`. It also re-hashes
+   every compared file on disk, on both sides, and lists any that does not match its
+   recorded hash.
+
+   The step 3 capture rebuilds the cache, and Frosty lists more assets in a run that
+   rebuilds its cache than in one that loads a saved cache (1,014 more on client
+   `1.0.443.60769` with unchanged game files). Compare its catalog only with a
+   rebuilt-cache catalog. If the baseline's raw files came from a loaded-cache run, name
+   the rebuilt-cache catalog folder separately:
+
+   ```bash
+   python scripts/frosty-capture-compare.py <baseline collection> <new collection> <check folder>/comparison.json --baseline-catalog <baseline rebuilt-cache collection>
+   ```
+
+   The catalog alone is not enough: record
    hashes can stay the same when the bytes change (Stage 3). It exits 1 when coverage is
-   incomplete (baseline routes missing from the new capture, or new failures); explain each
+   incomplete (baseline routes missing from the new capture, new failures, or a file that
+   does not match its recorded hash); explain each
    before deciding. Record both results in the client entry (`catalogCheck`, `rawCheck`).
 
 6. **Decide.**
