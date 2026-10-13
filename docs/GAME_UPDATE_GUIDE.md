@@ -186,32 +186,43 @@ Run `guard <build> --game "<game>"` before every export from now on.
 
 ## Stage 2 — Capture the new build
 
-Reuse the previous build's route list so the two captures are comparable.
+Start from the previous build's newest route list (`capture\raw-routes*.txt`) so the two
+captures are comparable, and extend it before the run. A reused list cannot name files that
+did not exist before: in 2.1.1.0 that cost two extra Frosty runs (1,767 routes, then 24) and a
+third for 43 attachment descriptors. Add, from the Stage 1 comparison's added and changed
+routes:
+
+- every catalog-added route under `Common/Hardware/Weapons/` and
+  `Common/UI/Static/Metadata/Attachments/` (new weapon folders, `AAM_*` maps, `AD_*`
+  descriptors), and added gameplay routes under `Common/Hardware/` and `Common/Gameplay/`;
+- the season's name metadata: `Common/UI/Static/Metadata/S<n>/UI*MetaData*`;
+- the season's availability tables: `Common/GameSetup/Tweakables/Killswitches/KST_*`,
+  `GameConfigurations/CT_GLA_*` unlock tables, and new `GRX_*` and `MUT_*` tweakables;
+- every changed route the old list does not cover.
+
+Write the extended list as the new build's `capture\raw-routes.txt`.
 
 ```bash
 python scripts/frosty-capture.py collection --build <build> --into capture/collection --catalog --routes-file "<datamining>/builds/<build>/capture/raw-routes.txt"
 ```
 
-**New weapons and attachments need a second capture.** The reused route list cannot name
-files that did not exist before, so a new weapon's UI descriptors are missing after the
-first capture and the site has no tooltip or label for its barrels, magazines, iron sights
-and weapon-specific muzzles. Before building site data for a new weapon or attachment:
+**Check the descriptors after the capture.** For each new weapon, read its `AAM_<weapon>`
+map and list every `AD_*` descriptor its records point to that the build does not hold.
+Shared descriptors under `Attachments/Shared/` are often older files and so are not
+"catalog-added". Capture the missing ones with
+`frosty-capture.py <topic>-<date> --build <build> --routes-file <list>`. Without them the
+weapon's barrels, magazines, iron sights and own muzzles have no tooltip or label. Read labels
+and descriptions only from captured descriptors; a string-table text match is not a link, so
+record such a choice as "not found".
 
-1. Capture the weapon's `AAM_<weapon>` map (under `Common/UI/Static/Metadata/Attachments/`)
-   with the weapon folder.
-2. List every `AD_*` descriptor route its records point to that the build does not hold
-   (shared ones under `Attachments/Shared/` included), and capture those routes with
-   `frosty-capture.py <topic>-<date> --build <build> --routes-file <list>`.
-3. Write a new route file `capture\raw-routes-<date>.txt` holding the build's
-   `raw-routes.txt` plus every route captured since, and name it in the `BUILD.json` notes
-   as the list for the next update. Existing files under `capture\` cannot change, so do
-   not edit `raw-routes.txt` itself. Then `record` and `verify`.
+After any follow-up capture, write a new route file `capture\raw-routes-<date>.txt` holding
+`raw-routes.txt` plus every route captured since, and name it in the `BUILD.json` notes as the
+list for the next update. Existing files under `capture\` cannot change, so do not edit
+`raw-routes.txt` itself. Then `record` and `verify`.
 
-Read labels and descriptions only from the captured descriptors. A string-table text match
-is not a link; record such a choice as "not found".
-
-Then XML-export the changed subset into `builds/<build>/xml/` with the batch command, and
-export strings. Full command lines are in [Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#frostycmd).
+Then export strings. An XML export is no longer needed: the generator scripts read the raw
+capture directly (see [raw mode](../MAINTENANCE.md#raw-mode)). XML-export a subset into
+`builds/<build>/xml/` only if you want to read an asset by eye. Full command lines are in [Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#frostycmd).
 
 Write the text catalog files from the captured catalog:
 
@@ -444,7 +455,43 @@ corrected" matched only *muzzle-flash* changes in the captured set; say so rathe
 forcing the match.
 
 Also review changes the notes do **not** mention. Both the SU-230 camera-recoil fix and the
-PiP setting binding were unannounced.
+PiP setting binding were unannounced. Make this a pass of its own: list every changed value
+in a weapon, attachment or bullet file that no patch-note line explains, then read the same
+field on every other weapon. The count across weapons is what separates a deliberate change
+from an error: in 2.1.1.0 the spot-on-fire range became 75 m on four weapons only (M433, SGX,
+L110, P18), which no note mentioned.
+
+### In-game names
+
+Read the in-game names of every new weapon, gadget and attachment from the season's name
+metadata (`UIWeaponAbilityMetaData_*`, `UIWeaponAttachmentMetadata_*`, the `AAM_*` maps) and
+the strings table as a standard step, and add the internal-to-in-game rows to
+`reference-data/provenance/frosty-weapon-identities.json` in the research repo. Use in-game
+names in every report to the operator; give the internal name only where the file name
+itself matters.
+
+### Availability of new content
+
+A record in the files does not mean the item is in the game. Run this census for every new
+attachment, ammunition choice, weapon and gadget, and classify each as live, switched off or
+future release:
+
+| Needed for "live" | Where |
+|---|---|
+| An attachment record | `Attachment_<weapon>_*` in the weapon folder |
+| An ability branch that binds it | `<weapon>_ability`, branch list `Field_d7605aab` |
+| A modifier package in the weapon's list | `<weapon>_WB`, `Field_0cd9f20f` |
+| Kill switch not set | `KST_*` row stored `false`; `true` means switched off |
+
+Cross-check against the roadmap dates: an item with all four that the roadmap dates later is
+a future release. Two limits found in 2.1.1.0:
+
+- **Ammunition:** the four conditions are necessary, not sufficient. Nine older ammunition
+  records meet all of them and are not offered in game. List new ammunition for an in-game
+  menu check.
+- **Not in the weapon's own `AAM_*` map:** an attachment with a record but no entry in the
+  weapon's UI map is unconfirmed. List it for an in-game check; do not count it from
+  kill-switch rows alone.
 
 Record each result in the update's checklist (Stage 0): fill in the result column for every
 row, add rows for unannounced changes, and complete its outcome section when the work closes.
@@ -488,8 +535,24 @@ way (patch-note lines first, then changed assets, then status):
 For a lead whose cited raw asset changed, reopen it; a receipt at the previous build does not
 carry forward (hotfixes with no gameplay change excepted, per Stage 1).
 
+Three parts of the recheck were skipped in 2.1.1.0 because their inputs were not re-read.
+Either re-read them from the new raw files or tell the operator before starting that they
+are out of scope:
+
+- optic field-of-view assets (attachment bug entry 11);
+- reload timing entries (entry 15);
+- the selector graph, which is still built from the 1.4.3.0 export and so does not contain
+  attachments added since.
+
 Report the outcome to the operator as three lists: resolved, still present, and needs
 in-game recheck.
+
+### Recording in-game confirmations
+
+Record every in-game check the operator reports as one line in the update's results file:
+date, weapon (in-game name), screen or test (for example "loadout panel" or "firing range,
+target at 50 m"), and the value seen. A confirmation without the weapon and screen cannot be
+reused later.
 
 ## Stage 9 — Update the Analyzer
 
@@ -500,6 +563,43 @@ in-game recheck.
    Check the site header, footer, page description and `data/provenance/live-baseline.json`
    as well as per-weapon provenance. Verify the changed values in the local browser.
 5. Record the implementation revision and the check results.
+
+### Adding a new weapon
+
+Used for the Mk 24, ELR-40, Z84M and RSPR in 2.1.1.0. Finish the Stage 2 descriptor check and
+the Stage 7 availability census first.
+
+1. **Split the site data into three parts**, one worker each, all reading the new build's raw
+   files through `scripts/frosty-ebx-decode.py` (no XML export):
+   - A: weapon records: fire rate, magazine, reloads, velocity, recoil and spread tables,
+     fire modes, role tags, description, Precision table;
+   - B: ammunition, ballistics, hit zones, damage curves, collateral;
+   - C: attachments, magazines, optic categories, tooltips, dependencies.
+2. **Each part proves its method first.** It must reproduce the site's current values for
+   every existing weapon from the new build's files, and name the cause of every mismatch,
+   before it is run on the new weapons. A method that cannot reproduce the existing roster
+   is not used.
+3. **Parts write proposals, not site files:** fragments keyed by target file and JSON path,
+   with the route and field each value came from, plus a list of what was not found.
+4. **The main session checks the proposals against the files**, resolves cross-part
+   dependencies (magazine ids, reload exceptions), and integrates from a backup of the data
+   files so the integration can be re-run.
+5. **Site defaults:** basic barrel, standard ammunition, regular magazine, nothing else,
+   whatever the in-game default is.
+6. **Things that need a row per weapon:** `reference-data/provenance/frosty-draw-time-*.json`
+   and `frosty-optic-category-mapping-*.json` (two tests read them),
+   `data/provenance/live-baseline.json`, and the weapon and ammunition counts in `README.md`
+   and `docs/`.
+7. **Check in the local site** that each weapon loads with its magazines, ammunition and
+   attachments, and compare with the operator's in-game panel where the loadouts match.
+8. **List for the operator:** values that need an in-game check (ammunition menus, default
+   attachments, anything "not found"), and file values that look like game errors, which go
+   to [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md).
+
+The readers written for 2.1.1.0 (attachment graph, names, kill switches, the three parts'
+extractors) are in the datamining folder under
+`reports\weapon-analyzer-research\2026-10-13-update-2110-post\stage9\` (`A\`, `B\`, `C\`).
+They are run-folder scripts until they are moved into the research repo's `scripts/`.
 
 ## Haiku workers
 
@@ -519,6 +619,8 @@ Ready briefs are in the research repo:
 | Stage 6 | One consistency scan per worker, compared with the previous build's result | E |
 | Stage 7 | Confirm each "to" value at the field located the day before | G |
 | Stage 8 | One known-issue list per worker: which entries cite a changed asset or match a "fixed" line | F |
+| Stage 7, new content | Availability census of every added attachment, ammunition choice, weapon and gadget | H |
+| Stage 9, new weapons | One worker per part (A weapon records, B ammunition and ballistics, C attachments): reproduce the existing roster, then propose the new weapons | I |
 
 Launch independent workers together; Stages 5, 6 and 8 can all start as soon as the changed
 route list exists.
@@ -555,6 +657,17 @@ before recording it.
   root for the generators, layer the new build's fully decoded assets over the previous
   tree and record which routes were left behind. Any generator that reads one of those
   routes needs `scripts/frosty-ebx-decode.py`, not the overlay.
+
+- **Session folders.** Start the session with the site repo and the research repo as session
+  folders as well as the datamining folder; otherwise file edits in them need patch scripts.
+- **Line endings.** The site's data files use Windows line endings and
+  `json.dumps(indent=2, ensure_ascii=False)` (`weapon_attributes.json` is compact). Preserve
+  them when a script rewrites a file, or the diff covers every line.
+- **Shell.** Here-documents with quotes fail in the Windows shells used here. Write a script
+  or message file and pass its path. Read `$LASTEXITCODE` for pass or fail, not the output.
+- **Decoding everything at once.** Decoding all held files in one process used over 5 GB.
+  To find references to a GUID, search the raw bytes (little-endian GUID) and decode only
+  the hits.
 
 ## Recording what you learn
 

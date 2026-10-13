@@ -94,9 +94,13 @@ def type_descriptors(path):
 
 
 class Ebx:
-    def __init__(self, path, types):
+    # Opt-in: keep the stored float32 value instead of rounding it to 6 decimals.
+    exact_floats = False
+
+    def __init__(self, path, types, exact_floats=False):
         self.data = Path(path).read_bytes()
         self.types = types
+        self.exact_floats = exact_floats
         self.path = str(path)
         self.sha256 = hashlib.sha256(self.data).hexdigest()
         self._parse_header()
@@ -214,7 +218,7 @@ class Ebx:
             fmt, size = SIMPLE[kind]
             value = struct.unpack_from(fmt, self.data, self.pos)[0]
             self.pos += size
-            if kind == FLOAT32:
+            if kind == FLOAT32 and not self.exact_floats:
                 value = round(value, 6)
             return value
         if kind == ENUM:
@@ -464,6 +468,8 @@ def main():
                         help="file of .ebx paths, one per line, for large batches")
     parser.add_argument("--out", type=Path, required=True)
     parser.add_argument("--root", type=Path, help="strip this prefix from recorded paths")
+    parser.add_argument("--exact-floats", action="store_true",
+                        help="write the stored float32 value instead of rounding it to 6 decimals")
     args = parser.parse_args()
     targets = list(args.ebx)
     if args.ebx_list:
@@ -479,7 +485,7 @@ def main():
         if key.lower().endswith(".ebx"):
             key = key[:-4]
         try:
-            results[key] = Ebx(path, types).decode()
+            results[key] = Ebx(path, types, exact_floats=args.exact_floats).decode()
         except Exception as error:
             failures.append({"file": key, "error": f"{type(error).__name__}: {error}"})
     args.out.parent.mkdir(parents=True, exist_ok=True)

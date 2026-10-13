@@ -25,7 +25,6 @@ import json
 from pathlib import Path
 import re
 import struct
-import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 REGISTRY = "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml"
@@ -48,7 +47,7 @@ LIMB_BONES = ("LeftArm", "RightArm", "LeftForeArm", "RightForeArm", "LeftUpLeg",
 # Frosty ammo attachment suffix (after "_AMO_") -> site ammo ID.
 AMMO_BY_SUFFIX = {
     "FMJ": "standard", "Tungsten": "penetration", "Frangible": "frangible", "HollowPoint": "hollow_pt",
-    "BallisticTip": "synthetic", "PolymerCase": "lightweight", "Polymer_Case": "lightweight",
+    "BallisticTip": "synthetic", "PolymerCase": "lightweight", "Polymer_Case": "lightweight", "PolymerLinks": "lightweight",
     "Match": "long_range", "MatchTungsten": "range_pen", "Subsonic": "subsonic",
     "SubsonicHollowPoint": "subsonic_hp", "SubsonicTungsten": "subsonic_pen",
     "Buckshot": "buckshot", "No00Buckshot": "buckshot_00", "Flechette": "flechette", "Slugs": "slugs",
@@ -216,7 +215,12 @@ def signed(raw):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--root", required=True, type=Path, help="Frosty XML export root")
+    spec = importlib.util.spec_from_file_location("frosty_raw_tree", ROOT / "scripts/frosty-raw-tree.py")
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument("--root", type=Path, help="Frosty XML export root")
+    # --descriptors below also serves the raw input mode.
+    raw_tree.add_raw_arguments(parser, descriptors=False)
     parser.add_argument("--grid", required=True, type=Path, action="append",
                         help="Raw material-grid EBX stream; repeat for cross-checks between levels")
     parser.add_argument("--descriptors", required=True, type=Path, help="Frosty SharedTypeDescriptors.ebx")
@@ -228,14 +232,14 @@ def main():
                         default=ROOT / f"reference-data/provenance/frosty-hit-zones-{date.today().isoformat()}.json")
     args = parser.parse_args()
     args.site, args.out, args.evidence = args.site.resolve(), args.out.resolve(), args.evidence.resolve()
+    export = raw_tree.open_input(parser, args, args.root)
+    args.root = export.root
 
     hashes, parsed = {}, {}
 
     def read_xml(relative):
         if relative not in parsed:
-            data = (args.root / relative).read_bytes()
-            hashes[relative] = hashlib.sha256(data).hexdigest()
-            parsed[relative] = ET.fromstring(data)
+            parsed[relative], hashes[relative] = export.load(relative)
         return parsed[relative]
 
     def object_by_guid(relative, guid):
@@ -296,7 +300,9 @@ def main():
         gs_xml = gs_files[0].relative_to(args.root).as_posix()
         base_index = protection_index.get(internal)
         if base_index is None:
-            raise ValueError(f"{site_id}: no DamageProtectionMultiplierIndex")
+            # No registry row (RSPR in 2.1.1.0): the weapon's own WB value, equal to the registry on every weapon with a row.
+            base_index = signed(read_xml(wb_xml).findtext("Class_35259f6b/Field_58d70acb/Struct_29ea5d2b/Field_9ba8b76b").strip())
+            issues.append({"weapon": site_id, "reason": "no registry DamageProtectionMultiplierIndex row; WB Field_9ba8b76b used"})
         base_projectile = projectile(read_xml(wb_xml).findtext(PRIMARY_PROJECTILE))
 
         rows, graph_issues = attachment_graph(args.root, [{"internalId": internal, "wbXml": wb_xml, "gsXml": gs_xml}], read_xml)
@@ -391,7 +397,7 @@ def main():
         "issues": issues,
         "weapons": evidence_weapons,
     }
-    args.evidence.write_text(json.dumps(evidence, indent=2) + "\n", encoding="utf-8")
+    args.evidence.write_text(json.dumps(export.mark(evidence), indent=2) + "\n", encoding="utf-8")
     print(json.dumps({"weapons": len(runtime), "ammoEntries": sum(len(w["ammo"]) for w in runtime.values()),
                       "grids": len(grids), "issues": issues}, indent=2))
 

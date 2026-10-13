@@ -852,11 +852,11 @@ What was compared:
 | 8 | No source/text change; PW7A2 text mismatch retained. |
 | 9 | No source/text change; SGX text mismatch retained. |
 | 10 | No source/text change; KTS100 relative-to-default status retained. |
-| 11 | Optic-FOV source assets not re-examined in this recheck; the weapon files show only the build-wide additions. Visual status retained. |
+| 11 | Re-read from raw: all 23 optic-FOV source assets keep their links and values. The RPK-74M and L115 still link the six base optic parts at render FOV 55 where other long guns link riser parts at 40 (CQ RDS 44). The Mk 24, ELR-40, Z84M and RSPR link riser parts. Visual status retained. |
 | 12 | `GS_L115A3` byte-identical; suppressor binding omission retained. |
 | 13 | No source/text change; source-specific tungsten penalties retained. |
 | 14 | No source/text change; burst activation remains open and still needs an in-game recheck. |
-| 15 | Reload entries not re-read; the weapon files show only the build-wide additions. Retained. |
+| 15 | Re-read from raw: both empty-reload entries still store `ReloadTime` 3.284 s against 3.2 s (SOR-300SC) and 3.034 s (GRT-CPS) in `ReloadTimeBulletsLeft` and at the end of the phase list. No reload value changed on any weapon; the four new weapons agree on all three values. Retained. |
 | 16 | No source/text change; BROD 3 iron-sight sway omission retained. |
 | 17 | New. See the entry. |
 | 18 | New. See the entry. |

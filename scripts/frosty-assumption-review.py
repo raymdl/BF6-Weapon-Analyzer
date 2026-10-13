@@ -23,10 +23,19 @@ RECOIL_FIELDS = {'adsRecoilTierMod': ('Field_6b84de87', 'Field_22ce7cf3'),
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', required=True, type=Path)
+    spec = importlib.util.spec_from_file_location('raw_tree', ROOT / 'scripts/frosty-raw-tree.py')
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument('--root', type=Path)
+    raw_tree.add_raw_arguments(parser)
+    parser.add_argument('--identity-audit', type=Path,
+                        default=ROOT / 'reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json',
+                        help='Retained audit whose mapped rows supply the attachment identities')
     parser.add_argument('--apply', action='store_true')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
+    export = raw_tree.open_input(parser, args, args.root)
+    args.root = export.root
     spec = importlib.util.spec_from_file_location('configuration', ROOT / 'scripts/frosty-configuration.py')
     cfg = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cfg)
@@ -41,7 +50,7 @@ def main():
         raise ValueError('Recoil index operand type changed')
     catalog = read_json('data/attachments.json')
     original = json.loads(json.dumps(catalog))
-    audit = read_json('reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json')
+    audit = json.loads(args.identity_audit.read_text(encoding='utf-8'))
     identities = read_json('reference-data/provenance/frosty-weapon-identities.json')['weapons']
     selections = [r for r in audit['candidateComparisons'] if r.get('siteId') in TARGETS and r['status'] == 'mapped']
     expected = {(wid, aid) for aid, category in TARGETS.items()
@@ -64,9 +73,7 @@ def main():
 
     def read(path):
         if path not in cache:
-            raw = (args.root / path).read_bytes()
-            cache[path] = ET.fromstring(raw)
-            hashes[path] = hashlib.sha256(raw).hexdigest()
+            cache[path], hashes[path] = export.load(path)
         return cache[path]
 
     def resolve(raw, source):
@@ -202,7 +209,7 @@ def main():
             raise ValueError('Catalog differs from traced modifier operands')
     else:
         (ROOT / 'reference-data/provenance/frosty-assumption-review.json').write_text(
-            json.dumps(report, indent=2) + '\n', encoding='utf-8')
+            json.dumps(export.mark(report), indent=2) + '\n', encoding='utf-8')
         if args.apply:
             if read_json('data/attachments.json') != original:
                 raise ValueError('Catalog changed during extraction')
