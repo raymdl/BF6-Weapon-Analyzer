@@ -409,6 +409,9 @@ def main():
             value = target
             for part in field.split("."):
                 value = value.get(part) if isinstance(value, dict) else None
+            # A name the registry repeats (Mk 24 in 2.1.1.0) resolves when every copy holds the same value.
+            if len({(m["raw"], m["value"]) for m in matches}) == 1:
+                matches = matches[:1]
             raw = matches[0]["raw"] if len(matches) == 1 else None
             decoded = matches[0]["value"] if len(matches) == 1 else None
             numeric = decoded if type(decoded) in (int, float) else number(raw)

@@ -597,9 +597,9 @@ the Stage 7 availability census first.
    to [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md).
 
 The readers written for 2.1.1.0 (attachment graph, names, kill switches, the three parts'
-extractors) are in the datamining folder under
-`reports\weapon-analyzer-research\2026-10-13-update-2110-post\stage9\` (`A\`, `B\`, `C\`).
-They are run-folder scripts until they are moved into the research repo's `scripts/`.
+extractors) are in the research repo under `scripts/update-readers-2.1.1.0/` (`A/`, `B/`, `C/`;
+see its README). They are tied to build 2.1.1.0 and keep their working files in the run folder
+`reports\weapon-analyzer-research\2026-10-13-update-2110-post\stage9\`.
 
 ## Haiku workers
 

@@ -686,9 +686,11 @@ is a verified conflict between stored values and in-game behavior.
 - **Frosty (1.4.3.1).** In `SCARSC_WB` and `MSBSGROTCPS_WB`,
   `ReloadInfoArray[1]` stores `ReloadTime` (`Field_85ff24a0`) 3.284 on both
   weapons. `ReloadTimeBulletsLeft` (`Field_fc66e75e`) is 3.2 and 3.034, and the
-  last entry of the reload phase list (`Field_dc244b57`) matches it. On 56 of 57
-  other weapons with a phase list, all three values agree. The identical 3.284 on
-  two unrelated weapons looks like a copied value.
+  last entry of the reload phase list (`Field_dc244b57`) matches it. On 54 of the 55
+  other weapons with a phase list, all three values agree (58 of 59 on 2.1.1.0 with the
+  Season 5 weapons; recounted from raw on 13 October 2026). The one exception is the CZ3A1,
+  where the two times agree at 2.95 and only the last phase entry differs (2.5). The
+  identical 3.284 on two unrelated weapons looks like a copied value.
 - **In-game.** Captured 23 September 2026 at 60 fps: auto-reload after firing the
   magazine dry, hipfire, default loadouts, four reloads per weapon. Timed from the
   last shot to the first shot of the new magazine:
