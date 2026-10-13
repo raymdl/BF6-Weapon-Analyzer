@@ -16577,16 +16577,12 @@
           ]
         },
         "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ],
           "thermal": [
             "Thermal 6.00x"
           ]
         },
         "secondary_optic": {
           "std_optic": [
-            "Scope 3.50x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -16816,7 +16812,6 @@
       "excludedSights": {
         "canted_irons": {
           "std_optic": [
-            "Scope 3.00x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -16825,7 +16820,6 @@
         },
         "secondary_optic": {
           "std_optic": [
-            "Scope 3.00x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
