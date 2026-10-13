@@ -297,7 +297,8 @@ Legacy target links with no stored distance open at 30 metres for compatibility.
 **Copy Image / Save Image** captures the current main view with attribution. The
 capture uses a consistent 1280 CSS-pixel layout and a 2× output bitmap. Overview is
 expanded temporarily so loadout identity is included. Other collapsed panels remain
-collapsed. Unsupported image-copy controls are disabled; a failed clipboard write
+collapsed. **Include sidebar in image** in the same menu, off by default, adds the
+weapon and attachment selections on the left. Unsupported image-copy controls are disabled; a failed clipboard write
 falls back to downloading the PNG. Capture failure is reported separately.
 
 **Pop Out** opens an independent recoil window with the encoded share state.

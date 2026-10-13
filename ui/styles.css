@@ -35,6 +35,8 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .share-menu[hidden]{display:none}
 .share-menu-item{text-align:left;background:none;border:0;border-radius:3px;color:var(--text);font-size:0.7rem;letter-spacing:.03em;padding:5px 9px}
 .share-menu-item:hover{background:var(--bg3);color:var(--accent)}
+.share-menu-check{display:flex;align-items:center;gap:6px;white-space:nowrap;border-top:1px solid var(--border);margin-top:3px;padding:6px 9px 4px;color:var(--muted);font-size:0.68rem;letter-spacing:.03em;cursor:pointer}
+.share-menu-check input{accent-color:var(--accent);margin:0}
 .share-menu-item:disabled{color:var(--muted);cursor:progress}
 /* Busy uses :disabled above. This is the browser-can't-do-it state, which
    stays focusable so its title explains why. */

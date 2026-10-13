@@ -2967,7 +2967,7 @@ async function shareImage(item, mode) {
   item.disabled = true;
   item.textContent = 'Rendering…';
   try {
-    const blob = await captureView();
+    const blob = await captureView({ sidebar: !!document.getElementById('shareSidebarChk')?.checked });
     let copied = false;
     if (mode === 'copy' && CAN_COPY_IMAGE) {
       try {

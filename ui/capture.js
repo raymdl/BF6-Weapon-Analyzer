@@ -12,7 +12,10 @@
  *     swapped for an <img> of its toDataURL() before serialising.
  *   - The capture body receives the live body's computed typography.
  *   - Media queries use the browser viewport width. The output is cropped to
- *     the main column's width, excluding the sidebar and its scrollbar.
+ *     the main column's width, excluding its scrollbar, plus the loadout
+ *     sidebar when that is asked for.
+ *   - An image has no timeline, so a finished CSS animation would be drawn at
+ *     its first frame. Animations are switched off in the capture stylesheet.
  */
 
 // Attribution stamped into the top-right of every shared image, where the
@@ -27,6 +30,34 @@ const SITE_URL = 'raymdl.github.io/BF6-Weapon-Analyzer';
 
 /** Controls are meaningless in a static image. .loadout-btn is mobile-only. */
 const CHROME_SELECTOR = '.share-wrap,.panel-toggle,.rc-popout-btn,.loadout-btn';
+
+/** The sidebar's desktop width; the narrow layout shows it as a dialog instead. */
+const SIDEBAR_WIDTH = 198;
+
+/**
+ * Sidebar clone laid out as the desktop column at full height.
+ *
+ * A select's chosen option is a property, which neither cloneNode nor the
+ * serialiser carries, so it is written back as the `selected` attribute.
+ */
+function buildSidebar() {
+  const sidebar = document.getElementById('loadoutPanel');
+  if (!sidebar) return null;
+  const clone = sidebar.cloneNode(true);
+  const live = [...sidebar.querySelectorAll('select')];
+  [...clone.querySelectorAll('select')].forEach((select, i) => {
+    [...select.options].forEach((option, j) => option.toggleAttribute('selected', j === live[i].selectedIndex));
+  });
+  clone.querySelectorAll('.loadout-modal-head').forEach(n => n.remove());
+  Object.assign(clone.style, {
+    display: 'flex', position: 'static', inset: 'auto', transform: 'none', opacity: '1',
+    width: `${SIDEBAR_WIDTH}px`, height: 'auto', maxHeight: 'none', flex: 'none', overflow: 'visible',
+    border: '0', borderRight: '1px solid var(--border)', borderRadius: '0', boxShadow: 'none',
+  });
+  const scroll = clone.querySelector('.sb-scroll');
+  if (scroll) Object.assign(scroll.style, { overflow: 'visible', height: 'auto', flex: 'none' });
+  return clone;
+}
 
 /**
  * Sizes a canvas bitmap to the box the capture layout gives it.
@@ -135,9 +166,10 @@ function buildHeader() {
 
 /**
  * Renders header + main column at full scroll height.
+ * @param {{sidebar?: boolean}} [options] `sidebar` adds the loadout sidebar on the left.
  * @returns {Promise<Blob>} PNG blob.
  */
-export async function captureView() {
+export async function captureView({ sidebar = false } = {}) {
   const main = document.getElementById('main');
   if (!main) throw new Error('nothing to capture');
 
@@ -155,8 +187,9 @@ export async function captureView() {
   ]);
 
   // clientWidth includes the main padding, but excludes its scrollbar.
-  const width = main.clientWidth;
-  const viewportWidth = window.innerWidth;
+  const side = sidebar ? buildSidebar() : null;
+  const width = main.clientWidth + (side ? SIDEBAR_WIDTH : 0);
+  const viewportWidth = Math.max(window.innerWidth, width);
   let svg;
   try {
     const mainClone = main.cloneNode(true);
@@ -170,7 +203,15 @@ export async function captureView() {
     shot.style.cssText = `width:${width}px;background:var(--bg)`;
     const header = buildHeader();
     if (header) shot.appendChild(header);
-    shot.appendChild(mainClone);
+    if (side) {
+      const row = document.createElement('div');
+      row.style.cssText = 'display:flex;align-items:stretch';
+      mainClone.style.width = `${main.clientWidth}px`;
+      row.append(side, mainClone);
+      shot.appendChild(row);
+    } else {
+      shot.appendChild(mainClone);
+    }
 
     const body = getComputedStyle(document.body);
     // Quotes in the computed font-family would terminate the style attribute.
@@ -181,7 +222,8 @@ export async function captureView() {
     ].join(';').replace(/"/g, "'");
     const css = [...document.styleSheets]
       .filter(sheet => !sheet.href || new URL(sheet.href).origin === location.origin)
-      .flatMap(sheet => [...sheet.cssRules].map(rule => rule.cssText)).join('\n');
+      .flatMap(sheet => [...sheet.cssRules].map(rule => rule.cssText)).join('\n')
+      + '\n*{animation:none!important;transition:none!important}';
     // Measured with the bitmaps out of flow, then re-serialised with the boxes
     // that measurement produced. The SVG has to carry the sized form.
     const { height, slots } = measureCapture(
