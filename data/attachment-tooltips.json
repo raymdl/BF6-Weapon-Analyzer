@@ -4971,7 +4971,8 @@
         "standard": "B6CDE708",
         "frangible": "2BA8E458",
         "hollow_pt": "F4F0FE8D",
-        "penetration": "78D58F2D"
+        "penetration": "78D58F2D",
+        "lightweight": "44E52C7D"
       },
       "ergo": {
         "rail_cover": "D520814B"
