@@ -1,10 +1,10 @@
 {
   "scope": "Individual source sights grouped under existing site categories; not one-to-one identities or live availability proof. Categories come from English UI labels only; Variable Low/High are explicit label lists, not a magnification threshold.",
   "coverage": {
-    "siteCategories": 350,
-    "linkedCategories": 350,
-    "sourceSights": 1931,
-    "classifiedSights": 1931,
+    "siteCategories": 374,
+    "linkedCategories": 374,
+    "sourceSights": 2065,
+    "classifiedSights": 2065,
     "unresolvedSights": 0,
     "ironSightTooltips": 63
   },
@@ -101180,6 +101180,1768 @@
           "status": "category-member"
         }
       ]
+    },
+    {
+      "weapon": "mk24",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "iron",
+      "siteName": "Iron Sights",
+      "sitePoints": 5,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_IronSights",
+          "kind": "attachment",
+          "category": "iron",
+          "sourcePointCost": 5,
+          "label": "Basic Sight",
+          "labelBasis": "same-optic-model-and-selector",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "mk24",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "std_optic",
+      "siteName": "Standard Optic",
+      "sitePoints": 10,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_ACROP2",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_Bravo3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_COD2M",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_CompM5b",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_EFLXMini",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_ELCANLDS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_M145MGO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_MeproM22",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_OPK7",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_PG350",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_QMK171A",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_RMR",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_Romeo4T",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_RomeoX",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_ShieldCQS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_Spitfire",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_SteinerT536",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_TrijiconMRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_TrijiconRCO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_TrijiconSDO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_TrijiconSRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_VZOR3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_XPS3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "mk24",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "therm_hyb",
+      "siteName": "Thermal Hybrid",
+      "sitePoints": 35,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_HolosunDRSTH",
+          "kind": "attachment",
+          "category": "therm_hyb",
+          "sourcePointCost": 35,
+          "label": "Thermal Hybrid",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "mk24",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "thermal",
+      "siteName": "Thermal",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_ANPAS35",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_TrijiconREAPIR",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 1.50x ",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "mk24",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_high",
+      "siteName": "Variable High",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_TrijiconVCOG",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_VortexM157",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "mk24",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_low",
+      "siteName": "Variable Low",
+      "sitePoints": 20,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_1P86",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1.5-4.5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_ELCANDR",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1-4x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "elr40",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "iron",
+      "siteName": "Iron Sights",
+      "sitePoints": 15,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_IronSights",
+          "kind": "attachment",
+          "category": "iron",
+          "sourcePointCost": 15,
+          "label": "Basic Sight",
+          "labelBasis": "same-optic-model-and-selector",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "elr40",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "std_optic",
+      "siteName": "Standard Optic",
+      "sitePoints": 10,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_ACROP2",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_Bravo3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_COD2M",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_CompM5b",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_EFLXMini",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_ELCANLDS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_M145MGO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_Mark4M5A2",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 8.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_MeproM22",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_NFATACR",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 10.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_NX8-1",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 6.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_NX8-4",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 8.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_OPK7",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_PG350",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_QMK171A",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_RMR",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_Romeo4T",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_RomeoX",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_SBPMII",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 6.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_ShieldCQS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_Spitfire",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_SteinerT536",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_TrijiconMRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_TrijiconRCO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_TrijiconSDO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_TrijiconSRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_VZOR3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_XPS3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "elr40",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "therm_hyb",
+      "siteName": "Thermal Hybrid",
+      "sitePoints": 35,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_HolosunDRSTH",
+          "kind": "attachment",
+          "category": "therm_hyb",
+          "sourcePointCost": 35,
+          "label": "Thermal Hybrid",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "elr40",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "thermal",
+      "siteName": "Thermal",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_ANPAS35",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_HISSHD",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 6.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_TrijiconREAPIR",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 1.50x ",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "elr40",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_high",
+      "siteName": "Variable High",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_1P885",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 3-10x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_M7Xi",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 2-8x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_MarchFFPShorty",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_TrijiconVCOG",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "elr40",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_low",
+      "siteName": "Variable Low",
+      "sitePoints": 20,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_1P86",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1.5-4.5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_ELCANDR",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1-4x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "z84m",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "iron",
+      "siteName": "Iron Sights",
+      "sitePoints": 5,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_IronSights",
+          "kind": "attachment",
+          "category": "iron",
+          "sourcePointCost": 5,
+          "label": "Basic Sight",
+          "labelBasis": "same-optic-model-and-selector",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "z84m",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "std_optic",
+      "siteName": "Standard Optic",
+      "sitePoints": 10,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_ACROP2",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_Bravo3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_COD2M",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_CompM5b",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_EFLXMini",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_ELCANLDS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_M145MGO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_MeproM22",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_OPK7",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_PG350",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_QMK171A",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_RMR",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_Romeo4T",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_RomeoX",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_ShieldCQS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_Spitfire",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_SteinerT536",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_TrijiconMRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_TrijiconRCO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_TrijiconSDO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_TrijiconSRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_VZOR3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_XPS3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "z84m",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "therm_hyb",
+      "siteName": "Thermal Hybrid",
+      "sitePoints": 35,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_HolosunDRSTH",
+          "kind": "attachment",
+          "category": "therm_hyb",
+          "sourcePointCost": 35,
+          "label": "Thermal Hybrid",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "z84m",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "thermal",
+      "siteName": "Thermal",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_ANPAS35",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_TrijiconREAPIR",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 1.50x ",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "z84m",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_high",
+      "siteName": "Variable High",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_MarchFFPShorty",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_TrijiconVCOG",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "z84m",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_low",
+      "siteName": "Variable Low",
+      "sitePoints": 20,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_1P86",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1.5-4.5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_ELCANDR",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1-4x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "rspr",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "iron",
+      "siteName": "Iron Sights",
+      "sitePoints": 5,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_IronSights",
+          "kind": "attachment",
+          "category": "iron",
+          "sourcePointCost": 5,
+          "label": "Basic Sight",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "rspr",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "std_optic",
+      "siteName": "Standard Optic",
+      "sitePoints": 10,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_ACROP2",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_Bravo3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_COD2M",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_CompM5b",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_EFLXMini",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_ELCANLDS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_M145MGO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_MeproM22",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_OPK7",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_PG350",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_QMK171A",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_RMR",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_Romeo4T",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_RomeoX",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_ShieldCQS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_Spitfire",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_SteinerT536",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_TrijiconMRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_TrijiconRCO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_TrijiconSDO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_TrijiconSRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_VZOR3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_XPS3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "rspr",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "therm_hyb",
+      "siteName": "Thermal Hybrid",
+      "sitePoints": 35,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_HolosunDRSTH",
+          "kind": "attachment",
+          "category": "therm_hyb",
+          "sourcePointCost": 35,
+          "label": "Thermal Hybrid",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "rspr",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "thermal",
+      "siteName": "Thermal",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_ANPAS35",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 3.00x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_TrijiconREAPIR",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 1.50x ",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "rspr",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_high",
+      "siteName": "Variable High",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_MarchFFPShorty",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "rspr",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_low",
+      "siteName": "Variable Low",
+      "sitePoints": 20,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_1P86",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1.5-4.5x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_ELCANDR",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1-4x",
+          "labelBasis": "aam-without-slot",
+          "status": "category-member",
+          "sourceBuild": "2.1.1.0"
+        }
+      ],
+      "sourceBuild": "2.1.1.0"
     }
   ],
   "unresolvedSources": [],
@@ -107813,5 +109575,6 @@
     "Common/Hardware/weapons/SMG/UMP40/AAM_UMP40": "f47f573998b00c680e82f7de2565b43fb905cb5178b84400283d5badaa3229d1",
     "Common/Hardware/weapons/SMG/Vector/AAM_Vector": "43adbd3f465a05e4d8dd9a63a9bc95ebd5a8b87fe1de1d1c79d1750b27e19a3f"
   },
-  "descriptorSha256": "0bc8441eb4970fe760ba29688ff397656df8fcf01348506d4117910add03c3a9"
+  "descriptorSha256": "0bc8441eb4970fe760ba29688ff397656df8fcf01348506d4117910add03c3a9",
+  "additions": "Rows for mk24, elr40, z84m and rspr were added on 2026-10-13 from raw 2.1.1.0 EBX files (no XML export); see reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/C in the datamining folder. They carry sourceBuild 2.1.1.0. Their tooltip fields and iron-sight tooltips are not included (ironSightTooltips still counts the original 63)."
 }

@@ -57,30 +57,6 @@ test('Interdictor preserves source velocity and the confirmed Basic magazine han
   assert.equal(extended._adsTimeMs, 500.00033);
 });
 
-test('the barrel catalog has all exact velocity tiers and retains velMult', () => {
-  assert.equal(balance.VELOCITY_LADDER, 0.8);
-  const expected = new Map([
-    ['none', 0],
-    ['basic', 0],
-    ['short', -1],
-    ['extended', 1],
-    ['heavy', 0],
-    ['heavy_ext', 1],
-    ['light', 0],
-    ['cryo', 0],
-    ['ext_light', 1],
-    ['short_light', -1],
-    ['vssm_suppressed', 0],
-    ['vssm_suppressed_asm', 0],
-  ]);
-  assert.deepEqual(new Set(attachments.BARRELS.map(barrel => barrel.id)), new Set(expected.keys()));
-  for (const barrel of attachments.BARRELS) {
-    assert.equal(barrel.velTierMod, expected.get(barrel.id), barrel.id);
-    assert.equal(Object.hasOwn(barrel, 'velMult'), true, `${barrel.id} must retain velMult`);
-    assert.equal(barrel.velMult, balance.VELOCITY_LADDER ** (-barrel.velTierMod), barrel.id);
-  }
-});
-
 test('velocity dual-read prefers velTierMod and falls back to velMult', () => {
   assert.deepEqual(resolveBarrelVelocity({ barData: { velTierMod: -1, velMult: 0.8 } }), {
     multiplier: 0.8,

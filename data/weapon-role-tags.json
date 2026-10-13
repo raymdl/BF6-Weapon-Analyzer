@@ -33,6 +33,10 @@
       {
         "asset": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
         "sha256": "272551e832ea216ffd7a43f5d363d86190c7a4d9581f0c325451b2c348c5982e"
+      },
+      {
+        "asset": "Common/UI/Static/Metadata/S5/UIWeaponAbilityMetaData_S5B1",
+        "sha256": "4e8b559b490a68633cd6b3ff7a04e42731eb8c902ce645627e591779336cc974"
       }
     ],
     "gameBuild": "1.4.2.5 export, checked 13 SEP 2026",
@@ -1808,6 +1812,114 @@
             "Subsonic",
             "Close Range",
             "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "mk24": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S5/UIWeaponAbilityMetaData_S5B1",
+          "guid": "e6e2009f-18cb-4f70-a545-fbf4e77d1011",
+          "label": "MRGG-A",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "elr40": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "C12312AF",
+        "text": "Extreme Range"
+      },
+      "firing": {
+        "id": "6FF4E2E4",
+        "text": "Bolt-Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S5/UIWeaponAbilityMetaData_S5B1",
+          "guid": "e12240dc-bc7a-4133-af05-384388aa04c2",
+          "label": "CDX-40",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Extreme Range",
+            "Bolt-Action"
+          ]
+        }
+      ]
+    },
+    "z84m": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S5/UIWeaponAbilityMetaData_S5B1",
+          "guid": "12fa9b30-7668-421d-a603-2f3bb513bd65",
+          "label": "PKM",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "rspr": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S5/UIWeaponAbilityMetaData_S5B1",
+          "guid": "72c61d7e-95b5-4024-8529-3c8c11862573",
+          "label": "RSAR999",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Steady Firerate"
           ]
         }
       ]

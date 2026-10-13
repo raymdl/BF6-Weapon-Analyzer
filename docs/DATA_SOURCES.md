@@ -2,15 +2,15 @@
 
 ## September 13 source integration
 
-The current model uses explicit projectile and hit-zone selections for 63 weapons
-and 328 ammo choices. Collateral values come from the named ten-row source table
+The current model uses explicit projectile and hit-zone selections for 67 weapons
+and 353 ammo choices. Collateral values come from the named ten-row source table
 with the operator-confirmed final index clamp. Regeneration uses 5 s plus the
 source ammo delay; sway compares supported amount factors against the default
 loadout; spotting multiplies source factors against the existing 54/150 m bases.
 The spotting bases and native composition remain model assumptions.
 
 Source spread exponents now drive `radius = spread * U ** exponent`: usually 0.5,
-with 0.67 for moving ADS on Interdictor. Controller recoil uses 0.8836 in the
+with 0.67 for moving ADS on Interdictor. Controller recoil uses 0.95 (2.1.1.0; 0.8836 before) in the
 existing platform amount model. The decoded light fields replace the former
 15% hip-recovery estimate for all 137 supported light/combination selections.
 Selected lights are modeled as active; idle recovery is not simulated.

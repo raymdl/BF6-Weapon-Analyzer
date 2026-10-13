@@ -430,10 +430,14 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
 
   // ── Weapon sway ───────────────────────────────────────────────────────────────
   const selectedMag = magRecord(WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def]);
-  // Source amount factors for muzzle/magazine effects, plus weapon-local barrel
+  // A magazine that fires its own bullet (ELR-40 Single Shot): damage curve, hit zones,
+  // collateral and drag come from that bullet, not from the weapon or the ammunition.
+  const magProjectile = selectedMag?.projectileOverride;
+  // Source amount factors for muzzle/magazine/grip effects, plus weapon-local barrel
   // and iron-sight factors. Optic categories carry no weapon sway; camera sway
   // is not modelled.
   const weaponSwayMult = (muz.weaponSwayMult ?? 1) * (selectedMag?.weaponSwayMult ?? 1)
+    * (grp.weaponSwayMult ?? 1)
     * (barrelBase.weaponSwayMultByWeapon?.[w.id] ?? 1)
     * (sightData?.weaponSwayMultByWeapon?.[w.id] ?? 1);
 
@@ -479,10 +483,9 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
 
   // ── Headshot & limb multipliers ───────────────────────────────────────────────
   // Frosty per weapon and ammo (data/hit_zones.json): head and limb (arm/leg/abdomen).
-  const {
-    headshotMultiplier: hsMult,
-    limbMultiplier: limbMult,
-  } = resolveHitMultipliers(w.id, ammoType, { HIT_ZONES });
+  const ammoHit = resolveHitMultipliers(w.id, ammoType, { HIT_ZONES });
+  const hsMult = magProjectile?.headshot ?? ammoHit.headshotMultiplier;
+  const limbMult = magProjectile?.limb ?? ammoHit.limbMultiplier;
 
   // ── Ammo velocity ─────────────────────────────────────────────────────────────
   const ammoVelocity = resolveAmmoVelocity({
@@ -498,7 +501,10 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // suppressor + subsonic (150 * 0.14 * 0.4285714, approximately 9 m).
   // M45A1 and vz. 61 are subsonic by default (1.3.3.0): their WB files store
   // 27 / 64.285713 and the stat screen shows 27 m / 64 m (Frosty L4001, L4008).
-  const [worldSpotBase, minimapSpotBase] = (w.id === 'm45a1' || w.id === 'vz61') ? [27, 64.285713] : [54, 150];
+  // Since 2.1.1.0 the M433, SGX, L110 and P18 WB files store 75 in-world; the stat
+  // screen shows 75 m (ATTACHMENT_BUGS.md entry 17).
+  const [worldSpotBase, minimapSpotBase] = (w.id === 'm45a1' || w.id === 'vz61') ? [27, 64.285713]
+    : ['m433', 'sgx', 'l110', 'p18'].includes(w.id) ? [75, 150] : [54, 150];
   const worldSpot = +(worldSpotBase * (muz.worldSpotMult ?? 1) * (bar.worldSpotMult ?? 1) * (ammoType.worldSpotMult ?? 1)).toFixed(6);
   const minimapSpot = +(minimapSpotBase * (muz.minimapSpotMult ?? 1) * (bar.minimapSpotMult ?? 1) * (ammoType.minimapSpotMult ?? 1)).toFixed(6);
 
@@ -513,8 +519,10 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // Display-only casing, mirroring attDisplayName in loadout.js — the overview
   // label would otherwise read "#01 BUCK" while the sidebar reads "#01 Buck".
   const ammoName = ammoType.id !== 'none' ? ammoType.name.replace(/\bBUCK\b/g, 'Buck') : null;
-  const collateralMult = COLLATERAL_MULT_OVERRIDE[w.id]?.[ammoType.id]
-    ?? ammoType.collateralMult?.[w.cls] ?? null;
+  const collateralMult = magProjectile?.collateralMult
+    ? magProjectile.collateralMult[ammoType.id] ?? null
+    : COLLATERAL_MULT_OVERRIDE[w.id]?.[ammoType.id]
+      ?? ammoType.collateralMult?.[w.cls] ?? null;
 
   // ── Magazine stats ────────────────────────────────────────────────────────────
   const wm       = WEAPON_MAG[w.id] ?? null;
@@ -625,6 +633,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   const modified = {
     ...w,
     ...(projectile ? { pellets: projectile.pellets, dmg: projectile.dmg } : {}),
+    ...(magProjectile ? { dmg: magProjectile.dmg, _projectileRoute: magProjectile.route } : {}),
     _label:                  allTags.length ? `${w.name} (${allTags.join(' · ')})` : w.name,
     _adsRecoilReductionPct:  adsRecoilReductionPct,
     _adsSpreadDecayBoost:    muz.adsSpreadDecayBoost ?? 0,

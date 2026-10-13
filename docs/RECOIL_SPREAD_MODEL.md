@@ -169,10 +169,11 @@ The four Smooth source assets define two operand sets:
 The Bolt modifiers also add -0.5 to the recovery time exponent (`decTimeExp`)
 in both aim states. This uses the existing recovery equation.
 
-The Bolt set applies only to these 17 mapped selections:
+The Bolt set applies only to these 19 mapped selections:
 
 | Weapon | Muzzles using 66.667 ms and 1.728 |
 |---|---|
+| ELR-40 | Lightened Suppressor, Long Suppressor |
 | Interdictor | Lightened Suppressor, Long Suppressor |
 | L115 | Lightened Suppressor, Long Suppressor, Compensated Brake |
 | M2010 ESR | Lightened Suppressor, Long Suppressor, Compensated Brake |
@@ -330,7 +331,7 @@ It does not cancel the sampled variation or spread. The single slider defaults t
 0% and allows 0–125%; values above 100% overcompensate the expected vector. There
 is no separate on/off toggle. Changing platform scales amount, not variation.
 
-The console setting applies an amount multiplier of `0.8836`, taken from Frosty's
+The console setting applies an amount multiplier of `0.95` (2.1.1.0; `0.8836` before), taken from Frosty's
 `GRM_Recoil_Controller_03`; PC uses `1`. The analyzer applies it as a final amount multiplier. Controller input, aim
 assist, camera shake, and visual recoil are not simulated. Visual recoil attachment tags
 do not establish corresponding changes to the generated physical shot path.

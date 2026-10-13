@@ -524,6 +524,10 @@
           "headshot": 1.4,
           "limb": 0.84
         },
+        "lightweight": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
         "hollow_pt": {
           "headshot": 1.57,
           "limb": 0.84
@@ -656,6 +660,10 @@
           "headshot": 1.4,
           "limb": 0.84
         },
+        "lightweight": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
         "hollow_pt": {
           "headshot": 1.57,
           "limb": 0.84
@@ -677,6 +685,10 @@
           "limb": 0.84
         },
         "penetration": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "lightweight": {
           "headshot": 1.4,
           "limb": 0.84
         },
@@ -781,6 +793,10 @@
           "limb": 0.84
         },
         "penetration": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "lightweight": {
           "headshot": 1.4,
           "limb": 0.84
         },
@@ -1017,6 +1033,10 @@
           "limb": 0.84
         },
         "penetration": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "lightweight": {
           "headshot": 1.4,
           "limb": 0.84
         },
@@ -1818,6 +1838,118 @@
         },
         "synthetic": {
           "headshot": 1.8,
+          "limb": 0.84
+        }
+      }
+    },
+    "mk24": {
+      "protectionIndex": 12,
+      "projectileMaterial": 496,
+      "headshot": 1.57,
+      "limb": 0.84,
+      "ammo": {
+        "standard": {
+          "headshot": 1.57,
+          "limb": 0.84
+        },
+        "penetration": {
+          "headshot": 1.57,
+          "limb": 0.84
+        },
+        "lightweight": {
+          "headshot": 1.57,
+          "limb": 0.84
+        },
+        "hollow_pt": {
+          "headshot": 1.8,
+          "limb": 0.84
+        },
+        "frangible": {
+          "headshot": 1.57,
+          "limb": 0.84
+        }
+      }
+    },
+    "elr40": {
+      "protectionIndex": 3,
+      "projectileMaterial": 290,
+      "headshot": 1.75,
+      "limb": 0.67,
+      "ammo": {
+        "standard": {
+          "headshot": 1.75,
+          "limb": 0.67
+        },
+        "penetration": {
+          "headshot": 1.75,
+          "limb": 0.67
+        },
+        "frangible": {
+          "headshot": 1.75,
+          "limb": 0.67
+        }
+      }
+    },
+    "z84m": {
+      "protectionIndex": 11,
+      "projectileMaterial": 496,
+      "headshot": 1.4,
+      "limb": 0.84,
+      "ammo": {
+        "standard": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "penetration": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "lightweight": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "hollow_pt": {
+          "headshot": 1.57,
+          "limb": 0.84
+        },
+        "frangible": {
+          "headshot": 1.4,
+          "limb": 0.84
+        }
+      }
+    },
+    "rspr": {
+      "protectionIndex": 11,
+      "projectileMaterial": 493,
+      "headshot": 1.4,
+      "limb": 0.84,
+      "ammo": {
+        "standard": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "penetration": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "lightweight": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "hollow_pt": {
+          "headshot": 1.57,
+          "limb": 0.84
+        },
+        "frangible": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "subsonic": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "subsonic_hp": {
+          "headshot": 1.57,
           "limb": 0.84
         }
       }

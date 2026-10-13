@@ -27,7 +27,7 @@ geometry is approximate; shotgun pellets are not individually simulated. Start
 with [model limitations](docs/MODEL_LIMITATIONS.md) when interpreting precision.
 
 Frosty-derived hit zones, projectile gravity/drag, and collateral values cover all
-63 weapons and 328 supported ammo selections. Weapon sway is shown as a percentage
+67 weapons and 353 supported ammo selections. Weapon sway is shown as a percentage
 change. Spread sampling uses the source exponent: normally 0.5 for uniform area,
 with 0.67 for Interdictor moving ADS. The M39 settled-hipfire captures support the
 0.5 interpretation; other states and native formulas remain unverified.

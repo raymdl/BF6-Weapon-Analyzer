@@ -6236,7 +6236,7 @@
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
-        "decTimeExp": 0.75,
+        "decTimeExp": 1,
         "decOffset": 0.06,
         "duration": 0.025,
         "decFactor": 16,
@@ -6252,7 +6252,7 @@
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
-        "decTimeExp": 0.75,
+        "decTimeExp": 1,
         "decOffset": 0.06,
         "duration": 0.025,
         "decFactor": 16,
@@ -6602,7 +6602,7 @@
     "emptyRld": 3.45,
     "bulletVel": 760,
     "recoilV": 1.5651637883705927,
-    "recoilDir": 4,
+    "recoilDir": 20,
     "recoilVar": 10,
     "recoilIncAds": 0,
     "fireMode": "semi",
@@ -6650,7 +6650,7 @@
     },
     "recoil": {
       "ads": {
-        "dir": 4,
+        "dir": 20,
         "amount": 1.3,
         "amountMult": 0.94,
         "amountExp": -3,
@@ -6659,14 +6659,14 @@
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
-        "decTimeExp": 0.75,
+        "decTimeExp": 1.1,
         "decOffset": 0.06,
         "duration": 0.025,
         "decFactor": 16,
         "shootingDecScale": 1
       },
       "hip": {
-        "dir": 4,
+        "dir": 20,
         "amount": 1.3,
         "amountMult": 0.94,
         "amountExp": -3,
@@ -6675,7 +6675,7 @@
         "dirVarExp": 0,
         "decNorm": 1,
         "decExp": 1,
-        "decTimeExp": 0.75,
+        "decTimeExp": 1.1,
         "decOffset": 0.06,
         "duration": 0.025,
         "decFactor": 16,
@@ -10220,6 +10220,717 @@
         "rpm 449.999 is Frosty RateOfFireForSingleFire. Frosty RateOfFire 799.999 is the Folding Stock full-auto rate, applied through autoRpm.",
         "Magazine, grip, ammo and ergonomics coverage is derived from the 2026-07-26 VSSM screenshot corpus; all 43 captures reproduce in the sim.",
         "QD Grip Pod applies a tier 3 ADS and hip recoil reduction on this weapon, as on BROD 3, EF88, M16A4 and RPK-74M. Frosty lists +3 for these five weapons, and current-build captures on 2026-09-13 confirm it through Control (reference-data/provenance/qd-grip-pod-screenshot-review-2026-09-13.json). The 1.3.3.0 capture corpus showed the extra tier only on the VSSM."
+      ]
+    }
+  },
+  {
+    "id": "mk24",
+    "name": "Mk 24",
+    "description": "Assaulter companion to the Mk 1 Mod 0, the Mk 24 can outshine many other automatic rifles at range with its 6.5x48mm chambering.",
+    "cls": "Assault Rifle",
+    "cal": "6.5×48mm",
+    "rpm": 635.294,
+    "mag": 21,
+    "tacRld": 2.534,
+    "emptyRld": 2.95,
+    "bulletVel": 696,
+    "recoilV": 0.7970160104045838,
+    "recoilDir": -19,
+    "recoilVar": 27.6,
+    "recoilIncAds": 0.409,
+    "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 359.9989929199219,
+        "hipNoBloomOnSwitch": false
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 635.2940063476562
+      }
+    },
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.409,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.2,
+        "firingExp": 2.5,
+        "firingOffset": 2.7,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.736,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
+        "firingExp": 2.5,
+        "firingOffset": 4.86,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -19,
+        "amount": 0.6603,
+        "amountMult": 0.9392,
+        "amountExp": -3,
+        "dirVar": 27.6,
+        "dirVarMult": 0.917742,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.24,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 76,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -19,
+        "amount": 0.6603,
+        "amountMult": 0.9392,
+        "amountExp": -3,
+        "dirVar": 27.6,
+        "dirVarMult": 0.917367,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.24,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 76,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        7
+      ],
+      "adsMove": [
+        0.32,
+        8
+      ],
+      "hipStand": [
+        2.432,
+        7
+      ],
+      "hipMove": [
+        3.04,
+        8
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Frosty"
+      }
+    ],
+    "damageStatus": "verified",
+    "damageSource": "Frosty PD_65x48mm tweakable damage curve referenced by MRGGA_WB, build 2.1.1.0.",
+    "reloadSpeed": 1,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "sourced",
+      "frosty": {
+        "sourceBuild": "2.1.1.0",
+        "buildEvidence": "raw EBX capture of the installed 2.1.1.0 client (builds/2.1.1.0)",
+        "fields": [
+          "cls",
+          "cal",
+          "rpm",
+          "mag",
+          "tacRld",
+          "emptyRld",
+          "reloadSpeed",
+          "bulletVel",
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "recoil",
+          "spread",
+          "spreadDyn",
+          "dmg"
+        ],
+        "note": "All listed base fields were read from the 2.1.1.0 raw MRGGA_WB, GS_MRGGA and PD_65x48mm files; 144 of 149 scalar leaves also have a GRX_Weapons registry row and every one equals the file value. rpm is FireLogic.RateOfFire. tacRld and emptyRld are ReloadInfoArray[0] and [1] ReloadTimeBulletsLeft at ReloadSpeed 1. Moving ADS and hipfire minima use the array selectors (ZDA_Moving_Weapons index 3, HDA_Weapons index 3). cal is formatted from the bullet asset name.",
+        "sourcingEvidence": "reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/A/proposed.json#evidence/mk24"
+      },
+      "notes": [
+        "name and description are the English strings F6899142 and 50FE3CA0 linked from the UIWeaponAbilityMetaData_S5B1 record e6e2009f-18cb-4f70-a545-fbf4e77d1011 (label MRGG-A).",
+        "Not tested in game."
+      ]
+    }
+  },
+  {
+    "id": "elr40",
+    "name": "ELR-40",
+    "description": "Extreme Long Range rifle chambered in 9.52×70mm. Most effective between between 150m-180m. Can be loaded via magazine or individual rounds.",
+    "cls": "Sniper Rifle",
+    "cal": ".375 EnABELR",
+    "rpm": 36.263721651931576,
+    "mag": 8,
+    "tacRld": 2.4,
+    "emptyRld": 4.083,
+    "bulletVel": 788.793,
+    "recoilV": 1.666,
+    "recoilDir": -8,
+    "recoilVar": 6,
+    "recoilIncAds": 0,
+    "fireMode": "bolt",
+    "availableFireModes": [
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "bolt",
+        "rpm": 299.9989929199219,
+        "hipNoBloomOnSwitch": false
+      }
+    },
+    "spreadDyn": {
+      "ads": {
+        "inc": 0,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 1,
+        "idleOffset": 6.5,
+        "firingCoef": 0,
+        "firingExp": 0.25,
+        "firingOffset": 6.6,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 6.6,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.941,
+        "idleTime": 1.8,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.05,
+        "firingExp": 2.5,
+        "firingOffset": 0.486,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -8,
+        "amount": 1.666,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 6,
+        "dirVarMult": 0.920506,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 0.6,
+        "decTimeExp": 4,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 70,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -8,
+        "amount": 1.666,
+        "amountMult": 0.94,
+        "amountExp": 0,
+        "dirVar": 6,
+        "dirVarMult": 0.920506,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 0.6,
+        "decTimeExp": 4,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 70,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0,
+        9
+      ],
+      "adsMove": [
+        0.32,
+        10
+      ],
+      "hipStand": [
+        3.352,
+        9
+      ],
+      "hipMove": [
+        4.19,
+        10
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 80,
+        "source": "Frosty"
+      },
+      {
+        "r": 120,
+        "d": 80,
+        "source": "Frosty"
+      },
+      {
+        "r": 150,
+        "d": 100,
+        "source": "Frosty"
+      },
+      {
+        "r": 180,
+        "d": 100,
+        "source": "Frosty"
+      },
+      {
+        "r": 210,
+        "d": 62,
+        "source": "Frosty"
+      }
+    ],
+    "damageStatus": "verified",
+    "damageSource": "Frosty PD_.375EnABELR_Match tweakable damage curve referenced by CDX40_WB, build 2.1.1.0.",
+    "reloadSpeed": 1,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "sourced",
+      "frosty": {
+        "sourceBuild": "2.1.1.0",
+        "buildEvidence": "raw EBX capture of the installed 2.1.1.0 client (builds/2.1.1.0)",
+        "fields": [
+          "cls",
+          "cal",
+          "rpm",
+          "mag",
+          "tacRld",
+          "emptyRld",
+          "reloadSpeed",
+          "bulletVel",
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "recoil",
+          "spread",
+          "spreadDyn",
+          "dmg"
+        ],
+        "note": "All listed base fields were read from the 2.1.1.0 raw CDX40_WB, GS_CDX40 and PD_.375EnABELR_Match files; 149 of 149 scalar leaves also have a GRX_Weapons registry row and every one equals the file value. rpm is the bolt cycle 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + 60 / RateOfFireForSingleFire). tacRld and emptyRld are ReloadInfoArray[0] and [1] ReloadTimeBulletsLeft at ReloadSpeed 1. Moving ADS and hipfire minima use the array selectors (ZDA_Moving_Weapons index 3, HDA_Weapons index 2). cal is formatted from the bullet asset name. Base MagazineCapacity is 1; the Regular magazine package wpm_mag_std_cdx40_w05 sets 8, used as the default (site convention: capacity of the default magazine including the chambered round).",
+        "sourcingEvidence": "reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/A/proposed.json#evidence/elr40"
+      },
+      "notes": [
+        "name and description are the English strings F5CD34B7 and 9BEB5135 linked from the UIWeaponAbilityMetaData_S5B1 record e12240dc-bc7a-4133-af05-384388aa04c2 (label CDX-40).",
+        "Not tested in game."
+      ]
+    }
+  },
+  {
+    "id": "z84m",
+    "name": "Z84M",
+    "description": "Classic GPMG modernized for the 21st century. A 100-round belt box feeds ammunition from the right.",
+    "cls": "LMG",
+    "cal": "7.62×54mmR",
+    "rpm": 719.999,
+    "mag": 101,
+    "tacRld": 7.6,
+    "emptyRld": 9.334,
+    "bulletVel": 604,
+    "recoilV": 0.9647913442381465,
+    "recoilDir": 12,
+    "recoilVar": 56.7,
+    "recoilIncAds": 0.523,
+    "fireMode": "auto",
+    "availableFireModes": [
+      "auto"
+    ],
+    "fireModes": {
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.523,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.2,
+        "firingExp": 2.5,
+        "firingOffset": 2.7,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.941,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
+        "firingExp": 2.5,
+        "firingOffset": 4.86,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": 12,
+        "amount": 0.8251,
+        "amountMult": 0.9492,
+        "amountExp": -3,
+        "dirVar": 56.7,
+        "dirVarMult": 0.923091,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.459,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 104,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": 12,
+        "amount": 0.8251,
+        "amountMult": 0.9492,
+        "amountExp": -3,
+        "dirVar": 56.7,
+        "dirVarMult": 0.923091,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.459,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 104,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        11
+      ],
+      "adsMove": [
+        0.32,
+        13
+      ],
+      "hipStand": [
+        4.848,
+        11
+      ],
+      "hipMove": [
+        6.06,
+        13
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 35.22,
+        "source": "Frosty"
+      },
+      {
+        "r": 21,
+        "d": 35.22,
+        "source": "Frosty"
+      },
+      {
+        "r": 21,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 20.67,
+        "source": "Frosty"
+      }
+    ],
+    "damageStatus": "verified",
+    "damageSource": "Frosty PD_762x54mmR_MG tweakable damage curve referenced by PKM_WB, build 2.1.1.0.",
+    "reloadSpeed": 1,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "sourced",
+      "frosty": {
+        "sourceBuild": "2.1.1.0",
+        "buildEvidence": "raw EBX capture of the installed 2.1.1.0 client (builds/2.1.1.0)",
+        "fields": [
+          "cls",
+          "cal",
+          "rpm",
+          "mag",
+          "tacRld",
+          "emptyRld",
+          "reloadSpeed",
+          "bulletVel",
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "recoil",
+          "spread",
+          "spreadDyn",
+          "dmg"
+        ],
+        "note": "All listed base fields were read from the 2.1.1.0 raw PKM_WB, GS_PKM and PD_762x54mmR_MG files; 144 of 149 scalar leaves also have a GRX_Weapons registry row and every one equals the file value. rpm is FireLogic.RateOfFire. tacRld and emptyRld are ReloadInfoArray[0] and [1] ReloadTimeBulletsLeft at ReloadSpeed 1. Moving ADS and hipfire minima use the array selectors (ZDA_Moving_Weapons index 3, HDA_Weapons index 1). cal is formatted from the bullet asset name.",
+        "sourcingEvidence": "reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/A/proposed.json#evidence/z84m"
+      },
+      "notes": [
+        "name and description are the English strings 72F1D53C and 5F320CDA linked from the UIWeaponAbilityMetaData_S5B1 record 12fa9b30-7668-421d-a603-2f3bb513bd65 (label PKM).",
+        "Not tested in game."
+      ]
+    }
+  },
+  {
+    "id": "rspr",
+    "name": "RSPR",
+    "description": "Modular, subcompact rifle intended to supplant traditional PDWs. Chambered in 7.62 Soviet to leverage unconventional supply lines.",
+    "cls": "SMG",
+    "cal": "7.62×39mm",
+    "rpm": 719.999,
+    "mag": 21,
+    "tacRld": 2.334,
+    "emptyRld": 3.1,
+    "bulletVel": 453,
+    "recoilV": 0.781859510898356,
+    "recoilDir": 21,
+    "recoilVar": 30,
+    "recoilIncAds": 0.36,
+    "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": true
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 719.9990234375
+      }
+    },
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.36,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.2,
+        "firingExp": 2.5,
+        "firingOffset": 2.7,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.736,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
+        "firingExp": 2.5,
+        "firingOffset": 4.86,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": 21,
+        "amount": 0.6494,
+        "amountMult": 0.94,
+        "amountExp": -3,
+        "dirVar": 30,
+        "dirVarMult": 0.917989,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 72,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": 21,
+        "amount": 0.6494,
+        "amountMult": 0.94,
+        "amountExp": -3,
+        "dirVar": 30,
+        "dirVarMult": 0.917989,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 72,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        6
+      ],
+      "hipStand": [
+        1.804,
+        6
+      ],
+      "hipMove": [
+        2.255,
+        6
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 35.22,
+        "source": "Frosty"
+      },
+      {
+        "r": 9,
+        "d": 35.22,
+        "source": "Frosty"
+      },
+      {
+        "r": 9,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 21,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 21,
+        "d": 20.67,
+        "source": "Frosty"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Frosty"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Frosty"
+      }
+    ],
+    "damageStatus": "verified",
+    "damageSource": "Frosty PD_762x39mm_PDW tweakable damage curve referenced by RSAR999_WB, build 2.1.1.0.",
+    "reloadSpeed": 1,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "sourced",
+      "frosty": {
+        "sourceBuild": "2.1.1.0",
+        "buildEvidence": "raw EBX capture of the installed 2.1.1.0 client (builds/2.1.1.0)",
+        "fields": [
+          "cls",
+          "cal",
+          "rpm",
+          "mag",
+          "tacRld",
+          "emptyRld",
+          "reloadSpeed",
+          "bulletVel",
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "recoil",
+          "spread",
+          "spreadDyn",
+          "dmg"
+        ],
+        "note": "All listed base fields were read from the 2.1.1.0 raw RSAR999_WB, GS_RSAR999 and PD_762x39mm_PDW files; 114 of 149 scalar leaves also have a GRX_Weapons registry row and every one equals the file value. rpm is FireLogic.RateOfFire. tacRld and emptyRld are ReloadInfoArray[0] and [1] ReloadTimeBulletsLeft at ReloadSpeed 1. Moving ADS and hipfire minima use the array selectors (ZDA_Moving_Weapons index 3, HDA_Weapons index 4). cal is formatted from the bullet asset name.",
+        "sourcingEvidence": "reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/A/proposed.json#evidence/rspr"
+      },
+      "notes": [
+        "name and description are the English strings 42049CD7 and 05A8CD55 linked from the UIWeaponAbilityMetaData_S5B1 record 72c61d7e-95b5-4024-8529-3c8c11862573 (label RSAR999).",
+        "Not tested in game."
       ]
     }
   }

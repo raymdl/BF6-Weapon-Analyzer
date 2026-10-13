@@ -63,7 +63,7 @@ row values; its native lookup code has not been decoded.
 
 For example, base index 5 gives 0.571429; adding three steps gives row 8,
 0.833334. A sum above 9 gives 1.0. The generated
-`COLLATERAL_MULT_OVERRIDE` map covers all 63 weapons and 328 ammo selections.
+`COLLATERAL_MULT_OVERRIDE` map covers all 67 weapons and 353 ammo selections.
 See the [source table trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json)
 and [generator](../scripts/frosty-collateral.py).
 

@@ -34,6 +34,13 @@
         "displayName": "95Rnd Drum",
         "recordKey": "rpk74m-95-rnd"
       }
+    },
+    "elr40": {
+      "1_rnd": {
+        "tacRldOverrideMs": 3166,
+        "displayName": "Single Shot",
+        "recordKey": "elr40-single-round"
+      }
     }
   },
   "screenshotExceptions": {
@@ -61,8 +68,8 @@
     }
   },
   "counts": {
-    "animationOverrideRecords": 4,
-    "animationOverrideEntries": 5,
+    "animationOverrideRecords": 5,
+    "animationOverrideEntries": 6,
     "screenshotExceptionEntries": 1,
     "composedLoadoutEvidenceEntries": 1
   }

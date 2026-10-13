@@ -111,7 +111,7 @@ Magazine capacity alone cannot resolve attachment identity.
 **Global estimates.** The [Frosty weapon notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md)
 found a controller modifier with 0.8836 operands on 57 weapons; the six sniper
 rifles have no matching GS binding. Its native activation and operation remain
-unresolved. The analyzer now uses the source value 0.8836 in its existing platform
+unresolved. Update 2.1.1.0 changed the operands to 0.95. The analyzer uses the source value 0.95 in its existing platform
 model; its universal application remains a model choice. The soldier's
 5-second regeneration baseline and +4/+2-second ammo additions are now used
 directly in the display model. The collateral table is corroborated by its named

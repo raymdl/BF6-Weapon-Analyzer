@@ -136,7 +136,7 @@ const CLOUD_RUNS = 10;
 // app. The full source hip table reaches 11.303° in the single-attachment
 // corpus. scripts/spread-bar-scale.test.mjs checks that the axis contains it.
 const RECOIL_BAR_SCALE = 3;
-const CONSOLE_RECOIL_MULT = 0.8836;
+const CONSOLE_RECOIL_MULT = 0.95;
 
 // Sym.gg and Frosty cycle calculations give effective RPM as timing-derived decimals.
 // Keep those raw values for calculations, but display the in-game integer mapping.
@@ -296,7 +296,8 @@ function getTTK(weapon, btk) {
 }
 function projectileModelFor(weapon, atts) {
   const selection = _ballistics.weapons?.[weapon?.id];
-  const projectile = _ballistics.projectiles?.[atts?.ammo ? selection?.ammo?.[atts.ammo] : selection?.base];
+  const projectile = _ballistics.projectiles?.[weapon?._projectileRoute
+    ?? (atts?.ammo ? selection?.ammo?.[atts.ammo] : selection?.base)];
   const model = {
     velocityMps: Number.isFinite(weapon?._projectileVelocityMps) ? weapon._projectileVelocityMps
       : weapon?.bulletVel,
@@ -1167,10 +1168,11 @@ function renderChart() {
           label: i => {
             const r = i.dataIndex; const w = i.dataset._weapon;
             const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
+            // Uncapped: damage above 100 matters for what is left after penetration.
             const line = `${chartWeaponDisplayLabel(w)}: ${d.toFixed(1)} dmg`;
             if (limbMult(w) === 1) return line;
             const dl = d * limbMult(w), dh = d * zoneMultiplierForWeapon(w, 'head');
-            return [line, `  limbs ${dl.toFixed(1)} · head ${Math.min(100, dh).toFixed(1)}`];
+            return [line, `  limbs ${dl.toFixed(1)} · head ${dh.toFixed(1)}`];
           },
         },
       } },

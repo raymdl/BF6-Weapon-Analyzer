@@ -293,7 +293,7 @@ metadata; a configured `autoRpm` can change cadence, as with VSSM Folding Stock'
 and `decTimeExp` in both aim-state groups, without modifying the base weapon.
 The current recovery equation consumes them. Smooth recoil uses source operands:
 `1.2` recovery and a `0.05`-second duration override for ordinary modifiers, or
-`1.728` and `0.066667` for 17 mapped Bolt weapon–muzzle combinations. The resolver
+`1.728` and `0.066667` for 19 mapped Bolt weapon–muzzle combinations. The resolver
 merges `muzzle.weaponOverrides[weaponId]` over the muzzle catalog record first.
 This selects the attachment-specific values in both aim states; it is not a
 weapon-class override. Base duration is read from each weapon's recoil group.

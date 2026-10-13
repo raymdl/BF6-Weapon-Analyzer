@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "status": "current-live",
   "adoptedAsBaseline": "2026-08-12",
-  "weaponCount": 63,
+  "weaponCount": 67,
   "sources": [
     {
       "id": "frosty-local-export",
@@ -18,6 +18,13 @@
       "reviewedDate": "2026-09-16",
       "evidence": "reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json",
       "authority": "Reviewed Interdictor damage curve, hit-zone material and iron-sight cost, plus VSSM velocity and recoil changes. Retained values keep their 1.4.2.5 provenance; the source update does not establish native runtime formulas."
+    },
+    {
+      "id": "frosty-update-2.1.1.0",
+      "sourceVersion": "2.1.1.0",
+      "buildEvidence": "bf6.exe SHA-256 2c1065ffc2d50b88708d7d1ca60aba84283cc18df3fcbdafab42bf0a084a488e; Frosty archive Head 5382784",
+      "reviewedDate": "2026-10-13",
+      "authority": "Raw before/after comparison of the 63 weapons against 1.4.3.5. Applied: SVDM recoil direction 4 to 20 and recoil decrease time exponent 0.75 to 1.1; M39 EMR exponent 0.75 to 1.0; controller recoil multiplier 0.8836 to 0.95; VSSM 10 Rnd description. No other value used by the site changed for these weapons; retained values keep their earlier provenance. Season 5 weapons and attachments are not included."
     },
     {
       "id": "ea-update-notes",

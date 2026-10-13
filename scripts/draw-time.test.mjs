@@ -19,7 +19,7 @@ const build = (id, changes = {}) => {
   return applyAttachments(weapon, { ...atts, ...changes });
 };
 
-test('timing arrays and all 63 base selectors match the retained Frosty exports', () => {
+test('timing arrays and all 67 base selectors match the retained Frosty exports', () => {
   assert.deepEqual(tables.sprint, evidence.sprint.map(row => +(Number(row.recoverySecondsRaw) * 1000).toFixed(6)));
   for (const [table, source] of [['primary', 'DTA_Weapons'], ['sidearm', 'DTA_Sidearms']]) {
     for (const field of ['deploy', 'undeploy']) {

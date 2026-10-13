@@ -42,7 +42,7 @@ The Attachment Effects panel also shows Recoil Duration: how long each shot's ki
 takes to play out. Longer is smoother to track; the kick itself is the same size.
 
 Hover a weapon button or a weapon name above the comparison stats to read its
-in-game description. All 63 weapons have descriptions, also exposed as accessible
+in-game description. All 67 weapons have descriptions, also exposed as accessible
 descriptions. Of these, 61 come from Frosty and two come from verified game captures.
 
 Hover an attachment control or option to read its in-game description where
@@ -197,7 +197,7 @@ use source ADS spread factors supported by the AK4D recordings. Native recoil an
 Flashlight, Hipfire Taclight, Combo Red and Combo Green now use source hipfire
 growth/recovery factors. The model treats a selected light as active; it has no
 light switch or automatic on/off simulation. Aimed Taclight has no hipfire bonus.
-The console setting scales recoil amount by 0.8836; it does not simulate aim assist.
+The console setting scales recoil amount by 0.95; it does not simulate aim assist.
 
 Shots are sampled uniformly over the spread circle's area when the source exponent
 is 0.5. This gives 25% probability inside half the radius, consistent with the M39

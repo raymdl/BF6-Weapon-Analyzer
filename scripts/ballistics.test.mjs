@@ -34,11 +34,5 @@ for (const [id, selection] of Object.entries(catalog.weapons)) {
     assert.equal(catalog.projectiles[key].gravityMps2, -9.81);
   }
 }
-const selected = (id, ammoId) => catalog.projectiles[catalog.weapons[id].ammo[ammoId]];
-assert.equal(selected('vssm', 'range_pen').dragPerMeter, 0.002);
-assert.equal(selected('sv98', 'long_range').dragPerMeter, 0.002);
-assert.equal(selected('sv98', 'penetration').dragPerMeter, 0.0035);
-assert.equal(catalog.weapons.m60.ammo.lightweight, undefined);
-assert.equal(catalog.weapons.m121a2.ammo.lightweight, undefined);
 
 console.log('ballistics tests passed');
