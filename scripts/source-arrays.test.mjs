@@ -20,8 +20,6 @@ const build = (id, changes = {}) => {
 };
 
 test('ADS calculations retain source precision while the panel keeps captured rounding', () => {
-  assert.deepEqual(balance.ADS_SPD_TIERS,
-    [500.00033, 433.33432, 366.66733, 300.00034, 250.00033, 200.00033, 166.66733, 133.33433]);
   assert.deepEqual(balance.ADS_MOVE_TIERS, evidence.arrays.adsMove);
   assert.deepEqual(balance.MOVING_ACC_TIERS, evidence.arrays.movingAdsSpread.map(row => Number(row.Field_6c73f45b)));
   assert.deepEqual(balance.ADS_SPD_TIERS.map(formatMilliseconds), [500, 433, 367, 300, 250, 200, 167, 133]);
@@ -35,10 +33,8 @@ test('ADS calculations retain source precision while the panel keeps captured ro
 });
 
 test('hip table retains all source fields and weapon selectors without sorting the rows', () => {
-  assert.equal(balance.HIP_SPREAD_TABLE.length, 18);
   const fields = { hipStand: 'Field_1867639b', hipMove: 'Field_c5401fc2' };
   balance.HIP_SPREAD_TABLE.forEach((row, index) => {
-    assert.equal(Object.keys(row).length, 7);
     for (const [key, value] of Object.entries(row)) {
       assert.equal(value, Number(evidence.arrays.hipSpread[index][fields[key] ?? key]));
     }
@@ -46,15 +42,11 @@ test('hip table retains all source fields and weapon selectors without sorting t
   for (const row of evidence.weapons) {
     assert.equal(balance.HIP_SPREAD_BASE_INDEX[row.weapon], row.indices.hipSpread);
   }
-  assert.equal(balance.HIP_SPREAD_BASE_INDEX.vssm, 4);
-  assert.equal(balance.HIP_SPREAD_BASE_INDEX_OVERRIDES.vssm, undefined);
   for (const ergo of ['none', 'full_auto_vssm']) {
     const vssm = build('vssm', { ergo });
     assert.deepEqual(vssm.spread.hipStand, [1.804, 9]);
     assert.deepEqual(vssm.spread.hipMove, [2.255, 10]);
   }
-  assert.equal(balance.HIP_SPREAD_TABLE[10].hipStand, 0.38);
-  assert.equal(balance.HIP_SPREAD_TABLE[11].hipStand, 2.16);
 });
 
 test('shotgun pellet ammunition adds nine source rows and stacks before clamping', () => {

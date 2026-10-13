@@ -1,6 +1,10 @@
-# Attachment bugs and mismatches
+# Game bugs and mismatches
 
-This list records attachments whose in-game stats and in-game description conflict.
+This list records game bugs and mismatches found while building the site. Most entries are
+attachments whose in-game stats and in-game description conflict; weapon stats and stat-panel
+errors are listed here too. The file keeps its name, `ATTACHMENT_BUGS.md`, so that existing
+links to it stay valid.
+
 Each entry is one of these types:
 
 - **Game error**: the description is correct, but the game does not apply a stat that
@@ -13,6 +17,8 @@ Each entry is one of these types:
   but the intended behavior is not confirmed.
 - **Source data inconsistency**: the source stores conflicting values for a weapon
   property; in-game timing shows which value the game uses.
+- **Game display error**: the stat panel shows a value that the game does not apply, or a
+  wrong value for a stat with no gameplay effect.
 
 Descriptions that leave out an effect that the game applies consistently are not
 errors. They are in [Accepted text](#accepted-text).
@@ -53,6 +59,12 @@ stat and adds a footnote with the intended effect.
 | 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
 | 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Matches game: no iron-sight sway on BROD 3 (marked †; 25 September capture) |
+| 17 | None (base weapon) | M433, SGX, L110, P18 | Suspected game error | Since 2.1.1.0 the in-world (3D) spot-on-fire range is 75 m; the other weapons keep 54 m. Not in the patch notes; four unrelated weapons. 75 m was the launch default before Season 2 reduced it to 54 m, so this looks like an unintended reversion. | Matches game: 75 m in-world, 150 m minimap |
+| 18 | Hollow Point | Mk 24 | Suspected game error | Costs 5 points, the same as Standard; every other weapon's Hollow Point costs 15 or 20. | Matches game: cost 5, headshot 1.80 with Hollow Point |
+| 19 | Single-Port Brake | RSPR | Suspected game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip. | Matches game: seven steps, 0.8 to 0.5 degrees |
+| 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. | Shows x1.00 (actual damage), not the panel's x0.00 |
+| 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M | Suspected game error | Each reduces recoil by one step more than on other weapons (2, 3 and 3 steps against 1, 2 and 2). The descriptions and costs are unchanged. | Matches game: the stronger steps |
+| 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -440,6 +452,131 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Evidence.** [L62 reverse coverage](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-2026-09-25-L62-reverse-coverage-handling.json),
   [Frosty sway notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#reverse-coverage-of-handling-velocity-and-sway-l62-25-september-2026).
 
+### 17. M433, SGX, L110 and P18 have a longer in-world spot-on-fire range
+
+- **What changed (2.1.1.0, 13 October 2026).** The in-world (3D) spot-on-fire base in the
+  weapon file went from 54 to 75 on four weapons: `HK433_WB` (M433), `MPX_WB` (SGX),
+  `Minimi_WB` (L110) and `M18_WB` (P18). Field: `Class_542ac52c`
+  `Field_5ebda408/Field_9918e670`. The minimap (2D) base beside it,
+  `Field_5ebda408/Field_31022dc5`, stays 150.
+- **Other weapons.** The same field is 54 on 57 other weapons of 2.1.1.0 (value census of the
+  held `_WB` files). The four weapons are of four different classes (assault rifle, SMG,
+  LMG, sidearm), and the patch notes do not mention the change.
+- **In-game evidence.** The operator confirmed 75 m on the in-game weapon panel on
+  13 October 2026. Which of the four weapons were checked is not recorded.
+- **Why it may be an error.** No class or calibre rule separates these four from the rest.
+  Operator note (13 October 2026): 75 m was the default in-world range in the launch
+  version of the game and was reduced to 54 m in Season 2, so these four weapons look
+  like an unintended reversion to the launch value. The launch and Season 2 values are
+  from the operator, not re-read from files here. The same update also changed
+  `ProjSimEx_SniperDecoyGameplay` `Field_87611ff9` from 150 to 75.
+- **Site.** The site uses 75 m as the in-world base for these four weapons and 54 m for
+  the others; attachment and ammunition factors multiply it as before.
+
+### 18. Mk 24 Hollow Point costs 5 points
+
+- **In-game text.** Hollow Point: "Ammunition with slightly improved headshot damage."
+  Unlock at Mk 24 Mastery 34.
+- **What is unusual (2.1.1.0, 13 October 2026).** The Mk 24 is new in this build. Its Hollow
+  Point costs 5 points, the same as its Standard ammunition. On the 52 other weapons that
+  offer Hollow Point the cost is 15 (34 weapons) or 20 (18 weapons).
+- **Frosty data.** `Attachment_MRGGA_AMO_HollowPoint` point cost `Field_6ee865a5` is 5. The
+  Mk 24's other ammunition costs follow the usual pattern: Standard 5, Penetration 5,
+  Lightweight 10, Frangible 20.
+- **Headshot multiplier (not counted as a bug).** `MRGGA_WB` uses protection index 12, which
+  no other weapon uses. It gives a base headshot multiplier of 1.57, and 1.80 with Hollow
+  Point. The other rifle-calibre weapons use index 11: 1.40 base and 1.57 with Hollow Point.
+  In the files Standard, Penetration, Lightweight and Frangible all read 1.57 on the Mk 24;
+  only Hollow Point reads 1.80. The operator's reading (13 October 2026) is that the higher
+  base value is a property of the weapon's 6.5x48mm ammunition, not an error. The files do
+  not state a reason.
+- **In-game evidence.** Two operator screenshots of the Mk 24 ammunition screen, 13 October
+  2026. The Hollow Point tile shows cost 5. With Standard (FMJ, the default) focused the
+  panel shows headshot x1.57 and collateral x0.75; with Hollow Point focused it shows
+  headshot x1.80 and collateral x0.67.
+- **Why it may be an error.** No other weapon prices Hollow Point at the Standard cost.
+  This is a hypothesis.
+- **Site.** The site uses cost 5 and the multipliers 1.57 and 1.80, as the game shows.
+
+### 19. RSPR Single-Port Brake reduces recoil by seven steps
+
+- **In-game text.** Single-Port Brake: "Simple brake that reduces recoil but increases weapon
+  sway. Soldiers firing will be spotted, marking their position in-world and on the minimap."
+  Cost 5. Unlock at RSPR Mastery 7.
+- **Frosty data (2.1.1.0; the RSPR is new in this build).** `GS_RSAR999` binds the brake's
+  selector `U_WPM_MZL_Brake1_W05` to two recoil modifiers: `GRM_Recoil_MZL_P10` (one step) and
+  `GRM_Recoil_MZL_Bolt_P10` (six steps). Both apply, for seven steps in ADS and hipfire.
+- **Comparison.** On the Mk 24 the same brake and selector bind only `GRM_Recoil_MZL_P10`
+  (one step), as on other automatic weapons. `GRM_Recoil_MZL_Bolt_P10` is otherwise the
+  bolt-action sniper binding (L115, M2010 ESR, Mini Scout, PSR). On the RSPR the strongest
+  grips, Classic Vertical (35 points) and Low-Profile Stubby (45 points), give five steps;
+  every other RSPR muzzle gives one step or less.
+- **In-game evidence.** Operator screenshot of the RSPR muzzle screen, 13 October 2026: with
+  the Single-Port Brake focused, Recoil Amount reads 0.5 degrees (0.8 without) and Control
+  reads 59 (39 without). A second screenshot of the underbarrel screen with Classic Vertical
+  focused reads Recoil Amount 0.6 degrees and Control 53. Seven steps at the RSPR's 0.94
+  factor give 0.782 to 0.507 degrees and five steps give 0.574, which match both panels;
+  one step would give 0.735.
+- **Why it is likely an error.** A 5-point brake outperforms the 35-point grip, and the extra
+  binding is one that belongs to bolt-action rifles.
+- **Site.** The site applies seven steps, as the game does.
+
+### 20. Collateral multiplier panel shows x0.00 past the top of the table
+
+- **In-game panel.** M121 A2 with Tungsten Core, and ELR-40 with the Single Shot magazine and
+  Standard ammunition, both show Collateral Multiplier x0.00 (operator screenshots, 13 October
+  2026).
+- **Frosty data (2.1.1.0).** The collateral table has ten rows, 0 to 9 (x0.00 to x1.00). The
+  M121 A2 is base row 6, plus Tungsten Core 3, plus the extra Standard step 1 (entry 2): row 10.
+  The ELR-40 is base row 6, plus Standard 1, plus the Single Shot magazine 3: row 10. These are
+  the only two combinations in the files that pass row 9 (Single Shot with Penetration reaches
+  row 12).
+- **Firing-range test (operator, 13 October 2026).** M121 A2, one target at 10 m and one behind
+  it at 50 m, headshot on the near target (49 damage both times). Damage to the far target:
+  16 with Standard, 26 with Tungsten Core. Body damage at 50 m is 26.05, so 26 is the full
+  x1.00. The 16 fits Standard's x0.75 on a limb or abdomen hit (26.05 x 0.84 x 0.75 = 16.4);
+  the zone hit on the far target was not recorded.
+- **Conclusion.** Damage holds at the last row (x1.00) when the row number passes the end of
+  the table; only the panel shows zero. The ELR-40 case rests on the same row number and was
+  not fired.
+- **Site.** x1.00 for both, as the damage test shows; the site does not copy the panel's x0.00.
+
+### 21. Mk 24 and Z84M: three grips reduce recoil by one extra step
+
+- **Attachments.** Adjustable Angled (15 points), Full Angled (25 points) and QD Grip Pod
+  (30 points) on the Mk 24 and the Z84M. Both weapons are new in 2.1.1.0.
+- **Frosty data (2.1.1.0).** `GS_MRGGA` and `GS_PKM` bind Adjustable Angled to
+  `GRM_Recoil_BTM_P20` (two steps; other weapons bind `GRM_Recoil_BTM_P10`, one step), and
+  Full Angled and QD Grip Pod to `GRM_Recoil_BTM_P30` (three steps; other weapons bind
+  `GRM_Recoil_BTM_P20`, two steps).
+- **Comparison.** No other weapon has the stronger binding for the two angled grips. The QD
+  Grip Pod has the same three-step binding on the B36A4, EF88 and M16A4.
+- **In-game evidence.** Confirmed by the operator on 13 October 2026; the panel values were
+  not recorded.
+- **Why it is likely an error.** The descriptions and costs are the same as on other weapons,
+  and only the two Season 5 weapons differ.
+- **Site.** The site applies the stronger steps on these two weapons, as the game does.
+
+### 22. Interdictor Precision shows 1
+
+- **In-game panel.** The Interdictor's Precision reads 1 (operator, 14 September and
+  13 October 2026). The other bolt-action rifles read 100.
+- **Frosty data (2.1.1.0).** Each weapon has a Precision table with keyed rows, chosen by
+  matching the loadout's values, and one fallback row. M2010 ESR, PSR, SV-98, Mini Scout and
+  ELR-40 each have one keyed row of 100 and a fallback row of 100. The L115 has no keyed row
+  and a fallback row of 100. The Interdictor has one keyed row and a fallback row of 0.5.
+  Every non-bolt weapon's fallback row is 0.
+- **Change in this build.** The Interdictor's keyed row read 1 up to 1.4.3.5 and reads 100 in
+  2.1.1.0. The panel still shows 1.
+- **Likely cause (inference).** Because correcting the keyed row changed nothing, the panel
+  is not using it. If bolt-action rifles do not match their keyed row and take the fallback
+  row, the others show 100 and the Interdictor shows its 0.5 as 1. The L115, which has only a
+  fallback row, fits this. How 0.5 becomes 1 and how the game selects rows are not
+  established.
+- **Effect.** The operator reports that wrong Precision panel values of this kind do not
+  change weapon behaviour.
+- **Site.** Shows 1, as the game does.
+
 ## Description errors
 
 ### 8. PW7A2 30 Rnd fast magazine
@@ -679,6 +816,64 @@ to the weapon's default magazine. When captures confirm a mismatch on a magazine
 add a `descriptionMismatch` object with a link to the evidence file. When the site
 links wrong text, add a reviewed panel row instead of editing
 `data/attachment-tooltips.json`.
+
+## 2.1.1.0 recheck, 13 October 2026
+
+Update 2.1.1.0 (Season 5) is a new build. Entries 1a to 16 were rechecked against the raw
+before/after comparison with 1.4.3.5; the earlier in-game measurements were not repeated.
+None is resolved. Entries 17 to 21 are new in this build; entry 22 is older and newly listed.
+
+What was compared:
+
+- **Modifier packages.** No package behind any entry changed. The only changed package files
+  in the build are `WPM_SCP_ElcanDR` and `GRM_Recoil_Controller_03`; neither belongs to an
+  entry.
+- **Weapon files.** The `GS_`, `_WB` and `_Ability` files of the listed weapons changed only
+  by additions for two new foregrips (`WPM_BTM_Actuated_W10`, `WPM_BTM_VerticalGrip02_W30`)
+  and the `GRM_Recoil_BTM_P30` binding, on the weapons that received them. Not every weapon
+  did: the Actuated Module has an attachment record on 36 of the 63 existing weapons. `GS_L115A3` is
+  byte-identical.
+- **Descriptions.** 1,004 AD assets were resolved; 55 changed raw bytes and 4 changed a label
+  or description. None of the 4 belongs to an entry: the three low-zoom variable optic
+  accessories ("Low-Zoom" is now "Low-Zoom 4x") and the VSSM 10 Rnd magazine, whose
+  description now reads "Compact magazine for improved handling at the cost of capacity."
+- **Patch notes.** No fix line names a listed entry.
+
+| Entry | 2.1.1.0 result |
+|---|---|
+| 1a | No source/text change; sniper selector status retained. |
+| 1b | No source/text change; corrected 18.5KS-K interpretation retained. |
+| 2 | No source/text change; extra FMJ selector status retained. |
+| 3 | No source/text change; absent SMG draw effect retained. |
+| 4 | No source/text change; PP-19 fast-magazine reload status retained. |
+| 5 | No source/text change; sidearm recoil status retained. |
+| 6 | No source/text change; PP-19 smoothing omission retained. |
+| 7 | Belt-box packages unchanged; moving-ADS status retained. `Minimi_WB` lost its `CMU_MatchTrigger` entry and its in-world spot base changed (entry 17); neither touches the belt box. |
+| 8 | No source/text change; PW7A2 text mismatch retained. |
+| 9 | No source/text change; SGX text mismatch retained. |
+| 10 | No source/text change; KTS100 relative-to-default status retained. |
+| 11 | Optic-FOV source assets not re-examined in this recheck; the weapon files show only the build-wide additions. Visual status retained. |
+| 12 | `GS_L115A3` byte-identical; suppressor binding omission retained. |
+| 13 | No source/text change; source-specific tungsten penalties retained. |
+| 14 | No source/text change; burst activation remains open and still needs an in-game recheck. |
+| 15 | Reload entries not re-read; the weapon files show only the build-wide additions. Retained. |
+| 16 | No source/text change; BROD 3 iron-sight sway omission retained. |
+| 17 | New. See the entry. |
+| 18 | New. See the entry. |
+| 19 | New. See the entry. |
+| 20 | New. See the entry. |
+| 21 | New. See the entry. |
+| 22 | Present before this build; listed now. The keyed row changed from 1 to 100, the panel did not. |
+
+The multi-package scan returns the same 15 candidates, none with a changed input.
+Re-reading 629 magazine operands supports 287 selections relative to their defaults, with
+no change. The retained selector graph is built from the 1.4.3.0 export, so it does not
+cover attachments added in this build.
+
+Site values changed for this build (not bug-list entries): SVDM recoil direction 4 to 20
+and recoil decrease time exponent 0.75 to 1.1; M39 EMR exponent 0.75 to 1.0; controller
+recoil multiplier 0.8836 to 0.95; VSSM 10 Rnd description; in-world spot base 75 m on the
+four weapons of entry 17.
 
 ## 1.4.3.5 recheck, 30 September 2026
 

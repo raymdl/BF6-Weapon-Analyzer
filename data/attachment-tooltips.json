@@ -23,17 +23,19 @@
       "shared-model-and-selector-consensus": 169,
       "weapon-descriptor-asset-name": 35
     },
-    "ironSightTooltips": 63
+    "ironSightTooltips": 67
   },
   "descriptions": {
     "0099DD29": "Standard magazine tubes that improve weapon draw speed.",
     "00AE744E": "High-capacity belt box that reduces weapon draw speed and movement speed while aiming down sights (ADS).",
     "015B7D0A": "Moderately reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+    "01FBB778": "Basic optic with a clear sight picture.",
     "0339F331": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "03AF7B03": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "0428B15B": "Long barrel that increases projectile velocity.",
     "0480369A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "04E6F19C": "Provides minor improvement to hip-fire accuracy and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
+    "05210E02": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "0581BB83": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil.",
     "06989669": "Lightened barrel that enables a fast transition to ADS.",
     "0743B369": "Slightly reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
@@ -44,8 +46,10 @@
     "097A9198": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "0A2C0CC5": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil at the cost of hip-fire accuracy, weapon sway, and weapon draw speed.",
     "0A584B95": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "0B7FB07D": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "0BB6AC0B": "Basic sights with reduced weapon sway.",
     "0C11D11E": "Greatly reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS movement speed and accuracy.",
+    "0D42D279": "Standard magazine with mag pull for faster reloads.",
     "0E01A41F": "Standard-issue long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "0F4DCE2B": "High-capacity drum with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "107EF13A": "Standard barrel that enables a fast transition to aim down sights (ADS).",
@@ -86,24 +90,29 @@
     "263642D4": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
     "2642813E": "Provides minor improvement to hip-fire recovery and can blind enemy soldiers, except those using thermal optics. Effects only active when light is turned on.",
     "2688090C": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "26DB7A65": "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through.",
     "26EB0C06": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "27C1D59F": "Converts the weapon to fire fully automatically, increasing overall rate of fire but reducing controllability.",
     "27CCDF76": "Heavy barrel that improves accuracy during sustained fire.",
     "2862AA06": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "286E1804": "Standard barrel that enables a faster transition to aim down sights (ADS).",
     "28A44906": "Standard 50 round drum that improves weapon draw speed.",
+    "2930A306": "Provides a clear sight picture with magnification levels between 1x and 6x, which can be manually cycled through.",
     "2A294A98": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "2B65A880": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "2B79C762": "Slightly reduces recoil, improves weapon draw speed, and enables a slightly faster transition to aim down sights (ADS) at the cost of ADS accuracy while moving.",
     "2BA8E458": "Ammunition that delays health regeneration on impact with the target.",
     "2CC9A132": "Long barrel that increases projectile velocity.",
     "2D23D544": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "2DDAF448": "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through.",
     "2DF91DDD": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "2EE70D43": "Standard magazine with mag pull for quicker reloads.",
     "2F912FE0": "Greatly reduces recoil at the cost of movement speed and accuracy while aiming down sights (ADS).",
+    "30301CE9": "Provides a clear sight picture with 1x and 4x magnification levels, which can be manually cycled through.",
     "31ADD6F7": "Cut-down support weapon barrel that improves accuracy during sustained fire.",
     "3357FA5E": "Cryogenically-treated barrel that enables a quick transition to aim down sights (ADS) and improves accuracy during sustained fire.",
     "343643F7": "Provides slight improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
+    "361DB892": "Magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection.",
     "36888514": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "368B6C98": "Provides moderate improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
     "36DC7F65": "Standard magazine with mag pull for faster reloads.",
@@ -119,6 +128,7 @@
     "3DAB3B9E": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "3E1D848C": "Long barrel that increases projectile velocity.",
     "3E42F43B": "Light barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "3F293F8E": "Standard belt box that improves weapon draw speed.",
     "3F349785": "Repurposed DMR barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "3F37F281": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
     "404043CD": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
@@ -131,6 +141,7 @@
     "43BBBD3C": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "441FB273": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "44323B08": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "44E52C7D": "Standard-penetration ammunition contained within lightweight belt links providing improved aim down sights (ADS) movement speed.",
     "454DB2B9": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "45D0A836": "Standard magazine that improves weapon draw speed.",
     "460C6BE0": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
@@ -142,6 +153,7 @@
     "48F06EA3": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "498D6DB6": "75 round drum with greatly increased capacity at the cost of weapon handling.",
     "49D9F464": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "49DBE3B1": "Moderately magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection.",
     "4B03D598": "Laser provides slight improvement to hip-fire accuracy while light provides minor improvement to hip-fire recovery, but is visible to enemy soldiers. Effects only active when laser/light is turned on. Can be used together or separately.",
     "4BC8B001": "Standard-weight barrel that enables a fast transition to aim down sights (ADS).",
     "4BE2D145": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
@@ -170,11 +182,14 @@
     "5B592E99": "Standard-issue heavy barrel that improves accuracy during sustained fire.",
     "5BFBBF12": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "5CB7818C": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
+    "5CCBCAEC": "Basic sights with reduced weapon sway.",
     "5E804CC7": "Muzzle thread protector that reduces recoil but increases weapon sway. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
     "5F0CAA2D": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil.",
+    "5F3726E8": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "5F74777A": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "5FDA6AA4": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
     "6136ABAA": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "61371A94": "Blocked magwell for individually loading custom 9.52×70mm rounds, dealing massive damage between 30m and 60m but at the detriment of long-range ballistics.",
     "6161D2CE": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
     "6172F4B5": "Short magazine tube with speedloader. Greatly improves weapon handling and allows for rapid reloading on low ammo.",
     "61CB75B8": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
@@ -185,6 +200,7 @@
     "6290A110": "Provides minor improvement to hip-fire accuracy and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "6293557F": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "639E8980": "Heavy barrel that improves accuracy during sustained fire.",
+    "63FE65FD": "Standard barrel that enables a fast transition to ADS (aim down sights).",
     "64DC144D": "Heavy barrel that improves accuracy during sustained fire.",
     "65AFB64B": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces hip-fire accuracy. ",
     "65B887D8": "Standard-issue heavy barrel that improves accuracy during sustained fire.",
@@ -208,6 +224,7 @@
     "6E2ACAA2": "Standard speedloader that improves weapon draw speed.",
     "6F360E5A": "Compact magazine for improved handling at the cost of capacity.",
     "6F4C07D7": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
+    "6FC0BDFC": "Reduces sway when aiming and when changing stances while aiming.",
     "702F5D04": "Heavy barrel that improves accuracy during sustained fire.",
     "70823C83": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "718B36FB": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
@@ -231,6 +248,7 @@
     "7FEE407B": "Provides moderate improvement to hip-fire accuracy and minor improvement to aim down sights (ADS) accuracy while moving, but is visible to enemy soldiers. Effects only active when laser is turned on.",
     "807009FF": "Allows weapon to be mounted while prone and more effectively on the edges of cover, greatly reducing recoil.",
     "80E096AF": "Basic sights without any scope glint.",
+    "81AB5757": "Canvas belt pouch that improves aim down sights (ADS) accuracy while moving.",
     "824F3268": "Long barrel that increases projectile velocity.",
     "82ACA282": "Repurposed support weapon barrel that improves firing accuracy during sustained fire and increases projectile velocity at the cost of weapon draw speed.",
     "832821E8": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
@@ -298,7 +316,9 @@
     "A9C68CE8": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "AA5E4585": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "AADC2F42": "Improved brake that reduces recoil. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
+    "AB5C17B7": "Compact magazine for improved handling at the cost of capacity.",
     "ABDC2EB4": "Standard magazine that improves weapon draw speed.",
+    "ABF244AC": "Repurposed DMR barrel that increases projectile velocity.",
     "AC43A80A": "Long barrel that increases projectile velocity.",
     "AC5B9517": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "AD3157E3": "Enhanced brake that reduces recoil, minimizes recoil buildup, and improves recoil recovery. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
@@ -357,7 +377,10 @@
     "C69BE039": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "C6F29F28": "Standard magazine with mag pull for faster reloads.",
     "C817105C": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "C8B48212": "Heavy barrel that improves accuracy during sustained fire.",
+    "C9AE7C74": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "C9B69788": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of movement and weapon draw speed.",
+    "CB527832": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "CD005281": "Standard magazine with mag pull for faster reloads.",
     "CD805A0B": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "CDC31BAE": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
@@ -396,6 +419,7 @@
     "EAD3932F": "Cartridge holder that improves reload speed.",
     "EAF75903": "Provides slight improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
     "EB4FEC2F": "Short barrel that improves hip-fire accuracy and enables a faster transition to aim down sights (ADS), but reduces projectile velocity.",
+    "EB6AA50F": "Basic optic overlaid with a thermal mode that detects heat signatures, which can be manually cycled through. Smoke volumes can disrupt thermal detection.",
     "EB716B56": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "EC278409": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "EC27840A": "Factory extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
@@ -413,11 +437,13 @@
     "F0B29B8A": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "F0E965D0": "Standard 60 round drum magazine that improves weapon draw speed.",
     "F2B3A62B": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
+    "F3026A2D": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "F3592630": "Light barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "F3B1FD64": "Provides slight improvement to reload speed.",
     "F43FF17C": "Shotgun ammunition with improved penetration, resulting in greater damage to soldiers behind the initial target. Delays health regeneration on impact.",
     "F4DCF0BE": "Ammunition belt that improves weapon draw speed and weapon sway as well as transition to aim down sights (ADS) and movement speed while ADS.",
     "F4F0FE8D": "Ammunition with slightly improved headshot damage.",
+    "F5FE6E43": "Lightweight belt box for faster reloads.",
     "F66DCE22": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "F849C9E9": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "F8522F18": "Long barrel that increases projectile velocity.",
@@ -433,6 +459,8 @@
     "FDAF8DB2": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "FDF18AFD": "High-capacity belt box that reduces weapon draw speed, slows transition to aim down sights (ADS), slows movement speed while ADS, and reduces ADS accuracy while moving.",
     "FDF3AFE2": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "FEA4F7A5": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
+    "FF4245A1": "Long barrel that increases projectile velocity.",
     "FFD5E558": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFDB627D": "Heavy barrel that improves accuracy during sustained fire.",
     "FFE5AF28": "Compact magazine for greatly improved handling at the cost of capacity.",
@@ -513,7 +541,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -596,7 +625,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -681,7 +711,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -766,7 +797,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -839,7 +871,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -914,7 +947,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1076,7 +1110,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1241,7 +1276,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1325,7 +1361,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1411,7 +1448,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1479,7 +1517,8 @@
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
         "slim_angled": "3F37F281",
-        "full_angled": "2B79C762"
+        "full_angled": "2B79C762",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1563,7 +1602,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1636,7 +1676,8 @@
         "ribbed_stubby": "474C527B",
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
-        "lp_stubby": "0C11D11E"
+        "lp_stubby": "0C11D11E",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1776,7 +1817,8 @@
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
         "slim_angled": "3F37F281",
-        "full_angled": "2B79C762"
+        "full_angled": "2B79C762",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1857,7 +1899,8 @@
         "lp_stubby": "0C11D11E",
         "adj_angled": "52F61DA0",
         "slim_angled": "3F37F281",
-        "full_angled": "2B79C762"
+        "full_angled": "2B79C762",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1930,7 +1973,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "263642D4"
+        "slim_angled_smg": "263642D4",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2255,7 +2299,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281"
+        "slim_angled_smg": "3F37F281",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2606,7 +2651,8 @@
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
-        "frangible": "2BA8E458"
+        "frangible": "2BA8E458",
+        "lightweight": "44E52C7D"
       },
       "mag": {
         "100_rnd": "AE3E8992",
@@ -2671,7 +2717,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2761,7 +2808,8 @@
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
-        "frangible": "2BA8E458"
+        "frangible": "2BA8E458",
+        "lightweight": "44E52C7D"
       },
       "mag": {
         "50_rnd": "F4DCF0BE",
@@ -2825,7 +2873,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2903,13 +2952,15 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
-        "frangible": "2BA8E458"
+        "frangible": "2BA8E458",
+        "lightweight": "44E52C7D"
       },
       "mag": {
         "100_rnd": "AE3E8992",
@@ -2971,13 +3022,15 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
-        "frangible": "2BA8E458"
+        "frangible": "2BA8E458",
+        "lightweight": "44E52C7D"
       },
       "mag": {
         "50_rnd": "42DFE476",
@@ -3041,7 +3094,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3121,7 +3175,7 @@
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
-        "lightweight": "83C8318F",
+        "lightweight": "44E52C7D",
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458"
       },
@@ -3189,13 +3243,15 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
-        "frangible": "2BA8E458"
+        "frangible": "2BA8E458",
+        "lightweight": "44E52C7D"
       },
       "mag": {
         "50_rnd": "28A44906",
@@ -3259,7 +3315,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3419,7 +3476,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3493,7 +3551,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "bipod_sr": "807009FF"
+        "bipod_sr": "807009FF",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3562,7 +3621,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "bipod_sr": "807009FF"
+        "bipod_sr": "807009FF",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3639,7 +3699,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3701,7 +3762,8 @@
         "full_angled_sr": "9AB2B3D4",
         "bipod_sr": "807009FF",
         "qd_grip_pod_sr": "40A1EFFF",
-        "classic_grip_pod_sr": "8D9C2CC0"
+        "classic_grip_pod_sr": "8D9C2CC0",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3728,9 +3790,7 @@
         "comp_brake": "AD3157E3",
         "flash_comp": "A2809736",
         "light_supp": "screenshot:sv98:muzzle:light_supp",
-        "hybrid_supp_l": "0A2C0CC5",
-        "hybrid_supp_s": "07D6E424",
-        "hybrid_supp_k": "0581BB83"
+        "hybrid_supp_l": "0A2C0CC5"
       },
       "barrel": {
         "basic": "F849C9E9",
@@ -3813,7 +3873,8 @@
         "full_angled_sr": "9AB2B3D4",
         "bipod_sr": "807009FF",
         "qd_grip_pod_sr": "40A1EFFF",
-        "classic_grip_pod_sr": "8D9C2CC0"
+        "classic_grip_pod_sr": "8D9C2CC0",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3875,7 +3936,8 @@
         "full_angled_sr": "9AB2B3D4",
         "bipod_sr": "807009FF",
         "qd_grip_pod_sr": "40A1EFFF",
-        "classic_grip_pod_sr": "8D9C2CC0"
+        "classic_grip_pod_sr": "8D9C2CC0",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3957,8 +4019,7 @@
       "muzzle": {
         "dp_brake": "AADC2F42",
         "flash_hider": "50C99C0F",
-        "long_supp": "B2A9F30C",
-        "light_supp": "B4FF1BAD"
+        "long_supp": "B2A9F30C"
       },
       "barrel": {
         "basic": "E74104F4",
@@ -3985,7 +4046,8 @@
         "bipod_sr": "807009FF",
         "qd_grip_pod_sr": "40A1EFFF",
         "classic_grip_pod_sr": "8D9C2CC0",
-        "slim_angled_interdictor": "263642D3"
+        "slim_angled_interdictor": "263642D3",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4042,7 +4104,8 @@
         "lp_stubby": "0C11D11E",
         "adj_angled": "52F61DA0",
         "slim_angled": "3F37F281",
-        "full_angled": "2B79C762"
+        "full_angled": "2B79C762",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "buckshot": "D910A530",
@@ -4096,7 +4159,8 @@
         "lp_stubby": "0C11D11E",
         "adj_angled": "52F61DA0",
         "slim_angled": "3F37F281",
-        "full_angled": "2B79C762"
+        "full_angled": "2B79C762",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "buckshot": "D910A530",
@@ -4537,7 +4601,8 @@
         "full_angled": "2B79C762",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4681,7 +4746,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "actuated_module": "6FC0BDFC"
       },
       "ammo": {
         "penetration": "78D58F2D",
@@ -4691,7 +4757,7 @@
       },
       "mag": {
         "20_rnd": "F8D66B75",
-        "10_rnd": "ABDC2EB4",
+        "10_rnd": "67CFDCC6",
         "10_fast": "6D0AA2D3",
         "20_fast": "BC69AC54",
         "30_rnd": "FFE5AF29"
@@ -4702,6 +4768,311 @@
       },
       "sight": {
         "iron": "0BB6AC0B"
+      }
+    },
+    "mk24": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "long_supp": "B2A9F30C",
+        "std_supp": "65AFB64B",
+        "linear_comp": "12FD3D70",
+        "comp_brake": "AD3157E3",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_k": "0581BB83",
+        "hybrid_supp_s": "07D6E424",
+        "compensator": "16A5F86C",
+        "cqb_supp": "6804DEEC",
+        "flash_comp": "A2809736",
+        "light_supp": "B4FF1BAD",
+        "dp_brake": "AADC2F42",
+        "flash_hider": "50C99C0F"
+      },
+      "laser": {
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "5mw_green": "EAF75903",
+        "50mw_blue": "7D9917DA",
+        "5mw_red": "04E6F19C",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "hip_taclight": "2642813E",
+        "flashlight": "F9EF13C4",
+        "ads_taclight": "7944DEA3"
+      },
+      "grip": {
+        "6h64_vert": "12DEAFDF",
+        "lp_stubby": "0C11D11E",
+        "qd_grip_pod": "5F0CAA2D",
+        "fold_vert": "0743B369",
+        "classic_grip_pod": "6161D2CE",
+        "adj_angled": "52F61DA0",
+        "classic_vert": "2F912FE0",
+        "bipod": "807009FF",
+        "fold_stubby": "C35AEDB8",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "stipp_stubby": "1FCFFC3D",
+        "canted_stubby": "94EBC12C",
+        "ptt_grip_pod": "5CB7818C",
+        "ribbed_vert": "015B7D0A",
+        "ribbed_stubby": "474C527B",
+        "slim_handstop": "1EFACE24",
+        "underslung_mount": "93DD74D9",
+        "alloy_vert": "512CB545",
+        "actuated_module": "6FC0BDFC"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "frangible": "2BA8E458",
+        "hollow_pt": "F4F0FE8D",
+        "lightweight": "83C8318F",
+        "penetration": "78D58F2D"
+      },
+      "mag": {
+        "15_rnd": "A845352B",
+        "25_rnd": "94870A0D",
+        "25_fast": "B12A7F39",
+        "30_rnd": "FFE5AF2A",
+        "20_fast": "BC69AC54",
+        "20_rnd": "F8D66B75"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "buffer": "B127B844",
+        "rail_cover": "D520814B",
+        "mag_flare": "ECC670D6"
+      },
+      "sight": {
+        "var_low": "30301CE9",
+        "std_optic": "01FBB778",
+        "thermal": "49DBE3B1",
+        "therm_hyb": "EB6AA50F",
+        "var_high": "26DB7A65",
+        "iron": "5CCBCAEC"
+      },
+      "barrel": {
+        "basic": "63FE65FD",
+        "short": "C9AE7C74",
+        "extended": "ABF244AC",
+        "light": "05210E02"
+      }
+    },
+    "elr40": {
+      "muzzle": {
+        "long_supp": "B2A9F30C",
+        "flash_hider": "50C99C0F",
+        "dp_brake": "AADC2F42",
+        "light_supp": "6804DEEC"
+      },
+      "laser": {
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "5mw_green": "EAF75903",
+        "50mw_blue": "7D9917DA",
+        "5mw_red": "04E6F19C",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "range_finder": "E20CD908",
+        "ads_taclight": "7944DEA3",
+        "hip_taclight": "97C1E0D4",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "bipod_sr": "807009FF",
+        "lp_stubby_sr": "8E4BF510",
+        "qd_grip_pod_sr": "40A1EFFF",
+        "classic_grip_pod_sr": "8D9C2CC0",
+        "full_angled_sr": "9AB2B3D4",
+        "slim_angled_sr": "263642D3",
+        "actuated_module": "6FC0BDFC"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "frangible": "2BA8E458",
+        "long_range": "22AF19F8",
+        "penetration": "78D58F2D"
+      },
+      "ergo": {
+        "ads_bolt": "41AE0530",
+        "mag_catch": "F3B1FD64",
+        "rail_cover": "D520814B"
+      },
+      "sight": {
+        "var_low": "30301CE9",
+        "var_high": "2930A306",
+        "std_optic": "01FBB778",
+        "thermal": "361DB892",
+        "therm_hyb": "EB6AA50F",
+        "iron": "80E096AF"
+      },
+      "barrel": {
+        "basic": "E74104F4",
+        "extended": "596C9FC3",
+        "light": "7B25B3AA"
+      },
+      "mag": {
+        "7_rnd": "55F7D9CC",
+        "1_rnd": "61371A94",
+        "5_rnd": "AB5C17B7",
+        "7_fast": "0D42D279"
+      }
+    },
+    "z84m": {
+      "muzzle": {
+        "comp_brake": "AD3157E3",
+        "linear_comp": "12FD3D70",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_k": "0581BB83",
+        "hybrid_supp_s": "07D6E424",
+        "light_supp": "B4FF1BAD",
+        "cqb_supp": "6804DEEC",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "long_supp": "B2A9F30C"
+      },
+      "laser": {
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "5mw_green": "EAF75903",
+        "50mw_blue": "7D9917DA",
+        "5mw_red": "04E6F19C",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "ads_taclight": "7944DEA3",
+        "hip_taclight": "97C1E0D4",
+        "flashlight": "F9EF13C4"
+      },
+      "grip": {
+        "6h64_vert": "12DEAFDF",
+        "lp_stubby": "0C11D11E",
+        "qd_grip_pod": "5F0CAA2D",
+        "fold_vert": "0743B369",
+        "classic_grip_pod": "6161D2CE",
+        "adj_angled": "52F61DA0",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "slim_angled": "3F37F281",
+        "full_angled": "2B79C762",
+        "stipp_stubby": "1FCFFC3D",
+        "canted_stubby": "94EBC12C",
+        "ptt_grip_pod": "5CB7818C",
+        "canted_vertical": "C37CF95A",
+        "ribbed_vert": "015B7D0A",
+        "ribbed_stubby": "474C527B",
+        "slim_handstop": "1EFACE24",
+        "alloy_vert": "512CB545",
+        "bipod": "807009FF"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "frangible": "2BA8E458",
+        "hollow_pt": "F4F0FE8D",
+        "penetration": "78D58F2D"
+      },
+      "ergo": {
+        "rail_cover": "D520814B"
+      },
+      "sight": {
+        "var_low": "30301CE9",
+        "std_optic": "01FBB778",
+        "thermal": "49DBE3B1",
+        "therm_hyb": "EB6AA50F",
+        "var_high": "2930A306",
+        "iron": "0BB6AC0B"
+      },
+      "barrel": {
+        "short": "FEA4F7A5",
+        "heavy": "C8B48212",
+        "light": "F3026A2D"
+      },
+      "mag": {
+        "100_rnd": "3F293F8E",
+        "100_agil": "81AB5757",
+        "100_fast": "F5FE6E43"
+      }
+    },
+    "rspr": {
+      "muzzle": {
+        "sp_brake": "A88706A1",
+        "long_supp": "B2A9F30C",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B",
+        "linear_comp": "12FD3D70",
+        "comp_brake": "AD3157E3",
+        "hybrid_supp_l": "0A2C0CC5",
+        "hybrid_supp_k": "0581BB83",
+        "hybrid_supp_s": "07D6E424",
+        "compensator": "16A5F86C",
+        "cqb_supp": "6804DEEC",
+        "flash_comp": "A2809736",
+        "light_supp": "B4FF1BAD",
+        "dp_brake": "AADC2F42"
+      },
+      "laser": {
+        "50mw_violet": "36888514",
+        "50mw_green": "ED4C81A4",
+        "5mw_green": "EAF75903",
+        "50mw_blue": "7D9917DA",
+        "5mw_red": "04E6F19C",
+        "120mw_blue": "7FEE407B"
+      },
+      "light": {
+        "hip_taclight": "2642813E",
+        "flashlight": "F9EF13C4",
+        "ads_taclight": "7944DEA3"
+      },
+      "grip": {
+        "6h64_vert": "12DEAFDF",
+        "lp_stubby": "0C11D11E",
+        "cmpct_handstop": "1CA5A583",
+        "fold_vert": "0743B369",
+        "classic_vert": "2F912FE0",
+        "fold_stubby": "C35AEDB8",
+        "slim_angled_smg": "263642D4",
+        "stipp_stubby": "1FCFFC3D",
+        "canted_stubby": "94EBC12C",
+        "ribbed_vert": "015B7D0A",
+        "ribbed_stubby": "474C527B",
+        "alloy_vert": "512CB545",
+        "actuated_module": "6FC0BDFC"
+      },
+      "ammo": {
+        "standard": "B6CDE708",
+        "frangible": "2BA8E458",
+        "hollow_pt": "F4F0FE8D",
+        "lightweight": "83C8318F",
+        "subsonic": "B34A96E3",
+        "subsonic_hp": "4775CFE5",
+        "penetration": "78D58F2D"
+      },
+      "ergo": {
+        "mag_catch": "F3B1FD64",
+        "match_trigger": "14F044F9",
+        "rail_cover": "D520814B",
+        "buffer": "B127B844",
+        "mag_flare": "ECC670D6"
+      },
+      "sight": {
+        "var_low": "30301CE9",
+        "std_optic": "01FBB778",
+        "thermal": "49DBE3B1",
+        "therm_hyb": "EB6AA50F",
+        "iron": "0BB6AC0B",
+        "var_high": "2DDAF448"
+      },
+      "barrel": {
+        "basic": "CB527832",
+        "extended": "FF4245A1",
+        "light": "5F3726E8"
+      },
+      "mag": {
+        "20_rnd": "F8D66B75",
+        "28_rnd": "0B7FB07D",
+        "20_fast": "BC69AC54"
       }
     }
   }

@@ -60,7 +60,10 @@
         "m357trait": 0.6666667,
         "vz61": 0.6666667,
         "ef88": 0.6666667,
-        "vssm": 0.6666667
+        "vssm": 0.6666667,
+        "mk24": 0.6666667,
+        "z84m": 0.6666667,
+        "rspr": 0.6666667
       }
     },
     {
@@ -150,6 +153,10 @@
         "vz61": {
           "pts": 10,
           "weaponSwayMult": 1
+        },
+        "rspr": {
+          "adsRecoilTierMod": 7,
+          "hipRecoilTierMod": 7
         }
       }
     },
@@ -165,7 +172,8 @@
       "weaponOverrides": {
         "interdictor": {
           "adsRecoilTierMod": 6,
-          "hipRecoilTierMod": 6
+          "hipRecoilTierMod": 6,
+          "name": "Multi-Port Brake"
         },
         "l115": {
           "adsRecoilTierMod": 6,
@@ -182,6 +190,11 @@
         "psr": {
           "adsRecoilTierMod": 6,
           "hipRecoilTierMod": 6
+        },
+        "elr40": {
+          "adsRecoilTierMod": 6,
+          "hipRecoilTierMod": 6,
+          "name": "Multi-Port Brake"
         }
       }
     },
@@ -377,6 +390,12 @@
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "recoilDecreaseTimeExponentAdd": -0.5
+        },
+        "elr40": {
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728,
+          "recoilDurationOverride": 0.066667,
+          "recoilDecreaseTimeExponentAdd": -0.5
         }
       },
       "pts": 25,
@@ -429,6 +448,14 @@
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "recoilDecreaseTimeExponentAdd": -0.5
+        },
+        "elr40": {
+          "hipSpreadTierMod": 0,
+          "adsRecoilDecayMult": 1.728,
+          "hipRecoilDecayMult": 1.728,
+          "recoilDurationOverride": 0.066667,
+          "recoilDecreaseTimeExponentAdd": -0.5,
+          "name": "CQB Suppressor"
         }
       },
       "pts": 30,
@@ -583,7 +610,10 @@
         "umg40": 1,
         "usg90": 1,
         "vcr2": 1,
-        "vz61": 1
+        "vz61": 1,
+        "mk24": 1,
+        "elr40": 1,
+        "rspr": 1
       }
     },
     {
@@ -624,7 +654,9 @@
         "svdm": 1,
         "svk86": 1,
         "tr7": 1,
-        "vcr2": 1
+        "vcr2": 1,
+        "mk24": 1,
+        "z84m": 1
       }
     },
     {
@@ -679,7 +711,10 @@
         "svk86": 0,
         "tr7": 0,
         "umg40": 0,
-        "vcr2": 0
+        "vcr2": 0,
+        "mk24": 0,
+        "elr40": 0,
+        "rspr": 0
       }
     },
     {
@@ -715,7 +750,8 @@
         "sl9": 0,
         "sor556": 0,
         "umg40": 0,
-        "usg90": 0
+        "usg90": 0,
+        "z84m": 0
       }
     },
     {
@@ -802,7 +838,11 @@
         "tr7": 1,
         "umg40": 1,
         "usg90": 1,
-        "vcr2": 1
+        "vcr2": 1,
+        "mk24": 1,
+        "elr40": 1,
+        "z84m": 1,
+        "rspr": 1
       }
     },
     {
@@ -1028,6 +1068,12 @@
           "deployTimeTierShift": 0
         },
         "vz61": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -1259,6 +1305,18 @@
           "deployTimeTierShift": -1
         },
         "vssm": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "z84m": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -1567,6 +1625,24 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -1867,6 +1943,24 @@
           "deployTimeTierShift": 0
         },
         "vssm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -2175,6 +2269,24 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -2461,6 +2573,24 @@
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -2743,6 +2873,24 @@
           "deployTimeTierShift": 0
         },
         "vssm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -3057,6 +3205,24 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -3363,6 +3529,24 @@
           "deployTimeTierShift": 0
         },
         "vz61": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -3677,6 +3861,24 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -3969,6 +4171,24 @@
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -4255,6 +4475,24 @@
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -4393,6 +4631,22 @@
           "deployTimeTierShift": -1
         },
         "vcr2": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "mk24": {
+          "hipRecoilTierMod": 2,
+          "adsRecoilTierMod": 2,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "z84m": {
+          "hipRecoilTierMod": 2,
+          "adsRecoilTierMod": 2,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -4618,6 +4872,18 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
         }
       }
     },
@@ -4672,6 +4938,12 @@
           "deployTimeTierShift": 0
         },
         "umg40": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4904,6 +5176,22 @@
           "deployTimeTierShift": -1
         },
         "vssm": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "mk24": {
+          "hipRecoilTierMod": 3,
+          "adsRecoilTierMod": 3,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "z84m": {
+          "hipRecoilTierMod": 3,
+          "adsRecoilTierMod": 3,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5181,6 +5469,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "elr40": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -5219,6 +5513,13 @@
           "deployTimeTierShift": -1
         },
         "sv98": {
+          "movingAdsSpreadTierMod": -1,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "elr40": {
           "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -5265,6 +5566,12 @@
           "deployTimeTierShift": -1
         },
         "sv98": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "elr40": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5325,6 +5632,12 @@
           "deployTimeTierShift": 0
         },
         "sor556": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5503,6 +5816,18 @@
           "deployTimeTierShift": 0
         },
         "vssm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5705,6 +6030,18 @@
           "deployTimeTierShift": 0
         },
         "vssm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5921,6 +6258,22 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "hipRecoilTierMod": 3,
+          "adsRecoilTierMod": 3,
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "hipRecoilTierMod": 3,
+          "adsRecoilTierMod": 3,
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -6123,6 +6476,18 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -6181,6 +6546,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "elr40": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -6227,6 +6598,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "elr40": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -6268,6 +6645,12 @@
           "deployTimeTierShift": 0
         },
         "sv98": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "elr40": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6348,6 +6731,254 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -2,
           "deployTimeTierShift": -2
+        },
+        "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -2,
+          "deployTimeTierShift": -2
+        }
+      }
+    },
+    {
+      "id": "actuated_module",
+      "name": "Actuated Module",
+      "pts": 10,
+      "weaponSwayMult": 0.6666667,
+      "frostyModifiers": {
+        "m87a1": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kord6p67": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "ak205": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "lmr27": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "b36a4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "ak4d": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m417a2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m433": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "l85a3": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m1014": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m16a4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m2010esr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m250": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "drsiar": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m4a1": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m123k": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m121a2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "miniscout": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sgx": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "psr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "grtbc": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "grtcps": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rpk74m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rpkm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sor556": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sor300sc": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sg553r": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "svk86": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "svdm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "tr7": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kts100": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kv9": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "vssm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m277": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "brod3": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "interdictor": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "elr40": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     }
@@ -6612,6 +7243,22 @@
         "vz61": {
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
+        },
+        "mk24": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "elr40": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "z84m": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "rspr": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
         }
       }
     },
@@ -6868,6 +7515,22 @@
         "vz61": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
+        },
+        "mk24": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
+        },
+        "elr40": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
+        },
+        "z84m": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
+        },
+        "rspr": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
         }
       }
     },
@@ -7098,6 +7761,22 @@
           "movingAdsSpreadTierMod": 1
         },
         "vssm": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
+        "mk24": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
+        "elr40": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
+        "z84m": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
+        "rspr": {
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
         }
@@ -7356,6 +8035,22 @@
         "vz61": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
+        },
+        "mk24": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
+        },
+        "elr40": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
+        },
+        "z84m": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
+        },
+        "rspr": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
         }
       }
     },
@@ -7588,6 +8283,22 @@
         "vssm": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
+        },
+        "mk24": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
+        },
+        "elr40": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
+        },
+        "z84m": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
+        },
+        "rspr": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
         }
       }
     },
@@ -7818,6 +8529,22 @@
           "movingAdsSpreadTierMod": 1
         },
         "vssm": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
+        "mk24": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
+        "elr40": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
+        "z84m": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
+        "rspr": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
         }
@@ -8200,7 +8927,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -8308,7 +9036,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -8416,7 +9145,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -8522,7 +9252,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -8623,7 +9354,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -8723,7 +9455,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -8934,7 +9667,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -9148,7 +9882,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "5mw_red",
@@ -9254,7 +9989,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -9362,7 +10098,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -9457,7 +10194,8 @@
         "lp_stubby",
         "slim_angled",
         "slim_handstop",
-        "full_angled"
+        "full_angled",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -9710,7 +10448,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -9807,7 +10546,8 @@
         "canted_stubby",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -9999,7 +10739,8 @@
         "slim_handstop",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -10102,7 +10843,8 @@
         "canted_stubby",
         "classic_vert",
         "stipp_stubby",
-        "lp_stubby"
+        "lp_stubby",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -10197,7 +10939,8 @@
         "canted_stubby",
         "cmpct_handstop",
         "slim_angled_smg",
-        "stipp_stubby"
+        "stipp_stubby",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -10663,7 +11406,8 @@
         "canted_stubby",
         "stipp_stubby",
         "cmpct_handstop",
-        "slim_angled_smg"
+        "slim_angled_smg",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -11512,7 +12256,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -11723,7 +12468,8 @@
         "ptt_grip_pod",
         "qd_grip_pod",
         "classic_grip_pod",
-        "canted_vertical"
+        "canted_vertical",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -11919,7 +12665,8 @@
         "ptt_grip_pod",
         "qd_grip_pod",
         "classic_grip_pod",
-        "canted_vertical"
+        "canted_vertical",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -12023,7 +12770,8 @@
         "ptt_grip_pod",
         "qd_grip_pod",
         "classic_grip_pod",
-        "canted_vertical"
+        "canted_vertical",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -12127,7 +12875,8 @@
         "ptt_grip_pod",
         "qd_grip_pod",
         "classic_grip_pod",
-        "canted_vertical"
+        "canted_vertical",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -12329,7 +13078,8 @@
         "ptt_grip_pod",
         "qd_grip_pod",
         "classic_grip_pod",
-        "canted_vertical"
+        "canted_vertical",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -12434,7 +13184,8 @@
         "ptt_grip_pod",
         "qd_grip_pod",
         "classic_grip_pod",
-        "canted_vertical"
+        "canted_vertical",
+        "actuated_module"
       ],
       "laser": [
         "5mw_red",
@@ -12753,7 +13504,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -12855,7 +13607,8 @@
         "bipod_sr",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -12959,7 +13712,8 @@
         "bipod_sr",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -13064,7 +13818,8 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -13155,7 +13910,8 @@
         "slim_angled_sr",
         "bipod_sr",
         "qd_grip_pod_sr",
-        "classic_grip_pod_sr"
+        "classic_grip_pod_sr",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -13251,9 +14007,7 @@
         "thread_prot",
         "comp_brake",
         "light_supp",
-        "hybrid_supp_l",
-        "hybrid_supp_k",
-        "hybrid_supp_s"
+        "hybrid_supp_l"
       ],
       "barrel": [
         "basic",
@@ -13382,7 +14136,8 @@
         "slim_angled_sr",
         "bipod_sr",
         "qd_grip_pod_sr",
-        "classic_grip_pod_sr"
+        "classic_grip_pod_sr",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -13500,7 +14255,8 @@
         "slim_angled_sr",
         "bipod_sr",
         "qd_grip_pod_sr",
-        "classic_grip_pod_sr"
+        "classic_grip_pod_sr",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -13592,7 +14348,6 @@
     "interdictor": {
       "muzzle": [
         "dp_brake",
-        "light_supp",
         "long_supp",
         "flash_hider"
       ],
@@ -13607,7 +14362,8 @@
         "qd_grip_pod_sr",
         "classic_grip_pod_sr",
         "full_angled_sr",
-        "slim_angled_interdictor"
+        "slim_angled_interdictor",
+        "actuated_module"
       ],
       "light": [
         "range_finder",
@@ -13833,7 +14589,8 @@
         "classic_vert",
         "lp_stubby",
         "full_angled",
-        "slim_handstop"
+        "slim_handstop",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -13921,7 +14678,8 @@
         "classic_vert",
         "lp_stubby",
         "full_angled",
-        "slim_handstop"
+        "slim_handstop",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
@@ -14484,7 +15242,8 @@
         "stipp_stubby",
         "lp_stubby",
         "slim_handstop",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "none",
@@ -14684,12 +15443,487 @@
         "bipod",
         "ptt_grip_pod",
         "qd_grip_pod",
-        "classic_grip_pod"
+        "classic_grip_pod",
+        "actuated_module"
       ],
       "laser": [
         "50mw_violet",
         "5mw_red",
         "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight"
+      ],
+      "slots": {
+        "grip": {
+          "accepts": [
+            "grip"
+          ]
+        },
+        "laser": {
+          "accepts": [
+            "laser"
+          ]
+        },
+        "light": {
+          "accepts": [
+            "light"
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
+    },
+    "mk24": {
+      "muzzle": [
+        "sp_brake",
+        "dp_brake",
+        "comp_brake",
+        "linear_comp",
+        "flash_hider",
+        "flash_comp",
+        "std_supp",
+        "long_supp",
+        "light_supp",
+        "cqb_supp",
+        "compensator",
+        "hybrid_supp_l",
+        "hybrid_supp_s",
+        "hybrid_supp_k"
+      ],
+      "barrel": [
+        "basic",
+        "short",
+        "extended",
+        "light"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "slim_handstop",
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "classic_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "underslung_mount",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod",
+        "actuated_module"
+      ],
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "50mw_violet",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight"
+      ],
+      "slots": {
+        "grip": {
+          "accepts": [
+            "grip"
+          ]
+        },
+        "laser": {
+          "accepts": [
+            "laser"
+          ]
+        },
+        "light": {
+          "accepts": [
+            "light"
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
+    },
+    "elr40": {
+      "muzzle": [
+        "dp_brake",
+        "flash_hider",
+        "long_supp",
+        "light_supp"
+      ],
+      "barrel": [
+        "basic",
+        "extended",
+        "light"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "lp_stubby_sr",
+        "slim_angled_sr",
+        "full_angled_sr",
+        "bipod_sr",
+        "qd_grip_pod_sr",
+        "classic_grip_pod_sr",
+        "actuated_module"
+      ],
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "50mw_violet",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight",
+        "range_finder"
+      ],
+      "slots": {
+        "grip": {
+          "accepts": [
+            "grip"
+          ]
+        },
+        "laser": {
+          "accepts": [
+            "laser"
+          ]
+        },
+        "light": {
+          "accepts": [
+            "light"
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "ag_coating",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_high"
+            },
+            {
+              "slot": "sight",
+              "attachment": "var_low"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "ads_bolt",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "5_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "mag_catch",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "5_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "rail_cover",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "1_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "5_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_rnd"
+            }
+          ]
+        }
+      ],
+      "sightPoints": {
+        "iron": 15
+      }
+    },
+    "z84m": {
+      "muzzle": [
+        "comp_brake",
+        "linear_comp",
+        "flash_hider",
+        "std_supp",
+        "long_supp",
+        "light_supp",
+        "cqb_supp",
+        "hybrid_supp_l",
+        "hybrid_supp_s",
+        "hybrid_supp_k"
+      ],
+      "barrel": [
+        "short",
+        "heavy",
+        "light"
+      ],
+      "barrelDef": "heavy",
+      "grip": [
+        "slim_handstop",
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "classic_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod",
+        "canted_vertical"
+      ],
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "50mw_violet",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight"
+      ],
+      "slots": {
+        "grip": {
+          "accepts": [
+            "grip"
+          ]
+        },
+        "laser": {
+          "accepts": [
+            "laser"
+          ]
+        },
+        "light": {
+          "accepts": [
+            "light"
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "std_optic"
+            },
+            {
+              "slot": "sight",
+              "attachment": "thermal"
+            }
+          ]
+        }
+      ]
+    },
+    "rspr": {
+      "muzzle": [
+        "sp_brake",
+        "dp_brake",
+        "comp_brake",
+        "linear_comp",
+        "flash_hider",
+        "flash_comp",
+        "std_supp",
+        "long_supp",
+        "light_supp",
+        "cqb_supp",
+        "compensator",
+        "hybrid_supp_l",
+        "hybrid_supp_s",
+        "hybrid_supp_k"
+      ],
+      "barrel": [
+        "basic",
+        "extended",
+        "light"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "cmpct_handstop",
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "classic_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "slim_angled_smg",
+        "actuated_module"
+      ],
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "50mw_violet",
         "50mw_green",
         "50mw_blue",
         "120mw_blue"
@@ -15086,6 +16320,36 @@
       "avail": [
         "mag_catch",
         "full_auto_vssm"
+      ]
+    },
+    "mk24": {
+      "avail": [
+        "rail_cover",
+        "mag_flare",
+        "mag_catch",
+        "match_trigger",
+        "buffer"
+      ]
+    },
+    "elr40": {
+      "avail": [
+        "rail_cover",
+        "mag_catch",
+        "ads_bolt"
+      ]
+    },
+    "z84m": {
+      "avail": [
+        "rail_cover"
+      ]
+    },
+    "rspr": {
+      "avail": [
+        "rail_cover",
+        "mag_flare",
+        "mag_catch",
+        "match_trigger",
+        "buffer"
       ]
     }
   },
@@ -16516,6 +17780,95 @@
             "Scope 8.00x"
           ]
         },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "mk24": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "elr40": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "var_low": [
+            "Variable 1-4x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "z84m": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "rspr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
         "secondary_optic": {
           "std_optic": [
             "Sight 1.00x",
@@ -20384,6 +21737,267 @@
       },
       "sprintRecoveryBaseIndex": 6,
       "deployBaseIndex": 6,
+      "deployTimeTable": "primary"
+    },
+    "mk24": {
+      "defAds": 3,
+      "defAms": 6,
+      "def": "20_rnd",
+      "mags": {
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "15_rnd": {
+          "name": "15 Rnd",
+          "pts": 5,
+          "mag": 15,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0,
+          "weaponSwayMult": 0.6666667
+        },
+        "25_rnd": {
+          "name": "25 Rnd",
+          "pts": 15,
+          "mag": 25,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        },
+        "25_fast": {
+          "name": "25 Fast",
+          "pts": 20,
+          "mag": 25,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 25,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        },
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 10,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        }
+      },
+      "sprintRecoveryBaseIndex": 5,
+      "deployBaseIndex": 5,
+      "deployTimeTable": "primary"
+    },
+    "elr40": {
+      "defAds": 1,
+      "defAms": 4,
+      "def": "7_rnd",
+      "mags": {
+        "7_rnd": {
+          "name": "7 Rnd",
+          "pts": 5,
+          "mag": 7,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "1_rnd": {
+          "name": "Single Shot",
+          "pts": 5,
+          "mag": 1,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -1,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 1,
+          "weaponSwayMult": 0.6666667,
+          "tacRldOverrideMs": 3166,
+          "projectileOverride": {
+            "route": "Common/Hardware/Weapons/_Bullets/PD_.375EnABELR_API",
+            "dmg": [
+              {
+                "r": 0,
+                "d": 90,
+                "source": "Frosty"
+              },
+              {
+                "r": 24,
+                "d": 90,
+                "source": "Frosty"
+              },
+              {
+                "r": 42,
+                "d": 120,
+                "source": "Frosty"
+              },
+              {
+                "r": 68,
+                "d": 120,
+                "source": "Frosty"
+              },
+              {
+                "r": 80,
+                "d": 100,
+                "source": "Frosty"
+              },
+              {
+                "r": 140,
+                "d": 80,
+                "source": "Frosty"
+              }
+            ],
+            "headshot": 1.34,
+            "limb": 0.84,
+            "collateralMult": {
+              "standard": 1.0,
+              "penetration": 1.0,
+              "frangible": 1.0
+            }
+          }
+        },
+        "5_rnd": {
+          "name": "5 Rnd",
+          "pts": 10,
+          "mag": 5,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": -1,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 1,
+          "weaponSwayMult": 0.6666667
+        },
+        "7_fast": {
+          "name": "7 Fast",
+          "pts": 10,
+          "mag": 7,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        }
+      },
+      "sprintRecoveryBaseIndex": 4,
+      "deployBaseIndex": 4,
+      "deployTimeTable": "primary"
+    },
+    "z84m": {
+      "defAds": 1,
+      "defAms": 4,
+      "def": "100_rnd",
+      "mags": {
+        "100_rnd": {
+          "name": "100 Rnd",
+          "pts": 5,
+          "mag": 100,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "100_agil": {
+          "name": "100 Agil",
+          "pts": 10,
+          "mag": 100,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 1
+        },
+        "100_fast": {
+          "name": "100 Fast",
+          "pts": 10,
+          "mag": 100,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        }
+      },
+      "sprintRecoveryBaseIndex": 2,
+      "deployBaseIndex": 2,
+      "deployTimeTable": "primary"
+    },
+    "rspr": {
+      "defAds": 5,
+      "defAms": 8,
+      "def": "20_rnd",
+      "mags": {
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "28_rnd": {
+          "name": "28 Rnd",
+          "pts": 35,
+          "mag": 28,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        },
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 10,
+          "mag": 20,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        }
+      },
+      "sprintRecoveryBaseIndex": 7,
+      "deployBaseIndex": 7,
       "deployTimeTable": "primary"
     }
   },

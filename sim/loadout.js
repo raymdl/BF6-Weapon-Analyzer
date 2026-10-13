@@ -228,10 +228,12 @@ export function computeAttPts(atts, weapon, data) {
 
 // Display-only casing fix: the corpus stores buckshot as "#01 BUCK"/"#00 BUCK",
 // which shouts next to every other title-cased option. The data keeps its name.
-const displayName = a => a.name.replace(/\bBUCK\b/g, 'Buck');
+// A weapon override may carry the name the game shows for that weapon's version.
+const displayName = (a, weaponId = null) =>
+  (a.weaponOverrides?.[weaponId]?.name ?? a.name).replace(/\bBUCK\b/g, 'Buck');
 
 export function attDisplayName(a, weaponId = null) {
-  return isAssumedAtt(a, weaponId) ? `${displayName(a)}*` : displayName(a);
+  return isAssumedAtt(a, weaponId) ? `${displayName(a, weaponId)}*` : displayName(a, weaponId);
 }
 
 // Marks a choice whose in-game effect differs from its description. The site
@@ -262,7 +264,7 @@ export function selectedGameBugs(atts, data, weapon) {
     ['ergo', lookups.ERGOS[atts.ergo]],
   ];
   return picks.flatMap(([slot, att]) => att?.id
-    ? gameBugsFor(data, weapon.id, slot, att.id).map(bug => ({ ...bug, attachmentName: displayName(att) }))
+    ? gameBugsFor(data, weapon.id, slot, att.id).map(bug => ({ ...bug, attachmentName: displayName(att, weapon.id) }))
     : []);
 }
 

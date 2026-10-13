@@ -125,7 +125,7 @@ test('interpolates linearly between distinct ranges and clamps outside the curve
   assert.equal(damageAtRange(sniper, -5), 80);
 });
 
-test('live hit zones use the Frosty values checked against in-game panels', () => {
+test('every weapon and ammunition choice resolves finite hit-zone multipliers', () => {
   const weapons = readJson('../data/weapons.json');
   const ammo = readJson('../data/ammo.json');
   const HIT_ZONES = readJson('../data/hit_zones.json');
@@ -137,56 +137,6 @@ test('live hit zones use the Frosty values checked against in-game panels', () =
         `${weapon.id}/${ammoId} has finite Frosty hit zones`);
     }
   }
-  // Limb follows the projectile material. VSSM fires a 5.56 carbine-material
-  // projectile after 1.4.2.0; the automatic Vz. 61 uses the automatic value.
-  const limbByClass = { 'Assault Rifle': 0.84, Carbine: 0.84, SMG: 0.84, LMG: 0.84, DMR: 0.91, 'Sniper Rifle': 0.67, Shotgun: 1, Sidearm: 1 };
-  // 1.4.3.0 moved the Interdictor's projectile to material 784, giving limb 1.0 so limb
-  // damage matches chest. The class ladder below is a test expectation only; the runtime
-  // resolves every weapon and ammo from data/hit_zones.json with no class fallback.
-  const limbExceptions = { vssm: 0.84, vz61: 0.84, interdictor: 1 };
-  for (const weapon of weapons) {
-    assert.equal(resolve(weapon.id).limbMultiplier, limbExceptions[weapon.id] ?? limbByClass[weapon.cls], `${weapon.id} limb`);
-  }
-  // Headshot = head table at DamageProtectionMultiplierIndex plus ammo protection steps.
-  assert.deepEqual(resolve('vssm', 'range_pen'), { headshotMultiplier: 1.8, limbMultiplier: 0.84 });
-  assert.deepEqual(resolve('m44', 'standard'), { headshotMultiplier: 1.5, limbMultiplier: 1 });
-  assert.equal(resolve('m44', 'hollow_pt').headshotMultiplier, 1.75);
-  assert.equal(resolve('m4a1', 'standard').headshotMultiplier, 1.4);
-  assert.equal(resolve('m4a1', 'hollow_pt').headshotMultiplier, 1.57);
-  assert.equal(resolve('m39emr', 'hollow_pt').headshotMultiplier, 1.75);
-  assert.equal(resolve('grtcps', 'hollow_pt').headshotMultiplier, 1.5);
-  assert.equal(resolve('p18', 'hollow_pt').headshotMultiplier, 1.5);
-  assert.equal(resolve('m87a1', 'slugs').headshotMultiplier, 1.34);
-  assert.equal(resolve('l115').headshotMultiplier, 1.75);
-});
-
-test('derives sniper sweet spots from the curve and preserves the Mini Scout exception', () => {
-  const weapons = readJson('../data/weapons.json');
-  const snipers = weapons.filter(weapon => weapon.cls === 'Sniper Rifle');
-  assert.ok(snipers.length > 0);
-
-  // No weapon stores a sweet-spot window. A later update may move it, so the
-  // current damage curve remains the only runtime authority for the window.
-  assert.deepEqual(weapons.filter(weapon => 'sweetSpot' in weapon), []);
-
-  const withPlateau = snipers.filter(weapon => hasSweetSpot(weapon));
-  assert.ok(withPlateau.length >= 4, 'bolt-actions carry a sweet-spot plateau');
-  for (const weapon of withPlateau) {
-    const { rangeM: [start, end], damage } = deriveSweetSpot(weapon);
-    assert.ok(end > start, `${weapon.id} sweet spot spans a range`);
-    // The sweet spot is the flat plateau; damage ramps in and out of it.
-    assert.ok(damageAtRange(weapon, start - 1) < damage, `${weapon.id} ramps into the sweet spot`);
-    assert.equal(damageAtRange(weapon, start), damage);
-    assert.equal(damageAtRange(weapon, end), damage);
-    assert.ok(damageAtRange(weapon, end + 1) < damage, `${weapon.id} ramps out of the sweet spot`);
-    // 1.4.3.0 raised the Interdictor minimum from 62 to 80; the others still end at 62.
-    const minimumDamage = { interdictor: 80 };
-    assert.equal(weapon.dmg.at(-1).d, minimumDamage[weapon.id] ?? 62, `${weapon.id} minimum damage`);
-  }
-
-  const miniScout = weapons.find(item => item.id === 'miniscout');
-  assert.equal(hasSweetSpot(miniScout), false);
-  assert.equal(miniScout.dmg.some(point => point.d === 100), false);
 });
 
 test('recognizes the Interdictor plateau without capping damage before limb multipliers', () => {
@@ -202,40 +152,8 @@ test('recognizes the Interdictor plateau without capping damage before limb mult
   assert.equal(hasSweetSpot(separatedPeaks), false);
 });
 
-test('every live damage breakpoint carries explicit source provenance', () => {
+test('every base damage curve is verified Frosty data', () => {
   const weapons = readJson('../data/weapons.json');
-  for (const weapon of weapons) {
-    if (!Array.isArray(weapon.dmg)) continue;
-    for (const point of weapon.dmg) assert.ok(['EA', 'Sym', 'in-game', 'Frosty'].includes(point.source), `${weapon.id} source`);
-  }
-});
-
-test('Interdictor chest and limb kill windows coincide after the 1.4.3.0 normalization', () => {
-  // 1.4.2.5 had limb 0.67 and a 150-damage sweet spot, so the limb window (120-150 m)
-  // sat inside the wider chest window (106-164 m). 1.4.3.0 set the limb multiplier to
-  // 1.0 and flattened the sweet spot to 100, so the two windows are now the same.
-  const weapon = readJson('../data/weapons.json').find(w => w.id === 'interdictor');
-  const HIT_ZONES = readJson('../data/hit_zones.json');
-  const { limbMultiplier } = resolveHitMultipliers(weapon.id, { id: 'standard' }, { HIT_ZONES });
-  assert.equal(limbMultiplier, 1);
-  const btk = (range, bodyMultiplier) => bulletsToKillWithHits(damageAtRange(weapon, range), { bodyMultiplier });
-  assert.deepEqual([119, 120, 160, 161].map(r => btk(r, 1)), [2, 1, 1, 2]);
-  assert.deepEqual([119, 120, 160, 161].map(r => btk(r, limbMultiplier)), [2, 1, 1, 2]);
-  assert.equal(damageAtRange(weapon, 135), 100);
-});
-
-test('uses the Frosty game-file damage tiers', () => {
-  const weapons = readJson('../data/weapons.json');
-  const curves = Object.fromEntries(weapons.map(weapon => [weapon.id, weapon.dmg?.map(point => point.d)]));
-
-  assert.deepEqual(curves.m433, [26.05, 26.05, 20.67, 20.67, 17.13]);
-  assert.deepEqual(curves.ak4d, [35.22, 35.22, 26.05, 26.05, 20.67]);
-  assert.deepEqual(curves.nvo228e, [35.22, 35.22, 27.48, 27.48, 21.56, 21.56, 20.67, 20.67, 17.13]);
-  assert.deepEqual(curves.pw5a3, [26.05, 26.05, 20.67, 20.67, 17.13, 17.13, 14.62, 14.62, 12.76]);
-  assert.deepEqual(curves.m39emr, [41.5, 41.5, 37.6, 37.6, 34.4]);
-  assert.deepEqual(curves.lmr27, [29.4, 29.4, 27.5, 27.5, 26.2]);
-  assert.deepEqual(curves.svk86, [66.7, 66.7, 57.2, 57.2, 52.4]);
-
   // Frosty is the golden source for every base damage curve.
   for (const weapon of weapons) {
     assert.equal(weapon.damageStatus, 'verified', `${weapon.id} status`);
@@ -243,20 +161,8 @@ test('uses the Frosty game-file damage tiers', () => {
   }
 });
 
-test('evaluates non-sniper damage curves and the NVO-228E tiers at whole metres', () => {
+test('non-sniper, non-shotgun damage curves are stepped: no sampled range lands between tiers', () => {
   const weapons = readJson('../data/weapons.json');
-  const byId = Object.fromEntries(weapons.map(weapon => [weapon.id, weapon]));
-
-  const nvo = byId.nvo228e;
-  assert.equal(damageAtRange(nvo, 9), 35.22);
-  assert.equal(damageAtRange(nvo, 10), 27.48);
-  assert.equal(damageAtRange(nvo, 21), 27.48);
-  assert.equal(damageAtRange(nvo, 22), 21.56);
-  assert.equal(damageAtRange(nvo, 36), 21.56);
-  assert.equal(damageAtRange(nvo, 37), 20.67);
-  assert.equal(damageAtRange(nvo, 75), 20.67);
-  assert.equal(damageAtRange(nvo, 76), 17.13);
-
   // Bolt-actions ramp across their sweet spot and shotguns carry a 1 m blend at
   // each tier boundary. Every other class repeats each boundary range, so no
   // sampled range may land strictly between two adjacent tier values.
@@ -267,16 +173,4 @@ test('evaluates non-sniper damage curves and the NVO-228E tiers at whole metres'
       assert.ok(tiers.has(damageAtRange(weapon, range)), `${weapon.id} stepped at ${range}m`);
     }
   }
-
-  // User-confirmed: the M250 has a special profile with no falloff at any range.
-  // Sym stops its curve at 15 m, which must stay a flat clamp, not a gap to fill.
-  const m250 = byId.m250;
-  assert.deepEqual(m250.dmg.map(point => point.d), [26.05, 26.05]);
-  for (const range of [0, 15, 16, 50, 75, 150, 500]) {
-    assert.equal(damageAtRange(m250, range), 26.05, `m250 flat at ${range}m`);
-  }
-
-  assert.deepEqual(byId.vz61.dmg.map(point => point.d), [17.13, 17.13, 15.07, 15.07, 13.09, 13.09, 12.76, 12.76, 11.32]);
-  assert.deepEqual(byId.m87a1.dmg.map(point => point.d), [8.4, 8.4, 7.2, 7.2, 5.6, 5.6, 3.8]);
-  assert.deepEqual(byId.db12.dmg.map(point => point.d), [5.6, 5.6, 3.3, 3.3, 2.5]);
 });

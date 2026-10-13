@@ -69,7 +69,11 @@
     "vz61": 0.9283,
     "brod3": 0.94,
     "ef88": 0.9375,
-    "vssm": 0.9467
+    "vssm": 0.9467,
+    "mk24": 0.9392,
+    "elr40": 0.94,
+    "z84m": 0.9492,
+    "rspr": 0.94
   },
   "HIP_SPREAD_TABLE": [
     {
@@ -298,7 +302,11 @@
     "pp19": 4,
     "cz3a1": 4,
     "umg40": 4,
-    "kv9": 4
+    "kv9": 4,
+    "mk24": 3,
+    "elr40": 2,
+    "z84m": 1,
+    "rspr": 4
   },
   "HIP_SPREAD_BASE_INDEX_OVERRIDES": {},
   "COLLATERAL_MULT_OVERRIDE": {
@@ -432,7 +440,8 @@
       "standard": 0.750001,
       "penetration": 1.0,
       "hollow_pt": 0.666667,
-      "frangible": 0.666667
+      "frangible": 0.666667,
+      "lightweight": 0.750001
     },
     "l115": {
       "standard": 0.750001,
@@ -465,13 +474,15 @@
       "standard": 0.750001,
       "hollow_pt": 0.750001,
       "frangible": 0.750001,
-      "penetration": 1.0
+      "penetration": 1.0,
+      "lightweight": 0.750001
     },
     "m123k": {
       "standard": 0.750001,
       "penetration": 1.0,
       "hollow_pt": 0.666667,
-      "frangible": 0.666667
+      "frangible": 0.666667,
+      "lightweight": 0.750001
     },
     "m16a4": {
       "standard": 0.750001,
@@ -497,7 +508,8 @@
       "standard": 0.750001,
       "penetration": 1.0,
       "hollow_pt": 0.666667,
-      "frangible": 0.666667
+      "frangible": 0.666667,
+      "lightweight": 0.750001
     },
     "m277": {
       "standard": 0.750001,
@@ -556,7 +568,8 @@
       "standard": 0.750001,
       "penetration": 1.0,
       "hollow_pt": 0.666667,
-      "frangible": 0.666667
+      "frangible": 0.666667,
+      "lightweight": 0.750001
     },
     "m87a1": {
       "buckshot": 0.333334,
@@ -755,6 +768,34 @@
       "frangible": 0.500001,
       "hollow_pt": 0.500001,
       "synthetic": 0.500001
+    },
+    "mk24": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "elr40": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "frangible": 0.666667
+    },
+    "z84m": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667
+    },
+    "rspr": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "subsonic": 0.666667,
+      "subsonic_hp": 0.666667
     }
   },
   "MOVING_ACC_TIERS": [

@@ -38,12 +38,12 @@ All paths in this table are under `scripts/`.
 | Test file | Distinct behavior protected |
 |---|---|
 | [attachment-compatibility.test.mjs](../scripts/attachment-compatibility.test.mjs) | Frosty physical-slot grouping, PP-19 grip and magazine-ergonomic dependencies, chained removals, valid alternatives, points/effects, and old shared links. |
-| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Generated handling and burst hip effects, shared-rail replacement/points/assumptions, ADS/hip composition, 17 source Bolt muzzle exceptions, Smooth/Heavy behavior, light hip growth/recovery and combined slots, collateral clamping, sway, spotting, regeneration, and base/catalog non-mutation. |
-| [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Explicit projectile selection for 63 weapons and 328 ammo choices, source coefficients, and flight/trajectory behavior. |
+| [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Generated handling and burst hip effects, shared-rail replacement/points/assumptions, ADS/hip composition, source Bolt muzzle exceptions, Smooth/Heavy behavior, light hip growth/recovery and combined slots, collateral clamping, sway, spotting, regeneration, and base/catalog non-mutation. |
+| [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Explicit projectile selection for 67 weapons and 353 ammo choices, source coefficients, and flight/trajectory behavior. |
 | [barrel-velocity.test.mjs](../scripts/barrel-velocity.test.mjs) | Tier precedence, compatibility multiplier, selectable-barrel equivalence and display rounding. |
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
 | [draw-time.test.mjs](../scripts/draw-time.test.mjs) | Source timing tables, selection, independent shifts, final clamping and invalid-input behavior. |
-| [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | No estimated or donor weapons, Frosty-sourced BROD 3/EF88/VSSM values, cross-file coverage and compatibility cases. |
+| [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | No estimated or donor weapons, share-state round trip and the assumed-attachment marker. |
 | [optic-costs.test.mjs](../scripts/optic-costs.test.mjs) | Each weapon's optic categories and point costs equal the latest Frosty optic mapping. |
 | [required-data.test.mjs](../scripts/required-data.test.mjs) | Missing/non-finite source fields, strict callers, and non-blocking browser reporting with independent stats preserved. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |

@@ -649,6 +649,38 @@
       "sprintIndex": 7,
       "deployIndex": 7,
       "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+    },
+    {
+      "siteId": "mk24",
+      "source": "builds/2.1.1.0/reports/season5-uncaptured-2026-10-13/raw/Common/Hardware/Weapons/AssaultRifle/MRGGA/MRGGA_WB.ebx",
+      "sprintIndex": 5,
+      "deployIndex": 5,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]",
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "siteId": "elr40",
+      "source": "builds/2.1.1.0/reports/season5-uncaptured-2026-10-13/raw/Common/Hardware/Weapons/BoltAction/CDX40/CDX40_WB.ebx",
+      "sprintIndex": 4,
+      "deployIndex": 4,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]",
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "siteId": "z84m",
+      "source": "builds/2.1.1.0/reports/season5-uncaptured-2026-10-13/raw/Common/Hardware/Weapons/MG/PKM/PKM_WB.ebx",
+      "sprintIndex": 2,
+      "deployIndex": 2,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]",
+      "sourceBuild": "2.1.1.0"
+    },
+    {
+      "siteId": "rspr",
+      "source": "builds/2.1.1.0/reports/season5-uncaptured-2026-10-13/raw/Common/Hardware/Weapons/SMG/RSAR999/RSAR999_WB.ebx",
+      "sprintIndex": 7,
+      "deployIndex": 7,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]",
+      "sourceBuild": "2.1.1.0"
     }
   ],
   "sourceSha256": {
@@ -746,5 +778,6 @@
     "attachmentShiftDirection": "negative is faster; effective source index = base index - sum of shifts",
     "bounds": "User confirmed absolute min/max; clamp after summing shifts",
     "scope": "Raw base selectors and full arrays. Screenshot audit independently supports sprint recovery; deploy/undeploy are source configuration values."
-  }
+  },
+  "additions": "Rows for mk24, elr40, z84m and rspr were added on 2026-10-13 from raw 2.1.1.0 EBX files (no XML export); see reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/C in the datamining folder. They carry sourceBuild 2.1.1.0."
 }

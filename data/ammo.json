@@ -764,6 +764,7 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
+        "lightweight": 10,
         "hollow_pt": 15,
         "frangible": 20
       }
@@ -784,6 +785,7 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
+        "lightweight": 10,
         "hollow_pt": 20,
         "frangible": 20
       }
@@ -804,6 +806,7 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
+        "lightweight": 10,
         "hollow_pt": 15,
         "frangible": 20
       }
@@ -813,6 +816,7 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
+        "lightweight": 10,
         "hollow_pt": 15,
         "frangible": 20
       }
@@ -843,6 +847,7 @@
       "ammo": {
         "standard": 5,
         "penetration": 5,
+        "lightweight": 10,
         "hollow_pt": 20,
         "frangible": 20
       }
@@ -1487,6 +1492,74 @@
         "range_pen": 10,
         "long_range": 10,
         "frangible": 20
+      }
+    },
+    "mk24": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 5,
+        "frangible": 20
+      }
+    },
+    "elr40": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "frangible": 20
+      },
+      "effectOverrides": {
+        "penetration": {
+          "adsRecoilTierMod": -6,
+          "hipRecoilTierMod": -6
+        }
+      }
+    },
+    "z84m": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20
+      }
+    },
+    "rspr": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 20,
+        "frangible": 20,
+        "subsonic": 10,
+        "subsonic_hp": 30
+      },
+      "velocityTreatments": {
+        "subsonic": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        },
+        "subsonic_hp": {
+          "kind": "subsonic-tier",
+          "subsonicVelocityTier": 3,
+          "displayRounding": "floor"
+        }
+      },
+      "effectOverrides": {
+        "subsonic": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        },
+        "subsonic_hp": {
+          "adsRecoilTierMod": 1,
+          "hipRecoilTierMod": 1
+        }
       }
     }
   }
