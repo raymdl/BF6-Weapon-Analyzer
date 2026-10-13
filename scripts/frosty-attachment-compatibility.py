@@ -10,7 +10,6 @@ import importlib.util
 import json
 from pathlib import Path
 import re
-import xml.etree.ElementTree as ET
 
 REPO = Path(__file__).resolve().parents[1]
 MOUNTS = ('grip', 'laser', 'light')
@@ -21,18 +20,39 @@ ACCESSORY_FAMILIES = {
     **{f: 'secondary_optic' for f in ('CantedReflex', 'CantedReflexSlanted', 'OffsetRedDot',
                                       'G43Magnifier', 'Variable2x', 'Variable3x', 'Variable4x')},
 }
+# Labels kept selectable although one scope with that label is not listed for the accessory:
+# two scopes share the label and the game accepts the other one (Interdictor: the MGO 3.50x
+# blocks canted sights, the SDO 3.50x does not; operator in-game check, 2026-10-13, client
+# 2.1.1.0). (weapon, accessory, sight label).
+OPERATOR_PERMITTED = {
+    ('interdictor', 'canted_irons', 'Scope 3.50x'), ('interdictor', 'secondary_optic', 'Scope 3.50x'),
+    ('m16a4', 'canted_irons', 'Scope 3.00x'), ('m16a4', 'secondary_optic', 'Scope 3.00x'),
+}
 EXTERNAL = re.compile(r'\[Ebx\] (.+) \[([0-9a-f-]{36})\]', re.I)
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', required=True, type=Path)
+    spec = importlib.util.spec_from_file_location('raw_tree', REPO / 'scripts/frosty-raw-tree.py')
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument('--root', type=Path)
+    raw_tree.add_raw_arguments(parser)
+    provenance = REPO / 'reference-data/provenance'
+    parser.add_argument('--identity-audit', type=Path, default=provenance / 'frosty-attachment-full-pass-2026-09-06.json',
+                        help='Retained audit whose mapped rows supply the attachment identities')
+    parser.add_argument('--barrel-mapping', type=Path, default=provenance / 'frosty-barrel-ads-2026-09-13.json',
+                        help='Reviewed barrel identity rows')
+    parser.add_argument('--optic-mapping', type=Path, default=provenance / 'frosty-optic-category-mapping-2026-09-15.json',
+                        help='Sight category members written by frosty-attachment-tooltips.py --optic-mapping-json')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
+    export = raw_tree.open_input(parser, args, args.root)
+    args.root = export.root
     spec = importlib.util.spec_from_file_location('tooltips', REPO / 'scripts/frosty-attachment-tooltips.py')
     tooltips = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(tooltips)
-    sources, reviews = tooltips.reviewed_identities()
+    sources, reviews = tooltips.reviewed_identities(args.identity_audit, args.barrel_mapping)
     offered = {(c['weapon'], c['slot'], c['attachment']) for c in tooltips.current_choices()}
     identity_path = REPO / 'reference-data/provenance/frosty-weapon-identities.json'
     identities = {w['siteId']: w['internalId'] for w in json.loads(identity_path.read_text())['weapons']}
@@ -46,9 +66,7 @@ def main():
     def read(path):
         path = Path(path).as_posix()
         if path not in cache:
-            raw = (args.root / path).read_bytes()
-            hashes[path] = hashlib.sha256(raw).hexdigest()
-            cache[path] = ET.fromstring(raw)
+            cache[path], hashes[path] = export.load(path)
         return cache[path]
 
     def reference(raw):
@@ -193,7 +211,7 @@ def main():
     # Optic Accessory (SCA) choices. Their prerequisites name individual optics;
     # the site offers a choice with a sight category when the category holds at
     # least one permitted optic, and lists the category's other optics as exclusions.
-    optic_map_path = REPO / 'reference-data/provenance/frosty-optic-category-mapping-2026-09-15.json'
+    optic_map_path = args.optic_mapping
     reviews[optic_map_path.name] = hashlib.sha256(optic_map_path.read_bytes()).hexdigest()
     optic_members, optic_by_path = defaultdict(dict), defaultdict(set)
     for category in json.loads(optic_map_path.read_text(encoding='utf-8'))['categories']:
@@ -232,7 +250,7 @@ def main():
         accessories.setdefault(weapon, {}).setdefault('avail', []).append(accessory)
         for category in categories:
             labels = sorted({label for path, label in optic_members[weapon, category].items()
-                             if path not in permitted})
+                             if path not in permitted} - {l for w, a, l in OPERATOR_PERMITTED if (w, a) == (weapon, accessory)})
             if labels:
                 accessories[weapon].setdefault('excludedSights', {}).setdefault(accessory, {})[category] = labels
     for weapon, wa in catalog['WEAPON_ATTS'].items():
@@ -255,7 +273,7 @@ def main():
             dependencyEntries=len(dependency_rows), generatedRules=sum(map(len, generated.values())),
             weaponsWithDependencies=sum(bool(v) for v in generated.values())))
     report_path = REPO / 'reference-data/provenance/frosty-attachment-compatibility.json'
-    report_text = json.dumps(report, indent=2, ensure_ascii=False) + '\n'
+    report_text = json.dumps(export.mark(report), indent=2, ensure_ascii=False) + '\n'
     if args.check:
         if output != original or not report_path.exists() or report_path.read_text(encoding='utf-8') != report_text:
             raise SystemExit('Generated compatibility data differs; regenerate and review')

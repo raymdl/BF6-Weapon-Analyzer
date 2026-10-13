@@ -5,9 +5,9 @@ its graph inputs before using it; operand files may change and are read afresh.
 """
 import argparse
 import hashlib
+import importlib.util
 import json
 from pathlib import Path
-import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 BRAKES = {'sp_brake', 'dp_brake', 'comp_brake', 'tp_brake', 'thread_prot'}
@@ -15,15 +15,23 @@ BRAKES = {'sp_brake', 'dp_brake', 'comp_brake', 'tp_brake', 'thread_prot'}
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', required=True, type=Path)
+    spec = importlib.util.spec_from_file_location('raw_tree', ROOT / 'scripts/frosty-raw-tree.py')
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument('--root', type=Path)
+    raw_tree.add_raw_arguments(parser)
+    parser.add_argument('--identity-audit', type=Path,
+                        default=ROOT / 'reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json',
+                        help='Retained trace with the brake identities, field paths and graph hashes')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
+    export = raw_tree.open_input(parser, args, args.root)
     path = ROOT / 'data/attachments.json'
     original = json.loads(path.read_text(encoding='utf-8'))
     catalog = json.loads(path.read_text(encoding='utf-8'))
     weapons = json.loads((ROOT / 'data/weapons.json').read_text())
     snipers = {w['id'] for w in weapons if w['cls'] == 'Sniper Rifle'}
-    trace_path = ROOT / 'reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json'
+    trace_path = args.identity_audit
     raw_trace = trace_path.read_bytes()
     trace = json.loads(raw_trace)
     expected = {(wid, aid) for wid in snipers for aid in catalog['WEAPON_ATTS'][wid]['muzzle'] if aid in BRAKES}
@@ -38,7 +46,7 @@ def main():
     for source, digest in trace['sourceHashes'].items():
         if source.lower() in {p.lower() for p in operand_files}:
             continue
-        if hashlib.sha256((args.root / source).read_bytes()).hexdigest() != digest:
+        if export.sha256(source) != digest:
             raise ValueError(f'Stale source graph: {source}')
     muzzles = {m['id']: m for m in catalog['MUZZLES']}
     evidence, hashes = [], {}
@@ -49,9 +57,8 @@ def main():
             comparison, = [c for c in row['comparisons'] if c['field'] == f'recoil.{aim}.amountTier.add']
             source, = comparison['sources']
             effect = effects[source['effect']]
-            raw = (args.root / effect['sourceXml']).read_bytes()
-            hashes[effect['sourceXml']] = hashlib.sha256(raw).hexdigest()
-            obj, = [n for n in ET.fromstring(raw) if n.get('Guid', '').lower() == effect['guid'].lower()]
+            tree, hashes[effect['sourceXml']] = export.load(effect['sourceXml'])
+            obj, = [n for n in tree if n.get('Guid', '').lower() == effect['guid'].lower()]
             field_path = source['path'].split('/', 1)[1] + '/Field_4692836a'
             literal = obj.findtext(field_path)
             value = int(literal, 16) if literal.startswith('0x') else int(literal)
@@ -76,7 +83,7 @@ def main():
                   'traceSha256': hashlib.sha256(raw_trace).hexdigest(), 'operandHashes': hashes,
                   'rows': evidence}
         (ROOT / 'reference-data/provenance/frosty-sniper-brakes-generated.json').write_text(
-            json.dumps(report, indent=2) + '\n', encoding='utf-8')
+            json.dumps(export.mark(report), indent=2) + '\n', encoding='utf-8')
     print(f'{len(evidence)} sniper brake selections, {len(evidence) * 2} source amount steps')
 
 

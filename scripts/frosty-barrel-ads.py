@@ -5,27 +5,33 @@ Rebuild the ability/selector graph from XML on each run. GS ADS is a separate
 route and is not added to animation/FOV. This does not prove native timing.
 """
 import argparse
-import hashlib
 import importlib.util
 import json
 from pathlib import Path
-import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', required=True, type=Path)
+    spec = importlib.util.spec_from_file_location('raw_tree', ROOT / 'scripts/frosty-raw-tree.py')
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument('--root', type=Path)
+    raw_tree.add_raw_arguments(parser)
+    parser.add_argument('--barrel-mapping', type=Path,
+                        default=ROOT / 'reference-data/provenance/frosty-barrel-ads-2026-09-13.json',
+                        help='Reviewed barrel identity rows')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
+    export = raw_tree.open_input(parser, args, args.root)
+    args.root = export.root
     spec = importlib.util.spec_from_file_location('configuration', ROOT / 'scripts/frosty-configuration.py')
     cfg = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cfg)
     catalog_path = ROOT / 'data/attachments.json'
     catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
-    mapping_path = ROOT / 'reference-data/provenance/frosty-barrel-ads-2026-09-13.json'
-    mapping = json.loads(mapping_path.read_text(encoding='utf-8'))['rows']
+    mapping = json.loads(args.barrel_mapping.read_text(encoding='utf-8'))['rows']
     identities = json.loads((ROOT / 'reference-data/provenance/frosty-weapon-identities.json').read_text())['weapons']
     folders = {r['weapon']: Path(r['attachment']).parent for r in mapping}
     weapons = []
@@ -39,9 +45,7 @@ def main():
 
     def read(path):
         if path not in cache:
-            raw = (args.root / path).read_bytes()
-            cache[path] = ET.fromstring(raw)
-            hashes[path] = hashlib.sha256(raw).hexdigest()
+            cache[path], hashes[path] = export.load(path)
         return cache[path]
 
     graph, issues = cfg.attachment_graph(args.root, weapons, read)
@@ -98,7 +102,7 @@ def main():
             raise ValueError('Barrel ADS catalog differs from current Frosty XML')
     else:
         catalog_path.write_text(output, encoding='utf-8')
-        report_path.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        report_path.write_text(json.dumps(export.mark(report), indent=2) + '\n', encoding='utf-8')
     print(f'{len(evidence)} source attachments, {len(actual)} unique barrel selections generated from current Frosty XML')
 
 

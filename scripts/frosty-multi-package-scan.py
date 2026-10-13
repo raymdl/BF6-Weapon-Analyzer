@@ -9,16 +9,23 @@ import argparse
 import importlib.util
 import json
 from pathlib import Path
-import xml.etree.ElementTree as ET
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', required=True, type=Path)
+    spec = importlib.util.spec_from_file_location('raw_tree', ROOT / 'scripts/frosty-raw-tree.py')
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument('--root', type=Path)
+    raw_tree.add_raw_arguments(parser)
     parser.add_argument('--out', type=Path, help='Optional JSON output path')
     args = parser.parse_args()
+    export = raw_tree.open_input(parser, args, args.root)
+    # In raw mode the recorded root is the list of raw folders.
+    root_label = '; '.join(map(str, args.raw)) if args.raw else str(args.root)
+    args.root = export.root
     spec = importlib.util.spec_from_file_location('configuration', ROOT / 'scripts/frosty-configuration.py')
     cfg = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cfg)
@@ -26,7 +33,7 @@ def main():
 
     def read(path):
         if path not in cache:
-            cache[path] = ET.fromstring((args.root / path).read_bytes())
+            cache[path] = export.load(path)[0]
         return cache[path]
 
     identities = json.loads((ROOT / 'reference-data/provenance/frosty-weapon-identities.json').read_text())['weapons']
@@ -64,7 +71,7 @@ def main():
         print(f"{h['weapon']:16s} {h['attachmentXml'].rsplit('/', 1)[-1]:50s} {names}")
     print(f'{len(hits)} actions select more than one package')
     if args.out:
-        args.out.write_text(json.dumps({'root': str(args.root), 'hits': hits}, indent=2) + '\n', encoding='utf-8')
+        args.out.write_text(json.dumps(export.mark({'root': root_label, 'hits': hits}), indent=2) + '\n', encoding='utf-8')
 
 
 if __name__ == '__main__':

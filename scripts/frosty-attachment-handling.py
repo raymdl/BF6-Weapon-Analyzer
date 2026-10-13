@@ -35,10 +35,19 @@ BASE_FIELDS = {
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--root', required=True, type=Path)
+    spec = importlib.util.spec_from_file_location('raw_tree', ROOT / 'scripts/frosty-raw-tree.py')
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument('--root', type=Path)
+    raw_tree.add_raw_arguments(parser)
+    parser.add_argument('--identity-audit', type=Path,
+                        default=ROOT / 'reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json',
+                        help='Retained audit whose mapped rows supply the attachment identities')
     parser.add_argument('--review', action='store_true', help='Write evidence without changing the catalog')
     parser.add_argument('--check', action='store_true', help='Compare generated fields without writing')
     args = parser.parse_args()
+    export = raw_tree.open_input(parser, args, args.root)
+    args.root = export.root
     spec = importlib.util.spec_from_file_location('configuration', ROOT / 'scripts/frosty-configuration.py')
     cfg = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cfg)
@@ -50,7 +59,7 @@ def main():
     if report_path.exists():
         previous = json.loads(report_path.read_text(encoding='utf-8'))
         previous_fields = {(r['weapon'], r['slot'], r['attachment']): set(r['fields']) for r in previous['rows']}
-    audit = json.loads((ROOT / 'reference-data/provenance/frosty-attachment-full-pass-2026-09-06.json').read_text())
+    audit = json.loads(args.identity_audit.read_text())
     identities = json.loads((ROOT / 'reference-data/provenance/frosty-weapon-identities.json').read_text())['weapons']
     gs_files = {p.stem[3:].lower(): p for p in (args.root / 'Common/Hardware/Weapons').rglob('GS_*.xml')}
     weapons = []
@@ -63,9 +72,7 @@ def main():
 
     def read(path):
         if path not in cache:
-            raw = (args.root / path).read_bytes()
-            cache[path] = ET.fromstring(raw)
-            hashes[path] = hashlib.sha256(raw).hexdigest()
+            cache[path], hashes[path] = export.load(path)
         return cache[path]
 
     def object_at(effect):
@@ -286,7 +293,7 @@ def main():
         if original != catalog:
             raise ValueError('Handling catalog differs from generated Frosty operands')
     else:
-        report_path.write_text(json.dumps(report, indent=2) + '\n', encoding='utf-8')
+        report_path.write_text(json.dumps(export.mark(report), indent=2) + '\n', encoding='utf-8')
         if not args.review:
             if json.loads(catalog_path.read_text(encoding='utf-8')) != original:
                 raise ValueError('Catalog changed during extraction; rerun to preserve those edits')

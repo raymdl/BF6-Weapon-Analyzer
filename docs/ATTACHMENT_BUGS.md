@@ -65,6 +65,7 @@ stat and adds a footnote with the intended effect.
 | 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. | Shows x1.00 (actual damage), not the panel's x0.00 |
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M | Suspected game error | Each reduces recoil by one step more than on other weapons (2, 3 and 3 steps against 1, 2 and 2). The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
+| 23 | MGO 3.50x with Canted Iron Sights or a canted reflex | Interdictor (confirmed), M16A4 (source only, 3.00x `QMK171A` scope) | Suspected game error | Since 2.1.1.0 the Interdictor's MGO 3.50x cannot be combined with Canted Iron Sights; the SDO 3.50x on the same weapon can. The update removed the scope from the accessory's permitted list on these two weapons, while about 50 other weapons gained the same two scopes between 1.4.2.5 and 2.1.1.0. | Not modelled: the site names sights by magnification, so 3.50x stays selectable with canted sights |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -577,6 +578,28 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   change weapon behaviour.
 - **Site.** Shows 1, as the game does.
 
+### 23. Interdictor MGO 3.50x cannot take canted sights
+
+- **In-game.** On the Interdictor the MGO 3.50x cannot be equipped together with Canted Iron
+  Sights; the SDO 3.50x can (operator, 13 October 2026, client 2.1.1.0). On the AK4D the
+  3.50x scope and Canted Iron Sights can be combined (same check).
+- **Frosty data.** Each weapon's `Equipment_<weapon>` file lists, per optic accessory, the
+  sights it may be combined with (`Field_f4142987`). Between 1.4.2.5 and 2.1.1.0 the MGO 3.50x
+  (`SCP_M145MGO`) and a 3.00x scope (`SCP_QMK171A`) were added to the canted-sight lists
+  of about 50 weapons (on the AK4D and M16A4 the MGO arrived in 1.4.3.5). In 2.1.1.0 two
+  weapons went the other way:
+  - Interdictor: `SCP_M145MGO` removed from Canted Iron Sights (replaced by `SCP_SBPMII`)
+    and from the canted reflex, where `SCP_NFATACR` was removed too.
+  - M16A4: `SCP_QMK171A` removed from Canted Iron Sights, the canted reflex and the offset
+    red dot.
+- **Why it looks like an error.** The change is not in the patch notes, runs against the
+  change on the other weapons, and on the Interdictor reads like one list entry
+  swapped for another.
+- **Not checked.** The M16A4 in game, and the canted reflex on the Interdictor.
+- **Site.** The site names sights by magnification, and both weapons have a second scope of
+  the same magnification that is still permitted. The magnification therefore stays
+  selectable with canted sights (named exceptions in
+  `scripts/frosty-attachment-compatibility.py`).
 ## Description errors
 
 ### 8. PW7A2 30 Rnd fast magazine
@@ -686,9 +709,11 @@ is a verified conflict between stored values and in-game behavior.
 - **Frosty (1.4.3.1).** In `SCARSC_WB` and `MSBSGROTCPS_WB`,
   `ReloadInfoArray[1]` stores `ReloadTime` (`Field_85ff24a0`) 3.284 on both
   weapons. `ReloadTimeBulletsLeft` (`Field_fc66e75e`) is 3.2 and 3.034, and the
-  last entry of the reload phase list (`Field_dc244b57`) matches it. On 56 of 57
-  other weapons with a phase list, all three values agree. The identical 3.284 on
-  two unrelated weapons looks like a copied value.
+  last entry of the reload phase list (`Field_dc244b57`) matches it. On 54 of the 55
+  other weapons with a phase list, all three values agree (58 of 59 on 2.1.1.0 with the
+  Season 5 weapons; recounted from raw on 13 October 2026). The one exception is the CZ3A1,
+  where the two times agree at 2.95 and only the last phase entry differs (2.5). The
+  identical 3.284 on two unrelated weapons looks like a copied value.
 - **In-game.** Captured 23 September 2026 at 60 fps: auto-reload after firing the
   magazine dry, hipfire, default loadouts, four reloads per weapon. Timed from the
   last shot to the first shot of the new magazine:
@@ -852,11 +877,11 @@ What was compared:
 | 8 | No source/text change; PW7A2 text mismatch retained. |
 | 9 | No source/text change; SGX text mismatch retained. |
 | 10 | No source/text change; KTS100 relative-to-default status retained. |
-| 11 | Optic-FOV source assets not re-examined in this recheck; the weapon files show only the build-wide additions. Visual status retained. |
+| 11 | Re-read from raw: all 23 optic-FOV source assets keep their links and values. The RPK-74M and L115 still link the six base optic parts at render FOV 55 where other long guns link riser parts at 40 (CQ RDS 44). The Mk 24, ELR-40, Z84M and RSPR link riser parts. Visual status retained. |
 | 12 | `GS_L115A3` byte-identical; suppressor binding omission retained. |
 | 13 | No source/text change; source-specific tungsten penalties retained. |
 | 14 | No source/text change; burst activation remains open and still needs an in-game recheck. |
-| 15 | Reload entries not re-read; the weapon files show only the build-wide additions. Retained. |
+| 15 | Re-read from raw: both empty-reload entries still store `ReloadTime` 3.284 s against 3.2 s (SOR-300SC) and 3.034 s (GRT-CPS) in `ReloadTimeBulletsLeft` and at the end of the phase list. No reload value changed on any weapon; the four new weapons agree on all three values. Retained. |
 | 16 | No source/text change; BROD 3 iron-sight sway omission retained. |
 | 17 | New. See the entry. |
 | 18 | New. See the entry. |

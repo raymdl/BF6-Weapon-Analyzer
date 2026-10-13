@@ -1,35 +1,9 @@
 {
   "source": "Reviewed Frosty hardware identities and localized UI metadata, with explicitly approved per-choice game-panel text where English strings are missing",
-  "coverage": {
-    "aamAssets": 64,
-    "nonSightChoices": 3011,
-    "mappedSelections": 2966,
-    "identityStatuses": {
-      "source-linked": 3011
-    },
-    "descriptionStatuses": {
-      "english-description-missing-or-conflicting": 45,
-      "linked": 2948,
-      "screenshot-verified": 18
-    },
-    "matchMethods": {
-      "aam-full-name": 1980,
-      "aam-without-rail-side": 22,
-      "aam-without-slot": 565,
-      "reviewed-source-alias-with-text-difference": 2,
-      "screenshot-reviewed-source-description": 19,
-      "screenshot-reviewed-ui-candidate": 2,
-      "shared-hardware-descriptor-name": 161,
-      "shared-model-and-selector-consensus": 169,
-      "weapon-descriptor-asset-name": 35
-    },
-    "ironSightTooltips": 67
-  },
   "descriptions": {
     "0099DD29": "Standard magazine tubes that improve weapon draw speed.",
     "00AE744E": "High-capacity belt box that reduces weapon draw speed and movement speed while aiming down sights (ADS).",
     "015B7D0A": "Moderately reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
-    "01FBB778": "Basic optic with a clear sight picture.",
     "0339F331": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "03AF7B03": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "0428B15B": "Long barrel that increases projectile velocity.",
@@ -90,29 +64,24 @@
     "263642D4": "Marginally reduces recoil, increases weapon draw speed, and enables a slightly faster transition to aim down sights (ADS).",
     "2642813E": "Provides minor improvement to hip-fire recovery and can blind enemy soldiers, except those using thermal optics. Effects only active when light is turned on.",
     "2688090C": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
-    "26DB7A65": "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through.",
     "26EB0C06": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "27C1D59F": "Converts the weapon to fire fully automatically, increasing overall rate of fire but reducing controllability.",
     "27CCDF76": "Heavy barrel that improves accuracy during sustained fire.",
     "2862AA06": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "286E1804": "Standard barrel that enables a faster transition to aim down sights (ADS).",
     "28A44906": "Standard 50 round drum that improves weapon draw speed.",
-    "2930A306": "Provides a clear sight picture with magnification levels between 1x and 6x, which can be manually cycled through.",
     "2A294A98": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "2B65A880": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "2B79C762": "Slightly reduces recoil, improves weapon draw speed, and enables a slightly faster transition to aim down sights (ADS) at the cost of ADS accuracy while moving.",
     "2BA8E458": "Ammunition that delays health regeneration on impact with the target.",
     "2CC9A132": "Long barrel that increases projectile velocity.",
     "2D23D544": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
-    "2DDAF448": "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through.",
     "2DF91DDD": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "2EE70D43": "Standard magazine with mag pull for quicker reloads.",
     "2F912FE0": "Greatly reduces recoil at the cost of movement speed and accuracy while aiming down sights (ADS).",
-    "30301CE9": "Provides a clear sight picture with 1x and 4x magnification levels, which can be manually cycled through.",
     "31ADD6F7": "Cut-down support weapon barrel that improves accuracy during sustained fire.",
     "3357FA5E": "Cryogenically-treated barrel that enables a quick transition to aim down sights (ADS) and improves accuracy during sustained fire.",
     "343643F7": "Provides slight improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
-    "361DB892": "Magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection.",
     "36888514": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "368B6C98": "Provides moderate improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
     "36DC7F65": "Standard magazine with mag pull for faster reloads.",
@@ -153,7 +122,6 @@
     "48F06EA3": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "498D6DB6": "75 round drum with greatly increased capacity at the cost of weapon handling.",
     "49D9F464": "Standard barrel that enables a fast transition to aim down sights (ADS).",
-    "49DBE3B1": "Moderately magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection.",
     "4B03D598": "Laser provides slight improvement to hip-fire accuracy while light provides minor improvement to hip-fire recovery, but is visible to enemy soldiers. Effects only active when laser/light is turned on. Can be used together or separately.",
     "4BC8B001": "Standard-weight barrel that enables a fast transition to aim down sights (ADS).",
     "4BE2D145": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
@@ -419,7 +387,6 @@
     "EAD3932F": "Cartridge holder that improves reload speed.",
     "EAF75903": "Provides slight improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
     "EB4FEC2F": "Short barrel that improves hip-fire accuracy and enables a faster transition to aim down sights (ADS), but reduces projectile velocity.",
-    "EB6AA50F": "Basic optic overlaid with a thermal mode that detects heat signatures, which can be manually cycled through. Smoke volumes can disrupt thermal detection.",
     "EB716B56": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "EC278409": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "EC27840A": "Factory extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
@@ -481,10 +448,20 @@
     "screenshot:m417a2:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:m433:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:m45a1:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:mk24:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:rpkm:mag:30_fast": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
+    "screenshot:rspr:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:scw10:barrel:extended": "Long barrel that increases projectile velocity.",
     "screenshot:sv98:muzzle:light_supp": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy.",
-    "screenshot:vcr2:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on."
+    "screenshot:vcr2:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "01FBB778": "Basic optic with a clear sight picture.",
+    "26DB7A65": "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through.",
+    "2930A306": "Provides a clear sight picture with magnification levels between 1x and 6x, which can be manually cycled through.",
+    "2DDAF448": "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through.",
+    "30301CE9": "Provides a clear sight picture with 1x and 4x magnification levels, which can be manually cycled through.",
+    "361DB892": "Magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection.",
+    "49DBE3B1": "Moderately magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection.",
+    "EB6AA50F": "Basic optic overlaid with a thermal mode that detects heat signatures, which can be manually cycled through. Smoke volumes can disrupt thermal detection."
   },
   "byWeapon": {
     "m433": {
@@ -4798,7 +4775,7 @@
       "light": {
         "hip_taclight": "2642813E",
         "flashlight": "F9EF13C4",
-        "ads_taclight": "7944DEA3"
+        "ads_taclight": "screenshot:mk24:light:ads_taclight"
       },
       "grip": {
         "6h64_vert": "12DEAFDF",
@@ -4971,7 +4948,8 @@
         "standard": "B6CDE708",
         "frangible": "2BA8E458",
         "hollow_pt": "F4F0FE8D",
-        "penetration": "78D58F2D"
+        "penetration": "78D58F2D",
+        "lightweight": "44E52C7D"
       },
       "ergo": {
         "rail_cover": "D520814B"
@@ -5023,7 +5001,7 @@
       "light": {
         "hip_taclight": "2642813E",
         "flashlight": "F9EF13C4",
-        "ads_taclight": "7944DEA3"
+        "ads_taclight": "screenshot:rspr:light:ads_taclight"
       },
       "grip": {
         "6h64_vert": "12DEAFDF",

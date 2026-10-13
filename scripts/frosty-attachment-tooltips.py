@@ -8,7 +8,6 @@ import json
 from pathlib import Path
 import re
 import subprocess
-import xml.etree.ElementTree as ET
 
 
 REPO = Path(__file__).resolve().parent.parent
@@ -68,7 +67,8 @@ process.stdout.write(JSON.stringify(choices));
         ["node", "--input-type=module", "-e", script], cwd=REPO, text=True))
 
 
-def source_graph(base, include_optics=False):
+def source_graph(export, include_optics=False):
+    base = export.root
     spec = importlib.util.spec_from_file_location("frosty_configuration", REPO / "scripts/frosty-configuration.py")
     cfg = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cfg)
@@ -84,9 +84,7 @@ def source_graph(base, include_optics=False):
 
     def read_xml(path):
         if path not in cache:
-            raw = (base / path).read_bytes()
-            hashes[path] = hashlib.sha256(raw).hexdigest()
-            cache[path] = ET.fromstring(raw)
+            cache[path], hashes[path] = export.load(path)
         return cache[path]
 
     handling = read_json(REPO / "reference-data/provenance/frosty-handling-mapping-followup.json")
@@ -98,15 +96,18 @@ def source_graph(base, include_optics=False):
     return {row.get("sourceKey") or row["attachmentXml"]: row for row in rows}, hashes, issues
 
 
-def reviewed_identities():
+def reviewed_identities(audit_file="frosty-attachment-full-pass-2026-09-06.json",
+                        barrel_file="frosty-barrel-ads-2026-09-13.json"):
+    """audit_file and barrel_file: a name in reference-data/provenance, or a full path."""
     sources, reviews = defaultdict(lambda: defaultdict(set)), {}
+    audit_name, barrel_name = Path(audit_file).name, Path(barrel_file).name
 
     def review(name):
         path = REPO / "reference-data/provenance" / name
-        reviews[name] = hashlib.sha256(path.read_bytes()).hexdigest()
+        reviews[path.name] = hashlib.sha256(path.read_bytes()).hexdigest()
         return read_json(path)
 
-    audit = review("frosty-attachment-full-pass-2026-09-06.json")
+    audit = review(audit_file)
     handling_followup = review("frosty-handling-mapping-followup.json")
     excluded = {r["attachmentXml"] for r in handling_followup["excludedSourceAttachments"]}
     for row in audit["candidateComparisons"]:
@@ -122,8 +123,7 @@ def reviewed_identities():
                 option = "cqb_supp"
             elif unlock.startswith("U_WPM_MZL_ImprvdSuppressor02_"):
                 option = "light_supp"
-        sources[row["siteWeaponId"], row["slot"], option][row["attachmentXml"]].add(
-            "frosty-attachment-full-pass-2026-09-06.json")
+        sources[row["siteWeaponId"], row["slot"], option][row["attachmentXml"]].add(audit_name)
 
     def replace(rows, name):
         grouped = defaultdict(lambda: defaultdict(set))
@@ -134,9 +134,8 @@ def reviewed_identities():
     followup = review("frosty-attachment-followup-2026-09-06.json")
     replace([((r["weapon"], "muzzle", "cqb_supp"), r["attachmentXml"]) for r in followup["cqb"]],
             "frosty-attachment-followup-2026-09-06.json")
-    barrels = review("frosty-barrel-ads-2026-09-13.json")
-    replace([((r["weapon"], "barrel", r["barrel"]), r["attachment"]) for r in barrels["rows"]],
-            "frosty-barrel-ads-2026-09-13.json")
+    barrels = review(barrel_file)
+    replace([((r["weapon"], "barrel", r["barrel"]), r["attachment"]) for r in barrels["rows"]], barrel_name)
     handling = review("frosty-attachment-handling-generated.json")
     if handling["additionalIdentitiesSha256"] != reviews["frosty-handling-mapping-followup.json"]:
         raise ValueError("Handling identity review changed; regenerate its source mapping first")
@@ -150,17 +149,16 @@ def reviewed_identities():
     return sources, reviews
 
 
-def ui_indexes(aam_root, descriptors):
+def ui_indexes(aam_root, descriptors, load):
     names, rails, assets_by_name = defaultdict(set), defaultdict(set), defaultdict(set)
     records, hashes = defaultdict(list), {}
     files = sorted(aam_root.rglob("AAM_*.xml"))
     if not files:
         raise FileNotFoundError(f"No AAM_* XML files under {aam_root}")
     for path in files:
-        raw = path.read_bytes()
-        root = ET.fromstring(raw)
+        root, digest = load(path)
         aam_asset = root.findtext("Class_d46324bc/Field_0c59fa06")
-        hashes[aam_asset] = hashlib.sha256(raw).hexdigest()
+        hashes[aam_asset] = digest
         for record in root.findall("Class_ccf7da47"):
             name = record.findtext("Field_55aded8d") or ""
             pointer = record.findtext("Field_85b318a1") or ""
@@ -374,8 +372,15 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
             raise ValueError(f"Screenshot tooltip source changed: {key}")
         if record["sources"][0]["uiLink"] != review["originalUiLink"]:
             raise ValueError(f"Screenshot tooltip UI link changed: {key}")
-        if hashlib.sha256((REPO / review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
-            raise ValueError(f"Screenshot tooltip image changed: {key}")
+        if "screenshot" in review:
+            if hashlib.sha256((REPO / review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
+                raise ValueError(f"Screenshot tooltip image changed: {key}")
+            evidence = {"screenshot": review["screenshot"], "screenshotSha256": review["screenshotSha256"]}
+        elif review.get("operatorConfirmation"):
+            # Text the operator read in game and confirmed, with no saved image.
+            evidence = {"operatorConfirmation": review["operatorConfirmation"]}
+        else:
+            raise ValueError(f"Panel tooltip has neither an image nor an operator confirmation: {key}")
         text = review["observedDescription"]
         if not text.strip():
             raise ValueError(f"Screenshot tooltip is empty: {key}")
@@ -387,8 +392,7 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
         record.pop("reviewStatus", None)
         record["tooltipDescriptionKey"] = description_key
         record["tooltipSource"] = {
-            "kind": "user-reviewed-game-panel", "screenshot": review["screenshot"],
-            "screenshotSha256": review["screenshotSha256"],
+            "kind": "user-reviewed-game-panel", **evidence,
             "originalFrostyStringIds": sorted({r["descriptionStringId"] for r in review["pointerEvidence"]}),
             "note": "Panel text approved for this choice only. Original Frosty UI links and missing English IDs are retained in sources.",
         }
@@ -506,32 +510,49 @@ def iron_sight_tooltips(optics, by_weapon):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("aam_xml_root", type=Path)
+    spec = importlib.util.spec_from_file_location("frosty_raw_tree", REPO / "scripts/frosty-raw-tree.py")
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument("aam_xml_root", type=Path,
+                        help="Folder holding the AAM_* XML files; with --raw, a folder inside the raw export")
     parser.add_argument("output_json", type=Path)
-    parser.add_argument("--frosty-root", required=True, type=Path)
+    parser.add_argument("--frosty-root", type=Path)
+    raw_tree.add_raw_arguments(parser)
     parser.add_argument("--mapping-json", type=Path,
                         help="Write a source identity and description audit for every current site choice")
     parser.add_argument("--optic-mapping-json", type=Path,
                         help="Audit individual Frosty sights against the existing generic site categories")
+    provenance = REPO / "reference-data/provenance"
+    parser.add_argument("--identity-audit", type=Path, default=provenance / "frosty-attachment-full-pass-2026-09-06.json",
+                        help="Retained audit whose mapped rows supply the attachment identities")
+    parser.add_argument("--barrel-mapping", type=Path, default=provenance / "frosty-barrel-ads-2026-09-13.json",
+                        help="Reviewed barrel identity rows")
+    parser.add_argument("--descriptions", type=Path, default=provenance / "frosty-attachment-descriptions-2026-09-13.json",
+                        help="Attachment UI labels and descriptions written by frosty-descriptions.py")
     args = parser.parse_args()
-    descriptor_path = REPO / "reference-data/provenance/frosty-attachment-descriptions-2026-09-13.json"
+    export = raw_tree.open_input(parser, args, args.frosty_root)
+    if args.raw:
+        aam_root, load_aam = export.root / args.aam_xml_root, export.load
+    else:
+        # The AAM folder is separate from the export root; its paths are read as given.
+        aam_root, load_aam = args.aam_xml_root, raw_tree.Input(xml_root=Path()).load
+    descriptor_path = args.descriptions
     descriptor_document = read_json(descriptor_path)
     descriptors = {r["asset"].lower(): r for r in descriptor_document["attachments"]}
     # MG5 stores its iron-sight descriptor with the weapon, outside the UI batch.
     extra_asset = "Common/Hardware/Weapons/MG/MG5/AD_MG5_IronSights"
-    extra_path = args.frosty_root / (extra_asset + ".xml")
-    extra_root = ET.fromstring(extra_path.read_bytes())
+    extra_root, extra_sha = export.load(extra_asset + ".xml")
     pointer = extra_root.findtext("Class_535682be/Field_490f0dd0").split()[-1]
     string_id = extra_root.find(f"Class_fbe1d3bc[@Guid='{pointer}']/Field_3d34898a").text[2:].upper()
     text_by_id = {r["description"]["id"]: r["description"]["text"] for r in descriptors.values() if r["description"].get("text")}
     descriptors[extra_asset.lower()] = {"asset": extra_asset, "label": {},
-        "xmlSha256": hashlib.sha256(extra_path.read_bytes()).hexdigest(),
+        "xmlSha256": extra_sha,
         "description": {"id": string_id, "text": text_by_id[string_id]}}
     choices = current_choices()
-    sources, review_hashes = reviewed_identities()
-    graph, graph_hashes, graph_issues = source_graph(args.frosty_root, include_optics=bool(args.optic_mapping_json))
+    sources, review_hashes = reviewed_identities(args.identity_audit, args.barrel_mapping)
+    graph, graph_hashes, graph_issues = source_graph(export, include_optics=bool(args.optic_mapping_json))
     graph_hashes[extra_asset + ".xml"] = descriptors[extra_asset.lower()]["xmlSha256"]
-    indexes = ui_indexes(args.aam_xml_root, descriptors)
+    indexes = ui_indexes(aam_root, descriptors, load_aam)
     if args.optic_mapping_json:
         optics = optic_categories(choices, graph, indexes, descriptors)
         optics.update({"graphSourceHashes": graph_hashes, "aamHashes": indexes[-1],
@@ -550,7 +571,7 @@ def main():
         iron_descriptions = iron_sight_tooltips(optics, by_weapon)
         optics["coverage"]["ironSightTooltips"] = sum(c.get("tooltipDescriptionKey") is not None for c in optics["categories"])
         args.optic_mapping_json.parent.mkdir(parents=True, exist_ok=True)
-        args.optic_mapping_json.write_text(json.dumps(optics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        args.optic_mapping_json.write_text(json.dumps(export.mark(optics), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         optic_choices = {(r["weapon"], r["attachment"]): r for r in optics["categories"]}
         for record in records:
             if record["slot"] == "sight":
@@ -597,7 +618,7 @@ def main():
             "graphIssues": graph_issues,
         }
         args.mapping_json.parent.mkdir(parents=True, exist_ok=True)
-        args.mapping_json.write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        args.mapping_json.write_text(json.dumps(export.mark(report), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(coverage, indent=2))
 
 

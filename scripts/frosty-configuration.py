@@ -7,11 +7,11 @@ and constant-value matches remain research evidence, not a decoded SDK schema.
 import argparse
 from collections import Counter, defaultdict
 import hashlib
+import importlib.util
 import json
 import math
 from pathlib import Path
 import re
-import xml.etree.ElementTree as ET
 
 REGISTRY = "Common/GameSetup/Tweakables/GameRemixer/GRX_Weapons.xml"
 EXTERNAL = re.compile(r"\[Ebx\]\s+([^\[]+?)\s+\[([0-9a-fA-F-]{36})\]")
@@ -270,7 +270,13 @@ def attachment_graph(base, weapons, read_xml, include_optics=False, ability_prog
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--root", required=True, type=Path)
+    spec = importlib.util.spec_from_file_location("frosty_raw_tree", Path(__file__).with_name("frosty-raw-tree.py"))
+    raw_tree = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(raw_tree)
+    parser.add_argument("--root", type=Path, help="Frosty XML export root")
+    raw_tree.add_raw_arguments(parser)
+    parser.add_argument("--build-label", default="1.4.2.5 (user supplied label)",
+                        help="Text recorded as sourceBuild in the summary")
     parser.add_argument("--site", type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument("--out", required=True, type=Path)
     parser.add_argument("--include-optics", action="store_true",
@@ -280,16 +286,16 @@ def main():
     parser.add_argument("--identities", type=Path,
                         default=Path(__file__).resolve().parents[1] / "reference-data/provenance/frosty-weapon-identities.json")
     args = parser.parse_args()
+    # Raw mode: the same export tree, built from raw captures. Hashes are of raw bytes.
+    export = raw_tree.open_input(parser, args, args.root)
+    args.root = export.root
     hashes, parsed = {}, {}
     sdk_bytes = args.sdk_metadata.read_bytes()
     sdk_types = json.loads(sdk_bytes)["types"]
 
     def read_xml(relative):
-        if relative in parsed:
-            return parsed[relative]
-        data = (args.root / relative).read_bytes()
-        hashes[relative] = hashlib.sha256(data).hexdigest()
-        parsed[relative] = ET.fromstring(data)
+        if relative not in parsed:
+            parsed[relative], hashes[relative] = export.load(relative)
         return parsed[relative]
 
     registry = read_xml(REGISTRY)
@@ -403,11 +409,17 @@ def main():
             value = target
             for part in field.split("."):
                 value = value.get(part) if isinstance(value, dict) else None
+            # A name the registry repeats (Mk 24 in 2.1.1.0) resolves when every copy holds the same value.
+            if len({(m["raw"], m["value"]) for m in matches}) == 1:
+                matches = matches[:1]
             raw = matches[0]["raw"] if len(matches) == 1 else None
             decoded = matches[0]["value"] if len(matches) == 1 else None
             numeric = decoded if type(decoded) in (int, float) else number(raw)
             status = "unresolved" if numeric is None or not isinstance(value, (int, float)) else (
                 "match" if abs(numeric - value) <= max(1e-6, abs(numeric) * 1e-6) else "different")
+            # The registry holds the mechanical rate; the site rate of a bolt or pump weapon includes the cycle time.
+            if field == "rpm" and status == "different" and target.get("fireMode") in ("bolt", "pump"):
+                status = "not comparable (cycle-limited)"
             comparisons.append({"internalId": weapon["internalId"], "siteId": target["id"],
                 "siteField": field, "siteValue": value, "registryName": prefix + "." + suffix,
                 "registryRaw": raw, "registryGuid": matches[0]["registryGuid"] if len(matches) == 1 else None,
@@ -483,7 +495,7 @@ def main():
             "scope": "Primary shot base projectile only; attachment replacements, damage modifiers, and engine formulas are not resolved"})
 
     graph, graph_issues = attachment_graph(args.root, weapons, read_xml, include_optics=args.include_optics)
-    summary = {"sourceBuild": "1.4.2.5 (user supplied label)", "runtimeReady": False,
+    summary = {"sourceBuild": args.build_label, "runtimeReady": False,
         "scope": "GS/WB registry-linked scalar configuration and "
             + ("all exported" if args.include_optics else "non-optic")
             + " attachment selector graph; no factory-build selection or runtime formulas",
@@ -497,7 +509,7 @@ def main():
         "identityMapSha256": hashlib.sha256(identity_bytes).hexdigest(),
         "siteWeaponsSha256": hashlib.sha256(site_bytes).hexdigest()}
     args.out.mkdir(parents=True, exist_ok=True)
-    for name, output in {"configuration-summary": summary, "configuration-roster": roster,
+    for name, output in {"configuration-summary": export.mark(summary), "configuration-roster": roster,
                          "registry-configuration": weapons, "registry-linked-blocks": blocks,
                          "raw-field-candidates": candidates, "configuration-comparison": comparisons,
                          "attachment-selection-graph": graph, "attachment-graph-issues": graph_issues,

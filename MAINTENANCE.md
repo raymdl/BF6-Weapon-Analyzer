@@ -151,7 +151,22 @@ visually reviewed captures; OCR output alone is not an accepted value.
 
 Frosty tools require the original local exports/SDK. See the
 [current export location and layout](docs/DATA_SOURCES.md#local-frosty-export-location).
-For example, replace the placeholder with your XML export root:
+### Raw mode
+
+Every `frosty-*` generator named in this file also reads the raw capture directly, so no XML
+export is needed. Replace `--root <export root>` (or the tooltip generator's `--frosty-root`) with:
+
+```sh
+--raw <build>/capture/collection/raw [--raw <later capture>/raw ...] --descriptors <build>/capture/toolchain/SharedTypeDescriptors.ebx --catalog <build>/capture/collection/asset-catalog.json
+```
+
+Later `--raw` folders override earlier ones. Outputs written this way carry `"sourceForm": "raw"`
+and hashes of the raw files; the key names (`sourceXml`, `xmlSha256`) are unchanged. Add
+`--known-fields-only` to leave out fields the old XML export never showed. For weapons added after
+September 2026, pass the newest dated identity files with `--identity-audit`, `--barrel-mapping`,
+`--optic-mapping` and `--descriptions` (research repo, `reference-data/provenance/*-2026-10-13.json`).
+
+In XML mode, replace the placeholder with your XML export root:
 
 ```sh
 python scripts/frosty-configuration.py --root "PATH_TO_EXPORT" --out outputs/frosty/review

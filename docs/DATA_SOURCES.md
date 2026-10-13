@@ -148,6 +148,8 @@ For analyzer tools that accept the XML export root, use
 `--root "../BF6 Datamining/builds/<build>/xml"` from the analyzer repository (for 1.4.3.0,
 `builds/1.4.3.0/xml/xml-overlay`). Historical reports and provenance keep their recorded
 absolute paths; use the table to locate their inputs without rewriting recorded hashes.
+The `frosty-*` generators also read `builds\<build>\capture\collection\raw` directly, with
+no XML export: see [raw mode](../MAINTENANCE.md#raw-mode).
 
 The separate `audit_weapon_exports.py` (now in `BF6 Datamining/_archive/poc-2026-09-05/`)
 expects `ebx_manifest.txt` inside `--root`. Its historical command requires adaptation
