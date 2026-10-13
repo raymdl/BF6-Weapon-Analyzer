@@ -564,6 +564,7 @@
         "db12": 1,
         "drsiar": 1,
         "ef88": 1,
+        "elr40": 1,
         "es57": 1,
         "ggh22": 1,
         "grtbc": 1,
@@ -588,6 +589,7 @@
         "m4a1": 1,
         "m87a1": 1,
         "miniscout": 1,
+        "mk24": 1,
         "nvo228e": 1,
         "p18": 1,
         "pp19": 1,
@@ -597,6 +599,7 @@
         "qbz192": 1,
         "rpk74m": 1,
         "rpkm": 1,
+        "rspr": 1,
         "scw10": 1,
         "sg553r": 1,
         "sgx": 1,
@@ -610,10 +613,7 @@
         "umg40": 1,
         "usg90": 1,
         "vcr2": 1,
-        "vz61": 1,
-        "mk24": 1,
-        "elr40": 1,
-        "rspr": 1
+        "vz61": 1
       }
     },
     {
@@ -644,6 +644,7 @@
         "m44": 1,
         "m4a1": 1,
         "miniscout": 1,
+        "mk24": 1,
         "nvo228e": 1,
         "rpk74m": 1,
         "rpkm": 1,
@@ -655,7 +656,6 @@
         "svk86": 1,
         "tr7": 1,
         "vcr2": 1,
-        "mk24": 1,
         "z84m": 1
       }
     },
@@ -675,6 +675,7 @@
         "db12": 0,
         "drsiar": 0,
         "ef88": 0,
+        "elr40": 0,
         "grtbc": 0,
         "grtcps": 0,
         "interdictor": 0,
@@ -694,12 +695,14 @@
         "m4a1": 0,
         "m87a1": 0,
         "miniscout": 0,
+        "mk24": 0,
         "nvo228e": 0,
         "pp19": 0,
         "psr": 0,
         "pw5a3": 0,
         "qbz192": 0,
         "rpkm": 0,
+        "rspr": 0,
         "scw10": 0,
         "sg553r": 0,
         "sgx": 0,
@@ -711,10 +714,7 @@
         "svk86": 0,
         "tr7": 0,
         "umg40": 0,
-        "vcr2": 0,
-        "mk24": 0,
-        "elr40": 0,
-        "rspr": 0
+        "vcr2": 0
       }
     },
     {
@@ -805,6 +805,7 @@
         "cz3a1": 1,
         "drsiar": 1,
         "ef88": 1,
+        "elr40": 1,
         "es57": 1,
         "ggh22": 1,
         "grtbc": 1,
@@ -825,9 +826,11 @@
         "m4a1": 1,
         "m60": 1,
         "miniscout": 1,
+        "mk24": 1,
         "nvo228e": 1,
         "p18": 1,
         "pp19": 1,
+        "rspr": 1,
         "scw10": 1,
         "sg553r": 1,
         "sgx": 1,
@@ -839,10 +842,7 @@
         "umg40": 1,
         "usg90": 1,
         "vcr2": 1,
-        "mk24": 1,
-        "elr40": 1,
-        "z84m": 1,
-        "rspr": 1
+        "z84m": 1
       }
     },
     {
@@ -1037,6 +1037,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "rspr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "scw10": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -1068,12 +1074,6 @@
           "deployTimeTierShift": 0
         },
         "vz61": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -1244,6 +1244,12 @@
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -1305,12 +1311,6 @@
           "deployTimeTierShift": -1
         },
         "vssm": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
-        },
-        "mk24": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -1512,6 +1512,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -1549,6 +1555,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -1626,19 +1638,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -1834,6 +1834,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -1871,6 +1877,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -1948,19 +1960,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -2156,6 +2156,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -2193,6 +2199,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -2270,19 +2282,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -2466,6 +2466,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
@@ -2503,6 +2509,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -2574,19 +2586,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -2770,6 +2770,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
@@ -2807,6 +2813,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -2878,19 +2890,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -3086,6 +3086,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -3123,6 +3129,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -3206,19 +3218,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -3414,6 +3414,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -3451,6 +3457,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -3534,19 +3546,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -3742,6 +3742,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -3779,6 +3785,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -3862,19 +3874,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4058,6 +4058,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4095,6 +4101,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4172,19 +4184,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4368,6 +4368,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 1,
@@ -4405,6 +4411,12 @@
           "deployTimeTierShift": 0
         },
         "rpkm": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4476,19 +4488,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -4594,6 +4594,14 @@
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
+        "mk24": {
+          "hipRecoilTierMod": 2,
+          "adsRecoilTierMod": 2,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
         "qbz192": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -4631,14 +4639,6 @@
           "deployTimeTierShift": -1
         },
         "vcr2": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
-        },
-        "mk24": {
-          "hipRecoilTierMod": 2,
-          "adsRecoilTierMod": 2,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -4807,6 +4807,12 @@
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -4873,12 +4879,6 @@
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
-        "mk24": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
-        },
         "z84m": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -4925,6 +4925,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "rspr": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "scw10": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -4938,12 +4944,6 @@
           "deployTimeTierShift": 0
         },
         "umg40": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5115,6 +5115,14 @@
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
+        "mk24": {
+          "hipRecoilTierMod": 3,
+          "adsRecoilTierMod": 3,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -5176,14 +5184,6 @@
           "deployTimeTierShift": -1
         },
         "vssm": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
-        },
-        "mk24": {
-          "hipRecoilTierMod": 3,
-          "adsRecoilTierMod": 3,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5434,6 +5434,12 @@
       "movingAdsSpreadTierMod": 0,
       "pts": 10,
       "frostyModifiers": {
+        "elr40": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "interdictor": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -5469,12 +5475,6 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
-        },
-        "elr40": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
         }
       }
     },
@@ -5485,6 +5485,13 @@
       "movingAdsSpreadTierMod": 0,
       "pts": 15,
       "frostyModifiers": {
+        "elr40": {
+          "movingAdsSpreadTierMod": -1,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
         "l115": {
           "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
@@ -5513,13 +5520,6 @@
           "deployTimeTierShift": -1
         },
         "sv98": {
-          "movingAdsSpreadTierMod": -1,
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
-        },
-        "elr40": {
           "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -5535,6 +5535,12 @@
       "movingAdsSpreadTierMod": -1,
       "pts": 5,
       "frostyModifiers": {
+        "elr40": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
         "interdictor": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -5566,12 +5572,6 @@
           "deployTimeTierShift": -1
         },
         "sv98": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": -1,
-          "deployTimeTierShift": -1
-        },
-        "elr40": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5631,13 +5631,13 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "sor556": {
+        "mk24": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
+        "sor556": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5779,6 +5779,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -5816,12 +5822,6 @@
           "deployTimeTierShift": 0
         },
         "vssm": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "mk24": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -5975,6 +5975,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -6030,12 +6036,6 @@
           "deployTimeTierShift": 0
         },
         "vssm": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "mk24": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6195,6 +6195,14 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "hipRecoilTierMod": 3,
+          "adsRecoilTierMod": 3,
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -6254,14 +6262,6 @@
         "vssm": {
           "adsRecoilTierMod": 3,
           "hipRecoilTierMod": 3,
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "mk24": {
-          "hipRecoilTierMod": 3,
-          "adsRecoilTierMod": 3,
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6417,6 +6417,12 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "mk24": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "nvo228e": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -6477,12 +6483,6 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "mk24": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "z84m": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -6499,6 +6499,12 @@
       "pts": 10,
       "noEffect": true,
       "frostyModifiers": {
+        "elr40": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "interdictor": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
@@ -6546,12 +6552,6 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
-        },
-        "elr40": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
         }
       }
     },
@@ -6562,6 +6562,12 @@
       "movingAdsSpreadTierMod": -1,
       "pts": 10,
       "frostyModifiers": {
+        "elr40": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "interdictor": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -6598,12 +6604,6 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
-        },
-        "elr40": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
         }
       }
     },
@@ -6614,6 +6614,12 @@
       "movingAdsSpreadTierMod": 0,
       "pts": 20,
       "frostyModifiers": {
+        "elr40": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "interdictor": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
@@ -6645,12 +6651,6 @@
           "deployTimeTierShift": 0
         },
         "sv98": {
-          "adsTimeTierMod": 1,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "elr40": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6746,31 +6746,7 @@
       "pts": 10,
       "weaponSwayMult": 0.6666667,
       "frostyModifiers": {
-        "m87a1": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "kord6p67": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "ak205": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "lmr27": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "b36a4": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6782,13 +6758,61 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "m417a2": {
+        "b36a4": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "m433": {
+        "brod3": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "drsiar": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "elr40": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "grtbc": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "grtcps": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "interdictor": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kord6p67": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kts100": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kv9": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6800,7 +6824,25 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "lmr27": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "m1014": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m121a2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m123k": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6824,7 +6866,19 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "drsiar": {
+        "m277": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m417a2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m433": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6836,13 +6890,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "m123k": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "m121a2": {
+        "m87a1": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6854,25 +6902,13 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "sgx": {
+        "mk24": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
         "psr": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "grtbc": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "grtcps": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6890,13 +6926,7 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "sor556": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "sor300sc": {
+        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6908,7 +6938,19 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "svk86": {
+        "sgx": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sor300sc": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sor556": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6920,61 +6962,19 @@
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
+        "svk86": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
         "tr7": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
         },
-        "kts100": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "kv9": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
         "vssm": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "m277": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "brod3": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "interdictor": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "mk24": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "elr40": {
-          "adsTimeTierMod": 0,
-          "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
-        },
-        "rspr": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -7028,6 +7028,10 @@
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
         },
+        "elr40": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
+        },
         "es57": {
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
@@ -7148,6 +7152,10 @@
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
         },
+        "mk24": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
+        },
         "nvo228e": {
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
@@ -7181,6 +7189,10 @@
           "movingAdsSpreadTierMod": 0
         },
         "rpkm": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "rspr": {
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
         },
@@ -7244,19 +7256,7 @@
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
         },
-        "mk24": {
-          "hipSpreadTierMod": -1,
-          "movingAdsSpreadTierMod": 0
-        },
-        "elr40": {
-          "hipSpreadTierMod": -1,
-          "movingAdsSpreadTierMod": 0
-        },
         "z84m": {
-          "hipSpreadTierMod": -1,
-          "movingAdsSpreadTierMod": 0
-        },
-        "rspr": {
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
         }
@@ -7300,6 +7300,10 @@
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
         },
+        "elr40": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
+        },
         "es57": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
@@ -7420,6 +7424,10 @@
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
         },
+        "mk24": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
+        },
         "nvo228e": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
@@ -7453,6 +7461,10 @@
           "movingAdsSpreadTierMod": 0
         },
         "rpkm": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
+        },
+        "rspr": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
         },
@@ -7516,19 +7528,7 @@
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
         },
-        "mk24": {
-          "hipSpreadTierMod": -2,
-          "movingAdsSpreadTierMod": 0
-        },
-        "elr40": {
-          "hipSpreadTierMod": -2,
-          "movingAdsSpreadTierMod": 0
-        },
         "z84m": {
-          "hipSpreadTierMod": -2,
-          "movingAdsSpreadTierMod": 0
-        },
-        "rspr": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
         }
@@ -7572,6 +7572,10 @@
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
         },
+        "elr40": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
         "grtbc": {
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
@@ -7676,6 +7680,10 @@
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
         },
+        "mk24": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
         "nvo228e": {
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
@@ -7705,6 +7713,10 @@
           "movingAdsSpreadTierMod": 1
         },
         "rpkm": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
+        "rspr": {
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
         },
@@ -7764,19 +7776,7 @@
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
         },
-        "mk24": {
-          "hipSpreadTierMod": 0,
-          "movingAdsSpreadTierMod": 1
-        },
-        "elr40": {
-          "hipSpreadTierMod": 0,
-          "movingAdsSpreadTierMod": 1
-        },
         "z84m": {
-          "hipSpreadTierMod": 0,
-          "movingAdsSpreadTierMod": 1
-        },
-        "rspr": {
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
         }
@@ -7817,6 +7817,10 @@
           "movingAdsSpreadTierMod": 0
         },
         "ef88": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
+        },
+        "elr40": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
         },
@@ -7940,6 +7944,10 @@
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
         },
+        "mk24": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
+        },
         "nvo228e": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
@@ -7973,6 +7981,10 @@
           "movingAdsSpreadTierMod": 0
         },
         "rpkm": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
+        },
+        "rspr": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
         },
@@ -8036,19 +8048,7 @@
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
         },
-        "mk24": {
-          "hipSpreadTierMod": -3,
-          "movingAdsSpreadTierMod": 0
-        },
-        "elr40": {
-          "hipSpreadTierMod": -3,
-          "movingAdsSpreadTierMod": 0
-        },
         "z84m": {
-          "hipSpreadTierMod": -3,
-          "movingAdsSpreadTierMod": 0
-        },
-        "rspr": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
         }
@@ -8092,6 +8092,10 @@
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
         },
+        "elr40": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
+        },
         "grtbc": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
@@ -8196,6 +8200,10 @@
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
         },
+        "mk24": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
+        },
         "nvo228e": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
@@ -8225,6 +8233,10 @@
           "movingAdsSpreadTierMod": 1
         },
         "rpkm": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
+        },
+        "rspr": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
         },
@@ -8284,19 +8296,7 @@
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
         },
-        "mk24": {
-          "hipSpreadTierMod": -2,
-          "movingAdsSpreadTierMod": 1
-        },
-        "elr40": {
-          "hipSpreadTierMod": -2,
-          "movingAdsSpreadTierMod": 1
-        },
         "z84m": {
-          "hipSpreadTierMod": -2,
-          "movingAdsSpreadTierMod": 1
-        },
-        "rspr": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
         }
@@ -8340,6 +8340,10 @@
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
         },
+        "elr40": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
         "grtbc": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
@@ -8444,6 +8448,10 @@
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
         },
+        "mk24": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
         "nvo228e": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
@@ -8473,6 +8481,10 @@
           "movingAdsSpreadTierMod": 1
         },
         "rpkm": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
+        "rspr": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
         },
@@ -8532,19 +8544,7 @@
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
         },
-        "mk24": {
-          "hipSpreadTierMod": -3,
-          "movingAdsSpreadTierMod": 1
-        },
-        "elr40": {
-          "hipSpreadTierMod": -3,
-          "movingAdsSpreadTierMod": 1
-        },
         "z84m": {
-          "hipSpreadTierMod": -3,
-          "movingAdsSpreadTierMod": 1
-        },
-        "rspr": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
         }
@@ -15667,6 +15667,9 @@
           ]
         }
       },
+      "sightPoints": {
+        "iron": 15
+      },
       "dependencies": [
         {
           "slot": "accessory",
@@ -15776,10 +15779,7 @@
             }
           ]
         }
-      ],
-      "sightPoints": {
-        "iron": 15
-      }
+      ]
     },
     "z84m": {
       "muzzle": [
@@ -16376,14 +16376,8 @@
         "secondary_optic"
       ],
       "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
         "secondary_optic": {
           "std_optic": [
-            "Scope 3.50x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -16398,14 +16392,8 @@
         "secondary_optic"
       ],
       "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
         "secondary_optic": {
           "std_optic": [
-            "Scope 3.50x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -16436,16 +16424,8 @@
         "secondary_optic"
       ],
       "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
         "secondary_optic": {
           "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -16460,16 +16440,8 @@
         "secondary_optic"
       ],
       "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
         "secondary_optic": {
           "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -16484,14 +16456,8 @@
         "secondary_optic"
       ],
       "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
         "secondary_optic": {
           "std_optic": [
-            "Scope 3.50x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -16513,1299 +16479,6 @@
         },
         "secondary_optic": {
           "std_optic": [
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "grtbc": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "grtcps": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "interdictor": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic",
-        "ag_coating"
-      ],
-      "excludedSights": {
-        "ag_coating": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "canted_irons": {
-          "std_optic": [
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "kord6p67": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "secondary_optic": {
-          "std_optic": [
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "ks18k": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "kts100": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "kv9": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "l110": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "l115": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic",
-        "ag_coating"
-      ],
-      "excludedSights": {
-        "ag_coating": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ],
-          "var_low": [
-            "Variable 1.5-4.5x"
-          ]
-        },
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "l85a3": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "lmr27": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "m1014": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 4.50x",
-            "Sight 1.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m121a2": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m123k": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m16a4": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m2010esr": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic",
-        "ag_coating"
-      ],
-      "excludedSights": {
-        "ag_coating": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ],
-          "var_low": [
-            "Variable 1.5-4.5x"
-          ]
-        },
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "m240l": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m250": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m277": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m39emr": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "m417a2": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m433": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m4a1": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m60": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "m87a1": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 2.50x",
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 4.00x",
-            "Scope 4.50x",
-            "Sight 1.00x",
-            "Sight 1.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 1.50x "
-          ]
-        }
-      }
-    },
-    "miniscout": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic",
-        "ag_coating"
-      ],
-      "excludedSights": {
-        "ag_coating": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ],
-          "var_low": [
-            "Variable 1.5-4.5x"
-          ]
-        },
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 1.50x ",
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "nvo228e": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "secondary_optic": {
-          "std_optic": [
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "pp19": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "psr": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic",
-        "ag_coating"
-      ],
-      "excludedSights": {
-        "ag_coating": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ],
-          "var_low": [
-            "Variable 1.5-4.5x"
-          ]
-        },
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "pw5a3": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 4.50x",
-            "Sight 1.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "pw7a2": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "qbz192": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "rpk74m": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "rpkm": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "scw10": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "sg553r": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "sgx": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "sl9": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "sor300sc": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "sor556": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "sv98": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic",
-        "ag_coating"
-      ],
-      "excludedSights": {
-        "ag_coating": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ],
-          "var_low": [
-            "Variable 1.5-4.5x"
-          ]
-        },
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "svdm": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "svk86": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 6.00x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ],
-          "thermal": [
-            "Thermal 6.00x"
-          ]
-        }
-      }
-    },
-    "tr7": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "umg40": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 4.50x",
-            "Sight 1.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Scope 4.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "usg90": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "vcr2": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.50x",
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "vssm": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 6.00x",
-            "Scope 8.00x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Sight 1.00x",
-            "Sight 1.25x",
-            "Sight 1.50x",
-            "Sight 1.75x"
-          ]
-        }
-      }
-    },
-    "mk24": {
-      "avail": [
-        "canted_irons",
-        "secondary_optic"
-      ],
-      "excludedSights": {
-        "canted_irons": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x"
-          ]
-        },
-        "secondary_optic": {
-          "std_optic": [
-            "Scope 3.00x",
-            "Scope 3.50x",
             "Sight 1.00x",
             "Sight 1.25x",
             "Sight 1.50x",
@@ -17847,7 +16520,716 @@
         }
       }
     },
-    "z84m": {
+    "grtbc": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "grtcps": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "interdictor": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "kord6p67": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "ks18k": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "kts100": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "kv9": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "l110": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "l115": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "l85a3": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "lmr27": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "m1014": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 4.50x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m121a2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m123k": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m16a4": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m2010esr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "m240l": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m250": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m277": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m39emr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "m417a2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m433": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m4a1": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m60": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "m87a1": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 2.50x",
+            "Scope 3.00x",
+            "Scope 4.00x",
+            "Scope 4.50x",
+            "Sight 1.00x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 1.50x "
+          ]
+        }
+      }
+    },
+    "miniscout": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ],
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 1.50x ",
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "mk24": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 3.00x",
+            "Scope 3.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "nvo228e": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "pp19": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "psr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "pw5a3": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 4.50x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "pw7a2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "qbz192": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "rpk74m": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "rpkm": {
       "avail": [
         "canted_irons",
         "secondary_optic"
@@ -17864,6 +17246,303 @@
       }
     },
     "rspr": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "scw10": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sg553r": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sgx": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 3.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sl9": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sor300sc": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sor556": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "sv98": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic",
+        "ag_coating"
+      ],
+      "excludedSights": {
+        "ag_coating": {
+          "var_low": [
+            "Variable 1.5-4.5x"
+          ]
+        },
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "svdm": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "svk86": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ],
+          "thermal": [
+            "Thermal 6.00x"
+          ]
+        }
+      }
+    },
+    "tr7": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "umg40": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 4.50x",
+            "Sight 1.50x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Scope 4.50x",
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "usg90": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "vcr2": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "vssm": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ],
+      "excludedSights": {
+        "canted_irons": {
+          "std_optic": [
+            "Scope 6.00x",
+            "Scope 8.00x"
+          ]
+        },
+        "secondary_optic": {
+          "std_optic": [
+            "Sight 1.00x",
+            "Sight 1.25x",
+            "Sight 1.50x",
+            "Sight 1.75x"
+          ]
+        }
+      }
+    },
+    "z84m": {
       "avail": [
         "canted_irons",
         "secondary_optic"
