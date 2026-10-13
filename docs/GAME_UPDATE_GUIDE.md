@@ -192,6 +192,24 @@ Reuse the previous build's route list so the two captures are comparable.
 python scripts/frosty-capture.py collection --build <build> --into capture/collection --catalog --routes-file "<datamining>/builds/<build>/capture/raw-routes.txt"
 ```
 
+**New weapons and attachments need a second capture.** The reused route list cannot name
+files that did not exist before, so a new weapon's UI descriptors are missing after the
+first capture and the site has no tooltip or label for its barrels, magazines, iron sights
+and weapon-specific muzzles. Before building site data for a new weapon or attachment:
+
+1. Capture the weapon's `AAM_<weapon>` map (under `Common/UI/Static/Metadata/Attachments/`)
+   with the weapon folder.
+2. List every `AD_*` descriptor route its records point to that the build does not hold
+   (shared ones under `Attachments/Shared/` included), and capture those routes with
+   `frosty-capture.py <topic>-<date> --build <build> --routes-file <list>`.
+3. Write a new route file `capture\raw-routes-<date>.txt` holding the build's
+   `raw-routes.txt` plus every route captured since, and name it in the `BUILD.json` notes
+   as the list for the next update. Existing files under `capture\` cannot change, so do
+   not edit `raw-routes.txt` itself. Then `record` and `verify`.
+
+Read labels and descriptions only from the captured descriptors. A string-table text match
+is not a link; record such a choice as "not found".
+
 Then XML-export the changed subset into `builds/<build>/xml/` with the batch command, and
 export strings. Full command lines are in [Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#frostycmd).
 
