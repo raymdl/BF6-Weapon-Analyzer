@@ -65,7 +65,7 @@ stat and adds a footnote with the intended effect.
 | 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. | Shows x1.00 (actual damage), not the panel's x0.00 |
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M | Suspected game error | Each reduces recoil by one step more than on other weapons (2, 3 and 3 steps against 1, 2 and 2). The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
-| 23 | MGO 3.50x with Canted Iron Sights or a canted reflex | Interdictor (confirmed), M16A4 (source only, 3.00x `QMK171A` scope) | Suspected game error | Since 2.1.1.0 the Interdictor's MGO 3.50x cannot be combined with Canted Iron Sights; the SDO 3.50x on the same weapon can. The update removed the scope from the accessory's permitted list on these two weapons, while about 50 other weapons gained the same two scopes between 1.4.2.5 and 2.1.1.0. | Not modelled: the site names sights by magnification, so 3.50x stays selectable with canted sights |
+| 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Not modelled: the site names sights by magnification, so 3.50x and 3.00x keep their optic accessories |
 
 Accepted as less detailed but consistent text: Slugs recoil, PP-19 53 Rnd ADS
 movement, SL9 60 Rnd weapon draw, RPK-74M 95 Rnd ADS time, and Linear Comp overall
@@ -578,27 +578,65 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   change weapon behaviour.
 - **Site.** Shows 1, as the game does.
 
-### 23. Interdictor MGO 3.50x cannot take canted sights
+### 23. Interdictor MGO 3.50x and M16A4 QMK 3.00x remove the Optic Accessory slot
 
-- **In-game.** On the Interdictor the MGO 3.50x cannot be equipped together with Canted Iron
-  Sights; the SDO 3.50x can (operator, 13 October 2026, client 2.1.1.0). On the AK4D the
-  3.50x scope and Canted Iron Sights can be combined (same check).
+- **In-game (operator, 13 October 2026, client 2.1.1.0).** With the MGO 3.50x equipped on the
+  Interdictor, the Optic Accessory slot is not shown at all; with the SDO 3.50x it offers
+  Canted Iron Sights, the canted reflex, the offset red dot and Anti-Glare, the four
+  accessories the files list for it. On the
+  M16A4 the QMK 3.00x removes the slot in the same way; with the Baker 3.00x the slot offers
+  Canted Iron Sights (Basic Sight, 5 points), the canted reflex and the offset red dot (both
+  Sight 1.00x, 10 points), the three accessories the files list for it. On
+  the AK4D the 3.50x scope and Canted Iron Sights can be combined. Screenshots:
+  `reference-data/attachment-audit/Weapon Attachments/Optic Accessory Slot 2026-10-13/`.
 - **Frosty data.** Each weapon's `Equipment_<weapon>` file lists, per optic accessory, the
-  sights it may be combined with (`Field_f4142987`). Between 1.4.2.5 and 2.1.1.0 the MGO 3.50x
-  (`SCP_M145MGO`) and a 3.00x scope (`SCP_QMK171A`) were added to the canted-sight lists
-  of about 50 weapons (on the AK4D and M16A4 the MGO arrived in 1.4.3.5). In 2.1.1.0 two
-  weapons went the other way:
-  - Interdictor: `SCP_M145MGO` removed from Canted Iron Sights (replaced by `SCP_SBPMII`)
-    and from the canted reflex, where `SCP_NFATACR` was removed too.
-  - M16A4: `SCP_QMK171A` removed from Canted Iron Sights, the canted reflex and the offset
-    red dot.
-- **Why it looks like an error.** The change is not in the patch notes, runs against the
-  change on the other weapons, and on the Interdictor reads like one list entry
-  swapped for another.
-- **Not checked.** The M16A4 in game, and the canted reflex on the Interdictor.
+  sights it may be combined with (`Field_f4142987`). A scope that no accessory lists gets no
+  Optic Accessory slot.
+  - 1.4.3.5 added the MGO 3.50x (`SCP_M145MGO`) to the Canted Iron Sights list on 48 weapons
+    and the QMK 3.00x (`SCP_QMK171A`) on 39, with similar numbers for the canted reflex.
+    Nothing was removed.
+  - 2.1.1.0 changed only two existing weapons, and both lost a scope. Interdictor: the MGO
+    3.50x was removed from Canted Iron Sights (the SSDS 6.00x, `SCP_SBPMII`, was added) and
+    from the canted reflex, where the R-VPS 10.00x (`SCP_NFATACR`) was removed too. The MGO
+    was never on the offset red dot or anti-glare lists, so no accessory lists it now. M16A4:
+    the QMK 3.00x was removed from Canted Iron Sights, the canted reflex and the offset red
+    dot, its only three lists.
+- **Accessory lists (2.1.1.0).** The scopes share the tile labels Scope 3.50x (MGO, SDO) and
+  Scope 3.00x (QMK, Baker) and one description, "Moderately magnified optic with a clear sight
+  picture."
+
+  Interdictor:
+
+  | Accessory (in-game tile, cost) | Sights listed, 1.4.3.5 → 2.1.1.0 | Change in 2.1.1.0 | 3x-class scopes listed now |
+  |---|---|---|---|
+  | Canted Iron Sights (Basic Sight, 5) | 29 → 29 | MGO 3.50x removed, SSDS 6.00x added | SDO 3.50x, QMK 3.00x, Baker 3.00x |
+  | Canted reflex (Sight 1.00x, 10) | 22 → 20 | MGO 3.50x and R-VPS 10.00x removed | SDO 3.50x, QMK 3.00x, Baker 3.00x |
+  | Offset red dot (Sight 1.00x, 10) | 6 → 6 | none | SDO 3.50x, QMK 3.00x, Baker 3.00x |
+  | Anti-glare coating (Anti-Glare, 10) | 34 → 34 | none | SDO 3.50x, Baker 3.00x |
+  | Magnifier | 8 → 8 | none | none (1.00x to 2.00x sights only) |
+  | Variable zoom 2x, 3x, 4x | 5 → 5 each | none | none (6.00x to 10.00x scopes only) |
+
+  M16A4 (no anti-glare or variable-zoom entries):
+
+  | Accessory (in-game tile, cost) | Sights listed, 1.4.3.5 → 2.1.1.0 | Change in 2.1.1.0 | 3x-class scopes listed now |
+  |---|---|---|---|
+  | Canted Iron Sights (Basic Sight, 5) | 19 → 18 | QMK 3.00x removed | MGO 3.50x, SDO 3.50x, Baker 3.00x |
+  | Canted reflex (Sight 1.00x, 10) | 19 → 18 | QMK 3.00x removed | MGO 3.50x, SDO 3.50x, Baker 3.00x |
+  | Offset red dot (Sight 1.00x, 10) | 6 → 5 | QMK 3.00x removed | SDO 3.50x, Baker 3.00x |
+  | Magnifier | 8 → 8 | none | none |
+
+  Accessory descriptions: Canted Iron Sights, "Back-up iron sights mounted at a 45-degree
+  angle."; canted reflex, "Secondary optic mounted at a 45-degree angle."; offset red dot,
+  "Secondary sight mounted on a magnified scope for a clear, close-range aiming alternative.";
+  anti-glare coating, "Reduces visible cone of scope glint with an anti-reflective coating.";
+  magnifier, "Additional high-magnification zoom level with low-magnification sights." None
+  states which scopes it can be combined with.
+- **Why it looks like an error.** The change is not in the patch notes, undoes on two weapons
+  what the previous patch added on most, and leaves a 10-point scope that silently removes a
+  whole slot. The scopes' descriptions are the same as those of the scopes that keep the slot.
 - **Site.** The site names sights by magnification, and both weapons have a second scope of
-  the same magnification that is still permitted. The magnification therefore stays
-  selectable with canted sights (named exceptions in
+  the same magnification that keeps every accessory. The magnification therefore stays
+  selectable with optic accessories (named exceptions in
   `scripts/frosty-attachment-compatibility.py`).
 ## Description errors
 
