@@ -74,12 +74,14 @@ old build is gone. Keep the open build complete while it is installed:
 - Export strings (`fs_us_loc`) for the build.
 - Record the executable hash and version, the Frosty archive Head and the SDK version in
   `BUILD.json`.
-- Once the patch notes are out, write a patch-specific checklist in the pre-trace run
-  folder (`update-<version>-checklist.md`): identity and baseline paths, decisions made for
-  this update, one row per expected change (source, file and field, "from", expected "to",
-  result) and anything seen outside the notes. It holds only what is particular to the
-  update and points here for method; its run-order table lists the stages with a tick
-  column and that update's paths, without repeating the steps. Example: `2026-10-12-update-2110-pretrace`.
+- Once the patch notes are out, write a patch-specific checklist in the research repo at
+  `docs/updates/<version>-checklist.md` and add it to that folder's README index: identity
+  and baseline paths, decisions made for this update, one row per expected change (source,
+  file and field, "from", expected "to", result) and anything seen outside the notes. It
+  holds only what is particular to the update and points here for method; its run-order
+  table lists the stages with a tick column and that update's paths, without repeating the
+  steps. Working files stay in the update's run folders. Example:
+  [2.1.1.0-checklist.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md).
 
 Write everything to the open build (`builds\<build>\capture\` or `xml\`), then run
 `record` and `verify`. Never write to a sealed build.
@@ -154,6 +156,19 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    incomplete (baseline routes missing from the new capture, new failures, or a file that
    does not match its recorded hash); explain each
    before deciding. Record both results in the client entry (`catalogCheck`, `rawCheck`).
+
+   Then print the watched mutator values on both sides (the Frosty Research script):
+
+   ```bash
+   python scripts/frosty-mutator-values.py <baseline collection> <new collection> --descriptors <baseline descriptors> <runtime SharedTypeDescriptors.ebx>
+   ```
+
+   It reads `MutatorDatabase_CH1` and prints default / min / max per setting, "-" where the
+   entry is absent. It watches the XP caps added in 2.1.1.0 (`WeaponXpCap`, `VehicleXpCap`,
+   `ClassXpCap`, `CareerXpCap`, `BattlepassXpCap`, all 300, and `Xp Cap Interval In Seconds`,
+   60). These are shipped defaults; servers can override them. Save the table as
+   `<check folder>\watched-values.md` and report any change. To watch another mutator, add
+   its name to `WATCHED` in the script.
 
 6. **Decide.**
    - **Hotfix (identical layouts; no added or removed assets; no gameplay-relevant change in the catalog or raw hashes):** copy the runtime
@@ -369,6 +384,20 @@ input.
 
 Apply the same shape to any other per-tier family before trusting its values.
 
+### Index bounds and fallback rows
+
+Several stats are a row number into a shared table: a weapon's base row plus steps from its
+attachments, magazine and ammunition. For every held weapon, add up the base row and each
+loadout's steps, and list every combination that lands outside the table. In 2.1.1.0 the
+collateral table has rows 0 to 9; M121 A2 with Tungsten Core and ELR-40 with the Single Shot
+magazine reach row 10, and the panel shows x0.00 while damage holds at the last row
+([ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md) entry 20). Run it again for every new weapon and
+every new ammunition or magazine step.
+
+For tables chosen by matching keyed rows with a fallback row (Precision), list each weapon
+whose fallback row differs from the rest of its class. The Interdictor's 0.5 fallback, against
+100 on the other bolt-action rifles, is the one known case (entry 22).
+
 ### Paired-field disagreement
 
 Where a struct carries two fields that are set together (`Field_7f1bb9d4` /
@@ -447,6 +476,15 @@ Patch-note wording rarely names the asset. Known homes:
 | Muzzle velocity | `<weapon>_WB` → `Shot.InitialSpeed.z` (`Field_32a99b9c` inside `Struct_739f3ac5`) |
 | Camera shake / visual recoil | `_WeaponModifiers/CameraRecoil/GCR_*` |
 | A new option or toggle | A new `Option*` asset, plus a new field on whatever consumes it |
+| Any vehicle, weapon or gadget value | Its named registry row: `GRX_Vehicles`, `GRX_Weapons`, `GRX_Gadgets_Glacier`, `MutatorDatabase_*` |
+| Game rules, XP, matchmaking, mode settings | `Common/GameSetup/Tweakables/Mutators/MutatorDatabase_*`, `MUT_*` |
+
+**A registry row overrides the file.** Read the registry row as well as the file field. In
+2.1.1.0 the anti-air velocity, lifetime, drag, magazine and reload changes kept the old value
+in the weapon file and moved only the registry row to EA's figure; a worker that reads only the file reports "no change". The one
+exception known is a registry row that no file is bound to (the `PB_C4` rows), where the file
+value stands. When a registry row is removed, the file value applies again (the IGLA rows in
+2.1.1.0).
 
 The weapon blueprint is often **not** where a weapon's balance change lives. In 1.4.3.0 the
 Interdictor's `_WB` changed only muzzle-flash FX; every damage change was in the bullet
@@ -462,6 +500,20 @@ in a weapon, attachment or bullet file that no patch-note line explains, then re
 field on every other weapon. The count across weapons is what separates a deliberate change
 from an error: in 2.1.1.0 the spot-on-fire range became 75 m on four weapons only (M433, SGX,
 L110, P18), which no note mentioned.
+
+The pass also covers the tweakable registries. Diff them by row name (research repo):
+
+```bash
+python scripts/frosty-registry-diff.py <baseline collection> <new collection> --old-descriptors <baseline descriptors> --new-descriptors <new descriptors> --new-extra <each later reports\*\ capture folder> --out <check folder>\registry-diff.tsv
+```
+
+It covers every file under a `Tweakables` folder plus every `GRX_*`, `MUT_*` and
+`MutatorDatabase*` file, compares decoded values (boxed values included, layout ignored),
+and flags REDSEC rows instead of dropping them. Review every added, removed and changed row
+outside REDSEC; do not set mutator rows aside as noise. In 2.1.1.0 they were, and the XP caps
+(300 XP per 60 s for weapon, vehicle, class, career and Battle Pass) went unreported until a
+community post found them
+(`builds\2.1.1.0\reports\registry-diff-2026-10-14\findings.md`).
 
 ### In-game names
 
@@ -558,13 +610,24 @@ reused later.
 
 ## Stage 9 — Update the Analyzer
 
-1. Decide which source changes require site changes. Not every diff does.
-2. Apply only those. Preserve the observed / fitted / native-confirmed evidence boundaries.
-3. Run the narrow existing checks for the changed areas, not the whole suite.
-4. Update source and build labels so retained old data is not presented as newly verified.
+1. **Re-run the generators on the new build.** Run every generator that supports
+   [raw mode](../MAINTENANCE.md#raw-mode) against the new build's capture, with explicit
+   output paths, and diff each output against the committed site data. A difference is either
+   a game change the diff stages missed or site data that has gone stale. In 2.1.1.0 this is
+   how the stale sight exclusions were found: the `Equipment_*` required-accessory lists had
+   changed, and no checklist row pointed at them.
+2. Decide which source changes require site changes. Not every diff does.
+3. Apply only those. Preserve the observed / fitted / native-confirmed evidence boundaries.
+4. Run the narrow existing checks for the changed areas, not the whole suite. A test that
+   fails only because it pins a data value the game changed is removed, not updated.
+5. Update source and build labels so retained old data is not presented as newly verified.
    Check the site header, footer, page description and `data/provenance/live-baseline.json`
    as well as per-weapon provenance. Verify the changed values in the local browser.
-5. Record the implementation revision and the check results.
+6. Record the implementation revision and the check results.
+7. **Close the run.** Run the `bf6-run-cleanup` skill on the update's run folder once the
+   site changes are pushed: it removes uncited copies and large regenerable files and records
+   what it removed. Without it the datamining `reports\` folder had reached 22.5 GB by the
+   2.1.1.0 update.
 
 ### Adding a new weapon
 
