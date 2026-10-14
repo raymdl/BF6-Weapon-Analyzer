@@ -194,6 +194,10 @@ export async function captureView({ sidebar = false } = {}) {
   try {
     const mainClone = main.cloneNode(true);
     const aspects = snapshotCanvases(main, mainClone);
+    // An input's current value is a property, like a select's chosen option, so
+    // a slider would draw its thumb at the markup default. Write it back.
+    const liveInputs = [...main.querySelectorAll('input')];
+    [...mainClone.querySelectorAll('input')].forEach((input, i) => input.setAttribute('value', liveInputs[i].value));
     mainClone.querySelectorAll(CHROME_SELECTOR).forEach(n => n.remove());
     // The page never scrolls as a document — .main scrolls internally — so the
     // clone has to be unclamped for anything below the fold to render.
