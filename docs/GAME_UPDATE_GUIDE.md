@@ -31,7 +31,7 @@ and SHA-256 of every file). `scripts/frosty-build.py` manages them
 | State | Meaning | Rule |
 |---|---|---|
 | `open` | The installed data build | New exports may add files. Existing files must not change (`reports\` may). Run `guard` before each export and `record` after it. |
-| `sealed` | No longer installed | Read-only. Compare new builds against it; never write to it. |
+| `sealed` | No longer installed | Read-only. Compare new builds against it; never write to it. NTFS compression after sealing is allowed (file bytes do not change). |
 
 A build stays open while it is installed, so later investigations can add new Frosty
 paths. It is sealed when the game updates, before the first export from the new client.
@@ -175,7 +175,10 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
      `SharedTypeDescriptors.ebx` into the open build's `capture\toolchain\` under a dated
      name, add the entry that `client-check` printed to `BUILD.json` `clients`, and continue
      with that build, then run `record` and `verify`.
-   - **New build (layouts differ, or assets were added, removed or changed in gameplay data):** run `record <old build>` (it adds the step 3 check capture), then `seal <old build>`. Create
+   - **New build (layouts differ, or assets were added, removed or changed in gameplay data):** run `record <old build>` (it adds the step 3 check capture), then `seal <old build>`.
+     Compress the sealed build with `compact /c /s:"builds\<old build>" /exe:lzx /i /q`, then
+     run `verify <old build>`. Compression keeps every file's bytes, read-only flag and
+     manifest hash; 1.4.2.5 went from 2.85 GB to 0.71 GB. Create
      `builds\<new build>\` with a `BUILD.json` like this, copy the runtime descriptors into
      `capture\toolchain\`, and run `record <new build>`:
 
