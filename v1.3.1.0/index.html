@@ -284,8 +284,19 @@ canvas.rcv{background:#080d0d;border:1px solid var(--border);border-radius:4px}
 <body>
 <header>
   <div class="logo">BF6 <span>/ Weapon Analyzer</span></div>
-  <div class="hdr-tag">v1.3.1.0 Archive (Updated 26 JUN 2026)</div>
-  <a class="legacy-link" href="../">Current Version</a>
+  <div class="hdr-tag">Season 3 (v1.3.1.0) Archive - Updated 26 JUN 2026</div>
+  <div class="archive-group archive-nav">
+    <style>.archive-nav{display:flex;align-items:center;gap:6px;margin-left:auto}.archive-nav .legacy-link{margin-left:0}.archive-nav select{background:#1c2222;border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 4px;font:inherit;font-size:0.65rem;cursor:pointer;outline:none}.archive-nav select:hover,.archive-nav select:focus{border-color:#666;color:#ccc}@media (max-width:720px){.archive-nav select{font-size:.58rem}}</style>
+    <select id="archiveSelect" autocomplete="off" aria-label="Site version">
+      <option value="" selected disabled hidden>Site Versions</option>
+      <option value="../">Season 5 (v2.1.1.0)</option>
+      <option value="../v1.4.3.1/">Season 4 (v1.4.3.1)</option>
+      <option value="../v1.3.3.0/">Season 4 (v1.3.3.0)</option>
+      <option value="../v1.3.1.0/" disabled>Season 3 (v1.3.1.0)</option>
+      <option value="../v1.2.3.0/">Season 2 (v1.2.3.0)</option>
+    </select>
+    <script>(function(){var s=document.getElementById('archiveSelect');s.addEventListener('change',function(){if(s.value)location.href=s.value;});window.addEventListener('pageshow',function(){s.selectedIndex=0;});})();</script>
+  </div>
   <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections">Loadout</button>
 </header>
 <div class="app">

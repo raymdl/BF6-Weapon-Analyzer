@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <!-- Reticle mark in the site palette: bg2 #151a1a plate, border #283030,
+       accent #c9a227 ring and ticks, accent2 #4d94d0 centre dot. No text. -->
+  <rect x="0" y="0" width="32" height="32" rx="7" fill="#151a1a"/>
+  <rect x="0.75" y="0.75" width="30.5" height="30.5" rx="6.25" fill="none" stroke="#283030" stroke-width="1.5"/>
+  <circle cx="16" cy="16" r="8.25" fill="none" stroke="#c9a227" stroke-width="2.25" opacity="0.35"/>
+  <path d="M16 4.5v6.25M16 21.25v6.25M4.5 16h6.25M21.25 16h6.25"
+        stroke="#c9a227" stroke-width="2.5" stroke-linecap="round"/>
+  <circle cx="16" cy="16" r="2.75" fill="#4d94d0"/>
+</svg>

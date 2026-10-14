@@ -6,6 +6,10 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://raymdl.github.io/BF6-Weapon-Analyzer/v1.4.3.1/</loc>
+    <priority>0.3</priority>
+  </url>
+  <url>
     <loc>https://raymdl.github.io/BF6-Weapon-Analyzer/v1.3.1.0/</loc>
     <priority>0.3</priority>
   </url>

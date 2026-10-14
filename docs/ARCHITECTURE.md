@@ -144,7 +144,7 @@ expanded and restored in `finally`; other collapsed panels stay collapsed. Captu
 rerunning the simulation. Clipboard failures fall back to PNG download;
 render/encoding failures produce an error state.
 
-`v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are self-contained historical products.
+`v1.4.3.1/`, `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are self-contained historical products.
 They are not imports for the current application. Keep maintenance in the live
 root unless correcting a defect specific to a historical page.
 

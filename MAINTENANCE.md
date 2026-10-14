@@ -237,7 +237,7 @@ pointers. Check current document links/anchors, preserve historical evidence bod
 and label capture references that are available only locally. Existing
 Mermaid diagrams render in GitHub; the SVG illustration remains self-contained.
 
-Keep `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` frozen, with their header links and
+Keep `v1.4.3.1/`, `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` frozen, with their header links and
 ship-manifest entries. These published products are distinct from the narrative
 research archive. Never make the current runtime import a historical copy.
 

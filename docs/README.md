@@ -94,7 +94,7 @@ The archive index identifies their status and current replacements.
 [Evidence index](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/README.md) locates source snapshots
 and review outputs. The [attachment audit](../reference-data/attachment-audit/README.md)
 is a separately maintained reference package. Neither is fetched by the browser.
-Frozen published sites live in `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/`;
+Frozen published sites live in `v1.4.3.1/`, `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/`;
 local-only capture/migration material is ignored under `.local-archive/`.
 
 ## Keeping the documentation focused

@@ -1,0 +1,19 @@
+{
+  "build": "1.4.3.5",
+  "Head": 4909002,
+  "descriptorSha256": "4c28ad656c175d9a8540245a3e6b57284c2e54d76cbd41b4ab480be1024816a1",
+  "sourcePath": "C:\\Users\\royal\\Documents\\BF6 Datamining\\reports\\weapon-analyzer-research\\2026-09-30T2323-0400-fire-modes\\fire-modes.json",
+  "sourceSha256": "12c442bbc28f8c845a26ab3834d46509eeb96e843f83e237712ab52a687d1c18",
+  "sourceWeaponCount": 63,
+  "sourceRowCount": 110,
+  "siteAttachmentBranchCount": 10,
+  "operatorValidationDate": "2026-10-01",
+  "rules": [
+    "Full source precision for explicit selected-mode RPM and burst timing. Implicit defaults retain legacy cadence for unchanged output.",
+    "Bolt/pump single records retain source RPM but the simulator uses existing cycle cadence.",
+    "Burst Training gates WB burst alternates. GRT-CPS source-only burst is excluded.",
+    "L63 hip no-bloom applies only after manual single selection on bound rows; default VSSM bloom and Match Trigger behavior remain unchanged.",
+    "Unavailable selections return to the current loadout default; mode-changing attachments can replace the base default.",
+    "VSSM Folding Stock single override is 399.9989929199219 RPM; negative source slots do not replace positive base rates."
+  ]
+}

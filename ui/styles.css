@@ -22,6 +22,8 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 .archive-group{display:flex;align-items:center;gap:6px;margin-left:auto}
 .archive-group .legacy-link{margin-left:0}
 .archive-label{font-size:0.65rem;color:var(--muted)}
+.archive-select{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 4px;font:inherit;font-size:0.65rem;cursor:pointer;outline:none}
+.archive-select:hover,.archive-select:focus{border-color:#666;color:#ccc}
 .share-btn{display:inline-flex;align-items:center;gap:5px;font-size:0.66rem;font-weight:600;color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:3px 10px;background:rgba(201,162,39,.1);letter-spacing:.04em;transition:all .15s}
 .share-btn::before{content:"";width:10px;height:10px;flex-shrink:0;background:currentColor;-webkit-mask:var(--share-icon) center/contain no-repeat;mask:var(--share-icon) center/contain no-repeat}
 .share-btn:hover{background:rgba(201,162,39,.18)}
@@ -505,6 +507,7 @@ body.rc-plot-expanded{overflow:hidden}
   .hdr-tag{font-size:.58rem}
   .legacy-link{font-size:.58rem}
   .archive-label{font-size:.58rem}
+  .archive-select{font-size:.58rem}
   .sidebar{inset:8px;width:auto;top:8px;bottom:8px;left:8px;right:8px;transform:translateY(-10px)}
   body.loadout-open .sidebar{transform:translateY(0)}
   .sb-scroll{display:block}

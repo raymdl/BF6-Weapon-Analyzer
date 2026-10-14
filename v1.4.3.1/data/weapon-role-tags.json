@@ -1,0 +1,1816 @@
+{
+  "source": {
+    "scope": "Per-weapon role tags from Frosty UIWeaponAbilityMetaData (Class_593f6146 Field_8c7f991f, three localized string pointers). Reference data only; the site UI does not load this file.",
+    "strings": {
+      "asset": "Common/Localization/Languages/fs_us_loc",
+      "exportSha256": "a90186f7ce5f6dea3b554b9ec984034231166b75e49798d6cd3ccfdd6b5db6d9"
+    },
+    "metadata": [
+      {
+        "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+        "sha256": "06a4d8ef2ffd72e61687c438c4bece072f3eac828195511c6ee7079810cbc90f"
+      },
+      {
+        "asset": "Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B1",
+        "sha256": "9d951652ebab84515ce57fb7e0905eac3a879a2d21b91a31df8ae66c5d9d05aa"
+      },
+      {
+        "asset": "Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B2",
+        "sha256": "204116de5caa97e6c16c8dce1e026d83d7a13ae5530781f815219e9f333210d8"
+      },
+      {
+        "asset": "Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B1",
+        "sha256": "1ccf60044819f341521cbd601369b10034886d310ff2e89f616882466d0144b3"
+      },
+      {
+        "asset": "Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B2",
+        "sha256": "a1796dbd1e2e9868d6027550b1b34b73dbefb8ec96d5e8d0047bf2c17d052ef3"
+      },
+      {
+        "asset": "Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B1",
+        "sha256": "80f26295c3a5e1295e963a090383647ff7fe59e82833225ade400028a4d94037"
+      },
+      {
+        "asset": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
+        "sha256": "272551e832ea216ffd7a43f5d363d86190c7a4d9581f0c325451b2c348c5982e"
+      }
+    ],
+    "gameBuild": "1.4.2.5 export, checked 13 SEP 2026",
+    "selection": "Records with a package image are primary. When primary records disagree, an in-game panel check selects the tag and panelEvidence records it."
+  },
+  "tagGroups": [
+    "style",
+    "range",
+    "firing"
+  ],
+  "weapons": {
+    "m433": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "d20def34-1e0d-4610-9742-833b9705e856",
+          "label": "HK433",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "b36a4": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "67a4c4b5-38cd-431c-8e67-e6bc49a8e17c",
+          "label": "G36",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "sor556": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "30116b48-1001-4bca-9b06-41d4546eb9a3",
+          "label": "SCAR-L",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Long Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "ak4d": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "9b3ad6d2-5862-4fd7-ab55-e62cab5941b4",
+          "label": "G3A4",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Long Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "tr7": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "5a62921f-54e2-4d52-ab33-0b0056b57e74",
+          "label": "Tavor 7",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "kord6p67": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "ad446a92-d14f-4f0b-9a91-3b0d38f8b47c",
+          "label": "6P67",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "nvo228e": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "85279391-90ae-4b12-8138-fc8a679a3be2",
+          "label": "ACE 32",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "l85a3": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "3fc1b832-6c59-4085-ae42-10ae56ef0f0d",
+          "label": "L85A3",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "vcr2": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B1",
+          "guid": "78a57fc3-1b46-4b74-9065-08cf91eef1ef",
+          "label": "VHS2",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "m16a4": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B1",
+          "guid": "141fe8e0-058c-482b-9042-c46de52cc5a5",
+          "label": "M16A3",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "m4a1": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "6c5bb3ea-b4c7-4232-bd4d-495b53f08751",
+          "label": "M4A1",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "m277": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "7d579192-e28a-4bb5-9e91-0dc9c0775895",
+          "label": "XM7",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "ak205": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "0c5c5d71-de08-4659-96b5-7e9eca9c5b02",
+          "label": "AK205",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Long Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "m417a2": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "91a7c8e5-73e5-4f69-a18a-5ddc088078e2",
+          "label": "HK417A2",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "grtbc": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "75b9c0c4-4d34-4b5c-acef-49b9116a2328",
+          "label": "MSBS Grot B",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "qbz192": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "9646c570-6add-4cdb-a9f5-c2c951646928",
+          "label": "QBZ-192",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "sg553r": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "047003de-619e-4ff1-b4f1-f6c089717137",
+          "label": "SG553R",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "sor300sc": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "b5ab910b-c621-4f7d-b361-4ab70084623b",
+          "label": "SCAR-SC .300 BLK",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Steady Firerate"
+          ]
+        },
+        {
+          "asset": "Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B1",
+          "guid": "7da37e7f-b69a-48eb-9f46-7c8830b63266",
+          "label": "SCAR-SC .300 BLK",
+          "primary": false,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "sgx": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "c78e8283-30ba-42bd-b909-1e4358e80ccc",
+          "label": "MPX",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "pw5a3": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "6dde3435-d1ce-41d1-bfd5-34ba3703c6d2",
+          "label": "MP5 MLI",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "pw7a2": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "f143982f-6e07-4ffc-bcb2-4d77db0a7450",
+          "label": "MP7A2",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        },
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "8c5b8d5f-46ea-4f39-98e3-35be64d449fc",
+          "label": "MP7A2 SP SUPPRESSED",
+          "primary": false,
+          "tags": [
+            "Versatile",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "umg40": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "42cd6e1a-b5a8-4f53-8039-7c1e8b912c7a",
+          "label": "UMP-40",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "usg90": {
+      "style": {
+        "id": "360B3089",
+        "text": "High Capacity"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "f1fe251f-5772-46db-86bc-b6b578b43b98",
+          "label": "P90",
+          "primary": true,
+          "tags": [
+            "High Capacity",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "kv9": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "36f9dec1-ff11-4891-a2a6-9681597b9f3f",
+          "label": "Vector",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "scw10": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "a08b6d7d-21c9-4b14-90a1-1959b7e1fc4d",
+          "label": "APC10 G Pro",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "sl9": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "299f342a-e4dc-4d90-933d-f2c6746d2f79",
+          "label": "APDW",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "cz3a1": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B2",
+          "guid": "5635add5-f3ef-4507-aafe-a4c88bb36a8a",
+          "label": "Scorpion Evo 3",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "pp19": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B1",
+          "guid": "804fa7b5-ae94-4ecf-b85a-785001aefdb8",
+          "label": "PP19",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "l110": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "f0c3bbd4-3df8-4f10-bd94-f86434ff8362",
+          "label": "Minimi",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "drsiar": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "9d21f31b-e96e-448d-a7bb-90ef7463b71e",
+          "label": "M27IAR",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "m60": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "11d340de-4bcd-4c88-a7fa-891e932c8215",
+          "label": "M60E6",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Long Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "rpkm": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "c1aad862-83ce-40fa-9f8e-f2413b396e30",
+          "label": "RPKM",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "m123k": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "22641284-aae0-4a34-b134-a57959ec0568",
+          "label": "MG4K",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "m250": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "42642fc5-c4a7-47b2-9ec9-2b0670312b30",
+          "label": "M250",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Long Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "kts100": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "1eb0257d-ef9d-4835-b910-7046bc9f1c61",
+          "label": "Ultimax",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Long Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "m240l": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "a587a2ae-ab81-43e2-8ef3-96fb6673fe77",
+          "label": "M240L",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "m121a2": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B1",
+          "guid": "19b3ac4c-813c-4535-94fc-db9ab432727c",
+          "label": "MG5",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "rpk74m": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B1",
+          "guid": "5d47fd8f-ee5b-4219-9da8-0c05371f7dbd",
+          "label": "RPK74M",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Long Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "m39emr": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "b494006f-b1b3-471d-9941-cef426428598",
+          "label": "M39 EMR",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Long Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "lmr27": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "eb841a8c-bc91-4591-a464-da2bead5878d",
+          "label": "ARA DMR",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Mid Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "svk86": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "f2cfff01-e49b-4122-87ea-79c674886386",
+          "label": "SVCh",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Long Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "svdm": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "331b82e7-d3c6-45d2-80ad-8baafbafc355",
+          "label": "SVDM",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Long Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "grtcps": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B1",
+          "guid": "d12d5d00-f986-4e61-86f4-be884b7aa17e",
+          "label": "GrotC",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Mid Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "m2010esr": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "C12312AF",
+        "text": "Extreme Range"
+      },
+      "firing": {
+        "id": "6FF4E2E4",
+        "text": "Bolt-Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "000a5c66-5bf6-4852-9604-b4d7206add87",
+          "label": "M2010ESR",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Extreme Range",
+            "Bolt-Action"
+          ]
+        }
+      ]
+    },
+    "sv98": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "6FF4E2E4",
+        "text": "Bolt-Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "738cb003-38be-4d55-9b20-685e18cc4bc6",
+          "label": "SV98M",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Long Range",
+            "Bolt-Action"
+          ]
+        }
+      ]
+    },
+    "psr": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "C12312AF",
+        "text": "Extreme Range"
+      },
+      "firing": {
+        "id": "6FF4E2E4",
+        "text": "Bolt-Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "c034c61c-e120-4b44-b7d1-f339acb39b35",
+          "label": "MRAD",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Extreme Range",
+            "Bolt-Action"
+          ]
+        }
+      ]
+    },
+    "miniscout": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "5852C245",
+        "text": "Long Range"
+      },
+      "firing": {
+        "id": "6FF4E2E4",
+        "text": "Bolt-Action"
+      },
+      "panelEvidence": "In-game loadout panel, 13 SEP 2026, shows Aggressive | Long Range | Bolt-Action (UIWeaponAbilityMetaData_S1B1). The base UIWeaponAbilityMetaData record says Mid Range.",
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "54336939-e7f8-4c5c-a999-dc2b89aa8fc0",
+          "label": "Mini Fix",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Mid Range",
+            "Bolt-Action"
+          ]
+        },
+        {
+          "asset": "Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B1",
+          "guid": "cbc7f124-bac9-4a38-836f-3e028c7d2d12",
+          "label": "Mini Fix",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Long Range",
+            "Bolt-Action"
+          ]
+        }
+      ]
+    },
+    "l115": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "C12312AF",
+        "text": "Extreme Range"
+      },
+      "firing": {
+        "id": "6FF4E2E4",
+        "text": "Bolt-Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S3/UIWeaponAbilityMetaData_S3B1",
+          "guid": "57bc075f-01cb-4e44-b9c8-e8fdb923dde3",
+          "label": "L115A3",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Extreme Range",
+            "Bolt-Action"
+          ]
+        }
+      ]
+    },
+    "interdictor": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "C12312AF",
+        "text": "Extreme Range"
+      },
+      "firing": {
+        "id": "6FF4E2E4",
+        "text": "Bolt-Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
+          "guid": "f80d8b46-d558-4750-9395-67424cf22216",
+          "label": "DesertTechHTI",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Extreme Range",
+            "Bolt-Action"
+          ]
+        }
+      ]
+    },
+    "m87a1": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "E2D589D7",
+        "text": "Pump Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "387347c8-71f1-4d1e-a802-e08d41335656",
+          "label": "590A1",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "Pump Action"
+          ]
+        }
+      ]
+    },
+    "m1014": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "ecaa291f-b11f-4569-921e-9db6d4f3ae54",
+          "label": "M1014",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "ks18k": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "9f209806-acf7-462f-969e-8810ab202f5c",
+          "label": "18.5KS-K",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "db12": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "E2D589D7",
+        "text": "Pump Action"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "f274703f-6fcb-4818-ba57-7811b32802bd",
+          "label": "DP-12",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "Pump Action"
+          ]
+        },
+        {
+          "asset": "Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B2",
+          "guid": "7661b2be-f7f8-4b9a-821d-d670bc866a24",
+          "label": "DP-12",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "Pump Action"
+          ]
+        }
+      ]
+    },
+    "p18": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "396feb0c-bce8-4ba7-a038-b688f4920e45",
+          "label": "M18",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Close Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "es57": {
+      "style": {
+        "id": "AB65D97D",
+        "text": "Accurate"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "e8fac9c1-798c-44b8-b8fb-ac27e8547578",
+          "label": "FiveSeven",
+          "primary": true,
+          "tags": [
+            "Accurate",
+            "Mid Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "m45a1": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "5d75cae5-aca9-4f35-afb1-48261714476e",
+          "label": "M45A1",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "m44": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "219BF40A",
+        "text": "Revolver"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "64bfa075-20d0-4e20-85d0-9ce976170651",
+          "label": "Raging Hunter",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Mid Range",
+            "Revolver"
+          ]
+        }
+      ]
+    },
+    "ggh22": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "7ca8894f-05ce-448e-9b83-0919b6cab09e",
+          "label": "G22",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "Semi-Auto"
+          ]
+        },
+        {
+          "asset": "Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B1",
+          "guid": "a307b274-1a41-4b17-a2f9-33a12e735a99",
+          "label": "G22",
+          "primary": false,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    },
+    "m357trait": {
+      "style": {
+        "id": "75D3730B",
+        "text": "Hard-Hitting"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "219BF40A",
+        "text": "Revolver"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/MetaData/UIWeaponAbilityMetaData",
+          "guid": "84122d5b-7f3c-4dc1-96f3-6faa1d44916e",
+          "label": "TRR8",
+          "primary": true,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Revolver"
+          ]
+        },
+        {
+          "asset": "Common/UI/Static/Metadata/S1/UIWeaponAbilityMetaData_S1B2",
+          "guid": "ec27ffae-d132-4054-a76f-5796d879efea",
+          "label": "TRR8",
+          "primary": false,
+          "tags": [
+            "Hard-Hitting",
+            "Close Range",
+            "Revolver"
+          ]
+        }
+      ]
+    },
+    "vz61": {
+      "style": {
+        "id": "AF244DFB",
+        "text": "Subsonic"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "C699DB41",
+        "text": "Full Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S2/UIWeaponAbilityMetaData_S2B2",
+          "guid": "be678dd8-6a27-4f3f-b882-68b8f1e8dca9",
+          "label": "Skorpion",
+          "primary": true,
+          "tags": [
+            "Subsonic",
+            "Close Range",
+            "Full Auto"
+          ]
+        }
+      ]
+    },
+    "brod3": {
+      "style": {
+        "id": "9B3EC6E5",
+        "text": "Aggressive"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "45BE859C",
+        "text": "High Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
+          "guid": "38d06585-2911-4a95-8e02-af2e2b50ed0a",
+          "label": "BREN3",
+          "primary": true,
+          "tags": [
+            "Aggressive",
+            "Close Range",
+            "High Firerate"
+          ]
+        }
+      ]
+    },
+    "ef88": {
+      "style": {
+        "id": "FBAFD304",
+        "text": "Versatile"
+      },
+      "range": {
+        "id": "61E260EF",
+        "text": "Mid Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
+          "guid": "1fa05a64-cf33-4b9f-a19c-9930649dbc82",
+          "label": "EF88",
+          "primary": true,
+          "tags": [
+            "Versatile",
+            "Mid Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "vssm": {
+      "style": {
+        "id": "AF244DFB",
+        "text": "Subsonic"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F86CBDBC",
+        "text": "Semi-Auto"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S4/UIWeaponAbilityMetaData_S4B1",
+          "guid": "0bf9ffc3-c9ec-4678-bcf3-096583522f3e",
+          "label": "VSSM",
+          "primary": true,
+          "tags": [
+            "Subsonic",
+            "Close Range",
+            "Semi-Auto"
+          ]
+        }
+      ]
+    }
+  }
+}

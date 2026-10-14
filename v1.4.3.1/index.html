@@ -1,0 +1,273 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BF6 Weapon Analyzer — Battlefield 6 Stats & Loadout Visualizer</title>
+<meta name="description" content="A Battlefield 6 weapon stats and recoil/spread visualizer: compare time-to-kill, damage drop-off, recoil and spread patterns, and full attachment effects for every multiplayer weapon. Includes reviewed Frosty v1.4.3.0 changes over the v1.4.2.5 baseline. Recoil and spread patterns are estimates.">
+<link rel="canonical" href="https://raymdl.github.io/BF6-Weapon-Analyzer/v1.4.3.1/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BF6 Weapon Analyzer">
+<meta property="og:url" content="https://raymdl.github.io/BF6-Weapon-Analyzer/v1.4.3.1/">
+<meta property="og:title" content="BF6 Weapon Analyzer — Battlefield 6 Stats & Loadout Visualizer">
+<meta property="og:description" content="A Battlefield 6 weapon stats and recoil/spread visualizer: compare time-to-kill, damage drop-off, recoil and spread patterns, and full attachment effects for every multiplayer weapon.">
+<meta property="og:image" content="https://raymdl.github.io/BF6-Weapon-Analyzer/v1.4.3.1/assets/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="BF6 Weapon Analyzer — a Battlefield 6 weapon stats and recoil/spread visualizer: TTK, damage drop-off and attachments.">
+<meta name="twitter:card" content="summary_large_image">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebApplication","name":"BF6 Weapon Analyzer","url":"https://raymdl.github.io/BF6-Weapon-Analyzer/v1.4.3.1/","applicationCategory":"GameApplication","operatingSystem":"Any (web browser)","browserRequirements":"Requires JavaScript","description":"A Battlefield 6 multiplayer weapon stats and recoil/spread visualizer: time-to-kill, damage drop-off, recoil and spread patterns, and attachment effects.","alternateName":"BF6 Recoil and Spread Visualizer","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}
+</script>
+<link rel="icon" type="image/svg+xml" href="./assets/favicon.svg">
+<script src="./vendor/chart.umd.min.js"></script>
+<script>if(!window.Chart){document.write('<div style="position:fixed;inset:0;display:flex;align-items:center;justify-content:center;background:#0c0e0e;color:#e05555;font-family:sans-serif;font-size:1rem">Chart.js failed to load. Please reload the page.</div>');}</script>
+<link rel="stylesheet" href="./ui/styles.css">
+  <link rel="stylesheet" href="ui/data-errors.css">
+</head>
+<body>
+<header>
+  <h1 class="logo-h1"><a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a></h1>
+  <div class="hdr-tag">Season 4 (v1.4.3.1) Archive - <time datetime="2026-10-10">Updated 10 OCT 2026</time></div>
+  <div class="archive-group archive-nav">
+    <style>.archive-nav{display:flex;align-items:center;gap:6px;margin-left:auto}.archive-nav .legacy-link{margin-left:0}.archive-nav select{background:#1c2222;border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 4px;font:inherit;font-size:0.65rem;cursor:pointer;outline:none}.archive-nav select:hover,.archive-nav select:focus{border-color:#666;color:#ccc}@media (max-width:720px){.archive-nav select{font-size:.58rem}}</style>
+    <select id="archiveSelect" autocomplete="off" aria-label="Site version">
+      <option value="" selected disabled hidden>Site Versions</option>
+      <option value="../">Season 5 (v2.1.1.0)</option>
+      <option value="../v1.4.3.1/" disabled>Season 4 (v1.4.3.1)</option>
+      <option value="../v1.3.3.0/">Season 4 (v1.3.3.0)</option>
+      <option value="../v1.3.1.0/">Season 3 (v1.3.1.0)</option>
+      <option value="../v1.2.3.0/">Season 2 (v1.2.3.0)</option>
+    </select>
+    <script>(function(){var s=document.getElementById('archiveSelect');s.addEventListener('change',function(){if(s.value)location.href=s.value;});window.addEventListener('pageshow',function(){s.selectedIndex=0;});})();</script>
+  </div>
+  <button class="loadout-btn" id="loadoutOpenBtn" type="button" title="Open weapon and attachment selections" aria-controls="loadoutPanel" aria-expanded="false">Loadout</button>
+</header>
+<div class="app">
+  <aside class="sidebar" id="loadoutPanel" aria-labelledby="loadoutTitle">
+    <div class="loadout-modal-head">
+      <div class="loadout-modal-title" id="loadoutTitle">Loadout</div>
+      <button class="loadout-close" id="loadoutCloseBtn" type="button" title="Close loadout panel" aria-label="Close loadout panel">×</button>
+    </div>
+    <button class="cmp-btn" id="cmpBtn" aria-pressed="false">+ Compare Loadout</button>
+    <div class="sb-scroll">
+      <div class="sb-sec">
+        <div class="sb-lbl">Class</div>
+        <div class="class-filter" id="classFilter1"></div>
+      </div>
+      <div class="sb-sec" style="padding-top:6px">
+        <div class="sb-lbl">Weapon</div>
+        <div class="wlist" id="wList1"></div>
+      </div>
+      <div class="att-sec" id="attSection1"></div>
+      <div id="cmpSection" style="display:none">
+        <div class="cmp-hdr"><span>Compare Loadout</span><button class="clone-btn" id="cloneLoadoutBtn" type="button" title="Copy Weapon 1 and its attachments into Weapon 2">Clone</button></div>
+        <div class="sb-sec">
+          <div class="sb-lbl">Class</div>
+          <div class="class-filter" id="classFilter2"></div>
+        </div>
+        <div class="sb-sec" style="padding-top:6px">
+          <div class="sb-lbl">Weapon 2</div>
+          <div class="wlist" id="wList2"></div>
+        </div>
+        <div class="att-sec" id="attSection2"></div>
+      </div>
+    </div>
+  </aside>
+  <div class="loadout-backdrop" id="loadoutBackdrop" aria-hidden="true"></div>
+  <main class="main" id="main">
+    <div class="empty" id="emptyState">
+      <div class="empty-t">Select a weapon to begin</div>
+      <div>Choose a class and weapon from the sidebar</div>
+    </div>
+    <div id="statsArea" style="display:none">
+      <div class="panel" id="overviewPanel">
+        <div class="overview-head">
+          <button class="panel-toggle" data-collapse="overview" data-collapse-label="the stat cards" type="button" aria-expanded="true" aria-controls="sGrid"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
+          <div class="ptitle">Overview</div>
+          <div class="share-wrap">
+            <button class="share-btn" id="shareBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="shareMenu" title="Share this loadout as a link or an image">Share Loadout</button>
+            <div class="share-menu" id="shareMenu" role="menu" hidden>
+              <button class="share-menu-item" id="shareLinkBtn" type="button" role="menuitem">Copy Link</button>
+              <button class="share-menu-item" id="shareImgBtn" type="button" role="menuitem">Copy Image</button>
+              <button class="share-menu-item" id="shareSaveImgBtn" type="button" role="menuitem">Save Image</button>
+            </div>
+          </div>
+        </div>
+        <div id="wHeader" class="w-header"></div>
+        <div id="sGrid" class="sgroups"></div>
+      </div>
+      <div class="panel" id="chartsPanel" style="padding:0;overflow:hidden">
+        <div style="display:flex;align-items:stretch">
+          <div class="chart-column chart-column-main" style="flex:1;min-width:0;padding:6px 8px;border-right:1px solid var(--border)">
+            <div class="chart-head" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
+              <div style="display:flex;align-items:center;gap:8px">
+                <button class="panel-toggle" data-collapse="charts" data-collapse-label="the damage chart and kill table" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
+                <div class="ptitle" style="margin-bottom:0" id="chartTitle">Comparison Chart</div>
+                <div class="chart-mode-controls" style="display:flex;gap:3px">
+                  <button class="mode-btn on" id="modeDmg" aria-pressed="true" title="Shows damage per shot across range.">DMG</button>
+                  <button class="mode-btn" id="modeBtk" aria-pressed="false" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
+                  <button class="mode-btn" id="modeTtk" aria-pressed="false" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
+                  <button class="mode-btn" id="adsToggleBtn" aria-pressed="false" style="display:none;margin-left:6px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
+                  <button class="mode-btn" id="velToggleBtn" aria-pressed="false" style="display:none" title="Adds the lethal projectile's level-target flight time once to the TTK chart and table.">+VEL</button>
+                </div>
+              </div>
+              <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer">
+                <option value="0">0 Headshots</option>
+                <option value="1">1 Headshot</option>
+                <option value="2">2 Headshots</option>
+                <option value="3">3 Headshots</option>
+                <option value="4">4 Headshots</option>
+              </select>
+            </div>
+            <div class="chart-wrap"><canvas id="dmgChart"></canvas><div class="rc-legend" id="chartLegend"></div></div>
+          </div>
+          <div class="chart-column chart-column-table" style="flex:1;min-width:0;padding:6px 8px">
+            <div class="ptitle chart-table-head">Bullets / Time to Kill</div>
+            <div id="btkArea"></div>
+          </div>
+        </div>
+      </div>
+      <div class="panel" id="recoilPanel">
+        <div class="rc-layout">
+          <div class="rc-head">
+            <div class="ptitle rc-title">
+              <button class="panel-toggle" data-collapse="recoil" data-collapse-label="the recoil and spread pattern" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
+              Recoil &amp; Spread Pattern (Simulated -
+              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"><span class="rc-shot-suffix">Shots)</span>
+              <button class="rc-popout-btn" id="rcPopoutBtn" type="button" title="Open the pattern in its own window, sized to fill it">Pop Out &#8599;</button>
+              <button class="rc-loadout-btn" id="rcLoadoutBtn" type="button" aria-controls="loadoutPanel" aria-expanded="false" title="Show or hide the weapon and attachment panel beside the plot"><svg class="rc-loadout-icon" viewBox="0 0 12 10" aria-hidden="true"><rect x="1" y="1" width="10" height="8" rx="1.2"/><line x1="4.6" y1="1" x2="4.6" y2="9"/></svg><span id="rcLoadoutBtnText">Modify Loadout</span></button></div>
+            <div class="rc-groups">
+              <div class="rc-group">
+                <div class="rc-group-hd">Soldier Aim Controls</div>
+                <div class="rc-control-collection">
+                  <div class="rc-control-group" data-control-group="position">
+                    <div class="rc-sub">Aim</div>
+                    <div class="rc-group-row seg">
+                      <button class="mode-btn rc-mode-btn on" id="rcAimAds" title="Use ADS recoil and spread values">ADS</button>
+                      <button class="mode-btn rc-mode-btn" id="rcAimHip" title="Use hipfire recoil and spread values">Hipfire</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="stance">
+                    <div class="rc-sub">Stance</div>
+                    <div class="rc-group-row seg">
+                      <button class="mode-btn rc-mode-btn on" id="rcStanceStand" title="Use standing spread values">Standing</button>
+                      <button class="mode-btn rc-mode-btn" id="rcStanceMove" title="Use moving spread values">Moving</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="input">
+                    <div class="rc-sub">Input</div>
+                    <div class="rc-group-row seg">
+                      <button class="mode-btn rc-mode-btn on" id="rcPlatformPc" title="Use PC recoil values">PC</button>
+                      <button class="mode-btn rc-mode-btn" id="rcPlatformConsole" title="Apply console recoil reduction">Console</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="recoil-control">
+                    <div class="rc-sub">Recoil Control</div>
+                    <span id="rcCompRow" class="rc-comp-row">
+                      <input id="rcCompRange" class="rc-range rc-comp-range" type="range" min="0" max="125" step="1" value="0" aria-label="Recoil compensation percentage" title="How much of the expected recoil the shooter pulls back down. 0% is no compensation.">
+                      <output id="rcCompReadout" class="rc-readout" for="rcCompRange">0%</output>
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="rc-group">
+                <div class="rc-group-hd">Chart Overlays</div>
+                <div class="rc-control-collection">
+                  <div class="rc-control-group" data-control-group="pattern">
+                    <div class="rc-sub">Pattern</div>
+                    <div class="rc-group-row">
+                      <button class="mode-btn rc-mode-btn on" id="rcModeScatter" title="Show faded scatter over 10 simulated runs">Scatter</button>
+                      <button class="mode-btn rc-mode-btn on" id="rcModeSpread" title="Show the solid reference run dots">Spray</button>
+                      <button class="mode-btn rc-mode-btn" id="rcModePath" title="Draw the recoil-only reference path">Recoil Path</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group" data-control-group="spread">
+                    <div class="rc-sub">Spread</div>
+                    <div class="rc-group-row">
+                      <button class="mode-btn rc-mode-btn" id="rcConeToggleBtn" title="Show the spread envelope cone across all shots">Cone</button>
+                      <button class="mode-btn rc-mode-btn" id="rcSpreadToggleBtn" title="Show potential spread bubbles on selected shots">Bubbles</button>
+                    </div>
+                  </div>
+                  <div class="rc-control-group rc-control-group--grow rc-bubble-preset-group" data-control-group="bubbles">
+                    <div class="rc-group-row rc-group-row-grow rc-bubble-field">
+                      <select id="rcSpreadPreset" class="rc-select" title="Preset choices include Shot 1 to show first-shot spread, especially useful for movement/hipfire. Custom uses the shot numbers entered below.">
+                        <option value="growth">Growth Curve</option>
+                        <option value="early">Early Shots</option>
+                        <option value="all">All Shots</option>
+                        <option value="custom">Custom…</option>
+                      </select>
+                      <input id="rcSpreadShotsInput" class="rc-shots-input rc-custom-pop" type="text" value="2, 3, 5, 8, 13, 20" hidden aria-label="Custom shot numbers for spread bubbles" title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'. Press Enter or click away to close.">
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="rc-plot" id="rcPlotColumn">
+            <div class="rc-viewport">
+              <div class="rc-tabstrip" role="tablist" aria-label="Chart view">
+                <button class="rc-tab on" id="rcViewAngle" type="button" role="tab" aria-selected="true" aria-controls="rcMain" title="Plot the pattern in angular degrees, independent of range">Angle Plot</button>
+                <button class="rc-tab" id="rcViewTarget" type="button" role="tab" aria-selected="false" aria-controls="rcMain" title="Project the same pattern onto a soldier-sized target at a chosen range">Soldier Target</button>
+              </div>
+              <div class="rc-touch-controls" id="rcTouchControls" hidden>
+                <button class="rc-touch-btn" id="rcRedraw" type="button">Redraw</button>
+                <button class="rc-touch-btn" id="rcSetAim" type="button" aria-pressed="false" hidden>Set aim</button>
+                <button class="rc-touch-btn" id="rcTouchResetView" type="button" title="Reset zoom and pan, keeping your aim and spray sample" hidden>Reset view</button>
+                <button class="rc-touch-btn" id="rcExpandPlot" type="button" aria-haspopup="dialog" aria-controls="rcExpandedPlot">Expand</button>
+              </div>
+              <div class="rc-viewbar">
+                <span class="rc-field" id="rcDistanceField" hidden>
+                  <span class="rc-field-lbl">Distance</span>
+                  <input class="rc-range" id="rcDistanceRange" type="range" min="5" max="300" step="5" value="30" aria-label="Target distance in meters">
+                  <output class="rc-readout" id="rcDistanceReadout" for="rcDistanceRange">20 m</output>
+                </span>
+                <span class="rc-field" id="rcZoomField">
+                  <span class="rc-field-lbl">Zoom</span>
+                  <input class="rc-range" id="rcZoomRange" type="range" min="0" max="100" step="1" value="50" aria-label="Chart zoom">
+                  <output class="rc-readout" id="rcZoomReadout" for="rcZoomRange">±5°</output>
+                </span>
+                <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample" aria-label="Reset view, aim and spray sample"><span class="rc-reset-icon" aria-hidden="true">↺</span></button>
+              </div>
+              <div class="rc-canvas-wrap">
+                <div class="rc-scale-controls">
+                  <button class="rc-scale-btn" id="rcCrosshairToggle" type="button" title="Hide crosshair overlay" aria-label="Hide crosshair overlay" aria-pressed="true">
+                    <svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3.55"/><circle cx="5" cy="5" r="1.25"/><line x1="5" y1="0.25" x2="5" y2="1.45"/><line x1="5" y1="8.55" x2="5" y2="9.75"/><line x1="0.25" y1="5" x2="1.45" y2="5"/><line x1="8.55" y1="5" x2="9.75" y2="5"/></svg>
+                  </button>
+                </div>
+                <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and spread pattern plot. Use arrow keys to pan and plus or minus to zoom." aria-describedby="rcHint"></canvas>
+              </div>
+              <div class="rc-target-controls" id="rcTargetControls" hidden>
+                <span class="rc-target-group"><span>RESOLUTION</span><input class="rc-target-resolution-input" id="rcTargetWidth" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display width in pixels"><span>×</span><input class="rc-target-resolution-input" id="rcTargetHeight" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display height in pixels"></span><span class="rc-target-group"><span>FOV</span><input class="rc-target-fov-input" id="rcTargetFov" type="number" min="1" max="179" step="1" value="103" inputmode="numeric" aria-label="Horizontal field of view in degrees" title="Horizontal field of view in degrees, matching the in-game FOV setting"></span>
+                <div class="rc-zero-readout" id="rcZeroReadout" hidden>
+                  <span>Zeroing</span>
+                  <button class="rc-zero-cycle" id="rcZeroCycleBtn" type="button" title="Cycle DMR/sniper zero distance">100 m</button>
+                </div>
+              </div>
+              <div class="rc-viewfoot">
+                <span class="rc-hint" id="rcHint" aria-live="polite">Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom</span>
+                <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText">Aim: center chest</span></span>
+              </div>
+            </div>
+            <div class="rc-legend" id="rcLegend"></div>
+            <div class="rc-note"></div>
+          </div>
+          <div class="rc-stats" id="rcStats"></div>
+          <div class="att-stats" id="attStats"></div>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
+<div class="footer"><span>Data: Frosty v1.4.3.1 (reviewed 16 SEP 2026) &nbsp;·&nbsp; Baseline: <a href="https://sym.gg" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">sym.gg</a> v1.4.2.0 (18 AUG 2026) &nbsp;·&nbsp; Spread decay model: <a href="https://www.youtube.com/@Dr.SmileyHenry" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Dr. Smiley Henry</a> &nbsp;·&nbsp; Spray pattern reference: <a href="https://www.youtube.com/@TheXclusiveAce" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">TheXclusiveAce</a> &nbsp;·&nbsp; Weapon data: <a href="https://www.youtube.com/@SORROW_Main" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SORROW</a> &nbsp;·&nbsp; Data Validation: <a href="https://www.reddit.com/user/SheetOnMyFace/" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">SheetOnMyFace</a></span><span>Discord: Raymdl &nbsp;·&nbsp; <a href="https://github.com/raymdl/BF6-Weapon-Analyzer" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">GitHub</a></span></div>
+
+<dialog class="rc-expanded-plot" id="rcExpandedPlot" aria-labelledby="rcExpandedPlotTitle">
+  <div class="rc-expanded-header"><span id="rcExpandedPlotTitle">Recoil / Spread Plot</span><button class="rc-touch-btn" id="rcCloseExpandedPlot" type="button">Close</button></div>
+  <div class="rc-expanded-slot" id="rcExpandedPlotSlot"></div>
+</dialog>
+<script type="module" src="./ui/app.js"></script>
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e0e1cac698a442b6abd238207d509270"}'></script>
+<!-- End Cloudflare Web Analytics -->
+</body>
+</html>

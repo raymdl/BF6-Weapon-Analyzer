@@ -3052,6 +3052,16 @@ function bindEvents() {
     });
   }
 
+  // Archive picker: choosing a version opens it. Reset to the placeholder when
+  // the page comes back from the back/forward cache still showing that choice.
+  const archiveSelect = document.getElementById('archiveSelect');
+  if (archiveSelect) {
+    archiveSelect.addEventListener('change', () => {
+      if (archiveSelect.value) location.href = archiveSelect.value;
+    });
+    window.addEventListener('pageshow', () => { archiveSelect.selectedIndex = 0; });
+  }
+
   // Compare toggle
   document.getElementById('cmpBtn').addEventListener('click', () => {
     state.comparing = !state.comparing;

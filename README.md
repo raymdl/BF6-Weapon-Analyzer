@@ -97,7 +97,7 @@ The root page and `data/`, `sim/`, and `ui/` contain the current product. The
 header's version identifies the represented source/game version; it is not a
 claim that every field was independently measured on that build.
 
-`v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are frozen, published site snapshots.
+`v1.4.3.1/`, `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` are frozen, published site snapshots.
 [Archived research and implementation records](docs/archive/README.md) explain past
 work and decisions. Use the current guides above for present behavior.
 
