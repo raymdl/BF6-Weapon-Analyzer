@@ -427,9 +427,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Other weapons.** The same field is 54 on 57 other weapons of 2.1.1.0 (value census of the
   held `_WB` files). The four weapons are of four different classes (assault rifle, SMG,
   LMG, sidearm), and the patch notes do not mention the change.
-- **In-game evidence.** The operator confirmed 75 m on the in-game weapon panel on
-  13 October 2026. Which of the four weapons were checked is not recorded. The P18
-  panel in an operator screenshot of 14 October 2026 shows 75 m.
+- **In-game evidence.** The operator confirmed 75 m on the in-game weapon panels of all
+  four weapons on 13 October 2026. The P18 panel in an operator screenshot of
+  14 October 2026 also shows 75 m.
 - **Why it may be an error.** No class or calibre rule separates these four from the rest.
   Operator note (13 October 2026): 75 m was the default in-world range in the launch
   version of the game and was reduced to 54 m in Season 2, so these four weapons look
@@ -849,7 +849,8 @@ Withdrawn or rejected:
   14 October 2026). The site text claims "Marginally lowers recoil", but the in-game
   text on these sidearms makes no recoil claim (attachment audit screenshots, July 2026,
   and P18 panels of 14 October 2026), and recoil is unchanged against FMJ (P18 1.2°,
-  Control 23). The site links the wrong text; the game is consistent.
+  Control 23). The site linked the shared SMG text; the game is consistent. Since
+  14 October the site shows the panel text on the three sidearms (reviewed panel rows).
 
 ### "Handling" wording
 

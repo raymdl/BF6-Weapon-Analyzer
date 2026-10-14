@@ -440,7 +440,11 @@
     "screenshot:db12:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "screenshot:drsiar:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "screenshot:ef88:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:es57:ammo:subsonic": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
+    "screenshot:es57:ammo:subsonic_hp": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Slightly improves headshot damage.",
     "screenshot:es57:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:ggh22:ammo:subsonic": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
+    "screenshot:ggh22:ammo:subsonic_hp": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Slightly improves headshot damage.",
     "screenshot:grtbc:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "screenshot:grtbc:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:l110:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
@@ -449,6 +453,8 @@
     "screenshot:m433:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:m45a1:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:mk24:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
+    "screenshot:p18:ammo:subsonic": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
+    "screenshot:p18:ammo:subsonic_hp": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Slightly improves headshot damage.",
     "screenshot:rpkm:mag:30_fast": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
     "screenshot:rspr:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:scw10:barrel:extended": "Long barrel that increases projectile velocity.",
@@ -4288,8 +4294,8 @@
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
-        "subsonic": "B34A96E3",
-        "subsonic_hp": "4775CFE5"
+        "subsonic": "screenshot:p18:ammo:subsonic",
+        "subsonic_hp": "screenshot:p18:ammo:subsonic_hp"
       },
       "mag": {
         "17_rnd": "BC304B1B",
@@ -4331,8 +4337,8 @@
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
-        "subsonic": "B34A96E3",
-        "subsonic_hp": "4775CFE5"
+        "subsonic": "screenshot:es57:ammo:subsonic",
+        "subsonic_hp": "screenshot:es57:ammo:subsonic_hp"
       },
       "mag": {
         "20_rnd": "F8D66B75",
@@ -4436,8 +4442,8 @@
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
-        "subsonic": "B34A96E3",
-        "subsonic_hp": "4775CFE5"
+        "subsonic": "screenshot:ggh22:ammo:subsonic",
+        "subsonic_hp": "screenshot:ggh22:ammo:subsonic_hp"
       },
       "mag": {
         "15_rnd": "A845352C",
