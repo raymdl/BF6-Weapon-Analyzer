@@ -42,27 +42,26 @@ stat and adds a footnote with the intended effect.
 
 | # | Attachment | Weapons | Type | Error | Site status |
 |---|---|---|---|---|---|
-| 1a | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Matches game: −1 ADS accuracy while moving |
+| 1 | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor, ELR-40 | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Matches game: −1 ADS accuracy while moving |
 | 2 | Hollow Point, Frangible, Tungsten Core | M121 A2, M45A1 | Game error | The game adds the FMJ +1 penetration step to these three ammo types. Collateral damage multiplier is too high: Hollow Point and Frangible keep the Standard value; M45A1 Tungsten Core is one step higher (M121 A2 Tungsten Core is at the maximum, so no change). The descriptions do not state a penetration change. | Matches game: extra collateral step |
-| 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19 | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches source data: no weapon draw speed change |
+| 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19, RSPR | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches game: no weapon draw speed change |
 | 4 | 20 Rnd fast | PP-19 | Game error | The description states faster reloads. The game does not apply the reload speed bonus (×1.13). | Matches game: no reload speed change |
-| 5 | Subsonic, Sub HP | P18, GGH-22, ES 5.7 | Game error | The description states lower recoil. The game does not apply it. | Matches source data: no recoil change |
 | 6 | Flash Comp | PP-19 | Game error | The description states less recoil buildup and better recoil recovery (recoil smoothing). The game does not apply it: `GS_PP19` has no smoothing binding for the Flash Comp package (source trace and operator report). | Matches game: no recoil smoothing (corrected 23 September) |
 | 7 | 200 Rnd belt box | L110, M123K | Game error | The description states reduced ADS accuracy while moving. The game does not apply it. | Matches game: no ADS accuracy while moving change |
 | 8 | 30 Rnd fast | PW7A2 | Description error | The description states improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Matches game: reload speed ×1.13 |
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Matches game: no ADS time change |
-| 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches source data: source values |
+| 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches game: reload 2.876 s, ADS and draw unchanged (sway from source data) |
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
-| 12 | Standard Suppressor | L115 | Game error (source binding omission) | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Matches game: no hipfire change (corrected 23 September) |
-| 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Source-specific penalties: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
-| 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Weapon Attributes match menu behavior; firing simulation retains source modifiers |
+| 12 | Standard Suppressor | L115 | Game error | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Matches game: no hipfire change (corrected 23 September) |
+| 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Matches game: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
+| 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Matches game: Weapon Attributes follow the menu; firing simulation keeps source modifiers (firing not confirmed) |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
 | 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Matches game: no iron-sight sway on BROD 3 (marked †; 25 September capture) |
 | 17 | None (base weapon) | M433, SGX, L110, P18 | Suspected game error | Since 2.1.1.0 the in-world (3D) spot-on-fire range is 75 m; the other weapons keep 54 m. Not in the patch notes; four unrelated weapons. 75 m was the launch default before Season 2 reduced it to 54 m, so this looks like an unintended reversion. | Matches game: 75 m in-world, 150 m minimap |
 | 18 | Hollow Point | Mk 24 | Suspected game error | Costs 5 points, the same as Standard; every other weapon's Hollow Point costs 15 or 20. | Matches game: cost 5, headshot 1.80 with Hollow Point |
 | 19 | Single-Port Brake | RSPR | Suspected game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip. | Matches game: seven steps, 0.8 to 0.5 degrees |
-| 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. | Shows x1.00 (actual damage), not the panel's x0.00 |
-| 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M | Suspected game error | Each reduces recoil by one step more than on other weapons (2, 3 and 3 steps against 1, 2 and 2). The descriptions and costs are unchanged. | Matches game: the stronger steps |
+| 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. | Matches game: x1.00 (firing-range damage); the panel shows x0.00 |
+| 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4) | Suspected game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons and 2 on the B36A4 and the rest; it may not be an error. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Not modelled: the site names sights by magnification, so 3.50x and 3.00x keep their optic accessories |
 
@@ -72,13 +71,9 @@ recoil. See
 [Accepted text](#accepted-text). Source candidates that are not confirmed bugs are in
 [Multi-package scan candidates](#multi-package-scan-candidates).
 
-## Game errors
+## Game errors and suspected errors
 
 ### 1. Slim Angled applies an unstated moving-ADS penalty
-
-The sniper cases apply an unstated moving-ADS penalty.
-
-#### 1a. Sniper rifles: Full Angled package selected
 
 - **In-game text (Slim Angled, 15 pts).** "Slightly increases weapon draw speed, and
   enables a slightly faster transition to aim down sights (ADS)."
@@ -128,6 +123,10 @@ The sniper cases apply an unstated moving-ADS penalty.
   Angled 63, Full Angled 63. The grip/None ratio (1.31-1.37) agrees with one ladder
   step, 0.32° to 0.43° (1.34). L115 Slim Angled is not captured.
   [Capture evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json).
+- **ELR-40 (2.1.1.0).** The ELR-40, new in this build, has the same fault. Its in-game
+  panels for Slim Angled and Full Angled are identical (operator screenshots, 14 October
+  2026): Mobility 44, ADS 300 ms, sprint recovery 167 ms. The site applies −1 moving-ADS
+  spread on both, from the source data.
 - **Site.** −1 moving-ADS spread on Full Angled for all six, and on Slim Angled for
   PSR, SV-98, L115, Mini Scout and Interdictor. L115, Mini Scout and Interdictor
   were added on 14 September; the handling generator preserves these per-weapon
@@ -145,7 +144,7 @@ The sniper cases apply an unstated moving-ADS penalty.
   and every other LMG and sidearm, select only the ammo's own package. Hollow Point
   and Frangible therefore keep Standard collateral instead of the lower value.
 - **Site and game panels.** `scripts/frosty-collateral.py` includes the extra step.
-  The attachment audit screenshots agree:
+  The attachment audit screenshots (26 July 2026, before 2.1.1.0) agree:
 
   | Ammo | M121 A2 panel / site | L110 panel / site | M45A1 panel / site | GGH-22 panel / site |
   |---|---|---|---|---|
@@ -157,6 +156,10 @@ The sniper cases apply an unstated moving-ADS penalty.
   M121 A2 Tungsten reaches index 10, which clamps to 9 (1.00). M45A1 Tungsten shows
   0.83 (site 0.833334), against 0.75 on GGH-22. The M45A1 Tungsten value is read
   from the screenshot.
+- **2.1.1.0 panels (operator screenshots, 14 October 2026).** M121 A2: Polymer Links
+  0.75, Hollow Point 0.75 and Frangible 0.75, still the Standard value. Tungsten Core
+  now shows x0.00: the panel no longer clamps row 10, while damage stays x1.00
+  (entry 20). P18 control: Frangible 0.50, below Standard 0.57.
 - **Evidence.** Audit screenshots `LMG/M121 A2/47-50_*_Ammo_*.png`,
   `Sidearm/M45A1/19-22_*_Ammo_*.png`, `LMG/L110/47-50_*`, `Sidearm/GGH-22/20-25_*`.
 - **Status.** Confirmed by panels. Likely a leftover selector on two weapons; the
@@ -169,10 +172,15 @@ The sniper cases apply an unstated moving-ADS penalty.
 - **Conflict.** All eight SMGs select `U_WPM_BTM_FastPDW_W20`. Its WB modifier has
   only `WME_ADSTime_FOV_P10` and `WME_ADSTime_Anim_P10`, with no draw effect. The
   rifle Slim Angled package does include draw effects.
-- **Not a floor clamp.** SMG base sprint index 7 (133 ms) has faster rows (100 ms,
-  83 ms).
+- **Not a floor clamp.** The SMG panels show sprint recovery 100 ms; faster rows exist
+  (83 and 67 ms on sidearms).
+- **In-game.** The attachment audit screenshots (23 and 24 July 2026) of all eight SMGs
+  show ADS 167 to 133 ms and sprint recovery unchanged at 100 ms with Slim Angled. The
+  RSPR, new in 2.1.1.0, has the same fault (operator screenshots, 14 October 2026): None
+  to Slim Angled gives ADS 167 to 133 ms and Control 39 to 41, with sprint recovery
+  unchanged at 100 ms.
 - **Status.** Game error: the SMG package does not have the draw effects that the
-  description states. Not checked in game.
+  description states. Confirmed by panels.
 
 ### 4. PP-19 20 Rnd fast magazine has no reload bonus
 
@@ -184,20 +192,6 @@ The sniper cases apply an unstated moving-ADS penalty.
   ([bug report](https://forums.ea.com/idea/battlefield-6-bug-reports-en/incorrect-stats-for-pp-19s-20-round-fast-magazine/13472218)).
   Recorded as `suspectedGameBug` in `data/attachments.json` and as a screenshot
   exception in `data/reload-exceptions.json`.
-
-### 5. Subsonic and Sub HP on sidearms have no recoil modifier
-
-- **In-game text (Subsonic).** "Low-velocity ammunition that partially hides in-world
-  spotting and slightly reduces the range where a soldier is spotted on the minimap
-  while firing. Marginally lowers recoil."
-- **In-game text (Sub HP).** The same text plus "and slightly improves headshot damage."
-- **Conflict.** "Marginally lowers recoil" on P18, GGH-22 and ES 5.7. The +1 recoil
-  link exists on 12 non-sidearms only (6 September comparison).
-- **Cost.** Sidearm Subsonic 10 and Sub HP 30 equal the carbine costs (SMGs: Subsonic
-  10-15, Sub HP 25-35). A missing sidearm recoil modifier is more likely than a
-  separate ammo class with different text.
-- **Status.** Game error: the sidearm packages do not have the recoil modifier that
-  the description states. Not checked in game.
 
 ### 6. PP-19 Flash Comp
 
@@ -431,7 +425,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   held `_WB` files). The four weapons are of four different classes (assault rifle, SMG,
   LMG, sidearm), and the patch notes do not mention the change.
 - **In-game evidence.** The operator confirmed 75 m on the in-game weapon panel on
-  13 October 2026. Which of the four weapons were checked is not recorded.
+  13 October 2026. Which of the four weapons were checked is not recorded. The P18
+  panel in an operator screenshot of 14 October 2026 shows 75 m.
 - **Why it may be an error.** No class or calibre rule separates these four from the rest.
   Operator note (13 October 2026): 75 m was the default in-world range in the launch
   version of the game and was reduced to 54 m in Season 2, so these four weapons look
@@ -512,17 +507,29 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 ### 21. Mk 24 and Z84M: three grips reduce recoil by one extra step
 
 - **Attachments.** Adjustable Angled (15 points), Full Angled (25 points) and QD Grip Pod
-  (30 points) on the Mk 24 and the Z84M. Both weapons are new in 2.1.1.0.
+  (30 points) on the Mk 24 and the Z84M. Both weapons are new in 2.1.1.0. The QD Grip Pod
+  part also applies to the EF88 and M16A4, and may not be an error.
 - **Frosty data (2.1.1.0).** `GS_MRGGA` and `GS_PKM` bind Adjustable Angled to
   `GRM_Recoil_BTM_P20` (two steps; other weapons bind `GRM_Recoil_BTM_P10`, one step), and
   Full Angled and QD Grip Pod to `GRM_Recoil_BTM_P30` (three steps; other weapons bind
   `GRM_Recoil_BTM_P20`, two steps).
 - **Comparison.** No other weapon has the stronger binding for the two angled grips. The QD
-  Grip Pod has the same three-step binding on the B36A4, EF88 and M16A4.
-- **In-game evidence.** Confirmed by the operator on 13 October 2026; the panel values were
-  not recorded.
-- **Why it is likely an error.** The descriptions and costs are the same as on other weapons,
-  and only the two Season 5 weapons differ.
+  Grip Pod has the same three-step binding on the EF88 and M16A4; on the B36A4 and the other
+  weapons it gives two steps, the same as PTT Grip Pod.
+- **In-game evidence (operator screenshots, 14 October 2026).** Control by grip:
+
+  | Weapon | None | Slim Angled | Adjustable Angled | PTT Grip Pod | Full Angled | QD Grip Pod |
+  |---|---:|---:|---:|---:|---:|---:|
+  | Mk 24 | 38 | 40 | 43 | 43 | 46 | 46 |
+  | Z84M | 35 | 37 | 39 | 39 | 42 | 42 |
+  | B36A4 | – | – | – | 47 | – | 47 |
+  | EF88 | – | – | – | 47 | – | 50 |
+  | M16A4 | – | – | – | 47 | – | 49 |
+
+  Adjustable Angled matches the two-step PTT Grip Pod, and Full Angled the QD Grip Pod.
+- **Why it is likely an error.** The angled grips' descriptions and costs are the same as on
+  other weapons, and only the two Season 5 weapons differ. The stronger QD Grip Pod on four
+  weapons may be intended.
 - **Site.** The site applies the stronger steps on these two weapons, as the game does.
 
 ### 22. Interdictor Precision shows 1
@@ -605,6 +612,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   the same magnification that keeps every accessory. The magnification therefore stays
   selectable with optic accessories (named exceptions in
   `scripts/frosty-attachment-compatibility.py`).
+
 ## Description errors
 
 ### 8. PW7A2 30 Rnd fast magazine
@@ -629,7 +637,10 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 ### 10. KTS100 MK8 50 Rnd magazine
 
 Found by the 14 September magazine recheck with every value relative to the
-weapon's default magazine. All values are source-generated. Not checked in game.
+weapon's default magazine. The attachment audit screenshots (July 2026) confirm it in
+game: against the default 60 Rnd Drum Mag, the 50 Rnd shows ADS 367 ms, sprint recovery
+200 ms and ADS movement x0.54 unchanged, and reload 3.25 to 2.876 s. Sway is not shown on
+the panel and comes from source data.
 
 | Weapon | Magazine | In-game text | Relative to default | Incorrect part |
 |---|---|---|---|---|
@@ -755,13 +766,13 @@ effect consistently with the game design.
 | 53 Rnd | PP-19 | "Helical drum magazine with increased capacity. Prevents the use of underbarrel attachments." | Slower ADS movement | Expected for a larger magazine |
 | 60 Rnd | SL9 | "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS)." | Slower weapon draw | Expected for a larger magazine |
 | 95 Rnd drum | RPK-74M | "95 round drum magazine with greatly increased capacity at the cost of weapon draw speed and reload speed." | Slower ADS time (`WPM_MAG_095Ext3_RPK74M_W50`: `WME_ADSTime_Anim_M10`, `WME_ADSTime_FOV_M10`; applied by the site) | Expected for a larger magazine |
-| Linear Comp | 45 weapons | "Reduces horizontal recoil in favor of more stable vertical recoil. …" | −1 recoil amount | Implied: vertical recoil is amount, horizontal is variation |
+| Linear Comp | 48 weapons (2.1.1.0) | "Reduces horizontal recoil in favor of more stable vertical recoil. …" | −1 recoil amount | Implied: vertical recoil is amount, horizontal is variation |
 
 ## Multi-package scan candidates
 
 `python scripts/frosty-multi-package-scan.py --root <Frosty-export-root>` lists
 attachment actions that select more than one modifier package. The 1.4.2.5 export
-has 15 hits: three sniper Slim Angled actions (entry 1a), six M121 A2/M45A1 ammo
+has 15 hits: three sniper Slim Angled actions (entry 1), six M121 A2/M45A1 ammo
 actions (entry 2), and the items below. PSR and SV-98 select only W05, so the scan
 does not list them. Each hit is a candidate for a trace and an in-game check.
 
@@ -791,7 +802,7 @@ the PP-19 25 Rnd magazine or GRT-CPS burst fire, or binds the extra packages.
 ## Review method and rejected findings
 
 **First scan (14 September).** Compared moving-ADS spread penalties and recoil
-smoothing with fixed wording. It found entry 1a. It also flagged Slim Angled on the
+smoothing with fixed wording. It found entry 1. It also flagged Slim Angled on the
 18.5KS-K, rejected on 21 September: the modifier binds outside the moving-ADS collection,
 and [ADS indicator captures](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/ks18k-ads-indicator-2026-09-21.json)
 show no moving penalty.
@@ -831,13 +842,18 @@ Withdrawn or rejected:
 - Codex readings that treated `movingAdsSpreadTierMod: +1` as worse.
 - AK4D 20 Rnd fast and SV-98 Lightened Suppressor text claims: the site links were
   wrong, not the game text.
+- Former entry 5, Subsonic and Sub HP on the P18, GGH-22 and ES 5.7 (removed
+  14 October 2026). The site text claims "Marginally lowers recoil", but the in-game
+  text on these sidearms makes no recoil claim (attachment audit screenshots, July 2026,
+  and P18 panels of 14 October 2026), and recoil is unchanged against FMJ (P18 1.2°,
+  Control 23). The site links the wrong text; the game is consistent.
 
 ### "Handling" wording
 
-All 58 current uses are magazines. Across weapons, "improved handling" covers any
-combination of faster sprint recovery (51 pairs), faster deploy (51), faster ADS
-(47), faster ADS movement (47), less sway (47), better moving-ADS accuracy (44)
-and faster reload (29). Magnitudes differ by weapon. RPKM 75 Rnd says "at the
+All 61 current uses (2.1.1.0) are magazines. Across weapons, "improved handling"
+covers any combination of faster sprint recovery (51 pairs), faster deploy (51),
+faster ADS (47), faster ADS movement (47), less sway (47), better moving-ADS
+accuracy (44) and faster reload (29); these sub-counts are from 1.4.x. Magnitudes differ by weapon. RPKM 75 Rnd says "at the
 cost of weapon handling" but only has ADS move +1. These counts use absolute
 magazine shifts, not values relative to the default magazine.
 
@@ -852,9 +868,10 @@ links wrong text, add a reviewed panel row instead of editing
 
 ## 2.1.1.0 recheck, 13 October 2026
 
-Update 2.1.1.0 (Season 5) is a new build. Entries 1a to 16 were rechecked against the raw
+Update 2.1.1.0 (Season 5) is a new build. Entries 1 to 16 were rechecked against the raw
 before/after comparison with 1.4.3.5; the earlier in-game measurements were not repeated.
-None is resolved. Entries 17 to 21 are new in this build; entry 22 is older and newly listed.
+None is resolved. Entries 17 to 21 and 23 are new in this build (23 added later on 13 October); entry 22
+is older and newly listed.
 
 What was compared:
 
@@ -874,11 +891,10 @@ What was compared:
 
 | Entry | 2.1.1.0 result |
 |---|---|
-| 1a | No source/text change; sniper selector status retained. |
+| 1 | No source/text change; sniper selector status retained. |
 | 2 | No source/text change; extra FMJ selector status retained. |
 | 3 | No source/text change; absent SMG draw effect retained. |
 | 4 | No source/text change; PP-19 fast-magazine reload status retained. |
-| 5 | No source/text change; sidearm recoil status retained. |
 | 6 | No source/text change; PP-19 smoothing omission retained. |
 | 7 | Belt-box packages unchanged; moving-ADS status retained. `Minimi_WB` lost its `CMU_MatchTrigger` entry and its in-world spot base changed (entry 17); neither touches the belt box. |
 | 8 | No source/text change; PW7A2 text mismatch retained. |
@@ -896,13 +912,14 @@ What was compared:
 | 20 | New. See the entry. |
 | 21 | New. See the entry. |
 | 22 | Present before this build; listed now. The keyed row changed from 1 to 100, the panel did not. |
+| 23 | New. See the entry. |
 
 The multi-package scan returns the same 15 candidates, none with a changed input.
 Re-reading 629 magazine operands supports 287 selections relative to their defaults, with
 no change. The retained selector graph is built from the 1.4.3.0 export, so it does not
 cover attachments added in this build.
 
-Site values changed for this build (not bug-list entries): SVDM recoil direction 4 to 20
+Site values changed for this build that are not bug corrections: SVDM recoil direction 4 to 20
 and recoil decrease time exponent 0.75 to 1.1; M39 EMR exponent 0.75 to 1.0; controller
 recoil multiplier 0.8836 to 0.95; VSSM 10 Rnd description; in-world spot base 75 m on the
 four weapons of entry 17.
@@ -917,11 +934,10 @@ reports folder. They give the selected source routes and both raw hashes.
 
 | Entry | 1.4.3.5 result |
 |---|---|
-| 1a | No source/text change; sniper selector status retained. |
+| 1 | No source/text change; sniper selector status retained. |
 | 2 | No source/text change; extra FMJ selector status retained. |
 | 3 | No source/text change; absent SMG draw effect retained. |
 | 4 | No source/text change; PP-19 fast-magazine reload status retained. |
-| 5 | No source/text change; sidearm recoil status retained. |
 | 6 | No source/text change; PP-19 smoothing omission retained. |
 | 7 | No source/text change; belt-box moving-ADS status retained. |
 | 8 | No source/text change; PW7A2 text mismatch retained. |

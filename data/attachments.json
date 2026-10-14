@@ -21676,7 +21676,7 @@
   },
   "GAME_BUGS": [
     {
-      "ref": "1a",
+      "ref": "1",
       "slot": "grip",
       "attachments": [
         "slim_angled_sr",
@@ -21687,7 +21687,8 @@
         "sv98",
         "l115",
         "miniscout",
-        "interdictor"
+        "interdictor",
+        "elr40"
       ],
       "metrics": [
         "Mov Spread"
@@ -21725,7 +21726,8 @@
         "kv9",
         "scw10",
         "cz3a1",
-        "pp19"
+        "pp19",
+        "rspr"
       ],
       "metrics": [
         "Deploy Speed"
@@ -21745,23 +21747,6 @@
         "Tac Reload"
       ],
       "note": "The description promises faster reloads, but the game doesn't apply the reload bonus."
-    },
-    {
-      "ref": "5",
-      "slot": "ammo",
-      "attachments": [
-        "subsonic",
-        "subsonic_hp"
-      ],
-      "weapons": [
-        "p18",
-        "ggh22",
-        "es57"
-      ],
-      "metrics": [
-        "ADS Recoil/Shot"
-      ],
-      "note": "The description promises lower recoil, but the game doesn't apply it on this pistol."
     },
     {
       "ref": "6",

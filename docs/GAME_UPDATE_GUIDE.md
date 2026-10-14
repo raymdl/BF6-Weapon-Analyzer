@@ -424,7 +424,7 @@ On a raw capture, replace `--root` with the [raw mode](../MAINTENANCE.md#raw-mod
 
 One attachment action normally selects one shared `U_WPM_*` package. Several packages in
 one action can mean an incomplete selector assignment. This found the sniper Slim Angled
-grips (ATTACHMENT_BUGS entry 1a) and the M121 A2 / M45A1 ammo packages (entry 2). Each hit
+grips (ATTACHMENT_BUGS entry 1) and the M121 A2 / M45A1 ammo packages (entry 2). Each hit
 is a candidate for a trace and an in-game check, **not** a confirmed bug.
 
 ### Relative-to-default comparison
