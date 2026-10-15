@@ -152,6 +152,68 @@ clock while preserving the accumulated recoil and any unfinished delivery.
 
 ![Continuous recovery during and between four shots: each shot resets the recovery clock while accumulated recoil is preserved](img/continuous-recovery.svg)
 
+### The recovery law against the BF1 community formula
+
+The closest public analog of this law is the community-measured Battlefield 1 recoil
+decrease on [Sym's BF1 page](https://sym.gg/legacy/pages/bf1/bf1_generalinfo.html):
+
+```text
+RecoilTerm = ((abs(CurrentRecoil) / 0.5)^0.6 + 0.001)
+Decrease   = RecoilTerm * RecoilDecrease * DeltaTime * TimeSinceLastShot^0.5 * C   (C about 5)
+```
+
+applied to each axis separately. The engine type dump in the Frosty plugin
+(`FrostyPlugin/Sdk/Bf6-Strings.txt`, identical to the BF2042 dump for this structure) lists
+the `GunSwayRecoilData` members that the BF1 formula uses by value. Term by term:
+
+| BF1 term | BF6 field | BF6 value (M4A1) | Site field | Site use |
+|---|---|---|---:|---|
+| `abs(CurrentRecoil)` per axis | per-axis state | | `cx`, `cy` | per axis, as in BF1 |
+| `/ 0.5` | `RecoilDecreaseNorm` | 1 | `decNorm` | divisor before the power; neutral at 1, so not applied |
+| `^0.6` | `RecoilDecreaseExponent` | 1 (0.6 on bolt-actions and two shotguns) | `decExp` | applied |
+| `+ 0.001` | `RecoilDecreaseOffset` | 0.06 (KSG reference 0.001, the BF1 value) | `decOffset` | applied |
+| `RecoilDecrease` | `RecoilDecreaseFactor` | 57 | `decFactor` | applied |
+| `TimeSinceLastShot^0.5` | `RecoilDecreaseTimeExponent` | 1.045 | `decTimeExp` | applied; clock reset on every shot |
+| `DeltaTime` | frame step | | 1 ms steps, exact integral | continuous limit, not the engine's tick |
+| `C` (about 5) | none known | | none | not applied; see the replay below |
+| gated while firing in BF1 | `ShootingRecoilDecreaseScale` | 1 | `shootingDecScale` | retained; 1 means recovery runs while firing, which Sym's BF6 page states |
+| none | `RecoilDuration` | 0.025 s | `duration` | timed delivery (BF2042-era field) |
+
+The BF1 formula is a measurement, not disassembly, so this is structural support for the
+form of the site's law, not proof of the BF6 arithmetic.
+
+**Replay of alternative laws (14 October 2026).** The 10 and 11 September M4A1, TR7 and AK4D
+recordings were replayed under four alternatives and a global factor scale with the camera
+method of the 11 September validation and the 12 September impact-height comparison
+(`outputs/recovery-variants-2026-10-14/RESULTS.md`, local). A clock running from the first
+shot of a burst makes recovery 15 to 20 times too strong and is rejected. No recovery
+during delivery is rejected by the Lightened Suppressor: it predicts 23% more climb than
+Standard at 15 rounds where the screenshots show 14.8% less. Recovery on the vector
+magnitude is indistinguishable from per-axis on these weapons (`decExp` 1). A single factor
+scale does not fit all three weapons: M4A1 wants about 0.77 and TR7 and AK4D about 0.91,
+and the M4A1 impact ratios keep their shape at every scale. Expressed as time, the three
+weapons' shortfalls are 31, 32 and 42 ms per interval; a diagnostic dead time of 33 ms after
+each shot, independent of `RecoilDuration`, brings all three long-burst peaks within 3% of
+observed with one parameter. That diagnostic was fitted on the same recordings and is a
+hypothesis for the next capture, not a model change. The Lightened gap (observed 14.8%
+reduction, modeled 8 to 9%) and the 6 to 24% under-prediction of rapid semi-auto sequences
+remain unexplained by every variant.
+
+**AK-205 impact capture (14 October 2026).** The capture proposed from that replay was recorded
+the same day: single-fire pairs at 133 and 167 ms and 5-, 10- and 15-round bursts, Standard and
+Lightened Suppressor, read from bullet marks under a 5x optic whose magnification was measured at
+5.00 over the 1x view in every clip. All ten measurements exceed this law run with the stored
+operands: pairs 0.331 / 0.302 degrees (Standard / Lightened) at 133 ms against 0.271 / 0.244, and
+0.264 / 0.225 at 167 ms against 0.190 / 0.145; bursts 1.36 / 2.13 / 2.41 degrees (Standard 5 / 10 /
+15 rounds) against 1.17 / 1.74 / 1.97. A uniform factor of 0.8 on `decFactor` fits all ten (chi-square
+48 against 580 as stored); the fixed dead time does not (it fits bursts only); the Standard minus
+Lightened differences match the x1.2 operand. The reading rests on the 1x field of view being
+103 degrees, which was not shown on camera. This is a proposal in the research queue
+(L4040), not a model change; the law's shape is unchanged. LMR27 pairs recorded the same evening
+(L4041) give 0.384 / 0.322 degrees at 233 ms against 0.319 / 0.271 stored and 0.403 / 0.349 at
+x0.8, an effective scale of 0.85 to 0.9 on the slow recovery profile (factor 13.7, exponent 0.56),
+so the constant transfers across profiles within one band's error.
+
 ### Duration and Smooth attachment selection
 
 Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the

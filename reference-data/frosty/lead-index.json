@@ -7775,6 +7775,61 @@
       "summary": "`SimEx_Vehicle_MobilityDamage` was read in full. Each damage event adds to a stored sum; when the sum reaches a scale x `MobilityHitDamageThreshold` (0.5) the mobility damage effect is applied for `MobilityHitDuration` (5 s) and the sum resets. The sum also resets once `MobilityHitTimeFrame` (3 s) has passed since the recorded hit. The effect is removed when normalised health equals 1. The scale is probably maximum health. 2 raw-offset checks matched.",
       "reopenWhen": "The scale is identified, or an in-game mobility hit contradicts the half-health reading.",
       "refs": []
+    },
+    "L4038": {
+      "id": "L4038",
+      "title": "Gun-sway modifier header flags read by value: light-enabled, bipod/grip-pod, mounted up/side and fire-mode gates, plus the controller modifier's device selector",
+      "status": "finding",
+      "date": "2026-10-14",
+      "receipts": [
+        "frosty-2026-10-14-L4038-gun-sway-modifier-header-flags.json"
+      ],
+      "summary": "Every gun-sway modifier root carries an int32 at offset 32 and seven booleans at 36..42; by value they are light enabled (Field_897a3f2c, the twelve light modifiers only), bipod or grip pod deployed (Field_b574fa40, nine assets), mounted side and up (Field_b0057325, Field_93dd77b9, one asset each), a fire-mode gate (Field_9ca063e9, the six ERG/Semi modifiers including Match Trigger), a TOP-array flag (Field_92cdfefc) and one never-set flag; the integer is 2 on GRM_Recoil_Controller_03 alone.",
+      "reopenWhen": "A decoded native consumer, a modifier that sets two flags, or a new modifier whose flag contradicts the value-based reading; the TOP flag and the integer enumeration need a consumer or an in-game test.",
+      "refs": [
+        "open-questions"
+      ]
+    },
+    "L4039": {
+      "id": "L4039",
+      "title": "Recoil compensation consumes aim (two true tweakables), and the executable's dispersion-as-recoil, recoil-force-tick and attribute names",
+      "status": "finding",
+      "date": "2026-10-14",
+      "receipts": [
+        "frosty-2026-10-14-L4039-recoil-strings-and-consumes-aim-tweakables.json"
+      ],
+      "summary": "GRX_WeaponsAndGadgets rows RecoilCompensationConsumesAimPitch and Yaw are true (raw-checked), so counter-aim input is subtracted from recoil state; the executable names a DispersionAsRecoil enumeration (never, always, bipod, mounted up, mounted side), a replicated recoil-force tick count, the Smooth attribute names RecoilSmoothness and RecoilDecayMultiplier, and the movement-state dispersion actions.",
+      "reopenWhen": "A GS field or enum resolves DispersionAsRecoil per weapon, a readable implementation gives the tick length, or an in-game test shows compensation changing recovery.",
+      "refs": []
+    },
+    "L4040": {
+      "id": "L4040",
+      "title": "AK-205 recoil recovery measured by impacts: recovery about 20% slower than the stored factor under the site law; dead time rejected; Lightened x1.2 supported",
+      "status": "proposal",
+      "date": "2026-10-14",
+      "receipts": [
+        "frosty-2026-10-14-L4040-ak205-recoil-recovery-capture.json"
+      ],
+      "summary": "Pairs at 133 and 167 ms and 5/10/15-round bursts, both suppressors, all exceed the production law; a factor scale of 0.8 fits all ten measurements (chi2 48 vs 580), a fixed dead time does not, and the Standard-minus-Lightened differences match the x1.2 recovery operand.",
+      "reopenWhen": "The operator confirms the 1x FOV, a second weapon with a different recovery profile (LMR27) is measured, or a readable implementation gives the native constant.",
+      "refs": [
+        "capture-plan",
+        "queue-proposals"
+      ]
+    },
+    "L4041": {
+      "id": "L4041",
+      "title": "LMR27 pairs: the recovery factor scale transfers to the slow profile (about 0.85 to 0.9 at 233 ms); 133 ms band lost to the reticle arc, longer bands below resolution",
+      "status": "finding",
+      "date": "2026-10-14",
+      "receipts": [
+        "frosty-2026-10-14-L4041-lmr27-pairs-second-profile.json"
+      ],
+      "summary": "At 233 ms the LMR27 pairs sit 0.05 to 0.065 deg above the stored-factor law and at the x0.8 law (effective scale 0.85 to 0.9, both suppressors), so the AK-205 constant transfers to the second recovery profile within one band; the x1.2 Lightened operand is consistent.",
+      "reopenWhen": "A second clean LMR27 band at 180 to 200 ms, or an estimator validated below 25 px separation.",
+      "refs": [
+        "capture-plan"
+      ]
     }
   }
 }

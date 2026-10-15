@@ -2799,6 +2799,14 @@
         "value": "auto"
       }
     ],
+    "data/weapons.json:/[id=ak205]/recoil/ads/decFactor": [
+      {
+        "receipt": "frosty-2026-10-14-L4040-ak205-recoil-recovery-capture.json",
+        "date": "2026-10-14",
+        "relation": "contradicts",
+        "value": 48
+      }
+    ],
     "data/weapons.json:/[id=ak205]/tacRld": [
       {
         "receipt": "frosty-2026-09-29-L123-reload-phases.json",
