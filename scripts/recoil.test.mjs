@@ -1,13 +1,13 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { applyRecoilDecay, genRecoilPts, setSimContext } from '../sim/core.js';
+import { RECOIL_RECOVERY_SCALE, applyRecoilDecay, genRecoilPts, setSimContext } from '../sim/core.js';
 
 function weapon(changes = {}) {
   setSimContext({ aimState: 'ads', compensationFn: () => 0, platformRecoilMultFn: () => 1 });
   return { id: 'recoil-test', rpm: 600, recoil: { ads: {
     dir: 0, amount: 1, amountMult: 1, amountExp: 0,
     dirVar: 0, dirVarMult: 1, dirVarExp: 0,
-    decFactor: 4, decExp: 1, decTimeExp: 0, decOffset: 0,
+    decFactor: 4 / RECOIL_RECOVERY_SCALE, decExp: 1, decTimeExp: 0, decOffset: 0,
     duration: 0.05, ...changes,
   } } };
 }

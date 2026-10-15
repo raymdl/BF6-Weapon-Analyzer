@@ -360,13 +360,21 @@ export function simulateSpread(w, shotCount) {
  * Returns pre-shot {x, y} angular offsets in degrees for each bullet.
  * Compensation is read from ctx.compensationFn() — pages provide their own.
  */
+/**
+ * Global scale on every weapon's recovery factor. Measured from impact pairs and bursts on the
+ * AK-205 (0.8, L4040) and confirmed within one band on the LMR27 (0.85 to 0.9, L4041); the stored
+ * factors in data/weapons.json are the source operands and are left as read. The Control attribute
+ * bar in weapon-attributes.js is deliberately unscaled: it matches the in-game stat screen.
+ */
+export const RECOIL_RECOVERY_SCALE = 0.8;
+
 export function genRecoilPts(w, seed = 0, shots = 20) {
   const { compensationFn } = _ctx;
   const rng = mulberry32((whash(w.id) ^ seed) >>> 0);
   const pts  = [{ x: 0, y: 0 }];
   const group = recoilGroup(w);
   const baseDecF = group.decFactor;
-  const decF    = baseDecF * (_ctx.aimState === 'ads'
+  const decF    = baseDecF * RECOIL_RECOVERY_SCALE * (_ctx.aimState === 'ads'
     ? (w._adsRecoilDecayMult ?? 1) : (w._hipRecoilDecayMult ?? 1));
   const decExp  = group.decExp;
   const timeExp = group.decTimeExp;

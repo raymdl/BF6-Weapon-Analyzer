@@ -66,6 +66,11 @@ The source provides these operands;
 recordings support the qualitative effect, not the exact native arithmetic.
 Recovery uses a continuous reset-on-shot clock with at most 1 ms delivery steps.
 The old 1.1 was an early visual estimate and is no longer used.
+Since 14 October 2026 the simulator scales every recovery factor by 0.8
+(`RECOIL_RECOVERY_SCALE` in `sim/core.js`), fitted to AK-205 impact pairs and bursts
+and consistent with one LMR27 band (L4040, L4041). The stored factors are the source
+operands; the 0.8 is an empirical correction on the modeled law, measured on two of the
+recovery profiles, and the Control attribute bar is left unscaled to match the stat screen.
 The modeled M4A1 15-round recoil-only height reduction is 10.0%, compared with about
 15% in the impact/camera observations. Camera pixels are not projectile angles.
 See [validation and unused-field review](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md).

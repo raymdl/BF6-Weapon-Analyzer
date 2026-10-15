@@ -208,11 +208,18 @@ operands: pairs 0.331 / 0.302 degrees (Standard / Lightened) at 133 ms against 0
 15 rounds) against 1.17 / 1.74 / 1.97. A uniform factor of 0.8 on `decFactor` fits all ten (chi-square
 48 against 580 as stored); the fixed dead time does not (it fits bursts only); the Standard minus
 Lightened differences match the x1.2 operand. The reading rests on the 1x field of view being
-103 degrees, which was not shown on camera. This is a proposal in the research queue
-(L4040), not a model change; the law's shape is unchanged. LMR27 pairs recorded the same evening
+103 degrees, which the operator confirmed after the capture. LMR27 pairs recorded the same evening
 (L4041) give 0.384 / 0.322 degrees at 233 ms against 0.319 / 0.271 stored and 0.403 / 0.349 at
 x0.8, an effective scale of 0.85 to 0.9 on the slow recovery profile (factor 13.7, exponent 0.56),
 so the constant transfers across profiles within one band's error.
+
+**Applied 14 October 2026.** The simulator multiplies every weapon's recovery factor by a single
+constant, `RECOIL_RECOVERY_SCALE = 0.8` in `sim/core.js`, inside the recoil path generator. The
+stored `decFactor` operands are unchanged (they remain the source values), the law's shape is
+unchanged, and the Control attribute bar is not scaled because it matches the in-game stat screen.
+The constant is a measured correction on an unverified law, not a decoded operand: it is pinned by
+two AK-205 bands and three burst lengths and by one LMR27 band, and a second clean LMR27 band at
+180 to 200 ms, or a third recovery profile, would decide whether 0.8 is exactly common.
 
 ### Duration and Smooth attachment selection
 
