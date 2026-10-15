@@ -7829,6 +7829,118 @@
       "refs": [
         "capture-plan"
       ]
+    },
+    "L4042": {
+      "id": "L4042",
+      "title": "Template-fit re-analysis of the 14 October pairs: factor scale 0.8 to 0.9 confirmed on all resolved bands; a slow recovery tail (last 10 to 20% of the kick) and no Lightened advantage beyond 300 ms, which no variant of the site law reproduces",
+      "status": "finding",
+      "date": "2026-10-15",
+      "receipts": [
+        "frosty-2026-10-15-L4042-recovery-tail-template-fit.json"
+      ],
+      "summary": "A two-star template fit (validated unbiased from 6 px, floor 4 to 7 px) measures all twenty 14 October bands. AK-205 Standard keeps 0.10 deg at 292 ms and 0.08 at 333 ms where the x0.8 law is at zero; the LMR27 Lightened at 350 ms (0.191 deg) equals the Standard. A scan over factor, time exponent, offset, recoil power and dead time bottoms out at chi2 207 for 26 observations (stored 737, applied 258).",
+      "reopenWhen": "The 15 October captures (TR-7 bands to 600 ms with bursts, LMR27 200 and 300 ms replicate, AK-205 long gaps) are analysed, or a readable implementation gives the native recovery law.",
+      "refs": [
+        "capture-plan"
+      ]
+    },
+    "L4043": {
+      "id": "L4043",
+      "title": "TR-7 and LMR27 captures: the 0.8 recovery scale holds on a third profile; the slow tail and the missing Lightened tail replicate; no residual beyond 0.5 s (the 15-round burst excess first reported here was a close-up ruler error, withdrawn by L4045)",
+      "status": "finding",
+      "date": "2026-10-15",
+      "receipts": [
+        "frosty-2026-10-15-L4043-tr7-lmr27-tail-capture.json"
+      ],
+      "summary": "TR-7 267 ms pairs sit at the x0.8 law on both suppressors and its 5 and 10-round bursts match it, but at 350 ms it keeps 0.129 deg where the law gives 0.022 and its 15-round bursts, re-measured from the 1x screenshots and a camera track (L4045), sit at 8.5 deg against 8.3. The LMR27 reproduces 14 October to 0.001 deg, Lightened again equal to Standard at 340 to 350 ms. All bands from 480 ms are at the estimator floor. Fits over 45 observations: stored 1232, x0.8 477, best 433.",
+      "reopenWhen": "A capture on the 72 / 1.2 profile (M433 or similar) with 10, 15 and 20-round bursts, or a readable implementation of the recovery law.",
+      "refs": [
+        "capture-plan"
+      ]
+    },
+    "L4044": {
+      "id": "L4044",
+      "title": "Recovery-law shape study: no two-term, rate-capped or time-capped recovery reproduces the tail, the Lightened tail and the TR-7 late climb together; the 15-round TR-7 climb is convex where every recovery law is concave; the unread recoil fields do not single out the steep profile",
+      "status": "finding",
+      "date": "2026-10-16",
+      "receipts": [
+        "frosty-2026-10-16-L4044-recovery-law-shape.json"
+      ],
+      "summary": "Over the 14 and 15 October observations the applied x0.8 law scores 476.7, the best offset variant 432.5, a two-pool recovery 410.4, a time cap 420.5, a recovery-rate cap of 8 deg/s 347.5 and the best combination 329.8; none matches the 290 to 350 ms tail, the equal Lightened and Standard LMR27 bands at 340 to 350 ms, or the 15-round TR-7 extent without over-predicting the 10-round one. The 15-round TR-7 close-ups put 0.591 to 0.674 of the marks in the lower half of the spray against 0.39 to 0.41 for the law: the climb accelerates through the burst. The nine weapons' unread fields (2.1.1.0) differ only in VerticalRecoilMin/Max and the horizontal bounds; the Smooth modifier is x1.2 on the factor and 0.05 s duration, nothing more.",
+      "reopenWhen": "Per-shot impact positions from the burst videos, or a capture on the 72 / 1.2 profile with 10, 15 and 20-round bursts, or a readable implementation of the recoil kick and recovery.",
+      "refs": [
+        "capture-plan"
+      ]
+    },
+    "L4045": {
+      "id": "L4045",
+      "title": "TR-7 15-round burst videos, camera track: the pre-shot aim follows the x0.8 law to within 0.4 deg through all 15 shots on both suppressors (the convex-climb reading of L4044 is withdrawn); the extent excess is impact deviation above the aim; recovery after the burst is rate-limited near 30 deg/s",
+      "status": "finding",
+      "date": "2026-10-16",
+      "receipts": [
+        "frosty-2026-10-16-L4045-tr7-burst-camera-track.json"
+      ],
+      "summary": "Frame-by-frame registration of the world around the scope in 18 bursts gives the camera pitch at 120 fps; the plateau before each kick is the pre-shot aim. Standard reaches 8.51 deg at shot 15 against 8.32 for the x0.8 law (stored 7.40), Lightened 7.61 against 7.62, every shot within 0.4 deg; lower-half fraction 0.37 / 0.36 against 0.40 / 0.33. The spray top sits 1.0 to 1.5 deg above the shot-15 aim (model 0.35), and the recovery after the last shot descends at a near-constant 28 to 31 deg/s where the law runs at 37 falling to 10.",
+      "reopenWhen": "A capture of long bursts followed by a held aim on two profiles (recovery-rate limit), or a mark-per-shot measurement of impact against aim (the upward deviation), or a readable implementation of the recoil kick and recovery.",
+      "refs": [
+        "capture-plan"
+      ]
+    },
+    "L4046": {
+      "id": "L4046",
+      "title": "TR-7 burst extents re-measured on the 1x screenshots: 15 rounds 8.62 / 7.59 deg, not 11.2 / 9.6; the close-up method counted the panel frame and the weapon as marks; every TR-7 burst now sits on the x0.8 law",
+      "status": "finding",
+      "date": "2026-10-16",
+      "receipts": [
+        "frosty-2026-10-16-L4046-tr7-burst-extents-1x.json"
+      ],
+      "summary": "Measured directly on the 1x screenshots the TR-7 extents are 8.62 / 7.59 deg at 15 rounds (law 8.67 / 8.03), 6.38 / 6.04 at 10 (6.47 / 6.13) and 3.58 / 2.97 at 5 (3.37 / 3.28), and the 15-round extents sit +0.08 / -0.12 deg from the camera aim at shot 15. The close-ups had attached the panel frame highlight and the weapon to the sprays. Refitted, the applied x0.8 law scores 329.7 on 45 observations and the rate cap no longer helps.",
+      "reopenWhen": "A burst capture on the 72 / 1.2 profile (M433) measured at 1x, or a readable implementation of the recovery law.",
+      "refs": [
+        "capture-plan"
+      ]
+    },
+    "L4047": {
+      "id": "L4047",
+      "title": "M433 pairs and bursts (72 / 1.2 profile): 200 ms band on the x0.8 law, 267 ms between x0.8 and x0.9, no tail at 333 ms; 15-round extents 5.66 / 4.71 deg against 5.72 / 5.31 at x0.8; the spread indicator never appears in semi-auto pairs and opens from the first automatic shot",
+      "status": "finding",
+      "date": "2026-10-16",
+      "receipts": [
+        "frosty-2026-10-16-L4047-m433-profile-capture.json"
+      ],
+      "summary": "Standard pairs 0.279 / 0.101 / 0.056 deg at 200 / 267 / 333 ms against 0.284 / 0.115 / 0.013 at x0.8; Lightened 0.246 / 0.101 at 200 / 267 ms against 0.238 / 0.072. Bursts at 1x: 5 / 10 / 15 rounds 2.55 / 4.05 / 5.66 Standard and 2.29 / 3.85 / 4.71 Lightened. All-weapons fit: stored 1099.5, applied x0.8 359.2, best 241.8.",
+      "reopenWhen": "20 and 25-round bursts on this profile measured at 1x, or a readable implementation of the recovery law.",
+      "refs": [
+        "capture-plan"
+      ]
+    },
+    "L4048": {
+      "id": "L4048",
+      "title": "Camera track of the single-shot pair videos: the recovery clock resets per shot, the camera rings for 7 to 10 frames after every kick and then follows the x0.8 law stretched in time (x1.35 to 1.40 on the AK-205 and TR-7, x1.05 to 1.10 on the LMR27), sitting above the hole separations by a kick-proportional amount that fades by 350 ms",
+      "status": "finding",
+      "date": "2026-10-16",
+      "receipts": [
+        "frosty-2026-10-16-L4048-pair-camera-track.json"
+      ],
+      "summary": "356 of 377 pairs tracked at 120 fps. The return after shot 2 equals the return after shot 1 plus the residual it started from (no-reset excluded on all 36 bands). After a single shot the camera is above the x0.8 law by +0.12 (AK-205) and +0.25 to +0.33 deg (TR-7) from 200 to 330 ms, within 0.06 on the LMR27, and reaches zero at 408 to 458 ms with a 0.04 undershoot on the TR-7; a two-pool slow pool does not fit (no bend, not a fixed fraction, vanishes by 450 ms). At shot 2 the camera is 0.07 to 0.36 deg above the holes at 167 to 300 ms (4 to 8 standard errors, growing with the kick) and equals them at 333 to 350 ms on the AK-205 and LMR27 Lightened. Descent rate 1.3 to 1.8 deg/s (AK-205) and 3.2 to 3.9 (TR-7), near-constant, the burst signature scaled down.",
+      "reopenWhen": "A capture that places the bullets against the camera on one shot (impact position per shot on a wall with a reference grid), or a readable implementation of the recovery and camera layers.",
+      "refs": [
+        "capture-plan"
+      ]
+    },
+    "L4049": {
+      "id": "L4049",
+      "title": "Recovery law with a time term that stops accelerating (saturating time term, lower exponent, held rate) fitted to the 56 bullet-hole observations and the L4048 camera curves: none beats the applied x0.8 law on every weapon on both; the camera stretch is a weapon-dependent factor scale the holes exclude",
+      "status": "finding",
+      "date": "2026-10-17",
+      "receipts": [
+        "frosty-2026-10-17-L4049-stretched-time-fit.json"
+      ],
+      "summary": "Hard cap min(t, 0.2 s) 294.9 against applied 359.2 (two-pool 241.8) but worse on the AK-205 and no camera gain; soft cap, lower exponent (global or compensated C) and held rate worse than the applied law on the holes (367.9, 341.3, 698.9); every setting within 100 of the applied law leaves the AK-205 and TR-7 camera stretched x1.25 to 1.39; the camera's own scale (C 0.45 on the AK-205 and TR-7, 0.7 on the LMR27) scores 5959.4 on the holes. Offset 0 with C 0.87 scores 270.6 (245 with a cap), a source-operand change not proposed. The x0.8 law stands.",
+      "reopenWhen": "A capture that places the bullets against the camera on one shot, or a readable implementation of the recovery law (offset, time term) and the camera layer.",
+      "refs": [
+        "capture-plan"
+      ]
     }
   }
 }

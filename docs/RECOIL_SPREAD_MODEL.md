@@ -221,6 +221,69 @@ The constant is a measured correction on an unverified law, not a decoded operan
 two AK-205 bands and three burst lengths and by one LMR27 band, and a second clean LMR27 band at
 180 to 200 ms, or a third recovery profile, would decide whether 0.8 is exactly common.
 
+**Tail re-analysis (15 October 2026, L4042).** A template fit that separates overlapping marks down to
+6 px measured every 14 October band. The 0.8 to 0.9 scale holds on both profiles where the law is
+far from zero, but the AK-205 Standard keeps 0.10 degrees at 292 ms and 0.08 at 333 ms where this law
+is at zero (it reaches zero through the offset term), and the LMR27 Lightened at 350 ms (0.191) recovers
+no faster than the Standard. No variant of the factor, time exponent, offset, recoil power or dead
+time fits the tail (chi-square 207 at best for 26 observations). The site keeps the x0.8 law; the
+tail is open and is the target of the 15 October captures.
+
+**15 October captures (L4043).** TR-7 pairs and bursts and an LMR27 replicate: the 0.8 scale holds on the
+TR-7's profile (factor 104, exponent 1.459) at 267 ms and in 5 and 10-round bursts; the LMR27 numbers
+repeat to 0.001 degrees with the Lightened tail anomaly intact; every band from 480 ms on is at the
+estimator floor, so nothing permanent remains; and the 15-round TR-7 bursts reach 11.2 degrees against 8.7
+under this law, which saturates where the game keeps climbing. Over 45 observations on three weapons the
+stored law scores 1232, the applied x0.8 477, the best variant of the family 433. The site keeps x0.8.
+
+**16 October shape study (L4044).** Two-term, rate-capped and time-capped recoveries were fitted to the same
+observations (with the unusable TR-7 200 ms band now excluded, which lowers every score by about 40): applied
+x0.8 476.7, best offset variant 432.5, recovery-rate cap 8 deg/s 347.5, best combination 329.8. None reproduces the
+290 to 350 ms tail, the equal Lightened and Standard LMR27 tail bands and the 15-round TR-7 extent together,
+and the 15-round close-ups show the climb accelerating through the burst where every recovery law
+saturates. Nothing changed on the site.
+
+**16 October camera track (L4045).** Registering the world around the scope frame by frame in the 15-round TR-7
+videos gives the camera pitch at 120 fps; the plateau before each kick is the pre-shot aim. It follows this law with
+the 0.8 scale to within 0.4 degrees through all 15 shots on both suppressors (8.51 against 8.32 degrees at shot 15
+Standard, 7.61 against 7.62 Lightened; the unscaled law gives 7.40), so the convex-climb reading from the close-up
+marks is withdrawn. What the law misses is elsewhere: the top impacts land 1.0 to 1.5 degrees above the aim (the
+model's spread gives 0.35), and the recovery after the last shot descends at a near-constant 28 to 31 degrees per
+second from 6 degrees down where the law runs at 37 falling to 10. Nothing changed on the site.
+
+**16 October re-measurement (L4046).** The TR-7 burst extents measured directly on the 1x screenshots are
+8.62 / 7.59 degrees at 15 rounds, 6.38 / 6.04 at 10 and 3.58 / 2.97 at 5 (Standard / Lightened), against
+8.67 / 8.03, 6.47 / 6.13 and 3.37 / 3.28 under this law with the 0.8 scale: the 15 October close-up values (11.2 / 9.6
+at 15 rounds) had counted the panel frame and the weapon as marks, and the "impacts above the aim" of the camera
+track was the dust cloud. Every TR-7 burst observation now sits on the law; refitted over 45 observations the
+applied law scores 329.7 and a recovery-rate cap no longer improves it. Nothing changed on the site.
+
+**16 October M433 capture (L4047).** The 72 / 1.2 profile (fifteen weapons): Standard pairs 0.279 / 0.101 / 0.056 degrees at
+200 / 267 / 333 ms against 0.284 / 0.115 / 0.013 under this law with the 0.8 scale (stored 0.224 / 0.062 / -0.001); no
+tail at 333 ms. Bursts measured at 1x: 5 / 10 / 15 rounds 2.55 / 4.05 / 5.66 Standard against 2.23 / 4.31 / 5.72 at x0.8, and
+2.29 / 3.85 / 4.71 Lightened against 2.17 / 4.08 / 5.31 (stored 2.06 / 3.74 / 4.73). The spread indicator, shown for the
+first time, never appears during semi-auto pairs and opens from the first automatic shot. Nothing changed on the site.
+
+**16 October camera track of the pair videos (L4048).** 356 of 377 single-shot pairs (AK-205, LMR27, TR-7, both suppressors)
+tracked at 120 fps. The recovery clock is reset by every shot: the return after shot 2 equals the return after shot 1 plus
+the residual it started from, and a clock that runs on through shot 2 is 0.1 to 0.6 degrees off. Every kick is followed by a
+camera ringing of fixed period that settles in 7 to 10 frames. From 170 ms on the camera follows this law with its time axis
+stretched by 1.35 to 1.40 on the AK-205 and TR-7 (above the law by 0.12 and 0.25 to 0.33 degrees from 200 to 330 ms, zero at
+408 to 458 ms where the law reaches zero at 289 to 374) and by 1.05 to 1.10 on the LMR27, descending at a near-constant rate
+(1.3 to 1.8 degrees per second on the AK-205, 3.2 to 3.9 on the TR-7); a slow pool holding 10% of the kick does not fit. At
+shot 2 the camera sits above the hole separations by 0.07 to 0.36 degrees at 167 to 300 ms, growing with the kick, and equals
+them at 333 to 350 ms on the AK-205 and the LMR27 Lightened, so the bullets do not follow the camera in full. Nothing changed
+on the site; no change is proposed.
+
+**17 October stretched-time fit (L4049).** Recovery laws whose time term stops accelerating (a hard or smooth cap on t, a
+lower exponent with a compensating factor, a descent that holds its early rate) were fitted to the 56 hole observations with
+the factor scale refitted each time. A hard cap at 0.2 s scores 294.9 against 359.2 for this law at x0.8 (two-pool 241.8) but
+is worse on the AK-205; the smooth cap, the lower exponent and the held rate are worse than x0.8 (367.9, 341.3, 698.9). None
+removes the camera's time stretch at its hole-fitted scale, and the scale the camera itself wants (0.45 on the AK-205 and
+TR-7, 0.7 on the LMR27) is excluded by the holes (5959.4). The x0.8 scale, the stored time exponent and offset stand; nothing
+changed on the site. A fit with RecoilDecreaseOffset 0 and scale 0.87 is better on every weapon (270.6) but changes a source
+operand and is recorded as an open question, not proposed.
+
 ### Duration and Smooth attachment selection
 
 Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
