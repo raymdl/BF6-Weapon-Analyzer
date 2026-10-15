@@ -7804,17 +7804,16 @@
     },
     "L4040": {
       "id": "L4040",
-      "title": "AK-205 recoil recovery measured by impacts: recovery about 20% slower than the stored factor under the site law; dead time rejected; Lightened x1.2 supported",
-      "status": "proposal",
+      "title": "AK-205 recoil recovery measured by impacts: recovery about 20% slower than the stored factor; applied to the site as a global 0.8 recovery scale",
+      "status": "site-fixed",
       "date": "2026-10-14",
       "receipts": [
         "frosty-2026-10-14-L4040-ak205-recoil-recovery-capture.json"
       ],
-      "summary": "Pairs at 133 and 167 ms and 5/10/15-round bursts, both suppressors, all exceed the production law; a factor scale of 0.8 fits all ten measurements (chi2 48 vs 580), a fixed dead time does not, and the Standard-minus-Lightened differences match the x1.2 recovery operand.",
-      "reopenWhen": "The operator confirms the 1x FOV, a second weapon with a different recovery profile (LMR27) is measured, or a readable implementation gives the native constant.",
+      "summary": "Pairs at 133 and 167 ms and 5/10/15-round bursts, both suppressors, all exceed the production law; a factor scale of 0.8 fits all ten measurements (chi2 48 vs 580), a fixed dead time does not, and the Standard-minus-Lightened differences match the x1.2 recovery operand. Applied 14 October: RECOIL_RECOVERY_SCALE = 0.8 in sim/core.js on every weapon (operator approved after the FOV 103 confirmation and the LMR27 band, L4041).",
+      "reopenWhen": "A second clean LMR27 band at 180 to 200 ms or a third recovery profile puts the constant away from 0.8, or a readable implementation gives the native constant.",
       "refs": [
-        "capture-plan",
-        "queue-proposals"
+        "capture-plan"
       ]
     },
     "L4041": {
