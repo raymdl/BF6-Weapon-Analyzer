@@ -67,10 +67,16 @@ recordings support the qualitative effect, not the exact native arithmetic.
 Recovery uses a continuous reset-on-shot clock with at most 1 ms delivery steps.
 The old 1.1 was an early visual estimate and is no longer used.
 Since 14 October 2026 the simulator scales every recovery factor by 0.8
-(`RECOIL_RECOVERY_SCALE` in `sim/core.js`), fitted to AK-205 impact pairs and bursts
-and consistent with one LMR27 band (L4040, L4041). The stored factors are the source
-operands; the 0.8 is an empirical correction on the modeled law, measured on two of the
-recovery profiles, and the Control attribute bar is left unscaled to match the stat screen.
+(`RECOIL_RECOVERY_SCALE` in `sim/core.js`), fitted to AK-205 impact pairs and bursts (L4040)
+and confirmed on the LMR27, TR-7 and M433 (L4041 to L4049): four recovery profiles, 56 bullet-hole
+observations, and camera tracks of the pair and burst videos. The stored factors are the source
+operands; the 0.8 is an empirical correction on the modeled law, and the Control attribute bar is
+left unscaled to match the stat screen. Not explained by the scaled law: the last tenth of a kick
+lingers about 100 ms longer on the AK-205 and TR-7 (not on the LMR27 or M433), the Lightened
+Suppressor's recovery advantage is absent in the LMR27 tail, and the camera sits a kick-proportional
+amount above the bullets after each shot. Every structural variant tried (two-pool, rate cap, time
+cap, stretched time, lower exponent, dead time) fits worse on at least one weapon, so the x0.8 law
+stands; the residuals are hundredths of a degree in slow single fire and nothing in bursts.
 The modeled M4A1 15-round recoil-only height reduction is 10.0%, compared with about
 15% in the impact/camera observations. Camera pixels are not projectile angles.
 See [validation and unused-field review](archive/RECOIL_MODEL_VALIDATION_2026-09-11.md).

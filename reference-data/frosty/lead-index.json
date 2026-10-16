@@ -7941,6 +7941,20 @@
       "refs": [
         "capture-plan"
       ]
+    },
+    "L4050": {
+      "id": "L4050",
+      "title": "M433 spread indicator against the site spread law: increase, firing recovery (2.7 + 1.2 x delta^2.5) and not-firing recovery (7.2 deg/s) reproduced within 5% through 5, 10 and 15-round bursts; the indicator draws the spread radius at the lens scale (179 px/deg)",
+      "status": "finding",
+      "date": "2026-10-15",
+      "receipts": [
+        "frosty-2026-10-15-L4050-m433-spread-indicator-law.json"
+      ],
+      "summary": "Between-shot recovery 2.68 / 2.97 / 3.62 / 4.42 deg/s at 0.42 / 0.70 / 0.98 / 1.26 deg against 2.80 / 3.11 / 3.70 / 4.63; not-firing 7.13 against 7.2; handover one shot interval after the last shot; peaks within 0.045 deg of the law at every shot. Scale fixed by the moving (0.32) and standing (0.05) minima and the lens scale. No site change.",
+      "reopenWhen": "A capture that places impacts against the indicator radius, or a pause past 0.4 s to see the idle state.",
+      "refs": [
+        "capture-plan"
+      ]
     }
   }
 }

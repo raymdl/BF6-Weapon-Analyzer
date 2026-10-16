@@ -199,7 +199,7 @@ The checker constructs six keys:
 | `rpm` | Resolved firing rate |
 | `minAngle` | The checker's `recoilIncAds` input; do not substitute an arbitrary ADS spread field based on the key name |
 | `duration` | Resolved ADS recoil duration |
-| `decrease` | ADS decrease factor multiplied by the separately stored recoil-decay multiplier |
+| `decrease` | ADS decrease factor multiplied by the separately stored recoil-decay multiplier; the simulator's 0.8 recovery scale is not applied here, so the score matches the stat screen |
 
 Selection proceeds in this order:
 

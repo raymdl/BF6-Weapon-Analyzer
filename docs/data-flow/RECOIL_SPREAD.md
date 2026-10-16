@@ -34,7 +34,8 @@ flowchart TB
 ```
 
 [`sim/core.js`](../../sim/core.js) selects the explicit ADS/hip group and consumes
-amount/variation factors, exponents, direction and recovery fields. The attachment
+amount/variation factors, exponents, direction and recovery fields (the recovery factor
+multiplied by `RECOIL_RECOVERY_SCALE`, 0.8, since 14 October 2026). The attachment
 resolver supplies field-scoped modifications. The `recoil_decay.json` maps are
 still fetched at startup but are retained legacy data, not current recovery
 fallbacks.

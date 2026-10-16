@@ -31,7 +31,7 @@ PR #25 (`50fd5eb`). Publication verification is handled by the release task.
 
 | Topic | Completed | Still open |
 |---|---|---|
-| Recoil delivery/recovery | Timed delivery, simultaneous recovery, and reset-on-shot clock implemented | Native envelope, recovery equation, timer semantics, and camera versus physical aim |
+| Recoil delivery/recovery | Timed delivery, simultaneous recovery, and reset-on-shot clock implemented; October 2026 bullet-hole captures confirmed the clock and put the recovery factor at 0.8 of the source value (applied) | Native envelope and arithmetic; the 100 ms tail on fast profiles; the Lightened tail on the LMR27; the camera layer above the bullets |
 | Smooth attachments | Ordinary 50 ms / 1.2; 17 mapped Bolt exceptions at 66.667 ms / 1.728; 63 base weapons checked at 25 ms | Exact modifier operations/composition; Bolt recording validation; PP-19 Flash Comp source mapping |
 | Heavy-type spread | Frosty factors applied to Heavy, Heavy Extended, and Cryogenic; AK4D comparison complete | Second-weapon transfer check, firing while moving, and idle-state activation |
 | VSSM hipfire | Matched standing screenshots support index 4; override removed; stored minima 1.804 / 2.255 | Independent angular/projectile calibration and hipfire-firing coverage; moving value follows the source row |

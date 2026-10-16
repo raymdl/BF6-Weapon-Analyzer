@@ -138,7 +138,11 @@ Other displacement exponents use small numerical steps. Recovery continues after
 delivery with the same clock age. Overlapping impulses retain their full input.
 The selected recoil group must supply explicit recovery parameters; missing
 values are reported and the dependent simulation is unavailable. `_adsRecoilDecayMult` or
-`_hipRecoilDecayMult` scales the factor for the selected aim state.
+`_hipRecoilDecayMult` scales the factor for the selected aim state. Since 14 October 2026 the factor
+also carries one empirical constant, `RECOIL_RECOVERY_SCALE` = 0.8: bullet-hole captures on four recovery
+profiles (AK-205, LMR27, TR-7, M433; leads L4040 to L4049) put the game's recovery at 0.8 of the stored
+factor with the law's shape and reset-on-shot clock otherwise confirmed. The paragraphs from "Applied
+14 October 2026" below carry the evidence and the open residuals.
 
 Smooth recoil uses the selected source duration as an override and the selected
 source recovery operand as a multiplier in both aim states. The duration
@@ -172,7 +176,7 @@ the `GunSwayRecoilData` members that the BF1 formula uses by value. Term by term
 | `/ 0.5` | `RecoilDecreaseNorm` | 1 | `decNorm` | divisor before the power; neutral at 1, so not applied |
 | `^0.6` | `RecoilDecreaseExponent` | 1 (0.6 on bolt-actions and two shotguns) | `decExp` | applied |
 | `+ 0.001` | `RecoilDecreaseOffset` | 0.06 (KSG reference 0.001, the BF1 value) | `decOffset` | applied |
-| `RecoilDecrease` | `RecoilDecreaseFactor` | 57 | `decFactor` | applied |
+| `RecoilDecrease` | `RecoilDecreaseFactor` | 57 | `decFactor` | applied, times `RECOIL_RECOVERY_SCALE` 0.8 (measured; see below) |
 | `TimeSinceLastShot^0.5` | `RecoilDecreaseTimeExponent` | 1.045 | `decTimeExp` | applied; clock reset on every shot |
 | `DeltaTime` | frame step | | 1 ms steps, exact integral | continuous limit, not the engine's tick |
 | `C` (about 5) | none known | | none | not applied; see the replay below |
@@ -263,6 +267,15 @@ applied law scores 329.7 and a recovery-rate cap no longer improves it. Nothing 
 tail at 333 ms. Bursts measured at 1x: 5 / 10 / 15 rounds 2.55 / 4.05 / 5.66 Standard against 2.23 / 4.31 / 5.72 at x0.8, and
 2.29 / 3.85 / 4.71 Lightened against 2.17 / 4.08 / 5.31 (stored 2.06 / 3.74 / 4.73). The spread indicator, shown for the
 first time, never appears during semi-auto pairs and opens from the first automatic shot. Nothing changed on the site.
+
+**Spread law against the M433 indicator (L4050).** The spread indicator read on every frame of the 12 M433 burst clips (52
+automatic bursts of 5, 10 and 15 rounds, 120 fps) follows `simulateSpread` as implemented: between shots the spread falls at
+2.68 / 2.97 / 3.62 / 4.42 degrees per second at 0.42 / 0.70 / 0.98 / 1.26 degrees against 2.80 / 3.11 / 3.70 / 4.63 from the
+firing recovery 2.7 + 1.2 x delta^2.5; after the last shot it falls at 7.13 against the 7.2 not-firing offset, starting one
+shot interval after the shot, as the post-burst split above computes it; and the peak after each shot is within 0.045 degrees
+of the law at all 15 shots. The indicator draws the spread radius at the optic's magnification (179 px per degree at 5.04x,
+fixed by the 0.32 moving and 0.05 standing minima), so its units are degrees of spread. The indicator ramps over two to three
+frames after a shot rather than stepping. Nothing changed on the site.
 
 **16 October camera track of the pair videos (L4048).** 356 of 377 single-shot pairs (AK-205, LMR27, TR-7, both suppressors)
 tracked at 120 fps. The recovery clock is reset by every shot: the return after shot 2 equals the return after shot 1 plus
@@ -511,6 +524,10 @@ precision, shotgun shifts and clamping. The
 single-attachment builds fit the display axis. These checks protect the
 implementation; they do not independently validate its physical accuracy.
 
-Unresolved areas include recoil recovery arithmetic, fitted attachment recovery
-parameters, conflicting modifier activation/composition evidence, and target
-sampling approximations.
+The recoil recovery law's form, its reset-on-shot clock and the 0.8 factor scale are supported by
+bullet-hole and camera captures on four recovery profiles (L4040 to L4049, above); the spread law's
+increase, firing and not-firing recovery were checked against the in-game spread indicator (L4050).
+Still unresolved: the native arithmetic behind the 0.8, the 100 ms tail on the AK-205 and TR-7, the
+missing Lightened Suppressor advantage in the LMR27 tail, the camera layer that sits above the
+bullets after each kick, fitted attachment recovery parameters, conflicting modifier
+activation/composition evidence, and target sampling approximations.

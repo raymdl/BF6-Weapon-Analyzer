@@ -33,7 +33,8 @@ with 0.67 for Interdictor moving ADS. The M39 settled-hipfire captures support t
 0.5 interpretation; other states and native formulas remain unverified.
 
 The recoil model delivers each shot over its selected Frosty duration while
-recovery acts at the same time. Base duration is 25 ms for all 63 currently
+recovery acts at the same time. Recovery runs at 0.8 of the source factor, measured on
+bullet-hole captures of four weapons in October 2026. Base duration is 25 ms for all 63 currently
 supported weapons. Smooth attachments use 50 ms and a 1.2 recovery factor;
 17 weapon–muzzle combinations use the source Bolt values of 66.667 ms and 1.728.
 Heavy-type barrels now use source ADS spread and recovery factors, supported by
