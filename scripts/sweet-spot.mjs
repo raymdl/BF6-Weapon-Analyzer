@@ -7,26 +7,58 @@
 // said sweet spots may move again, so the window is now read from the curve instead of recorded
 // beside it — there is no stored value left that a future import could contradict.
 //
-// The window is the span over which the curve holds its maximum damage. A weapon whose curve
-// never reaches that plateau across two distinct breakpoints has no sweet spot (the Mini Scout).
+// The sweet spot is the mechanic, not the curve's shape: the span of ranges over which one
+// upper-chest hit (zone multiplier 1) kills a full-health soldier, so where the curve holds at
+// least ONE_SHOT_DAMAGE. For the launch bolt-actions that span is also the 100-damage plateau.
+// For a bullet that peaks above 100 (the ELR-40 Single Shot's 90 → 120 → 80 curve) the two
+// differ, and the one-shot span is the one the game's "sweet spot" wording describes.
+// A curve that never reaches the threshold has no sweet spot (the Mini Scout).
+
+export const ONE_SHOT_DAMAGE = 100;
 
 /**
- * Returns { rangeM: [start, end], damage } for a continuous maximum-damage plateau
- * of at least 100 damage, or { rangeM: null } when it never occurs.
+ * Ranges over which the curve holds at least `threshold` damage, as [start, end] pairs
+ * in metres. Ramps are interpolated to the exact crossing; a repeated range is a step.
  */
-export function deriveSweetSpot(weapon) {
+export function oneShotSpans(weapon, threshold = ONE_SHOT_DAMAGE) {
   const curve = weapon?.dmg ?? [];
-  const damage = Math.max(...curve.map(point => point.d));
-  if (damage < 100) return { rangeM: null };
-  const points = curve.filter(point => point.d === damage);
-  if (points.length < 2 || curve.slice(curve.indexOf(points[0]), curve.indexOf(points.at(-1)) + 1)
-    .some(point => point.d !== damage)) return { rangeM: null };
-  const ranges = points.map(point => point.r);
-  const rangeM = [Math.min(...ranges), Math.max(...ranges)];
-  return rangeM[1] > rangeM[0] ? { rangeM, damage } : { rangeM: null };
+  if (curve.length === 0) return [];
+  const spans = [];
+  let start = null;
+  const above = point => point.d >= threshold;
+  if (above(curve[0])) start = curve[0].r;
+  for (let i = 1; i < curve.length; i++) {
+    const previous = curve[i - 1];
+    const point = curve[i];
+    if (above(previous) === above(point)) continue;
+    const ramp = point.r > previous.r;
+    const crossing = ramp
+      ? previous.r + (threshold - previous.d) * (point.r - previous.r) / (point.d - previous.d)
+      : point.r;
+    if (above(point)) start = crossing;
+    else { spans.push([start, crossing]); start = null; }
+  }
+  if (start !== null) spans.push([start, Infinity]);
+  return spans;
 }
 
-/** True when the weapon's curve carries a sweet-spot plateau. */
+/**
+ * Returns { rangeM: [start, end], damage } for the single continuous span where one chest
+ * hit kills (`damage` is the curve's peak inside it), or { rangeM: null } when the curve never
+ * reaches the threshold, holds it to infinity, or has more than one such span.
+ */
+export function deriveSweetSpot(weapon) {
+  const spans = oneShotSpans(weapon);
+  if (spans.length !== 1) return { rangeM: null };
+  const [start, end] = spans[0];
+  if (!(end > start) || !Number.isFinite(end)) return { rangeM: null };
+  const damage = Math.max(...(weapon.dmg ?? [])
+    .filter(point => point.r >= start && point.r <= end)
+    .map(point => point.d));
+  return { rangeM: [start, end], damage };
+}
+
+/** True when the weapon's curve carries a one-shot chest window. */
 export function hasSweetSpot(weapon) {
   return deriveSweetSpot(weapon).rangeM !== null;
 }

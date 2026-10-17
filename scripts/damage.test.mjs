@@ -139,15 +139,26 @@ test('every weapon and ammunition choice resolves finite hit-zone multipliers', 
   }
 });
 
-test('recognizes the Interdictor plateau without capping damage before limb multipliers', () => {
-  // Both exported health curves have this plateau; their falloff endpoints differ.
+test('the sweet spot is the one-shot chest span, not the maximum-damage plateau', () => {
+  // The 1.4.2.5 Interdictor peaked at 150 on a 120-150 m plateau; one chest hit already
+  // kills from where the ramp crosses 100 to where the falloff drops below it.
   for (const falloffEnd of [170, 175]) {
     const weapon = { dmg: [[100, 80], [120, 150], [150, 150], [falloffEnd, 62], [200, 62]]
       .map(([r, d]) => ({ r, d })) };
-    assert.deepEqual(deriveSweetSpot(weapon), { rangeM: [120, 150], damage: 150 });
+    const { rangeM, damage } = deriveSweetSpot(weapon);
+    assert.ok(Math.abs(rangeM[0] - (100 + 20 * 20 / 70)) < 1e-9, 'ramp crossing into 100');
+    assert.ok(Math.abs(rangeM[1] - (150 + 50 * (falloffEnd - 150) / 88)) < 1e-9, 'falloff crossing below 100');
+    assert.equal(damage, 150);
     assert.equal(damageAtRange(weapon, 135), 150);
     assert.equal(bulletsToKillWithHits(damageAtRange(weapon, 135), { bodyMultiplier: 0.67 }), 1);
   }
+  // A curve that peaks at exactly 100 gives the plateau itself (the launch bolt-actions).
+  const plateau = { dmg: [[54, 80], [75, 100], [100, 100], [133, 62]].map(([r, d]) => ({ r, d })) };
+  assert.deepEqual(deriveSweetSpot(plateau), { rangeM: [75, 100], damage: 100 });
+  // The ELR-40 Single Shot bullet peaks at 120 from 42 to 68 m but one-shots from 30 to 80 m.
+  const singleShot = { dmg: [[0, 90], [24, 90], [42, 120], [68, 120], [80, 100], [140, 80]]
+    .map(([r, d]) => ({ r, d })) };
+  assert.deepEqual(deriveSweetSpot(singleShot), { rangeM: [30, 80], damage: 120 });
   const separatedPeaks = { dmg: [{ r: 120, d: 150 }, { r: 135, d: 80 }, { r: 150, d: 150 }] };
   assert.equal(hasSweetSpot(separatedPeaks), false);
 });

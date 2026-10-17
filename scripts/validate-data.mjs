@@ -2,7 +2,7 @@ import { readFileSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { damageAtRange } from '../sim/damage.js';
-import { deriveSweetSpot } from './sweet-spot.mjs';
+import { ONE_SHOT_DAMAGE, deriveSweetSpot, oneShotSpans } from './sweet-spot.mjs';
 import { loadReloadExceptionRegister } from './reload-exceptions.mjs';
 import { availableAttachments } from '../sim/loadout.js';
 
@@ -200,19 +200,28 @@ if (DAMAGE_POINT_SOURCES.size === 0) {
   fail('live baseline must list the damage point sources a breakpoint may cite');
 }
 // Sweet spots are read from the current curve, never pinned to a distance.
-// Assert the required curve shape so a future data refresh can move the window.
+// A sweet spot is the span where one chest hit kills (damage at or above
+// ONE_SHOT_DAMAGE). Assert the required curve shape so a future data refresh
+// can move the window.
 for (const weapon of weapons.filter(item => item.cls === 'Sniper Rifle')) {
-  const { rangeM, damage } = deriveSweetSpot(weapon);
-  if (rangeM === null) continue;
-  const [start, end] = rangeM;
-  if (!(end > start)) {
-    fail(`${weapon.id}: sweet-spot plateau does not span a range`);
+  const spans = oneShotSpans(weapon);
+  if (spans.length === 0) continue;
+  if (spans.length > 1) {
+    fail(`${weapon.id}: damage curve has ${spans.length} separate one-shot spans`);
     continue;
   }
-  if (damageAtRange(weapon, start) !== damage || damageAtRange(weapon, end) !== damage) {
-    fail(`${weapon.id}: damage curve does not hold ${damage} across its sweet spot`);
+  const { rangeM } = deriveSweetSpot(weapon);
+  if (rangeM === null) {
+    fail(`${weapon.id}: one-shot span does not end`);
+    continue;
   }
-  if (!(damageAtRange(weapon, start - 1) < damage) || !(damageAtRange(weapon, end + 1) < damage)) {
+  const [start, end] = rangeM;
+  const tolerance = 1e-9;
+  if (damageAtRange(weapon, start) < ONE_SHOT_DAMAGE - tolerance
+    || damageAtRange(weapon, end) < ONE_SHOT_DAMAGE - tolerance) {
+    fail(`${weapon.id}: damage curve does not hold ${ONE_SHOT_DAMAGE} across its sweet spot`);
+  }
+  if (!(damageAtRange(weapon, start - 1) < ONE_SHOT_DAMAGE) || !(damageAtRange(weapon, end + 1) < ONE_SHOT_DAMAGE)) {
     fail(`${weapon.id}: damage curve does not ramp in and out of its sweet spot`);
   }
 }
