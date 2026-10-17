@@ -1,0 +1,70 @@
+cls,folder,wb,gs,site,wb_Bipod01_W10,wb_WPM_BipodActive,wb_CMU_BipodActive,wb_other_bipod,gs_GBM_NoIncrease_ERG_P00,gs_GRM_BipodDeployed_BTM_P50,gs_HipDispersion_BTM,gs_CMU_SemiAuto,gs_GBM_NoIncrease_Semi_P00,site_bipod,site_fire_modes
+AssaultRifle,6p67,6P67_WB,GS_6P67,KORD 6P67,yes,yes,yes,Game/KingstonLegacy/Mica/Hardware/Weapons/_WeaponAttachments/OB_WEPATT_GRP__ARBipod_01/WM_Bipod,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,ACE32,ACE32_WB,GS_ACE32,NVO-228E,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,EF88,EF88_WB,GS_EF88,EF88,yes,no,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,"auto,single"
+AssaultRifle,G36,G36_WB,GS_G36,B36A4,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,G3A4,G3A4_WB,GS_G3A4,AK4D,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,HK433,HK433_WB,GS_HK433,M433,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,L85A3,L85A3_WB,GS_L85A3,L85A3,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,M16A3,M16A3_WB,GS_M16A3,M16A4,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"burst,single"
+AssaultRifle,MRGGA,MRGGA_WB,GS_MRGGA,Mk 24,yes,no,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,"auto,single"
+AssaultRifle,SCARL,SCARL_WB,GS_SCARL,SOR-556 Mk2,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,Tavor7,Tavor7_WB,GS_Tavor7,TR-7,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+AssaultRifle,VHS2,VHS2_WB,GS_VHS2,VCR-2,yes,no,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+BoltAction,CDX40,CDX40_WB,GS_CDX40,ELR-40,yes,yes,yes,-,no,no,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+BoltAction,DesertTechHTI,DesertTechHTI_WB,GS_DesertTechHTI,Interdictor,yes,yes,yes,-,no,no,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+BoltAction,L115A3,L115A3_WB,GS_L115A3,L115,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+BoltAction,M2010ESR,M2010ESR_WB,GS_M2010ESR,M2010 ESR,yes,yes,yes,-,no,no,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+BoltAction,MiniFix,MiniFix_WB,GS_MiniFix,Mini Scout,yes,yes,yes,-,no,no,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+BoltAction,MRAD,MRAD_WB,GS_MRAD,PSR,yes,yes,yes,-,no,no,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+BoltAction,SV98M,SV98M_WB,GS_SV98M,SV-98,yes,yes,yes,-,no,no,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+Carbine,AK205,AK205_WB,GS_AK205,AK-205,no,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,no,"auto,single"
+Carbine,BREN3,BREN3_WB,GS_BREN3,BROD 3,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,no,"auto,single"
+Carbine,DEVGRU,Devgru_WB,GS_Devgru,-,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,-,-
+Carbine,HK417A2,HK417A2_WB,GS_HK417A2,M417 A2,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+Carbine,M4A1,M4A1_WB,GS_M4A1,M4A1,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+Carbine,MSBSGROTB,MSBSGROTB_WB,GS_MSBSGROTB,GRT-BC,no,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,no,"auto,single"
+Carbine,QBZ192,QBZ192_WB,GS_QBZ192,QBZ-192,no,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,no,"auto,single"
+Carbine,SCARSC,SCARSC_WB,GS_SCARSC,SOR-300SC,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,no,"auto,single"
+Carbine,SIG553R,SIG553R_WB,GS_SIG553R,SG 553R,no,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,no,"auto,single"
+Carbine,XM7,XM7_WB,GS_XM7,M277,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+DMR,ARADMR,ARADMR_WB,GS_ARADMR,LMR27,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+DMR,M39EMR,M39EMR_WB,GS_M39EMR,M39 EMR,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+DMR,MRGGS,MRGGS_WB,GS_MRGGS,-,no,no,yes,-,no,no,-,no,no,-,-
+DMR,MSBSGROTCPS,MSBSGROTCPS_WB,GS_MSBSGROTCPS,GRT-CPS,yes,no,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+DMR,SVCh,SVCh_WB,GS_SVCh,SVK-8.6,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+DMR,SVDM,SVDM_WB,GS_SVDM,SVDM,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,no,yes,single
+DMR,VSSM,VSSM_WB,GS_VSSM,VSSM,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,single
+MG,M240L,M240L_WB,GS_M240L,M240L,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,auto
+MG,M250,M250_WB,GS_M250,M250,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,"auto,single"
+MG,M27IAR,M27IAR_WB,GS_M27IAR,DRS-IAR,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20,no,yes,yes,"auto,single"
+MG,M60E6,M60E6_WB,GS_M60E6,M/60,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,auto
+MG,MG4K,MG4K_WB,GS_MG4K,M123K,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,auto
+MG,MG5,MG5_WB,GS_MG5,M121 A2,yes,no,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,auto
+MG,Minimi,Minimi_WB,GS_Minimi,L110,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,auto
+MG,PKM,PKM_WB,GS_PKM,Z84M,yes,yes,yes,-,no,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,auto
+MG,RPK74M,RPK74M_WB,GS_RPK74M,RPK-74M,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,"auto,single"
+MG,RPKM,RPKM_WB,GS_RPKM,RPKM,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,"auto,single"
+MG,Ultimax,Ultimax_WB,GS_Ultimax,KTS100 MK8,yes,yes,yes,-,yes,yes,Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20;Common/Hardware/weapons/_WeaponModifiers/HipDispersion/GDM_Array_HipDispersion_BTM_P20_NoBipod,no,yes,yes,"auto,single"
+SMG,APC10,APC10_WB,GS_APC10,SCW-10,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+SMG,APDW,APDW_WB,GS_APDW,SL9,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+SMG,MP5MLI,MP5MLI_WB,GS_MP5MLI,PW5A3,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+SMG,MP7A2,MP7A2_WB,GS_MP7A2,PW7A2,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+SMG,MPX,MPX_WB,GS_MPX,SGX,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+SMG,P90,P90_WB,GS_P90,USG-90,no,no,no,-,no,no,-,no,yes,no,"auto,single"
+SMG,PP19,PP19_WB,GS_PP19,PP-19,no,no,no,-,no,no,-,no,yes,no,"auto,single"
+SMG,RSAR999,RSAR999_WB,GS_RSAR999,RSPR,no,no,no,-,yes,no,-,no,yes,no,"auto,single"
+SMG,ScorpionEvo3,ScorpionEvo3_WB,GS_ScorpionEvo3,CZ3A1,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+SMG,UMP40,UMP40_WB,GS_UMP40,UMG-40,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+SMG,Vector,Vector_WB,GS_Vector,KV9,no,no,no,-,no,yes,-,no,yes,no,"auto,single"
+Secondary,FiveSeven,FiveSeven_WB,GS_FiveSeven,ES 5.7,no,no,no,-,no,no,-,no,no,no,single
+Secondary,G22,G22_WB,GS_G22,GGH-22,no,no,no,-,no,no,-,no,no,no,single
+Secondary,M18,M18_WB,GS_M18,P18,no,no,no,-,no,no,-,no,no,no,single
+Secondary,M45A1,M45A1_WB,GS_M45A1,M45A1,no,no,no,-,no,no,-,no,no,no,single
+Secondary,RagingHunter,RagingHunter_WB,GS_RagingHunter,M44,no,no,no,-,yes,no,-,no,no,no,single
+Secondary,Skorpion,Skorpion_WB,GS_Skorpion,vz. 61,no,no,no,-,no,no,-,no,yes,no,"auto,single"
+Secondary,TRR8,TRR8_WB,GS_TRR8,M357 Trait,no,no,no,-,no,no,-,no,no,no,single
+Shotgun,185KSK,185KSK_WB,GS_185KSK,18.5KS-K,no,no,no,-,no,yes,-,no,no,no,single
+Shotgun,590A1,590A1_WB,GS_590A1,M87A1,yes,no,no,-,no,yes,-,no,no,no,single
+Shotgun,DP12,DP12_WB,GS_DP12,DB-12,yes,no,no,-,no,yes,-,no,no,no,single
+Shotgun,M1014,M1014_WB,GS_M1014,M1014,no,no,no,-,no,yes,-,no,no,no,single

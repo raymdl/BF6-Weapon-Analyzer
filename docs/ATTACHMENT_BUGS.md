@@ -65,6 +65,8 @@ stat and adds a footnote with the intended effect.
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Not modelled: the site names sights by magnification, so 3.50x and 3.00x keep their optic accessories |
 | 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
+| 25 | Bipod, deployed | Mk 24, EF88, VSSM (predicted also Z84M) | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Not modelled: the site has no deployed state |
+| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Suspected game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 weapons in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](#review-method-and-rejected-findings)); numbers are not reused.
@@ -667,6 +669,108 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   toward 60 m confirms the forgotten curve; a description change to 30-80 m means the text
   was stale. A firing-range test at 70 m (one chest hit should kill) checks the current curve.
 
+### 25. Mk 24, EF88 and VSSM deployed bipods do not stop per-shot spread growth
+
+- **In-game (operator recordings, 17 October 2026, client 2.1.1.0).**
+  `reference-data/Recordings/10172026/Spread Indicators/<weapon>_Bipod_Mounted_vs_Unmounted.mp4`
+  for the Mk 24, M277, EF88, VCR-2, M121 A2 and VSSM (with the Folding Stock, so full
+  auto): a magazine of full-auto shots with the bipod deployed on the firing-range ledge, a
+  reload, then the same standing. The ADS spread indicator (the two ticks beside the red
+  dot) was measured frame by frame at 120 fps
+  ([Mk 24 and M277](../reference-data/provenance/spread-indicator-measurement-2026-10-17.md),
+  [EF88, VCR-2 and M121 A2](../reference-data/provenance/spread-indicator-measurement-2026-10-17-ef88-vcr2-m121a2.md),
+  [VSSM](../reference-data/provenance/spread-indicator-measurement-2026-10-17-vssm.md),
+  [annotated example](../reference-data/provenance/spread-indicator-measurement-2026-10-17-example.png)):
+
+  | Segment | Idle | Peak by shot 5 | Peak by shot 10 | Peak by shot 20 |
+  |---|---:|---:|---:|---:|
+  | M277 deployed | 13 px | 12 px | 16 px | 16 px |
+  | M277 standing | 13 px | 34 px | 45 px | 48 px |
+  | VCR-2 deployed | 14 px | 11 px | 17 px | 17 px |
+  | VCR-2 standing | 13 px | 24 px | 36 px | 51 px |
+  | M121 A2 deployed | 12 px | 12 px | 14 px | 14 px |
+  | M121 A2 standing | 14 px | 28 px | 37 px | 38 px |
+  | Mk 24 deployed | 12 px | 34 px | 40 px | 43 px |
+  | Mk 24 standing | 15 px | 31 px | 41 px | 44 px |
+  | EF88 deployed | 12 px | 26 px | 33 px | 42 px |
+  | EF88 standing | 14 px | 23 px | 37 px | 41 px |
+  | VSSM deployed | 14 px | 38 px | 52 px | 52 px |
+  | VSSM standing | 14 px | 37 px | 47 px | 54 px |
+
+  Deployed, the M277, VCR-2 and M121 A2 hold a near-constant indicator; the Mk 24, EF88
+  and VSSM grow like their standing runs. Deployed and standing segments were identified
+  from the camera height and the weapon resting on the ledge, not from data; the M121 A2
+  split is the least certain visually but its two segments differ clearly in the numbers.
+- **Frosty data (2.1.1.0 raw).** The deployed bipod is selector
+  `a5578cf4-546c-44ef-9a79-b84021406c17`, the GUID of the shared part
+  `U_WPM_BTM_Bipod01_W10` that every bipod-capable blueprint lists. Each gun-sway file
+  binds modifiers under that selector
+  ([five-weapon chain diff](../reference-data/provenance/bipod-chain-diff-2026-10-17.md),
+  [all 69 weapons](../reference-data/provenance/bipod-selector-bindings-2026-10-17.md)):
+
+  | Weapon | Bound under the bipod selector |
+  |---|---|
+  | M277 | `GRM_BipodDeployed_BTM_P50`, `GDM_Array_HipDispersion_BTM_P20`, `GBM_Increase_ADS_35_BTM_Bipod` |
+  | VCR-2 | the same, with `GBM_Increase_ADS_40_BTM_Bipod` |
+  | M121 A2 | the same, with `GBM_Increase_ADS_30_BTM_Bipod` |
+  | Mk 24 | `GRM_BipodDeployed_BTM_P50` only |
+  | EF88 | `GRM_BipodDeployed_BTM_P50` only |
+
+  Across all 39 weapons that offer the bipod in the menu, 23 automatic weapons bind all
+  three (the `GBM_Increase_ADS_xx_BTM_Bipod` variant runs from 30 to 50 by weapon), the
+  seven bolt-actions and five DMRs bind the recoil package and the hip-dispersion array,
+  and four bind the recoil package alone: `MRGGA` (Mk 24), `EF88`, `PKM` (Z84M) and
+  `VSSM`. The bipod attachment and progression files, the blueprint part lists, the
+  mounted parts and the condition objects do not separate the failing weapons from the
+  working ones; the first candidate, the `WPM_BipodActive` part missing from the Mk 24
+  blueprint, is also missing from the VCR-2 and M121 A2 blueprints, which work.
+- **Interpretation.** `GBM_Increase_ADS_xx_BTM_Bipod` is the deployed-state replacement
+  for the ADS per-shot increase (a reduced value, which fits the M277's slight residual
+  growth from 12 to 16 px), and the hip-dispersion array is its hip counterpart. The
+  Mk 24, EF88 and VSSM bind neither, so deploying changes only recoil; all three are
+  confirmed by recording, and the VSSM's Folding Stock ADS increase (0.409°) grows
+  deployed exactly as standing. The pattern is a missing binding, not a tuning choice:
+  the two Season 5 weapons that offer a bipod (Mk 24, Z84M) are both affected, and the
+  Z84M is the only belt LMG without the three bindings.
+- **Site.** The site models no deployed state (bipod is `noEffect`), so nothing changes.
+- **What would settle the remaining case.** The same deployed-versus-standing recording
+  on the Z84M (predicted: no reduction; not yet unlocked), or a patch that adds the two
+  bindings to the four gun-sway files.
+
+### 26. EF88, BROD 3 and Mk 24 keep per-shot spread growth in semi-auto
+
+- **In-game (operator observation, 17 October 2026, client 2.1.1.0).** In manually
+  selected semi-auto the spread indicator still widens on each shot on the EF88, BROD 3
+  and Mk 24, where the M277 and M433 show no growth. Recordings:
+  `reference-data/Recordings/10172026/Spread Indicators/*_Rapid_Single_Fire.mp4` (semi
+  rapid clicks at about 360 RPM). The frame measurement is coarse for these clips: the
+  Mk 24 and EF88 indicators pulse 2 to 4 px per shot over an idle of 10 to 13 px, and the
+  M277 and M433 clips yielded too few paired readings to quantify. At the 360 RPM semi cap
+  the ADS firing recovery (2.7°/s offset) removes a 0.41° per-shot increase between shots,
+  so no accumulation is expected even where the increase is active; the visible effect is
+  a pulse per shot, not a climb.
+- **Frosty data.** `GBM_NoIncrease_Semi_P00` multiplies `IncreasePerShot` by 0 in all
+  states under the `CMU_SemiAuto` selector (Frosty research `WEAPONS.md`, "No per-shot
+  increase: semi-auto and deployed"). In the 2.1.1.0 raw capture
+  ([survey](../reference-data/provenance/spread-binding-survey-2026-10-17.md)) it is
+  bound in 42 of the 69 gun-sway files. Of the 38 weapons that offer auto (or burst) and
+  single, 35 bind it; the three that do not are `GS_EF88`, `GS_BREN3` (BROD 3) and
+  `GS_MRGGA` (Mk 24). The other seven bindings are the VSSM and the six auto-only belt
+  LMGs. The 1.4.2.5 export shows the same gap for the
+  EF88 and BROD 3. The selector itself (`CMU_SemiAuto`) is referenced by key, not as an
+  import, in every file, so the difference is only the missing effect binding. The M433 in
+  manually selected semi was captured on 25 September with no widening across 10 hip
+  shots, consistent with the binding being active after a mode switch.
+- **Interpretation.** Three rifles out of 38 with a selectable semi mode lack the one
+  binding that removes semi-auto bloom. The pattern is a missing binding rather than a
+  tuning choice, but the files do not say which.
+- **Site.** `data/weapons.json` stores `hipNoBloomOnSwitch` false for these three and true
+  for the rest, so the site already matches the source. The ADS branch applies the same
+  increase in every mode on the site; the single-mode semi state is not modelled.
+- **What would settle it.** A patch that adds the binding to the three gun-sway files, or
+  a hip-fire semi recording on the EF88 against the M433 at the semi cap (predicted:
+  EF88 hip indicator climbs 0.65° per shot less recovery; M433 flat).
+
 ## Description errors
 
 ### 8. PW7A2 30 Rnd fast magazine
@@ -969,6 +1073,8 @@ What was compared:
 | 22 | Present before this build; listed now. The keyed row changed from 1 to 100, the panel did not. |
 | 23 | New. See the entry. |
 | 24 | New (17 October). See the entry. |
+| 25 | New (17 October). See the entry. |
+| 26 | New (17 October). See the entry. |
 
 The multi-package scan returns the same 15 candidates, none with a changed input.
 Re-reading 629 magazine operands supports 287 selections relative to their defaults, with
