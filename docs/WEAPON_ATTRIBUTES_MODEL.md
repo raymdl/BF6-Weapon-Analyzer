@@ -213,7 +213,11 @@ Selection proceeds in this order:
    again require agreement after rounding.
 5. If there are no keyed rows and exactly one fallback row, use it. L115's
    fallback score is 100.
-6. Otherwise report no matching row. Do not invent a value or interpolate silently.
+6. If the amount or variation sum lies outside the keyed rows' range, clamp it to
+   the range and look up again (`clamped-past-table`). The game panel shows its
+   fallback row (0) instead: RSPR with the Single-Port Brake and a vertical or
+   stubby grip (ATTACHMENT_BUGS.md entry 19).
+7. Otherwise report no matching row. Do not invent a value or interpolate silently.
 
 Tolerance uses `tolerance × max(1, abs(input))`. These selection conventions are
 the research checker's reconstruction, not a claim to have decoded every native

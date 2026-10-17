@@ -59,7 +59,7 @@ stat and adds a footnote with the intended effect.
 | 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Matches game: no iron-sight sway on BROD 3 (marked †; 25 September capture) |
 | 17 | None (base weapon) | M433, SGX, L110, P18 | Suspected game error | Since 2.1.1.0 the in-world (3D) spot-on-fire range is 75 m; the other weapons keep 54 m. Not in the patch notes; four unrelated weapons. 75 m was the launch default before Season 2 reduced it to 54 m, so this looks like an unintended reversion. | Matches game: 75 m in-world, 150 m minimap |
 | 18 | Hollow Point | Mk 24 | Suspected game error | Costs 5 points, the same as Standard; every other weapon's Hollow Point costs 15 or 20. | Matches game: cost 5, headshot 1.80 with Hollow Point |
-| 19 | Single-Port Brake | RSPR | Suspected game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip. | Matches game: seven steps, 0.8 to 0.5 degrees |
+| 19 | Single-Port Brake | RSPR | Suspected game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip.  With any vertical or stubby grip added, the recoil amount sum passes the end of the Precision table and the panel shows Precision 0. | Matches game: seven steps, 0.8 to 0.5 degrees. Precision with a vertical or stubby grip does not match game: 30 (last table row), not the panel's 0 |
 | 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. | Matches game: x1.00 (firing-range damage); the panel shows x0.00 |
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4) | Suspected game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons and 2 on the B36A4 and the rest; it may not be an error. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
@@ -509,6 +509,17 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Why it is likely an error.** A 5-point brake outperforms the 35-point grip, and the extra
   binding is one that belongs to bolt-action rifles.
 - **Site.** The site applies seven steps, as the game does.
+- **Precision panel reads 0 with a vertical or stubby grip (operator, 17 October 2026).**
+  The RSPR's Precision table is keyed on the recoil amount sum and has rows from −5 to 5
+  (base −3), plus one fallback row of 0, as on every non-bolt weapon (entry 22). The brake's
+  seven steps plus a vertical or stubby grip's two to five give sums of 6 to 9, past the last
+  row, so the panel takes the fallback row, as the Collateral panel shows x0.00 past its table
+  (entry 20). Slim Angled (one step, sum 5) and the hand stop (none) stay inside the table
+  and read 30. The operator reports that wrong Precision panel values do not change weapon
+  behaviour (entry 22). The site shows 30, the score of the table's last row, and does not
+  copy the panel's 0 (`clamped-past-table` in `sim/weapon-attributes.js`); the true score
+  past the table is not known. A scan of every weapon's muzzle, grip and barrel combinations
+  finds no other build past its Precision table.
 
 ### 20. Collateral multiplier panel shows x0.00 past the top of the table
 

@@ -79,6 +79,17 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
     if (near.length && sameRounded(near)) return { panel: near[0].panel, method: 'near' };
     // A row with all six key flags false matches any loadout (L115: one fallback row of 100).
     if (keyed.length === 0 && fallback.length === 1) return { panel: fallback[0].panel, method: 'fallback' };
+    // A tier sum past the table's end holds at the last row; the game panel shows its fallback 0 instead
+    // (RSPR Single-Port Brake with a vertical or stubby grip; ATTACHMENT_BUGS.md bug 19).
+    const clamp = key => {
+      const values = keyed.map(row => row[key]);
+      return Math.min(Math.max(k[key], Math.min(...values)), Math.max(...values));
+    };
+    const clamped = { ...k, amountSum: clamp('amountSum'), variationSum: clamp('variationSum') };
+    if (keyed.length && (clamped.amountSum !== k.amountSum || clamped.variationSum !== k.variationSum)) {
+      const edge = lookup(table, clamped);
+      if (edge.panel != null) return { panel: edge.panel, method: 'clamped-past-table' };
+    }
     return { panel: null, method: 'no-row' };
   }
 
