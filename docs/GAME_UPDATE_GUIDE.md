@@ -663,6 +663,12 @@ the Stage 7 availability census first.
 8. **List for the operator:** values that need an in-game check (ammunition menus, default
    attachments, anything "not found"), and file values that look like game errors, which go
    to [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md).
+9. **Wiring check, once part C is in the site** (the fire-mode test reads `data/weapons.json`):
+   `python -I scripts/frosty-attachment-wiring-check.py --raw <raw root> --descriptors <SharedTypeDescriptors.ebx> --new <folders>`
+   (usage at the top of the script). It lists attachment effects and gun-sway bindings the new
+   weapons lack or add against the roster, so such gaps (bugs 25 and 26) show before recordings.
+   Add each finding to the operator list of step 8; after the in-game check, record confirmed
+   ones in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md) as suspected game errors.
 
 The readers written for 2.1.1.0 (attachment graph, names, kill switches, the three parts'
 extractors) are in the research repo under `scripts/update-readers/` (`A/`, `B/`, `C/`; see

@@ -957,6 +957,34 @@ does not list them. Each hit is a candidate for a trace and an in-game check.
 None of these changes game or site behavior. Recheck them if a later build offers
 the PP-19 25 Rnd magazine or GRT-CPS burst fire, or binds the extra packages.
 
+### Wiring survey candidates that are not errors (17 October 2026)
+
+The [wiring survey](../reference-data/provenance/attachment-wiring-survey-2026-10-17.md)
+(section 3) lists attachments whose bindings differ from the same-named attachment on 10 or
+more other weapons. Triage against the site data and the stat-screen audit:
+
+| Candidate (survey section) | Finding | Status |
+|---|---|---|
+| AK4D Light Barrel; SOR-556 Mk2 M4QD Flash Hider; M2010 ESR `MZL_Muzzle`; M/60 Improved Mag Catch (3a) | The progression has no ability branch. The audit panels list no such choice: the AK4D has six barrels without a Light barrel, and the SOR-556 Mk2 and M2010 ESR Flash Hider panels show their own effects. The M/60 has no Ergonomics choices in the audit. | Unused source attachments; not offered, not on the site |
+| DB-12 `BTM_CMR201`, `HolosunRMLt`, `LMDPEIR1`, `Perst1`, `SFX300`, `SFX400`, `X5LG3` (3a); DB-12 QBZ Grip Pod, GPS2 and QD Grip Pod without hip dispersion or bipod package (3c) | Bottom-rail lights, lasers and grip pods that the DB-12 does not offer. Its lasers and lights come from the RGT/TOP attachments, which bind effects (panels: Taclight and Flashlight hip-fire 39 to 42; lasers). The DB-12 has no grip pod in the audit. | Not offered |
+| DB-12 50 MW Violet (ANPEQ16B) binds `WPM_RGT_LightLaser` instead of the TOP violet package (3c, 3d) | The package differs but the panel shows the benefit: Mobility rises 60 to 66 (moving-ADS accuracy is in the Mobility score; 45 other weapons rise 4). The site applies +1 moving-ADS accuracy. | Panel shows the effect; no change |
+| M433 and M44 Match Trigger (3b, 3c); DEVGRU Match Trigger extra (3c) | In 2.1.1.0 the selector `U_WPM_ERG_MatchTrigger_W15` is bound by nothing on the M433 and M44, while 26 weapons bind a WB-local effect and the DEVGRU binds the two GS effects directly. The Frosty research traced the HK433 through a WB-local target to an embedded identifier (L17, L24, 24 September, 1.4.x builds), so whether the 2.1.1.0 gap is real or the survey misses that route was not re-traced here. The site applies no Match Trigger effect on any weapon, and all 24 audited panels show none. | Known; not re-traced for 2.1.1.0; no site impact |
+| DRS-IAR Zenitco RK2 (3b) | `GS_M27IAR` has no binding for `Vertical03_W20`. | Known; resolved above (BROD 3 Alloy Vertical) |
+| RPK-74M 30 Rnd and 30 Fast; PP-19 25 Rnd (3b, 3c) | Leftover selectors from other weapons; the weapons' own packages supply all effects. | Known; see the traced table above |
+| M121 A2 and M45A1 Hollow Point, Frangible (3c) | The extra FMJ penetration step. | Entry 2 |
+| M121 A2 50 Fast (3c) | Lacks `WME_ReloadSpeedRegular` and carries its own `WPM_MAG_MG5_Fast`. Panel: reload 6.267 s to 5.55 s. | Applied; no change |
+| Z84M 100 Agil (3c) | Binds moving-ADS accuracy only: no capacity, draw, sprint or ADS-time effect. The text names only moving-ADS accuracy, and the site (`WEAPON_MAG.z84m`) matches. Not in the audit. | Text matches source |
+| M240L 75 Rnd and 100 Rnd; GGH-22 22 Rnd (3c) | Per-weapon magazine packages. The M240L 75 Rnd text names draw speed, moving-ADS accuracy and reload, and the GGH-22 22 Rnd text names draw speed; both match the package and the site. | Text matches source |
+| Mini Scout Short Barrel (3c) | No `GID_ADSTime_BRL` binding. Panel ADS time 250 ms equals Basic (Extended 300 ms), so the benefit is applied and the site's tier (1) matches. | Panel shows the effect; no change |
+| Mk 24 Hybrid Suppressor L, S, K (3c) | `GS_MRGGA` binds `GID_ADSTime_MZL_M10` for the three Magnus suppressor packages, which the same suppressors bind on none of 42 other weapons. Operator panels (17 October, `reference-data/attachment-audit/Weapon Attachments/Assault Rifle/Mk 24/Muzzle 2026-10-17/`): ADS time 250 ms with no muzzle and with each of the three; the other changes follow the texts (L: Hipfire 40 to 34, Mobility 52 to 50, sprint recovery 167 to 200 ms; S: Hipfire 34 only; K: none; all three Precision 24 to 25, Control 38 to 40, recoil 0.8° to 0.7°, spot ranges 0 and 21 m). A 120 fps recording of three hip-to-ADS transitions per muzzle with the Mini Flex ([measurement](../reference-data/provenance/mk24-hybrid-suppressor-ads-time-2026-10-17.md)) gives 40 frames (333 ms) to the settled frame for None, L, S and K alike, and 35 to 38 frames for ADS-to-hip; the offset from the panel's 250 ms is the settle criterion and is the same in all four. The site applies no muzzle ADS-time step. | Panel and recording show no effect; no change |
+| 18.5KS-K Magpul AFG (3c) | Extra `GDM_Array_ADSMoveDispersion_BTM_M10`. The same finding as the Slim Angled candidate rejected on 21 September (see below). | Rejected earlier |
+| M417 A2 and USG-90 Subsonic variants (3d) | `WPM_AMO_Subsonic` replaces `WME_MuzzleVelocity`. Panel velocity 560 to 273 m/s and 543 to 265 m/s. | Applied; no change |
+| Bolt-action recoil and bipod substitutions (3d) | `*_Bolt` assets replace the generic ones by design. | Per-weapon rule |
+| KORD 6P67 and M250 Classic Vertical; VCR-2 mission light; SV-98 5 MW laser; RPK-74M and RPKM Heavy Extended; PW7A2 Lightened Suppressor; M39 EMR and M417 A2 `SP_` suppressor assets; ELR-40 and other per-weapon magazine packages; PP-19 iron sights (3c) | Extra or relocated effects behind hash names with no visible stat. The panels equal the same attachments on other weapons, and the texts name no contradicted effect. The PW7A2 Lightened Suppressor extra hip-dispersion step is the hip-fire cost its text names. The PP-19 iron sights also list the `WM_PlaceHolder_IronSights` modifiers; their semantics are not read. | No evidence of an error |
+
+The seven uncaptured WB modifier assets in the survey (section 1) are coverage gaps and were
+not triaged.
+
 ## Review method and rejected findings
 
 **First scan (14 September).** Compared moving-ADS spread penalties and recoil
