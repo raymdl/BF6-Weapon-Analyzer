@@ -11,7 +11,7 @@ import {
   spreadBounds, spreadDynamics, weaponRpm, validateWeaponSimulation, sampleSpreadRadius, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
   simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
-import { setAttachmentContext, applyAttachments, applyBareWeapon, attachmentContributions, wLabel } from '../sim/applyAttachments.js';
+import { setAttachmentContext, applyAttachments, applyBareWeapon, attachmentContributions, floorStatDisplay, wLabel } from '../sim/applyAttachments.js';
 import { captureView, captureFilename } from './capture.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange, zoneMultiplierForWeapon, resolveHitMultipliers } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
@@ -138,55 +138,12 @@ const CLOUD_RUNS = 10;
 const RECOIL_BAR_SCALE = 3;
 const CONSOLE_RECOIL_MULT = 0.95;
 
-// Sym.gg and Frosty cycle calculations give effective RPM as timing-derived decimals.
-// Keep those raw values for calculations, but display the in-game integer mapping.
-const IN_GAME_RPM_BY_SYM = new Map(Object.entries({
-  '31.91488230': 31,
-  '38.20751293': 38,
-  '38.66345600': 38,
-  '43.90241000': 43,
-  '46.14231276': 46,
-  '47.09296950': 47,
-  '94.73654017': 94,
-  '149.99957639': 150,
-  '149.99900000': 150,
-  '163.63600000': 164,
-  '199.99900000': 200,
-  '224.99900000': 225,
-  '257.14200000': 257,
-  '299.99900000': 300,
-  '327.27200000': 327,
-  '359.99900000': 360,
-  '399.99900000': 400,
-  '449.99900000': 450,
-  '514.28500000': 514,
-  '553.84600000': 553,
-  '568.42100000': 568,
-  '599.99900000': 600,
-  '635.29400000': 635,
-  '654.54500000': 654,
-  '674.99900000': 675,
-  '685.71400000': 686,
-  '719.99900000': 720,
-  '771.42800000': 771,
-  '799.99900000': 800,
-  '818.18100000': 818,
-  '830.76900000': 830,
-  '899.99900000': 900,
-  '947.36800000': 947,
-  '981.81800000': 981,
-  '1079.99900000': 1080,
-}));
-
+// Keep raw timing-derived RPM for calculations; display it as the stat screen does.
 function formatInGameRpm(value) {
   if (value == null) return '—';
   const raw = Number(value);
   if (!Number.isFinite(raw)) return value;
-  // New mode rates retain float32 precision; legacy cycle displays stay unchanged.
-  const sourceDisplay = Math.fround(raw) === raw
-    ? IN_GAME_RPM_BY_SYM.get(Number(raw.toFixed(3)).toFixed(8)) ?? Math.round(raw)
-    : value;
-  return IN_GAME_RPM_BY_SYM.get(raw.toFixed(8)) ?? sourceDisplay;
+  return floorStatDisplay(raw);
 }
 
 // ── APP STATE ─────────────────────────────────────────────────────────────────

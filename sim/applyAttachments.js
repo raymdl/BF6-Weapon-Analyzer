@@ -49,15 +49,13 @@ let _ctx = {
   HEALTH_REGEN_DELAY_S: 5,
 };
 
-// JavaScript cannot represent 0.8 exactly. Correct only a product that is
-// infinitesimally below an integer because of that representation error; real
-// fractional display values such as 837.5 must still floor normally.
-export const VELOCITY_DISPLAY_EPSILON = 1e-9;
-
-export function floorVelocityDisplay(value) {
-  const nearest = Math.round(value);
-  if (nearest > value && nearest - value < VELOCITY_DISPLAY_EPSILON) return nearest;
-  return Math.floor(value);
+// Stat-screen integer rule, fitted to every observed fire rate and muzzle velocity:
+// snap to 2 decimals, then floor (719.999 -> 720, 163.636 -> 163, 985.99125 -> 985).
+// The game's snap lies between 0.001 (every .999 rate shows the next integer) and
+// 0.00875 (ELR-40 Extended 985.99125 shows 985); fractions between .99125 and
+// .999 are unverified.
+export function floorStatDisplay(value) {
+  return Math.floor(Math.round(value * 100) / 100);
 }
 
 function byId(items) {
@@ -681,7 +679,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
       : null,
     _projectileVelocityMps: projectileVelocityMps,
     bulletVel: projectileVelocityMps != null
-      ? floorVelocityDisplay(projectileVelocityMps)
+      ? floorStatDisplay(projectileVelocityMps)
       : null,
     deployT: millisecondsToSeconds(_deployTimeMs),
     undeployT: millisecondsToSeconds(_undeployTimeMs),

@@ -4,10 +4,9 @@ import { join } from 'node:path';
 import { test } from 'node:test';
 import {
   applyAttachments,
-  floorVelocityDisplay,
+  floorStatDisplay,
   resolveBarrelVelocity,
   setAttachmentContext,
-  VELOCITY_DISPLAY_EPSILON,
 } from '../sim/applyAttachments.js';
 const root = join(import.meta.dirname, '..');
 const readJson = file => JSON.parse(readFileSync(join(root, file), 'utf8'));
@@ -93,22 +92,25 @@ test('derived and legacy barrel velocity are bit-identical for every selectable 
   }
 });
 
-test('velocity flooring has a guarded floating-point edge', () => {
-  const nearIntegerProducts = [];
+test('velocity display avoids the unfitted stat-screen snap band', () => {
+  // The fitted snap is unproven for fractions between .99125 and .999.
+  const unfittedProducts = [];
   for (const weapon of weapons) {
     for (const barrelId of attachments.WEAPON_ATTS[weapon.id]?.barrel ?? []) {
       const barrel = attachments.BARRELS.find(candidate => candidate.id === barrelId);
       const multiplier = resolveBarrelVelocity({ barData: barrel }).multiplier;
       const product = weapon.bulletVel * multiplier;
-      const nearest = Math.round(product);
-      if (nearest > product && nearest - product < VELOCITY_DISPLAY_EPSILON) {
-        nearIntegerProducts.push(`${weapon.id}/${barrelId}: ${product}`);
+      const fraction = product - Math.floor(product);
+      if (fraction > 0.9913 && fraction < 0.999) {
+        unfittedProducts.push(`${weapon.id}/${barrelId}: ${product}`);
       }
     }
   }
-  assert.deepEqual(nearIntegerProducts, []);
-  assert.equal(floorVelocityDisplay(613.9999999999999), 614);
-  assert.equal(floorVelocityDisplay(837.5), 837);
+  assert.deepEqual(unfittedProducts, []);
+  assert.equal(floorStatDisplay(613.9999999999999), 614);
+  assert.equal(floorStatDisplay(837.5), 837);
+  assert.equal(floorStatDisplay(241.92), 241);
+  assert.equal(floorStatDisplay(788.793 * 1.25), 985);
 });
 
 test('projectile velocity retains fractions while the weapon panel floors its display', () => {
