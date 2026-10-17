@@ -54,7 +54,7 @@ stat and adds a footnote with the intended effect.
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
 | 12 | Standard Suppressor | L115 | Game error | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Matches game: no hipfire change (corrected 23 September) |
 | 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Matches game: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
-| 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Matches game: Weapon Attributes follow the menu; firing simulation keeps source modifiers (firing not confirmed) |
+| 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons: they are bound to the `BurstFireActive` runtime token, not the attachment selector the menu evaluates. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Matches game: Weapon Attributes follow the menu; firing simulation keeps source modifiers (firing not confirmed) |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
 | 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Matches game: no iron-sight sway on BROD 3 (marked †; 25 September capture) |
 | 17 | None (base weapon) | M433, SGX, L110, P18 | Suspected game error | Since 2.1.1.0 the in-world (3D) spot-on-fire range is 75 m; the other weapons keep 54 m. Not in the patch notes; four unrelated weapons. 75 m was the launch default before Season 2 reduced it to 54 m, so this looks like an unintended reversion. | Matches game: 75 m in-world, 150 m minimap |
@@ -310,6 +310,26 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   reference, and the behavior is the same on all eight weapons. Thus it is a menu
   behavior, not a GRT-BC data defect. Whether the menu or the source values show
   the firing behavior is 14b.
+- **Binding explanation (17 October 2026).** The source binding decides what the
+  menu shows. The three fire-mode conversions differ in the menu for one reason:
+  - VSSM Folding Stock shows its whole effect (variation 9.2° to 45.4°, rate 450
+    to 800). `GS_VSSM` binds `GRM_FullAutoRecoil_VSSM` directly to the
+    attachment's unlock selector.
+  - M16 A3 Receiver shows the amount step but no variation change. Its amount
+    package `GRM_Recoil_ERG_M10` is bound to the attachment selector. The M16A4's
+    burst variation step is not conditional: the base recoil block of
+    `GS_M16A3` stores variation exponent 3 and amount exponent −2 outright, and
+    the file has no burst condition binding. Variation therefore stays 29.2° in
+    full auto, in the menu and in the site.
+  - Burst Training and Burst Mode show only the rate change. Their recoil
+    packages are bound under the `BurstFireActive` condition token, a runtime
+    fire-mode state, not the attachment selector (L13 and L59 in the Frosty
+    research `ATTACHMENTS.md`). The menu evaluates attachment selectors and not
+    that token, so the +3 variation step and the amount steps never appear.
+  Match Trigger follows the same pattern: its effects sit behind an embedded
+  context identifier (L17), and the menu shows nothing for it. This explains the
+  menu on all eight weapons without a data defect. It does not settle 14b; the
+  token name implies the packages apply while burst fire is the active mode.
 
 #### 14b. Do burst recoil modifiers apply during firing? (open, GRT-BC tests)
 
