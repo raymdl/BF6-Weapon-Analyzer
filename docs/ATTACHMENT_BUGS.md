@@ -64,6 +64,7 @@ stat and adds a footnote with the intended effect.
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4) | Suspected game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons and 2 on the B36A4 and the rest; it may not be an error. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Not modelled: the site names sights by magnification, so 3.50x and 3.00x keep their optic accessories |
+| 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](#review-method-and-rejected-findings)); numbers are not reused.
@@ -636,6 +637,36 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   selectable with optic accessories (named exceptions in
   `scripts/frosty-attachment-compatibility.py`).
 
+### 24. ELR-40 Single Shot sweet spot is wider than its description
+
+- **In-game text.** The Single Shot magazine: "Blocked magwell for individually loading
+  custom 9.52×70mm rounds, dealing massive damage between 30m and 60m but at the detriment
+  of long-range ballistics." The ELR-40 itself: "Most effective between between 150m-180m."
+- **Frosty data (2.1.1.0).** The magazine fires its own bullet, `PD_.375EnABELR_API`, whose
+  damage curve is (0 m, 90), (24 m, 90), (42 m, 120), (68 m, 120), (80 m, 100), (140 m, 80),
+  with straight ramps between points. The curve is stored twice in the raw file and both
+  copies agree. The base bullet holds 100 from 150 to 180 m.
+- **Conflict.** A sweet spot is the span where one upper-chest hit kills, so where chest
+  damage is at or above 100. For the Single Shot bullet that span is 30 to 80 m (50 m wide);
+  the description gives 30 to 60 m (30 m wide). The near end matches exactly, the far end
+  does not. The base ELR-40's 150 to 180 m matches its text, as do the launch rifles'
+  windows after the 1.3.3.0 reduction (L115 120-175 to 100-133, M2010 ESR 75-120 to 75-100,
+  PSR 100-150 to 90-120, SV-98 54-90 to 54-75: every window cut by about 40 percent, the
+  PSR's from 50 m to 30 m).
+- **Interpretation.** The 50 m window is the pre-1.3.3.0 width and the 30 m text is the
+  post-1.3.3.0 width. The simplest reading is that the ELR-40 and the Single Shot were
+  designed before that update, the descriptions and the base bullet curve were reduced with
+  the other rifles, and the Single Shot bullet curve was not. The ELR-40 first appears in
+  2.1.1.0, after the update, so no earlier curve exists to confirm this; the curve and the
+  text were captured from the same build. The other reading, stale text over a deliberate
+  curve, cannot be excluded.
+- **Site.** The site applies the 30 to 80 m curve through the magazine's `projectileOverride`
+  (`WEAPON_MAG.elr40.mags["1_rnd"]`). `scripts/sweet-spot.mjs` derives the one-shot span and
+  gives 30 to 80 m for this bullet; the span is not displayed. Not tested in game.
+- **What would settle it.** A later update that moves the curve's 68 and 80 m breakpoints
+  toward 60 m confirms the forgotten curve; a description change to 30-80 m means the text
+  was stale. A firing-range test at 70 m (one chest hit should kill) checks the current curve.
+
 ## Description errors
 
 ### 8. PW7A2 30 Rnd fast magazine
@@ -937,6 +968,7 @@ What was compared:
 | 21 | New. See the entry. |
 | 22 | Present before this build; listed now. The keyed row changed from 1 to 100, the panel did not. |
 | 23 | New. See the entry. |
+| 24 | New (17 October). See the entry. |
 
 The multi-package scan returns the same 15 candidates, none with a changed input.
 Re-reading 629 magazine operands supports 287 selections relative to their defaults, with
