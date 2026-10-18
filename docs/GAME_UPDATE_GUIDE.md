@@ -669,6 +669,17 @@ the Stage 7 availability census first.
    weapons lack or add against the roster, so such gaps (bugs 25 and 26) show before recordings.
    Add each finding to the operator list of step 8; after the in-game check, record confirmed
    ones in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md) as suspected game errors.
+10. **Name the weapon on the KDM stats site.** The KDM bot takes weapon names from
+    `config/bf6-equipment-catalogue.json` in the kdm-discord-bot repo, and the site shows the
+    internal code name for any weapon missing there. Add one entry per new weapon,
+    keyed by its GameTools id, with the in-game name from Stage 7 and the class from the id
+    prefix: `"wp_ar_mrgga": { "name": "Mk 24", "class": "ar" }`. Edit the file by hand.
+    The repo tool `tools/bf6-build-equipment-catalogue.mjs` takes names from GameTools, which
+    may not have them yet. Commit it on the bot repo `main`: the Mini PC pulls within five
+    minutes and the next scheduled refresh publishes it. The ids exist only once a clan member
+    has used the weapon, so do this a day or two after release. To find missing names, compare
+    the ids in the live `equipment-index.json` with the catalogue. The 2.1.1.0 weapons were
+    missed until 18 October.
 
 The readers written for 2.1.1.0 (attachment graph, names, kill switches, the three parts'
 extractors) are in the research repo under `scripts/update-readers/` (`A/`, `B/`, `C/`; see
