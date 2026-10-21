@@ -6745,6 +6745,7 @@
       "name": "Actuated Module",
       "pts": 10,
       "weaponSwayMult": 0.6666667,
+      "stanceSway": "reduced",
       "frostyModifiers": {
         "ak205": {
           "adsTimeTierMod": 0,

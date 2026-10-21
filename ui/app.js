@@ -2281,6 +2281,14 @@ function renderAttachmentStats(loadouts) {
         desc: 'How visible your scope glint is to enemies. The coating reduces the visible cone of glint; the size of the change is not modelled.',
         rows: [{ name: escAttr(accessory.name), value, color }] }));
     }
+    const grip = ATT_BY_ID.GRIPS[atts.grip ?? 'none'];
+    if (grip?.stanceSway === 'reduced') {
+      // The game files hold no value for this effect; the direction comes from the operator's jump recordings.
+      const value = 'Reduced', color = 'var(--green)';
+      chips.push(chipHtml({ label: 'Stance-Change Sway', value, color,
+        desc: 'Weapon sway while changing stance (jumping, crouching, going prone) when aiming. The game files hold no value for this; in jump recordings the weapon dip fell to about 0.3x. The size of the change is not modelled.',
+        rows: [{ name: escAttr(grip.name), value, color }] }));
+    }
     Object.entries(cur._utilities ?? {}).forEach(([lbl, value]) => {
       chips.push(chipHtml({ label: escAttr(lbl), value: escAttr(value), color: 'var(--green)',
         desc: utilityTooltips[lbl] ?? `${lbl}: a capability added by the selected attachment.`,
