@@ -152,8 +152,10 @@ function formatInGameRpm(value) {
 
 const state = {
   slots: [
-    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts() },
-    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts() },
+    // `locked` maps an attachment slot to the choice it is locked at; those
+    // choices come along to every weapon that can take them.
+    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null },
+    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null },
   ],
   comparing: false,
   // Panels fold away so the page can be sized for a screenshot without giving
@@ -539,7 +541,10 @@ function buildWeaponList(containerId, slotIdx) {
     b.setAttribute('aria-pressed', String(isActive));
     b.onclick = () => {
       slot.weapon = w;
-      resetAttsForWeapon(slot.atts, w);
+      if (Object.keys(slot.locked).length) {
+        Loadout.carryAttsToWeapon(slot.atts, w, LOADOUT_DATA, lockedAsAtts(slot.locked), Object.keys(slot.locked));
+      } else resetAttsForWeapon(slot.atts, w);
+      slot.savedName = null;
       renderSidebar();
       renderStats();
     };
@@ -554,11 +559,304 @@ function buildAttachmentSection(containerId, slotIdx) {
     atts: slot.atts,
     weapon: slot.weapon,
     data: LOADOUT_DATA,
-    onChange: () => {
+    onChange: ({ key }) => {
+      slot.savedName = null;
+      // A locked slot the user changes is locked at the new choice.
+      const lockKey = key === 'rail' ? 'laser' : key;
+      if (Object.hasOwn(slot.locked, lockKey)) {
+        slot.locked[lockKey] = lockedValue(slot.atts, lockKey);
+        saveLocks(slotIdx);
+      }
+      syncSavedLoadoutRow(slotIdx);
       updateAssumedFootnote();
       renderStats();
     },
+    decorate: container => decorateAttachmentSection(container, containerId, slotIdx),
+    locks: slot.locked,
+    onLockToggle: key => toggleAttachmentLock(slotIdx, key),
+    lockHeld: key => lockHeldStatus(slot, key),
   });
+}
+/** Whether a locked slot shows its locked choice, and that choice's name for when it does not. */
+function lockHeldStatus(slot, key) {
+  const want = slot.locked[key];
+  const have = lockedValue(slot.atts, key);
+  const same = (a, b) => (a && typeof a === 'object') || (b && typeof b === 'object')
+    ? a?.type === b?.type && a?.id === b?.id : (a ?? null) === (b ?? null);
+  if (same(want, have)) return { held: true };
+  const id = want && typeof want === 'object' ? want.id : want;
+  const catalog = { sight: 'SIGHTS', muzzle: 'MUZZLES', barrel: 'BARRELS', grip: 'GRIPS', laser: 'LASERS',
+    light: 'LIGHTS', accessory: 'ACCESSORIES', ammo: 'AMMO', ergo: 'ERGOS' };
+  let name = id;
+  if (key === 'mag') name = Object.values(WEAPON_MAG).map(m => m.mags[id]).find(Boolean)?.name ?? id;
+  else if (want && typeof want === 'object') name = ATT_BY_ID[{ grip: 'GRIPS', laser: 'LASERS', light: 'LIGHTS' }[want.type]]?.[id]?.name ?? id;
+  else name = ATT_BY_ID[catalog[key]]?.[id]?.name ?? id;
+  return { held: false, name };
+}
+
+// ── SAVED LOADOUTS AND THE ATTACHMENT LOCK ───────────────────────────────────
+// Saved loadouts live in local storage as the same compact tokens share links
+// use, so they survive catalog growth the way links do. The lock keeps the
+// attachments through a weapon change, dropping only what the new weapon lacks.
+const SAVED_LOADOUTS_KEY = 'bf6.savedLoadouts';
+const LOCK_ATTS_KEY = ['bf6.lockedAtts1', 'bf6.lockedAtts2'];
+const LOCKABLE_KEYS = ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'accessory', 'ammo', 'mag', 'ergo'];
+
+function readSavedLoadouts() {
+  try {
+    const list = JSON.parse(localStorage.getItem(SAVED_LOADOUTS_KEY) ?? '[]');
+    return Array.isArray(list) ? list.filter(e => e && typeof e.name === 'string' && typeof e.weapon === 'string') : [];
+  } catch { return []; }
+}
+function writeSavedLoadouts(list) {
+  try { localStorage.setItem(SAVED_LOADOUTS_KEY, JSON.stringify(list)); } catch { /* storage is optional. */ }
+}
+function loadLockPreferences() {
+  state.slots.forEach((slot, i) => {
+    try {
+      const stored = JSON.parse(localStorage.getItem(LOCK_ATTS_KEY[i]) ?? '{}');
+      slot.locked = stored && typeof stored === 'object' && !Array.isArray(stored)
+        ? Object.fromEntries(Object.entries(stored).filter(([k]) => LOCKABLE_KEYS.includes(k))) : {};
+    } catch { slot.locked = {}; }
+  });
+}
+function saveLocks(slotIdx) {
+  try { localStorage.setItem(LOCK_ATTS_KEY[slotIdx], JSON.stringify(state.slots[slotIdx].locked)); } catch { /* storage is optional. */ }
+}
+/** The choice a slot is locked at; a device on a combined rail is kept as its rail entry. */
+function lockedValue(atts, key) {
+  if (key === 'laser' && atts.rail) return { ...atts.rail };
+  return atts[key] ?? null;
+}
+/** The locked choices as an attachment record for carrying onto a weapon. */
+function lockedAsAtts(locked) {
+  const atts = { ...locked };
+  if (atts.laser && typeof atts.laser === 'object') { atts.rail = atts.laser; delete atts.laser; }
+  return atts;
+}
+function toggleAttachmentLock(slotIdx, key) {
+  const slot = state.slots[slotIdx];
+  if (Object.hasOwn(slot.locked, key)) delete slot.locked[key];
+  else slot.locked[key] = lockedValue(slot.atts, key);
+  saveLocks(slotIdx);
+  renderSidebar();
+}
+function saveLoadout(slotIdx) {
+  const slot = state.slots[slotIdx];
+  if (!slot.weapon) return;
+  // Names are per weapon: "Loadout N" counts from 1 for each weapon, and a
+  // saved name is overwritten only by the same weapon's save.
+  const wid = slot.weapon.id;
+  const taken = new Set(readSavedLoadouts().filter(e => e.weapon === wid).map(e => e.name));
+  let suggested = slot.savedName;
+  for (let n = 1; !suggested || taken.has(suggested); n++) suggested = `Loadout ${n}`;
+  const name = window.prompt('Name this loadout', suggested)?.trim();
+  if (!name) return;
+  const list = readSavedLoadouts().filter(e => !(e.name === name && e.weapon === wid));
+  list.push({ name, weapon: wid, atts: shareCodec.encodeAtts(slot.weapon, slot.atts) });
+  list.sort((a, b) => a.name.localeCompare(b.name) || a.weapon.localeCompare(b.weapon));
+  writeSavedLoadouts(list);
+  slot.savedName = name;
+  renderSidebar();
+}
+function loadSavedLoadout(slotIdx, name, weaponId) {
+  const entry = readSavedLoadouts().find(e => e.name === name && e.weapon === weaponId);
+  const w = entry && W.find(x => x.id === entry.weapon);
+  if (!w) return;
+  const slot = state.slots[slotIdx];
+  slot.cls = w.cls;
+  slot.weapon = w;
+  slot.atts = shareCodec.decodeAtts(w, entry.atts ?? '');
+  slot.savedName = name;
+  renderSidebar();
+  renderStats();
+}
+function deleteSavedLoadout(name, weaponId) {
+  if (!window.confirm(`Delete the saved loadout "${name}"?`)) return;
+  writeSavedLoadouts(readSavedLoadouts().filter(e => !(e.name === name && e.weapon === weaponId)));
+  state.slots.forEach(s => { if (s.savedName === name && s.weapon?.id === weaponId) s.savedName = null; });
+  // Both slots list the same loadouts; the open menu stays open for the next delete.
+  const open = document.querySelector('.saved-menu:not([hidden])')?.closest('.sb-sec')?.id;
+  renderSidebar();
+  if (open) document.querySelector(`#${open} .saved-pick-btn`)?.click();
+}
+function syncSavedLoadoutRow(slotIdx) {
+  const slot = state.slots[slotIdx];
+  const sec = document.getElementById(`savedSec${slotIdx + 1}`);
+  if (!sec) return;
+  const btn = sec.querySelector('.saved-pick-btn');
+  if (btn) {
+    btn.textContent = slot.savedName ?? btn.dataset.placeholder;
+    btn.classList.toggle('placeholder', !slot.savedName);
+  }
+  sec.querySelectorAll('.saved-item').forEach(item => {
+    const on = item.dataset.name === slot.savedName && item.dataset.weapon === slot.weapon?.id;
+    item.classList.toggle('on', on);
+    item.querySelector('.saved-item-load')?.setAttribute('aria-selected', String(on));
+  });
+}
+function decorateAttachmentSection(container, containerId, slotIdx) {
+  const slot = state.slots[slotIdx];
+  const head = container.firstElementChild;
+  if (!head) return;
+  // The header padlock locks or unlocks every row at once; it shows closed
+  // when all rows are locked and half-lit when only some are.
+  const keys = [...container.querySelectorAll('.att-row[data-lock-key]')].map(row => row.dataset.lockKey);
+  // Lock-all takes only the rows with something fitted; a "None" stays free.
+  const fitted = keys.filter(key => { const v = lockedValue(slot.atts, key); return v != null && v !== 'none'; });
+  const lockedCount = keys.filter(key => Object.hasOwn(slot.locked, key)).length;
+  const all = fitted.length > 0 && fitted.every(key => Object.hasOwn(slot.locked, key));
+  const lock = document.createElement('button');
+  lock.type = 'button';
+  lock.className = 'att-tool att-tool-lock' + (all ? ' on' : lockedCount ? ' partial' : '');
+  lock.disabled = !keys.length;
+  lock.title = (all ? 'All fitted attachments locked. ' : lockedCount ? `${lockedCount} of ${keys.length} attachments locked. ` : 'No attachments locked. ')
+    + 'Locked attachments stay through a weapon change; one the new weapon cannot take goes back to its default until a weapon that can.';
+  lock.setAttribute('aria-label', all ? 'Unlock all attachments' : 'Lock all attachments');
+  lock.setAttribute('aria-pressed', String(all));
+  lock.onclick = () => {
+    if (all) slot.locked = {};
+    else for (const key of fitted) if (!Object.hasOwn(slot.locked, key)) slot.locked[key] = lockedValue(slot.atts, key);
+    saveLocks(slotIdx);
+    renderSidebar();
+  };
+  head.firstElementChild.insertAdjacentElement('afterend', lock);
+  head.firstElementChild.style.marginRight = '6px';
+}
+/** The Saved Loadouts section above the class filter: pick one to load it,
+ *  Save names the current weapon and attachments, ✕ deletes the loaded one. */
+/** The fitted attachments of a saved loadout, one per line, for its hover text. */
+function savedLoadoutSummary(weapon, atts) {
+  const catalog = { sight: 'SIGHTS', muzzle: 'MUZZLES', barrel: 'BARRELS', grip: 'GRIPS', laser: 'LASERS',
+    light: 'LIGHTS', accessory: 'ACCESSORIES', ammo: 'AMMO', ergo: 'ERGOS' };
+  const lines = [];
+  for (const [key, list] of Object.entries(catalog)) {
+    const id = key === 'laser' && atts.rail ? atts.rail.id : atts[key];
+    const a = id && id !== 'none' && id !== 'standard'
+      ? ATT_BY_ID[key === 'laser' && atts.rail ? { grip: 'GRIPS', laser: 'LASERS', light: 'LIGHTS' }[atts.rail.type] : list][id] : null;
+    if (a && a.id !== 'iron') lines.push(Loadout.attDisplayName(a, weapon.id));
+  }
+  const mag = atts.mag && WEAPON_MAG[weapon.id]?.mags[atts.mag];
+  if (mag && atts.mag !== WEAPON_MAG[weapon.id].def) lines.push(mag.name);
+  return lines;
+}
+/** One site-styled tooltip for the saved-loadout menu, placed beside the hovered entry. */
+let savedTipEl = null;
+function showSavedTip(item, name, lines) {
+  if (!savedTipEl) {
+    savedTipEl = document.createElement('div');
+    savedTipEl.className = 'rc-tt saved-tt';
+    document.body.appendChild(savedTipEl);
+  }
+  const tip = savedTipEl;
+  tip.innerHTML = '<div class="rc-tt-wname"></div>';
+  tip.firstElementChild.textContent = name;
+  if (lines.length) {
+    for (const line of lines) {
+      const row = document.createElement('div');
+      row.className = 'saved-tt-line';
+      row.textContent = line;
+      tip.appendChild(row);
+    }
+  } else {
+    tip.insertAdjacentHTML('beforeend', '<div class="saved-tt-line saved-tt-none">No attachments fitted</div>');
+  }
+  tip.style.display = 'block';
+  const r = item.getBoundingClientRect();
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = r.right + 6;
+  if (left + tw > window.innerWidth - 8) left = Math.max(8, r.left - tw - 6);
+  const top = Math.max(8, Math.min(r.top, window.innerHeight - th - 8));
+  tip.style.left = `${left}px`;
+  tip.style.top = `${top}px`;
+}
+function hideSavedTip() {
+  if (savedTipEl) savedTipEl.style.display = 'none';
+}
+/** A menu rather than a select, so each saved loadout can carry its own ✕. */
+function renderSavedLoadoutSection(containerId, slotIdx) {
+  const slot = state.slots[slotIdx];
+  const sec = document.getElementById(containerId);
+  if (!sec) return;
+  sec.innerHTML = '<div class="sb-lbl">Saved Loadouts</div>';
+  const row = document.createElement('div');
+  row.className = 'saved-row';
+  const pick = document.createElement('div');
+  pick.className = 'saved-pick';
+  const saved = readSavedLoadouts();
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'att-sel saved-pick-btn';
+  btn.id = `${containerId}_btn`;
+  btn.dataset.placeholder = saved.length ? 'Load a saved loadout…' : 'No saved loadouts yet';
+  btn.disabled = !saved.length;
+  btn.setAttribute('aria-haspopup', 'listbox');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'Saved loadouts');
+  const menu = document.createElement('div');
+  menu.className = 'saved-menu';
+  menu.setAttribute('role', 'listbox');
+  menu.hidden = true;
+  const close = () => {
+    // A re-rendered sidebar leaves this menu behind; its listener goes with it.
+    if (!menu.isConnected) { document.removeEventListener('click', close); return; }
+    menu.hidden = true; btn.setAttribute('aria-expanded', 'false');
+    hideSavedTip();
+  };
+  btn.onclick = e => {
+    e.stopPropagation();
+    if (!menu.hidden) { close(); return; }
+    document.querySelectorAll('.saved-menu:not([hidden])').forEach(m => { m.hidden = true; });
+    menu.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+  };
+  menu.onclick = e => e.stopPropagation();
+  document.addEventListener('click', close);
+  menu.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); btn.focus(); } });
+  for (const entry of saved) {
+    const w = W.find(x => x.id === entry.weapon);
+    const item = document.createElement('div');
+    item.className = 'saved-item';
+    item.dataset.name = entry.name;
+    item.dataset.weapon = entry.weapon;
+    const load = document.createElement('button');
+    load.type = 'button';
+    load.className = 'saved-item-load';
+    load.setAttribute('role', 'option');
+    load.innerHTML = `<span class="saved-item-name"></span><span class="saved-item-weapon"></span>`;
+    load.querySelector('.saved-item-name').textContent = entry.name;
+    load.querySelector('.saved-item-weapon').textContent = w ? weaponDisplayLabel(w) : 'weapon no longer listed';
+    load.disabled = !w;
+    if (w) {
+      const lines = savedLoadoutSummary(w, shareCodec.decodeAtts(w, entry.atts ?? ''));
+      const show = () => showSavedTip(item, entry.name, lines);
+      load.addEventListener('mouseenter', show);
+      load.addEventListener('focus', show);
+      load.addEventListener('mouseleave', hideSavedTip);
+      load.addEventListener('blur', hideSavedTip);
+    }
+    load.onclick = () => { close(); loadSavedLoadout(slotIdx, entry.name, entry.weapon); };
+    const del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'saved-item-del';
+    del.textContent = '✕';
+    del.title = `Delete "${entry.name}"`;
+    del.setAttribute('aria-label', `Delete the saved loadout ${entry.name}`);
+    del.onclick = () => deleteSavedLoadout(entry.name, entry.weapon);
+    item.append(load, del);
+    menu.appendChild(item);
+  }
+  pick.append(btn, menu);
+  const save = document.createElement('button');
+  save.type = 'button';
+  save.className = 'att-tool';
+  save.textContent = 'Save';
+  save.title = 'Save this weapon and its attachments in this browser';
+  save.disabled = !slot.weapon;
+  save.onclick = () => saveLoadout(slotIdx);
+  row.append(pick, save);
+  sec.appendChild(row);
+  syncSavedLoadoutRow(slotIdx);
 }
 
 function updateAssumedFootnote() {
@@ -577,12 +875,14 @@ function updateAssumedFootnote() {
 }
 
 function renderSidebar() {
+  renderSavedLoadoutSection('savedSec1', 0);
   buildClassFilter('classFilter1', 0);
   buildWeaponList('wList1', 0);
   buildAttachmentSection('attSection1', 0);
   if (state.comparing) {
     const cloneBtn = document.getElementById('cloneLoadoutBtn');
     if (cloneBtn) cloneBtn.disabled = !state.slots[0].weapon;
+    renderSavedLoadoutSection('savedSec2', 1);
     buildClassFilter('classFilter2', 1);
     buildWeaponList('wList2', 1);
     buildAttachmentSection('attSection2', 1);
@@ -596,6 +896,7 @@ function cloneCompareLoadout() {
   state.slots[1].cls = state.slots[0].weapon.cls;
   state.slots[1].weapon = state.slots[0].weapon;
   state.slots[1].atts = { ...state.slots[0].atts };
+  state.slots[1].savedName = null;
   document.getElementById('cmpBtn').classList.add('on');
   document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
   document.getElementById('cmpSection').style.display = 'block';
@@ -1667,14 +1968,19 @@ function fitMagnification(spanCm, display = targetDisplaySettings()) {
   return SCOPE_MAGNIFICATIONS[0];
 }
 /** The primary slot's sight when it carries a magnification; it sets the default target zoom. */
+// An optic only zooms when aiming down it; from the hip the view is 1.00×.
+const HIPFIRE_SIGHT = { id: 'hip', name: 'Hipfire', magnification: 1 };
 function equippedSight() {
   const { weapon, atts } = state.slots[0];
-  const sight = weapon ? ATT_BY_ID.SIGHTS[atts?.sight ?? 'iron'] : null;
+  if (!weapon) return null;
+  if (state.recoil.aim === 'hip') return HIPFIRE_SIGHT;
+  const sight = ATT_BY_ID.SIGHTS[atts?.sight ?? 'iron'];
   return Number.isFinite(sight?.magnification) ? sight : null;
 }
 function equippedSightKey() {
   const { weapon, atts } = state.slots[0];
-  return weapon ? `${weapon.id}:${atts?.sight ?? 'iron'}` : null;
+  if (!weapon) return null;
+  return `${weapon.id}:${state.recoil.aim === 'hip' ? 'hip' : atts?.sight ?? 'iron'}`;
 }
 /** The user's zoom, or null once the sight it was chosen on is no longer equipped. */
 function magnificationOverride() {
@@ -3567,6 +3873,7 @@ if (new URLSearchParams(location.search).get('popout') === '1') {
 }
 
 _restoringUrl = true;
+loadLockPreferences();
 restoreFromUrl();
 bindEvents();
 renderSidebar();

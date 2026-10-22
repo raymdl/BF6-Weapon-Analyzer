@@ -11,10 +11,11 @@ export function updateAttTotal(containerId, atts, weapon, data) {
   el.classList.toggle('over', pts > 100);
 }
 
-function appendSelectRow(container, { label, value, options, onChange, disabled = false }) {
+function appendSelectRow(container, { label, value, options, onChange, disabled = false, lock = null }) {
   if (!options.length) return;
   const row = document.createElement('div');
-  row.className = 'att-row';
+  row.className = 'att-row' + (lock?.on ? ' att-row-locked' : '') + (lock?.on && lock.held === false ? ' att-row-lock-lost' : '');
+  if (lock) row.dataset.lockKey = lock.key;
   const labelEl = document.createElement('label');
   labelEl.className = 'att-lbl';
   labelEl.textContent = label;
@@ -54,6 +55,18 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   }
   row.appendChild(labelEl);
   row.appendChild(sel);
+  if (lock && !disabled) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'att-tool att-tool-lock' + (lock.on ? ' on' : '');
+    btn.title = lock.on && lock.held === false ? `${label} is locked at ${lock.heldName}, which this weapon cannot take; it is back to the default here and returns on a weapon that can.`
+      : lock.on ? `${label} is locked: it stays through a weapon change where the weapon can take it.`
+      : `Lock ${label} so it stays through a weapon change.`;
+    btn.setAttribute('aria-label', `${lock.on ? 'Unlock' : 'Lock'} ${label}`);
+    btn.setAttribute('aria-pressed', String(lock.on));
+    btn.onclick = () => lock.toggle();
+    row.appendChild(btn);
+  }
   container.appendChild(row);
 }
 
@@ -64,8 +77,23 @@ export function renderAttachmentSection({
   weapon,
   data,
   onChange = () => {},
+  decorate = null,
+  locks = null,
+  onLockToggle = null,
+  lockHeld = null,
 }) {
   if (!container) return;
+  // A row's lock key: the combined rail row locks as its device slot (laser).
+  // `held` is false when the locked choice is not what the row shows, which
+  // happens when this weapon cannot take it.
+  const lockFor = (key, label) => {
+    if (!locks || !onLockToggle) return null;
+    const lockKey = key === 'rail' ? 'laser' : key;
+    const on = Object.hasOwn(locks, lockKey);
+    const status = on && lockHeld ? lockHeld(lockKey) : null;
+    return { key: lockKey, on, held: status ? status.held : undefined, heldName: status?.name,
+      toggle: () => onLockToggle(lockKey, label) };
+  };
   const normalizeSelection = () => {
     const normalized = normalizeAttachments(atts, weapon, data);
     for (const key of ['grip', 'laser', 'light', 'rail', 'fireMode']) {
@@ -99,7 +127,7 @@ export function renderAttachmentSection({
     }
     normalizeSelection();
     if (key === 'ergo' || key === 'fireMode' || wa?.dependencies?.length) {
-      renderAttachmentSection({ containerId, container, atts, weapon, data, onChange });
+      renderAttachmentSection({ containerId, container, atts, weapon, data, onChange, decorate, locks, onLockToggle, lockHeld });
     } else {
       updateAttTotal(containerId, atts, weapon, data);
     }
@@ -135,6 +163,7 @@ export function renderAttachmentSection({
           };
         }),
         onChange: value => handleChange('accessory', value),
+        lock: lockFor('accessory', 'OPT ACC'),
       });
     }
   };
@@ -198,6 +227,7 @@ export function renderAttachmentSection({
           bugs: bugsFor(key === 'rail' ? a.type : key, a.id) };
       }),
       onChange: value => handleChange(key, value),
+      lock: lockFor(key, label),
     });
   };
   slots.forEach(slot => {
@@ -219,6 +249,7 @@ export function renderAttachmentSection({
           bugs: bugsFor('ammo', a.id) };
       }),
       onChange: value => handleChange('ammo', value),
+      lock: lockFor('ammo', 'Ammo'),
     });
   } else if (!weapon) {
     appendSelectRow(container, {
@@ -243,6 +274,7 @@ export function renderAttachmentSection({
         bugs: bugsFor('mag', m.id),
       })),
       onChange: value => handleChange('mag', value),
+      lock: lockFor('mag', 'Mag'),
     });
   } else if (!weapon) {
     appendSelectRow(container, {
@@ -268,6 +300,7 @@ export function renderAttachmentSection({
         bugs: bugsFor('ergo', e.id),
       })),
       onChange: value => handleChange('ergo', value),
+      lock: lockFor('ergo', 'Ergo'),
     });
   } else if (!weapon) {
     appendSelectRow(container, {
@@ -291,4 +324,5 @@ export function renderAttachmentSection({
   if (pendingPp19Coverage) {
     container.insertAdjacentHTML('beforeend', '<div class="att-note pp19-coverage-note">PP-19 attachment availability and effects: needs measurement.</div>');
   }
+  decorate?.(container);
 }

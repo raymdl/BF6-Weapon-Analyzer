@@ -28,7 +28,7 @@
 <body>
 <header>
   <h1 class="logo-h1"><a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a></h1>
-  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-10-21">Updated 21 OCT 2026</time></div>
+  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-10-22">Updated 22 OCT 2026</time></div>
   <div class="archive-group">
     <select class="archive-select" id="archiveSelect" autocomplete="off" aria-label="Site version">
       <option value="" selected disabled hidden>Site Versions</option>
@@ -49,6 +49,7 @@
     </div>
     <button class="cmp-btn" id="cmpBtn" aria-pressed="false">+ Compare Loadout</button>
     <div class="sb-scroll">
+      <div class="sb-sec" id="savedSec1"></div>
       <div class="sb-sec">
         <div class="sb-lbl">Class</div>
         <div class="class-filter" id="classFilter1"></div>
@@ -60,6 +61,7 @@
       <div class="att-sec" id="attSection1"></div>
       <div id="cmpSection" style="display:none">
         <div class="cmp-hdr"><span>Compare Loadout</span><button class="clone-btn" id="cloneLoadoutBtn" type="button" title="Copy Weapon 1 and its attachments into Weapon 2">Clone</button></div>
+        <div class="sb-sec" id="savedSec2"></div>
         <div class="sb-sec">
           <div class="sb-lbl">Class</div>
           <div class="class-filter" id="classFilter2"></div>

@@ -53,6 +53,21 @@ UMG-40 uses its basic aperture sights. Optics are listed by their in-game names,
 with their magnification, and have no description yet. Text appears without an introductory prefix and
 does not define the simulated effects. Some choices still have no description.
 
+Each attachment row has a padlock; the one in the Attachments header locks every
+row with something fitted (a "None" stays free) or unlocks every row at once. A locked choice stays when another weapon is chosen,
+and one the new weapon cannot take goes back to that weapon's default until a
+weapon that can take it is chosen again. Changing a locked attachment locks it at
+the new choice. Locked rows take a gold edge; a dashed edge means the weapon cannot
+take the locked choice and the row shows its default instead. The locks are
+remembered per slot in browser storage.
+
+Saved Loadouts, above the class filter, live in browser storage, not in links.
+Save names the current weapon and attachments, suggesting "Loadout 1", "Loadout 2"
+and so on per weapon (a name already used for that weapon is overwritten); the menu
+loads one into that slot, and each entry's ✕ deletes it. A saved loadout is
+stored as the same compact tokens a share link uses, so it keeps resolving as
+the catalog grows.
+
 Enable comparison for a second independent loadout. Clone the first loadout to
 compare attachment changes on the same weapon. Disabling comparison clears the
 second slot. On smaller screens, the Loadout button opens a dialog; Escape closes
@@ -277,8 +292,9 @@ coarser distance increments farther away. Magnification, display resolution/aspe
 and horizontal FOV change the viewing scale.
 
 The zoom starts at the first loadout's sight: 1.50× for iron sights, the stated
-magnification for a fixed optic, and the high end of a variable optic's range. The
-zoom slider overrides it. Off the sight's own zoom, a tick on the slider marks where
+magnification for a fixed optic, and the high end of a variable optic's range. An
+optic only zooms when aiming down it, so hipfire starts at 1.00× whatever the sight.
+The zoom slider overrides it, separately for ADS and hipfire. Off the sight's own zoom, a tick on the slider marks where
 that zoom is. The zoom read-out turns gold with an asterisk when the zoom
 is one the sight cannot show; a variable optic's whole range counts as its own.
 Reset, or choosing another sight, returns the zoom to the sight. Display resolution/FOV preferences
