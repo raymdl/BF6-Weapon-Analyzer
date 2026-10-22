@@ -63,7 +63,7 @@ stat and adds a footnote with the intended effect.
 | 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. | Matches game: x1.00 (firing-range damage); the panel shows x0.00 |
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4) | Suspected game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons and 2 on the B36A4 and the rest; it may not be an error. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
-| 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Not modelled: the site names sights by magnification, so 3.50x and 3.00x keep their optic accessories |
+| 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Matches game: with these two scopes the site offers no Optic Accessory; the SDO 3.50x and Baker 3.00x keep it |
 | 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
 | 25 | Bipod, deployed | Mk 24, EF88, VSSM (predicted also Z84M) | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Not modelled: the site has no deployed state |
 | 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Suspected game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 weapons in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
@@ -645,10 +645,11 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Why it looks like an error.** The change is not in the patch notes, undoes on two weapons
   what the previous patch added on most, and leaves a 10-point scope that silently removes a
   whole slot. The scopes' descriptions are the same as those of the scopes that keep the slot.
-- **Site.** The site names sights by magnification, and both weapons have a second scope of
-  the same magnification that keeps every accessory. The magnification therefore stays
-  selectable with optic accessories (named exceptions in
-  `scripts/frosty-attachment-compatibility.py`).
+- **Site.** The site lists each optic by name, and the Optic Accessory prerequisites name
+  the individual optics the files list
+  ([individual optics](../reference-data/provenance/frosty-individual-optics-2026-10-21.json)).
+  The MGO 3.50x on the Interdictor and the QMK 3.00x on the M16A4 therefore remove the slot,
+  as in game.
 
 ### 24. ELR-40 Single Shot sweet spot is wider than its description
 
@@ -882,7 +883,8 @@ scope size with another sniper rifle in game before you add an entry.
 
 **Iron-sight zoom.** All iron sights zoom 1.50× (`Aim_1x50`), more than 1.00× optics.
 The operator confirmed this in game. It is consistent on all weapons, so it is not
-listed as an error. The site labels it "Iron Sights" without a magnification, like the other optics.
+listed as an error. The site labels it "Iron Sights" and gives it a 1.50× magnification, which
+sets the Soldier Target zoom.
 
 ## Source data inconsistencies
 

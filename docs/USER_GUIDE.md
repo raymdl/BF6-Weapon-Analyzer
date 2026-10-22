@@ -49,8 +49,8 @@ Hover an attachment control or option to read its in-game description where
 available. The selected control also exposes the text as an accessible description.
 Most text comes from Frosty UI records; 15 choices use approved game captures.
 Iron Sights also has a description on each weapon. M16A4 uses its Classic sights;
-UMG-40 uses its basic aperture sights. Other generic optic categories do not use
-one individual optic's tooltip. Text appears without an introductory prefix and
+UMG-40 uses its basic aperture sights. Optics are listed by their in-game names,
+with their magnification, and have no description yet. Text appears without an introductory prefix and
 does not define the simulated effects. Some choices still have no description.
 
 Enable comparison for a second independent loadout. Clone the first loadout to
@@ -274,7 +274,13 @@ expected accuracy.
 
 Distance ranges from 5 to 300 metres and starts at 20 metres. The slider snaps to
 coarser distance increments farther away. Magnification, display resolution/aspect,
-and horizontal FOV change the viewing scale. Display resolution/FOV preferences
+and horizontal FOV change the viewing scale.
+
+The zoom starts at the first loadout's sight: 1.50× for iron sights, the stated
+magnification for a fixed optic, and the high end of a variable optic's range. The
+zoom slider overrides it. The zoom read-out turns gold with an asterisk when the zoom
+is one the sight cannot show; a variable optic's whole range counts as its own.
+Reset, or choosing another sight, returns the zoom to the sight. Display resolution/FOV preferences
 are saved locally when browser storage is available.
 
 Aim at chest or head, or Ctrl+click the plot to place a custom aim point and fire a
@@ -301,10 +307,10 @@ click once per shot for semi-automatic, bolt and pump weapons, or click once per
 burst. The magazine empties at its real size. While the plot holds the mouse the
 cursor is hidden, so the keys are the controls: **R** reloads and clears the
 shots, **C** clears the shots, **Esc** releases the mouse. The **Reload** and
-**Clear** buttons above the plot do the same once the mouse is released, keeping
+**Clear** buttons in the plot's corner do the same once the mouse is released, keeping
 distance, zoom and aim; the reset button also returns the view and the aim to the
 starting point. The ring around the crosshair is the spread the next shot would
-be sampled from; the crosshair button hides the ring and crosshair. Dots are
+be sampled from. Dots are
 coloured by hit zone (red head, gold upper torso, blue lower torso, arms and legs) and
 faded dots miss. The Target Impact Stats describe the shots fired so far. Only
 Weapon 1 fires, so the compare loadout is greyed out but kept.

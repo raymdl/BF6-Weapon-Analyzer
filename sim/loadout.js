@@ -162,6 +162,17 @@ export function availableAttachments(weapon, key, data, atts = null) {
     || attachmentCompatible(weapon, a.type ?? key, a.id, atts, data)) : options;
 }
 
+/**
+ * Old share links name a sight category (Standard Optic, Thermal...). It now
+ * stands for the weapon's lowest-magnification optic of that category.
+ */
+export function resolveLegacySight(weapon, id, data) {
+  if (!data.SIGHTS?.find(sight => sight.id === id)?.legacy) return id;
+  const low = sight => sight.magnificationRange?.[0] ?? sight.magnification;
+  return attachmentOptions(weapon, 'sight', data).filter(sight => sight.category === id)
+    .reduce((best, sight) => (best && low(best) <= low(sight) ? best : sight), null)?.id ?? id;
+}
+
 function attachmentOptions(weapon, key, data) {
   if (!weapon) return [];
   const wa = data.WEAPON_ATTS?.[weapon.id];
@@ -181,7 +192,7 @@ function attachmentOptions(weapon, key, data) {
   let source = data[slot.dataKey] ?? [];
   let allowed = wa?.[key];
   // Sights are shared unless the weapon explicitly restricts them.
-  if (key === 'sight' && allowed == null) return source;
+  if (key === 'sight' && allowed == null) return source.filter(a => !a.legacy);
   return source.filter(a => slot.isBarrel
     ? a.id !== 'none' && allowed?.includes(a.id)
     : a.id === 'none' || allowed?.includes(a.id));

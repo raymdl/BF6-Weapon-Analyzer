@@ -118,18 +118,20 @@ export function renderAttachmentSection({
   const appendAccessoryRow = () => {
     const accessoryData = weapon ? data.WEAPON_ACCESSORY?.[weapon.id] : null;
     if (accessoryData) {
-      const sight = atts.sight ?? 'iron';
       const options = availableAttachments(weapon, 'accessory', data, atts);
+      const optics = availableAttachments(weapon, 'sight', data).filter(sight => sight.id !== 'iron');
       if (options.length === 1) return;
       appendSelectRow(container, {
         label: 'OPT ACC',
         value: atts.accessory ?? 'none',
         options: options.map(a => {
-          const excluded = accessoryData.excludedSights?.[a.id]?.[sight];
+          const rule = wa?.dependencies?.find(r => r.slot === 'accessory' && r.attachment === a.id);
+          const permitted = new Set(rule?.requiresAny.map(r => r.attachment));
+          const excluded = rule && optics.filter(sight => !permitted.has(sight.id)).map(sight => sight.name);
           return {
             id: a.id,
             text: a.pts > 0 ? `${attDisplayName(a, weapon.id)} [${a.pts}]` : attDisplayName(a, weapon.id),
-            description: [a.description, excluded && `Not with: ${excluded.join(', ')}.`].filter(Boolean).join('\n\n'),
+            description: [a.description, excluded?.length && `Not with: ${excluded.join(', ')}.`].filter(Boolean).join('\n\n'),
           };
         }),
         onChange: value => handleChange('accessory', value),
@@ -158,6 +160,14 @@ export function renderAttachmentSection({
       if (compensatorIndex > linearIndex && linearIndex >= 0) {
         visible.splice(linearIndex, 0, ...visible.splice(compensatorIndex, 1));
       }
+    }
+
+    if (key === 'sight') {
+      // Iron sights, then fixed optics, variables and thermals, each by zoom.
+      const group = a => a.id === 'iron' ? 0 : ['thermal', 'therm_hyb'].includes(a.category) ? 3
+        : ['var_low', 'var_high'].includes(a.category) ? 2 : 1;
+      visible.sort((a, b) => group(a) - group(b) || (a.magnification ?? 0) - (b.magnification ?? 0)
+        || a.name.localeCompare(b.name));
     }
 
     if (visible.length <= (isBarrel ? 0 : 1)) {

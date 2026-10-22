@@ -1,4 +1,4 @@
-import { availableAttachments, attachmentSlots, normalizeAttachments } from './loadout.js';
+import { availableAttachments, attachmentSlots, normalizeAttachments, resolveLegacySight } from './loadout.js';
 
 export const TARGET_DEFAULT_DISTANCE = 20;
 
@@ -74,6 +74,7 @@ export function createShareCodec({
     value.split('-').forEach((id, index) => {
       const key = ATT_ORDER[index];
       if (!key || id == null) return;
+      if (key === 'sight') id = resolveLegacySight(weapon, id, data);
       if (allowed(weapon, key, id)) atts[key] = id;
     });
     return normalizeAttachments(atts, weapon, data);
@@ -86,7 +87,8 @@ export function createShareCodec({
     delete atts.rail;
     const magKeys = magKeysFor(weapon);
     const set = (arr, index, slot) => {
-      if (arr[index] && allowed(weapon, slot, arr[index].id)) atts[slot] = arr[index].id;
+      const id = slot === 'sight' && arr[index] ? resolveLegacySight(weapon, arr[index].id, data) : arr[index]?.id;
+      if (id && allowed(weapon, slot, id)) atts[slot] = id;
     };
     let match;
     const re = /([A-Z])(\d+)/g;

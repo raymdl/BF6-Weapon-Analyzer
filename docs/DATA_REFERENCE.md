@@ -112,6 +112,18 @@ weapon's availability map. Supported effect families are:
 | `utilities` | Label → value map of non-numeric capabilities (e.g. `"Fire while Sprinting": "Yes"`), shown as green chips in Attachment Effects. |
 | `collateralMult`, `healthRegenDelayAddS` | Legacy collateral fallback and source regeneration-delay addition. All supported collateral values instead resolve through the generated per-weapon map. No penetration/regen event simulation. |
 
+`SIGHTS` holds Iron Sights, then five hidden legacy categories (`legacy: true`) kept
+at their positions for old share links, then the individual optics. An old link's
+category loads the weapon's lowest-magnification optic of that category. Each optic
+has its in-game `name`, the legacy `category` whose cost and effects it shares,
+`pts`, `magnification` and, for variable optics, `magnificationRange` (the label
+range; `magnification` is its high end, an assumption). Fixed optics zoom to their UI
+label; iron sights zoom 1.50×. The Soldier Target zoom defaults to `magnification`.
+`scripts/frosty-individual-optics.py` generates the optics, each weapon's
+`WEAPON_ATTS[id].sight` list and the optic prerequisites of `accessory` rules from
+the optic mapping, the compatibility report and the research repo's optic names
+([evidence](../reference-data/provenance/frosty-individual-optics-2026-10-21.json)).
+
 `WEAPON_ATTS[id]` supplies category ID arrays, `barrelDef`, optional `sightPoints`,
 and explicit `slots` with accepted attachment types. Shared rails store a typed
 `atts.rail = { type, id }` selection or `null`; category lists retain their own
@@ -165,7 +177,7 @@ research outputs and frozen site copies are excluded. Scalar maps follow the tab
 | `weapons.json: []` | Weapon records with unique IDs. | Roster/UI iteration; joins use IDs. |
 | `weapons[].dmg[]` | `{r,d,source?}` ordered nondecreasing ranges; duplicates encode discontinuities. | Damage, BTK, TTK, target damage. Never deduplicate equal ranges. |
 | `weapons[].spread.adsStand[]`, `.adsMove[]`, `.hipStand[]`, `.hipMove[]` | Exactly `[minimum, maximum]` in degrees. | Selected aim/stance bounds; effective minima may be replaced by ladders. |
-| `attachments: SIGHTS[]`, `MUZZLES[]`, `BARRELS[]`, `GRIPS[]`, `LASERS[]`, `LIGHTS[]`, `ERGOS[]` | Ordered ID-bearing catalogs. At review: 6, 18, 12, 49, 9, 5, 14 entries respectively. | Selection and positional share tokens; preserve existing order. |
+| `attachments: SIGHTS[]`, `MUZZLES[]`, `BARRELS[]`, `GRIPS[]`, `LASERS[]`, `LIGHTS[]`, `ERGOS[]` | Ordered ID-bearing catalogs. At review: 46 (6 of them Iron Sights and legacy categories), 18, 12, 49, 9, 5, 14 entries respectively. | Selection and positional share tokens; preserve existing order. |
 | `WEAPON_ATTS[id].sight[]`, `.muzzle[]`, `.barrel[]`, `.grip[]`, `.laser[]`, `.light[]` | Allowed catalog IDs, possibly empty. | Availability and menu order/filtering; empty is not an unknown numeric zero. |
 | `WEAPON_ERGO[id].avail[]` | Allowed ergonomic IDs. | Selection validation. |
 | `ammo: AMMO[]` | Ordered catalog, 15 entries at review. | Selection, effects and positional share tokens. |

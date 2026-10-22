@@ -21,18 +21,20 @@ test('site optic categories and costs match the latest Frosty optics', () => {
     ((frosty[member.weapon] ??= {})[member.category] ??= new Set()).add(member.sourcePointCost);
   }
 
-  const categoryIds = attachments.SIGHTS.map(sight => sight.id);
-  const defaultCost = Object.fromEntries(attachments.SIGHTS.map(sight => [sight.id, sight.pts]));
+  // Site sights are individual optics; each belongs to one legacy category.
+  const sights = Object.fromEntries(attachments.SIGHTS.map(sight => [sight.id, sight]));
   for (const weapon of weapons) {
     const source = frosty[weapon.id];
     assert.ok(source, `${weapon.id} has Frosty optics`);
     const wa = attachments.WEAPON_ATTS[weapon.id];
-    const siteCategories = (wa?.sight ?? categoryIds).slice().sort();
+    assert.ok(wa.sight.every(id => sights[id] && !sights[id].legacy), `${weapon.id} lists only current optics`);
+    const siteCategories = [...new Set(wa.sight.map(id => sights[id].category ?? id))].sort();
     assert.deepEqual(siteCategories, Object.keys(source).sort(), `${weapon.id} optic categories`);
     for (const [category, costs] of Object.entries(source)) {
       assert.equal(costs.size, 1, `${weapon.id} ${category} has one Frosty cost`);
-      const siteCost = wa?.sightPoints?.[category] ?? defaultCost[category];
-      assert.equal(siteCost, [...costs][0], `${weapon.id} ${category} cost`);
+      for (const id of wa.sight.filter(id => (sights[id].category ?? id) === category)) {
+        assert.equal(wa.sightPoints?.[id] ?? sights[id].pts, [...costs][0], `${weapon.id} ${id} cost`);
+      }
     }
   }
 });

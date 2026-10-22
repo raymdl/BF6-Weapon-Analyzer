@@ -44,6 +44,19 @@ test('indexed and legacy links reject attachments unavailable to the weapon', ()
   assert.deepEqual(codec.decodeAtts(w, 'iron-none-basic-none-none-none-slugs-none-'), defaults(w));
 });
 
+test('old sight-category links load the lowest-magnification optic of that category', () => {
+  for (const [id, category, expected] of [['m433', 'std_optic', 'mini_flex_1_00x'], ['m433', 'var_high', 'dvo_lpvo'],
+    ['m433', 'thermal', 'grim_1_50x'], ['p18', 'std_optic', 'mini_flex_1_00x'], ['p18', 'thermal', 'iron']]) {
+    const w = weapon(id);
+    const index = data.SIGHTS.findIndex(a => a.id === category);
+    assert.equal(codec.decodeAtts(w, `S${index}`).sight, expected, `${id} S${index}`);
+    assert.equal(codec.decodeAtts(w, `${category}-none-basic-none-none-none-standard-none-`).sight, expected);
+  }
+  const w = weapon('m433');
+  const optic = { ...defaults(w), sight: 'sdo_3_50x' };
+  assert.deepEqual(codec.decodeAtts(w, codec.encodeAtts(w, optic)), optic);
+});
+
 test('combined slots accept their supported items without enabling a second occupied slot', () => {
   for (const [id, laser] of [['vz61', 'canted_stubby'], ['grtbc', 'flashlight']]) {
     const w = weapon(id);

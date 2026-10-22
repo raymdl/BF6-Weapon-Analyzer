@@ -256,6 +256,9 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 /* The distance and zoom values are read while dragging their slider, so they
    carry a size up from the other read-outs. */
 .rc-viewbar .rc-readout{font-size:.72rem}
+/* Target zoom off the equipped sight's own magnification. */
+.rc-readout.rc-zoom-override{color:var(--accent)}
+.rc-readout.rc-zoom-override::after{content:'*';margin-left:1px}
 /* Chart viewport — tab strip, contextual bar and canvas read as one card */
 .rc-viewport{border:1px solid var(--border);border-radius:6px;background:#0b1010;overflow:hidden;min-width:0}
 .rc-tabstrip{display:flex;align-items:stretch;flex-wrap:wrap;background:#151b1b;border-bottom:1px solid var(--border)}

@@ -49,9 +49,9 @@ prerequisite attachment IDs from `Equipment_*` records. Its
 [evidence](../reference-data/provenance/frosty-attachment-compatibility.json)
 covers 1,391 offered mount choices and 285 dependency entries: 22 rules map to
 offered attachments on four weapons. The 263 Optic Accessory entries become 118
-`accessory` rules on 56 weapons. They name individual optics, so a site sight
-category qualifies when it holds at least one permitted optic; the category's
-other optics are listed in `WEAPON_ACCESSORY.excludedSights` for the tooltip. The PP-19 30/53-round screenshots corroborate
+`accessory` rules on 56 weapons. They name individual optics, which are site sight choices
+([individual optics](../reference-data/provenance/frosty-individual-optics-2026-10-21.json));
+the accessory tooltip lists the weapon's optics that do not allow it. The PP-19 30/53-round screenshots corroborate
 the dependency interpretation. Native hashed enum semantics and live overrides
 are not inferred. The [Frosty collection records](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites)
 retain asset findings and collection/recheck requirements.

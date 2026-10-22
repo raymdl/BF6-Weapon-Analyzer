@@ -278,7 +278,7 @@ M4A1 recordings show the reduction (vertical sway ratio 0.68 against ROX) and BR
 recordings show none. The same recordings support multiplication: M4A1 iron sights with
 the 20 Rnd magazine give 0.28 against ROX with 30 Rnd, where 0.667 × 0.444 = 0.296 ([captures](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sight-sway-ads-move-captures-2026-09-25.json)).
 
-Variable High and Thermal sights set `adsMoveSpeedTierShift: 1` (one ADS-move tier
+Optics in the Variable High and Thermal categories set `adsMoveSpeedTierShift: 1` (one ADS-move tier
 slower, source `WME_ADSMoveSpeed_M05`). M4A1 menu captures confirm it: ADS move
 0.82 → 0.75 and Mobility 74 → 72; no other optic changes a menu stat.
 

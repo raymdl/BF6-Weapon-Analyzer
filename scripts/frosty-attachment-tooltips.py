@@ -50,7 +50,13 @@ for (const weapon of read('data/weapons.json')) {
     !['grip', 'laser', 'light'].includes(key) ? [key] :
     key === 'laser' && mounts.rail ? ['rail'] : mounts[key] ? [key] : []);
   for (const mount of [...slots, 'ammo', 'mag', 'ergo']) {
-    for (const item of availableAttachments(weapon, mount, data)) {
+    let items = availableAttachments(weapon, mount, data);
+    // Optic evidence stays grouped by the legacy sight categories.
+    if (mount === 'sight') {
+      const ids = new Set(items.map(item => item.category ?? item.id));
+      items = data.SIGHTS.filter(sight => ids.has(sight.id));
+    }
+    for (const item of items) {
       if (item.id === 'none') continue;
       const slot = mount === 'rail' ? item.type : mount;
       const points = slot === 'ammo' ? data.WEAPON_AMMO[weapon.id].ammo[item.id] :

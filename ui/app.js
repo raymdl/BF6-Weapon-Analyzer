@@ -183,8 +183,10 @@ const state = {
     refSeed: 0,
     scaleH: 5, panX: 0, panY: 0,
     crosshair: true,
-    // Target view starts at 2.5×; null remains the automatic-fit sentinel.
-    magnification: 2.5, distancePanX: 0, distancePanY: 0,
+    // Target zoom follows the primary slot's sight. An explicit zoom holds only
+    // while the sight it was set on (magnificationSight) stays equipped; without
+    // a sight it starts at 2.5× and null is the automatic-fit sentinel.
+    magnification: 2.5, magnificationSight: null, distancePanX: 0, distancePanY: 0,
   },
 };
 
@@ -1429,8 +1431,8 @@ function targetDistanceIndex(distance) {
   return best;
 }
 function syncTargetDistance() {
-  if (isTargetGeometry() && state.recoil.magnification == null) {
-    state.recoil.magnification = currentMagnification();
+  if (isTargetGeometry() && magnificationOverride() == null && !equippedSight()) {
+    setMagnification(currentMagnification());
   }
   const el = document.getElementById('rcDistanceRange');
   const raw = +(el?.value ?? 0);
@@ -1454,7 +1456,7 @@ function syncZoomFromSlider() {
 /** The zoom slider indexes the magnification ladder in target view, percent in angle view. */
 function zoomSliderBounds() {
   return isTargetGeometry()
-    ? { min: 0, max: SCOPE_MAGNIFICATIONS.length - 1, step: 1, value: SCOPE_MAGNIFICATIONS.indexOf(currentMagnification()) }
+    ? { min: 0, max: SCOPE_MAGNIFICATIONS.length - 1, step: 1, value: magnificationIndex(currentMagnification()) }
     : { min: 0, max: 100, step: 1, value: (RECOIL_SCALE_MAX - state.recoil.scaleH) / (RECOIL_SCALE_MAX - RECOIL_SCALE_MIN) * 100 };
 }
 /** Paint the filled portion of a range input so every slider reads the same. */
@@ -1649,8 +1651,48 @@ function fitMagnification(spanCm, display = targetDisplaySettings()) {
   }
   return SCOPE_MAGNIFICATIONS[0];
 }
+/** The primary slot's sight when it carries a magnification; it sets the default target zoom. */
+function equippedSight() {
+  const { weapon, atts } = state.slots[0];
+  const sight = weapon ? ATT_BY_ID.SIGHTS[atts?.sight ?? 'iron'] : null;
+  return Number.isFinite(sight?.magnification) ? sight : null;
+}
+function equippedSightKey() {
+  const { weapon, atts } = state.slots[0];
+  return weapon ? `${weapon.id}:${atts?.sight ?? 'iron'}` : null;
+}
+/** The user's zoom, or null once the sight it was chosen on is no longer equipped. */
+function magnificationOverride() {
+  return state.recoil.magnificationSight === equippedSightKey() ? state.recoil.magnification : null;
+}
+function setMagnification(value) {
+  const sight = equippedSight();
+  state.recoil.magnification = sight && value === sight.magnification ? null : value;
+  state.recoil.magnificationSight = equippedSightKey();
+}
+/** Back to the sight's own zoom, or the fixed start zoom without a sight. */
+function resetMagnification() {
+  state.recoil.magnification = equippedSight() ? null : TARGET_DEFAULT_MAGNIFICATION;
+  state.recoil.magnificationSight = equippedSightKey();
+}
+/** A zoom the equipped sight cannot show: off its magnification and outside a variable optic's range. */
+function magnificationIsNonStandard(magnification, sight = equippedSight()) {
+  if (!sight) return false;
+  const [low, high] = sight.magnificationRange ?? [sight.magnification, sight.magnification];
+  return magnification < low || magnification > high;
+}
+function magnificationIndex(magnification) {
+  let index = 0;
+  SCOPE_MAGNIFICATIONS.forEach((value, i) => {
+    if (Math.abs(Math.log(value / magnification)) < Math.abs(Math.log(SCOPE_MAGNIFICATIONS[index] / magnification))) index = i;
+  });
+  return index;
+}
 function currentMagnification() {
-  if (state.recoil.magnification != null) return state.recoil.magnification;
+  const override = magnificationOverride();
+  if (override != null) return override;
+  const sight = equippedSight();
+  if (sight) return sight.magnification;
   return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL);
 }
 function recoilViewport() {
@@ -1681,11 +1723,11 @@ function recoilViewport() {
 }
 function setMagnificationIndex(index) {
   const clamped = Math.max(0, Math.min(SCOPE_MAGNIFICATIONS.length - 1, Math.round(index)));
-  state.recoil.magnification = SCOPE_MAGNIFICATIONS[clamped];
+  setMagnification(SCOPE_MAGNIFICATIONS[clamped]);
 }
 function adjustRecoilScale(dir) {
   if (isTargetGeometry()) {
-    const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
+    const index = magnificationIndex(currentMagnification());
     setMagnificationIndex(index + (dir === 'in' ? 1 : -1));
   } else {
     state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX,
@@ -1701,7 +1743,7 @@ function resetRecoilView() {
   if (state.recoil.view === 'range') firingRange?.reset();
   if (isTargetGeometry()) {
     state.recoil.distance = TARGET_DEFAULT_DISTANCE;
-    state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
+    resetMagnification();
     state.recoil.distancePanX = 0;
     state.recoil.distancePanY = 0;
     state.recoil.targetAim = 'chest';
@@ -1716,7 +1758,7 @@ function resetRecoilView() {
 function resetRecoilFraming() {
   recoilTouchControls?.cancel();
   if (isTargetGeometry()) {
-    state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
+    resetMagnification();
     state.recoil.distancePanX = 0; state.recoil.distancePanY = 0;
   } else {
     state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
@@ -1728,12 +1770,7 @@ function resetRecoilFraming() {
 function transformRecoilTouchView(baseZoom, ratio, anchor, clientX, clientY, canvas) {
   if (!Number.isFinite(ratio) || ratio <= 0) return;
   if (isTargetGeometry()) {
-    const wanted = baseZoom * ratio;
-    let index = 0;
-    SCOPE_MAGNIFICATIONS.forEach((value, i) => {
-      if (Math.abs(Math.log(value / wanted)) < Math.abs(Math.log(SCOPE_MAGNIFICATIONS[index] / wanted))) index = i;
-    });
-    setMagnificationIndex(index);
+    setMagnificationIndex(magnificationIndex(baseZoom * ratio));
   } else {
     state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX, baseZoom / ratio));
   }
@@ -1795,7 +1832,7 @@ function zoomRecoilAtPointer(deltaY, clientX, clientY, canvas) {
   const worldY = before.yCenter + (0.5 - v) * before.ySpan;
 
   if (isTargetGeometry()) {
-    const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
+    const index = magnificationIndex(currentMagnification());
     setMagnificationIndex(index + (deltaY < 0 ? 1 : -1));
     const after = recoilViewport();
     state.recoil.distancePanX = worldX - (u - 0.5) * after.xSpan;
@@ -2591,10 +2628,15 @@ function renderRecoil({ plotOnly = false } = {}) {
   const zoomReadout = document.getElementById('rcZoomReadout');
   if (zoomReadout) {
     const magnification = isTarget ? currentMagnification() : null;
+    const sight = isTarget ? equippedSight() : null;
+    const nonStandard = isTarget && magnificationIsNonStandard(magnification, sight);
     zoomReadout.textContent = isTarget ? `${magnification.toFixed(2)}×` : `±${fmtAxisDeg(state.recoil.scaleH)}°`;
-    zoomReadout.title = isTarget
-      ? `Optic magnification. The plot shows the same field a ${magnification.toFixed(2)}× sight would at this range.`
-      : 'Horizontal half-span of the plot, in degrees.';
+    zoomReadout.classList.toggle('rc-zoom-override', nonStandard);
+    zoomReadout.title = !isTarget ? 'Horizontal half-span of the plot, in degrees.'
+      : nonStandard ? `Not the sight's zoom: the ${sight.name} shows ${sight.magnificationRange
+        ? `${sight.magnificationRange[0].toFixed(2)}× to ${sight.magnificationRange[1].toFixed(2)}×`
+        : `${sight.magnification.toFixed(2)}×`}. Reset the view to return to it.`
+      : `Optic magnification${sight ? ` of the ${sight.name}` : ''}. The plot shows the same field a ${magnification.toFixed(2)}× sight would at this range.`;
   }
   pressed('rcPlatformPc', state.recoil.platform === 'pc');
   pressed('rcPlatformConsole', state.recoil.platform === 'console');

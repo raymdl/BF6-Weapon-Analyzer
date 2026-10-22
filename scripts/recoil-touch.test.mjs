@@ -165,12 +165,13 @@ function mathHarness(view) {
     RECOIL_SCALE_MIN: 1, RECOIL_SCALE_MAX: 20, TARGET_DEFAULT_MAGNIFICATION: 1,
     currentMagnification: () => c.state.recoil.magnification,
     isTargetGeometry: () => c.state.recoil.view === 'target' || c.state.recoil.view === 'range',
+    equippedSight: () => null, equippedSightKey: () => null,
     targetDisplaySettings: () => ({ height: 1000 }),
     targetCenterY: span => 80 + span / 10, spanCmAtMagnification: m => 2000 / m,
     plotBox: () => ({ PW: 364, PH: 374 }), scheduleRecoilPlot() {}, renderRecoil() {},
   });
-  runInContext(['canvasToWorld', 'plotCanvasSize', 'recoilViewport', 'setMagnificationIndex',
-    'transformRecoilTouchView', 'resetRecoilFraming'].map(runtimeFunction).join('\n'), c);
+  runInContext(['canvasToWorld', 'plotCanvasSize', 'recoilViewport', 'setMagnificationIndex', 'setMagnification',
+    'resetMagnification', 'magnificationIndex', 'transformRecoilTouchView', 'resetRecoilFraming'].map(runtimeFunction).join('\n'), c);
   c.canvas = canvas;
   return c;
 }
