@@ -403,7 +403,10 @@ export function createFiringRange({
     const impacts = sim.state.impacts;
     if (!impacts.length) return null;
     const summary = summarizeTargetImpacts(w, readDistance(), impacts.map(p => p.zone ?? null));
-    return summary.lethalShot == null ? null : { impact: impacts[summary.lethalShot - 1], hits: summary.lethalHit, shot: summary.lethalShot };
+    if (summary.lethalShot == null) return null;
+    const impact = impacts[summary.lethalShot - 1];
+    // Time to kill runs from the first shot on the board.
+    return { impact, hits: summary.lethalHit, shot: summary.lethalShot, ms: (impact.t - impacts[0].t) * 1000 };
   }
 
   function drawOverlay(frame, sim) {
@@ -482,17 +485,18 @@ export function createFiringRange({
     // HUD: ammunition and the trigger mode, drawn outside the clip so it never
     // slides off with the view.
     const mode = { auto: 'Hold to fire', burst: 'Click per burst', single: 'Click per shot' }[sim.state.triggerMode];
-    const ammo = Number.isFinite(sim.state.magazine) ? `${sim.state.ammo} / ${sim.state.magazine}` : `${sim.state.shots} fired`;
+    const ammo = Number.isFinite(sim.state.magazine) ? `Mag: ${sim.state.ammo} / ${sim.state.magazine}` : 'Mag: ∞';
     // Top-right belongs to the Reload and Clear buttons, so the read-outs stack at top-left.
     ctx.font = '600 11px sans-serif'; ctx.textBaseline = 'top'; ctx.textAlign = 'left';
+    const ammoText = sim.state.ammo === 0 ? `${ammo} · R to reload` : ammo;
     ctx.fillStyle = sim.state.ammo === 0 ? '#ff7b1c' : 'rgba(225,232,232,0.9)';
-    ctx.fillText(sim.state.ammo === 0 ? `${ammo} · R to reload` : ammo, PL + 6, PT + 6);
+    ctx.fillText(ammoText, PL + 6, PT + 6);
     ctx.fillStyle = 'rgba(160,175,175,0.85)';
-    ctx.fillText(`${sim.state.shots} shot${sim.state.shots === 1 ? '' : 's'} · ${mode}`, PL + 6, PT + 20);
+    ctx.fillText(` · ${sim.state.shots} shot${sim.state.shots === 1 ? '' : 's'} fired`, PL + 6 + ctx.measureText(ammoText).width, PT + 6);
     if (kill) {
       ctx.fillStyle = KILL_COLOR;
       ctx.font = '700 12px sans-serif';
-      ctx.fillText(`KILL on shot ${kill.shot} (${kill.hits} hit${kill.hits === 1 ? '' : 's'})`, PL + 6, PT + 36);
+      ctx.fillText(`KILL on shot ${kill.shot} (${kill.hits} hit${kill.hits === 1 ? '' : 's'}) · ${Math.round(kill.ms)}ms TTK`, PL + 6, PT + 22);
     }
 
     // The banner says how to get in, and once in, how to get out.
@@ -507,6 +511,12 @@ export function createFiringRange({
       ctx.fillRect(cx - width / 2, cy - 11, width, 22);
       ctx.fillStyle = supportsLock ? '#e1e8e8' : '#ff7b1c';
       ctx.fillText(label, cx, cy);
+      // Once the plot has the mouse, the trigger hint sits just above the banner.
+      if (locked) {
+        ctx.font = '600 11px sans-serif';
+        ctx.fillStyle = 'rgba(160,175,175,0.85)';
+        ctx.fillText(mode, cx, cy - 20);
+      }
     }
   }
 

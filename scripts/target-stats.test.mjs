@@ -17,7 +17,7 @@ test('pellet loads do not publish unsupported target hit and lethal figures', ()
   const weapon = { name: 'Test shotgun', dmg: [{ r: 0, d: 10 }], pellets: 16, _hsMult: 1.34, _limbMult: 1 };
   const html = render(weapon);
   assert.match(html, /pellets and flechettes are not yet simulated/);
-  assert.doesNotMatch(html, /<table|Spray hit rate|<span>Lethal/);
+  assert.doesNotMatch(html, /<table|<span>Accuracy|<span>Lethal/);
   assert.match(render({ ...weapon, pellets: 1 }), /<table/);
 });
 

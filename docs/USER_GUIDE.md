@@ -344,7 +344,8 @@ The reset button also returns the view and the aim to the starting point. The ri
 be sampled from. Dots are
 coloured by hit zone (red head, gold upper torso, off-white lower torso, arms and
 legs) and faded grey dots miss. When the running damage reaches a kill (100), the killing shot
-flashes a red ring and a KILL line names the shot. The Target Impact Stats describe the shots fired so far. Only
+flashes a red ring and a KILL line names the shot and the time from the first shot on the
+board to the kill; clear or reload between attempts so the clock starts fresh. The Target Impact Stats describe the shots fired so far. Only
 Weapon 1 fires, so the compare loadout is put aside while the range is up and
 comes back on the other views; share links still carry it. The impact table
 names Weapon 1 alone.

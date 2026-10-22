@@ -85,7 +85,7 @@ body.is-popout .sb-sec,body.is-popout .att-sec{border-right:0}
 body.is-popout #cmpSection[style*="display: block"],body.is-popout #cmpSection[style*="display:block"]{display:block!important}
 body.is-popout .main{padding:8px;gap:0}
 body.is-popout #recoilPanel{border:0;background:none;padding:0}
-body.is-popout .rc-layout{grid-template-columns:minmax(0,1fr) minmax(290px,360px);grid-template-rows:auto minmax(0,1fr);align-items:stretch;column-gap:12px;height:calc(100vh - 16px)}
+body.is-popout .rc-layout{grid-template-columns:minmax(0,1fr) minmax(290px,385px);grid-template-rows:auto minmax(0,1fr);align-items:stretch;column-gap:12px;height:calc(100vh - 16px)}
 body.is-popout .rc-head{grid-column:1/-1}
 /* The pop-out sizes itself to its own window, so the main page's width cap
    must not apply here — otherwise the plot leaves a dead column beside it. */
@@ -195,13 +195,13 @@ body.is-popout .rc-note{flex-shrink:0}
 .chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
 /* BTK table */
 .btk-tbl{width:100%;border-collapse:collapse;font-size:0.78rem}
-.btk-tbl th{padding:4px 7px;color:var(--muted);text-align:left;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
-.btk-tbl td{padding:4px 7px;text-align:left;border-bottom:1px solid rgba(40,48,48,.45)}.btk-tbl tr:last-child td{border-bottom:none}
+.btk-tbl th{padding:3px 7px;color:var(--muted);text-align:left;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
+.btk-tbl td{padding:3px 7px;text-align:left;border-bottom:1px solid rgba(40,48,48,.45)}.btk-tbl tr:last-child td{border-bottom:none}
 .rng{color:var(--muted);font-size:0.7rem}
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* Recoil */
-.rc-layout{display:grid;grid-template-columns:clamp(240px,calc(100% - 738px),496px) minmax(355px,1fr) minmax(355px,1fr);column-gap:14px;align-items:start;position:relative}
+.rc-layout{display:grid;grid-template-columns:clamp(240px,calc(100% - 686px),496px) minmax(390px,1fr) minmax(268px,1fr);column-gap:14px;align-items:start;position:relative}
 .rc-head{grid-column:1/-1;margin-bottom:9px}
 .rc-plot{min-width:0}
 .rc-head{display:flex;flex-direction:column;gap:6px;margin-bottom:9px}
@@ -426,7 +426,7 @@ body.rc-plot-expanded{overflow:hidden}
 @keyframes rcViewSwap{from{opacity:.25;transform:translateY(3px)}to{opacity:1;transform:none}}
 .rc-view-swap{animation:rcViewSwap .19s ease-out}
 @media (prefers-reduced-motion:reduce){.rc-view-swap{animation:none}}
-.target-impact-card,.rc-stats-card{border:1px solid #2b3737;border-radius:5px;background:#101515;padding:8px 10px}
+.target-impact-card,.rc-stats-card{border:1px solid #2b3737;border-radius:5px;background:#101515;padding:8px}
 /* The rows used to be spaced by the column's own gap; inside a card they
    need their own. */
 .rc-stats-card{display:flex;flex-direction:column;gap:9px}
@@ -437,7 +437,7 @@ body.rc-plot-expanded{overflow:hidden}
 .target-impact-weapon.c1{color:var(--accent)}
 .target-impact-weapon.c2{color:var(--accent2)}
 .target-impact-summary{display:flex;margin-bottom:7px;padding:6px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
-.target-impact-summary>div{display:flex;flex:1 1 auto;align-items:baseline;gap:4px;min-width:0;padding:1px 6px;border-right:1px solid #263131;white-space:nowrap}
+.target-impact-summary>div{display:flex;flex:1 1 auto;align-items:baseline;gap:4px;min-width:0;padding:1px 4px;border-right:1px solid #263131;white-space:nowrap}
 .target-impact-summary>div:first-child{padding-left:1px}
 .target-impact-summary>div:last-child{padding-right:1px;border-right:0}
 .target-impact-summary span{font-size:.56rem;letter-spacing:.045em;text-transform:uppercase;color:#718080}
@@ -454,6 +454,7 @@ body.rc-plot-expanded{overflow:hidden}
 .target-impact-note{font-size:.6rem;line-height:1.4;color:#93a0a0}
 /* Damage read-out coloring — after the base cell colors so it wins. */
 .target-zone-table tbody tr.no-hits th,.target-zone-table tbody tr.no-hits td{opacity:.5}
+.target-zone-table tbody tr.target-zone-miss th,.target-zone-table tbody tr.target-zone-miss td{color:#8c9a9a}
 .target-impact-summary strong.dmg-kill{color:var(--red)}
 .target-impact-summary strong.dmg-crit{color:var(--accent)}
 .rc-row{display:flex;flex-direction:column;gap:3px}
@@ -569,7 +570,7 @@ body.rc-plot-expanded{overflow:hidden}
    The popout window drives its own two-column grid off body.is-popout and is
    excluded here — it sizes to its own window, not this breakpoint. */
 @media (max-width:1279px){
-  body:not(.is-popout) .rc-layout{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+  body:not(.is-popout) .rc-layout{grid-template-columns:minmax(390px,1fr) minmax(0,1fr)}
   body:not(.is-popout) .rc-plot{grid-column:1/-1}
 }
 @media (max-width:980px){

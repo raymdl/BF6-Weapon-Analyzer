@@ -36,19 +36,27 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
         <td>${fmtDamage(zone.damagePerHit)}</td>
         <td>${fmtDamage(zone.damage)}</td>
       </tr>`).join('');
+    const missed = summary.totalShots - summary.hits;
+    const missRow = `
+      <tr class="${missed ? 'target-zone-miss' : 'no-hits'}">
+        <th scope="row">Missed</th>
+        <td>${missed}</td>
+        <td>—</td>
+        <td>—</td>
+      </tr>`;
     html += `
       <section class="target-impact-card">
         <div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
         <div class="target-impact-summary">
-          <div><span>Spray hit rate</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
+          <div><span>Accuracy</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
           <div><span>Hits</span><strong>${summary.hits} / ${summary.totalShots}</strong></div>
-          <div><span>Total damage</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal; 75+ counts as a critical assist">${fmtDamage(summary.totalDamage)}</strong></div>
+          <div><span>Total dmg</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal; 75+ counts as a critical assist">${fmtDamage(summary.totalDamage)}</strong></div>
           <div><span>Lethal</span>${kill}</div>
         </div>
         <table class="target-zone-table">
           <thead><tr><th>Body Part</th><th>Hits</th><th>Dmg / Hit</th><th>Damage</th></tr></thead>
 
-          <tbody>${rows}</tbody>
+          <tbody>${rows}${missRow}</tbody>
         </table>
       </section>`;
   });

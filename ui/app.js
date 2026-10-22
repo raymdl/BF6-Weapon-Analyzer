@@ -2913,7 +2913,7 @@ function renderAttachmentStats(loadouts) {
     });
     if (!chips.length && !bugs.length) return;
     rendered = true;
-    const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${bug.suspected ? 'likely a bug. ' : 'bug. '}${escAttr(bug.note)}</div>`).join('');
+    const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${escAttr(bug.note)}</div>`).join('');
     html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
@@ -3187,7 +3187,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const pelletNote = [w1, isRange ? null : w2].some(w => (w?.pellets ?? 1) > 1) ? ' Shotgun pellets and flechettes are not yet simulated; each shell is plotted as one direction.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
-      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.${pelletNote}`;
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant.${pelletNote}`;
     } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}${pelletNote}`;

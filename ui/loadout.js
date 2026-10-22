@@ -26,7 +26,7 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   options.forEach(optData => {
     const opt = document.createElement('option');
     opt.value = optData.id;
-    const bugNotes = (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely a bug. ' : 'Bug. '}${bug.note}`);
+    const bugNotes = (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${bug.note}`);
     opt.textContent = bugNotes.length ? `${optData.text}${GAME_BUG_MARK}` : optData.text;
     const title = [optData.description, ...bugNotes].filter(Boolean).join('\n\n');
     if (title) opt.title = title;
@@ -36,7 +36,7 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   });
   const updateTooltip = () => {
     const selected = options.find(option => option.id === sel.value);
-    const tooltip = [selected?.description, ...(selected?.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely a bug. ' : 'Bug. '}${bug.note}`)]
+    const tooltip = [selected?.description, ...(selected?.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${bug.note}`)]
       .filter(Boolean).join('\n\n');
     row.title = tooltip;
     sel.title = tooltip;
