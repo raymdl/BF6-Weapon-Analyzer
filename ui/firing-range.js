@@ -31,6 +31,11 @@ export const RANGE_ZONE_LEGEND = [
   ['head', 'Head'], ['chest', 'Upper torso'], ['stomach', 'Lower torso, arms, legs'],
 ];
 
+/** Hit zones per shot for the stats: one zone per shot, or one per pellet for a pellet load. */
+export function rangeImpactZones(impacts) {
+  return impacts.map(p => p.pellets ? p.pellets.map(q => q.zone ?? null) : (p.zone ?? null));
+}
+
 export function createFiringRange({
   canvas, doc = document, win = window,
   readBuild,            // () => the first slot's applied weapon, or null
@@ -399,10 +404,10 @@ export function createFiringRange({
   /** The shot that took the running damage to a kill, if the board has one. */
   function lethalImpact(sim) {
     const w = sim.state.weapon;
-    if ((w.pellets ?? 1) > 1 || !Number.isFinite(w._hsMult) || !Number.isFinite(w._limbMult)) return null;
+    if (!Number.isFinite(w._hsMult) || !Number.isFinite(w._limbMult)) return null;
     const impacts = sim.state.impacts;
     if (!impacts.length) return null;
-    const summary = summarizeTargetImpacts(w, readDistance(), impacts.map(p => p.zone ?? null));
+    const summary = summarizeTargetImpacts(w, readDistance(), rangeImpactZones(impacts));
     if (summary.lethalShot == null) return null;
     const impact = impacts[summary.lethalShot - 1];
     // Time to kill runs from the first shot on the board.
@@ -417,9 +422,11 @@ export function createFiringRange({
 
     // Hit zones are resolved once per shot; the zone is a world-space result
     // so later zoom or pan changes never move a hit onto a miss.
+    const zoneAt = p => targetHitTest({ xCm: aimOffset.x + cmAt(p.x), yCm: targetImpactYcm(w, p.y) });
     impacts.forEach(p => {
       if (p.zone !== undefined || !targetHitTest) return;
-      p.zone = targetHitTest({ xCm: aimOffset.x + cmAt(p.x), yCm: targetImpactYcm(w, p.y) });
+      p.zone = zoneAt(p);
+      p.pellets?.forEach(q => { q.zone = zoneAt(q); });
     });
 
     if (impacts.length > 1) {
@@ -429,10 +436,11 @@ export function createFiringRange({
       ctx.strokeStyle = 'rgba(201,162,39,0.35)'; ctx.lineWidth = 1.2; ctx.stroke();
     }
 
-    impacts.forEach(p => {
+    // A pellet load draws its pellets, smaller, in place of the shell's own dot.
+    const drawDot = (p, scale) => {
       const x = toX(p.x), y = toY(w, p.y);
       const hit = !!p.zone;
-      const r = hit ? sprayDotRadius * 1.3 : sprayDotRadius;
+      const r = (hit ? sprayDotRadius * 1.3 : sprayDotRadius) * scale;
       ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.fillStyle = hit ? (RANGE_ZONE_COLORS[p.zone] ?? col) : RANGE_MISS_COLOR + '80'; ctx.fill();
       if (hit && r > 1.6) {
@@ -440,7 +448,8 @@ export function createFiringRange({
         ctx.lineWidth = Math.min(1.4, r * 0.32);
         ctx.stroke();
       }
-    });
+    };
+    impacts.forEach(p => { p.pellets ? p.pellets.forEach(q => drawDot(q, 0.7)) : drawDot(p, 1); });
 
     // The killing shot gets a ring that pulses out as it lands and fades.
     const kill = lethalImpact(sim);
@@ -469,6 +478,14 @@ export function createFiringRange({
       ctx.beginPath(); ctx.arc(vx, vy, spreadPx, 0, Math.PI * 2);
       ctx.fillStyle = 'rgba(255,255,255,0.06)'; ctx.strokeStyle = 'rgba(255,255,255,0.55)'; ctx.lineWidth = 1;
       ctx.fill(); ctx.stroke();
+    }
+    // A pellet load adds a dashed ring: the farthest a pellet can land, spread plus dispersion.
+    const patternPx = Math.abs(toX(view.x + sim.currentSpread() + sim.pelletDispersion()) - vx);
+    if (showReticle && sim.pelletDispersion() > 0 && patternPx > spreadPx + 0.5) {
+      ctx.setLineDash([3, 3]);
+      ctx.beginPath(); ctx.arc(vx, vy, patternPx, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(255,255,255,0.4)'; ctx.lineWidth = 1; ctx.stroke();
+      ctx.setLineDash([]);
     }
     if (showReticle) {
       ctx.strokeStyle = 'rgba(255,255,255,0.9)';
@@ -533,10 +550,10 @@ export function createFiringRange({
     drawOverlay(frame, sim);
     syncAimedControl(sim);
     syncCursor(frame, sim);
-    const zones = sim.state.impacts.map(p => p.zone ?? null);
+    const zones = rangeImpactZones(sim.state.impacts);
     return {
       ...frame,
-      targetHits: [{ weapon: sim.state.weapon, zones, hits: zones.filter(Boolean).length, total: zones.length }],
+      targetHits: [{ weapon: sim.state.weapon, zones, hits: zones.flat().filter(Boolean).length, total: zones.flat().length }],
     };
   }
 

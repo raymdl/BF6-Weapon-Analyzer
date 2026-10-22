@@ -166,8 +166,9 @@ means no target hit result.
 
 Impact damage uses the same range and hit-zone helpers. It counts hits/misses,
 zone totals and the first shot reaching 100 damage. Total damage continues after
-lethality, and the displayed hit rate describes this sample. Pellet loads suppress
-these statistics: the plot has one direction per shell, not individual pellets.
+lethality, and the displayed hit rate describes this sample. A pellet load is
+scored per sampled pellet at its own zone with the per-pellet damage
+(see [the pellet pattern](RECOIL_SPREAD_MODEL.md#shotgun-pellet-pattern)).
 The 75-damage threshold affects styling only.
 
 In-game accuracy remains unverified for target geometry, sampling, drag, and

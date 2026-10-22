@@ -189,6 +189,24 @@ export const SPREAD_BAR_SCALE = 12;
 // 1 ms keeps stepped recovery within 0.2% of a 0.1 ms reference; 1/60 s differed by up to 3.3%.
 export const SPREAD_TIME_STEP = 0.001;
 
+/**
+ * Pellets of one shell, each at the shell direction plus a uniform-radius,
+ * uniform-angle draw inside the weapon's firing-dispersion cone
+ * (`pelletDispersion`, degrees). Undefined for a single projectile. Operator
+ * wall patterns of 22 October 2026 (reference-data/provenance/
+ * shotgun-pattern-measurement-2026-10-22.md) put every shell inside that cone.
+ */
+export function samplePellets(w, x, y, rng) {
+  const count = Math.max(1, Math.floor(w.pellets ?? 1));
+  if (count <= 1) return undefined;
+  const dispersion = requireNumber(w.pelletDispersion, `${w.id} pellet dispersion`);
+  return Array.from({ length: count }, () => {
+    const ang = rng() * Math.PI * 2;
+    const r = dispersion * rng();
+    return { x: x + r * Math.cos(ang), y: y + r * Math.sin(ang) };
+  });
+}
+
 /** Direct Frosty exponent interpretation; M39 settled hipfire supports uniform area. */
 export function sampleSpreadRadius(w, spread, u) {
   const dyn = spreadDynamics(w);

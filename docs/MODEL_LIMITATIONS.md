@@ -151,9 +151,12 @@ scatter layer contains ten fixed samples, not a statistical confidence band.
 Recoil control subtracts only the expected vector; console scaling does not simulate
 aim assist or controller input. Effective spread is the peak pre-shot value across one magazine (50 shots if the size is unknown).
 
-Target shape and zones are approximate. Individual pellets are not simulated;
-shotgun target hit/damage/lethality statistics are therefore suppressed. Ordinary
-shotgun damage/BTK assumes all pellets hit one zone. Target damage totals include
+Target shape and zones are approximate. The spray pattern and the Firing Range
+scatter each shell's pellets inside the weapon's firing-dispersion cone and score
+them per pellet (see [the pellet pattern](RECOIL_SPREAD_MODEL.md#shotgun-pellet-pattern));
+the scatter cloud, bubbles and cone show shell directions only. Ordinary shotgun
+damage/BTK assumes all pellets hit one zone. The pellet density inside the cone is
+inferred, not traced. Target damage totals include
 hits after the first lethal shot. No armor, missed-shot TTK, reload interruption,
 healing, target motion or obstruction is modeled.
 

@@ -107,7 +107,10 @@ the increase scales bloom recovery by the same factor, so bloom stays
 proportionally smaller and clears no slower. The **Spread Recovery** chips leave
 that scaling out and show only real changes, such as a muzzle's recovery boost.
 
-Headshot, limb and collateral values follow the selected weapon and ammo.
+Headshot, limb and collateral values follow the selected weapon and ammo. For a
+shotgun pellet load, **Base Damage** shows the shell with every pellet hitting and
+then one pellet's damage, and **Magazine Size** shows shells and pellets per shell
+for the selected ammo.
 Collateral is displayed as a multiplier; wall penetration is not simulated. Enemy regeneration delay is 5 s normally, 9 s with Frangible,
 and 7 s with Flechette. Healing is not included in TTK.
 
@@ -314,9 +317,10 @@ Target Impact Stats report hits, sampled hit rate, damage by body part, and the
 hits/shots needed to reach lethal damage. Total damage includes subsequent hits
 after the first lethal shot. The 180 cm figure and its hit zones are approximate;
 results describe this sample, not expected player accuracy. If its image is missing,
-hit statistics are unavailable. Shotgun pellets and flechettes are not yet simulated:
-the plot shows one direction per shell, the note under the plot says so, and pellet
-loads suppress hit-rate, damage and lethality results.
+hit statistics are unavailable. For a shotgun pellet load the spray dots are the
+pellets, each scattered inside the weapon's dispersion cone around its shell, and
+the impact table counts pellets; the scatter cloud, bubbles and cone still show
+the shell directions.
 
 ## Firing Range
 
@@ -341,7 +345,10 @@ were scored at the old range. The **Reload** and
 **Clear** buttons in the plot's corner do the same, keeping distance, zoom and aim;
 while the plot holds the mouse, aim the crosshair at a button and press to use it.
 The reset button also returns the view and the aim to the starting point. The ring around the crosshair is the spread the next shot would
-be sampled from. Dots are
+be sampled from. With a shotgun pellet load a dashed outer ring adds the weapon's
+dispersion cone: the shell lands inside the inner ring and its pellets scatter
+around it, inside the dashed one, as measured on the in-game wall. Each pellet
+is scored at its own hit zone, so the impact table counts pellets. Dots are
 coloured by hit zone (red head, gold upper torso, off-white lower torso, arms and
 legs) and faded grey dots miss. When the running damage reaches a kill (100), the killing shot
 flashes a red ring and a KILL line names the shot and the time from the first shot on the

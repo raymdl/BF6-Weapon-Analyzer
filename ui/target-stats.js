@@ -15,9 +15,10 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
 
   if (!entries.length) return '<p class="target-impact-note">Target image is loading or unavailable. Hit results are not available.</p>';
   entries.forEach((entry, index) => {
-    if ((entry.weapon.pellets ?? 1) > 1) {
+    // A pellet load is scored only from sampled pellets, never from shell directions.
+    if ((entry.weapon.pellets ?? 1) > 1 && entry.zones?.length && !entry.zones.some(Array.isArray)) {
       html += `<section class="target-impact-card"><div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
-        <p class="target-impact-note">Shotgun pellets and flechettes are not yet simulated, so hit rate, damage and lethality are unavailable. The plot shows one direction per shell.</p></section>`;
+        <p class="target-impact-note">Shotgun pellets were not sampled for this spray, so hit rate, damage and lethality are unavailable.</p></section>`;
       return;
     }
     if (!Number.isFinite(entry.weapon._hsMult) || !Number.isFinite(entry.weapon._limbMult)) {
@@ -25,9 +26,10 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
       return;
     }
     const summary = summarizeTargetImpacts(entry.weapon, distance, entry.zones);
+    const unit = summary.perPellet ? 'pellet' : 'shot';
     const kill = summary.lethalShot == null
       ? '<strong>None</strong>'
-      : `<strong title="Took ${summary.lethalHit} hits out of the first ${summary.lethalShot} shots fired">${summary.lethalHit} / ${summary.lethalShot}</strong>`;
+      : `<strong title="Took ${summary.lethalHit} ${unit} hits out of the first ${summary.lethalShot} ${summary.perPellet ? 'shells' : 'shots'} fired">${summary.lethalHit} / ${summary.lethalShot}</strong>`;
     // Only the running total decides a kill, so per-zone damage stays neutral.
     const rows = summary.zones.map(zone => `
       <tr${zone.hits ? '' : ' class="no-hits"'}>
@@ -36,7 +38,7 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
         <td>${fmtDamage(zone.damagePerHit)}</td>
         <td>${fmtDamage(zone.damage)}</td>
       </tr>`).join('');
-    const missed = summary.totalShots - summary.hits;
+    const missed = summary.misses;
     const missRow = `
       <tr class="${missed ? 'target-zone-miss' : 'no-hits'}">
         <th scope="row">Missed</th>
@@ -48,8 +50,8 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
       <section class="target-impact-card">
         <div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
         <div class="target-impact-summary">
-          <div><span>Accuracy</span><strong title="${summary.hits} of ${summary.totalShots} shots hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
-          <div><span>Hits</span><strong>${summary.hits} / ${summary.totalShots}</strong></div>
+          <div><span>Accuracy</span><strong title="${summary.hits} of ${summary.projectiles} ${unit}s hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
+          <div><span>Hits</span><strong title="${unit} hits / ${unit}s fired">${summary.hits} / ${summary.projectiles}</strong></div>
           <div><span>Total dmg</span><strong${damageClass(summary.totalDamage)} title="100+ is lethal; 75+ counts as a critical assist">${fmtDamage(summary.totalDamage)}</strong></div>
           <div><span>Lethal</span>${kill}</div>
         </div>
@@ -60,6 +62,6 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
         </table>
       </section>`;
   });
-  html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Results describe this simulated spray, not expected player accuracy. Target shape and hit zones are approximate. Total damage includes hits after the first lethal shot.</div>';
+  html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Results describe this simulated spray, not expected player accuracy. Target shape and hit zones are approximate. Total damage includes hits after the first lethal shot. Shotgun figures count pellets; the lethal figure is pellet hits over shells fired.</div>';
   return html;
 }

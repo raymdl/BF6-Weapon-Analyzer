@@ -131,3 +131,20 @@ test('mouse movement against the recoil consumes it, so a countered string settl
   assert.ok(live.settled());
   assert.ok(Math.abs(live.view().y) < 0.05, `view settles on the aim point, got ${live.view().y}`);
 });
+
+test('a pellet load scatters its pellets inside the dispersion cone around each shell', () => {
+  setSimContext({ aimState: 'ads', stanceState: 'stand' });
+  const w = { ...build('m87a1'), pelletDispersion: 1 };
+  assert.equal(w.pellets, 16);
+  const live = createLiveFire(w, { seed: 3, magazine: 4 });
+  for (let i = 0; i < 4; i++) { live.setTrigger(true); live.setTrigger(false); live.advance(1.5); }
+  assert.equal(live.state.impacts.length, 4);
+  for (const shell of live.state.impacts) {
+    assert.equal(shell.pellets.length, 16);
+    const radii = shell.pellets.map(p => Math.hypot(p.x - shell.x, p.y - shell.y));
+    assert.ok(Math.max(...radii) <= 1 + 1e-9, 'no pellet leaves the cone');
+    assert.ok(Math.max(...radii) > 0.5 && Math.min(...radii) < 0.5, 'pellets fill the cone, not its rim');
+  }
+  assert.equal(createLiveFire(build('m433'), { seed: 1 }).pelletDispersion(), 0);
+  assert.throws(() => createLiveFire(build('m87a1'), { seed: 1 }), /pellet dispersion/, 'a pellet load without a dispersion angle is invalid data');
+});

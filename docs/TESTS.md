@@ -48,7 +48,7 @@ All paths in this table are under `scripts/`.
 | [required-data.test.mjs](../scripts/required-data.test.mjs) | Missing/non-finite source fields, strict callers, and non-blocking browser reporting with independent stats preserved. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |
 | [recoil.test.mjs](../scripts/recoil.test.mjs) | Analytic recovery, timed delivery, overlapping impulses, clock reset/burst pauses, compensation, aim-state factors, and deterministic seeds. Attachment tests also cover Smooth duration and receiver composition without base mutation. |
-| [live-fire.test.mjs](../scripts/live-fire.test.mjs) | The live stepper reproduces the batch recoil path and spread sequence shot for shot under a held trigger, trigger-mode gating (auto, single, burst), magazine and reload, settling after release, and the sensitivity conversion constants. |
+| [live-fire.test.mjs](../scripts/live-fire.test.mjs) | The live stepper reproduces the batch recoil path and spread sequence shot for shot under a held trigger, trigger-mode gating (auto, single, burst), magazine and reload, settling after release, the sensitivity conversion constants, and the pellet cone around each shell of a pellet load. |
 | [recoil-gestures.test.mjs](../scripts/recoil-gestures.test.mjs) | Desktop modifier-click redraw and Soldier aim, drag/cancel exclusions, and the Angle Plot origin. |
 | [recoil-touch.test.mjs](../scripts/recoil-touch.test.mjs) | Touch/responsive gating, one-tap aim, inline scrolling, expanded gesture interruption and repeated use, focus/close restoration, short-landscape sizing, centroid anchoring and view-only reset. DOM boundaries are mocked; these tests do not verify a real browser or phone. |
 | [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults, every shared-rail option with indexed/legacy tokens, and weapon-specific attachment validation. |
@@ -56,7 +56,7 @@ All paths in this table are under `scripts/`.
 | [spread-bar-scale.test.mjs](../scripts/spread-bar-scale.test.mjs) | Default and valid single-attachment spread outputs fit the shared axis across aim/stance contexts. |
 | [spread-distribution.test.mjs](../scripts/spread-distribution.test.mjs) | Source exponents by aim/stance, uniform-area sampling, the Interdictor exception, and deterministic output. |
 | [target-geometry.test.mjs](../scripts/target-geometry.test.mjs) | Target coordinate/geometry and impact-summary behavior. |
-| [target-stats.test.mjs](../scripts/target-stats.test.mjs) | Uncapped impact totals, pellet limitations and missing-image presentation. |
+| [target-stats.test.mjs](../scripts/target-stats.test.mjs) | Uncapped impact totals, per-pellet scoring (and no scoring from unsampled shells), and missing-image presentation. |
 
 Tests protect the declared implementation and reviewed data decisions. They do not
 independently validate native game arithmetic, every possible attachment combination,

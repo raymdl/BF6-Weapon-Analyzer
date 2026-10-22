@@ -4,13 +4,13 @@ import { formatMilliseconds, formatMovementMultiplier } from './format.js';
 import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
 import { bindRecoilTouchControls } from './recoil-touch.js';
-import { createFiringRange, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND, RANGE_MISS_COLOR } from './firing-range.js';
+import { createFiringRange, rangeImpactZones, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND, RANGE_MISS_COLOR } from './firing-range.js';
 import { degreesPerCount, hipfireDegreesPerCount, cmPer360, SENS_DEFAULTS } from '../sim/sensitivity.js';
 import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
   selectedRecoilAmountFor, selectedRecoilAmountBeforePlatformFor, selectedRecoilVariationFor,
-  spreadBounds, spreadDynamics, weaponRpm, validateWeaponSimulation, sampleSpreadRadius, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
+  spreadBounds, spreadDynamics, weaponRpm, validateWeaponSimulation, sampleSpreadRadius, samplePellets, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
   simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, applyBareWeapon, attachmentContributions, floorStatDisplay, wLabel } from '../sim/applyAttachments.js';
@@ -56,6 +56,9 @@ try {
     if (!ammo?.ammo || !Object.hasOwn(ammo.ammo, ammo.def)) invalidData(`Missing or invalid ${weapon.id} ammo data`);
     resolveHitMultipliers(weapon.id, null, { HIT_ZONES: _hitZones });
     for (const id of Object.keys(ammo?.ammo ?? {})) resolveHitMultipliers(weapon.id, { id }, { HIT_ZONES: _hitZones });
+    // The blueprint firing-dispersion angle: the pellet cone the sprays sample.
+    const dispersion = _weaponAttributes.shotgunDispersion?.[weapon.id];
+    if (dispersion != null) weapon.pelletDispersion = requireNumber(dispersion, `${weapon.id} shotgunDispersion`);
   }
 } catch (err) {
   reportDataError(new Error(`Failed to load weapon data: ${err.message}`));
@@ -1122,8 +1125,10 @@ function renderOverview() {
   const grid = document.getElementById('sGrid');
   grid.innerHTML = '';
   const fields = [
-    { lbl: 'Base Dmg',    compute: w => damagePerShotAtRange(w, 0),      unit: '',    fmt: v => v != null ? v.toFixed(1) : '—',       higherBetter: true,
-      tooltip: 'Damage per shot at close range, before damage falloff. Shotgun values assume every pellet hits.' },
+    // A pellet load shows the whole shell with every pellet hitting, then one pellet.
+    { lbl: 'Base Dmg',    compute: w => (w.pellets ?? 1) > 1 ? { shot: damagePerShotAtRange(w, 0), pellet: damageAtRange(w, 0) } : damagePerShotAtRange(w, 0), unit: '',
+      fmt: v => typeof v === 'number' ? v.toFixed(1) : `${v.shot.toFixed(1)}<span class="sunit"> / </span>${v.pellet.toFixed(1)}<span class="sunit">per pellet</span>`, higherBetter: true,
+      tooltip: 'Damage per shot at close range, before damage falloff. Shotgun cards show the shell with every pellet hitting, then the damage of one pellet.' },
     // Two multipliers in one card, each carrying its own grey ×. Paired stats
     // like this drop the comparison badge — there is no single number to diff.
     { lbl: 'HS Mult',     compute: w => ({ hs: w?._hsMult, limb: w?._limbMult }), unit: '',
@@ -1137,8 +1142,9 @@ function renderOverview() {
       tooltip: 'Rounds per minute (RPM).' },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Muzzle velocity. Faster bullets have less travel time and drop at range, so you lead less.' },
-    { lbl: 'Mag Size',    k: 'mag',                                      unit: 'Rds', fmt: v => v,                                   higherBetter: true,
-      tooltip: 'Rounds per magazine.' },
+    { lbl: 'Mag Size',    compute: w => (w.pellets ?? 1) > 1 ? { mag: w.mag, pellets: w.pellets } : w.mag, unit: '',
+      fmt: v => typeof v === 'number' ? `${v}<span class="sunit">Rds</span>` : `${v.mag}<span class="sunit">shells / </span>${v.pellets}<span class="sunit">pellets</span>`, higherBetter: true,
+      tooltip: 'Rounds per magazine. Shotgun cards add the pellets per shell for the selected ammo.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
       tooltip: 'Reload time with rounds left in the magazine.' },
     { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
@@ -1221,7 +1227,7 @@ function renderOverview() {
     }
     const v1 = w1 ? getVal(w1) : null, v2 = w2 ? getVal(w2) : null;
     let diff = '';
-    if (!f.noDiff && v1 != null && v2 != null && v1 !== v2) {
+    if (!f.noDiff && typeof v1 === 'number' && typeof v2 === 'number' && v1 !== v2) {
       if (f.absDiff) {
         const delta = Math.round((-v2) - (-v1));
         diff = `<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta > 0 ? '+' : ''}${delta}°</span>`;
@@ -2088,8 +2094,8 @@ function refreshRangeStats() {
   const slot = document.getElementById('rcRangeStats');
   const live = firingRange?.live();
   if (!slot || !live) return;
-  const zones = live.state.impacts.map(p => p.zone ?? null);
-  slot.outerHTML = rangeStatsHtml({ targetHits: [{ weapon: live.state.weapon, zones, hits: zones.filter(Boolean).length, total: zones.length }] });
+  const zones = rangeImpactZones(live.state.impacts);
+  slot.outerHTML = rangeStatsHtml({ targetHits: [{ weapon: live.state.weapon, zones, hits: zones.flat().filter(Boolean).length, total: zones.flat().length }] });
 }
 
 /**
@@ -2471,21 +2477,23 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     const weaponRefSeed = refSeed >>> 0;
     const { points: pts, spreads } = patternFor(w, weaponRefSeed, N);
 
+    // A pellet load's shell carries its pellets, each scattered inside the
+    // dispersion cone; the dots and the hit zones are then the pellets'.
     const sprayPts = (() => {
       const rngRef = mulberry32((whash(w.id) ^ weaponRefSeed ^ 0xdeadbeef) >>> 0);
+      const rngPellet = mulberry32((whash(w.id) ^ weaponRefSeed ^ 0x9e3779b9) >>> 0);
       return pts.map((p, i) => {
         const spread = spreads[i] ?? spreadBounds(w)[0];
         const bAng = rngRef() * Math.PI * 2, bR = sampleSpreadRadius(w, spread, rngRef());
-        return { x: p.x + bR * Math.cos(bAng), y: p.y + bR * Math.sin(bAng) };
+        const x = p.x + bR * Math.cos(bAng), y = p.y + bR * Math.sin(bAng);
+        return { x, y, pellets: samplePellets(w, x, y, rngPellet) };
       });
     })();
+    const zoneAt = p => targetHitTest({ xCm: aimOffset.x + cmAtDistance(p.x), yCm: targetImpactYcm(w, p.y) });
     let sprayZones = null;
     if (targetHitTest) {
-      sprayZones = sprayPts.map(p => targetHitTest({
-        xCm: aimOffset.x + cmAtDistance(p.x),
-        yCm: targetImpactYcm(w, p.y),
-      }));
-      targetHits.push({ weapon: w, zones: sprayZones, hits: sprayZones.filter(Boolean).length, total: sprayPts.length });
+      sprayZones = sprayPts.map(p => p.pellets ? p.pellets.map(zoneAt) : zoneAt(p));
+      targetHits.push({ weapon: w, zones: sprayZones, hits: sprayZones.flat().filter(Boolean).length, total: sprayZones.flat().length });
     }
 
     if (layers.spread) {
@@ -2587,21 +2595,22 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       ctx.lineWidth = 2.2; ctx.stroke();
     }
 
-    if (layers.spray) sprayPts.forEach((p, i) => {
+    // Colour stays purely weapon identity. Hits read as bigger solid dots
+    // with a dark separator so they lift off the figure; misses fade back.
+    // Pellets are drawn smaller, in place of their shell's dot.
+    const drawSprayDot = (p, zone, scale) => {
       const x = toX(p.x), y = toY(w, p.y);
       if (!sprayZones) {
-        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius, 0, Math.PI * 2);
+        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius * scale, 0, Math.PI * 2);
         ctx.fillStyle = col; ctx.fill();
         return;
       }
-      // Colour stays purely weapon identity. Hits read as bigger solid dots
-      // with a dark separator so they lift off the figure; misses fade back.
-      if (!sprayZones[i]) {
-        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius, 0, Math.PI * 2);
+      if (!zone) {
+        ctx.beginPath(); ctx.arc(x, y, sprayDotRadius * scale, 0, Math.PI * 2);
         ctx.fillStyle = col + '80'; ctx.fill();
         return;
       }
-      const r = sprayDotRadius * 1.3;
+      const r = sprayDotRadius * 1.3 * scale;
       ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
       ctx.fillStyle = col; ctx.fill();
       if (r > 1.6) {
@@ -2609,6 +2618,10 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
         ctx.lineWidth = Math.min(1.4, r * 0.32);
         ctx.stroke();
       }
+    };
+    if (layers.spray) sprayPts.forEach((p, i) => {
+      if (p.pellets) p.pellets.forEach((q, j) => drawSprayDot(q, sprayZones?.[i]?.[j], 0.7));
+      else drawSprayDot(p, sprayZones?.[i], 1);
     });
   });
 
@@ -3183,11 +3196,12 @@ function renderRecoil({ plotOnly = false } = {}) {
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
-    // A shell is plotted as one direction: its pellets or flechettes are not spread yet.
-    const pelletNote = [w1, isRange ? null : w2].some(w => (w?.pellets ?? 1) > 1) ? ' Shotgun pellets and flechettes are not yet simulated; each shell is plotted as one direction.' : '';
+    const hasPellets = [w1, isRange ? null : w2].some(w => (w?.pellets ?? 1) > 1);
+    const pelletNote = hasPellets && !isRange ? ' Each shell\'s pellets scatter inside the weapon\'s dispersion cone, as measured on the in-game wall; the scatter cloud and bubbles show the shell directions.' : '';
+    const rangePelletNote = hasPellets && isRange ? ' Each shell\'s pellets scatter inside the dashed ring, the spread plus the weapon\'s dispersion cone, as measured on the in-game wall.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
-      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant.${pelletNote}`;
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from.${rangePelletNote} Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant.`;
     } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}${pelletNote}`;

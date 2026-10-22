@@ -1,7 +1,7 @@
 // BF6-proportioned target used by the distance spray view. The visual is a
 // generated project asset based on the supplied in-game figure reference; hit
 // zones remain an approximation rather than authoritative collision geometry.
-import { damagePerShotAtRange, zoneMultiplierForWeapon } from './damage.js';
+import { damageAtRange, damagePerShotAtRange, zoneMultiplierForWeapon } from './damage.js';
 
 export const TARGET_HEIGHT_CM = 180;
 export const TARGET_VIEW_HEIGHT = 206.3;
@@ -120,9 +120,17 @@ export function targetMarkerRadius(pxPerCm, radiusCm = 1.4) {
   return Math.min(5, Math.max(0.9, radius));
 }
 
+/**
+ * Score a spray against the target. Each entry of `shotZones` is one shot: the
+ * zone it hit (or null), or for a pellet load an array of per-pellet zones. A
+ * pellet entry scores each pellet at its own zone with the per-pellet damage;
+ * a plain entry scores the whole shot there. Hits, accuracy and the Missed count
+ * are in projectiles; the lethal shot is a shot index.
+ */
 export function summarizeTargetImpacts(weapon, range, shotZones, health = 100) {
   const shots = Array.isArray(shotZones) ? shotZones : [];
-  const baseDamage = damagePerShotAtRange(weapon, range);
+  const perPellet = shots.some(Array.isArray);
+  const baseDamage = perPellet ? damageAtRange(weapon, range) : damagePerShotAtRange(weapon, range);
   const zones = Object.fromEntries(TARGET_ZONE_ORDER.map(([zone, label]) => {
     const multiplier = zoneMultiplierForWeapon(weapon, zone);
     return [zone, {
@@ -132,17 +140,22 @@ export function summarizeTargetImpacts(weapon, range, shotZones, health = 100) {
     }];
   }));
   let hits = 0;
+  let projectiles = 0;
   let totalDamage = 0;
   let lethalShot = null;
   let lethalHit = null;
 
-  shots.forEach((zone, index) => {
-    if (!zone || !zones[zone]) return;
-    hits++;
-    const damage = zones[zone].damagePerHit ?? 0;
-    zones[zone].hits++;
-    zones[zone].damage += damage;
-    totalDamage += damage;
+  shots.forEach((shot, index) => {
+    const shotZones = Array.isArray(shot) ? shot : [shot];
+    projectiles += shotZones.length;
+    shotZones.forEach(zone => {
+      if (!zone || !zones[zone]) return;
+      hits++;
+      const damage = zones[zone].damagePerHit ?? 0;
+      zones[zone].hits++;
+      zones[zone].damage += damage;
+      totalDamage += damage;
+    });
     if (lethalShot == null && totalDamage >= health) {
       lethalShot = index + 1;
       lethalHit = hits;
@@ -151,9 +164,11 @@ export function summarizeTargetImpacts(weapon, range, shotZones, health = 100) {
 
   return {
     totalShots: shots.length,
+    projectiles,
+    perPellet,
     hits,
-    misses: shots.length - hits,
-    accuracy: shots.length ? hits / shots.length : 0,
+    misses: projectiles - hits,
+    accuracy: projectiles ? hits / projectiles : 0,
     totalDamage,
     lethalShot,
     lethalHit,

@@ -511,8 +511,34 @@ zero vertical displacement; this is a display fallback, not a measured no-drop r
 See [damage, ballistics and projection](DAMAGE_BALLISTICS.md).
 
 Target hit and lethal-shot figures are approximate outcomes of the sampled
-spray. Pellet loads suppress these figures because individual pellets are not
-simulated. A circle drawn for shotgun spread is not a simulated pellet pattern.
+spray. A pellet load is scored from its sampled pellets (below).
+
+## Shotgun pellet pattern
+
+The spray pattern and the Firing Range sample a pellet load in two stages. The
+shell leaves at the view plus the usual spread draw. Each pellet then leaves at the shell direction
+plus its own draw inside the weapon's blueprint firing-dispersion cone, the
+`shotgunDispersion` angle in [weapon_attributes.json](../data/weapon_attributes.json)
+(KS-18K 0.8°, M87A1 and M1014 1.0°, DB-12 1.2°), joined onto the weapon as
+`pelletDispersion` at load. Both draws use a uniform random angle and a uniform
+random radius, so density is centre-weighted. The spray dots are the pellets,
+drawn smaller than a single projectile's dot; the scatter cloud, spread bubbles
+and cone keep showing shell directions. On the Firing Range a dashed ring on the
+reticle marks spread plus dispersion, the farthest a pellet can land. Each pellet
+is scored at its own hit zone with the per-pellet damage; the impact table counts
+pellets, and the lethal figure is pellet hits over shells fired.
+
+The model rests on the operator's wall recordings of 22 October 2026
+([measurement](../reference-data/provenance/shotgun-pattern-measurement-2026-10-22.md)):
+at 20 m every M87A1 shell's pellets fell inside a cone of about 1.0° radius, in ADS
+and in standing hipfire alike, so the hip spread moves the shell (centres landed
+within 2.1° of the aim, inside the 2.432° value) and the dispersion spreads its
+pellets. KS-18K and DB-12 patterns measured 0.80° and 1.17° median radius, so the
+per-weapon value is live. Rapid ADS strings did not widen the pattern, matching
+the 0.001° ADS per-shot increase. The centre-weighted density fits the rms/max
+ratio of about 0.61 across 16-pellet shells (a uniform disc would give about
+0.73) but is likely rather than proven. Not measured: the M1014, hipfire on the
+other three shotguns, moving spread.
 
 ## Verification and remaining limits
 

@@ -16,10 +16,17 @@
  * (RecoilCompensationConsumesAimPitch/Yaw), so a pulled-down string recovers
  * only the kick the player did not counter and the view settles back on the
  * aim point rather than below it.
+ *
+ * A pellet load scatters its pellets around the shell's direction inside the
+ * weapon's firing-dispersion cone (`pelletDispersion`, degrees), with a uniform
+ * random radius and angle. Operator wall patterns of 22 October 2026
+ * (reference-data/provenance/shotgun-pattern-measurement-2026-10-22.md) put
+ * every shell inside that cone at ADS and hipfire alike: spread moves the whole
+ * shell, dispersion spreads its pellets, and rapid strings do not widen it.
  */
 import {
   mulberry32, whash, uniformDev, recoilGroup, selectedRecoilAmountFor, selectedRecoilVariationFor,
-  spreadBounds, selectedSpreadIncFor, spreadRecoveries, applySpreadRecovery, sampleSpreadRadius,
+  spreadBounds, selectedSpreadIncFor, spreadRecoveries, applySpreadRecovery, sampleSpreadRadius, samplePellets,
   shotIntervalAfter, isBurstGapAfter, weaponRpm, recoilRecoveryWeight, recoverRecoilAxis,
   RECOIL_TIME_STEP, RECOIL_RECOVERY_SCALE, simContext,
 } from './core.js';
@@ -54,7 +61,9 @@ export function createLiveFire(w, { seed = 1, magazine = w.mag } = {}) {
   const magSize = Number.isFinite(magazine) && magazine > 0 ? Math.floor(magazine) : Infinity;
   const rngRecoil = mulberry32((whash(w.id) ^ seed) >>> 0);
   const rngSpread = mulberry32((whash(w.id) ^ seed ^ 0xdeadbeef) >>> 0);
+  const rngPellet = mulberry32((whash(w.id) ^ seed ^ 0x9e3779b9) >>> 0);
   const clampSpread = v => Math.min(Math.max(v, baseline), sMax);
+  const dispersion = (w.pellets ?? 1) > 1 ? requireNumber(w.pelletDispersion, `${w.id} pellet dispersion`) : 0;
 
   const s = {
     weapon: w, triggerMode, magazine: magSize, baselineSpread: baseline, maxSpread: sMax,
@@ -94,14 +103,18 @@ export function createLiveFire(w, { seed = 1, magazine = w.mag } = {}) {
     const continues = s.shots > 0 && t <= firingUntil + EPS;
     s.shots++;
     s.ammo--;
+    const x = s.aim.x + s.recoil.x + bR * Math.cos(bAng);
+    const y = s.aim.y + s.recoil.y + bR * Math.sin(bAng);
+    // Each pellet leaves at the shell direction plus its own dispersion draw.
+    const pellets = samplePellets(w, x, y, rngPellet)?.map(p => ({ ...p, zone: undefined }));
     s.impacts.push({
       index: s.shots, t, continues,
-      x: s.aim.x + s.recoil.x + bR * Math.cos(bAng),
-      y: s.aim.y + s.recoil.y + bR * Math.sin(bAng),
+      x, y,
       recoil: { x: s.recoil.x, y: s.recoil.y },
       view: { x: s.aim.x + s.recoil.x, y: s.aim.y + s.recoil.y },
       spread: preSpread,
       zone: undefined,
+      ...(pellets ? { pellets } : {}),
     });
     const angle = dirRad + uniformDev(rngRecoil, variation) * Math.PI / 180;
     pending.push({ end: t + duration, xRate: Math.sin(angle) * amount / duration, yRate: Math.cos(angle) * amount / duration });
@@ -197,5 +210,7 @@ export function createLiveFire(w, { seed = 1, magazine = w.mag } = {}) {
     },
     /** Pre-shot spread ready for the next shot, in degrees. */
     currentSpread() { return clampSpread(s.spread); },
+    /** Radius of the pellet cone around a shell, in degrees; 0 for a single projectile. */
+    pelletDispersion() { return dispersion; },
   };
 }
