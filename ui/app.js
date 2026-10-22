@@ -3183,14 +3183,16 @@ function renderRecoil({ plotOnly = false } = {}) {
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
+    // A shell is plotted as one direction: its pellets or flechettes are not spread yet.
+    const pelletNote = [w1, isRange ? null : w2].some(w => (w?.pellets ?? 1) > 1) ? ' Shotgun pellets and flechettes are not yet simulated; each shell is plotted as one direction.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
-      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.`;
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.${pelletNote}`;
     } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
-      noteEl.textContent = `${layerNote}${ringNote}`;
+      noteEl.textContent = `${layerNote}${ringNote}${pelletNote}`;
     } else {
-      noteEl.textContent = `${layerNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.`;
+      noteEl.textContent = `${layerNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.${pelletNote}`;
     }
   }
 

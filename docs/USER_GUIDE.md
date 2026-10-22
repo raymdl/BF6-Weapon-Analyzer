@@ -314,8 +314,9 @@ Target Impact Stats report hits, sampled hit rate, damage by body part, and the
 hits/shots needed to reach lethal damage. Total damage includes subsequent hits
 after the first lethal shot. The 180 cm figure and its hit zones are approximate;
 results describe this sample, not expected player accuracy. If its image is missing,
-hit statistics are unavailable. Pellet loads explicitly suppress hit-rate, damage,
-and lethality results because the plot shows one direction per shell.
+hit statistics are unavailable. Shotgun pellets and flechettes are not yet simulated:
+the plot shows one direction per shell, the note under the plot says so, and pellet
+loads suppress hit-rate, damage and lethality results.
 
 ## Firing Range
 

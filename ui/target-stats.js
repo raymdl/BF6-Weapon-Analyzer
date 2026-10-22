@@ -17,7 +17,7 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
   entries.forEach((entry, index) => {
     if ((entry.weapon.pellets ?? 1) > 1) {
       html += `<section class="target-impact-card"><div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
-        <p class="target-impact-note">Pellet impacts are not simulated. Shotgun hit rate, damage and lethality are unavailable. The plot shows one direction per shell.</p></section>`;
+        <p class="target-impact-note">Shotgun pellets and flechettes are not yet simulated, so hit rate, damage and lethality are unavailable. The plot shows one direction per shell.</p></section>`;
       return;
     }
     if (!Number.isFinite(entry.weapon._hsMult) || !Number.isFinite(entry.weapon._limbMult)) {
