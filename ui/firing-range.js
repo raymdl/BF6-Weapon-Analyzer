@@ -155,6 +155,8 @@ export function createFiringRange({
     // the lock, and the focus the lock request gave the canvas is let go on
     // release so the keyboard focus ring does not linger as a false signal.
     canvas.classList?.toggle('captured', locked);
+    // One frame around the control bar and the canvas: the area the captured cursor reaches.
+    canvas.closest?.('.rc-capture')?.classList.toggle('captured', locked);
     if (!locked) canvas.blur?.();
     if (!locked) {
       live?.setTrigger(false);
@@ -204,8 +206,12 @@ export function createFiringRange({
     if (!frame || !bar) return;
     const rect = canvas.getBoundingClientRect();
     const scale = rect.width ? frame.CW / rect.width : 1;
-    // The bar spans the canvas width; the whole canvas below it is crosshair territory.
-    bar.x = Math.min(Math.max(bar.x + mouse.x * scale, 0), frame.CW);
+    // The cursor runs the bar's full width, which may be wider than a canvas
+    // capped to the viewport; the whole canvas below it is crosshair territory.
+    const barRect = controlBar()?.getBoundingClientRect();
+    const minX = barRect && rect.width ? (barRect.left - rect.left) * scale : 0;
+    const maxX = barRect && rect.width ? (barRect.right - rect.left) * scale : frame.CW;
+    bar.x = Math.min(Math.max(bar.x + mouse.x * scale, minX), maxX);
     bar.y += mouse.y * scale;
     const top = -barReach(frame);
     if (bar.y < top) bar.y = top;
@@ -215,7 +221,7 @@ export function createFiringRange({
       const w = sim.state.weapon;
       const sx = frame.toX(1) - frame.toX(0), sy = frame.toY(w, 1) - frame.toY(w, 0);
       if (sx && sy) {
-        sim.state.aim.x = (bar.x - frame.toX(0)) / sx - sim.state.recoil.x;
+        sim.state.aim.x = (Math.min(Math.max(bar.x, 0), frame.CW) - frame.toX(0)) / sx - sim.state.recoil.x;
         sim.state.aim.y = (1 - frame.toY(w, 0)) / sy - sim.state.recoil.y;
       }
       bar = null;
@@ -486,7 +492,7 @@ export function createFiringRange({
     if (kill) {
       ctx.fillStyle = KILL_COLOR;
       ctx.font = '700 12px sans-serif';
-      ctx.fillText(`KILL · shot ${kill.shot}, ${kill.hits} hit${kill.hits === 1 ? '' : 's'}`, PL + 6, PT + 36);
+      ctx.fillText(`KILL on shot ${kill.shot} (${kill.hits} hit${kill.hits === 1 ? '' : 's'})`, PL + 6, PT + 36);
     }
 
     // The banner says how to get in, and once in, how to get out.
@@ -526,6 +532,9 @@ export function createFiringRange({
 
   function bind() {
     doc.addEventListener('pointerlockchange', onLockChange);
+    // A refused request (browsers refuse one for about a second after Esc)
+    // leaves the press with nothing to do; say so in the console for diagnosis.
+    doc.addEventListener('pointerlockerror', () => { pressPending = null; win.console?.warn?.('Firing Range: the browser refused pointer capture; click the plot again.'); });
     doc.addEventListener('mousemove', onMouseMove);
     doc.addEventListener('mousedown', onMouseDown);
     doc.addEventListener('mouseup', onMouseUp);

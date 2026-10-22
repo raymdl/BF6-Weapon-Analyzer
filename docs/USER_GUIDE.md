@@ -57,19 +57,22 @@ Each attachment row has a padlock; the one in the Attachments header locks every
 row with something fitted (a "None" stays free) or unlocks every row at once. A locked choice stays when another weapon is chosen,
 and one the new weapon cannot take goes back to that weapon's default until a
 weapon that can take it is chosen again. Changing a locked attachment locks it at
-the new choice. Locked rows take a gold edge; a dashed edge means the weapon cannot
-take the locked choice and the row shows its default instead. The locks are
-remembered per slot in browser storage.
+the new choice. Locked rows take a gold edge; a dashed edge, with a line naming
+the locked choice, means the weapon cannot take it and the row shows its default
+instead. A one-time note explains this the first time a lock goes on. The locks
+are remembered per slot in browser storage.
 
 Saved Loadouts, above the class filter, live in browser storage, not in links.
-Save names the current weapon and attachments, suggesting "Loadout 1", "Loadout 2"
-and so on per weapon (a name already used for that weapon is overwritten); the menu
-loads one into that slot, and each entry's ✕ deletes it. A saved loadout is
+Save opens a name field in the row, suggesting "Loadout 1", "Loadout 2" and so on
+per weapon (Enter or Save keeps it, Escape cancels; a name already used for that
+weapon is overwritten). The menu lists them grouped by weapon and loads one into
+that slot, clearing its locks; each entry's ✕ deletes it at once, with an Undo link for a few seconds. A saved loadout is
 stored as the same compact tokens a share link uses, so it keeps resolving as
 the catalog grows.
 
 Enable comparison for a second independent loadout. Clone the first loadout to
-compare attachment changes on the same weapon. Disabling comparison clears the
+compare attachment changes on the same weapon; Swap exchanges the two loadouts,
+locks included. Disabling comparison clears the
 second slot. On smaller screens, the Loadout button opens a dialog; Escape closes
 it and returns focus to the opener.
 
@@ -337,10 +340,11 @@ be sampled from. Dots are
 coloured by hit zone (red head, gold upper torso, off-white lower torso, arms and
 legs) and faded grey dots miss. When the running damage reaches a kill (100), the killing shot
 flashes a red ring and a KILL line names the shot. The Target Impact Stats describe the shots fired so far. Only
-Weapon 1 fires, so the compare loadout is greyed out but kept.
+Weapon 1 fires, so the compare loadout is greyed out but kept, and the impact
+table names Weapon 1 alone.
 
 Enter your mouse **DPI**, the in-game **Soldier Mouse Sensitivity** and the
-**Uniform Infantry Aiming coefficient** (game default 133%) under the plot. These
+**Uniform Infantry Aiming coefficient** (default 178%) under the plot. These
 are saved locally, like the display settings, and never written to shared links.
 The read-out shows the hipfire cm/360 and the degrees of view rotation per mouse
 count for the current aim state and zoom. Hipfire uses the published Battlefield 6

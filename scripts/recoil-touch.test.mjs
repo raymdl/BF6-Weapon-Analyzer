@@ -162,7 +162,7 @@ function mathHarness(view) {
     targetAim: 'custom', customAim: { x: 44, y: 55 }, zeroDistance: 200 } },
     PLOT_PAD: { l: 28, r: 8, t: 8, b: 18 }, SCOPE_MAGNIFICATIONS: [1, 2, 4, 8],
     recoilTouchControls: null,
-    RECOIL_SCALE_MIN: 1, RECOIL_SCALE_MAX: 20, TARGET_DEFAULT_MAGNIFICATION: 1,
+    RECOIL_SCALE_MIN: 1, RECOIL_SCALE_MAX: 20, RECOIL_SCALE_DEFAULT: 5, TARGET_DEFAULT_MAGNIFICATION: 1,
     currentMagnification: () => c.state.recoil.magnification,
     isTargetGeometry: () => c.state.recoil.view === 'target' || c.state.recoil.view === 'range',
     equippedSight: () => null, equippedSightKey: () => null,

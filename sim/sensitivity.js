@@ -15,9 +15,9 @@
 export const BF6_YAW_PER_SENS = 0.0017362342283;
 export const BF6_YAW_OFFSET = 0.002314981532;
 /** Battlefield's default Uniform Soldier Aiming coefficient, in percent. */
-export const DEFAULT_ZOOM_COEFFICIENT = 133;
+export const DEFAULT_ZOOM_COEFFICIENT = 178;
 
-export const SENS_DEFAULTS = Object.freeze({ dpi: 800, sens: 20, coefficient: DEFAULT_ZOOM_COEFFICIENT });
+export const SENS_DEFAULTS = Object.freeze({ dpi: 800, sens: 25, coefficient: DEFAULT_ZOOM_COEFFICIENT });
 
 const clampPositive = (value, fallback) => (Number.isFinite(value) && value > 0 ? value : fallback);
 

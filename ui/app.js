@@ -106,6 +106,7 @@ const CLASS_SHORT = {
   'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'Shotgun', 'Sidearm': 'Pistol',
 };
 
+const RECOIL_SCALE_DEFAULT = 7;
 const RECOIL_SCALE_MIN = 2;
 const RECOIL_SCALE_MAX = 10;
 const RECOIL_SCALE_STEP = 0.5;
@@ -183,7 +184,7 @@ const state = {
     // 0% means no compensation, so the slider is the whole control.
     compensationLevel: 0,
     refSeed: 0,
-    scaleH: 5, panX: 0, panY: 0,
+    scaleH: RECOIL_SCALE_DEFAULT, panX: 0, panY: 0,
     crosshair: true,
     // Target zoom follows the primary slot's sight. An explicit zoom holds only
     // while the sight it was set on (magnificationSight) stays equipped; without
@@ -202,6 +203,13 @@ function weaponDisplayLabel(w) {
   return `${name}*${suffix}`;
 }
 
+/** Heading HTML for a stats card: the weapon's name with its attachments beneath. */
+function loadoutHeadingHtml(w) {
+  const label = weaponDisplayLabel(w);
+  const name = chartWeaponDisplayLabel(w);
+  const atts = label.startsWith(name + ' (') && label.endsWith(')') ? label.slice(name.length + 2, -1) : '';
+  return `${name}${atts ? `<span class="loadout-atts">${atts}</span>` : ''}`;
+}
 function chartWeaponDisplayLabel(w) {
   const name = w?.name ?? wLabel(w);
   return w?.estimated ? `${name}*` : name;
@@ -637,8 +645,20 @@ function lockedAsAtts(locked) {
 function toggleAttachmentLock(slotIdx, key) {
   const slot = state.slots[slotIdx];
   if (Object.hasOwn(slot.locked, key)) delete slot.locked[key];
-  else slot.locked[key] = lockedValue(slot.atts, key);
+  else { slot.locked[key] = lockedValue(slot.atts, key); noteFirstLock(); }
   saveLocks(slotIdx);
+  renderSidebar();
+}
+// A one-time line under the Attachments header, the first time a lock goes on.
+const LOCK_HINT_KEY = 'bf6.lockHintSeen';
+let lockHintShowing = false;
+function noteFirstLock() {
+  try { if (localStorage.getItem(LOCK_HINT_KEY)) return; } catch { return; }
+  lockHintShowing = true;
+}
+function dismissLockHint() {
+  lockHintShowing = false;
+  try { localStorage.setItem(LOCK_HINT_KEY, '1'); } catch { /* storage is optional. */ }
   renderSidebar();
 }
 function saveLoadout(slotIdx) {
@@ -650,11 +670,21 @@ function saveLoadout(slotIdx) {
   const taken = new Set(readSavedLoadouts().filter(e => e.weapon === wid).map(e => e.name));
   let suggested = slot.savedName;
   for (let n = 1; !suggested || taken.has(suggested); n++) suggested = `Loadout ${n}`;
-  const name = window.prompt('Name this loadout', suggested)?.trim();
-  if (!name) return;
+  savedNaming = { slotIdx, suggested };
+  renderSavedLoadoutSection(`savedSec${slotIdx + 1}`, slotIdx);
+}
+/** The name field is open in one Saved Loadouts row: { slotIdx, suggested }. */
+let savedNaming = null;
+/** The last deleted loadout, kept for Undo: { entry, timer }. */
+let savedUndo = null;
+function commitSavedName(slotIdx, name) {
+  const slot = state.slots[slotIdx];
+  savedNaming = null;
+  name = name?.trim();
+  if (!name || !slot.weapon) { renderSavedLoadoutSection(`savedSec${slotIdx + 1}`, slotIdx); return; }
+  const wid = slot.weapon.id;
   const list = readSavedLoadouts().filter(e => !(e.name === name && e.weapon === wid));
   list.push({ name, weapon: wid, atts: shareCodec.encodeAtts(slot.weapon, slot.atts) });
-  list.sort((a, b) => a.name.localeCompare(b.name) || a.weapon.localeCompare(b.weapon));
   writeSavedLoadouts(list);
   slot.savedName = name;
   renderSidebar();
@@ -667,18 +697,40 @@ function loadSavedLoadout(slotIdx, name, weaponId) {
   slot.cls = w.cls;
   slot.weapon = w;
   slot.atts = shareCodec.decodeAtts(w, entry.atts ?? '');
+  // A saved loadout is the whole set, so any locks from before are let go.
+  slot.locked = {};
+  saveLocks(slotIdx);
   slot.savedName = name;
   renderSidebar();
   renderStats();
 }
 function deleteSavedLoadout(name, weaponId) {
-  if (!window.confirm(`Delete the saved loadout "${name}"?`)) return;
+  const entry = readSavedLoadouts().find(e => e.name === name && e.weapon === weaponId);
+  if (!entry) return;
   writeSavedLoadouts(readSavedLoadouts().filter(e => !(e.name === name && e.weapon === weaponId)));
+  // Which slots had it loaded, so Undo can show its name in the picker again.
+  const loadedIn = state.slots.map(s => s.savedName === name && s.weapon?.id === weaponId);
   state.slots.forEach(s => { if (s.savedName === name && s.weapon?.id === weaponId) s.savedName = null; });
+  // No confirm: the row offers Undo for a few seconds instead.
+  clearTimeout(savedUndo?.timer);
+  savedUndo = { entry, loadedIn, timer: setTimeout(() => { savedUndo = null; renderSidebar(); }, 8000) };
   // Both slots list the same loadouts; the open menu stays open for the next delete.
   const open = document.querySelector('.saved-menu:not([hidden])')?.closest('.sb-sec')?.id;
   renderSidebar();
   if (open) document.querySelector(`#${open} .saved-pick-btn`)?.click();
+}
+function undoSavedDelete() {
+  if (!savedUndo) return;
+  clearTimeout(savedUndo.timer);
+  const { entry, loadedIn } = savedUndo;
+  savedUndo = null;
+  writeSavedLoadouts([...readSavedLoadouts().filter(e => !(e.name === entry.name && e.weapon === entry.weapon)), entry]);
+  // A slot that still holds the deleted loadout unchanged shows its name again.
+  state.slots.forEach((s, i) => {
+    if (loadedIn[i] && s.weapon?.id === entry.weapon && !s.savedName
+        && shareCodec.encodeAtts(s.weapon, s.atts) === (entry.atts ?? '')) s.savedName = entry.name;
+  });
+  renderSidebar();
 }
 function syncSavedLoadoutRow(slotIdx) {
   const slot = state.slots[slotIdx];
@@ -686,7 +738,7 @@ function syncSavedLoadoutRow(slotIdx) {
   if (!sec) return;
   const btn = sec.querySelector('.saved-pick-btn');
   if (btn) {
-    btn.textContent = slot.savedName ?? btn.dataset.placeholder;
+    btn.textContent = slot.savedName ? `${slot.savedName} · ${weaponDisplayLabel(slot.weapon)}` : btn.dataset.placeholder;
     btn.classList.toggle('placeholder', !slot.savedName);
   }
   sec.querySelectorAll('.saved-item').forEach(item => {
@@ -716,12 +768,24 @@ function decorateAttachmentSection(container, containerId, slotIdx) {
   lock.setAttribute('aria-pressed', String(all));
   lock.onclick = () => {
     if (all) slot.locked = {};
-    else for (const key of fitted) if (!Object.hasOwn(slot.locked, key)) slot.locked[key] = lockedValue(slot.atts, key);
+    else { for (const key of fitted) if (!Object.hasOwn(slot.locked, key)) slot.locked[key] = lockedValue(slot.atts, key); noteFirstLock(); }
     saveLocks(slotIdx);
     renderSidebar();
   };
   head.firstElementChild.insertAdjacentElement('afterend', lock);
   head.firstElementChild.style.marginRight = '6px';
+  if (lockHintShowing && slotIdx === 0) {
+    const hint = document.createElement('div');
+    hint.className = 'att-note att-lock-hint';
+    hint.textContent = 'Locked attachments stay when you choose another weapon. One the weapon cannot take shows a dashed edge and comes back on a weapon that can. ';
+    const ok = document.createElement('button');
+    ok.type = 'button';
+    ok.className = 'saved-undo-btn';
+    ok.textContent = 'Got it';
+    ok.onclick = dismissLockHint;
+    hint.appendChild(ok);
+    head.insertAdjacentElement('afterend', hint);
+  }
 }
 /** The Saved Loadouts section above the class filter: pick one to load it,
  *  Save names the current weapon and attachments, ✕ deletes the loaded one. */
@@ -781,9 +845,41 @@ function renderSavedLoadoutSection(containerId, slotIdx) {
   sec.innerHTML = '<div class="sb-lbl">Saved Loadouts</div>';
   const row = document.createElement('div');
   row.className = 'saved-row';
+  sec.appendChild(row);
+
+  // Naming: the picker gives way to a text field until Enter, Save or Escape.
+  if (savedNaming?.slotIdx === slotIdx) {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'att-sel saved-name-input';
+    input.value = savedNaming.suggested;
+    input.maxLength = 40;
+    input.setAttribute('aria-label', 'Name for the saved loadout');
+    input.placeholder = 'Loadout name';
+    const ok = document.createElement('button');
+    ok.type = 'button';
+    ok.className = 'att-tool on';
+    ok.textContent = 'Save';
+    ok.title = 'Save under this name (Enter)';
+    ok.onmousedown = e => e.preventDefault();
+    ok.onclick = () => commitSavedName(slotIdx, input.value);
+    input.onkeydown = e => {
+      if (e.key === 'Enter') { e.preventDefault(); commitSavedName(slotIdx, input.value); }
+      else if (e.key === 'Escape') { e.preventDefault(); commitSavedName(slotIdx, ''); }
+    };
+    input.onblur = () => { if (savedNaming?.slotIdx === slotIdx) commitSavedName(slotIdx, ''); };
+    row.append(input, ok);
+    requestAnimationFrame(() => { input.focus(); input.select(); });
+    return;
+  }
+
   const pick = document.createElement('div');
   pick.className = 'saved-pick';
   const saved = readSavedLoadouts();
+  const labelOf = e => { const w = W.find(x => x.id === e.weapon); return w ? weaponDisplayLabel(w) : null; };
+  // Grouped by weapon, weapons in sidebar order, names within.
+  const order = new Map(W.map((w, i) => [w.id, i]));
+  saved.sort((a, b) => (order.get(a.weapon) ?? 1e9) - (order.get(b.weapon) ?? 1e9) || a.name.localeCompare(b.name));
   const btn = document.createElement('button');
   btn.type = 'button';
   btn.className = 'att-sel saved-pick-btn';
@@ -813,8 +909,16 @@ function renderSavedLoadoutSection(containerId, slotIdx) {
   menu.onclick = e => e.stopPropagation();
   document.addEventListener('click', close);
   menu.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); btn.focus(); } });
+  let lastWeapon = null;
   for (const entry of saved) {
     const w = W.find(x => x.id === entry.weapon);
+    if (entry.weapon !== lastWeapon) {
+      const head = document.createElement('div');
+      head.className = 'saved-group';
+      head.textContent = labelOf(entry) ?? 'Weapon no longer listed';
+      menu.appendChild(head);
+      lastWeapon = entry.weapon;
+    }
     const item = document.createElement('div');
     item.className = 'saved-item';
     item.dataset.name = entry.name;
@@ -823,13 +927,12 @@ function renderSavedLoadoutSection(containerId, slotIdx) {
     load.type = 'button';
     load.className = 'saved-item-load';
     load.setAttribute('role', 'option');
-    load.innerHTML = `<span class="saved-item-name"></span><span class="saved-item-weapon"></span>`;
+    load.innerHTML = `<span class="saved-item-name"></span>`;
     load.querySelector('.saved-item-name').textContent = entry.name;
-    load.querySelector('.saved-item-weapon').textContent = w ? weaponDisplayLabel(w) : 'weapon no longer listed';
     load.disabled = !w;
     if (w) {
       const lines = savedLoadoutSummary(w, shareCodec.decodeAtts(w, entry.atts ?? ''));
-      const show = () => showSavedTip(item, entry.name, lines);
+      const show = () => showSavedTip(item, `${entry.name} · ${weaponDisplayLabel(w)}`, lines);
       load.addEventListener('mouseenter', show);
       load.addEventListener('focus', show);
       load.addEventListener('mouseleave', hideSavedTip);
@@ -855,7 +958,18 @@ function renderSavedLoadoutSection(containerId, slotIdx) {
   save.disabled = !slot.weapon;
   save.onclick = () => saveLoadout(slotIdx);
   row.append(pick, save);
-  sec.appendChild(row);
+  if (savedUndo) {
+    const note = document.createElement('div');
+    note.className = 'saved-undo';
+    note.textContent = `Deleted ${savedUndo.entry.name}${labelOf(savedUndo.entry) ? ` · ${labelOf(savedUndo.entry)}` : ''}. `;
+    const undo = document.createElement('button');
+    undo.type = 'button';
+    undo.className = 'saved-undo-btn';
+    undo.textContent = 'Undo';
+    undo.onclick = undoSavedDelete;
+    note.appendChild(undo);
+    sec.appendChild(note);
+  }
   syncSavedLoadoutRow(slotIdx);
 }
 
@@ -882,6 +996,8 @@ function renderSidebar() {
   if (state.comparing) {
     const cloneBtn = document.getElementById('cloneLoadoutBtn');
     if (cloneBtn) cloneBtn.disabled = !state.slots[0].weapon;
+    const swapBtn = document.getElementById('swapLoadoutBtn');
+    if (swapBtn) swapBtn.disabled = !state.slots[0].weapon && !state.slots[1].weapon;
     renderSavedLoadoutSection('savedSec2', 1);
     buildClassFilter('classFilter2', 1);
     buildWeaponList('wList2', 1);
@@ -890,6 +1006,15 @@ function renderSidebar() {
   updateAssumedFootnote();
 }
 
+function swapCompareLoadouts() {
+  if (!state.comparing) return;
+  const [a, b] = state.slots;
+  state.slots = [b, a];
+  // The locks travel with their loadouts, in storage too.
+  saveLocks(0); saveLocks(1);
+  renderSidebar();
+  renderStats();
+}
 function cloneCompareLoadout() {
   if (!state.slots[0].weapon) return;
   state.comparing = true;
@@ -1925,21 +2050,12 @@ function rangeSimKey() {
 }
 function rangeStatsHtml(axis) {
   const live = firingRange?.live();
-  let summary;
-  if (!live) {
-    summary = '<p class="target-impact-note">Select a weapon to use the Firing Range.</p>';
-  } else {
-    const sens = rangeSensSummary();
-    const legend = RANGE_ZONE_LEGEND.map(([zone, label]) => `<span><i style="background:${RANGE_ZONE_COLORS[zone]}"></i>${label}</span>`).join('')
-      + `<span><i class="miss" style="background:${RANGE_MISS_COLOR}"></i>Miss</span>`;
-    summary = `<div class="rc-range-summary"><strong>Firing Range</strong> · ${weaponDisplayLabel(live.state.weapon)}`
-      + `<br>${sens.text}. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.</div>`
-      + `<div class="rc-zone-legend">${legend}</div>`;
-  }
-  // The table comes first so it sits where the Soldier Target's does; the
-  // legend and the sensitivity note follow it.
-  const table = live ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, labelFor: weaponDisplayLabel }) : '';
-  return `<div id="rcRangeStats">${table}${summary}</div>`;
+  // The same impact table as the Soldier Target's, in the same place; the
+  // loadout is listed above it and the sensitivity read-out sits under the plot.
+  const table = live
+    ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, labelFor: loadoutHeadingHtml })
+    : '<p class="target-impact-note">Select a weapon to use the Firing Range.</p>';
+  return `<div id="rcRangeStats">${table}</div>`;
 }
 /** Refresh only the live sample's stats while shots are landing. */
 function refreshRangeStats() {
@@ -2072,7 +2188,7 @@ function resetRecoilView() {
     renderRecoil();
     return;
   }
-  state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
+  state.recoil.scaleH = RECOIL_SCALE_DEFAULT; state.recoil.panX = 0; state.recoil.panY = 0;
   renderRecoil();
 }
 /** Expanded touch reset changes zoom and pan only, preserving distance, aim and seed. */
@@ -2082,7 +2198,7 @@ function resetRecoilFraming() {
     resetMagnification();
     state.recoil.distancePanX = 0; state.recoil.distancePanY = 0;
   } else {
-    state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
+    state.recoil.scaleH = RECOIL_SCALE_DEFAULT; state.recoil.panX = 0; state.recoil.panY = 0;
   }
   renderRecoil();
 }
@@ -2814,7 +2930,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   if (isTargetGeometry()) state.recoil.distance = snapTargetDistance(state.recoil.distance);
   scheduleUrlSync();
   const w1 = selectedWeaponBuild(state.slots[0]);
-  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  let w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
   if ([w1, w2].some(w => w && !validateWeaponSimulation(w))) {
     const canvas = document.getElementById('rcMain');
     const ctx = canvas.getContext('2d');
@@ -2904,14 +3020,22 @@ function renderRecoil({ plotOnly = false } = {}) {
     // the plot is what says to click in.
     const rangeHint = !firingRange?.supportsLock()
       ? 'Firing Range needs a browser with pointer capture and a mouse'
-      : [key('LMB', 'fire'), key('R', 'reload'), key('C', 'clear'), key('Esc', 'release'),
-        key('Shift + drag', 'pan'), key('Shift + scroll', 'zoom'), key('Ctrl + scroll', 'distance'),
-        '<span class="rc-key">aim above the plot for the sliders</span>'].join('');
+      : [key('Click', 'fire'), key('R', 'reload'), key('C', 'clear'), key('Esc', 'release'),
+        key('Shift+drag', 'pan'), key('Shift+scroll', 'zoom'), key('Ctrl+scroll', 'distance')].join('');
     const nextHint = isRange ? rangeHint : (recoilTouchControls?.hint() ?? (isTarget
       ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom · Ctrl + scroll for distance'
       : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom'));
     if (isRange) { if (hint.innerHTML !== nextHint) hint.innerHTML = nextHint; }
     else if (hint.textContent !== nextHint) hint.textContent = nextHint;
+  }
+  // The hit-zone key sits in the footer strip, next to the dots it explains.
+  const zoneLegend = document.getElementById('rcZoneLegend');
+  if (zoneLegend) {
+    if (!zoneLegend.innerHTML) {
+      zoneLegend.innerHTML = RANGE_ZONE_LEGEND.map(([zone, label]) => `<span><i style="background:${RANGE_ZONE_COLORS[zone]}"></i>${label}</span>`).join('')
+        + `<span><i class="miss" style="background:${RANGE_MISS_COLOR}"></i>Miss</span>`;
+    }
+    zoneLegend.hidden = !isRange;
   }
   const aimReadout = document.getElementById('rcAimReadout');
   // The range aims with the mouse, so the Soldier Target aim read-out is not shown there.
@@ -3012,6 +3136,9 @@ function renderRecoil({ plotOnly = false } = {}) {
   // Only Weapon 1 fires on the range. The compare loadout is kept but greyed
   // out, so nobody has to rebuild it after a session on the range.
   document.getElementById('cmpSection')?.classList.toggle('range-locked', isRange);
+  // The range plot is capped to the viewport so the HUD, the soldier and the
+  // controls above and below it stay on screen together while the cursor is gone.
+  document.querySelector('.rc-layout')?.classList.toggle('rc-range-view', isRange);
   const cmpBtn = document.getElementById('cmpBtn');
   if (cmpBtn) {
     cmpBtn.disabled = isRange;
@@ -3019,6 +3146,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
   const sensGroup = document.getElementById('rcSensGroup');
   if (sensGroup) sensGroup.hidden = !isRange;
+  const sensReadout = document.getElementById('rcSensReadout');
+  if (sensReadout) sensReadout.hidden = !isRange;
   if (isRange) { loadSensSettings(); syncSensReadout(); }
   firingRange?.setActive(isRange);
   const axis = isRange
@@ -3039,7 +3168,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
-      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game.`;
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.`;
     } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}`;
@@ -3049,11 +3178,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
 
   if (plotOnly) return;
-  const leg = document.getElementById('rcLegend');
-  leg.innerHTML = '';
-  [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w).forEach(([w, col]) => {
-    leg.innerHTML += `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${weaponDisplayLabel(w)}</span></div>`;
-  });
+  // The range fires only the first weapon, so its stats name and chart only that one.
+  if (isRange) w2 = null;
 
   // The pop-out has room for both tables, so it stacks recoil/spread over the
   // impact breakdown instead of swapping one for the other.
@@ -3065,7 +3191,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   const tabsHtml = stacksStats ? '' : statsTabsHtml(activeStatsTab, isTargetView);
   const targetHtml = isRange
     ? rangeStatsHtml(axis)
-    : isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: weaponDisplayLabel }) : '';
+    : isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: loadoutHeadingHtml }) : '';
   // The strip and the stats it labels share one bordered box, the same way the
   // plot's tabs and canvas do, so the selected tab sits on its own content.
   const statsEl = document.getElementById('rcStats');
@@ -3262,7 +3388,10 @@ function renderRecoil({ plotOnly = false } = {}) {
   // With the strip present it already names the block, and the aim/stance it
   // describes is set by the controls right above it.
   const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : 'Standing'}</div>`;
-  let rowsHtml = '';
+  // The loadouts the bars compare head the card, the way each impact table
+  // names its own.
+  let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1'], [w2, 'c2']].filter(([w]) => w)
+    .map(([w, cls]) => `<div class="target-impact-weapon ${cls}">${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
   stats.forEach(s => {
     if (s.val1 === null && s.val2 === null) return;
     rowsHtml += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
@@ -3572,6 +3701,7 @@ function bindEvents() {
     renderStats();
   });
   document.getElementById('cloneLoadoutBtn').addEventListener('click', cloneCompareLoadout);
+  document.getElementById('swapLoadoutBtn')?.addEventListener('click', swapCompareLoadouts);
 
   // Share menu — copy the link, or a PNG of the whole view
   bindShareMenu();

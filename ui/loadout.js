@@ -68,6 +68,13 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
     row.appendChild(btn);
   }
   container.appendChild(row);
+  if (lock?.on && lock.held === false) {
+    // Says what the lock holds, since the row shows this weapon's default instead.
+    const note = document.createElement('div');
+    note.className = 'att-lock-note';
+    note.textContent = `Locked: ${lock.heldName} · not on this weapon`;
+    container.appendChild(note);
+  }
 }
 
 export function renderAttachmentSection({
