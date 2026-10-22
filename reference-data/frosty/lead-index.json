@@ -7955,6 +7955,20 @@
       "refs": [
         "capture-plan"
       ]
+    },
+    "L4056": {
+      "id": "L4056",
+      "title": "Class traits, training paths and perks rechecked on 2.1.1.0: UI assets, path assets and multiplayer stored values unchanged; Flak re-pointed to an identical Flak Jacket affector; four perk strings changed, Quick Plating text 33% -> 25% with the stored 1.5 unchanged",
+      "status": "finding",
+      "date": "2026-10-21",
+      "receipts": [
+        "frosty-2026-10-21-L4056-class-perk-recheck-2110.json"
+      ],
+      "summary": "Four UI metadata assets and all 16 FieldUpgradePath assets are byte-identical to 1.4.3.5; of 61 byte-changed ability assets 59 differ only in compiled type indices, body hashes and a new affector header field, Ability_Flak imports the new Affector_FlakJacket (0.67 explosive, same as Affector_Flak) and the BR weapon-grant table was reordered; the English table changed Quick Plating to 25% faster (Pointman and FasterArmorReplate bodies still store 1.5 with stat id 34 -> 35), added 33% to Flak (matches 0.67), moved the AIM-SPOT trait text onto the Recon class record and dropped the Passive Spotting perk strings.",
+      "reopenWhen": "A stored join from UI perk records to Ability assets, a consumer that reads the Quick Plating speed (stat id 35), or a later update that changes a FieldUpgradePath_* asset or a multiplayer affector payload.",
+      "refs": [
+        "capture-plan"
+      ]
     }
   }
 }
