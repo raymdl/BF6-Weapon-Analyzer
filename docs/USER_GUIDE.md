@@ -33,9 +33,10 @@ no longer add points or effects. Shared links also remove invalid combinations.
 Attachment labels include point costs. **More than 100 points produces a warning;
 it does not block calculation or sharing.** An asterisk marks an attachment with
 assumed effects. A dagger (†) marks a choice whose in-game effect differs from its
-description because of a game bug. The site shows what the game does; hovering the
-option shows the intended effect, and the Attachment Effects panel marks the affected
-stat and adds a footnote. Attachments with no modeled stat effect still retain their
+description because of a game bug, or a likely one such as the RSPR Single-Port Brake's
+seven recoil steps. The site shows what the game does; hovering the option says so in a
+sentence, and the Attachment Effects panel marks the affected stat and adds the same
+one-line footnote. Attachments with no modeled stat effect still retain their
 availability and point cost.
 
 The Attachment Effects panel also shows Recoil Duration: how long each shot's kick
@@ -49,12 +50,30 @@ Hover an attachment control or option to read its in-game description where
 available. The selected control also exposes the text as an accessible description.
 Most text comes from Frosty UI records; 15 choices use approved game captures.
 Iron Sights also has a description on each weapon. M16A4 uses its Classic sights;
-UMG-40 uses its basic aperture sights. Other generic optic categories do not use
-one individual optic's tooltip. Text appears without an introductory prefix and
+UMG-40 uses its basic aperture sights. Optics are listed by their in-game names,
+with their magnification, and have no description yet. Text appears without an introductory prefix and
 does not define the simulated effects. Some choices still have no description.
 
+Each attachment row has a padlock; the one in the Attachments header locks every
+row with something fitted (a "None" stays free) or unlocks every row at once. A locked choice stays when another weapon is chosen,
+and one the new weapon cannot take goes back to that weapon's default until a
+weapon that can take it is chosen again. Changing a locked attachment locks it at
+the new choice. Locked rows take a gold edge; a dashed edge, with a line naming
+the locked choice, means the weapon cannot take it and the row shows its default
+instead. A one-time note explains this the first time a lock goes on. The locks
+are remembered per slot in browser storage.
+
+Saved Loadouts, above the class filter, live in browser storage, not in links.
+Save opens a name field in the row, suggesting "Loadout 1", "Loadout 2" and so on
+per weapon (Enter or Save keeps it, Escape cancels; a name already used for that
+weapon is overwritten). The menu lists them grouped by weapon and loads one into
+that slot, clearing its locks; each entry's ✕ deletes it at once, with an Undo link for a few seconds. A saved loadout is
+stored as the same compact tokens a share link uses, so it keeps resolving as
+the catalog grows.
+
 Enable comparison for a second independent loadout. Clone the first loadout to
-compare attachment changes on the same weapon. Disabling comparison clears the
+compare attachment changes on the same weapon; Swap exchanges the two loadouts,
+locks included. Disabling comparison clears the
 second slot. On smaller screens, the Loadout button opens a dialog; Escape closes
 it and returns focus to the opener.
 
@@ -171,8 +190,8 @@ these lines can slope even between bullet-count steps.
 
 ## Recoil and spread
 
-Choose **Angle Plot** for angular comparison or **Soldier Target** for a projected
-pattern at distance. Choose ADS/hipfire, standing/moving, PC/console, and 1–100 shots.
+Choose **Angle Plot** for angular comparison, **Soldier Target** for a projected
+pattern at distance, or **Firing Range** to fire the weapon yourself with your mouse. Choose ADS/hipfire, standing/moving, PC/console, and 1–100 shots.
 These are model contexts; they do not add crouch, prone, player skill, or aim-assist simulation.
 
 | Layer/control | Meaning |
@@ -181,7 +200,7 @@ These are model contexts; they do not add crouch, prone, player skill, or aim-as
 | Spray | One sampled run, including random spread. Reroll selects another reference seed. |
 | Recoil path | Aim displacement without the random spread sample. |
 | Spread circles / cone | Angular spread envelopes, with selectable shot samples. They describe the model's bounds. |
-| Recoil control | Subtracts 0–125% of the expected recoil vector; defaults to 0%. It leaves random variation and spread. Values above 100% overcompensate. |
+| Recoil control | Subtracts 0–125% of the expected recoil vector; defaults to 0%. It leaves random variation and spread. Values above 100% overcompensate. In Firing Range the slider is disabled and your mouse takes its place. |
 | Zoom, pan, crosshair | Change the plot view without altering simulated accuracy. |
 
 Spread-circle samples offer growth, early-shot, all-shot, and custom selections.
@@ -274,11 +293,20 @@ expected accuracy.
 
 Distance ranges from 5 to 300 metres and starts at 20 metres. The slider snaps to
 coarser distance increments farther away. Magnification, display resolution/aspect,
-and horizontal FOV change the viewing scale. Display resolution/FOV preferences
+and horizontal FOV change the viewing scale.
+
+The zoom starts at the first loadout's sight: 1.50× for iron sights, the stated
+magnification for a fixed optic, and the high end of a variable optic's range. An
+optic only zooms when aiming down it, so hipfire starts at 1.00× whatever the sight.
+The zoom slider overrides it, separately for ADS and hipfire. Off the sight's own zoom, a tick on the slider marks where
+that zoom is. The zoom read-out turns gold with an asterisk when the zoom
+is one the sight cannot show; a variable optic's whole range counts as its own.
+Reset, or choosing another sight, returns the zoom to the sight. Display resolution/FOV preferences
 are saved locally when browser storage is available.
 
 Aim at chest or head, or Ctrl+click the plot to place a custom aim point and fire a
-new sample. Shift+drag pans the target view. The soldier remains fixed in world
+new sample. Shift+drag pans the target view, Shift+scroll zooms and Ctrl+scroll steps
+the distance. The soldier remains fixed in world
 space when the aim point changes. DMR/sniper builds expose zero distances from
 100 to 500 metres; other weapons use the bore-relative trajectory in this model.
 
@@ -288,6 +316,46 @@ after the first lethal shot. The 180 cm figure and its hit zones are approximate
 results describe this sample, not expected player accuracy. If its image is missing,
 hit statistics are unavailable. Pellet loads explicitly suppress hit-rate, damage,
 and lethality results because the plot shows one direction per shell.
+
+## Firing Range
+
+**Firing Range** runs the same recoil and spread model in real time, with your own
+mouse as the recoil control instead of the Recoil Control slider. It uses the
+Soldier Target geometry, distance and zoom, and fires only the first weapon.
+
+Click the plot to capture the mouse; the crosshair starts under the cursor and
+the click itself does not fire. Hold the left button to fire a full-auto weapon,
+click once per shot for semi-automatic, bolt and pump weapons, or click once per
+burst. The magazine empties at its real size. While the plot holds the mouse the
+cursor is hidden, so the keys are the controls: **R** reloads and clears the
+shots, **C** clears the shots, **Esc** releases the mouse. Moving the crosshair up
+past the top of the plot puts a cursor over the distance and zoom sliders and the
+reset button, where a press works a button and a held press drags a slider. **Shift
++ drag** pans, **Shift + scroll** zooms and **Ctrl + scroll** steps the distance,
+with or without the mouse captured; a distance change clears the shots, since hits
+were scored at the old range. The **Reload** and
+**Clear** buttons in the plot's corner do the same, keeping distance, zoom and aim;
+while the plot holds the mouse, aim the crosshair at a button and press to use it.
+The reset button also returns the view and the aim to the starting point. The ring around the crosshair is the spread the next shot would
+be sampled from. Dots are
+coloured by hit zone (red head, gold upper torso, off-white lower torso, arms and
+legs) and faded grey dots miss. When the running damage reaches a kill (100), the killing shot
+flashes a red ring and a KILL line names the shot. The Target Impact Stats describe the shots fired so far. Only
+Weapon 1 fires, so the compare loadout is put aside while the range is up and
+comes back on the other views; share links still carry it. The impact table
+names Weapon 1 alone.
+
+Enter your mouse **DPI**, the in-game **Soldier Mouse Sensitivity** and the
+**Uniform Infantry Aiming coefficient** (default 178%) under the plot. These
+are saved locally, like the display settings, and never written to shared links.
+The read-out shows the hipfire cm/360 and the degrees of view rotation per mouse
+count for the current aim state and zoom. Hipfire uses the published Battlefield 6
+yaw constant (sensitivity × 0.0017362342283 + 0.002314981532 degrees per count,
+from the KovaaK's sensitivity converter). The ADS scaling uses the community
+monitor-distance formula for the FOV and the plot's magnification; it has not been
+confirmed against BF6 source values. The browser requests raw mouse input where it
+can; otherwise operating-system pointer acceleration applies. Pointer capture
+needs a mouse and a desktop browser, so the view is not usable on touch devices.
 
 ## Share, capture, and pop out
 

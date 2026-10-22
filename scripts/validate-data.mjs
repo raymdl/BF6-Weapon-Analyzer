@@ -254,6 +254,22 @@ for (const barrel of attachments.BARRELS ?? []) {
   }
 }
 
+// The Soldier Target zoom defaults to the equipped sight's magnification.
+const sightsById = new Map(attachments.SIGHTS.map(sight => [sight.id, sight]));
+for (const sight of attachments.SIGHTS) {
+  if (sight.legacy) continue;
+  if (!(Number.isFinite(sight.magnification) && sight.magnification > 0)) fail(`${sight.id}: magnification must be a positive number`);
+  const range = sight.magnificationRange;
+  if (range && !(range.length === 2 && range[1] === sight.magnification && range[0] < range[1])) {
+    fail(`${sight.id}: magnificationRange must rise to magnification`);
+  }
+}
+for (const [weaponId, weaponAtts] of Object.entries(attachments.WEAPON_ATTS)) {
+  for (const id of weaponAtts.sight ?? []) {
+    if (!sightsById.has(id) || sightsById.get(id).legacy) fail(`${weaponId}: sight ${id} is not a current optic`);
+  }
+}
+
 const lightsSet = new Set((attachments.LIGHTS ?? []).map(a => a.id));
 
 for (const [weaponId, weaponAtts] of Object.entries(attachments.WEAPON_ATTS)) {

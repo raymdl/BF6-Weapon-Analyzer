@@ -35,6 +35,8 @@ export function bindRecoilTouchControls({ canvas, readView, readZoom, worldAt,
     viewport.classList.toggle('rc-touch-layout', enabled);
     expandButton.hidden = dialog.open;
     resetButton.hidden = !dialog.open;
+    // The Firing Range writes its own legend; leave it alone there.
+    if (readView() === 'range') return;
     const text = doc.getElementById('rcHint');
     const nextHint = hint() ?? (readView() === 'target'
       ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom'

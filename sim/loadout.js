@@ -156,10 +156,49 @@ export function resetAttsForWeapon(atts, weapon, data) {
 }
 
 /** Selectable items for one weapon slot. Shared by the editor and URL decoder. */
+/** Move a loadout's attachments onto another weapon: every choice the new
+ *  weapon can take is kept, the rest go back to that weapon's defaults.
+ *  `from` is the loadout to carry (the slot's own by default) and `keys`
+ *  limits which slots are carried; a combined rail counts as its device's slot. */
+export function carryAttsToWeapon(atts, weapon, data, from = atts, keys = null) {
+  const prev = { ...from };
+  const wanted = key => !keys || keys.includes(key);
+  resetAttsForWeapon(atts, weapon, data);
+  const mounts = attachmentSlots(weapon, data);
+  const allowed = (key, id) => availableAttachments(weapon,
+    mounts.rail?.accepts.includes(key) ? 'rail' : key, data).some(a => a.id === id);
+  for (const key of ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'ammo', 'ergo', 'accessory']) {
+    if (wanted(key) && prev[key] && prev[key] !== 'none' && allowed(key, prev[key])) atts[key] = prev[key];
+  }
+  if (prev.rail && wanted(prev.rail.type)) {
+    if (mounts.rail?.accepts.includes(prev.rail.type)
+        && availableAttachments(weapon, 'rail', data).some(a => a.type === prev.rail.type && a.id === prev.rail.id)) {
+      atts.rail = { ...prev.rail };
+    } else if (!mounts.rail && allowed(prev.rail.type, prev.rail.id)) {
+      // The device moves from a shared rail to the new weapon's own slot.
+      atts[prev.rail.type] = prev.rail.id;
+    }
+  }
+  if (wanted('mag') && prev.mag && Object.hasOwn(data.WEAPON_MAG[weapon?.id]?.mags ?? {}, prev.mag)) atts.mag = prev.mag;
+  const normalized = normalizeAttachments(atts, weapon, data);
+  for (const key of ['grip', 'laser', 'light', 'rail', 'fireMode']) if (!Object.hasOwn(normalized, key)) delete atts[key];
+  Object.assign(atts, normalized);
+}
 export function availableAttachments(weapon, key, data, atts = null) {
   const options = attachmentOptions(weapon, key, data);
   return atts ? options.filter(a => a.id === 'none'
     || attachmentCompatible(weapon, a.type ?? key, a.id, atts, data)) : options;
+}
+
+/**
+ * Old share links name a sight category (Standard Optic, Thermal...). It now
+ * stands for the weapon's lowest-magnification optic of that category.
+ */
+export function resolveLegacySight(weapon, id, data) {
+  if (!data.SIGHTS?.find(sight => sight.id === id)?.legacy) return id;
+  const low = sight => sight.magnificationRange?.[0] ?? sight.magnification;
+  return attachmentOptions(weapon, 'sight', data).filter(sight => sight.category === id)
+    .reduce((best, sight) => (best && low(best) <= low(sight) ? best : sight), null)?.id ?? id;
 }
 
 function attachmentOptions(weapon, key, data) {
@@ -181,7 +220,7 @@ function attachmentOptions(weapon, key, data) {
   let source = data[slot.dataKey] ?? [];
   let allowed = wa?.[key];
   // Sights are shared unless the weapon explicitly restricts them.
-  if (key === 'sight' && allowed == null) return source;
+  if (key === 'sight' && allowed == null) return source.filter(a => !a.legacy);
   return source.filter(a => slot.isBarrel
     ? a.id !== 'none' && allowed?.includes(a.id)
     : a.id === 'none' || allowed?.includes(a.id));

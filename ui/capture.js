@@ -29,10 +29,10 @@
 const SITE_URL = 'raymdl.github.io/BF6-Weapon-Analyzer';
 
 /** Controls are meaningless in a static image. .loadout-btn is mobile-only. */
-const CHROME_SELECTOR = '.share-wrap,.panel-toggle,.rc-popout-btn,.loadout-btn';
+const CHROME_SELECTOR = '.share-wrap,.panel-toggle,.rc-popout-btn,.loadout-btn,.att-tool,.sb-sec:has(.saved-row)';
 
 /** The sidebar's desktop width; the narrow layout shows it as a dialog instead. */
-const SIDEBAR_WIDTH = 198;
+const SIDEBAR_WIDTH = 228;
 
 /**
  * Sidebar clone laid out as the desktop column at full height.

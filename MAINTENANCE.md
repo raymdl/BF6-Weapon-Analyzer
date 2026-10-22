@@ -82,6 +82,17 @@ python scripts/frosty-attachment-compatibility.py --root <Frosty-export-root> --
 
 Omit `--check` to regenerate. Review the catalog and
 `reference-data/provenance/frosty-attachment-compatibility.json` together.
+
+Sights are individual optics. After the optic category mapping or the compatibility
+report changes, regenerate them, the per-weapon sight lists and the optic prerequisites
+of Optic Accessory rules (it reads the research repo's optic render-FOV report for
+in-game names; pass `--names` for another path):
+
+```sh
+python scripts/frosty-individual-optics.py --check
+```
+
+New optics are appended to `SIGHTS`, so share-link indices stay stable.
 Missing or ambiguous offered slot identities stop generation. Dependencies use
 reviewed attachment identities; unsupported source options remain in evidence.
 Keep positional URL tokens stable. Check replacement, empty selection, point

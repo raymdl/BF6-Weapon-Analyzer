@@ -28,7 +28,7 @@
 <body>
 <header>
   <h1 class="logo-h1"><a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a></h1>
-  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-10-20">Updated 20 OCT 2026</time></div>
+  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-10-22">Updated 22 OCT 2026</time></div>
   <div class="archive-group">
     <select class="archive-select" id="archiveSelect" autocomplete="off" aria-label="Site version">
       <option value="" selected disabled hidden>Site Versions</option>
@@ -49,6 +49,7 @@
     </div>
     <button class="cmp-btn" id="cmpBtn" aria-pressed="false">+ Compare Loadout</button>
     <div class="sb-scroll">
+      <div class="sb-sec" id="savedSec1"></div>
       <div class="sb-sec">
         <div class="sb-lbl">Class</div>
         <div class="class-filter" id="classFilter1"></div>
@@ -59,7 +60,8 @@
       </div>
       <div class="att-sec" id="attSection1"></div>
       <div id="cmpSection" style="display:none">
-        <div class="cmp-hdr"><span>Compare Loadout</span><button class="clone-btn" id="cloneLoadoutBtn" type="button" title="Copy Weapon 1 and its attachments into Weapon 2">Clone</button></div>
+        <div class="cmp-hdr"><span>Compare Loadout</span><span class="cmp-hdr-tools"><button class="clone-btn" id="swapLoadoutBtn" type="button" title="Swap Weapon 1 and Weapon 2, attachments and locks included">Swap</button><button class="clone-btn" id="cloneLoadoutBtn" type="button" title="Copy Weapon 1 and its attachments into Weapon 2">Clone</button></span></div>
+        <div class="sb-sec" id="savedSec2"></div>
         <div class="sb-sec">
           <div class="sb-lbl">Class</div>
           <div class="class-filter" id="classFilter2"></div>
@@ -170,7 +172,7 @@
                   </div>
                 </div>
               </div>
-              <div class="rc-group">
+              <div class="rc-group" id="rcOverlayGroup">
                 <div class="rc-group-hd">Chart Overlays</div>
                 <div class="rc-control-collection">
                   <div class="rc-control-group" data-control-group="pattern">
@@ -208,6 +210,7 @@
               <div class="rc-tabstrip" role="tablist" aria-label="Chart view">
                 <button class="rc-tab on" id="rcViewAngle" type="button" role="tab" aria-selected="true" aria-controls="rcMain" title="Plot the pattern in angular degrees, independent of range">Angle Plot</button>
                 <button class="rc-tab" id="rcViewTarget" type="button" role="tab" aria-selected="false" aria-controls="rcMain" title="Project the same pattern onto a soldier-sized target at a chosen range">Soldier Target</button>
+                <button class="rc-tab" id="rcViewRange" type="button" role="tab" aria-selected="false" aria-controls="rcMain" title="Fire the weapon yourself: hold the mouse button to shoot and control the recoil with your own mouse movement">Firing Range</button>
               </div>
               <div class="rc-touch-controls" id="rcTouchControls" hidden>
                 <button class="rc-touch-btn" id="rcRedraw" type="button">Redraw</button>
@@ -215,6 +218,7 @@
                 <button class="rc-touch-btn" id="rcTouchResetView" type="button" title="Reset zoom and pan, keeping your aim and spray sample" hidden>Reset view</button>
                 <button class="rc-touch-btn" id="rcExpandPlot" type="button" aria-haspopup="dialog" aria-controls="rcExpandedPlot">Expand</button>
               </div>
+              <div class="rc-capture" id="rcCapture">
               <div class="rc-viewbar">
                 <span class="rc-field" id="rcDistanceField" hidden>
                   <span class="rc-field-lbl">Distance</span>
@@ -224,20 +228,27 @@
                 <span class="rc-field" id="rcZoomField">
                   <span class="rc-field-lbl">Zoom</span>
                   <input class="rc-range" id="rcZoomRange" type="range" min="0" max="100" step="1" value="50" aria-label="Chart zoom">
+                  <span class="rc-zoom-mark" id="rcZoomMark" hidden></span>
                   <output class="rc-readout" id="rcZoomReadout" for="rcZoomRange">±5°</output>
                 </span>
                 <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample" aria-label="Reset view, aim and spray sample"><span class="rc-reset-icon" aria-hidden="true">↺</span></button>
               </div>
               <div class="rc-canvas-wrap">
                 <div class="rc-scale-controls">
+                  <span class="rc-range-actions" id="rcRangeActions" hidden>
+                    <button class="rc-range-btn" id="rcRangeReload" type="button" title="Refill the magazine and clear the shots (R while firing)">Reload</button>
+                    <button class="rc-range-btn" id="rcRangeClear" type="button" title="Clear the shots, keeping distance, zoom and ammunition (C while firing)">Clear</button>
+                  </span>
                   <button class="rc-scale-btn" id="rcCrosshairToggle" type="button" title="Hide crosshair overlay" aria-label="Hide crosshair overlay" aria-pressed="true">
                     <svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3.55"/><circle cx="5" cy="5" r="1.25"/><line x1="5" y1="0.25" x2="5" y2="1.45"/><line x1="5" y1="8.55" x2="5" y2="9.75"/><line x1="0.25" y1="5" x2="1.45" y2="5"/><line x1="8.55" y1="5" x2="9.75" y2="5"/></svg>
                   </button>
                 </div>
                 <canvas id="rcMain" class="rcv" width="430" height="430" tabindex="0" aria-label="Recoil and spread pattern plot. Use arrow keys to pan and plus or minus to zoom." aria-describedby="rcHint"></canvas>
               </div>
+              </div>
               <div class="rc-target-controls" id="rcTargetControls" hidden>
                 <span class="rc-target-group"><span>RESOLUTION</span><input class="rc-target-resolution-input" id="rcTargetWidth" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display width in pixels"><span>×</span><input class="rc-target-resolution-input" id="rcTargetHeight" type="number" min="1" step="1" inputmode="numeric" aria-label="Target display height in pixels"></span><span class="rc-target-group"><span>FOV</span><input class="rc-target-fov-input" id="rcTargetFov" type="number" min="1" max="179" step="1" value="103" inputmode="numeric" aria-label="Horizontal field of view in degrees" title="Horizontal field of view in degrees, matching the in-game FOV setting"></span>
+                <span class="rc-target-group rc-sens-group" id="rcSensGroup" hidden><span>DPI</span><input class="rc-sens-input rc-sens-input--wide" id="rcSensDpi" type="number" min="1" step="1" inputmode="numeric" aria-label="Mouse DPI" title="Your mouse DPI (counts per inch). Only the cm/360 read-out depends on it."><span>SENS</span><input class="rc-sens-input" id="rcSensValue" type="number" min="1" max="100" step="1" inputmode="numeric" aria-label="In-game mouse sensitivity" title="The in-game Soldier Mouse Sensitivity value"><span>ZOOM COEF</span><input class="rc-sens-input" id="rcSensCoef" type="number" min="0" max="300" step="1" inputmode="numeric" aria-label="Uniform Infantry Aiming coefficient in percent" title="The in-game Uniform Infantry Aiming coefficient, in percent (default 178). 0 uses the plain zoom ratio."><span>%</span></span><span class="rc-sens-readout" id="rcSensReadout" hidden></span>
                 <div class="rc-zero-readout" id="rcZeroReadout" hidden>
                   <span>Zeroing</span>
                   <button class="rc-zero-cycle" id="rcZeroCycleBtn" type="button" title="Cycle DMR/sniper zero distance">100 m</button>
@@ -245,10 +256,10 @@
               </div>
               <div class="rc-viewfoot">
                 <span class="rc-hint" id="rcHint" aria-live="polite">Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom</span>
+                <span class="rc-zone-legend" id="rcZoneLegend" hidden></span>
                 <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText">Aim: center chest</span></span>
               </div>
             </div>
-            <div class="rc-legend" id="rcLegend"></div>
             <div class="rc-note"></div>
           </div>
           <div class="rc-stats" id="rcStats"></div>

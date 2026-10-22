@@ -4,6 +4,8 @@ import { formatMilliseconds, formatMovementMultiplier } from './format.js';
 import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
 import { bindRecoilTouchControls } from './recoil-touch.js';
+import { createFiringRange, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND, RANGE_MISS_COLOR } from './firing-range.js';
+import { degreesPerCount, hipfireDegreesPerCount, cmPer360, SENS_DEFAULTS } from '../sim/sensitivity.js';
 import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
@@ -100,10 +102,11 @@ const ATT_BY_ID = {
 
 const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun', 'Sidearm'];
 const CLASS_SHORT = {
-  'Assault Rifle': 'AR', 'Carbine': 'Carb', 'SMG': 'SMG',
-  'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'SG', 'Sidearm': 'Pistol',
+  'Assault Rifle': 'AR', 'Carbine': 'Carbine', 'SMG': 'SMG',
+  'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'Shotgun', 'Sidearm': 'Pistol',
 };
 
+const RECOIL_SCALE_DEFAULT = 7;
 const RECOIL_SCALE_MIN = 2;
 const RECOIL_SCALE_MAX = 10;
 const RECOIL_SCALE_STEP = 0.5;
@@ -149,9 +152,14 @@ function formatInGameRpm(value) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 
 const state = {
+  // On the Firing Range the compare loadout is put aside: `comparing` turns
+  // off and `comparingHeld` remembers to turn it back on when the view changes.
+  comparingHeld: false,
   slots: [
-    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts() },
-    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts() },
+    // `locked` maps an attachment slot to the choice it is locked at; those
+    // choices come along to every weapon that can take them.
+    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null },
+    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null },
   ],
   comparing: false,
   // Panels fold away so the page can be sized for a screenshot without giving
@@ -170,6 +178,7 @@ const state = {
     savedLayers: {
       angle: { scatter: true, spray: true, path: false, spread: false, cone: false },
       target: { scatter: false, spray: true, path: false, spread: false, cone: false },
+      range: { scatter: false, spray: true, path: false, spread: false, cone: false },
     },
     platform: 'pc',
     spreadPreset: 'growth',
@@ -178,10 +187,12 @@ const state = {
     // 0% means no compensation, so the slider is the whole control.
     compensationLevel: 0,
     refSeed: 0,
-    scaleH: 5, panX: 0, panY: 0,
+    scaleH: RECOIL_SCALE_DEFAULT, panX: 0, panY: 0,
     crosshair: true,
-    // Target view starts at 2.5×; null remains the automatic-fit sentinel.
-    magnification: 2.5, distancePanX: 0, distancePanY: 0,
+    // Target zoom follows the primary slot's sight. An explicit zoom holds only
+    // while the sight it was set on (magnificationSight) stays equipped; without
+    // a sight it starts at 2.5× and null is the automatic-fit sentinel.
+    magnification: 2.5, magnificationSight: null, distancePanX: 0, distancePanY: 0,
   },
 };
 
@@ -195,6 +206,13 @@ function weaponDisplayLabel(w) {
   return `${name}*${suffix}`;
 }
 
+/** Heading HTML for a stats card: the weapon's name with its attachments beneath. */
+function loadoutHeadingHtml(w) {
+  const label = weaponDisplayLabel(w);
+  const name = chartWeaponDisplayLabel(w);
+  const atts = label.startsWith(name + ' (') && label.endsWith(')') ? label.slice(name.length + 2, -1) : '';
+  return `${name}${atts ? `<span class="loadout-atts">${atts}</span>` : ''}`;
+}
 function chartWeaponDisplayLabel(w) {
   const name = w?.name ?? wLabel(w);
   return w?.estimated ? `${name}*` : name;
@@ -209,6 +227,12 @@ let dmgChart = null;
 // Held so the observer is not collected while it still has an observation.
 let plotResizeObserver = null;
 let recoilTouchControls = null;
+let firingRange = null;
+
+/** Soldier Target and Firing Range share the projected-target geometry. */
+function isTargetGeometry() {
+  return state.recoil.view === 'target' || state.recoil.view === 'range';
+}
 
 // ── SIM CONTEXT INIT ──────────────────────────────────────────────────────────
 
@@ -390,7 +414,8 @@ let _urlSyncTimer = null;
 // NOTE: this relies on the catalog arrays being append-only (never reorder/remove
 // existing entries) so previously shared links keep resolving to the same item.
 function encodeState() {
-  return shareCodec.encodeState(state, selectedRecoilShotCount);
+  // A compare loadout held aside by the range still belongs in the link.
+  return shareCodec.encodeState(state.comparingHeld ? { ...state, comparing: true } : state, selectedRecoilShotCount);
 }
 
 function syncUrl() {
@@ -435,7 +460,7 @@ function setPanelCollapsed(key, collapsed) {
     if (key === 'charts') { renderChart(); renderBTK(); }
     if (key === 'recoil') {
       renderRecoil();
-      if (state.recoil.view === 'target') requestTargetImage();
+      if (isTargetGeometry()) requestTargetImage();
     }
     if (key === 'overview') renderOverview();
   }
@@ -528,7 +553,10 @@ function buildWeaponList(containerId, slotIdx) {
     b.setAttribute('aria-pressed', String(isActive));
     b.onclick = () => {
       slot.weapon = w;
-      resetAttsForWeapon(slot.atts, w);
+      if (Object.keys(slot.locked).length) {
+        Loadout.carryAttsToWeapon(slot.atts, w, LOADOUT_DATA, lockedAsAtts(slot.locked), Object.keys(slot.locked));
+      } else resetAttsForWeapon(slot.atts, w);
+      slot.savedName = null;
       renderSidebar();
       renderStats();
     };
@@ -543,11 +571,410 @@ function buildAttachmentSection(containerId, slotIdx) {
     atts: slot.atts,
     weapon: slot.weapon,
     data: LOADOUT_DATA,
-    onChange: () => {
+    onChange: ({ key }) => {
+      slot.savedName = null;
+      // A locked slot the user changes is locked at the new choice.
+      const lockKey = key === 'rail' ? 'laser' : key;
+      if (Object.hasOwn(slot.locked, lockKey)) {
+        slot.locked[lockKey] = lockedValue(slot.atts, lockKey);
+        saveLocks(slotIdx);
+      }
+      syncSavedLoadoutRow(slotIdx);
       updateAssumedFootnote();
       renderStats();
     },
+    decorate: container => decorateAttachmentSection(container, containerId, slotIdx),
+    locks: slot.locked,
+    onLockToggle: key => toggleAttachmentLock(slotIdx, key),
+    lockHeld: key => lockHeldStatus(slot, key),
   });
+}
+/** Whether a locked slot shows its locked choice, and that choice's name for when it does not. */
+function lockHeldStatus(slot, key) {
+  const want = slot.locked[key];
+  const have = lockedValue(slot.atts, key);
+  const same = (a, b) => (a && typeof a === 'object') || (b && typeof b === 'object')
+    ? a?.type === b?.type && a?.id === b?.id : (a ?? null) === (b ?? null);
+  if (same(want, have)) return { held: true };
+  const id = want && typeof want === 'object' ? want.id : want;
+  const catalog = { sight: 'SIGHTS', muzzle: 'MUZZLES', barrel: 'BARRELS', grip: 'GRIPS', laser: 'LASERS',
+    light: 'LIGHTS', accessory: 'ACCESSORIES', ammo: 'AMMO', ergo: 'ERGOS' };
+  let name = id;
+  if (key === 'mag') name = Object.values(WEAPON_MAG).map(m => m.mags[id]).find(Boolean)?.name ?? id;
+  else if (want && typeof want === 'object') name = ATT_BY_ID[{ grip: 'GRIPS', laser: 'LASERS', light: 'LIGHTS' }[want.type]]?.[id]?.name ?? id;
+  else name = ATT_BY_ID[catalog[key]]?.[id]?.name ?? id;
+  return { held: false, name };
+}
+
+// ── SAVED LOADOUTS AND THE ATTACHMENT LOCK ───────────────────────────────────
+// Saved loadouts live in local storage as the same compact tokens share links
+// use, so they survive catalog growth the way links do. The lock keeps the
+// attachments through a weapon change, dropping only what the new weapon lacks.
+const SAVED_LOADOUTS_KEY = 'bf6.savedLoadouts';
+const LOCK_ATTS_KEY = ['bf6.lockedAtts1', 'bf6.lockedAtts2'];
+const LOCKABLE_KEYS = ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'accessory', 'ammo', 'mag', 'ergo'];
+
+function readSavedLoadouts() {
+  try {
+    const list = JSON.parse(localStorage.getItem(SAVED_LOADOUTS_KEY) ?? '[]');
+    return Array.isArray(list) ? list.filter(e => e && typeof e.name === 'string' && typeof e.weapon === 'string') : [];
+  } catch { return []; }
+}
+function writeSavedLoadouts(list) {
+  try { localStorage.setItem(SAVED_LOADOUTS_KEY, JSON.stringify(list)); } catch { /* storage is optional. */ }
+}
+function loadLockPreferences() {
+  state.slots.forEach((slot, i) => {
+    try {
+      const stored = JSON.parse(localStorage.getItem(LOCK_ATTS_KEY[i]) ?? '{}');
+      slot.locked = stored && typeof stored === 'object' && !Array.isArray(stored)
+        ? Object.fromEntries(Object.entries(stored).filter(([k]) => LOCKABLE_KEYS.includes(k))) : {};
+    } catch { slot.locked = {}; }
+  });
+}
+function saveLocks(slotIdx) {
+  try { localStorage.setItem(LOCK_ATTS_KEY[slotIdx], JSON.stringify(state.slots[slotIdx].locked)); } catch { /* storage is optional. */ }
+}
+/** The choice a slot is locked at; a device on a combined rail is kept as its rail entry. */
+function lockedValue(atts, key) {
+  if (key === 'laser' && atts.rail) return { ...atts.rail };
+  return atts[key] ?? null;
+}
+/** The locked choices as an attachment record for carrying onto a weapon. */
+function lockedAsAtts(locked) {
+  const atts = { ...locked };
+  if (atts.laser && typeof atts.laser === 'object') { atts.rail = atts.laser; delete atts.laser; }
+  return atts;
+}
+function toggleAttachmentLock(slotIdx, key) {
+  const slot = state.slots[slotIdx];
+  if (Object.hasOwn(slot.locked, key)) delete slot.locked[key];
+  else { slot.locked[key] = lockedValue(slot.atts, key); noteFirstLock(); }
+  saveLocks(slotIdx);
+  renderSidebar();
+}
+// A one-time line under the Attachments header, the first time a lock goes on.
+const LOCK_HINT_KEY = 'bf6.lockHintSeen';
+let lockHintShowing = false;
+function noteFirstLock() {
+  try { if (localStorage.getItem(LOCK_HINT_KEY)) return; } catch { return; }
+  lockHintShowing = true;
+}
+function dismissLockHint() {
+  lockHintShowing = false;
+  try { localStorage.setItem(LOCK_HINT_KEY, '1'); } catch { /* storage is optional. */ }
+  renderSidebar();
+}
+function saveLoadout(slotIdx) {
+  const slot = state.slots[slotIdx];
+  if (!slot.weapon) return;
+  // Names are per weapon: "Loadout N" counts from 1 for each weapon, and a
+  // saved name is overwritten only by the same weapon's save.
+  const wid = slot.weapon.id;
+  const taken = new Set(readSavedLoadouts().filter(e => e.weapon === wid).map(e => e.name));
+  let suggested = slot.savedName;
+  for (let n = 1; !suggested || taken.has(suggested); n++) suggested = `Loadout ${n}`;
+  savedNaming = { slotIdx, suggested };
+  renderSavedLoadoutSection(`savedSec${slotIdx + 1}`, slotIdx);
+}
+/** The name field is open in one Saved Loadouts row: { slotIdx, suggested }. */
+let savedNaming = null;
+/** The last deleted loadout, kept for Undo: { entry, timer }. */
+let savedUndo = null;
+function commitSavedName(slotIdx, name) {
+  const slot = state.slots[slotIdx];
+  savedNaming = null;
+  name = name?.trim();
+  if (!name || !slot.weapon) { renderSavedLoadoutSection(`savedSec${slotIdx + 1}`, slotIdx); return; }
+  const wid = slot.weapon.id;
+  const list = readSavedLoadouts().filter(e => !(e.name === name && e.weapon === wid));
+  list.push({ name, weapon: wid, atts: shareCodec.encodeAtts(slot.weapon, slot.atts) });
+  writeSavedLoadouts(list);
+  slot.savedName = name;
+  renderSidebar();
+}
+function loadSavedLoadout(slotIdx, name, weaponId) {
+  const entry = readSavedLoadouts().find(e => e.name === name && e.weapon === weaponId);
+  const w = entry && W.find(x => x.id === entry.weapon);
+  if (!w) return;
+  const slot = state.slots[slotIdx];
+  slot.cls = w.cls;
+  slot.weapon = w;
+  slot.atts = shareCodec.decodeAtts(w, entry.atts ?? '');
+  // A saved loadout is the whole set, so any locks from before are let go.
+  slot.locked = {};
+  saveLocks(slotIdx);
+  slot.savedName = name;
+  renderSidebar();
+  renderStats();
+}
+function deleteSavedLoadout(name, weaponId) {
+  const entry = readSavedLoadouts().find(e => e.name === name && e.weapon === weaponId);
+  if (!entry) return;
+  writeSavedLoadouts(readSavedLoadouts().filter(e => !(e.name === name && e.weapon === weaponId)));
+  // Which slots had it loaded, so Undo can show its name in the picker again.
+  const loadedIn = state.slots.map(s => s.savedName === name && s.weapon?.id === weaponId);
+  state.slots.forEach(s => { if (s.savedName === name && s.weapon?.id === weaponId) s.savedName = null; });
+  // No confirm: the row offers Undo for a few seconds instead.
+  clearTimeout(savedUndo?.timer);
+  savedUndo = { entry, loadedIn, timer: setTimeout(() => { savedUndo = null; renderSidebar(); }, 8000) };
+  // Both slots list the same loadouts; the open menu stays open for the next delete.
+  const open = document.querySelector('.saved-menu:not([hidden])')?.closest('.sb-sec')?.id;
+  renderSidebar();
+  if (open) document.querySelector(`#${open} .saved-pick-btn`)?.click();
+}
+function undoSavedDelete() {
+  if (!savedUndo) return;
+  clearTimeout(savedUndo.timer);
+  const { entry, loadedIn } = savedUndo;
+  savedUndo = null;
+  writeSavedLoadouts([...readSavedLoadouts().filter(e => !(e.name === entry.name && e.weapon === entry.weapon)), entry]);
+  // A slot that still holds the deleted loadout unchanged shows its name again.
+  state.slots.forEach((s, i) => {
+    if (loadedIn[i] && s.weapon?.id === entry.weapon && !s.savedName
+        && shareCodec.encodeAtts(s.weapon, s.atts) === (entry.atts ?? '')) s.savedName = entry.name;
+  });
+  renderSidebar();
+}
+function syncSavedLoadoutRow(slotIdx) {
+  const slot = state.slots[slotIdx];
+  const sec = document.getElementById(`savedSec${slotIdx + 1}`);
+  if (!sec) return;
+  const btn = sec.querySelector('.saved-pick-btn');
+  if (btn) {
+    btn.textContent = slot.savedName ? `${slot.savedName} · ${weaponDisplayLabel(slot.weapon)}` : btn.dataset.placeholder;
+    btn.classList.toggle('placeholder', !slot.savedName);
+  }
+  sec.querySelectorAll('.saved-item').forEach(item => {
+    const on = item.dataset.name === slot.savedName && item.dataset.weapon === slot.weapon?.id;
+    item.classList.toggle('on', on);
+    item.querySelector('.saved-item-load')?.setAttribute('aria-selected', String(on));
+  });
+}
+function decorateAttachmentSection(container, containerId, slotIdx) {
+  const slot = state.slots[slotIdx];
+  const head = container.firstElementChild;
+  if (!head) return;
+  // The header padlock locks or unlocks every row at once; it shows closed
+  // when all rows are locked and half-lit when only some are.
+  const keys = [...container.querySelectorAll('.att-row[data-lock-key]')].map(row => row.dataset.lockKey);
+  // Lock-all takes only the rows with something fitted; a "None" stays free.
+  const fitted = keys.filter(key => { const v = lockedValue(slot.atts, key); return v != null && v !== 'none'; });
+  const lockedCount = keys.filter(key => Object.hasOwn(slot.locked, key)).length;
+  const all = fitted.length > 0 && fitted.every(key => Object.hasOwn(slot.locked, key));
+  const lock = document.createElement('button');
+  lock.type = 'button';
+  lock.className = 'att-tool att-tool-lock' + (all ? ' on' : lockedCount ? ' partial' : '');
+  lock.disabled = !keys.length;
+  lock.title = (all ? 'All fitted attachments locked. ' : lockedCount ? `${lockedCount} of ${keys.length} attachments locked. ` : 'No attachments locked. ')
+    + 'Locked attachments stay through a weapon change; one the new weapon cannot take goes back to its default until a weapon that can.';
+  lock.setAttribute('aria-label', all ? 'Unlock all attachments' : 'Lock all attachments');
+  lock.setAttribute('aria-pressed', String(all));
+  lock.onclick = () => {
+    if (all) slot.locked = {};
+    else { for (const key of fitted) if (!Object.hasOwn(slot.locked, key)) slot.locked[key] = lockedValue(slot.atts, key); noteFirstLock(); }
+    saveLocks(slotIdx);
+    renderSidebar();
+  };
+  head.firstElementChild.insertAdjacentElement('afterend', lock);
+  head.firstElementChild.style.marginRight = '6px';
+  if (lockHintShowing && slotIdx === 0) {
+    const hint = document.createElement('div');
+    hint.className = 'att-note att-lock-hint';
+    hint.textContent = 'Locked attachments stay when you choose another weapon. One the weapon cannot take shows a dashed edge and comes back on a weapon that can. ';
+    const ok = document.createElement('button');
+    ok.type = 'button';
+    ok.className = 'saved-undo-btn';
+    ok.textContent = 'Got it';
+    ok.onclick = dismissLockHint;
+    hint.appendChild(ok);
+    head.insertAdjacentElement('afterend', hint);
+  }
+}
+/** The Saved Loadouts section above the class filter: pick one to load it,
+ *  Save names the current weapon and attachments, ✕ deletes the loaded one. */
+/** The fitted attachments of a saved loadout, one per line, for its hover text. */
+function savedLoadoutSummary(weapon, atts) {
+  const catalog = { sight: 'SIGHTS', muzzle: 'MUZZLES', barrel: 'BARRELS', grip: 'GRIPS', laser: 'LASERS',
+    light: 'LIGHTS', accessory: 'ACCESSORIES', ammo: 'AMMO', ergo: 'ERGOS' };
+  const lines = [];
+  for (const [key, list] of Object.entries(catalog)) {
+    const id = key === 'laser' && atts.rail ? atts.rail.id : atts[key];
+    const a = id && id !== 'none' && id !== 'standard'
+      ? ATT_BY_ID[key === 'laser' && atts.rail ? { grip: 'GRIPS', laser: 'LASERS', light: 'LIGHTS' }[atts.rail.type] : list][id] : null;
+    if (a && a.id !== 'iron') lines.push(Loadout.attDisplayName(a, weapon.id));
+  }
+  const mag = atts.mag && WEAPON_MAG[weapon.id]?.mags[atts.mag];
+  if (mag && atts.mag !== WEAPON_MAG[weapon.id].def) lines.push(mag.name);
+  return lines;
+}
+/** One site-styled tooltip for the saved-loadout menu, placed beside the hovered entry. */
+let savedTipEl = null;
+function showSavedTip(item, name, lines) {
+  if (!savedTipEl) {
+    savedTipEl = document.createElement('div');
+    savedTipEl.className = 'rc-tt saved-tt';
+    document.body.appendChild(savedTipEl);
+  }
+  const tip = savedTipEl;
+  tip.innerHTML = '<div class="rc-tt-wname"></div>';
+  tip.firstElementChild.textContent = name;
+  if (lines.length) {
+    for (const line of lines) {
+      const row = document.createElement('div');
+      row.className = 'saved-tt-line';
+      row.textContent = line;
+      tip.appendChild(row);
+    }
+  } else {
+    tip.insertAdjacentHTML('beforeend', '<div class="saved-tt-line saved-tt-none">No attachments fitted</div>');
+  }
+  tip.style.display = 'block';
+  const r = item.getBoundingClientRect();
+  const tw = tip.offsetWidth, th = tip.offsetHeight;
+  let left = r.right + 6;
+  if (left + tw > window.innerWidth - 8) left = Math.max(8, r.left - tw - 6);
+  const top = Math.max(8, Math.min(r.top, window.innerHeight - th - 8));
+  tip.style.left = `${left}px`;
+  tip.style.top = `${top}px`;
+}
+function hideSavedTip() {
+  if (savedTipEl) savedTipEl.style.display = 'none';
+}
+/** A menu rather than a select, so each saved loadout can carry its own ✕. */
+function renderSavedLoadoutSection(containerId, slotIdx) {
+  const slot = state.slots[slotIdx];
+  const sec = document.getElementById(containerId);
+  if (!sec) return;
+  sec.innerHTML = '<div class="sb-lbl">Saved Loadouts</div>';
+  const row = document.createElement('div');
+  row.className = 'saved-row';
+  sec.appendChild(row);
+
+  // Naming: the picker gives way to a text field until Enter, Save or Escape.
+  if (savedNaming?.slotIdx === slotIdx) {
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.className = 'att-sel saved-name-input';
+    input.value = savedNaming.suggested;
+    input.maxLength = 40;
+    input.setAttribute('aria-label', 'Name for the saved loadout');
+    input.placeholder = 'Loadout name';
+    const ok = document.createElement('button');
+    ok.type = 'button';
+    ok.className = 'att-tool on';
+    ok.textContent = 'Save';
+    ok.title = 'Save under this name (Enter)';
+    ok.onmousedown = e => e.preventDefault();
+    ok.onclick = () => commitSavedName(slotIdx, input.value);
+    input.onkeydown = e => {
+      if (e.key === 'Enter') { e.preventDefault(); commitSavedName(slotIdx, input.value); }
+      else if (e.key === 'Escape') { e.preventDefault(); commitSavedName(slotIdx, ''); }
+    };
+    input.onblur = () => { if (savedNaming?.slotIdx === slotIdx) commitSavedName(slotIdx, ''); };
+    row.append(input, ok);
+    requestAnimationFrame(() => { input.focus(); input.select(); });
+    return;
+  }
+
+  const pick = document.createElement('div');
+  pick.className = 'saved-pick';
+  const saved = readSavedLoadouts();
+  const labelOf = e => { const w = W.find(x => x.id === e.weapon); return w ? weaponDisplayLabel(w) : null; };
+  // Grouped by weapon, weapons in sidebar order, names within.
+  const order = new Map(W.map((w, i) => [w.id, i]));
+  saved.sort((a, b) => (order.get(a.weapon) ?? 1e9) - (order.get(b.weapon) ?? 1e9) || a.name.localeCompare(b.name));
+  const btn = document.createElement('button');
+  btn.type = 'button';
+  btn.className = 'att-sel saved-pick-btn';
+  btn.id = `${containerId}_btn`;
+  btn.dataset.placeholder = saved.length ? 'Load a saved loadout…' : 'No saved loadouts yet';
+  btn.disabled = !saved.length;
+  btn.setAttribute('aria-haspopup', 'listbox');
+  btn.setAttribute('aria-expanded', 'false');
+  btn.setAttribute('aria-label', 'Saved loadouts');
+  const menu = document.createElement('div');
+  menu.className = 'saved-menu';
+  menu.setAttribute('role', 'listbox');
+  menu.hidden = true;
+  const close = () => {
+    // A re-rendered sidebar leaves this menu behind; its listener goes with it.
+    if (!menu.isConnected) { document.removeEventListener('click', close); return; }
+    menu.hidden = true; btn.setAttribute('aria-expanded', 'false');
+    hideSavedTip();
+  };
+  btn.onclick = e => {
+    e.stopPropagation();
+    if (!menu.hidden) { close(); return; }
+    document.querySelectorAll('.saved-menu:not([hidden])').forEach(m => { m.hidden = true; });
+    menu.hidden = false;
+    btn.setAttribute('aria-expanded', 'true');
+  };
+  menu.onclick = e => e.stopPropagation();
+  document.addEventListener('click', close);
+  menu.addEventListener('keydown', e => { if (e.key === 'Escape') { close(); btn.focus(); } });
+  let lastWeapon = null;
+  for (const entry of saved) {
+    const w = W.find(x => x.id === entry.weapon);
+    if (entry.weapon !== lastWeapon) {
+      const head = document.createElement('div');
+      head.className = 'saved-group';
+      head.textContent = labelOf(entry) ?? 'Weapon no longer listed';
+      menu.appendChild(head);
+      lastWeapon = entry.weapon;
+    }
+    const item = document.createElement('div');
+    item.className = 'saved-item';
+    item.dataset.name = entry.name;
+    item.dataset.weapon = entry.weapon;
+    const load = document.createElement('button');
+    load.type = 'button';
+    load.className = 'saved-item-load';
+    load.setAttribute('role', 'option');
+    load.innerHTML = `<span class="saved-item-name"></span>`;
+    load.querySelector('.saved-item-name').textContent = entry.name;
+    load.disabled = !w;
+    if (w) {
+      const lines = savedLoadoutSummary(w, shareCodec.decodeAtts(w, entry.atts ?? ''));
+      const show = () => showSavedTip(item, `${entry.name} · ${weaponDisplayLabel(w)}`, lines);
+      load.addEventListener('mouseenter', show);
+      load.addEventListener('focus', show);
+      load.addEventListener('mouseleave', hideSavedTip);
+      load.addEventListener('blur', hideSavedTip);
+    }
+    load.onclick = () => { close(); loadSavedLoadout(slotIdx, entry.name, entry.weapon); };
+    const del = document.createElement('button');
+    del.type = 'button';
+    del.className = 'saved-item-del';
+    del.textContent = '✕';
+    del.title = `Delete "${entry.name}"`;
+    del.setAttribute('aria-label', `Delete the saved loadout ${entry.name}`);
+    del.onclick = () => deleteSavedLoadout(entry.name, entry.weapon);
+    item.append(load, del);
+    menu.appendChild(item);
+  }
+  pick.append(btn, menu);
+  const save = document.createElement('button');
+  save.type = 'button';
+  save.className = 'att-tool';
+  save.textContent = 'Save';
+  save.title = 'Save this weapon and its attachments in this browser';
+  save.disabled = !slot.weapon;
+  save.onclick = () => saveLoadout(slotIdx);
+  row.append(pick, save);
+  if (savedUndo) {
+    const note = document.createElement('div');
+    note.className = 'saved-undo';
+    note.textContent = `Deleted ${savedUndo.entry.name}${labelOf(savedUndo.entry) ? ` · ${labelOf(savedUndo.entry)}` : ''}. `;
+    const undo = document.createElement('button');
+    undo.type = 'button';
+    undo.className = 'saved-undo-btn';
+    undo.textContent = 'Undo';
+    undo.onclick = undoSavedDelete;
+    note.appendChild(undo);
+    sec.appendChild(note);
+  }
+  syncSavedLoadoutRow(slotIdx);
 }
 
 function updateAssumedFootnote() {
@@ -566,12 +993,16 @@ function updateAssumedFootnote() {
 }
 
 function renderSidebar() {
+  renderSavedLoadoutSection('savedSec1', 0);
   buildClassFilter('classFilter1', 0);
   buildWeaponList('wList1', 0);
   buildAttachmentSection('attSection1', 0);
   if (state.comparing) {
     const cloneBtn = document.getElementById('cloneLoadoutBtn');
     if (cloneBtn) cloneBtn.disabled = !state.slots[0].weapon;
+    const swapBtn = document.getElementById('swapLoadoutBtn');
+    if (swapBtn) swapBtn.disabled = !state.slots[0].weapon && !state.slots[1].weapon;
+    renderSavedLoadoutSection('savedSec2', 1);
     buildClassFilter('classFilter2', 1);
     buildWeaponList('wList2', 1);
     buildAttachmentSection('attSection2', 1);
@@ -579,12 +1010,22 @@ function renderSidebar() {
   updateAssumedFootnote();
 }
 
+function swapCompareLoadouts() {
+  if (!state.comparing) return;
+  const [a, b] = state.slots;
+  state.slots = [b, a];
+  // The locks travel with their loadouts, in storage too.
+  saveLocks(0); saveLocks(1);
+  renderSidebar();
+  renderStats();
+}
 function cloneCompareLoadout() {
   if (!state.slots[0].weapon) return;
   state.comparing = true;
   state.slots[1].cls = state.slots[0].weapon.cls;
   state.slots[1].weapon = state.slots[0].weapon;
   state.slots[1].atts = { ...state.slots[0].atts };
+  state.slots[1].savedName = null;
   document.getElementById('cmpBtn').classList.add('on');
   document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
   document.getElementById('cmpSection').style.display = 'block';
@@ -1300,8 +1741,15 @@ function syncCompensationControls() {
   const level = state.recoil.compensationLevel;
   const range = document.getElementById('rcCompRange');
   const readout = document.getElementById('rcCompReadout');
-  if (range) { range.value = level; paintRange(range); }
-  if (readout) readout.textContent = `${level}%`;
+  const inRange = state.recoil.view === 'range';
+  if (range) {
+    range.value = level; paintRange(range);
+    range.disabled = inRange;
+    range.title = inRange
+      ? 'In the Firing Range your mouse is the recoil control.'
+      : 'How much of the expected recoil the shooter pulls back down. 0% is no compensation.';
+  }
+  if (readout) readout.textContent = inRange ? 'mouse' : `${level}%`;
 }
 function syncCompensationLevel() {
   const el = document.getElementById('rcCompRange');
@@ -1343,18 +1791,20 @@ function applyViewLayers(view) {
 function requestTargetImage() {
   if (!document.getElementById('rcMain').clientWidth) return;
   whenTargetImageReady().then(() => {
-    if (state.recoil.view === 'target') renderRecoil();
+    if (isTargetGeometry()) renderRecoil();
   });
 }
 function setRecoilView(view) {
-  const next = view === 'target' ? 'target' : 'angle';
+  const next = view === 'target' || view === 'range' ? view : 'angle';
   if (state.recoil.view === next) return;
   recoilTouchControls?.cancel();
+  firingRange?.setActive(false);
   // Each view remembers its own overlays, so the target view can start without
   // the scatter cloud without discarding the angle plot's setup.
   state.recoil.savedLayers[state.recoil.view] = { ...state.recoil.layers };
   state.recoil.view = next;
   applyViewLayers(next);
+  const compareChanged = syncRangeCompare();
   // Flag the swap so the plot and its stats fade in together, which reads as
   // one chart changing lens rather than two unrelated panels appearing.
   ['rcPlotColumn', 'rcStats'].forEach(id => {
@@ -1364,8 +1814,28 @@ function setRecoilView(view) {
     void el.offsetWidth;
     el.classList.add('rc-view-swap');
   });
-  renderRecoil();
-  if (next === 'target') requestTargetImage();
+  if (compareChanged) { renderSidebar(); renderStats(); } else renderRecoil();
+  if (next !== 'angle') requestTargetImage();
+}
+/** Hold the compare loadout aside while the range view is up, and bring it
+ *  back when the view leaves. Returns whether `comparing` changed. */
+function syncRangeCompare() {
+  const isRange = state.recoil.view === 'range';
+  let changed = false;
+  if (isRange && state.comparing) { state.comparing = false; state.comparingHeld = true; changed = true; }
+  else if (!isRange && state.comparingHeld) { state.comparing = true; state.comparingHeld = false; changed = true; }
+  const btn = document.getElementById('cmpBtn');
+  if (btn) {
+    btn.classList.toggle('on', state.comparing || state.comparingHeld);
+    btn.setAttribute('aria-pressed', String(state.comparing || state.comparingHeld));
+    btn.disabled = isRange;
+    btn.title = isRange
+      ? (state.comparingHeld ? 'Only Weapon 1 fires on the Firing Range. Your compare loadout returns when you leave it.' : 'Only Weapon 1 fires on the Firing Range.')
+      : '';
+  }
+  const section = document.getElementById('cmpSection');
+  if (section) section.style.display = state.comparing ? 'block' : 'none';
+  return changed;
 }
 /**
  * Soldier Target Ctrl+click places the aim point and fires a fresh sample.
@@ -1377,6 +1847,7 @@ function fireAtAimPoint(worldX, worldY) {
   redrawRecoilSample();
 }
 function redrawRecoilSample() {
+  if (state.recoil.view === 'range') { firingRange?.reset(); return; }
   const seed = (Math.random() * 0x100000000) >>> 0;
   state.recoil.refSeed = seed === state.recoil.refSeed ? (seed + 1) >>> 0 : seed;
   renderRecoil();
@@ -1410,21 +1881,34 @@ function targetDistanceIndex(distance) {
   TARGET_DISTANCE_LADDER.forEach((d, i) => { if (Math.abs(d - distance) < Math.abs(TARGET_DISTANCE_LADDER[best] - distance)) best = i; });
   return best;
 }
+/** One step along the distance ladder, from the wheel. */
+function stepTargetDistance(dir) {
+  if (!isTargetGeometry()) return;
+  const index = targetDistanceIndex(state.recoil.distance) + dir;
+  const next = TARGET_DISTANCE_LADDER[Math.max(0, Math.min(TARGET_DISTANCE_LADDER.length - 1, index))];
+  if (next === state.recoil.distance) return;
+  if (state.recoil.view === 'range') firingRange?.clear();
+  state.recoil.distance = next;
+  renderRecoil();
+}
 function syncTargetDistance() {
-  if (state.recoil.view === 'target' && state.recoil.magnification == null) {
-    state.recoil.magnification = currentMagnification();
+  if (isTargetGeometry() && magnificationOverride() == null && !equippedSight()) {
+    setMagnification(currentMagnification());
   }
   const el = document.getElementById('rcDistanceRange');
   const raw = +(el?.value ?? 0);
-  state.recoil.distance = state.recoil.view === 'target'
+  const next = isTargetGeometry()
     ? TARGET_DISTANCE_LADDER[Math.max(0, Math.min(TARGET_DISTANCE_LADDER.length - 1, Math.round(raw)))]
     : Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(Number.isFinite(raw) ? raw : TARGET_DEFAULT_DISTANCE)));
+  // Range hits were scored at the old distance, so the board starts over.
+  if (state.recoil.view === 'range' && next !== state.recoil.distance) firingRange?.clear();
+  state.recoil.distance = next;
   renderRecoil();
 }
 function syncZoomFromSlider() {
   const el = document.getElementById('rcZoomRange');
   const raw = +(el?.value ?? 50);
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     setMagnificationIndex(raw);
   } else {
     // scaleH is a half-span in degrees, so a wider span means less zoom.
@@ -1435,8 +1919,8 @@ function syncZoomFromSlider() {
 }
 /** The zoom slider indexes the magnification ladder in target view, percent in angle view. */
 function zoomSliderBounds() {
-  return state.recoil.view === 'target'
-    ? { min: 0, max: SCOPE_MAGNIFICATIONS.length - 1, step: 1, value: SCOPE_MAGNIFICATIONS.indexOf(currentMagnification()) }
+  return isTargetGeometry()
+    ? { min: 0, max: SCOPE_MAGNIFICATIONS.length - 1, step: 1, value: magnificationIndex(currentMagnification()) }
     : { min: 0, max: 100, step: 1, value: (RECOIL_SCALE_MAX - state.recoil.scaleH) / (RECOIL_SCALE_MAX - RECOIL_SCALE_MIN) * 100 };
 }
 /** Paint the filled portion of a range input so every slider reads the same. */
@@ -1528,6 +2012,86 @@ function targetDisplaySettings() {
     hFovDeg: Math.max(1, Math.min(179, enteredFov || ADS_1X_HFOV_DEG)),
   };
 }
+// ── FIRING RANGE SENSITIVITY ─────────────────────────────────────────────────
+// Mouse settings are a property of the player's PC, so like the display
+// settings they live in local storage rather than in shared links.
+const SENS_STORAGE = { dpi: 'bf6.sensDpi', sens: 'bf6.sensValue', coefficient: 'bf6.sensZoomCoefficient' };
+const SENS_INPUT = { dpi: 'rcSensDpi', sens: 'rcSensValue', coefficient: 'rcSensCoef' };
+let sensSettingsLoaded = false;
+
+function loadSensSettings() {
+  if (sensSettingsLoaded) return;
+  sensSettingsLoaded = true;
+  for (const key of Object.keys(SENS_INPUT)) {
+    const input = document.getElementById(SENS_INPUT[key]);
+    if (!input) continue;
+    let value = SENS_DEFAULTS[key];
+    try {
+      const stored = localStorage.getItem(SENS_STORAGE[key]);
+      if (stored != null && Number.isFinite(Number(stored)) && Number(stored) >= 0) value = Number(stored);
+    } catch { /* localStorage may be unavailable in a restricted browser context. */ }
+    input.value = String(value);
+  }
+}
+function sensSettings() {
+  const read = key => {
+    const entered = +(document.getElementById(SENS_INPUT[key])?.value ?? '');
+    return Number.isFinite(entered) && entered > 0 ? entered : SENS_DEFAULTS[key];
+  };
+  // A zoom coefficient of 0 is a legitimate setting (pure zoom ratio).
+  const coefficientRaw = +(document.getElementById(SENS_INPUT.coefficient)?.value ?? '');
+  return {
+    dpi: read('dpi'), sens: read('sens'),
+    coefficient: Number.isFinite(coefficientRaw) && coefficientRaw >= 0 ? coefficientRaw : SENS_DEFAULTS.coefficient,
+  };
+}
+/** Degrees of view rotation per mouse count for the current aim state and optic. */
+function rangeDegreesPerCount() {
+  const { sens, coefficient } = sensSettings();
+  return degreesPerCount({
+    sens, aim: state.recoil.aim, hFovDeg: targetDisplaySettings().hFovDeg,
+    magnification: currentMagnification(), coefficientPct: coefficient,
+  });
+}
+function rangeSensSummary() {
+  const { dpi, sens } = sensSettings();
+  const hip = hipfireDegreesPerCount(sens);
+  const current = rangeDegreesPerCount();
+  const aimLabel = state.recoil.aim === 'ads' ? `ADS ${currentMagnification().toFixed(2)}×` : 'hipfire';
+  return {
+    cm360: cmPer360(hip, dpi),
+    degPerCount: current,
+    text: `${cmPer360(hip, dpi).toFixed(1)} cm/360 hipfire · ${aimLabel} ${current.toFixed(4)}°/count`,
+  };
+}
+function syncSensReadout() {
+  const readout = document.getElementById('rcSensReadout');
+  if (readout) readout.textContent = rangeSensSummary().text;
+}
+function rangeSimKey() {
+  const w = selectedWeaponBuild(state.slots[0]);
+  const { aim, stance, platform } = state.recoil;
+  return [w ? w.id : '', w ? JSON.stringify(state.slots[0].atts) : '', aim, stance, platform].join('|');
+}
+function rangeStatsHtml(axis) {
+  const live = firingRange?.live();
+  // The same impact table as the Soldier Target's, in the same place; the
+  // loadout is listed above it and the sensitivity read-out sits under the plot.
+  const table = live
+    ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, labelFor: loadoutHeadingHtml })
+    : '<p class="target-impact-note">Select a weapon to use the Firing Range.</p>';
+  return `<div id="rcRangeStats">${table}</div>`;
+}
+/** Refresh only the live sample's stats while shots are landing. */
+function refreshRangeStats() {
+  if (state.recoil.view !== 'range') return;
+  const slot = document.getElementById('rcRangeStats');
+  const live = firingRange?.live();
+  if (!slot || !live) return;
+  const zones = live.state.impacts.map(p => p.zone ?? null);
+  slot.outerHTML = rangeStatsHtml({ targetHits: [{ weapon: live.state.weapon, zones, hits: zones.filter(Boolean).length, total: zones.length }] });
+}
+
 /**
  * Vertical field, in target-plane centimetres, seen through an `m`x optic.
  * Magnification scales the tangent of the half-angle the way a real optic does;
@@ -1544,12 +2108,57 @@ function fitMagnification(spanCm, display = targetDisplaySettings()) {
   }
   return SCOPE_MAGNIFICATIONS[0];
 }
+/** The primary slot's sight when it carries a magnification; it sets the default target zoom. */
+// An optic only zooms when aiming down it; from the hip the view is 1.00×.
+const HIPFIRE_SIGHT = { id: 'hip', name: 'Hipfire', magnification: 1 };
+function equippedSight() {
+  const { weapon, atts } = state.slots[0];
+  if (!weapon) return null;
+  if (state.recoil.aim === 'hip') return HIPFIRE_SIGHT;
+  const sight = ATT_BY_ID.SIGHTS[atts?.sight ?? 'iron'];
+  return Number.isFinite(sight?.magnification) ? sight : null;
+}
+function equippedSightKey() {
+  const { weapon, atts } = state.slots[0];
+  if (!weapon) return null;
+  return `${weapon.id}:${state.recoil.aim === 'hip' ? 'hip' : atts?.sight ?? 'iron'}`;
+}
+/** The user's zoom, or null once the sight it was chosen on is no longer equipped. */
+function magnificationOverride() {
+  return state.recoil.magnificationSight === equippedSightKey() ? state.recoil.magnification : null;
+}
+function setMagnification(value) {
+  const sight = equippedSight();
+  state.recoil.magnification = sight && value === sight.magnification ? null : value;
+  state.recoil.magnificationSight = equippedSightKey();
+}
+/** Back to the sight's own zoom, or the fixed start zoom without a sight. */
+function resetMagnification() {
+  state.recoil.magnification = equippedSight() ? null : TARGET_DEFAULT_MAGNIFICATION;
+  state.recoil.magnificationSight = equippedSightKey();
+}
+/** A zoom the equipped sight cannot show: off its magnification and outside a variable optic's range. */
+function magnificationIsNonStandard(magnification, sight = equippedSight()) {
+  if (!sight) return false;
+  const [low, high] = sight.magnificationRange ?? [sight.magnification, sight.magnification];
+  return magnification < low || magnification > high;
+}
+function magnificationIndex(magnification) {
+  let index = 0;
+  SCOPE_MAGNIFICATIONS.forEach((value, i) => {
+    if (Math.abs(Math.log(value / magnification)) < Math.abs(Math.log(SCOPE_MAGNIFICATIONS[index] / magnification))) index = i;
+  });
+  return index;
+}
 function currentMagnification() {
-  if (state.recoil.magnification != null) return state.recoil.magnification;
+  const override = magnificationOverride();
+  if (override != null) return override;
+  const sight = equippedSight();
+  if (sight) return sight.magnification;
   return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL);
 }
 function recoilViewport() {
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     const { PW, PH } = plotBox();
     const display = targetDisplaySettings();
     // Fullscreen compensation: plot world span = optical span × (plot pixel height / selected display height).
@@ -1576,11 +2185,11 @@ function recoilViewport() {
 }
 function setMagnificationIndex(index) {
   const clamped = Math.max(0, Math.min(SCOPE_MAGNIFICATIONS.length - 1, Math.round(index)));
-  state.recoil.magnification = SCOPE_MAGNIFICATIONS[clamped];
+  setMagnification(SCOPE_MAGNIFICATIONS[clamped]);
 }
 function adjustRecoilScale(dir) {
-  if (state.recoil.view === 'target') {
-    const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
+  if (isTargetGeometry()) {
+    const index = magnificationIndex(currentMagnification());
     setMagnificationIndex(index + (dir === 'in' ? 1 : -1));
   } else {
     state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX,
@@ -1593,9 +2202,10 @@ function adjustRecoilScale(dir) {
 function resetRecoilView() {
   recoilTouchControls?.cancel();
   state.recoil.refSeed = 0;
-  if (state.recoil.view === 'target') {
+  if (state.recoil.view === 'range') firingRange?.reset();
+  if (isTargetGeometry()) {
     state.recoil.distance = TARGET_DEFAULT_DISTANCE;
-    state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
+    resetMagnification();
     state.recoil.distancePanX = 0;
     state.recoil.distancePanY = 0;
     state.recoil.targetAim = 'chest';
@@ -1603,17 +2213,17 @@ function resetRecoilView() {
     renderRecoil();
     return;
   }
-  state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
+  state.recoil.scaleH = RECOIL_SCALE_DEFAULT; state.recoil.panX = 0; state.recoil.panY = 0;
   renderRecoil();
 }
 /** Expanded touch reset changes zoom and pan only, preserving distance, aim and seed. */
 function resetRecoilFraming() {
   recoilTouchControls?.cancel();
-  if (state.recoil.view === 'target') {
-    state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
+  if (isTargetGeometry()) {
+    resetMagnification();
     state.recoil.distancePanX = 0; state.recoil.distancePanY = 0;
   } else {
-    state.recoil.scaleH = 5; state.recoil.panX = 0; state.recoil.panY = 0;
+    state.recoil.scaleH = RECOIL_SCALE_DEFAULT; state.recoil.panX = 0; state.recoil.panY = 0;
   }
   renderRecoil();
 }
@@ -1621,19 +2231,14 @@ function resetRecoilFraming() {
  * centroid. Target zoom stays on the existing optic ladder, like its slider. */
 function transformRecoilTouchView(baseZoom, ratio, anchor, clientX, clientY, canvas) {
   if (!Number.isFinite(ratio) || ratio <= 0) return;
-  if (state.recoil.view === 'target') {
-    const wanted = baseZoom * ratio;
-    let index = 0;
-    SCOPE_MAGNIFICATIONS.forEach((value, i) => {
-      if (Math.abs(Math.log(value / wanted)) < Math.abs(Math.log(SCOPE_MAGNIFICATIONS[index] / wanted))) index = i;
-    });
-    setMagnificationIndex(index);
+  if (isTargetGeometry()) {
+    setMagnificationIndex(magnificationIndex(baseZoom * ratio));
   } else {
     state.recoil.scaleH = Math.max(RECOIL_SCALE_MIN, Math.min(RECOIL_SCALE_MAX, baseZoom / ratio));
   }
   const point = canvasToWorld(clientX, clientY, canvas);
   if (!point) return;
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     state.recoil.distancePanX += anchor.x - point.x;
     state.recoil.distancePanY += anchor.y - point.y;
   } else {
@@ -1643,7 +2248,7 @@ function transformRecoilTouchView(baseZoom, ratio, anchor, clientX, clientY, can
   scheduleRecoilPlot();
 }
 function panRecoilView(dir) {
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     const step = recoilViewport().xSpan * 0.12;
     if (dir === 'left')  state.recoil.distancePanX -= step;
     if (dir === 'right') state.recoil.distancePanX += step;
@@ -1666,7 +2271,7 @@ function panRecoilByPixels(dx, dy, canvas) {
   const { PW, PH } = plotBox();
   const dxWorld = dx * (plotCanvasSize(canvas).width / rect.width) / PW * xSpan;
   const dyWorld = dy * (plotCanvasSize(canvas).height / rect.height) / PH * ySpan;
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     state.recoil.distancePanX -= dxWorld;
     state.recoil.distancePanY += dyWorld;
   } else {
@@ -1688,8 +2293,8 @@ function zoomRecoilAtPointer(deltaY, clientX, clientY, canvas) {
   const worldX = before.xCenter + (u - 0.5) * before.xSpan;
   const worldY = before.yCenter + (0.5 - v) * before.ySpan;
 
-  if (state.recoil.view === 'target') {
-    const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
+  if (isTargetGeometry()) {
+    const index = magnificationIndex(currentMagnification());
     setMagnificationIndex(index + (deltaY < 0 ? 1 : -1));
     const after = recoilViewport();
     state.recoil.distancePanX = worldX - (u - 0.5) * after.xSpan;
@@ -1764,13 +2369,17 @@ function patternFor(weapon, seed, shots) {
   return { points: cached.points.get(seedKey), spreads: cached.spreads };
 }
 
-function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
+/**
+ * Background, grid, axis labels, crosshair and (in target geometry) the soldier
+ * figure, shared by the pattern plot and the Firing Range. Leaves the context
+ * saved and clipped to the plot area; the caller restores it.
+ */
+function drawPlotFrame(canvas, { crosshair = state.recoil.crosshair } = {}) {
   const { width: CW, height: CH } = syncPlotCanvasSize(canvas);
   const ctx = canvas.getContext('2d');
   const PL = PLOT_PAD.l, PR = PLOT_PAD.r, PT = PLOT_PAD.t, PB = PLOT_PAD.b;
   const PW = CW - PL - PR, PH = CH - PT - PB;
-  const N = selectedRecoilShotCount();
-  const isTargetView = state.recoil.view === 'target';
+  const isTargetView = isTargetGeometry();
   const view = recoilViewport();
   const xMin = view.xCenter - view.xSpan / 2, xMax = view.xCenter + view.xSpan / 2;
   const yMin = view.yCenter - view.ySpan / 2, yMax = view.yCenter + view.ySpan / 2;
@@ -1800,7 +2409,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     if (yMin <= 0 && yMax >= 0) { ctx.beginPath(); ctx.moveTo(PL, mapY(0)); ctx.lineTo(PL + PW, mapY(0)); ctx.stroke(); }
   }
 
-  if (state.recoil.crosshair) {
+  if (crosshair) {
     const ox = mapX(aimOffset.x), oy = mapY(aimOffset.y);
     if (ox >= PL && ox <= PL + PW && oy >= PT && oy <= PT + PH) {
       ctx.strokeStyle = isTargetView ? 'rgba(255,255,255,0.72)' : 'rgba(255,255,255,0.4)';
@@ -1823,13 +2432,21 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   ctx.save();
   ctx.beginPath(); ctx.rect(PL, PT, PW, PH); ctx.clip();
 
-  const cols = ['#c9a227', '#4d94d0'];
-  const drawOrder = [weapon1, weapon2].filter(Boolean);
-  const spreadBubbleIdxs = getSpreadBulletIdxs(N);
   const targetHitTest = isTargetView ? drawTarget(ctx, mapX, mapY) : null;
   const pxPerCm = isTargetView ? PW / (xMax - xMin) : 0;
   const sprayDotRadius = isTargetView ? targetMarkerRadius(pxPerCm) : 2.5;
   const scatterDotRadius = isTargetView ? targetMarkerRadius(pxPerCm, 1.25) : 2;
+  return { ctx, CW, CH, PL, PT, PW, PH, isTargetView, xMin, xMax, yMin, yMax, mapX, mapY, toX, toY,
+    targetImpactYcm, aimOffset, cmAt: cmAtDistance, targetHitTest, pxPerCm, sprayDotRadius, scatterDotRadius };
+}
+
+function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
+  const { ctx, isTargetView, xMin, xMax, yMin, yMax, toX, toY, targetImpactYcm, aimOffset,
+    targetHitTest, sprayDotRadius, scatterDotRadius } = drawPlotFrame(canvas);
+  const N = selectedRecoilShotCount();
+  const cols = ['#c9a227', '#4d94d0'];
+  const drawOrder = [weapon1, weapon2].filter(Boolean);
+  const spreadBubbleIdxs = getSpreadBulletIdxs(N);
   const targetHits = [];
 
   // Pass 0 — Scatter cloud
@@ -2195,9 +2812,9 @@ function renderAttachmentStats(loadouts) {
     const selectedAttachments = selectedAttachmentRecords(weapon, atts);
     const bugs = Loadout.selectedGameBugs(atts, LOADOUT_DATA, weapon);
     const bugMetrics = new Set(bugs.flatMap(bug => bug.metrics));
-    const bugMark = lbl => bugMetrics.has(lbl) ? Loadout.GAME_BUG_MARK : '';
+    const bugMark = lbl => bugMetrics.has(lbl) ? `${Loadout.GAME_BUG_MARK}` : '';
     const rowMarks = (c, lbl, fields) => `${(fields ?? []).some(f => Loadout.isAssumedField(c.record, f, weapon.id)) ? '*' : ''}`
-      + `${bugs.some(b => b.slot === c.slot && b.attachments.includes(c.record?.id) && b.metrics.includes(lbl)) ? Loadout.GAME_BUG_MARK : ''}`;
+      + `${bugs.some(b => b.slot === c.slot && b.attachments.includes(c.record?.id) && b.metrics.includes(lbl)) ? `${Loadout.GAME_BUG_MARK}` : ''}`;
     // Rows for one numeric stat: each attachment's own change, then the net.
     const breakdown = (m, valueOf, fmt, net) => {
       const rows = contributions.map(c => {
@@ -2296,7 +2913,7 @@ function renderAttachmentStats(loadouts) {
     });
     if (!chips.length && !bugs.length) return;
     rendered = true;
-    const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${escAttr(bug.note)} Stats show the in-game behavior.</div>`).join('');
+    const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${bug.suspected ? 'likely a bug. ' : 'bug. '}${escAttr(bug.note)}</div>`).join('');
     html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
@@ -2335,10 +2952,10 @@ function renderRecoil({ plotOnly = false } = {}) {
   if (!document.getElementById('rcMain').clientWidth) return;
   if (recoilPlotFrame != null) cancelAnimationFrame(recoilPlotFrame);
   recoilPlotFrame = null;
-  if (state.recoil.view === 'target') state.recoil.distance = snapTargetDistance(state.recoil.distance);
+  if (isTargetGeometry()) state.recoil.distance = snapTargetDistance(state.recoil.distance);
   scheduleUrlSync();
   const w1 = selectedWeaponBuild(state.slots[0]);
-  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  let w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
   if ([w1, w2].some(w => w && !validateWeaponSimulation(w))) {
     const canvas = document.getElementById('rcMain');
     const ctx = canvas.getContext('2d');
@@ -2351,7 +2968,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   const shotCount = selectedRecoilShotCount();
   // The base frame feeds the auto magnification, so it has to settle before
   // any of the control read-outs are written.
-  if (state.recoil.view === 'target') computeTargetBaseFrame([w1, w2], shotCount);
+  if (isTargetGeometry()) computeTargetBaseFrame([w1, w2], shotCount);
 
   if (!plotOnly) renderAttachmentStats([
     { weapon: state.slots[0].weapon, atts: state.slots[0].atts, build: w1, colClass: 'c1' },
@@ -2376,12 +2993,14 @@ function renderRecoil({ plotOnly = false } = {}) {
   pressed('rcStanceMove', stance === 'move');
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
+    // The range draws its own live crosshair; its corner holds Reload and Clear instead.
+    crosshairToggle.hidden = state.recoil.view === 'range';
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
     const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
     crosshairToggle.title = label;
     crosshairToggle.setAttribute('aria-label', label);
   }
-  const isTarget = state.recoil.view === 'target';
+  const isTarget = isTargetGeometry();
   const targetControls = document.getElementById('rcTargetControls');
   if (targetControls) targetControls.hidden = !isTarget;
   const targetWidthInput = document.getElementById('rcTargetWidth');
@@ -2401,10 +3020,11 @@ function renderRecoil({ plotOnly = false } = {}) {
       if (targetFovInput && Number.isFinite(storedFov) && storedFov >= 1 && storedFov <= 179) targetFovInput.value = String(Math.round(storedFov));
     } catch { /* localStorage may be unavailable in a restricted browser context. */ }
   }
-  ['rcViewAngle', 'rcViewTarget'].forEach(id => {
+  const isRange = state.recoil.view === 'range';
+  Object.entries({ rcViewAngle: 'angle', rcViewTarget: 'target', rcViewRange: 'range' }).forEach(([id, view]) => {
     const tab = document.getElementById(id);
     if (!tab) return;
-    const on = (id === 'rcViewTarget') === isTarget;
+    const on = state.recoil.view === view;
     tab.classList.toggle('on', on);
     tab.setAttribute('aria-selected', String(on));
   });
@@ -2418,13 +3038,33 @@ function renderRecoil({ plotOnly = false } = {}) {
   const hint = document.getElementById('rcHint');
   recoilTouchControls?.sync();
   if (hint) {
-    const nextHint = recoilTouchControls?.hint() ?? (isTarget
-      ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom'
-      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom');
-    if (hint.textContent !== nextHint) hint.textContent = nextHint;
+    // The range lists its controls once, here, as a key legend; the canvas HUD
+    // keeps only ammunition and the trigger mode.
+    const key = (k, what) => `<span class="rc-key"><kbd>${k}</kbd>${what}</span>`;
+    // The same legend whether or not the plot holds the mouse; the banner on
+    // the plot is what says to click in.
+    const rangeHint = !firingRange?.supportsLock()
+      ? 'Firing Range needs a browser with pointer capture and a mouse'
+      : [key('Click', 'fire'), key('R', 'reload'), key('C', 'clear'), key('Esc', 'release'),
+        key('Shift+drag', 'pan'), key('Shift+scroll', 'zoom'), key('Ctrl+scroll', 'distance')].join('');
+    const nextHint = isRange ? rangeHint : (recoilTouchControls?.hint() ?? (isTarget
+      ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom · Ctrl + scroll for distance'
+      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom'));
+    if (isRange) { if (hint.innerHTML !== nextHint) hint.innerHTML = nextHint; }
+    else if (hint.textContent !== nextHint) hint.textContent = nextHint;
+  }
+  // The hit-zone key sits in the footer strip, next to the dots it explains.
+  const zoneLegend = document.getElementById('rcZoneLegend');
+  if (zoneLegend) {
+    if (!zoneLegend.innerHTML) {
+      zoneLegend.innerHTML = RANGE_ZONE_LEGEND.map(([zone, label]) => `<span><i style="background:${RANGE_ZONE_COLORS[zone]}"></i>${label}</span>`).join('')
+        + `<span><i class="miss" style="background:${RANGE_MISS_COLOR}"></i>Miss</span>`;
+    }
+    zoneLegend.hidden = !isRange;
   }
   const aimReadout = document.getElementById('rcAimReadout');
-  if (aimReadout) aimReadout.hidden = !isTarget;
+  // The range aims with the mouse, so the Soldier Target aim read-out is not shown there.
+  if (aimReadout) aimReadout.hidden = state.recoil.view !== 'target';
   const aimText = document.getElementById('rcAimText');
   if (aimText) {
     const offset = currentAimOffset();
@@ -2465,10 +3105,30 @@ function renderRecoil({ plotOnly = false } = {}) {
   const zoomReadout = document.getElementById('rcZoomReadout');
   if (zoomReadout) {
     const magnification = isTarget ? currentMagnification() : null;
+    const sight = isTarget ? equippedSight() : null;
+    const nonStandard = isTarget && magnificationIsNonStandard(magnification, sight);
     zoomReadout.textContent = isTarget ? `${magnification.toFixed(2)}×` : `±${fmtAxisDeg(state.recoil.scaleH)}°`;
-    zoomReadout.title = isTarget
-      ? `Optic magnification. The plot shows the same field a ${magnification.toFixed(2)}× sight would at this range.`
-      : 'Horizontal half-span of the plot, in degrees.';
+    zoomReadout.classList.toggle('rc-zoom-override', nonStandard);
+    zoomReadout.title = !isTarget ? 'Horizontal half-span of the plot, in degrees.'
+      : nonStandard ? `Not the sight's zoom: the ${sight.name} shows ${sight.magnificationRange
+        ? `${sight.magnificationRange[0].toFixed(2)}× to ${sight.magnificationRange[1].toFixed(2)}×`
+        : `${sight.magnification.toFixed(2)}×`}. Reset the view to return to it.`
+      : `Optic magnification${sight ? ` of the ${sight.name}` : ''}. The plot shows the same field a ${magnification.toFixed(2)}× sight would at this range.`;
+  }
+  // Off the sight's own zoom, a tick on the slider shows where it is. It is
+  // placed after the read-out is written, since a wider read-out moves the slider.
+  const zoomMark = document.getElementById('rcZoomMark');
+  if (zoomMark && zoomRange) {
+    const sight = isTarget ? equippedSight() : null;
+    const show = !!sight && currentMagnification() !== sight.magnification;
+    zoomMark.hidden = !show;
+    if (show) {
+      const min = +zoomRange.min, max = +zoomRange.max;
+      const frac = max === min ? 0 : (magnificationIndex(sight.magnification) - min) / (max - min);
+      const thumb = zoomRange.closest('.rc-touch-layout') ? 20 : 11;
+      zoomMark.style.left = `${zoomRange.offsetLeft + thumb / 2 + frac * (zoomRange.offsetWidth - thumb)}px`;
+      zoomMark.title = `${sight.name}: ${sight.magnification.toFixed(2)}×`;
+    }
   }
   pressed('rcPlatformPc', state.recoil.platform === 'pc');
   pressed('rcPlatformConsole', state.recoil.platform === 'console');
@@ -2496,7 +3156,20 @@ function renderRecoil({ plotOnly = false } = {}) {
     shotsInput.hidden = !(state.recoil.spreadPreset === 'custom' && state.recoil.spreadEditing);
     shotsInput.classList.toggle('idle', !layers.spread);
   }
-  const axis = drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
+  document.getElementById('rcOverlayGroup')?.toggleAttribute('hidden', isRange);
+  document.getElementById('rcRangeActions')?.toggleAttribute('hidden', !isRange);
+  // The range plot is capped to the viewport so the HUD, the soldier and the
+  // controls above and below it stay on screen together while the cursor is gone.
+  document.querySelector('.rc-layout')?.classList.toggle('rc-range-view', isRange);
+  const sensGroup = document.getElementById('rcSensGroup');
+  if (sensGroup) sensGroup.hidden = !isRange;
+  const sensReadout = document.getElementById('rcSensReadout');
+  if (sensReadout) sensReadout.hidden = !isRange;
+  if (isRange) { loadSensSettings(); syncSensReadout(); }
+  firingRange?.setActive(isRange);
+  const axis = isRange
+    ? firingRange.render()
+    : drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
   const noteEl = document.querySelector('.rc-note');
   const stateLabel = `${aim.toUpperCase()} / ${stance === 'move' ? 'MOV' : 'STD'}`;
   if (noteEl && axis) {
@@ -2511,7 +3184,9 @@ function renderRecoil({ plotOnly = false } = {}) {
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
-    if (axis.isTargetView) {
+    if (isRange) {
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.`;
+    } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}`;
     } else {
@@ -2520,11 +3195,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
 
   if (plotOnly) return;
-  const leg = document.getElementById('rcLegend');
-  leg.innerHTML = '';
-  [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w).forEach(([w, col]) => {
-    leg.innerHTML += `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${weaponDisplayLabel(w)}</span></div>`;
-  });
+  // The range fires only the first weapon, so its stats name and chart only that one.
+  if (isRange) w2 = null;
 
   // The pop-out has room for both tables, so it stacks recoil/spread over the
   // impact breakdown instead of swapping one for the other.
@@ -2534,7 +3206,9 @@ function renderRecoil({ plotOnly = false } = {}) {
   // to the recoil block no matter which tab was last picked.
   const activeStatsTab = isTargetView && state.recoil.targetStatsTab === 'impact' ? 'impact' : 'recoil';
   const tabsHtml = stacksStats ? '' : statsTabsHtml(activeStatsTab, isTargetView);
-  const targetHtml = isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: weaponDisplayLabel }) : '';
+  const targetHtml = isRange
+    ? rangeStatsHtml(axis)
+    : isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: loadoutHeadingHtml }) : '';
   // The strip and the stats it labels share one bordered box, the same way the
   // plot's tabs and canvas do, so the selected tab sits on its own content.
   const statsEl = document.getElementById('rcStats');
@@ -2731,7 +3405,10 @@ function renderRecoil({ plotOnly = false } = {}) {
   // With the strip present it already names the block, and the aim/stance it
   // describes is set by the controls right above it.
   const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : 'Standing'}</div>`;
-  let rowsHtml = '';
+  // The loadouts the bars compare head the card, the way each impact table
+  // names its own.
+  let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1'], [w2, 'c2']].filter(([w]) => w)
+    .map(([w, cls]) => `<div class="target-impact-weapon ${cls}">${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
   stats.forEach(s => {
     if (s.val1 === null && s.val2 === null) return;
     rowsHtml += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
@@ -3041,6 +3718,7 @@ function bindEvents() {
     renderStats();
   });
   document.getElementById('cloneLoadoutBtn').addEventListener('click', cloneCompareLoadout);
+  document.getElementById('swapLoadoutBtn')?.addEventListener('click', swapCompareLoadouts);
 
   // Share menu — copy the link, or a PNG of the whole view
   bindShareMenu();
@@ -3136,6 +3814,17 @@ function bindEvents() {
   document.getElementById('rcStanceMove').addEventListener('click', () => setRecoilStance('move'));
   document.getElementById('rcViewAngle').addEventListener('click', () => setRecoilView('angle'));
   document.getElementById('rcViewTarget').addEventListener('click', () => setRecoilView('target'));
+  document.getElementById('rcViewRange')?.addEventListener('click', () => setRecoilView('range'));
+  Object.entries(SENS_INPUT).forEach(([key, id]) => {
+    document.getElementById(id)?.addEventListener('input', e => {
+      const value = Number(e.currentTarget.value);
+      if (Number.isFinite(value) && value >= 0) {
+        try { localStorage.setItem(SENS_STORAGE[key], String(value)); } catch { /* storage is optional. */ }
+      }
+      syncSensReadout();
+      refreshRangeStats();
+    });
+  });
   // The stats panel is rebuilt on every render, so the toggle is delegated.
   document.getElementById('rcStats').addEventListener('click', e => {
     const btn = e.target.closest('[data-stats-tab]');
@@ -3161,12 +3850,24 @@ function bindEvents() {
   const recoilCanvas = document.getElementById('rcMain');
   recoilTouchControls = bindRecoilTouchControls({
     canvas: recoilCanvas, readView: () => state.recoil.view,
-    readZoom: () => state.recoil.view === 'target' ? currentMagnification() : state.recoil.scaleH,
+    readZoom: () => isTargetGeometry() ? currentMagnification() : state.recoil.scaleH,
     worldAt: (x, y) => canvasToWorld(x, y, recoilCanvas),
     transformView: (...args) => transformRecoilTouchView(...args, recoilCanvas),
     redraw: redrawRecoilSample, aim: fireAtAimPoint,
     resetView: resetRecoilFraming, repaint: renderRecoil,
   });
+  firingRange = createFiringRange({
+    canvas: recoilCanvas,
+    readBuild: () => selectedWeaponBuild(state.slots[0]),
+    readSimKey: rangeSimKey,
+    readDegreesPerCount: rangeDegreesPerCount,
+    drawFrame: drawPlotFrame,
+    requestStats: refreshRangeStats,
+    requestHint: () => renderRecoil({ plotOnly: true }),
+    readDistance: () => state.recoil.distance,
+  });
+  document.getElementById('rcRangeReload')?.addEventListener('click', () => firingRange.reload());
+  document.getElementById('rcRangeClear')?.addEventListener('click', () => firingRange.clear());
   // Dragging replaced the pan buttons, so the keyboard needs its own way in.
   recoilCanvas.addEventListener('keydown', e => {
     const pan = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' }[e.key];
@@ -3195,6 +3896,8 @@ function bindEvents() {
 
   recoilCanvas.addEventListener('pointerdown', e => {
     if (e.button !== 0 || e.pointerType === 'touch') return;
+    // The Firing Range owns plain clicks: they capture the pointer and fire.
+    if (state.recoil.view === 'range' && !e.shiftKey) return;
     recoilDrag = { x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY, pointerId: e.pointerId, moved: false, pan: e.shiftKey };
     try { recoilCanvas.setPointerCapture(e.pointerId); } catch { /* pointer already gone */ }
     if (recoilDrag.pan) recoilCanvas.classList.add('dragging');
@@ -3202,11 +3905,16 @@ function bindEvents() {
   });
   recoilCanvas.addEventListener('pointermove', e => {
     if (!recoilDrag || recoilDrag.pointerId !== e.pointerId) return;
-    const dx = e.clientX - recoilDrag.x;
-    const dy = e.clientY - recoilDrag.y;
-    recoilDrag.x = e.clientX;
-    recoilDrag.y = e.clientY;
-    if (Math.abs(e.clientX - recoilDrag.startX) > CLICK_SLOP || Math.abs(e.clientY - recoilDrag.startY) > CLICK_SLOP) {
+    // Under pointer lock the client position freezes, so the drag follows the
+    // raw movement instead.
+    const locked = firingRange?.isLocked();
+    const px = locked ? recoilDrag.x + (e.movementX || 0) : e.clientX;
+    const py = locked ? recoilDrag.y + (e.movementY || 0) : e.clientY;
+    const dx = px - recoilDrag.x;
+    const dy = py - recoilDrag.y;
+    recoilDrag.x = px;
+    recoilDrag.y = py;
+    if (Math.abs(px - recoilDrag.startX) > CLICK_SLOP || Math.abs(py - recoilDrag.startY) > CLICK_SLOP) {
       recoilDrag.moved = true;
     }
     if (recoilDrag.pan && recoilDrag.moved) panRecoilByPixels(dx, dy, recoilCanvas);
@@ -3230,11 +3938,22 @@ function bindEvents() {
   // Plain scrolling belongs to the page; zooming needs Shift so the chart
   // cannot swallow the wheel while someone is reading past it.
   recoilCanvas.addEventListener('wheel', e => {
-    if (!e.shiftKey) return;
-    e.preventDefault();
     // Browsers remap a shifted wheel to the horizontal axis, so take whichever
     // delta actually carries the gesture.
-    zoomRecoilAtPointer(e.deltaY || e.deltaX, e.clientX, e.clientY, recoilCanvas);
+    const delta = e.deltaY || e.deltaX;
+    // Ctrl + wheel steps the target distance; preventDefault keeps the browser
+    // from zooming the page while the pointer is over the plot.
+    if (e.ctrlKey || e.metaKey) {
+      if (!isTargetGeometry()) return;
+      e.preventDefault();
+      // Scroll up brings the target closer, matching zoom in on Shift + scroll.
+      if (delta) stepTargetDistance(delta < 0 ? -1 : 1);
+      return;
+    }
+    if (!e.shiftKey) return;
+    e.preventDefault();
+    if (firingRange?.isLocked()) { if (delta) adjustRecoilScale(delta < 0 ? 'in' : 'out'); return; }
+    zoomRecoilAtPointer(delta, e.clientX, e.clientY, recoilCanvas);
   }, { passive: false });
 
   // Inputs
@@ -3301,10 +4020,12 @@ if (new URLSearchParams(location.search).get('popout') === '1') {
 }
 
 _restoringUrl = true;
+loadLockPreferences();
 restoreFromUrl();
+syncRangeCompare();
 bindEvents();
 renderSidebar();
 renderStats();
 _restoringUrl = false;
 initMobileTooltips();
-if (state.recoil.view === 'target') requestTargetImage();
+if (isTargetGeometry()) requestTargetImage();

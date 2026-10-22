@@ -41,13 +41,17 @@ function harness(view = 'angle') {
     window: { addEventListener() {} },
     renders: 0, renderRecoil: () => { context.renders++; },
     recoilTouchControls: null,
+    firingRange: null,
+    rangeSimKey() {}, rangeDegreesPerCount() {}, drawPlotFrame() {}, refreshRangeStats() {},
+    createFiringRange: () => ({ setActive() {}, reset() {}, render: () => ({ targetHits: [] }), isLocked: () => false, supportsLock: () => true, live: () => null }),
     fullResets: 0, framingResets: 0, expanded: false,
     bindRecoilTouchControls: () => ({ cancel() {}, isExpanded: () => context.expanded }),
     resetRecoilView: () => { context.fullResets++; },
     resetRecoilFraming: () => { context.framingResets++; },
-    applyViewLayers() {}, requestTargetImage() {}, panRecoilByPixels() {},
+    applyViewLayers() {}, requestTargetImage() {}, panRecoilByPixels() {}, syncRangeCompare: () => false, renderSidebar() {}, renderStats() {},
     Math: Object.assign(Object.create(Math), { random: () => 0.25 }),
   });
+  context.isTargetGeometry = () => context.state.recoil.view === 'target' || context.state.recoil.view === 'range';
   runInContext([
     ...['setRecoilView', 'fireAtAimPoint', 'redrawRecoilSample', 'canvasToWorld', 'plotCanvasSize'].map(runtimeFunction),
     section("  const recoilCanvas = document.getElementById('rcMain');", '  // Inputs'),
@@ -129,10 +133,11 @@ test('Angle Plot draws its crosshair at (0, 0) after switching from a custom Sol
     getSpreadBulletIdxs: () => [],
     currentAimOffset: () => { throw new Error('Angle Plot must not read Soldier aim'); },
     fmtAxisDeg: value => String(value),
+    cmAtDistance: () => { throw new Error('Angle Plot must not project to target distance'); },
   });
   context.viewport = { xSpan: 20, ySpan: 20, xCenter: 0, yCenter: 0 };
   canvas.getContext = () => ctx;
-  runInContext(runtimeFunction('drawRecoilFixed'), context);
+  runInContext([runtimeFunction('drawPlotFrame'), runtimeFunction('drawRecoilFixed')].join('\n'), context);
   runInContext("drawRecoilFixed(document.getElementById('rcMain'), null, null, {})", context);
   assert.deepEqual(moves, [[204, 195], [210, 189]]);
   assert.equal(context.state.recoil.customAim.x, 10);

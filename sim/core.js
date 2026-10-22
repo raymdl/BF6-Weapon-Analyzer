@@ -42,6 +42,11 @@ export function setSimContext(updates) {
   Object.assign(_ctx, updates);
 }
 
+/** Read-only view of the current simulation context (aim and stance state). */
+export function simContext() {
+  return { aimState: _ctx.aimState, stanceState: _ctx.stanceState };
+}
+
 
 // ── RNG ───────────────────────────────────────────────────────────────────────
 
@@ -77,14 +82,14 @@ export function uniformDev(rng, val) {
  * Applied independently to vertical and horizontal components.
  * The time integral is exact; non-linear displacement uses bounded small steps.
  */
-const RECOIL_TIME_STEP = 0.001;
+export const RECOIL_TIME_STEP = 0.001;
 
-function recoilRecoveryWeight(factor, exponent, time, step) {
+export function recoilRecoveryWeight(factor, exponent, time, step) {
   const power = exponent + 1;
   return factor * ((time + step) ** power - time ** power) / power;
 }
 
-function recoverRecoilAxis(r, exponent, offset, weight) {
+export function recoverRecoilAxis(r, exponent, offset, weight) {
   const magnitude = Math.abs(r);
   const remaining = exponent === 1
     ? (magnitude + offset) * Math.exp(-weight) - offset

@@ -20,14 +20,6 @@ ACCESSORY_FAMILIES = {
     **{f: 'secondary_optic' for f in ('CantedReflex', 'CantedReflexSlanted', 'OffsetRedDot',
                                       'G43Magnifier', 'Variable2x', 'Variable3x', 'Variable4x')},
 }
-# Labels kept selectable although one scope with that label is not listed for the accessory:
-# two scopes share the label and the game accepts the other one (Interdictor: the MGO 3.50x
-# blocks canted sights, the SDO 3.50x does not; operator in-game check, 2026-10-13, client
-# 2.1.1.0). (weapon, accessory, sight label).
-OPERATOR_PERMITTED = {
-    ('interdictor', 'canted_irons', 'Scope 3.50x'), ('interdictor', 'secondary_optic', 'Scope 3.50x'),
-    ('m16a4', 'canted_irons', 'Scope 3.00x'), ('m16a4', 'secondary_optic', 'Scope 3.00x'),
-}
 EXTERNAL = re.compile(r'\[Ebx\] (.+) \[([0-9a-f-]{36})\]', re.I)
 
 
@@ -43,8 +35,6 @@ def main():
                         help='Retained audit whose mapped rows supply the attachment identities')
     parser.add_argument('--barrel-mapping', type=Path, default=provenance / 'frosty-barrel-ads-2026-09-13.json',
                         help='Reviewed barrel identity rows')
-    parser.add_argument('--optic-mapping', type=Path, default=provenance / 'frosty-optic-category-mapping-2026-09-15.json',
-                        help='Sight category members written by frosty-attachment-tooltips.py --optic-mapping-json')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
     export = raw_tree.open_input(parser, args, args.root)
@@ -208,17 +198,14 @@ def main():
                     generated[weapon].append(rule)
             row['status'] = 'generated'
             dependency_rows.append(row)
-    # Optic Accessory (SCA) choices. Their prerequisites name individual optics;
-    # the site offers a choice with a sight category when the category holds at
-    # least one permitted optic, and lists the category's other optics as exclusions.
-    optic_map_path = args.optic_mapping
-    reviews[optic_map_path.name] = hashlib.sha256(optic_map_path.read_bytes()).hexdigest()
-    optic_members, optic_by_path = defaultdict(dict), defaultdict(set)
-    for category in json.loads(optic_map_path.read_text(encoding='utf-8'))['categories']:
-        for member in category['members']:
-            key = (category['weapon'], category['attachment'])
-            optic_members[key][member['source'].lower()] = member['label']
-            optic_by_path[member['source'].lower()].add(key)
+    # Optic Accessory (SCA) choices. Their prerequisites name individual optics,
+    # which are site sight choices (scripts/frosty-individual-optics.py).
+    optic_path = sorted(provenance.glob('frosty-individual-optics-*.json'))[-1]
+    reviews[optic_path.name] = hashlib.sha256(optic_path.read_bytes()).hexdigest()
+    optic_by_path = {re.sub(r'\.xml$', '', o['source'].lower()): (weapon, o['id'])
+                     for weapon, rows in json.loads(optic_path.read_text(encoding='utf-8'))['weapons'].items()
+                     for o in rows}
+    sight_order = {s['id']: i for i, s in enumerate(catalog['SIGHTS'])}
     permitted_optics = defaultdict(set)
     for row in dependency_rows:
         family = re.search(r'_SCA_(\w+)\.xml$', row['sourceAttachment'])
@@ -234,25 +221,19 @@ def main():
         weapons = set()
         for paths in row['requiredSourceAttachments']:
             for path in paths:
-                for weapon, category in optic_by_path.get(path.lower(), ()):
-                    permitted_optics[weapon, accessory].add(path.lower())
-                    weapons.add(weapon)
+                owner = optic_by_path.get(re.sub(r'\.xml$', '', path.lower()))
+                if owner:
+                    permitted_optics[owner[0], accessory].add(owner[1])
+                    weapons.add(owner[0])
         row['siteChoices'] = [dict(weapon=w, slot='accessory', attachment=accessory) for w in sorted(weapons)]
         row['status'] = 'generated' if weapons else 'not offered or no reviewed identity'
     for (weapon, accessory), permitted in sorted(permitted_optics.items()):
         wa = catalog['WEAPON_ATTS'].get(weapon)
         if wa is None:
             continue
-        categories = sorted(c for (w, c), members in optic_members.items()
-                            if w == weapon and permitted & members.keys())
         generated[weapon].append(dict(slot='accessory', attachment=accessory,
-            requiresAny=[dict(slot='sight', attachment=c) for c in categories]))
+            requiresAny=[dict(slot='sight', attachment=i) for i in sorted(permitted, key=sight_order.get)]))
         accessories.setdefault(weapon, {}).setdefault('avail', []).append(accessory)
-        for category in categories:
-            labels = sorted({label for path, label in optic_members[weapon, category].items()
-                             if path not in permitted} - {l for w, a, l in OPERATOR_PERMITTED if (w, a) == (weapon, accessory)})
-            if labels:
-                accessories[weapon].setdefault('excludedSights', {}).setdefault(accessory, {})[category] = labels
     for weapon, wa in catalog['WEAPON_ATTS'].items():
         wa.pop('dependencies', None)
         if generated[weapon]:

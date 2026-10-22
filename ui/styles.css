@@ -3,6 +3,8 @@
   --accent:#c9a227; --accent2:#4d94d0;
   --text:#dde3e3; --muted:#7a8a8a; --border:#283030;
   --green:#56c464; --red:#e05555;
+  --lock-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E");
+  --unlock-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 7.5-2'/%3E%3C/svg%3E");
   --share-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cline x1='8.6' y1='13.5' x2='15.4' y2='17.5'/%3E%3Cline x1='15.4' y1='6.5' x2='8.6' y2='10.5'/%3E%3C/svg%3E");
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -77,7 +79,7 @@ body.is-popout .rc-loadout-btn{display:inline-flex}
 body.is-popout .rc-loadout-btn[aria-expanded="true"]{border-color:var(--accent);color:var(--accent)}
 body.is-popout .rc-loadout-btn[aria-expanded="true"] .rc-loadout-icon rect{fill:currentColor;fill-opacity:.2}
 body.is-popout .app{display:flex;overflow:hidden}
-body.is-popout.popout-loadout .sidebar{display:flex;position:static;inset:auto;width:198px;max-height:none;border:0;border-right:1px solid var(--border);border-radius:0;box-shadow:none;transform:none;opacity:1;pointer-events:auto}
+body.is-popout.popout-loadout .sidebar{display:flex;position:static;inset:auto;width:228px;max-height:none;border:0;border-right:1px solid var(--border);border-radius:0;box-shadow:none;transform:none;opacity:1;pointer-events:auto}
 body.is-popout .sb-scroll{display:block}
 body.is-popout .sb-sec,body.is-popout .att-sec{border-right:0}
 body.is-popout #cmpSection[style*="display: block"],body.is-popout #cmpSection[style*="display:block"]{display:block!important}
@@ -89,12 +91,13 @@ body.is-popout .rc-head{grid-column:1/-1}
    must not apply here — otherwise the plot leaves a dead column beside it. */
 body.is-popout .rc-plot{display:flex;flex-direction:column;min-height:0;max-width:none}
 body.is-popout .rc-viewport{display:flex;flex-direction:column;min-height:0;flex:1}
+body.is-popout .rc-capture{display:flex;flex-direction:column;flex:1;min-height:0}
 body.is-popout .rc-canvas-wrap{flex:1;min-height:0;position:relative}
 body.is-popout canvas.rcv{position:absolute;inset:0;aspect-ratio:auto;width:100%;height:100%}
 body.is-popout #rcStats{overflow-y:auto;min-height:0;max-height:100%;scrollbar-width:thin;scrollbar-color:var(--border) transparent}
 body.is-popout #rcStats::-webkit-scrollbar{width:3px}
 body.is-popout #rcStats::-webkit-scrollbar-thumb{background:var(--border)}
-body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
+body.is-popout .rc-note{flex-shrink:0}
 /* Mobile tap tooltip */
 .m-tip{position:fixed;z-index:300;display:none;max-width:280px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-size:0.72rem;line-height:1.45;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.6);pointer-events:none}
 .m-tip.show{display:block}
@@ -105,14 +108,14 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .app{display:flex;flex:1;overflow:hidden}
 /* Sidebar */
 .loadout-modal-head{display:none}
-.sidebar{width:198px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
+.sidebar{width:228px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
 .sb-scroll{flex:1;overflow-y:auto;overflow-x:hidden}
 .sb-scroll::-webkit-scrollbar{width:3px}
 .sb-scroll::-webkit-scrollbar-thumb{background:var(--border)}
 .sb-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
 .sb-lbl{font-size:0.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600}
 .class-filter{display:flex;flex-wrap:wrap;gap:3px}
-.cbtn{padding:2px 6px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
+.cbtn{padding:2px 4px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
 .cbtn:hover,.cbtn.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
 .wlist{display:flex;flex-direction:column}
 .wbtn{padding:2px 11px;text-align:left;background:none;border:none;border-bottom:1px solid rgba(40,48,48,.55);color:var(--text);font-size:0.82rem;transition:background .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent}
@@ -127,8 +130,8 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 #adsToggleBtn,#velToggleBtn{color:#b39a52;border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.06)}
 #adsToggleBtn.on,#velToggleBtn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
 .cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
-.cmp-hdr{padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
-.clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:3px;padding:2px 7px;font-size:0.62rem;letter-spacing:.04em;transition:all .15s}
+.cmp-hdr{white-space:nowrap;padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:3px;padding:1px 5px;font-size:0.6rem;letter-spacing:.02em;transition:all .15s}
 .clone-btn:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
 .clone-btn:disabled{opacity:.38;cursor:not-allowed;color:var(--muted);border-color:var(--border);background:var(--bg3)}
 /* Main */
@@ -256,13 +259,19 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 /* The distance and zoom values are read while dragging their slider, so they
    carry a size up from the other read-outs. */
 .rc-viewbar .rc-readout{font-size:.72rem}
+/* Target zoom off the equipped sight's own magnification. */
+.rc-readout.rc-zoom-override{color:var(--accent)}
+#rcZoomField{position:relative}
+.rc-zoom-mark{position:absolute;top:50%;width:2px;height:12px;margin:-6px 0 0 -1px;background:#e1e8e8;border-radius:1px;box-shadow:0 0 2px #000;pointer-events:none}
+.rc-zoom-mark[hidden]{display:none}
+.rc-readout.rc-zoom-override::after{content:'*';margin-left:1px}
 /* Chart viewport — tab strip, contextual bar and canvas read as one card */
 .rc-viewport{border:1px solid var(--border);border-radius:6px;background:#0b1010;overflow:hidden;min-width:0}
 .rc-tabstrip{display:flex;align-items:stretch;flex-wrap:wrap;background:#151b1b;border-bottom:1px solid var(--border)}
 .rc-tab{flex:1 1 0;appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;color:#7f9090;font:inherit;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px 6px;cursor:pointer;white-space:nowrap;transition:color .13s,background .13s,border-color .13s}
 .rc-tab:hover:not(.on){color:#cdd6d6;background:rgba(255,255,255,.035)}
 .rc-tab.on{color:var(--accent);background:#0b1010;border-bottom-color:var(--accent)}
-.rc-viewbar{display:flex;align-items:center;gap:7px 14px;flex-wrap:nowrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
+.rc-viewbar{position:relative;display:flex;align-items:center;gap:7px 14px;flex-wrap:nowrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
 /* Both fields share the row, so the sliders take every spare pixel for finer
    dragging instead of leaving a gap on the right. */
 .rc-viewbar .rc-field{flex:1 1 0;min-width:0}
@@ -282,7 +291,16 @@ canvas.rcv{display:block;width:100%;height:auto;aspect-ratio:1;background:#080d0
 canvas.rcv.aiming{cursor:crosshair}
 canvas.rcv.panready,canvas.rcv.panready.aiming{cursor:grab}
 canvas.rcv.dragging,canvas.rcv.dragging.aiming{cursor:grabbing}
-canvas.rcv:focus-visible{outline-offset:-2px}
+/* The capture frame is the plot's one state signal; the keyboard focus ring would
+   draw a second box inside it. */
+canvas.rcv:focus-visible{outline:none}
+/* While the plot holds the mouse, one frame runs around the control bar and the
+   canvas together: the whole area the captured cursor can reach. */
+.rc-capture{position:relative}
+.rc-capture.captured::after{content:"";position:absolute;inset:0;border:2px solid #eaf0f0;border-radius:2px;pointer-events:none;z-index:5}
+/* The Firing Range plot never grows past the viewport: with the cursor gone,
+   its HUD, the soldier and the controls above and below must share the screen. */
+body:not(.is-popout) .rc-range-view canvas.rcv{width:min(100%,max(240px,calc(100vh - 170px)));margin:0 auto}
 .rc-canvas-wrap{position:relative;line-height:0}
 .rc-touch-controls{display:flex;flex-wrap:wrap;gap:6px;padding:6px 9px;background:#0e1414;border-bottom:1px solid var(--border)}
 .rc-touch-controls[hidden],.rc-touch-controls [hidden]{display:none}
@@ -305,6 +323,7 @@ canvas.rcv:focus-visible{outline-offset:-2px}
 .rc-expanded-header{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px 10px;font-size:.8rem;font-weight:600;flex-shrink:0}
 .rc-expanded-slot{display:flex;flex:1;min-height:0;padding:0 8px 8px}
 .rc-expanded-slot .rc-viewport{display:flex;flex-direction:column;flex:1;min-height:0}
+.rc-expanded-slot .rc-capture{display:flex;flex-direction:column;flex:1;min-height:0}
 .rc-expanded-slot .rc-canvas-wrap{flex:1;min-height:0}
 .rc-expanded-slot canvas.rcv{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;touch-action:none}
 .rc-expanded-slot .rc-tabstrip,.rc-expanded-slot .rc-touch-controls,.rc-expanded-slot .rc-viewbar,.rc-expanded-slot .rc-viewfoot{flex-shrink:0}
@@ -323,6 +342,15 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-target-controls input[type=number]::-webkit-inner-spin-button,.rc-target-controls input[type=number]::-webkit-outer-spin-button{margin:0;-webkit-appearance:none}
 .rc-target-controls .rc-target-resolution-input{width:36px}
 .rc-target-controls .rc-target-fov-input{width:29px}
+.rc-target-controls .rc-sens-input{width:29px}
+.rc-target-controls .rc-sens-input--wide{width:40px}
+.rc-sens-group{flex-wrap:wrap;row-gap:3px}
+/* The read-out takes its own line under the inputs. */
+.rc-sens-readout{flex:1 0 100%;color:#b9c6c6;letter-spacing:.02em;white-space:normal;line-height:1.3}
+.rc-sens-readout[hidden]{display:none}
+.rc-range-summary{font-size:.72rem;line-height:1.45;color:#aab7bb;padding:8px 0 2px}
+.rc-range-summary strong{color:var(--accent)}
+.rc-comp-range:disabled{opacity:.4;cursor:not-allowed}
 .rc-target-controls input:focus{border-color:var(--accent)}
 .rc-target-controls .rc-zero-readout{position:static;top:auto;right:auto;z-index:auto;margin-left:auto}
 .rc-zero-readout{position:absolute;top:8px;right:8px;z-index:2;display:flex;align-items:center;gap:5px;color:#8fa0a0;font-size:.63rem;line-height:1;text-transform:uppercase;letter-spacing:.06em}
@@ -332,14 +360,36 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-scale-controls{position:absolute;right:8px;top:8px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px}
 .rc-scale-btn{width:21px;height:21px;min-height:21px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#8fa0a0;font-weight:700;line-height:1;backdrop-filter:blur(2px)}
 .rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
+.rc-scale-btn[hidden]{display:none}
 #rcCrosshairToggle[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 /* Footer strip under the plot — keeps hints and the aim read-out off the axes. */
 .rc-viewfoot{display:flex;align-items:flex-end;gap:10px;padding:4px 9px;min-height:22px;background:#0e1414;border-top:1px solid var(--border)}
 .rc-hint{flex:1 1 auto;min-width:0;font-size:.55rem;letter-spacing:.03em;color:var(--text);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
+.rc-hint .rc-key{display:inline-flex;align-items:center;gap:3px;margin:1px 7px 1px 0;white-space:nowrap;color:#aab7bb}
+.rc-hint .rc-key:last-child{margin-right:0}
+.rc-hint kbd{font:inherit;font-size:.55rem;font-weight:700;letter-spacing:0;color:var(--text);padding:1px 3px;border:1px solid #2c3838;border-bottom-width:2px;border-radius:3px;background:#151d1d}
 .rc-aim-readout{display:flex;align-items:flex-end;justify-content:flex-end;flex:0 1 auto;max-width:42%;min-width:0;gap:7px;font-size:.55rem;color:#8c9a9a;white-space:normal;text-align:right;line-height:1.35;font-variant-numeric:tabular-nums}
 .rc-aim-readout[hidden]{display:none}
 .rc-viewbar #rcDistanceReadout{flex:0 0 36px;width:36px;text-align:right}
 .rc-viewbar #rcResetView{flex:0 0 21px;margin-left:auto}
+.rc-scale-controls .rc-range-actions{display:flex;gap:5px}
+.rc-scale-controls .rc-range-actions[hidden]{display:none}
+.rc-range-btn{height:21px;padding:0 8px;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#aab7bb;font:inherit;font-size:.68rem;font-weight:600;letter-spacing:.03em;line-height:1;cursor:pointer}
+.rc-range-btn:hover,.rc-range-btn.rc-aimed,.rc-scale-btn.rc-aimed{border-color:var(--accent);color:var(--accent)}
+.rc-range.rc-aimed{outline:1px solid var(--accent);outline-offset:3px;border-radius:3px}
+.rc-range-cursor{position:absolute;width:15px;height:15px;margin:-8px 0 0 -8px;pointer-events:none;z-index:3}
+.rc-range-cursor::before,.rc-range-cursor::after{content:"";position:absolute;background:#fff;box-shadow:0 0 2px #000}
+.rc-range-cursor::before{left:7px;top:0;width:1px;height:15px}
+.rc-range-cursor::after{top:7px;left:0;width:15px;height:1px}
+.rc-zone-legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin:8px 0 2px;font-size:.68rem;color:#aab7bb}
+/* The key chips take the first line of the footer and the hit-zone key the next, each the full width. */
+.rc-range-view .rc-viewfoot{flex-wrap:wrap;row-gap:4px}
+.rc-viewfoot .rc-zone-legend{flex:1 0 100%;margin:0;gap:3px 12px;font-size:.55rem;letter-spacing:.03em}
+.rc-viewfoot .rc-zone-legend[hidden]{display:none}
+.rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}
+.rc-zone-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.rc-zone-legend i.miss{opacity:.5}
+.cmp-btn:disabled{opacity:.55;cursor:not-allowed}
 .rc-linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent2);text-decoration:underline;letter-spacing:.03em}
 .rc-linkbtn:hover{color:var(--accent)}
 .rc-scale-icon{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;overflow:visible}
@@ -380,7 +430,10 @@ body.rc-plot-expanded{overflow:hidden}
 /* The rows used to be spaced by the column's own gap; inside a card they
    need their own. */
 .rc-stats-card{display:flex;flex-direction:column;gap:9px}
-.target-impact-weapon{font-size:.78rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.target-impact-weapon{font-size:.78rem;font-weight:700;margin-bottom:5px;line-height:1.3}
+.loadout-atts{display:inline;margin-left:6px;font-size:.62rem;font-weight:400;letter-spacing:.02em;color:#aab7bb;line-height:1.35}
+.rc-stats-loadouts{display:flex;flex-direction:column;gap:6px;margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid #2b3737}
+.rc-stats-loadouts .target-impact-weapon{margin-bottom:0}
 .target-impact-weapon.c1{color:var(--accent)}
 .target-impact-weapon.c2{color:var(--accent2)}
 .target-impact-summary{display:flex;margin-bottom:7px;padding:6px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
@@ -455,6 +508,51 @@ body.rc-plot-expanded{overflow:hidden}
 .att-sel:focus{border-color:var(--accent)}
 .att-sel option{background:var(--bg2)}
 .att-total{font-size:0.65rem;color:var(--accent);text-align:right;margin-top:4px;letter-spacing:.03em}
+.att-tool{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:1px 6px;font-size:0.6rem;letter-spacing:.04em;line-height:1.5;flex-shrink:0;transition:all .15s}
+.att-tool:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
+.att-tool.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
+.att-tool:disabled{opacity:.38;cursor:not-allowed}
+.att-tool-lock{margin-right:auto;width:18px;height:16px;padding:0;display:inline-flex;align-items:center;justify-content:center}
+.att-tool-lock::before{content:"";width:11px;height:11px;background:currentColor;-webkit-mask:var(--unlock-icon) center/contain no-repeat;mask:var(--unlock-icon) center/contain no-repeat}
+.att-tool-lock.on::before{-webkit-mask-image:var(--lock-icon);mask-image:var(--lock-icon)}
+.att-row-locked .att-sel{border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.06)}
+.att-row-lock-lost .att-sel{border-style:dashed;background:none}
+.att-row-lock-lost .att-tool-lock{border-style:dashed}
+.att-row .att-tool-lock{margin-right:0}
+.att-tool-lock.partial{color:var(--accent);border-color:rgba(201,162,39,.4)}
+.saved-row{display:flex;align-items:center;gap:5px}
+.saved-pick{position:relative;flex:1;min-width:0}
+.saved-pick-btn{width:100%;text-align:left;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;padding-right:18px;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpolyline points='2,3.75 5,6.75 8,3.75' fill='none' stroke='%238a9a9a' stroke-width='1.4'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 4px center;background-size:10px}
+.saved-pick-btn.placeholder{color:var(--muted)}
+.saved-pick-btn:disabled{opacity:.55;cursor:not-allowed}
+.saved-menu{position:absolute;left:0;right:0;top:calc(100% + 3px);z-index:120;max-height:220px;overflow-y:auto;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.6)}
+.saved-menu[hidden]{display:none}
+.saved-item{display:flex;align-items:stretch;border-radius:3px}
+.saved-item:hover,.saved-item.on{background:var(--bg3)}
+.saved-item-load{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left;background:none;border:0;color:var(--text);padding:4px 7px;font-size:0.7rem}
+.saved-item-load:disabled{color:var(--muted);cursor:not-allowed}
+.saved-item.on .saved-item-name{color:var(--accent)}
+.saved-item-name,.saved-item-weapon{max-width:100%;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.saved-item-weapon{font-size:0.58rem;color:var(--muted);letter-spacing:.03em}
+.saved-tt{position:fixed;left:0;top:0;z-index:310;min-width:150px;max-width:260px}
+.saved-tt-line{font-size:0.67rem;line-height:1.6;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.saved-tt-none{font-style:italic}
+.saved-group{font-size:0.56rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--muted);padding:5px 7px 2px}
+.saved-group:not(:first-child){border-top:1px solid var(--border);margin-top:2px}
+.saved-name-input{flex:1;min-width:0;cursor:text}
+.saved-name-input:focus{border-color:var(--accent)}
+.saved-undo{font-size:0.62rem;color:var(--muted);margin-top:5px;line-height:1.4}
+.saved-undo-btn{background:none;border:0;padding:0;color:var(--accent);font-size:inherit;letter-spacing:inherit;text-decoration:underline;cursor:pointer}
+.saved-undo-btn:hover{color:#e5c766}
+.att-lock-note{font-size:0.58rem;color:#b39a52;line-height:1.3;margin:-2px 0 4px 47px}
+.att-lock-hint{margin:0 0 6px;padding:5px 7px;border:1px solid rgba(201,162,39,.35);border-radius:3px;background:rgba(201,162,39,.06);color:var(--text)}
+.cmp-hdr-tools{display:flex;gap:4px;flex-shrink:0}
+@media (pointer:coarse){
+  .att-tool-lock{width:26px;height:24px}
+  .att-tool-lock::before{width:14px;height:14px}
+}
+.saved-item-del{flex:0 0 auto;background:none;border:0;color:var(--muted);padding:0 8px;font-size:0.7rem;border-radius:3px}
+.saved-item-del:hover{color:#e06c6c;background:rgba(224,108,108,.1)}
 .att-total.over{color:#c46464}
 .att-note{font-size:0.58rem;color:var(--muted);line-height:1.35;margin-top:5px}
 .att-bug-note{font-size:0.62rem;color:var(--muted);line-height:1.4;margin-top:5px}
@@ -492,6 +590,7 @@ body.rc-plot-expanded{overflow:hidden}
   .sb-scroll{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr);overflow:auto;min-height:0}
   .sb-sec,.att-sec{border-bottom:0;border-right:1px solid var(--border)}
   #cmpSection{grid-column:1/-1;border-top:1px solid var(--border)}
+  #savedSec1,#savedSec2{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--border)}
   #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:grid!important;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
   .cmp-hdr{grid-column:1/-1;border-top:0;border-bottom:1px solid var(--border)}
   .main{overflow:visible;padding:10px}
@@ -517,6 +616,8 @@ body.rc-plot-expanded{overflow:hidden}
   .wlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:2px}
   .wbtn{border:1px solid rgba(40,48,48,.55);border-left:2px solid transparent;border-radius:3px;padding:6px 8px}
   .att-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px}
+  .att-row[data-lock-key]{grid-template-columns:52px minmax(0,1fr) auto}
+  .att-lock-note{margin-left:58px}
   #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:block!important}
   .main{padding:8px;gap:8px}
   .panel{padding:10px;border-radius:5px}

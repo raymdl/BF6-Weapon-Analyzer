@@ -11,10 +11,11 @@ export function updateAttTotal(containerId, atts, weapon, data) {
   el.classList.toggle('over', pts > 100);
 }
 
-function appendSelectRow(container, { label, value, options, onChange, disabled = false }) {
+function appendSelectRow(container, { label, value, options, onChange, disabled = false, lock = null }) {
   if (!options.length) return;
   const row = document.createElement('div');
-  row.className = 'att-row';
+  row.className = 'att-row' + (lock?.on ? ' att-row-locked' : '') + (lock?.on && lock.held === false ? ' att-row-lock-lost' : '');
+  if (lock) row.dataset.lockKey = lock.key;
   const labelEl = document.createElement('label');
   labelEl.className = 'att-lbl';
   labelEl.textContent = label;
@@ -25,7 +26,7 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   options.forEach(optData => {
     const opt = document.createElement('option');
     opt.value = optData.id;
-    const bugNotes = (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.note}`);
+    const bugNotes = (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely a bug. ' : 'Bug. '}${bug.note}`);
     opt.textContent = bugNotes.length ? `${optData.text}${GAME_BUG_MARK}` : optData.text;
     const title = [optData.description, ...bugNotes].filter(Boolean).join('\n\n');
     if (title) opt.title = title;
@@ -35,7 +36,7 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   });
   const updateTooltip = () => {
     const selected = options.find(option => option.id === sel.value);
-    const tooltip = [selected?.description, ...(selected?.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.note}`)]
+    const tooltip = [selected?.description, ...(selected?.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely a bug. ' : 'Bug. '}${bug.note}`)]
       .filter(Boolean).join('\n\n');
     row.title = tooltip;
     sel.title = tooltip;
@@ -54,7 +55,26 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   }
   row.appendChild(labelEl);
   row.appendChild(sel);
+  if (lock && !disabled) {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'att-tool att-tool-lock' + (lock.on ? ' on' : '');
+    btn.title = lock.on && lock.held === false ? `${label} is locked at ${lock.heldName}, which this weapon cannot take; it is back to the default here and returns on a weapon that can.`
+      : lock.on ? `${label} is locked: it stays through a weapon change where the weapon can take it.`
+      : `Lock ${label} so it stays through a weapon change.`;
+    btn.setAttribute('aria-label', `${lock.on ? 'Unlock' : 'Lock'} ${label}`);
+    btn.setAttribute('aria-pressed', String(lock.on));
+    btn.onclick = () => lock.toggle();
+    row.appendChild(btn);
+  }
   container.appendChild(row);
+  if (lock?.on && lock.held === false) {
+    // Says what the lock holds, since the row shows this weapon's default instead.
+    const note = document.createElement('div');
+    note.className = 'att-lock-note';
+    note.textContent = `Locked: ${lock.heldName} · not on this weapon`;
+    container.appendChild(note);
+  }
 }
 
 export function renderAttachmentSection({
@@ -64,8 +84,23 @@ export function renderAttachmentSection({
   weapon,
   data,
   onChange = () => {},
+  decorate = null,
+  locks = null,
+  onLockToggle = null,
+  lockHeld = null,
 }) {
   if (!container) return;
+  // A row's lock key: the combined rail row locks as its device slot (laser).
+  // `held` is false when the locked choice is not what the row shows, which
+  // happens when this weapon cannot take it.
+  const lockFor = (key, label) => {
+    if (!locks || !onLockToggle) return null;
+    const lockKey = key === 'rail' ? 'laser' : key;
+    const on = Object.hasOwn(locks, lockKey);
+    const status = on && lockHeld ? lockHeld(lockKey) : null;
+    return { key: lockKey, on, held: status ? status.held : undefined, heldName: status?.name,
+      toggle: () => onLockToggle(lockKey, label) };
+  };
   const normalizeSelection = () => {
     const normalized = normalizeAttachments(atts, weapon, data);
     for (const key of ['grip', 'laser', 'light', 'rail', 'fireMode']) {
@@ -99,7 +134,7 @@ export function renderAttachmentSection({
     }
     normalizeSelection();
     if (key === 'ergo' || key === 'fireMode' || wa?.dependencies?.length) {
-      renderAttachmentSection({ containerId, container, atts, weapon, data, onChange });
+      renderAttachmentSection({ containerId, container, atts, weapon, data, onChange, decorate, locks, onLockToggle, lockHeld });
     } else {
       updateAttTotal(containerId, atts, weapon, data);
     }
@@ -118,21 +153,24 @@ export function renderAttachmentSection({
   const appendAccessoryRow = () => {
     const accessoryData = weapon ? data.WEAPON_ACCESSORY?.[weapon.id] : null;
     if (accessoryData) {
-      const sight = atts.sight ?? 'iron';
       const options = availableAttachments(weapon, 'accessory', data, atts);
+      const optics = availableAttachments(weapon, 'sight', data).filter(sight => sight.id !== 'iron');
       if (options.length === 1) return;
       appendSelectRow(container, {
         label: 'OPT ACC',
         value: atts.accessory ?? 'none',
         options: options.map(a => {
-          const excluded = accessoryData.excludedSights?.[a.id]?.[sight];
+          const rule = wa?.dependencies?.find(r => r.slot === 'accessory' && r.attachment === a.id);
+          const permitted = new Set(rule?.requiresAny.map(r => r.attachment));
+          const excluded = rule && optics.filter(sight => !permitted.has(sight.id)).map(sight => sight.name);
           return {
             id: a.id,
             text: a.pts > 0 ? `${attDisplayName(a, weapon.id)} [${a.pts}]` : attDisplayName(a, weapon.id),
-            description: [a.description, excluded && `Not with: ${excluded.join(', ')}.`].filter(Boolean).join('\n\n'),
+            description: [a.description, excluded?.length && `Not with: ${excluded.join(', ')}.`].filter(Boolean).join('\n\n'),
           };
         }),
         onChange: value => handleChange('accessory', value),
+        lock: lockFor('accessory', 'OPT ACC'),
       });
     }
   };
@@ -160,6 +198,14 @@ export function renderAttachmentSection({
       }
     }
 
+    if (key === 'sight') {
+      // Iron sights, then fixed optics, variables and thermals, each by zoom.
+      const group = a => a.id === 'iron' ? 0 : ['thermal', 'therm_hyb'].includes(a.category) ? 3
+        : ['var_low', 'var_high'].includes(a.category) ? 2 : 1;
+      visible.sort((a, b) => group(a) - group(b) || (a.magnification ?? 0) - (b.magnification ?? 0)
+        || a.name.localeCompare(b.name));
+    }
+
     if (visible.length <= (isBarrel ? 0 : 1)) {
       const single = visible[0];
       // A slot the weapon cannot use is left out rather than shown as a greyed "None".
@@ -183,10 +229,12 @@ export function renderAttachmentSection({
         const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a, weapon);
         const name = attDisplayName(a, weapon?.id);
         return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name,
-          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a, weapon?.id),
+          // Every sight sets the target zoom now, so none is shown as having no effect.
+          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: key === 'sight' ? false : a.noEffect, assumed: isAssumedAtt(a, weapon?.id),
           bugs: bugsFor(key === 'rail' ? a.type : key, a.id) };
       }),
       onChange: value => handleChange(key, value),
+      lock: lockFor(key, label),
     });
   };
   slots.forEach(slot => {
@@ -208,6 +256,7 @@ export function renderAttachmentSection({
           bugs: bugsFor('ammo', a.id) };
       }),
       onChange: value => handleChange('ammo', value),
+      lock: lockFor('ammo', 'Ammo'),
     });
   } else if (!weapon) {
     appendSelectRow(container, {
@@ -232,6 +281,7 @@ export function renderAttachmentSection({
         bugs: bugsFor('mag', m.id),
       })),
       onChange: value => handleChange('mag', value),
+      lock: lockFor('mag', 'Mag'),
     });
   } else if (!weapon) {
     appendSelectRow(container, {
@@ -257,6 +307,7 @@ export function renderAttachmentSection({
         bugs: bugsFor('ergo', e.id),
       })),
       onChange: value => handleChange('ergo', value),
+      lock: lockFor('ergo', 'Ergo'),
     });
   } else if (!weapon) {
     appendSelectRow(container, {
@@ -280,4 +331,5 @@ export function renderAttachmentSection({
   if (pendingPp19Coverage) {
     container.insertAdjacentHTML('beforeend', '<div class="att-note pp19-coverage-note">PP-19 attachment availability and effects: needs measurement.</div>');
   }
+  decorate?.(container);
 }

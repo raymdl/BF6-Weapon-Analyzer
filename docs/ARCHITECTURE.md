@@ -47,6 +47,8 @@ being loaded by the application.
 | [sim/ballistics.js](../sim/ballistics.js) | Flight-time approximation, vector trajectory integration, zeroing. |
 | [sim/core.js](../sim/core.js) | Shot intervals, recoil generation, spread growth/recovery, source-exponent radius sampling, shared display ceiling. |
 | [sim/target.js](../sim/target.js) | Lazy target image, geometry/alpha hit test, zone classification, impact summaries. |
+| [sim/live-fire.js](../sim/live-fire.js), [sim/sensitivity.js](../sim/sensitivity.js) | Real-time recoil/spread stepper driven by an external trigger and view rotation; mouse-count to degree conversion for the Firing Range. |
+| [ui/firing-range.js](../ui/firing-range.js) | Firing Range pointer capture, animation loop and live overlay on the shared plot frame. |
 | [sim/share-state.js](../sim/share-state.js) | Compact and legacy URL encoding/decoding and selection validation. |
 | [ui/loadout.js](../ui/loadout.js), [ui/target-stats.js](../ui/target-stats.js) | Attachment controls and target-result presentation. |
 | [ui/capture.js](../ui/capture.js) | Current-view PNG capture; no independent weapon calculations. |
