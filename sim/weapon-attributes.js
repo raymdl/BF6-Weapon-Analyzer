@@ -146,6 +146,9 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
         k.decrease = unsmoothed.recoil.ads.decFactor * (unsmoothed._adsRecoilDecayMult ?? 1);
       }
       precision = lookup(table, k);
+      // Interdictor: the game panel shows 1 (ATTACHMENT_BUGS.md bug 22). Show the 2.1.1.0 keyed row
+      // value of 100, which every other bolt-action rifle shows, until the table is refreshed.
+      if (weapon.id === 'interdictor' && precision.panel === 1) precision = { panel: 100, method: 'bug-22-corrected' };
     }
     const rounded = value => Number.isFinite(value) ? Math.round(value) : null;
     return {
