@@ -138,8 +138,8 @@ export function createShareCodec({
     if (state.recoil.stance !== 'stand') params.set('rs', state.recoil.stance);
     if (state.recoil.platform !== 'pc') params.set('rp', state.recoil.platform);
     if (state.recoil.compensationLevel > 0) params.set('rcc', state.recoil.compensationLevel);
-    if (state.recoil.view === 'target') {
-      params.set('rv', 'target');
+    if (state.recoil.view === 'target' || state.recoil.view === 'range') {
+      params.set('rv', state.recoil.view);
       params.set('rd', state.recoil.distance ?? TARGET_DEFAULT_DISTANCE);
       if (state.recoil.zeroDistance !== 100) params.set('rz', state.recoil.zeroDistance);
       if (state.recoil.targetAim !== 'chest') params.set('rta', state.recoil.targetAim);
@@ -191,9 +191,9 @@ export function createShareCodec({
     if (params.get('ra') === 'hip') state.recoil.aim = 'hip';
     if (params.get('rs') === 'move') state.recoil.stance = 'move';
     if (params.get('rp') === 'console') state.recoil.platform = 'console';
-    if (params.get('rv') === 'target') state.recoil.view = 'target';
+    if (params.get('rv') === 'target' || params.get('rv') === 'range') state.recoil.view = params.get('rv');
     // Old target links omitted 30 m. New links always carry their distance.
-    const distance = parseInt(params.get('rd') ?? (state.recoil.view === 'target' ? '30' : ''), 10);
+    const distance = parseInt(params.get('rd') ?? (state.recoil.view !== 'angle' ? '30' : ''), 10);
     if (Number.isFinite(distance)) state.recoil.distance = Math.max(5, Math.min(300, distance));
     const zeroDistance = parseInt(params.get('rz'), 10);
     if ([100, 200, 300, 400, 500].includes(zeroDistance)) state.recoil.zeroDistance = zeroDistance;

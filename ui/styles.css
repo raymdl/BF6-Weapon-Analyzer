@@ -323,6 +323,13 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-target-controls input[type=number]::-webkit-inner-spin-button,.rc-target-controls input[type=number]::-webkit-outer-spin-button{margin:0;-webkit-appearance:none}
 .rc-target-controls .rc-target-resolution-input{width:36px}
 .rc-target-controls .rc-target-fov-input{width:29px}
+.rc-target-controls .rc-sens-input{width:29px}
+.rc-target-controls .rc-sens-input--wide{width:40px}
+.rc-sens-group{flex-wrap:wrap;row-gap:3px}
+.rc-sens-readout{color:#b9c6c6;letter-spacing:.02em;white-space:normal}
+.rc-range-summary{font-size:.72rem;line-height:1.45;color:#aab7bb;padding:0 0 2px}
+.rc-range-summary strong{color:var(--accent)}
+.rc-comp-range:disabled{opacity:.4;cursor:not-allowed}
 .rc-target-controls input:focus{border-color:var(--accent)}
 .rc-target-controls .rc-zero-readout{position:static;top:auto;right:auto;z-index:auto;margin-left:auto}
 .rc-zero-readout{position:absolute;top:8px;right:8px;z-index:2;display:flex;align-items:center;gap:5px;color:#8fa0a0;font-size:.63rem;line-height:1;text-transform:uppercase;letter-spacing:.06em}
@@ -340,6 +347,16 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-aim-readout[hidden]{display:none}
 .rc-viewbar #rcDistanceReadout{flex:0 0 36px;width:36px;text-align:right}
 .rc-viewbar #rcResetView{flex:0 0 21px;margin-left:auto}
+.rc-viewbar .rc-range-actions{display:flex;gap:5px;margin-left:auto;flex:0 0 auto}
+.rc-viewbar .rc-range-actions:not([hidden])~#rcResetView{margin-left:0}
+.rc-range-btn{height:21px;padding:0 8px;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#aab7bb;font:inherit;font-size:.68rem;font-weight:600;letter-spacing:.03em;line-height:1;cursor:pointer}
+.rc-range-btn:hover{border-color:var(--accent);color:var(--accent)}
+.rc-zone-legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin:4px 0 6px;font-size:.68rem;color:#aab7bb}
+.rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}
+.rc-zone-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
+.rc-zone-legend i.miss{opacity:.5}
+#cmpSection.range-locked{opacity:.4;pointer-events:none}
+.cmp-btn:disabled{opacity:.55;cursor:not-allowed}
 .rc-linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent2);text-decoration:underline;letter-spacing:.03em}
 .rc-linkbtn:hover{color:var(--accent)}
 .rc-scale-icon{display:block;width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linecap:round;stroke-linejoin:round;overflow:visible}

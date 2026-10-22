@@ -4,6 +4,8 @@ import { formatMilliseconds, formatMovementMultiplier } from './format.js';
 import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
 import { bindRecoilTouchControls } from './recoil-touch.js';
+import { createFiringRange, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND } from './firing-range.js';
+import { degreesPerCount, hipfireDegreesPerCount, cmPer360, SENS_DEFAULTS } from '../sim/sensitivity.js';
 import {
   setSimContext, mulberry32, whash,
   recoilGroup, baseRecoilGroup, recoilAmount, recoilVariation,
@@ -170,6 +172,7 @@ const state = {
     savedLayers: {
       angle: { scatter: true, spray: true, path: false, spread: false, cone: false },
       target: { scatter: false, spray: true, path: false, spread: false, cone: false },
+      range: { scatter: false, spray: true, path: false, spread: false, cone: false },
     },
     platform: 'pc',
     spreadPreset: 'growth',
@@ -209,6 +212,12 @@ let dmgChart = null;
 // Held so the observer is not collected while it still has an observation.
 let plotResizeObserver = null;
 let recoilTouchControls = null;
+let firingRange = null;
+
+/** Soldier Target and Firing Range share the projected-target geometry. */
+function isTargetGeometry() {
+  return state.recoil.view === 'target' || state.recoil.view === 'range';
+}
 
 // ── SIM CONTEXT INIT ──────────────────────────────────────────────────────────
 
@@ -435,7 +444,7 @@ function setPanelCollapsed(key, collapsed) {
     if (key === 'charts') { renderChart(); renderBTK(); }
     if (key === 'recoil') {
       renderRecoil();
-      if (state.recoil.view === 'target') requestTargetImage();
+      if (isTargetGeometry()) requestTargetImage();
     }
     if (key === 'overview') renderOverview();
   }
@@ -1300,8 +1309,15 @@ function syncCompensationControls() {
   const level = state.recoil.compensationLevel;
   const range = document.getElementById('rcCompRange');
   const readout = document.getElementById('rcCompReadout');
-  if (range) { range.value = level; paintRange(range); }
-  if (readout) readout.textContent = `${level}%`;
+  const inRange = state.recoil.view === 'range';
+  if (range) {
+    range.value = level; paintRange(range);
+    range.disabled = inRange;
+    range.title = inRange
+      ? 'In the Firing Range your mouse is the recoil control.'
+      : 'How much of the expected recoil the shooter pulls back down. 0% is no compensation.';
+  }
+  if (readout) readout.textContent = inRange ? 'mouse' : `${level}%`;
 }
 function syncCompensationLevel() {
   const el = document.getElementById('rcCompRange');
@@ -1343,13 +1359,14 @@ function applyViewLayers(view) {
 function requestTargetImage() {
   if (!document.getElementById('rcMain').clientWidth) return;
   whenTargetImageReady().then(() => {
-    if (state.recoil.view === 'target') renderRecoil();
+    if (isTargetGeometry()) renderRecoil();
   });
 }
 function setRecoilView(view) {
-  const next = view === 'target' ? 'target' : 'angle';
+  const next = view === 'target' || view === 'range' ? view : 'angle';
   if (state.recoil.view === next) return;
   recoilTouchControls?.cancel();
+  firingRange?.setActive(false);
   // Each view remembers its own overlays, so the target view can start without
   // the scatter cloud without discarding the angle plot's setup.
   state.recoil.savedLayers[state.recoil.view] = { ...state.recoil.layers };
@@ -1365,7 +1382,7 @@ function setRecoilView(view) {
     el.classList.add('rc-view-swap');
   });
   renderRecoil();
-  if (next === 'target') requestTargetImage();
+  if (next !== 'angle') requestTargetImage();
 }
 /**
  * Soldier Target Ctrl+click places the aim point and fires a fresh sample.
@@ -1377,6 +1394,7 @@ function fireAtAimPoint(worldX, worldY) {
   redrawRecoilSample();
 }
 function redrawRecoilSample() {
+  if (state.recoil.view === 'range') { firingRange?.reset(); return; }
   const seed = (Math.random() * 0x100000000) >>> 0;
   state.recoil.refSeed = seed === state.recoil.refSeed ? (seed + 1) >>> 0 : seed;
   renderRecoil();
@@ -1411,12 +1429,12 @@ function targetDistanceIndex(distance) {
   return best;
 }
 function syncTargetDistance() {
-  if (state.recoil.view === 'target' && state.recoil.magnification == null) {
+  if (isTargetGeometry() && state.recoil.magnification == null) {
     state.recoil.magnification = currentMagnification();
   }
   const el = document.getElementById('rcDistanceRange');
   const raw = +(el?.value ?? 0);
-  state.recoil.distance = state.recoil.view === 'target'
+  state.recoil.distance = isTargetGeometry()
     ? TARGET_DISTANCE_LADDER[Math.max(0, Math.min(TARGET_DISTANCE_LADDER.length - 1, Math.round(raw)))]
     : Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(Number.isFinite(raw) ? raw : TARGET_DEFAULT_DISTANCE)));
   renderRecoil();
@@ -1424,7 +1442,7 @@ function syncTargetDistance() {
 function syncZoomFromSlider() {
   const el = document.getElementById('rcZoomRange');
   const raw = +(el?.value ?? 50);
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     setMagnificationIndex(raw);
   } else {
     // scaleH is a half-span in degrees, so a wider span means less zoom.
@@ -1435,7 +1453,7 @@ function syncZoomFromSlider() {
 }
 /** The zoom slider indexes the magnification ladder in target view, percent in angle view. */
 function zoomSliderBounds() {
-  return state.recoil.view === 'target'
+  return isTargetGeometry()
     ? { min: 0, max: SCOPE_MAGNIFICATIONS.length - 1, step: 1, value: SCOPE_MAGNIFICATIONS.indexOf(currentMagnification()) }
     : { min: 0, max: 100, step: 1, value: (RECOIL_SCALE_MAX - state.recoil.scaleH) / (RECOIL_SCALE_MAX - RECOIL_SCALE_MIN) * 100 };
 }
@@ -1528,6 +1546,93 @@ function targetDisplaySettings() {
     hFovDeg: Math.max(1, Math.min(179, enteredFov || ADS_1X_HFOV_DEG)),
   };
 }
+// ── FIRING RANGE SENSITIVITY ─────────────────────────────────────────────────
+// Mouse settings are a property of the player's PC, so like the display
+// settings they live in local storage rather than in shared links.
+const SENS_STORAGE = { dpi: 'bf6.sensDpi', sens: 'bf6.sensValue', coefficient: 'bf6.sensZoomCoefficient' };
+const SENS_INPUT = { dpi: 'rcSensDpi', sens: 'rcSensValue', coefficient: 'rcSensCoef' };
+let sensSettingsLoaded = false;
+
+function loadSensSettings() {
+  if (sensSettingsLoaded) return;
+  sensSettingsLoaded = true;
+  for (const key of Object.keys(SENS_INPUT)) {
+    const input = document.getElementById(SENS_INPUT[key]);
+    if (!input) continue;
+    let value = SENS_DEFAULTS[key];
+    try {
+      const stored = localStorage.getItem(SENS_STORAGE[key]);
+      if (stored != null && Number.isFinite(Number(stored)) && Number(stored) >= 0) value = Number(stored);
+    } catch { /* localStorage may be unavailable in a restricted browser context. */ }
+    input.value = String(value);
+  }
+}
+function sensSettings() {
+  const read = key => {
+    const entered = +(document.getElementById(SENS_INPUT[key])?.value ?? '');
+    return Number.isFinite(entered) && entered > 0 ? entered : SENS_DEFAULTS[key];
+  };
+  // A zoom coefficient of 0 is a legitimate setting (pure zoom ratio).
+  const coefficientRaw = +(document.getElementById(SENS_INPUT.coefficient)?.value ?? '');
+  return {
+    dpi: read('dpi'), sens: read('sens'),
+    coefficient: Number.isFinite(coefficientRaw) && coefficientRaw >= 0 ? coefficientRaw : SENS_DEFAULTS.coefficient,
+  };
+}
+/** Degrees of view rotation per mouse count for the current aim state and optic. */
+function rangeDegreesPerCount() {
+  const { sens, coefficient } = sensSettings();
+  return degreesPerCount({
+    sens, aim: state.recoil.aim, hFovDeg: targetDisplaySettings().hFovDeg,
+    magnification: currentMagnification(), coefficientPct: coefficient,
+  });
+}
+function rangeSensSummary() {
+  const { dpi, sens } = sensSettings();
+  const hip = hipfireDegreesPerCount(sens);
+  const current = rangeDegreesPerCount();
+  const aimLabel = state.recoil.aim === 'ads' ? `ADS ${currentMagnification().toFixed(2)}×` : 'hipfire';
+  return {
+    cm360: cmPer360(hip, dpi),
+    degPerCount: current,
+    text: `${cmPer360(hip, dpi).toFixed(1)} cm/360 hipfire · ${aimLabel} ${current.toFixed(4)}°/count`,
+  };
+}
+function syncSensReadout() {
+  const readout = document.getElementById('rcSensReadout');
+  if (readout) readout.textContent = rangeSensSummary().text;
+}
+function rangeSimKey() {
+  const w = selectedWeaponBuild(state.slots[0]);
+  const { aim, stance, platform } = state.recoil;
+  return [w ? w.id : '', w ? JSON.stringify(state.slots[0].atts) : '', aim, stance, platform].join('|');
+}
+function rangeStatsHtml(axis) {
+  const live = firingRange?.live();
+  let summary;
+  if (!live) {
+    summary = '<p class="target-impact-note">Select a weapon to use the Firing Range.</p>';
+  } else {
+    const mode = { auto: 'hold the left button to fire', burst: 'click for each burst', single: 'click for each shot' }[live.state.triggerMode];
+    const sens = rangeSensSummary();
+    const legend = RANGE_ZONE_LEGEND.map(([zone, label]) => `<span><i style="background:${RANGE_ZONE_COLORS[zone]}"></i>${label}</span>`).join('')
+      + '<span><i class="miss" style="background:#c9a227"></i>Miss</span>';
+    summary = `<div class="rc-range-summary"><strong>Firing Range</strong> · ${weaponDisplayLabel(live.state.weapon)} · ${mode}. R reloads, C clears, Esc releases the mouse.`
+      + `<br>${sens.text}. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.</div>`
+      + `<div class="rc-zone-legend">${legend}</div>`;
+  }
+  return `<div id="rcRangeStats">${summary}${targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, labelFor: weaponDisplayLabel })}</div>`;
+}
+/** Refresh only the live sample's stats while shots are landing. */
+function refreshRangeStats() {
+  if (state.recoil.view !== 'range') return;
+  const slot = document.getElementById('rcRangeStats');
+  const live = firingRange?.live();
+  if (!slot || !live) return;
+  const zones = live.state.impacts.map(p => p.zone ?? null);
+  slot.outerHTML = rangeStatsHtml({ targetHits: [{ weapon: live.state.weapon, zones, hits: zones.filter(Boolean).length, total: zones.length }] });
+}
+
 /**
  * Vertical field, in target-plane centimetres, seen through an `m`x optic.
  * Magnification scales the tangent of the half-angle the way a real optic does;
@@ -1549,7 +1654,7 @@ function currentMagnification() {
   return fitMagnification(targetBaseFrame?.fitSpan ?? targetFrame().heightCm / TARGET_FRAME_FILL);
 }
 function recoilViewport() {
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     const { PW, PH } = plotBox();
     const display = targetDisplaySettings();
     // Fullscreen compensation: plot world span = optical span × (plot pixel height / selected display height).
@@ -1579,7 +1684,7 @@ function setMagnificationIndex(index) {
   state.recoil.magnification = SCOPE_MAGNIFICATIONS[clamped];
 }
 function adjustRecoilScale(dir) {
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
     setMagnificationIndex(index + (dir === 'in' ? 1 : -1));
   } else {
@@ -1593,7 +1698,8 @@ function adjustRecoilScale(dir) {
 function resetRecoilView() {
   recoilTouchControls?.cancel();
   state.recoil.refSeed = 0;
-  if (state.recoil.view === 'target') {
+  if (state.recoil.view === 'range') firingRange?.reset();
+  if (isTargetGeometry()) {
     state.recoil.distance = TARGET_DEFAULT_DISTANCE;
     state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
     state.recoil.distancePanX = 0;
@@ -1609,7 +1715,7 @@ function resetRecoilView() {
 /** Expanded touch reset changes zoom and pan only, preserving distance, aim and seed. */
 function resetRecoilFraming() {
   recoilTouchControls?.cancel();
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     state.recoil.magnification = TARGET_DEFAULT_MAGNIFICATION;
     state.recoil.distancePanX = 0; state.recoil.distancePanY = 0;
   } else {
@@ -1621,7 +1727,7 @@ function resetRecoilFraming() {
  * centroid. Target zoom stays on the existing optic ladder, like its slider. */
 function transformRecoilTouchView(baseZoom, ratio, anchor, clientX, clientY, canvas) {
   if (!Number.isFinite(ratio) || ratio <= 0) return;
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     const wanted = baseZoom * ratio;
     let index = 0;
     SCOPE_MAGNIFICATIONS.forEach((value, i) => {
@@ -1633,7 +1739,7 @@ function transformRecoilTouchView(baseZoom, ratio, anchor, clientX, clientY, can
   }
   const point = canvasToWorld(clientX, clientY, canvas);
   if (!point) return;
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     state.recoil.distancePanX += anchor.x - point.x;
     state.recoil.distancePanY += anchor.y - point.y;
   } else {
@@ -1643,7 +1749,7 @@ function transformRecoilTouchView(baseZoom, ratio, anchor, clientX, clientY, can
   scheduleRecoilPlot();
 }
 function panRecoilView(dir) {
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     const step = recoilViewport().xSpan * 0.12;
     if (dir === 'left')  state.recoil.distancePanX -= step;
     if (dir === 'right') state.recoil.distancePanX += step;
@@ -1666,7 +1772,7 @@ function panRecoilByPixels(dx, dy, canvas) {
   const { PW, PH } = plotBox();
   const dxWorld = dx * (plotCanvasSize(canvas).width / rect.width) / PW * xSpan;
   const dyWorld = dy * (plotCanvasSize(canvas).height / rect.height) / PH * ySpan;
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     state.recoil.distancePanX -= dxWorld;
     state.recoil.distancePanY += dyWorld;
   } else {
@@ -1688,7 +1794,7 @@ function zoomRecoilAtPointer(deltaY, clientX, clientY, canvas) {
   const worldX = before.xCenter + (u - 0.5) * before.xSpan;
   const worldY = before.yCenter + (0.5 - v) * before.ySpan;
 
-  if (state.recoil.view === 'target') {
+  if (isTargetGeometry()) {
     const index = SCOPE_MAGNIFICATIONS.indexOf(currentMagnification());
     setMagnificationIndex(index + (deltaY < 0 ? 1 : -1));
     const after = recoilViewport();
@@ -1764,13 +1870,17 @@ function patternFor(weapon, seed, shots) {
   return { points: cached.points.get(seedKey), spreads: cached.spreads };
 }
 
-function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
+/**
+ * Background, grid, axis labels, crosshair and (in target geometry) the soldier
+ * figure, shared by the pattern plot and the Firing Range. Leaves the context
+ * saved and clipped to the plot area; the caller restores it.
+ */
+function drawPlotFrame(canvas, { crosshair = state.recoil.crosshair } = {}) {
   const { width: CW, height: CH } = syncPlotCanvasSize(canvas);
   const ctx = canvas.getContext('2d');
   const PL = PLOT_PAD.l, PR = PLOT_PAD.r, PT = PLOT_PAD.t, PB = PLOT_PAD.b;
   const PW = CW - PL - PR, PH = CH - PT - PB;
-  const N = selectedRecoilShotCount();
-  const isTargetView = state.recoil.view === 'target';
+  const isTargetView = isTargetGeometry();
   const view = recoilViewport();
   const xMin = view.xCenter - view.xSpan / 2, xMax = view.xCenter + view.xSpan / 2;
   const yMin = view.yCenter - view.ySpan / 2, yMax = view.yCenter + view.ySpan / 2;
@@ -1800,7 +1910,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     if (yMin <= 0 && yMax >= 0) { ctx.beginPath(); ctx.moveTo(PL, mapY(0)); ctx.lineTo(PL + PW, mapY(0)); ctx.stroke(); }
   }
 
-  if (state.recoil.crosshair) {
+  if (crosshair) {
     const ox = mapX(aimOffset.x), oy = mapY(aimOffset.y);
     if (ox >= PL && ox <= PL + PW && oy >= PT && oy <= PT + PH) {
       ctx.strokeStyle = isTargetView ? 'rgba(255,255,255,0.72)' : 'rgba(255,255,255,0.4)';
@@ -1823,13 +1933,21 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   ctx.save();
   ctx.beginPath(); ctx.rect(PL, PT, PW, PH); ctx.clip();
 
-  const cols = ['#c9a227', '#4d94d0'];
-  const drawOrder = [weapon1, weapon2].filter(Boolean);
-  const spreadBubbleIdxs = getSpreadBulletIdxs(N);
   const targetHitTest = isTargetView ? drawTarget(ctx, mapX, mapY) : null;
   const pxPerCm = isTargetView ? PW / (xMax - xMin) : 0;
   const sprayDotRadius = isTargetView ? targetMarkerRadius(pxPerCm) : 2.5;
   const scatterDotRadius = isTargetView ? targetMarkerRadius(pxPerCm, 1.25) : 2;
+  return { ctx, CW, CH, PL, PT, PW, PH, isTargetView, xMin, xMax, yMin, yMax, mapX, mapY, toX, toY,
+    targetImpactYcm, aimOffset, cmAt: cmAtDistance, targetHitTest, pxPerCm, sprayDotRadius, scatterDotRadius };
+}
+
+function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
+  const { ctx, isTargetView, xMin, xMax, yMin, yMax, toX, toY, targetImpactYcm, aimOffset,
+    targetHitTest, sprayDotRadius, scatterDotRadius } = drawPlotFrame(canvas);
+  const N = selectedRecoilShotCount();
+  const cols = ['#c9a227', '#4d94d0'];
+  const drawOrder = [weapon1, weapon2].filter(Boolean);
+  const spreadBubbleIdxs = getSpreadBulletIdxs(N);
   const targetHits = [];
 
   // Pass 0 — Scatter cloud
@@ -2335,7 +2453,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   if (!document.getElementById('rcMain').clientWidth) return;
   if (recoilPlotFrame != null) cancelAnimationFrame(recoilPlotFrame);
   recoilPlotFrame = null;
-  if (state.recoil.view === 'target') state.recoil.distance = snapTargetDistance(state.recoil.distance);
+  if (isTargetGeometry()) state.recoil.distance = snapTargetDistance(state.recoil.distance);
   scheduleUrlSync();
   const w1 = selectedWeaponBuild(state.slots[0]);
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
@@ -2351,7 +2469,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   const shotCount = selectedRecoilShotCount();
   // The base frame feeds the auto magnification, so it has to settle before
   // any of the control read-outs are written.
-  if (state.recoil.view === 'target') computeTargetBaseFrame([w1, w2], shotCount);
+  if (isTargetGeometry()) computeTargetBaseFrame([w1, w2], shotCount);
 
   if (!plotOnly) renderAttachmentStats([
     { weapon: state.slots[0].weapon, atts: state.slots[0].atts, build: w1, colClass: 'c1' },
@@ -2377,11 +2495,13 @@ function renderRecoil({ plotOnly = false } = {}) {
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
-    const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
+    const label = state.recoil.view === 'range'
+      ? `${state.recoil.crosshair ? 'Hide' : 'Show'} the live crosshair and spread ring`
+      : `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
     crosshairToggle.title = label;
     crosshairToggle.setAttribute('aria-label', label);
   }
-  const isTarget = state.recoil.view === 'target';
+  const isTarget = isTargetGeometry();
   const targetControls = document.getElementById('rcTargetControls');
   if (targetControls) targetControls.hidden = !isTarget;
   const targetWidthInput = document.getElementById('rcTargetWidth');
@@ -2401,10 +2521,11 @@ function renderRecoil({ plotOnly = false } = {}) {
       if (targetFovInput && Number.isFinite(storedFov) && storedFov >= 1 && storedFov <= 179) targetFovInput.value = String(Math.round(storedFov));
     } catch { /* localStorage may be unavailable in a restricted browser context. */ }
   }
-  ['rcViewAngle', 'rcViewTarget'].forEach(id => {
+  const isRange = state.recoil.view === 'range';
+  Object.entries({ rcViewAngle: 'angle', rcViewTarget: 'target', rcViewRange: 'range' }).forEach(([id, view]) => {
     const tab = document.getElementById(id);
     if (!tab) return;
-    const on = (id === 'rcViewTarget') === isTarget;
+    const on = state.recoil.view === view;
     tab.classList.toggle('on', on);
     tab.setAttribute('aria-selected', String(on));
   });
@@ -2418,9 +2539,14 @@ function renderRecoil({ plotOnly = false } = {}) {
   const hint = document.getElementById('rcHint');
   recoilTouchControls?.sync();
   if (hint) {
-    const nextHint = recoilTouchControls?.hint() ?? (isTarget
+    const rangeHint = !firingRange?.supportsLock()
+      ? 'Firing Range needs a browser with pointer capture and a mouse'
+      : firingRange.isLocked()
+        ? 'Hold left mouse to fire · Move the mouse to control recoil · R reload · C clear · Esc release'
+        : 'Click the plot to take control · Hold left mouse to fire · Esc releases the mouse';
+    const nextHint = isRange ? rangeHint : (recoilTouchControls?.hint() ?? (isTarget
       ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom'
-      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom');
+      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom'));
     if (hint.textContent !== nextHint) hint.textContent = nextHint;
   }
   const aimReadout = document.getElementById('rcAimReadout');
@@ -2496,7 +2622,23 @@ function renderRecoil({ plotOnly = false } = {}) {
     shotsInput.hidden = !(state.recoil.spreadPreset === 'custom' && state.recoil.spreadEditing);
     shotsInput.classList.toggle('idle', !layers.spread);
   }
-  const axis = drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
+  document.getElementById('rcOverlayGroup')?.toggleAttribute('hidden', isRange);
+  document.getElementById('rcRangeActions')?.toggleAttribute('hidden', !isRange);
+  // Only Weapon 1 fires on the range. The compare loadout is kept but greyed
+  // out, so nobody has to rebuild it after a session on the range.
+  document.getElementById('cmpSection')?.classList.toggle('range-locked', isRange);
+  const cmpBtn = document.getElementById('cmpBtn');
+  if (cmpBtn) {
+    cmpBtn.disabled = isRange;
+    cmpBtn.title = isRange ? 'Only Weapon 1 fires on the Firing Range. Your compare loadout is kept.' : '';
+  }
+  const sensGroup = document.getElementById('rcSensGroup');
+  if (sensGroup) sensGroup.hidden = !isRange;
+  if (isRange) { loadSensSettings(); syncSensReadout(); }
+  firingRange?.setActive(isRange);
+  const axis = isRange
+    ? firingRange.render()
+    : drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
   const noteEl = document.querySelector('.rc-note');
   const stateLabel = `${aim.toUpperCase()} / ${stance === 'move' ? 'MOV' : 'STD'}`;
   if (noteEl && axis) {
@@ -2511,7 +2653,9 @@ function renderRecoil({ plotOnly = false } = {}) {
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
-    if (axis.isTargetView) {
+    if (isRange) {
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from. Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game.`;
+    } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}`;
     } else {
@@ -2534,7 +2678,9 @@ function renderRecoil({ plotOnly = false } = {}) {
   // to the recoil block no matter which tab was last picked.
   const activeStatsTab = isTargetView && state.recoil.targetStatsTab === 'impact' ? 'impact' : 'recoil';
   const tabsHtml = stacksStats ? '' : statsTabsHtml(activeStatsTab, isTargetView);
-  const targetHtml = isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: weaponDisplayLabel }) : '';
+  const targetHtml = isRange
+    ? rangeStatsHtml(axis)
+    : isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: weaponDisplayLabel }) : '';
   // The strip and the stats it labels share one bordered box, the same way the
   // plot's tabs and canvas do, so the selected tab sits on its own content.
   const statsEl = document.getElementById('rcStats');
@@ -3136,6 +3282,17 @@ function bindEvents() {
   document.getElementById('rcStanceMove').addEventListener('click', () => setRecoilStance('move'));
   document.getElementById('rcViewAngle').addEventListener('click', () => setRecoilView('angle'));
   document.getElementById('rcViewTarget').addEventListener('click', () => setRecoilView('target'));
+  document.getElementById('rcViewRange')?.addEventListener('click', () => setRecoilView('range'));
+  Object.entries(SENS_INPUT).forEach(([key, id]) => {
+    document.getElementById(id)?.addEventListener('input', e => {
+      const value = Number(e.currentTarget.value);
+      if (Number.isFinite(value) && value >= 0) {
+        try { localStorage.setItem(SENS_STORAGE[key], String(value)); } catch { /* storage is optional. */ }
+      }
+      syncSensReadout();
+      refreshRangeStats();
+    });
+  });
   // The stats panel is rebuilt on every render, so the toggle is delegated.
   document.getElementById('rcStats').addEventListener('click', e => {
     const btn = e.target.closest('[data-stats-tab]');
@@ -3161,12 +3318,24 @@ function bindEvents() {
   const recoilCanvas = document.getElementById('rcMain');
   recoilTouchControls = bindRecoilTouchControls({
     canvas: recoilCanvas, readView: () => state.recoil.view,
-    readZoom: () => state.recoil.view === 'target' ? currentMagnification() : state.recoil.scaleH,
+    readZoom: () => isTargetGeometry() ? currentMagnification() : state.recoil.scaleH,
     worldAt: (x, y) => canvasToWorld(x, y, recoilCanvas),
     transformView: (...args) => transformRecoilTouchView(...args, recoilCanvas),
     redraw: redrawRecoilSample, aim: fireAtAimPoint,
     resetView: resetRecoilFraming, repaint: renderRecoil,
   });
+  firingRange = createFiringRange({
+    canvas: recoilCanvas,
+    readBuild: () => selectedWeaponBuild(state.slots[0]),
+    readSimKey: rangeSimKey,
+    readDegreesPerCount: rangeDegreesPerCount,
+    drawFrame: drawPlotFrame,
+    requestStats: refreshRangeStats,
+    requestHint: () => renderRecoil({ plotOnly: true }),
+    readReticle: () => state.recoil.crosshair,
+  });
+  document.getElementById('rcRangeReload')?.addEventListener('click', () => firingRange.reload());
+  document.getElementById('rcRangeClear')?.addEventListener('click', () => firingRange.clear());
   // Dragging replaced the pan buttons, so the keyboard needs its own way in.
   recoilCanvas.addEventListener('keydown', e => {
     const pan = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' }[e.key];
@@ -3195,6 +3364,8 @@ function bindEvents() {
 
   recoilCanvas.addEventListener('pointerdown', e => {
     if (e.button !== 0 || e.pointerType === 'touch') return;
+    // The Firing Range owns plain clicks: they capture the pointer and fire.
+    if (state.recoil.view === 'range' && !e.shiftKey) return;
     recoilDrag = { x: e.clientX, y: e.clientY, startX: e.clientX, startY: e.clientY, pointerId: e.pointerId, moved: false, pan: e.shiftKey };
     try { recoilCanvas.setPointerCapture(e.pointerId); } catch { /* pointer already gone */ }
     if (recoilDrag.pan) recoilCanvas.classList.add('dragging');
@@ -3307,4 +3478,4 @@ renderSidebar();
 renderStats();
 _restoringUrl = false;
 initMobileTooltips();
-if (state.recoil.view === 'target') requestTargetImage();
+if (isTargetGeometry()) requestTargetImage();

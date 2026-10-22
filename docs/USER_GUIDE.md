@@ -171,8 +171,8 @@ these lines can slope even between bullet-count steps.
 
 ## Recoil and spread
 
-Choose **Angle Plot** for angular comparison or **Soldier Target** for a projected
-pattern at distance. Choose ADS/hipfire, standing/moving, PC/console, and 1–100 shots.
+Choose **Angle Plot** for angular comparison, **Soldier Target** for a projected
+pattern at distance, or **Firing Range** to fire the weapon yourself with your mouse. Choose ADS/hipfire, standing/moving, PC/console, and 1–100 shots.
 These are model contexts; they do not add crouch, prone, player skill, or aim-assist simulation.
 
 | Layer/control | Meaning |
@@ -181,7 +181,7 @@ These are model contexts; they do not add crouch, prone, player skill, or aim-as
 | Spray | One sampled run, including random spread. Reroll selects another reference seed. |
 | Recoil path | Aim displacement without the random spread sample. |
 | Spread circles / cone | Angular spread envelopes, with selectable shot samples. They describe the model's bounds. |
-| Recoil control | Subtracts 0–125% of the expected recoil vector; defaults to 0%. It leaves random variation and spread. Values above 100% overcompensate. |
+| Recoil control | Subtracts 0–125% of the expected recoil vector; defaults to 0%. It leaves random variation and spread. Values above 100% overcompensate. In Firing Range the slider is disabled and your mouse takes its place. |
 | Zoom, pan, crosshair | Change the plot view without altering simulated accuracy. |
 
 Spread-circle samples offer growth, early-shot, all-shot, and custom selections.
@@ -288,6 +288,38 @@ after the first lethal shot. The 180 cm figure and its hit zones are approximate
 results describe this sample, not expected player accuracy. If its image is missing,
 hit statistics are unavailable. Pellet loads explicitly suppress hit-rate, damage,
 and lethality results because the plot shows one direction per shell.
+
+## Firing Range
+
+**Firing Range** runs the same recoil and spread model in real time, with your own
+mouse as the recoil control instead of the Recoil Control slider. It uses the
+Soldier Target geometry, distance and zoom, and fires only the first weapon.
+
+Click the plot to capture the mouse; the crosshair starts under the cursor and
+the click itself does not fire. Hold the left button to fire a full-auto weapon,
+click once per shot for semi-automatic, bolt and pump weapons, or click once per
+burst. The magazine empties at its real size. While the plot holds the mouse the
+cursor is hidden, so the keys are the controls: **R** reloads and clears the
+shots, **C** clears the shots, **Esc** releases the mouse. The **Reload** and
+**Clear** buttons above the plot do the same once the mouse is released, keeping
+distance, zoom and aim; the reset button also returns the view and the aim to the
+starting point. The ring around the crosshair is the spread the next shot would
+be sampled from; the crosshair button hides the ring and crosshair. Dots are
+coloured by hit zone (red head, gold upper torso, blue lower torso, arms and legs) and
+faded dots miss. The Target Impact Stats describe the shots fired so far. Only
+Weapon 1 fires, so the compare loadout is greyed out but kept.
+
+Enter your mouse **DPI**, the in-game **Soldier Mouse Sensitivity** and the
+**Uniform Infantry Aiming coefficient** (game default 133%) under the plot. These
+are saved locally, like the display settings, and never written to shared links.
+The read-out shows the hipfire cm/360 and the degrees of view rotation per mouse
+count for the current aim state and zoom. Hipfire uses the published Battlefield 6
+yaw constant (sensitivity × 0.0017362342283 + 0.002314981532 degrees per count,
+from the KovaaK's sensitivity converter). The ADS scaling uses the community
+monitor-distance formula for the FOV and the plot's magnification; it has not been
+confirmed against BF6 source values. The browser requests raw mouse input where it
+can; otherwise operating-system pointer acceleration applies. Pointer capture
+needs a mouse and a desktop browser, so the view is not usable on touch devices.
 
 ## Share, capture, and pop out
 
