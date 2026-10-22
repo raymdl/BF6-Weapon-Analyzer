@@ -119,3 +119,15 @@ test('sensitivity conversion follows the published hipfire yaw and the zoom rati
   assert.equal(degreesPerCount({ sens: 20, aim: 'hip', magnification: 4 }), hip);
   assert.ok(degreesPerCount({ sens: 20, aim: 'ads', hFovDeg: 103, magnification: 2.5 }) < hip);
 });
+
+test('mouse movement against the recoil consumes it, so a countered string settles on the aim point', () => {
+  setSimContext({ aimState: 'ads', stanceState: 'stand' });
+  const live = createLiveFire(build('m433'), { seed: 1, magazine: 10 });
+  live.setTrigger(true);
+  while (live.state.shots < 10) live.advance(1 / 120, { x: 0, y: -0.05 });
+  live.setTrigger(false);
+  assert.ok(live.state.recoil.y < 4, 'the pull-down removed recoil state, not only aim');
+  live.advance(5);
+  assert.ok(live.settled());
+  assert.ok(Math.abs(live.view().y) < 0.05, `view settles on the aim point, got ${live.view().y}`);
+});

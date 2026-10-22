@@ -11,7 +11,11 @@
  *
  * All angles are degrees of view rotation: +x right, +y up. The view direction is
  * aim (mouse) + recoil (uncompensated kick, which decays toward zero); each shot
- * leaves at view + a spread sample.
+ * leaves at view + a spread sample. Mouse movement against the recoil still
+ * acting on the view consumes that recoil instead of moving the aim
+ * (RecoilCompensationConsumesAimPitch/Yaw), so a pulled-down string recovers
+ * only the kick the player did not counter and the view settles back on the
+ * aim point rather than below it.
  */
 import {
   mulberry32, whash, uniformDev, recoilGroup, selectedRecoilAmountFor, selectedRecoilVariationFor,
@@ -112,9 +116,18 @@ export function createLiveFire(w, { seed = 1, magazine = w.mag } = {}) {
     if (triggerMode === 'burst') burstLeft = Math.max(0, burstLeft - 1);
   }
 
+  // Mouse movement against the recoil state cancels it; the remainder turns the aim.
+  function counterAim(axis, delta) {
+    const held = s.recoil[axis];
+    if (delta === 0 || held === 0 || (delta > 0) === (held > 0)) return delta;
+    const used = Math.sign(delta) * Math.min(Math.abs(delta), Math.abs(held));
+    s.recoil[axis] = Math.abs(used) === Math.abs(held) ? 0 : held + used;
+    return delta - used;
+  }
+
   function integrate(step, mouseRate) {
-    s.aim.x += mouseRate.x * step;
-    s.aim.y += mouseRate.y * step;
+    s.aim.x += counterAim('x', mouseRate.x * step);
+    s.aim.y += counterAim('y', mouseRate.y * step);
     let xRate = 0, yRate = 0;
     for (const impulse of pending) { xRate += impulse.xRate; yRate += impulse.yRate; }
     if (xRate !== 0 || yRate !== 0 || s.recoil.x !== 0 || s.recoil.y !== 0) {

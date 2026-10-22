@@ -323,6 +323,9 @@ loads suppress hit-rate, damage and lethality results.
 **Firing Range** runs the same recoil and spread model in real time, with your own
 mouse as the recoil control instead of the Recoil Control slider. It uses the
 Soldier Target geometry, distance and zoom, and fires only the first weapon.
+Mouse movement against the recoil cancels it, as in the game: after a string you
+pulled down against, only the kick you did not counter recovers, so the view
+settles back on the aim point instead of below it.
 
 Click the plot to capture the mouse; the crosshair starts under the cursor and
 the click itself does not fire. Hold the left button to fire a full-auto weapon,
