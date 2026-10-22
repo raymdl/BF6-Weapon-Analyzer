@@ -19,13 +19,17 @@ const defaults = w => {
 };
 const build = id => applyAttachments(weapon(id), defaults(weapon(id)));
 
-/** Hold the trigger from t = 0 and advance in uneven frames until `shots` have fired. */
+/**
+ * Hold the trigger from t = 0 and advance in uneven frames until `shots` have
+ * fired. A burst weapon needs a press per burst, so it is tapped every frame.
+ */
 function heldRun(w, seed, shots, aimState) {
   setSimContext({ aimState, stanceState: 'stand' });
   const live = createLiveFire(w, { seed, magazine: Infinity });
   live.setTrigger(true);
   let frame = 0;
   while (live.state.shots < shots && frame < 5000) {
+    if (triggerModeFor(w) === 'burst') { live.setTrigger(false); live.setTrigger(true); }
     live.advance(0.0137 + (frame % 3) * 0.0041);
     frame++;
   }
@@ -83,6 +87,14 @@ test('mouse movement shifts the view and the trigger modes gate shots', () => {
   burst.setTrigger(false);
   burst.advance(1);
   assert.equal(burst.state.shots, burst.state.weapon.burstRounds, 'a tap fires one full burst');
+  burst.setTrigger(true);
+  burst.advance(2);
+  assert.equal(burst.state.shots, 2 * burst.state.weapon.burstRounds, 'holding the trigger fires one burst, not more');
+  const rounds = burst.state.weapon.burstRounds;
+  assert.deepEqual(burst.state.impacts.map(p => p.continues),
+    [false, ...Array(rounds - 1).fill(true), false, ...Array(rounds - 1).fill(true)],
+    'the recoil string breaks between bursts and runs within one');
+  assert.ok(auto.state.impacts.slice(1).every(p => p.continues), 'a held auto trigger is one string');
 });
 
 test('spread and recoil settle after the trigger is released', () => {

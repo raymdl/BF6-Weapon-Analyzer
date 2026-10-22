@@ -225,16 +225,17 @@
                 <span class="rc-field" id="rcZoomField">
                   <span class="rc-field-lbl">Zoom</span>
                   <input class="rc-range" id="rcZoomRange" type="range" min="0" max="100" step="1" value="50" aria-label="Chart zoom">
+                  <span class="rc-zoom-mark" id="rcZoomMark" hidden></span>
                   <output class="rc-readout" id="rcZoomReadout" for="rcZoomRange">±5°</output>
-                </span>
-                <span class="rc-range-actions" id="rcRangeActions" hidden>
-                  <button class="rc-range-btn" id="rcRangeReload" type="button" title="Refill the magazine and clear the shots (R while firing)">Reload</button>
-                  <button class="rc-range-btn" id="rcRangeClear" type="button" title="Clear the shots, keeping distance, zoom and ammunition (C while firing)">Clear</button>
                 </span>
                 <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample" aria-label="Reset view, aim and spray sample"><span class="rc-reset-icon" aria-hidden="true">↺</span></button>
               </div>
               <div class="rc-canvas-wrap">
                 <div class="rc-scale-controls">
+                  <span class="rc-range-actions" id="rcRangeActions" hidden>
+                    <button class="rc-range-btn" id="rcRangeReload" type="button" title="Refill the magazine and clear the shots (R while firing)">Reload</button>
+                    <button class="rc-range-btn" id="rcRangeClear" type="button" title="Clear the shots, keeping distance, zoom and ammunition (C while firing)">Clear</button>
+                  </span>
                   <button class="rc-scale-btn" id="rcCrosshairToggle" type="button" title="Hide crosshair overlay" aria-label="Hide crosshair overlay" aria-pressed="true">
                     <svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3.55"/><circle cx="5" cy="5" r="1.25"/><line x1="5" y1="0.25" x2="5" y2="1.45"/><line x1="5" y1="8.55" x2="5" y2="9.75"/><line x1="0.25" y1="5" x2="1.45" y2="5"/><line x1="8.55" y1="5" x2="9.75" y2="5"/></svg>
                   </button>

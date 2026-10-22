@@ -4,7 +4,7 @@ import { formatMilliseconds, formatMovementMultiplier } from './format.js';
 import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
 import { bindRecoilTouchControls } from './recoil-touch.js';
-import { createFiringRange, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND } from './firing-range.js';
+import { createFiringRange, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND, RANGE_MISS_COLOR } from './firing-range.js';
 import { degreesPerCount, hipfireDegreesPerCount, cmPer360, SENS_DEFAULTS } from '../sim/sensitivity.js';
 import {
   setSimContext, mulberry32, whash,
@@ -1430,15 +1430,28 @@ function targetDistanceIndex(distance) {
   TARGET_DISTANCE_LADDER.forEach((d, i) => { if (Math.abs(d - distance) < Math.abs(TARGET_DISTANCE_LADDER[best] - distance)) best = i; });
   return best;
 }
+/** One step along the distance ladder, from the wheel. */
+function stepTargetDistance(dir) {
+  if (!isTargetGeometry()) return;
+  const index = targetDistanceIndex(state.recoil.distance) + dir;
+  const next = TARGET_DISTANCE_LADDER[Math.max(0, Math.min(TARGET_DISTANCE_LADDER.length - 1, index))];
+  if (next === state.recoil.distance) return;
+  if (state.recoil.view === 'range') firingRange?.clear();
+  state.recoil.distance = next;
+  renderRecoil();
+}
 function syncTargetDistance() {
   if (isTargetGeometry() && magnificationOverride() == null && !equippedSight()) {
     setMagnification(currentMagnification());
   }
   const el = document.getElementById('rcDistanceRange');
   const raw = +(el?.value ?? 0);
-  state.recoil.distance = isTargetGeometry()
+  const next = isTargetGeometry()
     ? TARGET_DISTANCE_LADDER[Math.max(0, Math.min(TARGET_DISTANCE_LADDER.length - 1, Math.round(raw)))]
     : Math.max(TARGET_DISTANCE_MIN, Math.min(TARGET_DISTANCE_MAX, Math.round(Number.isFinite(raw) ? raw : TARGET_DEFAULT_DISTANCE)));
+  // Range hits were scored at the old distance, so the board starts over.
+  if (state.recoil.view === 'range' && next !== state.recoil.distance) firingRange?.clear();
+  state.recoil.distance = next;
   renderRecoil();
 }
 function syncZoomFromSlider() {
@@ -1615,15 +1628,17 @@ function rangeStatsHtml(axis) {
   if (!live) {
     summary = '<p class="target-impact-note">Select a weapon to use the Firing Range.</p>';
   } else {
-    const mode = { auto: 'hold the left button to fire', burst: 'click for each burst', single: 'click for each shot' }[live.state.triggerMode];
     const sens = rangeSensSummary();
     const legend = RANGE_ZONE_LEGEND.map(([zone, label]) => `<span><i style="background:${RANGE_ZONE_COLORS[zone]}"></i>${label}</span>`).join('')
-      + '<span><i class="miss" style="background:#c9a227"></i>Miss</span>';
-    summary = `<div class="rc-range-summary"><strong>Firing Range</strong> · ${weaponDisplayLabel(live.state.weapon)} · ${mode}. R reloads, C clears, Esc releases the mouse.`
+      + `<span><i class="miss" style="background:${RANGE_MISS_COLOR}"></i>Miss</span>`;
+    summary = `<div class="rc-range-summary"><strong>Firing Range</strong> · ${weaponDisplayLabel(live.state.weapon)}`
       + `<br>${sens.text}. Hipfire yaw is the published Battlefield 6 constant; the aimed scaling is the community monitor-distance formula with the Uniform Infantry Aiming coefficient, not yet confirmed for BF6.</div>`
       + `<div class="rc-zone-legend">${legend}</div>`;
   }
-  return `<div id="rcRangeStats">${summary}${targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, labelFor: weaponDisplayLabel })}</div>`;
+  // The table comes first so it sits where the Soldier Target's does; the
+  // legend and the sensitivity note follow it.
+  const table = live ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, labelFor: weaponDisplayLabel }) : '';
+  return `<div id="rcRangeStats">${table}${summary}</div>`;
 }
 /** Refresh only the live sample's stats while shots are landing. */
 function refreshRangeStats() {
@@ -2531,10 +2546,10 @@ function renderRecoil({ plotOnly = false } = {}) {
   pressed('rcStanceMove', stance === 'move');
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
+    // The range draws its own live crosshair; its corner holds Reload and Clear instead.
+    crosshairToggle.hidden = state.recoil.view === 'range';
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
-    const label = state.recoil.view === 'range'
-      ? `${state.recoil.crosshair ? 'Hide' : 'Show'} the live crosshair and spread ring`
-      : `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
+    const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
     crosshairToggle.title = label;
     crosshairToggle.setAttribute('aria-label', label);
   }
@@ -2576,18 +2591,25 @@ function renderRecoil({ plotOnly = false } = {}) {
   const hint = document.getElementById('rcHint');
   recoilTouchControls?.sync();
   if (hint) {
+    // The range lists its controls once, here, as a key legend; the canvas HUD
+    // keeps only ammunition and the trigger mode.
+    const key = (k, what) => `<span class="rc-key"><kbd>${k}</kbd>${what}</span>`;
+    // The same legend whether or not the plot holds the mouse; the banner on
+    // the plot is what says to click in.
     const rangeHint = !firingRange?.supportsLock()
       ? 'Firing Range needs a browser with pointer capture and a mouse'
-      : firingRange.isLocked()
-        ? 'Hold left mouse to fire · Move the mouse to control recoil · R reload · C clear · Esc release'
-        : 'Click the plot to take control · Hold left mouse to fire · Esc releases the mouse';
+      : [key('LMB', 'fire'), key('R', 'reload'), key('C', 'clear'), key('Esc', 'release'),
+        key('Shift + drag', 'pan'), key('Shift + scroll', 'zoom'), key('Ctrl + scroll', 'distance'),
+        '<span class="rc-key">aim above the plot for the sliders</span>'].join('');
     const nextHint = isRange ? rangeHint : (recoilTouchControls?.hint() ?? (isTarget
-      ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom'
+      ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom · Ctrl + scroll for distance'
       : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom'));
-    if (hint.textContent !== nextHint) hint.textContent = nextHint;
+    if (isRange) { if (hint.innerHTML !== nextHint) hint.innerHTML = nextHint; }
+    else if (hint.textContent !== nextHint) hint.textContent = nextHint;
   }
   const aimReadout = document.getElementById('rcAimReadout');
-  if (aimReadout) aimReadout.hidden = !isTarget;
+  // The range aims with the mouse, so the Soldier Target aim read-out is not shown there.
+  if (aimReadout) aimReadout.hidden = state.recoil.view !== 'target';
   const aimText = document.getElementById('rcAimText');
   if (aimText) {
     const offset = currentAimOffset();
@@ -2637,6 +2659,21 @@ function renderRecoil({ plotOnly = false } = {}) {
         ? `${sight.magnificationRange[0].toFixed(2)}× to ${sight.magnificationRange[1].toFixed(2)}×`
         : `${sight.magnification.toFixed(2)}×`}. Reset the view to return to it.`
       : `Optic magnification${sight ? ` of the ${sight.name}` : ''}. The plot shows the same field a ${magnification.toFixed(2)}× sight would at this range.`;
+  }
+  // Off the sight's own zoom, a tick on the slider shows where it is. It is
+  // placed after the read-out is written, since a wider read-out moves the slider.
+  const zoomMark = document.getElementById('rcZoomMark');
+  if (zoomMark && zoomRange) {
+    const sight = isTarget ? equippedSight() : null;
+    const show = !!sight && currentMagnification() !== sight.magnification;
+    zoomMark.hidden = !show;
+    if (show) {
+      const min = +zoomRange.min, max = +zoomRange.max;
+      const frac = max === min ? 0 : (magnificationIndex(sight.magnification) - min) / (max - min);
+      const thumb = zoomRange.closest('.rc-touch-layout') ? 20 : 11;
+      zoomMark.style.left = `${zoomRange.offsetLeft + thumb / 2 + frac * (zoomRange.offsetWidth - thumb)}px`;
+      zoomMark.title = `${sight.name}: ${sight.magnification.toFixed(2)}×`;
+    }
   }
   pressed('rcPlatformPc', state.recoil.platform === 'pc');
   pressed('rcPlatformConsole', state.recoil.platform === 'console');
@@ -3374,7 +3411,7 @@ function bindEvents() {
     drawFrame: drawPlotFrame,
     requestStats: refreshRangeStats,
     requestHint: () => renderRecoil({ plotOnly: true }),
-    readReticle: () => state.recoil.crosshair,
+    readDistance: () => state.recoil.distance,
   });
   document.getElementById('rcRangeReload')?.addEventListener('click', () => firingRange.reload());
   document.getElementById('rcRangeClear')?.addEventListener('click', () => firingRange.clear());
@@ -3415,11 +3452,16 @@ function bindEvents() {
   });
   recoilCanvas.addEventListener('pointermove', e => {
     if (!recoilDrag || recoilDrag.pointerId !== e.pointerId) return;
-    const dx = e.clientX - recoilDrag.x;
-    const dy = e.clientY - recoilDrag.y;
-    recoilDrag.x = e.clientX;
-    recoilDrag.y = e.clientY;
-    if (Math.abs(e.clientX - recoilDrag.startX) > CLICK_SLOP || Math.abs(e.clientY - recoilDrag.startY) > CLICK_SLOP) {
+    // Under pointer lock the client position freezes, so the drag follows the
+    // raw movement instead.
+    const locked = firingRange?.isLocked();
+    const px = locked ? recoilDrag.x + (e.movementX || 0) : e.clientX;
+    const py = locked ? recoilDrag.y + (e.movementY || 0) : e.clientY;
+    const dx = px - recoilDrag.x;
+    const dy = py - recoilDrag.y;
+    recoilDrag.x = px;
+    recoilDrag.y = py;
+    if (Math.abs(px - recoilDrag.startX) > CLICK_SLOP || Math.abs(py - recoilDrag.startY) > CLICK_SLOP) {
       recoilDrag.moved = true;
     }
     if (recoilDrag.pan && recoilDrag.moved) panRecoilByPixels(dx, dy, recoilCanvas);
@@ -3443,11 +3485,22 @@ function bindEvents() {
   // Plain scrolling belongs to the page; zooming needs Shift so the chart
   // cannot swallow the wheel while someone is reading past it.
   recoilCanvas.addEventListener('wheel', e => {
-    if (!e.shiftKey) return;
-    e.preventDefault();
     // Browsers remap a shifted wheel to the horizontal axis, so take whichever
     // delta actually carries the gesture.
-    zoomRecoilAtPointer(e.deltaY || e.deltaX, e.clientX, e.clientY, recoilCanvas);
+    const delta = e.deltaY || e.deltaX;
+    // Ctrl + wheel steps the target distance; preventDefault keeps the browser
+    // from zooming the page while the pointer is over the plot.
+    if (e.ctrlKey || e.metaKey) {
+      if (!isTargetGeometry()) return;
+      e.preventDefault();
+      // Scroll up brings the target closer, matching zoom in on Shift + scroll.
+      if (delta) stepTargetDistance(delta < 0 ? -1 : 1);
+      return;
+    }
+    if (!e.shiftKey) return;
+    e.preventDefault();
+    if (firingRange?.isLocked()) { if (delta) adjustRecoilScale(delta < 0 ? 'in' : 'out'); return; }
+    zoomRecoilAtPointer(delta, e.clientX, e.clientY, recoilCanvas);
   }, { passive: false });
 
   // Inputs

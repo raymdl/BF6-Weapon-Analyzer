@@ -278,13 +278,15 @@ and horizontal FOV change the viewing scale.
 
 The zoom starts at the first loadout's sight: 1.50× for iron sights, the stated
 magnification for a fixed optic, and the high end of a variable optic's range. The
-zoom slider overrides it. The zoom read-out turns gold with an asterisk when the zoom
+zoom slider overrides it. Off the sight's own zoom, a tick on the slider marks where
+that zoom is. The zoom read-out turns gold with an asterisk when the zoom
 is one the sight cannot show; a variable optic's whole range counts as its own.
 Reset, or choosing another sight, returns the zoom to the sight. Display resolution/FOV preferences
 are saved locally when browser storage is available.
 
 Aim at chest or head, or Ctrl+click the plot to place a custom aim point and fire a
-new sample. Shift+drag pans the target view. The soldier remains fixed in world
+new sample. Shift+drag pans the target view, Shift+scroll zooms and Ctrl+scroll steps
+the distance. The soldier remains fixed in world
 space when the aim point changes. DMR/sniper builds expose zero distances from
 100 to 500 metres; other weapons use the bore-relative trajectory in this model.
 
@@ -306,13 +308,19 @@ the click itself does not fire. Hold the left button to fire a full-auto weapon,
 click once per shot for semi-automatic, bolt and pump weapons, or click once per
 burst. The magazine empties at its real size. While the plot holds the mouse the
 cursor is hidden, so the keys are the controls: **R** reloads and clears the
-shots, **C** clears the shots, **Esc** releases the mouse. The **Reload** and
-**Clear** buttons in the plot's corner do the same once the mouse is released, keeping
-distance, zoom and aim; the reset button also returns the view and the aim to the
-starting point. The ring around the crosshair is the spread the next shot would
+shots, **C** clears the shots, **Esc** releases the mouse. Moving the crosshair up
+past the top of the plot puts a cursor over the distance and zoom sliders and the
+reset button, where a press works a button and a held press drags a slider. **Shift
++ drag** pans, **Shift + scroll** zooms and **Ctrl + scroll** steps the distance,
+with or without the mouse captured; a distance change clears the shots, since hits
+were scored at the old range. The **Reload** and
+**Clear** buttons in the plot's corner do the same, keeping distance, zoom and aim;
+while the plot holds the mouse, aim the crosshair at a button and press to use it.
+The reset button also returns the view and the aim to the starting point. The ring around the crosshair is the spread the next shot would
 be sampled from. Dots are
-coloured by hit zone (red head, gold upper torso, blue lower torso, arms and legs) and
-faded dots miss. The Target Impact Stats describe the shots fired so far. Only
+coloured by hit zone (red head, gold upper torso, off-white lower torso, arms and
+legs) and faded grey dots miss. When the running damage reaches a kill (100), the killing shot
+flashes a red ring and a KILL line names the shot. The Target Impact Stats describe the shots fired so far. Only
 Weapon 1 fires, so the compare loadout is greyed out but kept.
 
 Enter your mouse **DPI**, the in-game **Soldier Mouse Sensitivity** and the

@@ -74,7 +74,8 @@ export function createLiveFire(w, { seed = 1, magazine = w.mag } = {}) {
   function canFire(t) {
     if (s.ammo <= 0 || t < nextShotAt - EPS) return false;
     if (triggerMode === 'auto') return s.trigger || clicks > 0;
-    if (triggerMode === 'burst') return burstLeft > 0 || s.trigger || clicks > 0;
+    // A press starts one burst, which runs to its end; holding fires no more.
+    if (triggerMode === 'burst') return burstLeft > 0 || clicks > 0;
     return clicks > 0;
   }
 
@@ -84,10 +85,13 @@ export function createLiveFire(w, { seed = 1, magazine = w.mag } = {}) {
     const preSpread = clampSpread(s.spread);
     const bAng = rngSpread() * Math.PI * 2;
     const bR = sampleSpreadRadius(w, preSpread, rngSpread());
+    // A shot that follows the previous one within the cadence continues its
+    // string; after a burst gap or a released trigger it starts a new one.
+    const continues = s.shots > 0 && t <= firingUntil + EPS;
     s.shots++;
     s.ammo--;
     s.impacts.push({
-      index: s.shots, t,
+      index: s.shots, t, continues,
       x: s.aim.x + s.recoil.x + bR * Math.cos(bAng),
       y: s.aim.y + s.recoil.y + bR * Math.sin(bAng),
       recoil: { x: s.recoil.x, y: s.recoil.y },

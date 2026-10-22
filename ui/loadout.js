@@ -193,7 +193,8 @@ export function renderAttachmentSection({
         const pts = (key === 'sight' ? wa?.sightPoints?.[a.id] : null) ?? getAttPts(a, weapon);
         const name = attDisplayName(a, weapon?.id);
         return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name,
-          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: a.noEffect, assumed: isAssumedAtt(a, weapon?.id),
+          // Every sight sets the target zoom now, so none is shown as having no effect.
+          description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: key === 'sight' ? false : a.noEffect, assumed: isAssumedAtt(a, weapon?.id),
           bugs: bugsFor(key === 'rail' ? a.type : key, a.id) };
       }),
       onChange: value => handleChange(key, value),

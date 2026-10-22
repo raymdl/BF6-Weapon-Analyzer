@@ -258,6 +258,9 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .rc-viewbar .rc-readout{font-size:.72rem}
 /* Target zoom off the equipped sight's own magnification. */
 .rc-readout.rc-zoom-override{color:var(--accent)}
+#rcZoomField{position:relative}
+.rc-zoom-mark{position:absolute;top:50%;width:2px;height:12px;margin:-6px 0 0 -1px;background:#e1e8e8;border-radius:1px;box-shadow:0 0 2px #000;pointer-events:none}
+.rc-zoom-mark[hidden]{display:none}
 .rc-readout.rc-zoom-override::after{content:'*';margin-left:1px}
 /* Chart viewport — tab strip, contextual bar and canvas read as one card */
 .rc-viewport{border:1px solid var(--border);border-radius:6px;background:#0b1010;overflow:hidden;min-width:0}
@@ -265,7 +268,7 @@ body.is-popout .rc-legend,body.is-popout .rc-note{flex-shrink:0}
 .rc-tab{flex:1 1 0;appearance:none;background:transparent;border:0;border-bottom:2px solid transparent;color:#7f9090;font:inherit;font-size:.66rem;font-weight:700;letter-spacing:.07em;text-transform:uppercase;padding:7px 14px 6px;cursor:pointer;white-space:nowrap;transition:color .13s,background .13s,border-color .13s}
 .rc-tab:hover:not(.on){color:#cdd6d6;background:rgba(255,255,255,.035)}
 .rc-tab.on{color:var(--accent);background:#0b1010;border-bottom-color:var(--accent)}
-.rc-viewbar{display:flex;align-items:center;gap:7px 14px;flex-wrap:nowrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
+.rc-viewbar{position:relative;display:flex;align-items:center;gap:7px 14px;flex-wrap:nowrap;padding:6px 9px;min-height:33px;background:#0e1414;border-bottom:1px solid var(--border)}
 /* Both fields share the row, so the sliders take every spare pixel for finer
    dragging instead of leaving a gap on the right. */
 .rc-viewbar .rc-field{flex:1 1 0;min-width:0}
@@ -286,6 +289,7 @@ canvas.rcv.aiming{cursor:crosshair}
 canvas.rcv.panready,canvas.rcv.panready.aiming{cursor:grab}
 canvas.rcv.dragging,canvas.rcv.dragging.aiming{cursor:grabbing}
 canvas.rcv:focus-visible{outline-offset:-2px}
+canvas.rcv.captured{outline:2px solid #eaf0f0;outline-offset:-2px;border-radius:2px}
 .rc-canvas-wrap{position:relative;line-height:0}
 .rc-touch-controls{display:flex;flex-wrap:wrap;gap:6px;padding:6px 9px;background:#0e1414;border-bottom:1px solid var(--border)}
 .rc-touch-controls[hidden],.rc-touch-controls [hidden]{display:none}
@@ -330,7 +334,7 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-target-controls .rc-sens-input--wide{width:40px}
 .rc-sens-group{flex-wrap:wrap;row-gap:3px}
 .rc-sens-readout{color:#b9c6c6;letter-spacing:.02em;white-space:normal}
-.rc-range-summary{font-size:.72rem;line-height:1.45;color:#aab7bb;padding:0 0 2px}
+.rc-range-summary{font-size:.72rem;line-height:1.45;color:#aab7bb;padding:8px 0 2px}
 .rc-range-summary strong{color:var(--accent)}
 .rc-comp-range:disabled{opacity:.4;cursor:not-allowed}
 .rc-target-controls input:focus{border-color:var(--accent)}
@@ -342,19 +346,27 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-scale-controls{position:absolute;right:8px;top:8px;z-index:2;display:flex;flex-direction:column;align-items:center;gap:3px}
 .rc-scale-btn{width:21px;height:21px;min-height:21px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#8fa0a0;font-weight:700;line-height:1;backdrop-filter:blur(2px)}
 .rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
+.rc-scale-btn[hidden]{display:none}
 #rcCrosshairToggle[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 /* Footer strip under the plot — keeps hints and the aim read-out off the axes. */
 .rc-viewfoot{display:flex;align-items:flex-end;gap:10px;padding:4px 9px;min-height:22px;background:#0e1414;border-top:1px solid var(--border)}
 .rc-hint{flex:1 1 auto;min-width:0;font-size:.55rem;letter-spacing:.03em;color:var(--text);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
+.rc-hint .rc-key{display:inline-flex;align-items:center;gap:4px;margin:1px 10px 1px 0;white-space:nowrap;color:#aab7bb}
+.rc-hint kbd{font:inherit;font-size:.55rem;font-weight:700;letter-spacing:.02em;color:var(--text);padding:1px 4px;border:1px solid #2c3838;border-bottom-width:2px;border-radius:3px;background:#151d1d}
 .rc-aim-readout{display:flex;align-items:flex-end;justify-content:flex-end;flex:0 1 auto;max-width:42%;min-width:0;gap:7px;font-size:.55rem;color:#8c9a9a;white-space:normal;text-align:right;line-height:1.35;font-variant-numeric:tabular-nums}
 .rc-aim-readout[hidden]{display:none}
 .rc-viewbar #rcDistanceReadout{flex:0 0 36px;width:36px;text-align:right}
 .rc-viewbar #rcResetView{flex:0 0 21px;margin-left:auto}
-.rc-viewbar .rc-range-actions{display:flex;gap:5px;margin-left:auto;flex:0 0 auto}
-.rc-viewbar .rc-range-actions:not([hidden])~#rcResetView{margin-left:0}
+.rc-scale-controls .rc-range-actions{display:flex;gap:5px}
+.rc-scale-controls .rc-range-actions[hidden]{display:none}
 .rc-range-btn{height:21px;padding:0 8px;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#aab7bb;font:inherit;font-size:.68rem;font-weight:600;letter-spacing:.03em;line-height:1;cursor:pointer}
-.rc-range-btn:hover{border-color:var(--accent);color:var(--accent)}
-.rc-zone-legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin:4px 0 6px;font-size:.68rem;color:#aab7bb}
+.rc-range-btn:hover,.rc-range-btn.rc-aimed,.rc-scale-btn.rc-aimed{border-color:var(--accent);color:var(--accent)}
+.rc-range.rc-aimed{outline:1px solid var(--accent);outline-offset:3px;border-radius:3px}
+.rc-range-cursor{position:absolute;width:15px;height:15px;margin:-8px 0 0 -8px;pointer-events:none;z-index:3}
+.rc-range-cursor::before,.rc-range-cursor::after{content:"";position:absolute;background:#fff;box-shadow:0 0 2px #000}
+.rc-range-cursor::before{left:7px;top:0;width:1px;height:15px}
+.rc-range-cursor::after{top:7px;left:0;width:15px;height:1px}
+.rc-zone-legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin:8px 0 2px;font-size:.68rem;color:#aab7bb}
 .rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}
 .rc-zone-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .rc-zone-legend i.miss{opacity:.5}
