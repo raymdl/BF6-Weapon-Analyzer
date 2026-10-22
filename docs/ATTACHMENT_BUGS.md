@@ -66,7 +66,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Matches game: 1 |
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Matches game: with these two scopes the site offers no Optic Accessory; the SDO 3.50x and Baker 3.00x keep it |
 | 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
-| 25 | Bipod, deployed | Mk 24, EF88, VSSM (predicted also Z84M) | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Not modelled: the site has no deployed state |
+| 25 | Bipod, deployed | Mk 24, EF88, VSSM, Z84M | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), and the operator confirmed the same on the Z84M in game, while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Not modelled: the site has no deployed state |
 | 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Suspected game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 weapons in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
 
 Entry 5 was removed on 14 October 2026 (see
@@ -682,7 +682,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   toward 60 m confirms the forgotten curve; a description change to 30-80 m means the text
   was stale. A firing-range test at 70 m (one chest hit should kill) checks the current curve.
 
-### 25. Mk 24, EF88 and VSSM deployed bipods do not stop per-shot spread growth
+### 25. Mk 24, EF88, VSSM and Z84M deployed bipods do not stop per-shot spread growth
 
 - **In-game (operator recordings, 17 October 2026, client 2.1.1.0).**
   `reference-data/Recordings/10172026/Spread Indicators/<weapon>_Bipod_Mounted_vs_Unmounted.mp4`
@@ -745,10 +745,11 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   deployed exactly as standing. The pattern is a missing binding, not a tuning choice:
   the two Season 5 weapons that offer a bipod (Mk 24, Z84M) are both affected, and the
   Z84M is the only belt LMG without the three bindings.
+- **Z84M (operator in-game check, 22 October 2026, client 2.1.1.0 hotfix 2026-10-22).**
+  Deploying the bipod does not stop per-shot spread growth, as the files predicted. No
+  recording was measured.
 - **Site.** The site models no deployed state (bipod is `noEffect`), so nothing changes.
-- **What would settle the remaining case.** The same deployed-versus-standing recording
-  on the Z84M (predicted: no reduction; not yet unlocked), or a patch that adds the two
-  bindings to the four gun-sway files.
+- **What would close it.** A patch that adds the two bindings to the four gun-sway files.
 
 ### 26. EF88, BROD 3 and Mk 24 keep per-shot spread growth in semi-auto
 
