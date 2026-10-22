@@ -33,9 +33,10 @@ no longer add points or effects. Shared links also remove invalid combinations.
 Attachment labels include point costs. **More than 100 points produces a warning;
 it does not block calculation or sharing.** An asterisk marks an attachment with
 assumed effects. A dagger (†) marks a choice whose in-game effect differs from its
-description because of a game bug. The site shows what the game does; hovering the
-option shows the intended effect, and the Attachment Effects panel marks the affected
-stat and adds a footnote. Attachments with no modeled stat effect still retain their
+description because of a game bug, or a likely one such as the RSPR Single-Port Brake's
+seven recoil steps. The site shows what the game does; hovering the option says so in a
+sentence, and the Attachment Effects panel marks the affected stat and adds the same
+one-line footnote. Attachments with no modeled stat effect still retain their
 availability and point cost.
 
 The Attachment Effects panel also shows Recoil Duration: how long each shot's kick
@@ -340,8 +341,9 @@ be sampled from. Dots are
 coloured by hit zone (red head, gold upper torso, off-white lower torso, arms and
 legs) and faded grey dots miss. When the running damage reaches a kill (100), the killing shot
 flashes a red ring and a KILL line names the shot. The Target Impact Stats describe the shots fired so far. Only
-Weapon 1 fires, so the compare loadout is greyed out but kept, and the impact
-table names Weapon 1 alone.
+Weapon 1 fires, so the compare loadout is put aside while the range is up and
+comes back on the other views; share links still carry it. The impact table
+names Weapon 1 alone.
 
 Enter your mouse **DPI**, the in-game **Soldier Mouse Sensitivity** and the
 **Uniform Infantry Aiming coefficient** (default 178%) under the plot. These

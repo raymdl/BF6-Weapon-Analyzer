@@ -36,9 +36,10 @@ Site status uses one of these values, followed by the value that the site applie
 - **Not modelled**: the site does not show this property.
 
 The site models what the game does. Game errors where the in-game effect differs from
-the description are listed in `GAME_BUGS` in `data/attachments.json`. The attachment
-menu marks those choices with †, and the Attachment Effects panel marks the affected
-stat and adds a footnote with the intended effect.
+the description are listed in `GAME_BUGS` in `data/attachments.json`, as are the
+suspected errors the site reproduces (entries 19 and 21, flagged `suspected`). The
+attachment menu marks those choices with †, and the Attachment Effects panel marks the
+affected stat and adds a one-line footnote; the detail stays in this file.
 
 | # | Attachment | Weapons | Type | Error | Site status |
 |---|---|---|---|---|---|

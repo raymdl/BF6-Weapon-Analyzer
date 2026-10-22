@@ -389,7 +389,6 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}
 .rc-zone-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .rc-zone-legend i.miss{opacity:.5}
-#cmpSection.range-locked{opacity:.4;pointer-events:none}
 .cmp-btn:disabled{opacity:.55;cursor:not-allowed}
 .rc-linkbtn{background:none;border:0;padding:0;font:inherit;color:var(--accent2);text-decoration:underline;letter-spacing:.03em}
 .rc-linkbtn:hover{color:var(--accent)}

@@ -48,7 +48,7 @@ function harness(view = 'angle') {
     bindRecoilTouchControls: () => ({ cancel() {}, isExpanded: () => context.expanded }),
     resetRecoilView: () => { context.fullResets++; },
     resetRecoilFraming: () => { context.framingResets++; },
-    applyViewLayers() {}, requestTargetImage() {}, panRecoilByPixels() {},
+    applyViewLayers() {}, requestTargetImage() {}, panRecoilByPixels() {}, syncRangeCompare: () => false, renderSidebar() {}, renderStats() {},
     Math: Object.assign(Object.create(Math), { random: () => 0.25 }),
   });
   context.isTargetGeometry = () => context.state.recoil.view === 'target' || context.state.recoil.view === 'range';

@@ -152,6 +152,9 @@ function formatInGameRpm(value) {
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 
 const state = {
+  // On the Firing Range the compare loadout is put aside: `comparing` turns
+  // off and `comparingHeld` remembers to turn it back on when the view changes.
+  comparingHeld: false,
   slots: [
     // `locked` maps an attachment slot to the choice it is locked at; those
     // choices come along to every weapon that can take them.
@@ -411,7 +414,8 @@ let _urlSyncTimer = null;
 // NOTE: this relies on the catalog arrays being append-only (never reorder/remove
 // existing entries) so previously shared links keep resolving to the same item.
 function encodeState() {
-  return shareCodec.encodeState(state, selectedRecoilShotCount);
+  // A compare loadout held aside by the range still belongs in the link.
+  return shareCodec.encodeState(state.comparingHeld ? { ...state, comparing: true } : state, selectedRecoilShotCount);
 }
 
 function syncUrl() {
@@ -1800,6 +1804,7 @@ function setRecoilView(view) {
   state.recoil.savedLayers[state.recoil.view] = { ...state.recoil.layers };
   state.recoil.view = next;
   applyViewLayers(next);
+  const compareChanged = syncRangeCompare();
   // Flag the swap so the plot and its stats fade in together, which reads as
   // one chart changing lens rather than two unrelated panels appearing.
   ['rcPlotColumn', 'rcStats'].forEach(id => {
@@ -1809,8 +1814,28 @@ function setRecoilView(view) {
     void el.offsetWidth;
     el.classList.add('rc-view-swap');
   });
-  renderRecoil();
+  if (compareChanged) { renderSidebar(); renderStats(); } else renderRecoil();
   if (next !== 'angle') requestTargetImage();
+}
+/** Hold the compare loadout aside while the range view is up, and bring it
+ *  back when the view leaves. Returns whether `comparing` changed. */
+function syncRangeCompare() {
+  const isRange = state.recoil.view === 'range';
+  let changed = false;
+  if (isRange && state.comparing) { state.comparing = false; state.comparingHeld = true; changed = true; }
+  else if (!isRange && state.comparingHeld) { state.comparing = true; state.comparingHeld = false; changed = true; }
+  const btn = document.getElementById('cmpBtn');
+  if (btn) {
+    btn.classList.toggle('on', state.comparing || state.comparingHeld);
+    btn.setAttribute('aria-pressed', String(state.comparing || state.comparingHeld));
+    btn.disabled = isRange;
+    btn.title = isRange
+      ? (state.comparingHeld ? 'Only Weapon 1 fires on the Firing Range. Your compare loadout returns when you leave it.' : 'Only Weapon 1 fires on the Firing Range.')
+      : '';
+  }
+  const section = document.getElementById('cmpSection');
+  if (section) section.style.display = state.comparing ? 'block' : 'none';
+  return changed;
 }
 /**
  * Soldier Target Ctrl+click places the aim point and fires a fresh sample.
@@ -2787,9 +2812,9 @@ function renderAttachmentStats(loadouts) {
     const selectedAttachments = selectedAttachmentRecords(weapon, atts);
     const bugs = Loadout.selectedGameBugs(atts, LOADOUT_DATA, weapon);
     const bugMetrics = new Set(bugs.flatMap(bug => bug.metrics));
-    const bugMark = lbl => bugMetrics.has(lbl) ? Loadout.GAME_BUG_MARK : '';
+    const bugMark = lbl => bugMetrics.has(lbl) ? `${Loadout.GAME_BUG_MARK}` : '';
     const rowMarks = (c, lbl, fields) => `${(fields ?? []).some(f => Loadout.isAssumedField(c.record, f, weapon.id)) ? '*' : ''}`
-      + `${bugs.some(b => b.slot === c.slot && b.attachments.includes(c.record?.id) && b.metrics.includes(lbl)) ? Loadout.GAME_BUG_MARK : ''}`;
+      + `${bugs.some(b => b.slot === c.slot && b.attachments.includes(c.record?.id) && b.metrics.includes(lbl)) ? `${Loadout.GAME_BUG_MARK}` : ''}`;
     // Rows for one numeric stat: each attachment's own change, then the net.
     const breakdown = (m, valueOf, fmt, net) => {
       const rows = contributions.map(c => {
@@ -2888,7 +2913,7 @@ function renderAttachmentStats(loadouts) {
     });
     if (!chips.length && !bugs.length) return;
     rendered = true;
-    const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${escAttr(bug.note)} Stats show the in-game behavior.</div>`).join('');
+    const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${bug.suspected ? 'likely a bug. ' : 'bug. '}${escAttr(bug.note)}</div>`).join('');
     html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
@@ -3133,17 +3158,9 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
   document.getElementById('rcOverlayGroup')?.toggleAttribute('hidden', isRange);
   document.getElementById('rcRangeActions')?.toggleAttribute('hidden', !isRange);
-  // Only Weapon 1 fires on the range. The compare loadout is kept but greyed
-  // out, so nobody has to rebuild it after a session on the range.
-  document.getElementById('cmpSection')?.classList.toggle('range-locked', isRange);
   // The range plot is capped to the viewport so the HUD, the soldier and the
   // controls above and below it stay on screen together while the cursor is gone.
   document.querySelector('.rc-layout')?.classList.toggle('rc-range-view', isRange);
-  const cmpBtn = document.getElementById('cmpBtn');
-  if (cmpBtn) {
-    cmpBtn.disabled = isRange;
-    cmpBtn.title = isRange ? 'Only Weapon 1 fires on the Firing Range. Your compare loadout is kept.' : '';
-  }
   const sensGroup = document.getElementById('rcSensGroup');
   if (sensGroup) sensGroup.hidden = !isRange;
   const sensReadout = document.getElementById('rcSensReadout');
@@ -4005,6 +4022,7 @@ if (new URLSearchParams(location.search).get('popout') === '1') {
 _restoringUrl = true;
 loadLockPreferences();
 restoreFromUrl();
+syncRangeCompare();
 bindEvents();
 renderSidebar();
 renderStats();

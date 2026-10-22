@@ -34230,7 +34230,7 @@
       "metrics": [
         "Mov Spread"
       ],
-      "note": "The game also applies the Full Angled grip's ADS accuracy-while-moving penalty, which the description doesn't mention."
+      "note": "Also applies the Full Angled grip's moving-ADS penalty."
     },
     {
       "ref": "2",
@@ -34247,7 +34247,7 @@
       "metrics": [
         "Collateral Mult"
       ],
-      "note": "This ammo also gets FMJ's penetration bonus, so its collateral damage is higher than intended."
+      "note": "Also gets FMJ's penetration bonus, so collateral damage is higher."
     },
     {
       "ref": "3",
@@ -34269,7 +34269,7 @@
       "metrics": [
         "Deploy Speed"
       ],
-      "note": "The description promises faster weapon draw, but the game doesn't apply it."
+      "note": "The promised faster draw isn't applied."
     },
     {
       "ref": "4",
@@ -34283,7 +34283,7 @@
       "metrics": [
         "Tac Reload"
       ],
-      "note": "The description promises faster reloads, but the game doesn't apply the reload bonus."
+      "note": "The promised faster reload isn't applied."
     },
     {
       "ref": "6",
@@ -34298,7 +34298,7 @@
         "Recoil Recovery",
         "Recoil Duration"
       ],
-      "note": "The description promises smoother recoil and faster recovery, but the game doesn't apply either on the PP-19."
+      "note": "The promised recoil smoothing and recovery aren't applied."
     },
     {
       "ref": "7",
@@ -34313,7 +34313,7 @@
       "metrics": [
         "Mov Spread"
       ],
-      "note": "The description lists an ADS accuracy-while-moving penalty, but the game doesn't apply it."
+      "note": "The listed moving-ADS penalty isn't applied."
     },
     {
       "ref": "12",
@@ -34327,7 +34327,7 @@
       "metrics": [
         "Hipfire Spread"
       ],
-      "note": "The description lists a hipfire accuracy penalty, but the game doesn't apply it on the L115."
+      "note": "The listed hipfire penalty isn't applied."
     },
     {
       "ref": "16",
@@ -34341,7 +34341,39 @@
       "metrics": [
         "Weapon Sway"
       ],
-      "note": "The description promises reduced weapon sway, but the game doesn't apply it on the BROD 3."
+      "note": "The promised sway reduction isn't applied."
+    },
+    {
+      "ref": "19",
+      "slot": "muzzle",
+      "attachments": [
+        "sp_brake"
+      ],
+      "weapons": [
+        "rspr"
+      ],
+      "metrics": [
+        "ADS Recoil/Shot"
+      ],
+      "suspected": true,
+      "note": "Reduces recoil by seven steps instead of one."
+    },
+    {
+      "ref": "21",
+      "slot": "grip",
+      "attachments": [
+        "adj_angled",
+        "full_angled"
+      ],
+      "weapons": [
+        "mk24",
+        "z84m"
+      ],
+      "metrics": [
+        "ADS Recoil/Shot"
+      ],
+      "suspected": true,
+      "note": "Reduces recoil by one step more than on other weapons."
     }
   ]
 }
