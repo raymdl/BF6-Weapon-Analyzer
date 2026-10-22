@@ -102,8 +102,8 @@ const ATT_BY_ID = {
 
 const CLASSES = ['Assault Rifle', 'Carbine', 'SMG', 'LMG', 'DMR', 'Sniper Rifle', 'Shotgun', 'Sidearm'];
 const CLASS_SHORT = {
-  'Assault Rifle': 'AR', 'Carbine': 'Carb', 'SMG': 'SMG',
-  'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'SG', 'Sidearm': 'Pistol',
+  'Assault Rifle': 'AR', 'Carbine': 'Carbine', 'SMG': 'SMG',
+  'LMG': 'LMG', 'DMR': 'DMR', 'Sniper Rifle': 'Sniper', 'Shotgun': 'Shotgun', 'Sidearm': 'Pistol',
 };
 
 const RECOIL_SCALE_MIN = 2;
