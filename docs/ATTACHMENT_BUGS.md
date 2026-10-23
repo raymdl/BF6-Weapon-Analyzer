@@ -61,7 +61,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 17 | None (base weapon) | M433, SGX, L110, P18 | Suspected game error | Since 2.1.1.0 the in-world (3D) spot-on-fire range is 75 m; the other weapons keep 54 m. Not in the patch notes; four unrelated weapons. 75 m was the launch default before Season 2 reduced it to 54 m, so this looks like an unintended reversion. | Matches game: 75 m in-world, 150 m minimap |
 | 18 | Hollow Point | Mk 24 | Suspected game error | Costs 5 points, the same as Standard; every other weapon's Hollow Point costs 15 or 20. | Matches game: cost 5, headshot 1.80 with Hollow Point |
 | 19 | Single-Port Brake | RSPR | Suspected game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip.  With any vertical or stubby grip added, the recoil amount sum passes the end of the Precision table and the panel shows Precision 0. | Matches game: seven steps, 0.8 to 0.5 degrees. Precision with a vertical or stubby grip does not match game: 30 (last table row), not the panel's 0 |
-| 20 | Tungsten Core | M121 A2 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. The ELR-40 Single Shot magazine, listed here on the same row count until 23 October 2026, deals no damage through a target when fired: its x0.00 is the real value. | Matches game: x1.00 (firing-range damage); the panel shows x0.00. ELR-40 Single Shot: x0.00 |
+| 20 | Tungsten Core | M121 A2 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). A firing-range test on the M121 A2 shows full x1.00 damage to the second target. The ELR-40 Single Shot magazine has the same row count; one firing-range shot on 23 October 2026 registered no second target, but its alignment is unverified. | Matches game: x1.00 (firing-range damage); the panel shows x0.00. ELR-40 Single Shot: x0.00 under review; the data says x1.00 |
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4) | Suspected game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons and 2 on the B36A4 and the rest; it may not be an error. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Does not match game: shows 100 |
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Matches game: with these two scopes the site offers no Optic Accessory; the SDO 3.50x and Baker 3.00x keep it |
@@ -542,17 +542,24 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   at about 12 m, Standard ammunition. 7 Rnd: 140 on the near target and 105 on the far one,
   which is 80 x 1.75 (headshot) and 80 x 0.75 x 1.75 (the same shot through the first
   target), so the base rifle's x0.75 collateral and 1.75 headshot are confirmed. Single Shot:
-  108 on the near target and no hit on the far one. The far target took nothing, so the
-  Single Shot's x0.00 is the real value, not the panel error. The 108 is 90 x 1.2, which is
-  neither the Single Shot bullet's 1.34 headshot (121) nor a chest hit (90); the zone hit
-  was not recorded, so the Single Shot's hit multipliers are not confirmed by this test.
+  108 on the near target and no hit on the far one. Both Single Shot hits were chest hits:
+  the near target rides a moving rail, so the 108 is a chest hit at about 35 m on the
+  bullet's 24 to 42 m ramp (90 + 30 x 0.6), and a later chest hit read 90, inside 24 m.
+  Both match the site's curve (entry 24); a 7 Rnd chest hit read 80, the base bullet's
+  damage at any range under 120 m. No zone multiplier is involved. The near target had
+  moved between the shots and the side-view screenshot of the two targets in line, so its
+  alignment with the far target at the moment of the 108 shot is not established: the
+  missing second hit does not prove x0.00, since the bullet may have passed beside the far
+  target.
 - **Conclusion.** The M121 A2 holds at the last row (x1.00) when the row number passes the
-  end of the table; only its panel shows zero. The ELR-40 Single Shot does not, so the row
-  count does not carry to it: the magazine fires its own bullet (entry 24), and that bullet
-  does no damage to a second target.
-- **Site.** M121 A2 x1.00, as the damage test shows. ELR-40 Single Shot x0.00 for every
-  ammunition since 23 October 2026 (`WEAPON_MAG.elr40.mags["1_rnd"].projectileOverride`);
-  Penetration and Frangible were not fired with it.
+  end of the table; only its panel shows zero. The ELR-40 Single Shot has the same row
+  number (6 + 1 + 3 = 10), its own bullet's collateral table equals the base bullet's, and
+  the files hold nothing else that would give zero (stage 9 note, 13 October 2026). By the
+  data it should behave as the M121 A2 does; the one firing-range shot is inconclusive.
+- **Site.** M121 A2 x1.00, as the damage test shows. ELR-40 Single Shot: x0.00 since
+  23 October 2026 on the inconclusive shot, under review; the data-consistent value is
+  x1.00. A clean test is a Single Shot fired while the far target is visible directly behind
+  the near one in the sight, as the 7 Rnd shot that registered both targets was.
 
 ### 21. Mk 24 and Z84M: three grips reduce recoil by one extra step
 
