@@ -2510,10 +2510,14 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       targetHits.push({ weapon: w, zones: sprayZones, hits: sprayZones.flat().filter(Boolean).length, total: sprayZones.flat().length });
     }
 
+    // A pellet load's pellets land up to the spread plus the dispersion cone
+    // from the aim line, so its bubbles and cone cover both.
+    const pelletReach = (w.pellets ?? 1) > 1 ? w.pelletDispersion : 0;
+
     if (layers.spread) {
       spreadBubbleIdxs.forEach(idx => {
         const p = pts[idx]; if (!p) return;
-        const spread = spreads[idx] ?? spreadBounds(w)[0];
+        const spread = (spreads[idx] ?? spreadBounds(w)[0]) + pelletReach;
         const x = toX(p.x), y = toY(w, p.y), r = Math.abs(toX(p.x + spread) - x);
         ctx.beginPath(); ctx.arc(x, y, r, 0, Math.PI * 2);
         ctx.fillStyle = col + '1a'; ctx.strokeStyle = col + 'aa'; ctx.lineWidth = 1.2;
@@ -2523,7 +2527,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
 
     if (layers.cone) {
       const coneCircles = pts.map((p, idx) => {
-        const spread = spreads[idx] ?? spreadBounds(w)[0];
+        const spread = (spreads[idx] ?? spreadBounds(w)[0]) + pelletReach;
         const x = toX(p.x), y = toY(w, p.y), r = Math.abs(toX(p.x + spread) - x);
         return { x, y, r };
       }).filter(c => Number.isFinite(c.x) && Number.isFinite(c.y) && Number.isFinite(c.r) && c.r > 0.5);
@@ -3212,7 +3216,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const hasPellets = [w1, isRange ? null : w2].some(w => (w?.pellets ?? 1) > 1);
-    const pelletNote = hasPellets && !isRange ? ' Each shell\'s pellets scatter inside the weapon\'s dispersion cone, as measured on the in-game wall; the scatter cloud and bubbles show the shell directions.' : '';
+    const pelletNote = hasPellets && !isRange ? ' Each shell\'s pellets scatter inside the weapon\'s dispersion cone, as measured on the in-game wall; the scatter cloud shows the shell directions, and the bubbles and cone cover the spread plus that cone.' : '';
     const rangePelletNote = hasPellets && isRange ? ' Each shell\'s pellets scatter inside the dashed ring, the spread plus the weapon\'s dispersion cone, as measured on the in-game wall.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
