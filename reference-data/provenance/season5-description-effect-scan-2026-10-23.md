@@ -61,7 +61,7 @@ against the default 7 Rnd:
 | Reload | 2.400 s | 3.166 s (override) | Reload time |
 | Headshot multiplier (own bullet) | 1.75 | 1.34 | Headshot multiplier |
 | Limb multiplier (own bullet) | 0.67 | 0.84 | not on the panel |
-| Collateral multiplier (own bullet) | 0.75 | 0.00 (was 1.00 until the 23 October test) | Collateral multiplier |
+| Collateral multiplier (own bullet) | 0.75 | 1.00 (confirmed by firing, 23 October) | Collateral multiplier |
 
 The handling shifts are the compact-magazine set (the 5 Rnd carries the same ADS and
 movement shifts and says "improved handling"); the Single Shot text says nothing about
@@ -77,9 +77,9 @@ x0.54, sprint recovery 200 ms, Hipfire 34, Precision 100, Control 15: every site
 above is confirmed. Two panel figures differ from the site by design: the magazine reads 0
 where the site stores 1 (the panel shows stored capacity minus one for every ELR-40
 magazine; the site keeps one round so the simulation fires once before reloading, stage 9
-worker C judgement call 6), and the collateral multiplier reads x0.00, which the firing-range test of the same day
-confirmed (no damage to a second target; entry 20), so the site now applies x0.00. The
-values are right. Operator reading of the text (23 October 2026): not an error. The Single
+worker C judgement call 6), and the collateral multiplier reads x0.00, the panel's end-of-table display error
+(entry 20): the recorded two-target test of the same day shows full damage to the second
+target, so the site keeps x1.00. The values are right. Operator reading of the text (23 October 2026): not an error. The Single
 Shot is a special-case magazine that changes the weapon's behaviour, and its description is
 less descriptive rather than wrong. No bug entry; candidate closed.
 

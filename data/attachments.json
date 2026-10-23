@@ -34312,9 +34312,9 @@
             "headshot": 1.34,
             "limb": 0.84,
             "collateralMult": {
-              "standard": 0.0,
-              "penetration": 0.0,
-              "frangible": 0.0
+              "standard": 1.0,
+              "penetration": 1.0,
+              "frangible": 1.0
             }
           }
         },
