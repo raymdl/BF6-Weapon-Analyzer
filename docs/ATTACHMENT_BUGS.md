@@ -1072,7 +1072,7 @@ Withdrawn or rejected:
   weapon draw speed" covers the ADS movement penalty.
 - Magazine sway, moving-ADS accuracy and reload benefits under "handling" (see below).
 - Lower collateral on non-penetration ammo; shotgun pellet hip spread.
-- Bipod (deployed state not modeled); Match Trigger and speedloader tubes (M1014 4
+- Match Trigger and speedloader tubes (M1014 4
   Rnd fast, M87A1 5 Rnd fast: "rapid reloading on low ammo") are mechanics the site
   does not model.
 - Codex readings that treated `movingAdsSpreadTierMod: +1` as worse.

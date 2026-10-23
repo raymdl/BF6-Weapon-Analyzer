@@ -6009,7 +6009,6 @@
       "adsRecoilTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "pts": 10,
-      "noEffect": true,
       "frostyModifiers": {
         "ak4d": {
           "adsTimeTierMod": 0,
@@ -7019,7 +7018,6 @@
       "adsRecoilTierMod": 0,
       "movingAdsSpreadTierMod": 0,
       "pts": 10,
-      "noEffect": true,
       "frostyModifiers": {
         "elr40": {
           "adsTimeTierMod": 0,
