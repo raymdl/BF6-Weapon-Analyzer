@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { availableAttachments, blankAtts, resetAttsForWeapon, normalizeAttachments,
-  resolveMountAttachments, computeAttPts } from '../sim/loadout.js';
+  resolveMountAttachments, computeAttPts, carryAttsToWeapon, equivalentAttachments } from '../sim/loadout.js';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
 import { createShareCodec } from '../sim/share-state.js';
 
@@ -97,6 +97,27 @@ test('Frosty shared rails migrate old separate-slot links and apply exactly one 
     assert.equal(computeAttPts(both, w, data) - computeAttPts(defaults(w), w, data), mounts.laser.pts);
     assert.deepEqual(codec.decodeAtts(w, codec.encodeAtts(w, both)), both);
   }
+});
+
+test('a carried choice becomes the same attachment under another name, and moves onto a combined rail', () => {
+  // The 5-point brake is the Single-Port Brake on the SOR-556 and the Slant Brake on the RPKM.
+  const brake = { ...defaults(weapon('sor556')), muzzle: 'sp_brake' };
+  carryAttsToWeapon(brake, weapon('rpkm'), data);
+  assert.equal(brake.muzzle, 'slant_brake');
+  carryAttsToWeapon(brake, weapon('sor556'), data);
+  assert.equal(brake.muzzle, 'sp_brake');
+  // A different cost or effect is a different attachment.
+  const muzzle = id => data.MUZZLES.find(m => m.id === id);
+  assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('dp_brake')), false);
+  assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('sp_brake')), false);
+  // A laser from the M433's own slot lands on the KORD 6P67's combined rail, and back.
+  const laser = { ...defaults(weapon('m433')), laser: '5mw_red' };
+  carryAttsToWeapon(laser, weapon('kord6p67'), data);
+  assert.deepEqual(laser.rail, { type: 'laser', id: '5mw_red' });
+  assert.equal(Object.hasOwn(laser, 'laser'), false);
+  carryAttsToWeapon(laser, weapon('m433'), data);
+  assert.equal(laser.laser, '5mw_red');
+  assert.equal(Object.hasOwn(laser, 'rail'), false);
 });
 
 test('every mapped source mount uses the generated physical-slot grouping', () => {

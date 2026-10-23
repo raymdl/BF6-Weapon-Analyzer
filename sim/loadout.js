@@ -155,9 +155,33 @@ export function resetAttsForWeapon(atts, weapon, data) {
   Object.assign(atts, normalized);
 }
 
+const CATALOG_OF = { ...MOUNT_CATALOGS, ergo: 'ERGOS', accessory: 'ACCESSORIES',
+  ...Object.fromEntries(ATTACHMENT_SLOT_KEYS.map(slot => [slot.key, slot.dataKey])) };
+
+/** The catalog record behind one slot choice (sight, muzzle, barrel, grip, laser, light, ergo, accessory). */
+export function catalogRecord(data, key, id) {
+  return (data[CATALOG_OF[key]] ?? []).find(a => a.id === id) ?? null;
+}
+
+// Fields that name or annotate a record rather than define what it does.
+const NON_EFFECT_FIELDS = new Set(['id', 'name', 'description', 'type', 'weaponOverrides', 'assumed', 'assumedFields', 'noEffect', 'legacy']);
+const effectSignature = a => JSON.stringify(Object.fromEntries(Object.entries(a)
+  .filter(([field]) => !NON_EFFECT_FIELDS.has(field)).sort(([x], [y]) => (x < y ? -1 : x > y ? 1 : 0))));
+
+/**
+ * Whether two records are the one attachment under different names: the same
+ * cost and the same effect fields (the 5-point brake is the Single-Port Brake,
+ * the Slant Brake or the Thread Protector by weapon). Legacy sight categories
+ * stand for no single optic and never match.
+ */
+export function equivalentAttachments(a, b) {
+  return !!a && !!b && !a.legacy && !b.legacy && a.id !== b.id && effectSignature(a) === effectSignature(b);
+}
+
 /** Selectable items for one weapon slot. Shared by the editor and URL decoder. */
 /** Move a loadout's attachments onto another weapon: every choice the new
- *  weapon can take is kept, the rest go back to that weapon's defaults.
+ *  weapon can take is kept, or the same attachment under another name where
+ *  the weapon has that instead; the rest go back to that weapon's defaults.
  *  `from` is the loadout to carry (the slot's own by default) and `keys`
  *  limits which slots are carried; a combined rail counts as its device's slot. */
 export function carryAttsToWeapon(atts, weapon, data, from = atts, keys = null) {
@@ -165,19 +189,25 @@ export function carryAttsToWeapon(atts, weapon, data, from = atts, keys = null) 
   const wanted = key => !keys || keys.includes(key);
   resetAttsForWeapon(atts, weapon, data);
   const mounts = attachmentSlots(weapon, data);
-  const allowed = (key, id) => availableAttachments(weapon,
-    mounts.rail?.accepts.includes(key) ? 'rail' : key, data).some(a => a.id === id);
+  const onRail = key => !!mounts.rail?.accepts.includes(key);
+  // The choice itself if the weapon offers it, else its equivalent, else null.
+  const carried = (key, id) => {
+    const offered = availableAttachments(weapon, onRail(key) ? 'rail' : key, data)
+      .filter(a => a.id !== 'none' && (!onRail(key) || a.type === key));
+    if (offered.some(a => a.id === id)) return id;
+    const want = catalogRecord(data, key, id);
+    return offered.find(a => equivalentAttachments(want, a))?.id ?? null;
+  };
+  const fit = (key, id) => { if (onRail(key)) atts.rail = { type: key, id }; else atts[key] = id; };
   for (const key of ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'ammo', 'ergo', 'accessory']) {
-    if (wanted(key) && prev[key] && prev[key] !== 'none' && allowed(key, prev[key])) atts[key] = prev[key];
+    if (!wanted(key) || !prev[key] || prev[key] === 'none') continue;
+    const id = carried(key, prev[key]);
+    if (id) fit(key, id);
   }
   if (prev.rail && wanted(prev.rail.type)) {
-    if (mounts.rail?.accepts.includes(prev.rail.type)
-        && availableAttachments(weapon, 'rail', data).some(a => a.type === prev.rail.type && a.id === prev.rail.id)) {
-      atts.rail = { ...prev.rail };
-    } else if (!mounts.rail && allowed(prev.rail.type, prev.rail.id)) {
-      // The device moves from a shared rail to the new weapon's own slot.
-      atts[prev.rail.type] = prev.rail.id;
-    }
+    // The device moves between a shared rail and the new weapon's own slot as needed.
+    const id = carried(prev.rail.type, prev.rail.id);
+    if (id) fit(prev.rail.type, id);
   }
   if (wanted('mag') && prev.mag && Object.hasOwn(data.WEAPON_MAG[weapon?.id]?.mags ?? {}, prev.mag)) atts.mag = prev.mag;
   const normalized = normalizeAttachments(atts, weapon, data);

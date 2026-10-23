@@ -596,9 +596,13 @@ function buildAttachmentSection(containerId, slotIdx) {
 function lockHeldStatus(slot, key) {
   const want = slot.locked[key];
   const have = lockedValue(slot.atts, key);
-  const same = (a, b) => (a && typeof a === 'object') || (b && typeof b === 'object')
-    ? a?.type === b?.type && a?.id === b?.id : (a ?? null) === (b ?? null);
-  if (same(want, have)) return { held: true };
+  // A device on a combined rail and one in its own slot compare as type and id.
+  const norm = v => v == null ? null : typeof v === 'object' ? { type: v.type, id: v.id } : { type: key, id: v };
+  const w = norm(want), h = norm(have);
+  // The same attachment under another weapon's name counts as the locked choice.
+  const held = (!w && !h) || (!!w && !!h && w.type === h.type && (w.id === h.id
+    || Loadout.equivalentAttachments(Loadout.catalogRecord(LOADOUT_DATA, w.type, w.id), Loadout.catalogRecord(LOADOUT_DATA, h.type, h.id))));
+  if (held) return { held: true };
   const id = want && typeof want === 'object' ? want.id : want;
   const catalog = { sight: 'SIGHTS', muzzle: 'MUZZLES', barrel: 'BARRELS', grip: 'GRIPS', laser: 'LASERS',
     light: 'LIGHTS', accessory: 'ACCESSORIES', ammo: 'AMMO', ergo: 'ERGOS' };
