@@ -2478,9 +2478,15 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
       recoilPts.forEach((p, i) => {
         const spread = spreads[i] ?? spreadBounds(w)[0];
         const bAng = rngB() * Math.PI * 2, bR = sampleSpreadRadius(w, spread, rngB());
-        ctx.beginPath();
-        ctx.arc(toX(p.x + bR * Math.cos(bAng)), toY(w, p.y + bR * Math.sin(bAng)), scatterDotRadius, 0, Math.PI * 2);
-        ctx.fillStyle = col + '38'; ctx.fill();
+        const x = p.x + bR * Math.cos(bAng), y = p.y + bR * Math.sin(bAng);
+        // A pellet load scatters as its pellets, drawn smaller.
+        const pellets = samplePellets(w, x, y, rngB);
+        ctx.fillStyle = col + '38';
+        (pellets ?? [{ x, y }]).forEach(q => {
+          ctx.beginPath();
+          ctx.arc(toX(q.x), toY(w, q.y), scatterDotRadius * (pellets ? 0.7 : 1), 0, Math.PI * 2);
+          ctx.fill();
+        });
       });
     }
   });
@@ -3216,7 +3222,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
     const hasPellets = [w1, isRange ? null : w2].some(w => (w?.pellets ?? 1) > 1);
-    const pelletNote = hasPellets && !isRange ? ' Each shell\'s pellets scatter inside the weapon\'s dispersion cone, as measured on the in-game wall; the scatter cloud shows the shell directions, and the bubbles and cone cover the spread plus that cone.' : '';
+    const pelletNote = hasPellets && !isRange ? ' Each shell\'s pellets scatter inside the weapon\'s dispersion cone, as measured on the in-game wall; the scatter cloud shows pellets too, and the bubbles and cone cover the spread plus that cone.' : '';
     const rangePelletNote = hasPellets && isRange ? ' Each shell\'s pellets scatter inside the dashed ring, the spread plus the weapon\'s dispersion cone, as measured on the in-game wall.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
