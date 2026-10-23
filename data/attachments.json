@@ -34596,6 +34596,21 @@
       ],
       "suspected": true,
       "note": "Reduces recoil by one step more than on other weapons."
+    },
+    {
+      "ref": "27",
+      "slot": "muzzle",
+      "attachments": [
+        "light_supp"
+      ],
+      "weapons": [
+        "elr40"
+      ],
+      "metrics": [
+        "Recoil Recovery",
+        "Recoil Duration"
+      ],
+      "note": "Also applies the sniper suppressors' recoil smoothing (a longer kick with faster recovery), which its text does not state."
     }
   ]
 }

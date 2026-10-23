@@ -68,7 +68,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
 | 25 | Bipod, deployed | Mk 24, EF88, VSSM, Z84M | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), and the operator confirmed the same on the Z84M in game, while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Not modelled: the site has no deployed state |
 | 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Suspected game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 weapons in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
-| 27 | CQB Suppressor | ELR-40 | Suspected game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. Either a Lightened Suppressor mislabelled, or a CQB Suppressor with recoil effects its text does not state. | Matches game (panel, 23 October 2026): Hipfire 34 unchanged, Control 15, recoil 1.7 deg, spotting 0 m / 21 m, 30 points; the recovery package is not shown on the panel and is untested. A locked CQB Suppressor does not carry to it |
+| 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. Either a Lightened Suppressor mislabelled, or a CQB Suppressor with recoil effects its text does not state. | Matches game: panel values (23 October 2026) and the recoil package, applied and marked with the bug label (operator decision on the data binding and the recordings). A locked CQB Suppressor does not carry to it |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](#review-method-and-rejected-findings)); numbers are not reused.
@@ -804,8 +804,10 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   a penalty the game does not apply.
 - **Site.** The 2.1.1.0 worker kept the Lightened Suppressor record with the ELR-40 raw
   values as a per-weapon override, and that override shows the in-game name on this
-  weapon. The attachment lock matches catalog names, so a locked CQB Suppressor does not
-  carry to it and a locked Lightened Suppressor does (23 October 2026).
+  weapon, so the recoil package is applied. Since 23 October 2026 the choice is listed in
+  `GAME_BUGS` (ref 27): the menu marks it with the bug mark and the Recoil Recovery and
+  Recoil Duration chips carry the footnote. The attachment lock matches catalog names, so
+  a locked CQB Suppressor does not carry to it and a locked Lightened Suppressor does.
 - **In-game panel (operator screenshots, 23 October 2026, extended barrel, 7 Rnd, Standard,
   iron sights).** None: Hipfire 34, Precision 100, Control 15, Mobility 34, recoil 1.7 deg,
   variation 6.0 deg, spotting 54 m / 150 m. CQB Suppressor (30 points): Hipfire 34 and
@@ -820,11 +822,10 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   Hider kick (172 ms against 75 ms after the flash), the direction a 67 ms delivery
   instead of 25 ms would give. Consistent with the package being active; not conclusive
   with five shots and the bolt-action camera oscillation.
-- **Status.** The absent hipfire penalty is confirmed in game; the name and description
-  remain as the panel shows them. The recovery package is probable from the recordings
-  but not established: a Long Suppressor clip (the same package in the data) matching the
-  CQB Suppressor trace, or a Lightened Suppressor clip on a launch sniper as the reference
-  shape, would settle it.
+- **Status.** Logged as a game error on 23 October 2026 (operator decision): the source
+  binding, the panel and the recordings together. The Long Suppressor clip (the same
+  package in the data; unlock at Mastery 34) remains the confirming test for the recoil
+  package when it is available.
 - **Evidence.** 2.1.1.0 stage 9 worker C report, judgement call 4
   (`BF6 Datamining\reports\weapon-analyzer-research\2026-10-13-update-2110-post\stage9\C\REPORT.md`).
 

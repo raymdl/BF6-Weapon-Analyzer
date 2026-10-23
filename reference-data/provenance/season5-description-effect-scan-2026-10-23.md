@@ -71,6 +71,16 @@ in-game panel with the Single Shot fitted would show ADS time, ADS move speed, r
 time, headshot and collateral multipliers and the Mobility score, which decides whether
 the site's values are right and leaves the text question to the bug list.
 
+Panel check (operator screenshots, 23 October 2026, Single Shot fitted): DMG 120, Mobility
+44, reload 3.166 s, ADS time 367 ms, headshot x1.34, long-range damage 80, ADS move speed
+x0.54, sprint recovery 200 ms, Hipfire 34, Precision 100, Control 15: every site value
+above is confirmed. Two panel figures differ from the site by design: the magazine reads 0
+where the site stores 1 (the panel shows stored capacity minus one for every ELR-40
+magazine; the site keeps one round so the simulation fires once before reloading, stage 9
+worker C judgement call 6), and the collateral multiplier reads x0.00 where the site
+applies x1.00 (entry 20, the panel's end-of-table display error). The values are right;
+what remains is that the text states none of the handling, reload or hit-zone changes.
+
 ## Coverage gaps
 
 - Optics: no description text exists, so the LPVO and thermal ADS move-speed changes on
