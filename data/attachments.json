@@ -34626,6 +34626,45 @@
       "note": "Reduces recoil by one step more than on other weapons."
     },
     {
+      "ref": "25",
+      "slot": "grip",
+      "attachments": [
+        "bipod"
+      ],
+      "weapons": [
+        "mk24",
+        "ef88",
+        "z84m",
+        "vssm"
+      ],
+      "metrics": [
+        "Spread Inc/Shot",
+        "Hipfire Spread"
+      ],
+      "suspected": true,
+      "note": "Deployed (Mounted stance), only the recoil reduction applies: the per-shot ADS spread growth and the hipfire spread stay as standing, unlike every other bipod weapon."
+    },
+    {
+      "ref": "25",
+      "slot": "grip",
+      "attachments": [
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod"
+      ],
+      "weapons": [
+        "mk24",
+        "ef88",
+        "z84m",
+        "vssm"
+      ],
+      "metrics": [
+        "Spread Inc/Shot"
+      ],
+      "suspected": true,
+      "note": "Deployed (Mounted stance), the per-shot ADS spread growth stays as standing, unlike on other grip pod weapons; the recoil reduction and the hipfire spread step apply."
+    },
+    {
       "ref": "27",
       "slot": "muzzle",
       "attachments": [
