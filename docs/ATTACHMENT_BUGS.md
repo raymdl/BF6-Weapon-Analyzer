@@ -813,10 +813,18 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   Mastery 34): Hipfire 29, spotting 0 m / 21 m. Multi-Port Brake (10 points, the game
   default): Control 24, recoil 1.1 deg. Flash Hider (10 points): spotting 0 m / 150 m. The
   site reproduces every panel value, including the secondary stats, for all five choices.
+- **In-game recordings (operator, 23 October 2026).** Five single shots each with the CQB
+  Suppressor and the Flash Hider, camera-tracked
+  ([elr40-cqb-suppressor-recoil-2026-10-23.md](../reference-data/provenance/elr40-cqb-suppressor-recoil-2026-10-23.md)).
+  The net climb is the same, but the CQB kick peaks about 90 ms later than the Flash
+  Hider kick (172 ms against 75 ms after the flash), the direction a 67 ms delivery
+  instead of 25 ms would give. Consistent with the package being active; not conclusive
+  with five shots and the bolt-action camera oscillation.
 - **Status.** The absent hipfire penalty is confirmed in game; the name and description
-  remain as the panel shows them. The bolt-action recovery package is not visible on the
-  panel and is untested: a firing-range recoil comparison against the Long Suppressor
-  would show whether it applies.
+  remain as the panel shows them. The recovery package is probable from the recordings
+  but not established: a Long Suppressor clip (the same package in the data) matching the
+  CQB Suppressor trace, or a Lightened Suppressor clip on a launch sniper as the reference
+  shape, would settle it.
 - **Evidence.** 2.1.1.0 stage 9 worker C report, judgement call 4
   (`BF6 Datamining\reports\weapon-analyzer-research\2026-10-13-update-2110-post\stage9\C\REPORT.md`).
 
