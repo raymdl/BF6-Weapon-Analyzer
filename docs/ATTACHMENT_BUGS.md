@@ -596,17 +596,20 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Comparison.** No other weapon has the stronger binding for the two angled grips. The QD
   Grip Pod has the same three-step binding on the EF88 and M16A4; on the B36A4 and the other
   weapons it gives two steps, the same as PTT Grip Pod.
-- **In-game evidence (operator screenshots, 14 October 2026).** Control by grip:
+- **In-game evidence.** Control by grip. Mk 24 and Z84M readings are from operator
+  screenshots (14 October 2026); comparison-weapon readings are from the earlier
+  [attachment audit](../reference-data/attachment-audit/attachment-screenshot-review.json):
 
   | Weapon | None | Slim Angled | Adjustable Angled | PTT Grip Pod | Full Angled | QD Grip Pod |
   |---|---:|---:|---:|---:|---:|---:|
   | Mk 24 | 38 | 40 | 43 | 43 | 46 | 46 |
   | Z84M | 35 | 37 | 39 | 39 | 42 | 42 |
-  | B36A4 | – | – | – | 47 | – | 47 |
-  | EF88 | – | – | – | 47 | – | 50 |
-  | M16A4 | – | – | – | 47 | – | 49 |
+  | B36A4 | 42 | 44 | 44 | 47 | 47 | 47 |
+  | EF88 | 41 | – | – | 47 | 47 | 50 |
+  | M16A4 | 41 | 44 | 44 | 47 | 47 | 49 |
 
-  Adjustable Angled matches the two-step PTT Grip Pod, and Full Angled the QD Grip Pod.
+  On Mk 24 and Z84M, Adjustable Angled matches the two-step PTT Grip Pod, and
+  Full Angled matches the three-step QD Grip Pod.
 - **Game error.** The angled grips' descriptions and costs are the same as on
   other weapons, and only the two Season 5 weapons differ. The QD Grip Pod also gives an
   extra recoil step on the EF88 and M16A4.
