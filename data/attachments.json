@@ -34642,7 +34642,7 @@
         "Hipfire Spread"
       ],
       "suspected": true,
-      "note": "Deployed (Mounted stance), only the recoil reduction applies: the per-shot ADS spread growth and the hipfire spread stay as standing, unlike every other bipod weapon."
+      "note": "The mounted spread benefits aren't applied; only the recoil reduction is."
     },
     {
       "ref": "25",
@@ -34663,7 +34663,7 @@
         "Spread Inc/Shot"
       ],
       "suspected": true,
-      "note": "Deployed (Mounted stance), the per-shot ADS spread growth stays as standing, unlike on other grip pod weapons; the recoil reduction and the hipfire spread step apply. The BROD 3 offers no bipod to compare against."
+      "note": "The mounted ADS spread benefit isn't applied; recoil and hipfire spread are."
     },
     {
       "ref": "27",
