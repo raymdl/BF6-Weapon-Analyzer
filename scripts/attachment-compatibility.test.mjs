@@ -110,6 +110,18 @@ test('a carried choice becomes the same attachment under another name, and moves
   const muzzle = id => data.MUZZLES.find(m => m.id === id);
   assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('dp_brake')), false);
   assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('sp_brake')), false);
+  // The same name with weapon-specific cost or effects: Slim Angled is one grip across families.
+  const slim = { ...defaults(weapon('m4a1')), grip: 'slim_angled' };
+  carryAttsToWeapon(slim, weapon('pw7a2'), data);
+  assert.equal(slim.grip, 'slim_angled_smg');
+  carryAttsToWeapon(slim, weapon('l115'), data);
+  assert.equal(slim.grip, 'slim_angled_sr');
+  // The name the game shows on the new weapon counts: the ELR-40's Lightened Suppressor
+  // is its CQB Suppressor, but a Lightened Suppressor is not a CQB Suppressor elsewhere.
+  const supp = { ...defaults(weapon('m4a1')), muzzle: 'cqb_supp' };
+  carryAttsToWeapon(supp, weapon('elr40'), data);
+  assert.equal(supp.muzzle, 'light_supp');
+  assert.equal(equivalentAttachments(muzzle('light_supp'), muzzle('cqb_supp')), false);
   // A laser from the M433's own slot lands on the KORD 6P67's combined rail, and back.
   const laser = { ...defaults(weapon('m433')), laser: '5mw_red' };
   carryAttsToWeapon(laser, weapon('kord6p67'), data);

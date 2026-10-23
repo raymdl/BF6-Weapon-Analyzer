@@ -168,14 +168,28 @@ const NON_EFFECT_FIELDS = new Set(['id', 'name', 'description', 'type', 'weaponO
 const effectSignature = a => JSON.stringify(Object.fromEntries(Object.entries(a)
   .filter(([field]) => !NON_EFFECT_FIELDS.has(field)).sort(([x], [y]) => (x < y ? -1 : x > y ? 1 : 0))));
 
+// The name the game shows for a record on one weapon, or its catalog name.
+const gameName = (a, weaponId = null) => a.weaponOverrides?.[weaponId]?.name ?? a.name;
+
 /**
- * Whether two records are the one attachment under different names: the same
- * cost and the same effect fields (the 5-point brake is the Single-Port Brake,
- * the Slant Brake or the Thread Protector by weapon). Legacy sight categories
- * stand for no single optic and never match.
+ * The one attachment split into records by weapon family, with its own cost
+ * or effects on each (Slim Angled is four records): the name the game shows
+ * for `b` on this weapon is `a`'s.
  */
-export function equivalentAttachments(a, b) {
-  return !!a && !!b && !a.legacy && !b.legacy && a.id !== b.id && effectSignature(a) === effectSignature(b);
+export function sameAttachmentName(a, b, weaponId = null) {
+  return !!a && !!b && a.id !== b.id && (gameName(b, weaponId) === a.name || b.name === a.name);
+}
+
+/**
+ * Whether two records are one attachment: the same name with weapon-specific
+ * cost or effects, or another name with the same cost and the same effect
+ * fields (the 5-point brake is the Single-Port Brake, the Slant Brake or the
+ * Thread Protector by weapon). Legacy sight categories stand for no single
+ * optic and never match.
+ */
+export function equivalentAttachments(a, b, weaponId = null) {
+  if (!a || !b || a.legacy || b.legacy || a.id === b.id) return false;
+  return sameAttachmentName(a, b, weaponId) || effectSignature(a) === effectSignature(b);
 }
 
 /** Selectable items for one weapon slot. Shared by the editor and URL decoder. */
@@ -190,13 +204,15 @@ export function carryAttsToWeapon(atts, weapon, data, from = atts, keys = null) 
   resetAttsForWeapon(atts, weapon, data);
   const mounts = attachmentSlots(weapon, data);
   const onRail = key => !!mounts.rail?.accepts.includes(key);
-  // The choice itself if the weapon offers it, else its equivalent, else null.
+  // The choice itself if the weapon offers it, else the record of the same
+  // name on this weapon, else one with the same cost and effects, else null.
   const carried = (key, id) => {
     const offered = availableAttachments(weapon, onRail(key) ? 'rail' : key, data)
       .filter(a => a.id !== 'none' && (!onRail(key) || a.type === key));
     if (offered.some(a => a.id === id)) return id;
     const want = catalogRecord(data, key, id);
-    return offered.find(a => equivalentAttachments(want, a))?.id ?? null;
+    return (offered.find(a => sameAttachmentName(want, a, weapon.id))
+      ?? offered.find(a => equivalentAttachments(want, a)))?.id ?? null;
   };
   const fit = (key, id) => { if (onRail(key)) atts.rail = { type: key, id }; else atts[key] = id; };
   for (const key of ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'ammo', 'ergo', 'accessory']) {

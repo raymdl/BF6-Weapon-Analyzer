@@ -56,11 +56,13 @@ does not define the simulated effects. Some choices still have no description.
 
 Each attachment row has a padlock; the one in the Attachments header locks every
 row with something fitted (a "None" stays free) or unlocks every row at once. A locked choice stays when another weapon is chosen.
-Where the new weapon has the same attachment under another name (the same cost
-and the same effects: the 5-point brake is the Single-Port Brake, the Slant Brake
-or the Thread Protector by weapon; an optic of one zoom and cost; Rail Cover and
-Speed Holster), that one is fitted and counts as the locked choice. One the new
-weapon cannot take goes back to that weapon's default until a
+Where the new weapon has the same attachment as its own record, that one is
+fitted and counts as the locked choice: the same name with weapon-specific cost
+or effects (Slim Angled on SMGs and sniper rifles, the sniper versions of the
+vertical and stubby grips and bipods), or another name with the same cost and
+effects (the 5-point brake is the Single-Port Brake, the Slant Brake or the
+Thread Protector by weapon; an optic of one zoom and cost; Rail Cover and Speed
+Holster). One the new weapon cannot take goes back to that weapon's default until a
 weapon that can take it is chosen again. Changing a locked attachment locks it at
 the new choice. Locked rows take a gold edge; a dashed edge, with a line naming
 the locked choice, means the weapon cannot take it and the row shows its default
