@@ -196,7 +196,7 @@ export function equivalentAttachments(a, b) {
  *  weapon can take is kept, or the same attachment under another name where
  *  the weapon has that instead; the rest go back to that weapon's defaults.
  *  `from` is the loadout to carry (the slot's own by default) and `keys`
- *  limits which slots are carried; a combined rail counts as its device's slot. */
+ *  limits which slots are carried; a combined rail uses the UI's laser lock key. */
 export function carryAttsToWeapon(atts, weapon, data, from = atts, keys = null) {
   const prev = { ...from };
   const wanted = key => !keys || keys.includes(key);
@@ -219,7 +219,7 @@ export function carryAttsToWeapon(atts, weapon, data, from = atts, keys = null) 
     const id = carried(key, prev[key]);
     if (id) fit(key, id);
   }
-  if (prev.rail && wanted(prev.rail.type)) {
+  if (prev.rail && wanted('laser')) {
     // The device moves between a shared rail and the new weapon's own slot as needed.
     const id = carried(prev.rail.type, prev.rail.id);
     if (id) fit(prev.rail.type, id);

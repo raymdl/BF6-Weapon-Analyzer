@@ -1957,6 +1957,7 @@ function setRecoilPlatform(platform) {
 function cycleTargetZero() {
   const zeroes = [100, 200, 300, 400, 500];
   const current = zeroes.indexOf(state.recoil.zeroDistance);
+  if (state.recoil.view === 'range') firingRange?.clear();
   state.recoil.zeroDistance = zeroes[(current + 1) % zeroes.length];
   renderRecoil();
 }

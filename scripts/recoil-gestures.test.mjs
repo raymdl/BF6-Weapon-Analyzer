@@ -65,6 +65,23 @@ function harness(view = 'angle') {
   return { context, canvas, emit, click };
 }
 
+test('changing range zero clears old impacts before rendering the new zero', () => {
+  for (const view of ['range', 'target']) {
+    const events = [];
+    const context = createContext({
+      state: { recoil: { view, zeroDistance: 100 } },
+      firingRange: { clear: () => events.push(['clear', context.state.recoil.zeroDistance]) },
+      renderRecoil: () => events.push(['render', context.state.recoil.zeroDistance]),
+    });
+    runInContext(runtimeFunction('cycleTargetZero'), context);
+    context.cycleTargetZero();
+    assert.deepEqual(events, view === 'range' ? [['clear', 100], ['render', 200]] : [['render', 200]]);
+    context.state.recoil.zeroDistance = 500;
+    context.cycleTargetZero();
+    assert.equal(context.state.recoil.zeroDistance, 100);
+  }
+});
+
 test('Angle Plot Ctrl/Meta-click redraws with a different seed without changing target aim', () => {
   const { context, click } = harness();
   const aim = JSON.stringify(context.state.recoil.customAim);

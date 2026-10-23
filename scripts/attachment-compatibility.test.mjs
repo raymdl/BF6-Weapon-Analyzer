@@ -132,6 +132,22 @@ test('a carried choice becomes the same attachment under another name, and moves
   assert.equal(Object.hasOwn(laser, 'rail'), false);
 });
 
+test('combined-rail locks carry lights and grips using the UI lock key', () => {
+  for (const [id, type, attachment] of [['kord6p67', 'light', 'ads_taclight'], ['vz61', 'grip', 'fold_stubby']]) {
+    const w = weapon(id);
+    const rail = { type, id: attachment };
+    const atts = defaults(w);
+    carryAttsToWeapon(atts, w, data, { rail }, ['laser']);
+    assert.deepEqual(atts.rail, rail);
+    carryAttsToWeapon(atts, w, data, { rail }, ['muzzle']);
+    assert.equal(atts.rail, null);
+  }
+  const atts = defaults(weapon('m433'));
+  carryAttsToWeapon(atts, weapon('m433'), data,
+    { rail: { type: 'light', id: 'ads_taclight' } }, ['laser']);
+  assert.equal(atts.light, 'ads_taclight');
+});
+
 test('every mapped source mount uses the generated physical-slot grouping', () => {
   const report = read('../reference-data/provenance/frosty-attachment-compatibility.json');
   assert.deepEqual(report.unresolvedSlots, []);
