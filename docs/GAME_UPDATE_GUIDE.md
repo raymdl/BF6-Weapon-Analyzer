@@ -401,6 +401,19 @@ For tables chosen by matching keyed rows with a fallback row (Precision), list e
 whose fallback row differs from the rest of its class. The Interdictor's 0.5 fallback, against
 100 on the other bolt-action rifles, is the one known case (entry 22).
 
+The site shows 100 for the Interdictor from a row that differs from its 1.4.3.0 source: the
+keyed row in `data/weapon_attributes.json` holds the 2.1.1.0 value of 100 (entry 22). Nothing
+in `sim/` names the Interdictor. On every new build, ask the operator to open the Interdictor's
+loadout panel in game and report the Precision reading (record it per Stage 8, "Recording
+in-game confirmations"), check the Interdictor's Precision table in the raw files, and then:
+
+- **Panel shows 100.** Set entry 22 to "Matches game: 100" with the build. No site change.
+- **Precision tables refreshed from the new build.** The keyed row has been 100 in its source
+  since 2.1.1.0, so the refreshed row needs no special handling; remove the differing-row
+  note in [SOURCES.md](data-flow/SOURCES.md) ("Weapon Attributes inputs").
+- **Keyed or fallback row changed to another value.** Take the new rows with the refresh,
+  confirm the panel reading in game, and record both in entry 22.
+
 ### Paired-field disagreement
 
 Where a struct carries two fields that are set together (`Field_7f1bb9d4` /
