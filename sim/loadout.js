@@ -168,16 +168,15 @@ const NON_EFFECT_FIELDS = new Set(['id', 'name', 'description', 'type', 'weaponO
 const effectSignature = a => JSON.stringify(Object.fromEntries(Object.entries(a)
   .filter(([field]) => !NON_EFFECT_FIELDS.has(field)).sort(([x], [y]) => (x < y ? -1 : x > y ? 1 : 0))));
 
-// The name the game shows for a record on one weapon, or its catalog name.
-const gameName = (a, weaponId = null) => a.weaponOverrides?.[weaponId]?.name ?? a.name;
-
 /**
  * The one attachment split into records by weapon family, with its own cost
- * or effects on each (Slim Angled is four records): the name the game shows
- * for `b` on this weapon is `a`'s.
+ * or effects on each (Slim Angled is four records): the same catalog name. A
+ * per-weapon display name does not count, since the game can mislabel one
+ * attachment as another (the ELR-40 shows its Lightened Suppressor as the
+ * CQB Suppressor).
  */
-export function sameAttachmentName(a, b, weaponId = null) {
-  return !!a && !!b && a.id !== b.id && (gameName(b, weaponId) === a.name || b.name === a.name);
+export function sameAttachmentName(a, b) {
+  return !!a && !!b && a.id !== b.id && b.name === a.name;
 }
 
 /**
@@ -187,9 +186,9 @@ export function sameAttachmentName(a, b, weaponId = null) {
  * Thread Protector by weapon). Legacy sight categories stand for no single
  * optic and never match.
  */
-export function equivalentAttachments(a, b, weaponId = null) {
+export function equivalentAttachments(a, b) {
   if (!a || !b || a.legacy || b.legacy || a.id === b.id) return false;
-  return sameAttachmentName(a, b, weaponId) || effectSignature(a) === effectSignature(b);
+  return sameAttachmentName(a, b) || effectSignature(a) === effectSignature(b);
 }
 
 /** Selectable items for one weapon slot. Shared by the editor and URL decoder. */
@@ -211,7 +210,7 @@ export function carryAttsToWeapon(atts, weapon, data, from = atts, keys = null) 
       .filter(a => a.id !== 'none' && (!onRail(key) || a.type === key));
     if (offered.some(a => a.id === id)) return id;
     const want = catalogRecord(data, key, id);
-    return (offered.find(a => sameAttachmentName(want, a, weapon.id))
+    return (offered.find(a => sameAttachmentName(want, a))
       ?? offered.find(a => equivalentAttachments(want, a)))?.id ?? null;
   };
   const fit = (key, id) => { if (onRail(key)) atts.rail = { type: key, id }; else atts[key] = id; };

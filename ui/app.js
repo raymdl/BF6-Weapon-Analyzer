@@ -601,7 +601,7 @@ function lockHeldStatus(slot, key) {
   const w = norm(want), h = norm(have);
   // The same attachment under another weapon's name counts as the locked choice.
   const held = (!w && !h) || (!!w && !!h && w.type === h.type && (w.id === h.id
-    || Loadout.equivalentAttachments(Loadout.catalogRecord(LOADOUT_DATA, w.type, w.id), Loadout.catalogRecord(LOADOUT_DATA, h.type, h.id), slot.weapon?.id)));
+    || Loadout.equivalentAttachments(Loadout.catalogRecord(LOADOUT_DATA, w.type, w.id), Loadout.catalogRecord(LOADOUT_DATA, h.type, h.id))));
   if (held) return { held: true };
   const id = want && typeof want === 'object' ? want.id : want;
   const catalog = { sight: 'SIGHTS', muzzle: 'MUZZLES', barrel: 'BARRELS', grip: 'GRIPS', laser: 'LASERS',

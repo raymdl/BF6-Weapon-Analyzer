@@ -116,11 +116,11 @@ test('a carried choice becomes the same attachment under another name, and moves
   assert.equal(slim.grip, 'slim_angled_smg');
   carryAttsToWeapon(slim, weapon('l115'), data);
   assert.equal(slim.grip, 'slim_angled_sr');
-  // The name the game shows on the new weapon counts: the ELR-40's Lightened Suppressor
-  // is its CQB Suppressor, but a Lightened Suppressor is not a CQB Suppressor elsewhere.
+  // Only the catalog name counts: the ELR-40 labels its Lightened Suppressor "CQB Suppressor",
+  // which does not make a locked CQB Suppressor into one.
   const supp = { ...defaults(weapon('m4a1')), muzzle: 'cqb_supp' };
   carryAttsToWeapon(supp, weapon('elr40'), data);
-  assert.equal(supp.muzzle, 'light_supp');
+  assert.equal(supp.muzzle, defaults(weapon('elr40')).muzzle);
   assert.equal(equivalentAttachments(muzzle('light_supp'), muzzle('cqb_supp')), false);
   // A laser from the M433's own slot lands on the KORD 6P67's combined rail, and back.
   const laser = { ...defaults(weapon('m433')), laser: '5mw_red' };
