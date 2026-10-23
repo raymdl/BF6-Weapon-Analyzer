@@ -34656,13 +34656,14 @@
         "mk24",
         "ef88",
         "z84m",
-        "vssm"
+        "vssm",
+        "brod3"
       ],
       "metrics": [
         "Spread Inc/Shot"
       ],
       "suspected": true,
-      "note": "Deployed (Mounted stance), the per-shot ADS spread growth stays as standing, unlike on other grip pod weapons; the recoil reduction and the hipfire spread step apply."
+      "note": "Deployed (Mounted stance), the per-shot ADS spread growth stays as standing, unlike on other grip pod weapons; the recoil reduction and the hipfire spread step apply. The BROD 3 offers no bipod to compare against."
     },
     {
       "ref": "27",

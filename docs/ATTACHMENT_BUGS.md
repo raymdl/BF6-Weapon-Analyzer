@@ -784,6 +784,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   simulation keeps full bloom deployed, as recorded. `GAME_BUGS` (ref 25) marks the
   bipod † for Spread Inc/Shot and Hipfire Spread, and the three grip pods † for Spread
   Inc/Shot (their hip step is bound), with the note in the attachment menu and panel.
+  The grip pod mark also covers the BROD 3, whose grip pods lack the same ADS bloom
+  binding in the wiring survey; it offers no bipod, so it has no recording comparison.
 - **What would close it.** A patch that adds the two bindings to the four gun-sway files.
 
 ### 26. EF88, BROD 3 and Mk 24 keep per-shot spread growth in semi-auto
