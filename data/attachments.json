@@ -34581,6 +34581,34 @@
       "note": "Reduces recoil by seven steps instead of one."
     },
     {
+      "ref": "20",
+      "slot": "ammo",
+      "attachments": [
+        "penetration"
+      ],
+      "weapons": [
+        "m121a2"
+      ],
+      "metrics": [
+        "Collateral Mult"
+      ],
+      "note": "The stat panel shows x0.00 past the end of its table; damage through a target is the full x1.00, as fired."
+    },
+    {
+      "ref": "20",
+      "slot": "mag",
+      "attachments": [
+        "1_rnd"
+      ],
+      "weapons": [
+        "elr40"
+      ],
+      "metrics": [
+        "Collateral Mult"
+      ],
+      "note": "The stat panel shows x0.00 past the end of its table; damage through a target is the full x1.00, as fired."
+    },
+    {
       "ref": "21",
       "slot": "grip",
       "attachments": [
