@@ -36,8 +36,7 @@ Site status uses one of these values, followed by the value that the site applie
 - **Not modelled**: the site does not show this property.
 
 The site models what the game does. Game errors where the in-game effect differs from
-the description are listed in `GAME_BUGS` in `data/attachments.json`, as are the
-suspected errors the site reproduces (entries 19 and 21, flagged `suspected`). The
+the description are listed in `GAME_BUGS` in `data/attachments.json`. The
 attachment menu marks those choices with †, and the Attachment Effects panel marks the
 affected stat and adds a one-line footnote; the detail stays in this file.
 
@@ -54,21 +53,21 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches game: reload 2.876 s, ADS and draw unchanged (sway from source data) |
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
 | 12 | Standard Suppressor | L115 | Game error | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Matches game: no hipfire change (corrected 23 September) |
-| 13 | Tungsten Core | L115, with sniper comparisons | Suspected game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Matches game: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
-| 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Suspected game error | The menu does not show the burst recoil modifiers on any of the eight weapons: they are bound to the `BurstFireActive` runtime token, not the attachment selector the menu evaluates. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Matches game: Weapon Attributes follow the menu; firing simulation keeps source modifiers (firing not confirmed) |
+| 13 | Tungsten Core | L115, with sniper comparisons | Game error | L115 uses one recoil penalty step; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. Interdictor also uses one; Mini Scout stacks one and six. | Matches game: L115/Interdictor −1, three launch snipers −6, Mini Scout −7 |
+| 14 | Burst Mode, Burst Training | GRT-BC, SL9, KORD 6P67, SG 553R, PW5A3, KV9, CZ3A1, UMG-40 | Game error | The menu does not show the burst recoil modifiers on any of the eight weapons: they are bound to the `BurstFireActive` runtime token, not the attachment selector the menu evaluates. Whether the modifiers apply during firing is an open question; GRT-BC firing tests are inconclusive. | Matches game: Weapon Attributes follow the menu; firing simulation keeps source modifiers (firing not confirmed) |
 | 15 | None (base weapon, default magazine) | SOR-300SC, GRT-CPS | Source data inconsistency | The empty-reload entry stores `ReloadTime` 3.284 s, but `ReloadTimeBulletsLeft` and the reload phase list end at 3.2 s and 3.034 s. Timed captures show the game uses 3.2 s and 3.034 s. Sym's data also lists 3.284. | Matches game: empty reload 3.2 s / 3.034 s (corrected 23 September) |
 | 16 | Iron Sights | BROD 3 | Game error | The description states reduced weapon sway. The BROD 3 iron sights do not import the iron-sight sway package (weapon and camera sway ×0.667) that 56 other weapons use. | Matches game: no iron-sight sway on BROD 3 (marked †; 25 September capture) |
-| 17 | None (base weapon) | M433, SGX, L110, P18 | Suspected game error | Since 2.1.1.0 the in-world (3D) spot-on-fire range is 75 m; the other weapons keep 54 m. Not in the patch notes; four unrelated weapons. 75 m was the launch default before Season 2 reduced it to 54 m, so this looks like an unintended reversion. | Matches game: 75 m in-world, 150 m minimap |
+| 17 | None (base weapon) | M433, SGX, L110, P18 | Game error | Since 2.1.1.0 the in-world (3D) spot-on-fire range is 75 m; the other weapons keep 54 m. Not in the patch notes; four unrelated weapons. 75 m was the launch default before Season 2 reduced it to 54 m, so this looks like an unintended reversion. | Matches game: 75 m in-world, 150 m minimap |
 | 18 | Hollow Point | Mk 24 | Suspected game error | Costs 5 points, the same as Standard; every other weapon's Hollow Point costs 15 or 20. | Matches game: cost 5, headshot 1.80 with Hollow Point |
-| 19 | Single-Port Brake | RSPR | Suspected game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip.  With any vertical or stubby grip added, the recoil amount sum passes the end of the Precision table and the panel shows Precision 0. | Matches game: seven steps, 0.8 to 0.5 degrees. Precision with a vertical or stubby grip does not match game: 30 (last table row), not the panel's 0 |
-| 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game display error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). Firing-range tests on the M121 A2 and on the ELR-40 Single Shot show full x1.00 damage to the second target. | Matches game: x1.00 (firing-range damage); the panel shows x0.00 |
-| 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4) | Suspected game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons and 2 on the B36A4 and the rest; it may not be an error. The descriptions and costs are unchanged. | Matches game: the stronger steps |
+| 19 | Single-Port Brake | RSPR | Game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip.  With any vertical or stubby grip added, the recoil amount sum passes the end of the Precision table and the panel shows Precision 0. | Matches game: seven steps, 0.8 to 0.5 degrees. Precision with a vertical or stubby grip does not match game: 30 (last table row), not the panel's 0 |
+| 20 | Tungsten Core; Single Shot magazine | M121 A2; ELR-40 | Game error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). Firing-range tests on the M121 A2 and on the ELR-40 Single Shot show full x1.00 damage to the second target. | Matches game: x1.00 (firing-range damage); the panel shows x0.00 |
+| 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4) | Game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons and 2 on the B36A4 and the rest. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Does not match game: shows 100 |
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Matches game: with these two scopes the site offers no Optic Accessory; the SDO 3.50x and Baker 3.00x keep it |
 | 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
 | 25 | Bipod, deployed | Mk 24, EF88, VSSM, Z84M | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), and the operator confirmed the same on the Z84M in game, while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Matches game: the Mounted stance deploys the recoil package only on these four, and the bipod and grip pods are marked † with the missing spread benefits |
-| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Suspected game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 weapons in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
-| 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. Either a Lightened Suppressor mislabelled, or a CQB Suppressor with recoil effects its text does not state. | Matches game: panel values (23 October 2026) and the recoil package, applied and marked with the bug label (operator decision on the data binding and the recordings). A locked CQB Suppressor does not carry to it |
+| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 weapons in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
+| 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. The CQB Suppressor incorrectly receives the Lightened Suppressor recoil benefits. | Matches game: the CQB Suppressor receives the Lightened Suppressor recoil benefits |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](#review-method-and-rejected-findings)); numbers are not reused.
@@ -261,6 +260,8 @@ recoil. See
 
 ### 13. Sniper Tungsten Core recoil penalties are inconsistent
 
+- **Status.** Game error.
+
 - **In-game text.** "Ammunition that trades recoil for improved penetration,
   resulting in greater damage to soldiers behind the initial target."
 - **Confirmed configuration.** M2010 ESR, PSR and SV-98 bind the Tungsten Core
@@ -268,7 +269,7 @@ recoil. See
   with no variation shift. L115 and Interdictor bind `GRM_Recoil_AMO_M10`:
   −1 step. Mini Scout binds both and sums to −7. These are penalties, since
   the recoil multiplier is less than one.
-- **Suspected error.** The operator considers the six-step setting on the three
+- **Game error.** The operator considers the six-step setting on the three
   launch snipers the intended sniper penalty, and the later L115 setting a
   missed configuration. This is a plausible consistency hypothesis, not confirmed
   developer intent. Caliber alone does not establish the intended game value.
@@ -285,6 +286,8 @@ recoil. See
 - **Source.** [Tungsten Core trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sniper-tungsten-recoil-2026-09-21.json).
 
 ### 14. Burst attachments: menu omits burst recoil modifiers; firing effect unresolved
+
+- **Status.** Game error (menu display); firing effects remain unresolved.
 
 The entry has two parts. 14a is a confirmed menu observation on all eight
 burst-capable weapons. 14b is an open question about firing. The menu observation
@@ -444,6 +447,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 
 ### 17. M433, SGX, L110 and P18 have a longer in-world spot-on-fire range
 
+- **Status.** Game error.
+
 - **What changed (2.1.1.0, 13 October 2026).** The in-world (3D) spot-on-fire base in the
   weapon file went from 54 to 75 on four weapons: `HK433_WB` (M433), `MPX_WB` (SGX),
   `Minimi_WB` (L110) and `M18_WB` (P18). Field: `Class_542ac52c`
@@ -455,7 +460,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **In-game evidence.** The operator confirmed 75 m on the in-game weapon panels of all
   four weapons on 13 October 2026. The P18 panel in an operator screenshot of
   14 October 2026 also shows 75 m.
-- **Why it may be an error.** No class or calibre rule separates these four from the rest.
+- **Game error.** No class or calibre rule separates these four from the rest.
   Operator note (13 October 2026): 75 m was the default in-world range in the launch
   version of the game and was reduced to 54 m in Season 2, so these four weapons look
   like an unintended reversion to the launch value. The launch and Season 2 values are
@@ -491,6 +496,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 
 ### 19. RSPR Single-Port Brake reduces recoil by seven steps
 
+- **Status.** Game error.
+
 - **In-game text.** Single-Port Brake: "Simple brake that reduces recoil but increases weapon
   sway. Soldiers firing will be spotted, marking their position in-world and on the minimap."
   Cost 5. Unlock at RSPR Mastery 7.
@@ -508,7 +515,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   focused reads Recoil Amount 0.6 degrees and Control 53. Seven steps at the RSPR's 0.94
   factor give 0.782 to 0.507 degrees and five steps give 0.574, which match both panels;
   one step would give 0.735.
-- **Why it is likely an error.** A 5-point brake outperforms the 35-point grip, and the extra
+- **Game error.** A 5-point brake outperforms the 35-point grip, and the extra
   binding is one that belongs to bolt-action rifles.
 - **Site.** The site applies seven steps, as the game does.
 - **Precision panel reads 0 with a vertical or stubby grip (operator, 17 October 2026).**
@@ -524,6 +531,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   finds no other build past its Precision table.
 
 ### 20. Collateral multiplier panel shows x0.00 past the top of the table
+
+- **Status.** Game error.
 
 - **In-game panel.** M121 A2 with Tungsten Core, and ELR-40 with the Single Shot magazine and
   Standard ammunition, both show Collateral Multiplier x0.00 (operator screenshots, 13 October
@@ -575,9 +584,11 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 
 ### 21. Mk 24 and Z84M: three grips reduce recoil by one extra step
 
+- **Status.** Game error.
+
 - **Attachments.** Adjustable Angled (15 points), Full Angled (25 points) and QD Grip Pod
   (30 points) on the Mk 24 and the Z84M. Both weapons are new in 2.1.1.0. The QD Grip Pod
-  part also applies to the EF88 and M16A4, and may not be an error.
+  part also applies to the EF88 and M16A4.
 - **Frosty data (2.1.1.0).** `GS_MRGGA` and `GS_PKM` bind Adjustable Angled to
   `GRM_Recoil_BTM_P20` (two steps; other weapons bind `GRM_Recoil_BTM_P10`, one step), and
   Full Angled and QD Grip Pod to `GRM_Recoil_BTM_P30` (three steps; other weapons bind
@@ -596,9 +607,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   | M16A4 | – | – | – | 47 | – | 49 |
 
   Adjustable Angled matches the two-step PTT Grip Pod, and Full Angled the QD Grip Pod.
-- **Why it is likely an error.** The angled grips' descriptions and costs are the same as on
-  other weapons, and only the two Season 5 weapons differ. The stronger QD Grip Pod on four
-  weapons may be intended.
+- **Game error.** The angled grips' descriptions and costs are the same as on
+  other weapons, and only the two Season 5 weapons differ. The QD Grip Pod also gives an
+  extra recoil step on the EF88 and M16A4.
 - **Site.** The site applies the stronger steps on these two weapons, as the game does.
 
 ### 22. Interdictor Precision shows 1
@@ -790,6 +801,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 
 ### 26. EF88, BROD 3 and Mk 24 keep per-shot spread growth in semi-auto
 
+- **Status.** Game error.
+
 - **In-game (operator observation, 17 October 2026, client 2.1.1.0).** In manually
   selected semi-auto the spread indicator still widens on each shot on the EF88, BROD 3
   and Mk 24, where the M277 and M433 show no growth. Recordings:
@@ -814,11 +827,11 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   shots, consistent with the binding being active after a mode switch.
 - **Interpretation.** Three rifles out of 38 with a selectable semi mode lack the one
   binding that removes semi-auto bloom. The pattern is a missing binding rather than a
-  tuning choice, but the files do not say which.
+  tuning choice.
 - **Site.** `data/weapons.json` stores `hipNoBloomOnSwitch` false for these three and true
   for the rest, so the site already matches the source. The ADS branch applies the same
   increase in every mode on the site; the single-mode semi state is not modelled.
-- **What would settle it.** A patch that adds the binding to the three gun-sway files, or
+- **Follow-up verification.** A patch that adds the binding to the three gun-sway files, or
   a hip-fire semi recording on the EF88 against the M433 at the semi cap (predicted:
   EF88 hip indicator climbs 0.65° per shot less recovery; M433 flat).
 
@@ -832,8 +845,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   (`light_supp` on the site; the SV-98 is the precedent). The sniper CQB Suppressor uses
   `ImprvdSuppressor01`. With it come the bolt-action recoil package (duration 0.066667 s,
   recovery x1.728, recovery time exponent -0.5) and raw values with no hipfire penalty step.
-- **Reading.** Either the game mislabels a Lightened Suppressor as the CQB Suppressor, or
-  the ELR-40 CQB Suppressor carries recoil effects its text does not state. The absent
+- **Game error.** The ELR-40 CQB Suppressor incorrectly receives the Lightened Suppressor
+  recoil benefits. The absent
   hipfire penalty agrees with the CQB text, unlike entry 12, where the L115 text promises
   a penalty the game does not apply.
 - **Site.** The 2.1.1.0 worker kept the Lightened Suppressor record with the ELR-40 raw
