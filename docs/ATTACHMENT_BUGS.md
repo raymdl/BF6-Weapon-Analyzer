@@ -749,7 +749,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Z84M (operator in-game check, 22 October 2026, client 2.1.1.0 hotfix 2026-10-22).**
   Deploying the bipod does not stop per-shot spread growth, as the files predicted. No
   recording was measured.
-- **Site.** The site models no deployed state (bipod is `noEffect`), so nothing changes.
+- **Site.** The Mounted stance deploys the bipod with the recoil package only on these
+  four weapons (their `deployed` blocks carry no `adsSpreadK` or hip step), so the
+  simulation keeps full bloom deployed, as recorded.
 - **What would close it.** A patch that adds the two bindings to the four gun-sway files.
 
 ### 26. EF88, BROD 3 and Mk 24 keep per-shot spread growth in semi-auto

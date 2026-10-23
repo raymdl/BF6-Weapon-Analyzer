@@ -469,6 +469,32 @@ This replaces the old +15% firing-offset estimate. Evaluate the lower flat recov
 spread and increased nonlinear recovery coefficient. The attachment panel shows both hip
 spread per shot and the flat firing recovery value.
 
+## Mounted stance (deployed bipod and grip pods)
+
+The Stance control's third state, Mounted, is the weapon rested on cover with its
+bipod or grip pod deployed. `applyDeployedState(build)` (sim/applyAttachments.js)
+applies the grip's `deployed` block to the simulation build only; the stats and
+attribute panels keep the undeployed build, as the game's stat screen does. Without a
+bipod or grip pod the mount changes nothing: the plain mounted modifiers are identity
+operands.
+
+The block holds the three source packages that the `BenefittingFromBipod` condition
+binds in each gun-sway file (2.1.1.0 raw):
+
+| Field | Source | Values |
+|---|---|---|
+| `recoilTierMod` | `GRM_BipodDeployed_BTM_P50`, `GRM_GrippodDeployed_BTM_P30`, `GRM_BipodDeployed_Bolt_BTM_P50` | +10 bipod, +8 grip pod, +30 bolt-action, added to the ADS and hip amount exponents (`recoilV × mult^tier`). The grip pods' always-on +2 stays, so a deployed grip pod on an automatic weapon totals +10, the same as the bipod. The PSR, M2010 ESR, SV-98 and Mini Scout grip pods bind the bolt package (+30); the ELR-40 binds both (+38); the Interdictor and L115 only the grip pod one (+8). |
+| `adsSpreadK` | `GBM_Increase_ADS_{30..50}_BTM_Bipod` (identical operands) | 1/3: ADS per-shot increase and both recovery offsets × k, firing coefficient × k^−1.5, the Light-barrel rule. Not bound on Mk 24, EF88, Z84M, VSSM (bug 25), BROD 3 grip pods, the DMRs and the bolt-actions, which keep their standing bloom. |
+| `hipSpreadTierMod` | `GDM_Array_HipDispersion_BTM_P20` | −2 in the catalog sign (two source steps better), stacked on the build's hip step. Not bound for the bipod on the four bug-25 weapons. |
+
+Measured on 23 October 2026 ([receipt](../reference-data/provenance/deployed-recoil-measurement-2026-10-23.md)):
+M277 deployed camera climb 0.52 to 0.53 of standing against the predicted 0.558, bipod
+and grip pods alike; PSR settled 0.163 against 0.156; mounting without a bipod gives no
+reduction. Not applied: the −4 / −5 direction-variation tiers, because the PSR clips
+show no rise in horizontal variation when deployed (four shots per clip). Not verified:
+the 1/3 bloom factor; the 17 October ADS indicator clips grew nearer a tenth of standing
+on the M277, VCR-2 and M121 A2, with an unverified indicator scale.
+
 ## Recoil control and platform
 
 Recoil control subtracts a fraction of the expected kick vector on each shot.

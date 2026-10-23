@@ -99,6 +99,7 @@ weapon's availability map. Supported effect families are:
 | `hipSpreadIncMult`, `hipSpreadFiringDecCoefMult`, `hipSpreadFiringDecOffsetMult`, `hipSpreadNotFiringDecOffsetMult` | Light/combo-light factors: 0.666667, 1.837117, 0.666667, 0.666667. Affect hipfire only; selected light and laser factors multiply. |
 | `hipSpreadIdleDecOffsetMult` | Retained light source operand 0.666667; no idle-state simulation consumes it. |
 | `hipSpreadTierMod`, `movingAdsSpreadTierMod` | Source-array index shifts; signs and participating slots are specified in the ladder guide. |
+| Grip `deployed` (`recoilTierMod`, `adsSpreadK`, `hipSpreadTierMod`) | Bipod and grip pod packages applied only in the Mounted stance; a per-weapon `frostyModifiers[weaponId].deployed` block replaces the catalog default. See the [Mounted stance](RECOIL_SPREAD_MODEL.md#mounted-stance-deployed-bipod-and-grip-pods). |
 | `adsSpreadIncMult`, `adsSpreadFiringDecCoefMult`, `adsSpreadFiringDecOffsetMult`, `adsSpreadNotFiringDecOffsetMult` | Source ADS-only Heavy-type barrel factors: 0.666667, 1.837117, 0.666667, 0.666667. Increment precision is retained. Explicit not-firing fields are required. |
 | `adsSpreadDynOverride`, `hipSpreadDynOverride` | Field-wise dynamics replacement; ergo overrides win over ammo on the ADS branch. |
 | `adsTimeTierMod`, `adsTimeTierShift`, `adsMoveSpeedTierShift`, `sprintRecoveryTierShift`, `deployTimeTierShift` | Handling coordinates. `TierMod` and `TierShift` must not be assumed to share a sign convention. |

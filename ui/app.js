@@ -13,7 +13,7 @@ import {
   spreadBounds, spreadDynamics, weaponRpm, validateWeaponSimulation, sampleSpreadRadius, samplePellets, selectedSpreadIncFor, effectiveSpreadMax, SPREAD_BAR_SCALE,
   simulateSpread, shotIntervalAfter, genRecoilPts,
 } from '../sim/core.js';
-import { setAttachmentContext, applyAttachments, applyBareWeapon, attachmentContributions, floorStatDisplay, wLabel } from '../sim/applyAttachments.js';
+import { setAttachmentContext, applyAttachments, applyBareWeapon, attachmentContributions, floorStatDisplay, wLabel, applyDeployedState, hasDeployable } from '../sim/applyAttachments.js';
 import { captureView, captureFilename } from './capture.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange, zoneMultiplierForWeapon, resolveHitMultipliers } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
@@ -301,6 +301,15 @@ function selectedWeaponBuild(slot) {
   if (projectileModel) build._projectileModel = projectileModel;
   selectedBuildCache.set(slot, { weapon: slot.weapon, key, build });
   return build;
+}
+/**
+ * The build the recoil and spread simulation uses: the selected build, with its
+ * bipod or grip pod deployed in the Mounted stance. The stats and attribute
+ * panels keep the undeployed build, as the game's stat screen does.
+ */
+function selectedSimBuild(slot) {
+  const build = selectedWeaponBuild(slot);
+  return build && state.recoil.stance === 'mount' ? applyDeployedState(build) : build;
 }
 function isZeroableWeapon(weapon) {
   return weapon?.cls === 'DMR' || weapon?.cls === 'Sniper Rifle';
@@ -1785,7 +1794,7 @@ function setRecoilAim(aim) {
   renderRecoil();
 }
 function setRecoilStance(stance) {
-  state.recoil.stance = stance === 'move' ? 'move' : 'stand';
+  state.recoil.stance = stance === 'move' || stance === 'mount' ? stance : 'stand';
   setSimContext({ stanceState: state.recoil.stance });
   renderRecoil();
 }
@@ -2971,8 +2980,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   recoilPlotFrame = null;
   if (isTargetGeometry()) state.recoil.distance = snapTargetDistance(state.recoil.distance);
   scheduleUrlSync();
-  const w1 = selectedWeaponBuild(state.slots[0]);
-  let w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  const w1 = selectedSimBuild(state.slots[0]);
+  let w2 = state.comparing ? selectedSimBuild(state.slots[1]) : null;
   if ([w1, w2].some(w => w && !validateWeaponSimulation(w))) {
     const canvas = document.getElementById('rcMain');
     const ctx = canvas.getContext('2d');
@@ -3008,6 +3017,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   pressed('rcAimHip', aim === 'hip');
   pressed('rcStanceStand', stance === 'stand');
   pressed('rcStanceMove', stance === 'move');
+  pressed('rcStanceMount', stance === 'mount');
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
     // The range draws its own live crosshair; its corner holds Reload and Clear instead.
@@ -3188,7 +3198,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     ? firingRange.render()
     : drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
   const noteEl = document.querySelector('.rc-note');
-  const stateLabel = `${aim.toUpperCase()} / ${stance === 'move' ? 'MOV' : 'STD'}`;
+  const stateLabel = `${aim.toUpperCase()} / ${stance === 'move' ? 'MOV' : stance === 'mount' ? 'MNT' : 'STD'}`;
   if (noteEl && axis) {
     const activeLayers = [
       layers.scatter ? 'scatter' : null,
@@ -3400,7 +3410,7 @@ function renderRecoil({ plotOnly = false } = {}) {
       let tt = '';
       if (sim1 || sim2) {
         const aimLbl = aim === 'hip' ? 'Hipfire' : 'ADS';
-        const stanceLbl = stance === 'move' ? 'Moving' : 'Standing';
+        const stanceLbl = stance === 'move' ? 'Moving' : stance === 'mount' ? 'Mounted' : 'Standing';
         const spreadHdr = `Effective Spread (${aimLbl} | ${stanceLbl})`;
         const thW1 = state.slots[0].weapon ? `<th style="color:var(--accent)">${weaponDisplayLabel(state.slots[0].weapon)}</th>` : '';
         const thW2 = sim2 && state.slots[1].weapon ? `<th style="color:var(--accent2)">${weaponDisplayLabel(state.slots[1].weapon)}</th>` : '';
@@ -3424,7 +3434,10 @@ function renderRecoil({ plotOnly = false } = {}) {
 
   // With the strip present it already names the block, and the aim/stance it
   // describes is set by the controls right above it.
-  const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : 'Standing'}</div>`;
+  // Mounted deploys the bipod or grip pod; without one the mount changes nothing.
+  const mountNote = stance !== 'mount' ? ''
+    : [w1, w2].filter(Boolean).some(hasDeployable) ? ' (bipod or grip pod deployed)' : ' (no bipod or grip pod: standing values)';
+  const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : stance === 'mount' ? `Mounted${mountNote}` : 'Standing'}</div>`;
   // The loadouts the bars compare head the card, the way each impact table
   // names its own.
   let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1'], [w2, 'c2']].filter(([w]) => w)
@@ -3832,6 +3845,7 @@ function bindEvents() {
   document.getElementById('rcAimHip').addEventListener('click', () => setRecoilAim('hip'));
   document.getElementById('rcStanceStand').addEventListener('click', () => setRecoilStance('stand'));
   document.getElementById('rcStanceMove').addEventListener('click', () => setRecoilStance('move'));
+  document.getElementById('rcStanceMount').addEventListener('click', () => setRecoilStance('mount'));
   document.getElementById('rcViewAngle').addEventListener('click', () => setRecoilView('angle'));
   document.getElementById('rcViewTarget').addEventListener('click', () => setRecoilView('target'));
   document.getElementById('rcViewRange')?.addEventListener('click', () => setRecoilView('range'));
@@ -3878,7 +3892,7 @@ function bindEvents() {
   });
   firingRange = createFiringRange({
     canvas: recoilCanvas,
-    readBuild: () => selectedWeaponBuild(state.slots[0]),
+    readBuild: () => selectedSimBuild(state.slots[0]),
     readSimKey: rangeSimKey,
     readDegreesPerCount: rangeDegreesPerCount,
     drawFrame: drawPlotFrame,

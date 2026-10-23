@@ -690,6 +690,69 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
 }
 
 
+// ── DEPLOYED STATE ────────────────────────────────────────────────────────────
+
+/**
+ * The build with its bipod or grip pod deployed (the Mounted stance). The grip's
+ * `deployed` block (default on the catalog entry, replaced per weapon through
+ * `frostyModifiers[weaponId].deployed`) carries the source packages that the
+ * `BenefittingFromBipod` condition binds in each gun-sway file:
+ *   recoilTierMod   exponent tiers added to ADS and hip recoil amount (+10 bipod,
+ *                   +8 grip pod, +30 bolt-action bipod); the −4 / −5 variation
+ *                   tiers are not applied: the 23 Oct 2026 PSR clips show no rise
+ *                   in horizontal variation when deployed.
+ *   adsSpreadK      ADS bloom scale k: per-shot increase and both recovery offsets
+ *                   × k, firing recovery coefficient × k^−1.5 (the Light-barrel
+ *                   rule; 1/3 for `GBM_Increase_ADS_xx_BTM_Bipod`). Weapons that
+ *                   bind no bloom replacement keep k = 1 (bug 25 and the DMRs).
+ *   hipSpreadTierMod hip spread table shift in the catalog sign (−2 = two source
+ *                   steps better, `GDM_Array_HipDispersion_BTM_P20`).
+ * Mounting without a bipod or grip pod changes nothing (the plain mounted
+ * modifiers are identity operands), so the build is returned as is. Measured on
+ * the M277 and PSR, 23 Oct 2026 (reference-data/provenance/
+ * deployed-recoil-measurement-2026-10-23.md). Does NOT mutate `build`.
+ */
+export function applyDeployedState(build) {
+  const deployed = build?._resolved?.grip?.deployed;
+  if (!deployed || build._deployed) return build;
+  const { RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES } = _ctx;
+  const tier = deployed.recoilTierMod ?? 0;
+  const k = deployed.adsSpreadK ?? 1;
+  const hipStep = deployed.hipSpreadTierMod ?? 0;
+  const mult = requireNumber(RECOIL_MULT[build.id], `${build.id} RECOIL_MULT`);
+  const recoil = build.recoil && tier
+    ? Object.fromEntries(Object.entries(build.recoil).map(([state, group]) => [state,
+      { ...group, amountExp: (group.amountExp ?? 0) + tier }]))
+    : build.recoil;
+  let spread = build.spread;
+  const hipBaseIndex = HIP_SPREAD_BASE_INDEX_OVERRIDES[build.id] ?? HIP_SPREAD_BASE_INDEX[build.id];
+  if (hipStep && Number.isInteger(hipBaseIndex) && build.spread) {
+    const row = HIP_SPREAD_TABLE[Math.max(0, Math.min(HIP_SPREAD_TABLE.length - 1,
+      hipBaseIndex - (build._hipSpreadTierMod ?? 0) - hipStep))];
+    spread = { ...build.spread };
+    for (const key of ['hipStand', 'hipMove']) {
+      if (build.spread[key]) spread[key] = [row[key], build.spread[key][1]];
+    }
+  }
+  return {
+    ...build,
+    _deployed: true,
+    recoil,
+    recoilV: +(build.recoilV * Math.pow(mult, tier)).toFixed(3),
+    recoilIncAds: build.recoilIncAds != null ? build.recoilIncAds * k : build.recoilIncAds,
+    _adsSpreadFiringDecCoefMult: (build._adsSpreadFiringDecCoefMult ?? 1) * Math.pow(k, -1.5),
+    _adsSpreadFiringDecOffsetMult: (build._adsSpreadFiringDecOffsetMult ?? 1) * k,
+    _adsSpreadNotFiringDecOffsetMult: (build._adsSpreadNotFiringDecOffsetMult ?? 1) * k,
+    spread,
+  };
+}
+
+/** True when the build carries a bipod or grip pod that the Mounted stance deploys. */
+export function hasDeployable(build) {
+  return Boolean(build?._resolved?.grip?.deployed);
+}
+
+
 // ── UTILITY ───────────────────────────────────────────────────────────────────
 
 /** Returns the weapon's display label (includes attachment names if applied). */

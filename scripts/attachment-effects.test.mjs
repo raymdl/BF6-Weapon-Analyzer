@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import test from 'node:test';
-import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
+import { applyAttachments, applyDeployedState, setAttachmentContext } from '../sim/applyAttachments.js';
 import { availableAttachments, computeAttPts, getAttPts, resetAttsForWeapon } from '../sim/loadout.js';
 import { createShareCodec } from '../sim/share-state.js';
 import { setSimContext, simulateSpread, shotIntervalAfter, selectedRecoilAmountFor, spreadRecoveries, applySpreadRecovery } from '../sim/core.js';
@@ -683,4 +683,31 @@ test('18.5KS-K Slim Angled preserves ADS spread with and without Violet', () => 
     assert.deepEqual(slim.spread.adsStand, base.spread.adsStand);
     assert.ok(stubby.spread.adsMove[0] > base.spread.adsMove[0]);
   }
+});
+
+test('Mounted stance deploys the bipod or grip pod with the per-weapon source packages', () => {
+  // 23 Oct 2026 recordings: M277 deployed climb 0.52-0.53 of standing against 0.9433^10,
+  // PSR settled 0.163 against 0.94^30; deployed bipod and grip pods indistinguishable.
+  const m277 = weapon('m277');
+  const bare = build(m277);
+  assert.equal(applyDeployedState(bare), bare, 'no bipod or grip pod: mounting changes nothing');
+  const bipod = applyDeployedState(build(m277, { grip: 'bipod' }));
+  assert.ok(Math.abs(bipod.recoilV / bare.recoilV - 0.9433 ** 10) < 1e-3);
+  assert.ok(Math.abs(bipod.recoilIncAds / bare.recoilIncAds - 1 / 3) < 1e-5);
+  assert.ok(Math.abs(bipod._adsSpreadFiringDecCoefMult - 3 ** 1.5) < 1e-4);
+  assert.equal(bipod.recoil.hip.amountExp, bare.recoil.hip.amountExp + 10);
+  assert.ok(bipod.spread.hipStand[0] < bare.spread.hipStand[0], 'two hip spread steps');
+  const pod = applyDeployedState(build(m277, { grip: 'qd_grip_pod' }));
+  assert.ok(Math.abs(pod.recoilV - bipod.recoilV) < 2e-3, 'grip pod +2 undeployed +8 deployed equals the bipod +10');
+  // Bug 25: the Mk 24 binds the recoil package only.
+  const mk24 = weapon('mk24');
+  const mk24Deployed = applyDeployedState(build(mk24, { grip: 'bipod' }));
+  assert.equal(mk24Deployed.recoilIncAds, build(mk24, { grip: 'bipod' }).recoilIncAds);
+  assert.deepEqual(mk24Deployed.spread.hipStand, build(mk24, { grip: 'bipod' }).spread.hipStand);
+  assert.ok(mk24Deployed.recoilV < build(mk24, { grip: 'bipod' }).recoilV);
+  // Bolt-actions: +30, and the PSR grip pods bind the same bolt package.
+  const psr = weapon('psr');
+  const psrBipod = applyDeployedState(build(psr, { grip: 'bipod_sr' }));
+  assert.ok(Math.abs(psrBipod.recoilV / build(psr).recoilV - 0.94 ** 30) < 1e-3);
+  assert.equal(applyDeployedState(build(psr, { grip: 'qd_grip_pod_sr' })).recoilV, psrBipod.recoilV);
 });

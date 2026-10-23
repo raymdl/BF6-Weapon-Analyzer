@@ -16,7 +16,7 @@ without an application backend or compilation step.
 - **Damage:** damage-versus-range, bullets to kill, and time to kill, with
   headshot scenarios, chest/limb bands, and optional ADS/flight time.
 - **Recoil and spread:** reproducible spray samples, recoil paths, spread
-  overlays, standing/moving and ADS/hipfire contexts, and recoil-control settings.
+  overlays, standing/moving/mounted and ADS/hipfire contexts, and recoil-control settings.
 - **Target impacts:** pattern projection onto an approximate soldier, with distance,
   aim, magnification, and single-projectile hit and damage results.
 - **Sharing and export:** loadout/view links, PNG capture, and a recoil popout window.

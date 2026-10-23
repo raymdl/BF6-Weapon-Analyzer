@@ -191,7 +191,7 @@ export function createShareCodec({
     if (params.get('ads') === '1' && state.chart.mode === 'ttk') state.chart.showAds = true;
     if (params.get('vel') === '1' && state.chart.mode === 'ttk') state.chart.showVel = true;
     if (params.get('ra') === 'hip') state.recoil.aim = 'hip';
-    if (params.get('rs') === 'move') state.recoil.stance = 'move';
+    if (['move', 'mount'].includes(params.get('rs'))) state.recoil.stance = params.get('rs');
     if (params.get('rp') === 'console') state.recoil.platform = 'console';
     if (params.get('rv') === 'target' || params.get('rv') === 'range') state.recoil.view = params.get('rv');
     // Old target links omitted 30 m. New links always carry their distance.

@@ -286,8 +286,10 @@ Capabilities without a numeric stat are stored as `utilities` (label → value) 
 shown as green chips: Fire while Sprinting (Compact Handstop), Gadget Draw Speed
 (Underslung Mount), Flashlight with its activation (Toggleable, ADS or Hipfire; combo
 lights are Toggleable), Auto-Zeroing (Range Finder), Reload in ADS (Magwell Flare)
-and Rechamber in ADS (DLC Bolt). They do not change the simulation. Bipod and Match
-Trigger remain `noEffect` until deployed and semi-auto states are modelled.
+and Rechamber in ADS (DLC Bolt). They do not change the simulation. Match Trigger
+remains `noEffect` until a semi-auto state is modelled. The Bipod stays `noEffect`
+undeployed; the Mounted stance deploys it (and the grip pods) through each grip's
+`deployed` block, see the [recoil and spread guide](RECOIL_SPREAD_MODEL.md#mounted-stance-deployed-bipod-and-grip-pods).
 
 Ergonomics can change fire mode. Auto takes precedence over burst and clears burst
 metadata; a configured `autoRpm` can change cadence, as with VSSM Folding Stock's

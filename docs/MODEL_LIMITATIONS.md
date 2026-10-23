@@ -55,6 +55,15 @@ branch does not establish in-game availability.
 
 ## Explicitly deferred or normalized behavior
 
+**Mounted stance (deployed bipod and grip pods).** The recoil amount tiers and the
+hip spread step follow the source packages and the 23 October 2026 M277/PSR
+measurement. The −4 / −5 direction-variation tiers are not applied: the PSR clips show
+no rise in horizontal variation when deployed (four shots per clip, weak). The 1/3 ADS
+bloom factor is the source operand; the 17 October indicator clips suggest a smaller
+deployed bloom, with an unverified indicator scale. Mounting without a bipod or grip
+pod changes nothing, and the Steady Aim perk's mounted recoil package is not modelled.
+See the [recoil and spread guide](RECOIL_SPREAD_MODEL.md#mounted-stance-deployed-bipod-and-grip-pods).
+
 **Recoil recovery and smooth-recoil attachments.** The source factors, exponent
 fields, and native class layouts do not independently validate the current recovery
 equation. The model uses a 0.05-second duration override and 1.2 recovery-factor

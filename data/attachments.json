@@ -6033,13 +6033,20 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10
+          }
         },
         "grtcps": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10,
+            "hipSpreadTierMod": -2
+          }
         },
         "kord6p67": {
           "adsTimeTierMod": 0,
@@ -6069,7 +6076,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10,
+            "hipSpreadTierMod": -2
+          }
         },
         "m121a2": {
           "adsTimeTierMod": 0,
@@ -6111,7 +6122,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10,
+            "hipSpreadTierMod": -2
+          }
         },
         "m417a2": {
           "adsTimeTierMod": 0,
@@ -6141,7 +6156,10 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10
+          }
         },
         "nvo228e": {
           "adsTimeTierMod": 0,
@@ -6183,14 +6201,25 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10
+          }
         },
         "z84m": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10
+          }
         }
+      },
+      "deployed": {
+        "recoilTierMod": 10,
+        "adsSpreadK": 0.333333,
+        "hipSpreadTierMod": -2
       }
     },
     {
@@ -6217,7 +6246,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "drsiar": {
           "adsTimeTierMod": 0,
@@ -6229,13 +6262,21 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "grtcps": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "kord6p67": {
           "adsTimeTierMod": 0,
@@ -6265,7 +6306,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "m121a2": {
           "adsTimeTierMod": 0,
@@ -6307,7 +6352,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "m417a2": {
           "adsTimeTierMod": 0,
@@ -6337,7 +6386,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "nvo228e": {
           "adsTimeTierMod": 0,
@@ -6373,13 +6426,21 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "svk86": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "tr7": {
           "adsTimeTierMod": 0,
@@ -6397,14 +6458,27 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "z84m": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         }
+      },
+      "deployed": {
+        "recoilTierMod": 8,
+        "adsSpreadK": 0.333333,
+        "hipSpreadTierMod": -2
       }
     },
     {
@@ -6433,7 +6507,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "drsiar": {
           "adsTimeTierMod": 0,
@@ -6447,13 +6525,21 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "grtcps": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "kord6p67": {
           "adsTimeTierMod": 0,
@@ -6483,7 +6569,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "m121a2": {
           "adsTimeTierMod": 0,
@@ -6527,7 +6617,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "m417a2": {
           "adsTimeTierMod": 0,
@@ -6559,7 +6653,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "nvo228e": {
           "adsTimeTierMod": 0,
@@ -6597,13 +6695,21 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "svk86": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "tr7": {
           "adsTimeTierMod": 0,
@@ -6623,7 +6729,11 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "z84m": {
           "hipRecoilTierMod": 3,
@@ -6631,8 +6741,17 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         }
+      },
+      "deployed": {
+        "recoilTierMod": 8,
+        "adsSpreadK": 0.333333,
+        "hipSpreadTierMod": -2
       }
     },
     {
@@ -6659,7 +6778,11 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "drsiar": {
           "adsTimeTierMod": 1,
@@ -6671,13 +6794,21 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "grtcps": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "kord6p67": {
           "adsTimeTierMod": 1,
@@ -6707,7 +6838,11 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "m121a2": {
           "adsTimeTierMod": 1,
@@ -6749,7 +6884,11 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "m417a2": {
           "adsTimeTierMod": 1,
@@ -6779,7 +6918,11 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "nvo228e": {
           "adsTimeTierMod": 1,
@@ -6815,13 +6958,21 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "svk86": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "tr7": {
           "adsTimeTierMod": 1,
@@ -6839,14 +6990,27 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         },
         "z84m": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         }
+      },
+      "deployed": {
+        "recoilTierMod": 8,
+        "adsSpreadK": 0.333333,
+        "hipSpreadTierMod": -2
       }
     },
     {
@@ -6903,14 +7067,26 @@
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10,
+            "hipSpreadTierMod": -2
+          }
         },
         "svk86": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 10,
+            "hipSpreadTierMod": -2
+          }
         }
+      },
+      "deployed": {
+        "recoilTierMod": 30,
+        "hipSpreadTierMod": -2
       }
     },
     {
@@ -6924,7 +7100,11 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 38,
+            "hipSpreadTierMod": -2
+          }
         },
         "interdictor": {
           "adsTimeTierMod": 1,
@@ -6943,26 +7123,46 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         },
         "miniscout": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         },
         "psr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         },
         "sv98": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         }
+      },
+      "deployed": {
+        "recoilTierMod": 8,
+        "hipSpreadTierMod": -2
       }
     },
     {
@@ -6976,7 +7176,11 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 38,
+            "hipSpreadTierMod": -2
+          }
         },
         "interdictor": {
           "adsTimeTierMod": 1,
@@ -6994,26 +7198,46 @@
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         },
         "miniscout": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         },
         "psr": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         },
         "sv98": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
-          "deployTimeTierShift": 0
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 30,
+            "hipSpreadTierMod": -2
+          }
         }
+      },
+      "deployed": {
+        "recoilTierMod": 8,
+        "hipSpreadTierMod": -2
       }
     },
     {
