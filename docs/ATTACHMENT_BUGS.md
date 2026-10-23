@@ -551,8 +551,24 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   the second target with the first missed. The second target takes 91 whether or not the
   first stands in front of it, so the bullet passes through at x1.00, as the M121 A2 does.
   Lone Single Shot readings of 108 and 120 on the lane also sit on the bullet's curve (entry 24).
+  Third session, recorded in the same folder (`ELR_*_Stomach_*.mp4`), aimed at the stomach of
+  the fixed targets, because chest aims sometimes passed over the heads of the targets behind.
+  Limb or abdomen multiplier: 0.84 for the Single Shot bullet, 0.67 for the base bullet; the
+  base rifle's collateral is x0.75 with Standard and x1.00 with Penetration ammunition. 7 Rnd
+  with Standard: 54, 40 and 30 on three targets in line (80, the base bullet's damage at every
+  range under 120 m, x 0.67 on the first target, then x0.75 per target behind it); with
+  Penetration: 54 and 54 on two targets in line (the same abdomen hit, x1.00 through the first
+  target); a lone 80 with each on another shot. Both match the site. Single Shot: 97, 101 and
+  91 on three targets in line with Standard and, identically, with Penetration, and 97 and 101
+  on another Penetration shot. Each is an abdomen hit at increasing range with no loss per
+  target: 97 is 115 x 0.84 (a target at about 39 m, on the rise from 90 at 24 m to 120 at
+  42 m), 101 is 120 x 0.84 (42 to 68 m) and 91 is 108 x 0.84 (about 75 m, on the fall from 120
+  to 100 at 80 m). The multiplier through each target is x1.00; with x0.75 the third target
+  would read about 51, not 91. This confirms the conclusion with three targets rather than two,
+  for both ammunitions.
 - **Conclusion.** Damage holds at the last row (x1.00) when the row number passes the end of
-  the table; only the panel shows zero. Confirmed by firing on both weapons.
+  the table; only the panel shows zero. Confirmed by firing on both weapons, the Single Shot
+  through three targets in line with Standard and with Penetration ammunition.
 - **Site.** x1.00 for both, as the damage tests show; the site does not copy the panel's
   x0.00. The ELR-40 Single Shot stood at x0.00 for part of 23 October 2026 on the first,
   misaligned shot.
