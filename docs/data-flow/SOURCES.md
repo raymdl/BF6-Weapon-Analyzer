@@ -242,7 +242,7 @@ assembled from three reference files named in its `provenance` field:
 [Precision tables](../../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json),
 [shotgun hipfire trace](../../reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json)
 and [Mobility source trace](../../reference-data/provenance/composite-mobility-source-trace-2026-09-21.json).
-No production generator writes it. The research checkers
+No production generator writes it. One row differs from the 1.4.3.0 tables: the Interdictor keyed row holds the 2.1.1.0 value of 100 instead of 1 (operator decision, 23 October 2026; `docs/ATTACHMENT_BUGS.md` entry 22). The research checkers
 [`frosty-composite-check.mjs`](../../scripts/frosty-composite-check.mjs) and
 [`frosty-precision-check.mjs`](../../scripts/frosty-precision-check.mjs) compare
 the model with captured panels. The calculation is in
