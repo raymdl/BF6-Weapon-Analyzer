@@ -136,9 +136,12 @@ Then fill the individual optic tooltips from the two provenance reports; this
 step needs no Frosty export:
 
 ```bash
-python scripts/optic-tooltips.py --individual reference-data/provenance/frosty-individual-optics-2026-10-21.json --mapping reference-data/provenance/frosty-optic-category-mapping-2026-10-13.json --write
+python scripts/optic-tooltips.py --individual reference-data/provenance/frosty-individual-optics-2026-10-21.json --mapping "../BF6 Frosty Research/reference-data/provenance/frosty-optic-category-mapping-2026-10-13.json" --write
 ```
 
+The mapping stays in the research repo: its unresolved rows are not what the
+site's optic-costs test expects of a mapping file here, and the script reads
+the unresolved list for descriptor assets anyway.
 It writes one description per weapon and optic from the optic's own descriptor
 asset, drops the legacy category keys the site no longer offers, and stops on
 any optic that resolves to no string or to more than one. Expect 1,996 entries
