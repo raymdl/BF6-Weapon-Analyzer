@@ -454,7 +454,11 @@ export function validateWeaponSimulation(w) {
   if (hasCycleCadence(w) && (w.fireMode === 'burst' || w.burstRounds != null || w.burstBurstsPerMinute != null)) {
     const rounds = requireNumber(w.burstRounds, `${w.id} burstRounds`);
     if (!Number.isInteger(rounds) || rounds < 1) invalidData(`Invalid ${w.id} burstRounds`);
-    weaponRpm(w, 'burstBurstsPerMinute');
+    // A bursts-per-minute of 0, or none at all, is the source's "no pause between
+    // bursts" (KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 with Burst Training or
+    // Burst Mode): the next burst starts at the shot interval, which the cadence
+    // helpers already do. Only a value above zero has to be a usable rate.
+    if (w.burstBurstsPerMinute != null && w.burstBurstsPerMinute !== 0) weaponRpm(w, 'burstBurstsPerMinute');
   }
   requireFields(w, ['recoilV', 'recoilVar', 'recoilIncAds'], w.id);
   for (const aim of ['ads', 'hip']) {

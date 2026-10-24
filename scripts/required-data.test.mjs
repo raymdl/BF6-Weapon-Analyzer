@@ -53,9 +53,11 @@ test('missing recoil tier rows fail even with no attachment tier shift', () => {
   setAttachmentContext(context);
 });
 
-test('missing burst timing and malformed bounds fail while single-shot pumps remain valid', () => {
+test('negative burst timing and malformed bounds fail while single-shot pumps remain valid', () => {
+  // A missing or zero bursts-per-minute is the source's no-pause burst, so only a
+  // value that cannot be a rate is a defect.
   const burst = structuredClone(weapons.find(w => w.fireMode === 'burst'));
-  delete burst.burstBurstsPerMinute;
+  burst.burstBurstsPerMinute = -1;
   assert.throws(() => validateWeaponSimulation(burst), /burstBurstsPerMinute/);
   const weapon = structuredClone(weapons[0]);
   for (const bounds of [undefined, [0, NaN], [2, 1]]) {
