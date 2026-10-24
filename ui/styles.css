@@ -398,10 +398,12 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-fire-seg button:hover{color:var(--accent)}
 .rc-fire-seg button.on{position:relative;z-index:1;background:rgba(201,162,39,.18);border-color:var(--accent);color:var(--accent)}
 .rc-fire-seg button.rc-aimed{border-color:var(--accent);color:var(--accent)}
-/* On the Reload / Clear row in the plot corner, as one joined group to their
-   left, where the captured cursor reaches it like them. */
-.rc-plot-mode{display:inline-flex;margin-right:6px}
+/* The fire-mode group holds the plot's top-right corner; Reload and Clear sit
+   at the bottom-right above the axis labels. The captured cursor reaches both. */
+.rc-plot-mode{display:inline-flex}
 .rc-plot-mode[hidden]{display:none}
+.rc-range-tools{position:absolute;right:8px;bottom:26px;z-index:2;display:flex;gap:5px}
+.rc-range-tools[hidden]{display:none}
 .rc-plot-mode .rc-fire-seg button{height:21px;padding:0 9px;font-size:.68rem;background:rgba(12,18,18,.78);backdrop-filter:blur(2px)}
 .rc-plot-mode .rc-fire-seg button.on{background:rgba(201,162,39,.22)}
 .rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}

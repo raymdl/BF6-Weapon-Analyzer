@@ -351,9 +351,9 @@ reset button, where a press works a button and a held press drags a slider. **Sh
 + drag** pans, **Shift + scroll** zooms and **Ctrl + scroll** steps the distance,
 with or without the mouse captured; a distance change clears the shots, since hits
 were scored at the old range. The **Reload** and
-**Clear** buttons in the plot's corner do the same, keeping distance, zoom and aim;
+**Clear** buttons in the plot's bottom corner do the same, keeping distance, zoom and aim;
 while the plot holds the mouse, aim the crosshair at a button and press to use it.
-On the plot beside Reload and Clear, **Semi**, **Burst** and **Auto** switch
+In the plot's top corner, **Semi**, **Burst** and **Auto** switch
 the fire mode between the modes the weapon and its ergonomic offer (an M16A4
 offers Burst and Semi, and
 Auto and Semi with the A3 Receiver; a weapon with one mode shows no buttons).

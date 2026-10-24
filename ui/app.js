@@ -2121,7 +2121,7 @@ function cycleFireMode(slotIdx) {
   setFireMode(slotIdx, modes[(modes.indexOf(current) + 1) % modes.length]);
 }
 /**
- * Semi / Burst / Auto on the plot's Reload / Clear row, with the X key noted in
+ * Semi / Burst / Auto in the plot's top-right corner, with the X key noted in
  * the footer: only the modes the loadout offers, and nothing at all when there is one.
  */
 function renderRangeFireModes(isRange) {
@@ -3264,6 +3264,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
   document.getElementById('rcOverlayGroup')?.toggleAttribute('hidden', isRange);
   document.getElementById('rcRangeActions')?.toggleAttribute('hidden', !isRange);
+  document.getElementById('rcRangeTools')?.toggleAttribute('hidden', !isRange);
   renderRangeFireModes(isRange);
   // The range plot is capped to the viewport so the HUD, the soldier and the
   // controls above and below it stay on screen together while the cursor is gone.
