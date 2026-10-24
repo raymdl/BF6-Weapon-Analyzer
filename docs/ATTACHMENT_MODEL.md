@@ -294,7 +294,10 @@ decrease factor ×1.728 in both aim states and no spread increase per shot (Fros
 embedded context identifier; L17 and L24 in the research notes). The source path
 is established; activation in semi-automatic fire is still the open L17 capture,
 and EA has said the attachment must not affect automatic fire, which the gating
-follows. The Bipod has no undeployed
+follows. Its two spread rows in the Attachment Effects panel carry a footnote on
+every weapon but the EF88, BROD 3 and Mk 24: semi-automatic fire already adds no
+spread per shot there ([bug entry 26](ATTACHMENT_BUGS.md)), so the rows change
+nothing in practice. The Bipod has no undeployed
 effect; the Mounted stance deploys it (and the grip pods) through each grip's
 `deployed` block, see the [recoil and spread guide](RECOIL_SPREAD_MODEL.md#mounted-stance-deployed-bipod-and-grip-pods).
 

@@ -3038,6 +3038,13 @@ function renderAttachmentStats(loadouts) {
         const names = contributions.filter(c => (c.record?.[field] ?? 1) !== 1).map(c => c.name).join(', ');
         footer.push({ note: scaleNote(+scale.toFixed(2), names) });
       }
+      // Match Trigger's spread rows: semi-automatic fire already adds no spread
+      // per shot on every weapon except EF88, BROD 3 and Mk 24 (ATTACHMENT_BUGS.md
+      // entry 26), so on the others the rows change nothing in practice.
+      if ((m.lbl === 'Spread Inc/Shot' || m.lbl === 'Hip Spread/Shot') && weapon.fireModes?.single?.hipNoBloomOnSwitch === true
+        && selectedFireMode(weapon, atts) === 'single' && contributions.some(c => c.record?.semiAuto?.spreadIncMult === 0)) {
+        footer.push({ note: 'Semi-automatic fire already adds no spread per shot on this weapon, so this changes nothing in practice.' });
+      }
       // A net of zero still shows when attachments cancel each other out.
       if (Math.abs(delta) < 0.0005 && !rows.length) return;
       const label = `${m.displayLabel ?? m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
