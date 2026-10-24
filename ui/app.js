@@ -1165,7 +1165,7 @@ function renderOverview() {
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
       tooltip: w => ({ text: 'Reload time with rounds left in the magazine (tactical), and from empty.', rows: [
         ['Tactical', w.tacRld != null ? `${(+w.tacRld).toFixed(3)}s` : '—'],
-        ['Empty', w.emptyRld != null ? `${(+w.emptyRld).toFixed(3)}s` : 'not captured for this magazine'],
+        ['Empty', w.emptyRld != null ? `${(+w.emptyRld).toFixed(3)}s` : 'N/A'],
       ] }) },
     { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Damage multiplier for bullets that penetrate a target or a thin surface.' },
