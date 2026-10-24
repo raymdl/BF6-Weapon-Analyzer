@@ -3136,7 +3136,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     // the plot is what says to click in.
     const rangeHint = !firingRange?.supportsLock()
       ? 'Firing Range needs a browser with pointer capture and a mouse'
-      : [key('Click', 'fire'), key('R', 'reload'), key('C', 'clear'), key('Esc', 'release'),
+      : [key('Click', 'fire'), key('R', 'reload'), key('C', 'clear'), key('X', 'mode'), key('Esc', 'release'),
         key('Shift+drag', 'pan'), key('Shift+scroll', 'zoom'), key('Ctrl+scroll', 'distance')].join('');
     const nextHint = isRange ? rangeHint : (recoilTouchControls?.hint() ?? (isTarget
       ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom · Ctrl + scroll for distance'
@@ -3280,7 +3280,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const rangePelletNote = hasPellets && isRange ? ' Each shell\'s pellets scatter inside the dashed ring, the spread plus the weapon\'s dispersion cone, as measured on the in-game wall.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
-      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from.${rangePelletNote} Dots are coloured by hit zone; faded dots miss. Only the first weapon fires. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant.`;
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from.${rangePelletNote} Dots are coloured by hit zone; faded dots miss. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant.`;
     } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}${pelletNote}`;
