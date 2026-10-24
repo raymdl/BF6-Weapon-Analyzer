@@ -398,9 +398,9 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-fire-seg button:hover{color:var(--accent)}
 .rc-fire-seg button.on{position:relative;z-index:1;background:rgba(201,162,39,.18);border-color:var(--accent);color:var(--accent)}
 .rc-fire-seg button.rc-aimed{border-color:var(--accent);color:var(--accent)}
-/* On the plot, under the HUD lines at their left edge (placed by the range each
-   frame), where the captured cursor reaches it like Reload and Clear. */
-.rc-plot-mode{position:absolute;left:40px;top:46px;z-index:2;display:inline-flex}
+/* On the Reload / Clear row in the plot corner, as one joined group to their
+   left, where the captured cursor reaches it like them. */
+.rc-plot-mode{display:inline-flex;margin-right:6px}
 .rc-plot-mode[hidden]{display:none}
 .rc-plot-mode .rc-fire-seg button{height:21px;padding:0 9px;font-size:.68rem;background:rgba(12,18,18,.78);backdrop-filter:blur(2px)}
 .rc-plot-mode .rc-fire-seg button.on{background:rgba(201,162,39,.22)}

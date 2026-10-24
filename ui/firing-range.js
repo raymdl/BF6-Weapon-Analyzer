@@ -524,15 +524,6 @@ export function createFiringRange({
       ctx.fillText(`KILL on shot ${kill.shot} (${kill.hits} hit${kill.hits === 1 ? '' : 's'}) · ${Math.round(kill.ms)}ms TTK`, PL + 6, PT + 22);
     }
 
-    // The fire-mode selector is a DOM control over the plot, under the HUD
-    // lines at their left edge, so the captured cursor reaches it like Reload.
-    const modeEl = doc.getElementById?.('rcRangeModes');
-    if (modeEl && !modeEl.hidden) {
-      const cRect = canvas.getBoundingClientRect();
-      modeEl.style.left = `${canvas.offsetLeft + (PL + 6) * cRect.width / frame.CW}px`;
-      modeEl.style.top = `${canvas.offsetTop + (PT + 40) * cRect.height / frame.CH}px`;
-    }
-
     // The banner says how to get in, and once in, how to get out.
     {
       const label = !supportsLock ? 'Pointer capture is not available in this browser'

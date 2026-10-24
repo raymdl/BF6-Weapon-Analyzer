@@ -2121,8 +2121,8 @@ function cycleFireMode(slotIdx) {
   setFireMode(slotIdx, modes[(modes.indexOf(current) + 1) % modes.length]);
 }
 /**
- * Semi / Burst / Auto on the plot under the HUD, with the X key noted in the
- * footer: only the modes the loadout offers, and nothing at all when there is one.
+ * Semi / Burst / Auto on the plot's Reload / Clear row, with the X key noted in
+ * the footer: only the modes the loadout offers, and nothing at all when there is one.
  */
 function renderRangeFireModes(isRange) {
   const el = document.getElementById('rcRangeModes');
