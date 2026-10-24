@@ -2120,26 +2120,35 @@ function cycleFireMode(slotIdx) {
   const current = selectedFireMode(slot.weapon, slot.atts);
   setFireMode(slotIdx, modes[(modes.indexOf(current) + 1) % modes.length]);
 }
-/** Semi / Burst / Auto under Reload and Clear: only the modes the loadout offers, none when there is one. */
+/**
+ * Semi / Burst / Auto in the footer under the plot, with the X key beside it:
+ * only the modes the loadout offers, and nothing at all when there is one.
+ */
 function renderRangeFireModes(isRange) {
   const el = document.getElementById('rcRangeModes');
   if (!el) return;
   const slot = state.slots[0];
-  const modes = rangeFireModes(slot);
-  el.hidden = !isRange || modes.length < 2;
+  const modes = isRange ? rangeFireModes(slot) : [];
   el.replaceChildren();
-  if (el.hidden) return;
+  if (modes.length < 2) return;
   const current = selectedFireMode(slot.weapon, slot.atts);
+  const chip = document.createElement('span');
+  chip.className = 'rc-key';
+  chip.innerHTML = '<kbd>X</kbd>fire mode';
+  chip.title = 'X while firing cycles the fire mode';
+  const seg = document.createElement('span');
+  seg.className = 'rc-fire-seg';
   for (const mode of modes) {
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = `rc-range-btn${mode === current ? ' on' : ''}`;
+    if (mode === current) b.className = 'on';
     b.textContent = FIRE_MODE_LABELS[mode];
     b.setAttribute('aria-pressed', String(mode === current));
-    b.title = `${FIRE_MODE_LABELS[mode]} fire (X while firing cycles the mode)`;
+    b.title = `${FIRE_MODE_LABELS[mode]} fire`;
     b.addEventListener('click', () => setFireMode(0, mode));
-    el.appendChild(b);
+    seg.appendChild(b);
   }
+  el.append(chip, seg);
 }
 function rangeSimKey() {
   const w = selectedWeaponBuild(state.slots[0]);
@@ -3136,7 +3145,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     // the plot is what says to click in.
     const rangeHint = !firingRange?.supportsLock()
       ? 'Firing Range needs a browser with pointer capture and a mouse'
-      : [key('Click', 'fire'), key('R', 'reload'), key('C', 'clear'), key('X', 'mode'), key('Esc', 'release'),
+      : [key('Click', 'fire'), key('R', 'reload'), key('C', 'clear'), key('Esc', 'release'),
         key('Shift+drag', 'pan'), key('Shift+scroll', 'zoom'), key('Ctrl+scroll', 'distance')].join('');
     const nextHint = isRange ? rangeHint : (recoilTouchControls?.hint() ?? (isTarget
       ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom · Ctrl + scroll for distance'
@@ -3151,7 +3160,7 @@ function renderRecoil({ plotOnly = false } = {}) {
       zoneLegend.innerHTML = RANGE_ZONE_LEGEND.map(([zone, label]) => `<span><i style="background:${RANGE_ZONE_COLORS[zone]}"></i>${label}</span>`).join('')
         + `<span><i class="miss" style="background:${RANGE_MISS_COLOR}"></i>Miss</span>`;
     }
-    zoneLegend.hidden = !isRange;
+    document.getElementById('rcZoneRow')?.toggleAttribute('hidden', !isRange);
   }
   const aimReadout = document.getElementById('rcAimReadout');
   // The range aims with the mouse, so the Soldier Target aim read-out is not shown there.

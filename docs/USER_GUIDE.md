@@ -353,8 +353,9 @@ with or without the mouse captured; a distance change clears the shots, since hi
 were scored at the old range. The **Reload** and
 **Clear** buttons in the plot's corner do the same, keeping distance, zoom and aim;
 while the plot holds the mouse, aim the crosshair at a button and press to use it.
-Under them, **Semi**, **Burst** and **Auto** switch the fire mode between the
-modes the weapon and its ergonomic offer (an M16A4 offers Burst and Semi, and
+Under the plot, beside the hit-zone key, **Semi**, **Burst** and **Auto** switch
+the fire mode between the modes the weapon and its ergonomic offer (an M16A4
+offers Burst and Semi, and
 Auto and Semi with the A3 Receiver; a weapon with one mode shows no buttons).
 The mode carries into the stats, the overview and share links, and a Match
 Trigger's semi-automatic effects apply in Semi.

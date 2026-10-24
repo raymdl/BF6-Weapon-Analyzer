@@ -240,7 +240,6 @@
                     <button class="rc-range-btn" id="rcRangeReload" type="button" title="Refill the magazine and clear the shots (R while firing)">Reload</button>
                     <button class="rc-range-btn" id="rcRangeClear" type="button" title="Clear the shots, keeping distance, zoom and ammunition (C while firing)">Clear</button>
                   </span>
-                  <span class="rc-range-modes" id="rcRangeModes" role="group" aria-label="Fire mode" hidden></span>
                   <button class="rc-scale-btn" id="rcCrosshairToggle" type="button" title="Hide crosshair overlay" aria-label="Hide crosshair overlay" aria-pressed="true">
                     <svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><circle cx="5" cy="5" r="3.55"/><circle cx="5" cy="5" r="1.25"/><line x1="5" y1="0.25" x2="5" y2="1.45"/><line x1="5" y1="8.55" x2="5" y2="9.75"/><line x1="0.25" y1="5" x2="1.45" y2="5"/><line x1="8.55" y1="5" x2="9.75" y2="5"/></svg>
                   </button>
@@ -258,7 +257,10 @@
               </div>
               <div class="rc-viewfoot">
                 <span class="rc-hint" id="rcHint" aria-live="polite">Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom</span>
-                <span class="rc-zone-legend" id="rcZoneLegend" hidden></span>
+                <span class="rc-zone-row" id="rcZoneRow" hidden>
+                  <span class="rc-fire-mode" id="rcRangeModes" role="group" aria-label="Fire mode"></span>
+                  <span class="rc-zone-legend" id="rcZoneLegend"></span>
+                </span>
                 <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText">Aim: center chest</span></span>
               </div>
             </div>

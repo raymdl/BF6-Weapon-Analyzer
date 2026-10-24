@@ -373,11 +373,8 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-viewbar #rcResetView{flex:0 0 21px;margin-left:auto}
 .rc-scale-controls .rc-range-actions{display:flex;gap:5px}
 .rc-scale-controls .rc-range-actions[hidden]{display:none}
-.rc-scale-controls .rc-range-modes{display:flex;gap:5px}
-.rc-scale-controls .rc-range-modes[hidden]{display:none}
 .rc-range-btn{height:21px;padding:0 8px;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#aab7bb;font:inherit;font-size:.68rem;font-weight:600;letter-spacing:.03em;line-height:1;cursor:pointer}
 .rc-range-btn:hover,.rc-range-btn.rc-aimed,.rc-scale-btn.rc-aimed{border-color:var(--accent);color:var(--accent)}
-.rc-range-btn.on{background:rgba(201,162,39,.16);border-color:var(--accent);color:var(--accent)}
 .rc-range.rc-aimed{outline:1px solid var(--accent);outline-offset:3px;border-radius:3px}
 .rc-range-cursor{position:absolute;width:15px;height:15px;margin:-8px 0 0 -8px;pointer-events:none;z-index:3}
 .rc-range-cursor::before,.rc-range-cursor::after{content:"";position:absolute;background:#fff;box-shadow:0 0 2px #000}
@@ -386,8 +383,20 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-zone-legend{display:flex;flex-wrap:wrap;gap:4px 12px;margin:8px 0 2px;font-size:.68rem;color:#aab7bb}
 /* The key chips take the first line of the footer and the hit-zone key the next, each the full width. */
 .rc-range-view .rc-viewfoot{flex-wrap:wrap;row-gap:4px}
-.rc-viewfoot .rc-zone-legend{flex:1 0 100%;margin:0;gap:3px 12px;font-size:.55rem;letter-spacing:.03em}
-.rc-viewfoot .rc-zone-legend[hidden]{display:none}
+.rc-viewfoot .rc-zone-legend{flex:1 1 auto;min-width:0;margin:0;justify-content:flex-end;gap:3px 12px;font-size:.55rem;letter-spacing:.03em}
+/* The range's second footer row: the fire-mode selector with its key on the
+   left, the hit-zone key on the right. */
+.rc-zone-row{display:flex;flex:1 0 100%;align-items:center;justify-content:space-between;gap:6px 12px}
+.rc-zone-row[hidden]{display:none}
+.rc-fire-mode{display:inline-flex;flex:0 0 auto;align-items:center;gap:7px;min-height:18px}
+.rc-fire-mode .rc-key{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;font-size:.55rem;letter-spacing:.03em;color:#aab7bb}
+.rc-fire-mode kbd{font:inherit;font-size:.55rem;font-weight:700;letter-spacing:0;color:var(--text);padding:1px 3px;border:1px solid #2c3838;border-bottom-width:2px;border-radius:3px;background:#151d1d}
+.rc-fire-seg{display:inline-flex}
+.rc-fire-seg button{height:18px;padding:0 9px;margin-left:-1px;background:#151d1d;border:1px solid #2c3838;color:#aab7bb;font:inherit;font-size:.58rem;font-weight:600;letter-spacing:.03em;line-height:1;cursor:pointer}
+.rc-fire-seg button:first-child{margin-left:0;border-radius:3px 0 0 3px}
+.rc-fire-seg button:last-child{border-radius:0 3px 3px 0}
+.rc-fire-seg button:hover{color:var(--accent)}
+.rc-fire-seg button.on{position:relative;z-index:1;background:rgba(201,162,39,.18);border-color:var(--accent);color:var(--accent)}
 .rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}
 .rc-zone-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}
 .rc-zone-legend i.miss{opacity:.5}
