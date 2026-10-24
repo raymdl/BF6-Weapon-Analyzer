@@ -3636,6 +3636,10 @@ function initHoverTooltips() {
   tip.className = 'm-tip h-tip';
   document.body.appendChild(tip);
   let current = null;
+  // The hovered element and every ancestor that also carries a title: the
+  // browser would show the nearest one left in place (an attachment row
+  // repeats its select's text), so all of them are held while the bubble is up.
+  let held = [];
   let timer = null;
 
   const place = el => {
@@ -3653,18 +3657,24 @@ function initHoverTooltips() {
     clearTimeout(timer);
     timer = null;
     tip.classList.remove('show');
-    if (current) {
-      if (current.dataset.tip != null && !current.hasAttribute('title')) current.setAttribute('title', current.dataset.tip);
-      delete current.dataset.tip;
-      current = null;
+    for (const { el, text } of held) {
+      if (!el.hasAttribute('title')) el.setAttribute('title', text);
+      delete el.dataset.tip;
     }
+    held = [];
+    current = null;
   };
   const take = (el, delay) => {
     const text = el.getAttribute('title');
     if (!text) return;
     hide();
-    el.dataset.tip = text;
-    el.removeAttribute('title');
+    for (let node = el; node && node !== document.body; node = node.parentElement) {
+      const own = node.getAttribute('title');
+      if (!own) continue;
+      node.dataset.tip = own;
+      node.removeAttribute('title');
+      held.push({ el: node, text: own });
+    }
     current = el;
     timer = setTimeout(() => {
       if (current !== el || !el.isConnected) return;
@@ -3675,17 +3685,19 @@ function initHoverTooltips() {
   };
 
   document.addEventListener('mouseover', e => {
+    // Inside a held element the title is already gone; stay on it.
+    if (current && current.contains(e.target)) return;
     const el = e.target.closest?.('[title]');
     if (!el) return;
-    if (el === current) return;
     take(el, 350);
   });
   document.addEventListener('mouseout', e => {
     if (current && !current.contains(e.relatedTarget)) hide();
   });
   document.addEventListener('focusin', e => {
+    if (current && current.contains(e.target)) return;
     const el = e.target.closest?.('[title]');
-    if (el && el !== current) take(el, 0);
+    if (el) take(el, 0);
   });
   document.addEventListener('focusout', hide);
   document.addEventListener('mousedown', hide, true);
