@@ -146,11 +146,11 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
     if (optData.id === value) opt.selected = true;
     sel.appendChild(opt);
   });
+  // The description shows beside the open list, not over the rows below a
+  // closed one; the select keeps it for assistive technology.
   const updateTooltip = () => {
     const selected = options.find(option => option.id === sel.value);
     const tooltip = selected ? optionTitle(selected) : '';
-    row.title = tooltip;
-    sel.title = tooltip;
     if (tooltip) sel.setAttribute('aria-description', tooltip);
     else sel.removeAttribute('aria-description');
   };

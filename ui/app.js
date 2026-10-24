@@ -3687,10 +3687,12 @@ function initHoverTooltips() {
     const vw = document.documentElement.clientWidth, vh = window.innerHeight;
     let left, top;
     if (el.dataset.tipSide === 'right') {
-      // Beside a list item, so the bubble covers none of the list.
-      left = r.right + 8;
-      if (left + tw > vw - 8) left = Math.max(8, r.left - tw - 8);
-      top = Math.max(8, Math.min(r.top + r.height / 2 - th / 2, vh - th - 8));
+      // Beside a list item: past the list's own edge (and its scrollbar), top
+      // aligned with the item, so the bubble covers none of the list.
+      const box = (el.closest('.att-menu') ?? el).getBoundingClientRect();
+      left = box.right + 8;
+      if (left + tw > vw - 8) left = Math.max(8, box.left - tw - 8);
+      top = Math.max(8, Math.min(r.top, vh - th - 8));
     } else {
       // Under the element from its left edge, as the attachment-effect popovers sit.
       left = Math.max(8, Math.min(r.left, vw - tw - 8));
