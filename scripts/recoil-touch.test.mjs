@@ -54,7 +54,7 @@ function harness({ touch = 1, narrow = true, coarse = false, view = 'target' } =
     readView: () => view, readZoom: () => 5, worldAt: (x, y) => ({ x: x / 10, y: y / 10 }),
     aim: (...args) => calls.aim.push(args), redraw: () => calls.redraw++,
     transformView: (...args) => calls.transforms.push(args), resetView: () => calls.reset++,
-    repaint: () => calls.repaint++ });
+    repaint: () => calls.repaint++, mouseHint: v => `mouse:${v}` });
   const emit = (type, values) => nodes.rcMain.emit(type, values);
   const tap = values => { const down = emit('pointerdown', values); const up = emit('pointerup', values); return [down, up]; };
   return { nodes, doc, win, layout, pointer, calls, controller, viewport, home, emit, tap,
@@ -147,7 +147,7 @@ test('close, resize, blur and mode changes clear touch state; modal restores its
   h.layout.matches = false; h.layout.emit('change');
   assert.equal(h.controller.isExpanded(), false); assert.equal(h.nodes.rcTouchControls.hidden, true);
   assert.equal(h.viewport.parent, h.home);
-  assert.equal(h.nodes.rcHint.textContent, 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom');
+  assert.equal(h.nodes.rcHint.innerHTML, 'mouse:angle');
 });
 
 const source = readFileSync(new URL('../ui/app.js', import.meta.url), 'utf8');

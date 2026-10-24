@@ -45,6 +45,7 @@ function harness(view = 'angle') {
     rangeSimKey() {}, rangeDegreesPerCount() {}, drawPlotFrame() {}, refreshRangeStats() {},
     createFiringRange: () => ({ setActive() {}, reset() {}, render: () => ({ targetHits: [] }), isLocked: () => false, supportsLock: () => true, live: () => null }),
     fullResets: 0, framingResets: 0, expanded: false,
+    recoilPlotHint() {},
     bindRecoilTouchControls: () => ({ cancel() {}, isExpanded: () => context.expanded }),
     resetRecoilView: () => { context.fullResets++; },
     resetRecoilFraming: () => { context.framingResets++; },

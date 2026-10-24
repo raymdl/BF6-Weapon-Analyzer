@@ -3142,6 +3142,15 @@ function scheduleRecoilPlot() {
   });
 }
 
+const recoilKey = (k, what) => `<span class="rc-key"><kbd>${k}</kbd>${what}</span>`;
+// Mouse controls for the Angle Plot and Soldier Target, in the Firing Range's key-legend style.
+function recoilPlotHint(view) {
+  const isTarget = view === 'target';
+  return [recoilKey('Ctrl+click', isTarget ? 'aim &amp; redraw' : 'redraw'),
+    recoilKey('Shift+drag', 'pan'), recoilKey('Shift+scroll', 'zoom'),
+    ...(isTarget ? [recoilKey('Ctrl+scroll', 'distance')] : [])].join('');
+}
+
 function renderRecoil({ plotOnly = false } = {}) {
   if (!document.getElementById('rcMain').clientWidth) return;
   if (recoilPlotFrame != null) cancelAnimationFrame(recoilPlotFrame);
@@ -3235,18 +3244,19 @@ function renderRecoil({ plotOnly = false } = {}) {
   if (hint) {
     // The range lists its controls once, here, as a key legend; the canvas HUD
     // keeps only ammunition and the trigger mode.
-    const key = (k, what) => `<span class="rc-key"><kbd>${k}</kbd>${what}</span>`;
+    const key = recoilKey;
     // The same legend whether or not the plot holds the mouse; the banner on
     // the plot is what says to click in.
     const rangeHint = !firingRange?.supportsLock()
       ? 'Firing Range needs a browser with pointer capture and a mouse'
       : [key('Click', 'fire'), key('R', 'reload'), key('C', 'clear'), key('Esc', 'release'),
         key('Shift+drag', 'pan'), key('Shift+scroll', 'zoom'), key('Ctrl+scroll', 'distance')].join('');
-    const nextHint = isRange ? rangeHint : (recoilTouchControls?.hint() ?? (isTarget
-      ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom · Ctrl + scroll for distance'
-      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom'));
-    if (isRange) { if (hint.innerHTML !== nextHint) hint.innerHTML = nextHint; }
-    else if (hint.textContent !== nextHint) hint.textContent = nextHint;
+    const touchHint = isRange ? null : recoilTouchControls?.hint();
+    if (touchHint != null) { if (hint.textContent !== touchHint) hint.textContent = touchHint; }
+    else {
+      const nextHint = isRange ? rangeHint : recoilPlotHint(state.recoil.view);
+      if (hint.innerHTML !== nextHint) hint.innerHTML = nextHint;
+    }
   }
   // The hit-zone key sits in the footer strip, next to the dots it explains.
   const zoneLegend = document.getElementById('rcZoneLegend');
@@ -4162,6 +4172,7 @@ function bindEvents() {
     transformView: (...args) => transformRecoilTouchView(...args, recoilCanvas),
     redraw: redrawRecoilSample, aim: fireAtAimPoint,
     resetView: resetRecoilFraming, repaint: renderRecoil,
+    mouseHint: recoilPlotHint,
   });
   firingRange = createFiringRange({
     canvas: recoilCanvas,

@@ -1,7 +1,7 @@
 /** Touch-only plot controls. Inline touches remain available to page scrolling;
  * the modal owns touches only while its expanded canvas is open. */
 export function bindRecoilTouchControls({ canvas, readView, readZoom, worldAt,
-  transformView, redraw, aim, resetView, repaint, doc = document, win = window }) {
+  transformView, redraw, aim, resetView, repaint, mouseHint, doc = document, win = window }) {
   const viewport = canvas.closest('.rc-viewport');
   const controls = doc.getElementById('rcTouchControls');
   const aimButton = doc.getElementById('rcSetAim');
@@ -38,10 +38,14 @@ export function bindRecoilTouchControls({ canvas, readView, readZoom, worldAt,
     // The Firing Range writes its own legend; leave it alone there.
     if (readView() === 'range') return;
     const text = doc.getElementById('rcHint');
-    const nextHint = hint() ?? (readView() === 'target'
-      ? 'Ctrl + click to aim & redraw · Shift + drag to pan · Shift + scroll to zoom'
-      : 'Ctrl + click to redraw · Shift + drag to pan · Shift + scroll to zoom');
-    if (text && text.textContent !== nextHint) text.textContent = nextHint;
+    if (!text) return;
+    const touchHint = hint();
+    if (touchHint != null) { if (text.textContent !== touchHint) text.textContent = touchHint; }
+    else {
+      // The mouse legend is HTML key chips, built by the page.
+      const nextHint = mouseHint(readView());
+      if (text.innerHTML !== nextHint) text.innerHTML = nextHint;
+    }
   }
   function cancel() {
     gesture = null;
