@@ -3644,18 +3644,23 @@ function initHoverTooltips() {
 
   const place = el => {
     const r = el.getBoundingClientRect();
+    // Measured while shown at the origin: a hidden box has no size, and a
+    // fixed box placed near the right edge shrinks to the room left there.
     tip.style.left = '0px'; tip.style.top = '0px';
+    tip.classList.add('show');
     const tw = tip.offsetWidth, th = tip.offsetHeight;
+    const vw = document.documentElement.clientWidth, vh = window.innerHeight;
     let left, top;
     if (el.dataset.tipSide === 'right') {
       // Beside a list item, so the bubble covers none of the list.
       left = r.right + 8;
-      if (left + tw > window.innerWidth - 8) left = Math.max(8, r.left - tw - 8);
-      top = Math.max(8, Math.min(r.top + r.height / 2 - th / 2, window.innerHeight - th - 8));
+      if (left + tw > vw - 8) left = Math.max(8, r.left - tw - 8);
+      top = Math.max(8, Math.min(r.top + r.height / 2 - th / 2, vh - th - 8));
     } else {
-      left = Math.max(8, Math.min(r.left + r.width / 2 - tw / 2, window.innerWidth - tw - 8));
+      // Under the element from its left edge, as the attachment-effect popovers sit.
+      left = Math.max(8, Math.min(r.left, vw - tw - 8));
       top = r.bottom + 6;
-      if (top + th > window.innerHeight - 8) top = Math.max(8, r.top - th - 6);
+      if (top + th > vh - 8) top = Math.max(8, r.top - th - 6);
     }
     tip.style.left = `${left}px`;
     tip.style.top = `${top}px`;
@@ -3687,7 +3692,6 @@ function initHoverTooltips() {
       if (current !== el || !el.isConnected) return;
       tip.textContent = el.dataset.tip;
       place(el);
-      tip.classList.add('show');
     }, delay);
   };
 
@@ -3725,9 +3729,10 @@ function initMobileTooltips() {
   const positionBubble = el => {
     const r = el.getBoundingClientRect();
     tip.style.left = '0px'; tip.style.top = '0px';
+    tip.classList.add('show');
     const tw = tip.offsetWidth, th = tip.offsetHeight;
-    let left = r.left + r.width / 2 - tw / 2;
-    left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+    let left = r.left;
+    left = Math.max(8, Math.min(left, document.documentElement.clientWidth - tw - 8));
     let top = r.bottom + 6;
     if (top + th > window.innerHeight - 8) top = Math.max(8, r.top - th - 6);
     tip.style.left = left + 'px';
