@@ -3306,7 +3306,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const rangePelletNote = hasPellets && isRange ? ' Each shell\'s pellets scatter inside the dashed ring, the spread plus the weapon\'s dispersion cone, as measured on the in-game wall.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
     if (isRange) {
-      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from.${rangePelletNote} Dots are coloured by hit zone; faded dots miss. Recoil recovery and shot distribution are not fully verified against the game. Hipfire yaw is the published Battlefield 6 constant.`;
+      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from.${rangePelletNote} Dots are coloured by hit zone; faded dots miss. Recoil recovery and shot distribution are not fully verified against the game. Hipfire cm/360 matches the in-game settings panel.`;
     } else if (axis.isTargetView) {
       const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
       noteEl.textContent = `${layerNote}${ringNote}${pelletNote}`;

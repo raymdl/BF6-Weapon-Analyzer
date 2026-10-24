@@ -1,0 +1,25 @@
+{
+  "source": "In-game Settings > Infantry > Infantry Mouse Aim Sensitivity, panel text \"Mouse movement distances for 360 degree rotation\"",
+  "capturedBy": "operator screenshots",
+  "capturedOn": "2026-10-24",
+  "build": "2.1.1.0",
+  "unit": "mouse travel for one full hipfire turn, as the panel prints it (one decimal)",
+  "panel": [
+    { "sensitivity": 15, "dpi": 800, "inches": 15.9, "cm": 40.3 },
+    { "sensitivity": 15, "dpi": 1600, "inches": 7.9, "cm": 20.2 },
+    { "sensitivity": 15, "dpi": 3200, "inches": 4.0, "cm": 10.1 },
+    { "sensitivity": 24, "dpi": 800, "inches": 10.2, "cm": 26.0 },
+    { "sensitivity": 24, "dpi": 1600, "inches": 5.1, "cm": 13.0 },
+    { "sensitivity": 24, "dpi": 3200, "inches": 2.6, "cm": 6.5 },
+    { "sensitivity": 55, "dpi": 800, "inches": 4.6, "cm": 11.7 },
+    { "sensitivity": 55, "dpi": 1600, "inches": 2.3, "cm": 5.8 },
+    { "sensitivity": 55, "dpi": 3200, "inches": 1.2, "cm": 2.9 }
+  ],
+  "siteCheck": {
+    "formula": "degrees per count = sensitivity x 0.0017362342283 + 0.002314981532; cm/360 = 360 / (degrees per count x DPI) x 2.54",
+    "module": "sim/sensitivity.js",
+    "result": "all nine distances reproduce to the panel's displayed decimal (largest difference 0.045 cm at sensitivity 15 / 1,600 DPI and 55 / 1,600 DPI)",
+    "test": "scripts/live-fire.test.mjs, 'hipfire cm/360 reproduces the in-game settings panel distances'"
+  },
+  "note": "The constant was first taken from the KovaaK's sensitivity converter's Battlefield 6 entry (read 21 October 2026); this panel is the game's own statement of the same conversion. The ADS scaling rule (Uniform Infantry Aiming coefficient) is not covered by the panel and stays a community formula."
+}

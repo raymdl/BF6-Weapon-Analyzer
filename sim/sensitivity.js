@@ -1,9 +1,12 @@
 /**
  * sim/sensitivity.js — Mouse input to view-angle conversion for the Firing Range.
  *
- * Hipfire yaw per mouse count is the Battlefield 6 entry of the KovaaK's sensitivity
- * converter (https://kovaaks.com/kovaaks/sens-converter, bundled game table, read
- * 21 Oct 2026). It is a community-derived constant, not a Frosty value.
+ * Hipfire yaw per mouse count came from the Battlefield 6 entry of the KovaaK's
+ * sensitivity converter (https://kovaaks.com/kovaaks/sens-converter, bundled game
+ * table, read 21 Oct 2026) and is confirmed by the game's own settings panel: its
+ * "mouse movement distances for 360 degree rotation" at sensitivity 15, 24 and 55
+ * for 800, 1,600 and 3,200 DPI all reproduce to the displayed decimal
+ * (reference-data/provenance/ingame-mouse-sensitivity-2026-10-24.json).
  *
  * The aimed-sensitivity rule is the Frostbite monitor-distance match that the
  * community has documented since Battlefield 1 (the "Uniform Soldier Aiming"

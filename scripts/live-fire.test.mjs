@@ -120,6 +120,16 @@ test('sensitivity conversion follows the published hipfire yaw and the zoom rati
   assert.ok(degreesPerCount({ sens: 20, aim: 'ads', hFovDeg: 103, magnification: 2.5 }) < hip);
 });
 
+test('hipfire cm/360 reproduces the in-game settings panel distances', () => {
+  // Infantry Mouse Aim Sensitivity panel, 24 October 2026: cm for 800 / 1,600 / 3,200 DPI
+  // (reference-data/provenance/ingame-mouse-sensitivity-2026-10-24.json). The panel prints one decimal.
+  const panel = { 15: [40.3, 20.2, 10.1], 24: [26.0, 13.0, 6.5], 55: [11.7, 5.8, 2.9] };
+  for (const [sens, cms] of Object.entries(panel)) {
+    const hip = hipfireDegreesPerCount(+sens);
+    [800, 1600, 3200].forEach((dpi, i) => assert.ok(Math.abs(cmPer360(hip, dpi) - cms[i]) <= 0.05, `${sens} at ${dpi} DPI`));
+  }
+});
+
 test('mouse movement against the recoil consumes it, so a countered string settles on the aim point', () => {
   setSimContext({ aimState: 'ads', stanceState: 'stand' });
   const live = createLiveFire(build('m433'), { seed: 1, magazine: 10 });

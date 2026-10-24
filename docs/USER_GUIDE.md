@@ -377,9 +377,11 @@ Enter your mouse **DPI**, the in-game **Soldier Mouse Sensitivity** and the
 **Uniform Infantry Aiming coefficient** (default 178%) under the plot. These
 are saved locally, like the display settings, and never written to shared links.
 The read-out shows the hipfire cm/360 and the degrees of view rotation per mouse
-count for the current aim state and zoom. Hipfire uses the published Battlefield 6
-yaw constant (sensitivity × 0.0017362342283 + 0.002314981532 degrees per count,
-from the KovaaK's sensitivity converter). The ADS scaling uses the community
+count for the current aim state and zoom. Hipfire uses the Battlefield 6 yaw
+constant (sensitivity × 0.0017362342283 + 0.002314981532 degrees per count), which
+reproduces the in-game settings panel's 360° mouse distances at sensitivity 15, 24
+and 55 for 800, 1,600 and 3,200 DPI to the displayed decimal (24 October 2026).
+The ADS scaling uses the community
 monitor-distance formula for the FOV and the plot's magnification; it has not been
 confirmed against BF6 source values. The browser requests raw mouse input where it
 can; otherwise operating-system pointer acceleration applies. Pointer capture
