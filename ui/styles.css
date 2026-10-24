@@ -101,6 +101,8 @@ body.is-popout .rc-note{flex-shrink:0}
 /* Mobile tap tooltip */
 .m-tip{position:fixed;z-index:300;display:none;max-width:280px;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:7px 9px;font-size:0.72rem;line-height:1.45;color:var(--text);box-shadow:0 4px 14px rgba(0,0,0,.6);pointer-events:none}
 .m-tip.show{display:block}
+/* The hover bubble carries the same text a title did, line breaks included. */
+.m-tip.h-tip{white-space:pre-line;max-width:340px}
 .rc-row.tt-open .rc-tt{display:block}
 .loadout-btn{display:none;padding:5px 10px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:var(--accent2);border-radius:4px;font-size:0.72rem;letter-spacing:.04em}
 .loadout-close{display:none}

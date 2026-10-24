@@ -1080,17 +1080,7 @@ function renderOverview() {
 
   const hdr = document.getElementById('wHeader');
   hdr.innerHTML = '';
-  const burstBadgeTooltip = w => {
-    if (w.fireMode !== 'burst' || !w.burstRounds) return '';
-    const intraMs = 1000 * (60 / (weaponRpm(w, w.burstRpm == null ? 'rpm' : 'burstRpm')));
-    const postMs = 1000 * shotIntervalAfter(w, w.burstRounds);
-    const extraMs = Math.max(0, postMs - intraMs);
-    const effectiveRpm = w.burstBurstsPerMinute
-      ? w.burstBurstsPerMinute * w.burstRounds
-      : 60000 / postMs;
-    const delayText = extraMs >= 0.5 ? `${extraMs.toFixed(0)}ms` : 'None';
-    return `Burst Delay: ${delayText}\nEffective fire rate: ${effectiveRpm.toFixed(0)}RPM`;
-  };
+  const burstBadgeTooltip = burstDetail;
   const appendFireModeBadge = (w, hdr) => {
     if (!w) return;
     const label =
@@ -1160,14 +1150,16 @@ function renderOverview() {
       noDiff: true,
       tooltip: 'Headshot and limb (arm, leg, abdomen) damage multipliers.' },
     { lbl: 'Fire Rate',   compute: w => w.fireMode === 'pump' && w.burstRounds > 1 && w.burstBurstsPerMinute ? w.burstRounds * w.burstBurstsPerMinute : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
-      tooltip: 'Rounds per minute (RPM).' },
+      tooltip: w => (w.fireMode === 'burst' && w.burstRounds
+        ? `Rounds per minute (RPM) within a burst.\n${burstDetail(w)}`
+        : 'Rounds per minute (RPM).') },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Muzzle velocity. Faster bullets have less travel time and drop at range, so you lead less.' },
     { lbl: 'Mag Size',    compute: w => (w.pellets ?? 1) > 1 ? { mag: w.mag, pellets: w.pellets } : w.mag, unit: '',
       fmt: v => typeof v === 'number' ? `${v}<span class="sunit">Rds</span>` : `${v.mag}<span class="sunit">shells / </span>${v.pellets}<span class="sunit">pellets</span>`, higherBetter: true,
       tooltip: 'Rounds per magazine. Shotgun cards add the pellets per shell for the selected ammo.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
-      tooltip: 'Reload time with rounds left in the magazine.' },
+      tooltip: w => `Reload time with rounds left in the magazine.\nEmpty reload: ${w.emptyRld != null ? `${(+w.emptyRld).toFixed(3)}s` : 'not captured for this magazine'}` },
     { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Damage multiplier for bullets that penetrate a target or a thin surface.' },
     { lbl: 'ADS Time',    compute: w => w._adsTimeMs,                    unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true, group: 'mobility',
@@ -1316,7 +1308,11 @@ function renderOverview() {
       secFields.forEach(f => {
         const card = document.createElement('div');
         card.className = 'scard';
-        if (f.tooltip) card.title = f.tooltip;
+        // A tooltip can depend on the build; with two weapons each gets a block under its name.
+        const tip = typeof f.tooltip === 'function'
+          ? [w1, w2].filter(Boolean).map(w => (w2 ? `${wLabel(w)}\n` : '') + f.tooltip(w)).join('\n\n')
+          : f.tooltip;
+        if (tip) card.title = tip;
         card.innerHTML = `<div class="slbl">${overviewLabels[f.lbl] ?? f.lbl}</div>` + cardValueHtml(f);
         sg.appendChild(card);
       });
@@ -2097,6 +2093,20 @@ function rangeSensSummary() {
 function syncSensReadout() {
   const readout = document.getElementById('rcSensReadout');
   if (readout) readout.textContent = rangeSensSummary().text;
+}
+/** Shots per burst, the pause after each burst and the sustained rate, for a burst build. */
+function burstDetail(w) {
+  if (!w || w.fireMode !== 'burst' || !w.burstRounds) return '';
+  const intraMs = 1000 * (60 / weaponRpm(w, w.burstRpm == null ? 'rpm' : 'burstRpm'));
+  const postMs = 1000 * shotIntervalAfter(w, w.burstRounds);
+  const extraMs = Math.max(0, postMs - intraMs);
+  const cycleMs = (w.burstRounds - 1) * intraMs + postMs;
+  const effectiveRpm = w.burstRounds * 60000 / cycleMs;
+  return [
+    `Shots per burst: ${w.burstRounds}`,
+    `Burst delay: ${extraMs >= 0.5 ? `${extraMs.toFixed(0)}ms after each burst` : 'none'}`,
+    `Effective fire rate: ${effectiveRpm.toFixed(0)} RPM sustained`,
+  ].join('\n');
 }
 const FIRE_MODE_LABELS = { single: 'Semi', burst: 'Burst', auto: 'Auto' };
 const FIRE_MODE_ORDER = ['single', 'burst', 'auto'];
@@ -3615,6 +3625,75 @@ function flipChipTooltip(chip) {
   if (chip && !chip.contains(e.relatedTarget)) flipChipTooltip(chip);
 }));
 
+// ── HOVER TOOLTIPS ──────────────────────────────────────────────────────────────
+// On hover devices every `title` shows in the site's own bubble instead of the
+// browser's. The text moves to `data-tip` while the pointer is on the element,
+// which is what keeps the browser's tooltip from appearing, and goes back to
+// `title` on leave, so screen readers and the touch tap bubble still find it.
+function initHoverTooltips() {
+  if (matchMedia('(hover: none)').matches) return;
+  const tip = document.createElement('div');
+  tip.className = 'm-tip h-tip';
+  document.body.appendChild(tip);
+  let current = null;
+  let timer = null;
+
+  const place = el => {
+    const r = el.getBoundingClientRect();
+    tip.style.left = '0px'; tip.style.top = '0px';
+    const tw = tip.offsetWidth, th = tip.offsetHeight;
+    let left = r.left + r.width / 2 - tw / 2;
+    left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
+    let top = r.bottom + 6;
+    if (top + th > window.innerHeight - 8) top = Math.max(8, r.top - th - 6);
+    tip.style.left = `${left}px`;
+    tip.style.top = `${top}px`;
+  };
+  const hide = () => {
+    clearTimeout(timer);
+    timer = null;
+    tip.classList.remove('show');
+    if (current) {
+      if (current.dataset.tip != null && !current.hasAttribute('title')) current.setAttribute('title', current.dataset.tip);
+      delete current.dataset.tip;
+      current = null;
+    }
+  };
+  const take = (el, delay) => {
+    const text = el.getAttribute('title');
+    if (!text) return;
+    hide();
+    el.dataset.tip = text;
+    el.removeAttribute('title');
+    current = el;
+    timer = setTimeout(() => {
+      if (current !== el || !el.isConnected) return;
+      tip.textContent = el.dataset.tip;
+      place(el);
+      tip.classList.add('show');
+    }, delay);
+  };
+
+  document.addEventListener('mouseover', e => {
+    const el = e.target.closest?.('[title]');
+    if (!el) return;
+    if (el === current) return;
+    take(el, 350);
+  });
+  document.addEventListener('mouseout', e => {
+    if (current && !current.contains(e.relatedTarget)) hide();
+  });
+  document.addEventListener('focusin', e => {
+    const el = e.target.closest?.('[title]');
+    if (el && el !== current) take(el, 0);
+  });
+  document.addEventListener('focusout', hide);
+  document.addEventListener('mousedown', hide, true);
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') hide(); });
+  document.addEventListener('scroll', hide, true);
+  window.addEventListener('resize', hide);
+}
+
 function initMobileTooltips() {
   const tip = document.createElement('div');
   tip.className = 'm-tip';
@@ -4145,4 +4224,5 @@ renderSidebar();
 renderStats();
 _restoringUrl = false;
 initMobileTooltips();
+initHoverTooltips();
 if (isTargetGeometry()) requestTargetImage();

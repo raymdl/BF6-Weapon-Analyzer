@@ -81,9 +81,10 @@ test('shotgun pellet ammunition adds nine source rows and stacks before clamping
 });
 
 test('double reload tier uses the exported 1.277 factor without rounding the calculation', () => {
-  const result = resolveReloadTiming({ weaponTacRld: 3, magData: { reloadSpeedTier: 2 },
+  const result = resolveReloadTiming({ weaponTacRld: 3, weaponEmptyRld: 4, magData: { reloadSpeedTier: 2 },
     ergoData: { reloadSpeedMult: 1.063 } });
   assert.equal(result.tacRld, 3 / (1.277 * 1.063));
+  assert.equal(result.emptyRld, 4 / (1.277 * 1.063));
   assert.notEqual(result.tacRld, 3 / (1.13 ** 2 * 1.063));
   assert.equal(result.tacRld.toFixed(3), '2.210');
 });

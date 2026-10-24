@@ -224,6 +224,7 @@ export function resolveBarrelVelocity({ barData = null, velocityLadder = _ctx.VE
  */
 export function resolveReloadTiming({
   weaponTacRld,
+  weaponEmptyRld = null,
   magData = null,
   ergoData = null,
 } = {}) {
@@ -255,8 +256,11 @@ export function resolveReloadTiming({
     if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {
       return { tacRld: null, branch: 'derived', reason: 'invalid-derived-result' };
     }
+    // The override is a captured tactical time for this magazine; nothing
+    // says how its empty reload relates to it, so none is derived.
     return {
       tacRld: derivedTacRld,
+      emptyRld: null,
       branch: 'derived',
       mode: 'override',
       reason: 'derived-override',
@@ -272,8 +276,13 @@ export function resolveReloadTiming({
   if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {
     return { tacRld: null, branch: 'derived', reason: 'invalid-derived-result' };
   }
+  // Reload-speed modifiers scale the whole animation, so the empty reload
+  // takes the same factors as the tactical one.
+  const derivedEmptyRld = typeof weaponEmptyRld === 'number' && Number.isFinite(weaponEmptyRld) && weaponEmptyRld > 0
+    ? weaponEmptyRld / (magMult * ergoMult) : null;
   return {
     tacRld: derivedTacRld,
+    emptyRld: derivedEmptyRld,
     branch: 'derived',
     mode: 'normal',
     reason: 'derived-normal',
@@ -560,6 +569,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   const magMag    = magData?.mag   ?? null;
   const reloadResolution = resolveReloadTiming({
     weaponTacRld: w.tacRld,
+    weaponEmptyRld: w.emptyRld,
     magData,
     ergoData,
   });
@@ -695,6 +705,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     undeployT: millisecondsToSeconds(_undeployTimeMs),
     mag:    magMag ?? w.mag,
     tacRld: reloadResolution.tacRld,
+    emptyRld: reloadResolution.emptyRld ?? null,
   };
   return applySelectedFireMode(modified, w, atts);
 }
