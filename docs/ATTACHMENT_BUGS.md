@@ -68,6 +68,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 25 | Bipod, deployed | Mk 24, EF88, VSSM, Z84M | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), and the operator confirmed the same on the Z84M in game, while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Matches game: the Mounted stance deploys the recoil package only on these four, and the bipod and grip pods are marked † with the missing spread benefits |
 | 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 weapons in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
 | 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. The CQB Suppressor incorrectly receives the Lightened Suppressor recoil benefits. | Matches game: the CQB Suppressor receives the Lightened Suppressor recoil benefits |
+| 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](#review-method-and-rejected-findings)); numbers are not reused.
@@ -878,6 +879,39 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   package when it is available.
 - **Evidence.** 2.1.1.0 stage 9 worker C report, judgement call 4
   (`BF6 Datamining\reports\weapon-analyzer-research\2026-10-13-update-2110-post\stage9\C\REPORT.md`).
+
+### 28. Burst Training reverses the fire-mode cycle on six weapons
+
+- **In-game (operator confirmation on all six weapons, 24 October 2026).** The normal cycle is
+  Auto → Burst → Single. With Burst Training equipped, it is
+  Single → Burst → Auto. The operator corrected the initial weapon example from
+  SL9 to KORD 6P67. No recording was supplied for this report.
+- **Affected weapons.** KORD 6P67, SG 553R, PW5A3, UMG-40, KV9 and CZ3A1.
+  The operator confirmed the cycle change in game on all six weapons.
+- **Source.** All six weapon records store primary Auto (2), then alternates
+  Burst (3) and Single (0). Each Burst Training branch selects `WPM_ERG_BurstFireEnabled_W10`,
+  which stores primary Burst (3), then alternates Auto (2) and Single (0).
+  Cycling through that replacement list gives Burst → Auto → Single → Burst,
+  or Single → Burst → Auto when started at Single, matching the report.
+- **Verification (24 October 2026).** The modifier in the 2.1.1.0 raw capture
+  still reads 3 at byte 152 and 2, 0 at bytes 276, 280. Its SHA-256 is
+  `e3ea4a6563043821ac8090c1ce6b7c5bdd4ac6fcc3b3532432f88cb1170da4cf`,
+  identical to the 1.4.3.5 source extraction. The 19 October recheck records
+  unchanged base mode lists on 2.1.1.0.
+- **Suspected game error.** Enabling burst changes the cycle direction. The
+  stored order explains the observation, but the intended order is not confirmed
+  and the executable's mode-switch function has not been traced. This entry does
+  not claim a description error. GRT-BC and SL9 are excluded: their Burst Mode
+  attachment uses `WPM_ERG_BurstFireReplace_W10`, with only Burst and Single.
+- **Site.** Not modelled: the order of the in-game mode-switch cycle.
+- **Evidence.** [Fire-mode source findings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md#fire-mode-selector-source-data-1435-l600-l604);
+  [2.1.1.0 mode-list recheck](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/WEAPON_REGISTRY_RECHECK_2026-10-19.md#fire-modes-l604).
+  Local source extraction:
+  `BF6 Datamining/reports/weapon-analyzer-research/2026-09-30T2323-0400-fire-modes/fire-modes.json`
+  (weapon IDs `kord6p67`, `sg553r`, `pw5a3`, `umg40`, `kv9`, `cz3a1`;
+  each uses its `<weapon ID>-mode-branch-0` record).
+- **Recheck** after a game update changes any affected weapon's mode list or Burst Training
+  modifier, or when the intended cycle order is confirmed.
 
 ## Description errors
 
