@@ -2112,13 +2112,13 @@ function setFireMode(slotIdx, mode) {
   slot.atts.fireMode = mode;
   renderStats();
 }
-/** X on the range: the next mode the loadout offers, round and round. */
+/** X on the range steps Auto, Burst, Semi and round again, over the modes the loadout offers. */
 function cycleFireMode(slotIdx) {
   const slot = state.slots[slotIdx];
   const modes = rangeFireModes(slot);
   if (modes.length < 2) return;
   const current = selectedFireMode(slot.weapon, slot.atts);
-  setFireMode(slotIdx, modes[(modes.indexOf(current) + 1) % modes.length]);
+  setFireMode(slotIdx, modes[(modes.indexOf(current) - 1 + modes.length) % modes.length]);
 }
 /**
  * Semi / Burst / Auto in the plot's top-right corner, with the X key noted in

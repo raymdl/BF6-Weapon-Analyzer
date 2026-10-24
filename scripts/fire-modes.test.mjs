@@ -24,6 +24,8 @@ test('all eleven operator-confirmed fire-mode predictions match', () => {
     ['m4a1', 'none', ['auto', 'single']],
     ['m16a4', 'none', ['burst', 'single']],
     ['m16a4', 'full_auto', ['auto', 'single']],
+    // Burst is native on the six Burst Training weapons (operator, 24 October 2026; WB lists).
+    ['kord6p67', 'none', ['auto', 'burst', 'single']],
     ['kord6p67', 'burst_training', ['burst', 'auto', 'single']],
     ['grtbc', 'grtbc_burst_mode', ['burst', 'single']],
     ['sl9', 'burst_mode', ['burst', 'single']],
@@ -73,9 +75,11 @@ test('attachments gate modes, preserve valid selections, and reset unavailable s
         : ['semi', 'bolt', 'pump'].includes(w.fireMode) ? 'single' : w.fireMode);
     }
   }
+  // Burst is native on the six Burst Training weapons; the attachment only makes it the default.
   for (const id of ['kord6p67', 'sg553r', 'cz3a1', 'kv9', 'pw5a3', 'umg40']) {
-    assert.ok(!fireModeConfiguration(weapon(id)).modes.includes('burst'), id);
-    assert.equal(normalizeAttachments({ ...defaults(weapon(id)), fireMode: 'burst' }, weapon(id), data).fireMode, undefined);
+    assert.ok(fireModeConfiguration(weapon(id)).modes.includes('burst'), id);
+    assert.equal(selectedFireMode(weapon(id), defaults(weapon(id))), 'auto', id);
+    assert.equal(normalizeAttachments({ ...defaults(weapon(id)), fireMode: 'burst' }, weapon(id), data).fireMode, 'burst');
   }
   assert.equal(build('m16a4', { ergo: 'full_auto', fireMode: 'burst' }).fireMode, 'auto');
   assert.equal(build('grtbc', { ergo: 'grtbc_burst_mode', fireMode: 'auto' }).fireMode, 'burst');

@@ -757,6 +757,7 @@
     "fireMode": "auto",
     "availableFireModes": [
       "auto",
+      "burst",
       "single"
     ],
     "fireModes": {
@@ -2575,6 +2576,7 @@
     "fireMode": "auto",
     "availableFireModes": [
       "auto",
+      "burst",
       "single"
     ],
     "fireModes": {
@@ -3110,6 +3112,7 @@
     "fireMode": "auto",
     "availableFireModes": [
       "auto",
+      "burst",
       "single"
     ],
     "fireModes": {
@@ -3459,6 +3462,7 @@
     "fireMode": "auto",
     "availableFireModes": [
       "auto",
+      "burst",
       "single"
     ],
     "fireModes": {
@@ -3818,6 +3822,7 @@
     "fireMode": "auto",
     "availableFireModes": [
       "auto",
+      "burst",
       "single"
     ],
     "fireModes": {
@@ -4371,6 +4376,7 @@
     "fireMode": "auto",
     "availableFireModes": [
       "auto",
+      "burst",
       "single"
     ],
     "fireModes": {

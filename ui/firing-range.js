@@ -267,11 +267,15 @@ export function createFiringRange({
     return target;
   }
 
-  /** Show the virtual cursor over the control bar when the view is up there. */
-  function syncCursor(frame, sim) {
+  /**
+   * Show the virtual cursor over the control bar when the view is up there, and
+   * over a control in the plot's corners: those sit above the canvas, so the
+   * crosshair drawn on it would vanish behind the button it is aimed at.
+   */
+  function syncCursor(frame, sim, aimed = null) {
     const pos = locked ? cursorClient(frame, sim) : null;
-    const bar = controlBar();
-    if (!pos?.overBar || !bar) {
+    const host = !pos ? null : pos.overBar ? controlBar() : aimed ? canvas.parentElement : null;
+    if (!host) {
       cursorEl?.remove();
       cursorEl = null;
       return;
@@ -280,10 +284,10 @@ export function createFiringRange({
       cursorEl = doc.createElement('div');
       cursorEl.className = 'rc-range-cursor';
     }
-    if (cursorEl.parentElement !== bar) bar.appendChild(cursorEl);
-    const barRect = bar.getBoundingClientRect();
-    cursorEl.style.left = `${pos.x - barRect.left}px`;
-    cursorEl.style.top = `${pos.y - barRect.top}px`;
+    if (cursorEl.parentElement !== host) host.appendChild(cursorEl);
+    const hostRect = host.getBoundingClientRect();
+    cursorEl.style.left = `${pos.x - hostRect.left}px`;
+    cursorEl.style.top = `${pos.y - hostRect.top}px`;
   }
 
   function setSliderFromCursor(sim) {
@@ -556,8 +560,7 @@ export function createFiringRange({
     }
     clampAim(frame, sim);
     drawOverlay(frame, sim);
-    syncAimedControl(sim);
-    syncCursor(frame, sim);
+    syncCursor(frame, sim, syncAimedControl(sim));
     const zones = rangeImpactZones(sim.state.impacts);
     return {
       ...frame,

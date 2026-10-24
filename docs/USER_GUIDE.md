@@ -344,7 +344,7 @@ the click itself does not fire. Hold the left button to fire a full-auto weapon,
 click once per shot for semi-automatic, bolt and pump weapons, or click once per
 burst. The magazine empties at its real size. While the plot holds the mouse the
 cursor is hidden, so the keys are the controls: **R** reloads and clears the
-shots, **C** clears the shots, **X** changes the fire mode, **Esc** releases the
+shots, **C** clears the shots, **X** steps the fire mode (Auto, Burst, Semi), **Esc** releases the
 mouse. Moving the crosshair up
 past the top of the plot puts a cursor over the distance and zoom sliders and the
 reset button, where a press works a button and a held press drags a slider. **Shift
@@ -355,8 +355,9 @@ were scored at the old range. The **Reload** and
 while the plot holds the mouse, aim the crosshair at a button and press to use it.
 In the plot's top corner, **Semi**, **Burst** and **Auto** switch
 the fire mode between the modes the weapon and its ergonomic offer (an M16A4
-offers Burst and Semi, and
-Auto and Semi with the A3 Receiver; a weapon with one mode shows no buttons).
+offers Burst and Semi, and Auto and Semi with the A3 Receiver; the KORD 6P67 and
+the other Burst Training weapons offer all three bare; a weapon with one mode
+shows no buttons).
 The mode carries into the stats, the overview and share links, and a Match
 Trigger's semi-automatic effects apply in Semi.
 The reset button also returns the view and the aim to the starting point. The ring around the crosshair is the spread the next shot would
