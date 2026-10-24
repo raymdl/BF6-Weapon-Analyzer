@@ -3,6 +3,119 @@ import { availableAttachments, attachmentSlots, normalizeAttachments, computeAtt
 
 let selectSequence = 0;
 
+const bugNotesOf = optData => (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${bug.note}`);
+const optionText = optData => (bugNotesOf(optData).length ? `${optData.text}${GAME_BUG_MARK}` : optData.text);
+const optionTitle = optData => [optData.description, ...bugNotesOf(optData)].filter(Boolean).join('\n\n');
+
+// ── Styled attachment list ──────────────────────────────────────────────────────
+// On hover devices the native dropdown is replaced by a list of the site's own,
+// so each choice's description shows in the site bubble instead of the
+// browser's. The select stays underneath for its value, label, keyboard arrows
+// and the share-image clone; phones keep the native picker.
+const hoverDevice = typeof matchMedia === 'function' ? matchMedia('(hover: hover)') : null;
+let openMenu = null;
+
+function closeAttachmentMenu() {
+  if (!openMenu) return;
+  const { menu, sel, cleanup } = openMenu;
+  openMenu = null;
+  cleanup();
+  menu.remove();
+  sel.setAttribute('aria-expanded', 'false');
+}
+
+function openAttachmentMenu(sel, options) {
+  closeAttachmentMenu();
+  const menu = document.createElement('div');
+  menu.className = 'att-menu';
+  menu.setAttribute('role', 'listbox');
+  if (sel.labels?.[0]) menu.setAttribute('aria-label', sel.labels[0].textContent);
+  const items = [];
+  const choose = id => {
+    closeAttachmentMenu();
+    if (sel.value !== id) {
+      sel.value = id;
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+    sel.focus();
+  };
+  for (const optData of options) {
+    const item = document.createElement('button');
+    item.type = 'button';
+    const on = optData.id === sel.value;
+    item.className = `att-menu-item${on ? ' on' : ''}${optData.noEffect ? ' no-effect' : ''}`;
+    item.setAttribute('role', 'option');
+    item.setAttribute('aria-selected', String(on));
+    item.textContent = optionText(optData);
+    const title = optionTitle(optData);
+    if (title) { item.title = title; item.dataset.tipSide = 'right'; }
+    item.addEventListener('click', () => choose(optData.id));
+    menu.appendChild(item);
+    items.push(item);
+  }
+  menu.addEventListener('keydown', e => {
+    const index = items.indexOf(document.activeElement);
+    const focusItem = i => items[(i + items.length) % items.length]?.focus();
+    if (e.key === 'ArrowDown') { e.preventDefault(); focusItem(index + 1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); focusItem(index - 1); }
+    else if (e.key === 'Home') { e.preventDefault(); focusItem(0); }
+    else if (e.key === 'End') { e.preventDefault(); focusItem(items.length - 1); }
+    else if (e.key === 'Escape' || e.key === 'Tab') { e.preventDefault(); closeAttachmentMenu(); sel.focus(); }
+  });
+
+  // Fixed to the viewport under the select (above it when the room is below
+  // the fold), so the sidebar's scroll box never clips it.
+  document.body.appendChild(menu);
+  const r = sel.getBoundingClientRect();
+  const gap = 3, margin = 8;
+  const below = window.innerHeight - r.bottom - gap - margin;
+  const above = r.top - gap - margin;
+  const wanted = menu.scrollHeight + 2;
+  const up = wanted > below && above > below;
+  menu.style.maxHeight = `${Math.max(60, Math.min(280, up ? above : below))}px`;
+  menu.style.left = `${r.left}px`;
+  menu.style.minWidth = `${r.width}px`;
+  const h = menu.offsetHeight;
+  menu.style.top = `${up ? r.top - gap - h : r.bottom + gap}px`;
+
+  const onDown = e => { if (!menu.contains(e.target) && e.target !== sel) closeAttachmentMenu(); };
+  const onScroll = e => { if (!menu.contains(e.target)) closeAttachmentMenu(); };
+  const onFocusOut = e => { if (e.relatedTarget && !menu.contains(e.relatedTarget) && e.relatedTarget !== sel) closeAttachmentMenu(); };
+  document.addEventListener('mousedown', onDown, true);
+  document.addEventListener('scroll', onScroll, true);
+  window.addEventListener('resize', closeAttachmentMenu);
+  menu.addEventListener('focusout', onFocusOut);
+  const cleanup = () => {
+    document.removeEventListener('mousedown', onDown, true);
+    document.removeEventListener('scroll', onScroll, true);
+    window.removeEventListener('resize', closeAttachmentMenu);
+  };
+  openMenu = { menu, sel, cleanup };
+  sel.setAttribute('aria-expanded', 'true');
+  (items.find(i => i.classList.contains('on')) ?? items[0])?.focus();
+}
+
+function attachStyledMenu(sel, options) {
+  if (!hoverDevice?.matches) return;
+  sel.setAttribute('aria-haspopup', 'listbox');
+  sel.setAttribute('aria-expanded', 'false');
+  sel.addEventListener('mousedown', e => {
+    if (e.button !== 0 || sel.disabled) return;
+    e.preventDefault();
+    if (openMenu?.sel === sel) { closeAttachmentMenu(); return; }
+    sel.focus();
+    openAttachmentMenu(sel, options);
+  });
+  sel.addEventListener('keydown', e => {
+    if (sel.disabled) return;
+    // Plain arrows keep the native quick change; these would open the browser's list.
+    if (e.key === 'Enter' || e.key === ' ' || (e.altKey && (e.key === 'ArrowDown' || e.key === 'ArrowUp'))) {
+      e.preventDefault();
+      openAttachmentMenu(sel, options);
+    }
+  });
+}
+
 export function updateAttTotal(containerId, atts, weapon, data) {
   const el = document.getElementById(`${containerId}_total`);
   if (!el) return;
@@ -26,9 +139,8 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   options.forEach(optData => {
     const opt = document.createElement('option');
     opt.value = optData.id;
-    const bugNotes = (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${bug.note}`);
-    opt.textContent = bugNotes.length ? `${optData.text}${GAME_BUG_MARK}` : optData.text;
-    const title = [optData.description, ...bugNotes].filter(Boolean).join('\n\n');
+    opt.textContent = optionText(optData);
+    const title = optionTitle(optData);
     if (title) opt.title = title;
     if (optData.noEffect) opt.style.color = '#666';
     if (optData.id === value) opt.selected = true;
@@ -36,8 +148,7 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
   });
   const updateTooltip = () => {
     const selected = options.find(option => option.id === sel.value);
-    const tooltip = [selected?.description, ...(selected?.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${bug.note}`)]
-      .filter(Boolean).join('\n\n');
+    const tooltip = selected ? optionTitle(selected) : '';
     row.title = tooltip;
     sel.title = tooltip;
     if (tooltip) sel.setAttribute('aria-description', tooltip);
@@ -52,6 +163,7 @@ function appendSelectRow(container, { label, value, options, onChange, disabled 
       updateTooltip();
       onChange(sel.value);
     };
+    attachStyledMenu(sel, options);
   }
   row.appendChild(labelEl);
   row.appendChild(sel);

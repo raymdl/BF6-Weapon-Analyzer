@@ -3646,10 +3646,17 @@ function initHoverTooltips() {
     const r = el.getBoundingClientRect();
     tip.style.left = '0px'; tip.style.top = '0px';
     const tw = tip.offsetWidth, th = tip.offsetHeight;
-    let left = r.left + r.width / 2 - tw / 2;
-    left = Math.max(8, Math.min(left, window.innerWidth - tw - 8));
-    let top = r.bottom + 6;
-    if (top + th > window.innerHeight - 8) top = Math.max(8, r.top - th - 6);
+    let left, top;
+    if (el.dataset.tipSide === 'right') {
+      // Beside a list item, so the bubble covers none of the list.
+      left = r.right + 8;
+      if (left + tw > window.innerWidth - 8) left = Math.max(8, r.left - tw - 8);
+      top = Math.max(8, Math.min(r.top + r.height / 2 - th / 2, window.innerHeight - th - 8));
+    } else {
+      left = Math.max(8, Math.min(r.left + r.width / 2 - tw / 2, window.innerWidth - tw - 8));
+      top = r.bottom + 6;
+      if (top + th > window.innerHeight - 8) top = Math.max(8, r.top - th - 6);
+    }
     tip.style.left = `${left}px`;
     tip.style.top = `${top}px`;
   };

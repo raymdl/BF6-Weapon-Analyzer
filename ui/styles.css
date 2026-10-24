@@ -551,6 +551,12 @@ body.rc-plot-expanded{overflow:hidden}
 .saved-pick-btn:disabled{opacity:.55;cursor:not-allowed}
 .saved-menu{position:absolute;left:0;right:0;top:calc(100% + 3px);z-index:120;max-height:220px;overflow-y:auto;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.6)}
 .saved-menu[hidden]{display:none}
+/* The attachment list that stands in for the native dropdown on hover devices. */
+.att-menu{position:fixed;z-index:130;overflow-y:auto;background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:3px;box-shadow:0 6px 18px rgba(0,0,0,.6)}
+.att-menu-item{display:block;width:100%;text-align:left;background:none;border:0;border-radius:3px;color:var(--text);padding:3px 7px;font-size:0.7rem;line-height:1.5;white-space:nowrap;cursor:pointer}
+.att-menu-item:hover,.att-menu-item:focus-visible{background:var(--bg3);outline:none}
+.att-menu-item.no-effect{color:#666}
+.att-menu-item.on{color:var(--accent)}
 .saved-item{display:flex;align-items:stretch;border-radius:3px}
 .saved-item:hover,.saved-item.on{background:var(--bg3)}
 .saved-item-load{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left;background:none;border:0;color:var(--text);padding:4px 7px;font-size:0.7rem}
