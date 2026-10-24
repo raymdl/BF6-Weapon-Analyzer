@@ -132,6 +132,20 @@ including the Classic M16A4 and aperture UMG-40 defaults. The generator reads th
 MG5 iron-sight descriptor directly from the weapon export outside the UI batch.
 The runtime JSON is part of the ship surface.
 
+Then fill the individual optic tooltips from the two provenance reports; this
+step needs no Frosty export:
+
+```bash
+python scripts/optic-tooltips.py --individual reference-data/provenance/frosty-individual-optics-2026-10-21.json --mapping reference-data/provenance/frosty-optic-category-mapping-2026-10-13.json --write
+```
+
+It writes one description per weapon and optic from the optic's own descriptor
+asset, drops the legacy category keys the site no longer offers, and stops on
+any optic that resolves to no string or to more than one. Expect 1,996 entries
+over 40 optics and 16 strings (the game describes optics by class, so models of
+one magnification share a string); the GRT-CPS NFX 8.00x resolves through the
+`_nocaps` variant of the shared NX8-4 descriptor.
+
 ## Reload exceptions and provenance
 
 [data/reload-exceptions.json](data/reload-exceptions.json) records animation
