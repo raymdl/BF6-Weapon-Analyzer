@@ -167,7 +167,7 @@ body.is-popout .rc-note{flex-shrink:0}
 .wbadge-mode+.wbadge-mode{border-left:1px solid var(--border)}
 .wbadge-mode:hover:not(.on){color:var(--text);background:rgba(255,255,255,.05)}
 .wbadge-mode.on{color:#1a2020;background:var(--accent);font-weight:600;cursor:default}
- --sgroup-chrome is the group's border-left plus padding-left; the box is
+/* --sgroup-chrome is the group's border-left plus padding-left; the box is
    border-box, so the flex basis above has to carry it. Keep the three in
    step with the .sgroup and .sgrid rules that consume them.
 

@@ -93,7 +93,11 @@ function openAttachmentMenu(sel, options) {
   };
   openMenu = { menu, sel, cleanup };
   sel.setAttribute('aria-expanded', 'true');
+  // The initial focus is the list opening, not the user reaching an item, so
+  // the hover-tooltip system leaves it alone.
+  menu.dataset.opening = '1';
   (items.find(i => i.classList.contains('on')) ?? items[0])?.focus();
+  delete menu.dataset.opening;
 }
 
 function attachStyledMenu(sel, options) {

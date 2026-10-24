@@ -3783,7 +3783,9 @@ function initHoverTooltips() {
   document.addEventListener('focusin', e => {
     if (current && current.contains(e.target)) return;
     const el = e.target.closest?.('[title]');
-    if (el) take(el, 0);
+    // Not for the item the attachment list focuses as it opens: the pointer
+    // has not reached the list yet.
+    if (el && !el.closest('.att-menu')?.dataset.opening) take(el, 0);
   });
   document.addEventListener('focusout', hide);
   document.addEventListener('mousedown', hide, true);
