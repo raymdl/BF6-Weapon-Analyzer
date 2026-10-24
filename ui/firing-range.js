@@ -76,7 +76,11 @@ export function createFiringRange({
     if (!w) { live = null; liveKey = ''; return null; }
     const key = readSimKey();
     if (!live || liveKey !== key) {
+      // A loadout change made under capture (the fire mode, say) keeps the
+      // crosshair where it is instead of snapping it back to the centre.
+      const keep = live && locked ? { ...live.state.aim } : null;
       live = createLiveFire(w, { seed: (Math.random() * 0x100000000) >>> 0 });
+      if (keep) Object.assign(live.state.aim, keep);
       liveKey = key;
       markStats();
     }
@@ -518,6 +522,15 @@ export function createFiringRange({
       ctx.fillStyle = KILL_COLOR;
       ctx.font = '700 12px sans-serif';
       ctx.fillText(`KILL on shot ${kill.shot} (${kill.hits} hit${kill.hits === 1 ? '' : 's'}) · ${Math.round(kill.ms)}ms TTK`, PL + 6, PT + 22);
+    }
+
+    // The fire-mode selector is a DOM control over the plot, under the HUD
+    // lines at their left edge, so the captured cursor reaches it like Reload.
+    const modeEl = doc.getElementById?.('rcRangeModes');
+    if (modeEl && !modeEl.hidden) {
+      const cRect = canvas.getBoundingClientRect();
+      modeEl.style.left = `${canvas.offsetLeft + (PL + 6) * cRect.width / frame.CW}px`;
+      modeEl.style.top = `${canvas.offsetTop + (PT + 40) * cRect.height / frame.CH}px`;
     }
 
     // The banner says how to get in, and once in, how to get out.

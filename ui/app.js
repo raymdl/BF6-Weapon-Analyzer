@@ -2121,21 +2121,27 @@ function cycleFireMode(slotIdx) {
   setFireMode(slotIdx, modes[(modes.indexOf(current) + 1) % modes.length]);
 }
 /**
- * Semi / Burst / Auto in the footer under the plot, with the X key beside it:
- * only the modes the loadout offers, and nothing at all when there is one.
+ * Semi / Burst / Auto on the plot under the HUD, with the X key noted in the
+ * footer: only the modes the loadout offers, and nothing at all when there is one.
  */
 function renderRangeFireModes(isRange) {
   const el = document.getElementById('rcRangeModes');
+  const keyEl = document.getElementById('rcRangeModeKey');
   if (!el) return;
   const slot = state.slots[0];
   const modes = isRange ? rangeFireModes(slot) : [];
   el.replaceChildren();
-  if (modes.length < 2) return;
+  keyEl?.replaceChildren();
+  el.hidden = modes.length < 2;
+  if (el.hidden) return;
   const current = selectedFireMode(slot.weapon, slot.atts);
-  const chip = document.createElement('span');
-  chip.className = 'rc-key';
-  chip.innerHTML = '<kbd>X</kbd>fire mode';
-  chip.title = 'X while firing cycles the fire mode';
+  if (keyEl) {
+    const chip = document.createElement('span');
+    chip.className = 'rc-key';
+    chip.innerHTML = '<kbd>X</kbd>fire mode';
+    chip.title = 'X while firing cycles the fire mode';
+    keyEl.appendChild(chip);
+  }
   const seg = document.createElement('span');
   seg.className = 'rc-fire-seg';
   for (const mode of modes) {
@@ -2148,7 +2154,7 @@ function renderRangeFireModes(isRange) {
     b.addEventListener('click', () => setFireMode(0, mode));
     seg.appendChild(b);
   }
-  el.append(chip, seg);
+  el.appendChild(seg);
 }
 function rangeSimKey() {
   const w = selectedWeaponBuild(state.slots[0]);
