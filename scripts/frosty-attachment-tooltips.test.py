@@ -41,6 +41,38 @@ class DescriptionMappingTests(unittest.TestCase):
         self.assertEqual(categories[0]['tooltipSourceIds'], ['m16a4'])
         self.assertEqual(len(categories[0]['members']), 2)
 
+    def test_panel_resolves_its_missing_string_id_for_the_choices_that_link_it(self):
+        descriptors = {'ad-missing': {'description': {'id': 'MISSING1'}},
+                       'ad-other': {'description': {'id': 'MISSING2'}},
+                       'ad-linked': {'description': {'id': 'LINKED1', 'text': 'Linked text.'}}}
+        def choice(weapon, status, asset, **extra):
+            return {'weapon': weapon, 'slot': 'light', 'attachment': 'hip', 'identityStatus': 'source-linked',
+                    'descriptionStatus': status, 'sources': [{'source': f'{weapon}.xml',
+                    'uiLink': {'method': 'aam-full-name', 'assets': [asset]}}], **extra}
+        def panel(weapon, asset, string_id):
+            return choice(weapon, 'screenshot-verified', asset, tooltipDescriptionKey=f'screenshot:{weapon}:light:hip',
+                          tooltipSource={'originalFrostyStringIds': [string_id]})
+        captured, differs = panel('captured', 'ad-missing', 'MISSING1'), panel('differs', 'ad-linked', 'LINKED1')
+        peer = choice('peer', 'english-description-missing-or-conflicting', 'ad-missing', reviewStatus='description-review-required')
+        other = choice('other', 'english-description-missing-or-conflicting', 'ad-other')
+        linked = choice('linked', 'linked', 'ad-linked')
+        panels = {'screenshot:captured:light:hip': 'Observed text.', 'screenshot:differs:light:hip': 'Panel text.'}
+        runtime = {}
+        descriptions = m.apply_string_id_tooltips([captured, differs, peer, other, linked], runtime, descriptors, panels)
+        # The missing ID is the key; a panel that replaced linked text resolves nothing.
+        self.assertEqual(descriptions, {'MISSING1': 'Observed text.'})
+        self.assertEqual(runtime, {'peer': {'light': {'hip': 'MISSING1'}}})
+        self.assertEqual(peer['descriptionStatus'], 'panel-resolved-string-id')
+        self.assertNotIn('reviewStatus', peer)
+        self.assertEqual(peer['tooltipSource']['panels'], ['captured:light:hip'])
+        self.assertEqual(other['descriptionStatus'], 'english-description-missing-or-conflicting')
+        self.assertEqual(linked['descriptionStatus'], 'linked')
+        # Every approved panel for one ID has to agree.
+        second = panel('second', 'ad-missing', 'MISSING1')
+        with self.assertRaises(ValueError):
+            m.apply_string_id_tooltips([captured, second], {}, descriptors,
+                                       {**panels, 'screenshot:second:light:hip': 'Different text.'})
+
     def test_panel_tooltip_keeps_original_pointer_and_does_not_fill_peer_choice(self):
         with TemporaryDirectory() as directory:
             root = Path(directory)

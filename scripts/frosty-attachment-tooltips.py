@@ -11,6 +11,18 @@ import subprocess
 
 
 REPO = Path(__file__).resolve().parent.parent
+# The dated evidence files live in the research repository and the reviewed
+# panel screenshots in the site repository, so a copy of this script in either
+# one reads from the other when its own tree lacks the file.
+SIBLINGS = (REPO.parent / "BF6 Frosty Research", REPO.parent / "BF6 Weapon Analyzer")
+
+
+def local_file(relative):
+    """A file of this repository, or of the sibling repository that holds it."""
+    for root in (REPO, *SIBLINGS):
+        if (root / relative).exists():
+            return root / relative
+    return REPO / relative
 SLOT_CODE = r"(SCP|MZL|BRL|BTM|TOP|RGT|LFT|ERG|MAG|AMO)"
 
 
@@ -78,7 +90,7 @@ def source_graph(export, include_optics=False):
     spec = importlib.util.spec_from_file_location("frosty_configuration", REPO / "scripts/frosty-configuration.py")
     cfg = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cfg)
-    identities = read_json(REPO / "reference-data/provenance/frosty-weapon-identities.json")["weapons"]
+    identities = read_json(local_file("reference-data/provenance/frosty-weapon-identities.json"))["weapons"]
     gs_files = {p.stem[3:].lower(): p for p in (base / "Common/Hardware/Weapons").rglob("GS_*.xml")}
     weapons = []
     for identity in identities:
@@ -93,7 +105,7 @@ def source_graph(export, include_optics=False):
             cache[path], hashes[path] = export.load(path)
         return cache[path]
 
-    handling = read_json(REPO / "reference-data/provenance/frosty-handling-mapping-followup.json")
+    handling = read_json(local_file("reference-data/provenance/frosty-handling-mapping-followup.json"))
     progressions = defaultdict(list)
     for row in handling["rows"]:
         if "abilityProgression" in row:
@@ -109,7 +121,7 @@ def reviewed_identities(audit_file="frosty-attachment-full-pass-2026-09-06.json"
     audit_name, barrel_name = Path(audit_file).name, Path(barrel_file).name
 
     def review(name):
-        path = REPO / "reference-data/provenance" / name
+        path = local_file(Path("reference-data/provenance") / name)
         reviews[path.name] = hashlib.sha256(path.read_bytes()).hexdigest()
         return read_json(path)
 
@@ -379,7 +391,7 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
         if record["sources"][0]["uiLink"] != review["originalUiLink"]:
             raise ValueError(f"Screenshot tooltip UI link changed: {key}")
         if "screenshot" in review:
-            if hashlib.sha256((REPO / review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
+            if hashlib.sha256(local_file(review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
                 raise ValueError(f"Screenshot tooltip image changed: {key}")
             evidence = {"screenshot": review["screenshot"], "screenshotSha256": review["screenshotSha256"]}
         elif review.get("operatorConfirmation"):
@@ -400,7 +412,52 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
         record["tooltipSource"] = {
             "kind": "user-reviewed-game-panel", **evidence,
             "originalFrostyStringIds": sorted({r["descriptionStringId"] for r in review["pointerEvidence"]}),
-            "note": "Panel text approved for this choice only. Original Frosty UI links and missing English IDs are retained in sources.",
+            "note": "Panel text approved for this choice; it also resolves the missing string ID for the choices that link it. Original Frosty UI links and missing English IDs are retained in sources.",
+        }
+    return descriptions
+
+
+def apply_string_id_tooltips(records, by_weapon, descriptors, panel_descriptions):
+    """An approved panel also resolves the missing string ID it was captured for.
+
+    The game renders one localized string per ID, so every choice whose linked
+    descriptor carries that ID shows the panel text. Only IDs absent from the
+    English string table are resolved, every approved panel for an ID has to
+    agree, and the ID itself is the runtime key.
+    """
+    missing = {r["description"]["id"] for r in descriptors.values()
+               if r["description"].get("id") and not r["description"].get("text")}
+    texts, panels = defaultdict(set), defaultdict(list)
+    for record in records:
+        if record.get("descriptionStatus") != "screenshot-verified":
+            continue
+        ids = record["tooltipSource"]["originalFrostyStringIds"]
+        if len(ids) == 1 and ids[0] in missing:
+            texts[ids[0]].add(panel_descriptions[record["tooltipDescriptionKey"]])
+            panels[ids[0]].append(":".join((record["weapon"], record["slot"], record["attachment"])))
+    for string_id, observed in texts.items():
+        if len(observed) != 1:
+            raise ValueError(f"Approved panels disagree on string {string_id}: {sorted(observed)}")
+    descriptions = {}
+    for record in records:
+        if record.get("descriptionStatus") != "english-description-missing-or-conflicting" or len(record["sources"]) != 1:
+            continue
+        link = record["sources"][0].get("uiLink") or {}
+        ids = {descriptors.get(asset.lower(), {}).get("description", {}).get("id") for asset in link.get("assets", [])}
+        if len(ids) != 1 or not ids & texts.keys():
+            continue
+        string_id, = ids
+        text, = texts[string_id]
+        descriptions[string_id] = text
+        key = record["weapon"], record["slot"], record["attachment"]
+        by_weapon.setdefault(key[0], {}).setdefault(key[1], {})[key[2]] = string_id
+        record["descriptionStatus"] = "panel-resolved-string-id"
+        record.pop("reviewStatus", None)
+        record["descriptionIds"] = [string_id]
+        record["tooltipDescriptionKey"] = string_id
+        record["tooltipSource"] = {
+            "kind": "user-reviewed-game-panel-string-id", "stringId": string_id, "panels": sorted(panels[string_id]),
+            "note": "Text of the approved panels that resolve this missing string ID. Original Frosty UI links are retained in sources.",
         }
     return descriptions
 
@@ -423,7 +480,7 @@ def optic_category(label):
 
 
 def optic_categories(choices, graph, indexes, descriptors):
-    identities = read_json(REPO / "reference-data/provenance/frosty-weapon-identities.json")["weapons"]
+    identities = read_json(local_file("reference-data/provenance/frosty-weapon-identities.json"))["weapons"]
     site_ids = {r["internalId"].lower(): r["siteId"] for r in identities}
     rows = [r for r in graph.values() if (r.get("category") or {}).get("asset", "").endswith("_Sight")]
     links, peers = {}, defaultdict(set)
@@ -528,12 +585,12 @@ def main():
                         help="Write a source identity and description audit for every current site choice")
     parser.add_argument("--optic-mapping-json", type=Path,
                         help="Audit individual Frosty sights against the existing generic site categories")
-    provenance = REPO / "reference-data/provenance"
-    parser.add_argument("--identity-audit", type=Path, default=provenance / "frosty-attachment-full-pass-2026-09-06.json",
+    provenance = Path("reference-data/provenance")
+    parser.add_argument("--identity-audit", type=Path, default=local_file(provenance / "frosty-attachment-full-pass-2026-09-06.json"),
                         help="Retained audit whose mapped rows supply the attachment identities")
-    parser.add_argument("--barrel-mapping", type=Path, default=provenance / "frosty-barrel-ads-2026-09-13.json",
+    parser.add_argument("--barrel-mapping", type=Path, default=local_file(provenance / "frosty-barrel-ads-2026-09-13.json"),
                         help="Reviewed barrel identity rows")
-    parser.add_argument("--descriptions", type=Path, default=provenance / "frosty-attachment-descriptions-2026-09-13.json",
+    parser.add_argument("--descriptions", type=Path, default=local_file(provenance / "frosty-attachment-descriptions-2026-09-13.json"),
                         help="Attachment UI labels and descriptions written by frosty-descriptions.py")
     args = parser.parse_args()
     export = raw_tree.open_input(parser, args, args.frosty_root)
@@ -564,15 +621,16 @@ def main():
         optics.update({"graphSourceHashes": graph_hashes, "aamHashes": indexes[-1],
                        "descriptorSha256": hashlib.sha256(descriptor_path.read_bytes()).hexdigest()})
         print(json.dumps(optics["coverage"]))
-    followup = read_json(REPO / "reference-data/provenance/frosty-attachment-identity-followup-2026-09-13.json")
+    followup = read_json(local_file("reference-data/provenance/frosty-attachment-identity-followup-2026-09-13.json"))
     ui_reviews = followup.get("uiLinkReviews", [])
     for review in ui_reviews:
-        if hashlib.sha256((REPO / review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
+        if hashlib.sha256(local_file(review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
             raise ValueError(f"Reviewed screenshot changed: {review['screenshot']}")
     records, by_weapon, used_ids = audit(choices, graph, sources, indexes, descriptors, ui_reviews)
     panel_review = followup.get("panelLinkageInvestigation", {})
     screenshot_descriptions = apply_screenshot_tooltips(
         records, by_weapon, panel_review.get("rows", []) if panel_review.get("applyAsTooltips") is True else [])
+    screenshot_descriptions.update(apply_string_id_tooltips(records, by_weapon, descriptors, screenshot_descriptions))
     if args.optic_mapping_json:
         iron_descriptions = iron_sight_tooltips(optics, by_weapon)
         optics["coverage"]["ironSightTooltips"] = sum(c.get("tooltipDescriptionKey") is not None for c in optics["categories"])
@@ -593,7 +651,7 @@ def main():
     primary = [r for r in records if r["slot"] != "sight"]
     coverage = {
         "aamAssets": len(indexes[-1]), "nonSightChoices": len(primary),
-        "mappedSelections": sum(r["descriptionStatus"] in ("linked", "screenshot-verified") for r in primary),
+        "mappedSelections": sum(r["descriptionStatus"] in ("linked", "screenshot-verified", "panel-resolved-string-id") for r in primary),
         "identityStatuses": dict(sorted(Counter(r["identityStatus"] for r in primary).items())),
         "descriptionStatuses": dict(sorted(Counter(r["descriptionStatus"] for r in primary).items())),
         "matchMethods": dict(sorted(Counter(s["uiLink"]["method"] for r in primary
@@ -601,7 +659,7 @@ def main():
     }
     coverage["ironSightTooltips"] = sum("iron" in slots.get("sight", {}) for slots in by_weapon.values())
     result = {
-        "source": "Reviewed Frosty hardware identities and localized UI metadata, with explicitly approved per-choice game-panel text where English strings are missing",
+        "source": "Reviewed Frosty hardware identities and localized UI metadata, with approved game-panel text where English strings are missing: per captured choice, and for the missing string ID each capture resolves",
         "coverage": coverage,
         "descriptions": dict(sorted(({r["description"]["id"]: r["description"]["text"]
             for r in descriptors.values() if r["description"].get("id") in used_ids} | screenshot_descriptions
