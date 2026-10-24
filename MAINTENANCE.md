@@ -119,15 +119,21 @@ in-game check; record confirmed cases in
 
 Follow the [description audit commands](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#regeneration-and-verification)
 to regenerate `data/attachment-tooltips.json` and both mapping reports together.
-Keep `--optic-mapping-json` in the command. The generator requires the original
+Keep `--optic-mapping-json` in the command. The generator reads the dated evidence
+files from the research repo and the reviewed screenshots from this repo when its
+own tree lacks them, so the command runs from either copy. The generator requires the original
 local AAM XML, Frosty export, and ignored capture library; the small mapper tests
 do not. Approved panel text is enabled explicitly in `panelLinkageInvestigation`
 and checked against the original hardware/UI link and screenshot hash. A row with
 `status: linked-text-differs-from-panel` may also replace a linked English string
 that differs from the live panel; record the reason and keep the original pointer. Never
 replace a missing Frosty string ID with an unrelated ID that has matching text.
-Review the 2,948 source-text, 18 panel-text and 45 deferred choice counts, and
-retain the per-choice source distinction. Also check all 63 iron-sight tooltips,
+An approved panel does resolve its own missing string ID for every choice whose
+linked descriptor carries that ID: those choices get status
+`panel-resolved-string-id` and the real ID as their key.
+Review the 3,179 source-text, 26 panel-text, 45 string-ID-resolved and 0 deferred
+choice counts, and retain the per-choice source distinction. Also check all 67
+iron-sight tooltips,
 including the Classic M16A4 and aperture UMG-40 defaults. The generator reads the
 MG5 iron-sight descriptor directly from the weapon export outside the UI batch.
 The runtime JSON is part of the ship surface.

@@ -54,10 +54,9 @@ sniper brake steps, Linear Comp/burst recoil and the belt-box description
 mismatches. The [description mismatch list](docs/ATTACHMENT_BUGS.md)
 records reviewed text and data conflicts. Source-backed modifiers do not establish native simulation formulas.
 
-Attachment tooltips cover 2,966 non-optic selections using Frosty UI descriptions
-and 18 approved game-panel transcriptions, plus Iron Sights on all 63 weapons.
-The remaining 45 non-optic descriptions are
-deferred. See the [description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
+Attachment tooltips cover all 3,250 non-optic selections using Frosty UI descriptions,
+26 approved game-panel transcriptions and 45 descriptions whose missing string ID an
+approved panel resolves, plus Iron Sights on all 67 weapons. See the [description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
 for the exact scope and source boundaries.
 
 ## Run locally

@@ -279,10 +279,12 @@ flowchart LR
 
 [`frosty-attachment-tooltips.py`](../../scripts/frosty-attachment-tooltips.py)
 creates descriptions and `byWeapon[weapon][slot][attachment]` lookups. Approved
-`screenshot:` keys hold one selection-specific transcription; they do not fill
-other weapons' missing text. As of 22 September 2026 the tooltip file covers
-2,966 of 3,011 non-optic selections (2,948 Frosty text, 18 approved panel
-transcriptions; 45 deferred), plus Iron Sights on all 63 weapons. See the
+`screenshot:` keys hold one selection-specific transcription. When the captured
+choice's string ID is missing from the English table, the panel also resolves that
+ID for every other choice whose descriptor links it, keyed by the real ID. As of
+24 October 2026 the tooltip file covers all 3,250 non-optic selections (3,179
+Frosty text, 26 approved panel transcriptions, 45 through a panel-resolved string
+ID; none deferred), plus Iron Sights on all 67 weapons. See the
 [current mapping audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping).
 
 Weapon names and descriptions are promoted separately;
