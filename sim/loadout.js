@@ -163,10 +163,11 @@ export function catalogRecord(data, key, id) {
   return (data[CATALOG_OF[key]] ?? []).find(a => a.id === id) ?? null;
 }
 
-// Fields that name or annotate a record rather than define what it does.
-const NON_EFFECT_FIELDS = new Set(['id', 'name', 'description', 'type', 'weaponOverrides', 'assumed', 'assumedFields', 'noEffect', 'legacy']);
-const effectSignature = a => JSON.stringify(Object.fromEntries(Object.entries(a)
-  .filter(([field]) => !NON_EFFECT_FIELDS.has(field)).sort(([x], [y]) => (x < y ? -1 : x > y ? 1 : 0))));
+// The one attachment under different names by weapon family: the 5-point brake
+// is the Single-Port Brake, the Slant Brake or the Thread Protector. Matching
+// cost and effects alone do not make two records one attachment (Rail Cover and
+// Speed Holster, two optics of one zoom), so the list is explicit.
+const SAME_ATTACHMENT = [['sp_brake', 'slant_brake', 'thread_prot']];
 
 /**
  * The one attachment split into records by weapon family, with its own cost
@@ -181,14 +182,12 @@ export function sameAttachmentName(a, b) {
 
 /**
  * Whether two records are one attachment: the same name with weapon-specific
- * cost or effects, or another name with the same cost and the same effect
- * fields (the 5-point brake is the Single-Port Brake, the Slant Brake or the
- * Thread Protector by weapon). Legacy sight categories stand for no single
- * optic and never match.
+ * cost or effects, or one of the names SAME_ATTACHMENT lists together. Legacy
+ * sight categories stand for no single optic and never match.
  */
 export function equivalentAttachments(a, b) {
   if (!a || !b || a.legacy || b.legacy || a.id === b.id) return false;
-  return sameAttachmentName(a, b) || effectSignature(a) === effectSignature(b);
+  return sameAttachmentName(a, b) || SAME_ATTACHMENT.some(group => group.includes(a.id) && group.includes(b.id));
 }
 
 /** Selectable items for one weapon slot. Shared by the editor and URL decoder. */

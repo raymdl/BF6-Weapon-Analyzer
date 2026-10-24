@@ -49,6 +49,7 @@ function buildSidebar() {
     [...select.options].forEach((option, j) => option.toggleAttribute('selected', j === live[i].selectedIndex));
   });
   clone.querySelectorAll('.loadout-modal-head').forEach(n => n.remove());
+  clone.querySelectorAll(CHROME_SELECTOR).forEach(n => n.remove());
   Object.assign(clone.style, {
     display: 'flex', position: 'static', inset: 'auto', transform: 'none', opacity: '1',
     width: `${SIDEBAR_WIDTH}px`, height: 'auto', maxHeight: 'none', flex: 'none', overflow: 'visible',

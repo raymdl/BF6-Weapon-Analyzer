@@ -872,7 +872,8 @@ function renderSavedLoadoutSection(containerId, slotIdx) {
     const input = document.createElement('input');
     input.type = 'text';
     input.className = 'att-sel saved-name-input';
-    input.value = savedNaming.suggested;
+    // A re-render while naming (the Undo timer, a weapon click) keeps what was typed.
+    input.value = savedNaming.typed ?? savedNaming.suggested;
     input.maxLength = 40;
     input.setAttribute('aria-label', 'Name for the saved loadout');
     input.placeholder = 'Loadout name';
@@ -887,9 +888,15 @@ function renderSavedLoadoutSection(containerId, slotIdx) {
       if (e.key === 'Enter') { e.preventDefault(); commitSavedName(slotIdx, input.value); }
       else if (e.key === 'Escape') { e.preventDefault(); commitSavedName(slotIdx, ''); }
     };
-    input.onblur = () => { if (savedNaming?.slotIdx === slotIdx) commitSavedName(slotIdx, ''); };
+    input.oninput = () => { if (savedNaming?.slotIdx === slotIdx) savedNaming.typed = input.value; };
+    // A field a re-render has replaced is not the user leaving it.
+    input.onblur = () => { if (input.isConnected && savedNaming?.slotIdx === slotIdx) commitSavedName(slotIdx, ''); };
     row.append(input, ok);
-    requestAnimationFrame(() => { input.focus(); input.select(); });
+    requestAnimationFrame(() => {
+      input.focus();
+      if (savedNaming?.typed == null) input.select();
+      else input.setSelectionRange(input.value.length, input.value.length);
+    });
     return;
   }
 
@@ -2037,6 +2044,8 @@ function targetDisplaySettings() {
 // settings they live in local storage rather than in shared links.
 const SENS_STORAGE = { dpi: 'bf6.sensDpi', sens: 'bf6.sensValue', coefficient: 'bf6.sensZoomCoefficient' };
 const SENS_INPUT = { dpi: 'rcSensDpi', sens: 'rcSensValue', coefficient: 'rcSensCoef' };
+// DPI and sensitivity must be positive; a zoom coefficient of 0 is a legitimate setting.
+const sensValueValid = (key, value) => Number.isFinite(value) && (key === 'coefficient' ? value >= 0 : value > 0);
 let sensSettingsLoaded = false;
 
 function loadSensSettings() {
@@ -2048,7 +2057,7 @@ function loadSensSettings() {
     let value = SENS_DEFAULTS[key];
     try {
       const stored = localStorage.getItem(SENS_STORAGE[key]);
-      if (stored != null && Number.isFinite(Number(stored)) && Number(stored) >= 0) value = Number(stored);
+      if (stored != null && sensValueValid(key, Number(stored))) value = Number(stored);
     } catch { /* localStorage may be unavailable in a restricted browser context. */ }
     input.value = String(value);
   }
@@ -3261,7 +3270,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
 
   // Recoil / Spread stats panel
-  const compPct = selectedCompensationLevel() / 100;
+  // The Firing Range applies no compensation: the player's mouse is the control.
+  const compPct = isRange ? 0 : selectedCompensationLevel() / 100;
   const stats = [
     (() => {
       const ttHtml = (selW, w, atts, colCls) => {
@@ -3863,7 +3873,7 @@ function bindEvents() {
   Object.entries(SENS_INPUT).forEach(([key, id]) => {
     document.getElementById(id)?.addEventListener('input', e => {
       const value = Number(e.currentTarget.value);
-      if (Number.isFinite(value) && value >= 0) {
+      if (sensValueValid(key, value)) {
         try { localStorage.setItem(SENS_STORAGE[key], String(value)); } catch { /* storage is optional. */ }
       }
       syncSensReadout();

@@ -110,6 +110,9 @@ test('a carried choice becomes the same attachment under another name, and moves
   const muzzle = id => data.MUZZLES.find(m => m.id === id);
   assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('dp_brake')), false);
   assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('sp_brake')), false);
+  // Matching cost and effects alone are not one attachment: Rail Cover is not the Speed Holster.
+  const ergo = id => data.ERGOS.find(e => e.id === id);
+  assert.equal(equivalentAttachments(ergo('rail_cover'), ergo('fast_deploy')), false);
   // The same name with weapon-specific cost or effects: Slim Angled is one grip across families.
   const slim = { ...defaults(weapon('m4a1')), grip: 'slim_angled' };
   carryAttsToWeapon(slim, weapon('pw7a2'), data);
