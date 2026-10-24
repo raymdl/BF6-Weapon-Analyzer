@@ -160,6 +160,11 @@ body.is-popout .rc-note{flex-shrink:0}
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .wbadge-estimated{font-size:0.68rem;color:#d8704a;border:1px solid rgba(216,112,74,.65);border-radius:3px;padding:2px 6px}
 .wbadge-burst{font-size:0.68rem;color:#c8960a;border:1px solid rgba(200,150,10,.4);border-radius:3px;padding:2px 6px}
+/* The fire-mode badges: one per mode the loadout offers, the selected one lit. */
+.wbadge-modes{display:inline-flex;gap:4px}
+.wbadge-mode{font:inherit;font-size:0.68rem;line-height:inherit;color:var(--muted);background:none;border:1px solid var(--border);border-radius:3px;padding:2px 6px;cursor:pointer}
+.wbadge-mode:hover{color:var(--text);border-color:#3a4a4a}
+.wbadge-mode.on{color:#c8960a;border-color:rgba(200,150,10,.4);background:rgba(200,150,10,.08);cursor:default}
 /* --sgroup-chrome is the group's border-left plus padding-left; the box is
    border-box, so the flex basis above has to carry it. Keep the three in
    step with the .sgroup and .sgrid rules that consume them.

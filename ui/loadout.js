@@ -63,15 +63,16 @@ function openAttachmentMenu(sel, options) {
     else if (e.key === 'Escape' || e.key === 'Tab') { e.preventDefault(); closeAttachmentMenu(); sel.focus(); }
   });
 
-  // Fixed to the viewport under the select (above it when the room is below
-  // the fold), so the sidebar's scroll box never clips it.
+  // Fixed to the viewport under the select, so the sidebar's scroll box never
+  // clips it. A long list scrolls rather than moving; it opens above only
+  // when the room below is too small for a useful list and above has more.
   document.body.appendChild(menu);
   const r = sel.getBoundingClientRect();
   const gap = 3, margin = 8;
   const below = window.innerHeight - r.bottom - gap - margin;
   const above = r.top - gap - margin;
   const wanted = menu.scrollHeight + 2;
-  const up = wanted > below && above > below;
+  const up = below < Math.min(wanted, 200) && above > below;
   menu.style.maxHeight = `${Math.max(60, Math.min(280, up ? above : below))}px`;
   menu.style.left = `${r.left}px`;
   menu.style.minWidth = `${r.width}px`;

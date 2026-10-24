@@ -562,6 +562,8 @@ function buildWeaponList(containerId, slotIdx) {
     b.textContent = weaponDisplayLabel(w);
     b.setAttribute('aria-label', weaponAriaLabel(w));
     b.title = w.description ?? '';
+    // Beside the list, so the description covers none of the weapons below.
+    b.dataset.tipSide = 'right';
     if (w.description) b.setAttribute('aria-description', w.description);
     b.setAttribute('aria-pressed', String(isActive));
     b.onclick = () => {
@@ -1081,25 +1083,60 @@ function renderOverview() {
   const hdr = document.getElementById('wHeader');
   hdr.innerHTML = '';
   const burstBadgeTooltip = burstDetail;
-  const appendFireModeBadge = (w, hdr) => {
+  // Every fire mode the loadout offers, as badges; the selected one is lit and
+  // the others switch to it, the same state the Firing Range buttons and X use.
+  const mechanismLabel = (mechanism, rounds) =>
+    mechanism === 'burst' && rounds ? `${rounds}-Rd Burst` :
+    mechanism === 'burst' ? 'Burst' :
+    mechanism === 'auto' ? 'Full Auto' :
+    mechanism === 'semi' ? 'Semi-Auto' :
+    mechanism === 'bolt' ? 'Bolt Action' :
+    mechanism === 'pump' ? 'Pump Action' :
+    null;
+  const appendFireModeBadge = (w, hdr, slotIdx) => {
     if (!w) return;
-    const label =
-      w.fireMode === 'burst' && w.burstRounds ? `${w.burstRounds}-Rd Burst` :
-      w.fireMode === 'burst' ? 'Burst' :
-      w.fireMode === 'auto' ? 'Full Auto' :
-      w.fireMode === 'semi' ? 'Semi-Auto' :
-      w.fireMode === 'bolt' ? 'Bolt Action' :
-      w.fireMode === 'pump' ? 'Pump Action' :
-      null;
-    if (!label) return;
-    const bb = document.createElement('span'); bb.className = 'wbadge-burst'; bb.textContent = label;
-    const tooltip = burstBadgeTooltip(w);
-    if (tooltip) {
-      bb.title = tooltip;
-      bb.dataset.tipHtml = statTooltip([{ w, tip: { text: '', rows: burstRows(w) } }]).html;
-      bb.setAttribute('aria-label', `${label}. ${tooltip.replace(/\n/g, '. ')}`);
+    const slot = state.slots[slotIdx];
+    const modes = rangeFireModes(slot);
+    if (modes.length < 2) {
+      const label = mechanismLabel(w.fireMode, w.burstRounds);
+      if (!label) return;
+      const bb = document.createElement('span'); bb.className = 'wbadge-burst'; bb.textContent = label;
+      const tooltip = burstBadgeTooltip(w);
+      if (tooltip) {
+        bb.title = tooltip;
+        bb.dataset.tipHtml = statTooltip([{ w, tip: { text: '', rows: burstRows(w) } }]).html;
+        bb.setAttribute('aria-label', `${label}. ${tooltip.replace(/\n/g, '. ')}`);
+      }
+      hdr.appendChild(bb);
+      return;
     }
-    hdr.appendChild(bb);
+    const current = selectedFireMode(slot.weapon, slot.atts);
+    const group = document.createElement('span');
+    group.className = 'wbadge-modes';
+    group.setAttribute('role', 'group');
+    group.setAttribute('aria-label', 'Fire mode');
+    for (const mode of modes) {
+      const source = slot.weapon.fireModes?.[mode];
+      const label = mechanismLabel(source?.mechanism ?? mode, source?.burstRounds) ?? FIRE_MODE_LABELS[mode];
+      const b = document.createElement('button');
+      b.type = 'button';
+      b.className = `wbadge-mode${mode === current ? ' on' : ''}`;
+      b.textContent = label;
+      b.setAttribute('aria-pressed', String(mode === current));
+      // The burst badge carries the burst figures whether or not it is the selected mode.
+      const build = mode === current ? w : mode === 'burst' ? applyAttachments(slot.weapon, { ...slot.atts, fireMode: 'burst' }) : null;
+      const tooltip = build ? burstBadgeTooltip(build) : '';
+      if (tooltip) {
+        b.title = tooltip;
+        b.dataset.tipHtml = statTooltip([{ w: build, tip: { text: '', rows: burstRows(build) } }]).html;
+        b.setAttribute('aria-label', `${label}. ${tooltip.replace(/\n/g, '. ')}`);
+      } else if (mode !== current) {
+        b.title = `Switch to ${label}`;
+      }
+      b.addEventListener('click', () => setFireMode(slotIdx, mode));
+      group.appendChild(b);
+    }
+    hdr.appendChild(group);
   };
   const appendWeaponName = (w, className, hdr) => {
     const s = document.createElement('span');
@@ -1123,14 +1160,14 @@ function renderOverview() {
     appendWeaponName(w1, 'wname', hdr);
     appendEstimatedBadge(w1, hdr);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w1.cls; hdr.appendChild(b);
-    appendFireModeBadge(w1, hdr);
+    appendFireModeBadge(w1, hdr, 0);
   }
   if (w2) {
     const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px;font-size:12px'; vs.textContent = 'vs'; hdr.appendChild(vs);
     appendWeaponName(w2, 'wname2', hdr);
     appendEstimatedBadge(w2, hdr);
     const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w2.cls; hdr.appendChild(b);
-    appendFireModeBadge(w2, hdr);
+    appendFireModeBadge(w2, hdr, 1);
   }
 
   if (!document.getElementById('sGrid').getClientRects().length) return;
