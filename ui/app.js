@@ -3727,8 +3727,8 @@ function initHoverTooltips() {
       // Beside a list item: past the list's own edge (and its scrollbar), top
       // aligned with the item, so the bubble covers none of the list.
       const box = (el.closest('.att-menu') ?? el).getBoundingClientRect();
-      left = box.right + 8;
-      if (left + tw > vw - 8) left = Math.max(8, box.left - tw - 8);
+      left = box.right + 2;
+      if (left + tw > vw - 8) left = Math.max(8, box.left - tw - 2);
       top = Math.max(8, Math.min(r.top, vh - th - 8));
     } else {
       // Under the element from its left edge, as the attachment-effect popovers sit.
