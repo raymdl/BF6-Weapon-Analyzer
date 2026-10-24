@@ -1,4 +1,4 @@
-import { applySelectedFireMode } from './fire-modes.js';
+import { applySelectedFireMode, selectedFireMode } from './fire-modes.js';
 import { requireNumber } from './required-data.js';
 import { baseRecoilGroup } from './core.js';
 import { normalizeAttachments, resolveMountAttachments } from './loadout.js';
@@ -320,8 +320,11 @@ export function applyBareWeapon(w, defaultAtts) {
 export function attachmentContributions(w, atts, defaultAtts) {
   if (!w || !atts) return [];
   atts = normalizeAttachments(atts, w, _ctx);
-  const bareAtts = { ...defaultAtts, sight: 'none', barrel: 'none' };
-  const bare = applyBareWeapon(w, defaultAtts);
+  // The selected fire mode travels with every measurement, so an effect that
+  // only semi-automatic fire carries shows as that attachment's own.
+  const modeAtts = atts.fireMode ? { fireMode: atts.fireMode } : {};
+  const bareAtts = { ...defaultAtts, ...modeAtts, sight: 'none', barrel: 'none' };
+  const bare = applyBareWeapon(w, { ...defaultAtts, ...modeAtts });
   const full = applyAttachments(w, atts);
   const picks = [];
   if (atts.sight && atts.sight !== 'none') picks.push(['sight', { sight: atts.sight }, { sight: 'none' }]);
@@ -389,7 +392,12 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // ── Ergonomics (declared early — used in ADS recoil calc below) ──────────────
   const ergoBase = ERGOS_BY_ID[atts.ergo ?? 'none'] ?? ERGOS[0];
   const ergoData = { ...ergoBase, ...ergoBase.weaponOverrides?.[w.id] };
-  const ergoAdsRecoilTierMod = ergoData.adsRecoilTierMod ?? 0;
+  // Effects an ergonomic carries only in semi-automatic fire (Match Trigger):
+  // the selected mode decides, so Auto on the same weapon sees none of them.
+  const semiActive = selectedFireMode(w, atts) === 'single'
+    && (w.fireModes?.single?.mechanism ?? w.fireMode) === 'semi';
+  const ergoSemi = semiActive ? ergoData.semiAuto ?? {} : {};
+  const ergoAdsRecoilTierMod = (ergoData.adsRecoilTierMod ?? 0) + (ergoSemi.adsRecoilTierMod ?? 0);
 
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
   // Tier formula: effectiveRecoilV = recoilV × ADSRecoilAmountMultiplier ^ (sum of tier mods)
@@ -400,7 +408,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   const totalHipRecoilTierMod = (grp.hipRecoilTierMod ?? 0)
     + (muz.hipRecoilTierMod ?? 0)
     + (ammoType.hipRecoilTierMod ?? 0)
-    + (ergoData.hipRecoilTierMod ?? 0);
+    + (ergoData.hipRecoilTierMod ?? 0)
+    + (ergoSemi.hipRecoilTierMod ?? 0);
   const totalHipVarTierMod = (grp.hipRecoilVariationTierMod ?? 0)
     + (muz.hipRecoilVariationTierMod ?? 0)
     + (ergoData.hipRecoilVariationTierMod ?? 0);
@@ -461,8 +470,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
 
   // ── Spread per shot ───────────────────────────────────────────────────────────
   // Heavy-type barrel modifiers target ADS. Hip spread keeps its own parameters.
-  const spreadIncMult = bar.adsSpreadIncMult ?? 1;
-  const hipSpreadIncMult = (lit?.hipSpreadIncMult ?? 1) * (las.hipSpreadIncMult ?? 1);
+  const spreadIncMult = (bar.adsSpreadIncMult ?? 1) * (ergoSemi.spreadIncMult ?? 1);
+  const hipSpreadIncMult = (lit?.hipSpreadIncMult ?? 1) * (las.hipSpreadIncMult ?? 1) * (ergoSemi.spreadIncMult ?? 1);
   const spreadDynBase = w.spreadDyn
     ? { ...w.spreadDyn,
       ads: { ...w.spreadDyn.ads, ...ammoType.adsSpreadDynOverride, ...ergoData.adsSpreadDynOverride },
@@ -609,11 +618,12 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     : null;
   const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd
     || muz.recoilDurationOverride != null || muz.recoilDecreaseTimeExponentAdd
-    || ergoData.recoilDecreaseFactorOverride != null || ergoData.recoilDecreaseTimeExponentOverride != null)
+    || ergoData.recoilDecreaseFactorOverride != null || ergoData.recoilDecreaseTimeExponentOverride != null
+    || ergoSemi.recoilDecreaseFactorMult != null)
     ? Object.fromEntries(Object.entries(w.recoil).map(([state, group]) => [state, {
       ...group,
-      ...(ergoData.recoilDecreaseFactorOverride != null
-        ? { decFactor: ergoData.recoilDecreaseFactorOverride } : {}),
+      ...(ergoData.recoilDecreaseFactorOverride != null || ergoSemi.recoilDecreaseFactorMult != null
+        ? { decFactor: (ergoData.recoilDecreaseFactorOverride ?? group.decFactor) * (ergoSemi.recoilDecreaseFactorMult ?? 1) } : {}),
       ...((ergoData.recoilDecreaseTimeExponentOverride != null || muz.recoilDecreaseTimeExponentAdd)
         ? { decTimeExp: (ergoData.recoilDecreaseTimeExponentOverride ?? group.decTimeExp)
           + (muz.recoilDecreaseTimeExponentAdd ?? 0) } : {}),

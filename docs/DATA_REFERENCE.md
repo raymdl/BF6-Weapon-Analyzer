@@ -106,6 +106,7 @@ weapon's availability map. Supported effect families are:
 | `velTierMod`, `velMult` | Barrel velocity: tier field takes precedence; multiplier is compatibility fallback only when tier is absent. |
 | `reloadSpeedTier`, `reloadSpeedMult`, `tacRldOverrideMs` | Magazine factor index, ergonomic multiplier, or direct tactical-animation time. |
 | `setsFireModeAuto`, `setsFireModeBurst`, `autoRpm` | Receiver/ergonomic fire-mode selection; burst overrides are also supported by the resolver. |
+| `semiAuto` | Ergonomic effects applied only while the selected fire mode is semi-automatic (Match Trigger): `adsRecoilTierMod`, `hipRecoilTierMod`, `recoilDecreaseFactorMult`, `spreadIncMult`. |
 | `recoilDurationOverride`, `recoilDurationAdd` | Seconds of impulse delivery. Selected Smooth source overrides duration to 0.05 or 0.066667, then ergonomics adds its adjustment; the result clamps at zero. Recovery acts during delivery. Native operation/order remain model assumptions. |
 | `visualRecoil`, `laserVisible` | Qualitative/display behavior; no separate camera, sway, visibility or aim-assist simulation. |
 | `suppressor`, `worldSpotMult`, `minimapSpotMult` | Suppression selection and multiplicative spot-on-fire range factors. Zero is meaningful. |

@@ -5,6 +5,7 @@ import { renderAttachmentSection } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
 import { bindRecoilTouchControls } from './recoil-touch.js';
 import { createFiringRange, rangeImpactZones, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND, RANGE_MISS_COLOR } from './firing-range.js';
+import { fireModeConfiguration, selectedFireMode } from '../sim/fire-modes.js';
 import { degreesPerCount, hipfireDegreesPerCount, cmPer360, SENS_DEFAULTS } from '../sim/sensitivity.js';
 import {
   setSimContext, mulberry32, whash,
@@ -2097,6 +2098,49 @@ function syncSensReadout() {
   const readout = document.getElementById('rcSensReadout');
   if (readout) readout.textContent = rangeSensSummary().text;
 }
+const FIRE_MODE_LABELS = { single: 'Semi', burst: 'Burst', auto: 'Auto' };
+const FIRE_MODE_ORDER = ['single', 'burst', 'auto'];
+/** The fire modes the slot's weapon and ergonomic offer, in selector order. */
+function rangeFireModes(slot) {
+  if (!slot?.weapon) return [];
+  const { modes } = fireModeConfiguration(slot.weapon, slot.atts);
+  return FIRE_MODE_ORDER.filter(mode => modes.includes(mode));
+}
+function setFireMode(slotIdx, mode) {
+  const slot = state.slots[slotIdx];
+  if (!rangeFireModes(slot).includes(mode) || selectedFireMode(slot.weapon, slot.atts) === mode) return;
+  slot.atts.fireMode = mode;
+  renderStats();
+}
+/** X on the range: the next mode the loadout offers, round and round. */
+function cycleFireMode(slotIdx) {
+  const slot = state.slots[slotIdx];
+  const modes = rangeFireModes(slot);
+  if (modes.length < 2) return;
+  const current = selectedFireMode(slot.weapon, slot.atts);
+  setFireMode(slotIdx, modes[(modes.indexOf(current) + 1) % modes.length]);
+}
+/** Semi / Burst / Auto under Reload and Clear: only the modes the loadout offers, none when there is one. */
+function renderRangeFireModes(isRange) {
+  const el = document.getElementById('rcRangeModes');
+  if (!el) return;
+  const slot = state.slots[0];
+  const modes = rangeFireModes(slot);
+  el.hidden = !isRange || modes.length < 2;
+  el.replaceChildren();
+  if (el.hidden) return;
+  const current = selectedFireMode(slot.weapon, slot.atts);
+  for (const mode of modes) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = `rc-range-btn${mode === current ? ' on' : ''}`;
+    b.textContent = FIRE_MODE_LABELS[mode];
+    b.setAttribute('aria-pressed', String(mode === current));
+    b.title = `${FIRE_MODE_LABELS[mode]} fire (X while firing cycles the mode)`;
+    b.addEventListener('click', () => setFireMode(0, mode));
+    el.appendChild(b);
+  }
+}
 function rangeSimKey() {
   const w = selectedWeaponBuild(state.slots[0]);
   const { aim, stance, platform } = state.recoil;
@@ -3205,6 +3249,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
   document.getElementById('rcOverlayGroup')?.toggleAttribute('hidden', isRange);
   document.getElementById('rcRangeActions')?.toggleAttribute('hidden', !isRange);
+  renderRangeFireModes(isRange);
   // The range plot is capped to the viewport so the HUD, the soldier and the
   // controls above and below it stay on screen together while the cursor is gone.
   document.querySelector('.rc-layout')?.classList.toggle('rc-range-view', isRange);
@@ -3920,6 +3965,7 @@ function bindEvents() {
     requestStats: refreshRangeStats,
     requestHint: () => renderRecoil({ plotOnly: true }),
     readDistance: () => state.recoil.distance,
+    onCycleFireMode: () => cycleFireMode(0),
   });
   document.getElementById('rcRangeReload')?.addEventListener('click', () => firingRange.reload());
   document.getElementById('rcRangeClear')?.addEventListener('click', () => firingRange.clear());

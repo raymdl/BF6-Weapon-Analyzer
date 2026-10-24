@@ -3,7 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import { applyAttachments, setAttachmentContext } from '../sim/applyAttachments.js';
 import { resetAttsForWeapon } from '../sim/loadout.js';
-import { shotIntervalAfter, setSimContext, simulateSpread, genRecoilPts } from '../sim/core.js';
+import { shotIntervalAfter, setSimContext, simulateSpread, genRecoilPts, validateWeaponSimulation } from '../sim/core.js';
 const read = name => JSON.parse(readFileSync(new URL(`../data/${name}.json`, import.meta.url)));
 const weapons = read('weapons');
 const data = { ...read('attachments'), ...read('ammo') };
@@ -37,6 +37,22 @@ test('all eleven operator-confirmed fire-mode predictions match', () => {
     assert.deepEqual(fireModeConfiguration(weapon(id), { ergo }).modes, expected, `${id}/${ergo}`);
   }
   assert.equal(build('m2010esr', { fireMode: 'single' }).fireMode, 'bolt');
+});
+
+test('Match Trigger applies its semi-automatic effects only in that mode', () => {
+  const base = weapon('m433');
+  const auto = build('m433', { ergo: 'match_trigger' });
+  const plain = build('m433');
+  assert.equal(auto.recoilV, plain.recoilV);
+  assert.equal(auto.recoil.ads.decFactor, plain.recoil.ads.decFactor);
+  assert.equal(auto.recoilIncAds, plain.recoilIncAds);
+  const semi = build('m433', { ergo: 'match_trigger', fireMode: 'single' });
+  assert.equal(semi.fireMode, 'semi');
+  assert.equal(semi.recoilV, +(base.recoilV * 0.945 ** 3).toFixed(3));
+  assert.equal(semi.recoil.hip.amountExp, base.recoil.hip.amountExp + 3);
+  assert.ok(Math.abs(semi.recoil.ads.decFactor - base.recoil.ads.decFactor * 1.728) < 1e-9);
+  assert.equal(semi.recoilIncAds, 0);
+  assert.equal(semi.spreadDyn.hip.inc, 0);
 });
 
 test('every weapon stores exactly the modes its base and attachment choices can select', () => {
@@ -104,7 +120,7 @@ test('selected-mode rates keep source precision and drive shot spacing, TTK and 
   }
 });
 
-test('manual single disables hip bloom only on the L63-bound single rows; default VSSM and Match Trigger remain unchanged', () => {
+test('manual single disables hip bloom only on the L63-bound single rows; default VSSM remains unchanged', () => {
   const bound = weapons.filter(w => w.fireModes.single?.hipNoBloomOnSwitch);
   assert.ok(bound.length > 0);
   for (const w of bound) {
@@ -121,11 +137,17 @@ test('manual single disables hip bloom only on the L63-bound single rows; defaul
   }
   setSimContext({ aimState: 'hip', stanceState: 'stand' });
   assert.ok(simulateSpread(build('vssm'), 10).some((v, i, a) => v > a[0]));
-  const match = build('m4a1', { ergo: 'match_trigger' });
-  const manualMatch = build('m4a1', { ergo: 'match_trigger', fireMode: 'single' });
-  assert.deepEqual(manualMatch.recoil, match.recoil);
-  assert.equal(manualMatch.recoilIncAds, match.recoilIncAds);
-  assert.deepEqual(manualMatch._resolved.ergo, match._resolved.ergo);
+});
+
+test('burst weapons with no pause between bursts validate with or without an explicit burst selection', () => {
+  for (const [id, ergo] of [['kord6p67', 'burst_training'], ['sg553r', 'burst_training'], ['umg40', 'burst_training']]) {
+    const implicit = build(id, { ergo });
+    assert.equal(implicit.fireMode, 'burst', id);
+    assert.ok(validateWeaponSimulation(implicit), `${id} implicit burst`);
+    const explicit = build(id, { ergo, fireMode: 'burst' });
+    assert.ok(validateWeaponSimulation(explicit), `${id} explicit burst`);
+    assert.equal(shotIntervalAfter(explicit, explicit.burstRounds), shotIntervalAfter(explicit, 1), `${id} no pause between bursts`);
+  }
 });
 
 test('share links reproduce both explicit modes, preserve old defaults, and reject unavailable modes', () => {

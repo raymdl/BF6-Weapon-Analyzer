@@ -287,7 +287,14 @@ shown as green chips: Fire while Sprinting (Compact Handstop), Gadget Draw Speed
 (Underslung Mount), Flashlight with its activation (Toggleable, ADS or Hipfire; combo
 lights are Toggleable), Auto-Zeroing (Range Finder), Reload in ADS (Magwell Flare)
 and Rechamber in ADS (DLC Bolt). They do not change the simulation. Match Trigger
-remains `noEffect` until a semi-auto state is modelled. The Bipod has no undeployed
+carries its effects in a `semiAuto` block that the resolver applies only while the
+selected fire mode is semi-automatic: +3 on both recoil tier exponents, recoil
+decrease factor ×1.728 in both aim states and no spread increase per shot (Frosty
+`GRM_MatchTrigger_ERG_P15` and `GBM_NoIncrease_ERG_P00`, reached through an
+embedded context identifier; L17 and L24 in the research notes). The source path
+is established; activation in semi-automatic fire is still the open L17 capture,
+and EA has said the attachment must not affect automatic fire, which the gating
+follows. The Bipod has no undeployed
 effect; the Mounted stance deploys it (and the grip pods) through each grip's
 `deployed` block, see the [recoil and spread guide](RECOIL_SPREAD_MODEL.md#mounted-stance-deployed-bipod-and-grip-pods).
 

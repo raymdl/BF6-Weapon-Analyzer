@@ -9320,7 +9320,12 @@
       "id": "match_trigger",
       "name": "Match Trigger",
       "pts": 15,
-      "noEffect": true
+      "semiAuto": {
+        "adsRecoilTierMod": 3,
+        "hipRecoilTierMod": 3,
+        "recoilDecreaseFactorMult": 1.728,
+        "spreadIncMult": 0
+      }
     },
     {
       "id": "ads_bolt",

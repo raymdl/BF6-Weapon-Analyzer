@@ -45,6 +45,7 @@ export function createFiringRange({
   requestStats,         // () => void, refresh the stats panel for the live sample
   requestHint,          // () => void, refresh the hint line and buttons
   readDistance,         // () => target distance in metres, for the damage that decides a kill
+  onCycleFireMode,      // () => void, step to the next fire mode the loadout offers
 }) {
   let live = null;
   let liveKey = '';
@@ -351,6 +352,9 @@ export function createFiringRange({
     } else if (e.key === 'c' || e.key === 'C') {
       e.preventDefault();
       clear();
+    } else if (e.key === 'x' || e.key === 'X') {
+      e.preventDefault();
+      onCycleFireMode?.();
     }
   }
 
