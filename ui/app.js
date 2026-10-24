@@ -1137,10 +1137,14 @@ function renderOverview() {
   const grid = document.getElementById('sGrid');
   grid.innerHTML = '';
   const fields = [
-    // A pellet load shows the whole shell with every pellet hitting, then one pellet.
-    { lbl: 'Base Dmg',    compute: w => (w.pellets ?? 1) > 1 ? { shot: damagePerShotAtRange(w, 0), pellet: damageAtRange(w, 0) } : damagePerShotAtRange(w, 0), unit: '',
-      fmt: v => typeof v === 'number' ? v.toFixed(1) : `${v.shot.toFixed(1)}<span class="sunit"> / </span>${v.pellet.toFixed(1)}<span class="sunit">per pellet</span>`, higherBetter: true,
-      tooltip: 'Damage per shot at close range, before damage falloff. Shotgun cards show the shell with every pellet hitting, then the damage of one pellet.' },
+    // A pellet load shows the whole shell with every pellet hitting; the tooltip adds one pellet.
+    { lbl: 'Base Dmg',    compute: w => damagePerShotAtRange(w, 0), unit: 'dmg', fmt: v => v.toFixed(1), higherBetter: true,
+      tooltip: w => ((w.pellets ?? 1) > 1
+        ? { text: 'Damage per shot at close range, before damage falloff. A shell counts every pellet hitting.', rows: [
+          ['Per shell', `${damagePerShotAtRange(w, 0).toFixed(1)} dmg`],
+          ['Per pellet', `${damageAtRange(w, 0).toFixed(1)} dmg`],
+        ] }
+        : 'Damage per shot at close range, before damage falloff.') },
     // Two multipliers in one card, each carrying its own grey ×. Paired stats
     // like this drop the comparison badge — there is no single number to diff.
     { lbl: 'HS Mult',     compute: w => ({ hs: w?._hsMult, limb: w?._limbMult }), unit: '',
