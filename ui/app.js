@@ -1096,6 +1096,7 @@ function renderOverview() {
     const tooltip = burstBadgeTooltip(w);
     if (tooltip) {
       bb.title = tooltip;
+      bb.dataset.tipHtml = statTooltip([{ w, tip: { text: '', rows: burstRows(w) } }]).html;
       bb.setAttribute('aria-label', `${label}. ${tooltip.replace(/\n/g, '. ')}`);
     }
     hdr.appendChild(bb);
@@ -1150,16 +1151,18 @@ function renderOverview() {
       noDiff: true,
       tooltip: 'Headshot and limb (arm, leg, abdomen) damage multipliers.' },
     { lbl: 'Fire Rate',   compute: w => w.fireMode === 'pump' && w.burstRounds > 1 && w.burstBurstsPerMinute ? w.burstRounds * w.burstBurstsPerMinute : w.rpm, unit: 'RPM', fmt: formatInGameRpm,                   higherBetter: true, group: 'combat',
-      tooltip: w => (w.fireMode === 'burst' && w.burstRounds
-        ? `Rounds per minute (RPM) within a burst.\n${burstDetail(w)}`
-        : 'Rounds per minute (RPM).') },
+      // One description for both builds in a comparison; only a burst build adds rows.
+      tooltip: w => ({ text: 'Rounds per minute (RPM); for a burst weapon, the rate within the burst.', rows: burstRows(w) }) },
     { lbl: 'Bullet Vel',  k: 'bulletVel',                                unit: 'm/s', fmt: v => v ?? '—',                            higherBetter: true, group: 'combat',
       tooltip: 'Muzzle velocity. Faster bullets have less travel time and drop at range, so you lead less.' },
     { lbl: 'Mag Size',    compute: w => (w.pellets ?? 1) > 1 ? { mag: w.mag, pellets: w.pellets } : w.mag, unit: '',
       fmt: v => typeof v === 'number' ? `${v}<span class="sunit">Rds</span>` : `${v.mag}<span class="sunit">shells / </span>${v.pellets}<span class="sunit">pellets</span>`, higherBetter: true,
       tooltip: 'Rounds per magazine. Shotgun cards add the pellets per shell for the selected ammo.' },
     { lbl: 'Tac Reload',  k: 'tacRld',                                   unit: 's',   fmt: v => v != null ? (+v).toFixed(3) : '—',   lowerBetter: true,
-      tooltip: w => `Reload time with rounds left in the magazine.\nEmpty reload: ${w.emptyRld != null ? `${(+w.emptyRld).toFixed(3)}s` : 'not captured for this magazine'}` },
+      tooltip: w => ({ text: 'Reload time with rounds left in the magazine (tactical), and from empty.', rows: [
+        ['Tactical', w.tacRld != null ? `${(+w.tacRld).toFixed(3)}s` : '—'],
+        ['Empty', w.emptyRld != null ? `${(+w.emptyRld).toFixed(3)}s` : 'not captured for this magazine'],
+      ] }) },
     { lbl: 'Collateral Mult', k: '_collateralMult',                      unit: '×',   fmt: v => v != null ? v.toFixed(2) : '—',      higherBetter: true,
       tooltip: 'Damage multiplier for bullets that penetrate a target or a thin surface.' },
     { lbl: 'ADS Time',    compute: w => w._adsTimeMs,                    unit: 'ms',  fmt: formatMilliseconds,                 lowerBetter: true, group: 'mobility',
@@ -1308,11 +1311,11 @@ function renderOverview() {
       secFields.forEach(f => {
         const card = document.createElement('div');
         card.className = 'scard';
-        // A tooltip can depend on the build; with two weapons each gets a block under its name.
-        const tip = typeof f.tooltip === 'function'
-          ? [w1, w2].filter(Boolean).map(w => (w2 ? `${wLabel(w)}\n` : '') + f.tooltip(w)).join('\n\n')
-          : f.tooltip;
-        if (tip) card.title = tip;
+        // A tooltip can depend on the build; with two weapons each gets its rows under its name.
+        if (typeof f.tooltip === 'function') {
+          const { text, html } = statTooltip([w1, w2].filter(Boolean).map(w => ({ w, tip: f.tooltip(w) })));
+          if (text) { card.title = text; card.dataset.tipHtml = html; }
+        } else if (f.tooltip) card.title = f.tooltip;
         card.innerHTML = `<div class="slbl">${overviewLabels[f.lbl] ?? f.lbl}</div>` + cardValueHtml(f);
         sg.appendChild(card);
       });
@@ -2095,18 +2098,46 @@ function syncSensReadout() {
   if (readout) readout.textContent = rangeSensSummary().text;
 }
 /** Shots per burst, the pause after each burst and the sustained rate, for a burst build. */
-function burstDetail(w) {
-  if (!w || w.fireMode !== 'burst' || !w.burstRounds) return '';
+function burstRows(w) {
+  if (!w || w.fireMode !== 'burst' || !w.burstRounds) return [];
   const intraMs = 1000 * (60 / weaponRpm(w, w.burstRpm == null ? 'rpm' : 'burstRpm'));
   const postMs = 1000 * shotIntervalAfter(w, w.burstRounds);
   const extraMs = Math.max(0, postMs - intraMs);
   const cycleMs = (w.burstRounds - 1) * intraMs + postMs;
   const effectiveRpm = w.burstRounds * 60000 / cycleMs;
   return [
-    `Shots per burst: ${w.burstRounds}`,
-    `Burst delay: ${extraMs >= 0.5 ? `${extraMs.toFixed(0)}ms after each burst` : 'none'}`,
-    `Effective fire rate: ${effectiveRpm.toFixed(0)} RPM sustained`,
-  ].join('\n');
+    ['Shots per burst', String(w.burstRounds)],
+    ['Burst delay', extraMs >= 0.5 ? `${extraMs.toFixed(0)}ms after each burst` : 'none'],
+    ['Effective fire rate', `${effectiveRpm.toFixed(0)} RPM sustained`],
+  ];
+}
+const burstDetail = w => burstRows(w).map(([label, value]) => `${label}: ${value}`).join('\n');
+
+const escapeHtml = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+/**
+ * A stat tooltip for one or two builds: the description once, then each
+ * build's rows under its name when there are two. `parts` is [{ w, tip }]
+ * where tip is a string or { text, rows: [[label, value], ...] }. Returns the
+ * plain text for the title and the HTML the hover bubble renders.
+ */
+function statTooltip(parts) {
+  const texts = [...new Set(parts.map(p => (typeof p.tip === 'string' ? p.tip : p.tip.text)).filter(Boolean))];
+  const two = parts.length > 1;
+  const lines = [...texts];
+  let html = texts.map(t => `<div class="tt-desc">${escapeHtml(t)}</div>`).join('');
+  parts.forEach(({ w, tip }, i) => {
+    const rows = typeof tip === 'string' ? [] : tip.rows ?? [];
+    if (!rows.length) return;
+    if (two) {
+      lines.push(wLabel(w));
+      html += `<div class="tt-wname c${i + 1}">${escapeHtml(wLabel(w))}</div>`;
+    }
+    for (const [label, value] of rows) {
+      lines.push(`${label}: ${value}`);
+      html += `<div class="tt-row"><span>${escapeHtml(label)}</span><b>${escapeHtml(value)}</b></div>`;
+    }
+  });
+  return { text: lines.join('\n'), html };
 }
 const FIRE_MODE_LABELS = { single: 'Semi', burst: 'Burst', auto: 'Auto' };
 const FIRE_MODE_ORDER = ['single', 'burst', 'auto'];
@@ -3690,7 +3721,8 @@ function initHoverTooltips() {
     current = el;
     timer = setTimeout(() => {
       if (current !== el || !el.isConnected) return;
-      tip.textContent = el.dataset.tip;
+      if (el.dataset.tipHtml) tip.innerHTML = el.dataset.tipHtml;
+      else tip.textContent = el.dataset.tip;
       place(el);
     }, delay);
   };
@@ -3754,7 +3786,11 @@ function initMobileTooltips() {
     if (info) {
       closeRow();
       const text = info.getAttribute('title');
-      if (text) { tip.textContent = text; positionBubble(info); tip.classList.add('show'); }
+      if (text) {
+        if (info.dataset.tipHtml) tip.innerHTML = info.dataset.tipHtml;
+        else tip.textContent = text;
+        positionBubble(info); tip.classList.add('show');
+      }
       else hideBubble();
       return;
     }

@@ -103,6 +103,14 @@ body.is-popout .rc-note{flex-shrink:0}
 .m-tip.show{display:block}
 /* The hover bubble carries the same text a title did, line breaks included. */
 .m-tip.h-tip{white-space:pre-line;max-width:340px}
+/* Structured stat bubbles: the description, then label / value rows, under a
+   weapon name in its compare colour when two weapons are shown. */
+.m-tip .tt-desc{white-space:normal}
+.m-tip .tt-wname{margin-top:7px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent)}
+.m-tip .tt-wname.c2{color:var(--accent2)}
+.m-tip .tt-desc + .tt-row,.m-tip .tt-wname + .tt-row{margin-top:3px}
+.m-tip .tt-row{display:flex;justify-content:space-between;gap:16px;color:var(--muted);line-height:1.6;white-space:nowrap}
+.m-tip .tt-row b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
 .rc-row.tt-open .rc-tt{display:block}
 .loadout-btn{display:none;padding:5px 10px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:var(--accent2);border-radius:4px;font-size:0.72rem;letter-spacing:.04em}
 .loadout-close{display:none}
