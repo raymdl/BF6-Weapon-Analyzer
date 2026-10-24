@@ -109,6 +109,8 @@ test('a carried choice becomes the same attachment under another name, and moves
   // A different cost or effect is a different attachment.
   const muzzle = id => data.MUZZLES.find(m => m.id === id);
   assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('dp_brake')), false);
+  // The 10-point brake is the Double-Port Brake or the Triple-Port Brake by weapon.
+  assert.equal(equivalentAttachments(muzzle('dp_brake'), muzzle('tp_brake')), true);
   assert.equal(equivalentAttachments(muzzle('sp_brake'), muzzle('sp_brake')), false);
   // Matching cost and effects alone are not one attachment: Rail Cover is not the Speed Holster.
   const ergo = id => data.ERGOS.find(e => e.id === id);

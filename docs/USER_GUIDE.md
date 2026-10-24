@@ -59,8 +59,9 @@ row with something fitted (a "None" stays free) or unlocks every row at once. A 
 Where the new weapon has the same attachment as its own record, that one is
 fitted and counts as the locked choice: the same name with weapon-specific cost
 or effects (Slim Angled on SMGs and sniper rifles, the sniper versions of the
-vertical and stubby grips and bipods), or the 5-point brake, which is the
-Single-Port Brake, the Slant Brake or the Thread Protector by weapon. Matching
+vertical and stubby grips and bipods), or a brake of one cost under its name
+by weapon: the 5-point Single-Port Brake, Slant Brake or Thread Protector, and
+the 10-point Double-Port or Triple-Port Brake. Matching
 cost and effects alone do not make one attachment: Rail Cover and Speed Holster,
 or two optics of one zoom, stay separate. One the new weapon cannot take goes
 back to that weapon's default until a

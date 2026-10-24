@@ -164,10 +164,15 @@ export function catalogRecord(data, key, id) {
 }
 
 // The one attachment under different names by weapon family: the 5-point brake
-// is the Single-Port Brake, the Slant Brake or the Thread Protector. Matching
-// cost and effects alone do not make two records one attachment (Rail Cover and
-// Speed Holster, two optics of one zoom), so the list is explicit.
-const SAME_ATTACHMENT = [['sp_brake', 'slant_brake', 'thread_prot']];
+// is the Single-Port Brake, the Slant Brake or the Thread Protector, and the
+// 10-point brake the Double-Port or Triple-Port Brake (sniper-specific effects
+// are weapon overrides on these records). Matching cost and effects alone do
+// not make two records one attachment (Rail Cover and Speed Holster, two optics
+// of one zoom), so the list is explicit.
+const SAME_ATTACHMENT = [
+  ['sp_brake', 'slant_brake', 'thread_prot'],
+  ['dp_brake', 'tp_brake'],
+];
 
 /**
  * The one attachment split into records by weapon family, with its own cost
