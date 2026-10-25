@@ -106,6 +106,11 @@ function snapshotCanvases(source, clone) {
   return aspects;
 }
 
+/** The capture body's inline style. The live body is capped at 1700px and centred for wide
+ *  viewports; the capture is laid out inside a frame at least that wide, so without this the
+ *  image was centred (a blank strip at the left) and clipped at the cap. */
+const BODY_CSS = (width, rootCss) => `width:${width}px;max-width:none;margin:0;box-shadow:none;${rootCss};height:auto;min-height:0;overflow:visible;display:block`;
+
 /**
  * Lays the capture out at its target width and reports the height plus the box
  * each canvas slot ends up with.
@@ -120,11 +125,6 @@ function snapshotCanvases(source, clone) {
  *
  * @returns {{height:number, slots:{width:number,height:number}[]}}
  */
-/** The capture body's inline style. The live body is capped at 1700px and centred for wide
- *  viewports; the capture is laid out inside a frame at least that wide, so without this the
- *  image was centred (a blank strip at the left) and clipped at the cap. */
-const BODY_CSS = (width, rootCss) => `width:${width}px;max-width:none;margin:0;box-shadow:none;${rootCss};height:auto;min-height:0;overflow:visible;display:block`;
-
 function measureCapture(markup, css, rootCss, width, viewportWidth, aspects) {
   const frame = document.createElement('iframe');
   frame.setAttribute('aria-hidden', 'true');

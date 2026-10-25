@@ -1783,7 +1783,7 @@ function renderBTK() {
   const cells = (w, r) => {
     const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
     if (!Number.isFinite(b) || !Number.isFinite(bl)) return { bTxt: '—', tTxt: '—' };
-    const bTxt = btkBtkText(w, r);
+    const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
     const tTxt = bl !== b
       ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
       : fmtTtkAt(ttkAt(w, r, b));
@@ -1802,12 +1802,18 @@ function renderBTK() {
   syncDistanceMarker();
 }
 
-/** Mark the Soldier Target's distance on the damage chart and the BTK table. */
+/** Mark the Soldier Target's distance on the damage chart and the BTK table.
+ *  The marked row says which distance it stands for; a row whose title the
+ *  hover bubble has taken over (data-tip) keeps it until the pointer leaves. */
 function syncDistanceMarker() {
   dmgChart?.update('none');
   const at = isTargetGeometry() ? btkRowForRange(state.recoil.distance) : null;
-  document.querySelectorAll('#btkArea tbody tr[data-range]').forEach(row => row.classList.toggle('at-distance', row === at));
-  refreshBtkRowTitles();
+  for (const row of document.querySelectorAll('#btkArea tbody tr[data-range]')) {
+    row.classList.toggle('at-distance', row === at);
+    if (row.dataset.tip !== undefined) continue;
+    if (row === at) row.title = `Values at the target distance (${state.recoil.distance} m)`;
+    else row.removeAttribute('title');
+  }
 }
 /** The kill-table row that shows a range's values: the nearest row (the lower
  *  on a tie) whose DMG and BTK text for every weapon match the text at that
@@ -1824,30 +1830,14 @@ function btkRowForRange(range) {
   }
   return best;
 }
-/** Say on the marked rows which range's values they stand for: the target
- *  distance, or the range hovered on the chart. A row under the pointer is
- *  left alone, as the hover bubble holds its title until the pointer leaves. */
-let btkHoverFromChart = false;
-function refreshBtkRowTitles() {
-  for (const row of document.querySelectorAll('#btkArea tbody tr[data-range]')) {
-    if (row.dataset.tip !== undefined) continue;
-    const text = row.classList.contains('is-hover') && btkHoverFromChart && hoverRange != null ? `Values at ${hoverRange} m`
-      : row.classList.contains('at-distance') ? `Values at the target distance (${state.recoil.distance} m)` : null;
-    if (text) row.title = text;
-    else row.removeAttribute('title');
-  }
-}
-
 // ── CHART ↔ TABLE HOVER ───────────────────────────────────────────────────────
 // The chart and the kill table are two views of the same ranges, so pointing
 // at one shows the same range in the other: the chart's read-out box moves to
 // it and the matching row is lit. Classes and a chart redraw only: hovering
 // never re-renders either.
-function setBtkHoverRow(row, fromChart = false) {
-  btkHoverFromChart = fromChart;
+function setBtkHoverRow(row) {
   document.querySelectorAll('#btkArea tbody tr.is-hover').forEach(r => { if (r !== row) r.classList.remove('is-hover'); });
   row?.classList.add('is-hover');
-  refreshBtkRowTitles();
 }
 /** Move the read-out box to a range (null: back to the target distance). */
 function setHoverRange(range) {
@@ -1862,15 +1852,18 @@ const chartTableHover = {
   id: 'chart-table-hover',
   afterEvent(chart, args) {
     const { event, inChartArea } = args;
+    // Chart.js delivers events a frame late; its mouseout would clear a row the
+    // pointer has since reached, so the canvas's own mouseleave handles leaving.
+    if (event.type === 'mouseout') return;
     let range = hoverRange;
-    if (event.type === 'mouseout' || !inChartArea) range = null;
+    if (!inChartArea) range = null;
     else if (event.type === 'mousemove') {
       const items = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, false);
       range = items.length ? items[0].index : null;
     } else return;
     // Redrawn by Chart.js after this event, rather than updated from inside it.
     if (range !== hoverRange) { hoverRange = range; args.changed = true; }
-    setBtkHoverRow(range == null ? null : btkRowForRange(range), true);
+    setBtkHoverRow(range == null ? null : btkRowForRange(range));
   },
 };
 function bindChartTableHover() {
@@ -1938,9 +1931,9 @@ function spaceBtkColumns() {
   table.style.tableLayout = 'fixed';
   placeBtkWeaponNames(headers, natural);
 }
-/** Set each compared weapon's name on the title row over its own columns,
- *  starting where its DMG header text starts, with its rule running to the
- *  end of the TTK column's text (the column itself may be wider). */
+/** Set each shown weapon's name on the title row over its own columns:
+ *  centred, with its rule, between the start of its DMG header text and the
+ *  end of its TTK column's text (the column itself may be wider). */
 function placeBtkWeaponNames(headers, natural) {
   const names = [...document.querySelectorAll('#btkWeapons > span')];
   const head = document.querySelector('.chart-table-head');
@@ -1952,7 +1945,7 @@ function placeBtkWeaponNames(headers, natural) {
     const left = dmg.getBoundingClientRect().left + parseFloat(getComputedStyle(dmg).paddingLeft);
     const right = ttk.getBoundingClientRect().left + natural[3 + i * 3] - parseFloat(getComputedStyle(ttk).paddingRight);
     span.style.left = `${left - headLeft}px`;
-    span.style.setProperty('--grp-w', `${Math.max(0, right - left)}px`);
+    span.style.setProperty('--btk-name-w', `${Math.max(0, right - left)}px`);
   });
 }
 
