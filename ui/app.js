@@ -1454,17 +1454,29 @@ const distanceMarker = {
     if (targetPx != null) vline(targetPx, 'rgba(221,227,227,.45)', [4, 4]);
     if (px != null && range !== target) vline(px, 'rgba(221,227,227,.22)', []);
     if (px == null || !chartReadout) { ctx.restore(); return; }
-    const lines = [{ text: `${range} m`, color: '#dde3e3' }];
-    for (const ds of chart.data.datasets) {
-      if (!ds._weapon || ds.isBand || ds.isBaseline) continue;
-      const text = chartReadout(ds._weapon, range);
-      if (text) lines.push({ text, color: ds.borderColor });
-    }
-    ctx.font = '600 10px "Segoe UI", system-ui, sans-serif';
-    ctx.textBaseline = 'top';
-    const lineHeight = 13, pad = 5;
-    const boxW = Math.ceil(Math.max(...lines.map(l => ctx.measureText(l.text).width))) + pad * 2;
-    const boxH = lines.length * lineHeight + pad * 2;
+    // A small grid: the range over the weapon rows, then one column per figure,
+    // shown when it applies to at least one weapon.
+    const rows = chart.data.datasets
+      .filter(ds => ds._weapon && !ds.isBand && !ds.isBaseline)
+      .map(ds => ({ color: ds.borderColor, cells: chartReadout(ds._weapon, range) ?? [] }));
+    const columns = [...Array(Math.max(0, ...rows.map(row => row.cells.length))).keys()]
+      .filter(k => rows.some(row => row.cells[k]?.applies));
+    const labelOf = k => rows.find(row => row.cells[k])?.cells[k].label.toUpperCase() ?? '';
+    const valueFont = '600 10px "Segoe UI", system-ui, sans-serif';
+    const headFont = '600 9px "Segoe UI", system-ui, sans-serif';
+    const lineHeight = 13, pad = 5, gap = 10;
+    const measure = (text, font, spacing = '0px') => {
+      ctx.font = font;
+      ctx.letterSpacing = spacing;
+      return ctx.measureText(text).width;
+    };
+    const rangeText = `${range} m`;
+    const firstW = measure(rangeText, valueFont);
+    const widths = columns.map(k => Math.max(
+      measure(labelOf(k), headFont, '.5px'),
+      ...rows.map(row => measure(row.cells[k]?.value ?? '', valueFont))));
+    const boxW = Math.ceil(firstW + widths.reduce((sum, w) => sum + gap + w, 0)) + pad * 2;
+    const boxH = (rows.length + 1) * lineHeight + pad * 2;
     // Beside the line, flipping to its left where the right edge would clip it.
     const left = px + 6 + boxW > chartArea.right ? px - 6 - boxW : px + 6;
     const top = chartArea.top + 4;
@@ -1472,9 +1484,26 @@ const distanceMarker = {
     ctx.fillRect(left, top, boxW, boxH);
     ctx.strokeStyle = '#283030';
     ctx.strokeRect(Math.round(left) + 0.5, Math.round(top) + 0.5, boxW - 1, boxH - 1);
-    lines.forEach((l, i) => {
-      ctx.fillStyle = l.color;
-      ctx.fillText(l.text, left + pad, top + pad + i * lineHeight);
+    ctx.textBaseline = 'top';
+    ctx.font = valueFont;
+    ctx.letterSpacing = '0px';
+    ctx.textAlign = 'left';
+    ctx.fillStyle = '#dde3e3';
+    ctx.fillText(rangeText, left + pad, top + pad);
+    ctx.textAlign = 'right';
+    let x = left + pad + firstW;
+    columns.forEach((k, c) => {
+      x += gap + widths[c];
+      ctx.font = headFont;
+      ctx.letterSpacing = '.5px';
+      ctx.fillStyle = '#7a8a8a';
+      ctx.fillText(labelOf(k), x, top + pad + 1);
+      ctx.font = valueFont;
+      ctx.letterSpacing = '0px';
+      rows.forEach((row, i) => {
+        ctx.fillStyle = row.color;
+        ctx.fillText(row.cells[k]?.value ?? '', x, top + pad + (i + 1) * lineHeight);
+      });
     });
     ctx.restore();
   },
@@ -1569,7 +1598,10 @@ function renderChart() {
     chartReadout = (w, r) => {
       const chest = getBTKWithHits(w, r, btkHS);
       const limb = getBTKWithHits(w, r, btkHS, limbMult(w));
-      return limb === chest ? `${chest} BTK` : `${chest}–${limb} BTK chest–limbs`;
+      return [
+        { label: 'Chest', value: `${chest}`, applies: true },
+        { label: 'Limbs', value: `${limb}`, applies: limb !== chest },
+      ];
     };
     updateDmgChart(ctx, {
       type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
@@ -1615,15 +1647,16 @@ function renderChart() {
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
     // Time view: timings only, no bullet counts.
+    // Chest and limbs are the totals; ADS and flight show what the toggles add.
     chartReadout = (w, r) => {
-      const ttk = ttkAt(w, r);
       const btk = getBTKWithHits(w, r, btkHS);
       const limbBtk = getBTKWithHits(w, r, btkHS, limbMult(w));
-      if (limbBtk !== btk) return `${fmtTtkAt(ttk)}–${fmtTtkAt(ttkAt(w, r, limbMult(w)))} chest–limbs`;
-      const additions = [];
-      if (showAds && w._adsTimeMs) additions.push(`${formatMilliseconds(w._adsTimeMs)}ms ADS`);
-      if (showVel) additions.push(`${Math.round((flightTimeAtDistance(w._projectileModel, r) ?? 0) * 1000)}ms flight`);
-      return additions.length ? `${fmtTtkAt(ttk)} incl. ${additions.join(' + ')}` : fmtTtkAt(ttk);
+      return [
+        { label: 'Chest', value: fmtTtkAt(ttkAt(w, r)), applies: true },
+        { label: 'Limbs', value: fmtTtkAt(ttkAt(w, r, limbMult(w))), applies: limbBtk !== btk },
+        { label: 'ADS', value: `${formatMilliseconds(w._adsTimeMs ?? 0)}ms`, applies: showAds },
+        { label: 'Flight', value: `${Math.round((flightTimeAtDistance(w._projectileModel, r) ?? 0) * 1000)}ms`, applies: showVel },
+      ];
     };
     updateDmgChart(ctx, {
       type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
@@ -1675,9 +1708,12 @@ function renderChart() {
     const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
     if (!Number.isFinite(d)) return null;
     // Uncapped: damage above 100 matters for what is left after penetration.
-    const line = `${d.toFixed(1)} dmg`;
-    if (limbMult(w) === 1) return line;
-    return `${line} · limbs ${(d * limbMult(w)).toFixed(1)} · head ${(d * zoneMultiplierForWeapon(w, 'head')).toFixed(1)}`;
+    const zones = limbMult(w) !== 1;
+    return [
+      { label: 'Chest', value: d.toFixed(1), applies: true },
+      { label: 'Limbs', value: (d * limbMult(w)).toFixed(1), applies: zones },
+      { label: 'Head', value: (d * zoneMultiplierForWeapon(w, 'head')).toFixed(1), applies: zones },
+    ];
   };
   updateDmgChart(ctx, {
     type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
@@ -1876,7 +1912,7 @@ function spaceBtkColumns() {
   table.style.width = '';
   btkSpacedWidth = area.clientWidth;
   const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
-  if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers, natural); return; } // Narrow panel: keep the automatic layout.
+  if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers); return; } // Narrow panel: keep the automatic layout.
   const colgroup = document.createElement('colgroup');
   natural.forEach(w => {
     const col = document.createElement('col');
@@ -1885,23 +1921,19 @@ function spaceBtkColumns() {
   });
   table.prepend(colgroup);
   table.style.tableLayout = 'fixed';
-  placeBtkWeaponNames(headers, natural);
+  placeBtkWeaponNames(headers);
 }
-/** Centre each compared weapon's name on the title row over its own three
- *  columns: midway between its DMG text's start and its TTK column's widest
- *  text's end (`natural` holds each column's max-content width). */
-function placeBtkWeaponNames(headers, natural) {
+/** Set each compared weapon's name on the title row over its own columns,
+ *  starting where its DMG header text starts. */
+function placeBtkWeaponNames(headers) {
   const names = [...document.querySelectorAll('#btkWeapons > span')];
   const head = document.querySelector('.chart-table-head');
   if (!names.length || !head) return;
   const headLeft = head.getBoundingClientRect().left;
   names.forEach((span, i) => {
-    const dmg = headers[1 + i * 3], ttk = headers[3 + i * 3];
-    if (!dmg || !ttk) return;
-    const start = dmg.getBoundingClientRect().left + parseFloat(getComputedStyle(dmg).paddingLeft);
-    const rect = ttk.getBoundingClientRect();
-    const end = Math.min(rect.right, rect.left + natural[3 + i * 3]) - parseFloat(getComputedStyle(ttk).paddingRight);
-    span.style.left = `${(start + end) / 2 - headLeft}px`;
+    const dmg = headers[1 + i * 3];
+    if (!dmg) return;
+    span.style.left = `${dmg.getBoundingClientRect().left + parseFloat(getComputedStyle(dmg).paddingLeft) - headLeft}px`;
   });
 }
 
