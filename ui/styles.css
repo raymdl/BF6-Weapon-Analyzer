@@ -604,6 +604,8 @@ body.rc-plot-expanded{overflow:hidden}
 #attSection2 .att-tool-lock.partial{color:var(--accent2);border-color:rgba(77,148,208,.4)}
 #attSection2 .att-lock-note{color:#6a9ec0}
 #attSection2 .att-lock-hint{border-color:rgba(77,148,208,.35);background:rgba(77,148,208,.06)}
+/* Weapon 2's tool buttons (Save, locks) hover in its colour. */
+#savedSec2 .att-tool:hover:not(:disabled),#attSection2 .att-tool:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
 /* Weapon 2's saved-loadout row: Save button, name field focus, chosen item and undo link. */
 #savedSec2 .att-tool.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.1)}
 #savedSec2 .saved-name-input:focus,#savedSec2 .att-sel:focus{border-color:var(--accent2)}
