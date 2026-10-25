@@ -28,6 +28,8 @@ function openAttachmentMenu(sel, options) {
   closeAttachmentMenu();
   const menu = document.createElement('div');
   menu.className = 'att-menu';
+  // Weapon 2's menu marks its choice in weapon 2's colour.
+  if (sel.closest('#attSection2')) menu.classList.add('att-menu-2');
   menu.setAttribute('role', 'listbox');
   if (sel.labels?.[0]) menu.setAttribute('aria-label', sel.labels[0].textContent);
   const items = [];
