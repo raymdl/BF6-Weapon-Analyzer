@@ -225,10 +225,11 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .chart-head{margin-bottom:14px}
 .chart-table-head{height:21px;display:flex;align-items:center;position:relative}
 /* Compare only: each weapon named on the kill table's title row, in its colour, over its own columns (styled as .att-name). */
-.btk-weapons{text-transform:none;letter-spacing:0;font-size:.68rem;font-weight:700}
-.btk-weapons>span{position:absolute;top:0;bottom:0;display:flex;align-items:center;white-space:nowrap}
-/* A rule in the weapon's colour under the name, across its three columns (width set in app.js). */
-.btk-weapons>span::after{content:'';position:absolute;left:0;bottom:0;width:var(--grp-w,0);height:1px;background:currentColor;opacity:.55}
+.btk-weapons{text-transform:none;letter-spacing:0;font-size:.76rem;font-weight:700}
+/* Each name spans its three columns (width set in app.js), sitting at the right end of its rule. */
+.btk-weapons>span{position:absolute;top:0;bottom:0;width:var(--grp-w,auto);display:flex;align-items:center;justify-content:flex-end;white-space:nowrap}
+/* A rule in the weapon's colour under the name, across the columns. */
+.btk-weapons>span::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;opacity:.55}
 .chart-wrap{position:relative;height:225px}
 .chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
 /* BTK table */
