@@ -227,6 +227,9 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 /* Chart */
 .chart-head{margin-bottom:14px}
 .chart-table-head{height:21px;display:flex;align-items:center}
+/* Compare only: each weapon named on the kill table's title row, in its colour. */
+.btk-weapons{margin-left:auto;padding-left:14px;display:flex;gap:14px;min-width:0;overflow:hidden;white-space:nowrap;text-transform:none;letter-spacing:0;font-size:.66rem;font-weight:600}
+.btk-weapons>span{min-width:0;overflow:hidden;text-overflow:ellipsis}
 .chart-wrap{position:relative;height:225px}
 .chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
 /* BTK table */
@@ -236,23 +239,10 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .rng{color:var(--muted);font-size:0.7rem}
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
-/* Compare only: the faster kill at each range, in its weapon's colour. The row
-   attribute lifts it over the striping and the distance row's tint; only the
-   muted TTK text brightens, so a BTK cell keeps its change colour. */
-.btk-tbl tbody tr[data-range] td.win1{background:rgba(201,162,39,.12)}
-.btk-tbl tbody tr[data-range] td.win2{background:rgba(77,148,208,.14)}
-.btk-tbl tbody tr[data-range] td.tv.win1,.btk-tbl tbody tr[data-range] td.tv.win2{color:var(--text)}
 /* The range under the pointer in the chart or the table; background only, so nothing moves. */
 .btk-tbl tbody tr[data-range]{cursor:default}
 .btk-tbl tbody tr[data-range].is-hover td{background:rgba(221,227,227,.07)}
-.btk-tbl tbody tr[data-range].is-hover td.win1{background:rgba(201,162,39,.18)}
-.btk-tbl tbody tr[data-range].is-hover td.win2{background:rgba(77,148,208,.2)}
 .btk-tbl tbody tr:nth-child(even) td{background:rgba(255,255,255,.025)}
-/* Compare only: a row naming each weapon over its columns, ruled off between the two. */
-.btk-tbl .btk-grp th{padding:1px 7px 2px;border-bottom:0;font-size:.62rem;font-weight:700;letter-spacing:.02em}
-.btk-tbl .btk-grp th.btk-grp-1{color:var(--accent)}
-.btk-tbl .btk-grp th.btk-grp-2{color:var(--accent2);border-left:1px solid var(--border)}
-.btk-tbl thead tr:last-child th.btk-col-2,.btk-tbl tbody td.btk-col-2{border-left:1px solid var(--border)}
 /* The row at the Soldier Target's distance, matching the chart's dashed marker.
    Inset shadows rather than borders: in a collapsed table the row above's
    border wins the shared edge, and side borders widen the table by half a pixel. */
@@ -537,26 +527,6 @@ body.rc-plot-expanded{overflow:hidden}
 .target-zone-table tbody tr.target-zone-miss th,.target-zone-table tbody tr.target-zone-miss td{color:#8c9a9a}
 .target-impact-summary strong.dmg-kill{color:var(--red)}
 .target-impact-summary strong.dmg-crit{color:var(--accent)}
-/* Two weapons share one impact table: weapon 1 | Δ 2−1 | weapon 2. */
-.impact-cmp{width:100%;border-collapse:collapse;font-size:.7rem}
-.impact-cmp th,.impact-cmp td{padding:3px;border-bottom:1px solid rgba(43,55,55,.75);text-align:right;white-space:nowrap}
-.impact-cmp th:first-child,.impact-cmp td:first-child{text-align:left}
-.impact-cmp thead th{font-size:.58rem;font-weight:500;letter-spacing:.045em;text-transform:uppercase;color:#718080}
-.impact-cmp thead tr.impact-cmp-names th{font-size:.7rem;font-weight:700;text-transform:none;letter-spacing:0;color:var(--text);text-align:left;padding-bottom:4px;white-space:normal}
-.impact-cmp thead tr.impact-cmp-names th.c1{color:var(--accent)}
-.impact-cmp thead tr.impact-cmp-names th.c2{color:var(--accent2)}
-.impact-cmp thead tr.impact-cmp-names th .loadout-atts{display:block;margin-left:0;font-size:.58rem}
-.impact-cmp tbody th{font-weight:500;color:#aab7b7;text-align:left}
-.impact-cmp tbody td{color:#c6d0d0}
-.impact-cmp .impact-cmp-delta{color:#8c9a9a;text-align:center;border-left:1px solid #263131;border-right:1px solid #263131}
-.impact-cmp thead .impact-cmp-delta{color:#718080}
-.impact-cmp tbody tr.no-hits th,.impact-cmp tbody tr.no-hits td{opacity:.55}
-.impact-cmp tbody tr.target-zone-miss th,.impact-cmp tbody tr.target-zone-miss td{color:#8c9a9a}
-.impact-cmp tbody tr.impact-cmp-sum td{color:#d4dddd;font-weight:600}
-.impact-cmp tbody tr.impact-cmp-sum td.dmg-kill{color:var(--red)}
-.impact-cmp tbody tr.impact-cmp-sum td.dmg-crit{color:var(--accent)}
-.impact-cmp tbody tr.impact-cmp-sum.last td,.impact-cmp tbody tr.impact-cmp-sum.last th{border-bottom:2px solid #2b3737}
-.impact-cmp tbody tr:last-child th,.impact-cmp tbody tr:last-child td{border-bottom:none}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
 .rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;position:relative}
@@ -581,12 +551,9 @@ body.rc-plot-expanded{overflow:hidden}
 .att-name{font-size:0.68rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-name.c1{color:var(--accent)} .att-name.c2{color:var(--accent2)}
 .att-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:4px}
-/* The left edge carries the chip's overview group colour; the padding gives up
-   the border's 2px so the text stays put, and ungrouped chips keep the same box. */
-.att-chip{background:var(--bg3);border-left:2px solid var(--grp,transparent);border-radius:4px;padding:5px 6px 5px 4px;min-width:0;position:relative}
+.att-chip{background:var(--bg3);border-radius:4px;padding:5px 6px;min-width:0;position:relative}
 .att-chip:hover .att-tt,.att-chip:focus-visible .att-tt,.att-chip.tt-open .att-tt{display:block}
-/* Back over the chip's 2px edge, so the popover lines up with the chip as before. */
-.att-tt{left:-2px;min-width:230px;max-width:320px}
+.att-tt{left:0;min-width:230px;max-width:320px}
 /* Chips whose popover would pass the window edge open leftward (set in app.js). */
 .att-chip.tt-flip .att-tt{left:auto;right:0}
 .att-tt-desc{font-size:0.67rem;line-height:1.45;color:var(--text);margin-bottom:5px;white-space:normal}
