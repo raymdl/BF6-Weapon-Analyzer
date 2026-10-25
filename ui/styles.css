@@ -120,11 +120,14 @@ body.is-popout .rc-note{flex-shrink:0}
    rules above that, so a maximised 1440p/4K browser stretched every panel
    while text and chart heights stayed fixed. Cap the whole page (header,
    sidebar, main, footer) and centre it; body's background propagates to the
-   canvas, so the margins stay the same colour. The pop-out sizes itself to
-   its own window and is excluded. */
-body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto}
+   canvas, so html carries a slightly lighter backdrop of its own and body
+   restates the page colour: the page then reads as a dark card on the
+   backdrop rather than a letterboxed strip. The pop-out sizes itself to its
+   own window and is excluded. */
+html{background:#111616}
+body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--bg)}
 @media (min-width:1702px){
-  body:not(.is-popout) .app{border-left:1px solid var(--border);border-right:1px solid var(--border)}
+  body:not(.is-popout){box-shadow:0 0 0 1px #2a3232}
 }
 /* Sidebar */
 .loadout-modal-head{display:none}
