@@ -1921,14 +1921,15 @@ function spaceBtkColumns() {
   btkSpacedWidth = area.clientWidth;
   const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
   if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers, natural); return; } // Narrow panel: keep the automatic layout.
-  // The spare goes to the gaps between the weapon columns only: Range keeps
-  // its natural width, since it is a label and not part of a weapon's group,
-  // and the last column's text ends at the panel edge like the panels around it.
+  // The spare goes to the gaps between columns, weighted: a full share between
+  // weapon columns, half a share after Range (a label, not part of a weapon's
+  // group) and none after the last column, so its text ends at the panel edge.
   const colgroup = document.createElement('colgroup');
-  const gaps = Math.max(1, natural.length - 2);
+  const weight = i => (i === natural.length - 1 ? 0 : i === 0 ? 0.5 : 1);
+  const total = natural.reduce((sum, _, i) => sum + weight(i), 0) || 1;
   natural.forEach((w, i) => {
     const col = document.createElement('col');
-    col.style.width = `${i >= 1 && i < natural.length - 1 ? w + spare / gaps : w}px`;
+    col.style.width = `${w + spare * weight(i) / total}px`;
     colgroup.appendChild(col);
   });
   table.prepend(colgroup);
