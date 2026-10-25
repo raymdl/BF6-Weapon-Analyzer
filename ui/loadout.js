@@ -250,12 +250,13 @@ export function renderAttachmentSection({
       atts[key] = value;
     }
     normalizeSelection();
+    // onChange first, so a locked slot's lock moves to the new choice before the rows redraw.
+    onChange({ key, value });
     if (key === 'ergo' || key === 'fireMode' || wa?.dependencies?.length) {
       renderAttachmentSection({ containerId, container, atts, weapon, data, onChange, decorate, locks, onLockToggle, lockHeld });
     } else {
       updateAttTotal(containerId, atts, weapon, data);
     }
-    onChange({ key, value });
   };
 
   const mounts = attachmentSlots(weapon, data);
