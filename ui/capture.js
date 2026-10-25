@@ -120,6 +120,11 @@ function snapshotCanvases(source, clone) {
  *
  * @returns {{height:number, slots:{width:number,height:number}[]}}
  */
+/** The capture body's inline style. The live body is capped at 1700px and centred for wide
+ *  viewports; the capture is laid out inside a frame at least that wide, so without this the
+ *  image was centred (a blank strip at the left) and clipped at the cap. */
+const BODY_CSS = (width, rootCss) => `width:${width}px;max-width:none;margin:0;box-shadow:none;${rootCss};height:auto;min-height:0;overflow:visible;display:block`;
+
 function measureCapture(markup, css, rootCss, width, viewportWidth, aspects) {
   const frame = document.createElement('iframe');
   frame.setAttribute('aria-hidden', 'true');
@@ -129,7 +134,7 @@ function measureCapture(markup, css, rootCss, width, viewportWidth, aspects) {
     const doc = frame.contentDocument;
     doc.open();
     doc.write(`<style>*{margin:0;padding:0;box-sizing:border-box}</style><style>${css}</style>`
-      + `<body style="width:${width}px;${rootCss};height:auto;min-height:0;overflow:visible;display:block">${markup}</body>`);
+      + `<body style="${BODY_CSS(width, rootCss)}">${markup}</body>`);
     doc.close();
     // Reading a rect forces layout synchronously. The bitmaps are out of flow,
     // so every wrap is measured on the surrounding layout alone.
@@ -240,7 +245,7 @@ export async function captureView({ sidebar = false } = {}) {
 
     svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${viewportWidth}" height="${height}">`
       + '<foreignObject width="100%" height="100%">'
-      + `<body xmlns="http://www.w3.org/1999/xhtml" style="width:${width}px;${rootCss};height:auto;min-height:0;overflow:visible;display:block">`
+      + `<body xmlns="http://www.w3.org/1999/xhtml" style="${BODY_CSS(width, rootCss)}">`
       + `<style>${css}</style>${markup}</body></foreignObject></svg>`;
 
     const image = new Image();
