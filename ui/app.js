@@ -1919,10 +1919,12 @@ function spaceBtkColumns() {
   btkSpacedWidth = area.clientWidth;
   const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
   if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers, natural); return; } // Narrow panel: keep the automatic layout.
+  // The spare goes to the gaps between columns, not after the last one, so
+  // the last column's text ends at the panel edge like the panels around it.
   const colgroup = document.createElement('colgroup');
-  natural.forEach(w => {
+  natural.forEach((w, i) => {
     const col = document.createElement('col');
-    col.style.width = `${w + spare / headers.length}px`;
+    col.style.width = `${i < natural.length - 1 ? w + spare / (natural.length - 1) : w}px`;
     colgroup.appendChild(col);
   });
   table.prepend(colgroup);

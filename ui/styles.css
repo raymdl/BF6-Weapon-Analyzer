@@ -227,7 +227,7 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 /* Compare only: each weapon named on the kill table's title row, in its colour, over its own columns (styled as .att-name). */
 .btk-weapons{text-transform:none;letter-spacing:0;font-size:.76rem;font-weight:700}
 /* Each name spans its three columns (width set in app.js), sitting at the right end of its rule. */
-.btk-weapons>span{position:absolute;top:0;bottom:0;width:var(--grp-w,auto);display:flex;align-items:center;justify-content:flex-end;white-space:nowrap}
+.btk-weapons>span{position:absolute;top:0;bottom:0;width:var(--grp-w,auto);display:flex;align-items:center;justify-content:center;white-space:nowrap}
 /* A rule in the weapon's colour under the name, across the columns. */
 .btk-weapons>span::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:1px;background:currentColor;opacity:.55}
 .chart-wrap{position:relative;height:225px}
