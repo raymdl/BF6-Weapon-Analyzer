@@ -24,13 +24,16 @@
       "sourceVersion": "2.1.1.0",
       "buildEvidence": "bf6.exe SHA-256 2c1065ffc2d50b88708d7d1ca60aba84283cc18df3fcbdafab42bf0a084a488e; Frosty archive Head 5382784",
       "reviewedDate": "2026-10-13",
-      "authority": "Raw before/after comparison of the 63 weapons against 1.4.3.5. Applied: SVDM recoil direction 4 to 20 and recoil decrease time exponent 0.75 to 1.1; M39 EMR exponent 0.75 to 1.0; controller recoil multiplier 0.8836 to 0.95; VSSM 10 Rnd description. No other value used by the site changed for these weapons; retained values keep their earlier provenance. Season 5 weapons and attachments are not included."
+      "evidence": "https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md",
+      "authority": "Raw before/after comparison of the 63 pre-existing weapons against 1.4.3.5. Applied: SVDM recoil direction 4 to 20 and recoil decrease time exponent 0.75 to 1.1; M39 EMR exponent 0.75 to 1.0; controller recoil multiplier 0.8836 to 0.95; VSSM 10 Rnd description. No other value used by the site changed for these weapons; retained values keep their earlier provenance. The four Season 5 weapons (Mk 24, ELR-40, Z84M, RSPR) were added from 2.1.1.0."
     },
     {
       "id": "ea-update-notes",
       "sourceVersion": "1.3.3.0",
       "url": "https://www.ea.com/games/battlefield/redsec/news/battlefield-6-game-update-1-3-3-0",
-      "authority": "Declared mechanics and explicitly listed balance changes"
+      "authority": "Declared mechanics and explicitly listed balance changes",
+      "status": "historical",
+      "note": "The 1.3.3.0 notes were the declared-mechanics source when the baseline was adopted. No later EA update notes page has been adopted as a source."
     },
     {
       "id": "sym-bf6-json",
