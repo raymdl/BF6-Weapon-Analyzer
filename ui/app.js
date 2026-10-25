@@ -1735,9 +1735,10 @@ function renderBTK() {
   // With two weapons a row names each over its three columns; btk-col-2 opens
   // weapon 2's group so the stylesheet can rule it off.
   if (w1 && w2) {
+    const tintNote = ' title="Tinted cells mark the faster kill at that range"';
     html += '<tr class="btk-grp"><th></th>'
-      + `<th colspan="3" class="btk-grp-1">${badgeHtml(0)}${escapeHtml(chartWeaponDisplayLabel(w1))}</th>`
-      + `<th colspan="3" class="btk-grp-2">${badgeHtml(1)}${escapeHtml(chartWeaponDisplayLabel(w2))}</th></tr>`;
+      + `<th colspan="3" class="btk-grp-1"${tintNote}>${badgeHtml(0)}${escapeHtml(chartWeaponDisplayLabel(w1))}</th>`
+      + `<th colspan="3" class="btk-grp-2"${tintNote}>${badgeHtml(1)}${escapeHtml(chartWeaponDisplayLabel(w2))}</th></tr>`;
   }
   html += '<tr><th>RANGE</th>';
   if (w1) html += `<th style="color:var(--accent)">DMG</th><th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
@@ -1752,18 +1753,31 @@ function renderBTK() {
   // Each cell shows chest–limb ranges when the limb multiplier changes the outcome.
   const cells = (w, r) => {
     const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
-    if (!Number.isFinite(b) || !Number.isFinite(bl)) return { bTxt: '—', tTxt: '—' };
+    if (!Number.isFinite(b) || !Number.isFinite(bl)) return { bTxt: '—', tTxt: '—', chestBtk: null, chestTtk: null };
     const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
+    const chestTtk = ttkAt(w, r, b);
     const tTxt = bl !== b
-      ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
-      : fmtTtkAt(ttkAt(w, r, b));
-    return { bTxt, tTxt };
+      ? `${fmtTtkAt(chestTtk).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
+      : fmtTtkAt(chestTtk);
+    return { bTxt, tTxt, chestBtk: b, chestTtk: chestTtk == null ? null : Math.round(chestTtk) };
+  };
+  // With two weapons, the faster chest-hit kill at each range tints that weapon's
+  // TTK cell. Its BTK cell is tinted too when it also needs fewer bullets, so a
+  // tint never points at the slower kill.
+  const winners = (c1, c2) => {
+    if (c1.chestTtk == null || c2.chestTtk == null || c1.chestTtk === c2.chestTtk) return { ttk: 0, btk: 0 };
+    const ttk = c1.chestTtk < c2.chestTtk ? 1 : 2;
+    const fewer = c1.chestBtk === c2.chestBtk ? 0 : c1.chestBtk < c2.chestBtk ? 1 : 2;
+    return { ttk, btk: fewer === ttk ? ttk : 0 };
   };
   let prev1 = null, prev2 = null;
   ranges.forEach(r => {
     html += `<tr data-range="${r}"><td class="rng">${r}m</td>`;
-    if (w1) { const { bTxt, tTxt } = cells(w1, r); const chg = prev1 !== null && bTxt !== prev1; html += `<td class="tv">${dmgTxt(w1, r)}</td><td class="bv${chg ? ' bchg' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev1 = bTxt; }
-    if (w2) { const { bTxt, tTxt } = cells(w2, r); const chg = prev2 !== null && bTxt !== prev2; html += `<td class="tv${col2}">${dmgTxt(w2, r)}</td><td class="bv${chg ? ' bchg2' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev2 = bTxt; }
+    const c1 = w1 && cells(w1, r), c2 = w2 && cells(w2, r);
+    const win = c1 && c2 ? winners(c1, c2) : { ttk: 0, btk: 0 };
+    const tint = (n, which) => (win[which] === n ? ` win${n}` : '');
+    if (w1) { const { bTxt, tTxt } = c1; const chg = prev1 !== null && bTxt !== prev1; html += `<td class="tv">${dmgTxt(w1, r)}</td><td class="bv${chg ? ' bchg' : ''}${tint(1, 'btk')}">${bTxt}</td><td class="tv${tint(1, 'ttk')}">${tTxt}</td>`; prev1 = bTxt; }
+    if (w2) { const { bTxt, tTxt } = c2; const chg = prev2 !== null && bTxt !== prev2; html += `<td class="tv${col2}">${dmgTxt(w2, r)}</td><td class="bv${chg ? ' bchg2' : ''}${tint(2, 'btk')}">${bTxt}</td><td class="tv${tint(2, 'ttk')}">${tTxt}</td>`; prev2 = bTxt; }
     html += '</tr>';
   });
   html += '</tbody></table>';

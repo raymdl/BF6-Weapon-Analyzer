@@ -236,6 +236,12 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .rng{color:var(--muted);font-size:0.7rem}
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
+/* Compare only: the faster kill at each range, in its weapon's colour. The row
+   attribute lifts it over the striping and the distance row's tint; only the
+   muted TTK text brightens, so a BTK cell keeps its change colour. */
+.btk-tbl tbody tr[data-range] td.win1{background:rgba(201,162,39,.12)}
+.btk-tbl tbody tr[data-range] td.win2{background:rgba(77,148,208,.14)}
+.btk-tbl tbody tr[data-range] td.tv.win1,.btk-tbl tbody tr[data-range] td.tv.win2{color:var(--text)}
 .btk-tbl tbody tr:nth-child(even) td{background:rgba(255,255,255,.025)}
 /* Compare only: a row naming each weapon over its columns, ruled off between the two. */
 .btk-tbl .btk-grp th{padding:1px 7px 2px;border-bottom:0;font-size:.62rem;font-weight:700;letter-spacing:.02em}
