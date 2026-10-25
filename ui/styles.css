@@ -187,11 +187,11 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
    border-box, so the flex basis above has to carry it. Keep the three in
    step with the .sgroup and .sgrid rules that consume them.
 
-   The overview rows stop growing at 1400px. Each card also has its own
-   maximum width; the row cap limits the space distributed across groups. */
+   The overview rows fill the panel, as the Attachment Effects grid below
+   does; the page's own 1700px cap bounds them, and each card keeps its own
+   maximum width. */
 .sgroups{display:flex;flex-direction:column;gap:11px;
-  --scard-min:103px;--scard-max:180px;--sgrid-gap:6px;--sgroup-chrome:12px;
-  max-width:1400px}
+  --scard-min:103px;--scard-max:180px;--sgrid-gap:6px;--sgroup-chrome:12px}
 .sgrow{display:flex;align-items:start;gap:20px;flex-wrap:wrap}
 /* renderStatCards sets --n to the card count. The group then reproduces the
    width it had when cards were pinned at --scard-min, and grows from there in
