@@ -189,10 +189,14 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 
    The overview rows fill the panel, as the Attachment Effects grid below
    does; the page's own 1700px cap bounds them, and each card keeps its own
-   maximum width. */
+   maximum width. From 1450px of viewport the gaps between cards and between
+   groups widen with the window, up to the page cap, so the spare width goes
+   partly into air rather than all into the cards. */
 .sgroups{display:flex;flex-direction:column;gap:11px;
-  --scard-min:103px;--scard-max:180px;--sgrid-gap:6px;--sgroup-chrome:12px}
-.sgrow{display:flex;align-items:start;gap:20px;flex-wrap:wrap}
+  --scard-min:103px;--scard-max:180px;--sgroup-chrome:12px;
+  --sgrid-gap:clamp(6px,calc(6px + (100vw - 1450px) * .03),14px);
+  --sgroup-gap:clamp(20px,calc(20px + (100vw - 1450px) * .05),32px)}
+.sgrow{display:flex;align-items:start;gap:var(--sgroup-gap);flex-wrap:wrap}
 /* renderStatCards sets --n to the card count. The group then reproduces the
    width it had when cards were pinned at --scard-min, and grows from there in
    proportion to --n, so spare width splits by card count and every card lands
