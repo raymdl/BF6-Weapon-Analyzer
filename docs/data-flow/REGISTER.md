@@ -34,7 +34,7 @@ assumption IDs here instead of repeating the limits.
 | `weapon_attributes.json` | **CUR**, assembled from dated 1.4.3.0 Precision, shotgun and Mobility traces (named in its `provenance` field); Season 5 tables added with 2.1.1.0. | `sim/weapon-attributes.js`; Weapon Attributes scores only. No production generator. |
 | `recoil_decay.json` | **CUR, legacy retained**. | Still a startup fetch. Current equations use explicit per-aim weapon groups instead. |
 | `weapon-role-tags.json` | **Reference**, source-derived tags with reviewed panel conflict resolution. | Not fetched by the UI. |
-| `data/provenance/live-baseline.json` | **CUR**, high-level acceptance/source record (1.4.2.5 baseline, 1.4.3.0 changes, 2.1.1.0 comparison and Season 5 weapons; the EA 1.3.3.0 notes record is historical). | Maintenance only; field provenance is more specific. |
+| `data/provenance/live-baseline.json` | **CUR**, high-level acceptance/source record (1.4.2.5 baseline, 1.4.3.0 changes, 2.1.1.0 comparison and Season 5 weapons, the EA 2.1.1.0 notes; the EA 1.3.3.0 notes record is historical). | Maintenance only; field provenance is more specific. |
 | `reference-data/provenance/*` | **Mixed CUR/GEN evidence**. | Identity audits, snapshots, hashes, generated traces and reviews. Some are offline generator inputs; none are startup JSON. |
 | `SIGHTS` individual optics, `WEAPON_ATTS[id].sight`, optic prerequisites of accessory rules | **GEN**, optic category mapping + compatibility report + research-repo optic names. | `frosty-individual-optics.py`; menus, points, links and target zoom. |
 | Attachment screenshot-review JSON | **CUR**, canonical human review. | `build-workbook.py` derives the workbook. Not a runtime table. |

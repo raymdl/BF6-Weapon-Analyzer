@@ -33,7 +33,15 @@
       "url": "https://www.ea.com/games/battlefield/redsec/news/battlefield-6-game-update-1-3-3-0",
       "authority": "Declared mechanics and explicitly listed balance changes",
       "status": "historical",
-      "note": "The 1.3.3.0 notes were the declared-mechanics source when the baseline was adopted. No later EA update notes page has been adopted as a source."
+      "note": "The 1.3.3.0 notes were the declared-mechanics source when the baseline was adopted. The Season 5 notes are recorded as ea-update-notes-2.1.1.0."
+    },
+    {
+      "id": "ea-update-notes-2.1.1.0",
+      "sourceVersion": "2.1.1.0",
+      "url": "https://www.ea.com/games/battlefield/battlefield-6/news/battlefield-6-game-update-2-1-1-0",
+      "reviewedDate": "2026-10-13",
+      "evidence": "https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md",
+      "authority": "Declared Season 5 mechanics and listed balance changes, checked row by row against the 2.1.1.0 raw data in the update checklist. Notes do not supply internal coefficients or prove unmentioned fields."
     },
     {
       "id": "sym-bf6-json",

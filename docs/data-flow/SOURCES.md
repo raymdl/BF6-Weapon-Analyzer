@@ -9,7 +9,7 @@ Checked against `af612b3` on 25 October 2026. Frosty research tooling moved to t
 ```mermaid
 flowchart LR
     SY["SRC · Sym JSON snapshot<br/>1.4.2.0 · 18 AUG 2026"]:::src
-    EA["SRC · EA 1.3.3.0 notes<br/>historical: declared mechanics at adoption"]:::src
+    EA["SRC · EA update notes<br/>2.1.1.0 current; 1.3.3.0 historical"]:::src
     FX["SRC · Frosty build 1.4.2.5<br/>sealed baseline export · 12 AUG 2026"]:::src
     F3["SRC · Frosty build 1.4.3.0<br/>sealed, reviewed changes · 16 SEP 2026"]:::src
     F35["SRC · Frosty build 1.4.3.5<br/>sealed, comparison base · 30 SEP 2026"]:::src
@@ -40,7 +40,7 @@ flowchart LR
 | Input | Role | Limit |
 |---|---|---|
 | [Sym baseline record](../../data/provenance/live-baseline.json) and [retained snapshot evidence](../../reference-data/provenance/sym-1.4.2.0-interdictor.json) | Historical foundation for base weapon fields. Data version **1.4.2.0**, dated **18 August 2026**. | The retained file holds an extract and a full-payload hash, not the complete payload. |
-| [EA notes](../../data/provenance/live-baseline.json) (`ea-update-notes`, `status: historical`) | Declared behavior and explicit changes for 1.3.3.0, the declared-mechanics source when the baseline was adopted. | No later notes page has been adopted as a source. Notes do not give internal operands or unmentioned behavior. |
+| [EA notes](../../data/provenance/live-baseline.json) (`ea-update-notes-2.1.1.0`; `ea-update-notes` for 1.3.3.0, `status: historical`) | Declared Season 5 mechanics and listed changes, checked against the 2.1.1.0 raw data in the update checklist; the 1.3.3.0 notes were the declared-mechanics source at adoption. | Notes do not give internal operands or unmentioned behavior; the raw comparison decides what is applied. |
 | Frosty build **1.4.2.5** ([local export](../DATA_SOURCES.md#local-frosty-export-location)) | Baseline adopted 12 August 2026. Source for accepted projectile damage, per-aim groups, arrays, generated handling, projectile/hit-zone data and many modifiers. | Build label is operator-supplied. Build is sealed (read-only). |
 | Frosty build **1.4.3.0** ([source comparison](../../reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json)) | Reviewed 16 September 2026. Reviewed changes only: Interdictor damage curve, hit-zone material and iron-sight cost; VSSM velocity and recoil; Weapon Attributes Precision tables. Includes the 16 September hotfix client (1.4.3.1). | Fields that did not change keep their 1.4.2.5 provenance. Sealed 30 September 2026. |
 | Frosty build **1.4.3.5** ([update report](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/1.4.3.5-report.md)) | Checked 30 September 2026; no site value changed. Its last client is the "before" side of the 2.1.1.0 comparison. | Sealed 13 October 2026. No `live-baseline.json` record of its own. |

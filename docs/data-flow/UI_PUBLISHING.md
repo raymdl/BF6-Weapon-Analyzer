@@ -83,7 +83,7 @@ flowchart TB
     LS["OUT · localStorage<br/>display, sensitivity, saved loadouts, locks"]:::out
     V["RUN · rendered current view"]:::run
     CAP["RUN · capture.js<br/>clone layout + existing canvas pixels"]:::run
-    PNG["OUT · 2x PNG<br/>clipboard or download fallback"]:::out
+    PNG["OUT · PNG at page size<br/>clipboard or download fallback"]:::out
     A["ASM · partial-state sharing and<br/>capture/presentation policy · A12/A13"]:::asm
     U --> S
     S --> URL
