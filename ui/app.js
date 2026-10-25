@@ -221,6 +221,14 @@ function chartWeaponDisplayLabel(w) {
   const name = w?.name ?? wLabel(w);
   return w?.estimated ? `${name}*` : name;
 }
+/** The slot's numbered badge, so a heading says which loadout it is when two are shown. */
+function badgeHtml(i) {
+  return `<span class="wb wb${i + 1}" aria-hidden="true">${i + 1}</span>`;
+}
+/** Badges appear only while two weapons are on the page; one needs no number. */
+function showsBadges() {
+  return state.comparing && !!state.slots[0].weapon && !!state.slots[1].weapon;
+}
 
 function weaponAriaLabel(w) {
   const label = weaponDisplayLabel(w);
@@ -1138,10 +1146,13 @@ function renderOverview() {
     }
     hdr.appendChild(group);
   };
+  const badges = !!(w1 && w2);
   const appendWeaponName = (w, className, hdr) => {
     const s = document.createElement('span');
     s.className = className;
     s.textContent = weaponDisplayLabel(w);
+    // Inside the name, so a wrapping header never leaves the badge behind.
+    if (badges) s.insertAdjacentHTML('afterbegin', badgeHtml(className === 'wname2' ? 1 : 0));
     s.setAttribute('aria-label', weaponAriaLabel(w));
     s.title = w.description ?? '';
     if (w.description) s.setAttribute('aria-description', w.description);
@@ -1418,6 +1429,57 @@ const damageHeadroomMask = {
   },
 };
 
+// The Soldier Target's distance as a dashed line with each weapon's value
+// there, so the chart reads at the range the plot is showing.
+const distanceMarker = {
+  id: 'distance-marker',
+  afterDatasetsDraw(chart) {
+    if (!isTargetGeometry()) return;
+    const distance = state.recoil.distance;
+    const labels = chart.data.labels ?? [];
+    if (!Number.isFinite(distance) || distance > labels.length - 1) return;
+    const { chartArea, ctx, scales } = chart;
+    const px = scales.x?.getPixelForValue(distance);
+    if (!chartArea || !Number.isFinite(px) || px < chartArea.left || px > chartArea.right) return;
+    const { mode } = state.chart;
+    const lines = [{ text: `${distance} m`, color: '#dde3e3' }];
+    for (const ds of chart.data.datasets) {
+      if (!ds._weapon || ds.isBand || ds.isBaseline) continue;
+      const v = ds.data[distance];
+      if (!Number.isFinite(v)) continue;
+      const text = mode === 'btk' ? `${v} BTK` : mode === 'ttk' ? fmtTTK(Math.round(v)) : `${v.toFixed(1)} dmg`;
+      lines.push({ text, color: ds.borderColor });
+    }
+    ctx.save();
+    const x = Math.round(px) + 0.5;
+    ctx.strokeStyle = 'rgba(221,227,227,.45)';
+    ctx.lineWidth = 1;
+    ctx.setLineDash([4, 4]);
+    ctx.beginPath();
+    ctx.moveTo(x, chartArea.top);
+    ctx.lineTo(x, chartArea.bottom);
+    ctx.stroke();
+    ctx.setLineDash([]);
+    ctx.font = '600 10px "Segoe UI", system-ui, sans-serif';
+    ctx.textBaseline = 'top';
+    const lineHeight = 13, pad = 5;
+    const boxW = Math.ceil(Math.max(...lines.map(l => ctx.measureText(l.text).width))) + pad * 2;
+    const boxH = lines.length * lineHeight + pad * 2;
+    // Beside the line, flipping to its left where the right edge would clip it.
+    const left = px + 6 + boxW > chartArea.right ? px - 6 - boxW : px + 6;
+    const top = chartArea.top + 4;
+    ctx.fillStyle = 'rgba(12,14,14,.85)';
+    ctx.fillRect(left, top, boxW, boxH);
+    ctx.strokeStyle = '#283030';
+    ctx.strokeRect(Math.round(left) + 0.5, Math.round(top) + 0.5, boxW - 1, boxH - 1);
+    lines.forEach((l, i) => {
+      ctx.fillStyle = l.color;
+      ctx.fillText(l.text, left + pad, top + pad + i * lineHeight);
+    });
+    ctx.restore();
+  },
+};
+
 function updateDmgChart(ctx, config) {
   if (!dmgChart) {
     dmgChart = new Chart(ctx, config);
@@ -1457,8 +1519,9 @@ function renderChart() {
 
   const legEl = document.getElementById('chartLegend');
   if (legEl) {
-    let legHtml = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
-      .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${chartWeaponDisplayLabel(w)}</span></div>`).join('');
+    const badges = !!(w1 && w2);
+    let legHtml = [[w1, '#c9a227', 0], [w2, '#4d94d0', 1]].filter(([w]) => w)
+      .map(([w, col, i]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${badges ? badgeHtml(i) : ''}${chartWeaponDisplayLabel(w)}</span></div>`).join('');
     legEl.innerHTML = legHtml;
   }
 
@@ -1504,7 +1567,7 @@ function renderChart() {
     dashOverlap(datasets);
     const yMax = Math.max(9, ...datasets.flatMap(ds => ds.data));
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask],
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
@@ -1558,7 +1621,7 @@ function renderChart() {
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask],
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
@@ -1621,7 +1684,7 @@ function renderChart() {
   dashOverlap(datasets);
   const dmgYMax = damageYMax([w1, w2]);
   updateDmgChart(ctx, {
-    type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask],
+    type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker],
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
       layout: { padding: { bottom: 0 } },
@@ -1668,9 +1731,18 @@ function renderBTK() {
     return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
   };
   const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
-  let html = '<table class="btk-tbl"><thead><tr><th>RANGE</th>';
+  let html = '<table class="btk-tbl"><thead>';
+  // With two weapons a row names each over its three columns; btk-col-2 opens
+  // weapon 2's group so the stylesheet can rule it off.
+  if (w1 && w2) {
+    html += '<tr class="btk-grp"><th></th>'
+      + `<th colspan="3" class="btk-grp-1">${badgeHtml(0)}${escapeHtml(chartWeaponDisplayLabel(w1))}</th>`
+      + `<th colspan="3" class="btk-grp-2">${badgeHtml(1)}${escapeHtml(chartWeaponDisplayLabel(w2))}</th></tr>`;
+  }
+  html += '<tr><th>RANGE</th>';
   if (w1) html += `<th style="color:var(--accent)">DMG</th><th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
-  if (w2) html += `<th style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
+  const col2 = w1 && w2 ? ' btk-col-2' : '';
+  if (w2) html += `<th${w1 ? ' class="btk-col-2"' : ''} style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
   html += '</tr></thead><tbody>';
   // Per-shot body damage, matching the damage chart tooltip (pellet loads show the full shot).
   const dmgTxt = (w, r) => {
@@ -1689,14 +1761,30 @@ function renderBTK() {
   };
   let prev1 = null, prev2 = null;
   ranges.forEach(r => {
-    html += `<tr><td class="rng">${r}m</td>`;
+    html += `<tr data-range="${r}"><td class="rng">${r}m</td>`;
     if (w1) { const { bTxt, tTxt } = cells(w1, r); const chg = prev1 !== null && bTxt !== prev1; html += `<td class="tv">${dmgTxt(w1, r)}</td><td class="bv${chg ? ' bchg' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev1 = bTxt; }
-    if (w2) { const { bTxt, tTxt } = cells(w2, r); const chg = prev2 !== null && bTxt !== prev2; html += `<td class="tv">${dmgTxt(w2, r)}</td><td class="bv${chg ? ' bchg2' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev2 = bTxt; }
+    if (w2) { const { bTxt, tTxt } = cells(w2, r); const chg = prev2 !== null && bTxt !== prev2; html += `<td class="tv${col2}">${dmgTxt(w2, r)}</td><td class="bv${chg ? ' bchg2' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev2 = bTxt; }
     html += '</tr>';
   });
   html += '</tbody></table>';
   document.getElementById('btkArea').innerHTML = html;
   spaceBtkColumns();
+  syncDistanceMarker();
+}
+
+/** Mark the Soldier Target's distance on the damage chart and the BTK table:
+ *  the table row is the last range at or inside it. */
+function syncDistanceMarker() {
+  dmgChart?.update('none');
+  const rows = [...document.querySelectorAll('#btkArea tbody tr[data-range]')];
+  let at = null;
+  if (isTargetGeometry()) {
+    for (const row of rows) {
+      const r = Number(row.dataset.range);
+      if (r <= state.recoil.distance && (!at || r > Number(at.dataset.range))) at = row;
+    }
+  }
+  rows.forEach(row => row.classList.toggle('at-distance', row === at));
 }
 
 // Give every BTK column its longest value plus an equal share of the spare width,
@@ -1717,7 +1805,8 @@ function spaceBtkColumns() {
   table.querySelector('colgroup')?.remove();
   table.style.tableLayout = '';
   table.style.width = 'max-content';
-  const headers = [...table.querySelectorAll('thead th')];
+  // The column row only: the weapon row's spanning cells are not columns.
+  const headers = [...table.querySelectorAll('thead tr:last-child th')];
   const natural = headers.map(th => th.getBoundingClientRect().width);
   table.style.width = '';
   btkSpacedWidth = area.clientWidth;
@@ -2248,7 +2337,8 @@ function rangeStatsHtml(axis) {
   // The same impact table as the Soldier Target's, in the same place; the
   // loadout is listed above it and the sensitivity read-out sits under the plot.
   const table = live
-    ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, labelFor: loadoutHeadingHtml })
+    ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance,
+      labelFor: (w, i) => (showsBadges() ? badgeHtml(i) : '') + loadoutHeadingHtml(w) })
     : '<p class="target-impact-note">Select a weapon to use the Firing Range.</p>';
   return `<div id="rcRangeStats">${table}</div>`;
 }
@@ -2963,6 +3053,12 @@ function renderAttachmentStats(loadouts) {
   };
   const colorFor = (m, d) => (Math.abs(d) < 0.0005 ? 'var(--muted)'
     : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
+  const SLOT_LABELS = { sight: 'Sight', muzzle: 'Muzzle', barrel: 'Barrel', grip: 'Grip', laser: 'Laser',
+    light: 'Light', ammo: 'Ammo', ergo: 'Ergo', mag: 'Mag' };
+  // With two or more sources, a line under the value gives each one's share,
+  // so a ±0 chip reads as two changes cancelling. One source needs no line.
+  const sourceLine = rows => rows.length < 2 ? ''
+    : `<div class="att-chip-src">${rows.map(r => `<b style="color:${r.color ?? 'inherit'}">${r.value}</b> ${SLOT_LABELS[r.slot] ?? r.name}`).join(' · ')}</div>`;
   // A chip whose hover/tap popover lists each attachment's own contribution.
   const chipHtml = ({ label, value, color, desc, rows = [], footer = [] }) => {
     // Columns: attachment | source step | value, so the value sits on the right.
@@ -2974,11 +3070,12 @@ function renderAttachmentStats(loadouts) {
         : `<span class="att-tt-note">${escAttr(f.note)}</span>`)).join('')
       + '</div>' : '';
     const aria = escAttr(`${label.replace(/<[^>]+>/g, '')}: ${value}. ${desc}`);
-    return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>`
+    return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>${sourceLine(rows)}`
       + `<div class="rc-tt att-tt"><div class="att-tt-desc">${escAttr(desc)}</div>${body}</div></div>`;
   };
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
+  const badges = loadouts.filter(x => x.weapon).length === 2;
   loadouts.filter(x => x.weapon).forEach(({ weapon, atts, build, colClass }) => {
     // Baseline is the bare weapon, so default sights, barrels and magazines show their effects.
     const defaults = defaultAttsForWeapon(weapon);
@@ -3009,7 +3106,7 @@ function renderAttachmentStats(loadouts) {
         if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
         const d = b - a;
         if (Math.abs(d) < 0.0005) return null;
-        return { d, name: escAttr(c.name) + rowMarks(c, m.lbl, estimatedFieldsForMetric[m.lbl]),
+        return { d, slot: c.slot, name: escAttr(c.name) + rowMarks(c, m.lbl, estimatedFieldsForMetric[m.lbl]),
           value: fmt(d), color: colorFor(m, d), parts: stepParts(c.record, m.lbl, weapon),
           better: (m.higherBetter && d > 0) || (m.lowerBetter && d < 0) };
       }).filter(Boolean);
@@ -3108,7 +3205,7 @@ function renderAttachmentStats(loadouts) {
     if (!chips.length && !bugs.length) return;
     rendered = true;
     const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${escAttr(bug.note)}</div>`).join('');
-    html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
+    html += `<div class="att-block"><div class="att-name ${colClass}">${badges ? badgeHtml(colClass === 'c2' ? 1 : 0) : ''}${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
   el.innerHTML = html;
@@ -3405,8 +3502,11 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
 
   if (plotOnly) return;
+  // Every distance change comes through a full render, so the markers follow it here.
+  syncDistanceMarker();
   // The range fires only the first weapon, so its stats name and chart only that one.
   if (isRange) w2 = null;
+  const compare = showsBadges() && !!w1 && !!w2;
 
   // The pop-out has room for both tables, so it stacks recoil/spread over the
   // impact breakdown instead of swapping one for the other.
@@ -3418,7 +3518,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   const tabsHtml = stacksStats ? '' : statsTabsHtml(activeStatsTab, isTargetView);
   const targetHtml = isRange
     ? rangeStatsHtml(axis)
-    : isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats, labelFor: loadoutHeadingHtml }) : '';
+    : isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats,
+      labelFor: (w, i) => (compare ? badgeHtml(i) : '') + loadoutHeadingHtml(w) }) : '';
   // The strip and the stats it labels share one bordered box, the same way the
   // plot's tabs and canvas do, so the selected tab sits on its own content.
   const statsEl = document.getElementById('rcStats');
@@ -3621,8 +3722,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : stance === 'mount' ? `Mounted${mountNote}` : 'Standing'}</div>`;
   // The loadouts the bars compare head the card, the way each impact table
   // names its own.
-  let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1'], [w2, 'c2']].filter(([w]) => w)
-    .map(([w, cls]) => `<div class="target-impact-weapon ${cls}">${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
+  let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1', 0], [w2, 'c2', 1]].filter(([w]) => w)
+    .map(([w, cls, i]) => `<div class="target-impact-weapon ${cls}">${compare ? badgeHtml(i) : ''}${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
   stats.forEach(s => {
     if (s.val1 === null && s.val2 === null) return;
     rowsHtml += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
@@ -4036,6 +4137,26 @@ function bindEvents() {
     renderSidebar();
     renderStats();
   });
+  // The empty page's example: a ready comparison, so a first visit sees what the page does.
+  const exampleBtn = document.getElementById('emptyExampleBtn');
+  const exampleWeapons = [W.find(w => w.id === 'm433'), W.find(w => w.id === 'ak4d')];
+  if (exampleBtn && exampleWeapons.every(Boolean)) {
+    exampleBtn.addEventListener('click', () => {
+      exampleWeapons.forEach((weapon, i) => {
+        const slot = state.slots[i];
+        slot.cls = weapon.cls;
+        slot.weapon = weapon;
+        resetAttsForWeapon(slot.atts, weapon);
+        slot.savedName = null;
+      });
+      state.comparing = true;
+      document.getElementById('cmpBtn').classList.add('on');
+      document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
+      document.getElementById('cmpSection').style.display = 'block';
+      renderSidebar();
+      renderStats();
+    });
+  } else if (exampleBtn) exampleBtn.hidden = true;
   document.getElementById('cloneLoadoutBtn').addEventListener('click', cloneCompareLoadout);
   document.getElementById('swapLoadoutBtn')?.addEventListener('click', swapCompareLoadouts);
 

@@ -163,6 +163,9 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .main::-webkit-scrollbar-thumb{background:var(--border)}
 .empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;color:var(--muted);gap:6px;text-align:center}
 .empty-t{font-size:1rem;color:var(--text)}
+.empty-what{font-size:.7rem;color:var(--muted);margin-top:4px}
+.empty-example{margin-top:10px;background:none;border:1px solid var(--border);border-radius:4px;color:var(--accent);font:inherit;font-size:.72rem;padding:5px 12px;letter-spacing:.03em}
+.empty-example:hover{border-color:var(--accent);background:rgba(201,162,39,.08)}
 /* Panel */
 .panel{background:var(--bg2);border:1px solid var(--border);border-radius:6px;padding:6px 8px}
 .ptitle{font-size:0.65rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--muted);margin-bottom:5px;font-weight:600}
@@ -214,6 +217,9 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
 .sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
 .c1{color:var(--accent)} .c2{color:var(--accent2)}
+/* Weapon 1 / 2 badges, shown only while two weapons are compared. */
+.wb{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;font-size:.58rem;font-weight:800;line-height:1;color:#0c0e0e;flex-shrink:0;letter-spacing:0;vertical-align:1px;margin-right:4px}
+.wb1{background:var(--accent)}.wb2{background:var(--accent2)}
 .scmp{display:flex;flex-direction:column;gap:0}.scmp-row{display:flex;align-items:baseline;gap:2px}
 .diff{font-size:0.62rem;padding:1px 2px;border-radius:3px;margin-left:1px;letter-spacing:-0.02em}
 .d-up{background:rgba(86,196,100,.15);color:var(--green)}
@@ -230,6 +236,18 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .rng{color:var(--muted);font-size:0.7rem}
 .bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
 .tv{color:var(--muted);font-size:0.76rem}
+.btk-tbl tbody tr:nth-child(even) td{background:rgba(255,255,255,.025)}
+/* Compare only: a row naming each weapon over its columns, ruled off between the two. */
+.btk-tbl .btk-grp th{padding:1px 7px 2px;border-bottom:0;font-size:.62rem;font-weight:700;letter-spacing:.02em}
+.btk-tbl .btk-grp th.btk-grp-1{color:var(--accent)}
+.btk-tbl .btk-grp th.btk-grp-2{color:var(--accent2);border-left:1px solid var(--border)}
+.btk-tbl thead tr:last-child th.btk-col-2,.btk-tbl tbody td.btk-col-2{border-left:1px solid var(--border)}
+/* The row at the Soldier Target's distance, matching the chart's dashed marker.
+   Inset shadows rather than borders: in a collapsed table the row above's
+   border wins the shared edge, and side borders widen the table by half a pixel. */
+.btk-tbl tr.at-distance td{--at:rgba(221,227,227,.45);background:rgba(221,227,227,.05);box-shadow:inset 0 1px 0 var(--at),inset 0 -1px 0 var(--at)}
+.btk-tbl tr.at-distance td:first-child{box-shadow:inset 0 1px 0 var(--at),inset 0 -1px 0 var(--at),inset 1px 0 0 var(--at)}
+.btk-tbl tr.at-distance td:last-child{box-shadow:inset 0 1px 0 var(--at),inset 0 -1px 0 var(--at),inset -1px 0 0 var(--at)}
 /* Recoil */
 .rc-layout{display:grid;grid-template-columns:clamp(240px,calc(100% - 686px),496px) minmax(390px,1fr) minmax(268px,1fr);column-gap:14px;align-items:start;position:relative}
 .rc-head{grid-column:1/-1;margin-bottom:9px}
@@ -508,6 +526,26 @@ body.rc-plot-expanded{overflow:hidden}
 .target-zone-table tbody tr.target-zone-miss th,.target-zone-table tbody tr.target-zone-miss td{color:#8c9a9a}
 .target-impact-summary strong.dmg-kill{color:var(--red)}
 .target-impact-summary strong.dmg-crit{color:var(--accent)}
+/* Two weapons share one impact table: weapon 1 | Δ 2−1 | weapon 2. */
+.impact-cmp{width:100%;border-collapse:collapse;font-size:.7rem}
+.impact-cmp th,.impact-cmp td{padding:3px;border-bottom:1px solid rgba(43,55,55,.75);text-align:right;white-space:nowrap}
+.impact-cmp th:first-child,.impact-cmp td:first-child{text-align:left}
+.impact-cmp thead th{font-size:.58rem;font-weight:500;letter-spacing:.045em;text-transform:uppercase;color:#718080}
+.impact-cmp thead tr.impact-cmp-names th{font-size:.7rem;font-weight:700;text-transform:none;letter-spacing:0;color:var(--text);text-align:left;padding-bottom:4px;white-space:normal}
+.impact-cmp thead tr.impact-cmp-names th.c1{color:var(--accent)}
+.impact-cmp thead tr.impact-cmp-names th.c2{color:var(--accent2)}
+.impact-cmp thead tr.impact-cmp-names th .loadout-atts{display:block;margin-left:0;font-size:.58rem}
+.impact-cmp tbody th{font-weight:500;color:#aab7b7;text-align:left}
+.impact-cmp tbody td{color:#c6d0d0}
+.impact-cmp .impact-cmp-delta{color:#8c9a9a;text-align:center;border-left:1px solid #263131;border-right:1px solid #263131}
+.impact-cmp thead .impact-cmp-delta{color:#718080}
+.impact-cmp tbody tr.no-hits th,.impact-cmp tbody tr.no-hits td{opacity:.55}
+.impact-cmp tbody tr.target-zone-miss th,.impact-cmp tbody tr.target-zone-miss td{color:#8c9a9a}
+.impact-cmp tbody tr.impact-cmp-sum td{color:#d4dddd;font-weight:600}
+.impact-cmp tbody tr.impact-cmp-sum td.dmg-kill{color:var(--red)}
+.impact-cmp tbody tr.impact-cmp-sum td.dmg-crit{color:var(--accent)}
+.impact-cmp tbody tr.impact-cmp-sum.last td,.impact-cmp tbody tr.impact-cmp-sum.last th{border-bottom:2px solid #2b3737}
+.impact-cmp tbody tr:last-child th,.impact-cmp tbody tr:last-child td{border-bottom:none}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
 .rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;position:relative}
@@ -547,6 +585,9 @@ body.rc-plot-expanded{overflow:hidden}
 .att-tt-grid>.att-tt-note{grid-column:1/-1;font-style:italic;white-space:normal;line-height:1.4;margin-top:2px}
 .att-chip-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-chip-val{font-size:0.72rem;font-weight:700;white-space:nowrap;letter-spacing:.3px}
+/* Each source's share, on chips with more than one, so a cancelling ±0 explains itself. */
+.att-chip-src{font-size:.56rem;color:#8e9c9c;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-chip-src b{font-weight:600}
 .att-empty{font-size:0.68rem;color:var(--muted);background:var(--bg3);border-radius:4px;padding:7px 8px}
 .rc-legend{display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;min-height:14px}
 .rc-legend-item{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--text)}
@@ -713,11 +754,18 @@ body.rc-plot-expanded{overflow:hidden}
   .att-tt{max-width:none}
   .att-tt-grid>span{white-space:normal}
   .att-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  /* The tables keep their columns and scroll inside their own box instead of the page. */
+  #btkArea,.target-impact-card{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .footer{align-items:flex-start;flex-direction:column;padding:7px 10px;gap:4px}
 }
 @media (max-width:430px){
   .sgrid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .scard{max-width:none}
+  /* Two cards share the row, so a card and its group may shrink below their
+     desktop minimums rather than run past the right edge. */
+  .scard{max-width:none;min-width:0;overflow:hidden}
+  .sgroup{flex-basis:auto;min-width:0;max-width:100%}
+  /* The legend's dots already carry the colours; the badges would push it over the axis title. */
+  .chart-wrap #chartLegend .wb{display:none}
   .att-grid{grid-template-columns:1fr}
   .mode-btn{padding-inline:7px}
   .rc-mode-btn{min-width:auto!important}
