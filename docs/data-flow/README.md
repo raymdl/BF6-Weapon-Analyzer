@@ -12,7 +12,7 @@ New to the project? Read [How much to trust each result](#how-much-to-trust-each
 [Known differences from the game](#known-differences-from-the-game) and the
 [Glossary](#glossary) first.
 
-**Checked against:** [`af612b3`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/af612b3)
+**Checked against:** [`0ea7c0b`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/0ea7c0b)
 on 25 October 2026. Each page states the commit it was last checked against.
 The live data is Frosty build **2.1.1.0** (Season 5, reviewed 13 October 2026),
 applied over a 1.4.2.5 baseline with the reviewed 1.4.3.0 changes; the site header

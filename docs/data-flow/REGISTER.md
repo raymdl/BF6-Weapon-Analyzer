@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Source pipeline](SOURCES.md) · [Model limitations](../MODEL_LIMITATIONS.md)
 
-Checked against `af612b3` on 25 October 2026.
+Checked against `0ea7c0b` on 25 October 2026.
 
 This register lists who maintains each field family, every model assumption,
 and what to review when an input changes. The other atlas pages refer to the

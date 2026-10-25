@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Attachment model](../ATTACHMENT_MODEL.md) · [Stat ladders](../STAT_LADDERS.md) · [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md)
 
-Checked against `af612b3` on 25 October 2026.
+Checked against `0ea7c0b` on 25 October 2026.
 
 ## Selection and metadata
 

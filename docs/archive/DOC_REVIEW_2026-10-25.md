@@ -1,6 +1,6 @@
 # Documentation review, 25 October 2026
 
-> **Archived record.** Applied on 25 October 2026 on branch `ui-redesign`: the provenance record in `af612b3`, then the data-flow atlas, the site meta description and the Analyzer docs in the commits that follow it, the last of which archived this file. The research-repo findings (section 5 and the Frosty rows) are for that repo. Line numbers refer to the files before these changes.
+> **Archived record.** Applied on 25 October 2026 on branch `ui-redesign`: the provenance record in `0ea7c0b`, then the data-flow atlas, the site meta description and the Analyzer docs in the commits that follow it, the last of which archived this file. The research-repo findings (section 5 and the Frosty rows) are for that repo. Line numbers refer to the files before these changes.
 
 Scope: every live document in the BF6 Weapon Analyzer repo (README, MAINTENANCE, docs/*.md, docs/data-flow/*.md, docs/working/*.md, index.html prose) and in the BF6 Frosty Research repo (README, CLAUDE.md, docs/frosty/*.md, docs/updates/*.md, docs/working/*.md). Archives were checked only for being indexed. Six reviewers (one Opus, five Sonnet) worked from a fact sheet of the current state: Frosty v2.1.1.0 (Season 5) reviewed 13 October, 67 weapons, sym.gg v1.4.2.0 baseline, the UI as it stands on branch `ui-redesign`. Every finding below names a file and line; the reviewers verified counts against the data files and code unless marked inferred. The six full reports are in the session scratchpad (`review-A` to `review-F`).
 

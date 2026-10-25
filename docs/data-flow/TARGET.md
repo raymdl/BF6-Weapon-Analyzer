@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Recoil and spread](RECOIL_SPREAD.md) · [Damage and ballistics](DAMAGE_BALLISTICS.md)
 
-Checked against `af612b3` on 25 October 2026.
+Checked against `0ea7c0b` on 25 October 2026.
 
 ## Angular pattern to physical impact
 

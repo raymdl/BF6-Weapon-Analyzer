@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Source generation](SOURCES.md#projectile-hit-zone-and-collateral-chain) · [Formula guide](../DAMAGE_BALLISTICS.md)
 
-Checked against `af612b3` on 25 October 2026.
+Checked against `0ea7c0b` on 25 October 2026.
 
 ## Source curves and selected projectile
 

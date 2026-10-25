@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Architecture](../ARCHITECTURE.md) · [Tests](../TESTS.md)
 
-Checked against `af612b3` on 25 October 2026.
+Checked against `0ea7c0b` on 25 October 2026.
 
 ## Runtime startup
 
