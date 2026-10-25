@@ -1753,22 +1753,34 @@ function btkBtkText(w, r) {
   if (!Number.isFinite(b) || !Number.isFinite(bl)) return '—';
   return bl !== b ? `${b}–${bl}` : `${b}`;
 }
+/** Time to kill at a range for a bullet count, with the chart's ADS and flight
+ *  additions; null when the weapon lacks the data. */
+function btkTtkAt(w, range, btk) {
+  const { showAds, showVel } = state.chart;
+  const firingTtk = getTTK(w, btk);
+  if (firingTtk == null) return null;
+  const flightTime = showVel ? flightTimeAtDistance(w._projectileModel, range) : 0;
+  if (flightTime == null) return null;
+  return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
+}
+/** A kill-table TTK cell: chest, or chest–limbs when the limb multiplier changes the count. */
+function btkTtkText(w, r) {
+  const { btkHS } = state.chart;
+  const fmt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
+  const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
+  if (!Number.isFinite(b) || !Number.isFinite(bl)) return '—';
+  return bl !== b
+    ? `${fmt(btkTtkAt(w, r, b)).replace(/ms$/, '')}–${fmt(btkTtkAt(w, r, bl))}`
+    : fmt(btkTtkAt(w, r, b));
+}
 
 function renderBTK() {
   if (!document.getElementById('btkArea').getClientRects().length) return;
   const w1 = selectedWeaponBuild(state.slots[0]);
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
-  const { btkHS, showAds, showVel } = state.chart;
+  const { showAds, showVel } = state.chart;
   const ranges = btkRanges(w1, w2);
   const ttkHdr = ['TTK', showAds && 'ADS', showVel && 'Flight'].filter(Boolean).join('+');
-  const ttkAt = (w, range, btk) => {
-    const firingTtk = getTTK(w, btk);
-    if (firingTtk == null) return null;
-    const flightTime = showVel ? flightTimeAtDistance(w._projectileModel, range) : 0;
-    if (flightTime == null) return null;
-    return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
-  };
-  const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
   // The title row names each weapon shown, in its colour, over its columns.
   document.getElementById('btkWeapons').innerHTML = [[w1, '--accent'], [w2, '--accent2']]
     .filter(([w]) => w)
@@ -1779,16 +1791,9 @@ function renderBTK() {
   if (w2) html += `<th style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
   html += '</tr></thead><tbody>';
   const dmgTxt = btkDmgText;
-  // Each cell shows chest–limb ranges when the limb multiplier changes the outcome.
-  const cells = (w, r) => {
-    const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
-    if (!Number.isFinite(b) || !Number.isFinite(bl)) return { bTxt: '—', tTxt: '—' };
-    const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
-    const tTxt = bl !== b
-      ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
-      : fmtTtkAt(ttkAt(w, r, b));
-    return { bTxt, tTxt };
-  };
+  // Each cell shows chest–limb ranges when the limb multiplier changes the outcome;
+  // the same helpers decide which row the target marker and chart hover light.
+  const cells = (w, r) => ({ bTxt: btkBtkText(w, r), tTxt: btkTtkText(w, r) });
   let prev1 = null, prev2 = null;
   ranges.forEach(r => {
     html += `<tr data-range="${r}"><td class="rng">${r}m</td>`;
@@ -1816,15 +1821,16 @@ function syncDistanceMarker() {
   }
 }
 /** The kill-table row that shows a range's values: the nearest row (the lower
- *  on a tie) whose DMG and BTK text for every weapon match the text at that
- *  range itself; none when no row does. */
+ *  on a tie) whose DMG, BTK and TTK text for every weapon match the text at
+ *  that range itself; none when no row does. With flight time on, the TTK
+ *  changes every metre, so only a row at the range itself can match. */
 function btkRowForRange(range) {
   if (!Number.isFinite(range)) return null;
   const weapons = [selectedWeaponBuild(state.slots[0]), state.comparing ? selectedWeaponBuild(state.slots[1]) : null].filter(Boolean);
-  const want = weapons.flatMap(w => [btkDmgText(w, range), btkBtkText(w, range)]).join('|');
+  const want = weapons.flatMap(w => [btkDmgText(w, range), btkBtkText(w, range), btkTtkText(w, range)]).join('|');
   let best = null, bestGap = Infinity;
   for (const row of document.querySelectorAll('#btkArea tbody tr[data-range]')) {
-    const have = weapons.flatMap((w, k) => [row.cells[1 + k * 3]?.textContent, row.cells[2 + k * 3]?.textContent]).join('|');
+    const have = weapons.flatMap((w, k) => [1, 2, 3].map(c => row.cells[c + k * 3]?.textContent)).join('|');
     const gap = Math.abs(Number(row.dataset.range) - range);
     if (have === want && gap < bestGap) { best = row; bestGap = gap; }
   }
@@ -1857,7 +1863,8 @@ const chartTableHover = {
     if (event.type === 'mouseout') return;
     let range = hoverRange;
     if (!inChartArea) range = null;
-    else if (event.type === 'mousemove') {
+    // Chart.js delivers a touch tap as mousedown, so a tap selects a range too.
+    else if (event.type === 'mousemove' || event.type === 'mousedown' || event.type === 'click') {
       const items = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, false);
       range = items.length ? items[0].index : null;
     } else return;
