@@ -1918,7 +1918,7 @@ function spaceBtkColumns() {
   table.style.width = '';
   btkSpacedWidth = area.clientWidth;
   const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
-  if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers); return; } // Narrow panel: keep the automatic layout.
+  if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers, natural); return; } // Narrow panel: keep the automatic layout.
   const colgroup = document.createElement('colgroup');
   natural.forEach(w => {
     const col = document.createElement('col');
@@ -1927,19 +1927,23 @@ function spaceBtkColumns() {
   });
   table.prepend(colgroup);
   table.style.tableLayout = 'fixed';
-  placeBtkWeaponNames(headers);
+  placeBtkWeaponNames(headers, natural);
 }
 /** Set each compared weapon's name on the title row over its own columns,
- *  starting where its DMG header text starts. */
-function placeBtkWeaponNames(headers) {
+ *  starting where its DMG header text starts, with its rule running to the
+ *  end of the TTK column's text (the column itself may be wider). */
+function placeBtkWeaponNames(headers, natural) {
   const names = [...document.querySelectorAll('#btkWeapons > span')];
   const head = document.querySelector('.chart-table-head');
   if (!names.length || !head) return;
   const headLeft = head.getBoundingClientRect().left;
   names.forEach((span, i) => {
-    const dmg = headers[1 + i * 3];
-    if (!dmg) return;
-    span.style.left = `${dmg.getBoundingClientRect().left + parseFloat(getComputedStyle(dmg).paddingLeft) - headLeft}px`;
+    const dmg = headers[1 + i * 3], ttk = headers[3 + i * 3];
+    if (!dmg || !ttk) return;
+    const left = dmg.getBoundingClientRect().left + parseFloat(getComputedStyle(dmg).paddingLeft);
+    const right = ttk.getBoundingClientRect().left + natural[3 + i * 3] - parseFloat(getComputedStyle(ttk).paddingRight);
+    span.style.left = `${left - headLeft}px`;
+    span.style.setProperty('--grp-w', `${Math.max(0, right - left)}px`);
   });
 }
 
