@@ -143,6 +143,16 @@ const CLOUD_RUNS = 10;
 // app. The full source hip table reaches 11.303° in the single-attachment
 // corpus. scripts/spread-bar-scale.test.mjs checks that the axis contains it.
 const RECOIL_BAR_SCALE = 3;
+// The overview's stat groups. Their colours also mark the Attachment Effects
+// chips, so a change is found under the colour the overview taught.
+const STAT_GROUPS = {
+  combat:   { label: 'Combat',      color: '#c9a227' },
+  mobility: { label: 'Mobility',    color: '#4f9c98' },
+  conceal:  { label: 'Concealment', color: '#7f9a9a' },
+  ammo:     { label: 'Ammo',        color: '#78a840' },
+  recoil:   { label: 'Recoil',      color: '#d8704a' },
+  spread:   { label: 'Spread',      color: '#4d94d0' },
+};
 const CONSOLE_RECOIL_MULT = 0.95;
 
 // Keep raw timing-derived RPM for calculations; display it as the stat screen does.
@@ -1327,17 +1337,10 @@ function renderOverview() {
   };
   // Split the cards across two rows rather than
   // grouping by theme alone, which left the first row noticeably longer.
+  const statGroup = key => ({ key, ...STAT_GROUPS[key] });
   const STAT_ROWS = [
-    [
-      { key: 'combat',   label: 'Combat',      color: '#c9a227' },
-      { key: 'mobility', label: 'Mobility',    color: '#4f9c98' },
-      { key: 'conceal',  label: 'Concealment', color: '#7f9a9a' },
-    ],
-    [
-      { key: 'ammo',     label: 'Ammo',        color: '#78a840' },
-      { key: 'recoil',   label: 'Recoil',      color: '#d8704a' },
-      { key: 'spread',   label: 'Spread',      color: '#4d94d0' },
-    ],
+    [statGroup('combat'), statGroup('mobility'), statGroup('conceal')],
+    [statGroup('ammo'), statGroup('recoil'), statGroup('spread')],
   ];
   for (const rowSecs of STAT_ROWS) {
     const row = document.createElement('div');
@@ -3131,8 +3134,23 @@ function renderAttachmentStats(loadouts) {
   // so a ±0 chip reads as two changes cancelling. One source needs no line.
   const sourceLine = rows => rows.length < 2 ? ''
     : `<div class="att-chip-src">${rows.map(r => `<b style="color:${r.color ?? 'inherit'}">${r.value}</b> ${SLOT_LABELS[r.slot] ?? r.name}`).join(' · ')}</div>`;
+  // Each chip's overview group, keyed by its metric: an edge in that group's
+  // colour, and the chips ordered as the overview orders the groups.
+  const CHIP_GROUPS = {
+    'Bullet Vel': 'combat', 'Bullet Drag': 'combat', 'HS Mult': 'combat', 'Collateral Mult': 'combat', 'Enemy Health Regen': 'combat',
+    'ADS Time': 'mobility', 'ADS Move Speed': 'mobility', 'Sprint Recovery': 'mobility', 'Deploy Speed': 'mobility', 'Holster Speed': 'mobility',
+    'Fire while Sprinting': 'mobility', 'Gadget Draw Speed': 'mobility', 'Reload in ADS': 'mobility', 'Rechamber in ADS': 'mobility', 'Auto-Zeroing': 'mobility',
+    'Mag Size': 'ammo', 'Tac Reload': 'ammo',
+    'ADS Recoil/Shot': 'recoil', 'ADS Recoil Variation': 'recoil', 'Recoil Recovery': 'recoil', 'Recoil Duration': 'recoil',
+    'Weapon Sway': 'recoil', 'Visual Recoil': 'recoil', 'Stance-Change Sway': 'recoil',
+    'Spread Inc/Shot': 'spread', 'Hip Spread/Shot': 'spread', 'ADS Spread Recovery': 'spread', 'Hip Spread Recovery': 'spread', 'Mov Spread': 'spread', 'Hipfire Spread': 'spread',
+    '3D Spot': 'conceal', 'Minimap Spot': 'conceal', 'Laser Visibility': 'conceal', 'Scope Glint': 'conceal', 'Flashlight': 'conceal',
+  };
+  const CHIP_GROUP_ORDER = ['combat', 'mobility', 'ammo', 'recoil', 'spread', 'conceal'];
+  const groupStyle = key => (CHIP_GROUPS[key] ? ` style="--grp:${STAT_GROUPS[CHIP_GROUPS[key]].color}"` : '');
+  const groupRank = key => (CHIP_GROUPS[key] ? CHIP_GROUP_ORDER.indexOf(CHIP_GROUPS[key]) : CHIP_GROUP_ORDER.length);
   // A chip whose hover/tap popover lists each attachment's own contribution.
-  const chipHtml = ({ label, value, color, desc, rows = [], footer = [] }) => {
+  const chipHtml = ({ key, label, value, color, desc, rows = [], footer = [] }) => {
     // Columns: attachment | source step | value, so the value sits on the right.
     const cells = (r, cls = '') => `<span class="${cls}">${r.name}</span>`
       + `<span class="att-tt-step ${cls}">${r.step ? escAttr(r.step) : ''}</span>`
@@ -3142,7 +3160,7 @@ function renderAttachmentStats(loadouts) {
         : `<span class="att-tt-note">${escAttr(f.note)}</span>`)).join('')
       + '</div>' : '';
     const aria = escAttr(`${label.replace(/<[^>]+>/g, '')}: ${value}. ${desc}`);
-    return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>${sourceLine(rows)}`
+    return `<div class="att-chip"${groupStyle(key)} tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>${sourceLine(rows)}`
       + `<div class="rc-tt att-tt"><div class="att-tt-desc">${escAttr(desc)}</div>${body}</div></div>`;
   };
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
@@ -3190,11 +3208,13 @@ function renderAttachmentStats(loadouts) {
       if (rows.length > 1) footer.push({ name: `Net ${m.displayLabel ?? m.lbl}`, total: true, step: netStep(rows), value: Math.abs(net) < 0.0005 ? fmt(0).replace(/^[+-]?/, '±') : fmt(net), color: colorFor(m, net) });
       return { rows, footer };
     };
+    // Collected with their group key, then ordered by group; within a group they keep this order.
     const chips = [];
+    const chip = (key, opts) => chips.push({ key, html: chipHtml({ ...opts, key }) });
     metrics.forEach(m => {
       const baseVal = m.val(base), curVal = m.val(cur);
       if (!Number.isFinite(baseVal) || !Number.isFinite(curVal)) {
-        chips.push(`<div class="att-chip"><div class="att-chip-lbl">${m.displayLabel ?? m.lbl}</div><div class="att-chip-val" title="Data unavailable">—</div></div>`);
+        chips.push({ key: m.lbl, html: `<div class="att-chip"${groupStyle(m.lbl)}><div class="att-chip-lbl">${m.displayLabel ?? m.lbl}</div><div class="att-chip-val" title="Data unavailable">—</div></div>` });
         return;
       }
       const delta = +(curVal - baseVal).toFixed(Math.max(m.dec, 3));
@@ -3217,17 +3237,17 @@ function renderAttachmentStats(loadouts) {
       // A net of zero still shows when attachments cancel each other out.
       if (Math.abs(delta) < 0.0005 && !rows.length) return;
       const label = `${m.displayLabel ?? m.lbl}${hasEstimatedEffect(estimatedFieldsForMetric[m.lbl], selectedAttachments, weapon) ? '*' : ''}${bugMark(m.lbl)}`;
-      chips.push(chipHtml({ label, value: Math.abs(delta) < 0.0005 ? `±0${m.unit}` : signed(delta, m.unit, m.dec),
-        color: colorFor(m, delta), desc: m.tooltip ?? m.lbl, rows, footer }));
+      chip(m.lbl, { label, value: Math.abs(delta) < 0.0005 ? `±0${m.unit}` : signed(delta, m.unit, m.dec),
+        color: colorFor(m, delta), desc: m.tooltip ?? m.lbl, rows, footer });
     });
     const swayMetric = { lbl: 'Weapon Sway', lowerBetter: true, dec: 1 };
     const swayVal = ((cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1) - 1) * 100;
     const sway = breakdown(swayMetric, w => (w._weaponSwayMult ?? 1) * 100, d => signed(d, '%', 1), swayVal);
     if (Math.abs(swayVal) >= 0.05 || sway.rows.length) {
       const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments, weapon) ? '*' : ''}${bugMark('Weapon Sway')}`;
-      chips.push(chipHtml({ label, value: Math.abs(swayVal) < 0.05 ? '±0%' : signed(swayVal, '%', 1),
+      chip('Weapon Sway', { label, value: Math.abs(swayVal) < 0.05 ? '±0%' : signed(swayVal, '%', 1),
         color: colorFor(swayMetric, swayVal), rows: sway.rows, footer: sway.footer,
-        desc: 'Weapon sway while ADS, compared with the bare weapon. Sway modifiers multiply. Camera sway is not included.' }));
+        desc: 'Weapon sway while ADS, compared with the bare weapon. Sway modifiers multiply. Camera sway is not included.' });
     }
     const sourceRow = (c, value, color) => ({ name: escAttr(c.name), value, color });
     const vrVal = cur._visualRecoil ?? 0;
@@ -3235,49 +3255,50 @@ function renderAttachmentStats(loadouts) {
       const reduced = vrVal < 0;
       const label = `Visual Recoil${hasEstimatedEffect(['visualRecoil'], selectedAttachments, weapon) ? '*' : ''}`;
       const value = reduced ? 'Decreased' : 'Increased', color = reduced ? 'var(--green)' : 'var(--red)';
-      chips.push(chipHtml({ label, value, color, desc: 'Visual recoil (camera shake) when firing. The size of the change is not modelled.',
-        rows: contributions.filter(c => c.record?.visualRecoil).map(c => sourceRow(c, value, color)) }));
+      chip('Visual Recoil', { label, value, color, desc: 'Visual recoil (camera shake) when firing. The size of the change is not modelled.',
+        rows: contributions.filter(c => c.record?.visualRecoil).map(c => sourceRow(c, value, color)) });
     }
     const regenDelayDelta = (cur._healthRegenDelayS ?? 0) - (base._healthRegenDelayS ?? 0);
     if (regenDelayDelta !== 0) {
       const label = `Enemy Health Regen${hasEstimatedEffect(['healthRegenDelayAddS'], selectedAttachments, weapon) ? '*' : ''}`;
       const value = signed(regenDelayDelta, 's', 0), color = regenDelayDelta > 0 ? 'var(--green)' : 'var(--red)';
-      chips.push(chipHtml({ label, value, color,
+      chip('Enemy Health Regen', { label, value, color,
         desc: `Delay before an enemy you hit starts regenerating health: ${cur._healthRegenDelayS}s, versus ${base._healthRegenDelayS}s with the default ammo. Longer is better.`,
-        rows: contributions.filter(c => c.slot === 'ammo').map(c => sourceRow(c, value, color)) }));
+        rows: contributions.filter(c => c.slot === 'ammo').map(c => sourceRow(c, value, color)) });
     }
     if (cur._laserVisible != null) {
       const visible = cur._laserVisible;
       const label = `Laser Visibility${hasEstimatedEffect(['laserVisible'], selectedAttachments, weapon) ? '*' : ''}`;
       const value = visible ? 'Visible' : 'Not Visible', color = visible ? 'var(--red)' : 'var(--green)';
-      chips.push(chipHtml({ label, value, color, desc: 'Whether enemies can see your laser.',
-        rows: contributions.filter(c => c.record?.laserVisible != null).map(c => sourceRow(c, value, color)) }));
+      chip('Laser Visibility', { label, value, color, desc: 'Whether enemies can see your laser.',
+        rows: contributions.filter(c => c.record?.laserVisible != null).map(c => sourceRow(c, value, color)) });
     }
     const accessory = ATT_BY_ID.ACCESSORIES[atts.accessory ?? 'none'];
     if (accessory?.scopeGlint === 'reduced') {
       // The source gives no defined glint quantity, so only the direction is shown.
       const value = 'Reduced', color = 'var(--green)';
-      chips.push(chipHtml({ label: 'Scope Glint', value, color,
+      chip('Scope Glint', { label: 'Scope Glint', value, color,
         desc: 'How visible your scope glint is to enemies. The coating reduces the visible cone of glint; the size of the change is not modelled.',
-        rows: [{ name: escAttr(accessory.name), value, color }] }));
+        rows: [{ name: escAttr(accessory.name), value, color }] });
     }
     const grip = ATT_BY_ID.GRIPS[atts.grip ?? 'none'];
     if (grip?.stanceSway === 'reduced') {
       // The game files hold no value for this effect; the direction comes from the operator's jump recordings.
       const value = 'Reduced', color = 'var(--green)';
-      chips.push(chipHtml({ label: 'Stance-Change Sway', value, color,
+      chip('Stance-Change Sway', { label: 'Stance-Change Sway', value, color,
         desc: 'Weapon sway while changing stance (jumping, crouching, going prone) when aiming. The game files hold no value for this; in jump recordings the weapon dip fell to about 0.3x. The size of the change is not modelled.',
-        rows: [{ name: escAttr(grip.name), value, color }] }));
+        rows: [{ name: escAttr(grip.name), value, color }] });
     }
     Object.entries(cur._utilities ?? {}).forEach(([lbl, value]) => {
-      chips.push(chipHtml({ label: escAttr(lbl), value: escAttr(value), color: 'var(--green)',
+      chip(lbl, { label: escAttr(lbl), value: escAttr(value), color: 'var(--green)',
         desc: utilityTooltips[lbl] ?? `${lbl}: a capability added by the selected attachment.`,
-        rows: contributions.filter(c => c.record?.utilities?.[lbl]).map(c => sourceRow(c, escAttr(c.record.utilities[lbl]), 'var(--green)')) }));
+        rows: contributions.filter(c => c.record?.utilities?.[lbl]).map(c => sourceRow(c, escAttr(c.record.utilities[lbl]), 'var(--green)')) });
     });
     if (!chips.length && !bugs.length) return;
     rendered = true;
+    chips.sort((a, b) => groupRank(a.key) - groupRank(b.key));
     const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${escAttr(bug.note)}</div>`).join('');
-    html += `<div class="att-block"><div class="att-name ${colClass}">${badges ? badgeHtml(colClass === 'c2' ? 1 : 0) : ''}${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
+    html += `<div class="att-block"><div class="att-name ${colClass}">${badges ? badgeHtml(colClass === 'c2' ? 1 : 0) : ''}${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.map(c => c.html).join('')}</div>` : ''}${bugNotes}</div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
   el.innerHTML = html;

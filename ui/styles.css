@@ -581,9 +581,12 @@ body.rc-plot-expanded{overflow:hidden}
 .att-name{font-size:0.68rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-name.c1{color:var(--accent)} .att-name.c2{color:var(--accent2)}
 .att-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:4px}
-.att-chip{background:var(--bg3);border-radius:4px;padding:5px 6px;min-width:0;position:relative}
+/* The left edge carries the chip's overview group colour; the padding gives up
+   the border's 2px so the text stays put, and ungrouped chips keep the same box. */
+.att-chip{background:var(--bg3);border-left:2px solid var(--grp,transparent);border-radius:4px;padding:5px 6px 5px 4px;min-width:0;position:relative}
 .att-chip:hover .att-tt,.att-chip:focus-visible .att-tt,.att-chip.tt-open .att-tt{display:block}
-.att-tt{left:0;min-width:230px;max-width:320px}
+/* Back over the chip's 2px edge, so the popover lines up with the chip as before. */
+.att-tt{left:-2px;min-width:230px;max-width:320px}
 /* Chips whose popover would pass the window edge open leftward (set in app.js). */
 .att-chip.tt-flip .att-tt{left:auto;right:0}
 .att-tt-desc{font-size:0.67rem;line-height:1.45;color:var(--text);margin-bottom:5px;white-space:normal}
