@@ -1567,7 +1567,7 @@ function renderChart() {
     dashOverlap(datasets);
     const yMax = Math.max(9, ...datasets.flatMap(ds => ds.data));
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker],
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
@@ -1621,7 +1621,7 @@ function renderChart() {
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker],
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
@@ -1684,7 +1684,7 @@ function renderChart() {
   dashOverlap(datasets);
   const dmgYMax = damageYMax([w1, w2]);
   updateDmgChart(ctx, {
-    type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker],
+    type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
       layout: { padding: { bottom: 0 } },
@@ -1790,15 +1790,73 @@ function renderBTK() {
  *  the table row is the last range at or inside it. */
 function syncDistanceMarker() {
   dmgChart?.update('none');
-  const rows = [...document.querySelectorAll('#btkArea tbody tr[data-range]')];
+  const at = isTargetGeometry() ? btkRowAtRange(state.recoil.distance) : null;
+  document.querySelectorAll('#btkArea tbody tr[data-range]').forEach(row => row.classList.toggle('at-distance', row === at));
+}
+/** The kill-table row that covers a range: the last one at or inside it. */
+function btkRowAtRange(range) {
   let at = null;
-  if (isTargetGeometry()) {
-    for (const row of rows) {
-      const r = Number(row.dataset.range);
-      if (r <= state.recoil.distance && (!at || r > Number(at.dataset.range))) at = row;
-    }
+  if (!Number.isFinite(range)) return at;
+  for (const row of document.querySelectorAll('#btkArea tbody tr[data-range]')) {
+    const r = Number(row.dataset.range);
+    if (r <= range && (!at || r > Number(at.dataset.range))) at = row;
   }
-  rows.forEach(row => row.classList.toggle('at-distance', row === at));
+  return at;
+}
+
+// ── CHART ↔ TABLE HOVER ───────────────────────────────────────────────────────
+// The chart and the kill table are two views of the same ranges, so pointing
+// at one shows the same range in the other. Classes and the chart's own active
+// state only: hovering never re-renders either.
+function setBtkHoverRow(row) {
+  document.querySelectorAll('#btkArea tbody tr.is-hover').forEach(r => { if (r !== row) r.classList.remove('is-hover'); });
+  row?.classList.add('is-hover');
+}
+/** The range under the chart pointer, in the tooltip's own mode. A plugin
+ *  rather than onHover: Chart.js calls onHover only inside the plot area, so
+ *  it could not clear the row when the pointer moves onto the axes, where the
+ *  tooltip closes. */
+const chartTableHover = {
+  id: 'chart-table-hover',
+  afterEvent(chart, { event, inChartArea }) {
+    if (event.type === 'mouseout' || !inChartArea) { setBtkHoverRow(null); return; }
+    if (event.type !== 'mousemove') return;
+    const items = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, false);
+    setBtkHoverRow(items.length ? btkRowAtRange(items[0].index) : null);
+  },
+};
+/** Open the chart's tooltip at a range, as if the pointer were there; null clears it. */
+function showChartAtRange(range) {
+  if (!dmgChart) return;
+  const last = (dmgChart.data.labels?.length ?? 0) - 1;
+  const elements = range == null || range > last ? [] : dmgChart.data.datasets
+    .map((ds, datasetIndex) => ({ ds, datasetIndex }))
+    .filter(({ ds, datasetIndex }) => ds._weapon && !ds.isBand && !ds.isBaseline && dmgChart.isDatasetVisible(datasetIndex))
+    .map(({ datasetIndex }) => ({ datasetIndex, index: range }));
+  const point = elements.length ? dmgChart.getDatasetMeta(elements[0].datasetIndex).data[range] : null;
+  dmgChart.setActiveElements(elements);
+  dmgChart.tooltip.setActiveElements(elements, { x: point?.x ?? 0, y: point?.y ?? 0 });
+  dmgChart.update('none');
+}
+function bindChartTableHover() {
+  document.getElementById('dmgChart')?.addEventListener('mouseleave', () => setBtkHoverRow(null));
+  const area = document.getElementById('btkArea');
+  if (!area) return;
+  // Bound once on the container, since the table is rebuilt on every render.
+  let hovered = null;
+  area.addEventListener('mouseover', e => {
+    const row = e.target.closest?.('tbody tr[data-range]') ?? null;
+    if (row === hovered) return;
+    hovered = row;
+    setBtkHoverRow(row);
+    showChartAtRange(row ? Number(row.dataset.range) : null);
+  });
+  area.addEventListener('mouseleave', () => {
+    if (!hovered) return;
+    hovered = null;
+    setBtkHoverRow(null);
+    showChartAtRange(null);
+  });
 }
 
 // Give every BTK column its longest value plus an equal share of the spare width,
@@ -4172,6 +4230,7 @@ function bindEvents() {
     });
   } else if (exampleBtn) exampleBtn.hidden = true;
   document.getElementById('cloneLoadoutBtn').addEventListener('click', cloneCompareLoadout);
+  bindChartTableHover();
   document.getElementById('swapLoadoutBtn')?.addEventListener('click', swapCompareLoadouts);
 
   // Share menu — copy the link, or a PNG of the whole view

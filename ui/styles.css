@@ -242,6 +242,11 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .btk-tbl tbody tr[data-range] td.win1{background:rgba(201,162,39,.12)}
 .btk-tbl tbody tr[data-range] td.win2{background:rgba(77,148,208,.14)}
 .btk-tbl tbody tr[data-range] td.tv.win1,.btk-tbl tbody tr[data-range] td.tv.win2{color:var(--text)}
+/* The range under the pointer in the chart or the table; background only, so nothing moves. */
+.btk-tbl tbody tr[data-range]{cursor:default}
+.btk-tbl tbody tr[data-range].is-hover td{background:rgba(221,227,227,.07)}
+.btk-tbl tbody tr[data-range].is-hover td.win1{background:rgba(201,162,39,.18)}
+.btk-tbl tbody tr[data-range].is-hover td.win2{background:rgba(77,148,208,.2)}
 .btk-tbl tbody tr:nth-child(even) td{background:rgba(255,255,255,.025)}
 /* Compare only: a row naming each weapon over its columns, ruled off between the two. */
 .btk-tbl .btk-grp th{padding:1px 7px 2px;border-bottom:0;font-size:.62rem;font-weight:700;letter-spacing:.02em}
