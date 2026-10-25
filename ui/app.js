@@ -1027,11 +1027,11 @@ function renderSidebar() {
   buildClassFilter('classFilter1', 0);
   buildWeaponList('wList1', 0);
   buildAttachmentSection('attSection1', 0);
+  const cloneBtn = document.getElementById('cloneLoadoutBtn');
+  if (cloneBtn) cloneBtn.disabled = !state.comparing || !state.slots[0].weapon;
+  const swapBtn = document.getElementById('swapLoadoutBtn');
+  if (swapBtn) swapBtn.disabled = !state.comparing || (!state.slots[0].weapon && !state.slots[1].weapon);
   if (state.comparing) {
-    const cloneBtn = document.getElementById('cloneLoadoutBtn');
-    if (cloneBtn) cloneBtn.disabled = !state.slots[0].weapon;
-    const swapBtn = document.getElementById('swapLoadoutBtn');
-    if (swapBtn) swapBtn.disabled = !state.slots[0].weapon && !state.slots[1].weapon;
     renderSavedLoadoutSection('savedSec2', 1);
     buildClassFilter('classFilter2', 1);
     buildWeaponList('wList2', 1);
@@ -1767,11 +1767,11 @@ function renderBTK() {
     return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
   };
   const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
-  // With two weapons the title row names each in its colour.
-  document.getElementById('btkWeapons').innerHTML = w1 && w2
-    ? `<span style="color:var(--accent)">${escapeHtml(chartWeaponDisplayLabel(w1))}</span>`
-      + `<span style="color:var(--accent2)">${escapeHtml(chartWeaponDisplayLabel(w2))}</span>`
-    : '';
+  // The title row names each weapon shown, in its colour, over its columns.
+  document.getElementById('btkWeapons').innerHTML = [[w1, '--accent'], [w2, '--accent2']]
+    .filter(([w]) => w)
+    .map(([w, color]) => `<span style="color:var(${color})">${escapeHtml(chartWeaponDisplayLabel(w))}</span>`)
+    .join('');
   let html = '<table class="btk-tbl"><thead><tr><th>RANGE</th>';
   if (w1) html += `<th style="color:var(--accent)">DMG</th><th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
   if (w2) html += `<th style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
