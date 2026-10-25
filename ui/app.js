@@ -1922,10 +1922,12 @@ function spaceBtkColumns() {
   const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
   if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers, natural); return; } // Narrow panel: keep the automatic layout.
   // The spare goes to the gaps between columns, weighted: a full share between
-  // weapon columns, half a share after Range (a label, not part of a weapon's
-  // group) and none after the last column, so its text ends at the panel edge.
+  // weapon columns, none after the last column (so its text ends at the panel
+  // edge), and after Range a full share with two weapons but half with one,
+  // where three columns across the width left a chasm before DMG.
   const colgroup = document.createElement('colgroup');
-  const weight = i => (i === natural.length - 1 ? 0 : i === 0 ? 0.5 : 1);
+  const rangeShare = natural.length > 4 ? 1 : 0.5;
+  const weight = i => (i === natural.length - 1 ? 0 : i === 0 ? rangeShare : 1);
   const total = natural.reduce((sum, _, i) => sum + weight(i), 0) || 1;
   natural.forEach((w, i) => {
     const col = document.createElement('col');
