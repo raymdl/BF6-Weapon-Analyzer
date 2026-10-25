@@ -1490,6 +1490,13 @@ const distanceMarker = {
     ctx.textAlign = 'left';
     ctx.fillStyle = '#dde3e3';
     ctx.fillText(rangeText, left + pad, top + pad);
+    // The legend's dot under the range, so each row names its weapon.
+    rows.forEach((row, i) => {
+      ctx.fillStyle = row.color;
+      ctx.beginPath();
+      ctx.arc(left + pad + 4, top + pad + (i + 1) * lineHeight + 6, 3, 0, Math.PI * 2);
+      ctx.fill();
+    });
     ctx.textAlign = 'right';
     let x = left + pad + firstW;
     columns.forEach((k, c) => {
