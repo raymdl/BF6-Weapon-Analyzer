@@ -1030,7 +1030,8 @@ function renderSidebar() {
   const cloneBtn = document.getElementById('cloneLoadoutBtn');
   if (cloneBtn) cloneBtn.disabled = !state.comparing || !state.slots[0].weapon;
   const swapBtn = document.getElementById('swapLoadoutBtn');
-  if (swapBtn) swapBtn.disabled = !state.comparing || (!state.slots[0].weapon && !state.slots[1].weapon);
+  // Swap needs both weapons: with one, a swap empties slot 1 and leaving compare then empties the page.
+  if (swapBtn) swapBtn.disabled = !state.comparing || !state.slots[0].weapon || !state.slots[1].weapon;
   if (state.comparing) {
     renderSavedLoadoutSection('savedSec2', 1);
     buildClassFilter('classFilter2', 1);
@@ -1043,6 +1044,7 @@ function renderSidebar() {
 function swapCompareLoadouts() {
   if (!state.comparing) return;
   const [a, b] = state.slots;
+  if (!a.weapon || !b.weapon) return;
   state.slots = [b, a];
   // The locks travel with their loadouts, in storage too.
   saveLocks(0); saveLocks(1);
