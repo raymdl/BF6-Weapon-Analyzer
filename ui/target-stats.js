@@ -17,7 +17,7 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
   entries.forEach((entry, index) => {
     // A pellet load is scored only from sampled pellets, never from shell directions.
     if ((entry.weapon.pellets ?? 1) > 1 && entry.zones?.length && !entry.zones.some(Array.isArray)) {
-      html += `<section class="target-impact-card"><div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon, index)}</div>
+      html += `<section class="target-impact-card"><div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
         <p class="target-impact-note">Shotgun pellets were not sampled for this spray, so hit rate, damage and lethality are unavailable.</p></section>`;
       return;
     }
@@ -48,7 +48,7 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
       </tr>`;
     html += `
       <section class="target-impact-card">
-        <div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon, index)}</div>
+        <div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
         <div class="target-impact-summary">
           <div><span>Accuracy</span><strong title="${summary.hits} of ${summary.projectiles} ${unit}s hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
           <div><span>Hits</span><strong title="${unit} hits / ${unit}s fired">${summary.hits} / ${summary.projectiles}</strong></div>

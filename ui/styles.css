@@ -217,19 +217,16 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
 .sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
 .c1{color:var(--accent)} .c2{color:var(--accent2)}
-/* Weapon 1 / 2 badges, shown only while two weapons are compared. */
-.wb{display:inline-flex;align-items:center;justify-content:center;width:14px;height:14px;border-radius:3px;font-size:.58rem;font-weight:800;line-height:1;color:#0c0e0e;flex-shrink:0;letter-spacing:0;vertical-align:1px;margin-right:4px}
-.wb1{background:var(--accent)}.wb2{background:var(--accent2)}
 .scmp{display:flex;flex-direction:column;gap:0}.scmp-row{display:flex;align-items:baseline;gap:2px}
 .diff{font-size:0.62rem;padding:1px 2px;border-radius:3px;margin-left:1px;letter-spacing:-0.02em}
 .d-up{background:rgba(86,196,100,.15);color:var(--green)}
 .d-dn{background:rgba(224,85,85,.15);color:var(--red)}
 /* Chart */
 .chart-head{margin-bottom:14px}
-.chart-table-head{height:21px;display:flex;align-items:center}
-/* Compare only: each weapon named on the kill table's title row, in its colour. */
-.btk-weapons{margin-left:auto;padding-left:14px;display:flex;gap:14px;min-width:0;overflow:hidden;white-space:nowrap;text-transform:none;letter-spacing:0;font-size:.66rem;font-weight:600}
-.btk-weapons>span{min-width:0;overflow:hidden;text-overflow:ellipsis}
+.chart-table-head{height:21px;display:flex;align-items:center;position:relative}
+/* Compare only: each weapon named on the kill table's title row, in its colour, centred over its columns. */
+.btk-weapons{text-transform:none;letter-spacing:0;font-size:.66rem;font-weight:600}
+.btk-weapons>span{position:absolute;top:50%;transform:translate(-50%,-50%);white-space:nowrap}
 .chart-wrap{position:relative;height:225px}
 .chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
 /* BTK table */
@@ -745,8 +742,6 @@ body.rc-plot-expanded{overflow:hidden}
      desktop minimums rather than run past the right edge. */
   .scard{max-width:none;min-width:0;overflow:hidden}
   .sgroup{flex-basis:auto;min-width:0;max-width:100%}
-  /* The legend's dots already carry the colours; the badges would push it over the axis title. */
-  .chart-wrap #chartLegend .wb{display:none}
   .att-grid{grid-template-columns:1fr}
   .mode-btn{padding-inline:7px}
   .rc-mode-btn{min-width:auto!important}

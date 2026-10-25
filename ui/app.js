@@ -221,14 +221,6 @@ function chartWeaponDisplayLabel(w) {
   const name = w?.name ?? wLabel(w);
   return w?.estimated ? `${name}*` : name;
 }
-/** The slot's numbered badge, so a heading says which loadout it is when two are shown. */
-function badgeHtml(i) {
-  return `<span class="wb wb${i + 1}" aria-hidden="true">${i + 1}</span>`;
-}
-/** Badges appear only while two weapons are on the page; one needs no number. */
-function showsBadges() {
-  return state.comparing && !!state.slots[0].weapon && !!state.slots[1].weapon;
-}
 
 function weaponAriaLabel(w) {
   const label = weaponDisplayLabel(w);
@@ -236,6 +228,10 @@ function weaponAriaLabel(w) {
 }
 
 let dmgChart = null;
+// The chart's one read-out: each weapon's line for a range, in the chart's mode
+// (set by renderChart), and the range under the pointer on the chart or table.
+let chartReadout = null;
+let hoverRange = null;
 // Held so the observer is not collected while it still has an observation.
 let plotResizeObserver = null;
 let recoilTouchControls = null;
@@ -1146,13 +1142,10 @@ function renderOverview() {
     }
     hdr.appendChild(group);
   };
-  const badges = !!(w1 && w2);
   const appendWeaponName = (w, className, hdr) => {
     const s = document.createElement('span');
     s.className = className;
     s.textContent = weaponDisplayLabel(w);
-    // Inside the name, so a wrapping header never leaves the badge behind.
-    if (badges) s.insertAdjacentHTML('afterbegin', badgeHtml(className === 'wname2' ? 1 : 0));
     s.setAttribute('aria-label', weaponAriaLabel(w));
     s.title = w.description ?? '';
     if (w.description) s.setAttribute('aria-description', w.description);
@@ -1429,37 +1422,44 @@ const damageHeadroomMask = {
   },
 };
 
-// The Soldier Target's distance as a dashed line with each weapon's value
-// there, so the chart reads at the range the plot is showing.
+// The chart's read-out box: each weapon's value at the hovered range, else at
+// the Soldier Target's distance, which keeps its dashed line throughout. The
+// Chart.js tooltip is off, so this is the only box on the chart.
 const distanceMarker = {
   id: 'distance-marker',
   afterDatasetsDraw(chart) {
-    if (!isTargetGeometry()) return;
-    const distance = state.recoil.distance;
-    const labels = chart.data.labels ?? [];
-    if (!Number.isFinite(distance) || distance > labels.length - 1) return;
     const { chartArea, ctx, scales } = chart;
-    const px = scales.x?.getPixelForValue(distance);
-    if (!chartArea || !Number.isFinite(px) || px < chartArea.left || px > chartArea.right) return;
-    const { mode } = state.chart;
-    const lines = [{ text: `${distance} m`, color: '#dde3e3' }];
+    if (!chartArea) return;
+    const last = (chart.data.labels?.length ?? 0) - 1;
+    const pixelAt = range => {
+      if (!Number.isFinite(range) || range < 0 || range > last) return null;
+      const px = scales.x?.getPixelForValue(range);
+      return Number.isFinite(px) && px >= chartArea.left && px <= chartArea.right ? px : null;
+    };
+    const target = isTargetGeometry() ? state.recoil.distance : null;
+    const targetPx = pixelAt(target);
+    const range = hoverRange ?? target;
+    const px = pixelAt(range);
+    const vline = (x, style, dash) => {
+      ctx.strokeStyle = style;
+      ctx.lineWidth = 1;
+      ctx.setLineDash(dash);
+      ctx.beginPath();
+      ctx.moveTo(Math.round(x) + 0.5, chartArea.top);
+      ctx.lineTo(Math.round(x) + 0.5, chartArea.bottom);
+      ctx.stroke();
+      ctx.setLineDash([]);
+    };
+    ctx.save();
+    if (targetPx != null) vline(targetPx, 'rgba(221,227,227,.45)', [4, 4]);
+    if (px != null && range !== target) vline(px, 'rgba(221,227,227,.22)', []);
+    if (px == null || !chartReadout) { ctx.restore(); return; }
+    const lines = [{ text: `${range} m`, color: '#dde3e3' }];
     for (const ds of chart.data.datasets) {
       if (!ds._weapon || ds.isBand || ds.isBaseline) continue;
-      const v = ds.data[distance];
-      if (!Number.isFinite(v)) continue;
-      const text = mode === 'btk' ? `${v} BTK` : mode === 'ttk' ? fmtTTK(Math.round(v)) : `${v.toFixed(1)} dmg`;
-      lines.push({ text, color: ds.borderColor });
+      const text = chartReadout(ds._weapon, range);
+      if (text) lines.push({ text, color: ds.borderColor });
     }
-    ctx.save();
-    const x = Math.round(px) + 0.5;
-    ctx.strokeStyle = 'rgba(221,227,227,.45)';
-    ctx.lineWidth = 1;
-    ctx.setLineDash([4, 4]);
-    ctx.beginPath();
-    ctx.moveTo(x, chartArea.top);
-    ctx.lineTo(x, chartArea.bottom);
-    ctx.stroke();
-    ctx.setLineDash([]);
     ctx.font = '600 10px "Segoe UI", system-ui, sans-serif';
     ctx.textBaseline = 'top';
     const lineHeight = 13, pad = 5;
@@ -1519,9 +1519,8 @@ function renderChart() {
 
   const legEl = document.getElementById('chartLegend');
   if (legEl) {
-    const badges = !!(w1 && w2);
-    let legHtml = [[w1, '#c9a227', 0], [w2, '#4d94d0', 1]].filter(([w]) => w)
-      .map(([w, col, i]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${badges ? badgeHtml(i) : ''}${chartWeaponDisplayLabel(w)}</span></div>`).join('');
+    let legHtml = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
+      .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${chartWeaponDisplayLabel(w)}</span></div>`).join('');
     legEl.innerHTML = legHtml;
   }
 
@@ -1566,23 +1565,18 @@ function renderChart() {
     }
     dashOverlap(datasets);
     const yMax = Math.max(9, ...datasets.flatMap(ds => ds.data));
+    // Bullet view: bullet counts only, no timings.
+    chartReadout = (w, r) => {
+      const chest = getBTKWithHits(w, r, btkHS);
+      const limb = getBTKWithHits(w, r, btkHS, limbMult(w));
+      return limb === chest ? `${chest} BTK` : `${chest}–${limb} BTK chest–limbs`;
+    };
     updateDmgChart(ctx, {
       type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
-        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, filter: i => !i.dataset.isBaseline && !i.dataset.isBand, callbacks: {
-          title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
-          // Bullet view: bullet counts only, no timings.
-          label: i => {
-            const w = i.dataset._weapon;
-            const chest = i.raw;
-            const limb = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
-            const displayName = chartWeaponDisplayLabel(w);
-            if (limb === chest) return `${displayName}: ${chest} BTK`;
-            return `${displayName}: ${chest}–${limb} BTK chest–limbs`;
-          },
-        } } },
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: {
           x: chartXAxis(mr),
           y: { min: 1, max: yMax, title: { display: true, text: 'Bullets to Kill', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 1, precision: 0 }, grid: { color: 'rgba(40,48,48,0.6)' } },
@@ -1620,30 +1614,23 @@ function renderChart() {
     dashOverlap(datasets);
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
+    // Time view: timings only, no bullet counts.
+    chartReadout = (w, r) => {
+      const ttk = ttkAt(w, r);
+      const btk = getBTKWithHits(w, r, btkHS);
+      const limbBtk = getBTKWithHits(w, r, btkHS, limbMult(w));
+      if (limbBtk !== btk) return `${fmtTtkAt(ttk)}–${fmtTtkAt(ttkAt(w, r, limbMult(w)))} chest–limbs`;
+      const additions = [];
+      if (showAds && w._adsTimeMs) additions.push(`${formatMilliseconds(w._adsTimeMs)}ms ADS`);
+      if (showVel) additions.push(`${Math.round((flightTimeAtDistance(w._projectileModel, r) ?? 0) * 1000)}ms flight`);
+      return additions.length ? `${fmtTtkAt(ttk)} incl. ${additions.join(' + ')}` : fmtTtkAt(ttk);
+    };
     updateDmgChart(ctx, {
       type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
         layout: { padding: { bottom: 0 } },
-        plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false, filter: i => !i.dataset.isBand, callbacks: {
-          title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
-          // Time view: timings only, no bullet counts.
-          label: i => {
-            const w = i.dataset._weapon;
-            const btk = getBTKWithHits(w, i.dataIndex, btkHS);
-            const limbBtk = getBTKWithHits(w, i.dataIndex, btkHS, limbMult(w));
-            if (limbBtk !== btk) {
-              const displayName = chartWeaponDisplayLabel(w);
-              return `${displayName}: ${fmtTtkAt(i.raw)}–${fmtTtkAt(ttkAt(w, i.dataIndex, limbMult(w)))} chest–limbs`;
-            }
-            const displayName = chartWeaponDisplayLabel(w);
-            const additions = [];
-            if (showAds && w._adsTimeMs) additions.push(`${formatMilliseconds(w._adsTimeMs)}ms ADS`);
-            if (showVel) additions.push(`${Math.round((flightTimeAtDistance(w._projectileModel, i.dataIndex) ?? 0) * 1000)}ms flight`);
-            if (additions.length) return `${displayName}: ${fmtTtkAt(i.raw)} incl. ${additions.join(' + ')}`;
-            return `${displayName}: ${fmtTtkAt(i.raw)}`;
-          },
-        } } },
+        plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: {
           x: chartXAxis(mr),
           y: { min: 0, max: yMax, title: { display: true, text: `${['Time to Kill', showAds && 'ADS', showVel && 'Flight'].filter(Boolean).join(' + ')} (ms)`, color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
@@ -1683,27 +1670,21 @@ function renderChart() {
   }
   dashOverlap(datasets);
   const dmgYMax = damageYMax([w1, w2]);
+  // Damage view: damage only. Bullet and time counts live in their own views.
+  chartReadout = (w, r) => {
+    const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
+    if (!Number.isFinite(d)) return null;
+    // Uncapped: damage above 100 matters for what is left after penetration.
+    const line = `${d.toFixed(1)} dmg`;
+    if (limbMult(w) === 1) return line;
+    return `${line} · limbs ${(d * limbMult(w)).toFixed(1)} · head ${(d * zoneMultiplierForWeapon(w, 'head')).toFixed(1)}`;
+  };
   updateDmgChart(ctx, {
     type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
       layout: { padding: { bottom: 0 } },
-      plugins: { legend: { display: false }, tooltip: { mode: 'index', intersect: false,
-        filter: i => !i.dataset.isBand,
-        callbacks: {
-          title: items => 'Range: ' + (items[0]?.label ?? '') + 'm',
-          // Damage view: damage only. Bullet and time counts live in their own views.
-          label: i => {
-            const r = i.dataIndex; const w = i.dataset._weapon;
-            const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
-            // Uncapped: damage above 100 matters for what is left after penetration.
-            const line = `${chartWeaponDisplayLabel(w)}: ${d.toFixed(1)} dmg`;
-            if (limbMult(w) === 1) return line;
-            const dl = d * limbMult(w), dh = d * zoneMultiplierForWeapon(w, 'head');
-            return [line, `  limbs ${dl.toFixed(1)} · head ${dh.toFixed(1)}`];
-          },
-        },
-      } },
+      plugins: { legend: { display: false }, tooltip: { enabled: false } },
       scales: {
         x: chartXAxis(mr),
         y: { min: 0, max: dmgYMax, title: { display: true, text: 'Damage per shot', color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a' }, grid: { color: 'rgba(40,48,48,0.6)' }, afterBuildTicks: scale => {
@@ -1714,6 +1695,19 @@ function renderChart() {
       },
     },
   });
+}
+
+// Per-shot body damage, matching the chart's read-out (pellet loads show the full shot).
+function btkDmgText(w, r) {
+  const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
+  return Number.isFinite(d) ? d.toFixed(1) : '—';
+}
+/** A kill-table BTK cell: chest, or chest–limbs when the limb multiplier changes it. */
+function btkBtkText(w, r) {
+  const { btkHS } = state.chart;
+  const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
+  if (!Number.isFinite(b) || !Number.isFinite(bl)) return '—';
+  return bl !== b ? `${b}–${bl}` : `${b}`;
 }
 
 function renderBTK() {
@@ -1733,23 +1727,19 @@ function renderBTK() {
   const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
   // With two weapons the title row names each in its colour.
   document.getElementById('btkWeapons').innerHTML = w1 && w2
-    ? `<span style="color:var(--accent)">${badgeHtml(0)}${escapeHtml(chartWeaponDisplayLabel(w1))}</span>`
-      + `<span style="color:var(--accent2)">${badgeHtml(1)}${escapeHtml(chartWeaponDisplayLabel(w2))}</span>`
+    ? `<span style="color:var(--accent)">${escapeHtml(chartWeaponDisplayLabel(w1))}</span>`
+      + `<span style="color:var(--accent2)">${escapeHtml(chartWeaponDisplayLabel(w2))}</span>`
     : '';
   let html = '<table class="btk-tbl"><thead><tr><th>RANGE</th>';
   if (w1) html += `<th style="color:var(--accent)">DMG</th><th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
   if (w2) html += `<th style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
   html += '</tr></thead><tbody>';
-  // Per-shot body damage, matching the damage chart tooltip (pellet loads show the full shot).
-  const dmgTxt = (w, r) => {
-    const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
-    return Number.isFinite(d) ? d.toFixed(1) : '—';
-  };
+  const dmgTxt = btkDmgText;
   // Each cell shows chest–limb ranges when the limb multiplier changes the outcome.
   const cells = (w, r) => {
     const b = getBTKWithHits(w, r, btkHS), bl = getBTKWithHits(w, r, btkHS, limbMult(w));
     if (!Number.isFinite(b) || !Number.isFinite(bl)) return { bTxt: '—', tTxt: '—' };
-    const bTxt = bl !== b ? `${b}–${bl}` : `${b}`;
+    const bTxt = btkBtkText(w, r);
     const tTxt = bl !== b
       ? `${fmtTtkAt(ttkAt(w, r, b)).replace(/ms$/, '')}–${fmtTtkAt(ttkAt(w, r, bl))}`
       : fmtTtkAt(ttkAt(w, r, b));
@@ -1768,60 +1758,82 @@ function renderBTK() {
   syncDistanceMarker();
 }
 
-/** Mark the Soldier Target's distance on the damage chart and the BTK table:
- *  the table row is the last range at or inside it. */
+/** Mark the Soldier Target's distance on the damage chart and the BTK table. */
 function syncDistanceMarker() {
   dmgChart?.update('none');
-  const at = isTargetGeometry() ? btkRowAtRange(state.recoil.distance) : null;
+  const at = isTargetGeometry() ? btkRowForRange(state.recoil.distance) : null;
   document.querySelectorAll('#btkArea tbody tr[data-range]').forEach(row => row.classList.toggle('at-distance', row === at));
+  refreshBtkRowTitles();
 }
-/** The kill-table row that covers a range: the last one at or inside it. */
-function btkRowAtRange(range) {
-  let at = null;
-  if (!Number.isFinite(range)) return at;
+/** The kill-table row that shows a range's values: the nearest row (the lower
+ *  on a tie) whose DMG and BTK text for every weapon match the text at that
+ *  range itself; none when no row does. */
+function btkRowForRange(range) {
+  if (!Number.isFinite(range)) return null;
+  const weapons = [selectedWeaponBuild(state.slots[0]), state.comparing ? selectedWeaponBuild(state.slots[1]) : null].filter(Boolean);
+  const want = weapons.flatMap(w => [btkDmgText(w, range), btkBtkText(w, range)]).join('|');
+  let best = null, bestGap = Infinity;
   for (const row of document.querySelectorAll('#btkArea tbody tr[data-range]')) {
-    const r = Number(row.dataset.range);
-    if (r <= range && (!at || r > Number(at.dataset.range))) at = row;
+    const have = weapons.flatMap((w, k) => [row.cells[1 + k * 3]?.textContent, row.cells[2 + k * 3]?.textContent]).join('|');
+    const gap = Math.abs(Number(row.dataset.range) - range);
+    if (have === want && gap < bestGap) { best = row; bestGap = gap; }
   }
-  return at;
+  return best;
+}
+/** Say on the marked rows which range's values they stand for: the target
+ *  distance, or the range hovered on the chart. A row under the pointer is
+ *  left alone, as the hover bubble holds its title until the pointer leaves. */
+let btkHoverFromChart = false;
+function refreshBtkRowTitles() {
+  for (const row of document.querySelectorAll('#btkArea tbody tr[data-range]')) {
+    if (row.dataset.tip !== undefined) continue;
+    const text = row.classList.contains('is-hover') && btkHoverFromChart && hoverRange != null ? `Values at ${hoverRange} m`
+      : row.classList.contains('at-distance') ? `Values at the target distance (${state.recoil.distance} m)` : null;
+    if (text) row.title = text;
+    else row.removeAttribute('title');
+  }
 }
 
 // ── CHART ↔ TABLE HOVER ───────────────────────────────────────────────────────
 // The chart and the kill table are two views of the same ranges, so pointing
-// at one shows the same range in the other. Classes and the chart's own active
-// state only: hovering never re-renders either.
-function setBtkHoverRow(row) {
+// at one shows the same range in the other: the chart's read-out box moves to
+// it and the matching row is lit. Classes and a chart redraw only: hovering
+// never re-renders either.
+function setBtkHoverRow(row, fromChart = false) {
+  btkHoverFromChart = fromChart;
   document.querySelectorAll('#btkArea tbody tr.is-hover').forEach(r => { if (r !== row) r.classList.remove('is-hover'); });
   row?.classList.add('is-hover');
+  refreshBtkRowTitles();
 }
-/** The range under the chart pointer, in the tooltip's own mode. A plugin
- *  rather than onHover: Chart.js calls onHover only inside the plot area, so
- *  it could not clear the row when the pointer moves onto the axes, where the
- *  tooltip closes. */
+/** Move the read-out box to a range (null: back to the target distance). */
+function setHoverRange(range) {
+  if (range === hoverRange) return;
+  hoverRange = range;
+  dmgChart?.update('none');
+}
+/** The range under the chart pointer. A plugin rather than onHover: Chart.js
+ *  calls onHover only inside the plot area, so it could not clear the range
+ *  when the pointer moves onto the axes. */
 const chartTableHover = {
   id: 'chart-table-hover',
-  afterEvent(chart, { event, inChartArea }) {
-    if (event.type === 'mouseout' || !inChartArea) { setBtkHoverRow(null); return; }
-    if (event.type !== 'mousemove') return;
-    const items = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, false);
-    setBtkHoverRow(items.length ? btkRowAtRange(items[0].index) : null);
+  afterEvent(chart, args) {
+    const { event, inChartArea } = args;
+    let range = hoverRange;
+    if (event.type === 'mouseout' || !inChartArea) range = null;
+    else if (event.type === 'mousemove') {
+      const items = chart.getElementsAtEventForMode(event, 'index', { intersect: false }, false);
+      range = items.length ? items[0].index : null;
+    } else return;
+    // Redrawn by Chart.js after this event, rather than updated from inside it.
+    if (range !== hoverRange) { hoverRange = range; args.changed = true; }
+    setBtkHoverRow(range == null ? null : btkRowForRange(range), true);
   },
 };
-/** Open the chart's tooltip at a range, as if the pointer were there; null clears it. */
-function showChartAtRange(range) {
-  if (!dmgChart) return;
-  const last = (dmgChart.data.labels?.length ?? 0) - 1;
-  const elements = range == null || range > last ? [] : dmgChart.data.datasets
-    .map((ds, datasetIndex) => ({ ds, datasetIndex }))
-    .filter(({ ds, datasetIndex }) => ds._weapon && !ds.isBand && !ds.isBaseline && dmgChart.isDatasetVisible(datasetIndex))
-    .map(({ datasetIndex }) => ({ datasetIndex, index: range }));
-  const point = elements.length ? dmgChart.getDatasetMeta(elements[0].datasetIndex).data[range] : null;
-  dmgChart.setActiveElements(elements);
-  dmgChart.tooltip.setActiveElements(elements, { x: point?.x ?? 0, y: point?.y ?? 0 });
-  dmgChart.update('none');
-}
 function bindChartTableHover() {
-  document.getElementById('dmgChart')?.addEventListener('mouseleave', () => setBtkHoverRow(null));
+  document.getElementById('dmgChart')?.addEventListener('mouseleave', () => {
+    setHoverRange(null);
+    setBtkHoverRow(null);
+  });
   const area = document.getElementById('btkArea');
   if (!area) return;
   // Bound once on the container, since the table is rebuilt on every render.
@@ -1830,14 +1842,14 @@ function bindChartTableHover() {
     const row = e.target.closest?.('tbody tr[data-range]') ?? null;
     if (row === hovered) return;
     hovered = row;
+    setHoverRange(row ? Number(row.dataset.range) : null);
     setBtkHoverRow(row);
-    showChartAtRange(row ? Number(row.dataset.range) : null);
   });
   area.addEventListener('mouseleave', () => {
     if (!hovered) return;
     hovered = null;
+    setHoverRange(null);
     setBtkHoverRow(null);
-    showChartAtRange(null);
   });
 }
 
@@ -1864,7 +1876,7 @@ function spaceBtkColumns() {
   table.style.width = '';
   btkSpacedWidth = area.clientWidth;
   const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
-  if (!headers.length || spare <= 0) return; // Narrow panel: keep the automatic layout.
+  if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers, natural); return; } // Narrow panel: keep the automatic layout.
   const colgroup = document.createElement('colgroup');
   natural.forEach(w => {
     const col = document.createElement('col');
@@ -1873,6 +1885,24 @@ function spaceBtkColumns() {
   });
   table.prepend(colgroup);
   table.style.tableLayout = 'fixed';
+  placeBtkWeaponNames(headers, natural);
+}
+/** Centre each compared weapon's name on the title row over its own three
+ *  columns: midway between its DMG text's start and its TTK column's widest
+ *  text's end (`natural` holds each column's max-content width). */
+function placeBtkWeaponNames(headers, natural) {
+  const names = [...document.querySelectorAll('#btkWeapons > span')];
+  const head = document.querySelector('.chart-table-head');
+  if (!names.length || !head) return;
+  const headLeft = head.getBoundingClientRect().left;
+  names.forEach((span, i) => {
+    const dmg = headers[1 + i * 3], ttk = headers[3 + i * 3];
+    if (!dmg || !ttk) return;
+    const start = dmg.getBoundingClientRect().left + parseFloat(getComputedStyle(dmg).paddingLeft);
+    const rect = ttk.getBoundingClientRect();
+    const end = Math.min(rect.right, rect.left + natural[3 + i * 3]) - parseFloat(getComputedStyle(ttk).paddingRight);
+    span.style.left = `${(start + end) / 2 - headLeft}px`;
+  });
 }
 
 // ── RECOIL / SPREAD ────────────────────────────────────────────────────────────
@@ -2391,7 +2421,7 @@ function rangeStatsHtml(axis) {
   // loadout is listed above it and the sensitivity read-out sits under the plot.
   const table = live
     ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance,
-      labelFor: (w, i) => (showsBadges() ? badgeHtml(i) : '') + loadoutHeadingHtml(w) })
+      labelFor: loadoutHeadingHtml })
     : '<p class="target-impact-note">Select a weapon to use the Firing Range.</p>';
   return `<div id="rcRangeStats">${table}</div>`;
 }
@@ -3128,7 +3158,6 @@ function renderAttachmentStats(loadouts) {
   };
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';
   let rendered = false;
-  const badges = loadouts.filter(x => x.weapon).length === 2;
   loadouts.filter(x => x.weapon).forEach(({ weapon, atts, build, colClass }) => {
     // Baseline is the bare weapon, so default sights, barrels and magazines show their effects.
     const defaults = defaultAttsForWeapon(weapon);
@@ -3258,7 +3287,7 @@ function renderAttachmentStats(loadouts) {
     if (!chips.length && !bugs.length) return;
     rendered = true;
     const bugNotes = bugs.map(bug => `<div class="att-bug-note">${Loadout.GAME_BUG_MARK} <b>${escAttr(bug.attachmentName)}:</b> ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${escAttr(bug.note)}</div>`).join('');
-    html += `<div class="att-block"><div class="att-name ${colClass}">${badges ? badgeHtml(colClass === 'c2' ? 1 : 0) : ''}${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
+    html += `<div class="att-block"><div class="att-name ${colClass}">${weaponDisplayLabel(weapon)}</div>${chips.length ? `<div class="att-grid">${chips.join('')}</div>` : ''}${bugNotes}</div>`;
   });
   if (!rendered) html += '<div class="att-empty">No attachment stat changes</div>';
   el.innerHTML = html;
@@ -3559,7 +3588,6 @@ function renderRecoil({ plotOnly = false } = {}) {
   syncDistanceMarker();
   // The range fires only the first weapon, so its stats name and chart only that one.
   if (isRange) w2 = null;
-  const compare = showsBadges() && !!w1 && !!w2;
 
   // The pop-out has room for both tables, so it stacks recoil/spread over the
   // impact breakdown instead of swapping one for the other.
@@ -3572,7 +3600,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   const targetHtml = isRange
     ? rangeStatsHtml(axis)
     : isTargetView ? targetImpactStatsHtml(axis.targetHits, { distance: state.recoil.distance, showHeading: stacksStats,
-      labelFor: (w, i) => (compare ? badgeHtml(i) : '') + loadoutHeadingHtml(w) }) : '';
+      labelFor: loadoutHeadingHtml }) : '';
   // The strip and the stats it labels share one bordered box, the same way the
   // plot's tabs and canvas do, so the selected tab sits on its own content.
   const statsEl = document.getElementById('rcStats');
@@ -3775,8 +3803,8 @@ function renderRecoil({ plotOnly = false } = {}) {
   const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : stance === 'mount' ? `Mounted${mountNote}` : 'Standing'}</div>`;
   // The loadouts the bars compare head the card, the way each impact table
   // names its own.
-  let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1', 0], [w2, 'c2', 1]].filter(([w]) => w)
-    .map(([w, cls, i]) => `<div class="target-impact-weapon ${cls}">${compare ? badgeHtml(i) : ''}${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
+  let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1'], [w2, 'c2']].filter(([w]) => w)
+    .map(([w, cls]) => `<div class="target-impact-weapon ${cls}">${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
   stats.forEach(s => {
     if (s.val1 === null && s.val2 === null) return;
     rowsHtml += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
