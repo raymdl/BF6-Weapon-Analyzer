@@ -298,9 +298,8 @@ Effect chips cover changed handling, velocity/drag, magazine/reload, ADS amount 
 variation, selected recoil recovery factor, spread increments, selected recovery
 offsets, spread minima, spotting, headshot multiplier and collateral. Qualitative
 tags additionally expose sway change, visual recoil, laser visibility and enemy
-regeneration delay. When two or more attachments contribute to one chip, a source
-line under the value gives each one's share, so a ±0 chip reads as changes that
-cancel; hover or tap lists every contribution.
+regeneration delay. A ±0 chip is kept when two attachments cancel; hover or tap
+lists every contribution.
 
 A recovery chip summarizes a selected factor/offset, not the full nonlinear
 recovery equation. Sway is a relative muzzle/magazine amount factor; regeneration

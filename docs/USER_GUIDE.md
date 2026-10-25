@@ -106,9 +106,8 @@ Overview groups combat, ammunition, mobility, recoil, spread, and concealment
 statistics. The attachment-effects breakdown compares values with the bare weapon:
 no barrel, the default ammunition, and the default magazine without its handling
 shifts. The default barrel and magazine therefore show their own effects, such as
-Basic's faster ADS time and the standard magazine's faster draw. When two or more
-attachments contribute to a chip, a line under its value names each one's share
-by slot (for example Barrel and Grip), so a ±0 chip reads as two changes cancelling.
+Basic's faster ADS time and the standard magazine's faster draw. A chip stays at
+±0 when two attachments cancel each other.
 Hover or tap a chip to see each attachment's own contribution with its tier step
 or multiplier, and the net when more than one attachment contributes.
 Multiplied factors show their × step. When tier steps of different sizes keep

@@ -68,7 +68,6 @@ Weapon 2. What the main controls show:
 | Empty state | With no weapon chosen, an "Or try an example: M433 vs AK4D" button loads that comparison. |
 | Range chart | Chart.js tooltips are off. One read-out box gives the range and one row per weapon in its colour, labelled with the chart mode (DMG, BTK or TTK): CHEST/LIMBS/HEAD columns in DMG mode, CHEST/LIMBS in BTK, and CHEST/LIMBS plus ADS and FLIGHT columns in TTK when they apply. It follows the pointer; otherwise, on the Soldier Target and Firing Range views, it sits at the target distance, which a dashed line marks. |
 | Kill table | Titled "BTK / TTK". Each weapon's name sits centred over its DMG, BTK and TTK columns with a 1px rule in its colour. Rows are the class-specific distances from `btkRanges()`. On the target views the outlined row is the nearest row whose DMG and BTK match the values at the target distance exactly (none when no row matches). Hovering a chart range lights the matching row; hovering a row moves the chart's read-out box. |
-| Attachment Effects chips | When two or more attachments contribute to one chip, a source line under the value gives each one's share. |
 | Target Impact Stats | A tab beside "Recoil / Spread Stats": one card per weapon, stacked. |
 
 ## State and exports

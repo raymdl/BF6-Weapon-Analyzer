@@ -3180,12 +3180,6 @@ function renderAttachmentStats(loadouts) {
   };
   const colorFor = (m, d) => (Math.abs(d) < 0.0005 ? 'var(--muted)'
     : ((m.higherBetter && d > 0) || (m.lowerBetter && d < 0)) ? 'var(--green)' : 'var(--red)');
-  const SLOT_LABELS = { sight: 'Sight', muzzle: 'Muzzle', barrel: 'Barrel', grip: 'Grip', laser: 'Laser',
-    light: 'Light', ammo: 'Ammo', ergo: 'Ergo', mag: 'Mag' };
-  // With two or more sources, a line under the value gives each one's share,
-  // so a ±0 chip reads as two changes cancelling. One source needs no line.
-  const sourceLine = rows => rows.length < 2 ? ''
-    : `<div class="att-chip-src">${rows.map(r => `<b style="color:${r.color ?? 'inherit'}">${r.value}</b> ${SLOT_LABELS[r.slot] ?? r.name}`).join(' · ')}</div>`;
   // A chip whose hover/tap popover lists each attachment's own contribution.
   const chipHtml = ({ label, value, color, desc, rows = [], footer = [] }) => {
     // Columns: attachment | source step | value, so the value sits on the right.
@@ -3197,7 +3191,7 @@ function renderAttachmentStats(loadouts) {
         : `<span class="att-tt-note">${escAttr(f.note)}</span>`)).join('')
       + '</div>' : '';
     const aria = escAttr(`${label.replace(/<[^>]+>/g, '')}: ${value}. ${desc}`);
-    return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>${sourceLine(rows)}`
+    return `<div class="att-chip" tabindex="0" aria-label="${aria}"><div class="att-chip-lbl">${label}</div><div class="att-chip-val" style="color:${color}">${value}</div>`
       + `<div class="rc-tt att-tt"><div class="att-tt-desc">${escAttr(desc)}</div>${body}</div></div>`;
   };
   let html = '<div class="ptitle" style="margin-bottom:9px">Attachment Effects</div>';

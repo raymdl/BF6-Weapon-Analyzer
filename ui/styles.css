@@ -575,8 +575,6 @@ body.rc-plot-expanded{overflow:hidden}
 .att-chip-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-chip-val{font-size:0.72rem;font-weight:700;white-space:nowrap;letter-spacing:.3px}
 /* Each source's share, on chips with more than one, so a cancelling ±0 explains itself. */
-.att-chip-src{font-size:.56rem;color:#8e9c9c;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.att-chip-src b{font-weight:600}
 .att-empty{font-size:0.68rem;color:var(--muted);background:var(--bg3);border-radius:4px;padding:7px 8px}
 .rc-legend{display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;min-height:14px}
 .rc-legend-item{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--text)}
