@@ -17,7 +17,8 @@ and the time-based simulation, but does not remove damage or BTK.
 ## Build and compare loadouts
 
 Select a class and weapon in the loadout panel, then select attachments, ammunition,
-magazine, and ergonomics. Menus are filtered to the weapon's supported selections.
+magazine, and ergonomics. Before any weapon is chosen, the page offers **Or try an
+example: M433 vs AK4D**, which opens that comparison. Menus are filtered to the weapon's supported selections.
 A shared rail has one menu labeled **Laser / Light** or **Grip / Laser / Light**.
 Select one device for that rail; selecting another replaces it. Separate controls
 for the same rail are hidden. Combo laser/light devices count as one attachment. A new weapon resets its build to
@@ -44,11 +45,13 @@ takes to play out. Longer is smoother to track; the kick itself is the same size
 
 Hover a weapon button or a weapon name above the comparison stats to read its
 in-game description. All 67 weapons have descriptions, also exposed as accessible
-descriptions. Of these, 61 come from Frosty and two come from verified game captures.
+descriptions. Of the 63 weapons before Season 5, 61 use Frosty text and two (M2010
+ESR, SV-98) use verified game captures; the four Season 5 weapons' descriptions were
+read from the 2.1.1.0 files.
 
 Hover an attachment control or option to read its in-game description where
 available. The selected control also exposes the text as an accessible description.
-Most text comes from Frosty UI records; 15 choices use approved game captures.
+Most text comes from Frosty UI records; 26 choices use approved game captures.
 Iron Sights also has a description on each weapon. M16A4 uses its Classic sights;
 UMG-40 uses its basic aperture sights. Optics are listed by their in-game names,
 with their magnification, and have no description yet. Text appears without an introductory prefix and
@@ -79,9 +82,14 @@ that slot, clearing its locks; each entry's ✕ deletes it at once, with an Undo
 stored as the same compact tokens a share link uses, so it keeps resolving as
 the catalog grows.
 
-Enable comparison for a second independent loadout. Clone the first loadout to
-compare attachment changes on the same weapon; Swap exchanges the two loadouts,
-locks included. Disabling comparison clears the
+Select **+ Compare Loadout** for a second independent loadout. The sidebar is
+headed **Weapon 1** (gold) at the top and **Weapon 2** (blue) on the compare block,
+and weapon 2's controls (class buttons, selected weapon, points total, attachment
+menus, locks and saved-loadout row) are blue. Two icon buttons beside the compare
+button stay greyed out unless you are comparing: **Swap** exchanges the two
+loadouts, locks included, and needs both weapons chosen; **Clone** copies Weapon 1
+and its attachments into Weapon 2, to compare attachment changes on the same
+weapon. Selecting the compare button again ends the comparison and clears the
 second slot. On smaller screens, the Loadout button opens a dialog; Escape closes
 it and returns focus to the opener.
 
@@ -89,7 +97,7 @@ it and returns focus to the opener.
 
 The Weapon Attributes strip shows **Hipfire, Precision, Control and Mobility**
 for each selected loadout. Scores update when you change attachments. Gold is
-loadout 1; blue is loadout 2. Select an attribute to highlight its related stat
+Weapon 1; blue is Weapon 2. Select an attribute to highlight its related stat
 cards, and hover for its input explanation. These are game ratings, not percentages.
 `Unavailable` means the model has no verified result for that combination.
 See the [model guide](WEAPON_ATTRIBUTES_MODEL.md) for calculation and validation limits.
@@ -98,9 +106,11 @@ Overview groups combat, ammunition, mobility, recoil, spread, and concealment
 statistics. The attachment-effects breakdown compares values with the bare weapon:
 no barrel, the default ammunition, and the default magazine without its handling
 shifts. The default barrel and magazine therefore show their own effects, such as
-Basic's faster ADS time and the standard magazine's faster draw. Hover or tap a chip
-to see each attachment's own contribution with its tier step or multiplier, and the
-net when more than one attachment contributes.
+Basic's faster ADS time and the standard magazine's faster draw. When two or more
+attachments contribute to a chip, a line under its value names each one's share
+by slot (for example Barrel and Grip), so a ±0 chip reads as two changes cancelling.
+Hover or tap a chip to see each attachment's own contribution with its tier step
+or multiplier, and the net when more than one attachment contributes.
 Multiplied factors show their × step. When tier steps of different sizes keep
 the rows from adding up to the net, the breakdown says so. A stat whose contributions cancel shows
 ±0 in grey. Favorable indicators follow each stat's direction: higher damage/velocity,
@@ -133,7 +143,7 @@ measured zero.
 
 | View | What it shows | Interpretation |
 |---|---|---|
-| Damage | Chest damage by distance, with a chest-to-limb band where multipliers differ. | The plotted damage is capped at 100; the underlying calculation and some tooltips retain higher damage. |
+| Damage | Chest damage by distance, with a chest-to-limb band where multipliers differ. | The plotted damage is capped at 100; the underlying calculation and the chart read-out retain higher damage. |
 | Bullets to kill (BTK) | Shots required against 100 health, with 0–4 headshots and remaining chest/limb hits. | Headshots are a count within the lethal sequence, not a hit-rate percentage. A dashed 0-headshot baseline helps compare scenarios. |
 | Time to kill (TTK) | Time from the first shot to the lethal shot. Optional ADS and projectile flight time are added. | No reaction time, misses, reload interruptions, armor, or target regeneration is included. |
 
@@ -141,14 +151,40 @@ The headshot setting affects BTK and TTK. Chest/limb bands describe alternative
 hit placement, not statistical confidence. Shotgun damage/BTK assumes all pellets
 hit the selected zone. Bolt- and pump-action TTK use source manual-cycle timing;
 DB-12 includes two shots per pump cycle. Burst weapons use separate within-burst
-and between-burst cadence. The range table lists results at class-specific distances.
+and between-burst cadence. The kill table lists results at class-specific distances.
 See [damage and ballistics](DAMAGE_BALLISTICS.md) for the equations and endpoint rules.
+
+### The kill table
+
+The table beside the chart is titled **BTK / TTK**. Each weapon's name sits centred
+over its three columns, in its colour: **DMG** (damage per shot, the full shell for a
+pellet load), **BTK** and **TTK** (the TTK heading adds +ADS and +Flight when those
+are on). A BTK or TTK cell shows a chest–limb range where limb hits need more
+bullets, and a BTK that changes from the row above is marked. The rows are distances
+chosen by the classes shown: 0 to 250 m when a sniper rifle is shown, otherwise 0 to
+100 m with a DMR, 0 to 30 m for shotguns alone (to 75 m when a shotgun is compared
+with another class) and 0 to 80 m in 10 m steps for the rest.
+
+On the Soldier Target and Firing Range views, one row is outlined: the nearest row
+whose DMG and BTK, for every weapon shown, match the values at the target distance
+(none when no row matches); its title names that distance. The chart and the table
+are linked: pointing at a range on the chart lights the matching row, and pointing
+at a row moves the chart's read-out to that row's distance.
 
 ### Read the comparison charts
 
-Each color identifies a selected weapon. The horizontal axis is range in metres;
-the vertical axis uses the selected chart mode. These examples compare SOR-556
-Mk2 (orange) with SOR-300SC (blue).
+Each colour identifies a selected weapon: gold is Weapon 1 and blue is Weapon 2.
+The horizontal axis is range in metres; the vertical axis uses the selected chart
+mode. The illustrations below compare SOR-556 Mk2 with SOR-300SC; they draw
+Weapon 1 in orange rather than the app's gold.
+
+The chart has one read-out box and no other tooltip. It follows the pointer and
+shows the range over one row per weapon, in the weapon's colour, labelled with the
+chart mode (DMG, BTK or TTK). Its columns are CHEST, LIMBS and HEAD in Damage (damage
+is not capped there), CHEST and LIMBS in BTK, and CHEST and LIMBS plus ADS and FLIGHT,
+when those additions are on, in TTK; a column appears only where it applies to a
+weapon. When the pointer is off the chart on the Soldier Target and Firing Range
+views, the box sits at the target distance, which a dashed line marks.
 
 - **Solid colored line:** The result for chest hits. In BTK and TTK, any selected
   headshots are counted first; the remaining hits are chest hits.
@@ -306,7 +342,7 @@ Distance ranges from 5 to 300 metres and starts at 20 metres. The slider snaps t
 coarser distance increments farther away. Magnification, display resolution/aspect,
 and horizontal FOV change the viewing scale.
 
-The zoom starts at the first loadout's sight: 1.50× for iron sights, the stated
+The zoom starts at Weapon 1's sight: 1.50× for iron sights, the stated
 magnification for a fixed optic, and the high end of a variable optic's range. An
 optic only zooms when aiming down it, so hipfire starts at 1.00× whatever the sight.
 The zoom slider overrides it, separately for ADS and hipfire. Off the sight's own zoom, a tick on the slider marks where
@@ -321,8 +357,10 @@ the distance. The soldier remains fixed in world
 space when the aim point changes. DMR/sniper builds expose zero distances from
 100 to 500 metres; other weapons use the bore-relative trajectory in this model.
 
-Target Impact Stats report hits, sampled hit rate, damage by body part, and the
-hits/shots needed to reach lethal damage. Total damage includes subsequent hits
+Target Impact Stats is a tab beside **Recoil / Spread Stats**, greyed out on the
+Angle Plot. It shows one card per weapon, Weapon 2's below Weapon 1's; the pop-out
+stacks both stats blocks with no tabs. The cards report hits, sampled hit rate,
+damage by body part, and the hits/shots needed to reach lethal damage. Total damage includes subsequent hits
 after the first lethal shot. The 180 cm figure and its hit zones are approximate;
 results describe this sample, not expected player accuracy. If its image is missing,
 hit statistics are unavailable. For a shotgun pellet load the spray dots are the

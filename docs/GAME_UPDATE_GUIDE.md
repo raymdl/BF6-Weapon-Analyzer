@@ -10,9 +10,12 @@ Run every raw capture through `scripts/frosty-capture.py`, never the collector
 and `record`, and fails loudly. The agents' game-update skills (Claude's `bf6-game-update-check`) run
 Stages 0 and 1 in order with these scripts; this guide wins where they differ.
 
-This is the durable procedure. The 1.4.3.0 run is the worked example and is kept as a
-one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md);
-read it for the specific paths, counts and decisions of that update, not as the procedure.
+This is the durable procedure. Two runs are worked examples: the 1.4.3.0 run, kept as a
+one-time record in [FROSTY_1.4.3.0_UPDATE_PLAN.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md),
+and the 2.1.1.0 (Season 5) run, read from raw files and adding four weapons, recorded in its
+[checklist](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md).
+Read them for the
+specific paths, counts and decisions of those updates, not as the procedure.
 
 Tool commands are in [Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md), field meanings in the
 [field map](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/FIELD_MAP.md), and the asset watchlist and per-asset findings in
@@ -639,8 +642,13 @@ reused later.
 5. Update source and build labels so retained old data is not presented as newly verified.
    Check the site header, footer, page description and `data/provenance/live-baseline.json`
    as well as per-weapon provenance. Verify the changed values in the local browser.
-6. Record the implementation revision and the check results.
-7. **Close the run.** Run the `bf6-run-cleanup` skill on the update's run folder once the
+6. **Review the source records in `data/provenance/live-baseline.json`**, not only the new
+   build's entry: `ea-update-notes`, `sym-bf6-json` and each earlier Frosty record. A record
+   the site no longer rests on is marked `status: historical` with a note; a new patch-notes
+   page is adopted as a source only by an explicit decision, never by default. The docs cite
+   these records, so a stale record spreads into them.
+7. Record the implementation revision and the check results.
+8. **Close the run.** Run the `bf6-run-cleanup` skill on the update's run folder once the
    site changes are pushed: it removes uncited copies and large regenerable files and records
    what it removed. Without it the datamining `reports\` folder had reached 22.5 GB by the
    2.1.1.0 update.

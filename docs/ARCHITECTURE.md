@@ -32,7 +32,7 @@ installs a reporter and keeps missing numeric results unavailable, with a
 deduplicated notification and details dialog.
 
 [ship-surface.json](../ship-surface.json) lists the current application files and
-three published historical versions for validation. It does not control access
+four published historical versions for validation. It does not control access
 or exclude files from deployment. Reference material may be published without
 being loaded by the application.
 
@@ -49,9 +49,12 @@ being loaded by the application.
 | [sim/target.js](../sim/target.js) | Lazy target image, geometry/alpha hit test, zone classification, impact summaries. |
 | [sim/live-fire.js](../sim/live-fire.js), [sim/sensitivity.js](../sim/sensitivity.js) | Real-time recoil/spread stepper driven by an external trigger and view rotation; mouse-count to degree conversion for the Firing Range. |
 | [ui/firing-range.js](../ui/firing-range.js) | Firing Range pointer capture, animation loop and live overlay on the shared plot frame. |
+| [sim/fire-modes.js](../sim/fire-modes.js) | The fire modes a weapon and its ergonomic offer, the default mode and the selected mode. |
 | [sim/share-state.js](../sim/share-state.js) | Compact and legacy URL encoding/decoding and selection validation. |
 | [ui/loadout.js](../ui/loadout.js), [ui/target-stats.js](../ui/target-stats.js) | Attachment controls and target-result presentation. |
 | [ui/capture.js](../ui/capture.js) | Current-view PNG capture; no independent weapon calculations. |
+| [ui/format.js](../ui/format.js) | Shared display formatting (milliseconds, movement multipliers) for cards and panels. |
+| [ui/recoil-touch.js](../ui/recoil-touch.js) | Touch-only recoil plot controls: Redraw, Set aim, the expanded plot and its pinch/pan gestures. |
 
 Simulation functions depend on shared tables, aim/stance, compensation, and
 platform settings supplied by `setSimContext()` and the attachment context.
@@ -105,6 +108,7 @@ against per-weapon availability; unknown/out-of-range tokens are ignored.
 | Fragment field | Meaning |
 |---|---|
 | `w`, `a`; `cmp=1`, `w2`, `a2` | Primary/secondary weapon and attachment tokens, comparison. |
+| `fm`, `fm2` | Selected fire mode (`auto`, `burst` or `single`) of weapon 1 and weapon 2, when one has been chosen; an invalid mode falls back to the weapon's default. |
 | `cm`, `hs`, `ads`, `vel` | Chart mode, 0–4 headshots, optional ADS/flight-time additions. |
 | `ra`, `rs`, `rp`, `rcc`, `sh` | Aim, stance, platform, recoil-control percentage, shot count. |
 | `rv`, `rd`, `rz`, `rta`, `rax`, `ray` | Target view, distance, zero, aim preset/custom coordinates. |
@@ -112,7 +116,7 @@ against per-weapon availability; unknown/out-of-range tokens are ignored.
 
 Compact attachment tokens use **zero-based decimal catalog positions**, not IDs:
 `S` sights, `M` muzzles, `B` barrels, `G` grips, `L` lasers, `T` lights, `A` ammo,
-`E` ergonomics, and `K` magazine keys. On a shared rail, `L` means a laser,
+`E` ergonomics, `O` Optic Accessories, and `K` magazine keys. On a shared rail, `L` means a laser,
 `R` a grip, and `H` a light. These existing tokens decode to typed `atts.rail`
 state; legacy shared selections in `atts.laser`, `atts.light` and `atts.grip` are
 normalized to that state. With no explicit rail selection, a legacy laser takes
@@ -133,16 +137,22 @@ It validates zeroing against 100/200/300/400/500 m. See
 [share-state tests](../scripts/share-state.test.mjs) for protected cases.
 
 Seeds, layers, plot pan/zoom/magnification, spread-circle custom selections, target
-stats tab, and display resolution/FOV are not encoded. Display preferences use
-local storage. The popout carries this same partial state using `?popout=1` and
+stats tab, and local preferences are not encoded. Local preferences use local
+storage: `bf6.targetResolutionWidth`, `bf6.targetResolutionHeight` and `bf6.targetFov`
+(display); `bf6.sensDpi`, `bf6.sensValue` and `bf6.sensZoomCoefficient` (Firing Range
+mouse sensitivity); `bf6.savedLoadouts` (saved loadouts); `bf6.lockedAtts1` and
+`bf6.lockedAtts2` (attachment locks); `bf6.lockHintSeen` (first-lock note shown).
+Every read and write is optional ([UI and publishing](data-flow/UI_PUBLISHING.md)). The popout carries this same partial state using `?popout=1` and
 operates independently after opening.
 
 ## Image capture and published history
 
-Capture clones the rendered main column and header, snapshots canvases, removes
-interactive controls, and measures an independent iframe at 1280 CSS pixels.
-It serializes an SVG `foreignObject` and produces a 2× PNG. Overview is temporarily
-expanded and restored in `finally`; other collapsed panels stay collapsed. Capture uses the existing chart bitmaps in the standardized layout without
+Capture clones the rendered header and main column at its live width (plus the
+loadout sidebar when the share menu asks for it), snapshots canvases, removes
+interactive controls, and measures the layout in an offscreen iframe. It serializes
+an SVG `foreignObject` and produces a PNG at the captured CSS width, one image pixel
+per CSS pixel ([UI and publishing](data-flow/UI_PUBLISHING.md)). Overview is temporarily
+expanded and restored in `finally`; other collapsed panels stay collapsed. Capture uses the existing chart bitmaps without
 rerunning the simulation. Clipboard failures fall back to PNG download;
 render/encoding failures produce an error state.
 

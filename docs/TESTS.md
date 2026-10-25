@@ -27,11 +27,11 @@ whether reference files are published. Evidence links are not browser imports.
 
 ## Product test inventory
 
-`weapon-attributes.test.mjs` checks all four runtime scores against the three
-current panel ledgers (131 + 17 + 12 panels, 640 values), and checks that a missing
+`weapon-attributes.test.mjs` checks all four runtime scores against the four
+current panel ledgers (131 + 17 + 12 + 43 panels, 812 values), and checks that a missing
 Precision table returns no score. It reads committed JSON evidence, not images.
 The 21 September integration passed 108 tests; this is a dated checkpoint, not a
-fixed suite-size requirement. All 63 default weapons returned four scores.
+fixed suite-size requirement. All 63 default weapons of that date returned four scores.
 
 All paths in this table are under `scripts/`.
 
@@ -44,6 +44,7 @@ All paths in this table are under `scripts/`.
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
 | [draw-time.test.mjs](../scripts/draw-time.test.mjs) | Source timing tables, selection, independent shifts, final clamping and invalid-input behavior. |
 | [estimated-weapons.test.mjs](../scripts/estimated-weapons.test.mjs) | No estimated or donor weapons, share-state round trip and the assumed-attachment marker. |
+| [fire-modes.test.mjs](../scripts/fire-modes.test.mjs) | The eleven operator-confirmed fire-mode predictions, the modes each weapon stores, attachment gating with reset to the loadout default, selected-mode rates in shot spacing, TTK and spray, Match Trigger effects only in semi-auto, single-fire hip bloom on the L63-bound rows, burst weapons without a burst pause, and share links carrying both modes. |
 | [optic-costs.test.mjs](../scripts/optic-costs.test.mjs) | Each weapon's optic categories and point costs equal the latest Frosty optic mapping. |
 | [required-data.test.mjs](../scripts/required-data.test.mjs) | Missing/non-finite source fields, strict callers, and non-blocking browser reporting with independent stats preserved. |
 | [runtime-syntax.test.mjs](../scripts/runtime-syntax.test.mjs) | UI and simulation modules parse. This does not execute a browser. |
@@ -86,6 +87,12 @@ physical correctness of every observed panel or existence of all ignored images.
 Workbook generation and ammo-stat rule checking in that package are ad-hoc tools,
 not the runtime or CI.
 
+`python scripts/frosty-ebx-decode.test.py` keeps provisional nested layouts visible
+to consumers of decoded EBX: nested and inherited layouts, struct and boxed arrays
+(empty, populated and count-checked), zero and missing values kept distinct from
+null, unresolved payloads, types and references left explicit, and bounded boxed
+strings and recursion.
+
 `scripts/frosty-configuration.test.py` checks research scalar conversion behavior:
 
 ```sh
@@ -122,7 +129,7 @@ on AK-205, RPK-74M or RPKM. KORD and KTS100 must each have one Laser / Light men
 switching devices must replace the selection, including restored older links.
 
 Test link restore (including a legacy target link), Copy/Save Image and failure
-feedback, panel collapse/resize, popout independence and all three historical links.
+feedback, panel collapse/resize, popout independence and all four historical links.
 PNG capture should keep loadout identity and restore the original overview state.
 
 On a touch-capable phone/tablet (including portrait, short landscape, and a larger

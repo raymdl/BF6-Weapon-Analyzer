@@ -92,9 +92,10 @@ Grip handling and laser spread use per-weapon `frostyModifiers` in their catalog
 records. The resolver merges these after selecting the normal or combined rail
 slot. Magazine handling is generated into the existing per-weapon magazine fields.
 QD Grip Pod also carries per-weapon `adsRecoilTierMod: 3` and `hipRecoilTierMod: 3`
-on BROD 3, EF88, M16A4, RPK-74M and VSSM, matching the Frosty
+on BROD 3, EF88, M16A4, RPK-74M and VSSM, and since 2.1.1.0 on the Mk 24 and Z84M
+([bug entry 21](ATTACHMENT_BUGS.md)), matching the Frosty
 `amountTier.add = 3` operands; other weapons keep the catalog tier 2.
-Current-build Control captures confirm tier 3 on all five
+Control captures of 13 September 2026 confirm tier 3 on the first five
 ([review](../reference-data/provenance/qd-grip-pod-screenshot-review-2026-09-13.json)).
 The handling generator keeps these recoil fields when it regenerates.
 Run `python scripts/frosty-attachment-handling.py --root <Frosty-export-root>`;
@@ -222,8 +223,8 @@ from a single-attachment panel observation.
 
 ![Ordinary magazine versus animation-override reload calculation, with PP-19 timing example](img/reload-paths.svg)
 
-The [exception register](../data/reload-exceptions.json) preserves four animation
-record identities covering five magazine entries, plus a screenshot exception and
+The [exception register](../data/reload-exceptions.json) preserves five animation
+record identities covering six magazine entries (the ELR-40 record added with 2.1.1.0), plus a screenshot exception and
 composed-loadout evidence. The browser does not load this file; the maintained
 magazine fields contain the accepted values and validation checks their agreement.
 The PP-19 20 Fast suspected-game-bug note records observed behavior; a fix remains
@@ -259,6 +260,9 @@ barrel and ammo source factors by the retained 54 m world / 150 m minimap bases.
 These bases and multiplicative composition reproduce the earlier rounded ranges:
 suppressor 21 m, subsonic about 64 m, both about 9 m. They are inferred from the
 site/source agreement, not independently decoded native range fields. Zero is valid.
+Two groups use other bases, stored in their WB files: the M433, SGX, L110 and P18
+use 75 m world since 2.1.1.0 ([bug entry 17](ATTACHMENT_BUGS.md)), and the M45A1
+and vz. 61, subsonic by default, use 27 m world / 64.29 m minimap.
 
 Collateral now resolves all supported selections through a generated per-weapon/ammo
 map. The generator sums source base and ammo index shifts, clamps to 0..9, and
@@ -271,7 +275,7 @@ Weapon sway displays the percentage change from sight, muzzle, magazine and
 barrel source factors against the bare weapon. Factors multiply: 1.5 means +50%,
 0.6666667 means about -33.3%, and 0.4444444 means about -55.6%. Weapon-specific
 muzzle exceptions are retained. Iron sights carry ×0.6666667 through
-`SIGHTS[iron].weaponSwayMultByWeapon` on the 56 weapons whose iron sights import
+`SIGHTS[iron].weaponSwayMultByWeapon` on the 59 weapons whose iron sights import
 `WPM_Sway_IronSights_P05`; bolt-action rifles have none by design, and BROD 3 has
 none in game (bug 16). Optics carry no sway factor. Camera sway is not modelled.
 M4A1 recordings show the reduction (vertical sway ratio 0.68 against ROX) and BROD 3
@@ -337,15 +341,15 @@ display layer and do not add or change attachment effects. See the
 ## Approved source operand additions
 
 Smooth Bolt muzzle overrides also add -0.5 to `decTimeExp` in both aim states,
-after any ergonomic exponent override. The 17 existing source-mapped selections
+after any ergonomic exponent override. The 19 existing source-mapped selections
 use this addition; ordinary Smooth modifiers do not. The recovery equation is
 unchanged and remains a model assumption.
 
 Mini Scout Tungsten applies the combined -1 and -6 source recoil amount steps
 (-7 total) in ADS and hip. Other sniper Tungsten values are unchanged.
-PSR, SV-98, L115, Mini Scout and Interdictor Slim Angled
+PSR, SV-98, L115, Mini Scout, Interdictor and ELR-40 Slim Angled
 add -1 to the moving-ADS spread row index. These are per-weapon effects. The
-operator approved these source composition choices. On the five sniper rifles the
+operator approved these source composition choices. On the six sniper rifles the
 Slim Angled action selects the Full Angled `FastBOLT01_W05` package, which carries
 the dispersion binding. Interdictor and Mini Scout HUD captures and matching Mobility
 panels support the penalty ([captures](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/sniper-slim-angled-moving-ads-2026-09-14.json)).

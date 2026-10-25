@@ -108,8 +108,8 @@ changes all four ZDA columns. The column names are inferred, not declared:
 
 Evidence: `Field_97ff0ca4` is `Prone` in GS `MinMaxDispersion`. That GS block has
 exactly four zoomed non-stationary states: standing, crouching and prone moving
-share one minimum (63 of 64 weapons), and standing jumping/sprinting is larger in
-all 64. The GS values are uniform placeholders (0.35/0.6, or 0.30/0.6), so values
+share one minimum (63 of the 64 GS files in the 13 September 2026 export), and
+standing jumping/sprinting is larger in all 64. The GS values are uniform placeholders (0.35/0.6, or 0.30/0.6), so values
 do not confirm the order. The analyzer uses only the moving minimum; the fourth
 column is not modeled. [GRX name evidence](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-grx-field-names-2026-09-13.json).
 
@@ -241,7 +241,7 @@ Recoil, velocity, and reload use the scalar factors and equations below.
 
 | Family | Rule | Evidence / boundary |
 |---|---|---|
-| `RECOIL_MULT[id]` | ADS effective amount = `round3(base recoilV × factor^sumAdsTiers)`. M433 factor is 0.945. | All 63 factors matched reviewed raw ADS/hip factors. Base `recoilV` already includes its base exponent. |
+| `RECOIL_MULT[id]` | ADS effective amount = `round3(base recoilV × factor^sumAdsTiers)`. M433 factor is 0.945. | All 63 factors matched reviewed raw ADS/hip factors in September 2026; the table now holds 67, the four Season 5 factors added from 2.1.1.0. Base `recoilV` already includes its base exponent. |
 | Per-aim variation | `dirVar × dirVarMult^(dirVarExp + summed variation tiers)` | Per-weapon/group geometric factors; never a universal linear percent. Hip amount uses its raw group factor/exponent similarly. |
 | `VELOCITY_LADDER = 0.8` | Barrel multiplier = `0.8^(−velTierMod)`; subsonic tier treatment = `baseVelocity × 0.8^tier` before barrel. | Source factors 0.8, 0.64, 0.512 and 1.25 agree with these powers. Absolute ammo treatments remain separate. |
 | `RELOAD_SPEED_MULTIPLIERS` | Index 0 → 1; 1 → 1.13; 2 → 1.277. Reload seconds divide by the selected factor and ergo multiplier. | Exact named factors, not `1.13^tier`. The double factor is 1.277, not 1.2769. |

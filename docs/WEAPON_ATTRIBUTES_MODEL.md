@@ -32,9 +32,13 @@ renders the compact strip and related-card highlights. The runtime data in
 `data/weapon_attributes.json` contains the base keys and rows from the 1.4.3.0
 Precision extraction, plus the traced shotgun and Mobility inputs. Its
 `provenance` field names the source files under `reference-data/provenance/`.
+The tables hold all 67 weapons at that extraction's `sourceVersion` (1.4.3.0): the
+four Season 5 tables were added with 2.1.1.0, and the tables were not re-derived
+at 2.1.1.0. One row differs: the Interdictor keyed row holds its 2.1.1.0 value of 100
+([bug entry 22](ATTACHMENT_BUGS.md)).
 
 The runtime does not read screenshot scores. The regression tests compare its
-results with 160 current panels (640 attribute values). Missing or ambiguous
+results with 203 current panels (812 attribute values) in four ledgers. Missing or ambiguous
 Precision lookups return unavailable; they are not interpolated. The selected
 loadout uses its resolved recoil inputs. The research checkers' burst-hover
 exception is not generalized to equipped builds without evidence.
@@ -127,9 +131,10 @@ not the hypothesized intended six-step rule. See [attachment bug 13](ATTACHMENT_
 
 The sine operation's native hash meaning is inferred from the decoded calculation
 and matches; complete native execution is not independently established. At
-`V = 0`, the mathematical limit of `sin(v)/v` is 1, but the current checker does
-not implement a zero-variation guard. That case needs a deliberate implementation
-and check before broader production use. Do not silently clamp Control to 100
+`V = 0`, the mathematical limit of `sin(v)/v` is 1. The site model guards this case
+(`sim/weapon-attributes.js` uses 1 when `V` is 0); the research checker does not
+implement a zero-variation guard, so that case needs a deliberate implementation
+and check there before broader use. Do not silently clamp Control to 100
 on the assumption that every bar shares Hipfire's clamp.
 
 ## Hipfire
@@ -186,7 +191,8 @@ Common/GameSetup/GameConfigurations/GlacierGameConfiguration/settings
 Class_fe5894b1.Field_d0874615
 ```
 
-Current captures use the 1.4.3.0 table extraction. The old checker default still
+Current captures use the 1.4.3.0 table extraction (the site's tables keep that
+`sourceVersion`; they were not re-derived at 2.1.1.0). The old checker default still
 points to the dated 1.4.2.5 extraction, so pass the current table file explicitly.
 The changed 1.4.3.0 settings export must take priority over a stale overlay copy.
 

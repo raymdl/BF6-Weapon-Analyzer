@@ -1,7 +1,9 @@
 # Attachment audit reference
 
 This directory contains the completed screenshot-backed attachment reference.
-The live site and normal validation do not load it.
+The live site and normal validation do not load it. The canonical reference covers
+the 63-weapon roster before 2.1.1.0; the four Season 5 weapons (Mk 24, ELR-40, Z84M,
+RSPR) are absent.
 
 Current runtime contracts and promotion rules: [data sources](../../docs/DATA_SOURCES.md).
 Historical investigations: [archive index](../../docs/archive/README.md). Individual records may remain provisional after the package review is complete.

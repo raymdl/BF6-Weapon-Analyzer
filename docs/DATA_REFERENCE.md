@@ -61,8 +61,9 @@ Recoil groups contain `dir`, `amount`, `amountMult`, `amountExp`, `dirVar`,
 The simulator consumes these for amount/variation and per-axis recovery.
 `duration` supplies the time over which each impulse is delivered, with recovery
 active during delivery. Muzzle overrides and ergonomic additions change that time.
-All 126 base aim-state durations in the current 63-weapon dataset were checked
-against Frosty and are 0.025 seconds; this is not a global simulator constant.
+All 134 base aim-state durations in the current 67-weapon dataset are 0.025
+seconds (the 63 weapons of September 2026 were checked against Frosty, the four
+Season 5 weapons read from 2.1.1.0); this is not a global simulator constant.
 `decNorm` and `shootingDecScale` remain retained without separate native norm or
 shooting-state behavior. See [recoil and spread](RECOIL_SPREAD_MODEL.md).
 
@@ -76,11 +77,13 @@ Optional `distExpMove` overrides the exponent while moving (Interdictor ADS: 0.6
 ## Attachment and ammunition record fields
 
 Barrel `adsTimeTierModByWeapon[weaponId]` values are generated from linked Frosty
-WB animation/FOV ADS modifiers for 233 unique selections (234 source records). Both VSSM barrels have zero
+WB animation/FOV ADS modifiers; the live barrels hold 246 per-weapon entries. Both VSSM barrels have zero
 WB ADS contribution. The regular VSSM barrel's separate GS +1 index binding
 does not match its WB modifier route; these routes are not added together.
-See [generated barrel evidence](../reference-data/provenance/frosty-barrel-ads-generated.json)
-for current values and the earlier `frosty-barrel-ads-2026-09-13.json` for both routes.
+The [generated barrel evidence](../reference-data/provenance/frosty-barrel-ads-generated.json)
+predates 2.1.1.0: its 234 source records (233 unique selections) cover the 63 weapons
+of September 2026, not the four Season 5 weapons, whose values were read from raw
+2.1.1.0 files. See it for those values and the earlier [`frosty-barrel-ads-2026-09-13.json`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-barrel-ads-2026-09-13.json) (research repo) for both routes.
 Grip and laser `frostyModifiers[weaponId]` override shared fields after selection.
 Magazine modifiers remain in each weapon's magazine records.
 
@@ -159,7 +162,7 @@ non-finite multipliers are validation errors, not generic 1.34 head / 1 limb
 defaults. Scripts throw; the browser reports the error and marks dependent results unavailable. Removed M60/M121 A2 Lightweight options do not have generated entries.
 
 `ballistics.weapons[id]` maps `base` and `ammo[ammoId]` to keys in
-`ballistics.projectiles`. Each of the 68 projectile records has `guid`,
+`ballistics.projectiles`. Each of the 69 projectile records has `guid`,
 `gravityMps2` and `dragPerMeter`. The source object records the attachment-trace
 name/hash and projectile XML hashes. These are maps, not positional arrays.
 All supported ammo selections have a projectile; missing selection data returns
@@ -179,7 +182,7 @@ research outputs and frozen site copies are excluded. Scalar maps follow the tab
 | `weapons.json: []` | Weapon records with unique IDs. | Roster/UI iteration; joins use IDs. |
 | `weapons[].dmg[]` | `{r,d,source?}` ordered nondecreasing ranges; duplicates encode discontinuities. | Damage, BTK, TTK, target damage. Never deduplicate equal ranges. |
 | `weapons[].spread.adsStand[]`, `.adsMove[]`, `.hipStand[]`, `.hipMove[]` | Exactly `[minimum, maximum]` in degrees. | Selected aim/stance bounds; effective minima may be replaced by ladders. |
-| `attachments: SIGHTS[]`, `MUZZLES[]`, `BARRELS[]`, `GRIPS[]`, `LASERS[]`, `LIGHTS[]`, `ERGOS[]` | Ordered ID-bearing catalogs. At review: 46 (6 of them Iron Sights and legacy categories), 18, 12, 49, 9, 5, 14 entries respectively. | Selection and positional share tokens; preserve existing order. |
+| `attachments: SIGHTS[]`, `MUZZLES[]`, `BARRELS[]`, `GRIPS[]`, `LASERS[]`, `LIGHTS[]`, `ERGOS[]` | Ordered ID-bearing catalogs. At review: 46 (6 of them Iron Sights and legacy categories), 18, 12, 50, 9, 5, 14 entries respectively. | Selection and positional share tokens; preserve existing order. |
 | `WEAPON_ATTS[id].sight[]`, `.muzzle[]`, `.barrel[]`, `.grip[]`, `.laser[]`, `.light[]` | Allowed catalog IDs, possibly empty. | Availability and menu order/filtering; empty is not an unknown numeric zero. |
 | `WEAPON_ERGO[id].avail[]` | Allowed ergonomic IDs. | Selection validation. |
 | `ammo: AMMO[]` | Ordered catalog, 15 entries at review. | Selection, effects and positional share tokens. |

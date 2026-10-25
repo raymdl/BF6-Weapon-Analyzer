@@ -20,16 +20,16 @@ dependencies from Frosty. See the [user controls](USER_GUIDE.md#build-and-compar
 and [Frosty data graph](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites).
 
 The [UI text notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
-documents attachment tooltips and the 18 approved panel-text exceptions. The
+documents attachment tooltips and the 26 approved panel-text exceptions. The
 [unmatched-record inventory](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_UNMATCHED_WEAPONS_ATTACHMENTS.md)
 groups extra Frosty records by what is known about their menu identity.
 
 ## Folder roles
 
 - `docs/`: live GitHub product and contributor guides.
-- `docs/frosty/`: game-data knowledge by topic (field map, data graph, weapons,
-  attachments, UI text, tools, open questions). Edit these pages in place; do not
-  create a new file per investigation.
+- Game-data knowledge by topic (field map, data graph, weapons, attachments, UI
+  text, tools, open questions) lives in the research repo's
+  [`docs/frosty/`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/README.md), not in this repo.
 - `docs/working/`: active investigations and handoffs; keep only current status,
   decisions, open questions, and next actions.
 - `docs/archive/`: completed analyses, implementation records, and superseded handoffs.
@@ -59,7 +59,7 @@ any remaining questions into an active handoff, and archive the completed record
 
 ## Open research
 
-[GRT-BC corrected pattern review](working/GRTBC_RECOIL_PATTERN_REVIEW.md) compares
+[Archived GRT-BC corrected pattern review](archive/GRTBC_RECOIL_PATTERN_REVIEW.md) compares
 all supplied firing sets against the source model. Burst activation remains unresolved.
 
 [Archived Weapon Attributes release check](archive/WEAPON_ATTRIBUTES_RELEASE_CHECK.md) records

@@ -9,8 +9,9 @@ in the simulator.
 ## Configuration versus behavior
 
 The live dataset combines versions and evidence types. `damageStatus: verified`
-means accepted by this project; every base damage curve names its Frosty 1.4.2.5
-projectile curve. No weapon is estimated or uses donor values, but
+means accepted by this project; every base damage curve names its Frosty
+projectile curve: 62 from 1.4.2.5, the Interdictor from 1.4.3.0 and the four Season 5
+weapons from 2.1.1.0. No weapon is estimated or uses donor values, but
 attachment assumptions and field-level uncertainty remain. Historical notes
 can describe earlier states, including fire-mode limitations
 that the current resolver has since addressed.
@@ -19,8 +20,9 @@ that the current resolver has since addressed.
 
 Shared grip/laser/light slots are generated from Frosty for all offered mount
 choices. Equipment dependencies are enforced where source identities map to site
-choices. Coverage excludes 263 inspected secondary-sight dependency entries whose choices
-or identities are unsupported. The PP-19 restriction is corroborated by supplied
+choices. The 283 Optic Accessory (secondary-sight) entries map to `accessory` rules on
+individual optics; entries whose choices or identities the site does not offer
+remain in evidence only. The PP-19 restriction is corroborated by supplied
 game screenshots; the other generated dependencies are source-backed without
 equivalent new in-game tests. Collection/build and live-override limits remain.
 
@@ -67,9 +69,9 @@ See the [recoil and spread guide](RECOIL_SPREAD_MODEL.md#mounted-stance-deployed
 **Recoil recovery and smooth-recoil attachments.** The source factors, exponent
 fields, and native class layouts do not independently validate the current recovery
 equation. The model uses a 0.05-second duration override and 1.2 recovery-factor
-multiplier for ordinary Smooth modifiers, or 0.066667 seconds and 1.728 for 17
+multiplier for ordinary Smooth modifiers, or 0.066667 seconds and 1.728 for 19
 source-mapped Bolt weapon–muzzle combinations, in ADS and hip. The current base
-duration check found 0.025 seconds in both aim states for all 63 weapons; the
+duration check found 0.025 seconds in both aim states for all 67 weapons; the
 simulator reads each weapon record rather than imposing that value globally.
 The source provides these operands;
 recordings support the qualitative effect, not the exact native arithmetic.
@@ -170,7 +172,7 @@ hits after the first lethal shot. No armor, missed-shot TTK, reload interruption
 healing, target motion or obstruction is modeled.
 
 Ballistics use generated projectile coefficients and explicit weapon/ammo links
-for all 63 weapons, plus available velocity. Missing selections have no global
+for all 67 weapons, plus available velocity. Missing selections have no global
 coefficient fallback. Non-ammo SP projectile branches remain excluded. Zeroing omits
 sight height; level flight time and vector trajectory are distinct calculations.
 The UI's zero-displacement fallback for unavailable trajectories must not be
@@ -190,7 +192,7 @@ guide and a focused behavioral test. Preserve historical evidence.
 
 ## Weapon Attributes
 
-The four-score runtime matches 640 values from 160 current panels. This is a
+The four-score runtime matches 812 values from 203 current panels. This is a
 sampled menu check, not proof of every combination or gameplay behavior.
 Precision returns unavailable for missing or ambiguous table rows. The Hipfire
 conditional factor and some native arithmetic remain inferred. The score-only

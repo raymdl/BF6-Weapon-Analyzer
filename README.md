@@ -34,13 +34,13 @@ with 0.67 for Interdictor moving ADS. The M39 settled-hipfire captures support t
 
 The recoil model delivers each shot over its selected Frosty duration while
 recovery acts at the same time. Recovery runs at 0.8 of the source factor, measured on
-bullet-hole captures of four weapons in October 2026. Base duration is 25 ms for all 63 currently
+bullet-hole captures of four weapons in October 2026. Base duration is 25 ms for all 67 currently
 supported weapons. Smooth attachments use 50 ms and a 1.2 recovery factor;
-17 weapon–muzzle combinations use the source Bolt values of 66.667 ms and 1.728.
+19 weapon–muzzle combinations use the source Bolt values of 66.667 ms and 1.728.
 Heavy-type barrels now use source ADS spread and recovery factors, supported by
 the AK4D recording comparison. Flashlight, Hipfire Taclight and combo lights use
 source hipfire growth/recovery factors; selecting one treats its light as active.
-The console option uses the source 0.8836 amount factor. Native engine formulas
+The console option uses the source 0.95 amount factor (2.1.1.0; 0.8836 before). Native engine formulas
 remain unverified. See [recoil and spread](docs/RECOIL_SPREAD_MODEL.md)
 for the attachment exceptions, formulas, and evidence limits.
 

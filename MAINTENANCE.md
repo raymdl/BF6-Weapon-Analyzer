@@ -234,7 +234,7 @@ node scripts/validate-data.mjs
 
 The XML export and the raw grids must come from the same game build. The extractor
 stops on conflicting links or disagreement between grids, but can record a base
-fallback for missing ammo attachments. Review those issues; the current 328 ammo
+fallback for missing ammo attachments. Review those issues; the current 353 ammo
 selections have no missing-attachment fallback. Review its dated evidence file
 and every changed value before committing `data/hit_zones.json`.
 

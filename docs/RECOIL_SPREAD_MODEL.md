@@ -52,14 +52,16 @@ decimals. Thus a baked exponent must not be applied twice to an effective base.
 Amount tiers include supported grip, muzzle, ammunition and ergonomics effects;
 variation tiers include grip, muzzle and ergonomics effects.
 
-Six sniper rifles use source +6 ADS/hip amount steps on 16 supported brake
-selections. `scripts/frosty-sniper-brakes.py` generates these per-weapon muzzle
+Seven sniper rifles use source +6 ADS/hip amount steps on 17 supported brake
+selections (the ELR-40 Double-Port Brake added in 2.1.1.0), and the RSPR Single-Port
+Brake uses +7 ([bug entry 19](ATTACHMENT_BUGS.md)). `scripts/frosty-sniper-brakes.py` generates these per-weapon muzzle
 overrides from the traced XML operands, preserving existing duration/recovery
 overrides. M2010 ESR with Single-Port Brake now computes 1.035 degrees ADS kick
 instead of 1.410. Mini Scout Tungsten now applies -7 amount steps in both aims
 from its combined -1/-6 source links; other Tungsten amount steps are unchanged. See the
 [source rows](../reference-data/provenance/frosty-sniper-brakes-generated.json)
-for the exact weapon/brake selections.
+for the exact weapon/brake selections (16 rows, generated before 2.1.1.0; the ELR-40
+and RSPR values were read from raw 2.1.1.0 files).
 
 The ADS selection helpers scale the selected group against the effective ADS
 base, so these attachment outputs reach the recoil path. Hip recoil uses its own
@@ -300,8 +302,9 @@ operand and is recorded as an open question, not proposed.
 ### Duration and Smooth attachment selection
 
 Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
-selected weapon record. The current Frosty check covers all 63 supported weapons
-and both aim states: all 126 values are **0.025 seconds**. The simulator reads the selected weapon record. A missing/zero duration
+selected weapon record. All 67 supported weapons in both aim states, 134 values, are **0.025 seconds**
+(the Frosty check of the 63 September weapons, and the four Season 5 weapons read
+from 2.1.1.0). The simulator reads the selected weapon record. A missing/zero duration
 uses a fallback of **0.025 seconds**.
 
 The four Smooth source assets define two operand sets:
@@ -379,8 +382,8 @@ do not introduce an idle-state machine or first-shot multiplier.
 `distExp` controls impact sampling as described below.
 
 Source structure supports this recovery form. In every supported weapon, firing
-offset equals the firing coefficient times 9.72 (hip) or 2.25 (ADS, 40 weapons;
-the other 22 use a linear 6.6 offset). All 24 light, barrel and bipod spread
+offset equals the firing coefficient times 9.72 (hip) or 2.25 (ADS, 44 weapons;
+the other 23 use a linear 6.6 offset). All 24 light, barrel and bipod spread
 modifiers multiply increase and all offsets by one factor k and the coefficient by
 exactly k^−1.5. With exponent 2.5, that keeps `coefficient × delta^exponent + offset`
 unchanged in form when spread above the minimum is scaled by k, so the equation
@@ -514,14 +517,15 @@ loadout, settings and seed. Both shot layers use a uniform angle and source-stat
 radius sampling: `r = spread * rng() ** distExp`. The usual exponent 0.5 gives
 uniform area. Interdictor moving ADS uses its source override of 0.67.
 
-The [M39 EMR capture analysis](https://chatgpt.com/c/6aa60039-1c78-83e9-b381-58241012b282)
+The M39 EMR capture analysis (an external conversation, not kept in either repo)
 reports 22 of 88 detected marks within half the radius across four first-25-shot
 takes, consistent with the 25% uniform-area prediction. This was settled hipfire
 with Standard Suppressor and two seconds between shots. The reported counts cover detected marks only; they do not reconstruct every
 bullet impact. Other
 weapons, ADS and native field consumption remain unverified. Source values for
-all 252 weapon/aim/movement combinations are recorded in
-`reference-data/provenance/frosty-distribution-exponents-2026-09-13.json`.
+all 252 weapon/aim/movement combinations of the 63 weapons at 13 September 2026 are recorded in
+[`frosty-distribution-exponents-2026-09-13.json`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-distribution-exponents-2026-09-13.json)
+(research repo), whose interpretation note records the M39 settled-hipfire support.
 The chart bubbles show modeled angular spread envelopes.
 
 ![Uniform-radius versus uniform-area sampling: half the radius contains 50 percent versus 25 percent of impacts](img/spread-sampling.svg)

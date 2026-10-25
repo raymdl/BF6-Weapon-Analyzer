@@ -69,6 +69,13 @@ completed analysis does not mean every native mechanic is known.
 | [Frosty docs consolidation](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_DOCS_CONSOLIDATION.md) | Completed plan for the move to [`docs/frosty/`](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/README.md). |
 | [Optics from Frosty data plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/OPTIC_FROSTY_SOURCE_PLAN.md) | Completed. Stage 3 used `frosty-optic-category-mapping-2026-09-15.json`; `scripts/optic-costs.test.mjs` checks the result. |
 
+### Moved from `working/` on 25 October 2026
+
+| Historical record | Status / present reference |
+|---|---|
+| [GRT-BC recoil pattern review](GRTBC_RECOIL_PATTERN_REVIEW.md) | Closed analysis, corrected 21 September 2026: the firing patterns do not distinguish active from inactive burst modifiers. Its conclusion is in [attachment bug 14b](../ATTACHMENT_BUGS.md#14b-do-burst-recoil-modifiers-apply-during-firing-open-grt-bc-tests), which stays open. |
+| [Documentation review, 25 October 2026](DOC_REVIEW_2026-10-25.md) | Compiled findings of the six-reviewer documentation pass. Applied the same day on branch `ui-redesign`; the research-repo findings are for that repo. Current text is in the guides it names. |
+
 ## Dated investigations and mixed progress logs
 
 These documents mix findings, candidates, accepted changes and deferred work.
@@ -98,7 +105,7 @@ workspaces describe original execution environments; those are not product depen
 Keep archived narrative/evidence bodies stable. Add new conclusions to current
 guides and new dated evidence rather than rewriting old results into apparent
 predictions of the current model. Frozen published site versions are separate:
-`v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` remain in their existing locations.
+`v1.4.3.1/`, `v1.3.3.0/`, `v1.3.1.0/`, and `v1.2.3.0/` remain in their existing locations.
 
 ## Weapon Attributes — 21 September 2026
 

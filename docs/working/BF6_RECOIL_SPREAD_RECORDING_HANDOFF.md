@@ -15,7 +15,7 @@ capture time. Use the [model guide](../RECOIL_SPREAD_MODEL.md) and
 [Frosty weapon notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/WEAPONS.md) for current behavior.
 
 
-Updated 12 September 2026. This is the active research handoff. Completed
+Updated 12 September 2026; counts and scenario status refreshed 25 October 2026. This is the active research handoff. Completed
 analysis and implementation records are in [the archive](../archive/README.md).
 The [full recording history](../archive/BF6_RECOIL_SPREAD_RECORDING_HISTORY_2026-09-11.md)
 preserves the previous detailed handoff, field inventory, measurements, capture
@@ -32,7 +32,7 @@ PR #25 (`50fd5eb`). Publication verification is handled by the release task.
 | Topic | Completed | Still open |
 |---|---|---|
 | Recoil delivery/recovery | Timed delivery, simultaneous recovery, and reset-on-shot clock implemented; October 2026 bullet-hole captures confirmed the clock and put the recovery factor at 0.8 of the source value (applied) | Native envelope and arithmetic; the 100 ms tail on fast profiles; the Lightened tail on the LMR27; the camera layer above the bullets |
-| Smooth attachments | Ordinary 50 ms / 1.2; 17 mapped Bolt exceptions at 66.667 ms / 1.728; 63 base weapons checked at 25 ms | Exact modifier operations/composition; Bolt recording validation; PP-19 Flash Comp source mapping |
+| Smooth attachments | Ordinary 50 ms / 1.2; 19 mapped Bolt exceptions at 66.667 ms / 1.728; all 67 base weapons at 25 ms (the 63 of September checked; the four Season 5 weapons read from 2.1.1.0) | Exact modifier operations/composition; Bolt recording validation; PP-19 Flash Comp source mapping |
 | Heavy-type spread | Frosty factors applied to Heavy, Heavy Extended, and Cryogenic; AK4D comparison complete | Second-weapon transfer check, firing while moving, and idle-state activation |
 | VSSM hipfire | Matched standing screenshots support index 4; override removed; stored minima 1.804 / 2.255 | Independent angular/projectile calibration and hipfire-firing coverage; moving value follows the source row |
 | VSSM aim transition | Eight no-shot transitions measured; approximately equal 170 px/s contraction with and without Folding Stock | Transition equation, active recovery branch, and HUD mapping |
@@ -116,7 +116,7 @@ and TR7. Offset scaling is not visible in these tracks. Keep the current
 source-based treatment. These recordings informed earlier model work, so they are
 not independent validation.
 
-## Standing recording conditions — operator confirmed 11 September 2026
+## Standing recording conditions — operator confirmed 11 September 2026 (superseded for new captures)
 
 For new captures requested on or after 23 September, the
 [ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md) supersedes the carry-forward rule
@@ -208,7 +208,9 @@ and pending attachment captures or conflicting capture identities. Recheck dated
 candidate rows against current source/configuration before promoting a change.
 Preserve the separate uncommitted attachment-audit work and its evidence.
 
-## Pending scenario 3: first-shot spread and reset rules
+## Scenario 3 (removed): first-shot spread and reset rules
+
+**Removed from the capture list by the operator's 28 September 2026 rescope** ([ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026)): captures are requested only for mechanics that change a displayed number. The text below is kept as a record, not a live request.
 
 Purpose: identify how the current game applies deviation after the first shot
 and when the first-shot state resets. Frosty `1.4.2.5` contains named
@@ -234,7 +236,11 @@ This set must test whether shot 1 uses the minimum, whether a special increase i
 applied after it, and whether the state resets on trigger release, after
 `IdleTime`, after complete spread recovery, or on a fire-mode transition.
 
-## Pending scenario 4: firing, not-firing, and idle spread recovery
+## Scenario 4 (removed; partly answered): firing, not-firing, and idle spread recovery
+
+**Removed from the capture list by the operator's 28 September 2026 rescope** ([ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026)): captures are requested only for mechanics that change a displayed number. The text below is kept as a record, not a live request. The rescope removed "idle recovery and recoil return" (item 4).
+Lead L4050 (15 October 2026) later reproduced the firing and not-firing spread
+recovery on the M433 spread indicator within 5%; the idle branch stays unmeasured.
 
 Purpose: identify transitions among Frosty's firing recovery, not-firing
 recovery, ordinary decrease, `IdleTime`, and idle recovery fields. This scenario
@@ -309,7 +315,9 @@ AK4D hip source values: minimum 2.432° standing / 3.04° moving, increase 0.941
 Use recorded shot and release times, not filename labels. Keep missing
 observations as missing.
 
-## Pending scenario 5: movement and stance spread branches
+## Scenario 5 (removed): movement and stance spread branches
+
+**Removed from the capture list by the operator's 28 September 2026 rescope** ([ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026)): captures are requested only for mechanics that change a displayed number. The text below is kept as a record, not a live request.
 
 The AK4D Basic/Heavy strafe-only ADS and hipfire controls are now available in
 the scenario 2 analysis. Both barrels reach the same visible movement plateaus
@@ -338,7 +346,9 @@ indicator enabled and without firing, hold each state long enough to settle:
 Repeat in ADS and hipfire where permitted. Then record a medium firing sequence
 in standing ADS, moving ADS, standing hipfire, and moving hipfire.
 
-## Pending scenario 6: projectile distribution inside the spread circle
+## Scenario 6 (removed): projectile distribution inside the spread circle
+
+**Removed from the capture list by the operator's 28 September 2026 rescope** ([ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026)): captures are requested only for mechanics that change a displayed number. The text below is kept as a record, not a live request.
 
 Purpose: test the source-exponent sampler across further weapons and ADS states.
 Compare measured radial distributions with the current `DistributionExponent` model.
@@ -356,7 +366,10 @@ The reticle center at the exact shot frame must remain measurable. If manual
 recentering dominates the result, the recording cannot distinguish projectile
 distribution from aim error.
 
-## Pending scenario 7: physical aim versus visual recoil
+## Scenario 7 (removed): physical aim versus visual recoil
+
+**Removed from the capture list by the operator's 28 September 2026 rescope** ([ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md#removed-captures-28-september-2026)): captures are requested only for mechanics that change a displayed number. The text below is kept as a record, not a live request. Lead L4048 (October 2026) tracked the camera in the single-shot
+pair videos against the bullet-hole separations, which bears on this question.
 
 Purpose: determine whether `RecoilDuration` changes physical aim used by later
 projectiles, camera/reticle animation, or both.
@@ -371,6 +384,9 @@ the spread indicator, camera rotation, weapon animation, and projectile directio
 represent the same quantity.
 
 ## Next-session order and evidence rules
+
+The order below predates the 28 September rescope; new captures follow the capture
+rule in the [ranked capture plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/BF6_CAPTURE_PRIORITIES.md). The evidence rules still apply.
 
 1. Define the specific unresolved question; use existing recordings first.
 2. Combine first-shot/reset and firing/not-firing/idle tests where possible.
