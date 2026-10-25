@@ -3702,12 +3702,15 @@ function setLoadoutOverlay(open) {
 // Desktop hover behavior is untouched (gated on `hover: none`).
 
 // Attachment chip popovers open rightward; flip one leftward when it would pass
-// the window edge. The grid's column count varies with width, so this is measured.
+// the edge of the main column, which clips its overflow and, on a wide monitor,
+// ends before the window does. The grid's column count varies with width, so
+// this is measured.
 function flipChipTooltip(chip) {
   const tt = chip?.querySelector('.att-tt');
   if (!tt) return;
   chip.classList.remove('tt-flip');
-  if (tt.getBoundingClientRect().right > document.documentElement.clientWidth - 8) chip.classList.add('tt-flip');
+  const edge = chip.closest('.main')?.getBoundingClientRect().right ?? document.documentElement.clientWidth;
+  if (tt.getBoundingClientRect().right > edge - 8) chip.classList.add('tt-flip');
 }
 ['mouseover', 'focusin'].forEach(type => document.addEventListener(type, e => {
   const chip = e.target.closest?.('.att-chip');
