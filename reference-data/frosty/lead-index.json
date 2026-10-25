@@ -827,14 +827,15 @@
       "id": "L63",
       "title": "VSSM default semi hip bloom",
       "status": "rejected",
-      "statusNote": "Source candidate; needs capture",
-      "date": "2026-09-25",
+      "statusNote": "Rejected by capture 25 Sep; site keeps 0.398",
+      "date": "2026-10-25",
       "receipts": [
         "frosty-2026-09-25-L63-L17-semi-bloom-captures.json",
-        "frosty-2026-09-25-L63-vssm-semi-bloom.json"
+        "frosty-2026-09-25-L63-vssm-semi-bloom.json",
+        "frosty-2026-10-25-decision-L63-status-note.json"
       ],
-      "summary": "[Key census and raw decode](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json): `GS_VSSM` binds `GBM_NoIncrease_Semi_P00` (IncreasePerShot ×0) to `CMU_SemiAuto` (mask 1). VSSM is the only site weapon whose default mode is semi that binds it; the site keeps 0.398° hip bloom (peak 3.679° vs 1.804°).",
-      "reopenWhen": "Capture: plan's L63 follow-up (bare VSSM hip taps, Folding Stock control). The same key confounds the L17 semi bloom comparison.",
+      "summary": "[Key census and raw decode](../../reference-data/provenance/frosty-2026-09-25-L63-vssm-semi-bloom.json): `GS_VSSM` binds `GBM_NoIncrease_Semi_P00` (IncreasePerShot ×0) to `CMU_SemiAuto` (mask 1). [Capture](../../reference-data/provenance/frosty-2026-09-25-L63-L17-semi-bloom-captures.json), 25 September: the bare VSSM hip reticle widens 68 → 121 px over 10 shots, so the semi condition is not active in its default mode; the site keeps 0.398° hip bloom. The bare M433 in manually selected semi shows no bloom, so the condition acts after a mode switch.",
+      "reopenWhen": "A selectable single-fire mode (L14) on the other bound weapons needs the post-switch no-bloom condition, or a game update changes GS_VSSM or CMU_SemiAuto.",
       "refs": [
         "capture-plan"
       ]
@@ -1307,14 +1308,15 @@
     "L99": {
       "id": "L99",
       "title": "Soldier hit capsules vs target zones",
-      "status": "needs-capture",
-      "statusNote": "Source candidate; needs capture (Claude, 27 Sep)",
-      "date": "2026-09-27",
+      "status": "site-fixed",
+      "statusNote": "Head zone applied 10 Oct (site 99ed8f6, c54b33f); chest prediction not supported by L4010; no capture needed",
+      "date": "2026-10-25",
       "receipts": [
-        "frosty-2026-09-27-L99-soldier-hit-capsules.json"
+        "frosty-2026-09-27-L99-soldier-hit-capsules.json",
+        "frosty-2026-10-25-decision-L99-closed-by-L4010.json"
       ],
-      "summary": "[Receipt](../../reference-data/provenance/frosty-2026-09-27-L99-soldier-hit-capsules.json): 11 raw-verified capsules; chest 1.0 is material 115 (Neck) on all 328 selections, and the abdomen material is the Spine capsule. On the bind pose the Spine capsule covers the centre line from 108 to 136 cm, where the site draws chest, and the head capsule is about 40% larger than the artwork head.",
-      "reopenWhen": "Would change target-view zone counts and first-lethal hits (M433 chest aim 4 → 5 hits). Needs the Awaiting-operator capture; reopen geometry for a typed offset frame or an in-game pose.",
+      "summary": "[Receipt](../../reference-data/provenance/frosty-2026-09-27-L99-soldier-hit-capsules.json): 11 raw-verified capsules; chest 1.0 is material 115 (Neck), the abdomen material is the Spine capsule, and the head capsule is about 40% larger than the artwork head. [L4010](../../reference-data/provenance/frosty-2026-10-10-L4010-l99-operator-video-chest-zone.json) (operator video, 10 Oct): mid-chest hits do full damage, so the rest-pose prediction of limb damage at mid-chest is not supported and the site's torso zones stay. The head zone is now the stored head capsule (radius 14 cm, length 6 cm) from 147.25 to 181.25 cm, placed by the operator (site commits 99ed8f6 and c54b33f, on origin/main; L4011).",
+      "reopenWhen": "A measured test (known heights, upright target or back view) is wanted for the head size or the torso boundary height, or a typed offset frame for the animated pose is found.",
       "refs": [
         "capture-plan"
       ]
@@ -7389,14 +7391,15 @@
     "L4008": {
       "id": "L4008",
       "title": "The stat screen shows 27 m and 64 m spot-on-fire ranges for the M45A1 and vz. 61 (0 and 9 m suppressed); the site shows 54 and 150 (0 and 21)",
-      "status": "proposal",
-      "statusNote": "Proposal validated by the stat screen; awaiting operator approval.",
-      "date": "2026-10-10",
+      "status": "site-fixed",
+      "statusNote": "Approved by the operator and applied 10 Oct in site commit b6da447 (on origin/main).",
+      "date": "2026-10-25",
       "receipts": [
-        "frosty-2026-10-10-L4008-stat-screen-confirms-m45a1-vz61-spot-base.json"
+        "frosty-2026-10-10-L4008-stat-screen-confirms-m45a1-vz61-spot-base.json",
+        "frosty-2026-10-25-decision-L4008-site-fixed.json"
       ],
-      "summary": "The operator's stat-screen screenshots show spot-on-fire ranges of 27 m and 64 m for the M45A1 and vz. 61 on every non-muzzle panel, and 0 and 9 m with a suppressor, against 54, 150 and 0, 21 on the P18. Stored values and EA's 1.3.3.0 note agree. The site uses 54 and 150 for all weapons. Proposed: per-weapon base 27 / 64.285713 for m45a1 and vz61. 6 raw-offset checks matched.",
-      "reopenWhen": "The operator approves or rejects the change, or a game update changes the two weapon files.",
+      "summary": "The operator's stat-screen screenshots show spot-on-fire ranges of 27 m and 64 m for the M45A1 and vz. 61 on every non-muzzle panel, and 0 and 9 m with a suppressor, against 54, 150 and 0, 21 on the P18; the stored WB values agree. Applied 10 October 2026: sim/applyAttachments.js uses base 27 / 64.285713 for m45a1 and vz61 and 54 / 150 for every other weapon (site commit b6da447).",
+      "reopenWhen": "A game update changes the spotting values in the M45A1 or vz. 61 WB files, or another weapon's stored base departs from 54 / 150.",
       "refs": []
     },
     "L4009": {
@@ -7966,9 +7969,7 @@
       ],
       "summary": "Four UI metadata assets and all 16 FieldUpgradePath assets are byte-identical to 1.4.3.5; of 61 byte-changed ability assets 59 differ only in compiled type indices, body hashes and a new affector header field, Ability_Flak imports the new Affector_FlakJacket (0.67 explosive, same as Affector_Flak) and the BR weapon-grant table was reordered; the English table changed Quick Plating to 25% faster (Pointman and FasterArmorReplate bodies still store 1.5 with stat id 34 -> 35), added 33% to Flak (matches 0.67), moved the AIM-SPOT trait text onto the Recon class record and dropped the Passive Spotting perk strings.",
       "reopenWhen": "A stored join from UI perk records to Ability assets, a consumer that reads the Quick Plating speed (stat id 35), or a later update that changes a FieldUpgradePath_* asset or a multiplayer affector payload.",
-      "refs": [
-        "capture-plan"
-      ]
+      "refs": []
     }
   }
 }

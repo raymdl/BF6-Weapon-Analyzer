@@ -160,10 +160,10 @@ def reviewed_identities(audit_file="frosty-attachment-full-pass-2026-09-06.json"
     replace([((r["weapon"], r["slot"], r["attachment"]), path)
              for r in handling["rows"] for path in r["sourceAttachments"]],
             "frosty-attachment-handling-generated.json")
-    identities = review("frosty-attachment-identity-followup-2026-09-13.json")
+    identities = review("frosty-attachment-identity-followup-2026-10-25.json")
     replace([((r["weapon"], r["slot"], r["attachment"]), r["attachmentXml"])
              for r in identities["rows"]],
-            "frosty-attachment-identity-followup-2026-09-13.json")
+            "frosty-attachment-identity-followup-2026-10-25.json")
     return sources, reviews
 
 
@@ -621,7 +621,7 @@ def main():
         optics.update({"graphSourceHashes": graph_hashes, "aamHashes": indexes[-1],
                        "descriptorSha256": hashlib.sha256(descriptor_path.read_bytes()).hexdigest()})
         print(json.dumps(optics["coverage"]))
-    followup = read_json(local_file("reference-data/provenance/frosty-attachment-identity-followup-2026-09-13.json"))
+    followup = read_json(local_file("reference-data/provenance/frosty-attachment-identity-followup-2026-10-25.json"))
     ui_reviews = followup.get("uiLinkReviews", [])
     for review in ui_reviews:
         if hashlib.sha256(local_file(review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
