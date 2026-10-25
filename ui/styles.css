@@ -116,6 +116,16 @@ body.is-popout .rc-note{flex-shrink:0}
 .loadout-close{display:none}
 .loadout-backdrop{display:none}
 .app{display:flex;flex:1;overflow:hidden}
+/* Wide viewports: the page was laid out for a ~1600px window and has no
+   rules above that, so a maximised 1440p/4K browser stretched every panel
+   while text and chart heights stayed fixed. Cap the whole page (header,
+   sidebar, main, footer) and centre it; body's background propagates to the
+   canvas, so the margins stay the same colour. The pop-out sizes itself to
+   its own window and is excluded. */
+body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto}
+@media (min-width:1702px){
+  body:not(.is-popout) .app{border-left:1px solid var(--border);border-right:1px solid var(--border)}
+}
 /* Sidebar */
 .loadout-modal-head{display:none}
 .sidebar{width:228px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border);display:flex;flex-direction:column;overflow:hidden}
