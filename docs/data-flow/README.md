@@ -12,8 +12,12 @@ New to the project? Read [How much to trust each result](#how-much-to-trust-each
 [Known differences from the game](#known-differences-from-the-game) and the
 [Glossary](#glossary) first.
 
-**Checked against:** [`b3e67bf`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/b3e67bf)
-on 22 September 2026. Each page states the commit it was last checked against.
+**Checked against:** [`af612b3`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/af612b3)
+on 25 October 2026. Each page states the commit it was last checked against.
+The live data is Frosty build **2.1.1.0** (Season 5, reviewed 13 October 2026),
+applied over a 1.4.2.5 baseline with the reviewed 1.4.3.0 changes; the site header
+shows v2.1.1.0. [Sources](SOURCES.md#source-authority-is-field-specific) gives the
+full chain.
 
 ## How much to trust each result
 
@@ -38,7 +42,7 @@ has one of these evidence levels:
 | Reload time, bullet velocity | Model on source values | Some magazine and ammo routes are not recorded in game (A03). |
 | Bullets to kill, time to kill | Model on source values | Ideal case: every shot hits, no armor, no reload (A04). |
 | Bullet drop and flight time | Model on source values | Not recording-checked (A06). |
-| Weapon Attributes (Hipfire, Precision, Control, Mobility) | Model, panel-checked | Matches all captured panels; some formulas are inferred (A17). |
+| Weapon Attributes (Hipfire, Precision, Control, Mobility) | Model, panel-checked | Matches the captured panels except two known Precision cases (bugs 19 and 22); some formulas are inferred (A17). |
 | Recoil pattern | Model, partly recording-checked | The timing and recovery shape of recoil are inferred (A07); console and control settings (A08). |
 | Spread growth, spray and scatter | Model, partly recording-checked | Checked for M39 hipfire and AK4D Heavy barrel only (A09). |
 | Target hits and hit zones | Estimate | Uses a drawn soldier, not the game's hitbox (A10). |
@@ -55,9 +59,11 @@ Two kinds of difference exist:
   says (for example, PP-19 20 Rnd fast gives no reload bonus). The site follows
   what the game does, not the text. The [attachment bug list](../ATTACHMENT_BUGS.md#status-overview)
   gives each case and the value the site uses.
-- **Site differences.** Two cases are known where the site does not match the
-  game: PP-19 Flash Comp recoil smoothing and L115 Standard Suppressor hipfire
-  (bugs 6 and 12). Burst recoil during firing is an open question (bug 14). The
+- **Site differences.** Two known cases show a value the game does not: the
+  Interdictor's Precision score (100; the game shows 1, bug 22) and the RSPR's
+  Precision with a vertical or stubby grip (bug 19). The PP-19 Flash Comp and L115
+  Standard Suppressor cases (bugs 6 and 12) have matched the game since
+  23 September 2026. Burst recoil during firing is an open question (bug 14). The
   [model limitations](../MODEL_LIMITATIONS.md) list other behavior that the
   site does not simulate.
 
@@ -65,7 +71,7 @@ Two kinds of difference exist:
 
 ```mermaid
 flowchart TB
-    S["SRC · Frosty builds 1.4.2.5 + 1.4.3.0,<br/>Sym snapshot, EA notes, game captures"]:::src
+    S["SRC · Frosty builds 1.4.2.5 → 1.4.3.0 → 2.1.1.0,<br/>Sym snapshot, game captures"]:::src
     E["EVID · identities, hashes, source joins,<br/>panel review and unresolved findings"]:::ev
     C["CUR · reviewed base records,<br/>catalogs, mappings and model choices"]:::cur
     G["GEN · field-scoped generators<br/>run by the maintainer"]:::gen
@@ -139,16 +145,16 @@ evidence or assumptions.
 | Damage/BTK/TTK charts, table and headshot scenarios | [Range outputs](DAMAGE_BALLISTICS.md#range-outputs) |
 | ADS, sprint, draw/holster, movement, hip spread and recoil ladders | [Ladders and timing](LOADOUTS.md#ladders-and-timing) |
 | Recoil path, spray, spread circles, envelope, ten-run scatter and contextual bars | [Recoil/spread outputs](RECOIL_SPREAD.md#outputs-and-sampling) |
-| Target distance, zeroing, aim, magnification, hit regions and impact statistics | [Target view](TARGET.md) |
-| Compare mode, collapsed panels, data errors, responsive rendering | [Runtime startup](UI_PUBLISHING.md#runtime-startup) |
-| Share link, legacy links, local preferences, popout and PNG | [State and exports](UI_PUBLISHING.md#state-and-exports) |
+| Target distance, zeroing, aim, magnification, hit regions, impact statistics and the Firing Range | [Target view](TARGET.md) |
+| Compare mode, sidebar, chart read-out, kill table, collapsed panels, data errors, responsive rendering | [Runtime startup](UI_PUBLISHING.md#runtime-startup) |
+| Share link, legacy links, saved loadouts and other local preferences, popout and PNG | [State and exports](UI_PUBLISHING.md#state-and-exports) |
 | Header/version links, root site, frozen versions and research visibility | [Publication](UI_PUBLISHING.md#publication-and-validation) |
 | Reference-only weapon roles and legacy fields | [Non-executed material](REGISTER.md#retained-and-non-executed-material) |
 
 ## Dataset size
 
-As of 22 September 2026 the data contains **63 weapons, 328 weapon/ammo
-selections and 64 projectile records**. Several selections share one projectile.
+As of 25 October 2026 the data contains **67 weapons, 353 weapon/ammo
+selections and 69 projectile records**. Several selections share one projectile.
 The site loads **nine** JSON files at startup. [`ship-surface.json`](../../ship-surface.json)
 (`runtimeData`) is the authoritative list; `validate-ship-surface.mjs` checks it.
 Other counts in these pages are also dated illustrations; the linked data or

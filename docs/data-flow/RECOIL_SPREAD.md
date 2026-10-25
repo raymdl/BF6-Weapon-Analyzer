@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Recoil/spread formulas](../RECOIL_SPREAD_MODEL.md) · [Assumptions](REGISTER.md#assumptions-and-interpretation)
 
-Checked against `b3e67bf` on 22 September 2026.
+Checked against `af612b3` on 25 October 2026.
 
 ## Per-aim recoil path
 
@@ -40,11 +40,12 @@ resolver supplies field-scoped modifications. The `recoil_decay.json` maps are
 still fetched at startup but are retained legacy data, not current recovery
 fallbacks.
 
-As of 22 September 2026 all 126 base aim-state durations (63 weapons × ADS/hip) are 25 ms. Ordinary
-Smooth selections use 50 ms and a 1.2 recovery factor; 17 mapped Bolt-type pairs
+As of 25 October 2026 all 134 base aim-state durations (67 weapons × ADS/hip) are 25 ms. Ordinary
+Smooth selections use 50 ms and a 1.2 recovery factor; 19 mapped Bolt-type pairs
 use 66.667 ms and 1.728, plus their recovery-time exponent adjustment. Ergonomic
-duration addition is applied after the muzzle override. The PP-19 Flash Comp
-selector gap remains an explicit evidence limit. Source durations and factors
+duration addition is applied after the muzzle override. The PP-19 Flash Comp has
+a `weaponOverrides` entry that removes the smoothing, because `GS_PP19` has no
+binding for it ([bug 6](../ATTACHMENT_BUGS.md#6-pp-19-flash-comp)). Source durations and factors
 are documented in the [duration audit](../../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json).
 
 `genRecoilPts` seeds `mulberry32` from weapon hash and seed, samples direction
@@ -53,8 +54,8 @@ control percentage. The random component remains. Delivery and recovery overlap;
 unfinished impulses can continue across a subsequent shot, and recovery age
 resets per shot. Integration uses at most 1 ms steps around impulse delivery (A07).
 
-The console option applies the source `0.8836` amount factor through a shared
-platform model (A08). Platform and control affect only the contextual recoil
+The console option applies the source `0.95` amount factor (`CONSOLE_RECOIL_MULT`
+in `ui/app.js`; `0.8836` before 2.1.1.0) through a shared platform model (A08). Platform and control affect only the contextual recoil
 displays, not the base values shown in the overview.
 
 ## Spread growth and inter-shot recovery
@@ -153,7 +154,7 @@ only (A09). Interdictor's moving-ADS source exponent is `0.67`.
 | Connected envelope | Geometric connection of spread bounds; it is not a fitted probability contour. |
 | Scatter | Ten fixed seeded runs; independent of the main spray reroll. It provides repeated examples, not a computed confidence interval. |
 | Contextual statistics and bars | Aim/stance-specific amount, variation, bounds, increment and peak pre-shot spread across one magazine (50 increases when magazine size is unknown). Bar normalization uses UI scale constants, not extra source parameters. |
-| Target impacts | The main reference spray projected into metres/centimetres. Target statistics do not pool the scatter overlay or count the envelope as shots. |
+| Target impacts | The main reference spray projected into metres/centimetres; a pellet load adds its sampled pellets around each shell. Target statistics do not pool the scatter overlay or count the envelope as shots. |
 
 `ui/app.js` caches pattern/sequence results using their relevant inputs. Layer
 visibility, pan/zoom and canvas scaling affect drawing, not the underlying

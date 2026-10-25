@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Recoil and spread](RECOIL_SPREAD.md) · [Damage and ballistics](DAMAGE_BALLISTICS.md)
 
-Checked against `b3e67bf` on 22 September 2026.
+Checked against `af612b3` on 25 October 2026.
 
 ## Angular pattern to physical impact
 
@@ -34,8 +34,9 @@ flowchart TB
 
 The physical position is derived before viewport scaling. Distance changes the
 physical spread on the target; aim changes its offset; the selected projectile
-model contributes drop/zeroing. Magnification, FOV, display resolution and plot
-pan/zoom control only the view of those coordinates.
+model contributes drop/zeroing. Magnification (by default the selected sight's;
+iron sights 1.50×), FOV, display resolution and plot pan/zoom control only the
+view of those coordinates.
 
 `ui/app.js` assembles the projectile from the generated weapon/ammo map and the
 build's precise velocity, then calls [`sim/ballistics.js`](../../sim/ballistics.js).
@@ -91,12 +92,24 @@ head/limb damage multipliers are applied **after** the geometric zone decision.
 | Per-hit / total damage | Selected damage at range multiplied by the classified zone factor. | Totals can include later hits after a first lethal result. |
 | First lethal shot / hit counts | Cumulative damage against 100 health. | No armor, healing, target movement or suppression response. |
 | Critical-assist styling | Maintained 75-damage presentation threshold. | UI policy; it does not implement or validate game reward logic. |
-| Multi-pellet ammo | Detailed target damage statistics are suppressed when `pellets > 1`. | Individual pellet paths are not generated. A single-projectile slug is not excluded by that condition. |
+| Pellet ammo | Scored per pellet: each shell's pellets are sampled inside the weapon's dispersion cone and each pellet is classified; the lethal figure is pellet hits over shells fired. If a spray has no sampled pellets, hit rate, damage and lethality show as unavailable. | Uniform pellet scatter inside the cone is a model choice (A09). A single-projectile slug is scored per shot. |
 
-Presentation is in [`ui/target-stats.js`](../../ui/target-stats.js) and the target
-orchestration in [`ui/app.js`](../../ui/app.js). The main reference spray is the
+Presentation is in [`ui/target-stats.js`](../../ui/target-stats.js) (the Target
+Impact Stats tab: one card per weapon, stacked) and the target orchestration in
+[`ui/app.js`](../../ui/app.js). The main reference spray is the
 statistics input even if the user also draws the ten-run scatter layer. Overlay
 visibility should not be used to infer which points were counted.
+
+## Firing Range
+
+The Firing Range view uses the same target, zones and statistics, but the player
+fires live: [`ui/firing-range.js`](../../ui/firing-range.js) captures the pointer,
+the left button is the trigger, and mouse counts become view rotation through the
+mouse-sensitivity settings ([`sim/sensitivity.js`](../../sim/sensitivity.js)).
+[`sim/live-fire.js`](../../sim/live-fire.js) runs the recoil and spread model in
+wall-clock time; mouse movement against active recoil consumes it, in place of the
+control-percentage slider. With the trigger held and no mouse input it reproduces
+the batch functions shot for shot (`scripts/live-fire.test.mjs`).
 
 ## What a target change affects
 

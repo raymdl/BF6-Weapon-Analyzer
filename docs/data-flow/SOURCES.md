@@ -2,16 +2,18 @@
 
 [Atlas](README.md) · [Ownership register](REGISTER.md) · [Source policy](../DATA_SOURCES.md) · [Game update guide](../GAME_UPDATE_GUIDE.md)
 
-Checked against `b3e67bf` on 22 September 2026. Frosty research tooling moved to the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo on 29 September 2026. Commands for `scripts/frosty-*.py` files that are not in this repo run from a checkout of that repo (beside this one; see its README).
+Checked against `af612b3` on 25 October 2026. Frosty research tooling moved to the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo on 29 September 2026. Commands for `scripts/frosty-*.py` files that are not in this repo run from a checkout of that repo (beside this one; see its README).
 
 ## Source authority is field-specific
 
 ```mermaid
 flowchart LR
     SY["SRC · Sym JSON snapshot<br/>1.4.2.0 · 18 AUG 2026"]:::src
-    EA["SRC · EA 1.3.3.0 notes<br/>declared mechanics and changes"]:::src
-    FX["SRC · Frosty build 1.4.2.5<br/>sealed baseline export"]:::src
-    F3["SRC · Frosty build 1.4.3.0<br/>open build, reviewed changes"]:::src
+    EA["SRC · EA 1.3.3.0 notes<br/>historical: declared mechanics at adoption"]:::src
+    FX["SRC · Frosty build 1.4.2.5<br/>sealed baseline export · 12 AUG 2026"]:::src
+    F3["SRC · Frosty build 1.4.3.0<br/>sealed, reviewed changes · 16 SEP 2026"]:::src
+    F35["SRC · Frosty build 1.4.3.5<br/>sealed, comparison base · 30 SEP 2026"]:::src
+    F21["SRC · Frosty build 2.1.1.0<br/>open build, read from raw · 13 OCT 2026"]:::src
     GP["SRC · game panels and recordings<br/>version, setup and rounding matter"]:::src
     WB["CUR · accepted weapon bases,<br/>catalogs, availability and defaults"]:::cur
     FL["CUR + GEN · reviewed Frosty fields<br/>curves, tables, modifiers and joins"]:::gen
@@ -20,6 +22,8 @@ flowchart LR
     SY --> WB
     FX --> FL
     F3 -->|changed fields only| FL
+    F35 -.->|before/after comparison| F21
+    F21 -->|changed fields + Season 5 weapons| FL
     GP --> WB
     GP --> MP
     EA -.-> MP
@@ -36,13 +40,16 @@ flowchart LR
 | Input | Role | Limit |
 |---|---|---|
 | [Sym baseline record](../../data/provenance/live-baseline.json) and [retained snapshot evidence](../../reference-data/provenance/sym-1.4.2.0-interdictor.json) | Historical foundation for base weapon fields. Data version **1.4.2.0**, dated **18 August 2026**. | The retained file holds an extract and a full-payload hash, not the complete payload. |
-| [EA notes](../../data/provenance/live-baseline.json) | Declared behavior and explicit changes for 1.3.3.0. | Notes do not give internal operands or unmentioned behavior. |
-| Frosty build **1.4.2.5** ([local export](../DATA_SOURCES.md#local-frosty-export-location)) | Source for accepted projectile damage, per-aim groups, arrays, generated handling, projectile/hit-zone data and many modifiers. | Build label is operator-supplied. Build is now sealed (read-only). |
-| Frosty build **1.4.3.0** ([source comparison](../../reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json)) | Reviewed changes only: Interdictor damage curve, hit-zone material and iron-sight cost; VSSM velocity and recoil; Weapon Attributes Precision tables. Includes the 16 September hotfix client. | Fields that did not change keep their 1.4.2.5 provenance. The site header shows v1.4.3.0. |
+| [EA notes](../../data/provenance/live-baseline.json) (`ea-update-notes`, `status: historical`) | Declared behavior and explicit changes for 1.3.3.0, the declared-mechanics source when the baseline was adopted. | No later notes page has been adopted as a source. Notes do not give internal operands or unmentioned behavior. |
+| Frosty build **1.4.2.5** ([local export](../DATA_SOURCES.md#local-frosty-export-location)) | Baseline adopted 12 August 2026. Source for accepted projectile damage, per-aim groups, arrays, generated handling, projectile/hit-zone data and many modifiers. | Build label is operator-supplied. Build is sealed (read-only). |
+| Frosty build **1.4.3.0** ([source comparison](../../reference-data/provenance/frosty-1.4.3.0-source-comparison-2026-09-15.json)) | Reviewed 16 September 2026. Reviewed changes only: Interdictor damage curve, hit-zone material and iron-sight cost; VSSM velocity and recoil; Weapon Attributes Precision tables. Includes the 16 September hotfix client (1.4.3.1). | Fields that did not change keep their 1.4.2.5 provenance. Sealed 30 September 2026. |
+| Frosty build **1.4.3.5** ([update report](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/1.4.3.5-report.md)) | Checked 30 September 2026; no site value changed. Its last client is the "before" side of the 2.1.1.0 comparison. | Sealed 13 October 2026. No `live-baseline.json` record of its own. |
+| Frosty build **2.1.1.0** ([checklist](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md), record `frosty-update-2.1.1.0`) | Season 5, reviewed 13 October 2026 and read from raw files. The 63 earlier weapons were compared raw against 1.4.3.5 (SVDM and M39 EMR recoil, console recoil factor 0.95, VSSM 10 Rnd text); the Mk 24, ELR-40, Z84M and RSPR were added from it. | Open build. Unchanged fields keep their earlier provenance. The site header shows v2.1.1.0. |
 | [Attachment capture audit](../../reference-data/attachment-audit/README.md), [recording history](../archive/BF6_RECOIL_SPREAD_RECORDING_HISTORY_2026-09-11.md) | Menu identity, displayed defaults, point costs, descriptions, Weapon Attributes panels and empirical model checks. | July/August captures need the correction ledgers before comparison. Raw captures can be local-only. |
 
 **Damage source:** `weapons[].damageSource` names Frosty projectile curves for
-every weapon. The M45A1 keeps the reviewed 75 m discontinuity. See the
+every weapon: 62 from 1.4.2.5, the Interdictor from 1.4.3.0, and the four Season 5
+weapons from 2.1.1.0. The M45A1 keeps the reviewed 75 m discontinuity. See the
 [damage review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
 
 ## Build snapshots
@@ -53,10 +60,12 @@ Each Frosty data build is kept as `BF6 Datamining\builds\<build>\` (`xml\`,
 changes to existing files, seals old builds and guards against exporting from the
 wrong installed client.
 
-| Build | State (22 September 2026) | Clients |
+| Build | State (25 October 2026) | Clients |
 |---|---|---|
 | 1.4.2.5 | `sealed` | Baseline export. |
-| 1.4.3.0 | `open` | Release and 16 September hotfix (identical type layouts). |
+| 1.4.3.0 | `sealed` | Release and 16 September hotfix, 1.4.3.1 (identical type layouts). |
+| 1.4.3.5 | `sealed` | Release (30 September) and client 1.0.443.60769 (identical type layouts). |
+| 2.1.1.0 | `open` | Season 5 release (13 October) and hotfixes of 15 and 22 October (identical type layouts). |
 
 A hotfix joins the open build only when the type layouts are identical and no
 gameplay asset changed. Otherwise the open build is sealed and a new build starts.
@@ -97,7 +106,8 @@ flowchart TB
 
 The steps follow stages 0–9 of the [Game update guide](../GAME_UPDATE_GUIDE.md).
 The 1.4.3.0 run is the worked example
-([update plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md)).
+([update plan](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/archive/FROSTY_1.4.3.0_UPDATE_PLAN.md));
+the 2.1.1.0 run has its own [checklist](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md).
 
 ## From local exports to an accepted change
 
@@ -173,15 +183,20 @@ flowchart LR
 
 Commands and flags for every generator are in
 [Maintenance](../../MAINTENANCE.md#regenerate-attachment-modifiers). Counts below
-come from each generator's committed report (reports dated 13–14 September 2026).
+come from each generator's committed report. The barrel ADS, handling and sniper
+brake reports date from 13–14 September 2026 and cover the 63 weapons of that
+time; the four Season 5 weapons' values were read from raw 2.1.1.0 files in the
+update commit (`016013a`). The compatibility report was regenerated from 2.1.1.0
+on 13 October 2026 and covers all 67 weapons.
 
 | Generator | Inputs and joins | Owned output |
 |---|---|---|
-| [frosty-barrel-ads.py](../../scripts/frosty-barrel-ads.py) | Current XML; reviewed barrel route/weapon identities. | `BARRELS[].adsTimeTierModByWeapon`; `frosty-barrel-ads-generated.json`. 233 selections. The WB route is not added to a separate GS route. |
+| [frosty-barrel-ads.py](../../scripts/frosty-barrel-ads.py) | Current XML; reviewed barrel route/weapon identities. | `BARRELS[].adsTimeTierModByWeapon`; `frosty-barrel-ads-generated.json`. 234 rows on 63 weapons. The WB route is not added to a separate GS route. |
 | [frosty-attachment-handling.py](../../scripts/frosty-attachment-handling.py) | Current XML plus reviewed identity and handling follow-up mappings. | Grip/laser per-weapon `frostyModifiers`, magazine fields and scoped base coordinates; handling report. 1,487 selections. |
 | [frosty-sniper-brakes.py](../../scripts/frosty-sniper-brakes.py) | Current XML and weapon/muzzle identity joins. | Muzzle `weaponOverrides` for source amount steps; `frosty-sniper-brakes-generated.json`. 16 pairs. |
 | [frosty-assumption-review.py](../../scripts/frosty-assumption-review.py) | Current XML, identity audits, SDK type evidence and nested fire-mode selectors. | Linear Comp/burst source fields and report. Changes live attachments only in apply mode. |
-| [frosty-attachment-compatibility.py](../../scripts/frosty-attachment-compatibility.py) | Root-listed ability branches, equipment dependency IDs, reviewed site choices. | `WEAPON_ATTS.slots`, `dependencies`, compatibility evidence. 1,391 mount choices; 22 rules on four weapons; 263 secondary-sight entries outside the mapped rules. |
+| [frosty-attachment-compatibility.py](../../scripts/frosty-attachment-compatibility.py) | Root-listed ability branches, equipment dependency IDs, reviewed site choices. | `WEAPON_ATTS.slots`, `dependencies`, compatibility evidence. 1,523 mount choices; 309 dependency entries, which become 25 grip/ergo rules on five weapons and 127 accessory (Optic Accessory) rules on 60 weapons. |
+| [frosty-individual-optics.py](../../scripts/frosty-individual-optics.py) | Optic category mapping, the compatibility report and the research repo's optic names; no Frosty export. | The individual optics in `SIGHTS` (legacy categories kept, hidden, at their positions), each weapon's `WEAPON_ATTS[id].sight` list and the optic prerequisites of accessory rules; [evidence](../../reference-data/provenance/frosty-individual-optics-2026-10-21.json). |
 
 Identity audits supply the joins; current XML supplies the numbers. Whole
 catalogs, offered availability and display order are not regenerated.
@@ -237,7 +252,8 @@ well as a rerun.
 ## Weapon Attributes inputs
 
 `data/weapon_attributes.json` holds the 1.4.3.0 Precision lookup tables (one per
-weapon), the shotgun dispersion angles and the traced Mobility inputs. It is
+weapon, 67; the four Season 5 tables were added with 2.1.1.0 and `sourceVersion`
+stays 1.4.3.0), the shotgun dispersion angles and the traced Mobility inputs. It is
 assembled from three reference files named in its `provenance` field:
 [Precision tables](../../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json),
 [shotgun hipfire trace](../../reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json)
@@ -284,7 +300,9 @@ choice's string ID is missing from the English table, the panel also resolves th
 ID for every other choice whose descriptor links it, keyed by the real ID. As of
 24 October 2026 the tooltip file covers all 3,250 non-optic selections (3,179
 Frosty text, 26 approved panel transcriptions, 45 through a panel-resolved string
-ID; none deferred), plus Iron Sights on all 67 weapons. See the
+ID; none deferred), plus Iron Sights on all 67 weapons and 1,996 individual-optic
+entries that [`optic-tooltips.py`](../../scripts/optic-tooltips.py) fills from the
+optics report and the optic category mapping (5,313 entries in all). See the
 [current mapping audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping).
 
 Weapon names and descriptions are promoted separately;

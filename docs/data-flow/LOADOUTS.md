@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Attachment model](../ATTACHMENT_MODEL.md) · [Stat ladders](../STAT_LADDERS.md) · [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md)
 
-Checked against `b3e67bf` on 22 September 2026.
+Checked against `af612b3` on 25 October 2026.
 
 ## Selection and metadata
 
@@ -11,9 +11,12 @@ Checked against `b3e67bf` on 22 September 2026.
 labels. `weapon-role-tags.json` is not an input to those filters. Ordered catalogs
 and per-weapon maps in `attachments.json` and `ammo.json` supply available
 choices, defaults and points; tooltip text is a separate selection-keyed
-dictionary. Generic sight categories drive choices, labels, points and links; the
-resolver has no optical/camera model. The no-sight option is labelled
-"Iron Sights (1.5x)" in [`sim/attachments.js`](../../sim/attachments.js).
+dictionary. Sights are the individual Frosty optics, each with its in-game name,
+magnification and a legacy category whose cost and effects it shares; the hidden
+legacy categories keep their `SIGHTS` positions so old links restore (to the
+weapon's lowest-magnification optic of that category). Magnification sets the
+Soldier Target's default zoom; the resolver has no optical/camera model. The
+no-sight option is labelled "Iron Sights" in [`sim/attachments.js`](../../sim/attachments.js).
 
 ## Valid loadout
 
@@ -211,7 +214,7 @@ Presentation and metric construction live in [`ui/app.js`](../../ui/app.js). The
 | Spread Inc/Shot | Resolved spread dynamics. | Per-shot input, not a recovered radius. |
 | ADS Spread: standing/moving | Source bounds with applicable minimum-table effects. | |
 | Hipfire Spread: standing/moving | Selected hip-minimum table rows and source maxima. | |
-| 3D / 2D Spotting | Source factors multiplied against maintained 54 m / 150 m bases. | Bases are assumptions (A11). |
+| 3D / 2D Spotting | Source factors multiplied against maintained 54 m / 150 m bases (75 m / 150 m for M433, SGX, L110 and P18; 27 m / 64.29 m for M45A1 and vz. 61). | Bases are assumptions (A11). |
 
 ## Weapon Attributes
 
@@ -261,10 +264,12 @@ Scores are menu values, not percentages of accuracy or speed.
 | Control | `96 / (1.1 × R × sin(v)/v + 0.75)^2.25 + 4`. | Unrounded ADS recoil amount `R` and variation `V`. |
 | Mobility | `D + 4A + S + 2M + 4Z + 4C` over source-order indices. | Deploy, ADS animation, sprint, ADS move, moving-ADS indices, sprint-fire flag. |
 
-Selection-specific input rules (burst-selector recoil not previewed, L115
-suppressor hipfire, PP-19 Flash Comp smoothing, L115 animation index, KS Slim
-Angled moving ADS) apply only inside this score model; the physical stat cards
-keep the source modifiers. A missing or ambiguous Precision row, or an unmatched
+Selection-specific input rules (burst-selector recoil not previewed, PP-19 Flash
+Comp without smoothing, L115 animation index and QD Grip Pod moving ADS, KS Slim
+Angled moving ADS, Handstop sprint-fire flag) apply only inside this score model;
+the physical stat cards keep the source modifiers. The PP-19 Flash Comp and L115
+Standard Suppressor corrections are also in the attachment data since
+23 September 2026 (bugs 6 and 12). A missing or ambiguous Precision row, or an unmatched
 Mobility index, returns Unavailable; nothing is interpolated. Evidence, open
 questions and the full rules are in the [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md).
 
@@ -293,7 +298,9 @@ Effect chips cover changed handling, velocity/drag, magazine/reload, ADS amount 
 variation, selected recoil recovery factor, spread increments, selected recovery
 offsets, spread minima, spotting, headshot multiplier and collateral. Qualitative
 tags additionally expose sway change, visual recoil, laser visibility and enemy
-regeneration delay.
+regeneration delay. When two or more attachments contribute to one chip, a source
+line under the value gives each one's share, so a ±0 chip reads as changes that
+cancel; hover or tap lists every contribution.
 
 A recovery chip summarizes a selected factor/offset, not the full nonlinear
 recovery equation. Sway is a relative muzzle/magazine amount factor; regeneration

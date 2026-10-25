@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Source generation](SOURCES.md#projectile-hit-zone-and-collateral-chain) · [Formula guide](../DAMAGE_BALLISTICS.md)
 
-Checked against `b3e67bf` on 22 September 2026.
+Checked against `af612b3` on 25 October 2026.
 
 ## Source curves and selected projectile
 
@@ -32,8 +32,9 @@ flowchart LR
 ```
 
 Base curves are reviewed Frosty curves, promoted by hand; no generator writes
-them. The Interdictor curve is from the 1.4.3.0 build; the others are from
-1.4.2.5. Selected ammo can replace the curve and pellet count; eight retained
+them. Of the 67 `damageSource` entries, 62 name 1.4.2.5 curves, the Interdictor
+names its 1.4.3.0 curve, and the Mk 24, ELR-40, Z84M and RSPR name 2.1.1.0
+curves. Selected ammo can replace the curve and pellet count; eight retained
 override curves cover the four shotguns'
 00-buck/slug alternatives. See [weapons.json](../../data/weapons.json),
 [ammo.json](../../data/ammo.json), and the [curve review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
@@ -96,6 +97,12 @@ a separate approximate origin (A05/A10).
 
 `ui/app.js` samples these functions for the chart and table, formats outputs and
 uses the vendored Chart.js renderer. It does not fetch a precomputed TTK table.
+The kill table's rows are class-specific distance lists from `btkRanges()`:
+10 m steps to 80 m for most classes, coarser lists to 100 m (DMR) or 250 m
+(sniper), and 5 m steps to 30 m for shotguns (plus 50 and 75 m beside another
+class). The chart's one read-out box (Chart.js
+tooltips are off) shows each weapon's value at the hovered range, or at the
+Soldier Target distance on the target views.
 The ideal-combat scope of TTK is A04.
 
 ## Flight time, drop and zeroing

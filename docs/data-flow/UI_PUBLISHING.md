@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Architecture](../ARCHITECTURE.md) · [Tests](../TESTS.md)
 
-Checked against `b3e67bf` on 22 September 2026.
+Checked against `af612b3` on 25 October 2026.
 
 ## Runtime startup
 
@@ -14,7 +14,7 @@ flowchart TB
     C["RUN · indexes and shared contexts<br/>source records kept as inputs"]:::run
     S["RUN · defaults + URL restoration<br/>normalized selection state"]:::run
     B["RUN · cached selected builds"]:::run
-    V["OUT · overview, Weapon Attributes, effects,<br/>range, recoil/spread, lazy target view"]:::out
+    V["OUT · overview, Weapon Attributes, effects,<br/>range, recoil/spread, lazy target views"]:::out
     E["OUT · startup load error<br/>and reload action"]:::out
     N["RUN · required numeric checks<br/>browser reporter; dependent values unavailable"]:::run
     P --> A
@@ -31,7 +31,7 @@ flowchart TB
 ```
 
 [`ui/app.js`](../../ui/app.js) fetches these files, all beneath `data/`. The list
-is current on 22 September 2026; [`ship-surface.json`](../../ship-surface.json)
+is current on 25 October 2026; [`ship-surface.json`](../../ship-surface.json)
 `runtimeData` is authoritative.
 
 | Fetch | Runtime purpose |
@@ -59,6 +59,18 @@ input-sensitive caches. Hidden panels skip detailed rendering; pan/zoom redraws
 are scheduled with animation frames, and canvas backing dimensions account for
 device-pixel ratio.
 
+The page identifies the two weapons by colour only: gold for Weapon 1, blue for
+Weapon 2. What the main controls show:
+
+| Element | Behavior |
+|---|---|
+| Sidebar | A gold "Weapon 1" heading over the first loadout and a blue "Weapon 2" heading over the compare block. Swap and Clone are icon buttons beside "+ Compare Loadout", greyed out unless comparing (Swap also needs both weapons). Weapon 2's class buttons, selected weapon, points total, attachment menus, locks, saved-loadout controls and fire-mode badge are blue. |
+| Empty state | With no weapon chosen, an "Or try an example: M433 vs AK4D" button loads that comparison. |
+| Range chart | Chart.js tooltips are off. One read-out box gives the range and one row per weapon in its colour, labelled with the chart mode (DMG, BTK or TTK): CHEST/LIMBS/HEAD columns in DMG mode, CHEST/LIMBS in BTK, and CHEST/LIMBS plus ADS and FLIGHT columns in TTK when they apply. It follows the pointer; otherwise, on the Soldier Target and Firing Range views, it sits at the target distance, which a dashed line marks. |
+| Kill table | Titled "BTK / TTK". Each weapon's name sits centred over its DMG, BTK and TTK columns with a 1px rule in its colour. Rows are the class-specific distances from `btkRanges()`. On the target views the outlined row is the nearest row whose DMG and BTK match the values at the target distance exactly (none when no row matches). Hovering a chart range lights the matching row; hovering a row moves the chart's read-out box. |
+| Attachment Effects chips | When two or more attachments contribute to one chip, a source line under the value gives each one's share. |
+| Target Impact Stats | A tab beside "Recoil / Spread Stats": one card per weapon, stacked. |
+
 ## State and exports
 
 ```mermaid
@@ -68,7 +80,7 @@ flowchart TB
     URL["RUN · share-state codec<br/>partial URL fragment, debounced 200 ms"]:::run
     L["OUT · copied URL / browser history<br/>restore and normalize on another visit"]:::out
     POP["OUT · popout=1 window<br/>same partial state, independent afterward"]:::out
-    LS["OUT · localStorage<br/>display resolution and FOV preferences"]:::out
+    LS["OUT · localStorage<br/>display, sensitivity, saved loadouts, locks"]:::out
     V["RUN · rendered current view"]:::run
     CAP["RUN · capture.js<br/>clone layout + existing canvas pixels"]:::run
     PNG["OUT · 2x PNG<br/>clipboard or download fallback"]:::out
@@ -96,16 +108,19 @@ write a build into a server-side database.
 
 | State family | What persists |
 |---|---|
-| Loadout and comparison | Primary/secondary weapon IDs and attachment tokens, comparison enabled. |
+| Loadout and comparison | Weapon 1 / Weapon 2 IDs, attachment tokens and selected fire modes (`fm`, `fm2`), comparison enabled. |
 | Chart | Damage/BTK/TTK mode, selected headshot count, ADS/travel toggles. |
-| Recoil | Aim, standing/moving, platform, control percentage and shot count. |
-| Target | Target view, distance, zeroing and aim preset/custom coordinates. |
+| Recoil | Aim, standing/moving/mounted, platform, control percentage and shot count. |
+| Target | Soldier Target or Firing Range view, distance, zeroing and aim preset/custom coordinates. |
 | Layout | Collapsed panel keys. |
-| **Not encoded in the ordinary URL** | Seeds, visible layers, pan/zoom/magnification, custom spread-circle selections, target stats tab, display resolution and FOV. |
-| Local preferences | Display resolution and FOV use local storage; they do not travel with a shared link. |
+| **Not encoded in the ordinary URL** | Seeds, visible layers, pan/zoom/magnification, custom spread-circle selections, target stats tab, display resolution and FOV, mouse sensitivity, saved loadouts and attachment locks. |
+| Local preferences | Local storage keys: `bf6.targetResolutionWidth`, `bf6.targetResolutionHeight`, `bf6.targetFov` (display); `bf6.sensDpi`, `bf6.sensValue`, `bf6.sensZoomCoefficient` (Firing Range mouse sensitivity); `bf6.savedLoadouts` (named saved loadouts); `bf6.lockedAtts1`, `bf6.lockedAtts2` (per-weapon attachment locks); `bf6.lockHintSeen` (first-lock hint shown). Every read and write is optional; none travels with a shared link. |
 
-Compact attachment tokens use **zero-based decimal catalog positions**. Magazine
-tokens use `Object.keys(mags)` insertion order. Reordering catalog entries or
+Compact attachment tokens are a slot letter (`S`, `M`, `B`, `G`, `R`/`L`/`H` for
+the shared rail, `T`, `A`, `E`, `O` for the Optic Accessory, `K` for the
+magazine) followed by a **zero-based decimal catalog position**. Magazine
+tokens use `Object.keys(mags)` insertion order. A legacy sight category restores
+as the weapon's lowest-magnification optic of that category. Reordering catalog entries or
 magazine keys changes old link meaning even when IDs and numerical values stay
 unchanged. UI-only sorting can remain independent. Legacy dash-separated IDs still
 restore, and legacy shared slots migrate to typed rails. New target links include
@@ -114,13 +129,17 @@ distance; old target links without it restore 30 m while the new-view default is
 [share-state tests](../../scripts/share-state.test.mjs).
 
 PNG capture is a different export path. [`ui/capture.js`](../../ui/capture.js)
-clones the rendered main column/header, snapshots current canvas bitmaps, removes
-interactive controls, lays out an independent iframe at 1280 CSS pixels, and
-serializes through SVG `foreignObject` to a 2x PNG. Overview is temporarily expanded
-and restored in `finally`; other collapsed sections stay collapsed. Existing
-charts are captured rather than independently resimulated at capture size.
-Clipboard failure falls back to download; rendering failure has its own error
-state. A PNG preserves visible pixels, not the complete editable model state.
+clones the header (the site address replaces the archive links) and the main
+column at its live width, plus the loadout sidebar at its 228 px desktop width
+when the share menu asks for it. It snapshots current canvas bitmaps, writes back
+input and select values, removes interactive controls, measures the layout in an
+offscreen iframe, and serializes through SVG `foreignObject` to a PNG at the
+captured CSS width. The capture body drops the live page's 1700 px width cap, so a
+wide window is no longer clipped or offset. Overview is temporarily expanded and
+restored in `finally`; other collapsed sections stay collapsed. Existing charts are
+captured rather than independently resimulated at capture size. Clipboard failure
+falls back to download; rendering failure has its own error state. A PNG preserves
+visible pixels, not the complete editable model state.
 
 ## Publication and validation
 
@@ -128,14 +147,14 @@ state. A PNG preserves visible pixels, not the complete editable model state.
 flowchart TB
     C["CUR + GEN · reviewed working-tree changes<br/>source data, code, docs and evidence"]:::cur
     PR["OUT · Git commit / pull request"]:::out
-    CI["RUN · Validate Data workflow<br/>Node 20 on push and pull_request"]:::run
+    CI["RUN · Validate Data workflow<br/>Node 20 on push and pull_request,<br/>skipped for docs-only changes"]:::run
     VD["RUN · validate-data.mjs<br/>cross-file values and contracts"]:::run
     VS["RUN · validate-ship-surface.mjs<br/>manifest consistency"]:::run
     TE["RUN · test.mjs<br/>product behavior tests"]:::run
     M["OUT · accepted main commit"]:::out
     PG["OUT · separate Pages build/deployment<br/>not gated on validation"]:::out
     ROOT["OUT · current root site"]:::out
-    OLD["OUT · frozen published versions<br/>1.2.3.0 / 1.3.1.0 / 1.3.3.0"]:::out
+    OLD["OUT · frozen published versions<br/>1.2.3.0 / 1.3.1.0 / 1.3.3.0 / 1.4.3.1"]:::out
     REF["OUT · other published repository files<br/>not automatically browser inputs"]:::out
     C --> PR
     PR --> CI
@@ -153,11 +172,13 @@ flowchart TB
 ```
 
 The checked-in [Validate Data workflow](../../.github/workflows/validate-data.yml)
-runs the three commands shown. Pages build/deployment is a separate GitHub
+runs the three commands shown. It does not run when a change touches only `docs/`,
+Markdown files or `scripts/*.py`. Pages build/deployment is a separate GitHub
 workflow; the repository does not make it wait for validation (A15).
 
 [`ship-surface.json`](../../ship-surface.json) declares runtime paths, the exact
-runtime JSON dependencies and the three published historical roots. Its validator
+runtime JSON dependencies and the four published historical roots
+(`publishedArchives`: v1.2.3.0, v1.3.1.0, v1.3.3.0, v1.4.3.1). Its validator
 checks the declared surface. The manifest does not itself exclude reference files
 from deployment or make them private. The audited Pages artifact includes research
 and documentation files that the browser never fetches. Do not store secrets or
@@ -171,8 +192,8 @@ versions as fallback data.
 
 ## Presentation and research boundaries
 
-The header's displayed version and historical navigation are maintained in the
-page. They identify the represented product/source context, not independent
+The header's displayed version (Season 5, v2.1.1.0) and the Site Versions menu
+are maintained in the page. They identify the represented product/source context, not independent
 measurement of every field on that build. Static artwork, favicon and social
 preview assets are maintained presentation inputs.
 
