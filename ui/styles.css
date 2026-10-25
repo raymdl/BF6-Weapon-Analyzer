@@ -140,6 +140,7 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .class-filter{display:flex;flex-wrap:wrap;gap:3px}
 .cbtn{padding:2px 4px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
 .cbtn:hover,.cbtn.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
+#classFilter2 .cbtn:hover,#classFilter2 .cbtn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.1)}
 .wlist{display:flex;flex-direction:column}
 .wbtn{padding:2px 11px;text-align:left;background:none;border:none;border-bottom:1px solid rgba(40,48,48,.55);color:var(--text);font-size:0.82rem;transition:background .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent}
 .wbtn:hover{background:var(--bg3)}
@@ -153,7 +154,7 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 #adsToggleBtn,#velToggleBtn{color:#b39a52;border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.06)}
 #adsToggleBtn.on,#velToggleBtn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
 .cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
-.cmp-hdr{white-space:nowrap;padding:6px 11px 4px;font-size:0.63rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
+.cmp-hdr{white-space:nowrap;padding:6px 11px 4px;font-size:0.72rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
 .clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:3px;padding:1px 5px;font-size:0.6rem;letter-spacing:.02em;transition:all .15s}
 .clone-btn:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
 .clone-btn:disabled{opacity:.38;cursor:not-allowed;color:var(--muted);border-color:var(--border);background:var(--bg3)}
