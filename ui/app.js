@@ -1118,7 +1118,7 @@ function renderOverview() {
     }
     const current = selectedFireMode(slot.weapon, slot.atts);
     const group = document.createElement('span');
-    group.className = 'wbadge-modes';
+    group.className = `wbadge-modes${slotIdx === 1 ? ' w2' : ''}`;
     group.setAttribute('role', 'group');
     group.setAttribute('aria-label', 'Fire mode');
     for (const mode of modes) {
