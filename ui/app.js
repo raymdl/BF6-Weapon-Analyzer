@@ -1471,7 +1471,9 @@ const distanceMarker = {
       return ctx.measureText(text).width;
     };
     const rangeText = `${range} m`;
-    const firstW = measure(rangeText, valueFont);
+    // Each weapon row is labelled with the figure it shows, in the weapon's colour.
+    const rowLabel = (state.chart.mode ?? 'dmg').toUpperCase();
+    const firstW = Math.max(measure(rangeText, valueFont), measure(rowLabel, valueFont));
     const widths = columns.map(k => Math.max(
       measure(labelOf(k), headFont, '.5px'),
       ...rows.map(row => measure(row.cells[k]?.value ?? '', valueFont))));
@@ -1490,12 +1492,9 @@ const distanceMarker = {
     ctx.textAlign = 'left';
     ctx.fillStyle = '#dde3e3';
     ctx.fillText(rangeText, left + pad, top + pad);
-    // The legend's dot under the range, so each row names its weapon.
     rows.forEach((row, i) => {
       ctx.fillStyle = row.color;
-      ctx.beginPath();
-      ctx.arc(left + pad + 4, top + pad + (i + 1) * lineHeight + 6, 3, 0, Math.PI * 2);
-      ctx.fill();
+      ctx.fillText(rowLabel, left + pad, top + pad + (i + 1) * lineHeight);
     });
     ctx.textAlign = 'right';
     let x = left + pad + firstW;
