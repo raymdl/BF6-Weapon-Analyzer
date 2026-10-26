@@ -51,6 +51,7 @@ export function createFiringRange({
   let liveKey = '';
   let locked = false;
   let flashedKill = null;
+  let hovered = null;
   let frameId = null;
   let lastTick = 0;
   let mouse = { x: 0, y: 0 };
@@ -271,6 +272,14 @@ export function createFiringRange({
     const target = locked ? aimedControl(sim) : null;
     plotColumn()?.querySelectorAll('.rc-aimed').forEach(el => { if (el !== target) el.classList.remove('rc-aimed'); });
     target?.classList.add('rc-aimed');
+    // The real pointer is hidden under capture, so tell the page's tooltips
+    // when the virtual cursor moves onto or off a control.
+    if (target !== hovered) {
+      const Ev = win.MouseEvent ?? win.Event;
+      hovered?.dispatchEvent(new Ev('mouseout', { bubbles: true, relatedTarget: target }));
+      target?.dispatchEvent(new Ev('mouseover', { bubbles: true, relatedTarget: hovered }));
+      hovered = target;
+    }
     return target;
   }
 

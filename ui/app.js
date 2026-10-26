@@ -4004,6 +4004,12 @@ function initHoverTooltips() {
       top = r.bottom + 6;
       if (top + th > vh - 8) top = Math.max(8, r.top - th - 6);
     }
+    // A control in the Firing Range keeps its bubble inside the capture frame.
+    const frame = el.closest('.rc-capture')?.getBoundingClientRect();
+    if (frame) {
+      left = Math.max(frame.left + 6, Math.min(left, frame.right - tw - 6));
+      if (top + th > frame.bottom - 6) top = Math.max(frame.top + 6, r.top - th - 6);
+    }
     tip.style.left = `${left}px`;
     tip.style.top = `${top}px`;
   };
