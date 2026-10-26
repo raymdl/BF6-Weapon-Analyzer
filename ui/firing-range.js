@@ -586,7 +586,8 @@ export function createFiringRange({
     doc.addEventListener('pointerlockchange', onLockChange);
     // A refused request (browsers refuse one for about a second after Esc)
     // leaves the press with nothing to do; say so in the console for diagnosis.
-    doc.addEventListener('pointerlockerror', () => { pressPending = null; win.console?.warn?.('Firing Range: the browser refused pointer capture; click the plot again.'); });
+    // The focus the request gave the canvas is let go, so no outline suggests a capture.
+    doc.addEventListener('pointerlockerror', () => { pressPending = null; if (!locked) canvas.blur?.(); win.console?.warn?.('Firing Range: the browser refused pointer capture; click the plot again.'); });
     doc.addEventListener('mousemove', onMouseMove);
     doc.addEventListener('mousedown', onMouseDown);
     doc.addEventListener('mouseup', onMouseUp);
