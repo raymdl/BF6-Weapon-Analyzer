@@ -530,7 +530,7 @@ export function createFiringRange({
 
     // HUD: ammunition and the trigger mode, drawn outside the clip so it never
     // slides off with the view.
-    const mode = { auto: 'Hold to fire', burst: 'Click per burst', single: 'Click per shot' }[sim.state.triggerMode];
+    const mode = { auto: 'Hold to fire', burst: 'Click to burst', single: 'Click to fire' }[sim.state.triggerMode];
     const ammo = Number.isFinite(sim.state.magazine) ? `Mag: ${sim.state.ammo} / ${sim.state.magazine}` : 'Mag: ∞';
     // Top-right belongs to the Reload and Clear buttons, so the read-outs stack at top-left.
     ctx.font = '600 11px sans-serif'; ctx.textBaseline = 'top'; ctx.textAlign = 'left';
