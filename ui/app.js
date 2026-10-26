@@ -3311,13 +3311,21 @@ function renderAttachmentStats(loadouts) {
         color: colorFor(m, delta), desc: m.tooltip ?? m.lbl, rows, footer }));
     });
     const swayMetric = { lbl: 'Weapon Sway', lowerBetter: true, dec: 1 };
-    const swayVal = ((cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1) - 1) * 100;
-    const sway = breakdown(swayMetric, w => (w._weaponSwayMult ?? 1) * 100, d => signed(d, '%', 1), swayVal);
+    const swayRatio = (cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1);
+    // Mounting (with or without a bipod or grip pod) stops all sway, whatever the
+    // attachments add: measured on the M433, 26 Oct 2026. Its row takes the net to −100%.
+    const mounted = state.recoil.stance === 'mount';
+    const swayVal = mounted ? -100 : (swayRatio - 1) * 100;
+    const swayExtra = mounted ? [{ d: -swayRatio * 100, name: 'Mounted', value: signed(-swayRatio * 100, '%', 1),
+      color: colorFor(swayMetric, -1), parts: [{ kind: 'mult', v: 0 }], better: true }] : [];
+    const sway = breakdown(swayMetric, w => (w._weaponSwayMult ?? 1) * 100, d => signed(d, '%', 1), swayVal, swayExtra);
     if (Math.abs(swayVal) >= 0.05 || sway.rows.length) {
       const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments, weapon) ? '*' : ''}${bugMark('Weapon Sway')}`;
       chips.push(chipHtml({ label, value: Math.abs(swayVal) < 0.05 ? '±0%' : signed(swayVal, '%', 1),
         color: colorFor(swayMetric, swayVal), rows: sway.rows, footer: sway.footer,
-        desc: 'Weapon sway while ADS, compared with the bare weapon. Sway modifiers multiply. Camera sway is not included.' }));
+        desc: mounted
+          ? 'Weapon sway while ADS, compared with the bare weapon. Mounting stops all weapon and camera sway, with or without a bipod or grip pod.'
+          : 'Weapon sway while ADS, compared with the bare weapon. Sway modifiers multiply. Camera sway is not included.' }));
     }
     const sourceRow = (c, value, color) => ({ name: escAttr(c.name), value, color });
     const vrVal = cur._visualRecoil ?? 0;

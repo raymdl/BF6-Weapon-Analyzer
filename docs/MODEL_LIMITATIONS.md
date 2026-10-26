@@ -144,7 +144,10 @@ Tungsten therefore uses index 9 and multiplier 1. The collateral stat is display
 Spotting now multiplies source factors using the existing 54/150 m bases; the
 bases and composition are inferred from site/source agreement. Sway percentages
 cover source sight, muzzle, barrel and magazine amount factors, excluding camera sway;
-the iron-sight factor is checked on M4A1 and BROD 3 recordings only.
+the iron-sight factor is checked on M4A1 and BROD 3 recordings only. The Mounted
+stance shows −100%: mounting stopped all sway on M433 recordings (26 Oct 2026), and
+standing, crouched and prone measured the same; other weapons and magnified optics are
+assumed to match ([measurement](../reference-data/provenance/stance-sway-measurement-2026-10-26.md)).
 Light operands are source-backed; their activation and operation are modeled as
 described above.
 
