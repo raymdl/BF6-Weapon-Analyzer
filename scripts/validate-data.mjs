@@ -56,6 +56,9 @@ if (!Array.isArray(balance.HIP_SPREAD_TABLE) || balance.HIP_SPREAD_TABLE.length 
 if (balance.VELOCITY_LADDER !== 0.8) {
   fail('VELOCITY_LADDER must be exactly 0.8');
 }
+if (!Number.isFinite(balance.CONSOLE_RECOIL_MULT) || balance.CONSOLE_RECOIL_MULT <= 0 || balance.CONSOLE_RECOIL_MULT > 1) {
+  fail('CONSOLE_RECOIL_MULT must be a recoil factor above 0 and at most 1');
+}
 
 const roleTags = readJson('data/weapon-role-tags.json');
 for (const weapon of weapons) {

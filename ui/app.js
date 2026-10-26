@@ -143,7 +143,8 @@ const CLOUD_RUNS = 10;
 // app. The full source hip table reaches 11.303° in the single-attachment
 // corpus. scripts/spread-bar-scale.test.mjs checks that the axis contains it.
 const RECOIL_BAR_SCALE = 3;
-const CONSOLE_RECOIL_MULT = 0.95;
+// Controller recoil amount factor, from the game data so a balance change updates it.
+const CONSOLE_RECOIL_MULT = requireNumber(_balance.CONSOLE_RECOIL_MULT, 'CONSOLE_RECOIL_MULT');
 
 // Keep raw timing-derived RPM for calculations; display it as the stat screen does.
 function formatInGameRpm(value) {
@@ -4451,7 +4452,6 @@ function bindEvents() {
   });
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
-  // From the multiplier the simulation uses, so a new console value updates the tooltip too.
   document.getElementById('rcPlatformConsole').title = `Apply the ${+((1 - CONSOLE_RECOIL_MULT) * 100).toFixed(2)}% console recoil reduction`;
   document.getElementById('rcZeroCycleBtn')?.addEventListener('click', cycleTargetZero);
 

@@ -55,7 +55,7 @@ unfinished impulses can continue across a subsequent shot, and recovery age
 resets per shot. Integration uses at most 1 ms steps around impulse delivery (A07).
 
 The console option applies the source `0.95` amount factor (`CONSOLE_RECOIL_MULT`
-in `ui/app.js`; `0.8836` before 2.1.1.0) through a shared platform model (A08). Platform and control affect only the contextual recoil
+in `data/balance_tables.json`; `0.8836` before 2.1.1.0) through a shared platform model (A08). Platform and control affect only the contextual recoil
 displays, not the base values shown in the overview.
 
 ## Spread growth and inter-shot recovery
