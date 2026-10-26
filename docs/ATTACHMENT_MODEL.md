@@ -330,7 +330,9 @@ See [model limitations](MODEL_LIMITATIONS.md) for unresolved native behavior.
 
 The eight recovery/duration muzzle entries no longer carry `*` markers; their
 numeric inputs are from Frosty, while simulation limits remain documented in the
-recoil model. VSSM Folding Stock retains its marker. Heavy, Heavy Extended, Cryogenic,
+recoil model. VSSM Folding Stock no longer carries it either (26 October 2026): its
+decay factor and time exponent are Frosty source values, run through the same
+recovery law as every weapon. No attachment carries the marker now. Heavy, Heavy Extended, Cryogenic,
 Flashlight, Hipfire Taclight, Combo Red/Green, Linear Comp and the three burst
 entries no longer carry that marker. In-game tooltip descriptions are a separate
 display layer and do not add or change attachment effects. See the

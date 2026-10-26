@@ -97,7 +97,8 @@ Flash Comp retains the ordinary Smooth estimate because its captured description
 supports the effect but the retained selector trace does not resolve its modifier.
 VSSM Folding Stock now applies source decay factor `76` and time exponent `1.24`
 in both ADS and hip fire, alongside its hip effects and 800 RPM automatic mode.
-These values use the existing recovery equation; native timing remains unverified.
+These source values run through the same recovery law as every weapon, so they share
+its limits (see the recovery law notes) and carry no `*` marker of their own.
 The base VSSM retains factor `13.7` and exponent `0.5555` without the stock.
 
 **Heavy-type barrels and lights.** Heavy, Heavy Extended and Cryogenic use source
