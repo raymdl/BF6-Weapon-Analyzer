@@ -459,7 +459,7 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-cycle-val>span{grid-area:1/1;text-align:left}
 .rc-cycle-val>span:not(.on){visibility:hidden}
 .rc-cycle-val>span.on{color:var(--accent)}
-.rc-plot-mode{display:inline-flex}
+.rc-plot-mode{display:inline-flex;align-items:center;gap:6px}
 .rc-plot-mode[hidden]{display:none}
 .rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}
 .rc-zone-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}

@@ -2459,10 +2459,13 @@ function renderRangeFireModes(isRange) {
     s.textContent = FIRE_MODE_LABELS[mode];
     val.appendChild(s);
   }
-  b.append('Fire Mode: ', val, ' ▸');
+  b.append(val, ' ▸');
   b.setAttribute('aria-label', `Fire mode: ${FIRE_MODE_LABELS[current]}. Click for the next mode.`);
   b.addEventListener('click', () => cycleFireMode(0));
-  el.appendChild(b);
+  const label = document.createElement('span');
+  label.className = 'rc-field-lbl';
+  label.textContent = 'Fire Mode';
+  el.append(label, b);
 }
 function rangeSimKey() {
   const w = selectedWeaponBuild(state.slots[0]);
