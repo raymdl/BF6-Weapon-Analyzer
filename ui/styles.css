@@ -349,7 +349,7 @@ canvas.rcv.panready,canvas.rcv.panready.aiming{cursor:grab}
 canvas.rcv.dragging,canvas.rcv.dragging.aiming{cursor:grabbing}
 /* While the plot holds the mouse the capture frame is its one state signal; the
    keyboard focus ring would draw a second box inside it. Other views keep the ring. */
-canvas.rcv.captured:focus-visible{outline:none}
+canvas.rcv.captured:focus-visible,canvas.rcv.lock-pending:focus-visible{outline:none}
 /* While the plot holds the mouse, one frame runs around the control bar and the
    canvas together: the whole area the captured cursor can reach. */
 .rc-capture{position:relative}

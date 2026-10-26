@@ -141,6 +141,8 @@ export function createFiringRange({
 
   function requestLock() {
     if (!supportsLock || locked || !active) return;
+    // No focus ring while the browser decides: a refusal would flash one.
+    canvas.classList?.add('lock-pending');
     canvas.focus?.({ preventScroll: true });
     let result;
     try {
@@ -166,6 +168,7 @@ export function createFiringRange({
     // the lock, and the focus the lock request gave the canvas is let go on
     // release so the keyboard focus ring does not linger as a false signal.
     canvas.classList?.toggle('captured', locked);
+    canvas.classList?.remove('lock-pending');
     // One frame around the control bar and the canvas: the area the captured cursor reaches.
     const captureEl = canvas.closest?.('.rc-capture');
     captureEl?.classList.toggle('captured', locked);
@@ -587,7 +590,7 @@ export function createFiringRange({
     // A refused request (browsers refuse one for about a second after Esc)
     // leaves the press with nothing to do; say so in the console for diagnosis.
     // The focus the request gave the canvas is let go, so no outline suggests a capture.
-    doc.addEventListener('pointerlockerror', () => { pressPending = null; if (!locked) canvas.blur?.(); win.console?.warn?.('Firing Range: the browser refused pointer capture; click the plot again.'); });
+    doc.addEventListener('pointerlockerror', () => { pressPending = null; if (!locked) canvas.blur?.(); canvas.classList?.remove('lock-pending'); win.console?.warn?.('Firing Range: the browser refused pointer capture; click the plot again.'); });
     doc.addEventListener('mousemove', onMouseMove);
     doc.addEventListener('mousedown', onMouseDown);
     doc.addEventListener('mouseup', onMouseUp);
