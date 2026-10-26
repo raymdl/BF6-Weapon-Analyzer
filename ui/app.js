@@ -2474,7 +2474,10 @@ function renderRangeFireModes(isRange) {
     b.type = 'button';
     b.className = mode === current ? 'rc-range-btn rc-fm-btn on' : 'rc-range-btn rc-fm-btn';
     b.innerHTML = fireModeIcon(FIRE_MODE_BULLETS[mode]);
-    b.setAttribute('aria-label', FIRE_MODE_LABELS[mode]);
+    const rounds = slot.weapon.fireModes?.burst?.burstRounds;
+    const name = { single: 'Semi-Auto', auto: 'Full Auto', burst: rounds ? `${rounds} Round Burst` : 'Burst' }[mode];
+    b.title = name;
+    b.setAttribute('aria-label', name);
     b.setAttribute('aria-pressed', String(mode === current));
     b.addEventListener('click', () => setFireMode(0, mode));
     seg.appendChild(b);
