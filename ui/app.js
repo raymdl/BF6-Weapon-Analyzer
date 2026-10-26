@@ -3595,6 +3595,16 @@ function renderRecoil({ plotOnly = false } = {}) {
     spreadPreset.classList.toggle('idle', !layers.spread);
     // Show the chosen shots on the option itself, so the list stays readable
     // once the editor has closed.
+    // Each preset names the shots it marks, for the current spray length.
+    const n = selectedRecoilShotCount();
+    const shots = preset => spreadPresetShots(preset, n).join(', ');
+    const optionTips = {
+      growth: `Shots ${shots('growth')}: spaced wider as the spray goes on, to show the spread growing`,
+      early: `Shots ${shots('early')}: the opening shots`,
+      all: n > 1 ? `Every shot, 1 to ${n}` : 'Every shot',
+      custom: 'The shot numbers you enter',
+    };
+    for (const opt of spreadPreset.options) opt.title = optionTips[opt.value] ?? '';
     const customOpt = spreadPreset.querySelector('option[value="custom"]');
     if (customOpt) {
       const list = (shotsInput?.value ?? '').trim();

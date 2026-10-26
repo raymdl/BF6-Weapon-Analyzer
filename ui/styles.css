@@ -303,6 +303,8 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .seg>.mode-btn{border:0;border-radius:0;background:transparent;padding:0 7px;min-height:20px}
 .seg>.mode-btn+.mode-btn{border-left:0}
 .seg>.mode-btn:hover:not(.on){background:rgba(255,255,255,.05);color:#c3cece}
+/* The Chart Overlays toggles stand alone but light up on hover the same way. */
+#rcOverlayGroup .mode-btn:hover:not(.on){background-image:linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.05));color:#c3cece}
 .seg>.mode-btn.on{background:var(--accent);color:#1a2020;text-shadow:0 0 .45px currentColor}
 .rc-field{display:flex;align-items:center;gap:6px;min-width:0}
 .rc-field-lbl{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:#738383;white-space:nowrap;flex-shrink:0}
