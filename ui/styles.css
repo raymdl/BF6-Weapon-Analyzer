@@ -63,7 +63,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 #recoilPanel.is-collapsed .rc-groups,#recoilPanel.is-collapsed .rc-plot,
 #recoilPanel.is-collapsed #rcStats,#recoilPanel.is-collapsed #attStats{display:none}
 #recoilPanel.is-collapsed .rc-head{margin-bottom:0}
-.rc-popout-btn,.rc-loadout-btn{margin-left:8px;padding:2px 8px;background:rgba(77,148,208,.1);border:1px solid #2a3a48;border-radius:3px;color:#6a9ec0;font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle;position:relative;top:-1px}
+.rc-popout-btn,.rc-loadout-btn{margin-left:8px;padding:2px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;color:var(--muted);font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle;position:relative;top:-1px}
 .rc-popout-btn:hover,.rc-loadout-btn:hover{border-color:var(--accent);color:var(--accent)}
 .rc-loadout-btn{display:none;align-items:center;gap:5px}
 .rc-loadout-icon{width:12px;height:10px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linejoin:round}
