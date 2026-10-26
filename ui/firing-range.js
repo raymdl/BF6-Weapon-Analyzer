@@ -46,6 +46,7 @@ export function createFiringRange({
   requestHint,          // () => void, refresh the hint line and buttons
   readDistance,         // () => target distance in metres, for the damage that decides a kill
   onCycleFireMode,      // () => void, step to the next fire mode the loadout offers
+  readInvertY = () => false, // () => true when vertical mouse movement is inverted
 }) {
   let live = null;
   let liveKey = '';
@@ -198,7 +199,8 @@ export function createFiringRange({
   function onMouseMove(e) {
     if (!locked || e.shiftKey) return;
     mouse.x += e.movementX || 0;
-    mouse.y += e.movementY || 0;
+    // Inverted at the input, so the view and the bar cursor flip together.
+    mouse.y += (readInvertY() ? -1 : 1) * (e.movementY || 0);
     schedule();
   }
 

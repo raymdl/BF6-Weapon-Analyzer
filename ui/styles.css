@@ -426,6 +426,11 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-scale-btn{width:21px;height:21px;min-height:21px;padding:3px;display:flex;align-items:center;justify-content:center;background:rgba(12,18,18,.78);border:1px solid #2c3838;border-radius:4px;color:#8fa0a0;font-weight:700;line-height:1;backdrop-filter:blur(2px)}
 .rc-scale-btn:hover{border-color:var(--accent);color:var(--accent)}
 .rc-scale-btn[hidden]{display:none}
+/* The range's invert-Y toggle, in the plot's bottom-right corner above the x-axis
+   labels (PLOT_PAD.b is 18px); lit like the fire-mode buttons. */
+.rc-invert-btn{position:absolute;right:8px;bottom:22px;z-index:2}
+.rc-invert-btn.on{border-color:#eaf0f0;background:rgba(234,240,240,.14);color:#e1e8e8}
+.rc-invert-btn:hover{border-color:#eaf0f0;color:#eaf0f0}
 #rcCrosshairToggle[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 /* Footer strip under the plot — keeps hints and the aim read-out off the axes. */
 .rc-viewfoot{display:flex;align-items:flex-end;gap:10px;padding:4px 9px;min-height:22px;background:#0e1414;border-top:1px solid var(--border)}

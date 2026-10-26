@@ -2307,6 +2307,15 @@ function targetDisplaySettings() {
 // ── FIRING RANGE SENSITIVITY ─────────────────────────────────────────────────
 // Mouse settings are a property of the player's PC, so like the display
 // settings they live in local storage rather than in shared links.
+// Firing Range inverted vertical mouse movement: a per-viewer preference.
+const RANGE_INVERT_KEY = 'bf6.rangeInvertY';
+let rangeInvertY = false;
+try { rangeInvertY = localStorage.getItem(RANGE_INVERT_KEY) === '1'; } catch { /* storage is optional. */ }
+function toggleRangeInvertY() {
+  rangeInvertY = !rangeInvertY;
+  try { localStorage.setItem(RANGE_INVERT_KEY, rangeInvertY ? '1' : '0'); } catch { /* storage is optional. */ }
+  renderRecoil({ plotOnly: true });
+}
 const SENS_STORAGE = { dpi: 'bf6.sensDpi', sens: 'bf6.sensValue', coefficient: 'bf6.sensZoomCoefficient' };
 const SENS_INPUT = { dpi: 'rcSensDpi', sens: 'rcSensValue', coefficient: 'rcSensCoef' };
 // DPI and sensitivity must be positive; a zoom coefficient of 0 is a legitimate setting.
@@ -3462,6 +3471,12 @@ function renderRecoil({ plotOnly = false } = {}) {
   pressed('rcStanceStand', stance === 'stand');
   pressed('rcStanceMove', stance === 'move');
   pressed('rcStanceMount', stance === 'mount');
+  const invertToggle = document.getElementById('rcRangeInvert');
+  if (invertToggle) {
+    invertToggle.hidden = state.recoil.view !== 'range';
+    invertToggle.classList.toggle('on', rangeInvertY);
+    invertToggle.setAttribute('aria-pressed', String(rangeInvertY));
+  }
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
     // The range draws its own live crosshair; its corner holds the range controls instead.
@@ -4495,7 +4510,9 @@ function bindEvents() {
     requestHint: () => renderRecoil({ plotOnly: true }),
     readDistance: () => state.recoil.distance,
     onCycleFireMode: () => cycleFireMode(0),
+    readInvertY: () => rangeInvertY,
   });
+  document.getElementById('rcRangeInvert')?.addEventListener('click', toggleRangeInvertY);
   document.getElementById('rcRangeReload')?.addEventListener('click', () => firingRange.reload());
   document.getElementById('rcRangeClear')?.addEventListener('click', () => firingRange.clear());
   document.getElementById('rcRangeExit')?.addEventListener('click', () => firingRange.releaseLock());
