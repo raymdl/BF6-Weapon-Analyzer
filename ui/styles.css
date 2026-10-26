@@ -454,8 +454,8 @@ body.rc-plot-expanded{overflow:hidden}
    buttons under them. The captured cursor reaches all of them. */
 .rc-scale-controls .rc-range-actions{flex-direction:column;align-items:flex-end}
 .rc-range-row{display:flex;gap:5px}
-.rc-fm-btn{display:inline-flex;align-items:center;padding:0 6px}
-.rc-fm-icon{display:block;width:16px;height:16px}
+.rc-fm-btn{display:inline-flex;align-items:center;padding:0 7px}
+.rc-fm-icon{display:block;width:12px;height:12px}
 .rc-fm-icon .lit{fill:#e1e8e8}
 .rc-fm-icon .dim{fill:#4a5656}
 .rc-fm-seg{display:inline-flex}
