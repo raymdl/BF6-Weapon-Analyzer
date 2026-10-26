@@ -2461,7 +2461,6 @@ function renderRangeFireModes(isRange) {
     const chip = document.createElement('span');
     chip.className = 'rc-key';
     chip.innerHTML = '<kbd>X</kbd>fire mode';
-    chip.title = 'X while firing cycles the fire mode';
     keyEl.appendChild(chip);
   }
   const label = document.createElement('span');
