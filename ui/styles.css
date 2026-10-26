@@ -354,6 +354,8 @@ canvas.rcv.captured:focus-visible{outline:none}
    canvas together: the whole area the captured cursor can reach. */
 .rc-capture{position:relative}
 .rc-capture.captured::after{content:"";position:absolute;inset:0;border:2px solid #eaf0f0;border-radius:2px;pointer-events:none;z-index:5}
+.rc-capture.captured.kill-flash::after{animation:rc-kill-flash .6s ease-out}
+@keyframes rc-kill-flash{from{border-color:#ff5c5c}to{border-color:#eaf0f0}}
 /* The Firing Range plot never grows past the viewport: with the cursor gone,
    its HUD, the soldier and the controls above and below must share the screen. */
 body:not(.is-popout) .rc-range-view canvas.rcv{width:min(100%,max(240px,calc(100vh - 170px)));margin:0 auto}

@@ -50,6 +50,7 @@ export function createFiringRange({
   let live = null;
   let liveKey = '';
   let locked = false;
+  let flashedKill = null;
   let frameId = null;
   let lastTick = 0;
   let mouse = { x: 0, y: 0 };
@@ -467,6 +468,16 @@ export function createFiringRange({
     const kill = lethalImpact(sim);
     if (kill) {
       const age = sim.state.t - kill.impact.t;
+      // The capture frame flashes red once per new kill.
+      if (kill.impact !== flashedKill && age < KILL_PULSE_S) {
+        flashedKill = kill.impact;
+        const frameEl = canvas.closest?.('.rc-capture');
+        if (frameEl) {
+          frameEl.classList.remove('kill-flash');
+          void frameEl.offsetWidth;
+          frameEl.classList.add('kill-flash');
+        }
+      }
       if (age < KILL_PULSE_S) {
         const x = toX(kill.impact.x), y = toY(w, kill.impact.y);
         const k = age / KILL_PULSE_S;
