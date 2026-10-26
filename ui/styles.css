@@ -451,15 +451,15 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-fire-mode .rc-key{display:inline-flex;align-items:center;gap:3px;white-space:nowrap;font-size:.55rem;letter-spacing:.03em;color:#aab7bb}
 .rc-fire-mode kbd{font:inherit;font-size:.55rem;font-weight:700;letter-spacing:0;color:var(--text);padding:1px 3px;border:1px solid #2c3838;border-bottom-width:2px;border-radius:3px;background:#151d1d}
 /* The plot's top-right corner: Reload, Clear and Exit in a row, the fire-mode
-   cycle button under them. The captured cursor reaches all of them. The cycle
-   button is as wide as its longest label, so a click never moves it. */
+   buttons under them. The captured cursor reaches all of them. */
 .rc-scale-controls .rc-range-actions{flex-direction:column;align-items:flex-end}
 .rc-range-row{display:flex;gap:5px}
-.rc-cycle-val{display:inline-grid}
-.rc-cycle-val>span{grid-area:1/1;text-align:left}
-.rc-cycle-val>span:not(.on){visibility:hidden}
-.rc-cycle-val>span.on{color:var(--accent)}
-.rc-plot-mode{display:inline-flex;align-items:center;gap:6px}
+.rc-fm-btn{display:inline-flex;align-items:center;padding:0 6px}
+.rc-fm-icon{display:block;width:13px;height:12px}
+.rc-fm-icon .lit{fill:#e1e8e8}
+.rc-fm-icon .dim{fill:#4a5656}
+.rc-fm-btn.on{border-color:var(--accent)}
+.rc-plot-mode{display:inline-flex;align-items:center;gap:5px}
 .rc-plot-mode[hidden]{display:none}
 .rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}
 .rc-zone-legend i{width:9px;height:9px;border-radius:50%;display:inline-block}

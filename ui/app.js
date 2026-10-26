@@ -2426,9 +2426,19 @@ function cycleFireMode(slotIdx) {
   setFireMode(slotIdx, modes[(modes.indexOf(current) - 1 + modes.length) % modes.length]);
 }
 /**
- * One button in the plot's top-right corner that steps the fire mode like the
- * X key, noted in the footer: only when the loadout offers more than one mode.
+ * The fire modes in the plot's top-right corner as the game draws them: three
+ * bullets, one lit for Semi, two for Burst, three for Auto. One button per mode
+ * the loadout offers, and none when it offers one. The X key, noted in the
+ * footer, steps through them.
  */
+const FIRE_MODE_BULLETS = { single: 1, burst: 2, auto: 3 };
+function fireModeIcon(lit) {
+  const bullets = [0, 1, 2].map(i => {
+    const x = 0.5 + i * 4.5;
+    return `<path class="${i < lit ? 'lit' : 'dim'}" d="M${x} 12V4.5Q${x + 1.5} 0 ${x + 3} 4.5V12Z"/>`;
+  }).join('');
+  return `<svg class="rc-fm-icon" viewBox="0 0 13 12" aria-hidden="true">${bullets}</svg>`;
+}
 function renderRangeFireModes(isRange) {
   const el = document.getElementById('rcRangeModes');
   const keyEl = document.getElementById('rcRangeModeKey');
@@ -2447,25 +2457,20 @@ function renderRangeFireModes(isRange) {
     chip.title = 'X while firing cycles the fire mode';
     keyEl.appendChild(chip);
   }
-  const b = document.createElement('button');
-  b.type = 'button';
-  b.className = 'rc-range-btn';
-  // Every label shares one grid cell, so the button keeps the longest one's width.
-  const val = document.createElement('span');
-  val.className = 'rc-cycle-val';
-  for (const mode of modes) {
-    const s = document.createElement('span');
-    if (mode === current) s.className = 'on';
-    s.textContent = FIRE_MODE_LABELS[mode];
-    val.appendChild(s);
-  }
-  b.append(val, ' ▸');
-  b.setAttribute('aria-label', `Fire mode: ${FIRE_MODE_LABELS[current]}. Click for the next mode.`);
-  b.addEventListener('click', () => cycleFireMode(0));
   const label = document.createElement('span');
   label.className = 'rc-field-lbl';
   label.textContent = 'Fire Mode';
-  el.append(label, b);
+  el.appendChild(label);
+  for (const mode of modes) {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = mode === current ? 'rc-range-btn rc-fm-btn on' : 'rc-range-btn rc-fm-btn';
+    b.innerHTML = fireModeIcon(FIRE_MODE_BULLETS[mode]);
+    b.setAttribute('aria-label', FIRE_MODE_LABELS[mode]);
+    b.setAttribute('aria-pressed', String(mode === current));
+    b.addEventListener('click', () => setFireMode(0, mode));
+    el.appendChild(b);
+  }
 }
 function rangeSimKey() {
   const w = selectedWeaponBuild(state.slots[0]);
