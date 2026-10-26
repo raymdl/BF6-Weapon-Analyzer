@@ -456,7 +456,7 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-fire-seg button:last-child{border-radius:0 3px 3px 0}
 .rc-fire-seg button:hover{color:var(--accent)}
 .rc-fire-seg button.on{position:relative;z-index:1;background:rgba(201,162,39,.18);border-color:var(--accent);color:var(--accent)}
-.rc-fire-seg button.rc-aimed{border-color:var(--accent);color:var(--accent)}
+.rc-fire-seg button.rc-aimed{position:relative;z-index:2;border-color:var(--accent);color:var(--accent)}
 /* Reload, Clear and Exit hold the plot's top-right corner; the fire-mode group
    sits at the bottom-right above the axis labels. The captured cursor reaches both. */
 .rc-plot-mode{display:inline-flex}
