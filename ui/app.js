@@ -2429,8 +2429,8 @@ function cycleFireMode(slotIdx) {
 /**
  * The fire modes in the plot's top-right corner as the game draws them: three
  * bullets, one lit for Semi, two for Burst, three for Auto. One button per mode
- * the loadout offers, and none when it offers one. The X key, noted in the
- * footer, steps through them.
+ * the loadout offers, a lone button when it offers one. The X key, noted in
+ * the footer when there is a choice, steps through them.
  */
 const FIRE_MODE_BULLETS = { single: 1, burst: 2, auto: 3 };
 function fireModeIcon(lit) {
@@ -2453,10 +2453,11 @@ function renderRangeFireModes(isRange) {
   const modes = isRange ? rangeFireModes(slot) : [];
   el.replaceChildren();
   keyEl?.replaceChildren();
-  el.hidden = modes.length < 2;
+  // A weapon with one mode still shows it, as a single button.
+  el.hidden = !modes.length;
   if (el.hidden) return;
   const current = selectedFireMode(slot.weapon, slot.atts);
-  if (keyEl) {
+  if (keyEl && modes.length > 1) {
     const chip = document.createElement('span');
     chip.className = 'rc-key';
     chip.innerHTML = '<kbd>X</kbd>fire mode';
@@ -2476,7 +2477,9 @@ function renderRangeFireModes(isRange) {
     b.className = mode === current ? 'rc-range-btn rc-fm-btn on' : 'rc-range-btn rc-fm-btn';
     b.innerHTML = fireModeIcon(FIRE_MODE_BULLETS[mode]);
     const rounds = slot.weapon.fireModes?.burst?.burstRounds;
-    const name = { single: 'Semi-Auto', auto: 'Full Auto', burst: rounds ? `${rounds} Round Burst` : 'Burst' }[mode];
+    // Bolt and pump weapons fire one round per action through the single mode.
+    const action = { bolt: 'Bolt-Action', pump: 'Pump-Action' }[slot.weapon.fireMode];
+    const name = { single: action ?? 'Semi-Auto', auto: 'Full Auto', burst: rounds ? `${rounds} Round Burst` : 'Burst' }[mode];
     b.title = name;
     b.setAttribute('aria-label', name);
     b.setAttribute('aria-pressed', String(mode === current));
