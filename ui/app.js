@@ -3249,7 +3249,7 @@ function renderAttachmentStats(loadouts) {
     const rowMarks = (c, lbl, fields) => `${(fields ?? []).some(f => Loadout.isAssumedField(c.record, f, weapon.id)) ? '*' : ''}`
       + `${bugs.some(b => b.slot === c.slot && b.attachments.includes(c.record?.id) && b.metrics.includes(lbl)) ? `${Loadout.GAME_BUG_MARK}` : ''}`;
     // Rows for one numeric stat: each attachment's own change, then the net.
-    const breakdown = (m, valueOf, fmt, net) => {
+    const breakdown = (m, valueOf, fmt, net, extra = []) => {
       const rows = contributions.map(c => {
         const a = valueOf(c.base), b = valueOf(c.build);
         if (!Number.isFinite(a) || !Number.isFinite(b)) return null;
@@ -3258,7 +3258,7 @@ function renderAttachmentStats(loadouts) {
         return { d, slot: c.slot, name: escAttr(c.name) + rowMarks(c, m.lbl, estimatedFieldsForMetric[m.lbl]),
           value: fmt(d), color: colorFor(m, d), parts: stepParts(c.record, m.lbl, weapon),
           better: (m.higherBetter && d > 0) || (m.lowerBetter && d < 0) };
-      }).filter(Boolean);
+      }).filter(Boolean).concat(extra);
       rows.forEach(r => { r.step = stepString(r.parts); });
       const footer = [];
       const sum = rows.reduce((t, r) => t + r.d, 0);
@@ -3269,14 +3269,24 @@ function renderAttachmentStats(loadouts) {
     };
     const chips = [];
     metrics.forEach(m => {
-      const baseVal = m.val(base), curVal = m.val(cur);
+      const baseVal = m.val(base);
+      let curVal = m.val(cur);
+      // Console input scales recoil per shot on top of the attachments, so it
+      // shows as its own row in the recoil breakdown.
+      const extra = [];
+      if (m.lbl === 'ADS Recoil/Shot' && state.recoil.platform === 'console' && Number.isFinite(curVal)) {
+        const d = curVal * (CONSOLE_RECOIL_MULT - 1);
+        curVal += d;
+        extra.push({ d, name: 'Console', value: signed(+d.toFixed(3), m.unit, m.dec), color: colorFor(m, d),
+          parts: [{ kind: 'mult', v: CONSOLE_RECOIL_MULT }], better: d < 0 });
+      }
       if (!Number.isFinite(baseVal) || !Number.isFinite(curVal)) {
         chips.push(`<div class="att-chip"><div class="att-chip-lbl">${m.displayLabel ?? m.lbl}</div><div class="att-chip-val" title="Data unavailable">—</div></div>`);
         return;
       }
       const delta = +(curVal - baseVal).toFixed(Math.max(m.dec, 3));
       const fmt = d => signed(+d.toFixed(Math.max(m.dec, 3)), m.unit, m.dec);
-      const { rows, footer } = breakdown(m, m.val, fmt, delta);
+      const { rows, footer } = breakdown(m, m.val, fmt, delta, extra);
       const scaleNote = bloomScaleNote[m.lbl];
       const scale = /^Hip/.test(m.lbl) ? bloomScale.hip : bloomScale.ads;
       if (scaleNote && rows.length && Math.abs(scale - 1) > 0.0005) {
@@ -4441,6 +4451,7 @@ function bindEvents() {
   });
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
+  document.getElementById('rcPlatformConsole').title = `Apply the console recoil reduction: ${+((1 - CONSOLE_RECOIL_MULT) * 100).toFixed(2)}% less recoil per shot (×${CONSOLE_RECOIL_MULT})`;
   document.getElementById('rcZeroCycleBtn')?.addEventListener('click', cycleTargetZero);
 
   // Recoil overlays
