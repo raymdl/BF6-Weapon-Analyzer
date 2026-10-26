@@ -3421,7 +3421,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   pressed('rcStanceMount', stance === 'mount');
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
-    // The range draws its own live crosshair; its corner holds Reload and Clear instead.
+    // The range draws its own live crosshair; its corner holds Reload, Clear and Exit instead.
     crosshairToggle.hidden = state.recoil.view === 'range';
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
     const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
@@ -4438,6 +4438,7 @@ function bindEvents() {
   });
   document.getElementById('rcRangeReload')?.addEventListener('click', () => firingRange.reload());
   document.getElementById('rcRangeClear')?.addEventListener('click', () => firingRange.clear());
+  document.getElementById('rcRangeExit')?.addEventListener('click', () => firingRange.releaseLock());
   // Dragging replaced the pan buttons, so the keyboard needs its own way in.
   recoilCanvas.addEventListener('keydown', e => {
     const pan = { ArrowLeft: 'left', ArrowRight: 'right', ArrowUp: 'up', ArrowDown: 'down' }[e.key];
