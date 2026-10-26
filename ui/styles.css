@@ -455,10 +455,15 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-scale-controls .rc-range-actions{flex-direction:column;align-items:flex-end}
 .rc-range-row{display:flex;gap:5px}
 .rc-fm-btn{display:inline-flex;align-items:center;padding:0 6px}
-.rc-fm-icon{display:block;width:13px;height:12px}
+.rc-fm-icon{display:block;width:16px;height:16px}
 .rc-fm-icon .lit{fill:#e1e8e8}
 .rc-fm-icon .dim{fill:#4a5656}
-.rc-fm-btn.on{border-color:var(--accent)}
+.rc-fm-seg{display:inline-flex}
+.rc-fm-seg .rc-fm-btn{margin-left:-1px;border-radius:0}
+.rc-fm-seg .rc-fm-btn:first-child{margin-left:0;border-radius:4px 0 0 4px}
+.rc-fm-seg .rc-fm-btn:last-child{border-radius:0 4px 4px 0}
+.rc-fm-btn.on{position:relative;z-index:1;border-color:var(--accent)}
+.rc-fm-btn.rc-aimed{position:relative;z-index:2}
 .rc-plot-mode{display:inline-flex;align-items:center;gap:5px}
 .rc-plot-mode[hidden]{display:none}
 .rc-zone-legend span{display:inline-flex;align-items:center;gap:5px}

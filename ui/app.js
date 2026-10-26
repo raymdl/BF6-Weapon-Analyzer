@@ -2433,11 +2433,16 @@ function cycleFireMode(slotIdx) {
  */
 const FIRE_MODE_BULLETS = { single: 1, burst: 2, auto: 3 };
 function fireModeIcon(lit) {
+  // Each cartridge: a pointed tip, a hairline gap, the case, and a rim at the base.
+  const w = 3.6;
   const bullets = [0, 1, 2].map(i => {
-    const x = 0.5 + i * 4.5;
-    return `<path class="${i < lit ? 'lit' : 'dim'}" d="M${x} 12V4.5Q${x + 1.5} 0 ${x + 3} 4.5V12Z"/>`;
+    const x = 0.4 + i * 5.7, m = x + w / 2;
+    return `<g class="${i < lit ? 'lit' : 'dim'}">`
+      + `<path d="M${x} 6Q${x} 2.2 ${m} 0.2Q${x + w} 2.2 ${x + w} 6Z"/>`
+      + `<rect x="${x}" y="6.8" width="${w}" height="7.6"/>`
+      + `<rect x="${x - 0.3}" y="14.8" width="${w + 0.6}" height="1.2"/></g>`;
   }).join('');
-  return `<svg class="rc-fm-icon" viewBox="0 0 13 12" aria-hidden="true">${bullets}</svg>`;
+  return `<svg class="rc-fm-icon" viewBox="0 0 16 16" aria-hidden="true">${bullets}</svg>`;
 }
 function renderRangeFireModes(isRange) {
   const el = document.getElementById('rcRangeModes');
@@ -2460,7 +2465,10 @@ function renderRangeFireModes(isRange) {
   const label = document.createElement('span');
   label.className = 'rc-field-lbl';
   label.textContent = 'Fire Mode';
-  el.appendChild(label);
+  // The buttons join into one group, as a toggle: one mode at a time.
+  const seg = document.createElement('span');
+  seg.className = 'rc-fm-seg';
+  el.append(label, seg);
   for (const mode of modes) {
     const b = document.createElement('button');
     b.type = 'button';
@@ -2469,7 +2477,7 @@ function renderRangeFireModes(isRange) {
     b.setAttribute('aria-label', FIRE_MODE_LABELS[mode]);
     b.setAttribute('aria-pressed', String(mode === current));
     b.addEventListener('click', () => setFireMode(0, mode));
-    el.appendChild(b);
+    seg.appendChild(b);
   }
 }
 function rangeSimKey() {
