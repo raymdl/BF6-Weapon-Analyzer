@@ -4451,7 +4451,8 @@ function bindEvents() {
   });
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
-  document.getElementById('rcPlatformConsole').title = `Apply the console recoil reduction: ${+((1 - CONSOLE_RECOIL_MULT) * 100).toFixed(2)}% less recoil per shot (×${CONSOLE_RECOIL_MULT})`;
+  // From the multiplier the simulation uses, so a new console value updates the tooltip too.
+  document.getElementById('rcPlatformConsole').title = `Apply the ${+((1 - CONSOLE_RECOIL_MULT) * 100).toFixed(2)}% console recoil reduction`;
   document.getElementById('rcZeroCycleBtn')?.addEventListener('click', cycleTargetZero);
 
   // Recoil overlays
