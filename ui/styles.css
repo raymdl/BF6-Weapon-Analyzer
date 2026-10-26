@@ -269,6 +269,8 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 /* Shot count lives in the title it appears in, rather than a group of its own. */
 .rc-title-num{width:28px;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:1px 3px;font:inherit;font-size:.65rem;font-variant-numeric:tabular-nums;text-align:right;outline:none;vertical-align:baseline}
 .rc-title-num:focus{border-color:var(--accent)}
+/* The gold border marks focus; the site-wide white ring would frame it twice. */
+.rc-title-num:focus-visible,.rc-shots-input:focus-visible{outline:none}
 .rc-shot-suffix{margin-left:4px}
 .rc-groups{display:flex;flex-wrap:wrap;gap:10px;align-items:stretch}
 /* Each group takes its natural one-row width and shares the slack; the second
