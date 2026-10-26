@@ -102,8 +102,11 @@ function openAttachmentMenu(sel, options) {
   delete menu.dataset.opening;
 }
 
-function attachStyledMenu(sel, options) {
+// `options` may be a function, read each time the list opens, for choices
+// whose descriptions change with the rest of the page.
+export function attachStyledMenu(sel, options) {
   if (!hoverDevice?.matches) return;
+  const current = () => (typeof options === 'function' ? options() : options);
   sel.setAttribute('aria-haspopup', 'listbox');
   sel.setAttribute('aria-expanded', 'false');
   sel.addEventListener('mousedown', e => {
@@ -111,14 +114,14 @@ function attachStyledMenu(sel, options) {
     e.preventDefault();
     if (openMenu?.sel === sel) { closeAttachmentMenu(); return; }
     sel.focus();
-    openAttachmentMenu(sel, options);
+    openAttachmentMenu(sel, current());
   });
   sel.addEventListener('keydown', e => {
     if (sel.disabled) return;
     // Plain arrows keep the native quick change; these would open the browser's list.
     if (e.key === 'Enter' || e.key === ' ' || (e.altKey && (e.key === 'ArrowDown' || e.key === 'ArrowUp'))) {
       e.preventDefault();
-      openAttachmentMenu(sel, options);
+      openAttachmentMenu(sel, current());
     }
   });
 }

@@ -1,7 +1,7 @@
 import { createDataErrorNotice } from './data-errors.js';
 import { requireNumber, setDataErrorReporter, invalidData } from '../sim/required-data.js';
 import { formatMilliseconds, formatMovementMultiplier } from './format.js';
-import { renderAttachmentSection } from './loadout.js';
+import { renderAttachmentSection, attachStyledMenu } from './loadout.js';
 import { targetImpactStatsHtml } from './target-stats.js';
 import { bindRecoilTouchControls } from './recoil-touch.js';
 import { createFiringRange, rangeImpactZones, RANGE_ZONE_COLORS, RANGE_ZONE_LEGEND, RANGE_MISS_COLOR } from './firing-range.js';
@@ -4593,6 +4593,11 @@ function bindEvents() {
     renderRecoil();
     if (state.recoil.spreadEditing) spreadShotsInput?.focus();
   });
+  // The site's own list replaces the browser's, so each preset's shot list
+  // shows in the site tooltip beside it. The options carry their text and
+  // tooltips, kept current by renderRecoil.
+  if (spreadPresetSel) attachStyledMenu(spreadPresetSel, () => [...spreadPresetSel.options]
+    .map(o => ({ id: o.value, text: o.textContent, description: o.title })));
   // Re-open the editor by clicking the menu again once Custom is already set.
   spreadPresetSel?.addEventListener('click', () => {
     if (state.recoil.spreadPreset !== 'custom' || state.recoil.spreadEditing) return;
