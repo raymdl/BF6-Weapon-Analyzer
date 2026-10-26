@@ -167,7 +167,10 @@ export function createFiringRange({
     // release so the keyboard focus ring does not linger as a false signal.
     canvas.classList?.toggle('captured', locked);
     // One frame around the control bar and the canvas: the area the captured cursor reaches.
-    canvas.closest?.('.rc-capture')?.classList.toggle('captured', locked);
+    const captureEl = canvas.closest?.('.rc-capture');
+    captureEl?.classList.toggle('captured', locked);
+    // A spent kill flash would replay when the frame reappears.
+    captureEl?.classList.remove('kill-flash');
     if (!locked) canvas.blur?.();
     if (!locked) {
       live?.setTrigger(false);
