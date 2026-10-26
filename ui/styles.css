@@ -289,7 +289,8 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .rc-shots-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:106px;outline:none}
 .rc-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:3px 5px;font:inherit;font-size:0.65rem;min-height:22px;cursor:pointer;outline:none;min-width:0}
 #rcSpreadPreset{flex:0 0 98px;width:98px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.rc-select:focus{border-color:var(--accent)}
+/* No focus ring: Chrome draws one on a mouse click too, framing the menu twice. */
+.rc-select:focus-visible{outline:none}
 .rc-select.idle{opacity:.62}
 .rc-select option{background:var(--bg2)}
 .rc-shots-input[hidden]{display:none}
