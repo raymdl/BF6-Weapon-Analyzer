@@ -462,7 +462,7 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-fm-seg .rc-fm-btn{margin-left:-1px;border-radius:0}
 .rc-fm-seg .rc-fm-btn:first-child{margin-left:0;border-radius:4px 0 0 4px}
 .rc-fm-seg .rc-fm-btn:last-child{border-radius:0 4px 4px 0}
-.rc-fm-btn.on{position:relative;z-index:1;border-color:var(--accent)}
+.rc-fm-btn.on{position:relative;z-index:1;border-color:#eaf0f0;background:rgba(234,240,240,.14)}
 .rc-fm-btn.rc-aimed,.rc-fm-btn:hover{position:relative;z-index:2}
 .rc-plot-mode{display:inline-flex;align-items:center;gap:5px}
 .rc-plot-mode[hidden]{display:none}
