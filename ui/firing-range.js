@@ -532,17 +532,24 @@ export function createFiringRange({
     // slides off with the view.
     const mode = { auto: 'Hold to fire', burst: 'Click to burst', single: 'Click to fire' }[sim.state.triggerMode];
     const ammo = Number.isFinite(sim.state.magazine) ? `Mag: ${sim.state.ammo} / ${sim.state.magazine}` : 'Mag: ∞';
-    // Top-right belongs to the Reload and Clear buttons, so the read-outs stack at top-left.
+    // Top-right belongs to Reload, Clear and Exit, so the read-outs stack at
+    // top-left, below the fire-mode group when the loadout offers one.
+    let textTop = PT + 6;
+    const modesEl = canvas.parentElement?.querySelector('.rc-plot-mode:not([hidden])');
+    const canvasRect = canvas.getBoundingClientRect();
+    if (modesEl && canvasRect.height) {
+      textTop = Math.max(textTop, (modesEl.getBoundingClientRect().bottom - canvasRect.top) * frame.CH / canvasRect.height + 6);
+    }
     ctx.font = '600 11px sans-serif'; ctx.textBaseline = 'top'; ctx.textAlign = 'left';
     const ammoText = sim.state.ammo === 0 ? `${ammo} · R to reload` : ammo;
     ctx.fillStyle = sim.state.ammo === 0 ? '#ff7b1c' : 'rgba(225,232,232,0.9)';
-    ctx.fillText(ammoText, PL + 6, PT + 6);
+    ctx.fillText(ammoText, PL + 6, textTop);
     ctx.fillStyle = 'rgba(160,175,175,0.85)';
-    ctx.fillText(` · ${sim.state.shots} shot${sim.state.shots === 1 ? '' : 's'} fired`, PL + 6 + ctx.measureText(ammoText).width, PT + 6);
+    ctx.fillText(` · ${sim.state.shots} shot${sim.state.shots === 1 ? '' : 's'} fired`, PL + 6 + ctx.measureText(ammoText).width, textTop);
     if (kill) {
       ctx.fillStyle = KILL_COLOR;
       ctx.font = '700 12px sans-serif';
-      ctx.fillText(`KILL on shot ${kill.shot} (${kill.hits} hit${kill.hits === 1 ? '' : 's'}) · ${Math.round(kill.ms)}ms TTK`, PL + 6, PT + 22);
+      ctx.fillText(`KILL on shot ${kill.shot} (${kill.hits} hit${kill.hits === 1 ? '' : 's'}) · ${Math.round(kill.ms)}ms TTK`, PL + 6, textTop + 16);
     }
 
     // The banner says how to get in, and once in, how to get out.
