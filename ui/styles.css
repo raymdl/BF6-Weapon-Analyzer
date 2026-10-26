@@ -457,11 +457,12 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-fire-seg button:hover{color:var(--accent)}
 .rc-fire-seg button.on{position:relative;z-index:1;background:rgba(201,162,39,.18);border-color:var(--accent);color:var(--accent)}
 .rc-fire-seg button.rc-aimed{position:relative;z-index:2;border-color:var(--accent);color:var(--accent)}
-/* Reload, Clear and Exit hold the plot's top-right corner and the fire-mode
-   group its top-left, with the read-outs drawn below it. The captured cursor reaches both. */
+/* The fire-mode group holds the plot's top-right corner; Reload, Clear and Exit
+   sit at the bottom-right above the axis labels. The captured cursor reaches both. */
 .rc-plot-mode{display:inline-flex}
 .rc-plot-mode[hidden]{display:none}
-.rc-range-tools{position:absolute;left:34px;top:8px;z-index:2;display:flex}
+.rc-range-tools{position:absolute;right:8px;bottom:26px;z-index:2;display:flex;flex-direction:column;align-items:stretch;gap:4px}
+.rc-range-tools .rc-range-btn{padding:0 5px}
 .rc-range-tools[hidden]{display:none}
 .rc-plot-mode .rc-fire-seg button{height:21px;padding:0 9px;font-size:.68rem;background:rgba(12,18,18,.78);backdrop-filter:blur(2px)}
 .rc-plot-mode .rc-fire-seg button.on{background:rgba(201,162,39,.22)}

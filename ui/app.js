@@ -3420,7 +3420,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   pressed('rcStanceMount', stance === 'mount');
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
-    // The range draws its own live crosshair; its corner holds Reload, Clear and Exit instead.
+    // The range draws its own live crosshair; its corner holds the fire modes instead.
     crosshairToggle.hidden = state.recoil.view === 'range';
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
     const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
