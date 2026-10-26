@@ -532,7 +532,7 @@ export function createFiringRange({
     // slides off with the view.
     const mode = { auto: 'Hold to fire', burst: 'Click to burst', single: 'Click to fire' }[sim.state.triggerMode];
     const ammo = Number.isFinite(sim.state.magazine) ? `Mag: ${sim.state.ammo} / ${sim.state.magazine}` : 'Mag: ∞';
-    // Top-right belongs to the fire modes, so the read-outs stack at top-left.
+    // Top-right belongs to the range controls, so the read-outs stack at top-left.
     ctx.font = '600 11px sans-serif'; ctx.textBaseline = 'top'; ctx.textAlign = 'left';
     const ammoText = sim.state.ammo === 0 ? `${ammo} · R to reload` : ammo;
     ctx.fillStyle = sim.state.ammo === 0 ? '#ff7b1c' : 'rgba(225,232,232,0.9)';

@@ -2426,8 +2426,8 @@ function cycleFireMode(slotIdx) {
   setFireMode(slotIdx, modes[(modes.indexOf(current) - 1 + modes.length) % modes.length]);
 }
 /**
- * Semi / Burst / Auto in the plot's top-right corner, with the X key noted in
- * the footer: only the modes the loadout offers, and nothing at all when there is one.
+ * One button in the plot's top-right corner that steps the fire mode like the
+ * X key, noted in the footer: only when the loadout offers more than one mode.
  */
 function renderRangeFireModes(isRange) {
   const el = document.getElementById('rcRangeModes');
@@ -2447,18 +2447,22 @@ function renderRangeFireModes(isRange) {
     chip.title = 'X while firing cycles the fire mode';
     keyEl.appendChild(chip);
   }
-  const seg = document.createElement('span');
-  seg.className = 'rc-fire-seg';
+  const b = document.createElement('button');
+  b.type = 'button';
+  b.className = 'rc-range-btn';
+  // Every label shares one grid cell, so the button keeps the longest one's width.
+  const val = document.createElement('span');
+  val.className = 'rc-cycle-val';
   for (const mode of modes) {
-    const b = document.createElement('button');
-    b.type = 'button';
-    if (mode === current) b.className = 'on';
-    b.textContent = FIRE_MODE_LABELS[mode];
-    b.setAttribute('aria-pressed', String(mode === current));
-    b.addEventListener('click', () => setFireMode(0, mode));
-    seg.appendChild(b);
+    const s = document.createElement('span');
+    if (mode === current) s.className = 'on';
+    s.textContent = FIRE_MODE_LABELS[mode];
+    val.appendChild(s);
   }
-  el.appendChild(seg);
+  b.append('Fire Mode: ', val, ' ▸');
+  b.setAttribute('aria-label', `Fire mode: ${FIRE_MODE_LABELS[current]}. Click for the next mode.`);
+  b.addEventListener('click', () => cycleFireMode(0));
+  el.appendChild(b);
 }
 function rangeSimKey() {
   const w = selectedWeaponBuild(state.slots[0]);
@@ -3420,7 +3424,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   pressed('rcStanceMount', stance === 'mount');
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
-    // The range draws its own live crosshair; its corner holds the fire modes instead.
+    // The range draws its own live crosshair; its corner holds the range controls instead.
     crosshairToggle.hidden = state.recoil.view === 'range';
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
     const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
@@ -3586,7 +3590,6 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
   document.getElementById('rcOverlayGroup')?.toggleAttribute('hidden', isRange);
   document.getElementById('rcRangeActions')?.toggleAttribute('hidden', !isRange);
-  document.getElementById('rcRangeTools')?.toggleAttribute('hidden', !isRange);
   renderRangeFireModes(isRange);
   // The range plot is capped to the viewport so the HUD, the soldier and the
   // controls above and below it stay on screen together while the cursor is gone.
