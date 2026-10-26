@@ -2455,7 +2455,6 @@ function renderRangeFireModes(isRange) {
     if (mode === current) b.className = 'on';
     b.textContent = FIRE_MODE_LABELS[mode];
     b.setAttribute('aria-pressed', String(mode === current));
-    b.title = `${FIRE_MODE_LABELS[mode]} fire`;
     b.addEventListener('click', () => setFireMode(0, mode));
     seg.appendChild(b);
   }
