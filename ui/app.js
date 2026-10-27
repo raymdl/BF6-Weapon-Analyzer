@@ -170,7 +170,7 @@ const state = {
   // Panels fold away so the page can be sized for a screenshot without giving
   // up canvas space.
   collapsed: { overview: false, charts: false, recoil: false },
-  chart: { mode: 'dmg', btkHS: 0, showAds: false, showVel: false },
+  chart: { mode: 'dmg', btkHS: 0, showAds: false, showRec: false, showVel: false },
   recoil: {
     aim: 'ads', stance: 'stand',
     view: 'angle', distance: TARGET_DEFAULT_DISTANCE, targetAim: 'chest', customAim: { x: 0, y: 0 }, zeroDistance: 100,
@@ -485,7 +485,7 @@ function setPanelCollapsed(key, collapsed) {
 }
 
 function applyChartStateToDom() {
-  const { mode, btkHS, showAds, showVel } = state.chart;
+  const { mode, btkHS, showAds, showRec, showVel } = state.chart;
   const press = (id, on) => {
     const el = document.getElementById(id);
     el.classList.toggle('on', on);
@@ -499,6 +499,10 @@ function applyChartStateToDom() {
   adsBtn.style.display = isTtk ? '' : 'none';
   adsBtn.classList.toggle('on', isTtk && showAds);
   adsBtn.setAttribute('aria-pressed', String(isTtk && showAds));
+  const recBtn = document.getElementById('recToggleBtn');
+  recBtn.style.display = isTtk ? '' : 'none';
+  recBtn.classList.toggle('on', isTtk && showRec);
+  recBtn.setAttribute('aria-pressed', String(isTtk && showRec));
   const velBtn = document.getElementById('velToggleBtn');
   velBtn.style.display = isTtk ? '' : 'none';
   velBtn.classList.toggle('on', isTtk && showVel);
@@ -1384,6 +1388,7 @@ function setChartMode(m) {
   const isTtk = m === 'ttk';
   if (!isTtk) {
     state.chart.showAds = false;
+    state.chart.showRec = false;
     state.chart.showVel = false;
   }
   applyChartStateToDom();
@@ -1392,6 +1397,12 @@ function setChartMode(m) {
 }
 function toggleAdsToggle() {
   state.chart.showAds = !state.chart.showAds;
+  applyChartStateToDom();
+  renderChart();
+  renderBTK();
+}
+function toggleRecToggle() {
+  state.chart.showRec = !state.chart.showRec;
   applyChartStateToDom();
   renderChart();
   renderBTK();
@@ -1550,7 +1561,7 @@ function renderChart() {
 
   const w1 = selectedWeaponBuild(state.slots[0]);
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
-  const { mode, btkHS, showAds, showVel } = state.chart;
+  const { mode, btkHS, showAds, showRec, showVel } = state.chart;
   const mr = maxRange([w1, w2]);
   const labels = []; for (let r = 0; r <= mr; r++) labels.push(r);
   const ctx = document.getElementById('dmgChart');
@@ -1634,7 +1645,8 @@ function renderChart() {
       if (firingTtk == null) return null;
       const flightTime = showVel ? flightTimeAtDistance(w._projectileModel, r) : 0;
       if (flightTime == null) return null;
-      return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
+      return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0)
+        + (showRec ? (w._sprintRecoveryMs ?? 0) : 0) + flightTime * 1000;
     };
     const fmtTtkAt = value => value == null ? fmtTTK(null) : fmtTTK(Math.round(value));
     const ttkDs = (w, color, label, zoneMult = 1, band = false) => ({
@@ -1656,7 +1668,7 @@ function renderChart() {
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
     // Time view: timings only, no bullet counts.
-    // Chest and limbs are the totals; ADS and flight show what the toggles add.
+    // Chest and limbs are the totals; ADS, recovery and flight show what the toggles add.
     chartReadout = (w, r) => {
       const btk = getBTKWithHits(w, r, btkHS);
       const limbBtk = getBTKWithHits(w, r, btkHS, limbMult(w));
@@ -1664,6 +1676,7 @@ function renderChart() {
         { label: 'Chest', value: fmtTtkAt(ttkAt(w, r)), applies: true },
         { label: 'Limbs', value: fmtTtkAt(ttkAt(w, r, limbMult(w))), applies: limbBtk !== btk },
         { label: 'ADS', value: `${formatMilliseconds(w._adsTimeMs ?? 0)}ms`, applies: showAds },
+        { label: 'Recovery', value: `${formatMilliseconds(w._sprintRecoveryMs ?? 0)}ms`, applies: showRec },
         { label: 'Flight', value: `${Math.round((flightTimeAtDistance(w._projectileModel, r) ?? 0) * 1000)}ms`, applies: showVel },
       ];
     };
@@ -1675,7 +1688,7 @@ function renderChart() {
         plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: {
           x: chartXAxis(mr),
-          y: { min: 0, max: yMax, title: { display: true, text: `${['Time to Kill', showAds && 'ADS', showVel && 'Flight'].filter(Boolean).join(' + ')} (ms)`, color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
+          y: { min: 0, max: yMax, title: { display: true, text: `${['Time to Kill', showAds && 'ADS', showRec && 'REC', showVel && 'Flight'].filter(Boolean).join(' + ')} (ms)`, color: '#7a8a8a', font: { size: 11 } }, ticks: { color: '#7a8a8a', stepSize: 100 }, grid: { color: 'rgba(40,48,48,0.6)' } },
         },
       },
     });
@@ -1754,15 +1767,16 @@ function btkBtkText(w, r) {
   if (!Number.isFinite(b) || !Number.isFinite(bl)) return '—';
   return bl !== b ? `${b}–${bl}` : `${b}`;
 }
-/** Time to kill at a range for a bullet count, with the chart's ADS and flight
+/** Time to kill at a range for a bullet count, with the chart's ADS, recovery and flight
  *  additions; null when the weapon lacks the data. */
 function btkTtkAt(w, range, btk) {
-  const { showAds, showVel } = state.chart;
+  const { showAds, showRec, showVel } = state.chart;
   const firingTtk = getTTK(w, btk);
   if (firingTtk == null) return null;
   const flightTime = showVel ? flightTimeAtDistance(w._projectileModel, range) : 0;
   if (flightTime == null) return null;
-  return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0) + flightTime * 1000;
+  return firingTtk + (showAds ? (w._adsTimeMs ?? 0) : 0)
+    + (showRec ? (w._sprintRecoveryMs ?? 0) : 0) + flightTime * 1000;
 }
 /** A kill-table TTK cell: chest, or chest–limbs when the limb multiplier changes the count. */
 function btkTtkText(w, r) {
@@ -1779,9 +1793,9 @@ function renderBTK() {
   if (!document.getElementById('btkArea').getClientRects().length) return;
   const w1 = selectedWeaponBuild(state.slots[0]);
   const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
-  const { showAds, showVel } = state.chart;
+  const { showAds, showRec, showVel } = state.chart;
   const ranges = btkRanges(w1, w2);
-  const ttkHdr = ['TTK', showAds && 'ADS', showVel && 'Flight'].filter(Boolean).join('+');
+  const ttkHdr = ['TTK', showAds && 'ADS', showRec && 'REC', showVel && 'Flight'].filter(Boolean).join('+');
   // The title row names each weapon shown, in its colour, over its columns.
   document.getElementById('btkWeapons').innerHTML = [[w1, '--accent'], [w2, '--accent2']]
     .filter(([w]) => w)
@@ -4445,6 +4459,7 @@ function bindEvents() {
   document.getElementById('modeBtk').addEventListener('click', () => setChartMode('btk'));
   document.getElementById('modeTtk').addEventListener('click', () => setChartMode('ttk'));
   document.getElementById('adsToggleBtn').addEventListener('click', toggleAdsToggle);
+  document.getElementById('recToggleBtn').addEventListener('click', toggleRecToggle);
   document.getElementById('velToggleBtn').addEventListener('click', toggleVelToggle);
   document.getElementById('btkHsSelect').addEventListener('change', e => setBtkHS(+e.target.value));
 

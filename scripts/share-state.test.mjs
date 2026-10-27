@@ -18,9 +18,27 @@ const codec = createShareCodec({ ...data, defaultAttsForWeapon: defaults });
 const state = () => ({
   slots: [{ weapon: weapon('m433'), atts: defaults(weapon('m433')) }, { weapon: null, atts: blankAtts() }],
   comparing: false, collapsed: {},
-  chart: { mode: 'dmg', btkHS: 0, showAds: false, showVel: false },
+  chart: { mode: 'dmg', btkHS: 0, showAds: false, showRec: false, showVel: false },
   recoil: { aim: 'ads', stance: 'stand', platform: 'pc', view: 'angle',
     distance: TARGET_DEFAULT_DISTANCE, zeroDistance: 100, targetAim: 'chest', compensationLevel: 0 },
+});
+
+test('TTK recovery toggle round-trips with timing options and stays off in other modes', () => {
+  for (const showAds of [false, true]) {
+    for (const showVel of [false, true]) {
+      const original = state();
+      Object.assign(original.chart, { mode: 'ttk', showAds, showRec: true, showVel });
+      const restored = state();
+      codec.restoreFromHash(restored, codec.encodeState(original), weapons);
+      assert.deepEqual(restored.chart, original.chart);
+    }
+  }
+  for (const hash of ['#w=m433&cm=ttk', '#w=m433&rec=1', '#w=m433&cm=btk&rec=1']) {
+    const restored = state();
+    codec.restoreFromHash(restored, hash, weapons);
+    assert.equal(restored.chart.showRec, false);
+  }
+  assert.equal(new URLSearchParams(codec.encodeState(state())).has('rec'), false);
 });
 
 test('new target links retain distance; old omitted distances mean 30 metres', () => {

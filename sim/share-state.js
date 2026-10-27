@@ -135,6 +135,7 @@ export function createShareCodec({
     if (state.chart.mode !== 'dmg') params.set('cm', state.chart.mode);
     if (state.chart.btkHS) params.set('hs', state.chart.btkHS);
     if (state.chart.showAds) params.set('ads', '1');
+    if (state.chart.showRec) params.set('rec', '1');
     if (state.chart.showVel) params.set('vel', '1');
     if (state.recoil.aim !== 'ads') params.set('ra', state.recoil.aim);
     if (state.recoil.stance !== 'stand') params.set('rs', state.recoil.stance);
@@ -189,6 +190,7 @@ export function createShareCodec({
     const headshots = parseInt(params.get('hs'), 10);
     if (headshots >= 1 && headshots <= 4) state.chart.btkHS = headshots;
     if (params.get('ads') === '1' && state.chart.mode === 'ttk') state.chart.showAds = true;
+    if (params.get('rec') === '1' && state.chart.mode === 'ttk') state.chart.showRec = true;
     if (params.get('vel') === '1' && state.chart.mode === 'ttk') state.chart.showVel = true;
     if (params.get('ra') === 'hip') state.recoil.aim = 'hip';
     if (['move', 'mount'].includes(params.get('rs'))) state.recoil.stance = params.get('rs');

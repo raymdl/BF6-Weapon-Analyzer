@@ -157,7 +157,7 @@ See [damage and ballistics](DAMAGE_BALLISTICS.md) for the equations and endpoint
 
 The table beside the chart is titled **BTK / TTK**. Each weapon's name sits centred
 over its three columns, in its colour: **DMG** (damage per shot, the full shell for a
-pellet load), **BTK** and **TTK** (the TTK heading adds +ADS and +Flight when those
+pellet load), **BTK** and **TTK** (the TTK heading adds +ADS, +REC and +Flight when those
 are on). A BTK or TTK cell shows a chest–limb range where limb hits need more
 bullets, and a BTK that changes from the row above is marked. The rows are distances
 chosen by the classes shown: 0 to 250 m when a sniper rifle is shown, otherwise 0 to
@@ -233,6 +233,9 @@ changes to **Time to Kill + ADS + Flight**. Travel time grows with distance, so
 these lines can slope even between bullet-count steps.
 
 ![TTK comparison including ADS and projectile flight time](img/chart-ttk-total-example.svg)
+
+**+REC:** Add the selected loadout's sprint recovery time to the TTK chart and
+table. This option works alone or together with +ADS and +VEL.
 
 ## Recoil and spread
 
