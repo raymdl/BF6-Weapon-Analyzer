@@ -105,10 +105,10 @@
         <div style="display:flex;align-items:stretch">
           <div class="chart-column chart-column-main" style="flex:1;min-width:0;padding:6px 8px;border-right:1px solid var(--border)">
             <div class="chart-head" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:6px">
-              <div style="display:flex;align-items:center;gap:8px">
+              <div style="display:flex;align-items:center;flex-wrap:wrap;min-width:0;gap:8px">
                 <button class="panel-toggle" data-collapse="charts" data-collapse-label="the damage chart and kill table" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Comparison Chart</div>
-                <div class="chart-mode-controls" style="display:flex;gap:3px">
+                <div class="chart-mode-controls" style="display:flex;flex-wrap:wrap;gap:3px">
                   <button class="mode-btn on" id="modeDmg" aria-pressed="true" title="Shows damage per shot across range.">DMG</button>
                   <button class="mode-btn" id="modeBtk" aria-pressed="false" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
                   <button class="mode-btn" id="modeTtk" aria-pressed="false" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
