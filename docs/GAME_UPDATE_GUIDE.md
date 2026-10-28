@@ -642,6 +642,9 @@ reused later.
 5. Update source and build labels so retained old data is not presented as newly verified.
    Check the site header, footer, page description and `data/provenance/live-baseline.json`
    as well as per-weapon provenance. Verify the changed values in the local browser.
+   Once the comparison is complete, set `lastVerified` in `live-baseline.json` to the new
+   build (or, for a hotfix, update `hotfixesCheckedThrough`). Unchanged values keep the build
+   they were first read from; `lastVerified` is what says they are current.
 6. **Review the source records in `data/provenance/live-baseline.json`**, not only the new
    build's entry: `ea-update-notes`, `sym-bf6-json` and each earlier Frosty record. A record
    the site no longer rests on is marked `status: historical` with a note; a new patch-notes

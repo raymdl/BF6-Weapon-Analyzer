@@ -142,7 +142,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by HK433_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by HK433_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -288,7 +288,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by G36_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by G36_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -434,7 +434,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by SCARL_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by SCARL_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -580,7 +580,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x51mmNATO tweakable damage curve referenced by G3A4_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x51mmNATO tweakable damage curve referenced by G3A4_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -726,7 +726,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x51mmNATO tweakable damage curve referenced by Tavor7_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x51mmNATO tweakable damage curve referenced by Tavor7_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.979166,
     "provenance": {
       "frosty": {
@@ -900,7 +900,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_545x39mm tweakable damage curve referenced by 6P67_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_545x39mm tweakable damage curve referenced by 6P67_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -1066,7 +1066,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x39mm tweakable damage curve referenced by ACE32_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x39mm tweakable damage curve referenced by ACE32_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.973599,
     "provenance": {
       "frosty": {
@@ -1222,7 +1222,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by L85A3_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by L85A3_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.975786,
     "provenance": {
       "frosty": {
@@ -1378,7 +1378,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by VHS2_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by VHS2_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.958915,
     "provenance": {
       "frosty": {
@@ -1551,7 +1551,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by M16A3_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by M16A3_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -1717,7 +1717,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by M4A1_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by M4A1_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.977272,
     "provenance": {
       "frosty": {
@@ -1863,7 +1863,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_68x51mm_Carbine tweakable damage curve referenced by XM7_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_68x51mm_Carbine tweakable damage curve referenced by XM7_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.979026,
     "provenance": {
       "frosty": {
@@ -2039,7 +2039,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_545x39mm_Carbine tweakable damage curve referenced by AK205_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_545x39mm_Carbine tweakable damage curve referenced by AK205_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.959742
   },
   {
@@ -2205,7 +2205,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x51mmNATO_Carbine tweakable damage curve referenced by HK417A2_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x51mmNATO_Carbine tweakable damage curve referenced by HK417A2_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -2389,7 +2389,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by MSBSGROTB_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by MSBSGROTB_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -2555,7 +2555,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_58x42mm_Carbine tweakable damage curve referenced by QBZ192_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_58x42mm_Carbine tweakable damage curve referenced by QBZ192_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -2739,7 +2739,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x39mm_Carbine tweakable damage curve referenced by SIG553R_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x39mm_Carbine tweakable damage curve referenced by SIG553R_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.979999,
     "provenance": {
       "frosty": {
@@ -2915,7 +2915,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.300BLK_Carbine tweakable damage curve referenced by SCARSC_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.300BLK_Carbine tweakable damage curve referenced by SCARSC_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -3091,7 +3091,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by MPX_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by MPX_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -3275,7 +3275,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by MP5MLI_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by MP5MLI_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -3431,7 +3431,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_46x30_PDW tweakable damage curve referenced by MP7A2_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_46x30_PDW tweakable damage curve referenced by MP7A2_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.961538,
     "provenance": {
       "frosty": {
@@ -3625,7 +3625,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.40SW_PDW tweakable damage curve referenced by UMP40_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.40SW_PDW tweakable damage curve referenced by UMP40_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -3791,7 +3791,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_57x28mm_PDW tweakable damage curve referenced by P90_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_57x28mm_PDW tweakable damage curve referenced by P90_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.955666,
     "provenance": {
       "frosty": {
@@ -3985,7 +3985,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by Vector_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by Vector_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4151,7 +4151,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_10x25mm_PDW tweakable damage curve referenced by APC10_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_10x25mm_PDW tweakable damage curve referenced by APC10_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.980769,
     "provenance": {
       "frosty": {
@@ -4345,7 +4345,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by APDW_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by APDW_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1.031698,
     "provenance": {
       "frosty": {
@@ -4539,7 +4539,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by ScorpionEvo3_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by ScorpionEvo3_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -4658,7 +4658,7 @@
       ]
     },
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by PP19_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_9x19mm_PDW tweakable damage curve referenced by PP19_WB, first read in 1.4.2.5.",
     "dmg": [
       {
         "r": 0,
@@ -4855,7 +4855,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by Minimi_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by Minimi_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5001,7 +5001,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by M27IAR_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by M27IAR_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5141,7 +5141,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by M60E6_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by M60E6_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.99102,
     "provenance": {
       "frosty": {
@@ -5317,7 +5317,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x39mm_MG tweakable damage curve referenced by RPKM_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x39mm_MG tweakable damage curve referenced by RPKM_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5457,7 +5457,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by MG4K_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by MG4K_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5588,7 +5588,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_68x51mm_MG tweakable damage curve referenced by M250_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_68x51mm_MG tweakable damage curve referenced by M250_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5734,7 +5734,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by Ultimax_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_MG tweakable damage curve referenced by Ultimax_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -5874,7 +5874,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by M240L_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by M240L_WB, first read in 1.4.2.5.",
     "reloadSpeed": 0.949176,
     "provenance": {
       "frosty": {
@@ -6024,7 +6024,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by MG5_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x51mmNATO_MG tweakable damage curve referenced by MG5_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6170,7 +6170,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_545x39mm_MG tweakable damage curve referenced by RPK74M_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_545x39mm_MG tweakable damage curve referenced by RPK74M_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6311,7 +6311,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x51mmNATO_Semi tweakable damage curve referenced by M39EMR_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x51mmNATO_Semi tweakable damage curve referenced by M39EMR_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6452,7 +6452,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_Semi tweakable damage curve referenced by ARADMR_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_Semi tweakable damage curve referenced by ARADMR_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6593,7 +6593,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.338LapuaMagnum_Semi tweakable damage curve referenced by SVCh_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.338LapuaMagnum_Semi tweakable damage curve referenced by SVCh_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6734,7 +6734,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x54mmR_Semi tweakable damage curve referenced by SVDM_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x54mmR_Semi tweakable damage curve referenced by SVDM_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -6875,7 +6875,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_Semi tweakable damage curve referenced by MSBSGROTCPS_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_Semi tweakable damage curve referenced by MSBSGROTCPS_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7021,7 +7021,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.300WinMag tweakable damage curve referenced by M2010ESR_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.300WinMag tweakable damage curve referenced by M2010ESR_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7176,7 +7176,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_762x54mmR_Bolt tweakable damage curve referenced by SV98M_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_762x54mmR_Bolt tweakable damage curve referenced by SV98M_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7326,7 +7326,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.338NormaMagnum tweakable damage curve referenced by MRAD_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.338NormaMagnum tweakable damage curve referenced by MRAD_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7471,7 +7471,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_Bolt tweakable damage curve referenced by MiniFix_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_Bolt tweakable damage curve referenced by MiniFix_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7621,7 +7621,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.338LapuaMagnum2 tweakable damage curve referenced by L115A3_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.338LapuaMagnum2 tweakable damage curve referenced by L115A3_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -7950,7 +7950,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_12gaNo01Buck300_Pump tweakable damage curve referenced by 590A1_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_12gaNo01Buck300_Pump tweakable damage curve referenced by 590A1_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -8124,7 +8124,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_12gaNo01Buck300_Semi tweakable damage curve referenced by M1014_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_12gaNo01Buck300_Semi tweakable damage curve referenced by M1014_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -8280,7 +8280,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_12gaNo01Buck275_Semi tweakable damage curve referenced by 185KSK_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_12gaNo01Buck275_Semi tweakable damage curve referenced by 185KSK_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -8422,7 +8422,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_12gaNo01Buck275_Pump tweakable damage curve referenced by DP12_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_12gaNo01Buck275_Pump tweakable damage curve referenced by DP12_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "burstRounds": 2,
     "burstRpm": 359.999,
@@ -8611,7 +8611,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x19mm tweakable damage curve referenced by M18_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_9x19mm tweakable damage curve referenced by M18_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -8772,7 +8772,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_57x28mm tweakable damage curve referenced by FiveSeven_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_57x28mm tweakable damage curve referenced by FiveSeven_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -8943,7 +8943,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.45ACP tweakable damage curve referenced by M45A1_WB, export label 1.4.2.5. The raw curve lists 54 m 14.3 to 75 m 12.5; in-game BTK and damage markers on 2026-09-13 confirm a step at 75 m, so the 75 m 14.3 point is explicit.",
+    "damageSource": "Frosty PD_.45ACP tweakable damage curve referenced by M45A1_WB, first read in 1.4.2.5. The raw curve lists 54 m 14.3 to 75 m 12.5; in-game BTK and damage markers on 2026-09-13 confirm a step at 75 m, so the 75 m 14.3 point is explicit.",
     "reloadSpeed": 1
   },
   {
@@ -9094,7 +9094,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.44Magnum tweakable damage curve referenced by RagingHunter_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.44Magnum tweakable damage curve referenced by RagingHunter_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -9268,7 +9268,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.40SW tweakable damage curve referenced by G22_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.40SW tweakable damage curve referenced by G22_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -9429,7 +9429,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_.357Magnum tweakable damage curve referenced by TRR8_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_.357Magnum tweakable damage curve referenced by TRR8_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {
@@ -9608,7 +9608,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_32ACP_PDW tweakable damage curve referenced by Skorpion_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_32ACP_PDW tweakable damage curve referenced by Skorpion_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1
   },
   {
@@ -9774,7 +9774,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by BREN3_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_Carbine tweakable damage curve referenced by BREN3_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "schemaVersion": 1,
@@ -9967,7 +9967,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by EF88_WB, export label 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO tweakable damage curve referenced by EF88_WB, first read in 1.4.2.5.",
     "reloadSpeed": 1,
     "provenance": {
       "schemaVersion": 1,
@@ -10191,7 +10191,7 @@
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_9x39mm_Semi tweakable damage curve referenced by VSSM_WB, export label 1.4.2.5. July 2026 panel screenshots showed long-range damage 20; that capture predates this export.",
+    "damageSource": "Frosty PD_9x39mm_Semi tweakable damage curve referenced by VSSM_WB, first read in 1.4.2.5. July 2026 panel screenshots showed long-range damage 20; that capture predates this export.",
     "reloadSpeed": 1,
     "provenance": {
       "schemaVersion": 1,
