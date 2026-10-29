@@ -1770,16 +1770,38 @@ const distanceMarker = {
       measure(labelOf(k), headFont, '.5px'),
       ...rows.map(row => measure(row.cells[k]?.value ?? '', valueFont))));
     const boxW = Math.ceil(firstW + widths.reduce((sum, w) => sum + gap + w, 0)) + pad * 2;
-    const boxH = (rows.length + 1) * lineHeight + pad * 2;
-    // Beside the line, flipping to its left where the right edge would clip it,
-    // and in whichever half of the plot the lines are not in at this range.
-    const left = px + 6 + boxW > chartArea.right ? px - 6 - boxW : px + 6;
-    const lineYs = chart.data.datasets
-      .filter(ds => ds._weapon && !ds.isBand && !ds.isBaseline)
-      .map(ds => scales.y?.getPixelForValue(ds.data[range]))
-      .filter(Number.isFinite);
-    const meanY = lineYs.length ? lineYs.reduce((sum, y) => sum + y, 0) / lineYs.length : chartArea.bottom;
-    const top = meanY < (chartArea.top + chartArea.bottom) / 2 ? chartArea.bottom - 4 - boxH : chartArea.top + 4;
+    // The last row's text ends short of its line height, so the box does too.
+    const boxH = (rows.length + 1) * lineHeight + pad * 2 - 5;
+    // Beside the line, on whichever side and at whichever end of the plot
+    // covers the fewest line points: right of the line and at the top when
+    // nothing separates the choices, as the box has always sat.
+    // A line counts where it passes through the box; a shaded limb band counts
+    // where any of its span, from its weapon's line (the dataset before it)
+    // to its own edge, lies inside.
+    const sets = chart.data.datasets;
+    const covered = (left, top) => {
+      const from = Math.max(0, Math.ceil(scales.x.getValueForPixel(left)));
+      const to = Math.min(last, Math.floor(scales.x.getValueForPixel(left + boxW)));
+      let n = 0;
+      sets.forEach((ds, i) => {
+        if (!ds._weapon || ds.isBaseline) return;
+        const edge = ds.isBand ? sets[i - 1] : null;
+        for (let r = from; r <= to; r++) {
+          const y = scales.y.getPixelForValue(ds.data[r]);
+          const y2 = edge ? scales.y.getPixelForValue(edge.data[r]) : y;
+          if (Math.max(y, y2) >= top && Math.min(y, y2) <= top + boxH) n++;
+        }
+      });
+      return n;
+    };
+    const sides = [px + 6, px - 6 - boxW].filter(x => x >= chartArea.left && x + boxW <= chartArea.right);
+    if (!sides.length) sides.push(px + 6 + boxW > chartArea.right ? px - 6 - boxW : px + 6);
+    const ends = [chartArea.top + 4, chartArea.bottom - 4 - boxH];
+    let left = sides[0], top = ends[0], best = Infinity;
+    for (const y of ends) for (const x of sides) {
+      const n = covered(x, y);
+      if (n < best) { best = n; left = x; top = y; }
+    }
     ctx.fillStyle = 'rgba(12,14,14,.85)';
     ctx.fillRect(left, top, boxW, boxH);
     ctx.strokeStyle = '#283030';
