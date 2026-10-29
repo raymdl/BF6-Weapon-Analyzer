@@ -156,7 +156,7 @@ test('Angle Plot draws its crosshair at (0, 0) after switching from a custom Sol
   context.viewport = { xSpan: 20, ySpan: 20, xCenter: 0, yCenter: 0 };
   canvas.getContext = () => ctx;
   runInContext([runtimeFunction('drawPlotFrame'), runtimeFunction('drawRecoilFixed')].join('\n'), context);
-  runInContext("drawRecoilFixed(document.getElementById('rcMain'), null, null, {})", context);
+  runInContext("drawRecoilFixed(document.getElementById('rcMain'), [null, null], {})", context);
   assert.deepEqual(moves, [[204, 195], [210, 189]]);
   assert.equal(context.state.recoil.customAim.x, 10);
   assert.equal(context.state.recoil.customAim.y, 30);
