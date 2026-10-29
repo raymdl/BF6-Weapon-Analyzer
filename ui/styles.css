@@ -1,6 +1,6 @@
 :root {
   --bg:#0c0e0e; --bg2:#151a1a; --bg3:#1c2222;
-  --accent:#c9a227; --accent2:#4d94d0;
+  --accent:#c9a227; --accent2:#4d94d0; --accent3:#de78a6; --accent4:#3fbfae;
   --text:#dde3e3; --muted:#7a8a8a; --border:#283030;
   --green:#56c464; --red:#e05555;
   --lock-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E");
@@ -110,6 +110,8 @@ body.is-popout .rc-note{flex-shrink:0}
 .m-tip .tt-desc{white-space:normal}
 .m-tip .tt-wname{margin-top:7px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent)}
 .m-tip .tt-wname.c2{color:var(--accent2)}
+.m-tip .tt-wname.c3{color:var(--accent3)}
+.m-tip .tt-wname.c4{color:var(--accent4)}
 .m-tip .tt-desc + .tt-row,.m-tip .tt-wname + .tt-row{margin-top:3px}
 .m-tip .tt-row{display:flex;justify-content:space-between;gap:16px;color:var(--muted);line-height:1.6;white-space:nowrap}
 .m-tip .tt-row b{color:var(--text);font-weight:600;font-variant-numeric:tabular-nums}
@@ -148,6 +150,7 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .wbtn:hover{background:var(--bg3)}
 .wbtn.p1{background:rgba(201,162,39,.1);color:var(--accent);border-left-color:var(--accent)}
 .wbtn.p2{background:rgba(77,148,208,.1);color:var(--accent2);border-left-color:var(--accent2)}
+.wbtn.p3,.wbtn.p4{background:color-mix(in srgb,var(--slot-c) 10%,transparent);color:var(--slot-c);border-left-color:var(--slot-c)}
 .no-w{padding:10px 11px;color:var(--muted);font-size:0.78rem}
 .cmp-row{display:flex;align-items:stretch;gap:4px;margin:5px 11px}
 .cmp-btn{flex:1;min-width:0;padding:4px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:0.78rem;transition:all .15s}
@@ -156,11 +159,10 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
 #adsToggleBtn,#recToggleBtn,#velToggleBtn{color:#b39a52;border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.06)}
 #adsToggleBtn.on,#recToggleBtn.on,#velToggleBtn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
-.cmp-btn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.08)}
-.cmp-hdr{white-space:nowrap;padding:6px 11px 1px;font-size:0.72rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px}
-.clone-btn{background:rgba(77,148,208,.1);border:1px solid #2a3a48;color:#6a9ec0;border-radius:4px;padding:0;width:26px;display:inline-flex;align-items:center;justify-content:center;transition:all .15s}
+.cmp-hdr{position:relative;white-space:nowrap;padding:6px 11px 1px;font-size:0.72rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px}
+.clone-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:4px;padding:0;width:26px;display:inline-flex;align-items:center;justify-content:center;transition:all .15s}
 .clone-btn svg{width:13px;height:13px;display:block}
-.clone-btn:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
+.clone-btn:hover:not(:disabled){border-color:var(--muted);color:var(--text)}
 .clone-btn:disabled{opacity:.38;cursor:not-allowed;color:var(--muted);border-color:var(--border);background:var(--bg3)}
 /* Main */
 .main{flex:1;overflow-y:auto;overflow-x:hidden;padding:8px;display:flex;flex-direction:column;gap:9px}
@@ -178,6 +180,8 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .w-header{display:flex;align-items:baseline;row-gap:3px;column-gap:5px;flex-wrap:wrap;margin-bottom:5px}
 .wname{font-size:15px;font-weight:700;color:var(--accent)}
 .wname2{font-size:15px;font-weight:700;color:var(--accent2)}
+.wname3{font-size:15px;font-weight:700;color:var(--accent3)}
+.wname4{font-size:15px;font-weight:700;color:var(--accent4)}
 .wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
 .wbadge-estimated{font-size:0.68rem;color:#d8704a;border:1px solid rgba(216,112,74,.65);border-radius:3px;padding:2px 6px}
 .wbadge-burst{font-size:0.68rem;color:#c8960a;border:1px solid rgba(200,150,10,.4);border-radius:3px;padding:2px 6px}
@@ -189,6 +193,8 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .wbadge-mode:hover:not(.on){color:var(--text);background:rgba(255,255,255,.05)}
 .wbadge-mode.on{color:#1a2020;background:var(--accent);font-weight:600;cursor:default}
 .wbadge-modes.w2 .wbadge-mode.on{background:var(--accent2)}
+.wbadge-modes.w3 .wbadge-mode.on{background:var(--accent3)}
+.wbadge-modes.w4 .wbadge-mode.on{background:var(--accent4)}
 /* --sgroup-chrome is the group's border-left plus padding-left; the box is
    border-box, so the flex basis above has to carry it. Keep the three in
    step with the .sgroup and .sgrid rules that consume them.
@@ -226,7 +232,7 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .sval{font-size:0.9rem;font-weight:700}
 .sunit{font-size:0.68rem;color:var(--muted);margin-left:1px;font-weight:400}
 .sest{font-size:0.58rem;color:var(--muted);margin-left:2px}
-.c1{color:var(--accent)} .c2{color:var(--accent2)}
+.c1{color:var(--accent)} .c2{color:var(--accent2)} .c3{color:var(--accent3)} .c4{color:var(--accent4)}
 .scmp{display:flex;flex-direction:column;gap:0}.scmp-row{display:flex;align-items:baseline;gap:2px}
 .diff{font-size:0.62rem;padding:1px 2px;border-radius:3px;margin-left:1px;letter-spacing:-0.02em}
 .d-up{background:rgba(86,196,100,.15);color:var(--green)}
@@ -234,6 +240,9 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 /* Chart */
 .chart-head{margin-bottom:14px}
 .chart-table-head{height:21px;display:flex;align-items:center;position:relative}
+/* Names scrolled left with the table pass under the title; past the panel edge they are cut off. */
+.chart-table-head{overflow:hidden}
+.btk-title{position:relative;z-index:1;align-self:stretch;display:flex;align-items:center;padding-right:8px;background:var(--bg2)}
 /* Each weapon shown is named on the kill table's title row, in its colour, over its own columns (styled as .att-name). */
 .btk-weapons{text-transform:none;letter-spacing:0;font-size:.76rem;font-weight:700}
 /* Each name spans its three columns (width set in app.js), centred over them. */
@@ -243,11 +252,13 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .chart-wrap{position:relative;height:225px}
 .chart-wrap #chartLegend{position:absolute;right:6px;bottom:1px;margin:0;min-height:0;z-index:2}
 /* BTK table */
+/* A table wider than its column (four weapons beside a narrow chart, or a phone) scrolls in its own box. */
+#btkArea{overflow-x:auto;-webkit-overflow-scrolling:touch}
 .btk-tbl{width:100%;border-collapse:collapse;font-size:0.78rem}
 .btk-tbl th{padding:3px 7px;color:var(--muted);text-align:left;border-bottom:1px solid var(--border);font-size:0.67rem;font-weight:500}
 .btk-tbl td{padding:3px 7px;text-align:left;border-bottom:1px solid rgba(40,48,48,.45)}.btk-tbl tr:last-child td{border-bottom:none}
 .rng{color:var(--muted);font-size:0.7rem}
-.bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)}
+.bv{font-weight:600} .bchg{color:var(--accent)} .bchg2{color:var(--accent2)} .bchg3{color:var(--accent3)} .bchg4{color:var(--accent4)}
 .tv{color:var(--muted);font-size:0.76rem}
 /* The range under the pointer in the chart or the table; background only, so nothing moves. */
 .btk-tbl tbody tr[data-range]{cursor:default}
@@ -530,6 +541,8 @@ body.rc-plot-expanded{overflow:hidden}
 .rc-stats-loadouts .target-impact-weapon{margin-bottom:0}
 .target-impact-weapon.c1{color:var(--accent)}
 .target-impact-weapon.c2{color:var(--accent2)}
+.target-impact-weapon.c3{color:var(--accent3)}
+.target-impact-weapon.c4{color:var(--accent4)}
 .target-impact-summary{display:flex;margin-bottom:7px;padding:6px 0;border-top:1px solid #263131;border-bottom:1px solid #263131}
 .target-impact-summary>div{display:flex;flex:1 1 auto;align-items:baseline;gap:4px;min-width:0;padding:1px 4px;border-right:1px solid #263131;white-space:nowrap}
 .target-impact-summary>div:first-child{padding-left:1px}
@@ -553,6 +566,9 @@ body.rc-plot-expanded{overflow:hidden}
 .target-impact-summary strong.dmg-crit{color:var(--accent)}
 .rc-row{display:flex;flex-direction:column;gap:3px}
 .rc-lbl{font-size:0.65rem;color:var(--muted);display:flex;justify-content:space-between}
+/* Each weapon's value in its colour; a long row wraps between values, never inside one. */
+.rc-vals{text-align:right}
+.rc-vals>span:not(.rc-val-sep){white-space:nowrap}
 .rc-bar{height:5px;background:var(--bg3);border-radius:3px;overflow:hidden;position:relative}
 .rc-row{display:flex;flex-direction:column;gap:3px;position:relative}
 .rc-tt{display:none;position:absolute;left:0;top:calc(100% + 3px);z-index:200;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:8px 10px;min-width:240px;pointer-events:none;box-shadow:0 4px 12px rgba(0,0,0,.5)}
@@ -573,7 +589,7 @@ body.rc-plot-expanded{overflow:hidden}
 .att-block{margin-bottom:8px}
 .att-block:last-child{margin-bottom:0}
 .att-name{font-size:0.68rem;font-weight:700;margin-bottom:5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.att-name.c1{color:var(--accent)} .att-name.c2{color:var(--accent2)}
+.att-name.c1{color:var(--accent)} .att-name.c2{color:var(--accent2)} .att-name.c3{color:var(--accent3)} .att-name.c4{color:var(--accent4)}
 .att-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:4px}
 .att-chip{background:var(--bg3);border-radius:4px;padding:5px 6px;min-width:0;position:relative}
 .att-chip:hover .att-tt,.att-chip:focus-visible .att-tt,.att-chip.tt-open .att-tt{display:block}
@@ -619,6 +635,7 @@ body.rc-plot-expanded{overflow:hidden}
 #attSection2 .att-tool-lock.partial{color:var(--accent2);border-color:rgba(77,148,208,.4)}
 #attSection2 .att-lock-note{color:#6a9ec0}
 #attSection2 .att-lock-hint{border-color:rgba(77,148,208,.35);background:rgba(77,148,208,.06)}
+.wslot .att-lock-hint{border-color:color-mix(in srgb,var(--slot-c) 35%,transparent);background:color-mix(in srgb,var(--slot-c) 6%,transparent)}
 /* Weapon 2's tool buttons (Save, locks) hover in its colour. */
 #savedSec2 .att-tool:hover:not(:disabled),#attSection2 .att-tool:hover:not(:disabled){border-color:var(--accent2);color:var(--accent2)}
 /* Weapon 2's saved-loadout row: Save button, name field focus, chosen item and undo link. */
@@ -649,6 +666,8 @@ body.rc-plot-expanded{overflow:hidden}
 .att-menu-item.no-effect{color:#666}
 .att-menu-item.on{color:var(--accent)}
 .att-menu-2 .att-menu-item.on{color:var(--accent2)}
+.att-menu-3 .att-menu-item.on{color:var(--accent3)}
+.att-menu-4 .att-menu-item.on{color:var(--accent4)}
 .saved-item{display:flex;align-items:stretch;border-radius:3px}
 .saved-item:hover,.saved-item.on{background:var(--bg3)}
 .saved-item-load{flex:1;min-width:0;display:flex;flex-direction:column;align-items:flex-start;gap:1px;text-align:left;background:none;border:0;color:var(--text);padding:4px 7px;font-size:0.7rem}
@@ -671,12 +690,62 @@ body.rc-plot-expanded{overflow:hidden}
 /* Swap and Clone sit beside the compare button; disabled rather than hidden
    while nothing is compared, so the button keeps its width. */
 .cmp-hdr-tools{display:flex;gap:4px}
+/* Swap and Copy's weapon menu, for three or four weapons. */
+.cmp-hdr-tools{position:relative}
+.slot-menu{min-width:176px}
+.slot-menu-head{padding:4px 9px 3px;color:var(--muted);font-size:0.62rem;text-transform:uppercase;letter-spacing:1px}
+.slot-menu .share-menu-item{display:flex;gap:8px;align-items:baseline}
+.slot-menu .share-menu-item:hover{color:var(--text)}
+.slot-menu-name{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.slot-menu-name.empty{color:var(--muted)}
+/* The source takes its weapon's colour and a light tint. */
+.slot-menu .share-menu-item.is-source,.slot-menu .share-menu-item.is-source:hover{background:color-mix(in srgb,var(--src) 14%,transparent);color:var(--src)}
+.slot-menu .share-menu-item[aria-disabled="true"]{opacity:.4}
+/* Weapons 3 and 4 take their colour from --slot-c, set on their section. */
+.wslot .cmp-hdr{color:var(--slot-c)}
+.wslot .cbtn:hover,.wslot .cbtn.on{border-color:var(--slot-c);color:var(--slot-c);background:color-mix(in srgb,var(--slot-c) 10%,transparent)}
+.wslot .att-sel:focus,.wslot .saved-name-input:focus{border-color:var(--slot-c)}
+.wslot .att-tool.on{border-color:var(--slot-c);color:var(--slot-c);background:color-mix(in srgb,var(--slot-c) 10%,transparent)}
+.wslot .att-tool:hover:not(:disabled){border-color:var(--slot-c);color:var(--slot-c)}
+.wslot .att-row-locked .att-sel{border-color:color-mix(in srgb,var(--slot-c) 55%,transparent);background:color-mix(in srgb,var(--slot-c) 6%,transparent)}
+.wslot .att-tool-lock.partial{color:var(--slot-c);border-color:color-mix(in srgb,var(--slot-c) 40%,transparent)}
+.wslot .att-lock-note,.wslot .saved-item.on .saved-item-name,.wslot .saved-undo-btn{color:var(--slot-c)}
+/* Each compare weapon past the first can be removed from its header; the title stays centred. */
+.slot-remove{position:absolute;right:11px;top:50%;transform:translateY(-38%);width:18px;height:18px;display:grid;place-items:center;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:0;color:var(--muted);font-size:.85rem;font-weight:400;letter-spacing:0;line-height:1;cursor:pointer;transition:all .15s}
+.slot-remove:hover{border-color:var(--muted);color:var(--text)}
 /* Weapon 1's heading at the top of the sidebar, in its colour; Weapon 2's is the compare header. */
 .cmp-hdr.w1-hdr{color:var(--accent);border-top:0;padding-top:3px}
+/* Each weapon folds to its header and the chosen weapon's name. */
+.slot-fold{background:none;border:0;padding:0;color:inherit;font:inherit;letter-spacing:inherit;text-transform:inherit;display:inline-flex;align-items:center;gap:5px;cursor:pointer}
+.fold-chev{width:9px;height:9px;flex-shrink:0;transition:transform .15s}
+.slot-fold[aria-expanded="false"] .fold-chev{transform:rotate(-90deg)}
+.slot-folded{display:none!important}
+.slot-summary{padding:4px 11px 7px;font-size:.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.slot-summary .wbtn{display:block;width:100%;border-bottom:0}
+.slot-summary[hidden]{display:none}
+.slot-summary.empty{color:var(--muted);text-align:center}
+/* Weapons scrolled past stay stacked at the top of the sidebar, and weapons
+   still below it stack at the bottom, each shown as its header and chosen
+   weapon the way a folded weapon is; clicking one scrolls to it. Each stack is
+   a zero-height sticky box whose rows overlay the list. */
+.slot-stack{position:sticky;top:0;z-index:5;height:0;grid-column:1/-1}
+.slot-stack[hidden]{display:none}
+.slot-stack-inner{background:var(--bg2);border-bottom:1px solid var(--border);box-shadow:0 6px 12px -4px rgba(0,0,0,.5)}
+.slot-stack-row{display:block;width:100%;padding:0;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.slot-stack-row:focus-visible{outline:1px solid var(--muted);outline-offset:-1px}
+.slot-stack-row .cmp-hdr{color:var(--slot-c)}
+.slot-stack-row:first-child .cmp-hdr{border-top:0;padding-top:3px}
+.slot-stack-row .fold-chev{transform:rotate(-90deg)}
+.slot-stack-row .slot-summary{display:block}
+.slot-stack-bottom{top:auto;bottom:0}
+.slot-stack-bottom .slot-stack-inner{position:absolute;left:0;right:0;bottom:0;border-bottom:0;border-top:1px solid var(--border);box-shadow:0 -6px 12px -4px rgba(0,0,0,.5)}
+.slot-stack-row .slot-summary .wbtn{display:block}
+.slot-stack-row:hover .slot-summary .wbtn{background:var(--bg3)}
 /* The saved-loadout label sits closer to its row than the other section labels. */
-#savedSec1 .sb-lbl,#savedSec2 .sb-lbl{margin-bottom:3px}
-/* Weapon 2's attachment points in its colour; over budget still reads red. */
+#savedSec1 .sb-lbl,#savedSec2 .sb-lbl,#savedSec3 .sb-lbl,#savedSec4 .sb-lbl{margin-bottom:3px}
+/* Each compare weapon's attachment points in its colour; over budget still reads red. */
 #attSection2 .att-total:not(.over){color:var(--accent2)}
+.wslot .att-total:not(.over){color:var(--slot-c)}
 @media (pointer:coarse){
   .att-tool-lock{width:26px;height:24px}
   .att-tool-lock::before{width:14px;height:14px}
@@ -720,9 +789,14 @@ body.rc-plot-expanded{overflow:hidden}
   .sb-scroll{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr);overflow:auto;min-height:0}
   .sb-sec,.att-sec{border-bottom:0;border-right:1px solid var(--border)}
   #cmpSection{grid-column:1/-1;border-top:1px solid var(--border)}
-  #savedSec1,#savedSec2{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--border)}
+  #savedSec1,#savedSec2,#savedSec3,#savedSec4{grid-column:1/-1;border-right:0;border-bottom:1px solid var(--border)}
+  /* Weapons 3 and 4 lay out like Weapon 2, each across the full width. */
+  .wslot:not([hidden]){grid-column:1/-1;display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
   #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:grid!important;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
   .cmp-hdr{grid-column:1/-1;border-top:0;border-bottom:1px solid var(--border)}
+  .slot-summary{grid-column:1/-1;padding-top:7px}
+  /* Folded weapons leave short rows; keep them at the top instead of stretching. */
+  .sb-scroll{align-content:start}
   .main{overflow:visible;padding:10px}
   #statsArea > .panel:nth-of-type(2) > div{flex-direction:column}
   #statsArea > .panel:nth-of-type(2) > div > div:first-child{border-right:0!important;border-bottom:1px solid var(--border)}
@@ -744,11 +818,12 @@ body.rc-plot-expanded{overflow:hidden}
   .class-filter{flex-wrap:nowrap;overflow-x:auto;padding-bottom:2px}
   .cbtn{flex:0 0 auto;padding:4px 8px}
   .wlist{display:grid;grid-template-columns:repeat(auto-fit,minmax(132px,1fr));gap:2px}
-  .wbtn{border:1px solid rgba(40,48,48,.55);border-left:2px solid transparent;border-radius:3px;padding:6px 8px}
+  .wbtn{border:1px solid rgba(40,48,48,.55);border-left:2px solid transparent;border-radius:0 3px 3px 0;padding:6px 8px}
   .att-row{display:grid;grid-template-columns:52px minmax(0,1fr);gap:6px}
   .att-row[data-lock-key]{grid-template-columns:52px minmax(0,1fr) auto}
   .att-lock-note{margin-left:58px}
   #cmpSection[style*="display: block"],#cmpSection[style*="display:block"]{display:block!important}
+  .wslot:not([hidden]){display:block}
   .main{padding:8px;gap:8px}
   .panel{padding:10px;border-radius:5px}
   .w-header{gap:6px}
@@ -782,7 +857,7 @@ body.rc-plot-expanded{overflow:hidden}
   .att-tt-grid>span{white-space:normal}
   .att-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
   /* The tables keep their columns and scroll inside their own box instead of the page. */
-  #btkArea,.target-impact-card{overflow-x:auto;-webkit-overflow-scrolling:touch}
+  .target-impact-card{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .footer{align-items:flex-start;flex-direction:column;padding:7px 10px;gap:4px}
 }
 @media (max-width:430px){
@@ -802,3 +877,25 @@ body.rc-plot-expanded{overflow:hidden}
   .loadout-btn,.cbtn,.wbtn,.mode-btn,.rc-tab,.rc-scale-btn,.loadout-close{min-height:36px}
   .rc-group-row:not(.seg)>.rc-mode-btn{min-height:22px}
 }
+/* Expand: on wide screens the loadout opens as the same centred pop-up narrow
+   screens use, so three or four weapons lay out side by side. A spacer holds
+   the sidebar's place so the dashboard does not move behind it. */
+@media (min-width:981px){
+  body.loadout-expanded .app::before{content:'';width:228px;flex-shrink:0;background:var(--bg2);border-right:1px solid var(--border)}
+  body.loadout-expanded .loadout-backdrop{display:block;position:fixed;inset:0;background:rgba(0,0,0,.58);z-index:50}
+  body.loadout-expanded .sidebar{position:fixed;left:50%;top:14px;bottom:14px;z-index:60;width:min(760px,calc(100vw - 24px));max-height:none;border:1px solid var(--border);border-radius:7px;box-shadow:0 18px 44px rgba(0,0,0,.65);transform:translate(-50%,0)}
+  body.loadout-expanded .loadout-modal-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
+  body.loadout-expanded .loadout-modal-title{font-size:0.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+  body.loadout-expanded .loadout-close{display:grid;place-items:center;width:28px;height:26px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:1rem;line-height:1}
+  body.loadout-expanded #loadoutExpandBtn{display:none}
+  body.loadout-expanded .sb-scroll{display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr);overflow:auto;min-height:0;align-content:start}
+  body.loadout-expanded .sb-sec,body.loadout-expanded .att-sec{border-bottom:0;border-right:1px solid var(--border)}
+  body.loadout-expanded #cmpSection{grid-column:1/-1;border-top:1px solid var(--border)}
+  body.loadout-expanded :is(#savedSec1,#savedSec2,#savedSec3,#savedSec4){grid-column:1/-1;border-right:0;border-bottom:1px solid var(--border)}
+  body.loadout-expanded .wslot:not([hidden]){grid-column:1/-1;display:grid;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
+  body.loadout-expanded #cmpSection:is([style*="display: block"],[style*="display:block"]){display:grid!important;grid-template-columns:minmax(180px,.75fr) minmax(220px,1fr) minmax(300px,1.2fr)}
+  body.loadout-expanded .cmp-hdr{grid-column:1/-1;border-top:0;border-bottom:1px solid var(--border)}
+  body.loadout-expanded .slot-summary{grid-column:1/-1;padding-top:7px}
+}
+@media (max-width:980px){#loadoutExpandBtn{display:none}}
+body.is-popout #loadoutExpandBtn{display:none}

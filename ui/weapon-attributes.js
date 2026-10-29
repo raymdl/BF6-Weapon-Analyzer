@@ -17,23 +17,26 @@ style.textContent = `
 .wa-score small{font-size:.6rem;font-weight:400;color:var(--muted)}
 .wa-track{grid-column:1 / -1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
 .wa-fill{height:100%;background:var(--accent)}
-.wa-fill.second{background:var(--accent2)}
+.wa-fill.c2{background:var(--accent2)}
+.wa-fill.c3{background:var(--accent3)}
+.wa-fill.c4{background:var(--accent4)}
 .scard.wa-related{outline:1px solid var(--accent);outline-offset:1px;background:rgba(201,162,39,.06)}
 @media(max-width:560px){.wa-strip{grid-template-columns:repeat(2,minmax(0,1fr))}}
 `;
 document.head.appendChild(style);
 
 export function renderWeaponAttributes(grid, state, calculate) {
-  const slots = state.comparing ? state.slots : state.slots.slice(0, 1);
-  const scores = slots.map(slot => slot.weapon ? calculate(slot.weapon, slot.atts) : null);
+  const slots = state.slots.slice(0, state.comparing ? state.slotCount : 1);
+  // Each slot keeps its index, and so its colour; a slot without a weapon shows no bar.
+  const scores = slots.map((slot, i) => slot.weapon ? { i, score: calculate(slot.weapon, slot.atts) } : null).filter(Boolean);
   const section = document.createElement('section');
   section.className = 'weapon-attributes';
   section.setAttribute('aria-label', 'Weapon Attributes');
-  const score = (value, index) => `<div class="wa-score c${index + 1}">${value ?? '—'}<small>${value == null ? 'Unavailable' : ' / 100'}</small></div><div class="wa-track"><div class="wa-fill ${index ? 'second' : ''}" style="width:${value ?? 0}%"></div></div>`;
-  section.innerHTML = `<div class="wa-strip">${attributes.map(a => `<button type="button" class="wa-card" data-attribute="${a.key}" aria-pressed="${selected === a.key}"><div class="wa-label">${a.label}</div>${scores.map((s, i) => score(s?.[a.key], i)).join('')}</button>`).join('')}</div>`;
+  const score = (value, index) => `<div class="wa-score c${index + 1}">${value ?? '—'}<small>${value == null ? 'Unavailable' : ' / 100'}</small></div><div class="wa-track"><div class="wa-fill c${index + 1}" style="width:${value ?? 0}%"></div></div>`;
+  section.innerHTML = `<div class="wa-strip">${attributes.map(a => `<button type="button" class="wa-card" data-attribute="${a.key}" aria-pressed="${selected === a.key}"><div class="wa-label">${a.label}</div>${(scores.length ? scores : [{ i: 0, score: null }]).map(s => score(s.score?.[a.key], s.i)).join('')}</button>`).join('')}</div>`;
   section.querySelectorAll('button').forEach(button => {
     const attribute = attributes.find(a => a.key === button.dataset.attribute);
-    const tooltip = `${attribute.text} Select to highlight related stats.${scores.some(s => s?.[attribute.key] == null) ? ' No verified model result is available for this loadout.' : ''}`;
+    const tooltip = `${attribute.text} Select to highlight related stats.${scores.some(s => s.score?.[attribute.key] == null) ? ' No verified model result is available for this loadout.' : ''}`;
     button.title = tooltip;
     button.setAttribute('aria-description', tooltip);
   });

@@ -1,7 +1,8 @@
 import { summarizeTargetImpacts } from '../sim/target.js';
 
 export function targetImpactStatsHtml(entries, { distance, showHeading = false, labelFor } ) {
-  const colors = ['c1', 'c2'];
+  // An entry's slot sets its colour; entries without one take their place in the list.
+  const colorOf = (entry, index) => `c${(entry.slot ?? index) + 1}`;
   const fmtDamage = value => value == null ? '—' : value.toFixed(1);
   const fmtMult = value => value == null ? '' : `<span class="target-zone-mult">${value.toFixed(2)}×</span>`;
   // 100 health is a kill. 75 is the critical-assist threshold — it says nothing
@@ -17,7 +18,7 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
   entries.forEach((entry, index) => {
     // A pellet load is scored only from sampled pellets, never from shell directions.
     if ((entry.weapon.pellets ?? 1) > 1 && entry.zones?.length && !entry.zones.some(Array.isArray)) {
-      html += `<section class="target-impact-card"><div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
+      html += `<section class="target-impact-card"><div class="target-impact-weapon ${colorOf(entry, index)}">${labelFor(entry.weapon)}</div>
         <p class="target-impact-note">Shotgun pellets were not sampled for this spray, so hit rate, damage and lethality are unavailable.</p></section>`;
       return;
     }
@@ -48,7 +49,7 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
       </tr>`;
     html += `
       <section class="target-impact-card">
-        <div class="target-impact-weapon ${colors[index] ?? ''}">${labelFor(entry.weapon)}</div>
+        <div class="target-impact-weapon ${colorOf(entry, index)}">${labelFor(entry.weapon)}</div>
         <div class="target-impact-summary">
           <div><span>Accuracy</span><strong title="${summary.hits} of ${summary.projectiles} ${unit}s hit">${(summary.accuracy * 100).toFixed(0)}%</strong></div>
           <div><span>Hits</span><strong title="${unit} hits / ${unit}s fired">${summary.hits} / ${summary.projectiles}</strong></div>

@@ -156,17 +156,30 @@ function formatInGameRpm(value) {
 
 // ── APP STATE ─────────────────────────────────────────────────────────────────
 
+// Up to four weapons compare at once; each keeps its colour everywhere it shows.
+const MAX_SLOTS = 4;
+const SLOT_COLORS = ['#c9a227', '#4d94d0', '#de78a6', '#3fbfae'];
+const SLOT_CSS_VARS = ['--accent', '--accent2', '--accent3', '--accent4'];
+/** A slot colour with an alpha channel, for bands, fills and faded lines. */
+function slotRgba(index, alpha) {
+  const hex = SLOT_COLORS[index];
+  const [r, g, b] = [1, 3, 5].map(i => parseInt(hex.slice(i, i + 2), 16));
+  return `rgba(${r},${g},${b},${alpha})`;
+}
+function blankSlot() {
+  return { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null, folded: false };
+}
+
 const state = {
   // On the Firing Range the compare loadout is put aside: `comparing` turns
   // off and `comparingHeld` remembers to turn it back on when the view changes.
   comparingHeld: false,
-  slots: [
-    // `locked` maps an attachment slot to the choice it is locked at; those
-    // choices come along to every weapon that can take them.
-    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null },
-    { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null },
-  ],
+  // `locked` maps an attachment slot to the choice it is locked at; those
+  // choices come along to every weapon that can take them.
+  slots: Array.from({ length: MAX_SLOTS }, blankSlot),
   comparing: false,
+  // How many weapons a comparison shows, Weapon 1 included (2 to MAX_SLOTS).
+  slotCount: 2,
   // Panels fold away so the page can be sized for a screenshot without giving
   // up canvas space.
   collapsed: { overview: false, charts: false, recoil: false },
@@ -200,6 +213,15 @@ const state = {
     magnification: 2.5, magnificationSight: null, distancePanX: 0, distancePanY: 0,
   },
 };
+
+/** The slots on show: Weapon 1 alone, or every weapon in the comparison. */
+function shownSlots() {
+  return state.slots.slice(0, state.comparing ? state.slotCount : 1);
+}
+/** Each shown slot's build, null where the slot has no weapon; the index is the slot's. */
+function shownBuilds(build = selectedWeaponBuild) {
+  return shownSlots().map(slot => build(slot));
+}
 
 const ASSUMED_STATS_NOTE = '* Estimated stats until full datamined values are available';
 
@@ -345,7 +367,6 @@ function maxRange(weapons) {
 function chartXAxis(maxRangeMeters) {
   const step = maxRangeMeters === 200 ? 25 : 10;
   return {
-    title: { display: true, text: 'Range (m)', color: '#7a8a8a', font: { size: 11 }, padding: { top: 4, bottom: 0 } },
     ticks: { color: '#7a8a8a' },
     grid: { color: 'rgba(40,48,48,0.6)' },
     afterBuildTicks: scale => {
@@ -362,8 +383,8 @@ function damageYMax(weapons) {
   if (cls.includes('DMR')) return 70;
   return 40;
 }
-function btkRanges(w1, w2) {
-  const cls = [w1, w2].filter(Boolean).map(w => w.cls);
+function btkRanges(weapons) {
+  const cls = weapons.filter(Boolean).map(w => w.cls);
   if (cls.includes('Sniper Rifle')) return [0, 25, 50, 100, 150, 200, 250];
   if (cls.includes('DMR'))          return [0, 15, 30, 50, 75, 100];
   if (cls.every(c => c === 'Shotgun')) return [0, 5, 10, 15, 20, 25, 30];
@@ -520,11 +541,7 @@ function restoreFromUrl() {
   applyViewLayers(state.recoil.view);
 
   // Reflect the pieces of state that render functions don't set themselves.
-  if (state.comparing) {
-    document.getElementById('cmpBtn').classList.add('on');
-    document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
-    document.getElementById('cmpSection').style.display = 'block';
-  }
+  if (state.comparing) setComparing(true);
   setSimContext({ aimState: state.recoil.aim, stanceState: state.recoil.stance });
   const sh = parseInt(p.get('sh'), 10);
   if (Number.isFinite(sh)) {
@@ -566,7 +583,7 @@ function buildWeaponList(containerId, slotIdx) {
   weapons.forEach(w => {
     const isActive = w === slot.weapon;
     const b = document.createElement('button');
-    b.className = 'wbtn' + (isActive ? (slotIdx === 0 ? ' p1' : ' p2') : '');
+    b.className = 'wbtn' + (isActive ? ` p${slotIdx + 1}` : '');
     b.type = 'button';
     b.textContent = weaponDisplayLabel(w);
     b.setAttribute('aria-label', weaponAriaLabel(w));
@@ -639,7 +656,7 @@ function lockHeldStatus(slot, key) {
 // use, so they survive catalog growth the way links do. The lock keeps the
 // attachments through a weapon change, dropping only what the new weapon lacks.
 const SAVED_LOADOUTS_KEY = 'bf6.savedLoadouts';
-const LOCK_ATTS_KEY = ['bf6.lockedAtts1', 'bf6.lockedAtts2'];
+const LOCK_ATTS_KEY = Array.from({ length: MAX_SLOTS }, (_, i) => `bf6.lockedAtts${i + 1}`);
 const LOCKABLE_KEYS = ['sight', 'muzzle', 'barrel', 'grip', 'laser', 'light', 'accessory', 'ammo', 'mag', 'ergo'];
 
 function readSavedLoadouts() {
@@ -746,7 +763,7 @@ function deleteSavedLoadout(name, weaponId) {
   // No confirm: the row offers Undo for a few seconds instead.
   clearTimeout(savedUndo?.timer);
   savedUndo = { entry, loadedIn, timer: setTimeout(() => { savedUndo = null; renderSidebar(); }, 8000) };
-  // Both slots list the same loadouts; the open menu stays open for the next delete.
+  // Every slot lists the same loadouts; the open menu stays open for the next delete.
   const open = document.querySelector('.saved-menu:not([hidden])')?.closest('.sb-sec')?.id;
   renderSidebar();
   if (open) document.querySelector(`#${open} .saved-pick-btn`)?.click();
@@ -1014,8 +1031,7 @@ function renderSavedLoadoutSection(containerId, slotIdx) {
 
 function updateAssumedFootnote() {
   document.querySelectorAll('.att-note.assumed-note').forEach(el => el.remove());
-  const selected = [state.slots[0], ...(state.comparing ? [state.slots[1]] : [])];
-  selected.forEach((slot, index) => {
+  shownSlots().forEach((slot, index) => {
     const noteTarget = document.getElementById(`attSection${index + 1}`);
     if (!noteTarget) return;
     if (slot.weapon?.estimated || Loadout.hasSelectedAssumedAtt(slot.atts, LOADOUT_DATA, slot.weapon)) {
@@ -1028,55 +1044,308 @@ function updateAssumedFootnote() {
 }
 
 function renderSidebar() {
-  renderSavedLoadoutSection('savedSec1', 0);
-  buildClassFilter('classFilter1', 0);
-  buildWeaponList('wList1', 0);
-  buildAttachmentSection('attSection1', 0);
-  const cloneBtn = document.getElementById('cloneLoadoutBtn');
-  if (cloneBtn) cloneBtn.disabled = !state.comparing || !state.slots[0].weapon;
-  const swapBtn = document.getElementById('swapLoadoutBtn');
-  // Swap needs both weapons: with one, a swap empties slot 1 and leaving compare then empties the page.
-  if (swapBtn) swapBtn.disabled = !state.comparing || !state.slots[0].weapon || !state.slots[1].weapon;
-  if (state.comparing) {
-    renderSavedLoadoutSection('savedSec2', 1);
-    buildClassFilter('classFilter2', 1);
-    buildWeaponList('wList2', 1);
-    buildAttachmentSection('attSection2', 1);
-  }
+  shownSlots().forEach((_, i) => {
+    renderSavedLoadoutSection(`savedSec${i + 1}`, i);
+    buildClassFilter(`classFilter${i + 1}`, i);
+    buildWeaponList(`wList${i + 1}`, i);
+    buildAttachmentSection(`attSection${i + 1}`, i);
+  });
+  syncSlotSections();
+  syncSlotMenuButtons();
   updateAssumedFootnote();
 }
-
-function swapCompareLoadouts() {
-  if (!state.comparing) return;
-  const [a, b] = state.slots;
-  if (!a.weapon || !b.weapon) return;
-  state.slots = [b, a];
-  // The locks travel with their loadouts, in storage too.
-  saveLocks(0); saveLocks(1);
+/** Show the sidebar sections for Weapons 3 and 4, and set the add button. */
+function syncSlotSections() {
+  const count = state.comparing ? state.slotCount : 1;
+  for (let i = 2; i < MAX_SLOTS; i++) {
+    const sec = document.getElementById(`slotSection${i + 1}`);
+    if (sec) sec.hidden = i >= count;
+  }
+  // Folded weapons keep their header and the chosen weapon's name.
+  document.querySelectorAll('[data-slot-body]').forEach(el =>
+    el.classList.toggle('slot-folded', !!state.slots[Number(el.dataset.slotBody)].folded));
+  document.querySelectorAll('[data-fold-slot]').forEach(b => {
+    const i = Number(b.dataset.foldSlot), folded = !!state.slots[i].folded;
+    b.setAttribute('aria-expanded', String(!folded));
+  });
+  document.querySelectorAll('[data-fold-name]').forEach(el => {
+    const slot = state.slots[Number(el.dataset.foldName)];
+    const i = Number(el.dataset.foldName);
+    el.hidden = !slot.folded;
+    el.classList.toggle('empty', !slot.weapon);
+    el.textContent = '';
+    if (!slot.weapon) { el.textContent = 'No weapon selected'; return; }
+    // The chosen weapon as it looks selected in the list; clicking it unfolds the weapon.
+    const pick = document.createElement('button');
+    pick.type = 'button';
+    pick.className = `wbtn p${i + 1}`;
+    pick.textContent = weaponDisplayLabel(slot.weapon);
+    pick.addEventListener('click', () => { slot.folded = false; syncSlotSections(); });
+    el.appendChild(pick);
+  });
+  scheduleSlotStack();
+  const btn = document.getElementById('cmpBtn');
+  if (!btn) return;
+  const isRange = state.recoil.view === 'range';
+  btn.disabled = isRange || count >= MAX_SLOTS;
+  btn.title = isRange
+    ? (state.comparingHeld ? 'Only Weapon 1 fires on the Firing Range. Your compare weapons return when you leave it.' : 'Only Weapon 1 fires on the Firing Range.')
+    : count >= MAX_SLOTS ? `Up to ${MAX_SLOTS} weapons at once` : `Add Weapon ${count + 1} to compare`;
+}
+/**
+ * Weapons whose header has scrolled under the top of the sidebar stay there as
+ * a stack of rows, and weapons whose header is still below the bottom stack
+ * there, each row the weapon's header and chosen weapon as a folded weapon
+ * shows them. Clicking a row scrolls to that weapon. Both stacks are rebuilt
+ * on scroll, on resize and whenever the sidebar is rendered.
+ */
+let slotStackFrame = 0;
+let slotStackRowHeight = 70;
+/** Scroll the sidebar so a weapon's header sits just under the rows that stay stacked above it. */
+function scrollToSlot(i) {
+  const scroller = document.querySelector('.sb-scroll');
+  const hdr = document.querySelector(`[data-fold-slot="${i}"]`)?.closest('.cmp-hdr');
+  if (!scroller || !hdr) return;
+  const at = hdr.getBoundingClientRect().top - scroller.getBoundingClientRect().top;
+  scroller.scrollBy({ top: at - i * slotStackRowHeight, behavior: 'smooth' });
+}
+function scheduleSlotStack() {
+  if (slotStackFrame) return;
+  slotStackFrame = requestAnimationFrame(() => { slotStackFrame = 0; syncSlotStack(); });
+}
+function slotStackRow(i, hdr) {
+  const slot = state.slots[i];
+  // A div rather than a button, so the Remove button can sit inside it.
+  const row = document.createElement('div');
+  row.className = 'slot-stack-row';
+  row.tabIndex = 0;
+  row.setAttribute('role', 'button');
+  row.style.setProperty('--slot-c', SLOT_COLORS[i]);
+  row.setAttribute('aria-label', `Go to Weapon ${i + 1}`);
+  row.addEventListener('click', () => scrollToSlot(i));
+  row.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); scrollToSlot(i); } });
+  const head = document.createElement('span');
+  head.className = 'cmp-hdr';
+  head.innerHTML = `<span class="slot-fold">${hdr.querySelector('.fold-chev')?.outerHTML ?? ''}Weapon ${i + 1}</span>`;
+  if (i > 0) {
+    const remove = document.createElement('button');
+    remove.type = 'button';
+    remove.className = 'slot-remove';
+    remove.textContent = '×';
+    remove.title = `Remove Weapon ${i + 1}`;
+    remove.setAttribute('aria-label', remove.title);
+    remove.addEventListener('click', e => { e.stopPropagation(); removeCompareSlot(i); });
+    head.appendChild(remove);
+  }
+  const summary = document.createElement('span');
+  summary.className = 'slot-summary' + (slot.weapon ? '' : ' empty');
+  if (slot.weapon) {
+    const pick = document.createElement('span');
+    pick.className = `wbtn p${i + 1}`;
+    pick.textContent = weaponDisplayLabel(slot.weapon);
+    summary.appendChild(pick);
+  } else summary.textContent = 'No weapon selected';
+  row.append(head, summary);
+  return row;
+}
+function syncSlotStack() {
+  const scroller = document.querySelector('.sb-scroll');
+  const top = document.getElementById('slotStack');
+  const bottom = document.getElementById('slotStackBottom');
+  if (!scroller || !top || !bottom) return;
+  const box = scroller.getBoundingClientRect();
+  const headers = [];
+  for (let i = 0; i < shownSlotCount(); i++) {
+    const hdr = document.querySelector(`[data-fold-slot="${i}"]`)?.closest('.cmp-hdr');
+    if (!hdr) continue;
+    const rect = hdr.getBoundingClientRect();
+    headers.push({ i, hdr, top: rect.top - box.top, bottom: rect.bottom - box.top });
+  }
+  top.firstElementChild.textContent = '';
+  bottom.firstElementChild.textContent = '';
+  let stacked = 0, first = 0;
+  // From the top: stuck once the header has scrolled under the rows above it.
+  for (; first < headers.length && headers[first].top < stacked; first++) {
+    const { i, hdr } = headers[first];
+    const row = slotStackRow(i, hdr);
+    top.firstElementChild.appendChild(row);
+    slotStackRowHeight = row.offsetHeight;
+    stacked += slotStackRowHeight;
+  }
+  // From the bottom: stacked while any of the header is still under the rows below it.
+  let under = 0;
+  for (let k = headers.length - 1; k >= first && headers[k].bottom > box.height - under; k--) {
+    const { i, hdr } = headers[k];
+    const row = slotStackRow(i, hdr);
+    bottom.firstElementChild.prepend(row);
+    slotStackRowHeight = row.offsetHeight;
+    under += slotStackRowHeight;
+  }
+  top.hidden = !top.firstElementChild.childElementCount;
+  bottom.hidden = !bottom.firstElementChild.childElementCount;
+}
+function setComparing(on) {
+  state.comparing = on;
+  document.getElementById('cmpSection').style.display = on ? 'block' : 'none';
+}
+/** Add the next compare weapon, turning the comparison on when it is off. */
+function addCompareSlot() {
+  if (state.recoil.view === 'range') return;
+  if (!state.comparing) { state.slotCount = 2; setComparing(true); }
+  else if (state.slotCount < MAX_SLOTS) state.slotCount++;
+  else return;
+  renderSidebar();
+  renderStats();
+  scrollToSlot(state.slotCount - 1);
+}
+/** Remove one compare weapon; the weapons after it move up a place, locks included.
+ *  Removing the last one leaves Weapon 1 alone. */
+function removeCompareSlot(index) {
+  if (!state.comparing || index < 1 || index >= state.slotCount) return;
+  const [removed] = state.slots.splice(index, 1);
+  Object.assign(removed, blankSlot());
+  state.slots.push(removed);
+  // A pending Undo remembers slots by place, so its record moves with them.
+  if (savedUndo) { savedUndo.loadedIn.splice(index, 1); savedUndo.loadedIn.push(false); }
+  if (state.slotCount > 2) state.slotCount--;
+  else setComparing(false);
+  savedNaming = null;
+  for (let i = index; i < MAX_SLOTS; i++) saveLocks(i);
   renderSidebar();
   renderStats();
 }
-function cloneCompareLoadout() {
-  if (!state.slots[0].weapon) return;
-  state.comparing = true;
-  state.slots[1].cls = state.slots[0].weapon.cls;
-  state.slots[1].weapon = state.slots[0].weapon;
-  state.slots[1].atts = { ...state.slots[0].atts };
-  state.slots[1].savedName = null;
-  document.getElementById('cmpBtn').classList.add('on');
-  document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
-  document.getElementById('cmpSection').style.display = 'block';
+
+/** Weapons shown in the sidebar: Weapon 1 alone, or every compare weapon too. */
+function shownSlotCount() { return state.comparing ? state.slotCount : 1; }
+function filledSlots() {
+  if (state.recoil.view === 'range') return [];
+  return state.slots.slice(0, shownSlotCount()).flatMap((s, i) => s.weapon ? [i] : []);
+}
+function swapSlots(a, b) {
+  [state.slots[a], state.slots[b]] = [state.slots[b], state.slots[a]];
+  if (savedUndo) [savedUndo.loadedIn[a], savedUndo.loadedIn[b]] = [savedUndo.loadedIn[b], savedUndo.loadedIn[a]];
+  // The locks travel with their loadouts, in storage too.
+  saveLocks(a); saveLocks(b);
   renderSidebar();
   renderStats();
+}
+/** Copy a weapon and its attachments onto another weapon, or into a new one. */
+function copySlot(from, to) {
+  if (to >= shownSlotCount()) {
+    if (!state.comparing) { state.slotCount = 2; setComparing(true); }
+    else state.slotCount = to + 1;
+  }
+  const src = state.slots[from], dest = state.slots[to];
+  dest.cls = src.weapon.cls;
+  dest.weapon = src.weapon;
+  dest.atts = { ...src.atts };
+  dest.savedName = null;
+  dest.folded = false;
+  renderSidebar();
+  renderStats();
+  if (to >= 1) scrollToSlot(to);
+}
+/**
+ * Swap and Copy share one picker: every weapon is listed, the first click picks
+ * the source and the second the target. Copy also lists the next empty slot.
+ */
+let slotPicker = null;
+function closeSlotMenu() {
+  const menu = document.getElementById('slotMenu');
+  slotPicker = null;
+  if (!menu || menu.hidden) return;
+  menu.hidden = true;
+  document.querySelectorAll('[data-slot-menu]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+}
+function renderSlotPicker() {
+  const menu = document.getElementById('slotMenu');
+  const { mode, from } = slotPicker;
+  const count = shownSlotCount();
+  const rows = [...Array(count).keys()];
+  if (mode === 'copy' && count < MAX_SLOTS) rows.push(count);
+  const verb = mode === 'swap' ? 'Swap' : 'Copy';
+  menu.textContent = '';
+  const head = document.createElement('div');
+  head.className = 'slot-menu-head';
+  head.textContent = from === null ? `${verb}: pick a weapon` : `${verb} Weapon ${from + 1} ${mode === 'swap' ? 'with' : 'to'}…`;
+  menu.appendChild(head);
+  rows.forEach(i => {
+    const weapon = i < count ? state.slots[i].weapon : null;
+    const enabled = from === null ? !!weapon
+      : i === from || mode === 'copy' || !!weapon;
+    const item = document.createElement('button');
+    item.type = 'button';
+    item.className = 'share-menu-item' + (i === from ? ' is-source' : '');
+    if (i === from) item.style.setProperty('--src', `var(${SLOT_CSS_VARS[i]})`);
+    item.setAttribute('role', 'menuitem');
+    if (!enabled) item.setAttribute('aria-disabled', 'true');
+    const label = document.createElement('span');
+    label.className = `c${i + 1}`;
+    label.textContent = `Weapon ${i + 1}`;
+    const name = document.createElement('span');
+    name.className = 'slot-menu-name' + (weapon ? '' : ' empty');
+    name.textContent = weapon ? weaponDisplayLabel(weapon) : i < count ? 'Empty' : 'New';
+    item.append(label, name);
+    item.addEventListener('click', e => {
+      e.stopPropagation();
+      if (!enabled) return;
+      if (from === null) { slotPicker.from = i; renderSlotPicker(); return; }
+      if (i === from) { slotPicker.from = null; renderSlotPicker(); return; }
+      closeSlotMenu();
+      if (mode === 'swap') swapSlots(from, i); else copySlot(from, i);
+    });
+    menu.appendChild(item);
+  });
+}
+function openSlotPicker(btn, mode) {
+  const menu = document.getElementById('slotMenu');
+  const wasOpenHere = !menu.hidden && btn.getAttribute('aria-expanded') === 'true';
+  closeSlotMenu();
+  if (wasOpenHere) return;
+  slotPicker = { mode, from: null };
+  renderSlotPicker();
+  menu.hidden = false;
+  btn.setAttribute('aria-expanded', 'true');
+}
+/** With only one possible move the buttons act at once; otherwise they open the picker. */
+function onSwapClick(e) {
+  e.stopPropagation();
+  const filled = filledSlots();
+  if (filled.length < 2) return;
+  if (filled.length === 2) { closeSlotMenu(); swapSlots(filled[0], filled[1]); }
+  else openSlotPicker(e.currentTarget, 'swap');
+}
+function onCopyClick(e) {
+  e.stopPropagation();
+  const filled = filledSlots();
+  if (!filled.length) return;
+  if (shownSlotCount() === 1) { closeSlotMenu(); copySlot(0, 1); }
+  else openSlotPicker(e.currentTarget, 'copy');
+}
+function syncSlotMenuButtons() {
+  closeSlotMenu();
+  const filled = filledSlots(), count = shownSlotCount();
+  const swapBtn = document.getElementById('swapLoadoutBtn');
+  if (swapBtn) {
+    swapBtn.disabled = filled.length < 2;
+    swapBtn.title = filled.length === 2 ? `Swap Weapon ${filled[0] + 1} and Weapon ${filled[1] + 1}, attachments and locks included`
+      : 'Swap two weapons, attachments and locks included';
+    swapBtn.setAttribute('aria-label', swapBtn.title);
+  }
+  const copyBtn = document.getElementById('cloneLoadoutBtn');
+  if (copyBtn) {
+    copyBtn.disabled = !filled.length;
+    copyBtn.title = count === 1 ? 'Copy Weapon 1 and its attachments as Weapon 2'
+      : 'Copy a weapon and its attachments onto another';
+    copyBtn.setAttribute('aria-label', copyBtn.title);
+  }
 }
 
 // ── OVERVIEW ──────────────────────────────────────────────────────────────────
 
 function renderStats() {
   scheduleUrlSync();
-  const w1 = state.slots[0].weapon;
-  const w2 = state.comparing ? state.slots[1].weapon : null;
-  const hasAny = w1 || w2;
+  const hasAny = shownSlots().some(slot => slot.weapon);
   document.getElementById('emptyState').style.display = hasAny ? 'none' : 'flex';
   document.getElementById('statsArea').style.display = hasAny ? 'flex' : 'none';
   if (hasAny) document.getElementById('statsArea').style.flexDirection = 'column';
@@ -1088,8 +1357,8 @@ function renderStats() {
 }
 
 function renderOverview() {
-  const w1 = selectedWeaponBuild(state.slots[0]);
-  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  const builds = shownBuilds();
+  const w1 = builds[0];
 
   const hdr = document.getElementById('wHeader');
   hdr.innerHTML = '';
@@ -1123,7 +1392,7 @@ function renderOverview() {
     }
     const current = selectedFireMode(slot.weapon, slot.atts);
     const group = document.createElement('span');
-    group.className = `wbadge-modes${slotIdx === 1 ? ' w2' : ''}`;
+    group.className = `wbadge-modes${slotIdx > 0 ? ` w${slotIdx + 1}` : ''}`;
     group.setAttribute('role', 'group');
     group.setAttribute('aria-label', 'Fire mode');
     for (const mode of modes) {
@@ -1167,19 +1436,17 @@ function renderOverview() {
     badge.setAttribute('aria-label', badge.title);
     hdr.appendChild(badge);
   };
-  if (w1) {
-    appendWeaponName(w1, 'wname', hdr);
-    appendEstimatedBadge(w1, hdr);
-    const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w1.cls; hdr.appendChild(b);
-    appendFireModeBadge(w1, hdr, 0);
-  }
-  if (w2) {
-    const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px;font-size:12px'; vs.textContent = 'vs'; hdr.appendChild(vs);
-    appendWeaponName(w2, 'wname2', hdr);
-    appendEstimatedBadge(w2, hdr);
-    const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w2.cls; hdr.appendChild(b);
-    appendFireModeBadge(w2, hdr, 1);
-  }
+  let named = 0;
+  builds.forEach((w, i) => {
+    if (!w) return;
+    if (named++) {
+      const vs = document.createElement('span'); vs.style.cssText = 'color:var(--muted);margin:0 3px;font-size:12px'; vs.textContent = 'vs'; hdr.appendChild(vs);
+    }
+    appendWeaponName(w, i ? `wname${i + 1}` : 'wname', hdr);
+    appendEstimatedBadge(w, hdr);
+    const b = document.createElement('span'); b.className = 'wbadge'; b.textContent = w.cls; hdr.appendChild(b);
+    appendFireModeBadge(w, hdr, i);
+  });
 
   if (!document.getElementById('sGrid').getClientRects().length) return;
   const grid = document.getElementById('sGrid');
@@ -1288,32 +1555,43 @@ function renderOverview() {
       return valid(value) ? value : null;
     };
     const isEst = w => f.estFn ? f.estFn(w) : f.est;
-    if (!w2 || !state.comparing) {
-      const wx = w1 || w2;
-      const v = getVal(wx);
-      return `<div class="sval c1">${v == null ? '—' : f.fmt(v)}<span class="sunit">${f.unit}</span>${isEst(wx) ? '<span class="sest">est</span>' : ''}</div>`;
+    // Slots without a weapon show nothing; one weapon alone gets the single-value card.
+    const present = builds.map((w, i) => ({ w, i })).filter(({ w }) => w);
+    if (present.length < 2) {
+      const { w, i } = present[0] ?? { w: w1, i: 0 };
+      const v = w ? getVal(w) : null;
+      return `<div class="sval c${i + 1}">${v == null ? '—' : f.fmt(v)}<span class="sunit">${f.unit}</span>${w && isEst(w) ? '<span class="sest">est</span>' : ''}</div>`;
     }
-    const v1 = w1 ? getVal(w1) : null, v2 = w2 ? getVal(w2) : null;
-    let diff = '';
-    if (!f.noDiff && typeof v1 === 'number' && typeof v2 === 'number' && v1 !== v2) {
+    // Every compare weapon's badge measures it against Weapon 1, and says so.
+    const v1 = w1 ? getVal(w1) : null;
+    const vs = ' title="Compared with Weapon 1"';
+    const diffFrom = v2 => {
+      if (f.noDiff || typeof v1 !== 'number' || typeof v2 !== 'number' || v1 === v2) return '';
       if (f.absDiff) {
         const delta = Math.round((-v2) - (-v1));
-        diff = `<span class="diff" style="background:rgba(122,138,138,.12);color:var(--muted)">${delta > 0 ? '+' : ''}${delta}°</span>`;
-      } else if (f.absoluteDelta) {
+        return `<span class="diff"${vs} style="background:rgba(122,138,138,.12);color:var(--muted)">${delta > 0 ? '+' : ''}${delta}°</span>`;
+      }
+      if (f.absoluteDelta) {
         const delta = Math.round(v2 - v1);
-        const w2better = (f.higherBetter && delta > 0) || (f.lowerBetter && delta < 0);
-        diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${delta > 0 ? '+' : ''}${delta}m</span>`;
-      } else if (v1 !== 0 && v2 !== 0 && Number.parseFloat(f.fmt(v1)) !== 0 && Number.parseFloat(f.fmt(v2)) !== 0) {
+        const better = (f.higherBetter && delta > 0) || (f.lowerBetter && delta < 0);
+        return `<span class="diff ${better ? 'd-up' : 'd-dn'}"${vs}>${delta > 0 ? '+' : ''}${delta}m</span>`;
+      }
+      if (v1 !== 0 && v2 !== 0 && Number.parseFloat(f.fmt(v1)) !== 0 && Number.parseFloat(f.fmt(v2)) !== 0) {
         const pct = Math.round(Math.abs(v2 - v1) / Math.abs(v1) * 100);
-        const w2better = (f.higherBetter && v2 > v1) || (f.lowerBetter && v2 < v1);
+        const better = (f.higherBetter && v2 > v1) || (f.lowerBetter && v2 < v1);
         // Sign shows the direction the raw number moved; color shows whether
         // that move is an improvement. A faster ADS time is "-12%" in green.
         const sign = v2 > v1 ? '+' : '-';
-        diff = `<span class="diff ${w2better ? 'd-up' : 'd-dn'}">${sign}${pct}%</span>`;
+        return `<span class="diff ${better ? 'd-up' : 'd-dn'}"${vs}>${sign}${pct}%</span>`;
       }
-    }
-    const est1 = w1 ? isEst(w1) : false, est2 = w2 ? isEst(w2) : false;
-    return `<div class="scmp"><div class="scmp-row"><span class="sval c1">${v1 != null ? f.fmt(v1) : '—'}<span class="sunit">${f.unit}</span>${est1 ? '<span class="sest">est</span>' : ''}</span></div><div class="scmp-row"><span class="sval c2">${v2 != null ? f.fmt(v2) : '—'}<span class="sunit">${f.unit}</span>${est2 ? '<span class="sest">est</span>' : ''}</span>${diff}</div></div>`;
+      return '';
+    };
+    const rows = present.map(({ w, i }) => {
+      const v = getVal(w);
+      const est = isEst(w);
+      return `<div class="scmp-row"><span class="sval c${i + 1}">${v != null ? f.fmt(v) : '—'}<span class="sunit">${f.unit}</span>${est ? '<span class="sest">est</span>' : ''}</span>${i ? diffFrom(v) : ''}</div>`;
+    });
+    return `<div class="scmp">${rows.join('')}</div>`;
   };
 
   // Group the stat cards into labeled, color-accented sections for scannability.
@@ -1365,7 +1643,7 @@ function renderOverview() {
         card.className = 'scard';
         // A tooltip can depend on the build; with two weapons each gets its rows under its name.
         if (typeof f.tooltip === 'function') {
-          const { text, html } = statTooltip([w1, w2].filter(Boolean).map(w => ({ w, tip: f.tooltip(w) })));
+          const { text, html } = statTooltip(builds.map((w, slot) => w && { w, slot, tip: f.tooltip(w) }).filter(Boolean));
           if (text) { card.title = text; card.dataset.tipHtml = html; }
         } else if (f.tooltip) card.title = f.tooltip;
         card.innerHTML = `<div class="slbl">${overviewLabels[f.lbl] ?? f.lbl}</div>` + cardValueHtml(f);
@@ -1493,9 +1771,15 @@ const distanceMarker = {
       ...rows.map(row => measure(row.cells[k]?.value ?? '', valueFont))));
     const boxW = Math.ceil(firstW + widths.reduce((sum, w) => sum + gap + w, 0)) + pad * 2;
     const boxH = (rows.length + 1) * lineHeight + pad * 2;
-    // Beside the line, flipping to its left where the right edge would clip it.
+    // Beside the line, flipping to its left where the right edge would clip it,
+    // and in whichever half of the plot the lines are not in at this range.
     const left = px + 6 + boxW > chartArea.right ? px - 6 - boxW : px + 6;
-    const top = chartArea.top + 4;
+    const lineYs = chart.data.datasets
+      .filter(ds => ds._weapon && !ds.isBand && !ds.isBaseline)
+      .map(ds => scales.y?.getPixelForValue(ds.data[range]))
+      .filter(Number.isFinite);
+    const meanY = lineYs.length ? lineYs.reduce((sum, y) => sum + y, 0) / lineYs.length : chartArea.bottom;
+    const top = meanY < (chartArea.top + chartArea.bottom) / 2 ? chartArea.bottom - 4 - boxH : chartArea.top + 4;
     ctx.fillStyle = 'rgba(12,14,14,.85)';
     ctx.fillRect(left, top, boxW, boxH);
     ctx.strokeStyle = '#283030';
@@ -1532,48 +1816,106 @@ const distanceMarker = {
 function updateDmgChart(ctx, config) {
   if (!dmgChart) {
     dmgChart = new Chart(ctx, config);
-    return;
+  } else {
+    dmgChart.config.type = config.type;
+    dmgChart.data = config.data;
+    dmgChart.options = config.options;
+    dmgChart.update('none');
   }
-  dmgChart.config.type = config.type;
-  dmgChart.data = config.data;
-  dmgChart.options = config.options;
-  dmgChart.update('none');
+  syncLegendPad(dmgChart);
 }
 
-// Where the two compared weapons' lines coincide, dash the weapon-1 line
-// (drawn on top — Chart.js paints lower dataset indices last) so weapon 2's
-// color shows through the gaps as an alternating two-color line.
+// Where compared weapons' lines coincide, dash the upper line (Chart.js paints
+// lower dataset indices last, so on top) so the colour beneath shows through
+// the gaps as an alternating line.
 function dashOverlap(datasets) {
   const solids = datasets.filter(ds => ds._weapon && !ds.isBand && !ds.isBaseline && !ds.borderDash);
-  if (solids.length !== 2) return;
-  const [top, under] = solids;
-  top.segment = {
-    borderDash: ctx =>
-      top.data[ctx.p0DataIndex] === under.data[ctx.p0DataIndex] &&
-      top.data[ctx.p1DataIndex] === under.data[ctx.p1DataIndex]
-        ? [5, 5] : undefined,
-  };
+  solids.slice(0, -1).forEach((top, i) => {
+    const under = solids.slice(i + 1);
+    const same = (ds, k) => top.data[k] === ds.data[k];
+    top.segment = {
+      borderDash: ctx => under.some(ds => same(ds, ctx.p0DataIndex) && same(ds, ctx.p1DataIndex)) ? [5, 5] : undefined,
+    };
+  });
+}
+
+// The x-axis title shares its row with the legend. It is drawn here rather than
+// by the scale so it can sit centred over the plot until the legend would reach
+// it, then slide left to stay clear. Only when the legend would not fit beside
+// the title even at the far left does the legend get a row of its own beneath.
+const X_AXIS_TITLE = 'Range (m)';
+const X_TITLE_PAD = 17;      // the title row under the tick labels
+const LEGEND_RIGHT = 6;      // #chartLegend's right offset inside the chart box
+const TITLE_LEGEND_GAP = 10;
+function xTitleFont() { return `11px ${Chart.defaults.font.family}`; }
+function xTitleWidth(ctx) {
+  ctx.save(); ctx.font = xTitleFont();
+  const width = ctx.measureText(X_AXIS_TITLE).width;
+  ctx.restore();
+  return width;
+}
+/** Where the legend starts, in chart pixels; Infinity when there is no legend. */
+function legendLeft(chart) {
+  const legEl = document.getElementById('chartLegend');
+  return legEl && legEl.offsetWidth ? chart.width - LEGEND_RIGHT - legEl.offsetWidth : Infinity;
+}
+const axisTitle = {
+  id: 'axisTitle',
+  afterDraw(chart) {
+    const { ctx, chartArea: area } = chart;
+    if (!area) return;
+    const half = xTitleWidth(ctx) / 2;
+    const pad = chart.options.layout.padding.bottom;
+    const ownRow = pad > X_TITLE_PAD;
+    const centre = (area.left + area.right) / 2;
+    const limit = ownRow ? Infinity : legendLeft(chart) - TITLE_LEGEND_GAP - half;
+    const x = Math.max(area.left + half, Math.min(centre, limit));
+    // With the legend on its own row the title sits above it.
+    const y = chart.height - 2 - (ownRow ? pad - X_TITLE_PAD : 0);
+    ctx.save();
+    ctx.font = xTitleFont();
+    ctx.fillStyle = '#7a8a8a';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText(X_AXIS_TITLE, x, y);
+    ctx.restore();
+  },
+};
+function chartLegendPad(chart) {
+  const legEl = document.getElementById('chartLegend');
+  const area = chart.chartArea;
+  if (!legEl || !legEl.offsetWidth || !area) return X_TITLE_PAD;
+  const fits = legendLeft(chart) - TITLE_LEGEND_GAP >= area.left + xTitleWidth(chart.ctx);
+  return fits ? X_TITLE_PAD : X_TITLE_PAD + legEl.offsetHeight + 2;
+}
+// The chart resizes itself without a re-render, so the legend row follows here.
+function syncLegendPad(chart) {
+  const pad = chartLegendPad(chart);
+  if (chart.options.layout.padding.bottom === pad) return;
+  chart.options.layout.padding.bottom = pad;
+  requestAnimationFrame(() => chart.update('none'));
 }
 
 function renderChart() {
   if (!document.getElementById('dmgChart').clientWidth) return;
   scheduleUrlSync();
 
-  const w1 = selectedWeaponBuild(state.slots[0]);
-  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  const builds = shownBuilds();
+  // Each weapon with its slot, so its colour follows the slot.
+  const shown = builds.map((w, slot) => ({ w, slot })).filter(({ w }) => w);
   const { mode, btkHS, showAds, showRec, showVel } = state.chart;
-  const mr = maxRange([w1, w2]);
+  const mr = maxRange(builds);
   const labels = []; for (let r = 0; r <= mr; r++) labels.push(r);
   const ctx = document.getElementById('dmgChart');
 
   const legEl = document.getElementById('chartLegend');
   if (legEl) {
-    let legHtml = [[w1, '#c9a227'], [w2, '#4d94d0']].filter(([w]) => w)
-      .map(([w, col]) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${col}"></div><span>${chartWeaponDisplayLabel(w)}</span></div>`).join('');
+    let legHtml = shown
+      .map(({ w, slot }) => `<div class="rc-legend-item"><div class="rc-legend-dot" style="background:${SLOT_COLORS[slot]}"></div><span>${chartWeaponDisplayLabel(w)}</span></div>`).join('');
     legEl.innerHTML = legHtml;
   }
 
-  const missingDamage = [w1, w2].some(weapon => weapon && (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0
+  const missingDamage = builds.some(weapon => weapon && (!Array.isArray(weapon.dmg) || weapon.dmg.length === 0
     || (mode !== 'dmg' && (!Number.isFinite(weapon._hsMult) || !Number.isFinite(weapon._limbMult)))
     || (mode === 'ttk' && !Number.isFinite(weaponRpm(weapon)))));
   if (missingDamage) {
@@ -1602,16 +1944,12 @@ function renderChart() {
       fill: '-1', isBand: true, _weaponSlot: slot, _weapon: w,
     });
     const datasets = [];
-    if (btkHS > 0 && w1) datasets.push(btkDs(w1, 'rgba(201,162,39,0.28)', `${chartWeaponDisplayLabel(w1)} (0 HS)`, 1, 0, true));
-    if (btkHS > 0 && w2) datasets.push(btkDs(w2, 'rgba(77,148,208,0.28)', `${chartWeaponDisplayLabel(w2)} (0 HS)`, 2, 0, true));
-    if (w1) {
-      datasets.push(btkDs(w1, '#c9a227', chartWeaponDisplayLabel(w1), 1));
-      if (limbMult(w1) !== 1) datasets.push(bandDs(w1, 'rgba(201,162,39,0.16)', 1));
-    }
-    if (w2) {
-      datasets.push(btkDs(w2, '#4d94d0', chartWeaponDisplayLabel(w2), 2));
-      if (limbMult(w2) !== 1) datasets.push(bandDs(w2, 'rgba(77,148,208,0.16)', 2));
-    }
+    if (btkHS > 0) shown.forEach(({ w, slot }) =>
+      datasets.push(btkDs(w, slotRgba(slot, 0.28), `${chartWeaponDisplayLabel(w)} (0 HS)`, slot + 1, 0, true)));
+    shown.forEach(({ w, slot }) => {
+      datasets.push(btkDs(w, SLOT_COLORS[slot], chartWeaponDisplayLabel(w), slot + 1));
+      if (limbMult(w) !== 1) datasets.push(bandDs(w, slotRgba(slot, 0.16), slot + 1));
+    });
     dashOverlap(datasets);
     const yMax = Math.max(9, ...datasets.flatMap(ds => ds.data));
     // Bullet view: bullet counts only, no timings.
@@ -1624,10 +1962,10 @@ function renderChart() {
       ];
     };
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover, axisTitle],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
-        layout: { padding: { bottom: 0 } },
+        layout: { padding: { bottom: X_TITLE_PAD } }, onResize: syncLegendPad,
         plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: {
           x: chartXAxis(mr),
@@ -1656,14 +1994,10 @@ function renderChart() {
       fill: band ? '-1' : false, isBand: band, _weapon: w,
     });
     const datasets = [];
-    if (w1) {
-      datasets.push(ttkDs(w1, '#c9a227', chartWeaponDisplayLabel(w1)));
-      if (limbMult(w1) !== 1) datasets.push(ttkDs(w1, 'rgba(201,162,39,0.16)', `${chartWeaponDisplayLabel(w1)} (limbs)`, limbMult(w1), true));
-    }
-    if (w2) {
-      datasets.push(ttkDs(w2, '#4d94d0', chartWeaponDisplayLabel(w2)));
-      if (limbMult(w2) !== 1) datasets.push(ttkDs(w2, 'rgba(77,148,208,0.16)', `${chartWeaponDisplayLabel(w2)} (limbs)`, limbMult(w2), true));
-    }
+    shown.forEach(({ w, slot }) => {
+      datasets.push(ttkDs(w, SLOT_COLORS[slot], chartWeaponDisplayLabel(w)));
+      if (limbMult(w) !== 1) datasets.push(ttkDs(w, slotRgba(slot, 0.16), `${chartWeaponDisplayLabel(w)} (limbs)`, limbMult(w), true));
+    });
     dashOverlap(datasets);
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
     const yMax = allVals.length ? Math.ceil(Math.max(...allVals) / 100) * 100 + 100 : 1000;
@@ -1681,10 +2015,10 @@ function renderChart() {
       ];
     };
     updateDmgChart(ctx, {
-      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
+      type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover, axisTitle],
       options: {
         responsive: true, maintainAspectRatio: false, animation: false,
-        layout: { padding: { bottom: 0 } },
+        layout: { padding: { bottom: X_TITLE_PAD } }, onResize: syncLegendPad,
         plugins: { legend: { display: false }, tooltip: { enabled: false } },
         scales: {
           x: chartXAxis(mr),
@@ -1715,16 +2049,12 @@ function renderChart() {
     fill: '-1', isBand: true, _weapon: w,
   });
   const datasets = [];
-  if (w1) {
-    datasets.push(buildDs(w1, '#c9a227', chartWeaponDisplayLabel(w1)));
-    if (limbMult(w1) !== 1) datasets.push(limbDs(w1, 'rgba(201,162,39,0.16)'));
-  }
-  if (w2) {
-    datasets.push(buildDs(w2, '#4d94d0', chartWeaponDisplayLabel(w2)));
-    if (limbMult(w2) !== 1) datasets.push(limbDs(w2, 'rgba(77,148,208,0.16)'));
-  }
+  shown.forEach(({ w, slot }) => {
+    datasets.push(buildDs(w, SLOT_COLORS[slot], chartWeaponDisplayLabel(w)));
+    if (limbMult(w) !== 1) datasets.push(limbDs(w, slotRgba(slot, 0.16)));
+  });
   dashOverlap(datasets);
-  const dmgYMax = damageYMax([w1, w2]);
+  const dmgYMax = damageYMax(builds);
   // Damage view: damage only. Bullet and time counts live in their own views.
   chartReadout = (w, r) => {
     const d = w.pellets ? getDmg(w, r) * w.pellets : getDmg(w, r);
@@ -1738,10 +2068,10 @@ function renderChart() {
     ];
   };
   updateDmgChart(ctx, {
-    type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover],
+    type: 'line', data: { labels, datasets }, plugins: [damageHeadroomMask, distanceMarker, chartTableHover, axisTitle],
     options: {
       responsive: true, maintainAspectRatio: false, animation: false,
-      layout: { padding: { bottom: 0 } },
+      layout: { padding: { bottom: X_TITLE_PAD } }, onResize: syncLegendPad,
       plugins: { legend: { display: false }, tooltip: { enabled: false } },
       scales: {
         x: chartXAxis(mr),
@@ -1791,29 +2121,34 @@ function btkTtkText(w, r) {
 
 function renderBTK() {
   if (!document.getElementById('btkArea').getClientRects().length) return;
-  const w1 = selectedWeaponBuild(state.slots[0]);
-  const w2 = state.comparing ? selectedWeaponBuild(state.slots[1]) : null;
+  const builds = shownBuilds();
+  const shown = builds.map((w, slot) => ({ w, slot })).filter(({ w }) => w);
   const { showAds, showRec, showVel } = state.chart;
-  const ranges = btkRanges(w1, w2);
+  const ranges = btkRanges(builds);
   const ttkHdr = ['TTK', showAds && 'ADS', showRec && 'REC', showVel && 'Flight'].filter(Boolean).join('+');
   // The title row names each weapon shown, in its colour, over its columns.
-  document.getElementById('btkWeapons').innerHTML = [[w1, '--accent'], [w2, '--accent2']]
-    .filter(([w]) => w)
-    .map(([w, color]) => `<span style="color:var(${color})">${escapeHtml(chartWeaponDisplayLabel(w))}</span>`)
+  document.getElementById('btkWeapons').innerHTML = shown
+    .map(({ w, slot }) => `<span style="color:var(${SLOT_CSS_VARS[slot]})">${escapeHtml(chartWeaponDisplayLabel(w))}</span>`)
     .join('');
   let html = '<table class="btk-tbl"><thead><tr><th>RANGE</th>';
-  if (w1) html += `<th style="color:var(--accent)">DMG</th><th style="color:var(--accent)">BTK</th><th style="color:var(--accent)">${ttkHdr}</th>`;
-  if (w2) html += `<th style="color:var(--accent2)">DMG</th><th style="color:var(--accent2)">BTK</th><th style="color:var(--accent2)">${ttkHdr}</th>`;
+  shown.forEach(({ slot }) => {
+    const c = `style="color:var(${SLOT_CSS_VARS[slot]})"`;
+    html += `<th ${c}>DMG</th><th ${c}>BTK</th><th ${c}>${ttkHdr}</th>`;
+  });
   html += '</tr></thead><tbody>';
   const dmgTxt = btkDmgText;
   // Each cell shows chest–limb ranges when the limb multiplier changes the outcome;
   // the same helpers decide which row the target marker and chart hover light.
   const cells = (w, r) => ({ bTxt: btkBtkText(w, r), tTxt: btkTtkText(w, r) });
-  let prev1 = null, prev2 = null;
+  const prev = shown.map(() => null);
   ranges.forEach(r => {
     html += `<tr data-range="${r}"><td class="rng">${r}m</td>`;
-    if (w1) { const { bTxt, tTxt } = cells(w1, r); const chg = prev1 !== null && bTxt !== prev1; html += `<td class="tv">${dmgTxt(w1, r)}</td><td class="bv${chg ? ' bchg' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev1 = bTxt; }
-    if (w2) { const { bTxt, tTxt } = cells(w2, r); const chg = prev2 !== null && bTxt !== prev2; html += `<td class="tv">${dmgTxt(w2, r)}</td><td class="bv${chg ? ' bchg2' : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`; prev2 = bTxt; }
+    shown.forEach(({ w, slot }, k) => {
+      const { bTxt, tTxt } = cells(w, r);
+      const chg = prev[k] !== null && bTxt !== prev[k];
+      html += `<td class="tv">${dmgTxt(w, r)}</td><td class="bv${chg ? ` bchg${slot ? slot + 1 : ''}` : ''}">${bTxt}</td><td class="tv">${tTxt}</td>`;
+      prev[k] = bTxt;
+    });
     html += '</tr>';
   });
   html += '</tbody></table>';
@@ -1841,7 +2176,7 @@ function syncDistanceMarker() {
  *  changes every metre, so only a row at the range itself can match. */
 function btkRowForRange(range) {
   if (!Number.isFinite(range)) return null;
-  const weapons = [selectedWeaponBuild(state.slots[0]), state.comparing ? selectedWeaponBuild(state.slots[1]) : null].filter(Boolean);
+  const weapons = shownBuilds().filter(Boolean);
   const want = weapons.flatMap(w => [btkDmgText(w, range), btkBtkText(w, range), btkTtkText(w, range)]).join('|');
   let best = null, bestGap = Infinity;
   for (const row of document.querySelectorAll('#btkArea tbody tr[data-range]')) {
@@ -1917,15 +2252,21 @@ function bindChartTableHover() {
 // spare width by content size instead, and calc() column widths collapse to equal widths.
 let btkResizeObserver = null;
 let btkSpacedWidth = null;
+let btkRowWidth = null;
+// Beside the kill table the chart keeps at least this width; past it the table scrolls.
+const CHART_MIN_WIDTH = 340;
 function spaceBtkColumns() {
   const area = document.getElementById('btkArea');
   const table = area.querySelector('table');
   if (!table) return;
+  const column = area.closest('.chart-column-table');
+  const row = column?.parentElement;
   if (!btkResizeObserver && typeof ResizeObserver !== 'undefined') {
     btkResizeObserver = new ResizeObserver(() => {
-      if (area.clientWidth !== btkSpacedWidth) spaceBtkColumns();
+      if (area.clientWidth !== btkSpacedWidth || (row && row.clientWidth !== btkRowWidth)) spaceBtkColumns();
     });
     btkResizeObserver.observe(area);
+    if (row) btkResizeObserver.observe(row);
   }
   table.querySelector('colgroup')?.remove();
   table.style.tableLayout = '';
@@ -1933,9 +2274,22 @@ function spaceBtkColumns() {
   const headers = [...table.querySelectorAll('thead th')];
   const natural = headers.map(th => th.getBoundingClientRect().width);
   table.style.width = '';
+  // Side by side, the table column takes the width its text needs without
+  // wrapping (never less than half the panel) and the chart gives up the rest,
+  // down to CHART_MIN_WIDTH. Stacked, the column spans the panel.
+  if (column && row) {
+    btkRowWidth = row.clientWidth;
+    if (getComputedStyle(row).flexDirection === 'row') {
+      const cs = getComputedStyle(column);
+      const need = Math.ceil(natural.reduce((sum, w) => sum + w, 0) + parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight));
+      const width = Math.max(0, Math.min(btkRowWidth - CHART_MIN_WIDTH, Math.max((btkRowWidth - 1) / 2, need)));
+      column.style.flex = `0 0 ${width}px`;
+    } else column.style.flex = '';
+  }
   btkSpacedWidth = area.clientWidth;
   const spare = btkSpacedWidth - natural.reduce((sum, w) => sum + w, 0);
-  if (!headers.length || spare <= 0) { placeBtkWeaponNames(headers, natural); return; } // Narrow panel: keep the automatic layout.
+  // Narrower than its text: the table keeps every cell on one line and scrolls in its box.
+  if (!headers.length || spare <= 0) { table.style.width = 'max-content'; placeBtkWeaponNames(headers, natural); return; }
   // The spare goes to the gaps between columns, weighted: a full share between
   // weapon columns, none after the last column (so its text ends at the panel
   // edge), and after Range a full share with two weapons but half with one,
@@ -1953,10 +2307,23 @@ function spaceBtkColumns() {
   table.style.tableLayout = 'fixed';
   placeBtkWeaponNames(headers, natural);
 }
+// A narrow screen scrolls the kill table sideways in its own box; the names
+// over its columns follow it.
+let btkNameColumns = null;
+function followBtkScroll() {
+  const area = document.getElementById('btkArea');
+  if (area?.dataset.followsScroll) return;
+  area.dataset.followsScroll = '1';
+  area.addEventListener('scroll', () => {
+    if (btkNameColumns) placeBtkWeaponNames(btkNameColumns.headers, btkNameColumns.natural);
+  }, { passive: true });
+}
 /** Set each shown weapon's name on the title row over its own columns:
  *  centred, with its rule, between the start of its DMG header text and the
  *  end of its TTK column's text (the column itself may be wider). */
 function placeBtkWeaponNames(headers, natural) {
+  btkNameColumns = { headers, natural };
+  followBtkScroll();
   const names = [...document.querySelectorAll('#btkWeapons > span')];
   const head = document.querySelector('.chart-table-head');
   if (!names.length || !head) return;
@@ -2129,17 +2496,10 @@ function syncRangeCompare() {
   let changed = false;
   if (isRange && state.comparing) { state.comparing = false; state.comparingHeld = true; changed = true; }
   else if (!isRange && state.comparingHeld) { state.comparing = true; state.comparingHeld = false; changed = true; }
-  const btn = document.getElementById('cmpBtn');
-  if (btn) {
-    btn.classList.toggle('on', state.comparing || state.comparingHeld);
-    btn.setAttribute('aria-pressed', String(state.comparing || state.comparingHeld));
-    btn.disabled = isRange;
-    btn.title = isRange
-      ? (state.comparingHeld ? 'Only Weapon 1 fires on the Firing Range. Your compare loadout returns when you leave it.' : 'Only Weapon 1 fires on the Firing Range.')
-      : '';
-  }
   const section = document.getElementById('cmpSection');
   if (section) section.style.display = state.comparing ? 'block' : 'none';
+  syncSlotSections();
+  syncSlotMenuButtons();
   return changed;
 }
 /**
@@ -2413,12 +2773,12 @@ function statTooltip(parts) {
   const two = parts.length > 1;
   const lines = [...texts];
   let html = texts.map(t => `<div class="tt-desc">${escapeHtml(t)}</div>`).join('');
-  parts.forEach(({ w, tip }, i) => {
+  parts.forEach(({ w, tip, slot }, i) => {
     const rows = typeof tip === 'string' ? [] : tip.rows ?? [];
     if (!rows.length) return;
     if (two) {
       lines.push(wLabel(w));
-      html += `<div class="tt-wname c${i + 1}">${escapeHtml(wLabel(w))}</div>`;
+      html += `<div class="tt-wname c${(slot ?? i) + 1}">${escapeHtml(wLabel(w))}</div>`;
     }
     for (const [label, value] of rows) {
       lines.push(`${label}: ${value}`);
@@ -2882,18 +3242,18 @@ function drawPlotFrame(canvas, { crosshair = state.recoil.crosshair } = {}) {
     targetImpactYcm, aimOffset, cmAt: cmAtDistance, targetHitTest, pxPerCm, sprayDotRadius, scatterDotRadius };
 }
 
-function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
+/** Draw the pattern of each weapon in `weapons`, indexed by slot (null for an empty slot). */
+function drawRecoilFixed(canvas, weapons, layers, refSeed = 0) {
   const { ctx, isTargetView, xMin, xMax, yMin, yMax, toX, toY, targetImpactYcm, aimOffset,
     targetHitTest, sprayDotRadius, scatterDotRadius } = drawPlotFrame(canvas);
   const N = selectedRecoilShotCount();
-  const cols = ['#c9a227', '#4d94d0'];
-  const drawOrder = [weapon1, weapon2].filter(Boolean);
+  const drawOrder = weapons.map((w, slot) => ({ w, slot })).filter(({ w }) => w);
   const spreadBubbleIdxs = getSpreadBulletIdxs(N);
   const targetHits = [];
 
   // Pass 0 — Scatter cloud
-  if (layers.scatter) drawOrder.forEach(w => {
-    const col = cols[w === weapon1 ? 0 : 1];
+  if (layers.scatter) drawOrder.forEach(({ w, slot }) => {
+    const col = SLOT_COLORS[slot];
     for (let s = 1; s <= CLOUD_RUNS; s++) {
       const { points: recoilPts, spreads } = patternFor(w, s * 0x9e3779b9, N);
       const rngB = mulberry32((whash(w.id) ^ (s * 0x6c62272e)) >>> 0);
@@ -2914,8 +3274,8 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
   });
 
   // Pass 1 — Reference run with spread jitter + overlays
-  drawOrder.forEach(w => {
-    const col = cols[w === weapon1 ? 0 : 1];
+  drawOrder.forEach(({ w, slot }) => {
+    const col = SLOT_COLORS[slot];
     const weaponRefSeed = refSeed >>> 0;
     const { points: pts, spreads } = patternFor(w, weaponRefSeed, N);
 
@@ -2935,7 +3295,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     let sprayZones = null;
     if (targetHitTest) {
       sprayZones = sprayPts.map(p => p.pellets ? p.pellets.map(zoneAt) : zoneAt(p));
-      targetHits.push({ weapon: w, zones: sprayZones, hits: sprayZones.flat().filter(Boolean).length, total: sprayZones.flat().length });
+      targetHits.push({ weapon: w, slot, zones: sprayZones, hits: sprayZones.flat().filter(Boolean).length, total: sprayZones.flat().length });
     }
 
     // A pellet load's pellets land up to the spread plus the dispersion cone
@@ -3037,7 +3397,7 @@ function drawRecoilFixed(canvas, weapon1, weapon2, layers, refSeed = 0) {
     if (layers.path && pts.length > 1) {
       ctx.beginPath();
       pts.forEach((p, i) => { const x = toX(p.x), y = toY(w, p.y); i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y); });
-      ctx.strokeStyle = col === '#c9a227' ? 'rgba(201,162,39,0.72)' : 'rgba(77,148,208,0.72)';
+      ctx.strokeStyle = slotRgba(slot, 0.72);
       ctx.lineWidth = 2.2; ctx.stroke();
     }
 
@@ -3447,9 +3807,10 @@ function renderRecoil({ plotOnly = false } = {}) {
   recoilPlotFrame = null;
   if (isTargetGeometry()) state.recoil.distance = snapTargetDistance(state.recoil.distance);
   scheduleUrlSync();
-  const w1 = selectedSimBuild(state.slots[0]);
-  let w2 = state.comparing ? selectedSimBuild(state.slots[1]) : null;
-  if ([w1, w2].some(w => w && !validateWeaponSimulation(w))) {
+  // Every shown weapon's simulated build, indexed by slot; the range fires Weapon 1 only.
+  let builds = shownBuilds(selectedSimBuild);
+  const w1 = builds[0];
+  if (builds.some(w => w && !validateWeaponSimulation(w))) {
     const canvas = document.getElementById('rcMain');
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -3461,12 +3822,10 @@ function renderRecoil({ plotOnly = false } = {}) {
   const shotCount = selectedRecoilShotCount();
   // The base frame feeds the auto magnification, so it has to settle before
   // any of the control read-outs are written.
-  if (isTargetGeometry()) computeTargetBaseFrame([w1, w2], shotCount);
+  if (isTargetGeometry()) computeTargetBaseFrame(builds, shotCount);
 
-  if (!plotOnly) renderAttachmentStats([
-    { weapon: state.slots[0].weapon, atts: state.slots[0].atts, build: w1, colClass: 'c1' },
-    { weapon: state.comparing ? state.slots[1].weapon : null, atts: state.slots[1].atts, build: w2, colClass: 'c2' },
-  ]);
+  if (!plotOnly) renderAttachmentStats(shownSlots().map((slot, i) =>
+    ({ weapon: slot.weapon, atts: slot.atts, build: builds[i], colClass: `c${i + 1}` })));
 
   const { aim, stance, layers, refSeed } = state.recoil;
   const pressed = (id, on) => {
@@ -3531,7 +3890,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   const distanceField = document.getElementById('rcDistanceField');
   if (distanceField) distanceField.hidden = !isTarget;
   const zeroReadout = document.getElementById('rcZeroReadout');
-  if (zeroReadout) zeroReadout.hidden = !isTarget || ![w1, w2].some(isZeroableWeapon);
+  if (zeroReadout) zeroReadout.hidden = !isTarget || !builds.some(isZeroableWeapon);
   const zeroCycle = document.getElementById('rcZeroCycleBtn');
   if (zeroCycle) zeroCycle.textContent = `${state.recoil.zeroDistance} m`;
   if (!isTarget) document.getElementById('rcMain')?.classList.remove('aiming');
@@ -3681,7 +4040,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   firingRange?.setActive(isRange);
   const axis = isRange
     ? firingRange.render()
-    : drawRecoilFixed(document.getElementById('rcMain'), w1, w2, layers, refSeed);
+    : drawRecoilFixed(document.getElementById('rcMain'), builds, layers, refSeed);
   const noteEl = document.querySelector('.rc-note');
   const stateLabel = `${aim.toUpperCase()} / ${stance === 'move' ? 'MOV' : stance === 'mount' ? 'MNT' : 'STD'}`;
   if (noteEl && axis) {
@@ -3695,7 +4054,7 @@ function renderRecoil({ plotOnly = false } = {}) {
     const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
     const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
     const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
-    const hasPellets = [w1, isRange ? null : w2].some(w => (w?.pellets ?? 1) > 1);
+    const hasPellets = (isRange ? [w1] : builds).some(w => (w?.pellets ?? 1) > 1);
     const pelletNote = hasPellets && !isRange ? ' Each shell\'s pellets scatter inside the weapon\'s dispersion cone, as measured on the in-game wall; the scatter cloud shows pellets too, and the bubbles and cone cover the spread plus that cone.' : '';
     const rangePelletNote = hasPellets && isRange ? ' Each shell\'s pellets scatter inside the dashed ring, the spread plus the weapon\'s dispersion cone, as measured on the in-game wall.' : '';
     const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
@@ -3713,7 +4072,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   // Every distance change comes through a full render, so the markers follow it here.
   syncDistanceMarker();
   // The range fires only the first weapon, so its stats name and chart only that one.
-  if (isRange) w2 = null;
+  if (isRange) builds = [w1];
 
   // The pop-out has room for both tables, so it stacks recoil/spread over the
   // impact breakdown instead of swapping one for the other.
@@ -3740,6 +4099,13 @@ function renderRecoil({ plotOnly = false } = {}) {
   // Recoil / Spread stats panel
   // The Firing Range applies no compensation: the player's mouse is the control.
   const compPct = isRange ? 0 : selectedCompensationLevel() / 100;
+  // Each stat lists one entry per shown weapon: its slot (so its colour), the
+  // value text and the bar; the tooltips stack every weapon's breakdown.
+  const shown = builds.map((w, slot) => ({ w, slot, sel: state.slots[slot] })).filter(({ w }) => w);
+  const joinTips = tips => {
+    const list = tips.filter(Boolean);
+    return list.length ? `<div class="rc-tt">${list.join('<div style="border-top:1px solid var(--border);margin:8px 0 6px"></div>')}</div>` : '';
+  };
   const stats = [
     (() => {
       const ttHtml = (selW, w, atts, colCls) => {
@@ -3781,26 +4147,18 @@ function renderRecoil({ plotOnly = false } = {}) {
           + `<div class="rc-tt-row rc-tt-eff"><span>Recoil Direction</span><span>${dirStr}</span></div>` + dirLines.join('')
           + `<div class="rc-tt-row rc-tt-eff" style="margin-top:6px"><span>Recoil Variation (±)</span><span>${effVar.toFixed(2)}°</span></div>` + varLines.join('');
       };
-      const tt1 = ttHtml(state.slots[0].weapon, w1, state.slots[0].atts, 'c1');
-      const tt2 = state.comparing ? ttHtml(state.slots[1].weapon, w2, state.slots[1].atts, 'c2') : '';
       return {
         lbl: 'Recoil Direction ± Variation',
-        val1: w1 ? (((-selectedRecoilDirectionFor(w1)) >= 0 ? '+' : '') + (-selectedRecoilDirectionFor(w1))) + '° ± ' + selectedRecoilVariationFor(w1).toFixed(1) + '°' : null,
-        val2: w2 ? (((-selectedRecoilDirectionFor(w2)) >= 0 ? '+' : '') + (-selectedRecoilDirectionFor(w2))) + '° ± ' + selectedRecoilVariationFor(w2).toFixed(1) + '°' : null,
         centeredRange: true,
-        barStart1: w1 ? (-selectedRecoilDirectionFor(w1) - selectedRecoilVariationFor(w1)) / 180 : 0,
-        bar1:      w1 ? (-selectedRecoilDirectionFor(w1) + selectedRecoilVariationFor(w1)) / 180 : 0,
-        barStart2: w2 ? (-selectedRecoilDirectionFor(w2) - selectedRecoilVariationFor(w2)) / 180 : 0,
-        bar2:      w2 ? (-selectedRecoilDirectionFor(w2) + selectedRecoilVariationFor(w2)) / 180 : 0,
-        tick1: w1 ? -selectedRecoilDirectionFor(w1) / 180 : null,
-        tick2: w2 ? -selectedRecoilDirectionFor(w2) / 180 : null,
-        tooltip: (tt1 || tt2) ? `<div class="rc-tt">${tt1}${tt2 && tt1 ? '<div style="border-top:1px solid var(--border);margin:8px 0 6px"></div>' : ''}${tt2}</div>` : '',
-        col1: '#c9a227', col2: '#4d94d0',
+        entries: shown.map(({ w, slot }) => {
+          const dir = -selectedRecoilDirectionFor(w), variation = selectedRecoilVariationFor(w);
+          return { slot, val: (dir >= 0 ? '+' : '') + dir + '° ± ' + variation.toFixed(1) + '°',
+            barStart: (dir - variation) / 180, bar: (dir + variation) / 180, tick: dir / 180 };
+        }),
+        tooltip: joinTips(shown.map(({ w, slot, sel }) => ttHtml(sel.weapon, w, sel.atts, `c${slot + 1}`))),
       };
     })(),
     (() => {
-      const baseW1 = state.slots[0].weapon ? defaultAppliedWeapon(state.slots[0].weapon) : null;
-      const baseW2 = state.comparing && state.slots[1].weapon ? defaultAppliedWeapon(state.slots[1].weapon) : null;
       const eff = w => w ? +(selectedRecoilAmountFor(w) * (1 - compPct)).toFixed(3) : null;
       const ld = w => { if (!w) return null; const wa = selectedRecoilAmountFor(w); return { eff: wa * (1 - compPct), wa }; };
       const ttHtml = (selW, atts, colCls) => {
@@ -3838,25 +4196,18 @@ function renderRecoil({ plotOnly = false } = {}) {
         const effLbl = aim === 'hip' ? 'Effective Hipfire Recoil' : 'Effective ADS Recoil';
         return wn + `<div class="rc-tt-row rc-tt-eff"><span>${effLbl}</span><span>${effVal.toFixed(2)}°</span></div><div class="rc-tt-row"><span>Base Weapon Recoil</span><span>${baseRecoil.toFixed(2)}°</span></div>` + lines.join('');
       };
-      const tt1 = ttHtml(state.slots[0].weapon, state.slots[0].atts, 'c1');
-      const tt2 = state.comparing ? ttHtml(state.slots[1].weapon, state.slots[1].atts, 'c2') : '';
-      const eff1 = eff(w1), eff2 = eff(w2);
       return {
         lbl: 'Recoil / Shot', layered: true,
-        val1: eff1 != null ? eff1.toFixed(2) + '°' : null,
-        val2: eff2 != null ? eff2.toFixed(2) + '°' : null,
-        bar1: eff1 != null ? eff1 / RECOIL_BAR_SCALE : 0,
-        bar2: eff2 != null ? eff2 / RECOIL_BAR_SCALE : 0,
-        layeredData1: ld(w1), layeredData2: ld(w2),
-        tooltip: (tt1 || tt2) ? `<div class="rc-tt">${tt1}${tt2 && tt1 ? '<div style="border-top:1px solid var(--border);margin:8px 0 6px"></div>' : ''}${tt2}</div>` : '',
-        col1: '#c9a227', col2: '#4d94d0',
+        entries: shown.map(({ w, slot }) => {
+          const value = eff(w);
+          return { slot, val: value.toFixed(2) + '°', bar: value / RECOIL_BAR_SCALE, ghost: ld(w) };
+        }),
+        tooltip: joinTips(shown.map(({ slot, sel }) => ttHtml(sel.weapon, sel.atts, `c${slot + 1}`))),
       };
     })(),
     (() => {
       const aimLbl = aim === 'hip' ? 'Hipfire' : 'ADS';
-      const eff1 = w1 ? selectedSpreadIncFor(w1) : null, eff2 = w2 ? selectedSpreadIncFor(w2) : null;
-      const base1 = w1 ? (aim === 'ads' ? (state.slots[0].weapon?.recoilIncAds ?? 0) : (state.slots[0].weapon?.spreadDyn?.hip?.inc ?? 0)) : null;
-      const base2 = w2 ? (aim === 'ads' ? (state.slots[1].weapon?.recoilIncAds ?? 0) : (state.slots[1].weapon?.spreadDyn?.hip?.inc ?? 0)) : null;
+      const baseOf = sel => aim === 'ads' ? (sel.weapon?.recoilIncAds ?? 0) : (sel.weapon?.spreadDyn?.hip?.inc ?? 0);
       const ld = (eff, base) => eff != null && base != null ? { eff, wa: base, scale: 1 } : null;
       const ttHtml = (selW, w, atts, base, eff, colCls) => {
         if (!selW || !w) return '';
@@ -3874,49 +4225,40 @@ function renderRecoil({ plotOnly = false } = {}) {
         const wn = selW.name ? `<div class="rc-tt-wname ${colCls}">${weaponDisplayLabel(selW)}</div>` : '';
         return wn + `<div class="rc-tt-row rc-tt-eff"><span>Effective ${aimLbl} SIPS</span><span>${eff.toFixed(2)}°</span></div><div class="rc-tt-row"><span>Base ${aimLbl} SIPS</span><span>${base.toFixed(2)}°</span></div>` + lines.join('');
       };
-      const tt1 = base1 != null ? ttHtml(state.slots[0].weapon, w1, state.slots[0].atts, base1, eff1, 'c1') : '';
-      const tt2 = base2 != null && state.comparing ? ttHtml(state.slots[1].weapon, w2, state.slots[1].atts, base2, eff2, 'c2') : '';
       return {
         lbl: 'Spread Inc / Shot', layered: true,
-        val1: eff1 != null ? eff1.toFixed(2) + '°' : null,
-        val2: eff2 != null ? eff2.toFixed(2) + '°' : null,
-        bar1: eff1 ?? 0, bar2: eff2 ?? 0,
-        layeredData1: ld(eff1, base1), layeredData2: ld(eff2, base2),
-        tooltip: (tt1 || tt2) ? `<div class="rc-tt">${tt1}${tt2 && tt1 ? '<div style="border-top:1px solid var(--border);margin:8px 0 6px"></div>' : ''}${tt2}</div>` : '',
-        col1: '#c9a227', col2: '#4d94d0',
+        entries: shown.map(({ w, slot, sel }) => {
+          const value = selectedSpreadIncFor(w);
+          return { slot, val: value.toFixed(2) + '°', bar: value, ghost: ld(value, baseOf(sel)) };
+        }),
+        tooltip: joinTips(shown.map(({ w, slot, sel }) =>
+          ttHtml(sel.weapon, w, sel.atts, baseOf(sel), selectedSpreadIncFor(w), `c${slot + 1}`))),
       };
     })(),
     (() => {
       const barScale = SPREAD_BAR_SCALE;
-      const e1 = w1 ? effectiveSpreadMax(w1) : null;
-      const e2 = w2 ? effectiveSpreadMax(w2) : null;
-      const b1 = w1 ? spreadBounds(w1) : null, b2 = w2 ? spreadBounds(w2) : null;
-      const mn1 = b1 ? b1[0] : null, mn2 = b2 ? b2[0] : null;
       const fmtR = (mn, mx) => mn != null && mx != null ? `${mn.toFixed(2)}° → ${mx.toFixed(2)}°` : null;
       const SAMPLE = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
-      const sim1 = w1 ? simulateSpread(w1, 15) : null;
-      const sim2 = w2 && state.comparing ? simulateSpread(w2, 15) : null;
+      const sims = shown.map(({ w }) => simulateSpread(w, 15));
       let tt = '';
-      if (sim1 || sim2) {
+      if (shown.length) {
         const aimLbl = aim === 'hip' ? 'Hipfire' : 'ADS';
         const stanceLbl = stance === 'move' ? 'Moving' : stance === 'mount' ? 'Mounted' : 'Standing';
         const spreadHdr = `Effective Spread (${aimLbl} | ${stanceLbl})`;
-        const thW1 = state.slots[0].weapon ? `<th style="color:var(--accent)">${weaponDisplayLabel(state.slots[0].weapon)}</th>` : '';
-        const thW2 = sim2 && state.slots[1].weapon ? `<th style="color:var(--accent2)">${weaponDisplayLabel(state.slots[1].weapon)}</th>` : '';
+        const ths = shown.map(({ slot, sel }) => `<th style="color:var(${SLOT_CSS_VARS[slot]})">${weaponDisplayLabel(sel.weapon)}</th>`).join('');
         const rows = SAMPLE.map(n => {
           const i = n - 1;
-          const c1 = sim1 && i < sim1.length ? `<td>${sim1[i].toFixed(2)}°</td>` : '';
-          const c2 = sim2 && i < sim2.length ? `<td>${sim2[i].toFixed(2)}°</td>` : '';
-          return `<tr><td>${n}</td>${c1}${c2}</tr>`;
+          return `<tr><td>${n}</td>${sims.map(sim => i < sim.length ? `<td>${sim[i].toFixed(2)}°</td>` : '').join('')}</tr>`;
         }).join('');
-        tt = `<div class="rc-tt" style="min-width:0"><div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:5px">${spreadHdr}</div><table class="rc-tt-tbl"><thead><tr><th>Shot</th>${thW1}${thW2}</tr></thead><tbody>${rows}</tbody></table></div>`;
+        tt = `<div class="rc-tt" style="min-width:0"><div style="font-size:0.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--text);margin-bottom:5px">${spreadHdr}</div><table class="rc-tt-tbl"><thead><tr><th>Shot</th>${ths}</tr></thead><tbody>${rows}</tbody></table></div>`;
       }
       return {
         lbl: 'Spread Min → Eff. Max',
-        val1: fmtR(mn1, e1), val2: fmtR(mn2, e2),
-        barStart1: mn1 != null ? mn1 / barScale : null, bar1: e1 != null ? e1 / barScale : 0,
-        barStart2: mn2 != null ? mn2 / barScale : null, bar2: e2 != null ? e2 / barScale : 0,
-        tooltip: tt, col1: '#c9a227', col2: '#4d94d0',
+        entries: shown.map(({ w, slot }) => {
+          const max = effectiveSpreadMax(w), min = spreadBounds(w)?.[0] ?? null;
+          return { slot, val: fmtR(min, max), barStart: min != null ? min / barScale : null, bar: max != null ? max / barScale : 0 };
+        }),
+        tooltip: tt,
       };
     })(),
   ];
@@ -3925,15 +4267,15 @@ function renderRecoil({ plotOnly = false } = {}) {
   // describes is set by the controls right above it.
   // Mounted deploys the bipod or grip pod; without one the mount changes nothing.
   const mountNote = stance !== 'mount' ? ''
-    : [w1, w2].filter(Boolean).some(hasDeployable) ? ' (bipod or grip pod deployed)' : ' (no bipod or grip pod: standing values)';
+    : builds.filter(Boolean).some(hasDeployable) ? ' (bipod or grip pod deployed)' : ' (no bipod or grip pod: standing values)';
   const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : stance === 'mount' ? `Mounted${mountNote}` : 'Standing'}</div>`;
   // The loadouts the bars compare head the card, the way each impact table
   // names its own.
-  let rowsHtml = '<div class="rc-stats-loadouts">' + [[w1, 'c1'], [w2, 'c2']].filter(([w]) => w)
-    .map(([w, cls]) => `<div class="target-impact-weapon ${cls}">${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
+  let rowsHtml = '<div class="rc-stats-loadouts">' + shown
+    .map(({ w, slot }) => `<div class="target-impact-weapon c${slot + 1}">${loadoutHeadingHtml(w)}</div>`).join('') + '</div>';
   stats.forEach(s => {
-    if (s.val1 === null && s.val2 === null) return;
-    rowsHtml += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span>${[s.val1, s.val2].filter(Boolean).join(' / ')}</span></div>`;
+    if (!s.entries.length) return;
+    rowsHtml += `<div class="rc-row"><div class="rc-lbl"><span>${s.lbl}</span><span class="rc-vals">${s.entries.filter(e => e.val).map(e => `<span class="c${e.slot + 1}">${e.val}</span>`).join('<span class="rc-val-sep"> / </span>')}</span></div>`;
     const renderBar = (start, end, col, tick = null, ghost = null) => {
       if (s.centeredRange) {
         const a = Math.max(-1, Math.min(1, start ?? 0)), b = Math.max(-1, Math.min(1, end ?? 0));
@@ -3958,8 +4300,9 @@ function renderRecoil({ plotOnly = false } = {}) {
       }
       return `<div class="rc-bar"><div class="rc-fill" style="width:${Math.min(end * 100, 100).toFixed(1)}%;background:${col}"></div></div>`;
     };
-    if (s.val1 != null) rowsHtml += renderBar(s.barStart1, s.bar1, s.col1, s.tick1 ?? null, s.layeredData1 ?? null);
-    if (s.val2 != null) rowsHtml += renderBar(s.barStart2, s.bar2, s.col2, s.tick2 ?? null, s.layeredData2 ?? null);
+    s.entries.forEach(e => {
+      if (e.val != null) rowsHtml += renderBar(e.barStart, e.bar, SLOT_COLORS[e.slot], e.tick ?? null, e.ghost ?? null);
+    });
     if (s.tooltip) rowsHtml += s.tooltip;
     rowsHtml += '</div>';
   });
@@ -3984,6 +4327,7 @@ function setLoadoutOverlay(open) {
   const header = document.querySelector('header');
   if (shouldOpen) loadoutOverlayOpener = document.activeElement;
   document.body.classList.toggle('loadout-open', shouldOpen);
+  if (!shouldOpen) document.body.classList.remove('loadout-expanded');
   document.getElementById('loadoutOpenBtn')?.setAttribute('aria-expanded', String(shouldOpen));
   if (panel) {
     if (shouldOpen) {
@@ -4224,9 +4568,7 @@ const CAN_COPY_IMAGE = typeof ClipboardItem !== 'undefined' && !!navigator.clipb
 
 /** Downloads a rendered capture under the current loadout's name. */
 function downloadCapture(blob) {
-  const names = state.slots
-    .slice(0, state.comparing ? 2 : 1)
-    .map(s => s.weapon?.name);
+  const names = shownSlots().map(s => s.weapon?.name);
   const a = document.createElement('a');
   a.href = URL.createObjectURL(blob);
   a.download = captureFilename(names);
@@ -4338,19 +4680,18 @@ function bindEvents() {
     window.addEventListener('pageshow', () => { archiveSelect.selectedIndex = 0; });
   }
 
-  // Compare toggle
-  document.getElementById('cmpBtn').addEventListener('click', () => {
-    state.comparing = !state.comparing;
-    document.getElementById('cmpBtn').classList.toggle('on', state.comparing);
-    document.getElementById('cmpBtn').setAttribute('aria-pressed', String(state.comparing));
-    document.getElementById('cmpSection').style.display = state.comparing ? 'block' : 'none';
-    if (!state.comparing) {
-      state.slots[1].weapon = null;
-      state.slots[1].atts = Loadout.blankAtts();
-    }
-    renderSidebar();
-    renderStats();
-  });
+  // Add Weapon: Weapon 2, then 3, then 4; each compare weapon has its own Remove.
+  document.getElementById('cmpBtn').addEventListener('click', addCompareSlot);
+  const scroller = document.querySelector('.sb-scroll');
+  scroller?.addEventListener('scroll', scheduleSlotStack, { passive: true });
+  if (scroller && typeof ResizeObserver !== 'undefined') new ResizeObserver(scheduleSlotStack).observe(scroller);
+  document.querySelectorAll('[data-fold-slot]').forEach(btn => btn.addEventListener('click', () => {
+    const slot = state.slots[Number(btn.dataset.foldSlot)];
+    slot.folded = !slot.folded;
+    syncSlotSections();
+  }));
+  document.querySelectorAll('[data-remove-slot]').forEach(btn =>
+    btn.addEventListener('click', () => removeCompareSlot(Number(btn.dataset.removeSlot))));
   // The empty page's example: a ready comparison, so a first visit sees what the page does.
   const exampleBtn = document.getElementById('emptyExampleBtn');
   const exampleWeapons = [W.find(w => w.id === 'm433'), W.find(w => w.id === 'ak4d')];
@@ -4363,17 +4704,18 @@ function bindEvents() {
         resetAttsForWeapon(slot.atts, weapon);
         slot.savedName = null;
       });
-      state.comparing = true;
-      document.getElementById('cmpBtn').classList.add('on');
-      document.getElementById('cmpBtn').setAttribute('aria-pressed', 'true');
-      document.getElementById('cmpSection').style.display = 'block';
+      setComparing(true);
       renderSidebar();
       renderStats();
     });
   } else if (exampleBtn) exampleBtn.hidden = true;
-  document.getElementById('cloneLoadoutBtn').addEventListener('click', cloneCompareLoadout);
+  document.getElementById('cloneLoadoutBtn').addEventListener('click', onCopyClick);
   bindChartTableHover();
-  document.getElementById('swapLoadoutBtn')?.addEventListener('click', swapCompareLoadouts);
+  document.getElementById('swapLoadoutBtn')?.addEventListener('click', onSwapClick);
+  document.addEventListener('click', e => {
+    if (!document.getElementById('slotMenu')?.contains(e.target)) closeSlotMenu();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closeSlotMenu(); });
 
   // Share menu — copy the link, or a PNG of the whole view
   bindShareMenu();
@@ -4431,11 +4773,16 @@ function bindEvents() {
 
   // Loadout overlay (responsive)
   document.getElementById('loadoutOpenBtn')?.addEventListener('click', () => setLoadoutOverlay(true));
+  document.getElementById('loadoutExpandBtn')?.addEventListener('click', () => {
+    document.body.classList.add('loadout-expanded');
+    setLoadoutOverlay(true);
+  });
   document.getElementById('loadoutCloseBtn')?.addEventListener('click', () => setLoadoutOverlay(false));
   document.getElementById('loadoutBackdrop')?.addEventListener('click', () => setLoadoutOverlay(false));
   const desktopLoadout = matchMedia('(min-width: 981px)');
   desktopLoadout.addEventListener?.('change', () => {
-    if (desktopLoadout.matches && document.body.classList.contains('loadout-open')) setLoadoutOverlay(false);
+    if (desktopLoadout.matches && document.body.classList.contains('loadout-open')
+      && !document.body.classList.contains('loadout-expanded')) setLoadoutOverlay(false);
   });
   document.addEventListener('keydown', e => {
     if (!document.body.classList.contains('loadout-open')) return;

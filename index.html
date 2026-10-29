@@ -28,7 +28,7 @@
 <body>
 <header>
   <h1 class="logo-h1"><a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a></h1>
-  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-10-28">Updated 28 OCT 2026</time></div>
+  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-10-29">Updated 29 OCT 2026</time></div>
   <div class="archive-group">
     <select class="archive-select" id="archiveSelect" autocomplete="off" aria-label="Site version">
       <option value="" selected disabled hidden>Site Versions</option>
@@ -47,32 +47,60 @@
       <div class="loadout-modal-title" id="loadoutTitle">Loadout</div>
       <button class="loadout-close" id="loadoutCloseBtn" type="button" title="Close loadout panel" aria-label="Close loadout panel">×</button>
     </div>
-    <div class="cmp-row"><button class="cmp-btn" id="cmpBtn" aria-pressed="false">+ Compare Loadout</button><span class="cmp-hdr-tools"><button class="clone-btn" id="swapLoadoutBtn" type="button" title="Swap Weapon 1 and Weapon 2, attachments and locks included" aria-label="Swap Weapon 1 and Weapon 2"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 5.5h9M9 2.5l3 3-3 3M13.5 10.5h-9M7 7.5l-3 3 3 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="clone-btn" id="cloneLoadoutBtn" type="button" title="Copy Weapon 1 and its attachments into Weapon 2" aria-label="Copy Weapon 1 into Weapon 2"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 5.5v-2a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button></span></div>
+    <div class="cmp-row"><button class="cmp-btn" id="cmpBtn" type="button">+ Add Weapon</button><span class="cmp-hdr-tools"><button class="clone-btn" id="swapLoadoutBtn" type="button" data-slot-menu aria-haspopup="menu" aria-expanded="false" aria-controls="slotMenu"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M2.5 5.5h9M9 2.5l3 3-3 3M13.5 10.5h-9M7 7.5l-3 3 3 3" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><button class="clone-btn" id="cloneLoadoutBtn" type="button" data-slot-menu aria-haspopup="menu" aria-expanded="false" aria-controls="slotMenu"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M10.5 5.5v-2a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h2" fill="none" stroke="currentColor" stroke-width="1.4"/></svg></button><button class="clone-btn" id="loadoutExpandBtn" type="button" title="Expand the loadout panel" aria-label="Expand the loadout panel" aria-controls="loadoutPanel"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M9.5 2.5h4v4M13.5 2.5L9.5 6.5M6.5 13.5h-4v-4M2.5 13.5l4-4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></button><div class="share-menu slot-menu" id="slotMenu" role="menu" hidden></div></span></div>
     <div class="sb-scroll">
-      <div class="cmp-hdr w1-hdr"><span>Weapon 1</span></div>
-      <div class="sb-sec" id="savedSec1"></div>
-      <div class="sb-sec">
+      <div class="slot-stack" id="slotStack" hidden><div class="slot-stack-inner"></div></div>
+      <div class="cmp-hdr w1-hdr"><button class="slot-fold" type="button" data-fold-slot="0" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 1</button></div><div class="slot-summary" data-fold-name="0" hidden></div>
+      <div class="sb-sec" id="savedSec1" data-slot-body="0"></div>
+      <div class="sb-sec" data-slot-body="0">
         <div class="sb-lbl">Class</div>
         <div class="class-filter" id="classFilter1"></div>
       </div>
-      <div class="sb-sec" style="padding-top:6px">
+      <div class="sb-sec" style="padding-top:6px" data-slot-body="0">
         <div class="sb-lbl">Weapon</div>
         <div class="wlist" id="wList1"></div>
       </div>
-      <div class="att-sec" id="attSection1"></div>
+      <div class="att-sec" id="attSection1" data-slot-body="0"></div>
       <div id="cmpSection" style="display:none">
-        <div class="cmp-hdr"><span>Weapon 2</span></div>
-        <div class="sb-sec" id="savedSec2"></div>
-        <div class="sb-sec">
+        <div class="cmp-hdr"><button class="slot-fold" type="button" data-fold-slot="1" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 2</button><button class="slot-remove" type="button" data-remove-slot="1" title="Remove Weapon 2" aria-label="Remove Weapon 2">×</button></div><div class="slot-summary" data-fold-name="1" hidden></div>
+        <div class="sb-sec" id="savedSec2" data-slot-body="1"></div>
+        <div class="sb-sec" data-slot-body="1">
           <div class="sb-lbl">Class</div>
           <div class="class-filter" id="classFilter2"></div>
         </div>
-        <div class="sb-sec" style="padding-top:6px">
+        <div class="sb-sec" style="padding-top:6px" data-slot-body="1">
           <div class="sb-lbl">Weapon</div>
           <div class="wlist" id="wList2"></div>
         </div>
-        <div class="att-sec" id="attSection2"></div>
+        <div class="att-sec" id="attSection2" data-slot-body="1"></div>
+        <div class="wslot" id="slotSection3" style="--slot-c:var(--accent3)" hidden>
+          <div class="cmp-hdr"><button class="slot-fold" type="button" data-fold-slot="2" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 3</button><button class="slot-remove" type="button" data-remove-slot="2" title="Remove Weapon 3" aria-label="Remove Weapon 3">×</button></div><div class="slot-summary" data-fold-name="2" hidden></div>
+          <div class="sb-sec" id="savedSec3" data-slot-body="2"></div>
+          <div class="sb-sec" data-slot-body="2">
+            <div class="sb-lbl">Class</div>
+            <div class="class-filter" id="classFilter3"></div>
+          </div>
+          <div class="sb-sec" style="padding-top:6px" data-slot-body="2">
+            <div class="sb-lbl">Weapon</div>
+            <div class="wlist" id="wList3"></div>
+          </div>
+          <div class="att-sec" id="attSection3" data-slot-body="2"></div>
+        </div>
+        <div class="wslot" id="slotSection4" style="--slot-c:var(--accent4)" hidden>
+          <div class="cmp-hdr"><button class="slot-fold" type="button" data-fold-slot="3" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 4</button><button class="slot-remove" type="button" data-remove-slot="3" title="Remove Weapon 4" aria-label="Remove Weapon 4">×</button></div><div class="slot-summary" data-fold-name="3" hidden></div>
+          <div class="sb-sec" id="savedSec4" data-slot-body="3"></div>
+          <div class="sb-sec" data-slot-body="3">
+            <div class="sb-lbl">Class</div>
+            <div class="class-filter" id="classFilter4"></div>
+          </div>
+          <div class="sb-sec" style="padding-top:6px" data-slot-body="3">
+            <div class="sb-lbl">Weapon</div>
+            <div class="wlist" id="wList4"></div>
+          </div>
+          <div class="att-sec" id="attSection4" data-slot-body="3"></div>
+        </div>
       </div>
+      <div class="slot-stack slot-stack-bottom" id="slotStackBottom" hidden><div class="slot-stack-inner"></div></div>
     </div>
   </aside>
   <div class="loadout-backdrop" id="loadoutBackdrop" aria-hidden="true"></div>
@@ -89,7 +117,7 @@
           <button class="panel-toggle" data-collapse="overview" data-collapse-label="the stat cards" type="button" aria-expanded="true" aria-controls="sGrid"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
           <div class="ptitle">Overview</div>
           <div class="share-wrap">
-            <button class="share-btn" id="shareBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="shareMenu" title="Share this loadout as a link or an image">Share Loadout</button>
+            <button class="share-btn" id="shareBtn" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="shareMenu" title="Share as a link or an image">Share</button>
             <div class="share-menu" id="shareMenu" role="menu" hidden>
               <button class="share-menu-item" id="shareLinkBtn" type="button" role="menuitem">Copy Link</button>
               <button class="share-menu-item" id="shareImgBtn" type="button" role="menuitem">Copy Image</button>
@@ -128,7 +156,7 @@
             <div class="chart-wrap"><canvas id="dmgChart"></canvas><div class="rc-legend" id="chartLegend"></div></div>
           </div>
           <div class="chart-column chart-column-table" style="flex:1;min-width:0;padding:6px 8px">
-            <div class="ptitle chart-table-head">BTK / TTK<span class="btk-weapons" id="btkWeapons"></span></div>
+            <div class="ptitle chart-table-head"><span class="btk-title">BTK / TTK</span><span class="btk-weapons" id="btkWeapons"></span></div>
             <div id="btkArea"></div>
           </div>
         </div>

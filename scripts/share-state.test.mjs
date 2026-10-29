@@ -126,3 +126,30 @@ test('one shared selection supplies effects, labels and points; invalid selectio
   assert.equal(atts.laser, 'none');
   assert.equal(atts.light, 'none');
 });
+
+test('comparison links carry up to four weapons; cmp=1 links stay two-weapon', () => {
+  const four = () => ({ ...state(), slotCount: 2,
+    slots: [weapon('m433'), null, null, null].map(w => ({ weapon: w, atts: w ? defaults(w) : blankAtts() })) });
+  const original = four();
+  original.comparing = true;
+  original.slotCount = 4;
+  for (const [i, id] of [[1, 'ak4d'], [3, 'm433']]) {
+    original.slots[i].weapon = weapon(id);
+    original.slots[i].atts = defaults(weapon(id));
+  }
+  const hash = codec.encodeState(original);
+  const params = new URLSearchParams(hash);
+  assert.equal(params.get('cmp'), '4');
+  assert.equal(params.has('w3'), false);
+  const restored = four();
+  codec.restoreFromHash(restored, hash, weapons);
+  assert.equal(restored.comparing, true);
+  assert.equal(restored.slotCount, 4);
+  assert.deepEqual(restored.slots.map(s => s.weapon?.id ?? null), ['m433', 'ak4d', null, 'm433']);
+
+  const old = four();
+  codec.restoreFromHash(old, '#w=m433&cmp=1&w2=ak4d', weapons);
+  assert.equal(old.slotCount, 2);
+  assert.equal(old.slots[1].weapon.id, 'ak4d');
+  assert.equal(new URLSearchParams(codec.encodeState(old)).get('cmp'), '1');
+});

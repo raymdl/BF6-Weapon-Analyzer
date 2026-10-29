@@ -122,14 +122,18 @@ export function createShareCodec({
       if (mode) params.set('fm', mode);
     }
     if (state.comparing) {
-      params.set('cmp', '1');
-      const second = state.slots[1];
-      if (second.weapon) {
-        params.set('w2', second.weapon.id);
-        const atts = encodeAtts(second.weapon, second.atts);
-        if (atts) params.set('a2', atts);
-        const mode = normalizeAttachments(second.atts, second.weapon, data).fireMode;
-        if (mode) params.set('fm2', mode);
+      // cmp=1 is a two-weapon comparison, as links have always written it;
+      // a larger comparison writes its weapon count.
+      const count = Math.max(2, Math.min(state.slotCount ?? 2, state.slots.length));
+      params.set('cmp', count > 2 ? String(count) : '1');
+      for (let i = 1; i < count; i++) {
+        const slot = state.slots[i];
+        if (!slot.weapon) continue;
+        params.set(`w${i + 1}`, slot.weapon.id);
+        const atts = encodeAtts(slot.weapon, slot.atts);
+        if (atts) params.set(`a${i + 1}`, atts);
+        const mode = normalizeAttachments(slot.atts, slot.weapon, data).fireMode;
+        if (mode) params.set(`fm${i + 1}`, mode);
       }
     }
     if (state.chart.mode !== 'dmg') params.set('cm', state.chart.mode);
@@ -175,14 +179,18 @@ export function createShareCodec({
       state.slots[0].atts = normalizeAttachments({ ...decodeAtts(first, params.get('a')),
         fireMode: params.get('fm') }, first, data);
     }
-    if (params.get('cmp') === '1') {
+    const compareCount = params.get('cmp') === '1' ? 2 : Number(params.get('cmp'));
+    if (Number.isInteger(compareCount) && compareCount >= 2 && compareCount <= state.slots.length) {
       state.comparing = true;
-      const second = params.get('w2') && weapons.find(weapon => weapon.id === params.get('w2'));
-      if (second) {
-        state.slots[1].cls = second.cls;
-        state.slots[1].weapon = second;
-        state.slots[1].atts = normalizeAttachments({ ...decodeAtts(second, params.get('a2')),
-          fireMode: params.get('fm2') }, second, data);
+      state.slotCount = compareCount;
+      for (let i = 1; i < compareCount; i++) {
+        const id = params.get(`w${i + 1}`);
+        const weapon = id && weapons.find(w => w.id === id);
+        if (!weapon) continue;
+        state.slots[i].cls = weapon.cls;
+        state.slots[i].weapon = weapon;
+        state.slots[i].atts = normalizeAttachments({ ...decodeAtts(weapon, params.get(`a${i + 1}`)),
+          fireMode: params.get(`fm${i + 1}`) }, weapon, data);
       }
     }
     const chartMode = params.get('cm');
