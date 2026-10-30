@@ -160,8 +160,10 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .mode-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:2px 8px;font-size:0.65rem;cursor:pointer;letter-spacing:.04em;transition:all .15s}
 #modeDmg,#modeBtk,#modeTtk,#adsToggleBtn,#recToggleBtn,#velToggleBtn{width:44px;display:inline-flex;align-items:center;justify-content:center}
 .mode-btn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
-#adsToggleBtn,#recToggleBtn,#velToggleBtn{color:#b39a52;border-color:rgba(201,162,39,.55);background:rgba(201,162,39,.06)}
-#adsToggleBtn.on,#recToggleBtn.on,#velToggleBtn.on{background:var(--accent);color:#1a2020;border-color:var(--accent);text-shadow:0 0 .45px currentColor}
+/* An independent switch (an overlay, a TTK addition) stands alone and is outlined
+   when on, so solid gold always means the chosen one of a joined group. */
+.switch-btn.on,#rcOverlayGroup .switch-btn.on{background:rgba(201,162,39,.12);background-image:none;color:var(--accent);border-color:var(--accent);text-shadow:none}
+.switch-btn.on:hover{background:rgba(201,162,39,.2)}
 .cmp-hdr{position:relative;white-space:nowrap;padding:6px 11px 1px;font-size:0.72rem;color:var(--accent2);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:center;gap:8px}
 .clone-btn{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:4px;padding:0;width:26px;display:inline-flex;align-items:center;justify-content:center;transition:all .15s}
 .clone-btn svg{width:13px;height:13px;display:block}
@@ -188,13 +190,13 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .wname2{font-size:15px;font-weight:700;color:var(--accent2)}
 .wname3{font-size:15px;font-weight:700;color:var(--accent3)}
 .wname4{font-size:15px;font-weight:700;color:var(--accent4)}
-.wbadge{font-size:0.68rem;color:var(--muted);border:1px solid var(--border);border-radius:3px;padding:2px 6px}
+.wbadge{font-size:0.68rem;color:#9aa8a8;padding:2px 0}
 .wbadge-estimated{font-size:0.68rem;color:#d8704a;border:1px solid rgba(216,112,74,.65);border-radius:3px;padding:2px 6px}
 .wbadge-burst{font-size:0.68rem;color:#c8960a;border:1px solid rgba(200,150,10,.4);border-radius:3px;padding:2px 6px}
 /* The fire-mode badges: one joined group of segments, one per mode the
    loadout offers, the selected one lit, as the stance control is. */
-.wbadge-modes{display:inline-flex;align-items:stretch;border:1px solid var(--border);border-radius:3px;background:var(--bg3);overflow:hidden}
-.wbadge-mode{font:inherit;font-size:0.68rem;line-height:inherit;color:var(--muted);background:transparent;border:0;padding:2px 7px;cursor:pointer}
+.wbadge-modes{display:inline-flex;align-items:stretch;border:1px solid var(--border);border-radius:4px;background:var(--bg3);overflow:hidden}
+.wbadge-mode{font:inherit;font-size:0.68rem;line-height:inherit;color:var(--muted);background:transparent;border:0;padding:2px 9px;cursor:pointer}
 .wbadge-mode+.wbadge-mode{border-left:1px solid var(--border)}
 .wbadge-mode:hover:not(.on){color:var(--text);background:rgba(255,255,255,.05)}
 .wbadge-mode.on{color:#1a2020;background:var(--accent);font-weight:600;cursor:default}

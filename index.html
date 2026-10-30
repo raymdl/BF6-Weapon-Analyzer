@@ -139,12 +139,14 @@
                 <button class="panel-toggle" data-collapse="charts" data-collapse-label="the damage chart and kill table" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
                 <div class="ptitle" style="margin-bottom:0" id="chartTitle">Comparison Chart</div>
                 <div class="chart-mode-controls" style="display:flex;flex-wrap:wrap;gap:3px">
-                  <button class="mode-btn on" id="modeDmg" aria-pressed="true" title="Shows damage per shot across range.">DMG</button>
-                  <button class="mode-btn" id="modeBtk" aria-pressed="false" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
-                  <button class="mode-btn" id="modeTtk" aria-pressed="false" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
-                  <button class="mode-btn" id="adsToggleBtn" aria-pressed="false" style="display:none;margin-left:6px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
-                  <button class="mode-btn" id="recToggleBtn" aria-pressed="false" style="display:none" title="Adds sprint recovery time to the TTK chart and table.">+REC</button>
-                  <button class="mode-btn" id="velToggleBtn" aria-pressed="false" style="display:none" title="Adds the lethal projectile's level-target flight time once to the TTK chart and table.">+VEL</button>
+                  <span class="seg" role="group" aria-label="Chart mode">
+                    <button class="mode-btn on" id="modeDmg" aria-pressed="true" title="Shows damage per shot across range.">DMG</button>
+                    <button class="mode-btn" id="modeBtk" aria-pressed="false" title="Shows bullets required to kill across range. Headshot count affects this view.">BTK</button>
+                    <button class="mode-btn" id="modeTtk" aria-pressed="false" title="Shows time to kill across range based on BTK and fire rate. Headshot count affects this view.">TTK</button>
+                  </span>
+                  <button class="mode-btn switch-btn" id="adsToggleBtn" aria-pressed="false" style="display:none;margin-left:6px" title="Adds ADS time to the TTK chart and table for an ADS+TTK total.">+ADS</button>
+                  <button class="mode-btn switch-btn" id="recToggleBtn" aria-pressed="false" style="display:none" title="Adds sprint recovery time to the TTK chart and table.">+REC</button>
+                  <button class="mode-btn switch-btn" id="velToggleBtn" aria-pressed="false" style="display:none" title="Adds the lethal projectile's level-target flight time once to the TTK chart and table.">+VEL</button>
                 </div>
               </div>
               <select id="btkHsSelect" style="display:none;font-size:0.7rem;background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:2px 6px;cursor:pointer">
@@ -213,16 +215,16 @@
                   <div class="rc-control-group" data-control-group="pattern">
                     <div class="rc-sub">Pattern</div>
                     <div class="rc-group-row">
-                      <button class="mode-btn rc-mode-btn on" id="rcModeScatter" title="Show faded scatter over 10 simulated runs">Scatter</button>
-                      <button class="mode-btn rc-mode-btn on" id="rcModeSpread" title="Show the solid reference run dots">Spray</button>
-                      <button class="mode-btn rc-mode-btn" id="rcModePath" title="Draw the recoil-only reference path">Recoil Path</button>
+                      <button class="mode-btn rc-mode-btn on switch-btn" id="rcModeScatter" title="Show faded scatter over 10 simulated runs">Scatter</button>
+                      <button class="mode-btn rc-mode-btn on switch-btn" id="rcModeSpread" title="Show the solid reference run dots">Spray</button>
+                      <button class="mode-btn rc-mode-btn switch-btn" id="rcModePath" title="Draw the recoil-only reference path">Recoil Path</button>
                     </div>
                   </div>
                   <div class="rc-control-group" data-control-group="spread">
                     <div class="rc-sub">Spread</div>
                     <div class="rc-group-row">
-                      <button class="mode-btn rc-mode-btn" id="rcConeToggleBtn" title="Show the spread envelope cone across all shots">Cone</button>
-                      <button class="mode-btn rc-mode-btn" id="rcSpreadToggleBtn" title="Show potential spread bubbles on selected shots. The presets include shot 1 to show first-shot spread, especially useful for movement and hipfire.">Bubbles</button>
+                      <button class="mode-btn rc-mode-btn switch-btn" id="rcConeToggleBtn" title="Show the spread envelope cone across all shots">Cone</button>
+                      <button class="mode-btn rc-mode-btn switch-btn" id="rcSpreadToggleBtn" title="Show potential spread bubbles on selected shots. The presets include shot 1 to show first-shot spread, especially useful for movement and hipfire.">Bubbles</button>
                     </div>
                   </div>
                   <div class="rc-control-group rc-control-group--grow rc-bubble-preset-group" data-control-group="bubbles">
