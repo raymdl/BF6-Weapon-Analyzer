@@ -1178,6 +1178,9 @@ function syncSlotStack() {
   }
   top.firstElementChild.textContent = '';
   bottom.firstElementChild.textContent = '';
+  // A hidden stack gives its rows no layout, so both are shown while measuring.
+  top.hidden = false;
+  bottom.hidden = false;
   let stacked = 0, first = 0;
   // From the top, in two stages: the header pins once it has scrolled under the
   // rows above it, and the chosen weapon's own row (the lit entry in the list, or
