@@ -92,8 +92,10 @@ and its attachments into Weapon 2, to compare attachment changes on the same
 weapon. Selecting the compare button again ends the comparison and clears the
 second slot. On smaller screens, the Loadout button opens a dialog. Choosing a
 weapon closes it so the stats show; **Done**, the close button or Escape closes it
-after attachment changes, returning focus to the opener. A weapon scrolled out of
-view stays as a row at the dialog's top or bottom; tap its **Edit** row to return to it.
+after attachment changes, returning focus to the opener. As the list scrolls, a weapon's
+header pins at the top, and its chosen weapon joins the header once its own row has
+scrolled under; tap the pinned rows to return to that weapon. Weapons further down pin
+at the bottom the same way.
 The attachment menus appear once a weapon is chosen.
 
 ## Overview and attachment effects

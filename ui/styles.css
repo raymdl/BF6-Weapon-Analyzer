@@ -744,12 +744,10 @@ body.rc-plot-expanded{overflow:hidden}
 .slot-stack-row .cmp-hdr{color:var(--slot-c)}
 .slot-stack-row:first-child .cmp-hdr{border-top:0;padding-top:3px}
 .slot-stack-row .fold-chev{transform:rotate(-90deg)}
-.slot-stack-row .slot-summary{display:flex;align-items:center;gap:8px}
-.slot-stack-hint{margin-left:auto;flex-shrink:0;font-size:.6rem;color:var(--muted);letter-spacing:.08em;text-transform:uppercase}
-.slot-stack-row:hover .slot-stack-hint{color:var(--text)}
+.slot-stack-row .slot-summary{display:block}
 .slot-stack-bottom{top:auto;bottom:0}
 .slot-stack-bottom .slot-stack-inner{position:absolute;left:0;right:0;bottom:0;border-bottom:0;border-top:1px solid var(--border);box-shadow:0 -6px 12px -4px rgba(0,0,0,.5)}
-.slot-stack-row .slot-summary .wbtn{display:block;flex:1 1 auto;min-width:0}
+.slot-stack-row .slot-summary .wbtn{display:block}
 .slot-stack-row:hover .slot-summary .wbtn{background:var(--bg3)}
 /* The saved-loadout label sits closer to its row than the other section labels. */
 #savedSec1 .sb-lbl,#savedSec2 .sb-lbl,#savedSec3 .sb-lbl,#savedSec4 .sb-lbl{margin-bottom:3px}

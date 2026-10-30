@@ -1125,7 +1125,7 @@ function scheduleSlotStack() {
   if (slotStackFrame) return;
   slotStackFrame = requestAnimationFrame(() => { slotStackFrame = 0; syncSlotStack(); });
 }
-function slotStackRow(i, hdr) {
+function slotStackRow(i, hdr, withName = true) {
   const slot = state.slots[i];
   // A div rather than a button, so the Remove button can sit inside it.
   const row = document.createElement('div');
@@ -1149,6 +1149,8 @@ function slotStackRow(i, hdr) {
     remove.addEventListener('click', e => { e.stopPropagation(); removeCompareSlot(i); });
     head.appendChild(remove);
   }
+  row.appendChild(head);
+  if (!withName) return row;
   const summary = document.createElement('span');
   summary.className = 'slot-summary' + (slot.weapon ? '' : ' empty');
   if (slot.weapon) {
@@ -1156,12 +1158,8 @@ function slotStackRow(i, hdr) {
     pick.className = `wbtn p${i + 1}`;
     pick.textContent = weaponDisplayLabel(slot.weapon);
     summary.appendChild(pick);
-    const hint = document.createElement('span');
-    hint.className = 'slot-stack-hint';
-    hint.textContent = 'Edit';
-    summary.appendChild(hint);
   } else summary.textContent = 'No weapon selected';
-  row.append(head, summary);
+  row.appendChild(summary);
   return row;
 }
 function syncSlotStack() {
@@ -1180,13 +1178,23 @@ function syncSlotStack() {
   top.firstElementChild.textContent = '';
   bottom.firstElementChild.textContent = '';
   let stacked = 0, first = 0;
-  // From the top: stuck once the header has scrolled under the rows above it.
+  // From the top, in two stages: the header pins once it has scrolled under the
+  // rows above it, and the chosen weapon's own row (the lit entry in the list, or
+  // the folded summary) joins it only once that row has scrolled under as well,
+  // so the name is never on screen twice.
   for (; first < headers.length && headers[first].top < stacked; first++) {
     const { i, hdr } = headers[first];
-    const row = slotStackRow(i, hdr);
+    let row = slotStackRow(i, hdr, false);
     top.firstElementChild.appendChild(row);
-    slotStackRowHeight = row.offsetHeight;
-    stacked += slotStackRowHeight;
+    const nameEl = state.slots[i].folded
+      ? document.querySelector(`[data-fold-name="${i}"]`)
+      : document.querySelector(`#wList${i + 1} .wbtn[aria-pressed="true"]`);
+    const nameBottom = nameEl ? nameEl.getBoundingClientRect().bottom - box.top : Infinity;
+    if (nameBottom <= stacked + row.offsetHeight) {
+      row.replaceWith(row = slotStackRow(i, hdr));
+      slotStackRowHeight = row.offsetHeight;
+    }
+    stacked += row.offsetHeight;
   }
   // From the bottom: stacked while any of the header is still under the rows below it.
   let under = 0;
