@@ -56,13 +56,15 @@
       "id": "L5",
       "title": "Burst cadence",
       "status": "site-fixed",
-      "date": "2026-09-28",
+      "statusNote": "Burst-rate precision proposal closed 30 Oct 2026: weapons.json already stores the exact source rates (site commit 88bc25d, 28 Sep, L107 full-precision pass); the operator agreed on 30 October.",
+      "date": "2026-10-30",
       "receipts": [
         "frosty-source-leads-2026-09-23.json",
-        "frosty-2026-09-28-burst-cadence.json"
+        "frosty-2026-09-28-burst-cadence.json",
+        "frosty-2026-10-30-decision-L5-burst-rate-precision-implemented.json"
       ],
-      "summary": "Done. Bursts per minute, rounds per burst and the fire-mode enum are sourced. The six burst weapons store no BPM. GRT-BC and SL9 BPM corrected.",
-      "reopenWhen": "Capture rank 9 checks for a native pause.",
+      "summary": "Bursts per minute, rounds per burst and the fire-mode enum are sourced; the six burst weapons store no BPM. GRT-BC and SL9 bursts per minute were corrected on 28 September, and their within-burst rates are stored at source precision (GRT-BC burstRpm 830.769 and fireModes.burst.rpm 830.7689819335938; SL9 771.428 and 771.427978515625), so the 'burst rate precision' proposal is implemented and its queue row is removed.",
+      "reopenWhen": "A game update changes RateOfFireForBurst or BurstsPerMinute on a burst weapon, or an in-game recording shows a pause between bursts the stored values do not explain.",
       "refs": []
     },
     "L6": {
@@ -208,15 +210,16 @@
     "L17": {
       "id": "L17",
       "title": "Match Trigger indirect effects",
-      "status": "needs-capture",
-      "statusNote": "Source finding; needs capture",
-      "date": "2026-09-25",
+      "status": "site-supported",
+      "statusNote": "site applies the semi-only block since commit 81371d5 (24 Oct); activation capture still open",
+      "date": "2026-10-30",
       "receipts": [
         "frosty-2026-09-24-L17-match-trigger-indirect-effects.json",
-        "frosty-2026-09-25-L63-L17-semi-bloom-captures.json"
+        "frosty-2026-09-25-L63-L17-semi-bloom-captures.json",
+        "frosty-2026-10-30-L4073-match-trigger-2110-and-capture-brief.json"
       ],
-      "summary": "[Raw selected-path review](../../reference-data/provenance/frosty-2026-09-24-L17-match-trigger-indirect-effects.json): HK433 selected chain binds bloom multiply 0, recoil exponent add 3 and recovery second-multiply 1.728.",
-      "reopenWhen": "Kept in the [capture plan](BF6_CAPTURE_PRIORITIES.md) (#2) with justification; the site shows no effect on 24 weapons, source suggests about 16% less recoil, probably semi-only.",
+      "summary": "On 2.1.1.0 GRM_MatchTrigger_ERG_P15 (+3 recoil exponent, x1.728 recovery) and GBM_NoIncrease_ERG_P00 (x0 spread increase) are byte-identical and the site's semiAuto block equals them.",
+      "reopenWhen": "The L4073 capture shows whether the effects act in semi only, in both modes or in neither.",
       "refs": [
         "capture-plan"
       ]
@@ -306,14 +309,15 @@
     "L24": {
       "id": "L24",
       "title": "Match Trigger family",
-      "status": "needs-capture",
-      "statusNote": "Shared source targets established; needs capture",
-      "date": "2026-09-24",
+      "status": "site-supported",
+      "statusNote": "site applies the semi-only block since commit 81371d5 (24 Oct); activation capture still open",
+      "date": "2026-10-30",
       "receipts": [
-        "frosty-2026-09-24-L24-match-trigger-family.json"
+        "frosty-2026-09-24-L24-match-trigger-family.json",
+        "frosty-2026-10-30-L4073-match-trigger-2110-and-capture-brief.json"
       ],
-      "summary": "[Independent 24-WB/24-GS check](../../reference-data/provenance/frosty-2026-09-24-L24-match-trigger-family.json): All 24 selected Match Trigger WB/GS chains use the two reviewed effect imports; priorities differ.",
-      "reopenWhen": "Extends L17 coverage, not runtime proof. Capture activation/composition before any family-wide implementation.",
+      "summary": "On 2.1.1.0 every Match Trigger GS file binds the same two effects and 25 of the 26 site weapons keep the local WB selector chain; the M433 now imports an empty-effect W15 package.",
+      "reopenWhen": "The L4073 capture, and a typed consumer for the empty-effect W15 package and the hotfix-only U_WPM_ERG_MatchTriggerActive asset.",
       "refs": [
         "capture-plan"
       ]
@@ -7195,15 +7199,16 @@
     },
     "L3380": {
       "id": "L3380",
-      "title": "Soldier armor is stored as material swaps: armor affectors name the chest material 579 and head material 587 and map them to other materials; this replaces L3370 and withdraws the dead end L3374",
+      "title": "Soldier armor as material swaps",
       "status": "finding",
-      "statusNote": "Swap tables and grid values read; direction of the swap and the amounts are candidates.",
-      "date": "2026-10-09",
+      "statusNote": "reopened by L4061 screening",
+      "date": "2026-10-30",
       "receipts": [
-        "frosty-2026-10-09-L3380-armor-upgrade-material-swaps.json"
+        "frosty-2026-10-09-L3380-armor-upgrade-material-swaps.json",
+        "frosty-2026-10-30-L4061-negative-closure-rescreen.json"
       ],
-      "summary": "Soldier armor is stored as material swaps. The soldier file names a chest material 579 (EA's against-armor values 0.84 / 0.91 / 0.67) and a head material 587 (bolt-action 2.25); the ceramic armor affectors map them to 238 and 586 (bolt-action head 1.75), the soft armor affectors leave them. This replaces L3370's statement that nothing else names these materials and withdraws the dead end L3374, whose file search was incomplete. Armor amounts 40 and 80 appear in the vest affectors but are not confirmed. 202 raw-offset checks matched.",
-      "reopenWhen": "An in-game damage reading on an armored soldier.",
+      "summary": "EA 1.3.3.0 states chest against armor 0.84x / 0.91x / 0.67x, the stored soldier material 579 holds the same values and the site documents no armor model.",
+      "reopenWhen": "Re-trace the head material and the 579 table on 2.1.1.0 (Glacier_Soldier changed), find whether soft or ceramic armor is granted in standard multiplayer modes, and decide with the operator whether an armor target option is wanted.",
       "refs": []
     },
     "L3381": {
@@ -7959,6 +7964,66 @@
         "capture-plan"
       ]
     },
+    "L4051": {
+      "id": "L4051",
+      "title": "L4000 and L4003 repeated on 2.1.1.0: registry default equals own value on 14,838 values (279 row names, 63 weapons) on both builds; six defaults moved (M39 EMR, SVDM recoil), own value with each; site equals the source on every existing weapon (441 records)",
+      "status": "finding",
+      "date": "2026-10-19",
+      "receipts": [
+        "frosty-2026-10-19-L4051-registry-own-recheck-2110.json"
+      ],
+      "summary": "14,838 registry-against-own values (279 row names, 63 weapons) are equal on both builds; 6 defaults moved (M39 EMR and SVDM recoil rows) and the own value moved with each, the 13 October site edits match; all 441 site-against-source records are identical to 10 October; own leaves differ in 2,006 places over 74 files, all in six classes (priority index shifts, recoil rows, spot-on-fire 54 to 75, class profile, array entries, armor curves).",
+      "reopenWhen": "A later build moves a registry default or own value on a site weapon, or a consumer shows which of the registry row and the own leaf the game reads.",
+      "refs": []
+    },
+    "L4052": {
+      "id": "L4052",
+      "title": "L4004 repeated on 2.1.1.0: health curves unchanged on all bullet files; 13 armor curves changed, own and registry together, equal; site dmg lists unchanged",
+      "status": "finding",
+      "date": "2026-10-19",
+      "receipts": [
+        "frosty-2026-10-19-L4052-bullet-curves-recheck-2110.json"
+      ],
+      "summary": "Health curves are unchanged on the 69 bullet files with both an own and a registry curve and registry equals own; 13 bullet files' armor curves changed with the registry default identical to the own curve on both builds; the site dmg lists still equal the own health curve (59 of 63, 3 with an added 0 m point, M45A1 its reviewed step).",
+      "reopenWhen": "A consumer or in-game reading shows what the armor curve changes mean, or a later build changes a health curve or the registry-own equality.",
+      "refs": []
+    },
+    "L4053": {
+      "id": "L4053",
+      "title": "L4002 repeated on 2.1.1.0: 1,836 value rows added (2,150 in GRX_Weapons by the tsv; the 1,846 figure does not reproduce), row suffixes unchanged (332), 106 value-matched names all in FIELD_MAP.md, none for the open-question or negative-closure hashes",
+      "status": "exhausted",
+      "date": "2026-10-19",
+      "receipts": [
+        "frosty-2026-10-19-L4053-registry-rows-added-2110.json"
+      ],
+      "summary": "allrows.py finds 1,836 value rows added and 8 removed over the GRX_* registries; the 1,086 rows on site-weapon owners (four Season 5 weapons, five new bullets, M240L stance rows) all equal their own values; the row-suffix set is the same 332, value-matching names 106 leaf hashes all already in FIELD_MAP.md, and no OPEN_QUESTIONS or negative-closure hash gains a name.",
+      "reopenWhen": "A later build adds a row suffix on a weapon, firing-data or bullet owner, or a typed consumer names one of the open-question or negative-closure hashes.",
+      "refs": []
+    },
+    "L4054": {
+      "id": "L4054",
+      "title": "L604 repeated on 2.1.1.0: mode lists and rates unchanged on 63 of 63, 12 branch files byte-identical; SGX and L110 lost the _Ergo/CMU_SemiAuto import; M433 gained a Match Trigger W15 import",
+      "status": "finding",
+      "date": "2026-10-19",
+      "receipts": [
+        "frosty-2026-10-19-L4054-fire-modes-recheck-2110.json"
+      ],
+      "summary": "Primary mode, alternate list, the four rate fields and rounds per burst are equal on all 63 weapons and the 12 mode-changing modifier files are byte-identical; MPX_WB (SGX) and Minimi_WB (L110) each lost the CMU_SemiAuto import (GUID at offsets 26724 and 26916 in the 1.4.3.5 files, no hit in 2.1.1.0) and HK433_WB (M433) gained a direct WPM_ERG_MatchTrigger_W15 import (offset 26360), whose effect is not traced.",
+      "reopenWhen": "A typed consumer or capture shows what the CMU_SemiAuto removal or the M433's Match Trigger W15 import changes at runtime, or a later build changes a mode list or rate.",
+      "refs": []
+    },
+    "L4055": {
+      "id": "L4055",
+      "title": "ELR-40 magazine: site mag 8 is the 7 Rnd package capacity (nominal 7 + 1)",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4065A-season5-loose-ends-elr40-mk24.json"
+      ],
+      "summary": "ELR-40 magazine: the Std 7 Rnd package WPM_MAG_Std_CDX40_W05 reads MagazineCapacity 8 and NumberOfMagazines 7, so site mag 8 is nominal 7 + 1 as on the other six bolt-actions (WB capacity nominal + 1 on all six); the CDX40_WB value 1 (50 magazines) is the bare receiver, equal to the Single Shot package block (1 / 49, nominal + 0).",
+      "reopenWhen": "A package with a different capacity appears, the CDX40 packages change, or an in-game ELR-40 magazine count differs from 7 + 1.",
+      "refs": []
+    },
     "L4056": {
       "id": "L4056",
       "title": "Class traits, training paths and perks rechecked on 2.1.1.0: UI assets, path assets and multiplayer stored values unchanged; Flak re-pointed to an identical Flak Jacket affector; four perk strings changed, Quick Plating text 33% -> 25% with the stored 1.5 unchanged",
@@ -7969,6 +8034,298 @@
       ],
       "summary": "Four UI metadata assets and all 16 FieldUpgradePath assets are byte-identical to 1.4.3.5; of 61 byte-changed ability assets 59 differ only in compiled type indices, body hashes and a new affector header field, Ability_Flak imports the new Affector_FlakJacket (0.67 explosive, same as Affector_Flak) and the BR weapon-grant table was reordered; the English table changed Quick Plating to 25% faster (Pointman and FasterArmorReplate bodies still store 1.5 with stat id 34 -> 35), added 33% to Flak (matches 0.67), moved the AIM-SPOT trait text onto the Recon class record and dropped the Passive Spotting perk strings.",
       "reopenWhen": "A stored join from UI perk records to Ability assets, a consumer that reads the Quick Plating speed (stat id 35), or a later update that changes a FieldUpgradePath_* asset or a multiplayer affector payload.",
+      "refs": []
+    },
+    "L4057": {
+      "id": "L4057",
+      "title": "Expression-graph diff 1.4.3.5 against 2.1.1.0",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4057-expression-graph-diff-1435-to-2110.json"
+      ],
+      "summary": "Of 304 compiled graphs, 188 kept their id (byte-equal bodies) and 116 were re-baked; 17 re-baked bodies changed in substance (Spooky Rush contracts, ArmorGrant, gadget interaction conditions, PlayerOwner, stance override, IsInMandown PVE bleed-out branch, persistence XP), 16 gained a game-mode case, 65 differ only by compiler lowering and renumbering, so the re-bake fields are not noise.",
+      "reopenWhen": "Body ead5aa90ea53b389 (SimEx_BR_ApplyProgressionWeapon) is captured, the next build re-bakes graphs, or a native-function name table lets the unidentified added calls be named.",
+      "refs": []
+    },
+    "L4058": {
+      "id": "L4058",
+      "title": "Registry precedence census on 2.1.1.0: 0 registry/file differences on the 67 site weapons, no registry rows on 631 attachment-effect files, 98 gadget/launcher/vehicle pairs, M136 AT spread as the controlled check",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4058-registry-precedence-census.json"
+      ],
+      "summary": "On 2.1.1.0 the registry default equals the own value on all 15,879 paired rows of the 67 site weapons (control 2,771/11,500/567 reproduced), none of 631 WME_/WPM_/GDM_/GID_/AAM_/GRM_/GBM_ files has a GRX_* row, the 98 differing pairs are 36 infantry gadget/launcher rows and 62 vehicle bullet rows, AAHV heat gives 8 shots under both 0.125 and 0.13, and the 'M16A3_WB - InitialSpeed.z' 720 row hangs from a group node no file imports.",
+      "reopenWhen": "The operator runs the M136 AT standing-stationary aimed-spread check in operator-check.md, a later build adds a registry/file difference on a site-weapon owner, or a consumer of the odd 'M16A3_WB - ...' rows is found.",
+      "refs": []
+    },
+    "L4059": {
+      "id": "L4059",
+      "title": "Hotfix check beyond the route list; route list from the full catalog",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4059-hotfix-check-and-route-list.json"
+      ],
+      "summary": "A path-shape route list from the 2.1.1.0 rebuilt-cache catalog (41,196 routes, 15,339 added, 6,127 dropped as cosmetic or removed) holds all 283 changed-not-captured routes, and a draft frosty-hotfix-check.py reproduces the 2.1.1.0 registry diff byte for byte, flags the XP caps, and on the 15/22 Oct hotfixes flags only SimEx_BR_ApplyProgressionWeapon.",
+      "reopenWhen": "When the next guard failure is checked with frosty-hotfix-check.py, or when the 18 uncaptured registries are captured.",
+      "refs": []
+    },
+    "L4060": {
+      "id": "L4060",
+      "title": "Census of number-bearing strings added or changed on 2.1.1.0: 1,363 scanned, 56 gameplay rows traced; Quick Plating text/value disagreement stands, CDX40 Single Shot range differs, M2010 ESR and SV-98 description ids absent from every table",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4060-strings-census-2110.json"
+      ],
+      "summary": "Of 1,363 added or changed strings 303 carry a number or count word and only 138 ids have any raw consumer; of 56 traced rows 3 agree with stored values (Flak 0.67, ELR-40 150-180 m, PKM capacity 101), 2 disagree (Quick Plating 25% vs stored 1.5, which is not decidable from source, and CDX40 Single Shot 30-60 m vs API peak 42-68 m), M2010 ESR and SV-98 records hold description ids 2DB86D4C and E8EA1B59 that no table contains, and the three E6 strings exist unchanged in both tables with moved or absent consumers.",
+      "reopenWhen": "A capture of the uncaptured string consumers (Low-Zoom 2x/3x, Thermal 1.00x, option assets), a consumer for stat id 35 or the Quick Plating speed, or an in-game plate-time or Single Shot damage test.",
+      "refs": []
+    },
+    "L4061": {
+      "id": "L4061",
+      "title": "Re-screen of the 'stored, no consumer found' negative closures",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4061-negative-closure-rescreen.json"
+      ],
+      "summary": "116 closures classified (A 46, B 12, C 32, D 26); the L7 control is detected; of 46 class A closures 30 stands, 14 unscreenable, 1 stands, fixed by L4008, 1 reopen; L3380 is reopened.",
+      "reopenWhen": "A new stat-screen set, EA note or in-game measurement covers one of the unscreenable class A rows (screening-table.md names the measurement for each).",
+      "refs": []
+    },
+    "L4062": {
+      "id": "L4062",
+      "title": "Recovery scale 0.8 by weapon class: measured on Carbine, Assault Rifle and one DMR; no sniper, pump, shotgun or sidearm clip constrains it",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4062-recovery-scale-by-class.json"
+      ],
+      "summary": "The 0.8 rests on AK-205, LMR27 (a DMR in the site data), TR-7 and M433 (bullet-hole pairs, 1x burst extents, camera tracks, all decExp-1 profiles); no existing clip constrains snipers, pumps, semi shotguns or pistols, bolt rifles are insensitive to the scale, and the smallest justified capture is M87A1 pump pairs at the 633 ms cycle (0.365 deg between 0.8 and 1.0), pending the operator.",
+      "reopenWhen": "The operator accepts the M87A1 pump-pair capture in capture-brief.md, or a pistol, DMR or shotgun clip with a hole pair 150 to 700 ms apart is recorded.",
+      "refs": []
+    },
+    "L4065": {
+      "id": "L4065",
+      "title": "2.1.1.0 loose ends: Stage 8 optic FOV, reload timing and selector graph; roster refresh; patch-notes entry",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4065A-season5-loose-ends-elr40-mk24.json",
+        "frosty-2026-10-30-L4065B-stage8-roster-patch-notes.json"
+      ],
+      "summary": "Optic render FOV and zoom values are unchanged on 157 shared files (8 new files); site reload times equal the stored phase sum divided by ReloadSpeed on all 67 weapons including the four Season 5 weapons; the selector graph builds from 2.1.1.0 raw and differs from the 1.4.3.0 XML graph by 91 added and 11 changed records; the repo roster-values.json is still the 1.4.3.5 pass and two name joins are dead.",
+      "reopenWhen": "A new build changes an optic file, a reload entry or a weapon attachment record, FML19 or HK433 Match Trigger W15 is captured, or the operator accepts the roster join edits.",
+      "refs": []
+    },
+    "L4066": {
+      "id": "L4066",
+      "title": "Capture-rule review: add a one-minute glance class",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4066-capture-rule-review.json"
+      ],
+      "summary": "A revised capture rule keeps the four-part recording rule and adds a glance test with a stated prediction, drafted with eight blocked items of which four are glance-eligible (L110, L120/L124, L22/L25, L69) and four need recordings (L114, L17, L19, L105).",
+      "reopenWhen": "the operator's decision on the revised rule",
+      "refs": []
+    },
+    "L4067": {
+      "id": "L4067",
+      "title": "ADS Out row on the Mobility card (L114/L125 on 2.1.1.0)",
+      "status": "proposal",
+      "statusNote": "Index re-read on 67 of 67 weapons incl. Season 5; validation recording proposed",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4067-ads-out-2110-proposal.json"
+      ],
+      "summary": "Each of the 67 weapon bodies stores a WeaponZoomTransitionIndex equal to the site ADS-in index; the paired FZT General_10 entry at that index (400 to 100 ms) is a candidate ADS-out base, but no consumer, attachment-shift receiver or registry name for ADS-out exists.",
+      "reopenWhen": "Reopen when a consumer of FZTT_General_10 or the receiver of the ADS-time WME/GID steps is named, or when an ADS-out recording is available.",
+      "refs": []
+    },
+    "L4068": {
+      "id": "L4068",
+      "title": "Reserve rounds and chambered round (Magazine card)",
+      "status": "proposal",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4068-reserve-rounds-2110-proposal.json"
+      ],
+      "summary": "Per-choice MagazineCapacity and NumberOfMagazines are read on 2.1.1.0 for 302 of 303 site magazine choices (nominal +1 on 277, +0 on 24, +2 on the DB-12); a spawn-HUD glance on the M4A1 20 Rnd (A: 20+1 / 189, B: 20+1 / 210, loaded 21 after a tactical reload) decides the card text.",
+      "reopenWhen": "After the in-game glance reports the spawn HUD for the M4A1 20 Rnd and the loaded count after one tactical reload, or when WPM_MAG_100Cpt1_PKM_W05 is captured.",
+      "refs": []
+    },
+    "L4069": {
+      "id": "L4069",
+      "title": "Stance-change penalties and crouch/prone spread minima: posture proposal",
+      "status": "proposal",
+      "statusNote": "Posture and stance-change proposal; glance validation pending",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4069-stance-penalty-posture-2110-proposal.json"
+      ],
+      "summary": "On 2.1.1.0 all 67 GS files hold the same 24 StanceChangePenalties leaves as L120 (no change on 63 weapons; MK24 joins the 7-degree outlier group, ELR-40, Z84M and RSPR the 6-degree/0.9 s group), and the HDA/ZDA posture rows still give M433 hip minima of 2.432/1.824/1.216 (100/75/50 percent) while static ADS minima do not vary with posture; a hip posture selector plus a stance-change line is proposed, to be validated by an in-game drop-prone glance.",
+      "reopenWhen": "a glance shows the hip crosshair ratios and the drop-prone transient (or their absence), settling whether to add a hip posture selector and a stance-change line and which composition reading holds.",
+      "refs": []
+    },
+    "L4070": {
+      "id": "L4070",
+      "title": "Class weapon traits as a per-weapon class-trait chip: on-class and off-class values for 41 of 67 weapons on 2.1.1.0",
+      "status": "proposal",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4070-class-trait-chip-proposal.json"
+      ],
+      "summary": "All class-trait operands (Assault deploy/sprint +1, Support ADS +1, Engineer hip +1, Recon sway x0.4444 against x2.25) re-read unchanged on 2.1.1.0 and membership covers the four Season 5 weapons; the site shows off-class values for Assault, Support and Engineer and the on-class value for Recon, and a stat-screen glance (M433 Sprint Recovery 133 vs 167 ms Assault vs Support) decides whether a chip can state both.",
+      "reopenWhen": "The stat-screen glance result is recorded, a decoded class and signature-weapon activation condition exists, or a later update changes a trait operand.",
+      "refs": []
+    },
+    "L4071": {
+      "id": "L4071",
+      "title": "Camera recoil ladder (GCR_*) consumption and the 2.1.1.0 SU-230 fix",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4071-camera-recoil-ladder-consumer.json"
+      ],
+      "summary": "The 34 GCR_* files (14-rung ladder) are byte-identical on 1.4.3.5 and 2.1.1.0 and override GS zoomed camera-recoil fields (own value -0.625) without a source unit; the six-weapon SU-230 binding is unchanged and the only SU-230 change is the unnamed WPM_SCP_ElcanDR pair Field_149939ab/Field_e9129d03 1.0005 -> 0.55.",
+      "reopenWhen": "A recording of one weapon with a 1.00x and a 10.00x optic (5-shot groups) shows camera kick differing while bullet holes match, or a consumer equation for CameraRecoilWhenZoomedAmount is found.",
+      "refs": []
+    },
+    "L4072": {
+      "id": "L4072",
+      "title": "Zeroing singletons and ELR-40 CustomZeroing; default-zero proposal",
+      "status": "proposal",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4072-zeroing-singletons-2110-proposal.json"
+      ],
+      "summary": "On 2.1.1.0 54 of 67 WB blocks hold a single zero-list entry (60/75/100; 51 launch weapons) and 13 hold 100-500 (12 launch plus ELR-40); CDX40_WB is the only block with CustomZeroing true; with a 75 m zero the site solver gives -5.36 cm at 100 m for the M4A1 against -18.05 cm bore-relative.",
+      "reopenWhen": "The firing-range reading of an M4A1 iron sight at a 100 m plate centre is recorded (about -5 cm supports a source-zero default; about -18 cm keeps bore-relative), or a consumer for Field_410f6aa8 is traced.",
+      "refs": []
+    },
+    "L4073": {
+      "id": "L4073",
+      "title": "Match Trigger semi-only effects: 2.1.1.0 re-read, M433 W15 package and final capture brief",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4073-match-trigger-2110-and-capture-brief.json"
+      ],
+      "summary": "Operands and 28 GS bindings re-read on 2.1.1.0 (control passed); the M433's WB lost its local selector chain to an empty-effect W15 package; the site block equals source; the capture brief uses 200 ms spacing because 300 ms predicts under 1 cm.",
+      "reopenWhen": "The operator records the capture, or a typed consumer shows what the W15 package or U_WPM_ERG_MatchTriggerActive does at runtime.",
+      "refs": []
+    },
+    "L4074": {
+      "id": "L4074",
+      "title": "Projectile lifetime vs damage curve (L22/L25 on 2.1.1.0)",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4074-projectile-lifetime-reach-2110.json"
+      ],
+      "summary": "TimeToLive was read on all 94 PD files and no site ammo selection (353) has a flight reach shorter than its damage curve last range, so no Range card lifetime note is proposed.",
+      "reopenWhen": "A runtime recording shows hits vanishing inside the curve range, or a new projectile has TimeToLive times velocity below its curve last range.",
+      "refs": []
+    },
+    "L4075": {
+      "id": "L4075",
+      "title": "Movement speed in m/s on 2.1.1.0: walk 3.5, sprint 6.05, LMG x0.95 on 11 tag-member weapons, firing x0.8; soldier values unchanged, compiled graph not captured; Mobility row proposal",
+      "status": "proposal",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4075-movement-speed-ms-proposal.json"
+      ],
+      "summary": "Walk 3.5 and sprint 6.05 re-read on 2.1.1.0 (pose entries and GRX multipliers unchanged), LMG tag membership is exactly the site's 11 LMG weapons, and the raw ADS-move index equals the site tier for all 67 weapons; a Mobility card row (walk / ADS walk / sprint in m/s) is proposed, validated by timing a 50 m sprint (8.26 s, LMG 8.70 s) and walk (14.29 s).",
+      "reopenWhen": "The compiled resource 0550f387167b0bdd is captured, or a timed run with a known distance disagrees with 6.05, 5.7475 or 3.5 m/s.",
+      "refs": []
+    },
+    "L4076": {
+      "id": "L4076",
+      "title": "Armor plates on 2.1.1.0: ArmorGrantSpawnPlate feeds a Battle Royale plate grant, multiplayer spawn armor defaults to none; BTK effect of the 13 changed armor curves",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4076-armor-curves-and-spawn-plate.json"
+      ],
+      "summary": "The new GRX_Glacier_Soldier row ArmorGrantSpawnPlate (true) is read only by SimEx_Ability_ArmorGrant, whose graph grants the Granite loot item Ammo_Armor; Ability_ArmorGrant was granted only by a Battle Royale field-upgrade path, no captured 2.1.1.0 multiplayer asset grants it, and the multiplayer spawn-armor mutator SpawnWithArmor defaults to 0, so plates are REDSEC/Gauntlet content; against a plate the 13 changed armor curves add up to two shots (candidate capacity 40/80, no spill) and unplated BTK is unchanged.",
+      "reopenWhen": "A multiplayer HUD armor bar in a standard mode, a capture of Ability_ArmorGrant and the FieldUpgradePath_BR_*_Y2 paths, or a mode override of SpawnWithArmor.",
+      "refs": []
+    },
+    "L4077": {
+      "id": "L4077",
+      "title": "Census: infantry bullets against vehicles, emplacements and deployables (2.1.1.0)",
+      "status": "finding",
+      "statusNote": "Census only; no control-qualified narrow lead; runtime selection unread.",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4077-small-arms-vs-vehicles-census.json"
+      ],
+      "summary": "94 PD bullet files carry 28 projectile materials; against 29 vehicle, emplacement and deployable target materials the 2.1.1.0 grids store 0 for every bullet against armour (119), 0.3 to 0.8 against jets, keyed 0.16/0.56 to 0.6/1.0 against helicopters, 5 against the MQ-9, and 1 against nearly every deployable; the 95 cells shared with L3364 are unchanged and only Flechette, Slugs and the ELR-40 API swap the projectile material.",
+      "reopenWhen": "An in-game reading that separates a vehicle's VB-root material from its damage-zone part material (e.g. rifle damage on a PTV), or a traced receiving operation for vehicle hit material.",
+      "refs": []
+    },
+    "L4078": {
+      "id": "L4078",
+      "title": "Census: ricochet and cover penetration",
+      "status": "exhausted",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4078-ricochet-penetration-census.json"
+      ],
+      "summary": "On 2.1.1.0 the M4A1 grid collateral control reproduces (0.750001), ricochet has no string, registry row, descriptor name or listing input, and the unnamed grid classes 6aa794ef/7d765f18/d4177d69 (25/150/1,655 Abbasid objects) offer no control-qualified wall-penetration lead.",
+      "reopenWhen": "A registry row or descriptor names a Class_d4177d69/Class_7d765f18 field, an asset names grid target material IDs, or an expression graph/delegate takes a penetration-, cover- or ricochet-named input.",
+      "refs": []
+    },
+    "L4079": {
+      "id": "L4079",
+      "title": "Jump, in-air and slide dispersion columns (H1, Field_bd300f62)",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4079-jump-dispersion-column.json"
+      ],
+      "summary": "HDA H1 (Field_160ef028) and ZDA column 4 (Field_bd300f62) sit at the GS Standing.JumpingSprinting slots (probable, positional), jump and sprint share one label, the site holds H1 but not bd300f62, and no consumer is exposed.",
+      "reopenWhen": "A decoded runtime consumer of the HDA/ZDA arrays or GS MinMaxDispersion appears, or an operator-approved M433 jump/slide recording is available.",
+      "refs": []
+    },
+    "L4080": {
+      "id": "L4080",
+      "title": "Downed-state damage reduction trace",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4080-downed-damage-affectors.json"
+      ],
+      "summary": "EA's 20% downed-damage line (1.3.1.0) has no matching stored value: SimEx_IsInMandown applies Affector_Mandown_DamageModifier (entries 0.0 and 2.0) and the crawling variant (0.05 and 0.45), whose native consumer and entry selection remain unread.",
+      "reopenWhen": "Bodies of SimEx_CeramicArmor (51fb26880d967f69) and SimEx_SoftArmor (bf4b65b03a70d55d) are captured, or an in-game hit-number ratio on downed versus standing enemies is available.",
+      "refs": []
+    },
+    "L4081": {
+      "id": "L4081",
+      "title": "Crouch and prone recoil modifiers: stance-gated recoil in recoil packages and WM_Mounted* neighbours",
+      "status": "exhausted",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4081-stance-gated-recoil-census.json"
+      ],
+      "summary": "No stance-gated recoil exists in the 2.1.1.0 serialized data: GS Recoil rows are Unzoomed/Zoomed only on all 67 weapons, the 62 WM_/GRM_ routes are gated only by mounted, bipod/grippod and fire-mode conditions, and the four CMU_ conditions and GRX_Glacier_Soldier name no stance recoil.",
+      "reopenWhen": "A firing-range or capture result shows a stance-dependent recoil difference that serialized values do not explain, or a recoil consumer graph is decoded whose inputs include a stance variable.",
+      "refs": []
+    },
+    "L4082": {
+      "id": "L4082",
+      "title": "Weapon swap total and sprint-to-fire inputs",
+      "status": "finding",
+      "date": "2026-10-30",
+      "receipts": [
+        "frosty-2026-10-30-L4082-swap-time-and-sprint-to-fire.json"
+      ],
+      "summary": "All 67 WB sprint/deploy indices and the DTA/SprintSettings tables on 2.1.1.0 equal the site; holster is the second column of the same DTA row (no holster field in the WB), sprint-to-fire has one stored input (recovery, two equal fields), and swap = holster(A)+draw(B) is arithmetic on site numbers with unproven sequencing.",
+      "reopenWhen": "A recording of one pair swapped five times (frames from key press to first possible shot) or a native swap/readiness consumer is found.",
       "refs": []
     }
   }

@@ -63,13 +63,41 @@ old build is gone. Keep the open build complete while it is installed:
   `preUpdateCapture` entry in `BUILD.json` at it:
 
   ```bash
-  python scripts/frosty-capture.py pre-update-<client>-<date> --into capture/pre-update-<client>-<date>/collection --catalog --routes-file "<datamining>/builds/<build>/capture/raw-routes.txt"
+  python scripts/frosty-capture.py pre-update-<client>-<date> --into capture/pre-update-<client>-<date>/collection --catalog --routes-file "<datamining>/builds/<build>/capture/raw-routes-gameplay-shape-<date>.txt"
   ```
 
-  Keep the route list: reusing it on the next build is
-  what makes raw hashes directly comparable. When a hotfix client is added to the open
-  build, capture the watched routes again on that client; otherwise the next comparison
-  runs against an older client and mixes two updates.
+  The route list is derived from the catalog by path shape, not grown by hand (L4059,
+  30 October 2026): every route under `Common/Hardware` (weapons with `_Bullets`,
+  `_WeaponModifiers`, `_Attachments` and the shared folders, gadgets, vehicles with their
+  weapons and projectiles, and the `Common`, `Camera`, `World` and `AttributeDelegates`
+  folders; not `_CosmeticsLibrary` or `CineProps`), all of `Common/Gameplay`,
+  `Common/GameSetup/Tweakables` and every `GRX_*`, `KST_*`, `MUT_*` and `MutatorDatabase*`
+  file anywhere, UI metadata (`Common/UI/Static/Metadata`, `Common/UI/MetaData`), the
+  material-grid curve data (`Globals/Materials/MaterialGrid`), the expression-graph source
+  assets, and the routes of the previous list that are still in the catalog. Cosmetic trees
+  are left out (`/Art/Skins/`, `_Textures/Decals/`, `_Charms/`, `U_MDV_*` skin files, sound).
+  The 2.1.1.0 list (41,196 routes, `capture/raw-routes-gameplay-shape-2026-10-30.txt`) and the
+  rule are in the L4059 receipt; rebuild it from the new rebuilt-cache catalog when a build is
+  opened. **Level `materialgrid_win32` routes are in the list for completeness only: never
+  export them with FrostyCmd; take them out of the routes file and read them only with
+  `scripts/frosty-material-grid-inventory.py`.**
+
+  Also capture the compiled expression-graph bodies, which are resources, not EBX routes:
+
+  ```bash
+  python scripts/frosty-capture.py pre-update-<client>-<date>-graph-bodies --into capture/pre-update-<client>-<date>/graph-bodies --resource-ids-file "<datamining>/builds/<build>/capture/expression-graph-resource-ids.txt"
+  ```
+
+  The IDs file holds one 16-digit resource ID per line, read from the expression-graph source
+  assets of the open build (`Field_aa4fa860.$resourceRef`; the L4019 and L4057 method). A
+  re-baked body gets a new ID, so derive the file again from the decoded sources of the new
+  build before capturing its bodies. Without the bodies a graph change shows only as a changed
+  source record and cannot be listed after the update.
+
+  Keep the route list and the IDs file: reusing them on the next build is what makes raw
+  hashes directly comparable. When a hotfix client is added to the open build, capture the
+  watched routes again on that client; otherwise the next comparison runs against an older
+  client and mixes two updates.
 - Keep `Profiles/BF6SDK.dll`, `FrostySdk.dll` and **`SharedTypeDescriptors.ebx`** in the
   open build's `capture\toolchain\`. Frosty rewrites the runtime descriptor file when it
   first loads a new game version, so after an update the old file can no longer be copied.
@@ -173,8 +201,28 @@ Start here when `guard` stops because the installed `bf6.exe` is not a recorded 
    `<check folder>\watched-values.md` and report any change. To watch another mutator, add
    its name to `WATCHED` in the script.
 
+   Then run the hotfix check (Frosty Research `scripts/frosty-hotfix-check.py`, L4059) on
+   every guard failure, before deciding:
+
+   ```bash
+   python scripts/frosty-hotfix-check.py <baseline collection> <new collection> --out-dir <check folder>/hotfix-check --old-descriptors <baseline descriptors> --new-descriptors <runtime SharedTypeDescriptors.ebx> [--old-extra <capture folder>]... [--new-extra <capture folder>]... [--old-catalog <baseline rebuilt-cache collection>]
+   ```
+
+   It runs `frosty-registry-diff.py` over every registry (all `GRX_*` including
+   `GRX_Weapons`, `GRX_Vehicles`, `GRX_Gadgets_Glacier` and `GRX_Glacier_Soldier`, `KST_*`,
+   `MUT_*` and the `MutatorDatabase_*` collections), the watched mutators through
+   `frosty-mutator-values.py`, and a catalog record diff limited to the gameplay paths of the
+   route list. Pass the folders that hold registries outside the main collection as
+   `--old-extra` / `--new-extra`, and a rebuilt-cache baseline catalog as `--old-catalog`
+   when the baseline raw came from a loaded cache (a loaded-cache catalog shows 243 false
+   "added" gameplay paths). It exits 0 when nothing gameplay changed, 1 when a registry row,
+   a watched mutator or a gameplay catalog or raw path changed (all listed in the output and
+   the TSVs), and 2 when nothing changed but coverage is incomplete. Save its output as
+   `<check folder>\hotfix-check.txt`. Before this step the registry diff ran only in Stage 7,
+   so a row change in a registry (the 2.1.1.0 XP caps) could pass Stage 1 unseen.
+
 6. **Decide.**
-   - **Hotfix (identical layouts; no added or removed assets; no gameplay-relevant change in the catalog or raw hashes):** copy the runtime
+   - **Hotfix (identical layouts; no added or removed assets; no gameplay-relevant change in the catalog or raw hashes; the hotfix check exits 0, or every path and row it lists is explained in the client entry, as `hotfixCheck` beside `catalogCheck` and `rawCheck`):** copy the runtime
      `SharedTypeDescriptors.ebx` into the open build's `capture\toolchain\` under a dated
      name, add the entry that `client-check` printed to `BUILD.json` `clients`, and continue
      with that build, then run `record` and `verify`.
@@ -364,12 +412,22 @@ a 10,000-line diff out of an identical asset.
    | Category | Marker |
    |---|---|
    | String-id renumbering | `Field_8cf424e7`, `Field_fefe9de1` |
-   | Compiled-expression re-bake | `Field_0c18a620`, `Field_aa4fa860`, `Field_c7ffe639` |
    | FX reference swap | `Field_0679f638` |
    | Cosmetic list growth | paths under `/Art/Skins/`, `_Textures/Decals/`, `_Charms/` |
 
 4. **Keep a control group.** Assets the patch summary touched but whose content is
    identical confirm the pipeline is not inventing differences.
+
+5. **A compiled-expression re-bake is not noise.** When `Field_aa4fa860.$resourceRef` (with
+   `Field_0c18a620` / `Field_c7ffe639`) changes on a `Class_25c12137` object, the compiled graph
+   body was rebuilt: treat it as "changed, read the listing". A source can be unchanged apart
+   from these fields while its body changes in substance (2.1.1.0: contract graphs gained a
+   game-mode case with no other source change). An unchanged resource id means a byte-identical
+   body. Derive the new build's resource IDs from the decoded sources, capture the bodies
+   (Stage 0 command), list both sides with each build's own `SoldierMotionMachine` variable
+   table (it renumbers between builds), and diff the listings; the method, the classifier and
+   the 1.4.3.5 to 2.1.1.0 worked example (304 graphs, 116 re-baked, 17 changed in substance)
+   are in the Frosty Research Tools page under L4057.
 
 ## Stage 6 — Consistency scans
 
