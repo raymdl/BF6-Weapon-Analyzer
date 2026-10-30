@@ -14,7 +14,7 @@ style.textContent = `
 .wa-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .wa-label{font-size:.68rem;color:var(--muted);letter-spacing:.6px;text-transform:uppercase}
 .wa-score{grid-column:2;display:flex;justify-content:flex-end;gap:4px;align-items:baseline;font-size:1.05rem;font-weight:600;line-height:1.15}
-.wa-score small{font-size:.6rem;font-weight:400;color:var(--muted)}
+.wa-score small{font-size:.65rem;font-weight:400;color:var(--muted)}
 .wa-track{grid-column:1 / -1;height:3px;background:var(--border);border-radius:2px;overflow:hidden}
 .wa-fill{height:100%;background:var(--accent)}
 .wa-fill.c2{background:var(--accent2)}

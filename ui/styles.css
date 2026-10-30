@@ -1,7 +1,7 @@
 :root {
   --bg:#0c0e0e; --bg2:#151a1a; --bg3:#1c2222;
   --accent:#c9a227; --accent2:#4d94d0; --accent3:#de78a6; --accent4:#3fbfae;
-  --text:#dde3e3; --muted:#7a8a8a; --border:#283030;
+  --text:#dde3e3; --muted:#93a3a3; --border:#283030;
   --green:#56c464; --red:#e05555;
   --lock-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E");
   --unlock-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 7.5-2'/%3E%3C/svg%3E");
@@ -63,7 +63,7 @@ header{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16p
 #recoilPanel.is-collapsed .rc-groups,#recoilPanel.is-collapsed .rc-plot,
 #recoilPanel.is-collapsed #rcStats,#recoilPanel.is-collapsed #attStats{display:none}
 #recoilPanel.is-collapsed .rc-head{margin-bottom:0}
-.rc-popout-btn,.rc-loadout-btn{margin-left:8px;padding:2px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;color:var(--muted);font:inherit;font-size:.6rem;letter-spacing:.05em;text-transform:none;vertical-align:middle;position:relative;top:-1px}
+.rc-popout-btn,.rc-loadout-btn{margin-left:8px;padding:2px 8px;background:var(--bg3);border:1px solid var(--border);border-radius:3px;color:var(--muted);font:inherit;font-size:.65rem;letter-spacing:.05em;text-transform:none;vertical-align:middle;position:relative;top:-1px}
 .rc-popout-btn:hover,.rc-loadout-btn:hover{border-color:var(--accent);color:var(--accent)}
 .rc-loadout-btn{display:none;align-items:center;gap:5px}
 .rc-loadout-icon{width:12px;height:10px;flex-shrink:0;fill:none;stroke:currentColor;stroke-width:1.1;stroke-linejoin:round}
@@ -305,7 +305,7 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .rc-control-group .rc-group-row{flex-wrap:nowrap}
 .rc-group-row-grow{flex:1 1 auto;min-width:0}
 .rc-group-row-grow .rc-shots-input{width:100%}
-.rc-sub{font-size:0.58rem;letter-spacing:.05em;text-transform:uppercase;color:#93a0a0;flex-shrink:0;margin:0}
+.rc-sub{font-size:.65rem;letter-spacing:.05em;text-transform:uppercase;color:#93a0a0;flex-shrink:0;margin:0}
 .rc-group-row{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
 .rc-shots-input{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:4px 6px;font-size:0.65rem;width:106px;outline:none}
 .rc-select{background:var(--bg3);border:1px solid var(--border);color:var(--text);border-radius:3px;padding:3px 5px;font:inherit;font-size:0.65rem;min-height:22px;cursor:pointer;outline:none;min-width:0}
@@ -329,7 +329,7 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 #rcOverlayGroup .mode-btn:hover:not(.on){background-image:linear-gradient(rgba(255,255,255,.05),rgba(255,255,255,.05));color:#c3cece}
 .seg>.mode-btn.on{background:var(--accent);color:#1a2020;text-shadow:0 0 .45px currentColor}
 .rc-field{display:flex;align-items:center;gap:6px;min-width:0}
-.rc-field-lbl{font-size:.58rem;letter-spacing:.06em;text-transform:uppercase;color:#738383;white-space:nowrap;flex-shrink:0}
+.rc-field-lbl{font-size:.65rem;letter-spacing:.06em;text-transform:uppercase;color:#738383;white-space:nowrap;flex-shrink:0}
 .rc-range{-webkit-appearance:none;appearance:none;height:14px;flex:0 1 auto;background:transparent;outline:none;cursor:pointer;--fill:0%}
 .rc-range::-webkit-slider-runnable-track{height:4px;border-radius:3px;background:linear-gradient(90deg,var(--accent) var(--fill),#26302f var(--fill))}
 .rc-range::-moz-range-track{height:4px;border-radius:3px;background:linear-gradient(90deg,var(--accent) var(--fill),#26302f var(--fill))}
@@ -453,10 +453,10 @@ body.rc-plot-expanded{overflow:hidden}
 #rcCrosshairToggle[aria-pressed="true"]{border-color:var(--accent);color:var(--accent)}
 /* Footer strip under the plot — keeps hints and the aim read-out off the axes. */
 .rc-viewfoot{display:flex;align-items:flex-end;gap:10px;padding:4px 9px;min-height:22px;background:#0e1414;border-top:1px solid var(--border)}
-.rc-hint{flex:1 1 auto;min-width:0;font-size:.55rem;letter-spacing:.03em;color:var(--text);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
+.rc-hint{flex:1 1 auto;min-width:0;font-size:.65rem;letter-spacing:.03em;color:var(--text);white-space:normal;overflow:visible;text-overflow:clip;overflow-wrap:anywhere;line-height:1.35}
 .rc-hint .rc-key{display:inline-flex;align-items:center;gap:3px;margin:1px 7px 1px 0;white-space:nowrap;color:#aab7bb}
 .rc-hint .rc-key:last-child{margin-right:0}
-.rc-hint kbd{font:inherit;font-size:.55rem;font-weight:700;letter-spacing:0;color:var(--text);padding:1px 3px;border:1px solid #2c3838;border-bottom-width:2px;border-radius:3px;background:#151d1d}
+.rc-hint kbd{font:inherit;font-size:.65rem;font-weight:700;letter-spacing:0;color:var(--text);padding:1px 3px;border:1px solid #2c3838;border-bottom-width:2px;border-radius:3px;background:#151d1d}
 .rc-aim-readout{display:flex;align-items:flex-end;justify-content:flex-end;flex:0 1 auto;max-width:42%;min-width:0;gap:7px;font-size:.55rem;color:#8c9a9a;white-space:normal;text-align:right;line-height:1.35;font-variant-numeric:tabular-nums}
 .rc-aim-readout[hidden]{display:none}
 .rc-viewbar #rcDistanceReadout{flex:0 0 36px;width:36px;text-align:right}
@@ -612,24 +612,24 @@ body.rc-plot-expanded{overflow:hidden}
 .att-tt-rule{grid-column:1/-1;border-top:1px solid var(--border);margin:3px 0 2px}
 .att-tt-total{color:var(--text);font-weight:700}
 .att-tt-grid>.att-tt-note{grid-column:1/-1;font-style:italic;white-space:normal;line-height:1.4;margin-top:2px}
-.att-chip-lbl{font-size:0.58rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.att-chip-lbl{font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;margin-bottom:1px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .att-chip-val{font-size:0.72rem;font-weight:700;white-space:nowrap;letter-spacing:.3px}
 /* Each source's share, on chips with more than one, so a cancelling ±0 explains itself. */
 .att-empty{font-size:0.68rem;color:var(--muted);background:var(--bg3);border-radius:4px;padding:7px 8px}
 .rc-legend{display:flex;gap:12px;margin-top:5px;flex-wrap:wrap;min-height:14px}
 .rc-legend-item{display:flex;align-items:center;gap:5px;font-size:0.68rem;color:var(--text)}
 .rc-legend-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.rc-note{font-size:0.6rem;color:var(--muted);margin-top:3px}
+.rc-note{font-size:.65rem;color:var(--muted);margin-top:3px}
 /* Attachments sidebar */
 .att-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
 .att-row{display:flex;align-items:center;gap:5px;margin-bottom:4px}
-.att-lbl{font-size:0.6rem;color:var(--muted);width:42px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
+.att-lbl{font-size:.65rem;color:var(--muted);width:48px;flex-shrink:0;text-transform:uppercase;letter-spacing:.5px}
 .att-sel{flex:1;background:var(--bg3);border:1px solid var(--border);color:var(--text);font-size:0.7rem;padding:2px 3px;border-radius:3px;cursor:pointer;min-width:0;outline:none}
 .att-sel:focus{border-color:var(--accent)}
 #attSection2 .att-sel:focus{border-color:var(--accent2)}
 .att-sel option{background:var(--bg2)}
 .att-total{font-size:0.65rem;color:var(--accent);text-align:right;margin-top:4px;letter-spacing:.03em}
-.att-tool{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:1px 6px;font-size:0.6rem;letter-spacing:.04em;line-height:1.5;flex-shrink:0;transition:all .15s}
+.att-tool{background:var(--bg3);border:1px solid var(--border);color:var(--muted);border-radius:3px;padding:1px 6px;font-size:.65rem;letter-spacing:.04em;line-height:1.5;flex-shrink:0;transition:all .15s}
 .att-tool:hover:not(:disabled){border-color:var(--accent);color:var(--accent)}
 .att-tool.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
 .att-tool:disabled{opacity:.38;cursor:not-allowed}
@@ -693,7 +693,7 @@ body.rc-plot-expanded{overflow:hidden}
 .saved-undo{font-size:0.62rem;color:var(--muted);margin-top:5px;line-height:1.4}
 .saved-undo-btn{background:none;border:0;padding:0;color:var(--accent);font-size:inherit;letter-spacing:inherit;text-decoration:underline;cursor:pointer}
 .saved-undo-btn:hover{color:#e5c766}
-.att-lock-note{font-size:0.58rem;color:#b39a52;line-height:1.3;margin:-2px 0 4px 47px}
+.att-lock-note{font-size:0.58rem;color:#b39a52;line-height:1.3;margin:-2px 0 4px 53px}
 .att-lock-hint{margin:0 0 6px;padding:5px 7px;border:1px solid rgba(201,162,39,.35);border-radius:3px;background:rgba(201,162,39,.06);color:var(--text)}
 /* Swap and Clone sit beside the compare button; disabled rather than hidden
    while nothing is compared, so the button keeps its width. */
