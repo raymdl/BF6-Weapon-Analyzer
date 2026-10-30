@@ -1,7 +1,8 @@
 {
   "schemaVersion": 1,
   "source": {
-    "build": "1.4.3.0",
+    "build": "2.1.1.0",
+    "buildNote": "Build the values were last checked against. The 63 launch weapons were generated from the 1.4.3.0 trace named in evidence; Mk 24, ELR-40, Z84M and RSPR were read from 2.1.1.0 raw files. The 13 October 2026 comparison found every weapon's protection index unchanged and no material-grid cell changed outside the vehicle, explosive and armour rows listed in the 2.1.1.0 checklist.",
     "generatedBy": "scripts/frosty-hit-zones.py",
     "evidence": "reference-data/provenance/frosty-hit-zones-2026-09-15.json"
   },
