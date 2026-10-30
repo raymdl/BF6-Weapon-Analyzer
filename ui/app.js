@@ -1184,16 +1184,19 @@ function syncSlotStack() {
   // so the name is never on screen twice.
   for (; first < headers.length && headers[first].top < stacked; first++) {
     const { i, hdr } = headers[first];
-    let row = slotStackRow(i, hdr, false);
+    // Measure the full row first: the hand-over happens when the list row's top
+    // reaches the exact spot the pinned name would occupy, so the pinned row takes
+    // the list row's place without a gap or a hop.
+    let row = slotStackRow(i, hdr);
     top.firstElementChild.appendChild(row);
+    const pinnedName = row.querySelector('.slot-summary .wbtn');
+    const nameOffset = pinnedName ? pinnedName.getBoundingClientRect().top - row.getBoundingClientRect().top : row.offsetHeight;
     const nameEl = state.slots[i].folded
-      ? document.querySelector(`[data-fold-name="${i}"]`)
+      ? document.querySelector(`[data-fold-name="${i}"] .wbtn`)
       : document.querySelector(`#wList${i + 1} .wbtn[aria-pressed="true"]`);
-    const nameBottom = nameEl ? nameEl.getBoundingClientRect().bottom - box.top : Infinity;
-    if (nameBottom <= stacked + row.offsetHeight) {
-      row.replaceWith(row = slotStackRow(i, hdr));
-      slotStackRowHeight = row.offsetHeight;
-    }
+    const nameTop = nameEl ? nameEl.getBoundingClientRect().top - box.top : Infinity;
+    if (nameTop > stacked + nameOffset) row.replaceWith(row = slotStackRow(i, hdr, false));
+    else slotStackRowHeight = row.offsetHeight;
     stacked += row.offsetHeight;
   }
   // From the bottom: stacked while any of the header is still under the rows below it.
