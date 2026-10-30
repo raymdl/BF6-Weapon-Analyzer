@@ -1125,7 +1125,8 @@ function scheduleSlotStack() {
   if (slotStackFrame) return;
   slotStackFrame = requestAnimationFrame(() => { slotStackFrame = 0; syncSlotStack(); });
 }
-function slotStackRow(i, hdr, withName = true) {
+/** parts: 'full' (header and name), 'header' or 'name'. */
+function slotStackRow(i, hdr, parts = 'full') {
   const slot = state.slots[i];
   // A div rather than a button, so the Remove button can sit inside it.
   const row = document.createElement('div');
@@ -1149,8 +1150,8 @@ function slotStackRow(i, hdr, withName = true) {
     remove.addEventListener('click', e => { e.stopPropagation(); removeCompareSlot(i); });
     head.appendChild(remove);
   }
-  row.appendChild(head);
-  if (!withName) return row;
+  if (parts !== 'name') row.appendChild(head);
+  if (parts === 'header') return row;
   const summary = document.createElement('span');
   summary.className = 'slot-summary' + (slot.weapon ? '' : ' empty');
   if (slot.weapon) {
@@ -1195,18 +1196,32 @@ function syncSlotStack() {
       ? document.querySelector(`[data-fold-name="${i}"] .wbtn`)
       : document.querySelector(`#wList${i + 1} .wbtn[aria-pressed="true"]`);
     const nameTop = nameEl ? nameEl.getBoundingClientRect().top - box.top : Infinity;
-    if (nameTop > stacked + nameOffset) row.replaceWith(row = slotStackRow(i, hdr, false));
+    if (nameTop > stacked + nameOffset) row.replaceWith(row = slotStackRow(i, hdr, 'header'));
     else slotStackRowHeight = row.offsetHeight;
     stacked += row.offsetHeight;
   }
-  // From the bottom: stacked while any of the header is still under the rows below it.
+  // From the bottom, the mirror image: the chosen weapon's row pins as soon as
+  // its own row drops under the rows below it, and the header joins it once the
+  // header drops under too. Each hand-over happens where the pinned copy sits.
   let under = 0;
-  for (let k = headers.length - 1; k >= first && headers[k].bottom > box.height - under; k--) {
+  for (let k = headers.length - 1; k >= first; k--) {
     const { i, hdr } = headers[k];
-    const row = slotStackRow(i, hdr);
+    let row = slotStackRow(i, hdr);
     bottom.firstElementChild.prepend(row);
-    slotStackRowHeight = row.offsetHeight;
-    under += slotStackRowHeight;
+    const pinnedName = row.querySelector('.slot-summary .wbtn');
+    const nameEl = state.slots[i].folded
+      ? document.querySelector(`[data-fold-name="${i}"] .wbtn`)
+      : document.querySelector(`#wList${i + 1} .wbtn[aria-pressed="true"]`);
+    const hdrBottom = hdr.getBoundingClientRect().bottom - box.top;
+    const nameBottom = nameEl ? nameEl.getBoundingClientRect().bottom - box.top : -Infinity;
+    // The prepended row already sits where it would pin, so its parts' bottoms
+    // are the hand-over lines (the name's bottom is the same in a name-only row).
+    const pinnedHdrBottom = row.querySelector('.cmp-hdr').getBoundingClientRect().bottom - box.top;
+    const pinnedNameBottom = pinnedName ? pinnedName.getBoundingClientRect().bottom - box.top : pinnedHdrBottom;
+    if (hdrBottom > pinnedHdrBottom) slotStackRowHeight = row.offsetHeight;
+    else if (nameEl && nameBottom > pinnedNameBottom) row.replaceWith(row = slotStackRow(i, hdr, 'name'));
+    else { row.remove(); break; }
+    under += row.offsetHeight;
   }
   top.hidden = !top.firstElementChild.childElementCount;
   bottom.hidden = !bottom.firstElementChild.childElementCount;
