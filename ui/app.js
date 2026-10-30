@@ -600,6 +600,7 @@ function buildWeaponList(containerId, slotIdx) {
       slot.savedName = null;
       renderSidebar();
       renderStats();
+      closeLoadoutDialogAfterChoice();
     };
     el.appendChild(b);
   });
@@ -607,6 +608,13 @@ function buildWeaponList(containerId, slotIdx) {
 
 function buildAttachmentSection(containerId, slotIdx) {
   const slot = state.slots[slotIdx];
+  // The menus belong to a weapon; before one is chosen the section says so instead
+  // of offering nine menus that change nothing.
+  if (!slot.weapon) {
+    const container = document.getElementById(containerId);
+    if (container) container.innerHTML = '<div class="att-placeholder">Attachments appear once a weapon is chosen.</div>';
+    return;
+  }
   renderAttachmentSection({
     containerId,
     atts: slot.atts,
@@ -1144,6 +1152,10 @@ function slotStackRow(i, hdr) {
     pick.className = `wbtn p${i + 1}`;
     pick.textContent = weaponDisplayLabel(slot.weapon);
     summary.appendChild(pick);
+    const hint = document.createElement('span');
+    hint.className = 'slot-stack-hint';
+    hint.textContent = 'Edit';
+    summary.appendChild(hint);
   } else summary.textContent = 'No weapon selected';
   row.append(head, summary);
   return row;
@@ -4342,6 +4354,18 @@ function renderRecoil({ plotOnly = false } = {}) {
 
 let loadoutOverlayOpener = null;
 
+/**
+ * On the narrow layout the loadout is a dialog over the stats, so choosing a
+ * weapon closes it and the result shows at once; the desktop pop-up (Expand)
+ * stays open, since it is beside the stats.
+ */
+function closeLoadoutDialogAfterChoice() {
+  if (!document.body.classList.contains('loadout-open')) return;
+  if (document.body.classList.contains('loadout-expanded')) return;
+  if (matchMedia('(min-width: 981px)').matches) return;
+  setLoadoutOverlay(false);
+}
+
 function setLoadoutOverlay(open) {
   const shouldOpen = !!open;
   const panel = document.getElementById('loadoutPanel');
@@ -4800,6 +4824,7 @@ function bindEvents() {
     setLoadoutOverlay(true);
   });
   document.getElementById('loadoutCloseBtn')?.addEventListener('click', () => setLoadoutOverlay(false));
+  document.getElementById('loadoutDoneBtn')?.addEventListener('click', () => setLoadoutOverlay(false));
   document.getElementById('loadoutBackdrop')?.addEventListener('click', () => setLoadoutOverlay(false));
   const desktopLoadout = matchMedia('(min-width: 981px)');
   desktopLoadout.addEventListener?.('change', () => {

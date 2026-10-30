@@ -90,8 +90,11 @@ button stay greyed out unless you are comparing: **Swap** exchanges the two
 loadouts, locks included, and needs both weapons chosen; **Clone** copies Weapon 1
 and its attachments into Weapon 2, to compare attachment changes on the same
 weapon. Selecting the compare button again ends the comparison and clears the
-second slot. On smaller screens, the Loadout button opens a dialog; Escape closes
-it and returns focus to the opener.
+second slot. On smaller screens, the Loadout button opens a dialog. Choosing a
+weapon closes it so the stats show; **Done**, the close button or Escape closes it
+after attachment changes, returning focus to the opener. A weapon scrolled out of
+view stays as a row at the dialog's top or bottom; tap its **Edit** row to return to it.
+The attachment menus appear once a weapon is chosen.
 
 ## Overview and attachment effects
 
