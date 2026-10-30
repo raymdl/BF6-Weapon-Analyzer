@@ -741,7 +741,7 @@ body.rc-plot-expanded{overflow:hidden}
 .slot-stack-inner{background:var(--bg2);border-bottom:1px solid var(--border);box-shadow:0 6px 12px -4px rgba(0,0,0,.5)}
 .slot-stack-row{display:block;width:100%;padding:0;background:none;border:0;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .slot-stack-row:focus-visible{outline:1px solid var(--muted);outline-offset:-1px}
-.slot-stack-row .cmp-hdr{color:var(--slot-c)}
+.slot-stack-row .cmp-hdr{color:var(--slot-c);padding-bottom:4px}
 .slot-stack-row:first-child .cmp-hdr{border-top:0;padding-top:3px}
 .slot-stack-row .fold-chev{transform:rotate(-90deg)}
 .slot-stack-row .slot-summary{display:block}
