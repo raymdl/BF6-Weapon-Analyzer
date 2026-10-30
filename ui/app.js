@@ -160,6 +160,10 @@ function formatInGameRpm(value) {
 const MAX_SLOTS = 4;
 const SLOT_COLORS = ['#c9a227', '#4d94d0', '#de78a6', '#3fbfae'];
 const SLOT_CSS_VARS = ['--accent', '--accent2', '--accent3', '--accent4'];
+/** The chest-to-limb bands' opacity: faint enough that four bands stay apart and the lines stay on top. */
+const BAND_ALPHA = 0.08;
+/** Chart.js draws higher `order` first, so this puts every band under every line. */
+const BAND_ORDER = 1;
 /** A slot colour with an alpha channel, for bands, fills and faded lines. */
 function slotRgba(index, alpha) {
   const hex = SLOT_COLORS[index];
@@ -1975,14 +1979,14 @@ function renderChart() {
       data: labels.map(r => getBTKWithHits(w, r, btkHS, limbMult(w))),
       borderColor: 'transparent', backgroundColor: fillColor,
       borderWidth: 0, pointRadius: 0, tension: 0, stepped: 'before',
-      fill: '-1', isBand: true, _weaponSlot: slot, _weapon: w,
+      fill: '-1', isBand: true, order: BAND_ORDER, _weaponSlot: slot, _weapon: w,
     });
     const datasets = [];
     if (btkHS > 0) shown.forEach(({ w, slot }) =>
       datasets.push(btkDs(w, slotRgba(slot, 0.28), `${chartWeaponDisplayLabel(w)} (0 HS)`, slot + 1, 0, true)));
     shown.forEach(({ w, slot }) => {
       datasets.push(btkDs(w, SLOT_COLORS[slot], chartWeaponDisplayLabel(w), slot + 1));
-      if (limbMult(w) !== 1) datasets.push(bandDs(w, slotRgba(slot, 0.16), slot + 1));
+      if (limbMult(w) !== 1) datasets.push(bandDs(w, slotRgba(slot, BAND_ALPHA), slot + 1));
     });
     dashOverlap(datasets);
     const yMax = Math.max(9, ...datasets.flatMap(ds => ds.data));
@@ -2025,12 +2029,12 @@ function renderChart() {
       label, data: labels.map(r => ttkAt(w, r, zoneMult)),
       borderColor: band ? 'transparent' : color, backgroundColor: band ? color : 'transparent',
       borderWidth: band ? 0 : 2, pointRadius: 0, tension: 0, stepped: 'before',
-      fill: band ? '-1' : false, isBand: band, _weapon: w,
+      fill: band ? '-1' : false, isBand: band, order: band ? BAND_ORDER : 0, _weapon: w,
     });
     const datasets = [];
     shown.forEach(({ w, slot }) => {
       datasets.push(ttkDs(w, SLOT_COLORS[slot], chartWeaponDisplayLabel(w)));
-      if (limbMult(w) !== 1) datasets.push(ttkDs(w, slotRgba(slot, 0.16), `${chartWeaponDisplayLabel(w)} (limbs)`, limbMult(w), true));
+      if (limbMult(w) !== 1) datasets.push(ttkDs(w, slotRgba(slot, BAND_ALPHA), `${chartWeaponDisplayLabel(w)} (limbs)`, limbMult(w), true));
     });
     dashOverlap(datasets);
     const allVals = datasets.flatMap(d => d.data).filter(v => v > 0);
@@ -2080,12 +2084,12 @@ function renderChart() {
     data: labels.map(r => +dmgAt(w, r, limbMult(w)).toFixed(2)),
     borderColor: 'transparent', backgroundColor: fillColor,
     borderWidth: 0, pointRadius: 0, tension: 0, stepped: steppedFor(w),
-    fill: '-1', isBand: true, _weapon: w,
+    fill: '-1', isBand: true, order: BAND_ORDER, _weapon: w,
   });
   const datasets = [];
   shown.forEach(({ w, slot }) => {
     datasets.push(buildDs(w, SLOT_COLORS[slot], chartWeaponDisplayLabel(w)));
-    if (limbMult(w) !== 1) datasets.push(limbDs(w, slotRgba(slot, 0.16)));
+    if (limbMult(w) !== 1) datasets.push(limbDs(w, slotRgba(slot, BAND_ALPHA)));
   });
   dashOverlap(datasets);
   const dmgYMax = damageYMax(builds);
