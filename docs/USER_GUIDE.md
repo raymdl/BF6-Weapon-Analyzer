@@ -282,6 +282,11 @@ fixed percentage of a whole burst.
 
 ### Touch controls on phones and tablets
 
+On a touch screen, press and hold any button, toggle, lock or attribute bar to read
+its description in a bubble without pressing it; a plain tap works the control as
+usual, and the next tap anywhere closes the bubble. Stat cards and effect chips
+open their breakdown on a plain tap.
+
 Touch-capable viewports up to 1440 CSS pixels wide show **Redraw** and **Expand**.
 Redraw selects a new spray sample in either view: Angle Plot keeps its origin at
 (0, 0), and Soldier Target keeps the current aim. In Soldier Target, **Set aim**

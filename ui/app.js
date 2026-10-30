@@ -4569,6 +4569,40 @@ function initMobileTooltips() {
     hideBubble();
   });
 
+  // Press and hold any control that carries a title to read it without pressing
+  // the control; a plain tap still works it. Inputs, selects and links keep their
+  // own press behaviour. The click that ends a long press is swallowed, and the
+  // bubble stays until the next tap anywhere.
+  const LONG_PRESS_MS = 400, LONG_PRESS_SLOP = 10;
+  let pressTimer = null, pressX = 0, pressY = 0, swallowClick = false;
+  const cancelPress = () => { clearTimeout(pressTimer); pressTimer = null; };
+  document.addEventListener('pointerdown', e => {
+    if (e.pointerType === 'mouse' || !matchMedia('(hover: none)').matches) return;
+    const el = e.target.closest?.('[title]');
+    if (!el || el.matches('input, select, textarea, a') || !el.getAttribute('title')) return;
+    pressX = e.clientX; pressY = e.clientY;
+    cancelPress();
+    pressTimer = setTimeout(() => {
+      pressTimer = null;
+      closeRow();
+      if (el.dataset.tipHtml) tip.innerHTML = el.dataset.tipHtml;
+      else tip.textContent = el.getAttribute('title');
+      positionBubble(el); tip.classList.add('show');
+      swallowClick = true;
+    }, LONG_PRESS_MS);
+  }, { passive: true });
+  document.addEventListener('pointermove', e => {
+    if (pressTimer && Math.hypot(e.clientX - pressX, e.clientY - pressY) > LONG_PRESS_SLOP) cancelPress();
+  }, { passive: true });
+  ['pointerup', 'pointercancel'].forEach(type => document.addEventListener(type, cancelPress, { passive: true }));
+  // Android raises the context menu at about the same hold time.
+  document.addEventListener('contextmenu', e => { if (pressTimer || swallowClick) e.preventDefault(); });
+  document.addEventListener('click', e => {
+    if (!swallowClick) return;
+    swallowClick = false;
+    e.preventDefault(); e.stopPropagation();
+  }, true);
+
   window.addEventListener('resize', () => { closeRow(); hideBubble(); });
 }
 
