@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Source generation](SOURCES.md#projectile-hit-zone-and-collateral-chain) · [Formula guide](../DAMAGE_BALLISTICS.md)
 
-Checked against `0ea7c0b` on 25 October 2026.
+Checked against [`71f3d25`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/71f3d25) on 30 October 2026.
 
 ## Source curves and selected projectile
 
@@ -50,12 +50,12 @@ its [tests](../../scripts/damage.test.mjs).
 ```mermaid
 flowchart TB
     C["CUR · selected curve and pellet count"]:::cur
-    U["USER · range, chart mode,<br/>0–4 headshots, ADS/flight toggles"]:::src
+    U["USER · range, chart mode,<br/>0–4 headshots, ADS/recovery/flight toggles"]:::src
     H["GEN · selected head/limb multipliers<br/>chest multiplier is 1"]:::gen
     D["RUN · damagePerShotAtRange<br/>interpolate then multiply by pellets"]:::run
     B["RUN · bulletsToKillAtRange<br/>100 health and selected hit scenario"]:::run
     I["RUN · shotIntervalAfter<br/>auto, semi, burst or manual cycle"]:::run
-    K["RUN · TTK = intervals for BTK minus 1<br/>plus enabled ADS / level flight time"]:::run
+    K["RUN · TTK = intervals for BTK minus 1<br/>plus enabled ADS / sprint recovery /<br/>level flight time"]:::run
     O["OUT · damage, BTK and TTK<br/>range chart and table"]:::out
     A["ASM · ideal hits, full pellet contribution,<br/>no misses/reloads/armor · A04"]:::asm
     C --> D
@@ -93,6 +93,7 @@ a separate approximate origin (A05/A10).
 | Firing time | The first shot occurs at time zero. Sum the next `BTK - 1` shot intervals; avoid a universal `(BTK-1) × 60/rpm` shortcut for burst/pump sequences. |
 | Burst/manual cycle | `rpm`, `burstRpm`, `burstRounds` and `burstBurstsPerMinute` establish within/between-group cadence. DB-12's two-round pump cycle uses that route; bolt/single-pump base RPM already represents the effective cycle. |
 | Optional ADS | Add the selected build's ADS milliseconds when enabled. This models sequential delay; it does not simulate partial ADS during firing. |
+| Optional sprint recovery | Add the selected build's sprint recovery milliseconds (`_sprintRecoveryMs`, the Sprint Recovery card's value) when +REC is on. Like ADS, it is a sequential delay added once. |
 | Optional travel | Add drag-aware level flight time using precise selected velocity and the explicit projectile coefficient. Gravity is handled separately in the target trajectory. |
 
 `ui/app.js` samples these functions for the chart and table, formats outputs and
@@ -102,7 +103,12 @@ The kill table's rows are class-specific distance lists from `btkRanges()`:
 (sniper), and 5 m steps to 30 m for shotguns (plus 50 and 75 m beside another
 class). The chart's one read-out box (Chart.js
 tooltips are off) shows each weapon's value at the hovered range, or at the
-Soldier Target distance on the target views.
+Soldier Target distance on the target views; it takes whichever side of the
+range line and end of the plot covers the fewest line and band points
+([main controls](UI_PUBLISHING.md#runtime-startup)). Where a weapon's limb
+multiplier is not 1, a band in its colour at 8% opacity (`BAND_ALPHA`) shades
+from its chest line to its limb line. Every band has Chart.js `order` 1
+(`BAND_ORDER`), so all bands are drawn before, and under, all lines.
 The ideal-combat scope of TTK is A04.
 
 ## Flight time, drop and zeroing

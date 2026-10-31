@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Architecture](../ARCHITECTURE.md) · [Tests](../TESTS.md)
 
-Checked against `0ea7c0b` on 25 October 2026.
+Checked against [`71f3d25`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/71f3d25) on 30 October 2026.
 
 ## Runtime startup
 
@@ -59,22 +59,36 @@ input-sensitive caches. Hidden panels skip detailed rendering; pan/zoom redraws
 are scheduled with animation frames, and canvas backing dimensions account for
 device-pixel ratio.
 
-The page identifies the two weapons by colour only: gold for Weapon 1, blue for
-Weapon 2. What the main controls show:
+The page compares up to four weapons (`MAX_SLOTS` in `ui/app.js`) and identifies
+them by colour: gold for Weapon 1, blue for Weapon 2, pink for Weapon 3 and teal for
+Weapon 4 (`SLOT_COLORS`). Each weapon keeps its colour in the overview, the Weapon
+Attributes bars, the range chart and kill table, the recoil plot and statistics,
+the target impact tables and the attachment menus. What the main controls show:
 
 | Element | Behavior |
 |---|---|
-| Sidebar | A gold "Weapon 1" heading over the first loadout and a blue "Weapon 2" heading over the compare block. Swap and Clone are icon buttons beside "+ Compare Loadout", greyed out unless comparing (Swap also needs both weapons). Weapon 2's class buttons, selected weapon, points total, attachment menus, locks, saved-loadout controls and fire-mode badge are blue. |
-| Empty state | With no weapon chosen, an "Or try an example: M433 vs AK4D" button loads that comparison. |
-| Range chart | Chart.js tooltips are off. One read-out box gives the range and one row per weapon in its colour, labelled with the chart mode (DMG, BTK or TTK): CHEST/LIMBS/HEAD columns in DMG mode, CHEST/LIMBS in BTK, and CHEST/LIMBS plus ADS and FLIGHT columns in TTK when they apply. It follows the pointer; otherwise, on the Soldier Target and Firing Range views, it sits at the target distance, which a dashed line marks. |
-| Kill table | Titled "BTK / TTK". Each weapon's name sits centred over its DMG, BTK and TTK columns with a 1px rule in its colour. Rows are the class-specific distances from `btkRanges()`. On the target views the outlined row is the nearest row whose DMG and BTK match the values at the target distance exactly (none when no row matches). Hovering a chart range lights the matching row; hovering a row moves the chart's read-out box. |
+| Sidebar | A heading per weapon in its colour, "Weapon 1" to "Weapon 4"; Weapons 2 to 4 colour their class buttons, selected weapon, points total, attachment menus, locks and saved-loadout controls by the same rules. "+ Add Weapon" adds Weapon 2, 3 and then 4 and scrolls to it; it is disabled at four weapons and on the Firing Range. Each compare weapon's × removes it, and the weapons after it move up a place with their locks. A heading's fold button folds its weapon to the heading and the chosen weapon. Swap, Copy and Expand are neutral grey icon buttons beside "+ Add Weapon". With exactly two weapons chosen Swap acts at once, and with only Weapon 1 shown Copy adds Weapon 2; otherwise both open one picker (source weapon, then target). Before a weapon is chosen, its attachment section reads "Attachments appear once a weapon is chosen." |
+| Sidebar stacks | Weapons whose heading has scrolled past stack at the top of the sidebar and weapons still below stack at the bottom; clicking a stacked row scrolls to that weapon. Both stacks pin in two stages so a weapon's name is never on screen twice. At the top the heading pins first, and the chosen weapon's name joins it once the lit list entry (or the folded summary) reaches the spot the pinned name occupies. At the bottom the name pins first, and the heading joins once it drops under as well. `slotStackRow()` builds a row as `'full'`, `'header'` or `'name'`; `syncSlotStack()` shows both stacks while it measures and hides a stack again only when it ends up empty. |
+| Empty state | With no weapon chosen, the hint names the sidebar on wide screens and the Loadout button at 980 px or less, and an "Or try an example: M433 vs AK4D" button loads that comparison. |
+| Loadout dialog | At 980 px or less the sidebar is a dialog opened by the Loadout button. Choosing a weapon closes it (`closeLoadoutDialogAfterChoice()`), and a Done button at its foot closes it after attachment changes. On wider screens the Expand button opens the same loadout as a wide pop-up, which has Done too but stays open when a weapon is chosen. |
+| Chart controls | DMG, BTK and TTK form one segmented group, like ADS/Hipfire. +ADS, +REC and +VEL appear in TTK mode. Independent switches (+ADS, +REC, +VEL and the Scatter, Spray, Recoil Path, Cone and Bubbles overlays) carry the `switch-btn` class and are outlined in gold when on; a solid gold fill marks the chosen button of a joined group. The class badge in the Overview header is plain text. |
+| Range chart | Chart.js tooltips are off. One read-out box gives the range and one row per weapon in its colour, labelled with the chart mode (DMG, BTK or TTK): CHEST/LIMBS/HEAD columns in DMG mode, CHEST/LIMBS in BTK, and CHEST/LIMBS plus ADS, RECOVERY and FLIGHT columns in TTK when they apply. It follows the pointer; otherwise, on the Soldier Target and Firing Range views, it sits at the target distance, which a dashed line marks. The box sits left or right of the range line and at the top or bottom of the plot, whichever covers the fewest points of the lines and limb bands over the ranges it spans; a tie keeps it right of the line and at the top. Limb bands are drawn under every line ([Range outputs](DAMAGE_BALLISTICS.md#range-outputs)). |
+| Kill table | Titled "BTK / TTK". Each weapon's name sits centred over its DMG, BTK and TTK columns with a 1px rule in its colour; the TTK heading adds ADS, REC and Flight when those toggles are on. Rows are the class-specific distances from `btkRanges()` for every weapon shown. Cell text never wraps: beside the chart the table column takes the width its text needs (at least half the row) while the chart keeps at least `CHART_MIN_WIDTH` (340 px); when that leaves the table too narrow, it scrolls in its own box. On the target views the outlined row is the nearest row whose DMG, BTK and TTK text for every weapon match the text at the target distance (none when no row matches). Hovering a chart range lights the matching row; hovering a row moves the chart's read-out box. |
 | Target Impact Stats | A tab beside "Recoil / Spread Stats": one card per weapon, stacked. |
+| Touch descriptions | On a touch screen (no hover), holding any element that carries a `title` for 400 ms, without moving more than 10 px, shows its text in the site's tooltip bubble without working the control. This covers toggles, chart modes, locks, attribute bars and weapon buttons. The click that ends the hold is swallowed, a plain tap still works the control, and the next tap anywhere closes the bubble. Inputs, selects, text areas and links keep their own press. |
+
+Muted text (`--muted` in [`ui/styles.css`](../../ui/styles.css)) is `#93a3a3`, 6.7:1
+against the panel background `#151a1a`. The small labels (plot key hints,
+attachment-effect chip labels, recoil control and field labels, sidebar slot
+labels, the lock and Save tools, Pop Out, the plot note and the "/ 100" after each
+attribute score) use the mode buttons' 0.65rem; the sidebar's slot label column is
+48 px wide.
 
 ## State and exports
 
 ```mermaid
 flowchart TB
-    U["USER · two loadouts, comparison,<br/>chart and recoil/target controls"]:::src
+    U["USER · up to four loadouts, comparison,<br/>chart and recoil/target controls"]:::src
     S["RUN · validated application state"]:::run
     URL["RUN · share-state codec<br/>partial URL fragment, debounced 200 ms"]:::run
     L["OUT · copied URL / browser history<br/>restore and normalize on another visit"]:::out
@@ -107,13 +121,13 @@ write a build into a server-side database.
 
 | State family | What persists |
 |---|---|
-| Loadout and comparison | Weapon 1 / Weapon 2 IDs, attachment tokens and selected fire modes (`fm`, `fm2`), comparison enabled. |
-| Chart | Damage/BTK/TTK mode, selected headshot count, ADS/travel toggles. |
+| Loadout and comparison | Weapon IDs (`w`, `w2` to `w4`), attachment tokens (`a`, `a2` to `a4`) and selected fire modes (`fm`, `fm2` to `fm4`); comparison size in `cmp`: `1` for two weapons, as links have always written it, or `3` or `4` for more. A two-weapon `cmp=1` link restores as before. A compare slot without a weapon writes no tokens. |
+| Chart | Damage/BTK/TTK mode, selected headshot count, ADS/sprint-recovery/travel toggles (`ads`, `rec`, `vel`; restored only in TTK mode). |
 | Recoil | Aim, standing/moving/mounted, platform, control percentage and shot count. |
 | Target | Soldier Target or Firing Range view, distance, zeroing and aim preset/custom coordinates. |
 | Layout | Collapsed panel keys. |
-| **Not encoded in the ordinary URL** | Seeds, visible layers, pan/zoom/magnification, custom spread-circle selections, target stats tab, display resolution and FOV, mouse sensitivity, saved loadouts and attachment locks. |
-| Local preferences | Local storage keys: `bf6.targetResolutionWidth`, `bf6.targetResolutionHeight`, `bf6.targetFov` (display); `bf6.sensDpi`, `bf6.sensValue`, `bf6.sensZoomCoefficient` (Firing Range mouse sensitivity); `bf6.savedLoadouts` (named saved loadouts); `bf6.lockedAtts1`, `bf6.lockedAtts2` (per-weapon attachment locks); `bf6.lockHintSeen` (first-lock hint shown). Every read and write is optional; none travels with a shared link. |
+| **Not encoded in the ordinary URL** | Seeds, visible layers, pan/zoom/magnification, custom spread-circle selections, target stats tab, folded sidebar weapons, display resolution and FOV, mouse sensitivity, saved loadouts and attachment locks. |
+| Local preferences | Local storage keys: `bf6.targetResolutionWidth`, `bf6.targetResolutionHeight`, `bf6.targetFov` (display); `bf6.sensDpi`, `bf6.sensValue`, `bf6.sensZoomCoefficient` (Firing Range mouse sensitivity); `bf6.savedLoadouts` (named saved loadouts); `bf6.lockedAtts1` to `bf6.lockedAtts4` (per-weapon attachment locks); `bf6.lockHintSeen` (first-lock hint shown); `bf6.rangeInvertY` (Firing Range inverted vertical mouse movement). Every read and write is optional; none travels with a shared link. |
 
 Compact attachment tokens are a slot letter (`S`, `M`, `B`, `G`, `R`/`L`/`H` for
 the shared rail, `T`, `A`, `E`, `O` for the Optic Accessory, `K` for the
