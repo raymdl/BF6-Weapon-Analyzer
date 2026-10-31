@@ -52,7 +52,7 @@ All paths in this table are under `scripts/`.
 | [live-fire.test.mjs](../scripts/live-fire.test.mjs) | The live stepper reproduces the batch recoil path and spread sequence shot for shot under a held trigger, trigger-mode gating (auto, single, burst), magazine and reload, settling after release, the sensitivity conversion constants, and the pellet cone around each shell of a pellet load. |
 | [recoil-gestures.test.mjs](../scripts/recoil-gestures.test.mjs) | Desktop modifier-click redraw and Soldier aim, drag/cancel exclusions, and the Angle Plot origin. |
 | [recoil-touch.test.mjs](../scripts/recoil-touch.test.mjs) | Touch/responsive gating, one-tap aim, inline scrolling, expanded gesture interruption and repeated use, focus/close restoration, short-landscape sizing, centroid anchoring and view-only reset. DOM boundaries are mocked; these tests do not verify a real browser or phone. |
-| [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults, every shared-rail option with indexed/legacy tokens, and weapon-specific attachment validation. |
+| [share-state.test.mjs](../scripts/share-state.test.mjs) | Distance round trips, legacy defaults, every shared-rail option with indexed/legacy tokens, weapon-specific attachment validation, comparison links carrying up to four weapons (with `cmp=1` links staying two-weapon), and the TTK sprint-recovery option. |
 | [source-arrays.test.mjs](../scripts/source-arrays.test.mjs) | Exact row order/precision, hip/shotgun indexing, moving/ADS arrays and composition boundaries. |
 | [spread-bar-scale.test.mjs](../scripts/spread-bar-scale.test.mjs) | Default and valid single-attachment spread outputs fit the shared axis across aim/stance contexts. |
 | [spread-distribution.test.mjs](../scripts/spread-distribution.test.mjs) | Source exponents by aim/stance, uniform-area sampling, the Interdictor exception, and deterministic output. |
@@ -116,7 +116,7 @@ Serve the live root on port 5174. Check representative widths around 1440, 1000,
 charts and practical touch targets. Check loadout open/close, focus loop, Escape,
 focus restoration, associated labels and pressed/selected ARIA state.
 
-Exercise both loadouts, cloning, combined slots, a normal rifle, burst configuration,
+Exercise a four-weapon comparison (Add Weapon, Remove, Swap, Copy), combined slots, a normal rifle, burst configuration,
 a pellet shotgun and slug override, plus a timing/assumption exception. Check damage/
 BTK/TTK options, recoil aim/stance/platform/control, both views, reroll, layers, target
 aiming/pan/zero and impact disclosure. Confirm lazy target-image loading on tab, shared-link, and popout entry, and
@@ -141,6 +141,36 @@ must stay unchanged except for Redraw or a completed armed tap. Confirm view-onl
 Reset view, slider fallback, Close and Escape, focus trapping/restoration, and no
 page overflow. Also check a narrow mouse-only viewport, a hybrid touch/mouse
 device, and the existing desktop modifier gestures and keyboard shortcuts.
+
+No script covers the sidebar, the dialog, the touch tooltip or the control styling
+below; `runtime-syntax.test.mjs` only checks that the modules parse. Check these in a
+browser after a change to `ui/app.js`, `ui/styles.css` or `index.html`.
+
+- **Pinned sidebar rows.** Add four weapons, choose one in each, and scroll the sidebar
+  slowly down and back. A weapon's header must pin at the top as soon as it scrolls under
+  the rows above it. Its chosen weapon's name must join the header only once its lit entry
+  in the weapon list (or the folded summary) has scrolled under, so the name is never on
+  screen twice and nothing jumps at the hand-over. The bottom stack must mirror this for
+  weapons below the fold, chosen weapon's row first and then its header. Tapping a pinned
+  row must scroll to that weapon, and a stack must disappear when it has no rows. Repeat
+  with some weapons folded, one weapon unchosen, and after removing a weapon.
+- **Phone loadout dialog.** At about 390 pixels, choose a weapon in the dialog: it must
+  close and the stats must show. Reopen it, change an attachment, and close it with **Done**;
+  the close button and Escape must also close it, with focus back on the Loadout button.
+  At desktop width, **Expand** must stay open after a weapon choice.
+- **Attachment placeholder.** Before any weapon is chosen, the attachment section (sidebar
+  and dialog) must read "Attachments appear once a weapon is chosen" with no menus. The
+  empty page must name the Loadout button on a narrow screen and the sidebar on a wide one.
+- **Touch tooltip.** On a touch device, press and hold a toggle, chart mode, lock,
+  attribute bar and weapon button for about half a second: the bubble must show and the
+  control must not fire. A plain tap must still work the control, a tap anywhere must close
+  the bubble, and inputs, selects and links must keep their own press.
+- **Switches and groups.** DMG, BTK and TTK must look like one joined group with solid gold
+  on the chosen one. +ADS, +REC, +VEL, Scatter, Spray, Recoil Path, Cone and Bubbles must show
+  an outlined gold state when on and solid gold must never appear on them.
+- **Chart bands.** With four weapons of different limb multipliers, in Damage, BTK and TTK,
+  every chest-to-limb band must be faint, drawn under all the lines, with the lines and
+  the hover read-out readable. Muted text must stay legible on the panel background.
 
 ## Documentation verification and test discipline
 

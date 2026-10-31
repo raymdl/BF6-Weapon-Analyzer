@@ -82,27 +82,32 @@ that slot, clearing its locks; each entry's ✕ deletes it at once, with an Undo
 stored as the same compact tokens a share link uses, so it keeps resolving as
 the catalog grows.
 
-Select **+ Compare Loadout** for a second independent loadout. The sidebar is
-headed **Weapon 1** (gold) at the top and **Weapon 2** (blue) on the compare block,
-and weapon 2's controls (class buttons, selected weapon, points total, attachment
-menus, locks and saved-loadout row) are blue. Two icon buttons beside the compare
-button stay greyed out unless you are comparing: **Swap** exchanges the two
-loadouts, locks included, and needs both weapons chosen; **Clone** copies Weapon 1
-and its attachments into Weapon 2, to compare attachment changes on the same
-weapon. Selecting the compare button again ends the comparison and clears the
-second slot. On smaller screens, the Loadout button opens a dialog. Choosing a
+Select **+ Add Weapon** to add Weapon 2, then Weapon 3 and Weapon 4, each an
+independent loadout; the button stays greyed out at four weapons and on the Firing
+Range. The sidebar is headed **Weapon 1** (gold) at the top, with **Weapon 2** (blue),
+**Weapon 3** (pink) and **Weapon 4** (teal) below it, and each weapon's controls
+(class buttons, selected weapon, points total, attachment menus, locks and
+saved-loadout row) take its colour. Every compare weapon has a **×** that removes it;
+the weapons after it move up a place. A weapon's chevron folds it to its header and
+chosen weapon. Two icon buttons beside the add button work on the weapons already
+chosen. **Swap** exchanges two weapons, locks included: with two weapons chosen it acts
+at once, otherwise pick the source weapon and then the one to swap it with.
+**Copy** puts a weapon and its attachments onto another weapon, or into the next empty
+place, to compare attachment changes on the same weapon; with only Weapon 1 chosen it
+adds Weapon 2. A third button, **Expand**, opens the loadout as a wide pop-up on desktop.
+On smaller screens, the Loadout button opens a dialog. Choosing a
 weapon closes it so the stats show; **Done**, the close button or Escape closes it
 after attachment changes, returning focus to the opener. As the list scrolls, a weapon's
 header pins at the top, and its chosen weapon joins the header once its own row has
 scrolled under; tap the pinned rows to return to that weapon. Weapons further down pin
-at the bottom the same way.
+at the bottom the same way, chosen weapon first and its header after it.
 The attachment menus appear once a weapon is chosen.
 
 ## Overview and attachment effects
 
 The Weapon Attributes strip shows **Hipfire, Precision, Control and Mobility**
-for each selected loadout. Scores update when you change attachments. Gold is
-Weapon 1; blue is Weapon 2. Select an attribute to highlight its related stat
+for each selected loadout. Scores update when you change attachments. Each weapon
+keeps its colour: gold, blue, pink and teal for Weapons 1 to 4. Select an attribute to highlight its related stat
 cards, and hover for its input explanation. These are game ratings, not percentages.
 `Unavailable` means the model has no verified result for that combination.
 See the [model guide](WEAPON_ATTRIBUTES_MODEL.md) for calculation and validation limits.
@@ -151,7 +156,10 @@ measured zero.
 | Bullets to kill (BTK) | Shots required against 100 health, with 0–4 headshots and remaining chest/limb hits. | Headshots are a count within the lethal sequence, not a hit-rate percentage. A dashed 0-headshot baseline helps compare scenarios. |
 | Time to kill (TTK) | Time from the first shot to the lethal shot. Optional ADS and projectile flight time are added. | No reaction time, misses, reload interruptions, armor, or target regeneration is included. |
 
-The headshot setting affects BTK and TTK. Chest/limb bands describe alternative
+**DMG**, **BTK** and **TTK** form one joined group, and the lit button is the
+chosen view. **+ADS**, **+REC** and **+VEL** appear with TTK and are independent
+switches: each shows an outlined gold state when on, so solid gold always marks the
+chosen one of a group. The headshot setting affects BTK and TTK. Chest/limb bands describe alternative
 hit placement, not statistical confidence. Shotgun damage/BTK assumes all pellets
 hit the selected zone. Bolt- and pump-action TTK use source manual-cycle timing;
 DB-12 includes two shots per pump cycle. Burst weapons use separate within-burst
@@ -177,13 +185,16 @@ at a row moves the chart's read-out to that row's distance.
 
 ### Read the comparison charts
 
-Each colour identifies a selected weapon: gold is Weapon 1 and blue is Weapon 2.
+Each colour identifies a selected weapon: gold is Weapon 1, blue Weapon 2, pink
+Weapon 3 and teal Weapon 4. Up to four can be drawn together; the illustrations
+below show two.
 The horizontal axis is range in metres; the vertical axis uses the selected chart
 mode. The illustrations below compare SOR-556 Mk2 with SOR-300SC; they draw
 Weapon 1 in orange rather than the app's gold.
 
-The chart has one read-out box and no other tooltip. It follows the pointer and
-shows the range over one row per weapon, in the weapon's colour, labelled with the
+The chart has one read-out box and no other tooltip. It follows the pointer, sitting
+on whichever side of the pointer line and at whichever end of the plot covers the fewest
+lines and bands, and shows the range over one row per weapon, in the weapon's colour, labelled with the
 chart mode (DMG, BTK or TTK). Its columns are CHEST, LIMBS and HEAD in Damage (damage
 is not capped there), CHEST and LIMBS in BTK, and CHEST and LIMBS plus ADS and FLIGHT,
 when those additions are on, in TTK; a column appears only where it applies to a
@@ -197,10 +208,10 @@ views, the box sits at the target distance, which a dashed line marks.
   Limb hits deal less damage, so this edge is **below** the chest line in Damage
   and **above** it in BTK and TTK. A mix of chest and limb hits can give a result
   between these limits. Bullet counts remain whole numbers.
-- **Overlapping shaded bands:** Both weapons can produce results in that range,
+- **Overlapping shaded bands:** Two or more weapons can produce results in that range,
   depending on hit location. The darker or mixed color is only the two fills
   drawn over each other. It does not mean extra damage or a more likely result.
-- **Overlapping lines:** Both weapons have the same value at that distance.
+- **Overlapping lines:** Two weapons have the same value at that distance.
   One line can cover the other; this does not mean a weapon has no data.
 
 The bands show different hit locations, not random spread, accuracy, or statistical
@@ -256,6 +267,9 @@ These are model contexts; they do not add crouch, prone, player skill, or aim-as
 | Spread circles / cone | Angular spread envelopes, with selectable shot samples. They describe the model's bounds. |
 | Recoil control | Subtracts 0–125% of the expected recoil vector; defaults to 0%. It leaves random variation and spread. Values above 100% overcompensate. In Firing Range the slider is disabled and your mouse takes its place. |
 | Zoom, pan, crosshair | Change the plot view without altering simulated accuracy. |
+
+Scatter, Spray, Recoil Path, Cone and Bubbles are independent switches and use the
+same outlined gold state when on as the chart's +ADS, +REC and +VEL.
 
 Spread-circle samples offer growth, early-shot, all-shot, and custom selections.
 Custom examples: `1,2,5-8`, `every 3`, or `all`; `every 3` begins at shot 1.
@@ -370,8 +384,8 @@ space when the aim point changes. DMR/sniper builds expose zero distances from
 100 to 500 metres; other weapons use the bore-relative trajectory in this model.
 
 Target Impact Stats is a tab beside **Recoil / Spread Stats**, greyed out on the
-Angle Plot. It shows one card per weapon, Weapon 2's below Weapon 1's; the pop-out
-stacks both stats blocks with no tabs. The cards report hits, sampled hit rate,
+Angle Plot. It shows one card per weapon, in weapon order; the pop-out
+stacks the stats blocks with no tabs. The cards report hits, sampled hit rate,
 damage by body part, and the hits/shots needed to reach lethal damage. Total damage includes subsequent hits
 after the first lethal shot. The 180 cm figure and its hit zones are approximate;
 results describe this sample, not expected player accuracy. If its image is missing,
@@ -403,7 +417,8 @@ with or without the mouse captured; a distance change clears the shots, since hi
 were scored at the old range. The **Reload** and
 **Clear** buttons in the plot's bottom corner do the same, keeping distance, zoom and aim;
 while the plot holds the mouse, aim the crosshair at a button and press to use it.
-In the plot's top corner, **Semi**, **Burst** and **Auto** switch
+An invert button in the plot's bottom-right corner reverses vertical mouse movement,
+and is saved in the browser like the mouse settings below. In the plot's top corner, **Semi**, **Burst** and **Auto** switch
 the fire mode between the modes the weapon and its ergonomic offer (an M16A4
 offers Burst and Semi, and Auto and Semi with the A3 Receiver; the KORD 6P67 and
 the other Burst Training weapons offer all three bare; a weapon with one mode
@@ -419,8 +434,8 @@ coloured by hit zone (red head, gold upper torso, off-white lower torso, arms an
 legs) and faded grey dots miss. When the running damage reaches a kill (100), the killing shot
 flashes a red ring and a KILL line names the shot and the time from the first shot on the
 board to the kill; clear or reload between attempts so the clock starts fresh. The Target Impact Stats describe the shots fired so far. Only
-Weapon 1 fires, so the compare loadout is put aside while the range is up and
-comes back on the other views; share links still carry it. The impact table
+Weapon 1 fires, so the compare weapons are put aside while the range is up and
+come back on the other views; share links still carry them. The impact table
 names Weapon 1 alone.
 
 Enter your mouse **DPI**, the in-game **Soldier Mouse Sensitivity** and the

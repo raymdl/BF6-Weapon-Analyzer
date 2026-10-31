@@ -237,6 +237,10 @@ stops on conflicting links or disagreement between grids, but can record a base
 fallback for missing ammo attachments. Review those issues; the current 353 ammo
 selections have no missing-attachment fallback. Review its dated evidence file
 and every changed value before committing `data/hit_zones.json`.
+The extractor writes `source.build` from `--build-label` (default 1.4.2.5) and writes no
+`source.buildNote`. The committed label is the build the values were last checked against
+(2.1.1.0, like `lastVerified` in `data/provenance/live-baseline.json`), so pass it explicitly
+and restore the note's first-read history by hand.
 
 After regenerating hit zones, pass that exact dated trace to the ballistics
 generator. Replace `YYYY-MM-DD` below with the date in the trace filename:
