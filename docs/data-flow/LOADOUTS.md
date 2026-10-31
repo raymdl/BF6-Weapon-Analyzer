@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Attachment model](../ATTACHMENT_MODEL.md) · [Stat ladders](../STAT_LADDERS.md) · [Weapon Attributes model](../WEAPON_ATTRIBUTES_MODEL.md)
 
-Checked against `0ea7c0b` on 25 October 2026.
+Checked against [`71f3d25`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/71f3d25) on 30 October 2026.
 
 ## Selection and metadata
 
@@ -17,6 +17,10 @@ legacy categories keep their `SIGHTS` positions so old links restore (to the
 weapon's lowest-magnification optic of that category). Magnification sets the
 Soldier Target's default zoom; the resolver has no optical/camera model. The
 no-sight option is labelled "Iron Sights" in [`sim/attachments.js`](../../sim/attachments.js).
+The sidebar holds up to four weapons, each with its own class filter, weapon list
+and attachment section. Until a weapon is chosen, its attachment section offers no
+menus and reads "Attachments appear once a weapon is chosen." The sidebar controls
+are listed in [UI › Runtime startup](UI_PUBLISHING.md#runtime-startup).
 
 ## Valid loadout
 
@@ -116,7 +120,7 @@ flowchart LR
     I["RUN · sum within each stat axis<br/>then clamp final index"]:::run
     L["CUR · ADS, ADS move, hip minima,<br/>moving ADS, sprint, draw/holster tables"]:::cur
     V["RUN · effective value<br/>ms, movement factor or degrees"]:::run
-    O["OUT · overview and effects<br/>ADS can also enter optional TTK"]:::out
+    O["OUT · overview and effects<br/>ADS and sprint recovery can also<br/>enter optional TTK"]:::out
     A["ASM · selected coordinate mapping<br/>and final clamp policy · A02"]:::asm
     S --> I
     D --> I
@@ -191,9 +195,11 @@ behave differently; see the [fallback register](REGISTER.md#missing-data-and-fal
 
 ## Overview output inventory
 
-Both slots follow the same resolver. Comparison percentages are signed by the
-raw direction of change; better/worse coloring uses the metric's preference rule.
-The selected comparison slot and a weapon's own default build are separate baselines.
+Every weapon shown follows the same resolver. Each compare weapon's comparison
+percentage measures it against Weapon 1, and its tooltip says "Compared with
+Weapon 1". Percentages are signed by the raw direction of change; better/worse
+coloring uses the metric's preference rule. Weapon 1, as the comparison baseline,
+and a weapon's own default build are separate baselines.
 Presentation and metric construction live in [`ui/app.js`](../../ui/app.js). The
 [Weapon Attributes](#weapon-attributes) strip sits above these cards.
 
@@ -209,7 +215,7 @@ Presentation and metric construction live in [`ui/app.js`](../../ui/app.js). The
 | ADS Time | ADS finite-table coordinate. | Optional additive TTK component. |
 | Strafe Speed | ADS movement finite-table coordinate. | |
 | Deploy Speed | Selected draw-table family and deploy coordinate. | Holster uses the paired undeploy family. |
-| Sprint Recovery | Sprint finite-table coordinate. | |
+| Sprint Recovery | Sprint finite-table coordinate. | Optional additive TTK component (+REC). |
 | Recoil Amount / Variation / Direction | Resolved ADS amount, variation and direction. | Platform/control are applied only in the recoil view. |
 | Spread Inc/Shot | Resolved spread dynamics. | Per-shot input, not a recovered radius. |
 | ADS Spread: standing/moving | Source bounds with applicable minimum-table effects. | |
@@ -221,7 +227,7 @@ Presentation and metric construction live in [`ui/app.js`](../../ui/app.js). The
 ```mermaid
 flowchart TB
     B["RUN · selectedWeaponBuild<br/>same resolver as the overview"]:::run
-    WA["CUR · weapon_attributes.json<br/>1.4.3.0 Precision tables, shotgun<br/>dispersion, Mobility inputs"]:::cur
+    WA["CUR · weapon_attributes.json<br/>Precision tables (first read 1.4.3.0,<br/>checked 2.1.1.0), shotgun<br/>dispersion, Mobility inputs"]:::cur
     T["CUR · balance_tables.json<br/>ladders for index lookup"]:::cur
     H["RUN · Hipfire<br/>delegate ladder + nonlinear formula"]:::run
     P["RUN · Precision<br/>per-weapon table row lookup"]:::run
@@ -252,10 +258,13 @@ flowchart TB
 ```
 
 The four game menu scores (Hipfire, Precision, Control, Mobility) are calculated
-for both loadouts by [`sim/weapon-attributes.js`](../../sim/weapon-attributes.js)
+for every weapon shown by [`sim/weapon-attributes.js`](../../sim/weapon-attributes.js)
 and drawn by [`ui/weapon-attributes.js`](../../ui/weapon-attributes.js). The model
 reads the resolved build, so attachment composition is shared with the overview.
-Scores are menu values, not percentages of accuracy or speed.
+Scores are menu values, not percentages of accuracy or speed. The Precision
+tables were first read at 1.4.3.0 (the four Season 5 tables at 2.1.1.0); the
+file's `sourceVersion` names 2.1.1.0, the build they were last checked against
+([inputs](SOURCES.md#weapon-attributes-inputs)).
 
 | Attribute | Method | Main input |
 |---|---|---|

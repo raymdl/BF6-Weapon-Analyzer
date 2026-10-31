@@ -83,6 +83,14 @@ baseline export adopted on 12 August 2026; Frosty 1.4.3.0, reviewed on 16 Septem
 site value changed (sealed, no record of its own); and Frosty 2.1.1.0 (Season 5),
 reviewed on 13 October 2026 from raw files, the open build. A value keeps the
 provenance of the build it was taken from until a later reviewed build changes it.
+A build named on a single value is therefore the build it was first read from; the
+baseline's `lastVerified` record (build 2.1.1.0, hotfixes checked through 22 October 2026)
+says separately which build every site value was last checked against. The two generated
+files that carry one build label follow the second meaning: `data/hit_zones.json`
+(`source.build`) and `data/weapon_attributes.json` (`sourceVersion`) read 2.1.1.0, and
+their `source.buildNote` and `sourceVersionNote` keep the first-read history (the 63 launch
+weapons from the 1.4.3.0 trace and extraction, the four Season 5 weapons from 2.1.1.0 raw
+files, all found unchanged by the 13 October 2026 comparison).
 The [data-flow atlas](data-flow/SOURCES.md#source-authority-is-field-specific) draws
 the chain and lists each build's state.
 
@@ -230,7 +238,8 @@ headshot and limb multipliers ([data/hit_zones.json](../data/hit_zones.json)). I
 the attachment graph above, reads raw material grids dumped by
 [frosty-raw-assets.ps1](../scripts/frosty-raw-assets.ps1), and records input hashes and
 per-ammo derivations in a dated `reference-data/provenance/frosty-hit-zones-*.json`
-file. Grid class and field names are stripped; the identification rests on the head
+file. The generated file's `source.build` is the last-checked build, not the build of that
+trace (see [What the current baseline means](#what-the-current-baseline-means)). Grid class and field names are stripped; the identification rests on the head
 row reproducing every panel headshot value and the limb records reproducing the
 checked limb values.
 

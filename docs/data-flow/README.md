@@ -12,12 +12,14 @@ New to the project? Read [How much to trust each result](#how-much-to-trust-each
 [Known differences from the game](#known-differences-from-the-game) and the
 [Glossary](#glossary) first.
 
-**Checked against:** [`0ea7c0b`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/0ea7c0b)
-on 25 October 2026. Each page states the commit it was last checked against.
+**Checked against:** [`71f3d25`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/71f3d25)
+on 30 October 2026. Each page states the commit it was last checked against.
 The live data is Frosty build **2.1.1.0** (Season 5, reviewed 13 October 2026),
 applied over a 1.4.2.5 baseline with the reviewed 1.4.3.0 changes; the site header
-shows v2.1.1.0. [Sources](SOURCES.md#source-authority-is-field-specific) gives the
-full chain.
+shows v2.1.1.0. It is the last build checked for every site value, with hotfixes
+checked through 22 October 2026; a build named on a single value is the build that
+value was first read from. [Sources](SOURCES.md#source-authority-is-field-specific)
+gives the full chain and the build labels.
 
 ## How much to trust each result
 
@@ -146,7 +148,7 @@ evidence or assumptions.
 | ADS, sprint, draw/holster, movement, hip spread and recoil ladders | [Ladders and timing](LOADOUTS.md#ladders-and-timing) |
 | Recoil path, spray, spread circles, envelope, ten-run scatter and contextual bars | [Recoil/spread outputs](RECOIL_SPREAD.md#outputs-and-sampling) |
 | Target distance, zeroing, aim, magnification, hit regions, impact statistics and the Firing Range | [Target view](TARGET.md) |
-| Compare mode, sidebar, chart read-out, kill table, collapsed panels, data errors, responsive rendering | [Runtime startup](UI_PUBLISHING.md#runtime-startup) |
+| Compare mode (up to four weapons), sidebar and its pinned stacks, loadout dialog, chart controls and read-out, kill table, collapsed panels, data errors, touch press-and-hold descriptions, responsive rendering | [Runtime startup](UI_PUBLISHING.md#runtime-startup) |
 | Share link, legacy links, saved loadouts and other local preferences, popout and PNG | [State and exports](UI_PUBLISHING.md#state-and-exports) |
 | Header/version links, root site, frozen versions and research visibility | [Publication](UI_PUBLISHING.md#publication-and-validation) |
 | Reference-only weapon roles and legacy fields | [Non-executed material](REGISTER.md#retained-and-non-executed-material) |

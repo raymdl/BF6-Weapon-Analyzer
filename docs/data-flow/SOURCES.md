@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Ownership register](REGISTER.md) · [Source policy](../DATA_SOURCES.md) · [Game update guide](../GAME_UPDATE_GUIDE.md)
 
-Checked against `0ea7c0b` on 25 October 2026. Frosty research tooling moved to the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo on 29 September 2026. Commands for `scripts/frosty-*.py` files that are not in this repo run from a checkout of that repo (beside this one; see its README).
+Checked against [`71f3d25`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/71f3d25) on 30 October 2026. Frosty research tooling moved to the [BF6-Frosty-Research](https://github.com/raymdl/BF6-Frosty-Research) repo on 29 September 2026. Commands for `scripts/frosty-*.py` files that are not in this repo run from a checkout of that repo (beside this one; see its README).
 
 ## Source authority is field-specific
 
@@ -51,6 +51,16 @@ flowchart LR
 every weapon: 62 from 1.4.2.5, the Interdictor from 1.4.3.0, and the four Season 5
 weapons from 2.1.1.0. The M45A1 keeps the reviewed 75 m discontinuity. See the
 [damage review](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-damage-curve-review-2026-09-13.json).
+
+**Build labels:** the `lastVerified` record in
+[`live-baseline.json`](../../data/provenance/live-baseline.json) (added
+28 October 2026) names the last build checked for every site value: 2.1.1.0, with
+hotfixes checked through 22 October 2026. A build named on a single value
+(`sourceBuild`, "first read in" in `damageSource`, a build in an evidence file
+name) is the build that value was first read from. Two file-level labels follow
+`lastVerified` instead: `hit_zones.json` `source.build` and
+`weapon_attributes.json` `sourceVersion` both say 2.1.1.0, and their
+`source.buildNote` and `sourceVersionNote` fields give the first-read history.
 
 ## Build snapshots
 
@@ -236,7 +246,12 @@ flowchart TB
 and projectile material through the attachment graph, then reads the raw material
 grids ([frosty-raw-assets.ps1](../../scripts/frosty-raw-assets.ps1) exports them).
 Grid names are stripped, so the head/limb interpretation rests on cross-checks
-against panel values (A05).
+against panel values (A05). The 63 launch weapons' multipliers were generated from
+the 1.4.3.0 trace; the Mk 24, ELR-40, Z84M and RSPR were read from 2.1.1.0 raw
+files. `source.build` (2.1.1.0) is the last build checked, and `source.buildNote`
+records that history. The generator writes `source` from its `--build-label`
+argument (default 1.4.2.5) and has no `buildNote`, so a rerun needs the label
+given and the note restored.
 
 [`frosty-ballistics.py`](../../scripts/frosty-ballistics.py) uses the current
 hit-zone trace to resolve projectile GUIDs, checks its source hashes and reads
@@ -251,9 +266,12 @@ well as a rerun.
 
 ## Weapon Attributes inputs
 
-`data/weapon_attributes.json` holds the 1.4.3.0 Precision lookup tables (one per
-weapon, 67; the four Season 5 tables were added with 2.1.1.0 and `sourceVersion`
-stays 1.4.3.0), the shotgun dispersion angles and the traced Mobility inputs. It is
+`data/weapon_attributes.json` holds the Precision lookup tables (one per weapon,
+67), the shotgun dispersion angles and the traced Mobility inputs. The 63 launch
+tables were first read at 1.4.3.0 and the four Season 5 tables at 2.1.1.0.
+`sourceVersion` (2.1.1.0) is the build the tables were last checked against: the
+13 October 2026 update comparison found the hip-spread ladder and every weapon row
+unchanged, so they were not re-derived. `sourceVersionNote` records this. It is
 assembled from three reference files named in its `provenance` field:
 [Precision tables](../../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json),
 [shotgun hipfire trace](../../reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json)

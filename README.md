@@ -9,10 +9,11 @@ without an application backend or compilation step.
 
 ## What it does
 
-- **Loadout comparison:** weapon-specific attachments, ammunition, magazines, point
-  totals, overview statistics, and attachment-effect breakdowns.
+- **Loadout comparison:** up to four weapons side by side, with weapon-specific
+  attachments, ammunition, magazines, point totals, overview statistics, and
+  attachment-effect breakdowns.
 - **Weapon Attributes:** calculated Hipfire, Precision, Control, and Mobility scores
-  for both loadouts, with tooltips and related-stat highlights.
+  for each selected loadout, with tooltips and related-stat highlights.
 - **Damage:** damage-versus-range, bullets to kill, and time to kill, with
   headshot scenarios, chest/limb bands, and optional ADS/flight time.
 - **Recoil and spread:** reproducible spray samples, recoil paths, spread

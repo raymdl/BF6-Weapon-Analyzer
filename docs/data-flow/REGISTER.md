@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Source pipeline](SOURCES.md) · [Model limitations](../MODEL_LIMITATIONS.md)
 
-Checked against `0ea7c0b` on 25 October 2026.
+Checked against [`71f3d25`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/71f3d25) on 30 October 2026.
 
 This register lists who maintains each field family, every model assumption,
 and what to review when an input changes. The other atlas pages refer to the
@@ -29,12 +29,12 @@ assumption IDs here instead of repeating the limits.
 | `balance_tables.json`: finite arrays, base maps and geometric factors | **CUR**, reviewed source row order, decoded fields and policy. | `applyAttachments.js` / `core.js`; preserve precision, repeated rows and axis signs. |
 | `balance_tables.json`: `COLLATERAL_MULT_OVERRIDE` | **GEN**, retained compiled trace + reviewed clamp. | `frosty-collateral.py`; display only. |
 | `ballistics.json` | **GEN**, current XML and checked hit-zone attachment trace. | `frosty-ballistics.py`; selected GUID/gravity/drag. |
-| `hit_zones.json` | **GEN**, current graph/raw grids/type descriptors and reviewed material interpretation. | `frosty-hit-zones.py`; head/limb multipliers for range and target damage. |
+| `hit_zones.json` | **GEN**, current graph/raw grids/type descriptors and reviewed material interpretation. `source.build` is the last build checked (2.1.1.0); `source.buildNote` gives the first-read history (63 launch weapons from the 1.4.3.0 trace, the Season 5 weapons from 2.1.1.0 raw files). | `frosty-hit-zones.py`; head/limb multipliers for range and target damage. A rerun writes `source.build` from `--build-label` and drops `buildNote`. |
 | `attachment-tooltips.json` | **GEN**, localization/linked descriptors + curated panel approvals. | `frosty-attachment-tooltips.py`; UI text only. |
-| `weapon_attributes.json` | **CUR**, assembled from dated 1.4.3.0 Precision, shotgun and Mobility traces (named in its `provenance` field); Season 5 tables added with 2.1.1.0. | `sim/weapon-attributes.js`; Weapon Attributes scores only. No production generator. |
+| `weapon_attributes.json` | **CUR**, assembled from dated 1.4.3.0 Precision, shotgun and Mobility traces (named in its `provenance` field); Season 5 tables added with 2.1.1.0. `sourceVersion` is the last build checked (2.1.1.0); `sourceVersionNote` gives the first-read history. | `sim/weapon-attributes.js`; Weapon Attributes scores only. No production generator. |
 | `recoil_decay.json` | **CUR, legacy retained**. | Still a startup fetch. Current equations use explicit per-aim weapon groups instead. |
 | `weapon-role-tags.json` | **Reference**, source-derived tags with reviewed panel conflict resolution. | Not fetched by the UI. |
-| `data/provenance/live-baseline.json` | **CUR**, high-level acceptance/source record (1.4.2.5 baseline, 1.4.3.0 changes, 2.1.1.0 comparison and Season 5 weapons, the EA 2.1.1.0 notes; the EA 1.3.3.0 notes record is historical). | Maintenance only; field provenance is more specific. |
+| `data/provenance/live-baseline.json` | **CUR**, high-level acceptance/source record (1.4.2.5 baseline, 1.4.3.0 changes, 2.1.1.0 comparison and Season 5 weapons, the EA 2.1.1.0 notes; the EA 1.3.3.0 notes record is historical). `lastVerified` names the last build checked for every site value (2.1.1.0, hotfixes through 22 October 2026); a build on a single value is the build it was first read from. | Maintenance only; field provenance is more specific. |
 | `reference-data/provenance/*` | **Mixed CUR/GEN evidence**. | Identity audits, snapshots, hashes, generated traces and reviews. Some are offline generator inputs; none are startup JSON. |
 | `SIGHTS` individual optics, `WEAPON_ATTS[id].sight`, optic prerequisites of accessory rules | **GEN**, optic category mapping + compatibility report + research-repo optic names. | `frosty-individual-optics.py`; menus, points, links and target zoom. |
 | Attachment screenshot-review JSON | **CUR**, canonical human review. | `build-workbook.py` derives the workbook. Not a runtime table. |
@@ -57,7 +57,7 @@ but formula assumptions such as A07/A09 still apply.
 | **A01** | `data/provenance`, field provenance and reviewed joins | Mixed-source baseline: 1.4.2.5 export plus reviewed 1.4.3.0 and 2.1.1.0 changes (the Season 5 weapons from 2.1.1.0), Sym base fields and panel evidence. A source label does not mean every field was re-verified on that build. | All outputs. |
 | **A02** | `sim/applyAttachments.js`, `balance_tables.json`, generated mapping inputs | Interpret source coordinates per axis; compose selected steps with explicit signs; clamp the final finite-table index. WB/GS alternative routes are not added together. | ADS, movement, hip minima, draw/sprint, attachment effects, Mobility. |
 | **A03** | `sim/applyAttachments.js`, per-mag reload exceptions | Animation override versus base/factor route, factory-default normalization, ammo/barrel velocity treatment. | Reload, velocity, default-relative effects, travel. |
-| **A04** | `sim/damage.js`, TTK orchestration in `ui/app.js` | 100 health; ideal head/body scenarios; all pellets hit one zone; first shot at time zero; no misses, armor, reload, healing, reaction or network delay; additive ADS/travel. | Damage/BTK/TTK. |
+| **A04** | `sim/damage.js`, TTK orchestration in `ui/app.js` | 100 health; ideal head/body scenarios; all pellets hit one zone; first shot at time zero; no misses, armor, reload, healing, reaction or network delay; additive ADS, sprint recovery and travel. | Damage/BTK/TTK. |
 | **A05** | `frosty-hit-zones.py`, grid evidence | Stripped material-grid semantics are inferred and corroborated by reproduced head/limb panel values. | Multipliers, damage bands, target damage. |
 | **A06** | `sim/ballistics.js` | Analytic level drag time, 2D point-projectile RK4 law, finite horizon, zero-angle solve with no sight height. | Optional travel TTK, target vertical offset. |
 | **A07** | `sim/core.js`, selected recoil override records | Uniform timed impulse delivery overlapping per-axis recovery, recovery age reset per shot, nonlinear decrement and overlap handling. | Recoil path/spray, target patterns. |
@@ -66,7 +66,7 @@ but formula assumptions such as A07/A09 still apply.
 | **A10** | `sim/target.js`, `assets/soldier-target.png` | Project artwork, 180 cm height, alpha silhouette, hand-drawn anatomical partitions; stationary target; no native hitbox. | Hit/miss, zone counts, first-lethal damage. Pellet loads are scored per sampled pellet. |
 | **A11** | `applyAttachments.js`, collateral generator and retained global trace | Spotting factors on 54/150 m bases (75/150 m for M433, SGX, L110 and P18 since 2.1.1.0; 27/64.29 m for M45A1 and vz. 61); regen `5 s + ammo addition`; sway as relative amount factors; collateral final index clamp confirmed by operator. | Overview/effect metadata; no detection, healing, sway or penetration simulation. |
 | **A12** | `ui/app.js`, `ui/target-stats.js`, `sim/core.js` | Peak pre-shot spread across the selected magazine (50 increases when magazine size is unknown), bar normalization constants, ten fixed scatter seeds, display rounding, 75-damage assist styling, comparison preference rules. | Presentation summaries. |
-| **A13** | `sim/share-state.js`, `ui/capture.js` | Partial URL state, positional tokens, local preferences (display, mouse sensitivity, saved loadouts, attachment locks), main-column bitmap capture. | Restored links omit seeds/layers; PNG has pixels, not state. |
+| **A13** | `sim/share-state.js`, `ui/capture.js` | Partial URL state, positional tokens, local preferences (display, mouse sensitivity, Firing Range vertical inversion, saved loadouts, attachment locks), main-column bitmap capture. | Restored links omit seeds/layers; PNG has pixels, not state. |
 | **A14** | `sim/required-data.js`, specific resolver/UI helpers | Required-data failures and fallbacks are field-specific; some helpers keep a fallback instead of failing. | See [missing data](#missing-data-and-fallbacks). |
 | **A15** | `.github/workflows/validate-data.yml`, `ship-surface.json`, hosting settings | Consistency tests are not game measurements; ship surface is not a privacy filter; Pages deployment does not wait for validation. | Publication and assurance. |
 | **A16** | `weapons.json`, modifier records and legacy maps | Keep source fields whose behavior is not modeled, without inventing their meaning. | Some JSON operands are unused. |
@@ -134,7 +134,7 @@ flowchart TB
 | Recoil duration missing or zero (`genRecoilPts`, `sim/core.js`) | `... || 0.025` supplies 25 ms. All base records contain 25 ms explicitly. | |
 | Absent/unrecognized ammo velocity treatment (`resolveAmmoVelocity`) | Keeps base velocity. | Does not fail closed. |
 | Present but invalid barrel `velTierMod` (`resolveBarrelVelocity`) | Invalid result; no fall-through to `velMult`. A missing tier can use `velMult`. | Field presence controls precedence. |
-| Missing ADS time in optional TTK (`ui/app.js`) | `_adsTimeMs ?? 0`. | Not evidence of zero ADS time. |
+| Missing ADS or sprint recovery time in optional TTK (`ui/app.js`) | `_adsTimeMs ?? 0`, `_sprintRecoveryMs ?? 0`. | Not evidence of a zero time. |
 | Missing collateral override (`applyAttachments.js`) | Legacy class/default route remains in code. | All current selections have generated values. |
 | No Precision row, ambiguous row, unmatched Mobility index or missing recoil multiplier (`sim/weapon-attributes.js`) | That score shows Unavailable. | No interpolation or default. |
 | Target image unavailable (`sim/target.js`) | Hit classification is unavailable. | |
@@ -162,7 +162,7 @@ flowchart TB
 |---|---|
 | Weapon/ammo identity or offered selection | Menus/defaults, dependencies, points, tooltips, share tokens, hit-zone trace, ballistics selections, collateral map, cross-file coverage. |
 | Catalog or magazine ordering | Existing compact links and their tests. |
-| Source table/base coordinate or handling modifier | All default/composed loadouts, final clamping, overview/effect values, optional ADS TTK, Mobility and Hipfire scores. |
+| Source table/base coordinate or handling modifier | All default/composed loadouts, final clamping, overview/effect values, optional ADS and sprint recovery TTK, Mobility and Hipfire scores. |
 | Curve, pellets or material multiplier | Base damage, range chart/table, BTK/TTK, target zone damage, first-lethal summaries. |
 | Velocity, drag or gravity | Precise versus displayed velocity, TTK travel, target drop/zeroing, projectile cache inputs. |
 | Recoil duration/amount/recovery or fire cadence | Pre-shot path, overlapping impulses, burst gaps, scatter, target impacts, Precision and Control scores. |
@@ -170,7 +170,7 @@ flowchart TB
 | `weapon_attributes.json` or attribute formulas | Weapon Attributes regression tests (`scripts/weapon-attributes.test.mjs`) and research checkers against current panels. |
 | Target PNG/height/partitions | Aim/projection, alpha hit mask, zone counts and damage; weapon-only outputs should not change. |
 | Text-only description | Tooltip mapping/coverage and unresolved pointer evidence. |
-| New game build | [Game update flow](SOURCES.md#when-the-game-updates), labels in header/footer and `live-baseline.json`. |
+| New game build | [Game update flow](SOURCES.md#when-the-game-updates), labels in header/footer and `live-baseline.json` (`lastVerified`). |
 | Publish manifest/workflow/version label | Hosted files, runtime fetch list, archives, CI scope. |
 
 For a change, keep the source inputs, inspect the generator-owned diff, run the

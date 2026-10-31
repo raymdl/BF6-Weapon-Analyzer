@@ -2,7 +2,7 @@
 
 [Atlas](README.md) · [Recoil and spread](RECOIL_SPREAD.md) · [Damage and ballistics](DAMAGE_BALLISTICS.md)
 
-Checked against `0ea7c0b` on 25 October 2026.
+Checked against [`71f3d25`](https://github.com/raymdl/BF6-Weapon-Analyzer/tree/71f3d25) on 30 October 2026.
 
 ## Angular pattern to physical impact
 
@@ -110,6 +110,10 @@ mouse-sensitivity settings ([`sim/sensitivity.js`](../../sim/sensitivity.js)).
 wall-clock time; mouse movement against active recoil consumes it, in place of the
 control-percentage slider. With the trigger held and no mouse input it reproduces
 the batch functions shot for shot (`scripts/live-fire.test.mjs`).
+Only Weapon 1 fires on the range: compare weapons are put aside and return when the
+view leaves the range. A toggle in the plot's bottom-right corner inverts vertical mouse
+movement where the input arrives, so the view and the control-bar cursor flip
+together; the choice is a local preference (`bf6.rangeInvertY`).
 
 ## What a target change affects
 

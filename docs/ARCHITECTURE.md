@@ -68,7 +68,7 @@ layers call `sampleSpreadRadius()` so they use the same aim/movement exponent.
 
 ## State and rendering
 
-`state` holds two loadout slots, comparison mode, chart options, recoil options,
+`state` holds up to four loadout slots (`MAX_SLOTS`, with `slotCount` of them in a comparison), chart options, recoil options,
 and collapsed panels. Loadout changes flow through the shared resolver; rendering
 must not independently reapply modifiers. Overview, range charts, contextual recoil
 stats, and target results consume the selected build, with different display contexts.
@@ -97,7 +97,41 @@ The target PNG and alpha mask load only when the target view is visible, includi
 entry through a shared link or popout. A missing image disables hit classification.
 Keyboard/ARIA behavior includes labeled selects, pressed/selected controls, and a
 compact-layout loadout dialog with focus trapping, Escape dismissal, inert background,
-and focus restoration. Verify these behaviors in a browser after UI changes.
+and focus restoration. On the compact layout choosing a weapon closes the dialog
+(`closeLoadoutDialogAfterChoice`), so the stats show at once; the **Done** button in its
+footer (`loadoutDoneBtn`), the close button and Escape close it after attachment changes,
+and focus returns to the Loadout button. The wide-layout Expand pop-up is not closed by a
+weapon choice. Before a weapon is chosen the attachment section shows a placeholder
+instead of menus, and the empty page names the Loadout button on narrow screens
+(`empty-hint-wide` and `empty-hint-narrow` in `index.html`, switched by CSS). Verify
+these behaviors in a browser after UI changes.
+
+### Sidebar, controls and touch
+
+The sidebar's weapon slots scroll under two stacks of pinned rows, one at the top and
+one at the bottom (`syncSlotStack`, `slotStackRow(i, hdr, parts)`). Each stack pins in
+two stages: a weapon's header pins as soon as it scrolls under the rows above it, and the
+chosen weapon's name joins it only once its own entry in the list (or the folded summary)
+has also scrolled under, so the name is never on screen twice. The bottom stack mirrors
+this with the chosen weapon's row first, then its header. `parts` is `'full'`, `'header'`
+or `'name'`. Each hand-over is measured from the pinned row's own position, so the list row
+and the pinned row coincide at the swap, and both stacks are shown while measuring and hidden
+only when empty. The stacks are rebuilt on scroll, resize and sidebar render, and a pinned
+row scrolls back to its weapon.
+
+Control styling follows two classes in [styles.css](../ui/styles.css). A joined group of
+choices takes `seg` (the DMG/BTK/TTK chart modes, like ADS/Hipfire), where solid gold marks
+the chosen one. An independent switch (+ADS, +REC, +VEL and the Scatter, Spray, Recoil
+Path, Cone and Bubbles overlays) takes `switch-btn`, which shows an outlined gold state
+when on. In the charts, every chest-to-limb band uses `BAND_ALPHA` and `BAND_ORDER`, so
+Chart.js draws all bands under all lines.
+
+The touch press-and-hold tooltip lives in `initMobileTooltips()` in `ui/app.js`, not in
+`ui/recoil-touch.js`, which handles the recoil plot only. On a touch device (no hover,
+pointer type other than mouse) a 400 ms hold on any element with a `title` shows the
+tooltip bubble without pressing the control. The click that ends the hold is swallowed, a
+plain tap still works the control, and the next tap anywhere closes the bubble. Inputs,
+selects, textareas and links keep their own press behaviour.
 
 ## URL compatibility contract
 
@@ -107,9 +141,9 @@ against per-weapon availability; unknown/out-of-range tokens are ignored.
 
 | Fragment field | Meaning |
 |---|---|
-| `w`, `a`; `cmp=1`, `w2`, `a2` | Primary/secondary weapon and attachment tokens, comparison. |
-| `fm`, `fm2` | Selected fire mode (`auto`, `burst` or `single`) of weapon 1 and weapon 2, when one has been chosen; an invalid mode falls back to the weapon's default. |
-| `cm`, `hs`, `ads`, `vel` | Chart mode, 0–4 headshots, optional ADS/flight-time additions. |
+| `w`, `a`; `cmp`, `w2`–`w4`, `a2`–`a4` | Weapon and attachment tokens for up to four weapons, and the comparison. `cmp=1` is a two-weapon comparison, as links have always written it; three or four weapons write `cmp=3` or `cmp=4`. |
+| `fm`, `fm2`–`fm4` | Selected fire mode (`auto`, `burst` or `single`) of each weapon, when one has been chosen; an invalid mode falls back to the weapon's default. |
+| `cm`, `hs`, `ads`, `rec`, `vel` | Chart mode, 0–4 headshots, optional ADS, sprint-recovery and flight-time additions (TTK mode only). |
 | `ra`, `rs`, `rp`, `rcc`, `sh` | Aim, stance, platform, recoil-control percentage, shot count. |
 | `rv`, `rd`, `rz`, `rta`, `rax`, `ray` | Target view, distance, zero, aim preset/custom coordinates. |
 | `cl` | Dot-separated collapsed panel keys. |
@@ -140,8 +174,9 @@ Seeds, layers, plot pan/zoom/magnification, spread-circle custom selections, tar
 stats tab, and local preferences are not encoded. Local preferences use local
 storage: `bf6.targetResolutionWidth`, `bf6.targetResolutionHeight` and `bf6.targetFov`
 (display); `bf6.sensDpi`, `bf6.sensValue` and `bf6.sensZoomCoefficient` (Firing Range
-mouse sensitivity); `bf6.savedLoadouts` (saved loadouts); `bf6.lockedAtts1` and
-`bf6.lockedAtts2` (attachment locks); `bf6.lockHintSeen` (first-lock note shown).
+mouse sensitivity); `bf6.savedLoadouts` (saved loadouts); `bf6.lockedAtts1` to
+`bf6.lockedAtts4` (attachment locks, one per slot); `bf6.rangeInvertY` (Firing Range
+inverted vertical mouse movement); `bf6.lockHintSeen` (first-lock note shown).
 Every read and write is optional ([UI and publishing](data-flow/UI_PUBLISHING.md)). The popout carries this same partial state using `?popout=1` and
 operates independently after opening.
 
