@@ -8327,6 +8327,21 @@
       "summary": "All 67 WB sprint/deploy indices and the DTA/SprintSettings tables on 2.1.1.0 equal the site; holster is the second column of the same DTA row (no holster field in the WB), sprint-to-fire has one stored input (recovery, two equal fields), and swap = holster(A)+draw(B) is arithmetic on site numbers with unproven sequencing.",
       "reopenWhen": "A recording of one pair swapped five times (frames from key press to first possible shot) or a native swap/readiness consumer is found.",
       "refs": []
+    },
+    "L4083": {
+      "id": "L4083",
+      "title": "Agile Shooter and LMG sprint exemption: upgrade checks in the movement-speed logic",
+      "status": "finding",
+      "date": "2026-11-09",
+      "receipts": [
+        "frosty-2026-11-09-L4083-agile-shooter-firing-move-gate.json",
+        "frosty-2026-11-09-L4083-move-speed-logic-2110.json",
+        "frosty-2026-11-09-L4083-move-speed-upgrade-ids-identified.json",
+        "frosty-2026-11-09-L4083-upgrade-slot-binding-and-firing-smoothing.json"
+      ],
+      "summary": "Stored binding found: a 73-entry table after the code of the movement resource binds slot 0x558 (the only gate on the x0.8 firing multiplier) to the Ability_Commando_Base id and slot 0x550 (the only gate on the LMG x0.95 sprint penalty) to the Ability_SupportTrait id; 0x560 and 0x568 (dragging) to Medical Triage and Swift Triage. Same on 1.4.3.5 and 2.1.1.0. The firing multiplier is eased toward its target by 10% of the gap per 1/60 s (function meanings inferred from use).",
+      "reopenWhen": "A game update changes the movement resource, or an in-game firing-walk or LMG-sprint comparison disagrees.",
+      "refs": []
     }
   }
 }
