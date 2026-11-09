@@ -145,9 +145,40 @@ body:not(.is-popout){max-width:1700px;width:100%;margin:0 auto;background:var(--
 .sb-sec{padding:6px 11px;border-bottom:1px solid var(--border)}
 .sb-lbl{font-size:0.63rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:6px;font-weight:600}
 .class-filter{display:flex;flex-wrap:wrap;gap:3px}
+/* Soldier class: one row of icon toggles; the selection reads on the label row. */
+.slot-col{min-width:0;display:flex;flex-direction:column}
+.slot-col>.sb-sec:last-child{flex:1}
+.slot-col>.soldier-sec.sb-sec{border-bottom:1px solid var(--border)}
+.sb-lbl-row{display:flex;align-items:baseline;gap:8px;margin-bottom:6px}
+.sb-lbl-row .sb-lbl{margin-bottom:0}
+.soldier-status{margin-left:auto;min-width:0;font-size:0.68rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.soldier-row{display:flex;gap:3px}
+.cbtn.sbtn{flex:1;display:flex;align-items:center;justify-content:center;height:24px;padding:0}
+.sbtn svg{width:18px;height:18px;fill:currentColor}
+.soldier-pop{position:fixed;z-index:310;display:none;width:470px;max-width:calc(100vw - 16px);max-height:calc(100vh - 16px);overflow-y:auto;background:var(--bg2);border:1px solid var(--border);border-radius:5px;padding:9px 11px;font-size:0.67rem;line-height:1.45;color:var(--muted);box-shadow:0 4px 14px rgba(0,0,0,.6);--slot-c:var(--accent)}
+.soldier-pop.show{display:block}
+.sp-head{font-size:0.78rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text)}
+.sp-k{font-size:0.6rem;text-transform:uppercase;letter-spacing:1.2px;font-weight:600;margin:8px 0 3px}
+.sp-item{display:flex;gap:6px;margin-bottom:3px;text-align:left}
+.sp-item b{font-weight:600;color:var(--muted)}
+.sp-item.sp-on b{color:var(--text)}
+.sp-text{display:block}
+.sp-item.sp-on .sp-text{color:var(--text)}
+.sp-lv{flex:0 0 13px;font-variant-numeric:tabular-nums;opacity:.8}
+.sp-paths{display:grid;grid-template-columns:1fr 1fr;gap:5px;align-items:stretch}
+.sp-path{display:block;width:100%;background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:6px 8px 3px;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.sp-path:hover{border-color:var(--muted)}
+.sp-path.on{border-color:var(--slot-c);cursor:default}
+.sp-path-name{display:block;font-size:0.72rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.sp-path.on .sp-path-name{color:var(--slot-c)}
+.sp-default{margin-left:6px;font-size:0.56rem;font-weight:400;text-transform:uppercase;letter-spacing:.6px;color:var(--muted)}
+/* A button centres its content; the shorter path starts at the top like its neighbour. */
+.sp-path{align-self:stretch;display:flex;flex-direction:column;justify-content:flex-start}
+@media (max-width:520px){.sp-paths{grid-template-columns:1fr}}
+.sp-foot{margin-top:7px;padding-top:6px;border-top:1px solid var(--border);font-size:0.62rem}
 .cbtn{padding:2px 4px;border:1px solid var(--border);background:var(--bg3);color:var(--muted);border-radius:3px;font-size:0.68rem;transition:all .12s}
 .cbtn:hover,.cbtn.on{border-color:var(--accent);color:var(--accent);background:rgba(201,162,39,.1)}
-#classFilter2 .cbtn:hover,#classFilter2 .cbtn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.1)}
+#classFilter2 .cbtn:hover,#classFilter2 .cbtn.on,#soldierClass2 .cbtn:hover,#soldierClass2 .cbtn.on{border-color:var(--accent2);color:var(--accent2);background:rgba(77,148,208,.1)}
 .wlist{display:flex;flex-direction:column}
 .wbtn{padding:2px 11px;text-align:left;background:none;border:none;border-bottom:1px solid rgba(40,48,48,.55);color:var(--text);font-size:0.82rem;transition:background .1s;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;border-left:2px solid transparent}
 .wbtn:hover{background:var(--bg3)}

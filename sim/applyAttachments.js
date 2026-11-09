@@ -3,6 +3,7 @@ import { requireNumber } from './required-data.js';
 import { baseRecoilGroup } from './core.js';
 import { normalizeAttachments, resolveMountAttachments } from './loadout.js';
 import { resolveHitMultipliers } from './damage.js';
+import { SNIPER_SWAY_PENALTY, soldierClass, soldierEffects } from './soldier-classes.js';
 
 /**
  * sim/applyAttachments.js — Applies attachment effects to a raw weapon object.
@@ -346,6 +347,13 @@ export function attachmentContributions(w, atts, defaultAtts) {
     if (atts[slot] && atts[slot] !== 'none') picks.push([slot, { [slot]: atts[slot] }, { [slot]: 'none' }]);
   }
   const out = [];
+  // The soldier class's signature weapon trait, measured on the bare weapon. It
+  // is left out of the other rows' solo builds; `without` rows keep it on both sides.
+  const { soldier, weaponTrait } = soldierEffects(atts.soldier, w.cls);
+  if (weaponTrait) {
+    out.push({ slot: 'class', mode: 'solo', record: weaponTrait,
+      build: applyAttachments(w, { ...bareAtts, soldier }, { neutralMagazine: true }), base: bare });
+  }
   for (const [slot, only, without] of picks) {
     const soloAtts = { ...bareAtts, ...only };
     const normalized = normalizeAttachments(soloAtts, w, _ctx);
@@ -408,6 +416,12 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   const ergoSemi = semiActive ? ergoData.semiAuto ?? {} : {};
   const ergoAdsRecoilTierMod = (ergoData.adsRecoilTierMod ?? 0) + (ergoSemi.adsRecoilTierMod ?? 0);
 
+  // ── Soldier class ────────────────────────────────────────────────────────────
+  // `atts.soldier` is the slot's class and training path. The signature weapon
+  // trait applies on that class's own weapon type; one ladder step per stat.
+  const { soldier, weaponTrait: classTrait, mountedRecoilTierMod } = soldierEffects(atts.soldier, w.cls);
+  const swayPenalty = w.cls === 'Sniper Rifle' ? SNIPER_SWAY_PENALTY : 1;
+
   // ── ADS Recoil ──────────────────────────────────────────────────────────────
   // Tier formula: effectiveRecoilV = recoilV × ADSRecoilAmountMultiplier ^ (sum of tier mods)
   const totalAdsRecoilTierMod = (grp.adsRecoilTierMod ?? 0)
@@ -442,7 +456,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   const tags = [muz, bar, grp, las, lit].filter(a => a && a.id !== 'none').map(a => a.name);
 
   // ── ADS time ─────────────────────────────────────────────────────────────────
-  const combinedAdsTimeTierMod = (grp.adsTimeTierMod ?? 0) + (bar.adsTimeTierMod ?? 0);
+  const combinedAdsTimeTierMod = (grp.adsTimeTierMod ?? 0) + (bar.adsTimeTierMod ?? 0)
+    + (classTrait?.adsTimeTierMod ?? 0);
 
   // ── Weapon sway ───────────────────────────────────────────────────────────────
   const selectedMag = magRecord(WEAPON_MAG[w.id]?.mags?.[atts.mag ?? WEAPON_MAG[w.id]?.def]);
@@ -455,7 +470,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   const weaponSwayMult = (muz.weaponSwayMult ?? 1) * (selectedMag?.weaponSwayMult ?? 1)
     * (grp.weaponSwayMult ?? 1)
     * (barrelBase.weaponSwayMultByWeapon?.[w.id] ?? 1)
-    * (sightData?.weaponSwayMultByWeapon?.[w.id] ?? 1);
+    * (sightData?.weaponSwayMultByWeapon?.[w.id] ?? 1)
+    * swayPenalty * (classTrait?.weaponSwayMult ?? 1);
 
   // ── Hip spread tier shift ─────────────────────────────────────────────────────
   // Catalog shifts have the opposite sign to Frosty's source index modifiers.
@@ -464,7 +480,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     + (bar.hipSpreadTierMod ?? 0)
     + (las.hipSpreadTierMod ?? 0)
     + (grp.hipSpreadTierMod ?? 0)
-    + (ammoType.hipSpreadTierMod ?? 0);
+    + (ammoType.hipSpreadTierMod ?? 0)
+    + (classTrait?.hipSpreadTierMod ?? 0);
   const hipBaseIndex = HIP_SPREAD_BASE_INDEX_OVERRIDES[w.id] ?? HIP_SPREAD_BASE_INDEX[w.id];
   const hipRow = Number.isInteger(hipBaseIndex)
     ? HIP_SPREAD_TABLE[Math.max(0, Math.min(HIP_SPREAD_TABLE.length - 1, hipBaseIndex - hipSpreadTierMod))]
@@ -590,7 +607,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
       - (sightData?.adsMoveSpeedTierShift ?? 0)));
     _adsTimeMs       = ADS_SPD_TIERS[adsIdx];
     _adsMoveSpeedMult = ADS_MOVE_TIERS[amsIdx];
-    const timingAttachments = [magData, grp, ergoData, bar, muz, las, lit, ammoType];
+    const timingAttachments = [magData, grp, ergoData, bar, muz, las, lit, ammoType, classTrait];
     _drawTimeResolution = resolveDrawTime({
       weaponMag: wm,
       sprintRecoveryTierShift: timingAttachments.reduce(
@@ -611,7 +628,10 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // default mag when no mag is selected, so this covers the stock case too.
   const magTags  = magData?.name ? [magData.name] : [];
   const ergoTags = ergoData.id !== 'none' ? [ergoData.name] : [];
-  const allTags  = [...tags, ...(ammoName ? [ammoName] : []), ...magTags, ...ergoTags];
+  // The class goes last, as "Support: Fire Support", so it reads as one entry.
+  const soldierCls = soldier && soldierClass(soldier.cls);
+  const soldierTag = soldierCls ? `${soldierCls.name}: ${soldierCls.paths.find(p => p.id === soldier.path).name}` : null;
+  const allTags  = [...tags, ...(ammoName ? [ammoName] : []), ...magTags, ...ergoTags, ...(soldierTag ? [soldierTag] : [])];
   const fireMode = ergoData.setsFireModeAuto ? 'auto'
     : ergoData.setsFireModeBurst ? 'burst'
       : w.fireMode;
@@ -666,6 +686,11 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     _worldSpot:              worldSpot,
     _minimapSpot:            minimapSpot,
     _weaponSwayMult:         weaponSwayMult,
+    // The class factors inside `_weaponSwayMult`, so a breakdown can show them apart.
+    _swayPenalty:            swayPenalty,
+    _classSwayMult:          classTrait?.weaponSwayMult ?? 1,
+    _classTrait:             classTrait,
+    _mountedRecoilTierMod:   mountedRecoilTierMod,
     _visualRecoil:           ergoData.visualRecoil ?? 0,
     _laserVisible:           las.laserVisible ?? null,
     // Effective per-slot records, for the attachment effects breakdown.
@@ -729,17 +754,21 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
  *   hipSpreadTierMod hip spread table shift in the catalog sign (−2 = two source
  *                   steps better, `GDM_Array_HipDispersion_BTM_P20`).
  * Mounting without a bipod or grip pod changes nothing (the plain mounted
- * modifiers are identity operands), so the build is returned as is. Measured on
+ * modifiers are identity operands), so the build is returned as is, unless the
+ * soldier's training path adds mounted recoil tiers (`_mountedRecoilTierMod`:
+ * Steady Aim's `GRM_MountedPlus*` +3 amount; its −2 variation tiers are left
+ * out like the bipod's). Those apply with or without a bipod. Measured on
  * the M277 and PSR, 23 Oct 2026 (reference-data/provenance/
  * deployed-recoil-measurement-2026-10-23.md). Does NOT mutate `build`.
  */
 export function applyDeployedState(build) {
-  const deployed = build?._resolved?.grip?.deployed;
-  if (!deployed || build._deployed) return build;
+  const deployed = build?._resolved?.grip?.deployed ?? null;
+  const perkTier = build?._mountedRecoilTierMod ?? 0;
+  if ((!deployed && !perkTier) || build._deployed) return build;
   const { RECOIL_MULT, HIP_SPREAD_TABLE, HIP_SPREAD_BASE_INDEX, HIP_SPREAD_BASE_INDEX_OVERRIDES } = _ctx;
-  const tier = deployed.recoilTierMod ?? 0;
-  const k = deployed.adsSpreadK ?? 1;
-  const hipStep = deployed.hipSpreadTierMod ?? 0;
+  const tier = (deployed?.recoilTierMod ?? 0) + perkTier;
+  const k = deployed?.adsSpreadK ?? 1;
+  const hipStep = deployed?.hipSpreadTierMod ?? 0;
   const mult = requireNumber(RECOIL_MULT[build.id], `${build.id} RECOIL_MULT`);
   const recoil = build.recoil && tier
     ? Object.fromEntries(Object.entries(build.recoil).map(([state, group]) => [state,

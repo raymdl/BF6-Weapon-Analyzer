@@ -24,6 +24,7 @@ import { flightTimeAtDistance, isProjectileModel, zeroRelativeVerticalOffset } f
 
 import { createWeaponAttributeModel } from '../sim/weapon-attributes.js';
 import { renderWeaponAttributes } from './weapon-attributes.js';
+import { renderSoldierClass } from './soldier-class.js';
 
 // ── DATA FETCH ────────────────────────────────────────────────────────────────
 
@@ -171,7 +172,7 @@ function slotRgba(index, alpha) {
   return `rgba(${r},${g},${b},${alpha})`;
 }
 function blankSlot() {
-  return { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), locked: {}, savedName: null, folded: false };
+  return { cls: 'Assault Rifle', weapon: null, atts: Loadout.blankAtts(), soldier: null, locked: {}, savedName: null, folded: false };
 }
 
 const state = {
@@ -322,13 +323,21 @@ function projectileModelFor(weapon, atts) {
   };
   return isProjectileModel(model) ? model : null;
 }
+/**
+ * A slot's attachments with its soldier class and training path, for the
+ * simulation. The class stays off `slot.atts` so saved loadouts and attachment
+ * codes hold the weapon build only.
+ */
+function slotAtts(slot) {
+  return slot.soldier ? { ...slot.atts, soldier: slot.soldier } : slot.atts;
+}
 const selectedBuildCache = new WeakMap();
 function selectedWeaponBuild(slot) {
   if (!slot?.weapon) return null;
-  const key = JSON.stringify(slot.atts);
+  const key = JSON.stringify(slotAtts(slot));
   const cached = selectedBuildCache.get(slot);
   if (cached?.weapon === slot.weapon && cached.key === key) return cached.build;
-  const build = applyAttachments(slot.weapon, slot.atts);
+  const build = applyAttachments(slot.weapon, slotAtts(slot));
   const projectileModel = projectileModelFor(build, slot.atts);
   if (projectileModel) build._projectileModel = projectileModel;
   selectedBuildCache.set(slot, { weapon: slot.weapon, key, build });
@@ -1060,6 +1069,8 @@ function renderSidebar() {
     renderSavedLoadoutSection(`savedSec${i + 1}`, i);
     buildClassFilter(`classFilter${i + 1}`, i);
     buildWeaponList(`wList${i + 1}`, i);
+    renderSoldierClass({ row: document.getElementById(`soldierClass${i + 1}`), status: document.getElementById(`soldierStatus${i + 1}`),
+      slot: state.slots[i], slotIdx: i, color: SLOT_COLORS[i], onChange: () => { renderSidebar(); renderStats(); } });
     buildAttachmentSection(`attSection${i + 1}`, i);
   });
   syncSlotSections();
@@ -1284,6 +1295,7 @@ function copySlot(from, to) {
   dest.cls = src.weapon.cls;
   dest.weapon = src.weapon;
   dest.atts = { ...src.atts };
+  dest.soldier = src.soldier ? { ...src.soldier } : null;
   dest.savedName = null;
   dest.folded = false;
   renderSidebar();
@@ -1449,7 +1461,7 @@ function renderOverview() {
       b.textContent = label;
       b.setAttribute('aria-pressed', String(mode === current));
       // The burst badge carries the burst figures whether or not it is the selected mode.
-      const build = mode === current ? w : mode === 'burst' ? applyAttachments(slot.weapon, { ...slot.atts, fireMode: 'burst' }) : null;
+      const build = mode === current ? w : mode === 'burst' ? applyAttachments(slot.weapon, { ...slotAtts(slot), fireMode: 'burst' }) : null;
       const tooltip = build ? burstBadgeTooltip(build) : '';
       if (tooltip) {
         b.title = tooltip;
@@ -2939,7 +2951,7 @@ function renderRangeFireModes(isRange) {
 function rangeSimKey() {
   const w = selectedWeaponBuild(state.slots[0]);
   const { aim, stance, platform } = state.recoil;
-  return [w ? w.id : '', w ? JSON.stringify(state.slots[0].atts) : '', aim, stance, platform].join('|');
+  return [w ? w.id : '', w ? JSON.stringify(slotAtts(state.slots[0])) : '', aim, stance, platform].join('|');
 }
 function rangeStatsHtml(axis) {
   const live = firingRange?.live();
@@ -3727,6 +3739,12 @@ function renderAttachmentStats(loadouts) {
       // Console input scales recoil per shot on top of the attachments, so it
       // shows as its own row in the recoil breakdown.
       const extra = [];
+      // Steady Aim's mounted recoil tiers, once the Mounted stance has applied them.
+      if (m.lbl === 'ADS Recoil/Shot' && cur._deployed && cur._mountedRecoilTierMod && Number.isFinite(curVal)) {
+        const d = curVal * (1 - Math.pow(RECOIL_MULT[weapon.id], -cur._mountedRecoilTierMod));
+        extra.push({ d, name: 'Steady Aim', value: signed(+d.toFixed(3), m.unit, m.dec), color: colorFor(m, d),
+          parts: [{ kind: 'tier', v: cur._mountedRecoilTierMod }], better: true });
+      }
       if (m.lbl === 'ADS Recoil/Shot' && state.recoil.platform === 'console' && Number.isFinite(curVal)) {
         const d = curVal * (CONSOLE_RECOIL_MULT - 1);
         curVal += d;
@@ -3761,21 +3779,37 @@ function renderAttachmentStats(loadouts) {
         color: colorFor(m, delta), desc: m.tooltip ?? m.lbl, rows, footer }));
     });
     const swayMetric = { lbl: 'Weapon Sway', lowerBetter: true, dec: 1 };
-    const swayRatio = (cur._weaponSwayMult ?? 1) / (base._weaponSwayMult ?? 1);
+    // Sniper rifles carry a sway penalty that the Recon trait cancels. Both show
+    // as their own rows, and the attachment rows are measured without them.
+    const classSway = w => (w._swayPenalty ?? 1) * (w._classSwayMult ?? 1);
+    const ownSway = w => (w._weaponSwayMult ?? 1) / classSway(w);
+    const swayRatio = (cur._weaponSwayMult ?? 1) / ownSway(base);
+    const swayPenalty = cur._swayPenalty ?? 1, swayTrait = cur._classSwayMult ?? 1;
+    const classSwayRows = [];
+    if (swayPenalty !== 1) {
+      classSwayRows.push({ d: (swayPenalty - 1) * 100, name: 'Sniper rifle sway penalty', value: signed((swayPenalty - 1) * 100, '%', 1),
+        color: colorFor(swayMetric, 1), parts: [{ kind: 'mult', v: swayPenalty }], better: false });
+      if (swayTrait !== 1) {
+        const d = swayPenalty * (swayTrait - 1) * 100;
+        classSwayRows.push({ d, name: escAttr(cur._classTrait.name), value: signed(d, '%', 1),
+          color: colorFor(swayMetric, d), parts: [{ kind: 'mult', v: swayTrait }], better: d < 0 });
+      }
+    }
     // Mounting (with or without a bipod or grip pod) stops all sway, whatever the
     // attachments add: measured on the M433, 26 Oct 2026. Its row takes the net to −100%.
     const mounted = state.recoil.stance === 'mount';
     const swayVal = mounted ? -100 : (swayRatio - 1) * 100;
-    const swayExtra = mounted ? [{ d: -swayRatio * 100, name: 'Mounted', value: signed(-swayRatio * 100, '%', 1),
-      color: colorFor(swayMetric, -1), parts: [{ kind: 'mult', v: 0 }], better: true }] : [];
-    const sway = breakdown(swayMetric, w => (w._weaponSwayMult ?? 1) * 100, d => signed(d, '%', 1), swayVal, swayExtra);
+    const swayExtra = classSwayRows.concat(mounted ? [{ d: -swayRatio * 100, name: 'Mounted', value: signed(-swayRatio * 100, '%', 1),
+      color: colorFor(swayMetric, -1), parts: [{ kind: 'mult', v: 0 }], better: true }] : []);
+    const sway = breakdown(swayMetric, w => ownSway(w) * 100, d => signed(d, '%', 1), swayVal, swayExtra);
     if (Math.abs(swayVal) >= 0.05 || sway.rows.length) {
       const label = `Weapon Sway${hasEstimatedEffect(['weaponSwayMult'], selectedAttachments, weapon) ? '*' : ''}${bugMark('Weapon Sway')}`;
       chips.push(chipHtml({ label, value: Math.abs(swayVal) < 0.05 ? '±0%' : signed(swayVal, '%', 1),
         color: colorFor(swayMetric, swayVal), rows: sway.rows, footer: sway.footer,
         desc: mounted
           ? 'Weapon sway while ADS, compared with the bare weapon. Mounting stops all weapon and camera sway, with or without a bipod or grip pod.'
-          : 'Weapon sway while ADS, compared with the bare weapon. Sway modifiers multiply. Camera sway is not included.' }));
+          : 'Weapon sway while ADS, compared with the bare weapon. Sway modifiers multiply. Camera sway is not included.'
+            + (swayPenalty !== 1 ? ` Sniper rifles sway ×${swayPenalty} unless the Recon class is selected.` : '') }));
     }
     const sourceRow = (c, value, color) => ({ name: escAttr(c.name), value, color });
     const vrVal = cur._visualRecoil ?? 0;
@@ -3892,7 +3926,7 @@ function renderRecoil({ plotOnly = false } = {}) {
   if (isTargetGeometry()) computeTargetBaseFrame(builds, shotCount);
 
   if (!plotOnly) renderAttachmentStats(shownSlots().map((slot, i) =>
-    ({ weapon: slot.weapon, atts: slot.atts, build: builds[i], colClass: `c${i + 1}` })));
+    ({ weapon: slot.weapon, atts: slotAtts(slot), build: builds[i], colClass: `c${i + 1}` })));
 
   const { aim, stance, layers, refSeed } = state.recoil;
   const pressed = (id, on) => {
@@ -4333,8 +4367,11 @@ function renderRecoil({ plotOnly = false } = {}) {
   // With the strip present it already names the block, and the aim/stance it
   // describes is set by the controls right above it.
   // Mounted deploys the bipod or grip pod; without one the mount changes nothing.
+  // Steady Aim (Support, Fire Support path) lowers mounted recoil with or without one.
+  const steadyAim = builds.filter(Boolean).some(b => b._mountedRecoilTierMod);
   const mountNote = stance !== 'mount' ? ''
-    : builds.filter(Boolean).some(hasDeployable) ? ' (bipod or grip pod deployed)' : ' (no bipod or grip pod: standing values)';
+    : builds.filter(Boolean).some(hasDeployable) ? ` (bipod or grip pod deployed${steadyAim ? ', Steady Aim' : ''})`
+      : steadyAim ? ' (Steady Aim)' : ' (no bipod or grip pod: standing values)';
   const rcContext = `<div class="rc-stats-context">${aim === 'hip' ? 'Hipfire' : 'ADS'} · ${stance === 'move' ? 'Moving' : stance === 'mount' ? `Mounted${mountNote}` : 'Standing'}</div>`;
   // The loadouts the bars compare head the card, the way each impact table
   // names its own.

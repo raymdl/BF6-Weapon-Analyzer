@@ -74,7 +74,7 @@ the locked choice, means the weapon cannot take it and the row shows its default
 instead. A one-time note explains this the first time a lock goes on. The locks
 are remembered per slot in browser storage.
 
-Saved Loadouts, above the class filter, live in browser storage, not in links.
+Saved Loadouts, above the weapon type filter, live in browser storage, not in links.
 Save opens a name field in the row, suggesting "Loadout 1", "Loadout 2" and so on
 per weapon (Enter or Save keeps it, Escape cancels; a name already used for that
 weapon is overwritten). The menu lists them grouped by weapon and loads one into

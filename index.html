@@ -28,7 +28,7 @@
 <body>
 <header>
   <h1 class="logo-h1"><a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a></h1>
-  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-10-29">Updated 29 OCT 2026</time></div>
+  <div class="hdr-tag">Season 5 (v2.1.1.0) - <time datetime="2026-11-09">Updated 09 NOV 2026</time></div>
   <div class="archive-group">
     <select class="archive-select" id="archiveSelect" autocomplete="off" aria-label="Site version">
       <option value="" selected disabled hidden>Site Versions</option>
@@ -52,9 +52,15 @@
       <div class="slot-stack" id="slotStack" hidden><div class="slot-stack-inner"></div></div>
       <div class="cmp-hdr w1-hdr"><button class="slot-fold" type="button" data-fold-slot="0" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 1</button></div><div class="slot-summary" data-fold-name="0" hidden></div>
       <div class="sb-sec" id="savedSec1" data-slot-body="0"></div>
-      <div class="sb-sec" data-slot-body="0">
-        <div class="sb-lbl">Class</div>
-        <div class="class-filter" id="classFilter1"></div>
+      <div class="slot-col">
+        <div class="sb-sec soldier-sec" data-slot-body="0">
+          <div class="sb-lbl-row"><span class="sb-lbl">Class</span><span class="soldier-status" id="soldierStatus1"></span></div>
+          <div class="soldier-row" id="soldierClass1"></div>
+        </div>
+        <div class="sb-sec" data-slot-body="0">
+          <div class="sb-lbl">Type</div>
+          <div class="class-filter" id="classFilter1"></div>
+        </div>
       </div>
       <div class="sb-sec" style="padding-top:6px" data-slot-body="0">
         <div class="sb-lbl">Weapon</div>
@@ -64,9 +70,15 @@
       <div id="cmpSection" style="display:none">
         <div class="cmp-hdr"><button class="slot-fold" type="button" data-fold-slot="1" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 2</button><button class="slot-remove" type="button" data-remove-slot="1" title="Remove Weapon 2" aria-label="Remove Weapon 2">×</button></div><div class="slot-summary" data-fold-name="1" hidden></div>
         <div class="sb-sec" id="savedSec2" data-slot-body="1"></div>
-        <div class="sb-sec" data-slot-body="1">
-          <div class="sb-lbl">Class</div>
-          <div class="class-filter" id="classFilter2"></div>
+        <div class="slot-col">
+          <div class="sb-sec soldier-sec" data-slot-body="1">
+            <div class="sb-lbl-row"><span class="sb-lbl">Class</span><span class="soldier-status" id="soldierStatus2"></span></div>
+            <div class="soldier-row" id="soldierClass2"></div>
+          </div>
+          <div class="sb-sec" data-slot-body="1">
+            <div class="sb-lbl">Type</div>
+            <div class="class-filter" id="classFilter2"></div>
+          </div>
         </div>
         <div class="sb-sec" style="padding-top:6px" data-slot-body="1">
           <div class="sb-lbl">Weapon</div>
@@ -76,9 +88,15 @@
         <div class="wslot" id="slotSection3" style="--slot-c:var(--accent3)" hidden>
           <div class="cmp-hdr"><button class="slot-fold" type="button" data-fold-slot="2" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 3</button><button class="slot-remove" type="button" data-remove-slot="2" title="Remove Weapon 3" aria-label="Remove Weapon 3">×</button></div><div class="slot-summary" data-fold-name="2" hidden></div>
           <div class="sb-sec" id="savedSec3" data-slot-body="2"></div>
-          <div class="sb-sec" data-slot-body="2">
-            <div class="sb-lbl">Class</div>
-            <div class="class-filter" id="classFilter3"></div>
+          <div class="slot-col">
+            <div class="sb-sec soldier-sec" data-slot-body="2">
+              <div class="sb-lbl-row"><span class="sb-lbl">Class</span><span class="soldier-status" id="soldierStatus3"></span></div>
+              <div class="soldier-row" id="soldierClass3"></div>
+            </div>
+            <div class="sb-sec" data-slot-body="2">
+              <div class="sb-lbl">Type</div>
+              <div class="class-filter" id="classFilter3"></div>
+            </div>
           </div>
           <div class="sb-sec" style="padding-top:6px" data-slot-body="2">
             <div class="sb-lbl">Weapon</div>
@@ -89,9 +107,15 @@
         <div class="wslot" id="slotSection4" style="--slot-c:var(--accent4)" hidden>
           <div class="cmp-hdr"><button class="slot-fold" type="button" data-fold-slot="3" aria-expanded="true"><svg class="fold-chev" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5l3 3 3-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>Weapon 4</button><button class="slot-remove" type="button" data-remove-slot="3" title="Remove Weapon 4" aria-label="Remove Weapon 4">×</button></div><div class="slot-summary" data-fold-name="3" hidden></div>
           <div class="sb-sec" id="savedSec4" data-slot-body="3"></div>
-          <div class="sb-sec" data-slot-body="3">
-            <div class="sb-lbl">Class</div>
-            <div class="class-filter" id="classFilter4"></div>
+          <div class="slot-col">
+            <div class="sb-sec soldier-sec" data-slot-body="3">
+              <div class="sb-lbl-row"><span class="sb-lbl">Class</span><span class="soldier-status" id="soldierStatus4"></span></div>
+              <div class="soldier-row" id="soldierClass4"></div>
+            </div>
+            <div class="sb-sec" data-slot-body="3">
+              <div class="sb-lbl">Type</div>
+              <div class="class-filter" id="classFilter4"></div>
+            </div>
           </div>
           <div class="sb-sec" style="padding-top:6px" data-slot-body="3">
             <div class="sb-lbl">Weapon</div>
@@ -108,8 +132,8 @@
   <main class="main" id="main">
     <div class="empty" id="emptyState">
       <div class="empty-t">Select a weapon to begin</div>
-      <div class="empty-hint-wide">Choose a class and weapon from the sidebar</div>
-      <div class="empty-hint-narrow">Tap <b>Loadout</b> above to choose a class and weapon</div>
+      <div class="empty-hint-wide">Choose a type and weapon from the sidebar</div>
+      <div class="empty-hint-narrow">Tap <b>Loadout</b> above to choose a type and weapon</div>
       <div class="empty-what">Damage and time-to-kill by range &nbsp;·&nbsp; Simulated recoil and spread &nbsp;·&nbsp; Every attachment's effect</div>
       <button class="empty-example" id="emptyExampleBtn" type="button">Or try an example: M433 vs AK4D</button>
     </div>

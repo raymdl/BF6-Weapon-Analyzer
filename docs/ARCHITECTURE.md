@@ -50,6 +50,7 @@ being loaded by the application.
 | [sim/live-fire.js](../sim/live-fire.js), [sim/sensitivity.js](../sim/sensitivity.js) | Real-time recoil/spread stepper driven by an external trigger and view rotation; mouse-count to degree conversion for the Firing Range. |
 | [ui/firing-range.js](../ui/firing-range.js) | Firing Range pointer capture, animation loop and live overlay on the shared plot frame. |
 | [sim/fire-modes.js](../sim/fire-modes.js) | The fire modes a weapon and its ergonomic offer, the default mode and the selected mode. |
+| [sim/soldier-classes.js](../sim/soldier-classes.js), [ui/soldier-class.js](../ui/soldier-class.js) | Soldier classes, signature sets and training paths with the effects the site models; the sidebar's Class row and its details popup. |
 | [sim/share-state.js](../sim/share-state.js) | Compact and legacy URL encoding/decoding and selection validation. |
 | [ui/loadout.js](../ui/loadout.js), [ui/target-stats.js](../ui/target-stats.js) | Attachment controls and target-result presentation. |
 | [ui/capture.js](../ui/capture.js) | Current-view PNG capture; no independent weapon calculations. |

@@ -1,4 +1,5 @@
 import { availableAttachments, attachmentSlots, normalizeAttachments, resolveLegacySight } from './loadout.js';
+import { normalizeSoldier, soldierClass } from './soldier-classes.js';
 
 export const TARGET_DEFAULT_DISTANCE = 20;
 
@@ -111,6 +112,15 @@ export function createShareCodec({
     return normalizeAttachments(atts, weapon, data);
   }
 
+  // A slot's soldier class (`sc`) and, when it is not the class default, its
+  // training path (`tp`). No class writes nothing, so older links are unchanged.
+  function encodeSoldier(params, soldier, suffix) {
+    const picked = normalizeSoldier(soldier);
+    if (!picked) return;
+    params.set(`sc${suffix}`, picked.cls);
+    if (picked.path !== soldierClass(picked.cls).defaultPath) params.set(`tp${suffix}`, picked.path);
+  }
+
   function encodeState(state, selectedRecoilShotCount = () => 20) {
     const params = new URLSearchParams();
     const first = state.slots[0];
@@ -120,6 +130,7 @@ export function createShareCodec({
       if (atts) params.set('a', atts);
       const mode = normalizeAttachments(first.atts, first.weapon, data).fireMode;
       if (mode) params.set('fm', mode);
+      encodeSoldier(params, first.soldier, '');
     }
     if (state.comparing) {
       // cmp=1 is a two-weapon comparison, as links have always written it;
@@ -134,6 +145,7 @@ export function createShareCodec({
         if (atts) params.set(`a${i + 1}`, atts);
         const mode = normalizeAttachments(slot.atts, slot.weapon, data).fireMode;
         if (mode) params.set(`fm${i + 1}`, mode);
+        encodeSoldier(params, slot.soldier, i + 1);
       }
     }
     if (state.chart.mode !== 'dmg') params.set('cm', state.chart.mode);
@@ -178,6 +190,7 @@ export function createShareCodec({
       state.slots[0].weapon = first;
       state.slots[0].atts = normalizeAttachments({ ...decodeAtts(first, params.get('a')),
         fireMode: params.get('fm') }, first, data);
+      state.slots[0].soldier = normalizeSoldier({ cls: params.get('sc'), path: params.get('tp') });
     }
     const compareCount = params.get('cmp') === '1' ? 2 : Number(params.get('cmp'));
     if (Number.isInteger(compareCount) && compareCount >= 2 && compareCount <= state.slots.length) {
@@ -191,6 +204,7 @@ export function createShareCodec({
         state.slots[i].weapon = weapon;
         state.slots[i].atts = normalizeAttachments({ ...decodeAtts(weapon, params.get(`a${i + 1}`)),
           fireMode: params.get(`fm${i + 1}`) }, weapon, data);
+        state.slots[i].soldier = normalizeSoldier({ cls: params.get(`sc${i + 1}`), path: params.get(`tp${i + 1}`) });
       }
     }
     const chartMode = params.get('cm');
