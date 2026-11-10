@@ -713,16 +713,17 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
    python scripts/frosty-check-all.py --build "<datamining>/builds/<build>" --research "<research repo>" [--raw "<later capture>/raw"]
    ```
 
-   It runs nine checks against the committed data: tooltips, availability, compatibility,
-   individual optics, optic tooltips, point costs, handling, barrel ADS and weapon records.
+   It runs ten checks against the committed data: tooltips, availability, compatibility,
+   individual optics, optic tooltips, point costs, handling, barrel ADS, weapon records and
+   ammunition with projectiles.
    Run it on the new build before changing anything: its failures are the update's work list
    for those areas (cost changes, handling changes, what each weapon offers, weapon values,
    description texts), alongside the Stage 7 change lists. Apply the changes by running the
    generators that write (`--out` and the default outputs), not by hand; a new attachment or
    weapon first needs rows in new dated mapping files. Deliberate differences are rows in
    `data-src/overrides*.json`; a row the new build makes STALE, REDUNDANT or UNUSED fails the
-   run and is reviewed, not silenced. All nine must exit 0 on the committed data at the end of
-   Stage 9. The availability and weapon-record scripts only check; they do not write yet.
+   run and is reviewed, not silenced. All ten must exit 0 on the committed data at the end of
+   Stage 9. The availability, weapon-record and ammunition scripts only check; they do not write yet.
    Three generators need refreshed inputs
    first; a run with the check turned off is not a result:
    - `frosty-sniper-brakes.py`: its trace hashes the source graphs (2.1.2.0: 298 differed after
