@@ -487,6 +487,13 @@ and give each a run-order row.
   little-endian bytes (2.1.2.0: this showed the recoil text was the GRT-BC's Extended Barrel,
   not the SGX's).
 
+- **Visual recoil census.** `python scripts/frosty-visual-recoil-census.py` in the research repo
+  (arguments in its `docs/frosty/TOOLS.md`), with `--compare reference-data/frosty/visual-recoil-census.json`.
+  It covers kick-animation modifiers and camera recoil, which the site does not model, so a
+  change is recorded in the checklist and reported, not applied. Replace the baseline with the
+  new output. An object added or removed with no value change is usually new content or a
+  renamed folder.
+
 **Gate:** every scan run with its control, or its run-order row says why not.
 
 ## Stage 7 — Account for every changed row
