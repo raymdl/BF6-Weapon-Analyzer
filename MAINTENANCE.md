@@ -184,6 +184,26 @@ keeps different from the files is a row in `data-src/overrides-weapons.json` (ge
 `pending-check`, `precision`). Run it on the previous build as well: the differences
 between the two runs are the update's weapon changes.
 
+Ammunition effects (`data/ammo.json`) and projectile values (`data/ballistics.json`)
+have a checker as well; it writes no site data:
+
+```sh
+python scripts/frosty-ammo.py --raw <capture>/raw ... --descriptors <...> --catalog <...> --check
+```
+
+Each site ammunition choice joins to its `Attachment_*_AMO_*` record through the
+point-cost mapping; the record's ability branch gives the selectors, and the effects
+they reach in the `_WB` packages and `GS_` bindings give the recoil, ADS move, hip
+spread, slug ADS spread, regeneration delay, spotting, velocity treatment, pellets and
+projectile swap. The default ammunition comes from the `Equipment_*` default preset;
+every `ballistics.json` projectile is read from its own `PD_*` file (gravity, drag,
+`GRX_Weapons` rows first). Costs and rosters stay with the point-cost and availability
+checks; hit zones and collateral need the material grids or a delegate resource and are
+not read. Families it does not own are `NOT_OWNED` in the script, and effect objects it
+cannot interpret are counted as unread. A value the site keeps different from the files
+is a row in `data-src/overrides-ammo.json` (generator `frosty-ammo`). Run it on the
+previous build too: the differences are the update's ammunition and projectile changes.
+
 After reviewing compatibility changes, update the
 [Frosty asset findings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites)
 with source hashes, evidence pointers and limits. In the [research repo](https://github.com/raymdl/BF6-Frosty-Research), run

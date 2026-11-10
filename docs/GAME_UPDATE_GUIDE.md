@@ -707,18 +707,23 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
    once per capture folder, later folders winning, and `--catalog` once per catalog with the
    loaded-cache catalog (`collection/asset-catalog.json`) first: the rebuilt-cache catalog lists
    leftover assets that reuse a live file GUID (1,179 in 2.1.2.0), and a run given only that one
-   stops on the first duplicate it needs. `frosty-barrel-ads.py --check` must exit 0 against the
-   committed data before and after the update's changes (it is the first generator that
-   reproduces the site data exactly; it needs `--identities` from the research repo).
-   `frosty-point-costs.py --check` does the same for every point cost: run it on the new build
-   and take the cost changes from its difference list, not from hand edits; a new attachment
-   needs a row in a new dated cost mapping first. `frosty-attachment-handling.py --check`
-   covers grip, laser and magazine handling and reloads the same way, and
-   `frosty-availability.py --check` compares what every weapon offers with the files (record,
-   branch, kill switch, equipment list). Deliberate differences are rows in
-   `data-src/overrides.json` and `data-src/overrides-availability.json`; a row the new build
-   makes STALE, REDUNDANT or UNUSED fails the run and is reviewed, not silenced. All four
-   checks must exit 0 on the committed data at the end of Stage 9. Three generators need refreshed inputs
+   stops on the first duplicate it needs. **One command runs every check, in order:**
+
+   ```bash
+   python scripts/frosty-check-all.py --build "<datamining>/builds/<build>" --research "<research repo>" [--raw "<later capture>/raw"]
+   ```
+
+   It runs nine checks against the committed data: tooltips, availability, compatibility,
+   individual optics, optic tooltips, point costs, handling, barrel ADS and weapon records.
+   Run it on the new build before changing anything: its failures are the update's work list
+   for those areas (cost changes, handling changes, what each weapon offers, weapon values,
+   description texts), alongside the Stage 7 change lists. Apply the changes by running the
+   generators that write (`--out` and the default outputs), not by hand; a new attachment or
+   weapon first needs rows in new dated mapping files. Deliberate differences are rows in
+   `data-src/overrides*.json`; a row the new build makes STALE, REDUNDANT or UNUSED fails the
+   run and is reviewed, not silenced. All nine must exit 0 on the committed data at the end of
+   Stage 9. The availability and weapon-record scripts only check; they do not write yet.
+   Three generators need refreshed inputs
    first; a run with the check turned off is not a result:
    - `frosty-sniper-brakes.py`: its trace hashes the source graphs (2.1.2.0: 298 differed after
      a re-bake). Refresh the trace on any update whose comparison shows changed graphs.
