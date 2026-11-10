@@ -205,10 +205,6 @@
           "headshot": 1.4,
           "limb": 0.84
         },
-        "synthetic": {
-          "headshot": 1.8,
-          "limb": 0.84
-        },
         "lightweight": {
           "headshot": 1.4,
           "limb": 0.84
@@ -276,6 +272,10 @@
         "subsonic_hp": {
           "headshot": 1.5,
           "limb": 1.0
+        },
+        "synthetic": {
+          "headshot": 1.75,
+          "limb": 1.0
         }
       }
     },
@@ -307,6 +307,10 @@
         },
         "subsonic_hp": {
           "headshot": 1.5,
+          "limb": 1.0
+        },
+        "synthetic": {
+          "headshot": 1.75,
           "limb": 1.0
         }
       }

@@ -360,7 +360,6 @@
       "penetration": 1.0,
       "hollow_pt": 0.666667,
       "frangible": 0.666667,
-      "synthetic": 0.666667,
       "lightweight": 0.750001
     },
     "ef88": {
@@ -377,7 +376,8 @@
       "frangible": 0.571429,
       "hollow_pt": 0.571429,
       "subsonic": 0.571429,
-      "subsonic_hp": 0.571429
+      "subsonic_hp": 0.571429,
+      "synthetic": 0.571429
     },
     "ggh22": {
       "standard": 0.571429,
@@ -385,7 +385,8 @@
       "frangible": 0.500001,
       "hollow_pt": 0.500001,
       "subsonic": 0.500001,
-      "subsonic_hp": 0.500001
+      "subsonic_hp": 0.500001,
+      "synthetic": 0.500001
     },
     "grtbc": {
       "standard": 0.750001,

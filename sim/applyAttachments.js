@@ -424,6 +424,13 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     && (w.fireModes?.single?.mechanism ?? w.fireMode) === 'semi';
   const ergoSemi = semiActive ? ergoData.semiAuto ?? {} : {};
   const ergoAdsRecoilTierMod = (ergoData.adsRecoilTierMod ?? 0) + (ergoSemi.adsRecoilTierMod ?? 0);
+  // Recoil smoothing comes from the muzzle; with no muzzle smoothing, an ergonomic
+  // that binds a smoothing package supplies it (M44 Match Trigger, 2.1.2.0).
+  const smoothing = {
+    recoilDurationOverride: muz.recoilDurationOverride ?? ergoData.recoilDurationOverride,
+    adsRecoilDecayMult: muz.adsRecoilDecayMult ?? ergoData.adsRecoilDecayMult,
+    hipRecoilDecayMult: muz.hipRecoilDecayMult ?? ergoData.hipRecoilDecayMult,
+  };
 
   // ── Soldier class ────────────────────────────────────────────────────────────
   // `atts.soldier` is the slot's class and training path. The signature weapon
@@ -659,7 +666,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     ? ergoData.autoRpm ?? w.autoRpm ?? null
     : null;
   const recoilOverride = w.recoil && (totalHipRecoilTierMod || totalHipVarTierMod || ergoData.recoilDurationAdd
-    || muz.recoilDurationOverride != null || muz.recoilDecreaseTimeExponentAdd
+    || smoothing.recoilDurationOverride != null || muz.recoilDecreaseTimeExponentAdd
     || ergoData.recoilDecreaseFactorOverride != null || ergoData.recoilDecreaseTimeExponentOverride != null
     || ergoSemi.recoilDecreaseFactorMult != null)
     ? Object.fromEntries(Object.entries(w.recoil).map(([state, group]) => [state, {
@@ -674,8 +681,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
       ...(state === 'hip' && totalHipVarTierMod
         ? { dirVarExp: (group.dirVarExp ?? 0) + totalHipVarTierMod } : {}),
       // Model choice: apply the Smooth override before the receiver's additive change.
-      ...((group.duration != null && ergoData.recoilDurationAdd) || muz.recoilDurationOverride != null
-        ? { duration: +Math.max(0, (muz.recoilDurationOverride ?? group.duration)
+      ...((group.duration != null && ergoData.recoilDurationAdd) || smoothing.recoilDurationOverride != null
+        ? { duration: +Math.max(0, (smoothing.recoilDurationOverride ?? group.duration)
           + (ergoData.recoilDurationAdd ?? 0)).toFixed(6) } : {}),
     }]))
     : w.recoil;
@@ -690,8 +697,8 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     _adsSpreadFiringDecCoefMult:   bar.adsSpreadFiringDecCoefMult ?? 1,
     _adsSpreadFiringDecOffsetMult: bar.adsSpreadFiringDecOffsetMult ?? 1,
     _adsSpreadNotFiringDecOffsetMult: bar.adsSpreadNotFiringDecOffsetMult ?? 1,
-    _adsRecoilDecayMult:     muz.adsRecoilDecayMult ?? 1,
-    _hipRecoilDecayMult:     muz.hipRecoilDecayMult ?? 1,
+    _adsRecoilDecayMult:     smoothing.adsRecoilDecayMult ?? 1,
+    _hipRecoilDecayMult:     smoothing.hipRecoilDecayMult ?? 1,
     _hipSpreadFiringDecCoefMult: (lit?.hipSpreadFiringDecCoefMult ?? 1) * (las.hipSpreadFiringDecCoefMult ?? 1),
     _hipSpreadFiringDecOffsetMult: (lit?.hipSpreadFiringDecOffsetMult ?? 1) * (las.hipSpreadFiringDecOffsetMult ?? 1),
     _hipSpreadNotFiringDecOffsetMult: (lit?.hipSpreadNotFiringDecOffsetMult ?? 1) * (las.hipSpreadNotFiringDecOffsetMult ?? 1),

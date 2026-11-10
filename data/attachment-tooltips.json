@@ -478,7 +478,8 @@
     "A5A8D05D": "Precision optic with magnification levels between 2x and 8x, which can be manually cycled through. Slows aim down sights (ADS) movement speed.",
     "A353A7BC": "Precision optic with magnification levels between 3x and 10x, which can be manually cycled through. Slows aim down sights (ADS) movement speed.",
     "BAF3C37B": "Magnified optic with a clear sight picture.",
-    "361DB892": "Magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection. Slows aim down sights (ADS) movement speed."
+    "361DB892": "Magnified optic with thermal mode that detects heat signatures. Smoke volumes can disrupt thermal detection. Slows aim down sights (ADS) movement speed.",
+    "E4BDD91B": "Moderately reduces recoil."
   },
   "byWeapon": {
     "m433": {
@@ -536,7 +537,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -556,7 +558,8 @@
       },
       "ergo": {
         "mag_flare": "ECC670D6",
-        "match_trigger": "14F044F9"
+        "match_trigger": "14F044F9",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -590,7 +593,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "b36a4": {
@@ -651,7 +655,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -674,7 +679,8 @@
       },
       "ergo": {
         "match_trigger": "14F044F9",
-        "buffer": "B127B844"
+        "buffer": "B127B844",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -708,7 +714,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "sor556": {
@@ -769,7 +776,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -828,7 +836,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "ak4d": {
@@ -887,7 +896,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -939,7 +949,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "tr7": {
@@ -993,7 +1004,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1047,7 +1059,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "kord6p67": {
@@ -1101,7 +1114,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1155,7 +1169,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "nvo228e": {
@@ -1212,7 +1227,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1266,7 +1282,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "l85a3": {
@@ -1328,7 +1345,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1350,7 +1368,8 @@
         "45_fast": "FAA9F4E9"
       },
       "ergo": {
-        "match_trigger": "14F044F9"
+        "match_trigger": "14F044F9",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -1384,7 +1403,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "vcr2": {
@@ -1441,7 +1461,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1495,7 +1516,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m16a4": {
@@ -1557,7 +1579,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1614,7 +1637,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m4a1": {
@@ -1673,7 +1697,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1728,7 +1753,9 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "dvo_lpvo": "2B85CBA7"
       }
     },
     "m277": {
@@ -1789,7 +1816,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1808,7 +1836,8 @@
       "ergo": {
         "mag_flare": "ECC670D6",
         "mag_catch": "F3B1FD64",
-        "match_trigger": "14F044F9"
+        "match_trigger": "14F044F9",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -1841,7 +1870,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "ak205": {
@@ -1889,7 +1919,8 @@
         "lp_stubby": "0C11D11E",
         "slim_angled": "3F37F281",
         "full_angled": "2B79C762",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -1945,7 +1976,9 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "dvo_lpvo": "2B85CBA7"
       }
     },
     "m417a2": {
@@ -2003,7 +2036,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2055,7 +2089,9 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "dvo_lpvo": "2B85CBA7"
       }
     },
     "grtbc": {
@@ -2107,7 +2143,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2159,7 +2196,9 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "dvo_lpvo": "2B85CBA7"
       }
     },
     "qbz192": {
@@ -2206,7 +2245,8 @@
         "full_angled": "2B79C762",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2256,7 +2296,9 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "dvo_lpvo": "2B85CBA7"
       }
     },
     "sg553r": {
@@ -2308,7 +2350,8 @@
         "lp_stubby": "0C11D11E",
         "slim_angled": "3F37F281",
         "full_angled": "2B79C762",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2364,7 +2407,9 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "dvo_lpvo": "2B85CBA7"
       }
     },
     "sor300sc": {
@@ -2420,7 +2465,8 @@
         "adj_angled": "52F61DA0",
         "slim_angled": "3F37F281",
         "full_angled": "2B79C762",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2479,7 +2525,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "sgx": {
@@ -2527,7 +2574,8 @@
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
         "slim_angled_smg": "263642D4",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2544,7 +2592,8 @@
         "41_rnd": "95200D98"
       },
       "ergo": {
-        "buffer": "B127B844"
+        "buffer": "B127B844",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -2576,7 +2625,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "pw5a3": {
@@ -2622,7 +2672,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281"
+        "slim_angled_smg": "3F37F281",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2674,7 +2725,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "pw7a2": {
@@ -2720,7 +2772,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "263642D4"
+        "slim_angled_smg": "263642D4",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2769,7 +2822,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "umg40": {
@@ -2818,7 +2872,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281"
+        "slim_angled_smg": "3F37F281",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -2870,7 +2925,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "usg90": {
@@ -2924,7 +2980,8 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64",
-        "buffer": "B127B844"
+        "buffer": "B127B844",
+        "fast_deploy": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -2956,7 +3013,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "kv9": {
@@ -3003,7 +3061,8 @@
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
         "slim_angled_smg": "3F37F281",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3052,7 +3111,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "scw10": {
@@ -3098,7 +3158,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281"
+        "slim_angled_smg": "3F37F281",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3147,7 +3208,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "sl9": {
@@ -3198,7 +3260,8 @@
         "ribbed_stubby": "474C527B",
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
-        "lp_stubby": "0C11D11E"
+        "lp_stubby": "0C11D11E",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3247,7 +3310,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "cz3a1": {
@@ -3293,7 +3357,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "263642D4"
+        "slim_angled_smg": "263642D4",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3345,7 +3410,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "pp19": {
@@ -3388,7 +3454,8 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "263642D4"
+        "slim_angled_smg": "263642D4",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3440,7 +3507,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "l110": {
@@ -3496,7 +3564,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3541,7 +3610,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "drsiar": {
@@ -3601,15 +3671,15 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "lightweight": "83C8318F",
         "hollow_pt": "F4F0FE8D",
-        "frangible": "2BA8E458",
-        "synthetic": "C65607FA"
+        "frangible": "2BA8E458"
       },
       "mag": {
         "30_rnd": "45D0A836",
@@ -3660,7 +3730,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m60": {
@@ -3717,7 +3788,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3762,7 +3834,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "rpkm": {
@@ -3821,7 +3894,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "canted_vertical": "C37CF95A",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3877,7 +3951,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m123k": {
@@ -3932,7 +4007,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "canted_vertical": "C37CF95A",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3977,7 +4053,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m250": {
@@ -4034,7 +4111,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "canted_vertical": "C37CF95A",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4079,7 +4157,11 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
+      },
+      "ergo": {
+        "rail_cover": "D520814B"
       }
     },
     "kts100": {
@@ -4138,7 +4220,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "canted_vertical": "C37CF95A",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4192,7 +4275,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m240l": {
@@ -4245,7 +4329,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4294,7 +4379,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m121a2": {
@@ -4350,7 +4436,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "canted_vertical": "C37CF95A",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4396,7 +4483,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "rpk74m": {
@@ -4454,7 +4542,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "canted_vertical": "C37CF95A",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4477,7 +4566,8 @@
       "ergo": {
         "mag_flare": "ECC670D6",
         "match_trigger": "14F044F9",
-        "buffer": "B127B844"
+        "buffer": "B127B844",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -4512,7 +4602,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m39emr": {
@@ -4569,7 +4660,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4630,7 +4722,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "lmr27": {
@@ -4688,7 +4781,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4748,7 +4842,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "svk86": {
@@ -4803,7 +4898,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "bipod_sr": "807009FF",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4856,7 +4952,11 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
+      },
+      "ergo": {
+        "rail_cover": "D520814B"
       }
     },
     "svdm": {
@@ -4913,7 +5013,8 @@
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
         "bipod_sr": "807009FF",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -4972,7 +5073,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "grtcps": {
@@ -5030,7 +5132,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -5089,7 +5192,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m2010esr": {
@@ -5147,7 +5251,8 @@
         "8_rnd": "718B36FB"
       },
       "ergo": {
-        "ads_bolt": "41AE0530"
+        "ads_bolt": "41AE0530",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -5189,7 +5294,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "sv98": {
@@ -5282,7 +5388,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "psr": {
@@ -5338,7 +5445,8 @@
       },
       "ergo": {
         "mag_catch": "F3B1FD64",
-        "ads_bolt": "41AE0530"
+        "ads_bolt": "41AE0530",
+        "rail_cover": "D520814B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -5380,7 +5488,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "miniscout": {
@@ -5481,7 +5590,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "l115": {
@@ -5495,7 +5605,8 @@
         "cqb_supp": "6804DEEC",
         "hybrid_supp_l": "0A2C0CC5",
         "hybrid_supp_s": "07D6E424",
-        "hybrid_supp_k": "0581BB83"
+        "hybrid_supp_k": "0581BB83",
+        "flash_hider": "50C99C0F"
       },
       "barrel": {
         "basic": "FDAF8DB2",
@@ -5580,7 +5691,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "interdictor": {
@@ -5672,7 +5784,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m87a1": {
@@ -5713,7 +5826,8 @@
         "adj_angled": "52F61DA0",
         "slim_angled": "3F37F281",
         "full_angled": "2B79C762",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "buckshot": "D910A530",
@@ -5756,7 +5870,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "m1014": {
@@ -5797,7 +5912,8 @@
         "adj_angled": "52F61DA0",
         "slim_angled": "3F37F281",
         "full_angled": "2B79C762",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "buckshot": "D910A530",
@@ -5840,7 +5956,11 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
+      },
+      "ergo": {
+        "rail_cover": "D520814B"
       }
     },
     "ks18k": {
@@ -5881,7 +6001,8 @@
         "6h64_vert_ks18k": "12DEAFDF",
         "classic_vert_ks18k": "2F912FE0",
         "stipp_stubby_ks18k": "1FCFFC3D",
-        "lp_stubby_ks18k": "0C11D11E"
+        "lp_stubby_ks18k": "0C11D11E",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "buckshot": "D910A530",
@@ -5928,7 +6049,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "db12": {
@@ -5966,7 +6088,9 @@
         "6h64_vert_db12": "12DEAFDF",
         "classic_vert_db12": "2F912FE0",
         "stipp_stubby_db12": "1FCFFC3D",
-        "lp_stubby_db12": "0C11D11E"
+        "lp_stubby_db12": "0C11D11E",
+        "rubberized_vert": "E4BDD91B",
+        "cmpct_handstop": "1CA5A583"
       },
       "ammo": {
         "buckshot": "D910A530",
@@ -6007,7 +6131,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "p18": {
@@ -6065,7 +6190,8 @@
         "flash_hider": "50C99C0F",
         "std_supp": "65AFB64B",
         "cqb_supp": "6804DEEC",
-        "compensator": "16A5F86C"
+        "compensator": "16A5F86C",
+        "flash_comp": "A2809736"
       },
       "barrel": {
         "basic": "107EF13A",
@@ -6088,7 +6214,8 @@
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
         "subsonic": "screenshot:es57:ammo:subsonic",
-        "subsonic_hp": "screenshot:es57:ammo:subsonic_hp"
+        "subsonic_hp": "screenshot:es57:ammo:subsonic_hp",
+        "synthetic": "C65607FA"
       },
       "mag": {
         "20_rnd": "F8D66B75",
@@ -6171,7 +6298,8 @@
       },
       "ergo": {
         "fast_deploy": "D520814B",
-        "fast_deploy_10": "377A95E9"
+        "fast_deploy_10": "377A95E9",
+        "match_trigger": "14F044F9"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -6197,7 +6325,12 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "mc_co_lpvo": "2930A306",
+        "grim_1_50x": "5D9A0ED0",
+        "pas_35_3_00x": "49DBE3B1",
+        "nfx_8_00x": "BAF3C37B"
       }
     },
     "ggh22": {
@@ -6229,7 +6362,8 @@
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
         "subsonic": "screenshot:ggh22:ammo:subsonic",
-        "subsonic_hp": "screenshot:ggh22:ammo:subsonic_hp"
+        "subsonic_hp": "screenshot:ggh22:ammo:subsonic_hp",
+        "synthetic": "C65607FA"
       },
       "mag": {
         "15_rnd": "A845352C",
@@ -6300,7 +6434,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "vz61": {
@@ -6408,7 +6543,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -6463,7 +6599,9 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775",
+        "dvo_lpvo": "2B85CBA7"
       }
     },
     "ef88": {
@@ -6521,7 +6659,8 @@
         "bipod": "807009FF",
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
-        "classic_grip_pod": "6161D2CE"
+        "classic_grip_pod": "6161D2CE",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -6575,7 +6714,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "vssm": {
@@ -6614,7 +6754,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "penetration": "78D58F2D",
@@ -6672,7 +6813,8 @@
         "ssds_6_00x": "BAF3C37B",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "mk24": {
@@ -6731,7 +6873,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -6787,7 +6930,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "elr40": {
@@ -6881,7 +7025,8 @@
         "ts_hd_6_00x": "361DB892",
         "lert_8_00x": "BAF3C37B",
         "nfx_8_00x": "BAF3C37B",
-        "r_vps_10_00x": "BAF3C37B"
+        "r_vps_10_00x": "BAF3C37B",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "z84m": {
@@ -6934,7 +7079,8 @@
         "ptt_grip_pod": "5CB7818C",
         "qd_grip_pod": "5F0CAA2D",
         "classic_grip_pod": "6161D2CE",
-        "canted_vertical": "C37CF95A"
+        "canted_vertical": "C37CF95A",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -6983,7 +7129,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     },
     "rspr": {
@@ -7034,7 +7181,8 @@
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
         "slim_angled_smg": "263642D4",
-        "actuated_module": "6FC0BDFC"
+        "actuated_module": "6FC0BDFC",
+        "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -7087,7 +7235,8 @@
         "pvq_31_4_00x": "423A4775",
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
-        "st_prism_5_00x": "423A4775"
+        "st_prism_5_00x": "423A4775",
+        "pa_sl_2_50x": "423A4775"
       }
     }
   }

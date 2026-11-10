@@ -453,6 +453,14 @@
       "pts": 10,
       "magnification": 10.0,
       "noEffect": true
+    },
+    {
+      "id": "pa_sl_2_50x",
+      "name": "PA-SL 2.50x",
+      "category": "std_optic",
+      "pts": 10,
+      "magnification": 2.5,
+      "noEffect": true
     }
   ],
   "MUZZLES": [
@@ -1441,6 +1449,12 @@
           "deployTimeTierShift": 0
         },
         "vz61": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "db12": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -7565,6 +7579,328 @@
           "deployTimeTierShift": 0
         }
       }
+    },
+    {
+      "id": "rubberized_vert",
+      "name": "Rubberized Vertical",
+      "adsRecoilTierMod": 3,
+      "movingAdsSpreadTierMod": 0,
+      "pts": 30,
+      "hipRecoilTierMod": 3,
+      "frostyModifiers": {
+        "m433": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "b36a4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sor556": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "ak4d": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "tr7": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kord6p67": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "nvo228e": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "l85a3": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "vcr2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m16a4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m4a1": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m277": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "ak205": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m417a2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "grtbc": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "qbz192": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sg553r": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sor300sc": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sgx": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "pw5a3": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "pw7a2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "umg40": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kv9": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "scw10": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "sl9": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "cz3a1": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "pp19": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "l110": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "drsiar": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m60": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rpkm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m123k": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m250": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "kts100": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m240l": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m121a2": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rpk74m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m39emr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "lmr27": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "svk86": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "svdm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "grtcps": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m87a1": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "m1014": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "ks18k": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "db12": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "brod3": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "ef88": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "vssm": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "mk24": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "rspr": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        }
+      }
     }
   ],
   "LASERS": [
@@ -9329,6 +9665,15 @@
         "hipRecoilTierMod": 3,
         "recoilDecreaseFactorMult": 1.728,
         "spreadIncMult": 0
+      },
+      "weaponOverrides": {
+        "m44": {
+          "pts": 10,
+          "semiAuto": null,
+          "adsRecoilDecayMult": 1.2,
+          "hipRecoilDecayMult": 1.2,
+          "recoilDurationOverride": 0.05
+        }
       }
     },
     {
@@ -9499,6 +9844,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "underslung_mount",
         "fold_stubby",
@@ -9617,6 +9963,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -9699,6 +10049,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -9760,6 +10114,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -9802,6 +10157,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "underslung_mount",
         "fold_stubby",
@@ -9920,6 +10276,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -9999,6 +10359,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -10063,6 +10427,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -10105,6 +10470,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "underslung_mount",
         "fold_stubby",
         "ribbed_stubby",
@@ -10223,6 +10589,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -10302,6 +10672,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -10366,6 +10740,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -10407,6 +10782,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "stipp_stubby",
@@ -10524,6 +10900,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -10606,6 +10986,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -10667,6 +11051,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -10707,6 +11092,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "fold_stubby",
         "ribbed_stubby",
         "classic_vert",
@@ -10820,6 +11206,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -10902,6 +11292,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -10963,6 +11357,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -10999,6 +11394,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "fold_stubby",
         "ribbed_stubby",
         "classic_vert",
@@ -11112,6 +11508,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -11194,6 +11594,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -11255,6 +11659,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -11296,6 +11701,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -11411,6 +11817,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -11493,6 +11903,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -11554,6 +11968,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -11597,6 +12012,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "underslung_mount",
         "fold_stubby",
@@ -11715,6 +12131,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -11797,6 +12217,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -11858,6 +12282,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -11905,6 +12330,7 @@
         "canted_stubby",
         "full_angled",
         "6h64_vert",
+        "rubberized_vert",
         "stipp_stubby",
         "classic_vert",
         "lp_stubby",
@@ -12014,6 +12440,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -12093,6 +12523,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -12157,6 +12591,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -12200,6 +12635,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "underslung_mount",
         "fold_stubby",
@@ -12294,6 +12730,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -12369,6 +12809,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -12429,6 +12873,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -12469,6 +12914,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "underslung_mount",
         "fold_stubby",
@@ -12587,304 +13033,7 @@
             },
             {
               "slot": "sight",
-              "attachment": "baker_3_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "pas_35_3_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "qmk_3_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "mgo_3_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "sdo_3_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "pvq_31_4_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "lds_4_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "sf_g2_5_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "st_prism_5_00x"
-            }
-          ]
-        },
-        {
-          "slot": "accessory",
-          "attachment": "secondary_optic",
-          "requiresAny": [
-            {
-              "slot": "sight",
-              "attachment": "osa_7_1_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "2pro_1_25x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "1p87_1_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "grim_1_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "su_123_1_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "3vzr_1_75x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "ro_m_1_75x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "cco_2_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "r4t_2_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "bf_2m_2_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "baker_3_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "pas_35_3_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "qmk_3_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "mgo_3_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "sdo_3_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "pvq_31_4_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "lds_4_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "sf_g2_5_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "st_prism_5_00x"
-            }
-          ]
-        }
-      ],
-      "sight": [
-        "iron",
-        "mini_flex_1_00x",
-        "ngfc_lpvo",
-        "osa_7_1_00x",
-        "r_mr_1_00x",
-        "su_230_lpvo",
-        "th_rds_1_00x",
-        "2pro_1_25x",
-        "cq_rds_1_25x",
-        "ro_s_1_25x",
-        "1p86_lpvo",
-        "1p87_1_50x",
-        "grim_1_50x",
-        "rox_1_50x",
-        "su_123_1_50x",
-        "3vzr_1_75x",
-        "a_p2_1_75x",
-        "ro_m_1_75x",
-        "cco_2_00x",
-        "r4t_2_00x",
-        "bf_2m_2_50x",
-        "baker_3_00x",
-        "pas_35_3_00x",
-        "qmk_3_00x",
-        "mgo_3_50x",
-        "sdo_3_50x",
-        "pvq_31_4_00x",
-        "lds_4_50x",
-        "sf_g2_5_00x",
-        "st_prism_5_00x"
-      ]
-    },
-    "m277": {
-      "muzzle": [
-        "light_supp",
-        "sp_brake",
-        "flash_hider",
-        "flash_comp",
-        "linear_comp",
-        "dp_brake",
-        "comp_brake",
-        "std_supp",
-        "long_supp",
-        "cqb_supp",
-        "compensator",
-        "hybrid_supp_l",
-        "hybrid_supp_k",
-        "hybrid_supp_s"
-      ],
-      "barrel": [
-        "basic",
-        "heavy",
-        "extended",
-        "heavy_ext",
-        "light",
-        "cryo"
-      ],
-      "barrelDef": "basic",
-      "grip": [
-        "fold_vert",
-        "alloy_vert",
-        "ribbed_vert",
-        "6h64_vert",
-        "classic_vert",
-        "underslung_mount",
-        "fold_stubby",
-        "ribbed_stubby",
-        "canted_stubby",
-        "stipp_stubby",
-        "lp_stubby",
-        "adj_angled",
-        "slim_angled",
-        "full_angled",
-        "slim_handstop",
-        "bipod",
-        "ptt_grip_pod",
-        "qd_grip_pod",
-        "classic_grip_pod",
-        "actuated_module"
-      ],
-      "laser": [
-        "50mw_violet",
-        "5mw_red",
-        "5mw_green",
-        "50mw_green",
-        "50mw_blue",
-        "120mw_blue"
-      ],
-      "light": [
-        "ads_taclight",
-        "hip_taclight",
-        "flashlight"
-      ],
-      "slots": {
-        "grip": {
-          "accepts": [
-            "grip"
-          ]
-        },
-        "laser": {
-          "accepts": [
-            "laser"
-          ]
-        },
-        "light": {
-          "accepts": [
-            "light"
-          ]
-        }
-      },
-      "dependencies": [
-        {
-          "slot": "accessory",
-          "attachment": "canted_irons",
-          "requiresAny": [
-            {
-              "slot": "sight",
-              "attachment": "mini_flex_1_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "osa_7_1_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "r_mr_1_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "2pro_1_25x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "cq_rds_1_25x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "ro_s_1_25x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "1p87_1_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "grim_1_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "rox_1_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "su_123_1_50x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "3vzr_1_75x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "a_p2_1_75x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "ro_m_1_75x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "cco_2_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "r4t_2_00x"
-            },
-            {
-              "slot": "sight",
-              "attachment": "bf_2m_2_50x"
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -12967,6 +13116,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -13030,6 +13183,319 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
+        "baker_3_00x",
+        "pas_35_3_00x",
+        "qmk_3_00x",
+        "mgo_3_50x",
+        "sdo_3_50x",
+        "pvq_31_4_00x",
+        "lds_4_50x",
+        "sf_g2_5_00x",
+        "st_prism_5_00x"
+      ]
+    },
+    "m277": {
+      "muzzle": [
+        "light_supp",
+        "sp_brake",
+        "flash_hider",
+        "flash_comp",
+        "linear_comp",
+        "dp_brake",
+        "comp_brake",
+        "std_supp",
+        "long_supp",
+        "cqb_supp",
+        "compensator",
+        "hybrid_supp_l",
+        "hybrid_supp_k",
+        "hybrid_supp_s"
+      ],
+      "barrel": [
+        "basic",
+        "heavy",
+        "extended",
+        "heavy_ext",
+        "light",
+        "cryo"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "rubberized_vert",
+        "classic_vert",
+        "underslung_mount",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "slim_handstop",
+        "bipod",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod",
+        "actuated_module"
+      ],
+      "laser": [
+        "50mw_violet",
+        "5mw_red",
+        "5mw_green",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "hip_taclight",
+        "flashlight"
+      ],
+      "slots": {
+        "grip": {
+          "accepts": [
+            "grip"
+          ]
+        },
+        "laser": {
+          "accepts": [
+            "laser"
+          ]
+        },
+        "light": {
+          "accepts": [
+            "light"
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "mini_flex_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "osa_7_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "r_mr_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "2pro_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "cq_rds_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "ro_s_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "1p87_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "grim_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "rox_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "su_123_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "3vzr_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "a_p2_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "ro_m_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "cco_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "r4t_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "baker_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pas_35_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "qmk_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "mgo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sdo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pvq_31_4_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "lds_4_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sf_g2_5_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "st_prism_5_00x"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "osa_7_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "2pro_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "1p87_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "grim_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "su_123_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "3vzr_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "ro_m_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "cco_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "r4t_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "baker_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pas_35_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "qmk_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "mgo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sdo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pvq_31_4_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "lds_4_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sf_g2_5_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "st_prism_5_00x"
+            }
+          ]
+        }
+      ],
+      "sight": [
+        "iron",
+        "dvo_lpvo",
+        "mini_flex_1_00x",
+        "ngfc_lpvo",
+        "osa_7_1_00x",
+        "r_mr_1_00x",
+        "su_230_lpvo",
+        "th_rds_1_00x",
+        "2pro_1_25x",
+        "cq_rds_1_25x",
+        "ro_s_1_25x",
+        "1p86_lpvo",
+        "1p87_1_50x",
+        "grim_1_50x",
+        "rox_1_50x",
+        "su_123_1_50x",
+        "3vzr_1_75x",
+        "a_p2_1_75x",
+        "ro_m_1_75x",
+        "cco_2_00x",
+        "r4t_2_00x",
+        "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -13065,6 +13531,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -13177,6 +13644,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -13256,6 +13727,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -13330,6 +13805,10 @@
             {
               "slot": "mag",
               "attachment": "50_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
             }
           ]
         },
@@ -13368,6 +13847,10 @@
             {
               "slot": "mag",
               "attachment": "50_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
             }
           ]
         },
@@ -13440,12 +13923,17 @@
             {
               "slot": "mag",
               "attachment": "50_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
             }
           ]
         }
       ],
       "sight": [
         "iron",
+        "dvo_lpvo",
         "mars_f_lpvo",
         "mini_flex_1_00x",
         "osa_7_1_00x",
@@ -13466,6 +13954,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -13505,6 +13994,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "underslung_mount",
         "fold_stubby",
@@ -13623,6 +14113,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -13705,6 +14199,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -13744,6 +14242,7 @@
       ],
       "sight": [
         "iron",
+        "dvo_lpvo",
         "mini_flex_1_00x",
         "ngfc_lpvo",
         "osa_7_1_00x",
@@ -13764,6 +14263,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -13804,6 +14304,7 @@
         "alloy_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "cmpct_handstop",
         "ribbed_stubby",
         "canted_stubby",
@@ -13911,6 +14412,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -13993,6 +14498,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -14032,6 +14541,7 @@
       ],
       "sight": [
         "iron",
+        "dvo_lpvo",
         "mars_f_lpvo",
         "mini_flex_1_00x",
         "osa_7_1_00x",
@@ -14052,6 +14562,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -14084,6 +14595,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "adj_angled",
         "slim_angled",
         "ribbed_stubby",
@@ -14198,6 +14710,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -14280,6 +14796,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -14319,6 +14839,7 @@
       ],
       "sight": [
         "iron",
+        "dvo_lpvo",
         "mars_f_lpvo",
         "mini_flex_1_00x",
         "osa_7_1_00x",
@@ -14339,6 +14860,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -14379,6 +14901,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "slim_angled",
         "ribbed_stubby",
         "canted_stubby",
@@ -14490,6 +15013,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -14572,6 +15099,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -14611,6 +15142,7 @@
       ],
       "sight": [
         "iron",
+        "dvo_lpvo",
         "mars_f_lpvo",
         "mini_flex_1_00x",
         "osa_7_1_00x",
@@ -14631,6 +15163,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -14675,6 +15208,7 @@
         "fold_stubby",
         "adj_angled",
         "6h64_vert",
+        "rubberized_vert",
         "slim_angled",
         "full_angled",
         "slim_handstop",
@@ -14786,6 +15320,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -14865,6 +15403,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -14930,6 +15472,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -14967,6 +15510,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "fold_stubby",
         "classic_vert",
         "lp_stubby",
@@ -15214,6 +15758,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -15249,6 +15794,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -15355,6 +15901,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -15433,6 +15983,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -15492,6 +16046,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -15530,6 +16085,7 @@
         "fold_stubby",
         "slim_angled_smg",
         "6h64_vert",
+        "rubberized_vert",
         "ribbed_stubby",
         "canted_stubby",
         "classic_vert",
@@ -15637,6 +16193,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -15719,6 +16279,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -15778,6 +16342,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -15819,6 +16384,7 @@
         "fold_stubby",
         "slim_angled_smg",
         "6h64_vert",
+        "rubberized_vert",
         "ribbed_stubby",
         "canted_stubby",
         "classic_vert",
@@ -16000,6 +16566,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -16055,6 +16625,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -16193,6 +16764,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -16275,6 +16850,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -16334,6 +16913,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -16369,6 +16949,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "fold_stubby",
         "lp_stubby",
         "ribbed_stubby",
@@ -16480,6 +17061,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -16562,6 +17147,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -16621,6 +17210,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -16657,6 +17247,7 @@
         "ribbed_vert",
         "lp_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "alloy_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -16766,6 +17357,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -16848,6 +17443,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -16907,6 +17506,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -16952,6 +17552,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert"
       ],
       "laser": [
@@ -17053,6 +17654,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -17135,6 +17740,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -17194,6 +17803,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -17234,6 +17844,7 @@
         "ribbed_vert",
         "canted_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "stipp_stubby",
         "classic_vert",
         "lp_stubby"
@@ -17339,6 +17950,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -17421,6 +18036,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -17480,6 +18099,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -17512,6 +18132,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -17701,6 +18322,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -17962,6 +18587,28 @@
         },
         {
           "slot": "grip",
+          "attachment": "rubberized_vert",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "20_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "35_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "grip",
           "attachment": "slim_angled_smg",
           "requiresAny": [
             {
@@ -18027,6 +18674,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -18067,6 +18715,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "slim_angled",
         "ribbed_stubby",
         "canted_stubby",
@@ -18182,6 +18831,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -18264,6 +18917,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -18325,6 +18982,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -18368,6 +19026,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "adj_angled",
         "slim_angled",
         "ribbed_stubby",
@@ -18484,6 +19143,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -18566,6 +19229,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -18627,6 +19294,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -18667,6 +19335,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "adj_angled",
         "slim_angled",
         "ribbed_stubby",
@@ -18783,6 +19452,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -18865,6 +19538,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -18926,6 +19603,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -18967,6 +19645,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "adj_angled",
         "slim_angled",
         "ribbed_stubby",
@@ -19084,6 +19763,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -19163,6 +19846,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -19321,6 +20008,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -19360,6 +20048,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "ribbed_stubby",
         "canted_stubby",
         "full_angled",
@@ -19475,6 +20164,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -19557,6 +20250,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -19618,6 +20315,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -19657,6 +20355,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "adj_angled",
         "slim_angled",
         "ribbed_stubby",
@@ -19774,6 +20473,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -19856,6 +20559,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -19917,6 +20624,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -19957,6 +20665,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "slim_angled",
         "ribbed_stubby",
         "canted_stubby",
@@ -20071,6 +20780,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -20153,6 +20866,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -20214,6 +20931,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -20251,6 +20969,7 @@
         "ribbed_vert",
         "fold_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "slim_angled",
         "ribbed_stubby",
         "canted_stubby",
@@ -20366,6 +21085,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -20448,6 +21171,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -20509,6 +21236,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -20554,6 +21282,7 @@
         "full_angled",
         "stipp_stubby",
         "6h64_vert",
+        "rubberized_vert",
         "lp_stubby",
         "classic_vert",
         "bipod",
@@ -20664,6 +21393,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -20746,6 +21479,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -20807,6 +21544,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -20846,6 +21584,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -20964,6 +21703,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -21043,6 +21786,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -21218,6 +21965,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -21257,6 +22005,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -21374,6 +22123,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -21476,6 +22229,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -21558,6 +22315,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -21605,6 +22363,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -21722,6 +22481,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -21820,6 +22583,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -21902,6 +22669,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -21946,6 +22714,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert_svk86",
+        "rubberized_vert",
         "classic_vert_svk86",
         "fold_stubby",
         "ribbed_stubby",
@@ -22063,6 +22832,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -22161,6 +22934,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -22243,6 +23020,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -22288,6 +23066,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -22406,6 +23185,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -22504,6 +23287,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -22586,6 +23373,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -22639,6 +23427,7 @@
         "canted_stubby",
         "full_angled",
         "6h64_vert",
+        "rubberized_vert",
         "stipp_stubby",
         "classic_vert",
         "lp_stubby",
@@ -22750,6 +23539,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -22848,6 +23641,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -22930,6 +23727,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -23237,6 +24035,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -23335,6 +24137,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -23417,6 +24223,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -23718,6 +24525,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -23812,6 +24623,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -23894,6 +24709,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -24199,6 +25015,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -24297,6 +25117,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -24379,6 +25203,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -24680,6 +25505,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -24774,6 +25603,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -24856,6 +25689,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -25142,6 +25976,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -25240,6 +26078,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -25318,6 +26160,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -25338,6 +26181,7 @@
     },
     "l115": {
       "muzzle": [
+        "flash_hider",
         "dp_brake",
         "sp_brake",
         "comp_brake",
@@ -25623,6 +26467,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -25717,6 +26565,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -25799,6 +26651,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -25837,6 +26690,7 @@
         "fold_stubby",
         "adj_angled",
         "6h64_vert",
+        "rubberized_vert",
         "canted_stubby",
         "ribbed_vert",
         "classic_vert",
@@ -25927,6 +26781,10 @@
             {
               "slot": "sight",
               "attachment": "r4t_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -26039,6 +26897,10 @@
             {
               "slot": "mag",
               "attachment": "7_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "8_rnd"
             }
           ]
         },
@@ -26100,6 +26962,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -26131,6 +26994,7 @@
         "fold_stubby",
         "adj_angled",
         "6h64_vert",
+        "rubberized_vert",
         "canted_stubby",
         "ribbed_vert",
         "classic_vert",
@@ -26233,6 +27097,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -26365,6 +27233,10 @@
             {
               "slot": "mag",
               "attachment": "6_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "8_rnd"
             }
           ]
         },
@@ -26427,6 +27299,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -26459,6 +27332,7 @@
         "fold_vert",
         "fold_stubby",
         "6h64_vert_ks18k",
+        "rubberized_vert",
         "canted_stubby",
         "ribbed_vert",
         "classic_vert_ks18k",
@@ -26567,6 +27441,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -26649,6 +27527,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -26708,6 +27590,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -26731,12 +27614,14 @@
       "barrelDef": "basic",
       "grip": [
         "factory_angled_db12",
+        "cmpct_handstop",
         "slim_handstop",
         "fold_vert",
         "alloy_vert",
         "fold_stubby",
         "ribbed_vert",
         "6h64_vert_db12",
+        "rubberized_vert",
         "slim_angled",
         "ribbed_stubby",
         "canted_stubby",
@@ -26845,6 +27730,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -26927,6 +27816,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -26986,6 +27879,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -27048,6 +27942,7 @@
     "es57": {
       "muzzle": [
         "flash_hider",
+        "flash_comp",
         "sp_brake",
         "std_supp",
         "cqb_supp",
@@ -27202,6 +28097,7 @@
       "grip": [],
       "sight": [
         "iron",
+        "mc_co_lpvo",
         "mini_flex_1_00x",
         "osa_7_1_00x",
         "r_mr_1_00x",
@@ -27209,6 +28105,7 @@
         "cq_rds_1_25x",
         "ro_s_1_25x",
         "1p87_1_50x",
+        "grim_1_50x",
         "rox_1_50x",
         "su_123_1_50x",
         "3vzr_1_75x",
@@ -27217,14 +28114,17 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
+        "pas_35_3_00x",
         "qmk_3_00x",
         "mgo_3_50x",
         "sdo_3_50x",
         "pvq_31_4_00x",
         "lds_4_50x",
         "sf_g2_5_00x",
-        "st_prism_5_00x"
+        "st_prism_5_00x",
+        "nfx_8_00x"
       ],
       "slots": {
         "grip": {
@@ -27279,6 +28179,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "qmk_3_00x",
         "mgo_3_50x",
@@ -27386,6 +28287,7 @@
         "ptt_grip_pod",
         "qd_grip_pod",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "canted_stubby",
         "stipp_stubby",
@@ -27498,6 +28400,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -27580,6 +28486,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -27619,6 +28529,7 @@
       ],
       "sight": [
         "iron",
+        "dvo_lpvo",
         "mars_f_lpvo",
         "mini_flex_1_00x",
         "ngfc_lpvo",
@@ -27640,6 +28551,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -27685,6 +28597,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "fold_stubby",
         "ribbed_stubby",
         "canted_stubby",
@@ -27801,6 +28714,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -27879,6 +28796,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -27940,6 +28861,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -27963,6 +28885,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -28079,6 +29002,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -28177,6 +29104,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -28259,6 +29190,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -28306,6 +29238,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -28423,6 +29356,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -28497,6 +29434,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -28550,6 +29491,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -28842,6 +29784,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -28937,6 +29883,10 @@
             {
               "slot": "sight",
               "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
             },
             {
               "slot": "sight",
@@ -29080,6 +30030,7 @@
         "r4t_2_00x",
         "sm_rifle_variable",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "1p88_variable",
         "baker_3_00x",
         "pas_35_3_00x",
@@ -29123,6 +30074,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -29239,6 +30191,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -29321,6 +30277,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -29382,6 +30342,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -29422,6 +30383,7 @@
         "alloy_vert",
         "ribbed_vert",
         "6h64_vert",
+        "rubberized_vert",
         "classic_vert",
         "fold_stubby",
         "ribbed_stubby",
@@ -29532,6 +30494,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -29614,6 +30580,10 @@
             },
             {
               "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
               "attachment": "baker_3_00x"
             },
             {
@@ -29673,6 +30643,7 @@
         "cco_2_00x",
         "r4t_2_00x",
         "bf_2m_2_50x",
+        "pa_sl_2_50x",
         "baker_3_00x",
         "pas_35_3_00x",
         "qmk_3_00x",
@@ -29688,12 +30659,14 @@
   "WEAPON_ERGO": {
     "m433": {
       "avail": [
+        "rail_cover",
         "mag_flare",
         "match_trigger"
       ]
     },
     "b36a4": {
       "avail": [
+        "rail_cover",
         "match_trigger",
         "buffer"
       ]
@@ -29732,6 +30705,7 @@
     },
     "l85a3": {
       "avail": [
+        "rail_cover",
         "match_trigger"
       ]
     },
@@ -29752,6 +30726,7 @@
     },
     "m277": {
       "avail": [
+        "rail_cover",
         "mag_catch",
         "mag_flare",
         "match_trigger"
@@ -29822,7 +30797,8 @@
     "usg90": {
       "avail": [
         "mag_catch",
-        "buffer"
+        "buffer",
+        "fast_deploy"
       ]
     },
     "scw10": {
@@ -29900,6 +30876,7 @@
     },
     "m2010esr": {
       "avail": [
+        "rail_cover",
         "ads_bolt"
       ]
     },
@@ -29911,6 +30888,7 @@
     },
     "psr": {
       "avail": [
+        "rail_cover",
         "mag_catch",
         "ads_bolt"
       ]
@@ -29926,6 +30904,7 @@
     },
     "rpk74m": {
       "avail": [
+        "rail_cover",
         "buffer",
         "mag_flare",
         "match_trigger"
@@ -29962,7 +30941,8 @@
     "m44": {
       "avail": [
         "fast_deploy",
-        "fast_deploy_10"
+        "fast_deploy_10",
+        "match_trigger"
       ]
     },
     "ggh22": {
@@ -29983,6 +30963,7 @@
     },
     "sgx": {
       "avail": [
+        "rail_cover",
         "buffer"
       ]
     },
@@ -30053,6 +31034,21 @@
         "mag_catch",
         "match_trigger",
         "buffer"
+      ]
+    },
+    "m1014": {
+      "avail": [
+        "rail_cover"
+      ]
+    },
+    "m250": {
+      "avail": [
+        "rail_cover"
+      ]
+    },
+    "svk86": {
+      "avail": [
+        "rail_cover"
       ]
     }
   },
@@ -30572,6 +31568,17 @@
           "reloadSpeedTier": 0,
           "deployTimeTierShift": 0,
           "movingAdsSpreadTierMod": 0
+        },
+        "60_rnd": {
+          "name": "60 Rnd",
+          "pts": 55,
+          "mag": 60,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 1,
+          "movingAdsSpreadTierMod": 0
         }
       },
       "sprintRecoveryBaseIndex": 6,
@@ -31085,6 +32092,30 @@
           "reloadSpeedTier": 1,
           "deployTimeTierShift": 1,
           "movingAdsSpreadTierMod": 0
+        },
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -2,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -2,
+          "movingAdsSpreadTierMod": 1,
+          "weaponSwayMult": 0.4444444
+        },
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 1,
+          "weaponSwayMult": 0.6666667
         }
       },
       "sprintRecoveryBaseIndex": 6,
@@ -31620,6 +32651,17 @@
           "reloadSpeedTier": 0,
           "deployTimeTierShift": -1,
           "movingAdsSpreadTierMod": 0
+        },
+        "75_rnd": {
+          "name": "75 Rnd",
+          "pts": 20,
+          "mag": 75,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
         }
       },
       "sprintRecoveryBaseIndex": 2,
@@ -31662,6 +32704,17 @@
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 0,
           "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "8_rnd": {
+          "name": "8 Rnd",
+          "pts": 35,
+          "mag": 8,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 1,
           "movingAdsSpreadTierMod": 0
         }
       },
@@ -31860,6 +32913,17 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "75_rnd": {
+          "name": "75 Rnd",
+          "pts": 30,
+          "mag": 75,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 0,
           "deployTimeTierShift": 1,
           "movingAdsSpreadTierMod": 0
@@ -32293,6 +33357,17 @@
           "adsMoveSpeedTierShift": 0,
           "reloadSpeedTier": 0,
           "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "8_rnd": {
+          "name": "8 Rnd",
+          "pts": 20,
+          "mag": 8,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 0,
           "movingAdsSpreadTierMod": 0
         }
       },

@@ -489,7 +489,6 @@
         "penetration": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG",
         "hollow_pt": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG",
         "frangible": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG",
-        "synthetic": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG",
         "lightweight": "Common/Hardware/Weapons/_Bullets/PD_556x45mmNATO_MG"
       }
     },
@@ -512,7 +511,8 @@
         "frangible": "Common/Hardware/Weapons/_Bullets/PD_57x28mm",
         "hollow_pt": "Common/Hardware/Weapons/_Bullets/PD_57x28mm",
         "subsonic": "Common/Hardware/Weapons/_Bullets/PD_57x28mm",
-        "subsonic_hp": "Common/Hardware/Weapons/_Bullets/PD_57x28mm"
+        "subsonic_hp": "Common/Hardware/Weapons/_Bullets/PD_57x28mm",
+        "synthetic": "Common/Hardware/Weapons/_Bullets/PD_57x28mm"
       }
     },
     "ggh22": {
@@ -523,7 +523,8 @@
         "frangible": "Common/Hardware/Weapons/_Bullets/PD_.40SW",
         "hollow_pt": "Common/Hardware/Weapons/_Bullets/PD_.40SW",
         "subsonic": "Common/Hardware/Weapons/_Bullets/PD_.40SW",
-        "subsonic_hp": "Common/Hardware/Weapons/_Bullets/PD_.40SW"
+        "subsonic_hp": "Common/Hardware/Weapons/_Bullets/PD_.40SW",
+        "synthetic": "Common/Hardware/Weapons/_Bullets/PD_.40SW"
       }
     },
     "grtbc": {

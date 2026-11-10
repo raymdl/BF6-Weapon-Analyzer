@@ -301,7 +301,7 @@ export function computeAttPts(atts, weapon, data) {
   const lookups = getLookups(data);
   const wm = data.WEAPON_MAG[wid] ?? null;
   const magPts = wm?.mags?.[atts.mag ?? wm?.def]?.pts ?? 0;
-  const ergoPts = lookups.ERGOS[atts.ergo ?? 'none']?.pts ?? 0;
+  const ergoPts = getAttPts(lookups.ERGOS[atts.ergo ?? 'none'], weapon);
   const accessoryPts = lookups.ACCESSORIES[atts.accessory ?? 'none']?.pts ?? 0;
   const mounts = resolveMountAttachments(atts, weapon, data);
   return (data.WEAPON_ATTS[wid]?.sightPoints?.[atts.sight ?? 'iron'] ?? getAttPts(lookups.SIGHTS[atts.sight ?? 'iron']))

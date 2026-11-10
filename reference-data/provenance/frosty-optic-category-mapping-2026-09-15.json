@@ -1257,6 +1257,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m433",
+          "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -2920,6 +2931,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "b36a4",
+          "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -4596,6 +4618,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "sor556",
+          "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -6272,6 +6305,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "ak4d",
+          "source": "Common/Hardware/weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -7948,6 +7992,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "tr7",
+          "source": "Common/Hardware/weapons/AssaultRifle/Tavor7/Attachment_Tavor7_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -9619,6 +9674,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "kord6p67",
+          "source": "Common/Hardware/Weapons/AssaultRifle/6p67/Attachment_6P67_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -11295,6 +11361,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "nvo228e",
+          "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -12971,6 +13048,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "l85a3",
+          "source": "Common/Hardware/weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -14658,6 +14746,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "vcr2",
+          "source": "Common/Hardware/Weapons/AssaultRifle/VHS2/Attachment_VHS2_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -16421,6 +16520,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m16a4",
+          "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -18116,6 +18226,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m4a1",
+          "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -18272,6 +18393,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m4a1",
+          "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -19692,6 +19824,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m277",
+          "source": "Common/Hardware/weapons/Carbine/XM7/Attachment_XM7_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -21318,6 +21461,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "ak205",
+          "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -21474,6 +21628,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "ak205",
+          "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -22913,6 +23078,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m417a2",
+          "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -23069,6 +23245,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m417a2",
+          "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -24489,6 +24676,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "grtbc",
+          "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -24645,6 +24843,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "grtbc",
+          "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -26065,6 +26274,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "qbz192",
+          "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -26221,6 +26441,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "qbz192",
+          "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -27641,6 +27872,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "sg553r",
+          "source": "Common/Hardware/weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -27797,6 +28039,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "sg553r",
+          "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -29217,6 +29470,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "sor300sc",
+          "source": "Common/Hardware/weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -30943,6 +31207,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "sgx",
+          "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -32514,6 +32789,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "pw5a3",
+          "source": "Common/Hardware/weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -34090,6 +34376,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "pw7a2",
+          "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -35718,6 +36015,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "umg40",
+          "source": "Common/Hardware/weapons/SMG/UMP40/Attachment_UMP40_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -37294,6 +37602,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "usg90",
+          "source": "Common/Hardware/weapons/SMG/P90/Attachment_P90_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -38870,6 +39189,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "kv9",
+          "source": "Common/Hardware/weapons/SMG/Vector/Attachment_Vector_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -40446,6 +40776,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "scw10",
+          "source": "Common/Hardware/weapons/SMG/APC10/Attachment_APC10_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -42022,6 +42363,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "sl9",
+          "source": "Common/Hardware/weapons/SMG/APDW/Attachment_APDW_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -43609,6 +43961,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "cz3a1",
+          "source": "Common/Hardware/Weapons/SMG/ScorpionEvo3/Attachment_ScorpionEvo3_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -45180,6 +45543,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "pp19",
+          "source": "Common/Hardware/Weapons/SMG/PP19/Attachment_PP19_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -46793,6 +47167,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "l110",
+          "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -48469,6 +48854,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "drsiar",
+          "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -50145,6 +50541,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m60",
+          "source": "Common/Hardware/weapons/MG/M60E6/Attachment_M60E6_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -51826,6 +52233,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "rpkm",
+          "source": "Common/Hardware/weapons/MG/RPKM/Attachment_RPKM_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -53502,6 +53920,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m123k",
+          "source": "Common/Hardware/weapons/MG/MG4K/Attachment_MG4K_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -55173,6 +55602,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m250",
+          "source": "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -56849,6 +57289,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "kts100",
+          "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -58525,6 +58976,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m240l",
+          "source": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -60212,6 +60674,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m121a2",
+          "source": "Common/Hardware/Weapons/MG/MG5/Attachment_MG5_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -61933,6 +62406,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "rpk74m",
+          "source": "Common/Hardware/Weapons/MG/RPK74M/Attachment_RPK74M_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -63945,6 +64429,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m39emr",
+          "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -66021,6 +66516,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "lmr27",
+          "source": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -68097,6 +68603,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "svk86",
+          "source": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -70173,6 +70690,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "svdm",
+          "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -72260,6 +72788,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "grtcps",
+          "source": "Common/Hardware/Weapons/DMR/MSBSGROTCPS/Attachment_MSBSGROTCPS_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -74363,6 +74902,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m2010esr",
+          "source": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -76440,6 +76990,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "sv98",
+          "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -78523,6 +79084,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "psr",
+          "source": "Common/Hardware/weapons/BoltAction/MRAD/Attachment_MRAD_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -80600,6 +81172,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "miniscout",
+          "source": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -82648,6 +83231,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "l115",
+          "source": "Common/Hardware/Weapons/BoltAction/L115A3/Attachment_L115A3_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -84760,6 +85354,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "interdictor",
+          "source": "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -86602,6 +87207,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m87a1",
+          "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -88128,6 +88744,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m1014",
+          "source": "Common/Hardware/weapons/shotgun/M1014/Attachment_M1014_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -89704,6 +90331,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "ks18k",
+          "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -91240,6 +91878,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "db12",
+          "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -93894,6 +94543,28 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m44",
+          "source": "Common/Hardware/weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
+        },
+        {
+          "weapon": "m44",
+          "source": "Common/Hardware/weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_NX8-4",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 8.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -95374,6 +96045,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "m357trait",
+          "source": "Common/Hardware/weapons/Secondary/TRR8/Attachment_TRR8_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -97018,6 +97700,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "brod3",
+          "source": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -97240,6 +97933,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "brod3",
+          "source": "Common/Hardware/Weapons/Carbine/BREN3/Attachment_BREN3_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -98679,6 +99383,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "ef88",
+          "source": "Common/Hardware/Weapons/AssaultRifle/EF88/Attachment_EF88_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -100640,6 +101355,17 @@
             }
           ],
           "status": "category-member"
+        },
+        {
+          "weapon": "vssm",
+          "source": "Common/Hardware/Weapons/DMR/VSSM/Attachment_VSSM_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ]
     },
@@ -101471,6 +102197,17 @@
           "labelBasis": "aam-without-slot",
           "status": "category-member",
           "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "mk24",
+          "source": "Common/Hardware/Weapons/AssaultRifle/MRGGA/Attachment_MRGGA_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ],
       "sourceBuild": "2.1.1.0"
@@ -101951,6 +102688,17 @@
           "labelBasis": "aam-without-slot",
           "status": "category-member",
           "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "elr40",
+          "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ],
       "sourceBuild": "2.1.1.0"
@@ -102408,6 +103156,17 @@
           "labelBasis": "aam-without-slot",
           "status": "category-member",
           "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "z84m",
+          "source": "Common/Hardware/Weapons/MG/PKM/Attachment_PKM_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ],
       "sourceBuild": "2.1.1.0"
@@ -102832,6 +103591,17 @@
           "labelBasis": "aam-without-slot",
           "status": "category-member",
           "sourceBuild": "2.1.1.0"
+        },
+        {
+          "weapon": "rspr",
+          "source": "Common/Hardware/Weapons/SMG/RSAR999/Attachment_RSAR999_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
         }
       ],
       "sourceBuild": "2.1.1.0"
@@ -102949,6 +103719,63 @@
         }
       ],
       "sourceBuild": "2.1.1.0"
+    },
+    {
+      "weapon": "m44",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_high",
+      "siteName": "Variable High",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "m44",
+          "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_TrijiconVCOG",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
+        }
+      ],
+      "update2120": "Category added in 2.1.2.0 (equipment list gained the optic)."
+    },
+    {
+      "weapon": "m44",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "thermal",
+      "siteName": "Thermal",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "m44",
+          "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_TrijiconREAPIR",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 1.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
+        },
+        {
+          "weapon": "m44",
+          "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_ANPAS35",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 3.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0",
+          "update2120": "Added from the raw 2.1.2.0 Attachment record and Equipment list (S9/C reader cache, A2-check)."
+        }
+      ],
+      "update2120": "Category added in 2.1.2.0 (equipment list gained the optic)."
     }
   ],
   "unresolvedSources": [],
@@ -109583,5 +110410,6 @@
     "Common/Hardware/weapons/SMG/Vector/AAM_Vector": "43adbd3f465a05e4d8dd9a63a9bc95ebd5a8b87fe1de1d1c79d1750b27e19a3f"
   },
   "descriptorSha256": "0bc8441eb4970fe760ba29688ff397656df8fcf01348506d4117910add03c3a9",
-  "additions": "Rows for mk24, elr40, z84m and rspr were added on 2026-10-13 from raw 2.1.1.0 EBX files (no XML export); see reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/C in the datamining folder. They carry sourceBuild 2.1.1.0. Their tooltip fields and iron-sight tooltips are not included (ironSightTooltips still counts the original 63)."
+  "additions": "Rows for mk24, elr40, z84m and rspr were added on 2026-10-13 from raw 2.1.1.0 EBX files (no XML export); see reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/C in the datamining folder. They carry sourceBuild 2.1.1.0. Their tooltip fields and iron-sight tooltips are not included (ironSightTooltips still counts the original 63).",
+  "update2120": "2.1.2.0 (10 Nov 2026): members added for PA-SL 2.50x (SCP_PAC25) on 62 weapons, DVO LPVO on the carbines whose equipment list gained Tango6T, and the M44 optics (VCOG, REAPIR, ANPAS35, NX8-4); coverage counts describe the earlier read."
 }
