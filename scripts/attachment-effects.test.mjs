@@ -403,7 +403,12 @@ test('new attachments preserve old share tokens and round-trip with traced weapo
   assert.deepEqual(codec.decodeAtts(l110, codec.encodeAtts(l110, atts)), atts);
 });
 
-test('weapon-specific ammunition prices reach loadout totals', () => {
+test('weapon-specific iron and ammunition prices reach loadout totals', () => {
+  for (const id of ['l115', 'm2010esr', 'miniscout', 'psr', 'sv98']) {
+    const w = weapon(id);
+    assert.equal(computeAttPts(loadout(w, { sight: 'iron' }), w, data)
+      - computeAttPts(loadout(w, { sight: 'std_optic' }), w, data), 10 - attachments.SIGHTS.find(a => a.id === 'std_optic').pts);
+  }
   for (const [id, choice] of [['rpk74m', 'synthetic'], ['rpk74m', 'hollow_pt'], ['scw10', 'hollow_pt']]) {
     const w = weapon(id), prices = ammo.WEAPON_AMMO[id].ammo;
     assert.equal(computeAttPts(loadout(w, { ammo: choice }), w, data)

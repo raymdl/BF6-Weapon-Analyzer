@@ -110,7 +110,7 @@ def main():
     # current-weapon modifier export. Keep that exclusion visible in the report.
     if any(not i['reference']['asset'].startswith(('Game/KingstonLegacy/', 'Test/TestData/')) for i in missing_wb):
         raise ValueError('Missing WB modifier asset; cannot infer zero handling effects')
-    graph = {r.get('sourceKey') or r['attachmentXml']: r for r in graph}
+    graph = {(r.get('sourceKey') or r['attachmentXml']).lower(): r for r in graph}   # raw routes keep the capture's folder case
     base_evidence = []
     registry = read(cfg.REGISTRY)
     for wid, fields in BASE_FIELDS.items():
@@ -230,9 +230,9 @@ def main():
             continue
         candidates = defaultdict(set)
         for path in paths:
-            entry = graph[path]
-            relevant = [i for i in graph_issues if i.get('attachmentXml') == path and i not in reviewed_unbound]
-            reviewed = [i for i in reviewed_unbound if i.get('attachmentXml') == path]
+            entry = graph[path.lower()]
+            relevant = [i for i in graph_issues if (i.get('attachmentXml') or '').lower() == path.lower() and i not in reviewed_unbound]
+            reviewed = [i for i in reviewed_unbound if (i.get('attachmentXml') or '').lower() == path.lower()]
             if reviewed:
                 row.setdefault('reviewedUnboundSelectors', []).extend(reviewed)
             if not entry['branches'] or relevant:

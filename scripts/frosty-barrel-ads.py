@@ -49,7 +49,7 @@ def main():
         return cache[path]
 
     graph, issues = cfg.attachment_graph(args.root, weapons, read)
-    graph = {r['attachmentXml']: r for r in graph}
+    graph = {r['attachmentXml'].lower(): r for r in graph}   # raw routes keep the capture's folder case
     expected = {(wid, bid) for wid, a in catalog['WEAPON_ATTS'].items()
                 for bid in a.get('barrel', []) if bid != 'none'}
     actual = {(r['weapon'], r['barrel']) for r in mapping}
@@ -58,10 +58,10 @@ def main():
     generated, evidence = {}, []
     for row in mapping:
         attachment = row['attachment']
-        entry = graph[attachment]
+        entry = graph[attachment.lower()]
         if not entry['branches']:
             raise ValueError(f'No ability branch: {attachment}')
-        relevant = [i for i in issues if i.get('attachmentXml') == attachment]
+        relevant = [i for i in issues if (i.get('attachmentXml') or '').lower() == attachment.lower()]
         if relevant:
             raise ValueError(f'Incomplete barrel graph: {relevant}')
         effects = {}

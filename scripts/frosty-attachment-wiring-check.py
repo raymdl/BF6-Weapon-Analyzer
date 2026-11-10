@@ -3,9 +3,9 @@
 Usage (from the repo root):
   python -I scripts/frosty-attachment-wiring-check.py --raw <raw root> --descriptors <SharedTypeDescriptors.ebx>
       [--catalog <asset-catalog.json>] [--new MRGGA CDX40 PKM RSAR999]
-  --raw          raw capture root (holds Common/Hardware/Weapons/...).
+  --raw          raw capture root (holds Common/Hardware/Weapons/...); repeat to add later capture folders, later wins.
   --descriptors  the build's SharedTypeDescriptors.ebx.
-  --catalog      asset-catalog.json that resolves import GUIDs; default: next to the raw folder.
+  --catalog      asset-catalog.json that resolves import GUIDs; default: next to the first raw folder.
   --new          weapon folders (Name or Class/Name) to report; default: every weapon.
 Signatures are built for all weapons (about 40 s cold). For each reported weapon and attachment it prints
   MISSING: an effect shape that 10 or more other weapons with the same attachment name carry and this one lacks;
@@ -41,10 +41,11 @@ class Raw:
         rows = cat["assets"] if isinstance(cat, dict) and "assets" in cat else cat
         self.byguid = {str(r["guid"]).lower(): r["path"] for r in rows}
         self.held, self.proper, self.cache = {}, {}, {}
-        for p in pathlib.Path(raw).rglob("*.ebx"):
-            r = p.relative_to(raw).as_posix()[:-4]
-            self.held[r.lower()] = str(p)
-            self.proper[r.lower()] = r
+        for folder in raw:    # later folders win
+            for p in pathlib.Path(folder).rglob("*.ebx"):
+                r = p.relative_to(folder).as_posix()[:-4]
+                self.held[r.lower()] = str(p)
+                self.proper[r.lower()] = r
 
     def load(self, route):
         k = route.lower()
@@ -303,13 +304,13 @@ def check_selectors(weapons, new, modes):
 
 def main():
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
-    ap.add_argument("--raw", required=True)
+    ap.add_argument("--raw", required=True, action="append")
     ap.add_argument("--descriptors", required=True)
     ap.add_argument("--catalog")
     ap.add_argument("--new", nargs="*", default=[])
     a = ap.parse_args()
-    raw = pathlib.Path(a.raw)
-    catalog = a.catalog or raw.parent / "asset-catalog.json"
+    raw = [pathlib.Path(r) for r in a.raw]
+    catalog = a.catalog or raw[0].parent / "asset-catalog.json"
     t0 = time.time()
     R = Raw(raw, a.descriptors, catalog)
     weapons = extract(R)

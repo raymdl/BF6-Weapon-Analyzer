@@ -92,12 +92,12 @@ def main():
     if any(i['reason'] == 'missing WB modifier asset'
            and not i['reference']['asset'].startswith(('Game/KingstonLegacy/', 'Test/TestData/')) for i in issues):
         raise ValueError('Missing current-weapon WB modifier asset')
-    graph = {r['attachmentXml']: r for r in graph}
+    graph = {r['attachmentXml'].lower(): r for r in graph}   # raw routes keep the capture's folder case
     rows = []
     for selection in selections:
         wid, aid, path = selection['siteWeaponId'], selection['siteId'], selection['attachmentXml']
-        entry = graph[path]
-        if any(i.get('attachmentXml') == path for i in issues) or len(entry['branches']) != 1:
+        entry = graph[path.lower()]
+        if any((i.get('attachmentXml') or '').lower() == path.lower() for i in issues) or len(entry['branches']) != 1:
             raise ValueError(f'Incomplete attachment graph: {path}')
         effects, nested, mode = {}, [], None
         for action in entry['branches'][0]['actions']:

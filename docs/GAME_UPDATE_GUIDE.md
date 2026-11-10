@@ -113,6 +113,9 @@ old build is gone. Keep the open build complete while it is installed:
   table lists the stages with a tick column and that update's paths, without repeating the
   steps. Working files stay in the update's run folders. Example:
   [2.1.1.0-checklist.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md).
+- Read [STALE_SITE_DATA.md](STALE_SITE_DATA.md) before writing the checklist: site values
+  already known to differ from the files. Those rows are not changes in this update; list
+  any that the patch notes touch so the update can close them.
 
 Write everything to the open build (`builds\<build>\capture\` or `xml\`), then run
 `record` and `verify`. Never write to a sealed build.
@@ -571,6 +574,15 @@ Check the note's wording against what you found. "Incorrect impact visual effect
 corrected" matched only *muzzle-flash* changes in the captured set; say so rather than
 forcing the match.
 
+**A contradiction needs a second, different method.** When the files disagree with a patch
+note (the note says a change was made and nothing stored changed, or the stored change differs
+from the note), the row stays "unresolved" until an independent route confirms it, and it goes
+on the operator's in-game list. Re-running the same check under the same conditions is not a
+second route. Different routes are, for example: record, binding and kill switch against the
+equipment list; the file against the registry row; a decoded value against a raw byte search.
+In 2.1.2.0 the DRS-IAR Synthetic Tip removal was first reported "not done" from the record,
+binding and kill switch alone; the equipment list showed it removed.
+
 Also review changes the notes do **not** mention. Both the SU-230 camera-recoil fix and the
 PiP setting binding were unannounced. Make this a pass of its own: list every changed value
 in a weapon, attachment or bullet file that no patch-note line explains, then read the same
@@ -628,6 +640,11 @@ way. The first check read only the other four conditions and reported the patch 
 "not done"; the operator then found it gone in game. Check a patch-note removal
 against this list before calling it not done. Check every "added" row against the census
 above, because an added row alone does not prove that the item is live.
+
+**Removal control.** Run the same command on the 2.1.1.0 to 2.1.2.0 pair as a control: it must
+list `M27IAR AMO_BallisticTip` (DRS-IAR Synthetic Tip) as removed. This is a permanent known
+removal; every availability or diff worker runs it beside its addition control (see
+"Haiku workers").
 
 Cross-check against the roadmap dates: an item with all five that the roadmap dates later is
 a future release. Two limits found in 2.1.1.0:
@@ -708,8 +725,28 @@ reused later.
    a game change the diff stages missed or site data that has gone stale. In 2.1.1.0 this is
    how the stale sight exclusions were found: the `Equipment_*` required-accessory lists had
    changed, and no checklist row pointed at them.
+   Run each one on the previous build's capture too: a difference that also appears there
+   is stale site data, not a game change. Add those rows to
+   [STALE_SITE_DATA.md](STALE_SITE_DATA.md), and remove any rows the update fixes.
+   Three generators cannot run on a new build until their inputs are refreshed. A run with the
+   check turned off is not a result:
+   - `frosty-sniper-brakes.py`: its trace hashes the source graphs. In 2.1.2.0, 298 graphs
+     differed from the 2026-10-13 trace (a graph re-bake). Refresh the trace on the new build
+     before the run, on any update whose comparison shows changed expression graphs.
+   - `frosty-ballistics.py`: needs a hit-zones trace taken on the new build. The current one
+     is from the 2026-09 XML export, so it fails on 4,286 stale sources. Refresh it once the
+     material grids of the new build are captured.
+   - `frosty-hit-zones.py`: needs the material grids, read with the bounded reader (see
+     "Hazards"). Capture them on every new build whose comparison shows changed grids or
+     bullet materials.
+   The wiring check takes `--raw` once per capture folder, later folders winning, the same as
+   the raw-mode generators.
 2. Decide which source changes require site changes. Not every diff does.
 3. Apply only those. Preserve the observed / fitted / native-confirmed evidence boundaries.
+   **Reach of a shared package.** When a shared package (`WPM_*`, `WME_*`, `PD_*`) changes,
+   count the weapons it reaches from the `Attachment_*` records and the equipment lists, not
+   from one worker's row count. In 2.1.2.0 the Magwell Flare reload bonus was first recorded
+   on 11 weapons; the records and lists give 15 (14 on the site).
 4. Run the narrow existing checks for the changed areas, not the whole suite. A test that
    fails only because it pins a data value the game changed is removed, not updated.
 5. Update source and build labels so retained old data is not presented as newly verified.
@@ -723,8 +760,14 @@ reused later.
    the site no longer rests on is marked `status: historical` with a note; a new patch-notes
    page is adopted as a source only by an explicit decision, never by default. The docs cite
    these records, so a stale record spreads into them.
-7. Record the implementation revision and the check results.
-8. **Close the run.** Run the `bf6-run-cleanup` skill on the update's run folder once the
+7. **Validate after integration.** Re-run the part A, B and C validators (and the raw-mode
+   generators) against the site data as committed, into a new folder. Every row labelled
+   "changed in <build>" must be gone, and only the known "site differs from both" rows may
+   remain. Any other row is a change dropped or mistyped during integration. The validators
+   compared the new build with the old site data, so before this step nothing shows such a
+   slip.
+8. Record the implementation revision and the check results.
+9. **Close the run.** Run the `bf6-run-cleanup` skill on the update's run folder once the
    site changes are pushed: it removes uncited copies and large regenerable files and records
    what it removed. Without it the datamining `reports\` folder had reached 22.5 GB by the
    2.1.1.0 update.
@@ -761,7 +804,7 @@ the Stage 7 availability census first.
    attachments, anything "not found"), and file values that look like game errors, which go
    to [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md).
 9. **Wiring check, once part C is in the site** (the fire-mode test reads `data/weapons.json`):
-   `python -I scripts/frosty-attachment-wiring-check.py --raw <raw root> --descriptors <SharedTypeDescriptors.ebx> --new <folders>`
+   `python -I scripts/frosty-attachment-wiring-check.py --raw <raw root> [--raw <later capture> ...] --descriptors <SharedTypeDescriptors.ebx> --catalog <asset-catalog.json> --new <folders>`
    (usage at the top of the script). It lists attachment effects and gun-sway bindings the new
    weapons lack or add against the roster, so such gaps (bugs 25 and 26) show before recordings.
    Add each finding to the operator list of step 8; after the in-game check, record confirmed
@@ -813,6 +856,25 @@ and Stage 9. The 7 October 2026 tests covered Haiku on bounded read-only tasks w
 brief and a checkable answer; they did not cover writing to the repos or judging models.
 About one run in four had a disclosed rule slip, so check each result against the files
 before recording it.
+
+**Controls.** Every diff or availability worker runs an addition control and a removal control
+alongside its real task: a known change on the previous build pair that its method must find.
+The permanent removal control is the DRS-IAR Synthetic Tip on the 2.1.1.0 to 2.1.2.0 pair
+(Stage 7). A failed control means the step is redone, with a corrected rule or a stronger
+model, before the stage is ticked. Pointing at another worker's partial result does not cover
+it.
+
+**Reconcile before reporting.** Before any summary to the operator, list every place where
+worker reports disagree (counts, verdicts, row sets) and resolve or flag each one. In 2.1.2.0
+the Rubberized Vertical was reported on 50 weapons, on every weapon and on two weapons by
+different workers (the equipment lists gave 54), and two workers counted 9 and 10 Match drag
+changes over different rows.
+
+**Mark confidence.** In every operator summary, mark each line as confirmed by two routes or
+resting on one worker. The 2.1.2.0 summaries had to be corrected three times, each on a
+single-worker line: the NSW4 bullet speed (no slower bullet was claimed; the base bullet is
+313 m/s), the Buffer change (4 values reported; 14 changed), and the DRS-IAR Synthetic Tip
+(reported not done; removed).
 
 ## Hazards
 

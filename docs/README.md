@@ -50,6 +50,7 @@ any remaining questions into an active handoff, and archive the completed record
 | [Weapon Attributes model](WEAPON_ATTRIBUTES_MODEL.md) | Research/model maintainers: Hipfire, Precision, Control and Mobility formulas, game naming, source inputs, preview rules and validation limits. Includes the current site integration. |
 | [Attachment model](ATTACHMENT_MODEL.md) | Model maintainers: selection, modifier composition, handling, reload, ammo, disclosure. |
 | [Frosty game data](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/README.md) | Data maintainers: Frosty exports, field meanings, asset links, source findings and open questions. |
+| [Known stale site data](STALE_SITE_DATA.md) | Maintainers: site values known to differ from the game files in two builds, read first on each update. |
 | [Game bugs and mismatches](ATTACHMENT_BUGS.md) | All readers: game data bugs (attachments, weapon stats, stat-panel errors), description errors and fixed site data errors, with evidence and status. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
 | [Recoil and spread](RECOIL_SPREAD_MODEL.md) | Model readers: per-shot equations, recovery, sampling, calibration, visual interpretation. |
