@@ -20,8 +20,16 @@ def main():
     parser.add_argument('--root', type=Path)
     raw_tree.add_raw_arguments(parser)
     parser.add_argument('--barrel-mapping', type=Path,
-                        default=ROOT / 'reference-data/provenance/frosty-barrel-ads-2026-09-13.json',
-                        help='Reviewed barrel identity rows')
+                        default=ROOT / 'reference-data/provenance/frosty-barrel-ads-2026-11-10.json',
+                        help='Reviewed barrel identity rows; its "identities" rows add weapons to --identities')
+    parser.add_argument('--identities', type=Path,
+                        default=ROOT / 'reference-data/provenance/frosty-weapon-identities.json',
+                        help='Reviewed weapon identities (research repo reference-data/provenance)')
+    parser.add_argument('--out', type=Path, default=ROOT / 'data/attachments.json',
+                        help='Where to write the regenerated catalog')
+    parser.add_argument('--report-out', type=Path,
+                        default=ROOT / 'reference-data/provenance/frosty-barrel-ads-generated.json',
+                        help='Where to write the generated evidence')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
     export = raw_tree.open_input(parser, args, args.root)
@@ -31,8 +39,9 @@ def main():
     spec.loader.exec_module(cfg)
     catalog_path = ROOT / 'data/attachments.json'
     catalog = json.loads(catalog_path.read_text(encoding='utf-8'))
-    mapping = json.loads(args.barrel_mapping.read_text(encoding='utf-8'))['rows']
-    identities = json.loads((ROOT / 'reference-data/provenance/frosty-weapon-identities.json').read_text())['weapons']
+    mapping_doc = json.loads(args.barrel_mapping.read_text(encoding='utf-8'))
+    mapping = mapping_doc['rows']
+    identities = json.loads(args.identities.read_text(encoding='utf-8'))['weapons'] + mapping_doc.get('identities', [])
     folders = {r['weapon']: Path(r['attachment']).parent for r in mapping}
     weapons = []
     for w in identities:
@@ -96,13 +105,12 @@ def main():
     report = {'generatedBy': 'scripts/frosty-barrel-ads.py',
               'route': 'WB animation/FOV; equal parallel effects counted once; no effect contributes zero',
               'rows': evidence, 'sourceHashes': hashes}
-    report_path = ROOT / 'reference-data/provenance/frosty-barrel-ads-generated.json'
     if args.check:
         if json.loads(catalog_path.read_text(encoding='utf-8')) != catalog:
             raise ValueError('Barrel ADS catalog differs from current Frosty XML')
     else:
-        catalog_path.write_text(output, encoding='utf-8')
-        report_path.write_text(json.dumps(export.mark(report), indent=2) + '\n', encoding='utf-8')
+        args.out.write_text(output, encoding='utf-8')
+        args.report_out.write_text(json.dumps(export.mark(report), indent=2) + '\n', encoding='utf-8')
     print(f'{len(evidence)} source attachments, {len(actual)} unique barrel selections generated from current Frosty XML')
 
 

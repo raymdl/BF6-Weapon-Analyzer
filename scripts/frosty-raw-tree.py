@@ -65,9 +65,10 @@ def load_order_table(path=ORDER_TABLE):
 class TreeBuilder:
     """Build the export element tree of one decoded asset."""
 
-    def __init__(self, types, path_by_guid, order_table, known_fields_only=False):
+    def __init__(self, types, path_by_guid, order_table, known_fields_only=False, ambiguous=None):
         self.types = types
         self.path_by_guid = path_by_guid
+        self.ambiguous = ambiguous or {}    # file GUID -> paths, when no catalog decides between them
         self.order_table = order_table
         # Opt-in: leave out fields the harvested export shape of a class lacks, so the
         # tree holds what the frozen SDK showed. A class with no harvested shape is kept whole.
@@ -245,6 +246,10 @@ class TreeBuilder:
             return f"[{tag}] {guid}"
         if "$import" in value:
             file_guid, class_guid = value["$import"]["fileGuid"], value["$import"]["classGuid"]
+            if file_guid.lower() in self.ambiguous:
+                raise ValueError(f"File GUID {file_guid} is listed by more than one asset "
+                                 f"({', '.join(self.ambiguous[file_guid.lower()])}); pass the loaded-cache "
+                                 "catalog (<capture>/collection/asset-catalog.json) as the first --catalog")
             path = self.path_by_guid.get(file_guid.lower())
             if path is None:
                 return f"[Ebx] BadRef {file_guid}/{class_guid}"
@@ -284,16 +289,39 @@ class RawPath(PureWindowsPath):
         return self.export.glob(self, "**/" + pattern)
 
 
+def guid_index(catalogs):
+    """(path by file GUID, ambiguous GUIDs) from one or more asset-catalog.json files.
+
+    The first catalog that lists a GUID decides its path. A capture holds two catalogs: the
+    loaded-cache one (collection/) lists every GUID once; the fresh-cache one also lists leftover
+    assets that reuse a live asset's GUID (WPM_BRL_Extended_W15 shares WPM_BRL_Extended_W05's).
+    Pass the loaded-cache catalog first. A GUID that two paths of the deciding catalog share is
+    ambiguous: dereferencing it is an error, never a guess."""
+    if isinstance(catalogs, (str, os.PathLike)):
+        catalogs = [catalogs]
+    path_by_guid, ambiguous = {}, {}
+    for catalog in catalogs:
+        listed = {}
+        for asset in json.loads(Path(catalog).read_text(encoding="utf-8"))["assets"]:
+            listed.setdefault(asset["guid"].lower(), []).append(asset["path"])
+        for guid, paths in listed.items():
+            if guid in path_by_guid or guid in ambiguous:
+                continue
+            if len(paths) == 1:
+                path_by_guid[guid] = paths[0]
+            else:
+                ambiguous[guid] = sorted(paths)
+    return path_by_guid, ambiguous
+
+
 class RawExport:
     """Raw capture folders read as one XML export. Later folders override earlier ones."""
 
     def __init__(self, raw_folders, descriptors, catalog, order_table=ORDER_TABLE, known_fields_only=False):
         self.types = decode.type_descriptors(descriptors)
-        assets = json.loads(Path(catalog).read_text(encoding="utf-8"))["assets"]
-        path_by_guid = {a["guid"].lower(): a["path"] for a in assets}
-        del assets
+        path_by_guid, ambiguous = guid_index(catalog)
         self.order_table = load_order_table(order_table)
-        self.builder = TreeBuilder(self.types, path_by_guid, self.order_table, known_fields_only)
+        self.builder = TreeBuilder(self.types, path_by_guid, self.order_table, known_fields_only, ambiguous)
         self.unlisted_classes, self.markers = self.builder.unlisted_classes, self.builder.markers
         self.files, self.folders = {}, {""}     # lower-case export path -> (export path, raw file)
         for folder in raw_folders:
@@ -408,7 +436,9 @@ def add_raw_arguments(parser, descriptors=True):
                         help="Raw capture folder to read in place of the XML export; repeat to overlay, later folders win")
     if descriptors:
         parser.add_argument("--descriptors", type=Path, help="SharedTypeDescriptors.ebx of the raw build")
-    parser.add_argument("--catalog", type=Path, help="asset-catalog.json of the raw build")
+    parser.add_argument("--catalog", type=Path, action="append",
+                        help="asset-catalog.json of the raw build; repeat to add catalogs, the first listing a "
+                             "file GUID wins, so give the loaded-cache collection/asset-catalog.json first")
     parser.add_argument("--known-fields-only", action="store_true",
                         help="With --raw: leave out fields the Frosty XML export never showed for a class")
 

@@ -953,6 +953,7 @@
         "m87a1": 1,
         "miniscout": 1,
         "mk24": 1,
+        "nsw4": 1,
         "nvo228e": 1,
         "p18": 1,
         "pp19": 1,
@@ -976,8 +977,7 @@
         "umg40": 1,
         "usg90": 1,
         "vcr2": 1,
-        "vz61": 1,
-        "nsw4": 1
+        "vz61": 1
       },
       "hipSpreadTierModByWeapon": {
         "grtbc": -1
@@ -1043,7 +1043,7 @@
         "drsiar": 0,
         "ef88": 0,
         "elr40": 0,
-        "grtbc": 0,
+        "grtbc": -1,
         "grtcps": 0,
         "interdictor": 0,
         "ks18k": 0,
@@ -1063,6 +1063,7 @@
         "m87a1": 0,
         "miniscout": 0,
         "mk24": 0,
+        "nsw4": 0,
         "nvo228e": 0,
         "pp19": 0,
         "psr": 0,
@@ -1081,8 +1082,7 @@
         "svk86": 0,
         "tr7": 0,
         "umg40": 0,
-        "vcr2": 0,
-        "nsw4": 0
+        "vcr2": 0
       },
       "adsRecoilTierModByWeapon": {
         "grtbc": 1
@@ -1118,6 +1118,7 @@
         "m250": 0,
         "m277": 0,
         "m60": 0,
+        "nsw4": 0,
         "pw7a2": 0,
         "rpk74m": 0,
         "rpkm": 0,
@@ -1125,8 +1126,7 @@
         "sor556": 0,
         "umg40": 0,
         "usg90": 0,
-        "z84m": 0,
-        "nsw4": 0
+        "z84m": 0
       }
     },
     {
@@ -1202,6 +1202,7 @@
         "m60": 1,
         "miniscout": 1,
         "mk24": 1,
+        "nsw4": 1,
         "nvo228e": 1,
         "p18": 1,
         "pp19": 1,
@@ -1217,8 +1218,7 @@
         "umg40": 1,
         "usg90": 1,
         "vcr2": 1,
-        "z84m": 1,
-        "nsw4": 1
+        "z84m": 1
       },
       "hipSpreadTierModByWeapon": {
         "grtbc": -1
@@ -1245,6 +1245,7 @@
         "m16a4": 1,
         "m277": 1,
         "m417a2": 1,
+        "nsw4": 1,
         "nvo228e": 1,
         "pp19": 1,
         "pw5a3": 1,
@@ -1254,8 +1255,7 @@
         "sor300sc": 1,
         "sor556": 1,
         "umg40": 1,
-        "usg90": 1,
-        "nsw4": 1
+        "usg90": 1
       }
     },
     {

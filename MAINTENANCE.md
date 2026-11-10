@@ -194,9 +194,12 @@ export is needed. Replace `--root <export root>` (or the tooltip generator's `--
 --raw <build>/capture/collection/raw [--raw <later capture>/raw ...] --descriptors <build>/capture/toolchain/SharedTypeDescriptors.ebx --catalog <build>/capture/collection/asset-catalog.json
 ```
 
-Later `--raw` folders override earlier ones. Outputs written this way carry `"sourceForm": "raw"`
-and hashes of the raw files; the key names (`sourceXml`, `xmlSha256`) are unchanged. Add
-`--known-fields-only` to leave out fields the old XML export never showed. For weapons added after
+Later `--raw` folders override earlier ones. When a `collection-fresh-cache` capture is overlaid, add
+its catalog as a second `--catalog` after the loaded-cache one: the first catalog that lists a file
+GUID decides it, because the fresh-cache catalog also lists leftover assets that reuse a live
+asset's GUID, and a GUID that the deciding catalog lists twice stops the run when it is
+dereferenced. Outputs written this way carry `"sourceForm": "raw"` and hashes of the raw files;
+the key names (`sourceXml`, `xmlSha256`) are unchanged. Add `--known-fields-only` to leave out fields the old XML export never showed. For weapons added after
 September 2026, pass the newest dated identity files with `--identity-audit`, `--barrel-mapping`,
 `--optic-mapping` and `--descriptions` (research repo, `reference-data/provenance/*-2026-10-13.json`).
 
