@@ -8342,6 +8342,18 @@
       "summary": "Stored binding found: a 73-entry table after the code of the movement resource binds slot 0x558 (the only gate on the x0.8 firing multiplier) to the Ability_Commando_Base id and slot 0x550 (the only gate on the LMG x0.95 sprint penalty) to the Ability_SupportTrait id; 0x560 and 0x568 (dragging) to Medical Triage and Swift Triage. Same on 1.4.3.5 and 2.1.1.0. The firing multiplier is eased toward its target by 10% of the gap per 1/60 s (function meanings inferred from use).",
       "reopenWhen": "A game update changes the movement resource, or an in-game firing-walk or LMG-sprint comparison disagrees.",
       "refs": []
+    },
+    "L4085": {
+      "id": "L4085",
+      "title": "REDSEC armor settings, no REDSEC weapon override, and plate models checked against EA's 2.1.1.0 list",
+      "status": "finding",
+      "date": "2026-11-09",
+      "receipts": [
+        "frosty-2026-11-09-L4085-redsec-armor-settings.json"
+      ],
+      "summary": "Stored on 2.1.1.0: BR starting ceramic armor amounts 0 / 80 / 40, Gauntlet soft armor 40 (plus an unexplained kind -1 entry of 242), vest tier initial 1 and max 1, tier size 230 (unit unknown); the armor HUD is one bar. No REDSEC row or asset overrides weapon damage, so multiplayer bullets and their armor curves apply. EA's 23-weapon 2.1.1.0 'one more bullet vs armor' list matches the armor-curve changes for 18 weapons under every plate model and 21 if the 0.84 / 0.91 / 0.67 chest multiplier applies to plates; the two DMRs do not fit. Plate HP per plate, carry-over and replate time are not readable.",
+      "reopenWhen": "In-game tests from docs/redsec/REDSEC_ARMOR_DATA.md report results, the unresolved imports become decodable, or a game update changes the REDSEC armor assets.",
+      "refs": []
     }
   }
 }
