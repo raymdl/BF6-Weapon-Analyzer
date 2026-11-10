@@ -54,7 +54,7 @@ variation tiers include grip, muzzle and ergonomics effects.
 
 Seven sniper rifles use source +6 ADS/hip amount steps on 17 supported brake
 selections (the ELR-40 Double-Port Brake added in 2.1.1.0), and the RSPR Single-Port
-Brake uses +7 ([bug entry 19](ATTACHMENT_BUGS.md)). `scripts/frosty-sniper-brakes.py` generates these per-weapon muzzle
+Brake uses +7 ([bug entry 19](ATTACHMENT_BUGS_RESOLVED.md#19-rspr-single-port-brake-reduces-recoil-by-seven-steps)). `scripts/frosty-sniper-brakes.py` generates these per-weapon muzzle
 overrides from the traced XML operands, preserving existing duration/recovery
 overrides. M2010 ESR with Single-Port Brake now computes 1.035 degrees ADS kick
 instead of 1.410. Mini Scout Tungsten now applies -7 amount steps in both aims

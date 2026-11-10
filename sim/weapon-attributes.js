@@ -80,7 +80,7 @@ export function createWeaponAttributeModel({ balance, catalogs, attributes }) {
     // A row with all six key flags false matches any loadout (L115: one fallback row of 100).
     if (keyed.length === 0 && fallback.length === 1) return { panel: fallback[0].panel, method: 'fallback' };
     // A tier sum past the table's end holds at the last row; the game panel shows its fallback 0 instead
-    // (RSPR Single-Port Brake with a vertical or stubby grip; ATTACHMENT_BUGS.md bug 19).
+    // (RSPR Single-Port Brake with a vertical or stubby grip; ATTACHMENT_BUGS_RESOLVED.md bug 19).
     const clamp = key => {
       const values = keyed.map(row => row[key]);
       return Math.min(Math.max(k[key], Math.min(...values)), Math.max(...values));

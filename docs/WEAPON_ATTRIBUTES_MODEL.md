@@ -174,7 +174,7 @@ and the direction/meaning of its comparison still need confirmation.
 For L115 Standard Suppressor, the research checker excludes the generic hipfire
 penalty because L115's GS has no corresponding selector binding. It retains the
 other suppressor effects. This exception is not proof that the generic production
-muzzle modifier is correct for L115; see [bug 12](ATTACHMENT_BUGS.md#12-l115-standard-suppressor-omits-the-hipfire-penalty).
+muzzle modifier is correct for L115; see [bug 12](ATTACHMENT_BUGS_RESOLVED.md#12-l115-standard-suppressor-omits-the-hipfire-penalty).
 
 The EF88 A/B pair with Standard Suppressor changes Hipfire from 40 to 47 when
 5 MW Red is replaced by 50 MW Blue. This tests penalty/bonus composition rather
@@ -222,7 +222,7 @@ Selection proceeds in this order:
 6. If the amount or variation sum lies outside the keyed rows' range, clamp it to
    the range and look up again (`clamped-past-table`). The game panel shows its
    fallback row (0) instead: RSPR with the Single-Port Brake and a vertical or
-   stubby grip (ATTACHMENT_BUGS.md entry 19).
+   stubby grip (ATTACHMENT_BUGS_RESOLVED.md entry 19).
 7. Otherwise report no matching row. Do not invent a value or interpolate silently.
 
 Tolerance uses `tolerance × max(1, abs(input))`. These selection conventions are

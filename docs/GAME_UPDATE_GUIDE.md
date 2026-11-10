@@ -446,7 +446,7 @@ and give each a run-order row.
   plus steps from attachments, magazine and ammunition. For every weapon, add up each offered
   loadout and list every combination outside the table (collateral rows 0 to 9, protection
   0 to 14). Known: ELR-40 Single Shot with Standard (10) and Tungsten (12); the M121 A2
-  Tungsten row 10 went in 2.1.2.0 (ATTACHMENT_BUGS entry 20; past the last row the panel shows
+  Tungsten row 10 went in 2.1.2.0 (ATTACHMENT_BUGS_RESOLVED entry 20; past the last row the panel shows
   x0.00 while damage holds at the last row). Run it again for every new weapon and every new
   ammunition or magazine step. For tables chosen by keyed
   rows with a fallback row (Precision), list each weapon whose fallback differs from its
@@ -643,7 +643,12 @@ For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
    - No asset changed but a note matches, or the behaviour is decided in the executable: the
      data cannot show a fix. Mark it "needs in-game recheck", list the test on
      IN_GAME_CHECKS.md, and do not record it as unchanged.
-6. Record the result in the document with the date, including "no change" results.
+   When an entry is resolved, move its row and section to
+   [ATTACHMENT_BUGS_RESOLVED.md](ATTACHMENT_BUGS_RESOLVED.md) in the same commit. A partly
+   resolved entry keeps a narrowed row and section for the part still in the game.
+6. Record the per-build result, with the date and including "no change" results, in a new
+   section at the top of [ATTACHMENT_BUGS_RECHECKS.md](ATTACHMENT_BUGS_RECHECKS.md). Update an
+   active entry's own row and section only when its status changes.
 
 ### Other lists
 

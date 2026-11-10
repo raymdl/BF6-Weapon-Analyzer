@@ -53,6 +53,9 @@ any remaining questions into an active handoff, and archive the completed record
 | [Known site differences](KNOWN_SITE_DIFFERENCES.md) | Maintainers: site values known to differ from the game files in two builds, read first on each update. |
 | [In-game checks](IN_GAME_CHECKS.md) | Operator: the one running list of things only an in-game look can settle. |
 | [Game bugs and mismatches](ATTACHMENT_BUGS.md) | All readers: game data bugs (attachments, weapon stats, stat-panel errors), description errors and fixed site data errors, with evidence and status. |
+| [Resolved game bugs](ATTACHMENT_BUGS_RESOLVED.md) | All readers: game bug entries the game has fixed, with the build that fixed them. |
+| [Game bug method](ATTACHMENT_BUGS_METHOD.md) | Maintainers: accepted text, scan candidates that are not bugs, and the review method for the game bug list. |
+| [Game bug rechecks](ATTACHMENT_BUGS_RECHECKS.md) | Maintainers: the per-build recheck of every game bug entry, newest build first. |
 | [Damage and ballistics](DAMAGE_BALLISTICS.md) | Model readers: curves, hit zones, BTK, firing cadence, TTK, drag, trajectory, target limits. |
 | [Recoil and spread](RECOIL_SPREAD_MODEL.md) | Model readers: per-shot equations, recovery, sampling, calibration, visual interpretation. |
 | [Model limitations](MODEL_LIMITATIONS.md) | All readers: retained-but-unused fields, estimates, unresolved composition and validation gaps. |
