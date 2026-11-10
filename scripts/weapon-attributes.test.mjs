@@ -11,8 +11,8 @@ const catalogs={...read('data/attachments.json'),...read('data/ammo.json')};
 const weapons=read('data/weapons.json');
 setAttachmentContext({...catalogs,...balance,HIT_ZONES:read('data/hit_zones.json')});
 const calculate=createWeaponAttributeModel({balance,catalogs,attributes:read('data/weapon_attributes.json')});
-// Skipped: dated 2026-09 panel captures kept as captured; the 2.1.2.0 update changed these loadouts (KTS100 MK8 deploy index, L115 Standard Suppressor).
-const supersededCaptures=new Set(['kts100 grip:ribbed_vert','kts100 mag:60_fast','l115 muzzle:std_supp']);
+// Skipped: dated 2026-09 panel captures kept as captured; the 2.1.2.0 update changed these loadouts (KTS100 MK8 deploy index, L115 Standard Suppressor, L115 QD Grip Pod moving-ADS penalty).
+const supersededCaptures=new Set(['kts100 grip:ribbed_vert','kts100 mag:60_fast','l115 muzzle:std_supp','l115 grip:qd_grip_pod_sr','l115 L-B']);
 for(const file of ['composite-current-panels-2026-09-21','composite-remaining-panels-2026-09-21','composite-combination-panels-2026-09-21','composite-vssm-panels-2026-09-22']) {
  test(file+' matches all four captured attributes',()=>{
   const failures=[];
