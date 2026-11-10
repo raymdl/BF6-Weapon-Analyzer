@@ -179,7 +179,7 @@ is gone.
    **site** (applied, not applicable, or not applied with the reason). "Confirmed" in the
    result column does not mean the site has the change; every applied row gets checks in
    `<version>-site-checks.json` (Stage 9, step 7). Working files stay in the run folders.
-6. **Stale site data.** Read [STALE_SITE_DATA.md](STALE_SITE_DATA.md): site values already
+6. **Known site differences.** Read [KNOWN_SITE_DIFFERENCES.md](KNOWN_SITE_DIFFERENCES.md): site values already
    known to differ from the files are not changes in this update; list any the notes touch so
    the update can close them.
 7. `record` and `verify` the open build.
@@ -719,8 +719,8 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
 1. **Re-run the generators on the new build.** Run every generator with
    [raw mode](../MAINTENANCE.md#raw-mode) against the new capture, with explicit output paths,
    and diff each output against the committed site data; run each on the previous build's
-   capture too. A difference on both builds is stale site data, not a game change: add it to
-   [STALE_SITE_DATA.md](STALE_SITE_DATA.md), and remove rows the update fixes. (2.1.1.0: the
+   capture too. A difference on both builds is a known site difference, not a game change: add it to
+   [KNOWN_SITE_DIFFERENCES.md](KNOWN_SITE_DIFFERENCES.md), and remove rows the update fixes. (2.1.1.0: the
    stale sight exclusions were found this way, from `Equipment_*` required-accessory lists no
    checklist row pointed at.) Raw-mode arguments, including the wiring check's, take `--raw`
    once per capture folder, later folders winning, and `--catalog` once per catalog with the

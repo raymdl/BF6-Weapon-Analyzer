@@ -1,4 +1,4 @@
-# Known stale site data
+# Known site differences
 
 Site values that differ from the game files in two builds running, so no update caused them.
 Read this list first on every update (Stage 0 of [GAME_UPDATE_GUIDE.md](GAME_UPDATE_GUIDE.md)),

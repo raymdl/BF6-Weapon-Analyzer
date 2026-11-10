@@ -11,7 +11,7 @@
       "sourceValue": 94.73657340777196,
       "siteValue": 359.999,
       "reason": "The site models the DB-12 as a two-round burst per pump (dual tube): rpm and burstRpm are RateOfFireForSingleFire 359.999, burstRounds 2, and burstBurstsPerMinute = 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + 2 x 60 / RateOfFireForSingleFire) = 60 / (0.433334 + 0.033334 + 2 x 60 / 359.999) = 74.99978819480148 (reproduced exactly with shortest-decimal operands). The WB stores primary mode 1 (bolt/pump), no alternates and Shot burst rounds 3, so the files give the pump cycle rpm 94.737 and no burst fields. A Dual Shot part (WPM_ERG_DualShot_W25, bullets-per-shot field Field_ebd2880e 2) is in 2.1.2.0 but in no equipment list (checklist U7); the site convention predates it.",
-      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -24,7 +24,7 @@
       "sourceValue": null,
       "siteValue": 2,
       "reason": "Pair of WP-0001: the two shells of the dual-tube pump. Files: no burst mode on the DB-12 (Shot Field_ca2ec42a 3 is unused by mode 1).",
-      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -37,7 +37,7 @@
       "sourceValue": null,
       "siteValue": 74.99978819480148,
       "reason": "Pair of WP-0001: one pump cycle plus two single-fire intervals per two-round burst.",
-      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -50,7 +50,7 @@
       "sourceValue": null,
       "siteValue": 359.999,
       "reason": "Pair of WP-0001: burst cadence = RateOfFireForSingleFire.",
-      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -261,8 +261,8 @@
           12.5
         ]
       ],
-      "reason": "The file curve (and GRX XYValues) runs 14.3 at 54 m straight to 12.5 at 75 m; the site keeps a 14.3 point at 75 m (a step). Operator firing-range test 2026-09-13: damage marker 14 and 7 body shots below 75 m, 12 and 8 beyond, which the file's ramp (about 12.7 near 70 m) would not give. docs/DATA_SOURCES.md calls it in-game-confirmed and kept; docs/STALE_SITE_DATA.md (\"M45A1 damage curve\") asks to settle which record is right before removing it.",
-      "evidence": "frosty-damage-curve-review-2026-09-13.json (m45a1 inGameCheck); docs/DATA_SOURCES.md \"damage\"; docs/STALE_SITE_DATA.md; PD_.45ACP curve, 2.1.1.0 and 2.1.2.0",
+      "reason": "The file curve (and GRX XYValues) runs 14.3 at 54 m straight to 12.5 at 75 m; the site keeps a 14.3 point at 75 m (a step). Operator firing-range test 2026-09-13: damage marker 14 and 7 body shots below 75 m, 12 and 8 beyond, which the file's ramp (about 12.7 near 70 m) would not give. docs/DATA_SOURCES.md calls it in-game-confirmed and kept; docs/KNOWN_SITE_DIFFERENCES.md (\"M45A1 damage curve\") asks to settle which record is right before removing it.",
+      "evidence": "frosty-damage-curve-review-2026-09-13.json (m45a1 inGameCheck); docs/DATA_SOURCES.md \"damage\"; docs/KNOWN_SITE_DIFFERENCES.md; PD_.45ACP curve, 2.1.1.0 and 2.1.2.0",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -275,7 +275,7 @@
       "sourceValue": "<string 2DB86D4C not in the strings table>",
       "siteValue": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m.",
       "reason": "The primary UIWeaponAbilityMetaData record's description string 2DB86D4C is in neither build's fs_us_loc table, so the checker cannot read the text; where the site text came from is not recorded.",
-      "evidence": "docs/STALE_SITE_DATA.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -288,7 +288,7 @@
       "sourceValue": "<string E8EA1B59 not in the strings table>",
       "siteValue": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m.",
       "reason": "The primary UIWeaponAbilityMetaData record's description string E8EA1B59 is in neither build's fs_us_loc table, so the checker cannot read the text; where the site text came from is not recorded.",
-      "evidence": "docs/STALE_SITE_DATA.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -301,7 +301,7 @@
       "sourceValue": 43.90240928013728,
       "siteValue": 43.90241,
       "reason": "Full-precision rule (store source precision, round in the UI): the site stores 43.90241, the bolt cycle 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + 60 / RateOfFireForSingleFire) gives 43.90240928013728 with the shortest-decimal float32 operands that reproduce the other bolt and pump rates exactly (exact float32 operands give 43.90240939022608). Site wrong by the files; not changed in this task.",
-      "evidence": "docs/STALE_SITE_DATA.md \"Bolt-action fire rate last digits\"; M2010ESR_WB BoltAction 1.2 / 1.0285712, rate 299.999",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"Bolt-action fire rate last digits\"; M2010ESR_WB BoltAction 1.2 / 1.0285712, rate 299.999",
       "since": "2.1.1.0",
       "alsoIn": []
     },
@@ -314,7 +314,7 @@
       "sourceValue": 38.663458649662005,
       "siteValue": 38.663456,
       "reason": "Full-precision rule (store source precision, round in the UI): the site stores 38.663456, the bolt cycle 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + 60 / RateOfFireForSingleFire) gives 38.663458649662005 with the shortest-decimal float32 operands that reproduce the other bolt and pump rates exactly (exact float32 operands give 38.66345608728906, which the site value rounds). Site wrong by the files; not changed in this task.",
-      "evidence": "docs/STALE_SITE_DATA.md \"Bolt-action fire rate last digits\"; MRAD_WB BoltAction 1.216667 / 0.9, rate 299.999",
+      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"Bolt-action fire rate last digits\"; MRAD_WB BoltAction 1.216667 / 0.9, rate 299.999",
       "since": "2.1.1.0",
       "alsoIn": []
     },
