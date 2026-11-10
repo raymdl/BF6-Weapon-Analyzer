@@ -9,9 +9,9 @@
   },
   "sources": {
     "optic-mapping.json": "ea7973e640776754954bcc6fda01566abb37e6a21c37e4a32abaaaec9ddbeb18",
-    "compat-report.json": "87c195424d1e35f23002c81a2c6b7aa45f33563a24725a3044d00688b1ce3cb6",
+    "compatibility.json": "570b6b261063544c471f8048971430e0a776fc3814ccd2372d8c5549b3ba5d2b",
     "frosty-optic-render-fov-2026-09-16.json": "f980222aca1bb9d3788efbadf1f35389bb3bc521842fb4dee5f1b4d46bf902a9",
-    "frosty-optic-names-2026-11-10.json": "41541897c337d32401659c1e969a51e1ebe449c6cf3b3928f8f711a465b219bf"
+    "frosty-optic-names-2026-11-10.json": "8c6c9f42fc49c205e465458e65d0dd499edb6a412f9304d619877af76b6baf5a"
   },
   "ironSightsChecked": [
     "185KSK",
@@ -9378,16 +9378,6 @@
         "joinMethod": "aam-record-name"
       },
       {
-        "id": "mars_f_lpvo",
-        "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_MarchFFPShorty.xml",
-        "joinMethod": "aam-record-name"
-      },
-      {
-        "id": "mc_co_lpvo",
-        "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_TrijiconVCOG.xml",
-        "joinMethod": "aam-record-name"
-      },
-      {
         "id": "mini_flex_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_EFLXMini.xml",
         "joinMethod": "aam-record-name"
@@ -14726,9 +14716,21 @@
   "counts": {
     "optics": 41,
     "weapons": 68,
-    "weaponOptics": 2100
+    "weaponOptics": 2098
   },
   "notOffered": [
+    {
+      "weapon": "sor300sc",
+      "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_MarchFFPShorty.xml",
+      "label": "Variable 1-5x",
+      "inGameName": "Mars-F LPVO"
+    },
+    {
+      "weapon": "sor300sc",
+      "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_TrijiconVCOG.xml",
+      "label": "Variable 1-6x",
+      "inGameName": "MC-CO LPVO"
+    },
     {
       "weapon": "m44",
       "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_FML19.xml",
@@ -14736,18 +14738,5 @@
       "inGameName": null
     }
   ],
-  "deviations": [
-    {
-      "overrideId": "IO-0001",
-      "weapon": "sor300sc",
-      "id": "mars_f_lpvo",
-      "status": "applied"
-    },
-    {
-      "overrideId": "IO-0002",
-      "weapon": "sor300sc",
-      "id": "mc_co_lpvo",
-      "status": "applied"
-    }
-  ]
+  "deviations": []
 }

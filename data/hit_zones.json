@@ -849,6 +849,14 @@
           "headshot": 1.5,
           "limb": 1.0
         },
+        "penetration": {
+          "headshot": 1.5,
+          "limb": 1.0
+        },
+        "frangible": {
+          "headshot": 1.5,
+          "limb": 1.0
+        },
         "hollow_pt": {
           "headshot": 1.75,
           "limb": 1.0

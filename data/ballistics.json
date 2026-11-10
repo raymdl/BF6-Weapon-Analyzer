@@ -720,6 +720,8 @@
       "base": "Common/Hardware/Weapons/_Bullets/PD_.357Magnum",
       "ammo": {
         "standard": "Common/Hardware/Weapons/_Bullets/PD_.357Magnum",
+        "penetration": "Common/Hardware/Weapons/_Bullets/PD_.357Magnum",
+        "frangible": "Common/Hardware/Weapons/_Bullets/PD_.357Magnum",
         "hollow_pt": "Common/Hardware/Weapons/_Bullets/PD_.357Magnum"
       }
     },

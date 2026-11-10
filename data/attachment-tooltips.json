@@ -2505,8 +2505,6 @@
       "sight": {
         "iron": "0BB6AC0B",
         "dvo_lpvo": "2B85CBA7",
-        "mars_f_lpvo": "2DDAF448",
-        "mc_co_lpvo": "2930A306",
         "mini_flex_1_00x": "01FBB778",
         "ngfc_lpvo": "26DB7A65",
         "osa_7_1_00x": "01FBB778",
@@ -6417,6 +6415,8 @@
       },
       "ammo": {
         "standard": "B6CDE708",
+        "penetration": "78D58F2D",
+        "frangible": "2BA8E458",
         "hollow_pt": "F4F0FE8D"
       },
       "mag": {

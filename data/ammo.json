@@ -1481,6 +1481,8 @@
       "def": "standard",
       "ammo": {
         "standard": 5,
+        "penetration": 5,
+        "frangible": 15,
         "hollow_pt": 20
       }
     },

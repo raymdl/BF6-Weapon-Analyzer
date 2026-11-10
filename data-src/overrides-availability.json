@@ -1,18 +1,6 @@
 {
   "schemaVersion": 1,
   "overrides": [
-    {"overrideId": "AV-0001", "generator": "frosty-availability", "weapon": "m357trait", "slot": "ammo", "id": "Attachment_TRR8_AMO_Frangible",
-     "sitePath": "data/ammo.json WEAPON_AMMO.m357trait.ammo", "siteValue": "not listed", "sourceValue": "offered",
-     "kind": "pending-check",
-     "reason": "Files offer Frangible on the M357 Trait (record, ability branch, KST_GLA_Weapons row false, in Equipment_TRR8) in 2.1.1.0 and 2.1.2.0; the site menu is Standard and Hollow Point and no record says where it came from. The one weapon of 68 where the equipment list and the site ammunition menu differ.",
-     "evidence": "docs/STALE_SITE_DATA.md 'M357 Trait ammunition menu'; docs/IN_GAME_CHECKS.md row 'M357 Trait ammunition menu'; frosty-availability.py on both captures",
-     "since": "2.1.1.0"},
-    {"overrideId": "AV-0002", "generator": "frosty-availability", "weapon": "m357trait", "slot": "ammo", "id": "Attachment_TRR8_AMO_Tungsten",
-     "sitePath": "data/ammo.json WEAPON_AMMO.m357trait.ammo", "siteValue": "not listed", "sourceValue": "offered",
-     "kind": "pending-check",
-     "reason": "Files offer Tungsten Core on the M357 Trait (record, ability branch, KST_GLA_Weapons row false, in Equipment_TRR8) in 2.1.1.0 and 2.1.2.0; not on the site menu. Same check as AV-0001.",
-     "evidence": "docs/STALE_SITE_DATA.md 'M357 Trait ammunition menu'; docs/IN_GAME_CHECKS.md row 'M357 Trait ammunition menu'",
-     "since": "2.1.1.0"},
     {"overrideId": "AV-0003", "generator": "frosty-availability", "weapon": "m4a1", "slot": "sight", "id": "Attachment_M4A1_SCP_CarrySights",
      "sitePath": "data/attachments.json WEAPON_ATTS.m4a1.sight", "siteValue": "not listed", "sourceValue": "offered",
      "kind": "convention",
@@ -30,18 +18,6 @@
      "kind": "identity",
      "reason": "0-point 'None' ergonomics record added to Equipment_VSSM in 2.1.2.0; its branch selects only the art package U_ATT_VSSM_Stock and no U_WPM modifier, so it is read as the empty ergonomics choice the site holds as 'none' (not listed in avail). The checklist records its meaning as not established.",
      "evidence": "BF6 Frosty Research docs/updates/2.1.2.0-checklist.md proposed rows ('a new 0-point None ergonomics record on the VSSM'); J-equip G20; IGC-avail scan_all.json packages",
-     "since": "2.1.2.0"},
-    {"overrideId": "AV-0006", "generator": "frosty-availability", "weapon": "sor300sc", "slot": "sight", "id": "mars_f_lpvo",
-     "sitePath": "data/attachments.json WEAPON_ATTS.sor300sc.sight", "siteValue": "listed", "sourceValue": "not offered: not in Equipment list",
-     "kind": "pending-check",
-     "reason": "Attachment_SCARSC_SCP_MarchFFPShorty has its ability branch and a KST_GLA_Weapons row false but is in neither build's Equipment_SCARSC; by the availability rule it is not offered. Candidate site error; not removed in this task.",
-     "evidence": "docs/STALE_SITE_DATA.md 'SOR-300SC optics outside the equipment list'; frosty-availability.py on 2.1.1.0 and 2.1.2.0",
-     "since": "2.1.1.0"},
-    {"overrideId": "AV-0007", "generator": "frosty-availability", "weapon": "sor300sc", "slot": "sight", "id": "mc_co_lpvo",
-     "sitePath": "data/attachments.json WEAPON_ATTS.sor300sc.sight", "siteValue": "listed", "sourceValue": "not offered: not in Equipment list",
-     "kind": "pending-check",
-     "reason": "Attachment_SCARSC_SCP_TrijiconVCOG has its ability branch and a KST_GLA_Weapons row false but is in neither build's Equipment_SCARSC; by the availability rule it is not offered. Candidate site error; not removed in this task.",
-     "evidence": "docs/STALE_SITE_DATA.md 'SOR-300SC optics outside the equipment list'; frosty-availability.py on 2.1.1.0 and 2.1.2.0",
-     "since": "2.1.1.0"}
+     "since": "2.1.2.0"}
   ]
 }

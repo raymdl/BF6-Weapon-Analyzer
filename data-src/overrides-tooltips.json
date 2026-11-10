@@ -29,32 +29,6 @@
       "reason": "As TT-0001: AD_Vector_MAG_027Ext2 points at string 092A87DC, absent from the 2.1.2.0 English string table; the site keeps its 2.1.1.0 text.",
       "evidence": "2.1.1.0 fs_us_loc.strings.tsv 092A87DC; T-strings/strings-diff.tsv row 092A87DC removed",
       "since": "2.1.2.0"
-    },
-    {
-      "overrideId": "IO-0001",
-      "generator": "frosty-individual-optics",
-      "kind": "pending-check",
-      "weapon": "sor300sc",
-      "slot": "sight",
-      "id": "mars_f_lpvo",
-      "sourceValue": "not offered",
-      "siteValue": "listed",
-      "reason": "Attachment_SCARSC_SCP_MarchFFPShorty is in neither build's Equipment_SCARSC, so the files do not offer it (availability row AV-0006); the site lists it, as the earlier optic run did from the category mapping. Candidate site error, kept until the in-game check.",
-      "evidence": "docs/STALE_SITE_DATA.md 'SOR-300SC optics outside the equipment list'; data-src/overrides-availability.json AV-0006",
-      "since": "2.1.1.0"
-    },
-    {
-      "overrideId": "IO-0002",
-      "generator": "frosty-individual-optics",
-      "kind": "pending-check",
-      "weapon": "sor300sc",
-      "slot": "sight",
-      "id": "mc_co_lpvo",
-      "sourceValue": "not offered",
-      "siteValue": "listed",
-      "reason": "As IO-0001 for Attachment_SCARSC_SCP_TrijiconVCOG (availability row AV-0007).",
-      "evidence": "docs/STALE_SITE_DATA.md 'SOR-300SC optics outside the equipment list'; data-src/overrides-availability.json AV-0007",
-      "since": "2.1.1.0"
     }
   ]
 }
