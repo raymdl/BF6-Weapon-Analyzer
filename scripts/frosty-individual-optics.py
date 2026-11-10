@@ -17,9 +17,17 @@ import re
 
 REPO = Path(__file__).resolve().parents[1]
 PROVENANCE = REPO / 'reference-data/provenance'
-DEFAULT_NAMES = Path('C:/Users/royal/Documents/BF6 Frosty Research/reference-data/provenance/frosty-optic-render-fov-2026-09-16.json')
+# Copied unchanged from the research repository (reference-data/provenance).
+DEFAULT_NAMES = PROVENANCE / 'frosty-optic-render-fov-2026-09-16.json'
 LEGACY = ('std_optic', 'var_low', 'var_high', 'thermal', 'therm_hyb')
-OUTPUT = PROVENANCE / 'frosty-individual-optics-2026-10-21.json'
+OUTPUT = PROVENANCE / 'frosty-individual-optics-2026-11-10.json'
+GENERATOR = 'frosty-individual-optics'
+# Optic Accessory record families (Attachment_*_SCA_<family>), as frosty-attachment-compatibility.py groups them.
+ACCESSORY_FAMILIES = {
+    'CantedIronSights': 'canted_irons', 'AGCoating': 'ag_coating',
+    **{f: 'secondary_optic' for f in ('CantedReflex', 'CantedReflexSlanted', 'OffsetRedDot',
+                                      'G43Magnifier', 'Variable2x', 'Variable3x', 'Variable4x')},
+}
 
 
 def norm(text):
@@ -55,20 +63,41 @@ def magnification(label, name):
 
 
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__ + """
+For a game update, pass the optic mapping the raw tooltip run writes
+(frosty-attachment-tooltips.py --optic-mapping-json) and the compatibility report of the raw
+compatibility run. --check writes nothing and exits 1 when the regenerated catalog or the
+report's optic lists differ from the committed ones.""", formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument('--optic-mapping', type=Path, default=latest('frosty-optic-category-mapping-*.json'))
     parser.add_argument('--compatibility', type=Path, default=PROVENANCE / 'frosty-attachment-compatibility.json')
-    parser.add_argument('--names', type=Path, default=DEFAULT_NAMES,
-                        help='Research-repo optic render-FOV report with opticNames and ironSights')
+    parser.add_argument('--names', type=Path, action='append',
+                        help='Optic name file with opticNames (and ironSights); repeat to add files. Default: the '
+                             'render-FOV report (research repository copy) and the dated name supplements')
+    parser.add_argument('--out', type=Path, default=REPO / 'data/attachments.json',
+                        help='Where to write the regenerated attachment catalog')
+    parser.add_argument('--report-out', type=Path, default=OUTPUT,
+                        help='Where to write the individual-optics report (--check compares with it)')
+    parser.add_argument('--availability', type=Path,
+                        help='frosty-availability.py --report-out of the same capture: list only the sights it '
+                             'finds offered')
+    parser.add_argument('--overrides', type=Path, default=REPO / 'data-src/overrides-tooltips.json',
+                        help='Reviewed deviations; rows with generator frosty-individual-optics keep a sight the '
+                             'files do not offer')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
 
     catalog_path = REPO / 'data/attachments.json'
-    original = catalog_path.read_text(encoding='utf-8')
+    original_bytes = catalog_path.read_bytes().decode('utf-8')
+    original = original_bytes.replace('\r\n', '\n')
     catalog = json.loads(original)
     mapping = json.loads(args.optic_mapping.read_text(encoding='utf-8'))
     compat = json.loads(args.compatibility.read_text(encoding='utf-8'))
-    names_report = json.loads(args.names.read_text(encoding='utf-8'))
+    args.names = args.names or [DEFAULT_NAMES, *sorted(PROVENANCE.glob('frosty-optic-names-*.json'))]
+    names_report = {'opticNames': [], 'ironSights': []}
+    for path in args.names:
+        document = json.loads(path.read_text(encoding='utf-8'))
+        names_report['opticNames'] += document['opticNames']
+        names_report['ironSights'] += document.get('ironSights', [])
 
     by_record, name_rows = {}, {}
     for row in names_report['opticNames']:
@@ -76,6 +105,17 @@ def main():
         for record in row['frostyRecordNames']:
             by_record.setdefault(norm(record), set()).add(row['inGameName'])
 
+    overrides = []
+    if args.overrides.exists():
+        overrides = [o for o in json.loads(args.overrides.read_text(encoding='utf-8'))['overrides']
+                     if o.get('generator') == GENERATOR]
+    kept = {(o['weapon'], o['id']): o for o in overrides}
+    verdicts = None
+    if args.availability:
+        verdicts = {w: {source_key(path): v for path, v in records.items()}
+                    for w, records in json.loads(args.availability.read_text(encoding='utf-8'))['records'].items()}
+    deviation_status = {}
+    not_listed = []
     sights = {s['id']: s for s in catalog['SIGHTS']}
     optics, per_weapon, by_source = {}, {}, {}
     for category in mapping['categories']:
@@ -93,6 +133,27 @@ def main():
             method = 'aam-record-name'
             if not joined:
                 joined, method = by_record.get(norm(token), set()), 'attachment-file-token'
+            # With --availability, a record the files do not offer (no ability branch, a kill-switch
+            # row stored true, or not in the Equipment list) is not listed unless a deviation row keeps it.
+            offered = True
+            if verdicts is not None:
+                verdict = verdicts.get(weapon, {}).get(source_key(member['source']))
+                if verdict is None:
+                    raise ValueError(f'{member["source"]}: no availability verdict')
+                offered = verdict['offered']
+            if not offered:
+                optic_id = None
+                if len(joined) == 1:
+                    optic_id = re.sub(r'_+', '_', re.sub(r'[^a-z0-9]', '_', next(iter(joined)).lower())).strip('_')
+                if (weapon, optic_id) not in kept:
+                    not_listed.append(dict(weapon=weapon, source=member['source'], label=member['label'],
+                                           inGameName=next(iter(joined)) if len(joined) == 1 else None))
+                    continue
+                deviation_status[weapon, optic_id] = 'applied'
+            elif len(joined) == 1:
+                optic_id = re.sub(r'_+', '_', re.sub(r'[^a-z0-9]', '_', next(iter(joined)).lower())).strip('_')
+                if (weapon, optic_id) in kept:
+                    deviation_status[weapon, optic_id] = 'REDUNDANT'
             if len(joined) != 1:
                 raise ValueError(f'{member["source"]}: in-game name {sorted(joined) or "missing"}')
             name = next(iter(joined))
@@ -138,6 +199,17 @@ def main():
         if optic['magnificationRange'] and not re.search(r'\d+(?:\.\d+)?x$', name):
             low, high = (f'{v:g}' for v in optic['magnificationRange'])
             name = f'{name} {low}-{high}x'
+        if optic_id in sights:
+            # An existing optic keeps the fields this script does not own (its effect fields
+            # start as the category's and may since have been set for the optic itself).
+            entry = dict(sights[optic_id])
+            entry.update(name=name, category=optic['category'], pts=legacy['pts'], magnification=optic['magnification'])
+            if optic['magnificationRange']:
+                entry['magnificationRange'] = optic['magnificationRange']
+            else:
+                entry.pop('magnificationRange', None)
+            sight_entries.append(entry)
+            continue
         entry = dict(id=optic_id, name=name, category=optic['category'], pts=legacy['pts'],
                      magnification=optic['magnification'])
         if optic['magnificationRange']:
@@ -145,7 +217,10 @@ def main():
         entry.update({k: v for k, v in legacy.items() if k not in ('id', 'name', 'pts', 'legacy')})
         sight_entries.append(entry)
     catalog['SIGHTS'] = ordered + sight_entries
-    order = {s['id']: i for i, s in enumerate(catalog['SIGHTS'])}
+    # SIGHTS positions are share-link indices (append only); lists show the optics by low-end
+    # magnification, then name.
+    order = {s['id']: ((s.get('magnificationRange') or [s['magnification']])[0], s['name'].lower())
+             for s in catalog['SIGHTS'][len(ordered):]}
 
     for weapon, wa in catalog['WEAPON_ATTS'].items():
         if weapon not in per_weapon:
@@ -153,17 +228,18 @@ def main():
         wa['sight'] = ['iron', *sorted(per_weapon[weapon], key=order.get)]
 
     # Optic Accessory prerequisites name individual sight records.
+    # The accessory comes from the record family and the weapon from the optic, so the report's
+    # siteChoices (written from the previous individual-optics report) are not needed.
     permitted = {}
     for row in compat['dependencies']:
-        for choice in row['siteChoices']:
-            if choice['slot'] != 'accessory':
-                continue
-            ids = permitted.setdefault((choice['weapon'], choice['attachment']), set())
-            for paths in row['requiredSourceAttachments']:
-                for path in paths:
-                    owner = by_source.get(source_key(path))
-                    if owner and owner[0] == choice['weapon']:
-                        ids.add(owner[1])
+        family = re.search(r'_SCA_(\w+?)(?:\.xml)?$', row['sourceAttachment'])
+        if not family or family[1] not in ACCESSORY_FAMILIES:
+            continue
+        for paths in row['requiredSourceAttachments']:
+            for path in paths:
+                owner = by_source.get(source_key(path))
+                if owner:
+                    permitted.setdefault((owner[0], ACCESSORY_FAMILIES[family[1]]), set()).add(owner[1])
     for weapon, wa in catalog['WEAPON_ATTS'].items():
         for rule in wa.get('dependencies', []):
             if rule['slot'] != 'accessory':
@@ -194,7 +270,7 @@ def main():
         sources={
             args.optic_mapping.name: sha(args.optic_mapping),
             args.compatibility.name: sha(args.compatibility),
-            'BF6 Frosty Research/reference-data/provenance/' + args.names.name: sha(args.names),
+            **{path.name: sha(path) for path in args.names},
         },
         ironSightsChecked=sorted(row['internalId'] for row in names_report['ironSights']),
         optics=[{k: v for k, v in optics[s['id']].items()} for s in sight_entries],
@@ -205,15 +281,64 @@ def main():
         counts=dict(optics=len(sight_entries), weapons=len(catalog['WEAPON_ATTS']),
                     weaponOptics=sum(len(per_weapon[w]) for w in catalog['WEAPON_ATTS'])),
     )
+    deviations = [dict(overrideId=o.get('overrideId'), weapon=o['weapon'], id=o['id'],
+                       status=deviation_status.get((o['weapon'], o['id']), 'UNUSED')) for o in overrides]
+    report['notOffered'] = not_listed
+    report['deviations'] = deviations
     output = json.dumps(catalog, indent=2, ensure_ascii=False) + '\n'
     report_text = json.dumps(report, indent=2, ensure_ascii=False) + '\n'
-    if args.check:
-        if output != original or not OUTPUT.exists() or OUTPUT.read_text(encoding='utf-8') != report_text:
-            raise SystemExit('Generated optics differ; regenerate and review')
-    else:
-        catalog_path.write_text(output, encoding='utf-8')
-        OUTPUT.write_text(report_text, encoding='utf-8')
     print(json.dumps(report['counts']))
+    print(f'{len(not_listed)} mapped sights the files do not offer, not listed: '
+          + ', '.join(f'{r["weapon"]} {r["source"].rsplit("/", 1)[-1]}' for r in not_listed))
+    for row in deviations:
+        print(f'deviation {row["overrideId"]} {row["weapon"]} {row["id"]}: {row["status"]}')
+    failed_deviation = any(row['status'] != 'applied' for row in deviations)
+    committed = json.loads(original)
+    differences = []
+    old_sights, new_sights = [s['id'] for s in committed['SIGHTS']], [s['id'] for s in catalog['SIGHTS']]
+    if old_sights != new_sights:
+        differences.append(f'SIGHTS ids: removed {[i for i in old_sights if i not in new_sights]}, '
+                           f'added {[i for i in new_sights if i not in old_sights]}')
+    for entry in catalog['SIGHTS']:
+        old = next((s for s in committed['SIGHTS'] if s['id'] == entry['id']), None)
+        if old is not None and old != entry:
+            differences.append(f'SIGHTS {entry["id"]}: ' + json.dumps(
+                {k: [old.get(k), entry.get(k)] for k in sorted(set(old) | set(entry)) if old.get(k) != entry.get(k)}))
+    for weapon, wa in catalog['WEAPON_ATTS'].items():
+        old = committed['WEAPON_ATTS'].get(weapon, {})
+        if old.get('sight') != wa.get('sight'):
+            differences.append(f'WEAPON_ATTS.{weapon}.sight: removed {[i for i in old.get("sight", []) if i not in wa["sight"]]}, '
+                               f'added {[i for i in wa["sight"] if i not in old.get("sight", [])]}')
+        old_rules = {r['attachment']: r for r in old.get('dependencies', []) if r['slot'] == 'accessory'}
+        for rule in wa.get('dependencies', []):
+            if rule['slot'] == 'accessory' and old_rules.get(rule['attachment']) != rule:
+                was = {r['attachment'] for r in old_rules.get(rule['attachment'], {}).get('requiresAny', [])}
+                now = {r['attachment'] for r in rule['requiresAny']}
+                differences.append(f'WEAPON_ATTS.{weapon}.dependencies accessory {rule["attachment"]}: '
+                                   f'removed {sorted(was - now)}, added {sorted(now - was)}' + (' (order)' if was == now else ''))
+    for line in differences:
+        print('DIFF ' + line)
+    if output != original and not differences:
+        print('Storage differs (order or fields outside the sight lists, SIGHTS and accessory rules)')
+    if args.check:
+        stale = False
+        if args.report_out.exists():
+            kept = json.loads(args.report_out.read_text(encoding='utf-8'))
+            for key in ('optics', 'weapons', 'accessoryPrerequisites', 'counts', 'notOffered', 'deviations'):
+                if kept.get(key) != report[key]:
+                    print(f'REPORT {args.report_out.name} {key} differs')
+                    stale = True
+        else:
+            print(f'REPORT {args.report_out.name} missing')
+            stale = True
+        if output != original or stale or failed_deviation:
+            raise SystemExit(1)
+        return
+    newline = '\r\n' if '\r\n' in original_bytes else '\n'
+    args.out.write_text(output, encoding='utf-8', newline=newline)
+    args.report_out.write_text(report_text, encoding='utf-8', newline='\n')
+    if failed_deviation:
+        raise SystemExit(1)
 
 
 if __name__ == '__main__':

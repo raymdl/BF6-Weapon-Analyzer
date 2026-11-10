@@ -31,24 +31,45 @@ def main():
     parser.add_argument('--root', type=Path)
     raw_tree.add_raw_arguments(parser)
     provenance = REPO / 'reference-data/provenance'
-    parser.add_argument('--identity-audit', type=Path, default=provenance / 'frosty-attachment-full-pass-2026-09-06.json',
-                        help='Retained audit whose mapped rows supply the attachment identities')
-    parser.add_argument('--barrel-mapping', type=Path, default=provenance / 'frosty-barrel-ads-2026-09-13.json',
-                        help='Reviewed barrel identity rows')
-    parser.add_argument('--check', action='store_true')
-    args = parser.parse_args()
-    export = raw_tree.open_input(parser, args, args.root)
-    args.root = export.root
     spec = importlib.util.spec_from_file_location('tooltips', REPO / 'scripts/frosty-attachment-tooltips.py')
     tooltips = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(tooltips)
-    sources, reviews = tooltips.reviewed_identities(args.identity_audit, args.barrel_mapping)
+    parser.add_argument('--identity-mapping', type=Path, default=tooltips.IDENTITY_MAPPING,
+                        help='Dated identity mapping whose rows supply the attachment identities')
+    parser.add_argument('--weapon-identities', type=Path, default=tooltips.WEAPON_MAPPING,
+                        help='Dated file whose identities (or weapons) list maps site ids to internal ids')
+    parser.add_argument('--identity-audit', type=Path,
+                        help='Legacy: research full-pass audit (with --barrel-mapping) in place of --identity-mapping')
+    parser.add_argument('--barrel-mapping', type=Path, help='Legacy: reviewed barrel identity rows')
+    parser.add_argument('--individual-optics', type=Path,
+                        default=sorted(provenance.glob('frosty-individual-optics-*.json'))[-1],
+                        help='Individual-optics report whose optic sources name the sight choices')
+    parser.add_argument('--out', type=Path, default=REPO / 'data/attachments.json',
+                        help='Where to write the regenerated attachment catalog')
+    parser.add_argument('--report-out', type=Path,
+                        help='Where to write the slot and dependency evidence (the input of '
+                             'frosty-individual-optics.py --compatibility); written with --check too when given. '
+                             'Default without --check: reference-data/provenance/frosty-attachment-compatibility.json')
+    parser.add_argument('--check', action='store_true',
+                        help='Write nothing; exit 1 on any difference from the committed catalog')
+    args = parser.parse_args()
+    export = raw_tree.open_input(parser, args, args.root)
+    args.root = export.root
+    if args.identity_audit:
+        sources, reviews = tooltips.reviewed_identities(args.identity_audit, args.barrel_mapping or 'frosty-barrel-ads-2026-09-13.json')
+    else:
+        # Individual optics are not slot or dependency choices here (the Optic Accessory step
+        # below names them); the iron sight is, as in the earlier audit.
+        sources, reviews = tooltips.mapped_identities(args.identity_mapping, export)
+        for key in [k for k in sources if k[1] == 'sight' and k[2] != 'iron']:
+            del sources[key]
     offered = {(c['weapon'], c['slot'], c['attachment']) for c in tooltips.current_choices()}
-    identity_path = REPO / 'reference-data/provenance/frosty-weapon-identities.json'
-    identities = {w['siteId']: w['internalId'] for w in json.loads(identity_path.read_text())['weapons']}
+    identity_path = args.weapon_identities
+    identities = {w['siteId']: w['internalId'] for w in tooltips.weapon_identities(identity_path)}
     reviews[identity_path.name] = hashlib.sha256(identity_path.read_bytes()).hexdigest()
     catalog_path = REPO / 'data/attachments.json'
-    original = catalog_path.read_text(encoding='utf-8')
+    original_bytes = catalog_path.read_bytes().decode('utf-8')
+    original = original_bytes.replace('\r\n', '\n')
     catalog = json.loads(original)
     ammo = json.loads((REPO / 'data/ammo.json').read_text(encoding='utf-8'))
     cache, hashes = {}, {}
@@ -200,12 +221,14 @@ def main():
             dependency_rows.append(row)
     # Optic Accessory (SCA) choices. Their prerequisites name individual optics,
     # which are site sight choices (scripts/frosty-individual-optics.py).
-    optic_path = sorted(provenance.glob('frosty-individual-optics-*.json'))[-1]
+    optic_path = args.individual_optics
     reviews[optic_path.name] = hashlib.sha256(optic_path.read_bytes()).hexdigest()
     optic_by_path = {re.sub(r'\.xml$', '', o['source'].lower()): (weapon, o['id'])
                      for weapon, rows in json.loads(optic_path.read_text(encoding='utf-8'))['weapons'].items()
                      for o in rows}
-    sight_order = {s['id']: i for i, s in enumerate(catalog['SIGHTS'])}
+    # Display order, as frosty-individual-optics.py writes it: low-end magnification, then name.
+    sight_order = {s['id']: ((s.get('magnificationRange') or [s.get('magnification')])[0], s['name'].lower())
+                   for s in catalog['SIGHTS']}
     permitted_optics = defaultdict(set)
     for row in dependency_rows:
         family = re.search(r'_SCA_(\w+)\.xml$', row['sourceAttachment'])
@@ -235,14 +258,19 @@ def main():
             requiresAny=[dict(slot='sight', attachment=i) for i in sorted(permitted, key=sight_order.get)]))
         accessories.setdefault(weapon, {}).setdefault('avail', []).append(accessory)
     for weapon, wa in catalog['WEAPON_ATTS'].items():
-        wa.pop('dependencies', None)
+        # Replace in place so the key keeps its committed position; a new list goes last.
         if generated[weapon]:
             wa['dependencies'] = sorted(generated[weapon], key=lambda r: (r['slot'], r['attachment']))
+        else:
+            wa.pop('dependencies', None)
 
     order = [a['id'] for a in catalog['ACCESSORIES']]
     for entry in accessories.values():
         entry['avail'].sort(key=order.index)
-    catalog['WEAPON_ACCESSORY'] = dict(sorted(accessories.items()))
+    # Committed weapon order; weapons new to the list follow, sorted.
+    stored = list(catalog.get('WEAPON_ACCESSORY') or {})
+    catalog['WEAPON_ACCESSORY'] = {w: accessories[w] for w in
+        [w for w in stored if w in accessories] + sorted(set(accessories) - set(stored))}
 
     output = json.dumps(catalog, indent=2, ensure_ascii=False) + '\n'
     report = dict(schemaVersion=1, source='Frosty ability slot categories and equipment dependency IDs',
@@ -253,15 +281,40 @@ def main():
         counts=dict(slotChoices=len({(r['weapon'], r['slot'], r['attachment']) for r in slot_rows}),
             dependencyEntries=len(dependency_rows), generatedRules=sum(map(len, generated.values())),
             weaponsWithDependencies=sum(bool(v) for v in generated.values())))
-    report_path = REPO / 'reference-data/provenance/frosty-attachment-compatibility.json'
     report_text = json.dumps(export.mark(report), indent=2, ensure_ascii=False) + '\n'
-    if args.check:
-        if output != original or not report_path.exists() or report_path.read_text(encoding='utf-8') != report_text:
-            raise SystemExit('Generated compatibility data differs; regenerate and review')
-    else:
-        catalog_path.write_text(output, encoding='utf-8')
-        report_path.write_text(report_text, encoding='utf-8')
     print(json.dumps(report['counts']))
+    committed = json.loads(original)
+    differences = []
+    for weapon in sorted(set(committed['WEAPON_ATTS']) | set(catalog['WEAPON_ATTS'])):
+        old, new = committed['WEAPON_ATTS'].get(weapon, {}), catalog['WEAPON_ATTS'].get(weapon, {})
+        for field in ('slots', 'dependencies'):
+            if old.get(field) != new.get(field):
+                differences.append((f'WEAPON_ATTS.{weapon}.{field}', old.get(field), new.get(field)))
+    if committed.get('WEAPON_ACCESSORY') != catalog.get('WEAPON_ACCESSORY'):
+        for weapon in sorted(set(committed.get('WEAPON_ACCESSORY', {})) | set(catalog['WEAPON_ACCESSORY'])):
+            old, new = committed.get('WEAPON_ACCESSORY', {}).get(weapon), catalog['WEAPON_ACCESSORY'].get(weapon)
+            if old != new:
+                differences.append((f'WEAPON_ACCESSORY.{weapon}', old, new))
+    for path, old, new in differences:
+        if isinstance(old, list) and isinstance(new, list):
+            old_rules = [json.dumps(r, sort_keys=True) for r in old]
+            new_rules = [json.dumps(r, sort_keys=True) for r in new]
+            print(f'DIFF {path}: removed {[r for r in old_rules if r not in new_rules]} '
+                  f'added {[r for r in new_rules if r not in old_rules]}')
+        else:
+            print(f'DIFF {path}: site {json.dumps(old)} -> generated {json.dumps(new)}')
+    if output != original and not differences:
+        print('Storage differs (order or fields outside slots, dependencies and WEAPON_ACCESSORY)')
+    if args.report_out or not args.check:
+        args.report_out = args.report_out or provenance / 'frosty-attachment-compatibility.json'
+        args.report_out.parent.mkdir(parents=True, exist_ok=True)
+        args.report_out.write_text(report_text, encoding='utf-8', newline='\n')
+    if args.check:
+        if output != original:
+            raise SystemExit(1)
+        return
+    newline = '\r\n' if '\r\n' in original_bytes else '\n'
+    args.out.write_text(output, encoding='utf-8', newline=newline)
 
 
 if __name__ == '__main__':

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "scope": "Reviewed deviations of site data from the generated source values. Each row names its generator, the entry (weapon, slot, id, and field where the generator owns more than one), the source value it was reviewed against (sourceValue) and the value the site keeps (siteValue; null = the field is absent). A generator reports each of its rows applied, STALE (the source moved), REDUNDANT (the source now equals the site) or UNUSED (no such entry); the last three fail the run. Kinds: emulated-bug, pending-check, observed, convention.",
+  "overrides": [
+    {
+      "overrideId": "handling-m121a2-50_fast-reload-tier",
+      "generator": "frosty-attachment-handling",
+      "kind": "pending-check",
+      "weapon": "m121a2",
+      "slot": "mag",
+      "id": "50_fast",
+      "field": "reloadSpeedTier",
+      "sourceValue": null,
+      "siteValue": 1,
+      "reason": "The 50 Fast binds its own WPM_MAG_MG5_Fast_W10, whose reload-time override (Class_7d916d6b, first entry 5.6 / 1.009009) gives 5,550 ms, in 2.1.1.0 and 2.1.2.0; it binds no WME_ReloadSpeed package. The site models it as reload tier 1 (base 6.267 s / 1.13 = 5.546 s). The panel reads 5.55 s, which does not separate the two. Site wrong by the files (4 ms); kept until the tacRldOverrideMs form is adopted with a reload-exceptions.json animationOverrides entry.",
+      "evidence": "docs/ATTACHMENT_BUGS.md wiring survey table (M121 A2 50 Fast: own WPM_MAG_MG5_Fast, panel 6.267 s to 5.55 s); reference-data/provenance/frosty-attachment-handling-generated.json row m121a2 mag 50_fast",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "handling-m121a2-50_fast-reload-override",
+      "generator": "frosty-attachment-handling",
+      "kind": "pending-check",
+      "weapon": "m121a2",
+      "slot": "mag",
+      "id": "50_fast",
+      "field": "tacRldOverrideMs",
+      "sourceValue": 5550,
+      "siteValue": null,
+      "reason": "Pair of handling-m121a2-50_fast-reload-tier: the source override value the site does not store.",
+      "evidence": "As handling-m121a2-50_fast-reload-tier",
+      "since": "2.1.1.0",
+      "alsoIn": ["data/reload-exceptions.json animationOverrides.m121a2 (absent; needed with displayName and recordKey when adopted)"]
+    }
+  ]
+}

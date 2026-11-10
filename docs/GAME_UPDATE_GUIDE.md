@@ -451,10 +451,11 @@ and give each a run-order row.
   ammunition or magazine step. For tables chosen by keyed
   rows with a fallback row (Precision), list each weapon whose fallback differs from its
   class; the Interdictor's 0.5 against 100 is the known case (entry 22). The site shows 100
-  for the Interdictor from its keyed row, which differs from its 1.4.3.0 source; nothing in `sim/` names it. On every new build put
+  for the Interdictor from its keyed row, which differs from its 1.4.3.0 source; nothing in `sim/` names it. On every new build check
+  its Precision table in the raw files. Only when its keyed or fallback row changed, put
   the Interdictor's Precision panel reading on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md)
-  (record the answer per Stage 8, "Recording in-game confirmations"), check
-  its Precision table in the raw files, and when the reading comes back:
+  (record the answer per Stage 8, "Recording in-game confirmations"); an unchanged table
+  needs no reading. When a reading comes back:
   - **Panel shows 100:** set entry 22 to "Matches game: 100" with the build; no site change.
   - **Tables refreshed from the new build:** the keyed row has been 100 since 2.1.1.0, so
     remove the differing-row note in [SOURCES.md](data-flow/SOURCES.md) ("Weapon Attributes
@@ -544,7 +545,8 @@ Then:
 
 **A contradiction needs a second, different method.** When the files disagree with a note (a
 line with nothing stored, or a stored change that differs), the row stays "unresolved" until an
-independent route confirms it, and goes on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md). Re-running
+independent route confirms it. It goes on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md) only when no
+second route exists (Stage 8, "When an in-game check is allowed"). Re-running
 the same check is not a second route; different routes are, for example, record, binding and
 kill switch against the equipment list; the file against the registry row; a decoded value
 against a raw byte search.
@@ -595,14 +597,23 @@ Check every equipment-list "added" row against this census (an added row alone d
 the item live) and every patch-note removal against the "removed" rows before calling it not
 done. An item with all five that the roadmap dates later is a future release. Limits:
 
-- **Ammunition:** the first four conditions are necessary, not sufficient (nine older
-  ammunition records meet them and are not offered). List new ammunition for an in-game menu
-  check.
-- **Not in the weapon's own `AAM_*` map:** unconfirmed; list it for an in-game check, and do
-  not count it from kill-switch rows alone.
+- **Ammunition:** the first four conditions are necessary, not sufficient; the equipment
+  list decides. Nine older ammunition records meet the four and are in no list, and none is
+  offered; "kill switch not true and in the list" reproduced the site's ammunition menu on 67
+  of 68 weapons (10 November 2026; the M357 Trait is the exception). No in-game menu check
+  is needed.
+- **Not in the weapon's own `AAM_*` map:** the displayed name cannot be fixed from the files
+  (no stored link joins a record to a name entry; names are label joins). Availability still
+  follows the record, the list and the kill switch: the map clause fails on ergonomics known
+  to be offered (Match Trigger on the M4A1 and RPKM). Do not count an item from kill-switch
+  rows alone.
+- **A whole weapon** has no stored on/off flag: an unreleased weapon passes all five
+  conditions (the NSW4 in 2.1.1.0). Released weapons have `GRX_Weapons` rows and loot rows;
+  an unreleased one has none (the Mk 1 Mod 0 in 2.1.2.0).
 
 **Gate:** the three lists run with their controls; unassigned count 0; every note line
-attached or listed as "announced, nothing stored"; every contradiction on IN_GAME_CHECKS.md;
+attached or listed as "announced, nothing stored"; every contradiction settled by a second
+method, or on IN_GAME_CHECKS.md with what was tried;
 the result column filled for every row.
 
 ## Stage 8 — Recheck the known-issue lists
@@ -648,6 +659,33 @@ checklist and the report.
 
 Report the outcome as three lists: resolved, still present, needs in-game recheck.
 
+### When an in-game check is allowed
+
+In-game checks cost the operator far more time than any file trace costs a worker, so they
+are the last resort. An item goes on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md) only when all of
+these hold, and its row says what was tried:
+
+1. **The answer would change a site value.** Never ask the operator to confirm a value read
+   from the files, a bug entry's wording, or something already applied. The files are the
+   source; a confirmation changes nothing.
+2. **The files cannot answer.** Try the route for the kind of question first:
+   - *Is it offered, what is on the menu:* the five availability conditions with the
+     equipment list (Stage 7, "Availability of new content").
+   - *The files disagree with a panel, a note or the site:* a second method, then the
+     existing captures (`reference-data/attachment-audit/`, the dated panel files the tests
+     read), then check the tool. Two assets can share one file GUID: the Extended barrel's
+     "+1 ADS step on 46 weapons" was a leftover asset resolved in place of the live one, and
+     the July panels already showed the site was right.
+   - *A time or speed the package does not state:* look for an override object in the
+     package before calling it animation-only (the M/60 100-Round Fast stores its own
+     reload; the M240L 75-Round Fast stores none and so reloads like the weapon).
+3. **A worker has tried and failed**, and the report names the missing link (no row, no
+   stored join, no flag).
+
+Ask for the smallest reading that settles it, combine readings on one weapon into one row,
+and prefer a menu or panel glance to a measurement. (10 November 2026: 15 rows became 3 this
+way.)
+
 ### Recording in-game confirmations
 
 Record every in-game check the operator reports as one line in the update's results file:
@@ -666,7 +704,21 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
    [STALE_SITE_DATA.md](STALE_SITE_DATA.md), and remove rows the update fixes. (2.1.1.0: the
    stale sight exclusions were found this way, from `Equipment_*` required-accessory lists no
    checklist row pointed at.) Raw-mode arguments, including the wiring check's, take `--raw`
-   once per capture folder, later folders winning. Three generators need refreshed inputs
+   once per capture folder, later folders winning, and `--catalog` once per catalog with the
+   loaded-cache catalog (`collection/asset-catalog.json`) first: the rebuilt-cache catalog lists
+   leftover assets that reuse a live file GUID (1,179 in 2.1.2.0), and a run given only that one
+   stops on the first duplicate it needs. `frosty-barrel-ads.py --check` must exit 0 against the
+   committed data before and after the update's changes (it is the first generator that
+   reproduces the site data exactly; it needs `--identities` from the research repo).
+   `frosty-point-costs.py --check` does the same for every point cost: run it on the new build
+   and take the cost changes from its difference list, not from hand edits; a new attachment
+   needs a row in a new dated cost mapping first. `frosty-attachment-handling.py --check`
+   covers grip, laser and magazine handling and reloads the same way, and
+   `frosty-availability.py --check` compares what every weapon offers with the files (record,
+   branch, kill switch, equipment list). Deliberate differences are rows in
+   `data-src/overrides.json` and `data-src/overrides-availability.json`; a row the new build
+   makes STALE, REDUNDANT or UNUSED fails the run and is reviewed, not silenced. All four
+   checks must exit 0 on the committed data at the end of Stage 9. Three generators need refreshed inputs
    first; a run with the check turned off is not a result:
    - `frosty-sniper-brakes.py`: its trace hashes the source graphs (2.1.2.0: 298 differed after
      a re-bake). Refresh the trace on any update whose comparison shows changed graphs.
@@ -759,9 +811,10 @@ Finish the Stage 2 descriptor check and the Stage 7 availability census first.
    and `docs/`.
 7. **Check in the local site** that each weapon loads with its magazines, ammunition and
    attachments, and compare with the operator's in-game panel where the loadouts match.
-8. **Operator list:** values that need an in-game check (ammunition menus, default
-   attachments, anything "not found") go on IN_GAME_CHECKS.md; file values that look like
-   game errors go to ATTACHMENT_BUGS.md.
+8. **Operator list:** menus and default attachments come from the equipment list and the
+   weapon files, not from an in-game look. Only what passes Stage 8, "When an in-game check
+   is allowed" goes on IN_GAME_CHECKS.md; file values that look like game errors go to
+   ATTACHMENT_BUGS.md.
 9. **Wiring check, once part C is in the site** (the fire-mode test reads `data/weapons.json`):
    `python -I scripts/frosty-attachment-wiring-check.py --raw <raw root> [--raw <later capture> ...] --descriptors <SharedTypeDescriptors.ebx> --catalog <asset-catalog.json> --new <folders>`
    (usage at the top of the script). It lists attachment effects and gun-sway bindings the new weapons lack or add against the
@@ -793,6 +846,42 @@ Finish the Stage 2 descriptor check and the Stage 7 availability census first.
       goes on the bot repo `main` (the Mini PC pulls within five minutes). Afterwards compare the
       live `equipment-index.json` with the catalogue for any name still missing. (The 2.1.1.0
       weapons were missed until 18 October.)
+
+## Stage 10 — Independent review
+
+Run this on every new build, after Stage 9 and before the final report. The review is a
+stage of the run, not something the operator has to start. (2.1.2.0: a review started by the
+operator found the DRS-IAR Synthetic Tip removal, the Magwell Flare count and a second L115
+override after the run had reported itself done.)
+
+1. **Who.** One fresh Opus 5.5 worker (brief K) that has seen none of the run's reasoning. It
+   gets the checklist, the three change lists with their assignments, `<version>-site-checks.json`,
+   the site diff (`git diff <commit before the update>..HEAD` on the Analyzer) and the raw
+   indexes. It writes a findings file in the run folder and edits nothing.
+2. **What it checks.**
+   - **Applied rows:** for every applied checklist row, read the value again from the new
+     build's raw file and compare it with the site diff. It does not trust the Result column
+     or the site checks, which were written by the run.
+   - **Rows not applied:** for every "not applied", "held" and "not applicable" row, whether
+     the reason holds in the files.
+   - **Assignments:** every noise category and out-of-scope class, with a sample of at least
+     20 rows from each (all rows when a class has fewer), looking for a real change filed as
+     noise.
+   - **Reach:** for every shared package that changed, count the weapons it reaches from the
+     records and equipment lists and compare with the weapons changed on the site.
+   - **Leftovers:** for every site value changed, search every data file and the `sim/` and
+     `ui/` code for another copy or override of the same fact.
+   - **Contradictions:** every row where the files and the notes disagree has a second method
+     recorded (Stage 7), and the site follows the files.
+   - **Tests and labels:** the report's list of tests removed, updated or skipped equals the
+     diff of `scripts/*.test.*`; the header date and build labels are updated.
+3. **Controls.** Plant one wrong site value and one real change filed as noise in the copies
+   the worker is given; a review that reports neither is rerun.
+4. **After it.** The main session fixes each finding or records why it stands, reruns the
+   Stage 9 step 7 checks if the site changed, and records the findings count and the fixes in
+   the run-order row.
+
+**Gate:** both controls found; every finding fixed or answered in the checklist.
 
 ## Workers
 
@@ -828,6 +917,7 @@ and the side task failed). Scripted steps stay scripts; workers assign or check 
 | Stage 7, new content | Availability census of every added attachment, ammunition choice, weapon and gadget | H | Sonnet |
 | Stage 8 | One known-issue list per worker | F | Haiku to match, Sonnet to judge |
 | Stage 9, new weapons | One worker per part (A, B, C): reproduce the roster, then propose | I | Sonnet |
+| Stage 10 | Independent review of the finished update, with two planted errors as controls | K | Opus |
 
 Launch independent workers together; Stages 5, 6 and 8 can start as soon as the changed-route
 list exists.

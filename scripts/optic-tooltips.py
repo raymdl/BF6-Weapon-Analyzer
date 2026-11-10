@@ -20,6 +20,17 @@ dropped from the sight slot.
 Usage:
   python scripts/optic-tooltips.py --individual <report.json> --mapping <mapping.json>
       [--tooltips data/attachment-tooltips.json] [--attachments data/attachments.json] [--write]
+
+From raw, after frosty-attachment-tooltips.py (its --out and --optic-mapping-json) and
+frosty-individual-optics.py (its --report-out):
+  python scripts/optic-tooltips.py --tooltips <generated tooltips> --mapping <optic mapping>
+      --individual reference-data/provenance/frosty-individual-optics-<date>.json
+      (--out data/attachment-tooltips.json | --check)
+
+--out writes the full site file (CRLF, without the generator's coverage block, in the
+committed file's key order with new keys appended); --check compares that file with
+--site (default data/attachment-tooltips.json), prints each differing leaf and exits 1
+on any difference.
 """
 import argparse
 import json
@@ -42,6 +53,22 @@ def asset_key(asset):
     return asset.lower().removesuffix("_nocaps")
 
 
+def site_order(value, committed):
+    """Order dict keys as the committed file has them; new keys follow in their own order."""
+    if not isinstance(value, dict) or not isinstance(committed, dict):
+        return value
+    keys = [k for k in committed if k in value] + [k for k in value if k not in committed]
+    return {k: site_order(value[k], committed.get(k)) for k in keys}
+
+
+def leaves(value, path=()):
+    if isinstance(value, dict):
+        for key, item in value.items():
+            yield from leaves(item, path + (key,))
+    else:
+        yield path, value
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--individual", required=True, help="frosty-individual-optics-<date>.json")
@@ -49,6 +76,11 @@ def main():
     parser.add_argument("--tooltips", default="data/attachment-tooltips.json")
     parser.add_argument("--attachments", default="data/attachments.json")
     parser.add_argument("--write", action="store_true", help="write the tooltip file; otherwise report only")
+    parser.add_argument("--site", default="data/attachment-tooltips.json",
+                        help="committed tooltip file: key order for --out, comparison for --check")
+    parser.add_argument("--out", help="write the full site tooltip file here")
+    parser.add_argument("--check", action="store_true",
+                        help="compare the full result with --site; exit 1 on any difference")
     args = parser.parse_args()
 
     individual = load(args.individual)
@@ -136,6 +168,27 @@ def main():
     if problems:
         print("problems:\n  " + "\n  ".join(problems))
         return 1
+    if args.out or args.check:
+        committed = load(args.site)
+        tooltips.pop("coverage", None)
+        result = site_order(tooltips, committed)
+        text = json.dumps(result, indent=2, ensure_ascii=False) + "\n"
+        if args.check:
+            old, new = dict(leaves(committed)), dict(leaves(result))
+            differences = [(k, old.get(k), new.get(k)) for k in sorted(set(old) | set(new), key=repr)
+                           if old.get(k) != new.get(k)]
+            for key, before, after in differences:
+                print(f"DIFF {'.'.join(key)}: site {json.dumps(before)} -> generated {json.dumps(after)}")
+            with open(args.site, encoding="utf-8") as handle:
+                stored = handle.read().replace("\r\n", "\n")
+            if stored != text and not differences:
+                print("Storage differs (key order or formatting)")
+            print(f"{len(differences)} leaf differences from {args.site}")
+            return 1 if stored != text else 0
+        with open(args.out, "w", encoding="utf-8", newline="") as handle:
+            handle.write(text.replace("\n", "\r\n"))
+        print(f"wrote {args.out}")
+        return 0
     if args.write:
         # The file is CRLF throughout; keep it so the diff is the content.
         text = json.dumps(tooltips, indent=2, ensure_ascii=False) + "\n"

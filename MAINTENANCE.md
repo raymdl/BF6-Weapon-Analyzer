@@ -73,30 +73,116 @@ Do not promote unresolved fields or source-only attachment availability.
 The [Frosty attachment notes](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#generated-site-values)
 records accepted mappings and remaining exceptions.
 
-Regenerate shared rails and attachment dependencies from Frosty rather than
-editing `WEAPON_ATTS.slots` or `dependencies` by hand:
+The handling generator runs from this repository alone (raw mode as above). It owns
+grip and laser per-weapon axes, grip and magazine moving-ADS spread (GS binding
+collection `Field_2ffeb6ac` only), magazine draw/sprint/ADS axes, `weaponSwayMult`,
+`reloadSpeedTier`, `reloadSpeedMult` and `tacRldOverrideMs`, and writes their copies in
+`reload-exceptions.json` `animationOverrides` and `weapon_attributes.json`
+`mobilityInputs`. Identities come from
+`reference-data/provenance/frosty-handling-mapping-*.json`; a new grip, laser or
+magazine needs a row in a new dated copy. Fields it does not own are listed in the
+script (`NOT_OWNED`) and counted in its output; any other key stops the run. A value
+the site keeps different from the files is a row in `data-src/overrides.json`
+(generator `frosty-attachment-handling`, with `field`).
+
+Shared rails, attachment dependencies, individual optics and tooltips come from
+four generators that run from the capture and this repository alone. `<RAW>` is
+the raw arguments of the point-cost command below; `<tmp>` is any scratch folder.
+Run them in this order; each `--check` writes no site data and exits 1 on any
+difference from the committed files:
 
 ```sh
-python scripts/frosty-attachment-compatibility.py --root <Frosty-export-root> --check
+python scripts/frosty-attachment-tooltips.py Common/Hardware/Weapons <tmp>/tooltips.json <RAW> --strings <capture>/fs_us_loc.strings.tsv --optic-mapping-json <tmp>/optic-mapping.json --check
+python scripts/frosty-availability.py <RAW> --strings <capture>/fs_us_loc.strings.tsv --report-out <tmp>/availability.json --check
+python scripts/frosty-attachment-compatibility.py <RAW> --report-out <tmp>/compatibility.json --check
+python scripts/frosty-individual-optics.py --optic-mapping <tmp>/optic-mapping.json --compatibility <tmp>/compatibility.json --availability <tmp>/availability.json --report-out reference-data/provenance/frosty-individual-optics-<date>.json --check
+python scripts/optic-tooltips.py --tooltips <tmp>/tooltips.json --mapping <tmp>/optic-mapping.json --individual reference-data/provenance/frosty-individual-optics-<date>.json --check
+python scripts/frosty-point-costs.py <RAW> --check
 ```
 
-Omit `--check` to regenerate. Review the catalog and
-`reference-data/provenance/frosty-attachment-compatibility.json` together.
+To regenerate, drop `--check`: the tooltip generator still writes `<tmp>/tooltips.json`
+(not site data); compatibility writes `data/attachments.json` (`--out`) and its
+report (default `reference-data/provenance/frosty-attachment-compatibility.json`);
+individual optics writes `data/attachments.json` and the dated report; optic
+tooltips writes the site file with `--out data/attachment-tooltips.json`. Point costs
+run last, because the optics step resets optic `pts`. Identities come from the
+point-cost mapping (`--identity-mapping`) and the handling mapping's weapon list;
+a new attachment needs its row there first. Compatibility reads the Optic Accessory
+prerequisites from the latest committed individual-optics report, so after a new
+optic rerun compatibility once the report is regenerated.
 
-Sights are individual optics. After the optic category mapping or the compatibility
-report changes, regenerate them, the per-weapon sight lists and the optic prerequisites
-of Optic Accessory rules (it reads the research repo's optic render-FOV report for
-in-game names; pass `--names` for another path):
+Individual optics take their in-game names from
+`reference-data/provenance/frosty-optic-render-fov-*.json` and
+`frosty-optic-names-*.json` (a new optic needs a row in a new dated names file), and
+skip a sight the availability report does not offer. A difference the site keeps
+on purpose, or that waits on an in-game check, is a row in
+`data-src/overrides-tooltips.json` (its `generator` names the script, `sourceValue`
+the generated value or state and `siteValue` the site's); each generator reports its
+rows applied, `STALE`, `REDUNDANT` or `UNUSED`, and only applied rows pass `--check`.
 
-```sh
-python scripts/frosty-individual-optics.py --check
-```
-
-New optics are appended to `SIGHTS`, so share-link indices stay stable.
+New optics are appended to `SIGHTS`, so share-link indices stay stable; each
+weapon's sight list and each accessory's `requiresAny` list are in display order
+(low-end magnification, then name).
 Missing or ambiguous offered slot identities stop generation. Dependencies use
 reviewed attachment identities; unsupported source options remain in evidence.
 Keep positional URL tokens stable. Check replacement, empty selection, point
 costs, legacy links, prerequisite changes and weapon switching.
+
+Point costs (catalogue `pts`, muzzle and ergonomics `weaponOverrides.pts`,
+`sightPoints`, magazine `pts`, `WEAPON_AMMO` costs) come from each attachment
+record's cost. Run it after the optics step, which resets optic `pts`:
+
+```sh
+python scripts/frosty-point-costs.py --raw <capture>/raw ... --descriptors <...> --catalog <...> --check
+```
+
+It joins every site cost entry to its records through
+`reference-data/provenance/frosty-point-cost-mapping-*.json`; an entry without a
+row, or a row without an entry, fails the run. A new attachment needs a row
+(record, and the evidence for the identity) in a new dated copy. A cost the site
+keeps different from the files belongs in `data-src/overrides.json` (generator
+`frosty-point-costs`, with the reviewed source value); a row whose source value
+has moved is reported `STALE`. Barrels, grips, lasers and lights hold one cost
+for every weapon: a per-weapon source cost there stops the run.
+
+Availability lists (`WEAPON_ATTS` slot and sight lists, `WEAPON_ERGO`,
+`WEAPON_ACCESSORY`, `WEAPON_MAG` magazines, `WEAPON_AMMO`) have a checker, not a
+generator: it writes no site data.
+
+```sh
+python scripts/frosty-availability.py --raw <capture>/raw ... --descriptors <...> --catalog <...> --strings <capture>/fs_us_loc.strings.tsv --check
+```
+
+A record is offered when it has an ability branch, no kill-switch row stored true
+and an `Equipment_<weapon>` entry (the guide's "Availability of new content").
+Site entries join to records through the point-cost mapping, so a new attachment
+needs its row there first. The run lists records the files offer that the site
+lacks (with the in-game name where the `AAM_*` map has one), site entries the
+files do not offer (with the failing condition) and site entries with no record,
+and prints the `GRX_Weapons` and loot row counts of weapons not on the site (none:
+not released). Every difference the site keeps on purpose, or that waits on an
+in-game check, is a row in `data-src/overrides-availability.json` (generator
+`frosty-availability`, `sourceValue` the computed state); `--check` exits 0 only
+when every difference has an applied row. Run it on the previous build too: the
+differences between the two runs are the update's availability changes.
+
+Weapon base records (`data/weapons.json`) have a checker too; it writes no site data:
+
+```sh
+python scripts/frosty-weapons.py --raw <capture>/raw ... --descriptors <...> --catalog <...> --strings <capture>/fs_us_loc.strings.tsv --check
+```
+
+It reads each weapon's `_WB`, `GS_`, bullet curve, `GRX_Weapons` rows and UI record
+(identities in `reference-data/provenance/frosty-weapon-identities-*.json`; a new weapon
+needs a row in a new dated copy) and compares every owned field, the attachment-gated
+fire modes (`fireModeAttachments`, through the ergonomics record's ability branch) and the
+per-weapon values in `recoil_decay.json`, `balance_tables.json` and `WEAPON_MAG` base
+indices. Families it cannot read (`cal`, `damageStatus`, `damageSource`, `provenance`)
+are listed in the script as `NOT_OWNED`; any other key stops the run. A value the site
+keeps different from the files is a row in `data-src/overrides-weapons.json` (generator
+`frosty-weapons`, `field` the printed leaf path, kinds `convention`, `observed`,
+`pending-check`, `precision`). Run it on the previous build as well: the differences
+between the two runs are the update's weapon changes.
 
 After reviewing compatibility changes, update the
 [Frosty asset findings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/DATA_GRAPH.md#slots-and-prerequisites)
@@ -117,43 +203,26 @@ in-game check; record confirmed cases in
 
 ## Regenerate attachment tooltips
 
-Follow the [description audit commands](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#regeneration-and-verification)
-to regenerate `data/attachment-tooltips.json` and both mapping reports together.
-Keep `--optic-mapping-json` in the command. The generator reads the dated evidence
-files from the research repo and the reviewed screenshots from this repo when its
-own tree lacks them, so the command runs from either copy. The generator requires the original
-local AAM XML, Frosty export, and ignored capture library; the small mapper tests
-do not. Approved panel text is enabled explicitly in `panelLinkageInvestigation`
-and checked against the original hardware/UI link and screenshot hash. A row with
-`status: linked-text-differs-from-panel` may also replace a linked English string
-that differs from the live panel; record the reason and keep the original pointer. Never
-replace a missing Frosty string ID with an unrelated ID that has matching text.
-An approved panel does resolve its own missing string ID for every choice whose
-linked descriptor carries that ID: those choices get status
-`panel-resolved-string-id` and the real ID as their key.
-Review the 3,179 source-text, 26 panel-text, 45 string-ID-resolved and 0 deferred
-choice counts, and retain the per-choice source distinction. Also check all 67
-iron-sight tooltips,
-including the Classic M16A4 and aperture UMG-40 defaults. The generator reads the
-MG5 iron-sight descriptor directly from the weapon export outside the UI batch.
-The runtime JSON is part of the ship surface.
-
-Then fill the individual optic tooltips from the two provenance reports; this
-step needs no Frosty export:
-
-```bash
-python scripts/optic-tooltips.py --individual reference-data/provenance/frosty-individual-optics-2026-10-21.json --mapping "../BF6 Frosty Research/reference-data/provenance/frosty-optic-category-mapping-2026-10-13.json" --write
-```
-
-The mapping stays in the research repo: its unresolved rows are not what the
-site's optic-costs test expects of a mapping file here, and the script reads
-the unresolved list for descriptor assets anyway.
-It writes one description per weapon and optic from the optic's own descriptor
-asset, drops the legacy category keys the site no longer offers, and stops on
-any optic that resolves to no string or to more than one. Expect 1,996 entries
-over 40 optics and 16 strings (the game describes optics by class, so models of
-one magnification share a string); the GRT-CPS NFX 8.00x resolves through the
-`_nocaps` variant of the shared NX8-4 descriptor.
+The tooltips come from the four-step raw chain in "Regenerate attachment modifiers"
+above: `frosty-attachment-tooltips.py` writes every non-optic tooltip and the iron
+sights (raw `AD_*` descriptors and the build's strings, joined to site choices
+through the point-cost mapping), and `optic-tooltips.py` adds the individual optics
+from the generated optic mapping and the individual-optics report and writes
+`data/attachment-tooltips.json` (`--out`, CRLF, committed key order). Approved panel
+text is enabled explicitly in `panelLinkageInvestigation` of
+`reference-data/provenance/frosty-attachment-identity-followup-*.json` and checked
+against the original hardware/UI link (and the screenshot hash when the ignored
+capture library is present). A row with `status: linked-text-differs-from-panel` may
+also replace a linked English string that differs from the live panel; record the
+reason and keep the original pointer. Never replace a missing Frosty string ID with
+an unrelated ID that has matching text; keep a removed string's old text only through
+a `data-src/overrides-tooltips.json` row. An approved panel does resolve its own
+missing string ID for every choice whose linked descriptor carries that ID: those
+choices get status `panel-resolved-string-id` and the real ID as their key. A new
+magazine with no `AAM_*` record links to the one `_MAG_` descriptor in its weapon's UI
+folder whose label is its site id. Optic tooltips stop on any optic that resolves to
+no string or to more than one (the game describes optics by class, so models of one
+magnification share a string). The runtime JSON is part of the ship surface.
 
 ## Reload exceptions and provenance
 

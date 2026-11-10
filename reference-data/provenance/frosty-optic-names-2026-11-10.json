@@ -1,0 +1,16 @@
+{
+  "scope": "In-game names of optics added after the optic render-FOV report of 2026-09-16, in its opticNames shape, for scripts/frosty-individual-optics.py. Names and labels only; no render FOV or zoom was read.",
+  "recordedDate": "2026-11-10",
+  "build": "2.1.2.0",
+  "opticNames": [
+    {
+      "inGameName": "PA-SL 2.50x",
+      "nameIds": ["0x149aa226"],
+      "frostyRecordNames": ["PAC25"],
+      "labels": ["Scope 2.50x"],
+      "descriptions": ["Moderately magnified optic with a clear sight picture."],
+      "evidence": "2.1.2.0 fs_us_loc string 149AA226 'PA-SL 2.50x' (in 2.1.1.0 the id read 'ST Prism 5.00x'; the Steiner sight moved to a new id); AAM records '<weapon> - SCP - PAC25' link common/ui/static/metadata/attachments/shared/ad_pac25 (label 'Scope 2.50x', description 423A4775) on 61 weapons. Research repo docs/updates/2.1.2.0-checklist.md row U1."
+    }
+  ],
+  "ironSights": []
+}

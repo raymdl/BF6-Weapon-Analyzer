@@ -85,12 +85,12 @@ process.stdout.write(JSON.stringify(choices));
         ["node", "--input-type=module", "-e", script], cwd=REPO, text=True))
 
 
-def source_graph(export, include_optics=False):
+def source_graph(export, include_optics=False, identities=None):
     base = export.root
     spec = importlib.util.spec_from_file_location("frosty_configuration", REPO / "scripts/frosty-configuration.py")
     cfg = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(cfg)
-    identities = read_json(local_file("reference-data/provenance/frosty-weapon-identities.json"))["weapons"]
+    identities = identities or weapon_identities()
     gs_files = {p.stem[3:].lower(): p for p in (base / "Common/Hardware/Weapons").rglob("GS_*.xml")}
     weapons = []
     for identity in identities:
@@ -112,6 +112,86 @@ def source_graph(export, include_optics=False):
             progressions[row["internalId"]].append(row["abilityProgression"])
     rows, issues = cfg.attachment_graph(base, weapons, read_xml, ability_progressions=progressions, include_optics=include_optics)
     return {row.get("sourceKey") or row["attachmentXml"]: row for row in rows}, hashes, issues
+
+
+IDENTITY_MAPPING = REPO / "reference-data/provenance/frosty-point-cost-mapping-2026-11-10.json"
+WEAPON_MAPPING = REPO / "reference-data/provenance/frosty-handling-mapping-2026-11-10.json"
+FOLLOWUP = REPO / "reference-data/provenance/frosty-attachment-identity-followup-2026-10-25.json"
+DESCRIPTOR_FOLDERS = ("Common/UI/Static/Metadata/Attachments", "Common/Hardware/Weapons")
+
+
+def weapon_identities(path=WEAPON_MAPPING):
+    """[{siteId, internalId}] of every site weapon, from a dated identity file of this repository:
+    the handling mapping's identities list, or a file with a weapons list of the same rows."""
+    document = read_json(Path(path))
+    return [{"siteId": r["siteId"], "internalId": r["internalId"]}
+            for r in document.get("identities") or document["weapons"]]
+
+
+def mapped_identities(mapping=IDENTITY_MAPPING, export=None, slots=None):
+    """Reviewed site identities from a dated identity mapping of this repository.
+
+    Every row (weapon, slot, id) names the Attachment_* record(s) of one site entry; the rows of
+    the point-cost mapping cover every site cost entry (the earlier full-pass audit, its
+    follow-ups and the 2.1.2.0 additions). Returns the shape reviewed_identities returns:
+    sources[(weapon, slot, id)] = {attachment .xml path: {mapping file name}}. With a raw
+    export the path takes the capture's own letter case (the graph keys)."""
+    mapping = Path(mapping)
+    sources, reviews = defaultdict(lambda: defaultdict(set)), {}
+    reviews[mapping.name] = hashlib.sha256(mapping.read_bytes()).hexdigest()
+    for row in read_json(mapping)["rows"]:
+        if slots and row["slot"] not in slots:
+            continue
+        for record in row["records"]:
+            path = record if record.lower().endswith(".xml") else record + ".xml"
+            if export is not None and export.export is not None:
+                path = export.export.files.get(path.lower(), (path,))[0]
+            sources[row["weapon"], row["slot"], row["id"]][path].add(mapping.name)
+    return sources, reviews
+
+
+def read_strings(path):
+    strings = {}
+    with Path(path).open(encoding="utf-8-sig") as source:
+        for line in source:
+            string_id, text = line.rstrip("\r\n").split("\t", 1)
+            strings[string_id] = text
+    return strings
+
+
+def raw_descriptors(export, strings_path, folders=DESCRIPTOR_FOLDERS):
+    """The attachment UI descriptor document (frosty-descriptions.py shape) read from the
+    capture's AD_* assets and the build's English string table."""
+    strings = read_strings(strings_path)
+
+    def resolve(root, reference):
+        value = root.findtext(f"Class_535682be/{reference}")
+        if not value or not value.startswith("[Class_fbe1d3bc] "):
+            return {"error": f"missing reference: {value}"}
+        target = root.find(f"Class_fbe1d3bc[@Guid='{value.split(' ', 1)[1]}']")
+        raw_id = target.findtext("Field_3d34898a") if target is not None else None
+        if not raw_id or not raw_id.startswith("0x"):
+            return {"error": f"missing string id: {raw_id}"}
+        result = {"id": raw_id[2:].upper()}
+        if result["id"] in strings:
+            result["text"] = strings[result["id"]]
+        else:
+            result["error"] = "id absent from English string table"
+        return result
+
+    records = []
+    for folder in folders:
+        for path in sorted((export.root / folder).rglob("AD_*.xml")):
+            root, digest = export.load(path.relative_to(export.root).as_posix())
+            main = root.find("Class_535682be")
+            record = {"asset": main.findtext("Field_0c59fa06") if main is not None else None, "xmlSha256": digest,
+                      "label": resolve(root, "Field_33a358a7"), "description": resolve(root, "Field_490f0dd0")}
+            if record["description"].get("error") == "id absent from English string table":
+                record["reviewStatus"] = "description-review-required"
+            records.append(record)
+    return {"sourceStrings": Path(strings_path).name,
+            "sourceStringsSha256": hashlib.sha256(Path(strings_path).read_bytes()).hexdigest(),
+            "count": len(records), "attachments": records}
 
 
 def reviewed_identities(audit_file="frosty-attachment-full-pass-2026-09-06.json",
@@ -255,6 +335,17 @@ def shared_model_key(name, slot, details):
     return slot, normalized(parts[1]), tuple((s["asset"], s["guid"]) for s in selectors)
 
 
+def magazine_label_link(internal_id, site_id, descriptors):
+    """A magazine whose weapon AAM lists no record (the 2.1.2.0 belts and tubes): the one
+    descriptor in the weapon's own UI folder whose MAG label reads the site id ("75 RND" is
+    75_rnd, "100 FAST" is 100_fast). Used only when every AAM-based link fails."""
+    folder = f"common/ui/static/metadata/attachments/{internal_id.lower()}/"
+    matches = sorted(asset for asset, record in descriptors.items()
+                     if asset.startswith(folder) and "_mag_" in asset.rsplit("/", 1)[-1]
+                     and re.sub(r"\s+", "_", (record.get("label", {}).get("text") or "").strip().lower()) == site_id)
+    return {"method": "weapon-magazine-descriptor-label", "assets": matches} if len(matches) == 1 else None
+
+
 def description_consensus(assets, descriptors):
     if not assets:
         return None
@@ -282,8 +373,14 @@ def audit(choices, graph, sources, indexes, descriptors, ui_reviews=()):
             link = weapon_ui(name, slot, indexes, slots_by_name)
             review = reviewed_links.get((path, slot))
             if review:
-                if sorted(link["assets"] if link else []) != sorted(review["candidateAssets"]):
+                current = set(link["assets"] if link else [])
+                if not set(review["candidateAssets"]) <= current or (current and not review["candidateAssets"]):
                     raise ValueError(f"Reviewed UI candidates changed: {path}")
+                if current - set(review["candidateAssets"]):
+                    # A descriptor the reviewed descriptor batch lacked (the raw read lists every
+                    # AD_* asset). The review still selects its asset by the panel text below.
+                    print(f"note: reviewed UI link {path} has candidates the review did not list: "
+                          f"{sorted(current - set(review['candidateAssets']))}")
                 asset = review["descriptionAsset"]
                 if (link and asset not in link["assets"]) or descriptors[asset]["description"].get("text") != review.get("sourceDescription", review["observedDescription"]):
                     raise ValueError(f"Reviewed UI text changed: {path}")
@@ -330,6 +427,8 @@ def audit(choices, graph, sources, indexes, descriptors, ui_reviews=()):
                 if description_consensus(assets, descriptors):
                     link = {"method": "shared-model-and-selector-consensus", "assets": assets,
                             "anchors": sorted(anchors, key=lambda a: (a["weapon"], a["source"]))}
+            if not link and choice["slot"] == "mag":
+                link = magazine_label_link(graph[path]["weapon"], choice["attachment"], descriptors)
             if not link:
                 item["status"] = "description-link-missing"
                 failures.append(item["status"])
@@ -372,6 +471,14 @@ def audit(choices, graph, sources, indexes, descriptors, ui_reviews=()):
     return records, by_weapon, used_ids
 
 
+def screenshot_matches(review):
+    """The reviewed image still hashes to its recorded SHA-256. The images live in the ignored
+    attachment-audit folder of the working copy that holds them; a checkout without the image
+    keeps the recorded hash and text, so the check only runs where the image is present."""
+    path = local_file(review["screenshot"])
+    return not path.exists() or hashlib.sha256(path.read_bytes()).hexdigest() == review["screenshotSha256"]
+
+
 def apply_screenshot_tooltips(records, by_weapon, reviews):
     """Use reviewed panel text per choice without replacing Frosty pointers or IDs."""
     choices = {(r["weapon"], r["slot"], r["attachment"]): r for r in records}
@@ -391,7 +498,7 @@ def apply_screenshot_tooltips(records, by_weapon, reviews):
         if record["sources"][0]["uiLink"] != review["originalUiLink"]:
             raise ValueError(f"Screenshot tooltip UI link changed: {key}")
         if "screenshot" in review:
-            if hashlib.sha256(local_file(review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
+            if not screenshot_matches(review):
                 raise ValueError(f"Screenshot tooltip image changed: {key}")
             evidence = {"screenshot": review["screenshot"], "screenshotSha256": review["screenshotSha256"]}
         elif review.get("operatorConfirmation"):
@@ -479,11 +586,11 @@ def optic_category(label):
             "Variable 2-8x": "var_high", "Variable 3-10x": "var_high"}.get(label)
 
 
-def optic_categories(choices, graph, indexes, descriptors):
-    identities = read_json(local_file("reference-data/provenance/frosty-weapon-identities.json"))["weapons"]
+def optic_categories(choices, graph, indexes, descriptors, identities=None):
+    identities = identities or weapon_identities()
     site_ids = {r["internalId"].lower(): r["siteId"] for r in identities}
     rows = [r for r in graph.values() if (r.get("category") or {}).get("asset", "").endswith("_Sight")]
-    links, peers = {}, defaultdict(set)
+    links, peers, token_assets = {}, defaultdict(set), defaultdict(set)
     for row in rows:
         name = source_name(row)
         link = weapon_ui(name, "sight", indexes, {normalized(without_slot(name)): {"sight"}})
@@ -498,12 +605,18 @@ def optic_categories(choices, graph, indexes, descriptors):
         links[row["attachmentXml"]] = (link, key, details)
         if link and details["selectors"] and all(s["bound"] for s in details["selectors"]):
             peers[key].update(link["assets"])
+        if link and link["method"] in ("aam-full-name", "aam-without-slot"):
+            token_assets[key[0]].add(tuple(link["assets"]))
     members, unresolved = [], []
     for row in rows:
         path = row["attachmentXml"]
         link, key, details = links[path]
         if not link and peers[key] and details["selectors"] and all(s["bound"] for s in details["selectors"]):
             link = {"method": "same-optic-model-and-selector", "assets": sorted(peers[key])}
+        if not link and len(token_assets.get(key[0], ())) == 1 and key[0] != "ironsights":
+            # A weapon whose AAM lists no record for an optic every AAM-linked weapon links to one
+            # and the same descriptor (the PA-SL 2.50x on the PSR and SV-98 in 2.1.2.0).
+            link = {"method": "same-optic-record-token-aam-consensus", "assets": list(next(iter(token_assets[key[0]])))}
         assets = link["assets"] if link else []
         labels = {descriptors.get(a, {}).get("label", {}).get("text") for a in assets}
         point_cost = int(row["rawPointCost"], 16)
@@ -571,60 +684,144 @@ def iron_sight_tooltips(optics, by_weapon):
     return descriptions
 
 
+GENERATOR = "frosty-attachment-tooltips"
+
+
+def owned_leaves(document):
+    """{(weapon, slot, id): (key, text)} of the leaves this generator writes: every slot but the
+    individual optics (scripts/optic-tooltips.py writes those); the sight slot's iron entry."""
+    leaves = {}
+    for weapon, slots in document["byWeapon"].items():
+        for slot, items in slots.items():
+            for item, key in items.items():
+                if slot == "sight" and item != "iron":
+                    continue
+                leaves[weapon, slot, item] = (key, document["descriptions"].get(key))
+    return leaves
+
+
+def apply_deviations(by_weapon, descriptions, overrides, choices):
+    """Rows of data-src/overrides-tooltips.json for this generator: the site keeps siteValue (a
+    description key, null = no tooltip) where the files give sourceValue. siteText is the text of a
+    siteValue key the files do not supply. Returns the report rows; every status but applied fails."""
+    offered = {(c["weapon"], c["slot"], c["attachment"]) for c in choices}
+    offered |= {(w, "sight", "iron") for w, _, _ in offered}
+    report = []
+    for row in overrides:
+        key = row["weapon"], row["slot"], row["id"]
+        generated = by_weapon.get(key[0], {}).get(key[1], {}).get(key[2])
+        if key not in offered:
+            status = "UNUSED"
+        elif generated == row["siteValue"] and (row.get("siteText") is None or descriptions.get(generated) == row["siteText"]):
+            status = "REDUNDANT"
+        elif generated != row["sourceValue"]:
+            status = "STALE"
+        else:
+            status = "applied"
+            slot = by_weapon.setdefault(key[0], {}).setdefault(key[1], {})
+            if row["siteValue"] is None:
+                slot.pop(key[2], None)
+            else:
+                slot[key[2]] = row["siteValue"]
+                if row.get("siteText") is not None:
+                    descriptions[row["siteValue"]] = row["siteText"]
+        report.append({"overrideId": row.get("overrideId"), "weapon": key[0], "slot": key[1], "id": key[2],
+                       "status": status, "source": generated, "reviewedSource": row["sourceValue"],
+                       "siteValue": row["siteValue"]})
+    return report
+
+
 def main():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(description=__doc__ + """
+
+Raw mode reads the capture: hardware graph, AAM_* records, AD_* descriptors (with --strings, the
+build's fs_us_loc.strings.tsv) and the reviewed identities of this repository (--identity-mapping,
+--weapon-identities, --followup). The output holds every non-optic tooltip and the iron sights;
+scripts/optic-tooltips.py adds the individual optics and writes data/attachment-tooltips.json.
+Deviations the site keeps are rows in data-src/overrides-tooltips.json, reported applied, STALE,
+REDUNDANT or UNUSED. --check writes no site data (output_json, when given, is still written) and
+exits 1 on any difference between the generated leaves and the committed file, or any deviation
+row not applied.""",
+                                     formatter_class=argparse.RawDescriptionHelpFormatter)
     spec = importlib.util.spec_from_file_location("frosty_raw_tree", REPO / "scripts/frosty-raw-tree.py")
     raw_tree = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(raw_tree)
     parser.add_argument("aam_xml_root", type=Path,
                         help="Folder holding the AAM_* XML files; with --raw, a folder inside the raw export")
-    parser.add_argument("output_json", type=Path)
+    parser.add_argument("output_json", type=Path, nargs="?",
+                        help="Generated non-optic and iron-sight tooltips (input of optic-tooltips.py)")
     parser.add_argument("--frosty-root", type=Path)
     raw_tree.add_raw_arguments(parser)
     parser.add_argument("--mapping-json", type=Path,
                         help="Write a source identity and description audit for every current site choice")
     parser.add_argument("--optic-mapping-json", type=Path,
                         help="Audit individual Frosty sights against the existing generic site categories")
-    provenance = Path("reference-data/provenance")
-    parser.add_argument("--identity-audit", type=Path, default=local_file(provenance / "frosty-attachment-full-pass-2026-09-06.json"),
-                        help="Retained audit whose mapped rows supply the attachment identities")
-    parser.add_argument("--barrel-mapping", type=Path, default=local_file(provenance / "frosty-barrel-ads-2026-09-13.json"),
-                        help="Reviewed barrel identity rows")
-    parser.add_argument("--descriptions", type=Path, default=local_file(provenance / "frosty-attachment-descriptions-2026-09-13.json"),
-                        help="Attachment UI labels and descriptions written by frosty-descriptions.py")
+    parser.add_argument("--strings", type=Path,
+                        help="fs_us_loc.strings.tsv of the build: read the AD_* descriptors from the input "
+                             "instead of a --descriptions file")
+    parser.add_argument("--descriptions", type=Path,
+                        help="Attachment UI labels and descriptions written by frosty-descriptions.py (without --strings)")
+    parser.add_argument("--identity-mapping", type=Path, default=IDENTITY_MAPPING,
+                        help="Dated identity mapping whose rows supply the attachment identities")
+    parser.add_argument("--identity-audit", type=Path,
+                        help="Legacy: research full-pass audit (with --barrel-mapping) in place of --identity-mapping")
+    parser.add_argument("--barrel-mapping", type=Path, help="Legacy: reviewed barrel identity rows")
+    parser.add_argument("--weapon-identities", type=Path, default=WEAPON_MAPPING,
+                        help="Dated file whose identities (or weapons) list maps site ids to internal ids")
+    parser.add_argument("--followup", type=Path, default=FOLLOWUP,
+                        help="Identity follow-up with the UI-link reviews and approved panel texts")
+    parser.add_argument("--overrides", type=Path, default=REPO / "data-src/overrides-tooltips.json",
+                        help="Reviewed deviations; rows with generator frosty-attachment-tooltips are applied")
+    parser.add_argument("--site", type=Path, default=REPO / "data/attachment-tooltips.json",
+                        help="Committed tooltip file --check compares with")
+    parser.add_argument("--check", action="store_true")
     args = parser.parse_args()
+    if not args.check and not args.output_json:
+        parser.error("give output_json, or --check")
     export = raw_tree.open_input(parser, args, args.frosty_root)
     if args.raw:
         aam_root, load_aam = export.root / args.aam_xml_root, export.load
     else:
         # The AAM folder is separate from the export root; its paths are read as given.
         aam_root, load_aam = args.aam_xml_root, raw_tree.Input(xml_root=Path()).load
-    descriptor_path = args.descriptions
-    descriptor_document = read_json(descriptor_path)
+    if args.strings:
+        descriptor_document = raw_descriptors(export, args.strings)
+        descriptor_sha = hashlib.sha256(json.dumps(descriptor_document, sort_keys=True).encode()).hexdigest()
+    else:
+        if not args.descriptions:
+            parser.error("give --strings (raw descriptors) or --descriptions")
+        descriptor_document = read_json(args.descriptions)
+        descriptor_sha = hashlib.sha256(args.descriptions.read_bytes()).hexdigest()
     descriptors = {r["asset"].lower(): r for r in descriptor_document["attachments"]}
     # MG5 stores its iron-sight descriptor with the weapon, outside the UI batch.
     extra_asset = "Common/Hardware/Weapons/MG/MG5/AD_MG5_IronSights"
     extra_root, extra_sha = export.load(extra_asset + ".xml")
-    pointer = extra_root.findtext("Class_535682be/Field_490f0dd0").split()[-1]
-    string_id = extra_root.find(f"Class_fbe1d3bc[@Guid='{pointer}']/Field_3d34898a").text[2:].upper()
-    text_by_id = {r["description"]["id"]: r["description"]["text"] for r in descriptors.values() if r["description"].get("text")}
-    descriptors[extra_asset.lower()] = {"asset": extra_asset, "label": {},
-        "xmlSha256": extra_sha,
-        "description": {"id": string_id, "text": text_by_id[string_id]}}
+    if extra_asset.lower() not in descriptors:
+        pointer = extra_root.findtext("Class_535682be/Field_490f0dd0").split()[-1]
+        string_id = extra_root.find(f"Class_fbe1d3bc[@Guid='{pointer}']/Field_3d34898a").text[2:].upper()
+        text_by_id = {r["description"]["id"]: r["description"]["text"] for r in descriptors.values() if r["description"].get("text")}
+        descriptors[extra_asset.lower()] = {"asset": extra_asset, "label": {},
+            "xmlSha256": extra_sha,
+            "description": {"id": string_id, "text": text_by_id[string_id]}}
     choices = current_choices()
-    sources, review_hashes = reviewed_identities(args.identity_audit, args.barrel_mapping)
-    graph, graph_hashes, graph_issues = source_graph(export, include_optics=bool(args.optic_mapping_json))
+    identities = weapon_identities(args.weapon_identities)
+    if args.identity_audit:
+        sources, review_hashes = reviewed_identities(args.identity_audit, args.barrel_mapping or "frosty-barrel-ads-2026-09-13.json")
+    else:
+        sources, review_hashes = mapped_identities(args.identity_mapping, export)
+    review_hashes[args.weapon_identities.name] = hashlib.sha256(args.weapon_identities.read_bytes()).hexdigest()
+    graph, graph_hashes, graph_issues = source_graph(export, include_optics=bool(args.optic_mapping_json), identities=identities)
     graph_hashes[extra_asset + ".xml"] = descriptors[extra_asset.lower()]["xmlSha256"]
     indexes = ui_indexes(aam_root, descriptors, load_aam)
     if args.optic_mapping_json:
-        optics = optic_categories(choices, graph, indexes, descriptors)
+        optics = optic_categories(choices, graph, indexes, descriptors, identities)
         optics.update({"graphSourceHashes": graph_hashes, "aamHashes": indexes[-1],
-                       "descriptorSha256": hashlib.sha256(descriptor_path.read_bytes()).hexdigest()})
+                       "descriptorSha256": descriptor_sha})
         print(json.dumps(optics["coverage"]))
-    followup = read_json(local_file("reference-data/provenance/frosty-attachment-identity-followup-2026-10-25.json"))
+    followup = read_json(args.followup)
     ui_reviews = followup.get("uiLinkReviews", [])
     for review in ui_reviews:
-        if hashlib.sha256(local_file(review["screenshot"]).read_bytes()).hexdigest() != review["screenshotSha256"]:
+        if not screenshot_matches(review):
             raise ValueError(f"Reviewed screenshot changed: {review['screenshot']}")
     records, by_weapon, used_ids = audit(choices, graph, sources, indexes, descriptors, ui_reviews)
     panel_review = followup.get("panelLinkageInvestigation", {})
@@ -658,32 +855,59 @@ def main():
             for s in r["sources"] if s.get("status") == "linked").items())),
     }
     coverage["ironSightTooltips"] = sum("iron" in slots.get("sight", {}) for slots in by_weapon.values())
+    descriptions = dict(sorted(({r["description"]["id"]: r["description"]["text"]
+        for r in descriptors.values() if r["description"].get("id") in used_ids} | screenshot_descriptions
+        | (iron_descriptions if args.optic_mapping_json else {})).items()))
+    overrides = []
+    if args.overrides.exists():
+        overrides = [o for o in read_json(args.overrides)["overrides"] if o.get("generator") == GENERATOR]
+    deviation_report = apply_deviations(by_weapon, descriptions, overrides, choices)
+    used = {key for slots in by_weapon.values() for items in slots.values() for key in items.values()}
+    descriptions = dict(sorted((k, v) for k, v in descriptions.items() if k in used))
     result = {
         "source": "Reviewed Frosty hardware identities and localized UI metadata, with approved game-panel text where English strings are missing: per captured choice, and for the missing string ID each capture resolves",
         "coverage": coverage,
-        "descriptions": dict(sorted(({r["description"]["id"]: r["description"]["text"]
-            for r in descriptors.values() if r["description"].get("id") in used_ids} | screenshot_descriptions
-            | (iron_descriptions if args.optic_mapping_json else {})).items())),
+        "descriptions": descriptions,
         "byWeapon": by_weapon,
     }
-    args.output_json.parent.mkdir(parents=True, exist_ok=True)
-    args.output_json.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    if args.output_json:
+        args.output_json.parent.mkdir(parents=True, exist_ok=True)
+        args.output_json.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     if args.mapping_json:
         report = {
             "scope": "Current site choices mapped to reviewed hardware and UI descriptions; source identity does not prove live availability or engine behavior",
             "generatedBy": "scripts/frosty-attachment-tooltips.py",
             "coverage": coverage, "choices": records,
             "reviewHashes": review_hashes,
-            "descriptorSha256": hashlib.sha256(descriptor_path.read_bytes()).hexdigest(),
+            "descriptorSha256": descriptor_sha,
             "englishStringsSha256": descriptor_document["sourceStringsSha256"],
             "siteHashes": {p: hashlib.sha256((REPO / p).read_bytes()).hexdigest()
                            for p in ("data/weapons.json", "data/attachments.json", "data/ammo.json")},
             "aamHashes": indexes[-1], "graphSourceHashes": graph_hashes,
-            "graphIssues": graph_issues,
+            "graphIssues": graph_issues, "deviations": deviation_report,
         }
         args.mapping_json.parent.mkdir(parents=True, exist_ok=True)
         args.mapping_json.write_text(json.dumps(export.mark(report), ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(coverage, indent=2))
+    print(f"deviations: {dict(Counter(d['status'] for d in deviation_report))}")
+    failed = False
+    for row in deviation_report:
+        if row["status"] != "applied":
+            failed = True
+            print(f"DEVIATION {row['status']}: {row['overrideId']} {row['weapon']} {row['slot']} {row['id']} "
+                  f"generated {row['source']}, reviewed {row['reviewedSource']}, site {row['siteValue']}")
+    if args.site.exists():
+        site = owned_leaves(read_json(args.site))
+        generated = owned_leaves(result)
+        differences = [(k, site.get(k), generated.get(k)) for k in sorted(set(site) | set(generated))
+                       if site.get(k) != generated.get(k)]
+        for key, old, new in differences:
+            print("DIFF " + " ".join(key) + f": site {json.dumps(old, ensure_ascii=False)} -> generated "
+                  f"{json.dumps(new, ensure_ascii=False)}")
+        print(f"{len(generated)} generated leaves, {len(site)} site leaves, {len(differences)} differ")
+        failed = failed or bool(differences)
+    if args.check and failed:
+        raise SystemExit(1)
 
 
 if __name__ == "__main__":

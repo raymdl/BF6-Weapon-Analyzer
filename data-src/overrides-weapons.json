@@ -1,0 +1,348 @@
+{
+  "schemaVersion": 1,
+  "scope": "Reviewed deviations of data/weapons.json from the source values scripts/frosty-weapons.py reads. Key: weapon and field (leaf path as the checker prints it; dmg is the whole curve as [range, damage] pairs). sourceValue is the computed value the row was reviewed against, siteValue the committed value (null = absent). The checker reports each row applied, STALE (the source or the site moved), REDUNDANT (they now agree) or UNUSED; the last three fail --check. Kinds: convention (a site modelling rule), observed (in-game result kept over the file), emulated-bug, pending-check (site looks wrong or unreadable by the files; needs a decision), precision (site stores fewer digits than the source: site wrong under the full-precision rule, not yet changed).",
+  "overrides": [
+    {
+      "overrideId": "WP-0001",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "db12",
+      "field": "rpm",
+      "sourceValue": 94.73657340777196,
+      "siteValue": 359.999,
+      "reason": "The site models the DB-12 as a two-round burst per pump (dual tube): rpm and burstRpm are RateOfFireForSingleFire 359.999, burstRounds 2, and burstBurstsPerMinute = 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + 2 x 60 / RateOfFireForSingleFire) = 60 / (0.433334 + 0.033334 + 2 x 60 / 359.999) = 74.99978819480148 (reproduced exactly with shortest-decimal operands). The WB stores primary mode 1 (bolt/pump), no alternates and Shot burst rounds 3, so the files give the pump cycle rpm 94.737 and no burst fields. A Dual Shot part (WPM_ERG_DualShot_W25, bullets-per-shot field Field_ebd2880e 2) is in 2.1.2.0 but in no equipment list (checklist U7); the site convention predates it.",
+      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0002",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "db12",
+      "field": "burstRounds",
+      "sourceValue": null,
+      "siteValue": 2,
+      "reason": "Pair of WP-0001: the two shells of the dual-tube pump. Files: no burst mode on the DB-12 (Shot Field_ca2ec42a 3 is unused by mode 1).",
+      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0003",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "db12",
+      "field": "burstBurstsPerMinute",
+      "sourceValue": null,
+      "siteValue": 74.99978819480148,
+      "reason": "Pair of WP-0001: one pump cycle plus two single-fire intervals per two-round burst.",
+      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0004",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "db12",
+      "field": "burstRpm",
+      "sourceValue": null,
+      "siteValue": 359.999,
+      "reason": "Pair of WP-0001: burst cadence = RateOfFireForSingleFire.",
+      "evidence": "docs/STALE_SITE_DATA.md \"DB-12 fire rate\"; RUN/S9/A/summary.txt; DP12_WB FireLogic (Field_16e6fa59 1, Field_9b956c3d [], BoltAction Field_a1abbce8 0.433334 / Field_caf2ace0 0.033334, Field_be31b12d 359.999), 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0005",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "m250",
+      "field": "dmg",
+      "sourceValue": [
+        [
+          15,
+          26.05
+        ]
+      ],
+      "siteValue": [
+        [
+          0,
+          26.05
+        ],
+        [
+          15,
+          26.05
+        ]
+      ],
+      "reason": "Site keeps an extra 0 m point of the first damage; the curve file starts at 15 m. Evaluation is identical (the simulator clamps before the first point): \"equivalent-evaluation\" in the 2026-09-13 damage curve review. The other curves that start beyond 0 m (M2010 ESR, PSR, L115, Interdictor) are stored without it.",
+      "evidence": "BF6 Frosty Research reference-data/provenance/frosty-damage-curve-review-2026-09-13.json (notes); PD_68x51mm_MG curve, 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0006",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "m277",
+      "field": "dmg",
+      "sourceValue": [
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "siteValue": [
+        [
+          0,
+          26.05
+        ],
+        [
+          75,
+          26.05
+        ],
+        [
+          75,
+          20.67
+        ]
+      ],
+      "reason": "Site keeps an extra 0 m point of the first damage; the curve file starts at 75 m. Evaluation is identical (the simulator clamps before the first point): \"equivalent-evaluation\" in the 2026-09-13 damage curve review. The other curves that start beyond 0 m (M2010 ESR, PSR, L115, Interdictor) are stored without it.",
+      "evidence": "frosty-damage-curve-review-2026-09-13.json (notes); PD_68x51mm_Carbine curve, 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0007",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "miniscout",
+      "field": "dmg",
+      "sourceValue": [
+        [
+          21,
+          62
+        ],
+        [
+          75,
+          58
+        ],
+        [
+          150,
+          58
+        ],
+        [
+          150,
+          50
+        ]
+      ],
+      "siteValue": [
+        [
+          0,
+          62
+        ],
+        [
+          21,
+          62
+        ],
+        [
+          75,
+          58
+        ],
+        [
+          150,
+          58
+        ],
+        [
+          150,
+          50
+        ]
+      ],
+      "reason": "Site keeps an extra 0 m point of the first damage; the curve file starts at 21 m. Evaluation is identical (the simulator clamps before the first point): \"equivalent-evaluation\" in the 2026-09-13 damage curve review. The other curves that start beyond 0 m (M2010 ESR, PSR, L115, Interdictor) are stored without it. The 2.1.2.0 curve adds 58 and 50 at 150 m (checklist W1); the site applied it with the 0 m point kept.",
+      "evidence": "frosty-damage-curve-review-2026-09-13.json (notes); PD_556x45mmNATO_Bolt curve; BF6 Frosty Research docs/updates/2.1.2.0-checklist.md W1",
+      "since": "2.1.2.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0008",
+      "generator": "frosty-weapons",
+      "kind": "observed",
+      "weapon": "m45a1",
+      "field": "dmg",
+      "sourceValue": [
+        [
+          0,
+          33.4
+        ],
+        [
+          9,
+          33.4
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          21,
+          25
+        ],
+        [
+          21,
+          20
+        ],
+        [
+          36,
+          20
+        ],
+        [
+          36,
+          16.7
+        ],
+        [
+          54,
+          16.7
+        ],
+        [
+          54,
+          14.3
+        ],
+        [
+          75,
+          12.5
+        ]
+      ],
+      "siteValue": [
+        [
+          0,
+          33.4
+        ],
+        [
+          9,
+          33.4
+        ],
+        [
+          9,
+          25
+        ],
+        [
+          21,
+          25
+        ],
+        [
+          21,
+          20
+        ],
+        [
+          36,
+          20
+        ],
+        [
+          36,
+          16.7
+        ],
+        [
+          54,
+          16.7
+        ],
+        [
+          54,
+          14.3
+        ],
+        [
+          75,
+          14.3
+        ],
+        [
+          75,
+          12.5
+        ]
+      ],
+      "reason": "The file curve (and GRX XYValues) runs 14.3 at 54 m straight to 12.5 at 75 m; the site keeps a 14.3 point at 75 m (a step). Operator firing-range test 2026-09-13: damage marker 14 and 7 body shots below 75 m, 12 and 8 beyond, which the file's ramp (about 12.7 near 70 m) would not give. docs/DATA_SOURCES.md calls it in-game-confirmed and kept; docs/STALE_SITE_DATA.md (\"M45A1 damage curve\") asks to settle which record is right before removing it.",
+      "evidence": "frosty-damage-curve-review-2026-09-13.json (m45a1 inGameCheck); docs/DATA_SOURCES.md \"damage\"; docs/STALE_SITE_DATA.md; PD_.45ACP curve, 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0009",
+      "generator": "frosty-weapons",
+      "kind": "pending-check",
+      "weapon": "m2010esr",
+      "field": "description",
+      "sourceValue": "<string 2DB86D4C not in the strings table>",
+      "siteValue": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m.",
+      "reason": "The primary UIWeaponAbilityMetaData record's description string 2DB86D4C is in neither build's fs_us_loc table, so the checker cannot read the text; where the site text came from is not recorded.",
+      "evidence": "docs/STALE_SITE_DATA.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0010",
+      "generator": "frosty-weapons",
+      "kind": "pending-check",
+      "weapon": "sv98",
+      "field": "description",
+      "sourceValue": "<string E8EA1B59 not in the strings table>",
+      "siteValue": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m.",
+      "reason": "The primary UIWeaponAbilityMetaData record's description string E8EA1B59 is in neither build's fs_us_loc table, so the checker cannot read the text; where the site text came from is not recorded.",
+      "evidence": "docs/STALE_SITE_DATA.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0011",
+      "generator": "frosty-weapons",
+      "kind": "precision",
+      "weapon": "m2010esr",
+      "field": "rpm",
+      "sourceValue": 43.90240928013728,
+      "siteValue": 43.90241,
+      "reason": "Full-precision rule (store source precision, round in the UI): the site stores 43.90241, the bolt cycle 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + 60 / RateOfFireForSingleFire) gives 43.90240928013728 with the shortest-decimal float32 operands that reproduce the other bolt and pump rates exactly (exact float32 operands give 43.90240939022608). Site wrong by the files; not changed in this task.",
+      "evidence": "docs/STALE_SITE_DATA.md \"Bolt-action fire rate last digits\"; M2010ESR_WB BoltAction 1.2 / 1.0285712, rate 299.999",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0012",
+      "generator": "frosty-weapons",
+      "kind": "precision",
+      "weapon": "psr",
+      "field": "rpm",
+      "sourceValue": 38.663458649662005,
+      "siteValue": 38.663456,
+      "reason": "Full-precision rule (store source precision, round in the UI): the site stores 38.663456, the bolt cycle 60 / (BoltActionTime / BoltActionSpeed + BoltActionDelay + 60 / RateOfFireForSingleFire) gives 38.663458649662005 with the shortest-decimal float32 operands that reproduce the other bolt and pump rates exactly (exact float32 operands give 38.66345608728906, which the site value rounds). Site wrong by the files; not changed in this task.",
+      "evidence": "docs/STALE_SITE_DATA.md \"Bolt-action fire rate last digits\"; MRAD_WB BoltAction 1.216667 / 0.9, rate 299.999",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0013",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "grtcps",
+      "field": "fireModeAttachments<Attachment_MSBSGROTCPS_ERG_BurstFireEnable>",
+      "sourceValue": "gates primary burst, alternates ['single'] (WPM_ERG_BurstFireReplace_W10)",
+      "siteValue": null,
+      "reason": "The GRT-CPS burst record selects WPM_ERG_BurstFireReplace_W10 (primary burst, alternate single) through its ability branch, but its unlock has kill-switch row KST_CH1_S3_Weapons true, so it is not offered (frosty-availability.py); data/provenance/fire-modes.json: \"GRT-CPS source-only burst is excluded\".",
+      "evidence": "data/provenance/fire-modes.json rules; frosty-availability.py record verdict (2.1.2.0)",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    },
+    {
+      "overrideId": "WP-0014",
+      "generator": "frosty-weapons",
+      "kind": "convention",
+      "weapon": "m16a4",
+      "field": "fireModeAttachments<U_PRG_M16A3_ERG_BurstFire>",
+      "sourceValue": "gates primary burst, alternates ['single'] (WPM_ERG_BurstFireReplace_W10)",
+      "siteValue": null,
+      "reason": "An M16A3_Ability branch with unlock U_PRG_M16A3_ERG_BurstFire (no Attachment_* record uses it) selects WPM_ERG_BurstFireReplace_W10: primary burst, alternate single, which is the WB default already. fire-modes.json: \"M16 default source progression\" is retained and adds no site choice.",
+      "evidence": "data/provenance/fire-modes.json (source report countMeaning); M16A3_Ability, 2.1.1.0 and 2.1.2.0",
+      "since": "2.1.1.0",
+      "alsoIn": []
+    }
+  ]
+}
