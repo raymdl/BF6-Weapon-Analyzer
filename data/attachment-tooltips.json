@@ -157,6 +157,7 @@
     "5F3726E8": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "5F74777A": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "5FDA6AA4": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "603B95DA": "Extended ammunition belt that improves weapon reload speed.",
     "6136ABAA": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "61371A94": "Blocked magwell for individually loading custom 9.52×70mm rounds, dealing massive damage between 30m and 80m but at the detriment of long-range ballistics.",
     "6161D2CE": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil and enables a slightly faster transition to aim down sights (ADS), at the cost of ADS accuracy while moving.",
@@ -386,6 +387,7 @@
     "E789D797": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "E877AAD1": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "E8F14F2B": "Standard barrel that enables a fast transition to aim down sights (ADS).",
+    "E9E1E237": "Extended ammunition belt that improves weapon draw speed.",
     "EAD3932F": "Cartridge holder that improves reload speed.",
     "EAF75903": "Provides slight improvement to hip-fire accuracy at the cost of visibility to enemy soldiers. Effects only active when laser is turned on.",
     "EB4FEC2F": "Short barrel that improves hip-fire accuracy and enables a faster transition to aim down sights (ADS), but reduces projectile velocity.",
@@ -3805,7 +3807,8 @@
       },
       "mag": {
         "50_rnd": "F4DCF0BE",
-        "100_rnd": "AE3E8992"
+        "100_rnd": "AE3E8992",
+        "100_fast": "603B95DA"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -4347,7 +4350,8 @@
       "mag": {
         "50_rnd": "907B08B0",
         "75_rnd": "4BEF55A7",
-        "100_rnd": "11AFB61C"
+        "100_rnd": "11AFB61C",
+        "75_fast": "E9E1E237"
       },
       "ergo": {
         "rail_cover": "D520814B"

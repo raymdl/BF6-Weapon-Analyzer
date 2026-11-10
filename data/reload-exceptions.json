@@ -19,6 +19,16 @@
         "tacRldOverrideMs": 4534,
         "displayName": "50Rnd Loose Belt",
         "recordKey": "m60-loose-belt"
+      },
+      "75_rnd": {
+        "tacRldOverrideMs": 4534,
+        "displayName": "75 Rnd",
+        "recordKey": "m60-loose-belt"
+      },
+      "100_fast": {
+        "tacRldOverrideMs": 4534,
+        "displayName": "100 Fast",
+        "recordKey": "m60-loose-belt"
       }
     },
     "pp19": {
@@ -69,7 +79,7 @@
   },
   "counts": {
     "animationOverrideRecords": 5,
-    "animationOverrideEntries": 6,
+    "animationOverrideEntries": 8,
     "screenshotExceptionEntries": 1,
     "composedLoadoutEvidenceEntries": 1
   }

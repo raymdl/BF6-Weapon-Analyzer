@@ -33140,8 +33140,19 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "reloadSpeedTier": 0,
+          "tacRldOverrideMs": 4534,
           "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "100_fast": {
+          "name": "100 Fast",
+          "pts": 40,
+          "mag": 100,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "tacRldOverrideMs": 4534,
+          "deployTimeTierShift": 0,
           "movingAdsSpreadTierMod": 0
         }
       },
@@ -33364,6 +33375,17 @@
           "sprintRecoveryTierShift": 0,
           "tacRldOverrideMs": 7100,
           "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        },
+        "75_fast": {
+          "name": "75 Fast",
+          "pts": 40,
+          "mag": 75,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
           "movingAdsSpreadTierMod": 0
         }
       },
