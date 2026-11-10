@@ -5,6 +5,8 @@ Read this list first on every update (Stage 0 of [GAME_UPDATE_GUIDE.md](GAME_UPD
 so these rows are not reported as new changes, and so the update can close some of them.
 
 Each row says what is needed before the site changes. Remove a row in the commit that fixes it.
+A row that needs an in-game check has its check on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md),
+the one list the operator works from.
 Add every new "site differs from both builds" row from the Stage 9 generator and reader runs.
 Row evidence for 2.1.2.0 is in the research run folder
 `reports\weapon-analyzer-research\2026-11-10-update-2120-post\` (`RUN` below).

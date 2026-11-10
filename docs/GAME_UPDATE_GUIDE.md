@@ -580,7 +580,7 @@ forcing the match.
 **A contradiction needs a second, different method.** When the files disagree with a patch
 note (the note says a change was made and nothing stored changed, or the stored change differs
 from the note), the row stays "unresolved" until an independent route confirms it, and it goes
-on the operator's in-game list. Re-running the same check under the same conditions is not a
+on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md). Re-running the same check under the same conditions is not a
 second route. Different routes are, for example: record, binding and kill switch against the
 equipment list; the file against the registry row; a decoded value against a raw byte search.
 In 2.1.2.0 the DRS-IAR Synthetic Tip removal was first reported "not done" from the record,
@@ -589,7 +589,21 @@ binding and kill switch alone; the equipment list showed it removed.
 Also review changes the notes do **not** mention. Both the SU-230 camera-recoil fix and the
 PiP setting binding were unannounced. Make this a pass of its own: list every changed value
 in a weapon, attachment or bullet file that no patch-note line explains, then read the same
-field on every other weapon. The count across weapons is what separates a deliberate change
+field on every other weapon.
+
+The per-weapon change list is a script, not a model task (research repo):
+
+```bash
+python -I scripts/frosty-weapon-semdiff.py --old-index <run>\raw-index-old.tsv --new-index <run>\raw-index-new.tsv --old-descriptors <baseline descriptors> --new-descriptors <new descriptors> --out <run>\sem-changes.tsv
+```
+
+It decodes every changed weapon file in both builds, drops the noise fields, and compares
+lists as multisets so an index shift is not a change. Its usage text gives the reference
+result for 2.1.1.0 to 2.1.2.0 (871 changed routes, 447 kept, 4,105 rows); `--controls 2.1.2.0`
+must pass (the nine Match drag changes and the Ultimax 45-round reload import removal) before
+a new build's output is used. The worker's task is to classify its rows against the patch
+notes. The equipment lists are left out: the equipment-list diff below is always its own
+scripted step. The count across weapons is what separates a deliberate change
 from an error: in 2.1.1.0 the spot-on-fire range became 75 m on four weapons only (M433, SGX,
 L110, P18), which no note mentioned.
 
@@ -647,14 +661,14 @@ above, because an added row alone does not prove that the item is live.
 **Removal control.** Run the same command on the 2.1.1.0 to 2.1.2.0 pair as a control: it must
 list `M27IAR AMO_BallisticTip` (DRS-IAR Synthetic Tip) as removed. This is a permanent known
 removal; every availability or diff worker runs it beside its addition control (see
-"Haiku workers").
+"Workers").
 
 Cross-check against the roadmap dates: an item with all five that the roadmap dates later is
 a future release. Two limits found in 2.1.1.0:
 
 - **Ammunition:** the first four conditions are necessary, not sufficient. Nine older ammunition
   records meet all of them and are not offered in game. List new ammunition for an in-game
-  menu check.
+  menu check on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md).
 - **Not in the weapon's own `AAM_*` map:** an attachment with a record but no entry in the
   weapon's UI map is unconfirmed. List it for an in-game check; do not count it from
   kill-switch rows alone.
@@ -750,8 +764,27 @@ reused later.
    count the weapons it reaches from the `Attachment_*` records and the equipment lists, not
    from one worker's row count. In 2.1.2.0 the Magwell Flare reload bonus was first recorded
    on 11 weapons; the records and lists give 15 (14 on the site).
-4. Run the narrow existing checks for the changed areas, not the whole suite. A test that
-   fails only because it pins a data value the game changed is removed, not updated.
+4. Run the narrow existing checks for the changed areas, not the whole suite. When a game
+   change makes a test fail, decide by what the test protects:
+   - **A mechanism in the site code** (a per-weapon override path, a price reaching the
+     loadout total, a tier resolving through a table, a dependency rule): keep it and update
+     the expected value to the new build, naming the build in the test title or a comment.
+     Removing it would drop coverage of code that still exists. Example: the sniper
+     iron-sight price check, 15 to 10 in 2.1.2.0.
+   - **Only a data value**, and the mechanism it runs through is covered by another test:
+     remove it. A pinned number the next patch will change again is a cost, not a safety net.
+     Example: a panel capture from an old build.
+   - **The mechanism is gone from the site** (an override deleted because the game fixed the
+     bug): remove the test with the override. Do not write a new test for ordinary behaviour
+     to keep the count.
+   - Never keep a failing test alive with a skip list or a filter that hides the changed case,
+     unless the data it reads is a dated historical record that must stay as captured. Then
+     say why in a comment at the filter.
+   - The update report lists each test removed, updated or filtered, with the reason that
+     applied.
+   In 2.1.2.0 the L115 QD Grip Pod test guarded the override that cancelled the moving-ADS
+   penalty; the override went, and the test now asserts the penalty on the L115 and M2010 ESR,
+   because no other test covers a grip pod's moving-ADS penalty on a bolt-action rifle.
 5. Update source and build labels so retained old data is not presented as newly verified.
    Check the site header, footer, page description and `data/provenance/live-baseline.json`
    as well as per-weapon provenance. Verify the changed values in the local browser.
@@ -804,7 +837,7 @@ the Stage 7 availability census first.
 7. **Check in the local site** that each weapon loads with its magazines, ammunition and
    attachments, and compare with the operator's in-game panel where the loadouts match.
 8. **List for the operator:** values that need an in-game check (ammunition menus, default
-   attachments, anything "not found"), and file values that look like game errors, which go
+   attachments, anything "not found") go on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md); file values that look like game errors go
    to [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md).
 9. **Wiring check, once part C is in the site** (the fire-mode test reads `data/weapons.json`):
    `python -I scripts/frosty-attachment-wiring-check.py --raw <raw root> [--raw <later capture> ...] --descriptors <SharedTypeDescriptors.ebx> --catalog <asset-catalog.json> --new <folders>`
@@ -829,26 +862,47 @@ extractors) are in the research repo under `scripts/update-readers/` (`A/`, `B/`
 its README). For a new build, set the build label and a new working folder in its
 `settings.json`, run `regnames.py`, then the parts.
 
-## Haiku workers
+## Workers
 
 Stages 0 to 2 are bounded by Frosty (one process at a time; about 10 minutes for a cache
 rebuild plus capture), so workers do not shorten them. From Stage 3 on, most of the time is
-mechanical reading that splits into independent parts. Hand those parts to Haiku workers
-(`haiku-worker` or `haiku-reader`, Medium effort) and keep the decisions in the main session.
-Ready briefs are in the research repo:
+reading that splits into independent parts. Hand those parts to workers and keep the
+decisions in the main session. Ready briefs are in the research repo:
 [game-update-haiku-briefs.md](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/working/game-update-haiku-briefs.md).
 
-| When | Worker task | Brief |
+**Model per task type.** Choose by what a wrong answer costs, not by how mechanical the task
+looks:
+
+| Task type | Model | Examples |
 |---|---|---|
-| The day before, once the patch notes are out | Locate every "from" value in the files already held, and the same field on other items | B |
-| While the Stage 1 capture runs | Turn the patch notes into a per-item checklist and a list of fixes | A |
-| Stage 3, after the comparison | Cross-check patch summary, catalog hash and raw hash; list disagreements | C |
-| Stage 5 | Diff triage in batches of about 40 changed files: match by GUID, label the noise categories, list the rest | D |
-| Stage 6 | One consistency scan per worker, compared with the previous build's result | E |
-| Stage 7 | Confirm each "to" value at the field located the day before | G |
-| Stage 8 | One known-issue list per worker: which entries cite a changed asset or match a "fixed" line | F |
-| Stage 7, new content | Availability census of every added attachment, ammunition choice, weapon and gadget | H |
-| Stage 9, new weapons | One worker per part (A weapon records, B ammunition and ballistics, C attachments): reproduce the existing roster, then propose the new weapons | I |
+| A fixed script on fixed inputs with a mechanical output | Haiku 5.5 (`haiku-worker` or `haiku-reader`, Medium) | Strings diff, list rechecks, running a maintained script and reporting its counts |
+| Decode and compare with a known method | Sonnet 5.5 | Parts A, B and C, registry review, generators, bug-entry judging, attachment graph diff, classifying the semantic-diff rows |
+| Designs its own method, or its answer can be "nothing else changed" | Opus 5.5, or two independent Sonnet 5.5 workers whose results are compared | Unannounced-changes review, reader blind-spot checks |
+| Availability census | Sonnet 5.5, not Haiku | It must notice when its own rule is wrong (the DRS-IAR Synthetic Tip) |
+| Site integration | Opus 5.5 (the main session) | Stage 9 |
+
+A wrong "nothing found" is the costly failure, and an independent second pass catches more
+than a larger model.
+
+**One deliverable per worker.** A brief asks for one output. Split a broad task: in 2.1.2.0
+the unannounced-changes brief asked for the full weapon diff, its classification and an
+equipment comparison in one go; it ran over budget, and the side task (the equipment
+comparison) is the part that failed. Scripted steps stay scripts: the per-weapon change list
+(`frosty-weapon-semdiff.py`) and the equipment-list diff (`frosty-equipment-list-diff.py`) are
+run, and a worker classifies or checks their rows.
+
+| When | Worker task | Brief | Model |
+|---|---|---|---|
+| The day before, once the patch notes are out | Locate every "from" value in the files already held, and the same field on other items | B | Sonnet |
+| While the Stage 1 capture runs | Turn the patch notes into a per-item checklist and a list of fixes | A | Haiku |
+| Stage 3, after the comparison | Cross-check patch summary, catalog hash and raw hash; list disagreements | C | Haiku |
+| Stage 5 | Diff triage in batches of about 40 changed files: match by GUID, label the noise categories, list the rest | D | Sonnet |
+| Stage 6 | One consistency scan per worker, compared with the previous build's result | E | Sonnet |
+| Stage 7 | Confirm each "to" value at the field located the day before | G | Sonnet |
+| Stage 7, unannounced changes | Classify the `frosty-weapon-semdiff.py` rows against the patch notes | J | Opus, or two Sonnet compared |
+| Stage 7, new content | Availability census of every added attachment, ammunition choice, weapon and gadget | H | Sonnet |
+| Stage 8 | One known-issue list per worker: which entries cite a changed asset or match a "fixed" line | F | Haiku to match, Sonnet to judge |
+| Stage 9, new weapons | One worker per part (A weapon records, B ammunition and ballistics, C attachments): reproduce the existing roster, then propose the new weapons | I | Sonnet |
 
 Launch independent workers together; Stages 5, 6 and 8 can all start as soon as the changed
 route list exists.
@@ -858,7 +912,7 @@ Not delegated: any Frosty run, the Stage 1 hotfix or new-build decision, `seal`,
 and Stage 9. The 7 October 2026 tests covered Haiku on bounded read-only tasks with a written
 brief and a checkable answer; they did not cover writing to the repos or judging models.
 About one run in four had a disclosed rule slip, so check each result against the files
-before recording it.
+before recording it, whatever the model.
 
 **Controls.** Every diff or availability worker runs an addition control and a removal control
 alongside its real task: a known change on the previous build pair that its method must find.

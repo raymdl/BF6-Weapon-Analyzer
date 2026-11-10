@@ -22,6 +22,18 @@ const defaults = w => {
 const loadout = (w, changes = {}) => ({ ...defaults(w), ...changes });
 const build = (w, changes = {}) => applyAttachments(w, loadout(w, changes));
 
+test('L115 QD Grip Pod worsens moving ADS spread like other bolt-action pods (2.1.2.0) while improving ADS time', () => {
+  for (const id of ['l115', 'm2010esr']) {
+    const w = weapon(id);
+    for (const changes of [{}, { barrel: 'light', laser: '50mw_violet' }]) {
+      const base = build(w, changes);
+      const pod = build(w, { ...changes, grip: 'qd_grip_pod_sr' });
+      assert.ok(pod.spread.adsMove[0] > base.spread.adsMove[0]);
+      assert.ok(pod._adsTimeMs < base._adsTimeMs);
+    }
+  }
+});
+
 test('screenshot-backed sidearm brakes retain their name with source-specific cost and sway', () => {
   for (const id of ['p18', 'es57', 'm45a1', 'ggh22', 'vz61']) {
     const w = weapon(id);
@@ -473,7 +485,7 @@ test('Smooth recoil resolves Frosty duration and recovery in both aim states wit
 test('Smooth Bolt values follow the weapon and muzzle, not the weapon class', () => {
   const audit = read('../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json');
   const before = JSON.stringify(attachments.MUZZLES);
-  // The SV-98 Lightened Suppressor lost its smoothing in 2.1.2.0; its 2026-09-11 audit row is historical.
+  // Skipped: the 2026-09-11 audit is a dated record kept as captured; the SV-98 Lightened Suppressor lost its smoothing in 2.1.2.0.
   for (const row of audit.boltPairs.filter(r => !(r.weapon === 'sv98' && r.muzzle === 'light_supp'))) {
     const w = weapon(row.weapon);
     const result = build(w, { muzzle: row.muzzle });
