@@ -44,7 +44,7 @@ The Attachment Effects panel also shows Recoil Duration: how long each shot's ki
 takes to play out. Longer is smoother to track; the kick itself is the same size.
 
 Hover a weapon button or a weapon name above the comparison stats to read its
-in-game description. All 67 weapons have descriptions, also exposed as accessible
+in-game description. All 68 weapons have descriptions, also exposed as accessible
 descriptions. Of the 63 weapons before Season 5, 61 use Frosty text and two (M2010
 ESR, SV-98) use verified game captures; the four Season 5 weapons' descriptions were
 read from the 2.1.1.0 files.

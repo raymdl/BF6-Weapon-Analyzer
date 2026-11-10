@@ -63,7 +63,7 @@ row values; its native lookup code has not been decoded.
 
 For example, base index 5 gives 0.571429; adding three steps gives row 8,
 0.833334. A sum above 9 gives 1.0. The generated
-`COLLATERAL_MULT_OVERRIDE` map covers all 67 weapons and 353 ammo selections.
+`COLLATERAL_MULT_OVERRIDE` map covers all 68 weapons and 360 ammo selections.
 See the [source table trace](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-global-compiled-trace-2026-09-13.json)
 and [generator](../scripts/frosty-collateral.py).
 
@@ -241,7 +241,7 @@ Recoil, velocity, and reload use the scalar factors and equations below.
 
 | Family | Rule | Evidence / boundary |
 |---|---|---|
-| `RECOIL_MULT[id]` | ADS effective amount = `round3(base recoilV × factor^sumAdsTiers)`. M433 factor is 0.945. | All 63 factors matched reviewed raw ADS/hip factors in September 2026; the table now holds 67, the four Season 5 factors added from 2.1.1.0. Base `recoilV` already includes its base exponent. |
+| `RECOIL_MULT[id]` | ADS effective amount = `round3(base recoilV × factor^sumAdsTiers)`. M433 factor is 0.945. | All 63 factors matched reviewed raw ADS/hip factors in September 2026; the table now holds 68, the four Season 5 factors added from 2.1.1.0 and the NSW4 from 2.1.2.0. Base `recoilV` already includes its base exponent. |
 | Per-aim variation | `dirVar × dirVarMult^(dirVarExp + summed variation tiers)` | Per-weapon/group geometric factors; never a universal linear percent. Hip amount uses its raw group factor/exponent similarly. |
 | `VELOCITY_LADDER = 0.8` | Barrel multiplier = `0.8^(−velTierMod)`; subsonic tier treatment = `baseVelocity × 0.8^tier` before barrel. | Source factors 0.8, 0.64, 0.512 and 1.25 agree with these powers. Absolute ammo treatments remain separate. |
 | `RELOAD_SPEED_MULTIPLIERS` | Index 0 → 1; 1 → 1.13; 2 → 1.277. Reload seconds divide by the selected factor and ergo multiplier. | Exact named factors, not `1.13^tier`. The double factor is 1.277, not 1.2769. |

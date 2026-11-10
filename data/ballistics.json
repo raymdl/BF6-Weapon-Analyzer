@@ -1108,6 +1108,17 @@
         "subsonic": "Common/Hardware/Weapons/_Bullets/PD_762x39mm_PDW",
         "subsonic_hp": "Common/Hardware/Weapons/_Bullets/PD_762x39mm_PDW"
       }
+    },
+    "nsw4": {
+      "base": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine",
+      "ammo": {
+        "standard": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine",
+        "penetration": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine",
+        "lightweight": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine",
+        "hollow_pt": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine",
+        "frangible": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine",
+        "supersonic": "Common/Hardware/Weapons/_Bullets/PD_.300BLK_Carbine"
+      }
     }
   }
 }

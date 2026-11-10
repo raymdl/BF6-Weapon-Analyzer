@@ -10959,5 +10959,203 @@
         "Not tested in game."
       ]
     }
+  },
+  {
+    "id": "nsw4",
+    "name": "NSW4",
+    "description": "This .300 BLK carbine was created at the request of special forces. Comes issued with subsonic ammunition.",
+    "cls": "Carbine",
+    "cal": ".300 BLK",
+    "rpm": 654.545,
+    "mag": 31,
+    "tacRld": 2.367,
+    "emptyRld": 3,
+    "bulletVel": 313,
+    "recoilV": 0.7534212740740741,
+    "recoilDir": -16,
+    "recoilVar": 27.5,
+    "recoilIncAds": 0.36,
+    "fireMode": "auto",
+    "availableFireModes": [
+      "auto",
+      "single"
+    ],
+    "fireModes": {
+      "single": {
+        "mechanism": "semi",
+        "rpm": 399.9989929199219,
+        "hipNoBloomOnSwitch": false
+      },
+      "auto": {
+        "mechanism": "auto",
+        "rpm": 654.5449829101562
+      }
+    },
+    "spreadDyn": {
+      "ads": {
+        "inc": 0.36,
+        "idleTime": 0.4,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 7.5,
+        "firingCoef": 1.2,
+        "firingExp": 2.5,
+        "firingOffset": 2.7,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 7.2,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      },
+      "hip": {
+        "inc": 0.736,
+        "idleTime": 0.6,
+        "idleCoef": 0,
+        "idleExp": 0.25,
+        "idleOffset": 25,
+        "firingCoef": 0.5,
+        "firingExp": 2.5,
+        "firingOffset": 4.86,
+        "notFiringCoef": 0,
+        "notFiringExp": 0.25,
+        "notFiringOffset": 12.96,
+        "firstShotMul": 1,
+        "distExp": 0.5
+      }
+    },
+    "recoil": {
+      "ads": {
+        "dir": -16,
+        "amount": 0.6208,
+        "amountMult": 0.9375,
+        "amountExp": -3,
+        "dirVar": 27.5,
+        "dirVarMult": 0.91512,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 72,
+        "shootingDecScale": 1
+      },
+      "hip": {
+        "dir": -16,
+        "amount": 0.6208,
+        "amountMult": 0.9375,
+        "amountExp": -3,
+        "dirVar": 27.5,
+        "dirVarMult": 0.91512,
+        "dirVarExp": 0,
+        "decNorm": 1,
+        "decExp": 1,
+        "decTimeExp": 1.2,
+        "decOffset": 0.06,
+        "duration": 0.025,
+        "decFactor": 72,
+        "shootingDecScale": 1
+      }
+    },
+    "spread": {
+      "adsStand": [
+        0.05,
+        6
+      ],
+      "adsMove": [
+        0.32,
+        7
+      ],
+      "hipStand": [
+        1.804,
+        6
+      ],
+      "hipMove": [
+        2.255,
+        7
+      ]
+    },
+    "dmg": [
+      {
+        "r": 0,
+        "d": 35.22,
+        "source": "Frosty"
+      },
+      {
+        "r": 9,
+        "d": 35.22,
+        "source": "Frosty"
+      },
+      {
+        "r": 9,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 21,
+        "d": 26.05,
+        "source": "Frosty"
+      },
+      {
+        "r": 21,
+        "d": 20.67,
+        "source": "Frosty"
+      },
+      {
+        "r": 36,
+        "d": 20.67,
+        "source": "Frosty"
+      },
+      {
+        "r": 36,
+        "d": 17.13,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 17.13,
+        "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 14.62,
+        "source": "Frosty"
+      }
+    ],
+    "damageStatus": "verified",
+    "damageSource": "Frosty PD_.300BLK_Carbine tweakable damage curve referenced by Devgru_WB, build 2.1.2.0.",
+    "reloadSpeed": 1,
+    "provenance": {
+      "schemaVersion": 1,
+      "status": "sourced",
+      "frosty": {
+        "sourceBuild": "2.1.2.0",
+        "buildEvidence": "raw EBX capture of the installed 2.1.2.0 client (builds/2.1.2.0)",
+        "fields": [
+          "cls",
+          "cal",
+          "rpm",
+          "mag",
+          "tacRld",
+          "emptyRld",
+          "reloadSpeed",
+          "bulletVel",
+          "recoilV",
+          "recoilDir",
+          "recoilVar",
+          "recoilIncAds",
+          "recoil",
+          "spread",
+          "spreadDyn",
+          "dmg"
+        ],
+        "note": "All listed base fields were read from the 2.1.2.0 raw Devgru_WB, GS_Devgru and PD_.300BLK_Carbine files; 144 of 149 scalar leaves also have a GRX_Weapons registry row and every one equals the file value. rpm is FireLogic.RateOfFire. tacRld and emptyRld are ReloadInfoArray[0] and [1] ReloadTimeBulletsLeft at ReloadSpeed 1. Moving ADS and hipfire minima use the array selectors (ZDA_Moving_Weapons index 3, HDA_Weapons index 4). cal is formatted from the bullet asset name.",
+        "sourcingEvidence": "reports/weapon-analyzer-research/2026-11-10-update-2120-post/S9/A/proposed.json#evidence/nsw4"
+      },
+      "notes": [
+        "name and description are the English strings 8567EA43 and 78115E41 linked from the UIWeaponAbilityMetaData_S5B1 record 563065cf-00a7-445e-a438-2b46b20a257e (label Devgru).",
+        "Not tested in game."
+      ]
+    }
   }
 ]

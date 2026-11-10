@@ -976,7 +976,8 @@
         "umg40": 1,
         "usg90": 1,
         "vcr2": 1,
-        "vz61": 1
+        "vz61": 1,
+        "nsw4": 1
       },
       "hipSpreadTierModByWeapon": {
         "grtbc": -1
@@ -1080,7 +1081,8 @@
         "svk86": 0,
         "tr7": 0,
         "umg40": 0,
-        "vcr2": 0
+        "vcr2": 0,
+        "nsw4": 0
       },
       "adsRecoilTierModByWeapon": {
         "grtbc": 1
@@ -1123,7 +1125,8 @@
         "sor556": 0,
         "umg40": 0,
         "usg90": 0,
-        "z84m": 0
+        "z84m": 0,
+        "nsw4": 0
       }
     },
     {
@@ -1214,7 +1217,8 @@
         "umg40": 1,
         "usg90": 1,
         "vcr2": 1,
-        "z84m": 1
+        "z84m": 1,
+        "nsw4": 1
       },
       "hipSpreadTierModByWeapon": {
         "grtbc": -1
@@ -1250,7 +1254,8 @@
         "sor300sc": 1,
         "sor556": 1,
         "umg40": 1,
-        "usg90": 1
+        "usg90": 1,
+        "nsw4": 1
       }
     },
     {
@@ -1702,6 +1707,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
+        },
+        "nsw4": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
         }
       }
     },
@@ -2020,6 +2031,12 @@
           "deployTimeTierShift": 0
         },
         "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "nsw4": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -2346,6 +2363,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -2668,6 +2691,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -2972,6 +3001,12 @@
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -3272,6 +3307,12 @@
           "deployTimeTierShift": 0
         },
         "z84m": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "nsw4": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
@@ -3604,6 +3645,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -3928,6 +3975,12 @@
           "deployTimeTierShift": 0
         },
         "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "nsw4": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -4260,6 +4313,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -4570,6 +4629,12 @@
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -4874,6 +4939,12 @@
           "adsMoveSpeedTierShift": 1,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 1,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     },
@@ -5028,6 +5099,12 @@
         "z84m": {
           "hipRecoilTierMod": 2,
           "adsRecoilTierMod": 2,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "nsw4": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5261,6 +5338,12 @@
           "deployTimeTierShift": -1
         },
         "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "nsw4": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5573,6 +5656,12 @@
         "z84m": {
           "hipRecoilTierMod": 3,
           "adsRecoilTierMod": 3,
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "deployTimeTierShift": -1
+        },
+        "nsw4": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -6014,6 +6103,12 @@
           "deployTimeTierShift": 0
         },
         "sor556": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
+        },
+        "nsw4": {
           "adsTimeTierMod": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -6490,6 +6585,16 @@
             "recoilTierMod": 8,
             "hipSpreadTierMod": -2
           }
+        },
+        "nsw4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         }
       },
       "deployed": {
@@ -6763,6 +6868,18 @@
             "recoilTierMod": 8,
             "hipSpreadTierMod": -2
           }
+        },
+        "nsw4": {
+          "hipRecoilTierMod": 3,
+          "adsRecoilTierMod": 3,
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
         }
       },
       "deployed": {
@@ -7014,6 +7131,16 @@
           }
         },
         "z84m": {
+          "adsTimeTierMod": 1,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0,
+          "deployed": {
+            "recoilTierMod": 8,
+            "hipSpreadTierMod": -2
+          }
+        },
+        "nsw4": {
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -7899,6 +8026,12 @@
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": 0,
           "deployTimeTierShift": 0
+        },
+        "nsw4": {
+          "adsTimeTierMod": 0,
+          "adsMoveSpeedTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "deployTimeTierShift": 0
         }
       }
     }
@@ -8179,6 +8312,10 @@
         "z84m": {
           "hipSpreadTierMod": -1,
           "movingAdsSpreadTierMod": 0
+        },
+        "nsw4": {
+          "hipSpreadTierMod": -1,
+          "movingAdsSpreadTierMod": 0
         }
       }
     },
@@ -8451,6 +8588,10 @@
         "z84m": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 0
+        },
+        "nsw4": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 0
         }
       }
     },
@@ -8697,6 +8838,10 @@
           "movingAdsSpreadTierMod": 1
         },
         "z84m": {
+          "hipSpreadTierMod": 0,
+          "movingAdsSpreadTierMod": 1
+        },
+        "nsw4": {
           "hipSpreadTierMod": 0,
           "movingAdsSpreadTierMod": 1
         }
@@ -8971,6 +9116,10 @@
         "z84m": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 0
+        },
+        "nsw4": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 0
         }
       }
     },
@@ -9219,6 +9368,10 @@
         "z84m": {
           "hipSpreadTierMod": -2,
           "movingAdsSpreadTierMod": 1
+        },
+        "nsw4": {
+          "hipSpreadTierMod": -2,
+          "movingAdsSpreadTierMod": 1
         }
       }
     },
@@ -9465,6 +9618,10 @@
           "movingAdsSpreadTierMod": 1
         },
         "z84m": {
+          "hipSpreadTierMod": -3,
+          "movingAdsSpreadTierMod": 1
+        },
+        "nsw4": {
           "hipSpreadTierMod": -3,
           "movingAdsSpreadTierMod": 1
         }
@@ -30654,6 +30811,316 @@
         "sf_g2_5_00x",
         "st_prism_5_00x"
       ]
+    },
+    "nsw4": {
+      "muzzle": [
+        "sp_brake",
+        "dp_brake",
+        "comp_brake",
+        "linear_comp",
+        "flash_hider",
+        "flash_comp",
+        "std_supp",
+        "long_supp",
+        "light_supp",
+        "cqb_supp",
+        "compensator",
+        "hybrid_supp_l",
+        "hybrid_supp_s",
+        "hybrid_supp_k"
+      ],
+      "barrel": [
+        "basic",
+        "extended",
+        "heavy",
+        "light",
+        "cryo"
+      ],
+      "barrelDef": "basic",
+      "grip": [
+        "slim_handstop",
+        "fold_vert",
+        "alloy_vert",
+        "ribbed_vert",
+        "6h64_vert",
+        "rubberized_vert",
+        "classic_vert",
+        "fold_stubby",
+        "ribbed_stubby",
+        "canted_stubby",
+        "stipp_stubby",
+        "lp_stubby",
+        "adj_angled",
+        "slim_angled",
+        "full_angled",
+        "underslung_mount",
+        "ptt_grip_pod",
+        "qd_grip_pod",
+        "classic_grip_pod",
+        "actuated_module"
+      ],
+      "laser": [
+        "5mw_red",
+        "5mw_green",
+        "50mw_violet",
+        "50mw_green",
+        "50mw_blue",
+        "120mw_blue"
+      ],
+      "light": [
+        "ads_taclight",
+        "flashlight",
+        "hip_taclight"
+      ],
+      "slots": {
+        "grip": {
+          "accepts": [
+            "grip"
+          ]
+        },
+        "laser": {
+          "accepts": [
+            "laser"
+          ]
+        },
+        "light": {
+          "accepts": [
+            "light"
+          ]
+        }
+      },
+      "dependencies": [
+        {
+          "slot": "accessory",
+          "attachment": "canted_irons",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "mini_flex_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "osa_7_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "r_mr_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "2pro_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "cq_rds_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "ro_s_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "1p87_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "grim_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "rox_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "su_123_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "3vzr_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "a_p2_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "ro_m_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "cco_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "r4t_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "baker_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pas_35_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "qmk_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "mgo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sdo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pvq_31_4_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "lds_4_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sf_g2_5_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "st_prism_5_00x"
+            }
+          ]
+        },
+        {
+          "slot": "accessory",
+          "attachment": "secondary_optic",
+          "requiresAny": [
+            {
+              "slot": "sight",
+              "attachment": "osa_7_1_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "2pro_1_25x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "1p87_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "grim_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "su_123_1_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "3vzr_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "ro_m_1_75x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "cco_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "r4t_2_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "bf_2m_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pa_sl_2_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "baker_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pas_35_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "qmk_3_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "mgo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sdo_3_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "pvq_31_4_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "lds_4_50x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "sf_g2_5_00x"
+            },
+            {
+              "slot": "sight",
+              "attachment": "st_prism_5_00x"
+            }
+          ]
+        }
+      ],
+      "sight": [
+        "iron",
+        "dvo_lpvo",
+        "mini_flex_1_00x",
+        "ngfc_lpvo",
+        "osa_7_1_00x",
+        "r_mr_1_00x",
+        "su_230_lpvo",
+        "th_rds_1_00x",
+        "2pro_1_25x",
+        "cq_rds_1_25x",
+        "ro_s_1_25x",
+        "1p86_lpvo",
+        "1p87_1_50x",
+        "grim_1_50x",
+        "rox_1_50x",
+        "su_123_1_50x",
+        "3vzr_1_75x",
+        "a_p2_1_75x",
+        "ro_m_1_75x",
+        "cco_2_00x",
+        "r4t_2_00x",
+        "bf_2m_2_50x",
+        "pa_sl_2_50x",
+        "baker_3_00x",
+        "pas_35_3_00x",
+        "qmk_3_00x",
+        "mgo_3_50x",
+        "sdo_3_50x",
+        "pvq_31_4_00x",
+        "lds_4_50x",
+        "sf_g2_5_00x",
+        "st_prism_5_00x"
+      ]
     }
   },
   "WEAPON_ERGO": {
@@ -31050,6 +31517,15 @@
       "avail": [
         "rail_cover"
       ]
+    },
+    "nsw4": {
+      "avail": [
+        "rail_cover",
+        "mag_flare",
+        "mag_catch",
+        "match_trigger",
+        "buffer"
+      ]
     }
   },
   "WEAPON_ACCESSORY": {
@@ -31415,6 +31891,12 @@
       ]
     },
     "z84m": {
+      "avail": [
+        "canted_irons",
+        "secondary_optic"
+      ]
+    },
+    "nsw4": {
       "avail": [
         "canted_irons",
         "secondary_optic"
@@ -35620,6 +36102,95 @@
       },
       "sprintRecoveryBaseIndex": 7,
       "deployBaseIndex": 7,
+      "deployTimeTable": "primary"
+    },
+    "nsw4": {
+      "defAds": 4,
+      "defAms": 7,
+      "def": "30_rnd",
+      "mags": {
+        "30_rnd": {
+          "name": "30 Rnd",
+          "pts": 5,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "20_fast": {
+          "name": "20 Fast",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -1,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 0,
+          "weaponSwayMult": 0.6666667
+        },
+        "20_rnd": {
+          "name": "20 Rnd",
+          "pts": 5,
+          "mag": 20,
+          "adsTimeTierShift": -1,
+          "sprintRecoveryTierShift": -2,
+          "adsMoveSpeedTierShift": -2,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -2,
+          "movingAdsSpreadTierMod": 1,
+          "weaponSwayMult": 0.4444444
+        },
+        "36_rnd": {
+          "name": "36 Rnd",
+          "pts": 15,
+          "mag": 36,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        },
+        "40_rnd": {
+          "name": "40 Rnd",
+          "pts": 25,
+          "mag": 40,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        },
+        "40_fast": {
+          "name": "40 Fast",
+          "pts": 30,
+          "mag": 40,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 1,
+          "adsMoveSpeedTierShift": 1,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 1,
+          "movingAdsSpreadTierMod": 0
+        },
+        "30_fast": {
+          "name": "30 Fast",
+          "pts": 10,
+          "mag": 30,
+          "adsTimeTierShift": 0,
+          "sprintRecoveryTierShift": 0,
+          "adsMoveSpeedTierShift": 0,
+          "reloadSpeedTier": 1,
+          "deployTimeTierShift": 0,
+          "movingAdsSpreadTierMod": 0
+        }
+      },
+      "sprintRecoveryBaseIndex": 6,
+      "deployBaseIndex": 6,
       "deployTimeTable": "primary"
     }
   },

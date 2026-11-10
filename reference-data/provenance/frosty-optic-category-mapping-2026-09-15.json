@@ -103776,6 +103776,398 @@
         }
       ],
       "update2120": "Category added in 2.1.2.0 (equipment list gained the optic)."
+    },
+    {
+      "weapon": "nsw4",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "iron",
+      "siteName": "Iron Sights",
+      "sitePoints": 5,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/DEVGRU/Attachment_DEVGRU_SCP_IronSights",
+          "kind": "attachment",
+          "category": "iron",
+          "sourcePointCost": 5,
+          "label": "Basic Sight",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        }
+      ],
+      "sourceBuild": "2.1.2.0"
+    },
+    {
+      "weapon": "nsw4",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_high",
+      "siteName": "Variable High",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_Tango6T",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-6x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_VortexM157",
+          "kind": "attachment",
+          "category": "var_high",
+          "sourcePointCost": 25,
+          "label": "Variable 1-5x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        }
+      ],
+      "sourceBuild": "2.1.2.0"
+    },
+    {
+      "weapon": "nsw4",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "std_optic",
+      "siteName": "Standard Optic",
+      "sitePoints": 10,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_EFLXMini",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_OPK7",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_RMR",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_MeproM22",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_ShieldCQS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_TrijiconSRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.25x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_PG350",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_RomeoX",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_XPS3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_VZOR3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_ACROP2",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_TrijiconMRO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 1.75x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_CompM5b",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_Romeo4T",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Sight 2.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_COD2M",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_PAC25",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 2.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_Bravo3",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_QMK171A",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_M145MGO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_TrijiconSDO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 3.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_TrijiconRCO",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_ELCANLDS",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 4.50x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_Spitfire",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_SteinerT536",
+          "kind": "attachment",
+          "category": "std_optic",
+          "sourcePointCost": 10,
+          "label": "Scope 5.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        }
+      ],
+      "sourceBuild": "2.1.2.0"
+    },
+    {
+      "weapon": "nsw4",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "var_low",
+      "siteName": "Variable Low",
+      "sitePoints": 20,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_ELCANDR",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1-4x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_1P86",
+          "kind": "attachment",
+          "category": "var_low",
+          "sourcePointCost": 20,
+          "label": "Variable 1.5-4.5x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        }
+      ],
+      "sourceBuild": "2.1.2.0"
+    },
+    {
+      "weapon": "nsw4",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "therm_hyb",
+      "siteName": "Thermal Hybrid",
+      "sitePoints": 35,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_HolosunDRSTH",
+          "kind": "attachment",
+          "category": "therm_hyb",
+          "sourcePointCost": 35,
+          "label": "Thermal Hybrid",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        }
+      ],
+      "sourceBuild": "2.1.2.0"
+    },
+    {
+      "weapon": "nsw4",
+      "slot": "sight",
+      "mount": "sight",
+      "attachment": "thermal",
+      "siteName": "Thermal",
+      "sitePoints": 25,
+      "status": "category-linked",
+      "members": [
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_TrijiconREAPIR",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 1.50x ",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        },
+        {
+          "weapon": "nsw4",
+          "source": "Common/Hardware/Weapons/Carbine/Devgru/Attachment_Devgru_SCP_ANPAS35",
+          "kind": "attachment",
+          "category": "thermal",
+          "sourcePointCost": 25,
+          "label": "Thermal 3.00x",
+          "status": "category-member",
+          "sourceBuild": "2.1.2.0"
+        }
+      ],
+      "sourceBuild": "2.1.2.0"
     }
   ],
   "unresolvedSources": [],
@@ -110411,5 +110803,5 @@
   },
   "descriptorSha256": "0bc8441eb4970fe760ba29688ff397656df8fcf01348506d4117910add03c3a9",
   "additions": "Rows for mk24, elr40, z84m and rspr were added on 2026-10-13 from raw 2.1.1.0 EBX files (no XML export); see reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/C in the datamining folder. They carry sourceBuild 2.1.1.0. Their tooltip fields and iron-sight tooltips are not included (ironSightTooltips still counts the original 63).",
-  "update2120": "2.1.2.0 (10 Nov 2026): members added for PA-SL 2.50x (SCP_PAC25) on 62 weapons, DVO LPVO on the carbines whose equipment list gained Tango6T, and the M44 optics (VCOG, REAPIR, ANPAS35, NX8-4); coverage counts describe the earlier read."
+  "update2120": "2.1.2.0 (10 Nov 2026): members added for PA-SL 2.50x (SCP_PAC25) on 62 weapons, DVO LPVO on the carbines whose equipment list gained Tango6T, and the M44 optics (VCOG, REAPIR, ANPAS35, NX8-4); coverage counts describe the earlier read. Categories for the new NSW4 (Devgru) were added from the raw 2.1.2.0 Attachment records (S9/C reader cache)."
 }

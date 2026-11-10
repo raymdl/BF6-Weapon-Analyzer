@@ -39,7 +39,7 @@ All paths in this table are under `scripts/`.
 |---|---|
 | [attachment-compatibility.test.mjs](../scripts/attachment-compatibility.test.mjs) | Frosty physical-slot grouping, PP-19 grip and magazine-ergonomic dependencies, chained removals, valid alternatives, points/effects, and old shared links. |
 | [attachment-effects.test.mjs](../scripts/attachment-effects.test.mjs) | Generated handling and burst hip effects, shared-rail replacement/points/assumptions, ADS/hip composition, source Bolt muzzle exceptions, Smooth/Heavy behavior, light hip growth/recovery and combined slots, collateral clamping, sway, spotting, regeneration, and base/catalog non-mutation. |
-| [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Explicit projectile selection for 67 weapons and 353 ammo choices, source coefficients, and flight/trajectory behavior. |
+| [ballistics.test.mjs](../scripts/ballistics.test.mjs) | Explicit projectile selection for 68 weapons and 360 ammo choices, source coefficients, and flight/trajectory behavior. |
 | [barrel-velocity.test.mjs](../scripts/barrel-velocity.test.mjs) | Tier precedence, compatibility multiplier, selectable-barrel equivalence and display rounding. |
 | [damage.test.mjs](../scripts/damage.test.mjs) | Curve endpoints/interpolation, hit zones, BTK, roster policy and damage evidence. |
 | [draw-time.test.mjs](../scripts/draw-time.test.mjs) | Source timing tables, selection, independent shifts, final clamping and invalid-input behavior. |

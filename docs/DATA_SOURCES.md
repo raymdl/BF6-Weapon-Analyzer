@@ -2,8 +2,8 @@
 
 ## September 13 source integration
 
-The current model uses explicit projectile and hit-zone selections for 67 weapons
-and 353 ammo choices. Collateral values come from the named ten-row source table
+The current model uses explicit projectile and hit-zone selections for 68 weapons
+and 360 ammo choices. Collateral values come from the named ten-row source table
 with the operator-confirmed final index clamp. Regeneration uses 5 s plus the
 source ammo delay; sway compares supported amount factors against the default
 loadout; spotting multiplies source factors against the existing 54/150 m bases.
@@ -75,7 +75,7 @@ loadout role tags for each weapon as reference data. The UI does not load it. Th
 source records, the Mini Scout range conflict and the related description findings.
 
 [data/provenance/live-baseline.json](../data/provenance/live-baseline.json) identifies
-the accepted live dataset and its source policy. It records 67 weapons and five
+the accepted live dataset and its source policy. It records 68 weapons and five
 source records. The baseline combines fields from multiple sources and versions
 along one chain: Sym's JSON v1.4.2.0 for base weapon fields; Frosty 1.4.2.5, the
 baseline export adopted on 12 August 2026; Frosty 1.4.3.0, reviewed on 16 September

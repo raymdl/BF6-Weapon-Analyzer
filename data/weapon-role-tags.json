@@ -36,7 +36,7 @@
       },
       {
         "asset": "Common/UI/Static/Metadata/S5/UIWeaponAbilityMetaData_S5B1",
-        "sha256": "4e8b559b490a68633cd6b3ff7a04e42731eb8c902ce645627e591779336cc974"
+        "sha256": "70462f1c5ca426e6bc7eecac593066987f459c889782137d6ad7500689ecea41"
       }
     ],
     "gameBuild": "1.4.2.5 export, checked 13 SEP 2026",
@@ -1918,6 +1918,33 @@
           "primary": true,
           "tags": [
             "Hard-Hitting",
+            "Close Range",
+            "Steady Firerate"
+          ]
+        }
+      ]
+    },
+    "nsw4": {
+      "style": {
+        "id": "AF244DFB",
+        "text": "Subsonic"
+      },
+      "range": {
+        "id": "76B2AA0B",
+        "text": "Close Range"
+      },
+      "firing": {
+        "id": "F2993CAE",
+        "text": "Steady Firerate"
+      },
+      "records": [
+        {
+          "asset": "Common/UI/Static/Metadata/S5/UIWeaponAbilityMetaData_S5B1",
+          "guid": "563065cf-00a7-445e-a438-2b46b20a257e",
+          "label": "Devgru",
+          "primary": true,
+          "tags": [
+            "Subsonic",
             "Close Range",
             "Steady Firerate"
           ]

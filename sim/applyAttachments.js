@@ -553,9 +553,10 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // suppressor + subsonic (150 * 0.14 * 0.4285714, approximately 9 m).
   // M45A1 and vz. 61 are subsonic by default (1.3.3.0): their WB files store
   // 27 / 64.285713 and the stat screen shows 27 m / 64 m (Frosty L4001, L4008).
+  // The NSW4 Devgru_WB (2.1.2.0) stores the same pair; its default FMJ adds no spotting factor.
   // Since 2.1.1.0 the M433, SGX, L110 and P18 WB files store 75 in-world; the stat
   // screen shows 75 m (ATTACHMENT_BUGS.md entry 17).
-  const [worldSpotBase, minimapSpotBase] = (w.id === 'm45a1' || w.id === 'vz61') ? [27, 64.285713]
+  const [worldSpotBase, minimapSpotBase] = (w.id === 'm45a1' || w.id === 'vz61' || w.id === 'nsw4') ? [27, 64.285713]
     : ['m433', 'sgx', 'l110', 'p18'].includes(w.id) ? [75, 150] : [54, 150];
   const worldSpot = +(worldSpotBase * (muz.worldSpotMult ?? 1) * (bar.worldSpotMult ?? 1) * (ammoType.worldSpotMult ?? 1)).toFixed(6);
   const minimapSpot = +(minimapSpotBase * (muz.minimapSpotMult ?? 1) * (bar.minimapSpotMult ?? 1) * (ammoType.minimapSpotMult ?? 1)).toFixed(6);

@@ -71,7 +71,7 @@ fields, and native class layouts do not independently validate the current recov
 equation. The model uses a 0.05-second duration override and 1.2 recovery-factor
 multiplier for ordinary Smooth modifiers, or 0.066667 seconds and 1.728 for 19
 source-mapped Bolt weapon–muzzle combinations, in ADS and hip. The current base
-duration check found 0.025 seconds in both aim states for all 67 weapons; the
+duration check found 0.025 seconds in both aim states for all 68 weapons; the
 simulator reads each weapon record rather than imposing that value globally.
 The source provides these operands;
 recordings support the qualitative effect, not the exact native arithmetic.
@@ -176,7 +176,7 @@ hits after the first lethal shot. No armor, missed-shot TTK, reload interruption
 healing, target motion or obstruction is modeled.
 
 Ballistics use generated projectile coefficients and explicit weapon/ammo links
-for all 67 weapons, plus available velocity. Missing selections have no global
+for all 68 weapons, plus available velocity. Missing selections have no global
 coefficient fallback. Non-ammo SP projectile branches remain excluded. Zeroing omits
 sight height; level flight time and vector trajectory are distinct calculations.
 The UI's zero-displacement fallback for unavailable trajectories must not be

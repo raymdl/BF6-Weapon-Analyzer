@@ -32,9 +32,9 @@ renders the compact strip and related-card highlights. The runtime data in
 `data/weapon_attributes.json` contains the base keys and rows from the 1.4.3.0
 Precision extraction, plus the traced shotgun and Mobility inputs. Its
 `provenance` field names the source files under `reference-data/provenance/`.
-The tables hold all 67 weapons. `sourceVersion` (2.1.1.0) is the build they were
+The tables hold all 68 weapons. `sourceVersion` (2.1.1.0) is the build they were
 last checked against; the 63 launch tables were extracted at 1.4.3.0, the four
-Season 5 tables were added with 2.1.1.0, and the tables were not re-derived
+Season 5 tables were added with 2.1.1.0, the NSW4 table with 2.1.2.0, and the tables were not re-derived
 at 2.1.1.0 because the update comparison found their inputs unchanged. One row differs: the Interdictor keyed row holds its 2.1.1.0 value of 100
 ([bug entry 22](ATTACHMENT_BUGS.md)).
 

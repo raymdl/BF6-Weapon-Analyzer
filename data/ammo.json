@@ -184,6 +184,23 @@
         "Sidearm": 0.75
       },
       "hipRecoilTierMod": -1
+    },
+    {
+      "id": "supersonic",
+      "name": "Supersonic FMJ",
+      "adsRecoilTierMod": -1,
+      "hipRecoilTierMod": -1,
+      "collateralMult": {
+        "Assault Rifle": 0.75,
+        "Carbine": 0.75,
+        "LMG": 0.75,
+        "DMR": 0.75,
+        "Sniper Rifle": 0.75,
+        "SMG": 0.57,
+        "Sidearm": 0.57
+      },
+      "worldSpotMult": 2,
+      "minimapSpotMult": 2.333333
     }
   ],
   "WEAPON_AMMO": {
@@ -1572,6 +1589,23 @@
         "subsonic_hp": {
           "adsRecoilTierMod": 1,
           "hipRecoilTierMod": 1
+        }
+      }
+    },
+    "nsw4": {
+      "def": "standard",
+      "ammo": {
+        "standard": 5,
+        "penetration": 5,
+        "lightweight": 10,
+        "hollow_pt": 15,
+        "frangible": 15,
+        "supersonic": 15
+      },
+      "velocityTreatments": {
+        "supersonic": {
+          "kind": "supersonic-absolute",
+          "subsonicVelocityMps": 611.328125
         }
       }
     }

@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "status": "current-live",
   "adoptedAsBaseline": "2026-08-12",
-  "weaponCount": 67,
+  "weaponCount": 68,
   "lastVerified": {
     "gameBuild": "2.1.2.0",
     "hotfixesCheckedThrough": "2026-11-10",

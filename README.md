@@ -28,14 +28,14 @@ geometry is approximate; shotgun pellets are not individually simulated. Start
 with [model limitations](docs/MODEL_LIMITATIONS.md) when interpreting precision.
 
 Frosty-derived hit zones, projectile gravity/drag, and collateral values cover all
-67 weapons and 353 supported ammo selections. Weapon sway is shown as a percentage
+68 weapons and 360 supported ammo selections. Weapon sway is shown as a percentage
 change. Spread sampling uses the source exponent: normally 0.5 for uniform area,
 with 0.67 for Interdictor moving ADS. The M39 settled-hipfire captures support the
 0.5 interpretation; other states and native formulas remain unverified.
 
 The recoil model delivers each shot over its selected Frosty duration while
 recovery acts at the same time. Recovery runs at 0.8 of the source factor, measured on
-bullet-hole captures of four weapons in October 2026. Base duration is 25 ms for all 67 currently
+bullet-hole captures of four weapons in October 2026. Base duration is 25 ms for all 68 currently
 supported weapons. Smooth attachments use 50 ms and a 1.2 recovery factor;
 19 weapon–muzzle combinations use the source Bolt values of 66.667 ms and 1.728.
 Heavy-type barrels now use source ADS spread and recovery factors, supported by
@@ -57,7 +57,7 @@ records reviewed text and data conflicts. Source-backed modifiers do not establi
 
 Attachment tooltips cover all 3,250 non-optic selections using Frosty UI descriptions,
 26 approved game-panel transcriptions and 45 descriptions whose missing string ID an
-approved panel resolves, plus Iron Sights on all 67 weapons. See the [description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
+approved panel resolves, plus Iron Sights on all 68 weapons. See the [description audit](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/UI_TEXT.md#current-site-mapping)
 for the exact scope and source boundaries.
 
 ## Run locally

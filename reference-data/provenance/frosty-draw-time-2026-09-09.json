@@ -682,6 +682,14 @@
       "deployIndex": 7,
       "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]",
       "sourceBuild": "2.1.1.0"
+    },
+    {
+      "siteId": "nsw4",
+      "source": "builds/2.1.2.0/capture/collection/raw/Common/Hardware/Weapons/Carbine/DEVGRU/Devgru_WB.ebx",
+      "sprintIndex": 6,
+      "deployIndex": 6,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]",
+      "sourceBuild": "2.1.2.0"
     }
   ],
   "sourceSha256": {
@@ -780,5 +788,5 @@
     "bounds": "User confirmed absolute min/max; clamp after summing shifts",
     "scope": "Raw base selectors and full arrays. Screenshot audit independently supports sprint recovery; deploy/undeploy are source configuration values."
   },
-  "additions": "Rows for mk24, elr40, z84m and rspr were added on 2026-10-13 from raw 2.1.1.0 EBX files (no XML export); see reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/C in the datamining folder. They carry sourceBuild 2.1.1.0."
+  "additions": "Rows for mk24, elr40, z84m and rspr were added on 2026-10-13 from raw 2.1.1.0 EBX files (no XML export); see reports/weapon-analyzer-research/2026-10-13-update-2110-post/stage9/C in the datamining folder. They carry sourceBuild 2.1.1.0. The nsw4 row was added on 2026-11-10 from the raw 2.1.2.0 Devgru_WB (S9/C reader cache) and carries sourceBuild 2.1.2.0."
 }

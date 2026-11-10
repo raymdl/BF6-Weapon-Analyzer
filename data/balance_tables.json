@@ -74,7 +74,8 @@
     "mk24": 0.9392,
     "elr40": 0.94,
     "z84m": 0.9492,
-    "rspr": 0.94
+    "rspr": 0.94,
+    "nsw4": 0.9375
   },
   "HIP_SPREAD_TABLE": [
     {
@@ -307,7 +308,8 @@
     "mk24": 3,
     "elr40": 2,
     "z84m": 1,
-    "rspr": 4
+    "rspr": 4,
+    "nsw4": 4
   },
   "HIP_SPREAD_BASE_INDEX_OVERRIDES": {},
   "COLLATERAL_MULT_OVERRIDE": {
@@ -798,6 +800,14 @@
       "frangible": 0.666667,
       "subsonic": 0.666667,
       "subsonic_hp": 0.666667
+    },
+    "nsw4": {
+      "standard": 0.750001,
+      "penetration": 1.0,
+      "lightweight": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
+      "supersonic": 0.750001
     }
   },
   "MOVING_ACC_TIERS": [

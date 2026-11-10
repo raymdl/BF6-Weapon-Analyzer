@@ -302,9 +302,9 @@ operand and is recorded as an open question, not proposed.
 ### Duration and Smooth attachment selection
 
 Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
-selected weapon record. All 67 supported weapons in both aim states, 134 values, are **0.025 seconds**
+selected weapon record. All 68 supported weapons in both aim states, 136 values, are **0.025 seconds**
 (the Frosty check of the 63 September weapons, and the four Season 5 weapons read
-from 2.1.1.0). The simulator reads the selected weapon record. A missing/zero duration
+from 2.1.1.0, the NSW4 from 2.1.2.0). The simulator reads the selected weapon record. A missing/zero duration
 uses a fallback of **0.025 seconds**.
 
 The four Smooth source assets define two operand sets:

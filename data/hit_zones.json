@@ -1958,6 +1958,38 @@
           "limb": 0.84
         }
       }
+    },
+    "nsw4": {
+      "protectionIndex": 11,
+      "projectileMaterial": 276,
+      "headshot": 1.4,
+      "limb": 0.84,
+      "ammo": {
+        "standard": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "penetration": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "lightweight": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "hollow_pt": {
+          "headshot": 1.57,
+          "limb": 0.84
+        },
+        "frangible": {
+          "headshot": 1.4,
+          "limb": 0.84
+        },
+        "supersonic": {
+          "headshot": 1.57,
+          "limb": 0.84
+        }
+      }
     }
   }
 }
