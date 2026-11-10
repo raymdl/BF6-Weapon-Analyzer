@@ -613,11 +613,26 @@ future release:
 | An ability branch that binds it | `<weapon>_ability`, branch list `Field_d7605aab` |
 | A modifier package in the weapon's list | `<weapon>_WB`, `Field_0cd9f20f` |
 | Kill switch not set | `KST_*` row stored `false`; `true` means switched off |
+| Listed in the weapon's equipment list | `Equipment_<weapon>` imports the `Attachment_*` file |
 
-Cross-check against the roadmap dates: an item with all four that the roadmap dates later is
+Run the equipment-list diff on every new build, over all weapons (research repo; about five
+seconds):
+
+```bash
+python -I scripts/frosty-equipment-list-diff.py <baseline collection> <new collection> --old-descriptors <baseline descriptors> --new-descriptors <new descriptors> --old-extra <baseline fresh-cache collection> --new-extra <new fresh-cache collection> --out <run folder>\equipment-list-diff.tsv
+```
+
+Every "removed" row is an attachment taken out of the game, even though its record, ability
+binding and kill-switch row may all stay. In 2.1.2.0 the DRS-IAR Synthetic Tip was removed this
+way. The first check read only the other four conditions and reported the patch note as
+"not done"; the operator then found it gone in game. Check a patch-note removal
+against this list before calling it not done. Check every "added" row against the census
+above, because an added row alone does not prove that the item is live.
+
+Cross-check against the roadmap dates: an item with all five that the roadmap dates later is
 a future release. Two limits found in 2.1.1.0:
 
-- **Ammunition:** the four conditions are necessary, not sufficient. Nine older ammunition
+- **Ammunition:** the first four conditions are necessary, not sufficient. Nine older ammunition
   records meet all of them and are not offered in game. List new ammunition for an in-game
   menu check.
 - **Not in the weapon's own `AAM_*` map:** an attachment with a record but no entry in the
