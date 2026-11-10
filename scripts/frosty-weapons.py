@@ -83,6 +83,21 @@ NOT_OWNED = OrderedDict([
     ('damageSource', 'editorial: text naming the curve and the build first read'),
     ('provenance', 'provenance: field-level evidence notes and recorded measurements (provenance.measured)'),
 ])
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section. NOT_COVERED: (file, section, fields, reason)
+# for the families above that no check reads. RELATED_SECTIONS are the copies in other files that related() compares.
+RELATED_SECTIONS = [
+    ('data/recoil_decay.json', 'RECOIL_DEC', None),
+    ('data/recoil_decay.json', 'RECOIL_DEC_TEXP', None),
+    ('data/recoil_decay.json', 'RECOIL_DEC_EXP', None),
+    ('data/balance_tables.json', 'RECOIL_MULT', None),
+    ('data/balance_tables.json', 'HIP_SPREAD_BASE_INDEX', None),
+    ('data/balance_tables.json', 'HIP_SPREAD_TABLE[]', ['hipStand (rows a weapon uses)']),
+    ('data/balance_tables.json', 'MOVING_ACC_TIERS (rows a weapon uses)', None),
+    ('data/attachments.json', 'WEAPON_MAG[]', ['defAds', 'defAms', 'sprintRecoveryBaseIndex', 'deployBaseIndex']),
+]
+COVERS = [('data/weapons.json', '[]', list(OWNED)), *RELATED_SECTIONS]
+NOT_COVERED = [('data/weapons.json', '[]', [k], why) for k, why in NOT_OWNED.items()]
 
 ZOOM, UNZOOM = F('6b84de87'), F('7b609515')
 STAT, MOVE, JUMP, MJS = F('0a160c57'), F('e2ae7c09'), F('a059dd20'), F('447d6d51')

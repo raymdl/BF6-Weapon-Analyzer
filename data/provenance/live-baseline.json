@@ -7,7 +7,8 @@
     "gameBuild": "2.1.2.0",
     "hotfixesCheckedThrough": "2026-11-10",
     "scope": "Every value the site uses. Each game update and hotfix since 1.4.2.5 had a raw before/after comparison; values reported unchanged keep their earlier provenance.",
-    "labelMeaning": "A build named on a single value (sourceBuild, 'first read in' in damageSource, a build in an evidence file name) is the build that value was first read from, not the last build it was checked against. This record gives the last build checked.",
+    "labelMeaning": "A build named on a single value (sourceBuild, 'first read in' in damageSource, a build in an evidence file name) is the build that value was first read from, not the last build it was checked against. This record gives the last build checked by the update comparison.",
+    "perFileStatus": "data/provenance/data-status.json holds the per-section labels: generatedFrom and verifiedThrough, stamped by scripts/frosty-check-all.py --stamp. A section no generator check covers keeps verifiedThrough null there even when this comparison found it unchanged.",
     "evidence": "https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/README.md"
   },
   "sources": [

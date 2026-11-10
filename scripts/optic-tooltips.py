@@ -39,6 +39,11 @@ from collections import defaultdict
 from pathlib import Path
 
 
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section.
+COVERS = [('data/attachment-tooltips.json', 'whole file', None)]
+
+
 def load(path):
     with open(path, encoding="utf-8") as handle:
         return json.load(handle)

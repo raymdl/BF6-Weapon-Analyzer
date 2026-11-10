@@ -24,7 +24,7 @@ const weapon = id => weapons.find(w => w.id === id);
 const defaults = w => { const atts = {}; resetAttsForWeapon(atts, w, data); return atts; };
 const round = n => (typeof n === 'number' ? Math.round(n * 1000) / 1000 : n);
 
-console.log(`hit_zones build: ${HIT_ZONES.source.build}`);
+console.log(`hit_zones generated from: ${HIT_ZONES.source.generatedFrom}`);
 
 for (const id of ['interdictor', 'vssm']) {
   const w = weapon(id);

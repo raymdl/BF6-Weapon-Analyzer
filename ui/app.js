@@ -37,6 +37,16 @@ async function fetchJson(url) {
 const reportDataError = createDataErrorNotice();
 setDataErrorReporter(reportDataError);
 
+// Footer data label: the last build on which every generator check passed, as frosty-check-all.py
+// --stamp records it. The page's own text stays if the file cannot be read.
+fetchJson('./data/provenance/data-status.json').then(r => r.json()).then(({ allChecksPassed: passed }) => {
+  const label = document.getElementById('footer-data-status');
+  const [y, m, d] = (passed?.verifiedOn ?? '').split('-').map(Number);
+  if (!label || !passed?.build || !d) return;
+  const month = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][m - 1];
+  label.textContent = `Frosty v${passed.build} (reviewed ${String(d).padStart(2, '0')} ${month} ${y})`;
+}).catch(() => {});
+
 let _weaponAttributes;
 let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips;
 try {

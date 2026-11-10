@@ -1,10 +1,11 @@
 {
   "schemaVersion": 2,
   "source": {
-    "build": "1.4.3.0",
+    "generatedFrom": "1.4.3.0",
     "generatedBy": "scripts/frosty-ballistics.py",
     "attachmentTrace": "frosty-hit-zones-2026-09-15.json",
     "attachmentTraceSha256": "eb67585bae08c714145912ad44ba4bbc543d6c947f5ddf007b39501a86a6d3c9",
+    "projectileSha256Status": "Historical: SHA-256 of the 1.4.3.0 XML-export files the generator read (15 Sep 2026). Later builds were checked by comparison, not by regenerating, so these hashes are not of the current game files. Verified-through status: data/provenance/data-status.json.",
     "projectileSha256": {
       "Common/Hardware/Weapons/_Bullets/PD_545x39mm_Carbine.xml": "21645365446517c58924fc8b2c0570e23e8161052c383580189197450033b718",
       "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO.xml": "6d02f9254966cdd6773aae9f7442bda5717f000c0fe1abbfe03443bfe0d3b196",

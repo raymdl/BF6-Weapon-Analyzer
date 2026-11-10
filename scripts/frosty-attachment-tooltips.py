@@ -685,6 +685,10 @@ def iron_sight_tooltips(optics, by_weapon):
 
 
 GENERATOR = "frosty-attachment-tooltips"
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section. None of its own: its output is the input of optic-tooltips.py,
+# which compares data/attachment-tooltips.json.
+COVERS = []
 
 
 def owned_leaves(document):

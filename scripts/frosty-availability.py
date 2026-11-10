@@ -43,6 +43,15 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 GENERATOR = 'frosty-availability'
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section.
+COVERS = [
+    ('data/attachments.json', 'WEAPON_ATTS[]', [f'{s} (ids offered)' for s in ('muzzle', 'barrel', 'grip', 'laser', 'light', 'sight')]),
+    ('data/attachments.json', 'WEAPON_ERGO[]', ['avail (ids offered)']),
+    ('data/attachments.json', 'WEAPON_ACCESSORY[]', ['avail (ids offered)']),
+    ('data/attachments.json', 'WEAPON_MAG[]', ['mags (ids offered)']),
+    ('data/ammo.json', 'WEAPON_AMMO[]', ['ammo (ids offered)']),
+]
 SITE_SLOTS = ('muzzle', 'barrel', 'grip', 'laser', 'light', 'sight', 'ergo', 'accessory', 'mag', 'ammo')
 # Record slot code -> site slot, for records with no identity row (RGT/LFT/TOP hold lasers
 # and lights on different weapons: the row of the same record name on another weapon decides first).

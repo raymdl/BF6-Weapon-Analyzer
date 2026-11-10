@@ -39,7 +39,8 @@
         "sha256": "70462f1c5ca426e6bc7eecac593066987f459c889782137d6ad7500689ecea41"
       }
     ],
-    "gameBuild": "1.4.2.5 export, checked 13 SEP 2026",
+    "generatedFrom": "1.4.2.5",
+    "generatedNote": "Read from the 1.4.2.5 export; in-game panel check 13 Sep 2026. Not re-read since; no generator check covers this file. Verified-through status: data/provenance/data-status.json.",
     "selection": "Records with a package image are primary. When primary records disagree, an in-game panel check selects the tag and panelEvidence records it."
   },
   "tagGroups": [

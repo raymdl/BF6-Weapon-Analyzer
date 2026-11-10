@@ -22,6 +22,12 @@ DEFAULT_NAMES = PROVENANCE / 'frosty-optic-render-fov-2026-09-16.json'
 LEGACY = ('std_optic', 'var_low', 'var_high', 'thermal', 'therm_hyb')
 OUTPUT = PROVENANCE / 'frosty-individual-optics-2026-11-10.json'
 GENERATOR = 'frosty-individual-optics'
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section.
+COVERS = [
+    ('data/attachments.json', 'SIGHTS', None),
+    ('data/attachments.json', 'WEAPON_ATTS[]', ['sight', 'dependencies (Optic Accessory rules)']),
+]
 # Optic Accessory record families (Attachment_*_SCA_<family>), as frosty-attachment-compatibility.py groups them.
 ACCESSORY_FAMILIES = {
     'CantedIronSights': 'canted_irons', 'AGCoating': 'ag_coating',

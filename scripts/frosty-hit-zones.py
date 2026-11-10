@@ -383,7 +383,7 @@ def main():
                                      "headTable": base_head_table, "ammo": weapon_evidence,
                                      "graphIssues": graph_issues}
 
-    source = {"build": args.build_label, "generatedBy": "scripts/frosty-hit-zones.py",
+    source = {"generatedFrom": args.build_label, "generatedBy": "scripts/frosty-hit-zones.py",
               "evidence": args.evidence.relative_to(args.site).as_posix() if args.evidence.is_relative_to(args.site) else str(args.evidence)}
     args.out.write_text(json.dumps({"schemaVersion": 1, "source": source, "weapons": runtime}, indent=2) + "\n", encoding="utf-8")
     evidence = {

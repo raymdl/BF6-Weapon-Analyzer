@@ -10,6 +10,9 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section.
+COVERS = [('data/attachments.json', 'BARRELS[]', ['adsTimeTierModByWeapon'])]
 
 
 def main():

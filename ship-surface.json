@@ -15,6 +15,7 @@
     "data/balance_tables.json",
     "data/ballistics.json",
     "data/hit_zones.json",
+    "data/provenance/data-status.json",
     "data/recoil_decay.json",
     "data/weapons.json",
     "data/weapon_attributes.json"

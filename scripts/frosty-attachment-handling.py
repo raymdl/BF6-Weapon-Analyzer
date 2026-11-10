@@ -74,6 +74,23 @@ NOT_OWNED = {
             'descriptionMismatch': 'hand (observation)', 'suspectedGameBug': 'hand (observation; checked)',
             'projectileOverride': 'hand (ballistics)'},
 }
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section. NOT_COVERED: (file, section, fields, reason)
+# for the families above that no check reads.
+COVERS = [
+    ('data/attachments.json', 'GRIPS[]', [f"frostyModifiers ({', '.join(AXES['grip'])})", 'movingAdsSpreadTierMod']),
+    ('data/attachments.json', 'LASERS[]', [f"frostyModifiers ({', '.join(AXES['laser'])})"]),
+    ('data/attachments.json', 'WEAPON_MAG[]', [f"mags ({', '.join(AXES['mag'] + MAG_EXTRA)})",
+                                               'defAds (m60)', 'defAms (m60, pw7a2)']),
+    ('data/reload-exceptions.json', 'animationOverrides[][]', ['tacRldOverrideMs']),
+    ('data/weapon_attributes.json', 'mobilityInputs[]', ['movingAdsGripShifts']),
+]
+_NOT_OWNED_AT = {'grip shared': ('GRIPS[]', ''), 'grip per weapon': ('GRIPS[]', 'frostyModifiers[].'),
+                 'laser shared': ('LASERS[]', ''), 'laser per weapon': ('LASERS[]', 'frostyModifiers[].'),
+                 'mag': ('WEAPON_MAG[]', 'mags[].')}
+NOT_COVERED = [('data/attachments.json', _NOT_OWNED_AT[label][0], [_NOT_OWNED_AT[label][1] + k], owner)
+               for label, keys in NOT_OWNED.items() for k, owner in keys.items()
+               if k != 'id' and not owner.endswith('.py')]
 WB_FIELDS = {
     'Class_016623ac': ('adsAnimation', 'Field_9540bd8e'),
     'Class_104c2294': ('adsFov', 'Field_9540bd8e'),

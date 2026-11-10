@@ -41,8 +41,8 @@ def lifetime_inventory(root, ledger, head, descriptor_sha):
     ballistics_path = root / 'data/ballistics.json'
     decoder_path = root / 'scripts/frosty-ebx-decode.py'
     ballistics = read_json(ballistics_path)
-    if ballistics['source']['build'] != '1.4.3.0':
-        raise ValueError('ballistics source build is not recorded build 1.4.3.0')
+    if ballistics['source']['generatedFrom'] != '1.4.3.0':
+        raise ValueError('ballistics source generatedFrom is not recorded build 1.4.3.0')
     decoder = importlib.machinery.SourceFileLoader('frosty_decoder', str(decoder_path)).load_module()
     con = sqlite3.connect(ledger.resolve().as_uri() + '?mode=ro', uri=True)
     con.row_factory = sqlite3.Row

@@ -35,6 +35,15 @@ CATALOGS = {'muzzle': 'MUZZLES', 'barrel': 'BARRELS', 'grip': 'GRIPS', 'laser': 
 WEAPON_EXCEPTIONS = ('muzzle', 'ergo')     # weaponOverrides[weapon].pts
 SHARED_ONLY = ('barrel', 'grip', 'laser', 'light')
 GENERATOR = 'frosty-point-costs'
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section.
+COVERS = [
+    *(('data/attachments.json', f'{CATALOGS[s]}[]', ['pts', 'weaponOverrides[].pts'] if s in WEAPON_EXCEPTIONS else ['pts'])
+      for s in CATALOGS),
+    ('data/attachments.json', 'WEAPON_ATTS[]', ['sightPoints']),
+    ('data/attachments.json', 'WEAPON_MAG[]', ['mags[].pts']),
+    ('data/ammo.json', 'WEAPON_AMMO[]', ['ammo (costs)']),
+]
 
 
 def site_entries(catalog, ammo):

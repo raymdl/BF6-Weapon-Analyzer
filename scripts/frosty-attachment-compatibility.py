@@ -13,6 +13,13 @@ import re
 
 REPO = Path(__file__).resolve().parents[1]
 MOUNTS = ('grip', 'laser', 'light')
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section.
+COVERS = [
+    ('data/attachments.json', 'WEAPON_ATTS[]', ['slots', 'dependencies']),
+    ('data/attachments.json', 'WEAPON_ACCESSORY', None),
+    ('data/attachments.json', 'ACCESSORIES[]', ['pts']),
+]
 # Source Optic Accessory families grouped into site choices. On the site the
 # canted/offset reflexes and magnifiers differ only by name.
 ACCESSORY_FAMILIES = {

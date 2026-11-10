@@ -85,7 +85,7 @@ NOT_OWNED = OrderedDict([
     ('WEAPON_AMMO.ammo', 'roster: frosty-availability.py; costs: frosty-point-costs.py'),
     ('velocityTreatments.displayRounding', 'site display convention'),
     ('velocityTreatments.combinesWith', 'site modelling note'),
-    ('ballistics.source', 'provenance block (build label, XML-export hashes, attachment trace)'),
+    ('ballistics.source', 'provenance block (generatedFrom, historical XML-export hashes, attachment trace)'),
 ])
 AMMO_KEYS = {'id', 'name', 'collateralMult', 'adsRecoilTierMod', 'hipRecoilTierMod', 'adsMoveSpeedTierShift',
              'healthRegenDelayAddS', 'worldSpotMult', 'minimapSpotMult', 'hipSpreadTierMod', 'adsSpreadDynOverride'}
@@ -95,6 +95,17 @@ NEUTRAL = {'adsRecoilTierMod': 0, 'hipRecoilTierMod': 0, 'adsMoveSpeedTierShift'
            'worldSpotMult': 1, 'minimapSpotMult': 1, 'hipSpreadTierMod': 0, 'adsSpreadDynOverride': None}
 WEAPON_AMMO_KEYS = {'def', 'ammo', 'effectOverrides', 'velocityTreatments', 'projectileOverrides'}
 KNOWN_QUIET = {'Class_96bab3b8': 'sound', 'Class_b1afeb65': 'projectile swap carrier'}
+# Data sections this check compares, read by frosty-check-all.py --stamp (data/provenance/data-status.json):
+# (file, section, fields); fields None = the whole section. NOT_COVERED: (file, section, fields, reason)
+# for the families above that no check reads.
+COVERS = [('data/ballistics.json', f.split('.', 1)[1], None) if f.startswith('ballistics.')
+          else ('data/ammo.json', 'AMMO[]', [f]) if f in EFFECT_FIELDS
+          else ('data/ammo.json', 'WEAPON_AMMO[]', [f.split('.', 1)[-1]]) for f in OWNED]
+COVERS.append(('data/ammo.json', 'WEAPON_AMMO[]', ['effectOverrides']))
+# Join keys, families another check owns and the provenance block are not data sections.
+NOT_COVERED = [('data/ammo.json', f.split('.', 1)[0] + '[]' if f.startswith('AMMO.') else 'WEAPON_AMMO[]',
+                [f.split('.', 1)[1] if f.startswith('AMMO.') else f], why)
+               for f, why in NOT_OWNED.items() if f not in ('AMMO.id', 'WEAPON_AMMO.ammo', 'ballistics.source')]
 
 
 def load(name, path):

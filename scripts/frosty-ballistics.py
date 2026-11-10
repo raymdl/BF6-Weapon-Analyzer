@@ -59,8 +59,10 @@ def main():
             selected[aid] = projectile(entry['projectileSwap']) if entry['projectileSwap'] else base
         weapons[wid] = {'base': base, 'ammo': selected}
     result = {'schemaVersion': 2, 'source': {
-        'build': trace['build'], 'generatedBy': 'scripts/frosty-ballistics.py',
+        'generatedFrom': trace['build'], 'generatedBy': 'scripts/frosty-ballistics.py',
         'attachmentTrace': args.trace.name, 'attachmentTraceSha256': hashlib.sha256(raw).hexdigest(),
+        'projectileSha256Status': f"SHA-256 of the {trace['build']} files this run read. "
+                                  'Verified-through status: data/provenance/data-status.json.',
         'projectileSha256': hashes,
     }, 'projectiles': projectiles, 'weapons': weapons}
     # This is a site data file: the marker goes beside the hashes, not at the top level.

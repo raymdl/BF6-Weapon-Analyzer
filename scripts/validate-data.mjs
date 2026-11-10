@@ -537,6 +537,22 @@ for (const weapon of weapons) {
   }
 }
 
+// Data labels (data/provenance/data-status.json, written by frosty-check-all.py --stamp): a row with
+// no check is never verified, and the page's footer text matches the last all-checks-pass record.
+const dataStatus = readJson('data/provenance/data-status.json');
+for (const row of dataStatus.sections ?? []) {
+  if (!row.checks?.length && row.verifiedThrough != null) {
+    fail(`data-status ${row.file} ${row.section}: no check covers it, so it cannot carry verifiedThrough`);
+  }
+}
+const passed = dataStatus.allChecksPassed;
+const footer = readFileSync(resolve(dataRoot, 'index.html'), 'utf8').match(/id="footer-data-status">([^<]*)</)?.[1];
+const [statusYear, statusMonth, statusDay] = (passed?.verifiedOn ?? '').split('-');
+const statusMonthName = ['JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'][statusMonth - 1];
+if (footer !== `Frosty v${passed?.build} (reviewed ${statusDay} ${statusMonthName} ${statusYear})`) {
+  fail(`index.html footer-data-status text "${footer}" does not match data-status allChecksPassed`);
+}
+
 if (errors.length) {
   console.error(`Data validation failed with ${errors.length} issue(s):`);
   for (const error of errors) console.error(`- ${error}`);
