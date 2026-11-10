@@ -57,10 +57,11 @@ weapons from 2.1.1.0. The M45A1 keeps the reviewed 75 m discontinuity. See the
 28 October 2026) names the last build checked for every site value: 2.1.1.0, with
 hotfixes checked through 22 October 2026. A build named on a single value
 (`sourceBuild`, "first read in" in `damageSource`, a build in an evidence file
-name) is the build that value was first read from. Two file-level labels follow
-`lastVerified` instead: `hit_zones.json` `source.build` and
-`weapon_attributes.json` `sourceVersion` both say 2.1.1.0, and their
-`source.buildNote` and `sourceVersionNote` fields give the first-read history.
+name) is the build that value was first read from. File-level labels follow the same rule: `generatedFrom` in `hit_zones.json`,
+`ballistics.json`, `weapon_attributes.json` and `weapon-role-tags.json` is the build
+whose files produced the values. The last build each file section was checked
+against is in [`data-status.json`](../../data/provenance/data-status.json)
+(`verifiedThrough`), written only by `frosty-check-all.py --stamp`.
 
 ## Build snapshots
 
@@ -248,9 +249,9 @@ grids ([frosty-raw-assets.ps1](../../scripts/frosty-raw-assets.ps1) exports them
 Grid names are stripped, so the head/limb interpretation rests on cross-checks
 against panel values (A05). The 63 launch weapons' multipliers were generated from
 the 1.4.3.0 trace; the Mk 24, ELR-40, Z84M and RSPR were read from 2.1.1.0 raw
-files. `source.build` (2.1.1.0) is the last build checked, and `source.buildNote`
-records that history. The generator writes `source` from its `--build-label`
-argument (default 1.4.2.5) and has no `buildNote`, so a rerun needs the label
+files. `source.generatedFrom` (1.4.3.0) names the trace's build, and `source.generatedNote`
+records the later reads. The generator writes `generatedFrom` from its `--build-label`
+argument (default 1.4.2.5) and has no note, so a rerun needs the label
 given and the note restored.
 
 [`frosty-ballistics.py`](../../scripts/frosty-ballistics.py) uses the current
@@ -269,9 +270,9 @@ well as a rerun.
 `data/weapon_attributes.json` holds the Precision lookup tables (one per weapon,
 67), the shotgun dispersion angles and the traced Mobility inputs. The 63 launch
 tables were first read at 1.4.3.0 and the four Season 5 tables at 2.1.1.0.
-`sourceVersion` (2.1.1.0) is the build the tables were last checked against: the
-13 October 2026 update comparison found the hip-spread ladder and every weapon row
-unchanged, so they were not re-derived. `sourceVersionNote` records this. It is
+`generatedFrom` is 1.4.3.0: the 13 October 2026 update comparison found the hip-spread
+ladder and every weapon row unchanged, so they were not re-derived. `generatedNote`
+records this and the later re-reads. It is
 assembled from three reference files named in its `provenance` field:
 [Precision tables](../../reference-data/provenance/frosty-precision-tables-1.4.3.0-2026-09-21.json),
 [shotgun hipfire trace](../../reference-data/provenance/composite-shotgun-hipfire-2026-09-21.json)

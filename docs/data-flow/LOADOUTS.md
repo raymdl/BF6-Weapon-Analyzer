@@ -262,8 +262,8 @@ for every weapon shown by [`sim/weapon-attributes.js`](../../sim/weapon-attribut
 and drawn by [`ui/weapon-attributes.js`](../../ui/weapon-attributes.js). The model
 reads the resolved build, so attachment composition is shared with the overview.
 Scores are menu values, not percentages of accuracy or speed. The Precision
-tables were first read at 1.4.3.0 (the four Season 5 tables at 2.1.1.0); the
-file's `sourceVersion` names 2.1.1.0, the build they were last checked against
+tables were first read at 1.4.3.0 (the four Season 5 tables at 2.1.1.0); the file's `generatedFrom` names 1.4.3.0, and `data/provenance/data-status.json`
+holds the build each section was last checked against
 ([inputs](SOURCES.md#weapon-attributes-inputs)).
 
 | Attribute | Method | Main input |

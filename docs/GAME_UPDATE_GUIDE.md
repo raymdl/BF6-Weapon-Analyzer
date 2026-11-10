@@ -538,7 +538,13 @@ Then:
 3. **Attach the patch notes as labels** to the rows that carry them. A row no note explains is
    a finding in its own right (unannounced so far: the SU-230 camera-recoil fix, the PiP
    setting binding, the 2.1.2.0 PA-SL 2.50x sight and L115 QD Grip Pod penalty).
-4. **Read the notes once as a watchlist.** List every note line with no row attached as
+4. **Read the notes once as a watchlist.** First save the full text of the notes in the
+   research repo (`reference-data/patch-notes/<version>-notes.md`, with the URL and the date
+   read) and number every line, gameplay or not. Each numbered line must end up attached to a
+   row, listed as "announced, nothing stored", or listed as out of scope with the reason; the
+   count of unaccounted lines is recorded and must be 0. (2.1.2.0: the notes were read from
+   the web page and never saved, and the "could display as 99 damage" fix line was dropped
+   without a trace; the operator noticed.) List every note line with no row attached as
    "announced, nothing stored". Check the wording against what was found ("incorrect impact
    visual effects" matched only muzzle-flash changes in 1.4.3.0: say so rather than force a
    match).
@@ -715,7 +721,9 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
 
    It runs ten checks against the committed data: tooltips, availability, compatibility,
    individual optics, optic tooltips, point costs, handling, barrel ADS, weapon records and
-   ammunition with projectiles.
+   ammunition with projectiles. When all ten pass, run it once more with `--stamp`: that writes
+   `data/provenance/data-status.json` (the build each data file section was verified through)
+   and is the only way those labels move.
    Run it on the new build before changing anything: its failures are the update's work list
    for those areas (cost changes, handling changes, what each weapon offers, weapon values,
    description texts), alongside the Stage 7 change lists. Apply the changes by running the
@@ -759,8 +767,9 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
    - The report lists each test removed, updated or skipped, with the reason.
 5. **Labels.** Update source and build labels so retained old data is not presented as newly
    verified: site header, footer, page description, `data/provenance/live-baseline.json`,
-   per-weapon provenance and data-file labels such as `weapon_attributes.json`
-   `sourceVersion`. Set `lastVerified` in `live-baseline.json` to the new build once the
+   per-weapon provenance and `generatedFrom` in any data file a generator rewrote. Verified-through
+   labels and the footer build come from the step 1 stamp (`data-status.json`), never from a hand
+   edit; a section no check covers stays unverified there. Set `lastVerified` in `live-baseline.json` to the new build once the
    comparison is complete (a hotfix updates `hotfixesCheckedThrough`); unchanged values keep
    the build they were first read from. Verify the changed values in the local browser.
 6. **Source records.** Review every record in `live-baseline.json`, not only the new build's
