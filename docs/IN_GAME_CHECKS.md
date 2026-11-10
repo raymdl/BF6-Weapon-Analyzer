@@ -19,8 +19,10 @@ in the same commit.
 | Slim Angled moving-ADS on a bolt sniper | One of PSR, SV-98, L115, Mini Scout, Interdictor, ELR-40 | Moving-ADS accuracy with Slim Angled | Bug entry 1 resolved from the files | 2.1.2.0 |
 | KTS100 MK8 draw | KTS100, against RPKM and RPK-74M | Draw time with default magazines | Checklist M-rows | 2.1.2.0 |
 | KTS100 60 Fast reload | KTS100 | Reload time, 60 Fast against the 60 drum | The 60 Fast lost its reload import | 2.1.2.0 |
-| NSW4 Carbine | NSW4 | Ammunition menu, spotting, iron-sight sway, single-fire bloom, no Harris bipod | New weapon values from the files | 2.1.2.0 |
+| NSW4 Carbine | NSW4 | Ammunition menu, spotting, iron-sight sway, single-fire bloom, no Harris bipod; Alloy Vertical still offered | New weapon values from the files; the Zenitco RK2 kill switch went false to true in 2.1.2.0 while RK1 stays false, and both map to the site's Alloy Vertical | 2.1.2.0 |
 | M44 sights and trigger | M44 | S-VPS / NFX sight names; Match Trigger offered | The S-VPS 6x maps to the NX8-4 record, unresolved | 2.1.2.0 |
 | Synthetic Tip on sidearms | ES 5.7, GGH-22 | Ammunition menu | Ammunition menus need an in-game look (2.1.1.0 limit) | 2.1.2.0 |
 | Mk 1 Mod 0 | Mk 1 Mod 0 | Live or not | Records present, not on the site | 2.1.2.0 |
-| Description links | PW7A2 30-Round Fast, KTS100 MK8 50-Round | Panel text | Bug entries 8 and 10: the changed text cannot be tied to the record from the strings alone | 2.1.2.0 |
+| Interdictor Precision | Interdictor | Precision on the loadout panel, default loadout | Asked on every new build (guide Stage 6, "Index bounds and fallback rows"): the site shows 100, the panel read 1 through 2.1.1.0 (bug entry 22); its 2.1.2.0 Precision table equals the site's | 2.1.2.0 |
+| KTS100 MK8 50 Rnd handling | KTS100 MK8 | Loadout panel, 50 Rnd against the default 60 Rnd: ADS, draw, sprint recovery, ADS movement, moving-ADS accuracy | Bug entry 10: the 50 Rnd lost its reload bonus and gained moving-ADS dispersion +1; whether "improved handling" is still wrong | 2.1.2.0 |
+| Slim Angled text on SMGs | PW7A2 (or SGX, PP-19, RSPR, CZ3A1) | Slim Angled description in the attachment menu | Bug entry 3: the files link these five to a text without the draw-speed claim; only SCW-10, PW5A3, UMG-40 and KV9 link the draw claim | 2.1.2.0 |
