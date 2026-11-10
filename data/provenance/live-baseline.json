@@ -40,7 +40,7 @@
       "buildEvidence": "bf6.exe SHA-256 1265c319cc8d990e0220e1635b48721a80d91e9a87687c7b5ff5d458e84cdb33; Frosty archive Head 5926293",
       "reviewedDate": "2026-11-10",
       "evidence": "https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.2.0-checklist.md",
-      "authority": "Raw before/after comparison of the 67 site weapons against 2.1.1.0, plus the site generators re-run in raw mode. Applied: Frangible, Underslung Mount, sniper iron sight, M417 A2 and Mk 24 magazine costs; KTS100 MK8, KV9, SCW-10 and SG 553R magazine handling and reloads; GRT-BC ADS tier and barrels; KTS100 MK8 deploy index; Mini Scout and SCW-10 damage curves; Match Grade drag; M121 A2 special ammunition; L115 and Interdictor Tungsten Core recoil; L115 Standard Suppressor, RSPR Single-Port Brake, SV-98 muzzles, M44 Gunslinger, Magwell Flare, TH-RDS, sniper Slim Angled; M1014 and M87A1 muzzle dependencies. Retained values keep their earlier provenance."
+      "authority": "Raw before/after comparison of the 67 site weapons against 2.1.1.0, plus the site generators re-run in raw mode. Applied: Frangible, Underslung Mount, sniper iron sight, M417 A2 and Mk 24 magazine costs; KTS100 MK8, KV9, SCW-10 and SG 553R magazine handling and reloads; GRT-BC ADS tier and barrels; KTS100 MK8 deploy index; Mini Scout and SCW-10 damage curves; Match Grade drag; M121 A2 special ammunition; L115 and Interdictor Tungsten Core recoil; L115 Standard Suppressor, RSPR Single-Port Brake, SV-98 muzzles, M44 Gunslinger, Magwell Flare, TH-RDS, sniper Slim Angled; M1014 and M87A1 muzzle dependencies; L115 QD Grip Pod moving-ADS step (found by the post-integration validation). Retained values keep their earlier provenance."
     },
     {
       "id": "ea-update-notes",

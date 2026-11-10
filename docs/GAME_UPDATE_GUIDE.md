@@ -108,7 +108,10 @@ old build is gone. Keep the open build complete while it is installed:
 - Once the patch notes are out, write a patch-specific checklist in the research repo at
   `docs/updates/<version>-checklist.md` and add it to that folder's README index: identity
   and baseline paths, decisions made for this update, one row per expected change (source,
-  file and field, "from", expected "to", result) and anything seen outside the notes. It
+  file and field, "from", expected "to", result, site) and anything seen outside the notes.
+  The result column says what the files hold; the site column says whether the site has it:
+  applied, not applicable, or not applied with the reason. "Confirmed" in the result column
+  does not mean the site has the change. It
   holds only what is particular to the update and points here for method; its run-order
   table lists the stages with a tick column and that update's paths, without repeating the
   steps. Working files stay in the update's run folders. Example:

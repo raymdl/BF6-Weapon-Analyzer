@@ -263,8 +263,10 @@ Important source distinctions:
 - L115's ADS animation base index is 2, while its zoom-transition base is 1.
   The resolver's ADS-time value follows the transition input. Mobility needs the
   animation input; substituting transition loses four points.
-- L115 QD Grip Pod has no moving-ADS penalty binding. The production override is
-  zero. Light + Violet gives Mobility 54; adding QD Grip Pod gives 58.
+- L115 QD Grip Pod had no moving-ADS penalty binding through 2.1.1.0 (Light + Violet
+  gave Mobility 54; adding QD Grip Pod gave 58). 2.1.2.0 adds
+  `GDM_Array_ADSMoveDispersion_BTM_M10`, so the L115 now takes the same −1 as the
+  other bolt-action snipers and the zero override is removed.
 - KS Slim Angled's dispersion modifier is in a different GS collection from
   moving-ADS modifiers. The research checker excludes the presumed moving-ADS
   penalty. With 4 Rnd Fast + Violet, Mobility is 74 then 80 when Slim Angled is

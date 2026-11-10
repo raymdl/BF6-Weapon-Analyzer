@@ -21,7 +21,8 @@ Row evidence for 2.1.2.0 is in the research run folder
 | Buckshot hit zones (material 280) | DB-12, 18.5KS-K, M1014, M87A1 | 1.0 / 1.0 | No head or limb row for material 280 in either grid | In-game check | 2.1.1.0 baseline, checklist U13 |
 | Missing description strings | M2010 ESR, SV-98 | Description text | String ids 2DB86D4C, E8EA1B59 in neither strings table | Find where the site text came from | 2.1.2.0, `RUN\S9\A\summary.txt` |
 | `PD_.375EnABELR_API` drag | (projectile key) | 0.004 | Key in neither build | Find which weapon cites it; drop or rename | 2.1.2.0, `RUN\S9\B\mismatches.tsv` |
-| Reloads not on the site | M240L 75 Fast, M60 100 Fast | None | Not decoded | Decode and add | 2.1.2.0 checklist outcome |
+| Magazines not on the site | M240L 75-Round Fast, M/60 100-Round Fast | Absent | Live (in the equipment lists); packages store no reload change, so the Fast reload is an animation | In-game reload reading, then add with the handling from the files | 2.1.2.0 checklist C7 |
+| GRT-BC Extended barrel ADS step | grtbc | 0 | -1 (2.1.1.0: +1) | Same in-game check as the Extended barrel row above | 2.1.2.0 checklist W5 |
 | Attachment rows that differ from both builds | Many (344 rows) | | | Most are known 2.1.1.0 causes (kill-switched records the site still lists, single-weapon id variants, ACE module); review the rest | 2.1.2.0, `RUN\S9\C\mismatches.tsv` |
 
 Reader gaps are not listed here (for example the Lightweight ammunition rows the part B reader
