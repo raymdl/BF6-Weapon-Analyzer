@@ -1,21 +1,5 @@
 {
   "schemaVersion": 1,
   "scope": "Reviewed deviations of data/ammo.json and data/ballistics.json from the source values scripts/frosty-ammo.py reads. Key: weapon (null for a projectile), slot (ammo: the effective ammunition effect, catalogue value merged with effectOverrides, or a WEAPON_AMMO leaf; ballistics: a weapon's projectile selection; projectile: a ballistics.json projectiles entry), id (ammunition id, 'base', or the projectile key) and field (leaf path as the checker prints it). sourceValue is the computed value the row was reviewed against, siteValue the committed value (null = absent). The checker reports each row applied, STALE (the source or the site moved), REDUNDANT (they now agree) or UNUSED; the last three fail --check. Kinds: convention (a site modelling rule), observed (in-game result kept over the file), emulated-bug, pending-check (site looks wrong or unreadable by the files; needs a decision), precision (site stores fewer digits than the source float32: site wrong under the full-precision rule, not yet changed).",
-  "overrides": [
-    {
-      "overrideId": "AM-0001",
-      "generator": "frosty-ammo",
-      "kind": "precision",
-      "weapon": "nsw4",
-      "slot": "ammo",
-      "id": "supersonic",
-      "field": "minimapSpotMult",
-      "sourceValue": 2.3333334922790527,
-      "siteValue": 2.333333,
-      "reason": "Catalogue AMMO.supersonic.minimapSpotMult stores six decimals; the source float32 is 2.3333335 (shortest round trip). Same float32 tolerance class as the WP precision rows: the displayed 150 m is unchanged.",
-      "evidence": "Devgru WPM U_WPM_AMO_Supersonic -> WME_SpotRange_2D_M10 Class_0045e7fa Field_d98b0371 2.3333334922790527, 2.1.2.0 (the record is not in the 2.1.1.0 capture)",
-      "since": "2.1.2.0",
-      "alsoIn": []
-    }
-  ]
+  "overrides": []
 }
