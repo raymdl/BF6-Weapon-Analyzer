@@ -4140,18 +4140,28 @@
         "source": "Frosty"
       },
       {
-        "r": 75,
+        "r": 55,
         "d": 17.13,
+        "source": "Frosty"
+      },
+      {
+        "r": 55,
+        "d": 14.62,
         "source": "Frosty"
       },
       {
         "r": 75,
         "d": 14.62,
         "source": "Frosty"
+      },
+      {
+        "r": 75,
+        "d": 12.76,
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_10x25mm_PDW tweakable damage curve referenced by APC10_WB, first read in 1.4.2.5.",
+    "damageSource": "Frosty PD_10x25mm_PDW tweakable damage curve referenced by APC10_WB, first read in 1.4.2.5; 55 m step and 12.76 from 75 m added in 2.1.2.0 (the file keeps 14.62 from 55 to 75 m; the patch notes say 14.3).",
     "reloadSpeed": 0.980769,
     "provenance": {
       "frosty": {
@@ -7468,10 +7478,20 @@
         "r": 75,
         "d": 58,
         "source": "Frosty"
+      },
+      {
+        "r": 150,
+        "d": 58,
+        "source": "Frosty"
+      },
+      {
+        "r": 150,
+        "d": 50,
+        "source": "Frosty"
       }
     ],
     "damageStatus": "verified",
-    "damageSource": "Frosty PD_556x45mmNATO_Bolt tweakable damage curve referenced by MiniFix_WB, first read in 1.4.2.5.",
+    "damageSource": "Frosty PD_556x45mmNATO_Bolt tweakable damage curve referenced by MiniFix_WB, first read in 1.4.2.5; step to 50 at 150 m added in 2.1.2.0.",
     "reloadSpeed": 1,
     "provenance": {
       "frosty": {

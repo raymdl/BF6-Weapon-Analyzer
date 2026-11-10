@@ -192,7 +192,7 @@
       "category": "therm_hyb",
       "pts": 35,
       "magnification": 1.0,
-      "noEffect": true
+      "adsMoveSpeedTierShift": 1
     },
     {
       "id": "2pro_1_25x",
@@ -511,10 +511,6 @@
         "vz61": {
           "pts": 10,
           "weaponSwayMult": 1
-        },
-        "rspr": {
-          "adsRecoilTierMod": 7,
-          "hipRecoilTierMod": 7
         }
       }
     },
@@ -687,6 +683,12 @@
           "adsRecoilDecayMult": 1,
           "hipRecoilDecayMult": 1,
           "recoilDurationOverride": null
+        },
+        "sv98": {
+          "pts": 10,
+          "adsRecoilDecayMult": 1,
+          "hipRecoilDecayMult": 1,
+          "recoilDurationOverride": null
         }
       },
       "pts": 20,
@@ -700,11 +702,6 @@
       "adsRecoilTierMod": 0,
       "adsSpreadDecayBoost": 0,
       "hipSpreadTierMod": 1,
-      "weaponOverrides": {
-        "l115": {
-          "hipSpreadTierMod": 0
-        }
-      },
       "pts": 20,
       "worldSpotMult": 0,
       "minimapSpotMult": 0.14
@@ -802,10 +799,10 @@
           "recoilDecreaseTimeExponentAdd": -0.5
         },
         "sv98": {
-          "recoilDurationOverride": 0.066667,
-          "adsRecoilDecayMult": 1.728,
-          "hipRecoilDecayMult": 1.728,
-          "recoilDecreaseTimeExponentAdd": -0.5
+          "pts": 20,
+          "adsRecoilDecayMult": 1,
+          "hipRecoilDecayMult": 1,
+          "recoilDurationOverride": null
         },
         "elr40": {
           "hipSpreadTierMod": 0,
@@ -925,7 +922,7 @@
         "elr40": 1,
         "es57": 1,
         "ggh22": 1,
-        "grtbc": 1,
+        "grtbc": 0,
         "grtcps": 1,
         "interdictor": 1,
         "kord6p67": 1,
@@ -972,6 +969,9 @@
         "usg90": 1,
         "vcr2": 1,
         "vz61": 1
+      },
+      "hipSpreadTierModByWeapon": {
+        "grtbc": -1
       }
     },
     {
@@ -1073,6 +1073,12 @@
         "tr7": 0,
         "umg40": 0,
         "vcr2": 0
+      },
+      "adsRecoilTierModByWeapon": {
+        "grtbc": 1
+      },
+      "hipRecoilTierModByWeapon": {
+        "grtbc": 1
       }
     },
     {
@@ -1166,7 +1172,7 @@
         "elr40": 1,
         "es57": 1,
         "ggh22": 1,
-        "grtbc": 1,
+        "grtbc": 0,
         "grtcps": 1,
         "interdictor": 1,
         "kord6p67": 1,
@@ -1201,6 +1207,9 @@
         "usg90": 1,
         "vcr2": 1,
         "z84m": 1
+      },
+      "hipSpreadTierModByWeapon": {
+        "grtbc": -1
       }
     },
     {
@@ -5844,14 +5853,12 @@
       "pts": 15,
       "frostyModifiers": {
         "elr40": {
-          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
         "l115": {
-          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5864,21 +5871,18 @@
           "deployTimeTierShift": -1
         },
         "miniscout": {
-          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
         "psr": {
-          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
           "deployTimeTierShift": -1
         },
         "sv98": {
-          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -5942,7 +5946,7 @@
       "name": "Underslung Mount",
       "adsRecoilTierMod": 0,
       "movingAdsSpreadTierMod": 0,
-      "pts": 10,
+      "pts": 5,
       "utilities": {
         "Gadget Draw Speed": "Yes"
       },
@@ -7244,7 +7248,6 @@
       "pts": 15,
       "frostyModifiers": {
         "interdictor": {
-          "movingAdsSpreadTierMod": -1,
           "adsTimeTierMod": 1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
@@ -9308,7 +9311,8 @@
       "pts": 10,
       "utilities": {
         "Reload in ADS": "Yes"
-      }
+      },
+      "reloadSpeedMult": 1.063
     },
     {
       "id": "mag_catch",
@@ -9361,8 +9365,7 @@
       "id": "fast_deploy_10",
       "name": "Gunslinger",
       "pts": 10,
-      "sprintRecoveryTierShift": -2,
-      "deployTimeTierShift": -2
+      "hipSpreadTierMod": -1
     },
     {
       "id": "burst_training",
@@ -22990,7 +22993,7 @@
         "range_finder"
       ],
       "sightPoints": {
-        "iron": 15
+        "iron": 10
       },
       "slots": {
         "grip": {
@@ -23471,7 +23474,7 @@
         "range_finder"
       ],
       "sightPoints": {
-        "iron": 15
+        "iron": 10
       },
       "slots": {
         "grip": {
@@ -23952,7 +23955,7 @@
         "range_finder"
       ],
       "sightPoints": {
-        "iron": 15
+        "iron": 10
       },
       "slots": {
         "grip": {
@@ -24441,7 +24444,7 @@
         "range_finder"
       ],
       "sightPoints": {
-        "iron": 15
+        "iron": 10
       },
       "slots": {
         "grip": {
@@ -24924,7 +24927,7 @@
         }
       },
       "sightPoints": {
-        "iron": 15
+        "iron": 10
       },
       "dependencies": [
         {
@@ -25376,7 +25379,7 @@
         "120mw_blue"
       ],
       "sightPoints": {
-        "iron": 15
+        "iron": 10
       },
       "slots": {
         "grip": {
@@ -26020,6 +26023,60 @@
               "attachment": "st_prism_5_00x"
             }
           ]
+        },
+        {
+          "slot": "muzzle",
+          "attachment": "compensator",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "5_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "6_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "muzzle",
+          "attachment": "cqb_supp",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "5_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "6_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "muzzle",
+          "attachment": "light_supp",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "5_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "6_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "7_rnd"
+            }
+          ]
         }
       ],
       "sight": [
@@ -26290,6 +26347,60 @@
             {
               "slot": "sight",
               "attachment": "st_prism_5_00x"
+            }
+          ]
+        },
+        {
+          "slot": "muzzle",
+          "attachment": "compensator",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "4_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "4_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "6_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "muzzle",
+          "attachment": "cqb_supp",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "4_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "4_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "6_rnd"
+            }
+          ]
+        },
+        {
+          "slot": "muzzle",
+          "attachment": "light_supp",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "4_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "4_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "6_rnd"
             }
           ]
         }
@@ -28504,7 +28615,7 @@
         }
       },
       "sightPoints": {
-        "iron": 15
+        "iron": 10
       },
       "dependencies": [
         {
@@ -30916,7 +31027,7 @@
       "deployTimeTable": "primary"
     },
     "grtbc": {
-      "defAds": 4,
+      "defAds": 5,
       "defAms": 7,
       "def": "30_rnd",
       "mags": {
@@ -31134,10 +31245,10 @@
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "reloadSpeedTier": 1,
+          "reloadSpeedTier": 0,
           "deployTimeTierShift": -1,
           "weaponSwayMult": 0.6666667,
-          "movingAdsSpreadTierMod": 0
+          "movingAdsSpreadTierMod": 1
         },
         "45_fast": {
           "name": "45 Fast",
@@ -31145,11 +31256,12 @@
           "mag": 45,
           "adsTimeTierShift": -1,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "reloadSpeedTier": 2,
+          "sprintRecoveryTierShift": -1,
+          "reloadSpeedTier": 0,
           "weaponSwayMult": 0.6666667,
-          "deployTimeTierShift": 0,
-          "movingAdsSpreadTierMod": 0
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 1,
+          "reloadSpeedMult": 1.063
         },
         "50_rnd": {
           "name": "50 Rnd",
@@ -31158,10 +31270,10 @@
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
           "sprintRecoveryTierShift": -1,
-          "reloadSpeedTier": 1,
+          "reloadSpeedTier": 0,
           "deployTimeTierShift": -1,
           "weaponSwayMult": 0.6666667,
-          "movingAdsSpreadTierMod": 0
+          "movingAdsSpreadTierMod": 1
         },
         "60_rnd": {
           "name": "60 Rnd",
@@ -31180,10 +31292,10 @@
           "mag": 60,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 0,
-          "sprintRecoveryTierShift": 0,
-          "reloadSpeedTier": 1,
-          "deployTimeTierShift": 0,
-          "movingAdsSpreadTierMod": 0
+          "sprintRecoveryTierShift": -1,
+          "reloadSpeedTier": 0,
+          "deployTimeTierShift": -1,
+          "movingAdsSpreadTierMod": 1
         },
         "100_rnd": {
           "name": "100 Rnd",
@@ -31198,7 +31310,7 @@
         }
       },
       "sprintRecoveryBaseIndex": 4,
-      "deployBaseIndex": 4,
+      "deployBaseIndex": 3,
       "deployTimeTable": "primary"
     },
     "kv9": {
@@ -31234,20 +31346,20 @@
           "mag": 23,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 2,
           "reloadSpeedTier": 0,
-          "deployTimeTierShift": 0,
+          "deployTimeTierShift": 2,
           "movingAdsSpreadTierMod": 0
         },
         "27_rnd": {
           "name": "27 Rnd",
           "pts": 45,
           "mag": 27,
-          "adsTimeTierShift": 0,
+          "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 2,
           "reloadSpeedTier": 0,
-          "deployTimeTierShift": 0,
+          "deployTimeTierShift": 2,
           "movingAdsSpreadTierMod": 0
         }
       },
@@ -31942,7 +32054,7 @@
         },
         "25_rnd": {
           "name": "25 Rnd",
-          "pts": 15,
+          "pts": 20,
           "mag": 25,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
@@ -32673,20 +32785,20 @@
           "mag": 20,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 2,
           "reloadSpeedTier": 0,
-          "deployTimeTierShift": 0,
+          "deployTimeTierShift": 2,
           "movingAdsSpreadTierMod": 0
         },
         "25_rnd": {
           "name": "25 Rnd",
           "pts": 45,
           "mag": 25,
-          "adsTimeTierShift": 0,
+          "adsTimeTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 2,
           "reloadSpeedTier": 0,
-          "deployTimeTierShift": 0,
+          "deployTimeTierShift": 2,
           "movingAdsSpreadTierMod": 0
         }
       },
@@ -32751,9 +32863,9 @@
           "mag": 36,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 1,
           "reloadSpeedTier": 0,
-          "deployTimeTierShift": 0,
+          "deployTimeTierShift": 1,
           "movingAdsSpreadTierMod": 0
         },
         "40_rnd": {
@@ -32762,9 +32874,9 @@
           "mag": 40,
           "adsTimeTierShift": 0,
           "adsMoveSpeedTierShift": 1,
-          "sprintRecoveryTierShift": 0,
+          "sprintRecoveryTierShift": 1,
           "reloadSpeedTier": 0,
-          "deployTimeTierShift": 0,
+          "deployTimeTierShift": 1,
           "movingAdsSpreadTierMod": 0
         },
         "40_fast": {
@@ -32774,9 +32886,10 @@
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
           "adsMoveSpeedTierShift": 1,
-          "reloadSpeedTier": 1,
+          "reloadSpeedTier": 0,
           "deployTimeTierShift": 1,
-          "movingAdsSpreadTierMod": 0
+          "movingAdsSpreadTierMod": 0,
+          "reloadSpeedMult": 1.063
         }
       },
       "sprintRecoveryBaseIndex": 6,
@@ -34203,7 +34316,7 @@
         },
         "25_rnd": {
           "name": "25 Rnd",
-          "pts": 15,
+          "pts": 20,
           "mag": 25,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -34214,7 +34327,7 @@
         },
         "25_fast": {
           "name": "25 Fast",
-          "pts": 20,
+          "pts": 25,
           "mag": 25,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 1,
@@ -34225,7 +34338,7 @@
         },
         "30_rnd": {
           "name": "30 Rnd",
-          "pts": 25,
+          "pts": 40,
           "mag": 30,
           "adsTimeTierShift": 0,
           "sprintRecoveryTierShift": 0,
@@ -34437,26 +34550,6 @@
   },
   "GAME_BUGS": [
     {
-      "ref": "1",
-      "slot": "grip",
-      "attachments": [
-        "slim_angled_sr",
-        "slim_angled_interdictor"
-      ],
-      "weapons": [
-        "psr",
-        "sv98",
-        "l115",
-        "miniscout",
-        "interdictor",
-        "elr40"
-      ],
-      "metrics": [
-        "Mov Spread"
-      ],
-      "note": "Also applies the Full Angled grip's moving-ADS penalty."
-    },
-    {
       "ref": "2",
       "slot": "ammo",
       "attachments": [
@@ -34465,8 +34558,7 @@
         "penetration"
       ],
       "weapons": [
-        "m45a1",
-        "m121a2"
+        "m45a1"
       ],
       "metrics": [
         "Collateral Mult"
@@ -34525,35 +34617,6 @@
       "note": "The promised recoil smoothing and recovery aren't applied."
     },
     {
-      "ref": "7",
-      "slot": "mag",
-      "attachments": [
-        "200_rnd"
-      ],
-      "weapons": [
-        "l110",
-        "m123k"
-      ],
-      "metrics": [
-        "Mov Spread"
-      ],
-      "note": "The listed moving-ADS penalty isn't applied."
-    },
-    {
-      "ref": "12",
-      "slot": "muzzle",
-      "attachments": [
-        "std_supp"
-      ],
-      "weapons": [
-        "l115"
-      ],
-      "metrics": [
-        "Hipfire Spread"
-      ],
-      "note": "The listed hipfire penalty isn't applied."
-    },
-    {
       "ref": "16",
       "slot": "sight",
       "attachments": [
@@ -34566,35 +34629,6 @@
         "Weapon Sway"
       ],
       "note": "The promised sway reduction isn't applied."
-    },
-    {
-      "ref": "19",
-      "slot": "muzzle",
-      "attachments": [
-        "sp_brake"
-      ],
-      "weapons": [
-        "rspr"
-      ],
-      "metrics": [
-        "ADS Recoil/Shot"
-      ],
-      "suspected": true,
-      "note": "Reduces recoil by seven steps instead of one."
-    },
-    {
-      "ref": "20",
-      "slot": "ammo",
-      "attachments": [
-        "penetration"
-      ],
-      "weapons": [
-        "m121a2"
-      ],
-      "metrics": [
-        "Collateral Mult"
-      ],
-      "note": "The stat panel shows x0.00 past the end of its table; damage through a target is the full x1.00, as fired."
     },
     {
       "ref": "20",

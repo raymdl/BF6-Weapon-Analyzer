@@ -14312,9 +14312,9 @@
       "fields": {
         "adsTimeTierShift": -1,
         "adsMoveSpeedTierShift": 0,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
-        "movingAdsSpreadTierMod": 0
+        "sprintRecoveryTierShift": -1,
+        "deployTimeTierShift": -1,
+        "movingAdsSpreadTierMod": 1
       },
       "deferred": {},
       "branches": [
@@ -14341,7 +14341,20 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": -1
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": -1
+        },
+        "movingAdsSpreadTierMod": {
+          "before": 0,
+          "source": 1
+        }
+      }
     },
     {
       "weapon": "kts100",
@@ -14355,7 +14368,7 @@
         "adsMoveSpeedTierShift": 0,
         "sprintRecoveryTierShift": -1,
         "deployTimeTierShift": -1,
-        "movingAdsSpreadTierMod": 0
+        "movingAdsSpreadTierMod": 1
       },
       "deferred": {},
       "branches": [
@@ -14392,7 +14405,12 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "movingAdsSpreadTierMod": {
+          "before": 0,
+          "source": 1
+        }
+      }
     },
     {
       "weapon": "kts100",
@@ -14406,7 +14424,7 @@
         "adsMoveSpeedTierShift": 0,
         "sprintRecoveryTierShift": -1,
         "deployTimeTierShift": -1,
-        "movingAdsSpreadTierMod": 0
+        "movingAdsSpreadTierMod": 1
       },
       "deferred": {},
       "branches": [
@@ -14433,7 +14451,12 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "movingAdsSpreadTierMod": {
+          "before": 0,
+          "source": 1
+        }
+      }
     },
     {
       "weapon": "kts100",
@@ -14445,9 +14468,9 @@
       "fields": {
         "adsTimeTierShift": 0,
         "adsMoveSpeedTierShift": 0,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
-        "movingAdsSpreadTierMod": 0
+        "sprintRecoveryTierShift": -1,
+        "deployTimeTierShift": -1,
+        "movingAdsSpreadTierMod": 1
       },
       "deferred": {},
       "branches": [
@@ -14464,7 +14487,20 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": -1
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": -1
+        },
+        "movingAdsSpreadTierMod": {
+          "before": 0,
+          "source": 1
+        }
+      }
     },
     {
       "weapon": "kts100",
@@ -15209,8 +15245,8 @@
       "fields": {
         "adsTimeTierShift": 0,
         "adsMoveSpeedTierShift": 1,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
+        "sprintRecoveryTierShift": 2,
+        "deployTimeTierShift": 2,
         "movingAdsSpreadTierMod": 0
       },
       "deferred": {},
@@ -15233,7 +15269,16 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": 2
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": 2
+        }
+      }
     },
     {
       "weapon": "kv9",
@@ -15243,10 +15288,10 @@
         "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_MAG_Extended2.xml"
       ],
       "fields": {
-        "adsTimeTierShift": 0,
+        "adsTimeTierShift": 1,
         "adsMoveSpeedTierShift": 1,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
+        "sprintRecoveryTierShift": 2,
+        "deployTimeTierShift": 2,
         "movingAdsSpreadTierMod": 0
       },
       "deferred": {},
@@ -15269,7 +15314,20 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "adsTimeTierShift": {
+          "before": 0,
+          "source": 1
+        },
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": 2
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": 2
+        }
+      }
     },
     {
       "weapon": "l110",
@@ -43079,8 +43137,8 @@
       "fields": {
         "adsTimeTierShift": 0,
         "adsMoveSpeedTierShift": 1,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
+        "sprintRecoveryTierShift": 2,
+        "deployTimeTierShift": 2,
         "movingAdsSpreadTierMod": 0
       },
       "deferred": {},
@@ -43103,7 +43161,16 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": 2
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": 2
+        }
+      }
     },
     {
       "weapon": "scw10",
@@ -43113,10 +43180,10 @@
         "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_MAG_Extended2.xml"
       ],
       "fields": {
-        "adsTimeTierShift": 0,
+        "adsTimeTierShift": 1,
         "adsMoveSpeedTierShift": 1,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
+        "sprintRecoveryTierShift": 2,
+        "deployTimeTierShift": 2,
         "movingAdsSpreadTierMod": 0
       },
       "deferred": {},
@@ -43139,7 +43206,20 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "adsTimeTierShift": {
+          "before": 0,
+          "source": 1
+        },
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": 2
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": 2
+        }
+      }
     },
     {
       "weapon": "sg553r",
@@ -44046,8 +44126,8 @@
       "fields": {
         "adsTimeTierShift": 0,
         "adsMoveSpeedTierShift": 1,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
+        "sprintRecoveryTierShift": 1,
+        "deployTimeTierShift": 1,
         "movingAdsSpreadTierMod": 0
       },
       "deferred": {},
@@ -44070,7 +44150,16 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": 1
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": 1
+        }
+      }
     },
     {
       "weapon": "sg553r",
@@ -44128,8 +44217,8 @@
       "fields": {
         "adsTimeTierShift": 0,
         "adsMoveSpeedTierShift": 1,
-        "sprintRecoveryTierShift": 0,
-        "deployTimeTierShift": 0,
+        "sprintRecoveryTierShift": 1,
+        "deployTimeTierShift": 1,
         "movingAdsSpreadTierMod": 0
       },
       "deferred": {},
@@ -44152,7 +44241,16 @@
           }
         }
       ],
-      "changes": {}
+      "changes": {
+        "deployTimeTierShift": {
+          "before": 0,
+          "source": 1
+        },
+        "sprintRecoveryTierShift": {
+          "before": 0,
+          "source": 1
+        }
+      }
     },
     {
       "weapon": "sgx",
@@ -59416,8 +59514,9 @@
     "mapped": 1487,
     "generatedFields": 5489,
     "generatedBaseIndices": 3,
-    "changedFields": 0,
+    "changedFields": 22,
     "deferredFields": 0,
     "unmapped": 0
-  }
+  },
+  "update2120": "2.1.2.0 (10 Nov 2026): changed values were applied from the raw 2.1.2.0 generator re-run (reports/weapon-analyzer-research/2026-11-10-update-2120-post/G-generators in the datamining folder); branch operands and source paths of those rows still describe the earlier read."
 }

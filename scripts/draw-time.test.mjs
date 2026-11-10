@@ -60,13 +60,11 @@ test('M433 holster speed is 200 ms with the default 30 Rnd magazine and 167 ms w
   assert.equal(Math.round(smallMag.deployT * 1000), 467);
 });
 
-test('Speed Holster and Gunslinger change sprint, deploy and undeploy', () => {
+test('Speed Holster changes sprint, deploy and undeploy', () => {
   const base = build('ggh22');
   const fast = build('ggh22', { ergo: 'fast_deploy' });
   assert.deepEqual([base._sprintRecoveryMs, base._deployTimeMs, base._undeployTimeMs].map(Math.round), [83, 233, 100]);
   assert.deepEqual([fast._sprintRecoveryMs, fast._deployTimeMs, fast._undeployTimeMs].map(Math.round), [67, 200, 83]);
-  const revolver = build('m44', { ergo: 'fast_deploy_10' });
-  assert.deepEqual([revolver._sprintRecoveryMs, revolver._deployTimeMs, revolver._undeployTimeMs].map(Math.round), [67, 267, 117]);
 });
 
 test('full arrays clamp both ends and retain the sidearm plateau', () => {

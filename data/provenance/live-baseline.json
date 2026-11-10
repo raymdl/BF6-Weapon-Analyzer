@@ -4,8 +4,8 @@
   "adoptedAsBaseline": "2026-08-12",
   "weaponCount": 67,
   "lastVerified": {
-    "gameBuild": "2.1.1.0",
-    "hotfixesCheckedThrough": "2026-10-22",
+    "gameBuild": "2.1.2.0",
+    "hotfixesCheckedThrough": "2026-11-10",
     "scope": "Every value the site uses. Each game update and hotfix since 1.4.2.5 had a raw before/after comparison; values reported unchanged keep their earlier provenance.",
     "labelMeaning": "A build named on a single value (sourceBuild, 'first read in' in damageSource, a build in an evidence file name) is the build that value was first read from, not the last build it was checked against. This record gives the last build checked.",
     "evidence": "https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/README.md"
@@ -33,6 +33,14 @@
       "reviewedDate": "2026-10-13",
       "evidence": "https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.1.0-checklist.md",
       "authority": "Raw before/after comparison of the 63 pre-existing weapons against 1.4.3.5. Applied: SVDM recoil direction 4 to 20 and recoil decrease time exponent 0.75 to 1.1; M39 EMR exponent 0.75 to 1.0; controller recoil multiplier 0.8836 to 0.95; VSSM 10 Rnd description. No other value used by the site changed for these weapons; retained values keep their earlier provenance. The four Season 5 weapons (Mk 24, ELR-40, Z84M, RSPR) were added from 2.1.1.0."
+    },
+    {
+      "id": "frosty-update-2.1.2.0",
+      "sourceVersion": "2.1.2.0",
+      "buildEvidence": "bf6.exe SHA-256 1265c319cc8d990e0220e1635b48721a80d91e9a87687c7b5ff5d458e84cdb33; Frosty archive Head 5926293",
+      "reviewedDate": "2026-11-10",
+      "evidence": "https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/updates/2.1.2.0-checklist.md",
+      "authority": "Raw before/after comparison of the 67 site weapons against 2.1.1.0, plus the site generators re-run in raw mode. Applied: Frangible, Underslung Mount, sniper iron sight, M417 A2 and Mk 24 magazine costs; KTS100 MK8, KV9, SCW-10 and SG 553R magazine handling and reloads; GRT-BC ADS tier and barrels; KTS100 MK8 deploy index; Mini Scout and SCW-10 damage curves; Match Grade drag; M121 A2 special ammunition; L115 and Interdictor Tungsten Core recoil; L115 Standard Suppressor, RSPR Single-Port Brake, SV-98 muzzles, M44 Gunslinger, Magwell Flare, TH-RDS, sniper Slim Angled; M1014 and M87A1 muzzle dependencies. Retained values keep their earlier provenance."
     },
     {
       "id": "ea-update-notes",

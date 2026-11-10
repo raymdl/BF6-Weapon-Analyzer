@@ -473,8 +473,8 @@
     },
     "m121a2": {
       "standard": 0.750001,
-      "hollow_pt": 0.750001,
-      "frangible": 0.750001,
+      "hollow_pt": 0.666667,
+      "frangible": 0.666667,
       "penetration": 1.0,
       "lightweight": 0.750001
     },

@@ -1220,11 +1220,9 @@
       "weapon": "grtbc",
       "barrel": "basic",
       "attachment": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_BRL_BasicBarrel.xml",
-      "step": 1,
-      "effects": {
-        "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml#c157bb27-c8f5-4771-a55e-32eac1033174": 1,
-        "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml#fa6ff00e-afd6-414e-b767-22cdd98fb096": 1
-      }
+      "step": 0,
+      "effects": {},
+      "update2120": "ADS animation and FOV steps removed in 2.1.2.0; the barrel now binds hip-spread -1 (site hipSpreadTierModByWeapon)."
     },
     {
       "weapon": "grtbc",
@@ -1237,11 +1235,9 @@
       "weapon": "grtbc",
       "barrel": "light",
       "attachment": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_BRL_LightBarrel.xml",
-      "step": 1,
-      "effects": {
-        "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_Anim_P10.xml#c157bb27-c8f5-4771-a55e-32eac1033174": 1,
-        "Common/Hardware/Weapons/_WeaponModifiers/ADSTime/WME_ADSTime_FOV_P10.xml#fa6ff00e-afd6-414e-b767-22cdd98fb096": 1
-      }
+      "step": 0,
+      "effects": {},
+      "update2120": "ADS animation and FOV steps removed in 2.1.2.0; the barrel now binds hip-spread -1 (site hipSpreadTierModByWeapon)."
     },
     {
       "weapon": "grtcps",
@@ -6297,5 +6293,6 @@
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_MeproSting.xml": "3a71e595ded5fb0a792e1ce2a3094c90147de2e4a57fc39cdc0dedd8a4a27990",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_Perst4.xml": "884d717cf65ed97a688e2704639b34c00105a809d1752424a99a2326b3f195b6",
     "Common/Hardware/Weapons/BoltAction/DesertTechHTI/Attachment_DesertTechHTI_TOP_RaidXe.xml": "074abb7c7d261c9f246ca7f90837b4189ab2ae00b8755eea2146d4144bc2dc6b"
-  }
+  },
+  "update2120": "2.1.2.0 (10 Nov 2026): changed values were applied from the raw 2.1.2.0 generator re-run (reports/weapon-analyzer-research/2026-11-10-update-2120-post/G-generators in the datamining folder); branch operands and source paths of those rows still describe the earlier read."
 }

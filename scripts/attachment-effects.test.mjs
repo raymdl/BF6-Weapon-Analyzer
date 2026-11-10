@@ -403,12 +403,7 @@ test('new attachments preserve old share tokens and round-trip with traced weapo
   assert.deepEqual(codec.decodeAtts(l110, codec.encodeAtts(l110, atts)), atts);
 });
 
-test('weapon-specific iron and ammunition prices reach loadout totals', () => {
-  for (const id of ['l115', 'm2010esr', 'miniscout', 'psr', 'sv98']) {
-    const w = weapon(id);
-    assert.equal(computeAttPts(loadout(w, { sight: 'iron' }), w, data)
-      - computeAttPts(loadout(w, { sight: 'std_optic' }), w, data), 15 - attachments.SIGHTS.find(a => a.id === 'std_optic').pts);
-  }
+test('weapon-specific ammunition prices reach loadout totals', () => {
   for (const [id, choice] of [['rpk74m', 'synthetic'], ['rpk74m', 'hollow_pt'], ['scw10', 'hollow_pt']]) {
     const w = weapon(id), prices = ammo.WEAPON_AMMO[id].ammo;
     assert.equal(computeAttPts(loadout(w, { ammo: choice }), w, data)
@@ -486,7 +481,8 @@ test('Smooth recoil resolves Frosty duration and recovery in both aim states wit
 test('Smooth Bolt values follow the weapon and muzzle, not the weapon class', () => {
   const audit = read('../reference-data/provenance/frosty-recoil-duration-audit-2026-09-11.json');
   const before = JSON.stringify(attachments.MUZZLES);
-  for (const row of audit.boltPairs) {
+  // The SV-98 Lightened Suppressor lost its smoothing in 2.1.2.0; its 2026-09-11 audit row is historical.
+  for (const row of audit.boltPairs.filter(r => !(r.weapon === 'sv98' && r.muzzle === 'light_supp'))) {
     const w = weapon(row.weapon);
     const result = build(w, { muzzle: row.muzzle });
     for (const aim of ['ads', 'hip']) {
@@ -657,20 +653,11 @@ test('approved Smooth Bolt and burst additions compose without changing source w
   assert.equal(build(weapon('kv9'), { ergo: 'burst_training', muzzle: 'none' }).recoil.ads.duration, 0.025);
 });
 
-test('Mini Scout Tungsten and selected Slim Angled grips apply the approved source steps', () => {
+test('Mini Scout Tungsten applies the approved source steps', () => {
   const w = weapon('miniscout');
   const result = build(w, { ammo: 'penetration', muzzle: 'none', grip: 'none' });
   assert.equal(result.recoil.hip.amountExp, w.recoil.hip.amountExp - 7);
   assert.equal(result.recoilV, Math.round(w.recoilV * balance.RECOIL_MULT[w.id] ** -7 * 1000) / 1000);
-  for (const [id, grip] of [['psr', 'slim_angled_sr'], ['sv98', 'slim_angled_sr'],
-    ['l115', 'slim_angled_sr'], ['miniscout', 'slim_angled_sr'], ['interdictor', 'slim_angled_interdictor']]) {
-    const w = weapon(id);
-    const base = build(w, { grip: 'none', laser: 'none' });
-    const result = build(w, { grip, laser: 'none' });
-    const index = balance.MOVING_ACC_TIERS.indexOf(base.spread.adsMove[0]);
-    assert.equal(result.spread.adsMove[0], balance.MOVING_ACC_TIERS[Math.max(0, index - 1)]);
-    assert.deepEqual(result.spread.adsStand, base.spread.adsStand);
-  }
 });
 
 test('18.5KS-K Slim Angled preserves ADS spread with and without Violet', () => {

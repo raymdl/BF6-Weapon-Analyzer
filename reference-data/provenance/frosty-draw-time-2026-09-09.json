@@ -500,8 +500,9 @@
       "siteId": "kts100",
       "source": "C:\\Users\\royal\\Documents\\BF6 Datamining\\Common\\Hardware\\Weapons\\MG\\Ultimax\\Ultimax_WB.xml",
       "sprintIndex": 4,
-      "deployIndex": 4,
-      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]"
+      "deployIndex": 3,
+      "deployArray": "[Ebx] Common/Hardware/Common/Arrays/Deploy/DTA_Weapons [8e36e925-9efd-416f-adfe-38cf803f727b]",
+      "update2120": "Ultimax_WB Class_01419c76.Field_2c3e0fbf.Field_2b6f2936 4 to 3 in raw 2.1.2.0 (checklist row W6)."
     },
     {
       "siteId": "es57",

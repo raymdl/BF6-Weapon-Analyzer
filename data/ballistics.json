@@ -145,7 +145,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_.416Barrett_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "bc175b96-b4cb-4ec7-a4a4-e644d263ee1d"
     },
     "Common/Hardware/Weapons/_Bullets/PD_545x39mm": {
@@ -180,7 +180,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum2_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "b95ee31f-a7bd-4f36-a6c5-da7baad6590a"
     },
     "Common/Hardware/Weapons/_Bullets/PD_12gaNo01Buck300_Semi": {
@@ -215,7 +215,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_.300WinMag_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "0657cf96-3127-4479-b609-c381d5d3c3e0"
     },
     "Common/Hardware/Weapons/_Bullets/PD_68x51mm_MG": {
@@ -240,7 +240,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_Semi_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "f6662111-5724-4219-bf8c-768a00d2b215"
     },
     "Common/Hardware/Weapons/_Bullets/PD_762x51mmNATO_Carbine": {
@@ -300,7 +300,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_.338NormaMagnum_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "d11c7ee6-889a-490f-a638-17f3ad288b2d"
     },
     "Common/Hardware/Weapons/_Bullets/PD_46x30_PDW": {
@@ -345,7 +345,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Bolt_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "c75fdbc4-fb85-4c04-9361-1fb48895a846"
     },
     "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Semi": {
@@ -355,7 +355,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_762x54mmR_Semi_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "d75a3ed8-5ee8-44ca-a0c9-2d647919f346"
     },
     "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum_Semi": {
@@ -365,7 +365,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_.338LapuaMagnum_Semi_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "ca1272af-2550-4167-9e8d-d77d707b70bd"
     },
     "Common/Hardware/Weapons/_Bullets/PD_.40SW_PDW": {
@@ -385,7 +385,7 @@
     },
     "Common/Hardware/Weapons/_Bullets/PD_9x39mm_Match": {
       "gravityMps2": -9.81,
-      "dragPerMeter": 0.002,
+      "dragPerMeter": 0.0025,
       "guid": "2a47e87f-024a-4cc8-be7b-1af871350b71"
     },
     "Common/Hardware/Weapons/_Bullets/PD_32ACP_PDW": {

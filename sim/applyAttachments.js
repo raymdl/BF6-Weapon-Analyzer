@@ -271,7 +271,9 @@ export function resolveReloadTiming({
   if (typeof weaponTacRld !== 'number' || !Number.isFinite(weaponTacRld) || weaponTacRld <= 0) {
     return { tacRld: null, branch: 'derived', reason: 'invalid-derived-base' };
   }
-  const magMult = _ctx.RELOAD_SPEED_MULTIPLIERS[hasReloadSpeedTier ? magData.reloadSpeedTier : 0];
+  // A magazine may carry a reload factor outside the tier ladder (KTS100 MK8 45 Fast, 2.1.2.0).
+  const magMult = _ctx.RELOAD_SPEED_MULTIPLIERS[hasReloadSpeedTier ? magData.reloadSpeedTier : 0]
+    * (Number.isFinite(magData?.reloadSpeedMult) && magData.reloadSpeedMult > 0 ? magData.reloadSpeedMult : 1);
   const ergoMult = hasReloadSpeedMult ? ergoData.reloadSpeedMult : 1;
   const derivedTacRld = weaponTacRld / (magMult * ergoMult);
   if (!Number.isFinite(derivedTacRld) || derivedTacRld <= 0) {
@@ -399,7 +401,14 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   const muzzleBase = MUZZLES_BY_ID[atts.muzzle] ?? MUZZLES[0];
   const muz = { ...muzzleBase, ...muzzleBase.weaponOverrides?.[w.id] };
   const barrelBase = BARRELS_BY_ID[atts.barrel] ?? BARRELS[0];
-  const bar = { ...barrelBase, adsTimeTierMod: barrelBase.adsTimeTierModByWeapon?.[w.id] ?? 0 };
+  // Per-weapon barrel maps (`<field>ByWeapon`) replace the shared value on the weapons they list.
+  const bar = {
+    ...barrelBase,
+    adsTimeTierMod: barrelBase.adsTimeTierModByWeapon?.[w.id] ?? 0,
+    hipSpreadTierMod: barrelBase.hipSpreadTierModByWeapon?.[w.id] ?? barrelBase.hipSpreadTierMod,
+    adsRecoilTierMod: barrelBase.adsRecoilTierModByWeapon?.[w.id] ?? barrelBase.adsRecoilTierMod,
+    hipRecoilTierMod: barrelBase.hipRecoilTierModByWeapon?.[w.id] ?? barrelBase.hipRecoilTierMod,
+  };
   const velocityResolution = resolveBarrelVelocity({ barData: bar });
   const { grip: grp, laser: las, light: lit } = resolveMountAttachments(atts, w, _ctx);
   const ammoBase = AMMO_BY_ID[atts.ammo ?? 'standard'] ?? AMMO[0];
@@ -426,10 +435,12 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
   // Tier formula: effectiveRecoilV = recoilV × ADSRecoilAmountMultiplier ^ (sum of tier mods)
   const totalAdsRecoilTierMod = (grp.adsRecoilTierMod ?? 0)
     + (muz.adsRecoilTierMod ?? 0)
+    + (bar.adsRecoilTierMod ?? 0)
     + (ammoType.adsRecoilTierMod ?? 0)
     + ergoAdsRecoilTierMod;
   const totalHipRecoilTierMod = (grp.hipRecoilTierMod ?? 0)
     + (muz.hipRecoilTierMod ?? 0)
+    + (bar.hipRecoilTierMod ?? 0)
     + (ammoType.hipRecoilTierMod ?? 0)
     + (ergoData.hipRecoilTierMod ?? 0)
     + (ergoSemi.hipRecoilTierMod ?? 0);
@@ -481,6 +492,7 @@ export function applyAttachments(w, atts, { neutralMagazine = false } = {}) {
     + (las.hipSpreadTierMod ?? 0)
     + (grp.hipSpreadTierMod ?? 0)
     + (ammoType.hipSpreadTierMod ?? 0)
+    + (ergoData.hipSpreadTierMod ?? 0)
     + (classTrait?.hipSpreadTierMod ?? 0);
   const hipBaseIndex = HIP_SPREAD_BASE_INDEX_OVERRIDES[w.id] ?? HIP_SPREAD_BASE_INDEX[w.id];
   const hipRow = Number.isInteger(hipBaseIndex)

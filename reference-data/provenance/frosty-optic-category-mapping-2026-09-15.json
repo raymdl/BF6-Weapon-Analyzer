@@ -72890,7 +72890,7 @@
               "bound": true
             }
           ],
-          "sourcePointCost": 15,
+          "sourcePointCost": 10,
           "label": "Basic Sight",
           "classification": "English UI label and site point category",
           "uiLink": {
@@ -72906,7 +72906,8 @@
               "text": "Basic sights with reduced weapon sway."
             }
           ],
-          "status": "category-member"
+          "status": "category-member",
+          "update2120": "Point cost 15 to 10 in raw 2.1.2.0 (checklist row T4)."
         }
       ],
       "tooltipDescriptionKey": "0BB6AC0B",
@@ -74968,7 +74969,7 @@
               "bound": true
             }
           ],
-          "sourcePointCost": 15,
+          "sourcePointCost": 10,
           "label": "Basic Sight",
           "classification": "English UI label and site point category",
           "uiLink": {
@@ -74992,7 +74993,8 @@
               "text": "Basic sights with reduced weapon sway."
             }
           ],
-          "status": "category-member"
+          "status": "category-member",
+          "update2120": "Point cost 15 to 10 in raw 2.1.2.0 (checklist row T4)."
         }
       ],
       "tooltipDescriptionKey": "0BB6AC0B",
@@ -77050,7 +77052,7 @@
               "bound": true
             }
           ],
-          "sourcePointCost": 15,
+          "sourcePointCost": 10,
           "label": "Basic Sight",
           "classification": "English UI label and site point category",
           "uiLink": {
@@ -77074,7 +77076,8 @@
               "text": "Basic sights with reduced weapon sway."
             }
           ],
-          "status": "category-member"
+          "status": "category-member",
+          "update2120": "Point cost 15 to 10 in raw 2.1.2.0 (checklist row T4)."
         }
       ],
       "tooltipDescriptionKey": "0BB6AC0B",
@@ -79126,7 +79129,7 @@
               "bound": true
             }
           ],
-          "sourcePointCost": 15,
+          "sourcePointCost": 10,
           "label": "Basic Sight",
           "classification": "English UI label and site point category",
           "uiLink": {
@@ -79150,7 +79153,8 @@
               "text": "Basic sights with reduced weapon sway."
             }
           ],
-          "status": "category-member"
+          "status": "category-member",
+          "update2120": "Point cost 15 to 10 in raw 2.1.2.0 (checklist row T4)."
         }
       ],
       "tooltipDescriptionKey": "0BB6AC0B",
@@ -81202,7 +81206,7 @@
               "bound": true
             }
           ],
-          "sourcePointCost": 15,
+          "sourcePointCost": 10,
           "label": "Basic Sight",
           "classification": "English UI label and site point category",
           "uiLink": {
@@ -81226,7 +81230,8 @@
               "text": "Basic sights without any scope glint."
             }
           ],
-          "status": "category-member"
+          "status": "category-member",
+          "update2120": "Point cost 15 to 10 in raw 2.1.2.0 (checklist row T4)."
         }
       ],
       "tooltipDescriptionKey": "80E096AF",
@@ -83273,7 +83278,7 @@
               "bound": true
             }
           ],
-          "sourcePointCost": 15,
+          "sourcePointCost": 10,
           "label": "Basic Sight",
           "classification": "English UI label and site point category",
           "uiLink": {
@@ -83297,7 +83302,8 @@
               "text": "Basic sights without any scope glint."
             }
           ],
-          "status": "category-member"
+          "status": "category-member",
+          "update2120": "Point cost 15 to 10 in raw 2.1.2.0 (checklist row T4)."
         }
       ],
       "tooltipDescriptionKey": "80E096AF",
@@ -101619,11 +101625,12 @@
           "source": "Common/Hardware/Weapons/BoltAction/CDX40/Attachment_CDX40_SCP_IronSights",
           "kind": "attachment",
           "category": "iron",
-          "sourcePointCost": 15,
+          "sourcePointCost": 10,
           "label": "Basic Sight",
           "labelBasis": "same-optic-model-and-selector",
           "status": "category-member",
-          "sourceBuild": "2.1.1.0"
+          "sourceBuild": "2.1.1.0",
+          "update2120": "Point cost 15 to 10 in raw 2.1.2.0 (checklist row T4)."
         }
       ],
       "sourceBuild": "2.1.1.0"
