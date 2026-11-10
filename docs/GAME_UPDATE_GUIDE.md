@@ -665,6 +665,19 @@ checklist and the report.
 
 Report the outcome as three lists: resolved, still present, needs in-game recheck.
 
+### Vehicle classes for the KDM bot
+
+Run `scripts/frosty-vehicle-archetypes.py` in the research repo on the new build's
+`capture/collection`, with `--compare reference-data/frosty/vehicle-archetypes.json` (research
+repo `docs/frosty/TOOLS.md`, "New or recategorized vehicles"). Exit 0 means no vehicle or
+archetype changed. On exit 1, replace that baseline with the new output and commit it, then
+prepare the bot change and hold its commit for the operator, as for new weapon step 11: copy the
+file to `config/bf6-vehicle-archetypes.json`, add a `VEHICLE_CLASS_ROWS` row in
+`src/bf6-equipment.js` for any new archetype (the operator chooses the label), and regenerate
+`config/bf6-equipment-catalogue.json`. Until then the bot files the vehicle under Unclassified
+and alerts. (2.1.2.0: the M142 MRAS, `veh_sur_himars`, in the new `arch_rocketarty`, was found
+from the bot's alert because this step did not exist.)
+
 ### When an in-game check is allowed
 
 In-game checks cost the operator far more time than any file trace costs a worker, so they
