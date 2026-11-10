@@ -151,7 +151,6 @@
     "5B592E99": "Standard-issue heavy barrel that improves accuracy during sustained fire.",
     "5BFBBF12": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "5CB7818C": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil at the cost of aim down sights (ADS) accuracy while moving.",
-    "5CCBCAEC": "Basic sights with reduced weapon sway.",
     "5E804CC7": "Muzzle thread protector that reduces recoil but increases weapon sway. Soldiers firing will be spotted, marking their position in-world and on the minimap.",
     "5F0CAA2D": "Allows weapon to be mounted more effectively on the edges of cover and while prone. Slightly reduces recoil.",
     "5F3726E8": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
@@ -403,7 +402,6 @@
     "EF363BF5": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "EF437332": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "EFC76EEE": "Heavy barrel that improves accuracy during sustained fire.",
-    "F04378FF": "[REDACTED]",
     "F0979379": "Cut-down DMR barrel that improves accuracy during sustained fire.",
     "F0B29B8A": "Long heavy barrel that increases projectile velocity and improves accuracy during sustained fire at the cost of weapon draw speed.",
     "F0E965D0": "Standard 60 round drum magazine that improves weapon draw speed.",
@@ -486,7 +484,11 @@
     "274836EB": "Long barrel that increases projectile velocity.",
     "7630AA97": "Heavy barrel that improves accuracy during sustained fire.",
     "A07E92B2": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
-    "AE828D56": "High-velocity, standard-penetration ammunition with improved headshot damage but increased recoil. Extends the range at which soldiers are visibly spotted in-world and slightly extends their minimap spotting range while firing."
+    "AE828D56": "High-velocity, standard-penetration ammunition with improved headshot damage but increased recoil. Extends the range at which soldiers are visibly spotted in-world and slightly extends their minimap spotting range while firing.",
+    "2CBF5E79": "Wide magazine with increased capacity that slows movement speed while aiming down sights (ADS), and weapon draw speed.",
+    "9A7B3565": "Ammunition belt that improves weapon reload speed and weapon draw speed.",
+    "BA9F1A4B": "Magazine tube with extension for increased shell capacity.",
+    "E8994690": "High-capacity belt pouch with reduced ammunition that reduces weapon draw speed."
   },
   "byWeapon": {
     "m433": {
@@ -1945,7 +1947,8 @@
         "40_fast": "5B27BF56",
         "45_rnd": "6D0AB3CE",
         "45_fast": "4FE8923B",
-        "50_rnd": "DFC521B8"
+        "50_rnd": "DFC521B8",
+        "60_rnd": "2CBF5E79"
       },
       "ergo": {
         "mag_flare": "ECC670D6",
@@ -3808,7 +3811,8 @@
       "mag": {
         "50_rnd": "F4DCF0BE",
         "100_rnd": "AE3E8992",
-        "100_fast": "603B95DA"
+        "100_fast": "603B95DA",
+        "75_rnd": "9A7B3565"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -4131,7 +4135,8 @@
       },
       "mag": {
         "50_rnd": "42DFE476",
-        "100_rnd": "760FBC04"
+        "100_rnd": "760FBC04",
+        "75_rnd": "E8994690"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -5848,7 +5853,8 @@
         "5_rnd": "B39FA068",
         "5_fast": "6172F4B5",
         "6_rnd": "B5F4C909",
-        "7_rnd": "B849F1AA"
+        "7_rnd": "B849F1AA",
+        "8_rnd": "BA9F1A4B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -5933,7 +5939,8 @@
       "mag": {
         "4_rnd": "B14A77C7",
         "4_fast": "DC163F74",
-        "6_rnd": "748DEA5B"
+        "6_rnd": "748DEA5B",
+        "8_rnd": "BA9F1A4B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -6908,7 +6915,7 @@
         "buffer": "B127B844"
       },
       "sight": {
-        "iron": "5CCBCAEC",
+        "iron": "0BB6AC0B",
         "dvo_lpvo": "2B85CBA7",
         "mc_co_lpvo": "2930A306",
         "mini_flex_1_00x": "01FBB778",

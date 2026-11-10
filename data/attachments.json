@@ -22094,6 +22094,44 @@
               "attachment": "95_rnd"
             }
           ]
+        },
+        {
+          "slot": "ergo",
+          "attachment": "rail_cover",
+          "requiresAny": [
+            {
+              "slot": "mag",
+              "attachment": "30_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "30_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "36_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_fast"
+            },
+            {
+              "slot": "mag",
+              "attachment": "45_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "50_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "60_rnd"
+            },
+            {
+              "slot": "mag",
+              "attachment": "95_rnd"
+            }
+          ]
         }
       ],
       "sight": [
