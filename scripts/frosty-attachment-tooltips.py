@@ -685,7 +685,7 @@ def iron_sight_tooltips(optics, by_weapon):
         if category["weapon"] in defaults:
             category["tooltipDefaultDescriptor"] = defaults[category["weapon"]]
             category["tooltipDefaultReason"] = (
-                "The weapon's plain iron-sight record (Attachment_*_SCP_IronSights), by the same rule as the user-selected M16A4 and UMG-40 defaults; not yet confirmed in game. Other category members are retained as evidence only."
+                "The weapon's plain iron-sight record (Attachment_*_SCP_IronSights), by the same rule as the user-selected M16A4 and UMG-40 defaults. Read in game on 10 Nov 2026: it is the first of the two iron sights listed (M4A1 Flip-Up Irons, PW7A2 Aperture Sight); the game has no default. Other category members are retained as evidence only."
                 if category["weapon"] in unconfirmed else
                 "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. Other category members are retained as evidence only.")
     return descriptions

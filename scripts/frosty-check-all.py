@@ -200,8 +200,12 @@ def main():
     raw = []
     for folder in raws:
         raw += ["--raw", str(folder)]
-    raw += ["--descriptors", str(cap / "toolchain" / "SharedTypeDescriptors.ebx"),
-            "--catalog", str(cap / "collection" / "asset-catalog.json"),
+    raw += ["--descriptors", str(cap / "toolchain" / "SharedTypeDescriptors.ebx")]
+    # reports/mp-*/asset-catalog.json: file GUIDs whose loaded-cache catalog entry is a campaign-only
+    # route of a renamed asset (frosty-mp-copies.py); read first, so they decide those GUIDs.
+    for catalog in sorted((args.build / "reports").glob("mp-*/asset-catalog.json")):
+        raw += ["--catalog", str(catalog)]
+    raw += ["--catalog", str(cap / "collection" / "asset-catalog.json"),
             "--catalog", str(cap / "collection-fresh-cache" / "asset-catalog.json")]
     strings = ["--strings", str(cap / "fs_us_loc.strings.tsv")]
     out = args.out or Path(tempfile.mkdtemp(prefix="frosty-check-all-"))

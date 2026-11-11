@@ -8,8 +8,8 @@
     "iron": "No iron-sight part overrides the aim; every checked weapon uses Aim_1x50 (1.50x). The report covers the 64 pre-2.1.1.0 blueprints; MK-24, ELR-40, Z-84M and RSPR were not checked and are assumed to match."
   },
   "sources": {
-    "optic-mapping.json": "823413c2a7259ddaad5717c235d7198d1a58bc0eee6041be0bfba48626982037",
-    "compatibility.json": "68734abab165908ba1985101baa379b1b1897fab63f4ccd3a01b6a81391f9628",
+    "optic-mapping.json": "6869196af3f0d69619587c4813ab9876fb24bd6c23f660e4ae55174ead7334f3",
+    "compatibility.json": "ba10e33ab15ab450618279f22fc5a54bfa396fcc25e9c53feef3d82fd217280f",
     "frosty-optic-render-fov-2026-09-16.json": "f980222aca1bb9d3788efbadf1f35389bb3bc521842fb4dee5f1b4d46bf902a9",
     "frosty-optic-names-2026-11-10.json": "f302c8cb34c38771fa6289a7e8452c57ded2907a5125cd27c5752d79940e7f5e"
   },

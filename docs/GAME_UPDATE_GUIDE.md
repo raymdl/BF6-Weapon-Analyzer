@@ -363,6 +363,11 @@ Then:
    the main capture, the latest date last. Run it again in Stage 0 before the next update, so
    the old build has a multiplayer baseline to diff against; 2.1.1.0 and earlier have none,
    so their name, label and description comparisons were between campaign copies.
+   The same run writes `asset-catalog.json`: a campaign bundle can still hold an asset under
+   an older name with the file GUID of its multiplayer successor (`AD_SF300` for
+   `AD_SF300_RightRail`), and the capture's catalog can name the campaign one for that GUID.
+   `frosty-check-all.py` reads `reports\mp-*\asset-catalog.json` before the capture's
+   catalogs, so imports resolve to the multiplayer asset.
 6. `record` and `verify`. Write comparison results (diffs, overlays, reviews) into the new
    build's `reports\` or `capture\`, never into the sealed build.
 
