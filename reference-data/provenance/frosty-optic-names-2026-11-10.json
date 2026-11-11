@@ -37,5 +37,75 @@
       "evidence": "2.1.2.0 fs_us_loc string 1B975E23 'ST Prisim 5.00x', the name the multiplayer copies of the AAM_* name lists give '<weapon> - SCP - Steiner T536' (builds/2.1.2.0/reports/mp-copies-2026-11-10); the operator read 'ST PRISIM 5.00X' on the M433 on 10 Nov 2026. inGameName keeps the 16 September spelling because the site id st_prism_5_00x derives from it; displayName is the name shown."
     }
   ],
-  "ironSights": []
+  "ironSights": [],
+  "ironSightVariants": [
+    {
+      "weapon": "m16a4",
+      "aamAsset": "AAM_M16A3",
+      "first": {
+        "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_IronSights",
+        "aamRecord": "M16A3 - Iron Sights",
+        "nameId": "0x7cd4e4d8",
+        "inGameName": "Carry Handle Irons"
+      },
+      "second": {
+        "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_IronSightsUSGI",
+        "aamRecord": "M16A3 - Iron Sights USGI",
+        "nameId": "0x51739e68",
+        "inGameName": "Flip-Up Irons"
+      },
+      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. The operator chose the Classic sights as the first on 25 Oct 2026; the names were not read in game on this weapon."
+    },
+    {
+      "weapon": "m4a1",
+      "aamAsset": "AAM_M4A1",
+      "first": {
+        "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_IronSights",
+        "aamRecord": "M4A1 - SCP - Iron Sights",
+        "nameId": "0x51739e68",
+        "inGameName": "Flip-Up Irons"
+      },
+      "second": {
+        "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_CarrySights",
+        "aamRecord": "M4A1 - Carry Sights",
+        "nameId": "0x7cd4e4d8",
+        "inGameName": "Carry Handle Irons"
+      },
+      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. Both names and their order read in game by the operator on 10 Nov 2026 (Flip-Up Irons listed first)."
+    },
+    {
+      "weapon": "pw7a2",
+      "aamAsset": "AAM_MP7A2",
+      "first": {
+        "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_Iron_Sights",
+        "aamRecord": "MP7A2 - SCP - Iron Sights",
+        "nameId": "0x52142f82",
+        "inGameName": "Aperture Sight"
+      },
+      "second": {
+        "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_Iron_Sights_CQB",
+        "aamRecord": "MP7A2 - SCP - Iron Sights CQB",
+        "nameId": "0x52142f83",
+        "inGameName": "CQB Sights"
+      },
+      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. Both names and their order read in game by the operator on 10 Nov 2026 (Aperture Sight listed first)."
+    },
+    {
+      "weapon": "umg40",
+      "aamAsset": "AAM_UMP40",
+      "first": {
+        "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_Iron_Sights",
+        "aamRecord": "UMP40 - SCP - Iron Sights",
+        "nameId": "0x52142f82",
+        "inGameName": "Aperture Sight"
+      },
+      "second": {
+        "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_CQC_Iron_Sights",
+        "aamRecord": "UMP40 - SCP - CQC Iron Sights",
+        "nameId": "0x52142f83",
+        "inGameName": "CQB Sights"
+      },
+      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. The operator chose the basic aperture sight as the first on 25 Oct 2026; the names were not read in game on this weapon."
+    }
+  ]
 }

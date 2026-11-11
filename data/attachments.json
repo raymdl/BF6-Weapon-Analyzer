@@ -65,7 +65,21 @@
         "z84m": 0.6666667,
         "rspr": 0.6666667
       },
-      "magnification": 1.5
+      "magnification": 1.5,
+      "weaponOverrides": {
+        "m16a4": {
+          "name": "Carry Handle Irons"
+        },
+        "m4a1": {
+          "name": "Flip-Up Irons"
+        },
+        "pw7a2": {
+          "name": "Aperture Sight"
+        },
+        "umg40": {
+          "name": "Aperture Sight"
+        }
+      }
     },
     {
       "id": "std_optic",
@@ -461,6 +475,37 @@
       "pts": 10,
       "magnification": 2.5,
       "noEffect": true
+    },
+    {
+      "id": "carry_handle_irons",
+      "name": "Carry Handle Irons",
+      "category": "iron",
+      "pts": 5,
+      "magnification": 1.5,
+      "weaponSwayMultByWeapon": {
+        "m4a1": 0.6666667
+      }
+    },
+    {
+      "id": "cqb_sights",
+      "name": "CQB Sights",
+      "category": "iron",
+      "pts": 5,
+      "magnification": 1.5,
+      "weaponSwayMultByWeapon": {
+        "pw7a2": 0.6666667,
+        "umg40": 0.6666667
+      }
+    },
+    {
+      "id": "flip_up_irons",
+      "name": "Flip-Up Irons",
+      "category": "iron",
+      "pts": 5,
+      "magnification": 1.5,
+      "weaponSwayMultByWeapon": {
+        "m16a4": 0.6666667
+      }
     }
   ],
   "MUZZLES": [
@@ -13007,6 +13052,7 @@
       ],
       "sight": [
         "iron",
+        "flip_up_irons",
         "dvo_lpvo",
         "mc_co_lpvo",
         "mini_flex_1_00x",
@@ -13318,6 +13364,7 @@
       ],
       "sight": [
         "iron",
+        "carry_handle_irons",
         "dvo_lpvo",
         "mini_flex_1_00x",
         "ngfc_lpvo",
@@ -16476,6 +16523,7 @@
       ],
       "sight": [
         "iron",
+        "cqb_sights",
         "mars_f_lpvo",
         "mini_flex_1_00x",
         "osa_7_1_00x",
@@ -16759,6 +16807,7 @@
       ],
       "sight": [
         "iron",
+        "cqb_sights",
         "mars_f_lpvo",
         "mini_flex_1_00x",
         "osa_7_1_00x",

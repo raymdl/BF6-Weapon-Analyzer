@@ -37,7 +37,9 @@ class DescriptionMappingTests(unittest.TestCase):
         runtime = {}
         descriptions = m.iron_sight_tooltips({'categories': categories}, runtime)
         self.assertEqual(descriptions, {'m16a4': 'Classic, basic sights with reduced weapon sway.',
-                                       'umg40': 'Basic aperture sight with reduced weapon sway.'})
+                                       'umg40': 'Basic aperture sight with reduced weapon sway.',
+                                       'other': 'Other variant.'})
+        self.assertEqual(runtime['m16a4']['sight'], {'iron': 'm16a4', 'flip_up_irons': 'other'})
         self.assertEqual(categories[0]['tooltipSourceIds'], ['m16a4'])
         self.assertEqual(len(categories[0]['members']), 2)
 

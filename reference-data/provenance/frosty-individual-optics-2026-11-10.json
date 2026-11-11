@@ -8,10 +8,10 @@
     "iron": "No iron-sight part overrides the aim; every checked weapon uses Aim_1x50 (1.50x). The report covers the 64 pre-2.1.1.0 blueprints; MK-24, ELR-40, Z-84M and RSPR were not checked and are assumed to match."
   },
   "sources": {
-    "optic-mapping.json": "6869196af3f0d69619587c4813ab9876fb24bd6c23f660e4ae55174ead7334f3",
+    "optic-mapping.json": "374e6714a859527e49659e0650d58213bc7388bafad055c5f54696e9a3d9a67c",
     "compatibility.json": "ba10e33ab15ab450618279f22fc5a54bfa396fcc25e9c53feef3d82fd217280f",
     "frosty-optic-render-fov-2026-09-16.json": "f980222aca1bb9d3788efbadf1f35389bb3bc521842fb4dee5f1b4d46bf902a9",
-    "frosty-optic-names-2026-11-10.json": "f302c8cb34c38771fa6289a7e8452c57ded2907a5125cd27c5752d79940e7f5e"
+    "frosty-optic-names-2026-11-10.json": "a8705cd91b517ae7e0125763b68c9eaaeb4d70d4721741f0b8e368f5a03a9b60"
   },
   "ironSightsChecked": [
     "185KSK",
@@ -78,6 +78,64 @@
     "Vector",
     "XM7"
   ],
+  "ironSightVariants": {
+    "m16a4": {
+      "iron": {
+        "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_IronSights",
+        "aamRecord": "M16A3 - Iron Sights",
+        "nameId": "0x7cd4e4d8",
+        "inGameName": "Carry Handle Irons"
+      },
+      "flip_up_irons": {
+        "source": "Common/Hardware/Weapons/AssaultRifle/M16A3/Attachment_M16A3_SCP_IronSightsUSGI",
+        "aamRecord": "M16A3 - Iron Sights USGI",
+        "nameId": "0x51739e68",
+        "inGameName": "Flip-Up Irons"
+      }
+    },
+    "m4a1": {
+      "iron": {
+        "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_IronSights",
+        "aamRecord": "M4A1 - SCP - Iron Sights",
+        "nameId": "0x51739e68",
+        "inGameName": "Flip-Up Irons"
+      },
+      "carry_handle_irons": {
+        "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_CarrySights",
+        "aamRecord": "M4A1 - Carry Sights",
+        "nameId": "0x7cd4e4d8",
+        "inGameName": "Carry Handle Irons"
+      }
+    },
+    "pw7a2": {
+      "iron": {
+        "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_Iron_Sights",
+        "aamRecord": "MP7A2 - SCP - Iron Sights",
+        "nameId": "0x52142f82",
+        "inGameName": "Aperture Sight"
+      },
+      "cqb_sights": {
+        "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_Iron_Sights_CQB",
+        "aamRecord": "MP7A2 - SCP - Iron Sights CQB",
+        "nameId": "0x52142f83",
+        "inGameName": "CQB Sights"
+      }
+    },
+    "umg40": {
+      "iron": {
+        "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_Iron_Sights",
+        "aamRecord": "UMP40 - SCP - Iron Sights",
+        "nameId": "0x52142f82",
+        "inGameName": "Aperture Sight"
+      },
+      "cqb_sights": {
+        "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_CQC_Iron_Sights",
+        "aamRecord": "UMP40 - SCP - CQC Iron Sights",
+        "nameId": "0x52142f83",
+        "inGameName": "CQB Sights"
+      }
+    }
+  },
   "optics": [
     {
       "id": "dvo_lpvo",

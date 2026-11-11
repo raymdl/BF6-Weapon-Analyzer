@@ -278,7 +278,7 @@ export function renderAttachmentSection({
     const accessoryData = weapon ? data.WEAPON_ACCESSORY?.[weapon.id] : null;
     if (accessoryData) {
       const options = availableAttachments(weapon, 'accessory', data, atts);
-      const optics = availableAttachments(weapon, 'sight', data).filter(sight => sight.id !== 'iron');
+      const optics = availableAttachments(weapon, 'sight', data).filter(sight => sight.id !== 'iron' && sight.category !== 'iron');
       if (options.length === 1) return;
       appendSelectRow(container, {
         label: 'OPT ACC',
@@ -324,7 +324,7 @@ export function renderAttachmentSection({
 
     if (key === 'sight') {
       // Iron sights, then fixed optics, variables and thermals, each by zoom.
-      const group = a => a.id === 'iron' ? 0 : ['thermal', 'therm_hyb'].includes(a.category) ? 3
+      const group = a => a.id === 'iron' ? 0 : a.category === 'iron' ? 0.5 : ['thermal', 'therm_hyb'].includes(a.category) ? 3
         : ['var_low', 'var_high'].includes(a.category) ? 2 : 1;
       visible.sort((a, b) => group(a) - group(b) || (a.magnification ?? 0) - (b.magnification ?? 0)
         || a.name.localeCompare(b.name));

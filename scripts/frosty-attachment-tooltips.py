@@ -660,6 +660,9 @@ def iron_sight_tooltips(optics, by_weapon):
         "m4a1": "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
         "pw7a2": "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
     }
+    # The weapon's other iron sight is its own site choice (frosty-individual-optics.py derives the
+    # id from its in-game name; reference-data/provenance/frosty-optic-names-2026-11-10.json).
+    second = {"m16a4": "flip_up_irons", "m4a1": "carry_handle_irons", "pw7a2": "cqb_sights", "umg40": "cqb_sights"}
     unconfirmed = {"m4a1", "pw7a2"}
     descriptions = {}
     for category in optics["categories"]:
@@ -667,9 +670,15 @@ def iron_sight_tooltips(optics, by_weapon):
             continue
         rows = [d for member in category["members"] for d in member["descriptions"]]
         if category["weapon"] in defaults:
+            others = [d for d in rows if d["asset"] != defaults[category["weapon"]]]
             rows = [d for d in rows if d["asset"] == defaults[category["weapon"]]]
             if not rows:
                 raise ValueError(f"Default iron-sight descriptor missing: {category['weapon']}")
+            if category["weapon"] in second:
+                if len(others) != 1 or not others[0].get("text"):
+                    raise ValueError(f"Second iron-sight descriptor missing: {category['weapon']}")
+                descriptions[others[0]["id"]] = others[0]["text"]
+                by_weapon.setdefault(category["weapon"], {}).setdefault("sight", {})[second[category["weapon"]]] = others[0]["id"]
         if not rows or any(not d.get("text") for d in rows):
             continue
         texts = sorted({d["text"] for d in rows})
@@ -685,9 +694,9 @@ def iron_sight_tooltips(optics, by_weapon):
         if category["weapon"] in defaults:
             category["tooltipDefaultDescriptor"] = defaults[category["weapon"]]
             category["tooltipDefaultReason"] = (
-                "The weapon's plain iron-sight record (Attachment_*_SCP_IronSights), by the same rule as the user-selected M16A4 and UMG-40 defaults. Read in game on 10 Nov 2026: it is the first of the two iron sights listed (M4A1 Flip-Up Irons, PW7A2 Aperture Sight); the game has no default. Other category members are retained as evidence only."
+                "The weapon's plain iron-sight record (Attachment_*_SCP_IronSights), by the same rule as the user-selected M16A4 and UMG-40 defaults. Read in game on 10 Nov 2026: it is the first of the two iron sights listed (M4A1 Flip-Up Irons, PW7A2 Aperture Sight); the game has no default. The other member is the weapon's second iron-sight choice."
                 if category["weapon"] in unconfirmed else
-                "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. Other category members are retained as evidence only.")
+                "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. The other member is the weapon's second iron-sight choice.")
     return descriptions
 
 

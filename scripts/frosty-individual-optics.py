@@ -99,11 +99,12 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
     mapping = json.loads(args.optic_mapping.read_text(encoding='utf-8'))
     compat = json.loads(args.compatibility.read_text(encoding='utf-8'))
     args.names = args.names or [DEFAULT_NAMES, *sorted(PROVENANCE.glob('frosty-optic-names-*.json'))]
-    names_report = {'opticNames': [], 'ironSights': []}
+    names_report = {'opticNames': [], 'ironSights': [], 'ironSightVariants': []}
     for path in args.names:
         document = json.loads(path.read_text(encoding='utf-8'))
         names_report['opticNames'] += document['opticNames']
         names_report['ironSights'] += document.get('ironSights', [])
+        names_report['ironSightVariants'] += document.get('ironSightVariants', [])
 
     by_record, name_rows = {}, {}
     for row in names_report['opticNames']:
@@ -124,11 +125,28 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
     not_listed = []
     sights = {s['id']: s for s in catalog['SIGHTS']}
     optics, per_weapon, by_source = {}, {}, {}
+    iron_rows = {row['weapon']: row for row in names_report['ironSightVariants']}
+    iron_variants = {}                  # weapon -> (sight id of its second iron sight, names row)
     for category in mapping['categories']:
         weapon, cat = category['weapon'], category['attachment']
         if cat == 'iron':
             if not category['members']:
                 raise ValueError(f'{weapon}: no iron sights')
+            # A weapon with two iron-sight records lists both: the first under 'iron' with its own
+            # name, the second as its own sight entry (same cost and modifier, another description).
+            row = iron_rows.get(weapon)
+            found = sorted(source_key(m['source']) for m in category['members'])
+            if len(found) > 1 or row:
+                if not row or found != sorted(source_key(row[k]['source']) for k in ('first', 'second')):
+                    raise ValueError(f'{weapon}: iron-sight records {found} differ from ironSightVariants')
+                for member in category['members']:
+                    key = 'first' if source_key(member['source']) == source_key(row['first']['source']) else 'second'
+                    if [r['name'] for r in member['uiLink']['aamRecords']] != [row[key]['aamRecord']]:
+                        raise ValueError(f'{member["source"]}: name-list record differs from ironSightVariants')
+                    if member['sourcePointCost'] != sights['iron']['pts']:
+                        raise ValueError(f'{member["source"]}: cost {member["sourcePointCost"]} != iron')
+                variant_id = re.sub(r'_+', '_', re.sub(r'[^a-z0-9]', '_', row['second']['inGameName'].lower())).strip('_')
+                iron_variants[weapon] = (variant_id, row)
             continue
         for member in category['members']:
             token = re.search(r'_SCP_(.+?)(?:\.xml)?$', member['source'])[1]
@@ -187,7 +205,11 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
     ordered = [s for s in catalog['SIGHTS'] if s['id'] == 'iron' or s['id'] in LEGACY]
     if [s['id'] for s in ordered] != ['iron', *LEGACY]:
         raise ValueError('Legacy sight entries moved; share-link indices would change')
-    known = [s['id'] for s in catalog['SIGHTS'][len(ordered):]]
+    variant_ids = sorted({v[0] for v in iron_variants.values()})
+    if set(variant_ids) & set(optics):
+        raise ValueError(f'Iron-sight variant ids collide with optics: {sorted(set(variant_ids) & set(optics))}')
+    previous = [s['id'] for s in catalog['SIGHTS'][len(ordered):]]       # share-link positions
+    known = [i for i in previous if i not in variant_ids]
     if set(known) - set(optics):
         raise ValueError(f'Optics no longer in Frosty: {sorted(set(known) - set(optics))}')
     new = sorted(set(optics) - set(known), key=lambda i: (optics[i]['magnification'], optics[i]['inGameName'].lower()))
@@ -196,6 +218,16 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
     if iron_zoom != [1.5]:
         raise ValueError(f'Iron-sight zoom is no longer uniform: {iron_zoom}')
     iron['magnification'] = 1.5
+    iron.pop('weaponOverrides', None)
+    variant_entries = {}
+    for weapon, (variant_id, row) in sorted(iron_variants.items()):
+        iron.setdefault('weaponOverrides', {})[weapon] = {'name': row['first']['inGameName']}
+        entry = variant_entries.setdefault(variant_id, dict(
+            id=variant_id, name=row['second']['inGameName'], category='iron', pts=iron['pts'], magnification=1.5,
+            weaponSwayMultByWeapon={}))
+        if entry['name'] != row['second']['inGameName']:
+            raise ValueError(f'{variant_id}: two names')
+        entry['weaponSwayMultByWeapon'][weapon] = iron['weaponSwayMultByWeapon'][weapon]
     for legacy in ordered[1:]:
         legacy['legacy'] = True
     sight_entries = []
@@ -223,16 +255,21 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
             entry['magnificationRange'] = optic['magnificationRange']
         entry.update({k: v for k, v in legacy.items() if k not in ('id', 'name', 'pts', 'legacy')})
         sight_entries.append(entry)
-    catalog['SIGHTS'] = ordered + sight_entries
+    # Existing entries keep their positions; new optics, then new iron-sight variants, are appended.
+    by_id = {e['id']: e for e in sight_entries} | variant_entries
+    tail = [i for i in previous if i in by_id]
+    tail += [i for i in [*new, *variant_ids] if i not in tail]
+    catalog['SIGHTS'] = ordered + [by_id[i] for i in tail]
     # SIGHTS positions are share-link indices (append only); lists show the optics by low-end
     # magnification, then name.
     order = {s['id']: ((s.get('magnificationRange') or [s['magnification']])[0], s['name'].lower())
-             for s in catalog['SIGHTS'][len(ordered):]}
+             for s in sight_entries}
 
     for weapon, wa in catalog['WEAPON_ATTS'].items():
         if weapon not in per_weapon:
             raise ValueError(f'{weapon}: no Frosty optics')
-        wa['sight'] = ['iron', *sorted(per_weapon[weapon], key=order.get)]
+        wa['sight'] = ['iron', *([iron_variants[weapon][0]] if weapon in iron_variants else []),
+                       *sorted(per_weapon[weapon], key=order.get)]
 
     # Optic Accessory prerequisites name individual sight records.
     # The accessory comes from the record family and the weapon from the optic, so the report's
@@ -280,6 +317,8 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
             **{path.name: sha(path) for path in args.names},
         },
         ironSightsChecked=sorted(row['internalId'] for row in names_report['ironSights']),
+        ironSightVariants={w: dict(iron=row['first'], **{variant_id: row['second']})
+                           for w, (variant_id, row) in sorted(iron_variants.items())},
         optics=[{k: v for k, v in optics[s['id']].items()} for s in sight_entries],
         weapons={w: [dict(id=i, **v) for i, v in sorted(per_weapon[w].items(), key=lambda kv: order[kv[0]])]
                  for w in sorted(per_weapon) if w in catalog['WEAPON_ATTS']},

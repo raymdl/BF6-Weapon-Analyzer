@@ -1,18 +1,6 @@
 {
   "schemaVersion": 1,
   "overrides": [
-    {"overrideId": "AV-0003", "generator": "frosty-availability", "weapon": "m4a1", "slot": "sight", "id": "Attachment_M4A1_SCP_CarrySights",
-     "sitePath": "data/attachments.json WEAPON_ATTS.m4a1.sight", "siteValue": "not listed", "sourceValue": "offered",
-     "kind": "convention",
-     "reason": "Alternate iron sight added in 2.1.2.0. It costs 5 and carries the same five effects as the standard irons (sight picture only), so the site keeps one 'iron' entry (Attachment_M4A1_SCP_IronSights).",
-     "evidence": "BF6 Frosty Research docs/updates/2.1.2.0-checklist.md U12 (decision 'Not applicable'); J-equip G17",
-     "since": "2.1.2.0"},
-    {"overrideId": "AV-0004", "generator": "frosty-availability", "weapon": "pw7a2", "slot": "sight", "id": "Attachment_MP7A2_SCP_Iron_Sights_CQB",
-     "sitePath": "data/attachments.json WEAPON_ATTS.pw7a2.sight", "siteValue": "not listed", "sourceValue": "offered",
-     "kind": "convention",
-     "reason": "Alternate CQB iron sight added in 2.1.2.0, cost 5, same effects as the standard irons; the site keeps one 'iron' entry (Attachment_MP7A2_SCP_Iron_Sights).",
-     "evidence": "BF6 Frosty Research docs/updates/2.1.2.0-checklist.md U12 (decision 'Not applicable'); J-equip G17",
-     "since": "2.1.2.0"},
     {"overrideId": "AV-0005", "generator": "frosty-availability", "weapon": "vssm", "slot": "ergo", "id": "Attachment_VSSM_ERG_None",
      "sitePath": "data/attachments.json WEAPON_ERGO.vssm.avail", "siteValue": "not listed", "sourceValue": "offered",
      "kind": "identity",

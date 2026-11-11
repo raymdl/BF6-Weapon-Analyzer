@@ -471,7 +471,8 @@
     "B9DC7186": "Modern, basic sights with reduced weapon sway.",
     "CDC31BB2": "Extended magazine with increased capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
     "EC27840E": "Extended magazine with increased capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
-    "FA92908A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS) and weapon draw speed."
+    "FA92908A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS) and weapon draw speed.",
+    "997AEB81": "Basic close-quarters battle sights with reduced weapon sway."
   },
   "byWeapon": {
     "m433": {
@@ -1630,7 +1631,8 @@
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
         "st_prism_5_00x": "423A4775",
-        "pa_sl_2_50x": "423A4775"
+        "pa_sl_2_50x": "423A4775",
+        "flip_up_irons": "B9DC7186"
       }
     },
     "m4a1": {
@@ -1747,7 +1749,8 @@
         "sf_g2_5_00x": "423A4775",
         "st_prism_5_00x": "423A4775",
         "pa_sl_2_50x": "423A4775",
-        "dvo_lpvo": "2B85CBA7"
+        "dvo_lpvo": "2B85CBA7",
+        "carry_handle_irons": "A2BEF776"
       }
     },
     "m277": {
@@ -2816,7 +2819,8 @@
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
         "st_prism_5_00x": "423A4775",
-        "pa_sl_2_50x": "423A4775"
+        "pa_sl_2_50x": "423A4775",
+        "cqb_sights": "997AEB81"
       }
     },
     "umg40": {
@@ -2919,7 +2923,8 @@
         "lds_4_50x": "423A4775",
         "sf_g2_5_00x": "423A4775",
         "st_prism_5_00x": "423A4775",
-        "pa_sl_2_50x": "423A4775"
+        "pa_sl_2_50x": "423A4775",
+        "cqb_sights": "997AEB81"
       }
     },
     "usg90": {
