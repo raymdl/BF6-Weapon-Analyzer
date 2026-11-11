@@ -47,10 +47,8 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | # | Attachment | Weapons | Type | Error | Site status |
 |---|---|---|---|---|---|
 | 2 | Hollow Point, Frangible, Tungsten Core | M45A1 | Game error | The game adds the FMJ +1 penetration step to these three ammo types. Collateral damage multiplier is too high: Hollow Point and Frangible keep the Standard value; M45A1 Tungsten Core is one step higher. The descriptions do not state a penetration change. | Matches game: extra collateral step. The M121 A2 part was resolved in 2.1.2.0 ([resolved](ATTACHMENT_BUGS_RESOLVED.md#2-m121-a2-special-ammo-resolved-part)) |
-| 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19, RSPR | Game error | The description states increased weapon draw speed. The game does not apply it. | Matches game: no weapon draw speed change |
 | 4 | 20 Rnd fast | PP-19 | Game error | The description states faster reloads. The game does not apply the reload speed bonus (×1.13). | Matches game: no reload speed change |
 | 6 | Flash Comp | PP-19 | Game error | The description states less recoil buildup and better recoil recovery (recoil smoothing). The game does not apply it: `GS_PP19` has no smoothing binding for the Flash Comp package (source trace and operator report). | Matches game: no recoil smoothing (corrected 23 September) |
-| 8 | 30 Rnd fast | PW7A2 | Description error | The description states improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Matches game: reload speed ×1.13 |
 | 10 | 50 Rnd | KTS100 MK8 | Description error | The description states improved handling. Compared with the default 60 Rnd magazine, only reload speed and sway improve; ADS time, weapon draw speed and ADS movement speed do not change. | Matches game: reload 2.876 s, ADS and draw unchanged (sway from source data) |
 | 11 | R-MR 1.00x, ROX 1.50x, Mini Flex 1.00x, A-P2 1.75x, RO-S 1.25x, CQ RDS 1.25x | RPK-74M (confirmed), L115 (source only) | Visual error | The optic looks smaller and further away, and the arm looks stretched. The weapon uses the base optic parts, which keep the default render FOV 55; other long guns use riser parts at 40 (CQ RDS 44). | Not modelled |
 | 13 | Tungsten Core | Mini Scout, with sniper comparisons | Game error | Mini Scout stacks one and six recoil penalty steps; M2010 ESR, PSR and SV-98 use six. Six steps as the intended sniper rule is a hypothesis. | Mini Scout matches game: −7. The L115 and Interdictor part was resolved in 2.1.2.0 ([resolved](ATTACHMENT_BUGS_RESOLVED.md#13-l115-and-interdictor-tungsten-core-resolved-part)) |
@@ -111,23 +109,6 @@ recoil. See
   `Sidearm/M45A1/19-22_*_Ammo_*.png`, `LMG/L110/47-50_*`, `Sidearm/GGH-22/20-25_*`.
 - **Status.** Confirmed by panels. Likely a leftover selector on two weapons; the
   descriptions do not mention penetration.
-
-### 3. Slim Angled on SMGs has no draw effect
-
-- **In-game text.** "Marginally reduces recoil, increases weapon draw speed, and
-  enables a slightly faster transition to aim down sights (ADS)."
-- **Conflict.** All eight SMGs select `U_WPM_BTM_FastPDW_W20`. Its WB modifier has
-  only `WME_ADSTime_FOV_P10` and `WME_ADSTime_Anim_P10`, with no draw effect. The
-  rifle Slim Angled package does include draw effects.
-- **Not a floor clamp.** The SMG panels show sprint recovery 100 ms; faster rows exist
-  (83 and 67 ms on sidearms).
-- **In-game.** The attachment audit screenshots (23 and 24 July 2026) of all eight SMGs
-  show ADS 167 to 133 ms and sprint recovery unchanged at 100 ms with Slim Angled. The
-  RSPR, new in 2.1.1.0, has the same fault (operator screenshots, 14 October 2026): None
-  to Slim Angled gives ADS 167 to 133 ms and Control 39 to 41, with sprint recovery
-  unchanged at 100 ms.
-- **Status.** Game error: the SMG package does not have the draw effects that the
-  description states. Confirmed by panels.
 
 ### 4. PP-19 20 Rnd fast magazine has no reload bonus
 
@@ -790,15 +771,6 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   modifier, or when the intended cycle order is confirmed.
 
 ## Description errors
-
-### 8. PW7A2 30 Rnd fast magazine
-
-- **In-game text.** "Standard magazine that improves weapon draw speed."
-- **Incorrect part.** The whole text belongs to the Regular magazine.
-- **Frosty.** `Attachment_MP7A2_MAG_Fast` selects `U_WPM_MAG_Fast_W10`, which has only
-  `WME_ReloadSpeedRegular_P10` (reload ×1.13). The draw effect is in the Regular
-  package `U_WPM_MAG_Std_W05`.
-- **In-game.** Operator confirmed the text error on 14 September.
 
 ### 10. KTS100 MK8 50 Rnd magazine
 

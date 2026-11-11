@@ -16,11 +16,11 @@ were read field by field. Earlier in-game measurements were not repeated. Run fo
 |---|---|
 | 1 | **Resolved** (not in the patch notes). The Slim Angled action on PSR, SV-98, L115, Mini Scout, Interdictor and ELR-40 now selects only `U_WPM_BTM_FastBOLT02_W15`, the M2010 ESR package; the Full Angled action keeps `FastBOLT01_W05`. Confirm in game that the moving-ADS penalty is gone. |
 | 2 | **Resolved for the M121 A2**: its three ammo selectors lost the FMJ step. **Still present on the M45A1.** |
-| 3 | Untouched; retained. Text link (AD-file scan, 10 Nov): by the `AAM_*` bytes, only SCW-10, PW5A3, UMG-40 and KV9 link the draw-claim text (`AD_MagpulAFG`, 3F37F281); PW7A2, SGX, PP-19, RSPR and CZ3A1 link `AD_MagpulAFG_PWD` (263642D4, "Marginally reduces recoil and enables a slightly faster transition to aim down sights (ADS).", no draw claim), in every build held back to 1.4.2.5. The missing draw effect stands on all nine; the description claim may apply to four only. In-game check listed. |
+| 3 | **Resolved: description corrected** (multiplayer copies, 10 Nov). All nine SMGs link `AD_MagpulAFG_PWD` (263642D4), which has no draw claim; the package is unchanged. The first reading of this row used the campaign copies of the name lists (see the note under this table). Confirm in game. |
 | 4 | Untouched; retained. |
 | 6 | `GS_PP19` changed by a shared camera-recoil addition only; still no smoothing binding for the Flash Comp package. Retained. |
 | 7 | **Resolved: description corrected.** The 200-Round Belt Box text no longer claims the moving-ADS penalty. |
-| 8 | **Still present** (AD-file scan, 10 Nov). `AAM_MP7A2` "MP7A2 - MAG - Fast" imports `AD_MP7A2_MAG_030Fast`, which holds description 45D0A836, the Regular magazine text; it is the only Fast descriptor with that id, in both builds. Descriptor unchanged; the magazine's only effect is still reload x1.13. The T13 patch-note fix did not touch this record (the changed "Fast" to "Compact" text is the KTS100 MK8 45 Rnd Fast's, `AD_Ultimax_MAG_045Cpt3`). |
+| 8 | **Resolved: description corrected** (multiplayer copies and operator in game, 10 Nov). `AD_MP7A2_MAG_030Fast` holds A4B86155, "Standard magazine with mag pull for faster reloads."; the magazine's only effect is still reload x1.13. The first reading of this row used the campaign copy, which still holds the Regular magazine text (45D0A836). |
 | 9 | **Resolved: description corrected.** The SGX Extended Barrel text (`AD_MPX_BRL_Extended`, string C1F220B3) now reads "Long barrel that increases projectile velocity." without the ADS claim. (Corrected 10 Nov: the recoil-and-slower-ADS text first recorded here, D0910A6F, is the GRT-BC Extended Barrel's.) |
 | 10 | **Re-judge in game.** Text link settled (AD-file scan, 10 Nov): description D86958EB, only in `AD_Ultimax_MAG_050Cpt2`, unchanged. The effects changed: the 50 Rnd lost its reload x1.13; against the default 60 Rnd it now improves sway (x0.667) only and adds moving-ADS dispersion +1 (draw and sprint equal the default's). Whether "improved handling" is still wrong needs the panel; in-game check listed. |
 | 11 | Re-read from raw: `RPK74M_WB` and `L115A3_WB` still link the six base optic parts at 55; the WB change is one added sight import. Retained. |
@@ -41,6 +41,8 @@ were read field by field. Earlier in-game measurements were not repeated. Run fo
 | 26 | `GBM_NoIncrease_Semi_P00` still 0 in `GS_EF88`, `GS_BREN3` and `GS_MRGGA`. Retained. |
 | 27 | Untouched; retained. |
 | 28 | Untouched; retained. |
+
+**Campaign copies (found 10 November 2026).** The capture held the campaign copy of 51 name lists (`AAM_*`), 741 attachment descriptors (`AD_*`) and the main UI metadata files; the multiplayer game reads another copy of the same name. Every text link in the rows above and in the earlier builds' sections was read from the campaign copies. The multiplayer copies are in `builds\2.1.2.0\reports\mp-copies-2026-11-10` (research repo `scripts/frosty-mp-copies.py`); rows 3 and 8 were re-read from them. Entries 4, 6, 10 and 16 keep the same description text in the multiplayer copies.
 
 The multi-package scan drops from 16 to 9 actions: the Magpul AFG BOLT multi-package on CDX40,
 Interdictor, L115 and Mini Scout and the MG5 Frangible, Hollow Point and Tungsten actions are gone.

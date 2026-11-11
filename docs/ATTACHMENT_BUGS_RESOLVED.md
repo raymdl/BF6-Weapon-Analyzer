@@ -9,7 +9,9 @@ Only the resolved part is here.
 |---|---|---|---|---|---|---|
 | 1 | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor, ELR-40 | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Resolved in 2.1.2.0: Slim Angled now selects the M2010 ESR package (no moving-ADS penalty); confirm in game | 2.1.2.0 |
 | 2 | Hollow Point, Frangible, Tungsten Core | M121 A2 | Game error | The game added the FMJ +1 penetration step to these three ammo types, so Hollow Point and Frangible kept the Standard collateral value. | Resolved in 2.1.2.0: the three ammo selectors lost the FMJ step. The M45A1 part is still active ([entry 2](ATTACHMENT_BUGS.md#2-m121-a2-and-m45a1-special-ammo-keep-the-fmj-package)) | 2.1.2.0 |
+| 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19, RSPR | Game error | The description stated increased weapon draw speed. The game did not apply it. | Resolved: the description no longer claims the draw speed (all nine link 263642D4); confirm in game ([IN_GAME_CHECKS.md](IN_GAME_CHECKS.md)) | By 2.1.2.0 (build not known) |
 | 7 | 200 Rnd belt box | L110, M123K | Game error | The description states reduced ADS accuracy while moving. The game does not apply it. | Resolved in 2.1.2.0: the description no longer claims the penalty | 2.1.2.0 |
+| 8 | 30 Rnd fast | PW7A2 | Description error | The description stated improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Resolved: the description now reads "Standard magazine with mag pull for faster reloads." (operator, in game, 10 Nov 2026) | 2.1.2.0 (patch notes) |
 | 9 | Extended barrel | SGX | Description error | The description states a fast transition to ADS. The game applies no ADS time change (old text from before the ADS buff was removed). | Resolved in 2.1.2.0: the description no longer claims a faster ADS | 2.1.2.0 |
 | 12 | Standard Suppressor | L115 | Game error | Description states a hipfire penalty, but the L115 GS has no hip-dispersion binding for the selected suppressor package. Panel stays at 34. | Resolved in 2.1.2.0: hip-spread +1 applied | 2.1.2.0 |
 | 13 | Tungsten Core | L115, Interdictor | Game error | Both used one recoil penalty step; M2010 ESR, PSR and SV-98 use six. | Resolved in 2.1.2.0: both now use six steps (−6). The Mini Scout part is still active ([entry 13](ATTACHMENT_BUGS.md#13-sniper-tungsten-core-recoil-penalties-are-inconsistent)) | 2.1.2.0 |
@@ -85,6 +87,24 @@ Resolved in 2.1.2.0 for the M121 A2: its three ammo selectors lost the FMJ step.
   0.75, Hollow Point 0.75 and Frangible 0.75, still the Standard value. Tungsten Core
   now shows x0.00: the panel no longer clamps row 10, while damage stays x1.00
   (entry 20). P18 control: Frangible 0.50, below Standard 0.57.
+
+### 3. Slim Angled on SMGs has no draw effect
+
+- **In-game text.** "Marginally reduces recoil, increases weapon draw speed, and
+  enables a slightly faster transition to aim down sights (ADS)."
+- **Conflict.** All eight SMGs select `U_WPM_BTM_FastPDW_W20`. Its WB modifier has
+  only `WME_ADSTime_FOV_P10` and `WME_ADSTime_Anim_P10`, with no draw effect. The
+  rifle Slim Angled package does include draw effects.
+- **Not a floor clamp.** The SMG panels show sprint recovery 100 ms; faster rows exist
+  (83 and 67 ms on sidearms).
+- **In-game.** The attachment audit screenshots (23 and 24 July 2026) of all eight SMGs
+  show ADS 167 to 133 ms and sprint recovery unchanged at 100 ms with Slim Angled. The
+  RSPR, new in 2.1.1.0, has the same fault (operator screenshots, 14 October 2026): None
+  to Slim Angled gives ADS 167 to 133 ms and Control 39 to 41, with sprint recovery
+  unchanged at 100 ms.
+- **Status.** Game error: the SMG package does not have the draw effects that the
+  description states. Confirmed by panels.
+- **Resolved.** In the multiplayer copies of the name lists and descriptors all nine SMGs link `AD_MagpulAFG_PWD` (263642D4): "Marginally reduces recoil and enables a slightly faster transition to aim down sights (ADS)." The draw claim is gone, so text and effect agree. Source: the multiplayer copy of the description (`builds\2.1.2.0\reports\mp-copies-2026-11-10`). The build that changed it is not known: captures before 10 November 2026 hold the campaign copy of these files. Not yet confirmed in game.
 
 ### 7. L110 and M123K 200 Rnd belt box
 
@@ -164,6 +184,16 @@ Resolved in 2.1.2.0 for the L115 and Interdictor: both now bind `GRM_Recoil_AMO_
 Resolved in 2.1.2.0 for the M121 A2: its Tungsten Core row went from 10 to 9, inside the table. The ELR-40 Single Shot part is still in the game; see [entry 20](ATTACHMENT_BUGS.md#20-collateral-multiplier-panel-shows-x000-past-the-top-of-the-table). The firing-range tests on both weapons stay there, because they show how damage behaves past the table.
 
 ## Description errors
+
+### 8. PW7A2 30 Rnd fast magazine
+
+- **In-game text.** "Standard magazine that improves weapon draw speed."
+- **Incorrect part.** The whole text belongs to the Regular magazine.
+- **Frosty.** `Attachment_MP7A2_MAG_Fast` selects `U_WPM_MAG_Fast_W10`, which has only
+  `WME_ReloadSpeedRegular_P10` (reload ×1.13). The draw effect is in the Regular
+  package `U_WPM_MAG_Std_W05`.
+- **In-game.** Operator confirmed the text error on 14 September.
+- **Resolved.** The game now shows "Standard magazine with mag pull for faster reloads." (operator, 10 November 2026), the fix the 2.1.2.0 patch notes list; string A4B86155 in the multiplayer copy of the description (`builds\2.1.2.0\reports\mp-copies-2026-11-10`). Captures before 10 November 2026 hold the campaign copy of this file, which still has the old text.
 
 ### 9. SGX Extended barrel
 

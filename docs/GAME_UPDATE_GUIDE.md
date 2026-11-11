@@ -346,7 +346,24 @@ Then:
    ([raw mode](../MAINTENANCE.md#raw-mode)). XML-export a subset into `builds/<build>/xml/`
    only to read an asset by eye ([Frosty tools](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/TOOLS.md#frostycmd)).
 4. **Graph bodies** of the new build, from its own IDs file (Stage 0, step 2).
-5. `record` and `verify`. Write comparison results (diffs, overlays, reviews) into the new
+5. **Multiplayer copies.** The install holds two copies of many assets under one name, a
+   campaign copy (`win32/sp/...` superbundles) and a multiplayer copy, and Frosty keeps the
+   first it meets, so the capture holds the campaign copy of the weapon name lists (`AAM_*`),
+   most attachment descriptors (`AD_*`), the main UI metadata files and about 3,700 routes in
+   all (found 10 November 2026). The multiplayer game does not read those. After the main
+   capture and every follow-up capture, from the research repo:
+
+   ```bash
+   python scripts/frosty-mp-copies.py mp-copies-<yyyy-mm-dd> --build <build>
+   ```
+
+   It reads the install directly (no Frosty process), writes the differing multiplayer copies
+   to `builds\<build>\reports\mp-copies-<date>\raw` and records them. Keep the folder name
+   shape: `frosty-check-all.py` and the update readers read `reports\mp-copies-*\raw` after
+   the main capture, the latest date last. Run it again in Stage 0 before the next update, so
+   the old build has a multiplayer baseline to diff against; 2.1.1.0 and earlier have none,
+   so their name, label and description comparisons were between campaign copies.
+6. `record` and `verify`. Write comparison results (diffs, overlays, reviews) into the new
    build's `reports\` or `capture\`, never into the sealed build.
 
 **Gate:** raw failures only for assets the catalog says were removed (any other failure is a
