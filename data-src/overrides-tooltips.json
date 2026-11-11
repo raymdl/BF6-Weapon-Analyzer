@@ -11,7 +11,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "The multiplayer name list links this weapon's SF300 record to AD_SF300, whose description 2642813E is the Flashlight wording (\"... can blind enemy soldiers, except those using thermal optics ...\"). Every in-game panel on record shows the Taclight - Hipfire with the automatic on/off text (97C1E0D4 wording): 55 of 55 weapons in the attachment audit, 23 July to 22 September 2026, this weapon among them where it has a panel. Either the game changed after September or the name-list link is not what the menu reads; the site keeps the text last seen in game until the M433 panel is read (docs/IN_GAME_CHECKS.md).",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -24,7 +24,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -37,7 +37,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -50,7 +50,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -63,7 +63,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -76,7 +76,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -89,7 +89,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -102,7 +102,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -115,7 +115,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -128,7 +128,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -141,7 +141,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -154,7 +154,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -167,7 +167,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -180,20 +180,20 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
     {
       "overrideId": "TT-0017",
       "generator": "frosty-attachment-tooltips",
-      "kind": "pending-check",
+      "kind": "observed",
       "weapon": "m433",
       "slot": "light",
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "The multiplayer name list links this weapon's SF300 record to AD_SF300, whose description 2642813E is the Flashlight wording (\"... can blind enemy soldiers, except those using thermal optics ...\"). In game the M433 Taclight - Hip reads \"Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.\" (operator screenshot, 10 Nov 2026), the 97C1E0D4 wording, as on 55 of 55 audit panels from 23 July to 22 September 2026. So the name-list link is not what the menu reads for this light. Open: which record the menu reads.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -206,7 +206,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -219,7 +219,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -232,7 +232,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -245,7 +245,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -258,7 +258,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -271,7 +271,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -284,7 +284,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -297,7 +297,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -310,7 +310,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -323,7 +323,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -336,7 +336,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     },
@@ -349,7 +349,7 @@
       "id": "hip_taclight",
       "sourceValue": "2642813E",
       "siteValue": "97C1E0D4",
-      "reason": "As TT-0003.",
+      "reason": "As TT-0003: the M433 panel was read in game on 10 Nov 2026; this weapon's panel was not read on 2.1.2.0.",
       "evidence": "reference-data/attachment-audit/attachment-screenshot-review.json (Taclight - Hipfire and Flashlight records); builds/2.1.2.0/reports/mp-copies-2026-11-10",
       "since": "2.1.2.0"
     }
