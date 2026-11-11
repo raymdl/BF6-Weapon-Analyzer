@@ -626,6 +626,9 @@
       "worldSpotMult": 1,
       "minimapSpotMult": 1,
       "weaponOverrides": {
+        "ks18k": {
+          "name": "Multi-Port Brake"
+        },
         "sv98": {
           "adsRecoilTierMod": 6,
           "hipRecoilTierMod": 6
@@ -733,12 +736,6 @@
       "recoilDurationOverride": 0.05,
       "weaponOverrides": {
         "pp19": {
-          "adsRecoilDecayMult": 1,
-          "hipRecoilDecayMult": 1,
-          "recoilDurationOverride": null
-        },
-        "sv98": {
-          "pts": 10,
           "adsRecoilDecayMult": 1,
           "hipRecoilDecayMult": 1,
           "recoilDurationOverride": null
@@ -850,12 +847,6 @@
           "adsRecoilDecayMult": 1.728,
           "hipRecoilDecayMult": 1.728,
           "recoilDecreaseTimeExponentAdd": -0.5
-        },
-        "sv98": {
-          "pts": 20,
-          "adsRecoilDecayMult": 1,
-          "hipRecoilDecayMult": 1,
-          "recoilDurationOverride": null
         },
         "elr40": {
           "hipSpreadTierMod": 0,
@@ -24485,11 +24476,11 @@
     },
     "sv98": {
       "muzzle": [
-        "flash_comp",
+        "flash_hider",
         "tp_brake",
         "thread_prot",
         "comp_brake",
-        "light_supp",
+        "std_supp",
         "hybrid_supp_l"
       ],
       "barrel": [

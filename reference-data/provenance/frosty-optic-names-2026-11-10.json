@@ -54,7 +54,7 @@
         "nameId": "0x51739e68",
         "inGameName": "Flip-Up Irons"
       },
-      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. The operator chose the Classic sights as the first on 25 Oct 2026; the names were not read in game on this weapon."
+      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. The operator chose the Classic sights as the first on 25 Oct 2026; both names were confirmed in game by the operator on 10 Nov 2026."
     },
     {
       "weapon": "m4a1",
@@ -105,7 +105,7 @@
         "nameId": "0x52142f83",
         "inGameName": "CQB Sights"
       },
-      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. The operator chose the basic aperture sight as the first on 25 Oct 2026; the names were not read in game on this weapon."
+      "evidence": "2.1.2.0 multiplayer name list: each record links the name string given (fs_us_loc). Both records cost 5 and bind U_WPM_IronSights. The game has no default sight; \"first\" is the one the site treats as the weapon's iron sights. The operator chose the basic aperture sight as the first on 25 Oct 2026; both names were confirmed in game by the operator on 10 Nov 2026."
     }
   ]
 }

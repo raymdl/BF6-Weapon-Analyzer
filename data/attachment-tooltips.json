@@ -432,9 +432,6 @@
     "FFE5AF29": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFE5AF2A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFE5AF2B": "Extended magazine with increased capacity at the cost of weapon draw speed.",
-    "screenshot:ak4d:mag:20_fast": "Standard magazine with mag pull for faster reloads.",
-    "screenshot:scw10:barrel:extended": "Long barrel that increases projectile velocity.",
-    "screenshot:sv98:muzzle:light_supp": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy.",
     "2DDAF448": "Provides a clear sight picture with magnification levels between 1x and 5x, which can be manually cycled through. Slows aim down sights (ADS) movement speed.",
     "01FBB778": "Basic optic with a clear sight picture.",
     "30301CE9": "Provides a clear sight picture with 1x and 4x magnification levels, which can be manually cycled through.",
@@ -472,7 +469,8 @@
     "CDC31BB2": "Extended magazine with increased capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
     "EC27840E": "Extended magazine with increased capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
     "FA92908A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS) and weapon draw speed.",
-    "997AEB81": "Basic close-quarters battle sights with reduced weapon sway."
+    "997AEB81": "Basic close-quarters battle sights with reduced weapon sway.",
+    "34F90D53": "Long barrel that increases projectile velocity."
   },
   "byWeapon": {
     "m433": {
@@ -903,7 +901,7 @@
         "15_rnd": "67CFDCC6",
         "15_fast": "61CB75B8",
         "20_rnd": "F8D66B75",
-        "20_fast": "screenshot:ak4d:mag:20_fast",
+        "20_fast": "BC69AC54",
         "30_rnd": "FFE5AF29"
       },
       "ergo": {
@@ -3128,7 +3126,7 @@
       },
       "barrel": {
         "basic": "49D9F464",
-        "extended": "screenshot:scw10:barrel:extended",
+        "extended": "34F90D53",
         "light": "DDBEA31A"
       },
       "laser": {
@@ -5305,9 +5303,9 @@
         "tp_brake": "AADC2F42",
         "thread_prot": "5E804CC7",
         "comp_brake": "AD3157E3",
-        "flash_comp": "50C99C0F",
-        "light_supp": "screenshot:sv98:muzzle:light_supp",
-        "hybrid_supp_l": "0A2C0CC5"
+        "hybrid_supp_l": "0A2C0CC5",
+        "flash_hider": "50C99C0F",
+        "std_supp": "65AFB64B"
       },
       "barrel": {
         "basic": "F849C9E9",

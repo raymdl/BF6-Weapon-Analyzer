@@ -9,9 +9,9 @@
   },
   "sources": {
     "optic-mapping.json": "374e6714a859527e49659e0650d58213bc7388bafad055c5f54696e9a3d9a67c",
-    "compatibility.json": "ba10e33ab15ab450618279f22fc5a54bfa396fcc25e9c53feef3d82fd217280f",
+    "compatibility.json": "d0b0e1bd74a557b25c8f16327df742c6e38ee137238f7a01849004fd9f29fea1",
     "frosty-optic-render-fov-2026-09-16.json": "f980222aca1bb9d3788efbadf1f35389bb3bc521842fb4dee5f1b4d46bf902a9",
-    "frosty-optic-names-2026-11-10.json": "a8705cd91b517ae7e0125763b68c9eaaeb4d70d4721741f0b8e368f5a03a9b60"
+    "frosty-optic-names-2026-11-10.json": "db84db68515c96bd180d954e6e65a5ee644e7bb2c420299142f400eb723e3af6"
   },
   "ironSightsChecked": [
     "185KSK",
