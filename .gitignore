@@ -42,3 +42,4 @@ sl9_recheck/
 # workbook lives below reference-data/, not at the repository root.
 /*.xlsx
 ~$*.xlsx
+reference-data/Classes/
