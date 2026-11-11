@@ -852,7 +852,9 @@ scope size with another sniper rifle in game before you add an entry.
 **Iron-sight zoom.** All iron sights zoom 1.50× (`Aim_1x50`), more than 1.00× optics.
 The operator confirmed this in game. It is consistent on all weapons, so it is not
 listed as an error. The site labels it "Iron Sights" and gives it a 1.50× magnification, which
-sets the Soldier Target zoom.
+sets the Soldier Target zoom. The M4A1, PW7A2, M16A4 and UMG-40 have two iron sights, listed under
+their in-game names (Flip-Up Irons, Carry Handle Irons, Aperture Sight, CQB Sights) with the same
+zoom and sway reduction.
 
 ## Source data inconsistencies
 

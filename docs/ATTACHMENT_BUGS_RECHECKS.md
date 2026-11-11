@@ -14,9 +14,9 @@ were read field by field. Earlier in-game measurements were not repeated. Run fo
 
 | Entry | 2.1.2.0 result |
 |---|---|
-| 1 | **Resolved** (not in the patch notes). The Slim Angled action on PSR, SV-98, L115, Mini Scout, Interdictor and ELR-40 now selects only `U_WPM_BTM_FastBOLT02_W15`, the M2010 ESR package; the Full Angled action keeps `FastBOLT01_W05`. Confirm in game that the moving-ADS penalty is gone. |
+| 1 | **Resolved** (not in the patch notes). The Slim Angled action on PSR, SV-98, L115, Mini Scout, Interdictor and ELR-40 now selects only `U_WPM_BTM_FastBOLT02_W15`, the M2010 ESR package; the Full Angled action keeps `FastBOLT01_W05`. Confirmed in game (operator, 10 Nov 2026: spread indicator; Mini Scout Mobility 60 with Low-Profile Stubby, 62 Slim Angled, 58 Full Angled). |
 | 2 | **Resolved for the M121 A2**: its three ammo selectors lost the FMJ step. **Still present on the M45A1.** |
-| 3 | **Resolved: description corrected** (multiplayer copies, 10 Nov). All nine SMGs link `AD_MagpulAFG_PWD` (263642D4), which has no draw claim; the package is unchanged. The first reading of this row used the campaign copies of the name lists (see the note under this table). Confirm in game. |
+| 3 | **Resolved: description corrected** (multiplayer copies, 10 Nov). All nine SMGs link `AD_MagpulAFG_PWD` (263642D4), which has no draw claim; the package is unchanged. The first reading of this row used the campaign copies of the name lists (see the note under this table). Confirmed in game on the SCW-10 (operator, 10 Nov 2026). |
 | 4 | Untouched; retained. |
 | 6 | `GS_PP19` changed by a shared camera-recoil addition only; still no smoothing binding for the Flash Comp package. Retained. |
 | 7 | **Resolved: description corrected.** The 200-Round Belt Box text no longer claims the moving-ADS penalty. |
