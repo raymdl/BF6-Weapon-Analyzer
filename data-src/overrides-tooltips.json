@@ -1,34 +1,5 @@
 {
   "schemaVersion": 1,
   "scope": "Reviewed deviations of the attachment tooltips, compatibility rules and sight lists from the generated source values (scripts/frosty-attachment-tooltips.py, optic-tooltips.py, frosty-attachment-compatibility.py, frosty-individual-optics.py). Each row names its generator, the entry (weapon, slot, id), the value the files give (sourceValue; null = none) and the value the site keeps (siteValue; null = none). A tooltip row's values are description keys; siteText is the text of a siteValue key the files do not supply. A generator reports each of its rows applied, STALE (the source moved), REDUNDANT (the source now equals the site) or UNUSED (no such entry); the last three fail the run. Kinds: emulated-bug, pending-check, observed, convention.",
-  "overrides": [
-    {
-      "overrideId": "TT-0001",
-      "generator": "frosty-attachment-tooltips",
-      "kind": "pending-check",
-      "weapon": "kv9",
-      "slot": "mag",
-      "id": "23_rnd",
-      "sourceValue": null,
-      "siteValue": "FFD5E558",
-      "siteText": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
-      "reason": "AD_Vector_MAG_023Ext1 still points at string FFD5E558, which the 2.1.2.0 English string table no longer holds (one of 31 ids removed in 2.1.2.0); the generator gives no tooltip. The site keeps the 2.1.1.0 text of the same id until the live panel is read.",
-      "evidence": "2.1.1.0 fs_us_loc.strings.tsv FFD5E558; datamining run 2026-11-10-update-2120-post T-strings/strings-diff.tsv row FFD5E558 removed",
-      "since": "2.1.2.0"
-    },
-    {
-      "overrideId": "TT-0002",
-      "generator": "frosty-attachment-tooltips",
-      "kind": "pending-check",
-      "weapon": "kv9",
-      "slot": "mag",
-      "id": "27_rnd",
-      "sourceValue": null,
-      "siteValue": "092A87DC",
-      "siteText": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
-      "reason": "As TT-0001: AD_Vector_MAG_027Ext2 points at string 092A87DC, absent from the 2.1.2.0 English string table; the site keeps its 2.1.1.0 text.",
-      "evidence": "2.1.1.0 fs_us_loc.strings.tsv 092A87DC; T-strings/strings-diff.tsv row 092A87DC removed",
-      "since": "2.1.2.0"
-    }
-  ]
+  "overrides": []
 }

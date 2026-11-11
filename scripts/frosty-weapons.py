@@ -727,10 +727,10 @@ def main():
                 if diff not in diffs:
                     diffs.append(diff)
         gen = record(r, site_gates)
-        # UI strings from the identity's primary record.
-        recs = ids[sid].get('uiRecords') or []
-        prim_rec = next((x for x in recs if x.get('primary')), recs[0] if recs else None)
-        rec = ui.get((prim_rec or {}).get('guid', '').lower())
+        # UI strings from the identity's primary record; when the files do not hold it (the
+        # multiplayer copy of the main file leaves out the season weapons), the first record held.
+        recs = sorted(ids[sid].get('uiRecords') or [], key=lambda x: not x.get('primary'))
+        rec = next((ui[x['guid'].lower()] for x in recs if x.get('guid', '').lower() in ui), None)
         if rec is None:
             unread[sid] += ['name', 'description']
         else:

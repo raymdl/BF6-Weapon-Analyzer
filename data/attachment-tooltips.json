@@ -16,7 +16,6 @@
     "075DEBD2": "Long barrel that increases projectile velocity.",
     "07D6E424": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil at the cost of hip-fire accuracy.",
     "0894534B": "Cut-down barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
-    "092A87DC": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "097A9198": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "0A2C0CC5": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup, improves recoil recovery, and marginally reduces overall recoil at the cost of hip-fire accuracy, weapon sway, and weapon draw speed.",
     "0A584B95": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
@@ -69,7 +68,6 @@
     "27CCDF76": "Heavy barrel that improves accuracy during sustained fire.",
     "2862AA06": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "286E1804": "Standard barrel that enables a faster transition to aim down sights (ADS).",
-    "2897A9DF": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "28A44906": "Standard 50 round drum that improves weapon draw speed.",
     "2A294A98": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "2B65A880": "Standard barrel that improves hip-fire accuracy.",
@@ -423,7 +421,6 @@
     "FA07C2E5": "Standard barrel that enables a fast transition to aim down sights (ADS).",
     "FAA9F4E9": "Extended magazine with mag pull for faster reloads. Increases capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
     "FB2B9416": "Factory extended magazine that slows weapon draw speed.",
-    "FC443C65": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "FCF1C5D3": "Lightened barrel that improves aim down sights (ADS) accuracy while moving and enables a fast transition to ADS.",
     "FD80BCB7": "Factory extended magazine with increased capacity at the cost of weapon draw speed.",
     "FDAF8DB2": "Standard barrel that enables a fast transition to aim down sights (ADS).",
@@ -431,34 +428,16 @@
     "FDF3AFE2": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
     "FEA4F7A5": "Short barrel that improves hip-fire accuracy and enables a fast transition to aim down sights (ADS), but reduces projectile velocity.",
     "FF4245A1": "Long barrel that increases projectile velocity.",
-    "FFD5E558": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFDB627D": "Heavy barrel that improves accuracy during sustained fire.",
     "FFE5AF28": "Compact magazine for greatly improved handling at the cost of capacity.",
     "FFE5AF29": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFE5AF2A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS).",
     "FFE5AF2B": "Extended magazine with increased capacity at the cost of weapon draw speed.",
     "screenshot:ak4d:mag:20_fast": "Standard magazine with mag pull for faster reloads.",
-    "screenshot:b36a4:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:brod3:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:db12:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
-    "screenshot:drsiar:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "screenshot:ef88:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:es57:ammo:subsonic": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
-    "screenshot:es57:ammo:subsonic_hp": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Slightly improves headshot damage.",
-    "screenshot:es57:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:ggh22:ammo:subsonic": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
-    "screenshot:ggh22:ammo:subsonic_hp": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Slightly improves headshot damage.",
-    "screenshot:grtbc:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
     "screenshot:grtbc:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:l110:laser:50mw_violet": "Provides minor improvement to aim down sights (ADS) accuracy while moving and is not visible to enemy soldiers. Benefit only active when laser is turned on.",
-    "screenshot:m277:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:m417a2:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:m433:light:hip_taclight": "Automatically turns on in hip-fire and off in aim down sights (ADS.) Provides minor improvement to hip-fire recovery and can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:m45a1:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:mk24:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
-    "screenshot:p18:ammo:subsonic": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
-    "screenshot:p18:ammo:subsonic_hp": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Slightly improves headshot damage.",
-    "screenshot:rpkm:mag:30_fast": "Compact magazine with mag pull for faster reloads. Improves handling at the cost of capacity.",
     "screenshot:rspr:light:ads_taclight": "Automatically turns on in aim down sights (ADS) and off in hip-fire. Can blind enemy soldiers. Effects only active when light is turned on.",
     "screenshot:scw10:barrel:extended": "Long barrel that increases projectile velocity.",
     "screenshot:sv98:muzzle:light_supp": "Fully hides in-world spotting and reduces the range where a soldier is spotted on the minimap while firing. Reduces recoil buildup and improves recoil recovery at the cost of hip-fire accuracy.",
@@ -488,7 +467,18 @@
     "2CBF5E79": "Wide magazine with increased capacity that slows movement speed while aiming down sights (ADS), and weapon draw speed.",
     "9A7B3565": "Ammunition belt that improves weapon reload speed and weapon draw speed.",
     "BA9F1A4B": "Magazine tube with extension for increased shell capacity.",
-    "E8994690": "High-capacity belt pouch with reduced ammunition that reduces weapon draw speed."
+    "E8994690": "High-capacity belt pouch with reduced ammunition that reduces weapon draw speed.",
+    "13A3DA4D": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS) and weapon draw speed.",
+    "2E7B838E": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS), weapon draw speed, and ADS speed.",
+    "6696B914": "2-round burst fire mode reduces horizontal recoil in favor of more stable vertical recoil and minimally reduces overall recoil.",
+    "720A0491": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing.",
+    "94870A10": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS), weapon draw speed, and ADS speed.",
+    "9D512553": "Low-velocity ammunition that partially hides in-world spotting and slightly reduces the range where a soldier is spotted on the minimap while firing. Slightly improves headshot damage.",
+    "B2F8E44B": "Reduces recoil buildup and improves recoil recovery. ",
+    "B9DC7186": "Modern, basic sights with reduced weapon sway.",
+    "CDC31BB2": "Extended magazine with increased capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "EC27840E": "Extended magazine with increased capacity at the cost of weapon draw speed and movement speed while aiming down sights (ADS).",
+    "FA92908A": "Extended magazine with increased capacity at the cost of movement speed while aiming down sights (ADS) and weapon draw speed."
   },
   "byWeapon": {
     "m433": {
@@ -522,9 +512,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "screenshot:m433:light:hip_taclight"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -640,9 +630,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "screenshot:b36a4:light:hip_taclight"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -761,9 +751,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -884,7 +874,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -994,9 +984,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "fold_vert": "0743B369",
@@ -1101,9 +1091,9 @@
         "combo_green": "4B03D598"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -1144,7 +1134,7 @@
       },
       "ergo": {
         "match_trigger": "14F044F9",
-        "burst_training": "68EBE1B5"
+        "burst_training": "6696B914"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -1217,7 +1207,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -1330,9 +1320,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -1682,7 +1672,7 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
         "hip_taclight": "97C1E0D4"
       },
@@ -1733,7 +1723,7 @@
         "buffer": "B127B844"
       },
       "sight": {
-        "iron": "0BB6AC0B",
+        "iron": "B9DC7186",
         "mini_flex_1_00x": "01FBB778",
         "ngfc_lpvo": "26DB7A65",
         "osa_7_1_00x": "01FBB778",
@@ -1801,9 +1791,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "screenshot:m277:light:hip_taclight"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -1912,7 +1902,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -2022,9 +2012,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "screenshot:m417a2:light:hip_taclight"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -2134,12 +2124,12 @@
         "120mw_blue": "7FEE407B",
         "combo_red": "48560A42",
         "combo_green": "4B03D598",
-        "50mw_violet": "screenshot:grtbc:laser:50mw_violet"
+        "50mw_violet": "36888514"
       },
       "light": {
         "flashlight": "F9EF13C4",
         "ads_taclight": "screenshot:grtbc:light:ads_taclight",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -2168,7 +2158,9 @@
         "30_fast": "A4B86155",
         "36_rnd": "CDC31BAE",
         "45_rnd": "9E74B01C",
-        "45_fast": "FAA9F4E9"
+        "45_fast": "FAA9F4E9",
+        "20_rnd": "BC69AC56",
+        "20_fast": "FDF3AFE2"
       },
       "ergo": {
         "mag_catch": "F3B1FD64",
@@ -2234,9 +2226,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -2344,7 +2336,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -2377,8 +2369,8 @@
         "20_fast": "FDF3AFE2",
         "30_rnd": "45D0A836",
         "30_fast": "2EE70D43",
-        "36_rnd": "53CF9BFC",
-        "40_rnd": "92CAE4F7",
+        "36_rnd": "CDC31BB2",
+        "40_rnd": "EC27840E",
         "40_fast": "5FDA6AA4"
       },
       "ergo": {
@@ -2455,9 +2447,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -2565,9 +2557,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -2666,7 +2658,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -2680,7 +2672,7 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281",
+        "slim_angled_smg": "263642D4",
         "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
@@ -2766,7 +2758,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -2794,14 +2786,14 @@
       "mag": {
         "20_rnd": "BC69AC56",
         "30_rnd": "45D0A836",
-        "30_fast": "45D0A836",
+        "30_fast": "A4B86155",
         "40_rnd": "EC27840A"
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
       },
       "sight": {
-        "iron": "0BB6AC0B",
+        "iron": "9725C2E0",
         "mars_f_lpvo": "2DDAF448",
         "mini_flex_1_00x": "01FBB778",
         "osa_7_1_00x": "01FBB778",
@@ -2866,7 +2858,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -2880,7 +2872,7 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281",
+        "slim_angled_smg": "263642D4",
         "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
@@ -2901,7 +2893,7 @@
       },
       "ergo": {
         "buffer": "B127B844",
-        "burst_training": "68EBE1B5"
+        "burst_training": "6696B914"
       },
       "sight": {
         "iron": "9725C2E0",
@@ -2970,9 +2962,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -3052,9 +3044,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -3068,7 +3060,7 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281",
+        "slim_angled_smg": "263642D4",
         "actuated_module": "6FC0BDFC",
         "rubberized_vert": "E4BDD91B"
       },
@@ -3083,11 +3075,11 @@
       "mag": {
         "17_rnd": "BC304B1B",
         "17_fast": "72894748",
-        "23_rnd": "FFD5E558",
-        "27_rnd": "092A87DC"
+        "23_rnd": "FA92908A",
+        "27_rnd": "2E7B838E"
       },
       "ergo": {
-        "burst_training": "68EBE1B5"
+        "burst_training": "6696B914"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -3150,9 +3142,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "cmpct_handstop": "1CA5A583",
@@ -3166,7 +3158,7 @@
         "canted_stubby": "94EBC12C",
         "stipp_stubby": "1FCFFC3D",
         "lp_stubby": "0C11D11E",
-        "slim_angled_smg": "3F37F281",
+        "slim_angled_smg": "263642D4",
         "rubberized_vert": "E4BDD91B"
       },
       "ammo": {
@@ -3180,8 +3172,8 @@
       "mag": {
         "15_rnd": "A845352C",
         "15_fast": "61CB75B9",
-        "20_rnd": "13A3DA48",
-        "25_rnd": "0480369A"
+        "20_rnd": "13A3DA4D",
+        "25_rnd": "94870A10"
       },
       "ergo": {
         "mag_catch": "F3B1FD64"
@@ -3252,9 +3244,9 @@
         "combo_green": "4B03D598"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "factory_angled_sl9": "419633DF",
@@ -3547,12 +3539,12 @@
         "50mw_green": "ED4C81A4",
         "50mw_blue": "7D9917DA",
         "120mw_blue": "7FEE407B",
-        "50mw_violet": "screenshot:l110:laser:50mw_violet"
+        "50mw_violet": "36888514"
       },
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -3653,12 +3645,12 @@
         "50mw_green": "ED4C81A4",
         "50mw_blue": "7D9917DA",
         "120mw_blue": "7FEE407B",
-        "50mw_violet": "screenshot:drsiar:laser:50mw_violet"
+        "50mw_violet": "36888514"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -3775,7 +3767,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -3882,7 +3874,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -3922,7 +3914,7 @@
         "40_fast": "5B27BF58",
         "60_rnd": "C4AB2DCC",
         "75_rnd": "498D6DB6",
-        "30_fast": "screenshot:rpkm:mag:30_fast"
+        "30_fast": "6D0AA2D3"
       },
       "ergo": {
         "mag_flare": "ECC670D6",
@@ -3997,7 +3989,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -4097,9 +4089,9 @@
         "120mw_blue": "7FEE407B"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -4208,9 +4200,9 @@
         "combo_green": "4B03D598"
       },
       "light": {
-        "ads_taclight": "7944DEA3",
+        "ads_taclight": "BC1F219E",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "2642813E"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -4320,7 +4312,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -4532,7 +4524,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -4652,7 +4644,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -4772,7 +4764,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "factory_angled_lmr27": "745CAFF1",
@@ -4890,7 +4882,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -5004,7 +4996,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -5240,7 +5232,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "lp_stubby_sr": "8E4BF510",
@@ -5267,7 +5259,7 @@
         "rail_cover": "D520814B"
       },
       "sight": {
-        "iron": "0BB6AC0B",
+        "iron": "80E096AF",
         "dvo_lpvo": "2B85CBA7",
         "mc_co_lpvo": "2930A306",
         "mini_flex_1_00x": "01FBB778",
@@ -5337,7 +5329,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "lp_stubby_sr": "8E4BF510",
@@ -5361,7 +5353,7 @@
         "ads_bolt": "41AE0530"
       },
       "sight": {
-        "iron": "0BB6AC0B",
+        "iron": "80E096AF",
         "dvo_lpvo": "2B85CBA7",
         "mars_f_lpvo": "2DDAF448",
         "mc_co_lpvo": "2930A306",
@@ -5434,7 +5426,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "lp_stubby_sr": "8E4BF510",
@@ -5461,7 +5453,7 @@
         "rail_cover": "D520814B"
       },
       "sight": {
-        "iron": "0BB6AC0B",
+        "iron": "80E096AF",
         "dvo_lpvo": "2B85CBA7",
         "mc_co_lpvo": "2930A306",
         "mini_flex_1_00x": "01FBB778",
@@ -5537,7 +5529,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "2642813E",
+        "hip_taclight": "97C1E0D4",
         "range_finder": "E20CD908"
       },
       "grip": {
@@ -5563,7 +5555,7 @@
         "20_fast": "BC69AC57"
       },
       "sight": {
-        "iron": "0BB6AC0B",
+        "iron": "80E096AF",
         "dvo_lpvo": "2B85CBA7",
         "mars_f_lpvo": "2DDAF448",
         "mc_co_lpvo": "2930A306",
@@ -5638,7 +5630,7 @@
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
         "range_finder": "E20CD908",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "lp_stubby_sr": "8E4BF510",
@@ -5821,7 +5813,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -5908,7 +5900,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -6000,7 +5992,7 @@
       "light": {
         "ads_taclight": "7944DEA3",
         "flashlight": "F9EF13C4",
-        "hip_taclight": "FC443C65"
+        "hip_taclight": "97C1E0D4"
       },
       "grip": {
         "slim_handstop": "1EFACE24",
@@ -6082,7 +6074,7 @@
         "50mw_green": "ED4C81A4",
         "50mw_blue": "7D9917DA",
         "120mw_blue": "7FEE407B",
-        "50mw_violet": "screenshot:db12:laser:50mw_violet"
+        "50mw_violet": "36888514"
       },
       "light": {
         "flashlight": "F9EF13C4",
@@ -6170,15 +6162,15 @@
       },
       "light": {
         "flashlight": "2642813E",
-        "ads_taclight": "2897A9DF"
+        "ads_taclight": "7944DEA3"
       },
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
-        "subsonic": "screenshot:p18:ammo:subsonic",
-        "subsonic_hp": "screenshot:p18:ammo:subsonic_hp"
+        "subsonic": "720A0491",
+        "subsonic_hp": "9D512553"
       },
       "mag": {
         "17_rnd": "BC304B1B",
@@ -6220,15 +6212,15 @@
       },
       "light": {
         "flashlight": "2642813E",
-        "ads_taclight": "screenshot:es57:light:ads_taclight"
+        "ads_taclight": "7944DEA3"
       },
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
-        "subsonic": "screenshot:es57:ammo:subsonic",
-        "subsonic_hp": "screenshot:es57:ammo:subsonic_hp",
+        "subsonic": "720A0491",
+        "subsonic_hp": "9D512553",
         "synthetic": "C65607FA"
       },
       "mag": {
@@ -6269,7 +6261,7 @@
       },
       "light": {
         "flashlight": "2642813E",
-        "ads_taclight": "screenshot:m45a1:light:ads_taclight"
+        "ads_taclight": "7944DEA3"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -6313,7 +6305,7 @@
       "ergo": {
         "fast_deploy": "D520814B",
         "fast_deploy_10": "377A95E9",
-        "match_trigger": "14F044F9"
+        "match_trigger": "B2F8E44B"
       },
       "sight": {
         "iron": "0BB6AC0B",
@@ -6368,15 +6360,15 @@
       },
       "light": {
         "flashlight": "2642813E",
-        "ads_taclight": "2897A9DF"
+        "ads_taclight": "7944DEA3"
       },
       "ammo": {
         "standard": "B6CDE708",
         "penetration": "78D58F2D",
         "hollow_pt": "F4F0FE8D",
         "frangible": "2BA8E458",
-        "subsonic": "screenshot:ggh22:ammo:subsonic",
-        "subsonic_hp": "screenshot:ggh22:ammo:subsonic_hp",
+        "subsonic": "720A0491",
+        "subsonic_hp": "9D512553",
         "synthetic": "C65607FA"
       },
       "mag": {
@@ -6411,7 +6403,7 @@
       },
       "light": {
         "flashlight": "2642813E",
-        "ads_taclight": "2897A9DF"
+        "ads_taclight": "7944DEA3"
       },
       "ammo": {
         "standard": "B6CDE708",
@@ -6480,7 +6472,7 @@
       },
       "light": {
         "flashlight": "2642813E",
-        "ads_taclight": "2897A9DF"
+        "ads_taclight": "7944DEA3"
       },
       "ammo": {
         "standard": "B6CDE708",

@@ -172,7 +172,8 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
             optic_id = re.sub(r'_+', '_', re.sub(r'[^a-z0-9]', '_', name.lower())).strip('_')
             entry = optics.setdefault(optic_id, dict(id=optic_id, inGameName=name, category=cat, label=label,
                 magnification=mag, magnificationRange=span, nameIds=name_rows[name]['nameIds'],
-                frostyRecordNames=name_rows[name]['frostyRecordNames']))
+                frostyRecordNames=name_rows[name]['frostyRecordNames'],
+                **{k: name_rows[name][k] for k in ('displayName',) if k in name_rows[name]}))
             if (entry['category'], entry['label']) != (cat, label):
                 raise ValueError(f'{name}: inconsistent category or label')
             listed = per_weapon.setdefault(weapon, {})
@@ -201,7 +202,7 @@ report's optic lists differ from the committed ones.""", formatter_class=argpars
     for optic_id in known + new:
         optic = optics[optic_id]
         legacy = sights[optic['category']]
-        name = optic['inGameName']
+        name = optic.get('displayName') or optic['inGameName']    # displayName: the shown name when it changed after the id was set
         if optic['magnificationRange'] and not re.search(r'\d+(?:\.\d+)?x$', name):
             low, high = (f'{v:g}' for v in optic['magnificationRange'])
             name = f'{name} {low}-{high}x'

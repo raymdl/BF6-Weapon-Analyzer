@@ -267,32 +267,6 @@
       "alsoIn": []
     },
     {
-      "overrideId": "WP-0009",
-      "generator": "frosty-weapons",
-      "kind": "observed",
-      "weapon": "m2010esr",
-      "field": "description",
-      "sourceValue": "<string 2DB86D4C not in the strings table>",
-      "siteValue": "This precision rifle is effective at extended ranges but has a relatively low base magazine capacity. Best used between 75m-100m.",
-      "reason": "The primary UIWeaponAbilityMetaData record's description string 2DB86D4C is in neither build's fs_us_loc table, so the checker cannot read the text. Operator, weapon card in game, 10 Nov 2026 (2.1.2.0): the card shows exactly the site text. Which table holds the string is not known.",
-      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
-      "since": "2.1.1.0",
-      "alsoIn": []
-    },
-    {
-      "overrideId": "WP-0010",
-      "generator": "frosty-weapons",
-      "kind": "observed",
-      "weapon": "sv98",
-      "field": "description",
-      "sourceValue": "<string E8EA1B59 not in the strings table>",
-      "siteValue": "Firing the legacy 7.62x54mmR, this balanced bolt-action rifle is most effective between 54m-75m.",
-      "reason": "The primary UIWeaponAbilityMetaData record's description string E8EA1B59 is in neither build's fs_us_loc table, so the checker cannot read the text. Operator, weapon card in game, 10 Nov 2026 (2.1.2.0): the card shows exactly the site text. Which table holds the string is not known.",
-      "evidence": "docs/KNOWN_SITE_DIFFERENCES.md \"Missing description strings\"; RUN/S9/A/summary.txt; fs_us_loc.strings.tsv of 2.1.1.0 and 2.1.2.0",
-      "since": "2.1.1.0",
-      "alsoIn": []
-    },
-    {
       "overrideId": "WP-0013",
       "generator": "frosty-weapons",
       "kind": "convention",

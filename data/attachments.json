@@ -400,7 +400,7 @@
     },
     {
       "id": "st_prism_5_00x",
-      "name": "ST Prism 5.00x",
+      "name": "ST Prisim 5.00x",
       "category": "std_optic",
       "pts": 10,
       "magnification": 5.0,
@@ -36267,28 +36267,6 @@
         "Collateral Mult"
       ],
       "note": "Also gets FMJ's penetration bonus, so collateral damage is higher."
-    },
-    {
-      "ref": "3",
-      "slot": "grip",
-      "attachments": [
-        "slim_angled_smg"
-      ],
-      "weapons": [
-        "sgx",
-        "pw5a3",
-        "pw7a2",
-        "umg40",
-        "kv9",
-        "scw10",
-        "cz3a1",
-        "pp19",
-        "rspr"
-      ],
-      "metrics": [
-        "Deploy Speed"
-      ],
-      "note": "The promised faster draw isn't applied."
     },
     {
       "ref": "4",

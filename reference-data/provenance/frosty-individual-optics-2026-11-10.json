@@ -8,10 +8,10 @@
     "iron": "No iron-sight part overrides the aim; every checked weapon uses Aim_1x50 (1.50x). The report covers the 64 pre-2.1.1.0 blueprints; MK-24, ELR-40, Z-84M and RSPR were not checked and are assumed to match."
   },
   "sources": {
-    "optic-mapping.json": "ea7973e640776754954bcc6fda01566abb37e6a21c37e4a32abaaaec9ddbeb18",
-    "compatibility.json": "570b6b261063544c471f8048971430e0a776fc3814ccd2372d8c5549b3ba5d2b",
+    "optic-mapping.json": "823413c2a7259ddaad5717c235d7198d1a58bc0eee6041be0bfba48626982037",
+    "compatibility.json": "68734abab165908ba1985101baa379b1b1897fab63f4ccd3a01b6a81391f9628",
     "frosty-optic-render-fov-2026-09-16.json": "f980222aca1bb9d3788efbadf1f35389bb3bc521842fb4dee5f1b4d46bf902a9",
-    "frosty-optic-names-2026-11-10.json": "8c6c9f42fc49c205e465458e65d0dd499edb6a412f9304d619877af76b6baf5a"
+    "frosty-optic-names-2026-11-10.json": "f302c8cb34c38771fa6289a7e8452c57ded2907a5125cd27c5752d79940e7f5e"
   },
   "ironSightsChecked": [
     "185KSK",
@@ -581,11 +581,12 @@
       "magnification": 5.0,
       "magnificationRange": null,
       "nameIds": [
-        "0x149aa226"
+        "0x1b975e23"
       ],
       "frostyRecordNames": [
         "Steiner T536"
-      ]
+      ],
+      "displayName": "ST Prisim 5.00x"
     },
     {
       "id": "s_vps_6_00x",
@@ -718,12 +719,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -743,7 +744,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -798,7 +799,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -813,12 +814,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/AK205/Attachment_AK205_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -880,12 +881,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -905,7 +906,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -960,7 +961,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -975,12 +976,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G3A4/Attachment_G3A4_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -1042,12 +1043,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -1067,7 +1068,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -1122,7 +1123,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -1137,12 +1138,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/G36/Attachment_G36_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -1488,7 +1489,7 @@
       {
         "id": "mars_f_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_MarchFFPShorty.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mini_flex_1_00x",
@@ -1508,12 +1509,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -1533,7 +1534,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -1543,7 +1544,7 @@
       {
         "id": "grim_1_50x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_TrijiconREAPIR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "rox_1_50x",
@@ -1583,12 +1584,12 @@
       {
         "id": "bf_2m_2_50x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_COD2M.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -1598,17 +1599,17 @@
       {
         "id": "pas_35_3_00x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_ANPAS35.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -1618,22 +1619,22 @@
       {
         "id": "pvq_31_4_00x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_TrijiconRCO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "lds_4_50x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_ELCANLDS.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sf_g2_5_00x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_Spitfire.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "st_prism_5_00x",
         "source": "Common/Hardware/Weapons/Shotgun/DP12/Attachment_DP12_SCP_SteinerT536.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       }
     ],
     "drsiar": [
@@ -1670,12 +1671,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -1695,7 +1696,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -1750,7 +1751,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -1765,12 +1766,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/M27IAR/Attachment_M27IAR_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -2255,12 +2256,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -2280,7 +2281,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -2335,7 +2336,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -2350,12 +2351,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/MSBSGROTB/Attachment_MSBSGROTB_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -2821,12 +2822,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/6P67/Attachment_6P67_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/6P67/Attachment_6P67_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -2846,7 +2847,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/6P67/Attachment_6P67_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -2901,7 +2902,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/6P67/Attachment_6P67_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -2916,12 +2917,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/6P67/Attachment_6P67_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/6P67/Attachment_6P67_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -2973,12 +2974,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -2998,7 +2999,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -3053,7 +3054,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -3068,12 +3069,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Shotgun/185KSK/Attachment_185KSK_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -3135,12 +3136,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -3160,7 +3161,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -3215,7 +3216,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -3230,12 +3231,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/Ultimax/Attachment_Ultimax_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -3287,12 +3288,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -3312,7 +3313,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -3367,7 +3368,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -3382,12 +3383,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/Vector/Attachment_Vector_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -3449,12 +3450,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -3474,7 +3475,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -3529,7 +3530,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -3544,12 +3545,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/Minimi/Attachment_Minimi_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -3813,12 +3814,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -3838,7 +3839,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -3893,7 +3894,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -3908,12 +3909,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/L85A3/Attachment_L85A3_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -3975,12 +3976,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -4000,7 +4001,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -4060,7 +4061,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -4080,12 +4081,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/DMR/ARADMR/Attachment_ARADMR_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -4167,12 +4168,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -4192,7 +4193,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -4247,7 +4248,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -4262,12 +4263,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Shotgun/M1014/Attachment_M1014_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -4491,12 +4492,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -4516,7 +4517,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -4571,7 +4572,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -4586,12 +4587,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/MG4K/Attachment_MG4K_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -4815,12 +4816,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -4840,7 +4841,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -4900,7 +4901,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -4920,12 +4921,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/BoltAction/M2010ESR/Attachment_M2010ESR_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -5017,12 +5018,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -5042,7 +5043,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -5097,7 +5098,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -5112,12 +5113,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/M240L/Attachment_M240L_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -5179,12 +5180,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -5204,7 +5205,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -5259,7 +5260,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -5274,12 +5275,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/M250/Attachment_M250_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -5336,12 +5337,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -5361,7 +5362,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -5416,7 +5417,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -5431,12 +5432,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/XM7/Attachment_XM7_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -5473,7 +5474,7 @@
       {
         "id": "osa_7_1_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_OPK7.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "r_mr_1_00x",
@@ -5483,7 +5484,7 @@
       {
         "id": "2pro_1_25x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_MeproM22.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "cq_rds_1_25x",
@@ -5498,7 +5499,7 @@
       {
         "id": "1p87_1_50x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_PG350.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "rox_1_50x",
@@ -5508,12 +5509,12 @@
       {
         "id": "su_123_1_50x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_XPS3.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "3vzr_1_75x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_VZOR3.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "a_p2_1_75x",
@@ -5523,67 +5524,67 @@
       {
         "id": "ro_m_1_75x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_TrijiconMRO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "cco_2_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_CompM5b.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "r4t_2_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_Romeo4T.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "bf_2m_2_50x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_COD2M.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_Bravo3.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_TrijiconSDO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "pvq_31_4_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_TrijiconRCO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "lds_4_50x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_ELCANLDS.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sf_g2_5_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_Spitfire.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "st_prism_5_00x",
         "source": "Common/Hardware/Weapons/Secondary/TRR8/Attachment_TRR8_SCP_SteinerT536.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       }
     ],
     "m39emr": [
@@ -5620,12 +5621,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -5645,7 +5646,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -5705,7 +5706,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -5725,12 +5726,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/DMR/M39EMR/Attachment_M39EMR_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -5817,12 +5818,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -5842,7 +5843,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -5897,7 +5898,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -5912,12 +5913,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/HK417A2/Attachment_HK417A2_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -5954,7 +5955,7 @@
       {
         "id": "mars_f_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_MarchFFPShorty.xml",
-        "joinMethod": "aam-record-name"
+        "joinMethod": "attachment-file-token"
       },
       {
         "id": "mc_co_lpvo",
@@ -5979,12 +5980,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -6004,7 +6005,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -6059,7 +6060,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -6074,12 +6075,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/HK433/Attachment_HK433_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -6196,7 +6197,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -6211,12 +6212,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -6246,7 +6247,7 @@
       {
         "id": "nfx_8_00x",
         "source": "Common/Hardware/Weapons/Secondary/RagingHunter/Attachment_RagingHunter_SCP_NX8-4.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       }
     ],
     "m45a1": [
@@ -6310,12 +6311,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -6335,7 +6336,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -6390,7 +6391,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -6405,12 +6406,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/M4A1/Attachment_M4A1_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -6472,12 +6473,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -6497,7 +6498,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -6552,7 +6553,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -6567,12 +6568,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/M60E6/Attachment_M60E6_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -6624,12 +6625,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -6699,7 +6700,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -6714,12 +6715,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Shotgun/590A1/Attachment_590A1_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -6781,12 +6782,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -6806,7 +6807,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -6866,7 +6867,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -6886,12 +6887,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/BoltAction/MiniFix/Attachment_MiniFix_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -7302,12 +7303,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -7327,7 +7328,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -7382,7 +7383,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -7397,12 +7398,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/ACE32/Attachment_ACE32_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -7648,12 +7649,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -7673,7 +7674,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -7733,7 +7734,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -7753,12 +7754,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/BoltAction/MRAD/Attachment_MRAD_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -7840,12 +7841,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -7865,7 +7866,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -7920,7 +7921,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -7935,12 +7936,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/MP5MLI/Attachment_MP5MLI_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -7992,12 +7993,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -8017,7 +8018,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -8072,7 +8073,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -8087,12 +8088,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/MP7A2/Attachment_MP7A2_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -8149,12 +8150,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -8174,7 +8175,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -8229,7 +8230,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -8244,12 +8245,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/QBZ192/Attachment_QBZ192_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -8478,12 +8479,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -8503,7 +8504,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -8558,7 +8559,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -8573,12 +8574,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/MG/RPKM/Attachment_RPKM_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -8782,12 +8783,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -8807,7 +8808,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -8862,7 +8863,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -8877,12 +8878,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/APC10/Attachment_APC10_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -8939,12 +8940,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -8964,7 +8965,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -9019,7 +9020,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -9034,12 +9035,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/SIG553R/Attachment_SIG553R_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -9091,12 +9092,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -9116,7 +9117,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -9171,7 +9172,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -9186,12 +9187,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/MPX/Attachment_MPX_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -9243,12 +9244,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -9268,7 +9269,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -9323,7 +9324,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -9338,12 +9339,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/APDW/Attachment_APDW_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -9400,12 +9401,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -9425,7 +9426,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -9480,7 +9481,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -9495,12 +9496,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/Carbine/SCARSC/Attachment_SCARSC_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -9562,12 +9563,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -9587,7 +9588,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -9642,7 +9643,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -9657,12 +9658,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/SCARL/Attachment_SCARL_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -9724,12 +9725,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -9749,7 +9750,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -9809,7 +9810,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -9829,12 +9830,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/BoltAction/SV98M/Attachment_SV98M_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -9926,12 +9927,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -9951,7 +9952,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -10011,7 +10012,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -10031,12 +10032,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/DMR/SVDM/Attachment_SVDM_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -10128,12 +10129,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -10153,7 +10154,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -10213,7 +10214,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p88_variable",
@@ -10233,12 +10234,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/DMR/SVCh/Attachment_SVCh_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -10330,12 +10331,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/TAVOR7/Attachment_Tavor7_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/TAVOR7/Attachment_Tavor7_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -10355,7 +10356,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/AssaultRifle/TAVOR7/Attachment_Tavor7_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -10410,7 +10411,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/TAVOR7/Attachment_Tavor7_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -10425,12 +10426,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/AssaultRifle/TAVOR7/Attachment_Tavor7_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/AssaultRifle/TAVOR7/Attachment_Tavor7_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -10482,12 +10483,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -10507,7 +10508,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -10562,7 +10563,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -10577,12 +10578,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/UMP40/Attachment_UMP40_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",
@@ -10634,12 +10635,12 @@
       {
         "id": "su_230_lpvo",
         "source": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_ELCANDR.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "th_rds_1_00x",
         "source": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_HolosunDRSTH.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "2pro_1_25x",
@@ -10659,7 +10660,7 @@
       {
         "id": "1p86_lpvo",
         "source": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_1P86.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "1p87_1_50x",
@@ -10714,7 +10715,7 @@
       {
         "id": "pa_sl_2_50x",
         "source": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_PAC25.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "baker_3_00x",
@@ -10729,12 +10730,12 @@
       {
         "id": "qmk_3_00x",
         "source": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_QMK171A.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "mgo_3_50x",
         "source": "Common/Hardware/Weapons/SMG/P90/Attachment_P90_SCP_M145MGO.xml",
-        "joinMethod": "attachment-file-token"
+        "joinMethod": "aam-record-name"
       },
       {
         "id": "sdo_3_50x",

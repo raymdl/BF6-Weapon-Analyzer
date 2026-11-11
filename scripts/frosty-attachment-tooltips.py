@@ -116,7 +116,7 @@ def source_graph(export, include_optics=False, identities=None):
 
 IDENTITY_MAPPING = REPO / "reference-data/provenance/frosty-point-cost-mapping-2026-11-10.json"
 WEAPON_MAPPING = REPO / "reference-data/provenance/frosty-handling-mapping-2026-11-10.json"
-FOLLOWUP = REPO / "reference-data/provenance/frosty-attachment-identity-followup-2026-10-25.json"
+FOLLOWUP = REPO / "reference-data/provenance/frosty-attachment-identity-followup-2026-11-10.json"
 DESCRIPTOR_FOLDERS = ("Common/UI/Static/Metadata/Attachments", "Common/Hardware/Weapons")
 
 
@@ -656,7 +656,11 @@ def iron_sight_tooltips(optics, by_weapon):
     defaults = {
         "m16a4": "common/ui/static/metadata/attachments/m16a3/ad_m16a3_ironsights",
         "umg40": "common/ui/static/metadata/attachments/ump40/ad_ump40_sight",
+        # The multiplayer name lists (10 November 2026) give these two a second variant with other text.
+        "m4a1": "common/ui/static/metadata/attachments/m4a1/ad_m4a1_sight",
+        "pw7a2": "common/ui/static/metadata/attachments/mp7a2/ad_mp7a2_sight",
     }
+    unconfirmed = {"m4a1", "pw7a2"}
     descriptions = {}
     for category in optics["categories"]:
         if category["attachment"] != "iron":
@@ -680,7 +684,10 @@ def iron_sight_tooltips(optics, by_weapon):
         category["tooltipStatus"] = "source-linked"
         if category["weapon"] in defaults:
             category["tooltipDefaultDescriptor"] = defaults[category["weapon"]]
-            category["tooltipDefaultReason"] = "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. Other category members are retained as evidence only."
+            category["tooltipDefaultReason"] = (
+                "The weapon's plain iron-sight record (Attachment_*_SCP_IronSights), by the same rule as the user-selected M16A4 and UMG-40 defaults; not yet confirmed in game. Other category members are retained as evidence only."
+                if category["weapon"] in unconfirmed else
+                "User selected the default iron sights: Classic on M16A4; basic aperture on UMG-40. Other category members are retained as evidence only.")
     return descriptions
 
 

@@ -190,7 +190,10 @@ def main():
         version(build_doc["build"])
         refuse_backwards(build_doc["build"])
     cap = args.build / "capture"
-    raws = [cap / "collection" / "raw", cap / "collection-fresh-cache" / "raw", *args.raw]
+    # reports/mp-copies-*: the multiplayer copies of assets whose capture holds the campaign copy
+    # (frosty-mp-copies.py in the research repository); a later folder replaces an earlier one.
+    raws = [cap / "collection" / "raw", cap / "collection-fresh-cache" / "raw",
+            *sorted((args.build / "reports").glob("mp-copies-*/raw")), *args.raw]
     for needed in [*raws, cap / "collection" / "asset-catalog.json"]:
         if not needed.exists():
             sys.exit(f"missing: {needed}")
