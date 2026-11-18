@@ -54,7 +54,10 @@ available. The selected control also exposes the text as an accessible descripti
 Most text comes from Frosty UI records; 26 choices use approved game captures.
 Iron Sights also has a description on each weapon. M16A4 uses its Classic sights;
 UMG-40 uses its basic aperture sights. Optics are listed by their in-game names,
-with their magnification, and have no description yet. Text appears without an introductory prefix and
+with their magnification, and have no description yet. Hovering a sight in the Sight
+menu also shows a drawing of it: the view from behind the sight, with its reticle,
+drawn from the game's models. Optics of similar magnification share one scale, so
+their sizes can be compared; a few reticle sizes are estimates. Text appears without an introductory prefix and
 does not define the simulated effects. Some choices still have no description.
 
 Each attachment row has a padlock; the one in the Attachments header locks every

@@ -43,11 +43,14 @@ is current on 25 October 2026; [`ship-surface.json`](../../ship-surface.json)
 | `ballistics.json` | Explicit weapon/ammo projectile selection and gravity/drag. |
 | `hit_zones.json` | Explicit base/ammo head and limb multipliers. |
 | `attachment-tooltips.json` | Text dictionary and selection-to-description lookup. |
+| `sight-previews.json` | Which sights have a drawing under `assets/sights/`, and the size to show it at. Optional. |
 | `recoil_decay.json` | Legacy maps retained in startup/context; current per-aim recoil groups supply active recovery inputs. |
 | `weapon_attributes.json` | Precision lookup tables, shotgun dispersion and Mobility inputs for the [Weapon Attributes](LOADOUTS.md#weapon-attributes) model. |
 
 Every request must load and parse for startup to complete, including the legacy
-map file. Required numeric validation is a separate mechanism:
+map file. The one exception is `sight-previews.json`, the list of sight drawings
+shown in the Sight menu tooltip: without it the page starts and the tooltips have no
+drawing. Required numeric validation is a separate mechanism:
 [`sim/required-data.js`](../../sim/required-data.js) throws by default in scripts,
 while the browser installs [`ui/data-errors.js`](../../ui/data-errors.js) to report
 deduplicated errors and keep affected numeric results unavailable.

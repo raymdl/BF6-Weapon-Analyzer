@@ -152,17 +152,33 @@ is gone.
    sources (`Field_aa4fa860.$resourceRef`; L4019, L4057). A re-baked body gets a new ID, so
    derive the file again from the new build's decoded sources before capturing its bodies.
    Without the bodies a graph change shows only as a changed source record.
-3. **Toolchain and strings.** Keep `Profiles/BF6SDK.dll`, `FrostySdk.dll`,
+3. **Sight files.** Optic lens blocks, reticle textures and sight meshes are resources as
+   well, and no capture holds them. The open build needs one sight-files folder before the
+   game updates (from the research repo; two Frosty runs under the capture lock, about a minute):
+
+   ```bash
+   python -I scripts/frosty-sight-diff.py export sight-files-<date> --build <build> --meshes "<datamining>/builds/<build>/reports/<newest sight-files folder>/mesh-list.txt"
+   ```
+
+   It records the SHA-256 of every lens-block file, reticle texture and listed sight mesh,
+   and the decoded lens-block values (reticle texture, size, colour, tint). No mesh is
+   exported: a mesh is checked by its small header resource (bounding box, buffer sizes,
+   section records, vertex-chunk ids), read in the same run as the lens blocks. Meshes are
+   exported only for a sight that is drawn or redrawn (Stage 9). 2.1.2.0 has
+   `reports\sight-files-2026-11-18`. Run it again when a hotfix client was added or sights
+   were drawn since (add their meshes to the list first); otherwise the existing folder is
+   the baseline.
+4. **Toolchain and strings.** Keep `Profiles/BF6SDK.dll`, `FrostySdk.dll`,
    **`SharedTypeDescriptors.ebx`**, `FrostyCmd.exe` and the collector script in the open
    build's `capture\toolchain\`: Frosty rewrites the runtime descriptor file when it first
    loads a new game version, so after an update the old one can no longer be copied.
    `BUILD.json` lists the descriptor file for each client. Export strings (`fs_us_loc`).
    Record the executable hash and version, the Frosty archive Head and the SDK version in
    `BUILD.json`.
-4. **Keep the lists.** Reusing the route list and the IDs file on the next build is what makes
+5. **Keep the lists.** Reusing the route list and the IDs file on the next build is what makes
    raw hashes directly comparable. When a hotfix client is added to the open build, capture
    the watched routes again on that client; otherwise the next comparison mixes two updates.
-5. **Checklist.** Write `docs/updates/<version>-checklist.md` in the research repo and add it
+6. **Checklist.** Write `docs/updates/<version>-checklist.md` in the research repo and add it
    to that folder's README index:
    - identity and baseline paths, and decisions made for this update;
    - a run-order table with a tick column and one row for every stage, 0 to 9 (Stage 9 one
@@ -179,12 +195,12 @@ is gone.
    **site** (applied, not applicable, or not applied with the reason). "Confirmed" in the
    result column does not mean the site has the change; every applied row gets checks in
    `<version>-site-checks.json` (Stage 9, step 7). Working files stay in the run folders.
-6. **Known site differences.** Read [KNOWN_SITE_DIFFERENCES.md](KNOWN_SITE_DIFFERENCES.md): site values already
+7. **Known site differences.** Read [KNOWN_SITE_DIFFERENCES.md](KNOWN_SITE_DIFFERENCES.md): site values already
    known to differ from the files are not changes in this update; list any the notes touch so
    the update can close them.
-7. `record` and `verify` the open build.
+8. `record` and `verify` the open build.
 
-**Gate:** baseline and graph bodies captured; failures only routes absent from the catalog
+**Gate:** baseline, graph bodies and sight files captured; failures only routes absent from the catalog
 (compare with the last capture's); a sample of raw files re-hashed against
 `raw-status.jsonl`; `verify` clean.
 
@@ -368,7 +384,10 @@ Then:
    `AD_SF300_RightRail`), and the capture's catalog can name the campaign one for that GUID.
    `frosty-check-all.py` reads `reports\mp-*\asset-catalog.json` before the capture's
    catalogs, so imports resolve to the multiplayer asset.
-6. `record` and `verify`. Write comparison results (diffs, overlays, reviews) into the new
+6. **Sight files** of the new build (Stage 0, step 3), with the previous build's
+   `mesh-list.txt`. A listed mesh the new build no longer has is printed as "not dumped":
+   that is a renamed or removed sight model, not a failure.
+7. `record` and `verify`. Write comparison results (diffs, overlays, reviews) into the new
    build's `reports\` or `capture\`, never into the sealed build.
 
 **Gate:** raw failures only for assets the catalog says were removed (any other failure is a
@@ -545,6 +564,28 @@ python scripts/frosty-registry-diff.py <baseline collection> <new collection> --
   stay: the DRS-IAR Synthetic Tip in 2.1.2.0 was first reported "not done" from those alone.
   **Removal control:** on the 2.1.1.0 to 2.1.2.0 pair it must list `M27IAR AMO_BallisticTip`
   as removed.
+- The **sight list** is a fourth list, from `frosty-sight-diff.py`. It covers what the other
+  three cannot see: the weapon list leaves out `MD_*` files, and lens blocks, reticle
+  textures and sight meshes are resources.
+
+  ```bash
+  python -I scripts/frosty-sight-diff.py compare "<baseline build>\reports\sight-files-<date>" "<new build>\reports\sight-files-<date>" --old-index <run>\raw-index-old.tsv --new-index <run>\raw-index-new.tsv --old-descriptors <baseline descriptors> --new-descriptors <new descriptors> --out <run>\sight-changes.tsv
+  ```
+
+  Sections: `file` (a lens-block file, texture or mesh whose raw SHA-256 differs, or that
+  was added or removed), `lens` (a decoded lens-block value: reticle texture, size, colour,
+  tint; parameter names are hashes, the known ones are in the research repo's
+  [sight drawings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#sight-drawings-2120-17-november-2026)
+  section) and `eye` (MD.Sight.Main per sight and weapon, mm). An optic's render FOV and
+  zoom are in the weapon list already (`WPM_SCP_*` and `*_WB` rows). **Control:** on the
+  2.1.1.0 to 2.1.2.0 indexes the `eye` section must list `dpf_wepatt_midzoom_pac25` (the
+  PA-SL 2.50x) as added on 64 weapons and the Devgru iron-sight change 122.8 to 127.1; two
+  exports of one build give no rows (2.1.2.0: `sight-files-2026-11-18` against
+  `sight-files-check-2026-11-18`). Assign each row like any other: a
+  changed reticle, colour, size, mesh or eye point of a sight the site draws is a checklist
+  row whose site action is a redraw (Stage 9, "Sight drawings"); an added sight is new
+  content; a `file` row with no `lens` row and no mesh or texture change is noise (another
+  material of the same attachment).
 - The **registry diff** covers every file under a `Tweakables` folder plus every `GRX_*`,
   `MUT_*` and `MutatorDatabase*` file, compares decoded values (boxed values included, layout
   ignored) and flags REDSEC rows rather than dropping them. Review every added, removed and
@@ -646,7 +687,7 @@ done. An item with all five that the roadmap dates later is a future release. Li
   conditions (the NSW4 in 2.1.1.0). Released weapons have `GRX_Weapons` rows and loot rows;
   an unreleased one has none (the Mk 1 Mod 0 in 2.1.2.0).
 
-**Gate:** the three lists run with their controls; unassigned count 0; every note line
+**Gate:** the three lists and the sight list run with their controls; unassigned count 0; every note line
 attached or listed as "announced, nothing stored"; every contradiction settled by a second
 method, or on IN_GAME_CHECKS.md with what was tried;
 the result column filled for every row.
@@ -908,6 +949,68 @@ Finish the Stage 2 descriptor check and the Stage 7 availability census first.
       goes on the bot repo `main` (the Mini PC pulls within five minutes). Afterwards compare the
       live `equipment-index.json` with the catalogue for any name still missing. (The 2.1.1.0
       weapons were missed until 18 October.)
+12. **Iron-sight drawing.** Once the weapon is in the site data, draw its iron sights
+    ("Sight drawings for new weapons and optics" below).
+
+### Sight drawings for new weapons and optics
+
+The Sight menu shows a drawing of each sight (added 17 November 2026 on 2.1.2.0: 41 optics,
+72 iron sights). A sight without a drawing still works: its tooltip shows the text only. So
+this step never blocks the rest of Stage 9, and it runs after the weapon or optic is in
+`data/attachments.json`.
+
+1. **Find what needs a drawing.** Run the site script on the current drawing folders; it
+   prints one line per sight with no drawing:
+
+   ```bash
+   node scripts/build-sight-previews.mjs "<optic svg folder>" "<iron-sight svg folder>"
+   ```
+
+   The current folders are `builds\2.1.2.0\reports\optic-icons-all-2026-11-17\svg` and
+   `builds\2.1.2.0\reports\iron-sights-all-2026-11-17\svg` in the datamining folder. The
+   script rewrites `assets/sights/` and `data/sight-previews.json`; with unchanged folders
+   `git status` stays clean. Expect every new weapon (its iron sights, and a second iron sight if it has one) and every
+   new optic. An existing optic added to more weapons needs nothing: an optic has one drawing
+   for all weapons.
+2. **Move the drawing scripts to the open build, once per build.** They are run-folder
+   scripts with the 2.1.2.0 paths written in, and 2.1.2.0 is sealed by then. Copy the script
+   folders and their kept inputs into dated folders under the new build's `reports\` and
+   change the build paths. This has not been done on a second build yet: record what had to
+   change in the checklist's "Decisions made during the run".
+3. **Draw** by the recipe in the research repo's
+   [sight drawings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#sight-drawings-2120-17-november-2026)
+   section. Each recipe needs FrostyCmd exports of meshes (and for an optic its shader state
+   and reticle texture), so `guard` and the one-process rule apply as for any capture.
+   - **Iron sights** come from the files alone: outline from the meshes, size from
+     MD.Sight.Main and the ADS render FOV (within 5% on all 46 screenshots tested).
+   - **An optic's** housing, lens, reticle image, colour, tint and lens opening come from the
+     files. A red dot's size has a file rule. The reticle size of any other optic is **not
+     in the files**: use the size model (about 12% off) and say "reticle estimated" in the
+     report, as for the PA-SL 2.50x.
+4. **Operator screenshots, one list at the end.** Put on [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md),
+   one row per sight, combined per weapon:
+   - every new optic that is not a red dot: one aimed screenshot (it sets the reticle size,
+     which no file gives, so it passes Stage 8, "When an in-game check is allowed");
+   - a new weapon's iron sights only when the drawing rule fails: the rear sight does not
+     land on the sight line (the Z84M and L110 were placed from screenshots), or the variant
+     is ambiguous.
+
+   Ask for it aimed down the sight, saved under `reference-data/Optics/<class>/` as
+   `<weapon>_<optic name>.png` or `<in-game name>_Iron_Sights.png`. The existing set was
+   taken at 2560×1440 with game FOV 103; the same settings keep the measurements comparable. When a screenshot comes back, fit the reticle
+   to it, redraw, and remove the row.
+5. **Bring the drawings into the site** ([MAINTENANCE.md](../MAINTENANCE.md#regenerate-sight-drawings)):
+   run the step 1 command again on the complete folders, check that only the expected "no
+   drawing" lines remain, run `node scripts/validate-ship-surface.mjs`, look at each new
+   drawing in the Sight menu of the local site, and commit `assets/sights/` and
+   `data/sight-previews.json` with the header date.
+6. **Existing drawings follow the sight list.** Stage 7's sight list (`sight-changes.tsv`)
+   names every sight whose lens block, reticle texture, mesh or eye point changed. Redraw
+   those; the rest stand. A changed render FOV shows in the weapon list instead
+   (`Field_7768ebf2` on a `WPM_SCP_*` part or a `*_WB`), and changes the drawn size.
+
+Model: the main session or one Sonnet 5.5 worker per sight for the drawing; no Frosty run is
+delegated (Workers, "Not delegated"). Check each drawing by eye before it is committed.
 
 ## Stage 10 — Independent review
 

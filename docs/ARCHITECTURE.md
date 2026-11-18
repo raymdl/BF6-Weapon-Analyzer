@@ -24,7 +24,9 @@ flowchart TD
 The nine startup requests are `weapons.json`, `recoil_decay.json`,
 `balance_tables.json`, `attachments.json`, `ammo.json`, `ballistics.json`, `hit_zones.json`, `attachment-tooltips.json`, and `weapon_attributes.json` under
 `data/`. These are ordinary `fetch()` requests, not JSON module imports. A failed
-request rejects initialization. Provenance, reload-exception registers, reference
+request rejects initialization. A tenth request, `data/sight-previews.json` (the list
+of sight drawings under `assets/sights/`), is optional: when it fails, the Sight menu
+tooltips show no drawing. Provenance, reload-exception registers, reference
 workbooks, and raw Frosty exports are not browser dependencies. Required numeric
 field checks report through `ui/data-errors.js`; they do not reject startup.
 `sim/required-data.js` is strict by default for scripts and tests. The browser

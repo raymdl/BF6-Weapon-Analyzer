@@ -244,6 +244,37 @@ folder whose label is its site id. Optic tooltips stop on any optic that resolve
 no string or to more than one (the game describes optics by class, so models of one
 magnification share a string). The runtime JSON is part of the ship surface.
 
+## Regenerate sight drawings
+
+Hovering a sight in the Sight menu shows a drawing of it above the description: the
+view from behind the sight, 280 × 210 px, made from the game's models and reticle
+textures. There is one drawing per optic (`assets/sights/optic/<sight id>.svg`, 41) and
+one per weapon for iron sights (`assets/sights/iron/<weapon id>.svg`, or
+`<weapon id>__<sight id>.svg` for a weapon's second iron sight; 72).
+`data/sight-previews.json` lists which drawings exist; a sight not listed there shows
+its tooltip without a drawing, and the page loads without the file.
+
+The drawings are made outside this repository, by run-folder scripts in the datamining
+folder; how each part is sourced and how to draw a new sight is in the research repo's
+[sight drawings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#sight-drawings-2120-17-november-2026)
+section. To bring new or changed drawings into the site:
+
+```bash
+node scripts/build-sight-previews.mjs "<optic svg folder>" "<iron-sight svg folder>"
+```
+
+It empties `assets/sights/`, copies every drawing whose sight is in
+`data/attachments.json`, renames optic drawings to the sight id, and rewrites
+`data/sight-previews.json`. Both folders must therefore hold the full set, not only
+the new drawings. It prints the counts and one line for each sight with no drawing: a
+new weapon or optic shows up there until its drawing exists. Afterwards run
+`node scripts/validate-ship-surface.mjs`, look at the new drawing in the Sight menu in
+the local site, and update the header date in the same commit.
+
+The in-game screenshots the drawings were checked against are in
+`reference-data/Optics/<class>/` (not committed): `<in-game name>_Iron_Sights.png` for
+iron sights and `<weapon>_<optic name>.png` for optics.
+
 ## Reload exceptions and provenance
 
 [data/reload-exceptions.json](data/reload-exceptions.json) records animation
