@@ -26,6 +26,9 @@ data/check_all.sh
 # Vehicle loadout screenshots (about 200 MB) retained locally for research.
 /reference-data/Vehicles Loadouts/
 
+# In-game sight screenshots (about 150 MB) used to check the sight drawings.
+/reference-data/Optics/
+
 # Third-party datamined bundle kept for research only. Nothing in it is
 # authoritative for this site; see its README for what was and was not taken.
 /reference-data/companion-datamined/
