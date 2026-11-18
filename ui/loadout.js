@@ -6,6 +6,30 @@ let selectSequence = 0;
 const bugNotesOf = optData => (optData.bugs ?? []).map(bug => `${GAME_BUG_MARK} ${bug.suspected ? 'Likely bugged. ' : 'Bugged. '}${bug.note}`);
 const optionText = optData => (bugNotesOf(optData).length ? `${optData.text}${GAME_BUG_MARK}` : optData.text);
 const optionTitle = optData => [optData.description, ...bugNotesOf(optData)].filter(Boolean).join('\n\n');
+const escapeText = text => String(text).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+// A sight's bubble shows its drawing above the description. The drawing is the
+// view from behind the sight, to scale, made from the game's models.
+const optionTipHtml = optData => {
+  if (!optData.preview) return '';
+  const title = optionTitle(optData);
+  const { src, name, label, width, height } = optData.preview;
+  return `<img class="tt-sight" src="${src}" width="${width}" height="${height}" alt="">`
+    + `<div class="tt-sight-head"><span class="tt-wname">${escapeText(name)}</span>${label ? `<b>${escapeText(label)}</b>` : ''}</div>`
+    + (title ? `<div class="tt-desc">${escapeText(title)}</div>` : '');
+};
+// The game's own label for an optic ("Sight 1.75x", "Scope 2.50x", "Variable
+// 1-6x", "Thermal Hybrid"). It follows from the category and magnification:
+// checked against the 40 reviewed labels in
+// reference-data/provenance/frosty-individual-optics-2026-10-21.json.
+const sightLabel = sight => {
+  const zoom = sight.magnification;
+  if (sight.category === 'therm_hyb') return 'Thermal Hybrid';
+  if (zoom == null) return '';
+  if (sight.id === 'iron' || sight.category === 'iron') return `${zoom.toFixed(2)}x`;
+  if (sight.category === 'thermal') return `Thermal ${zoom.toFixed(2)}x`;
+  if (sight.magnificationRange) return `Variable ${sight.magnificationRange.map(Number).join('-')}x`;
+  return `${zoom <= 2 ? 'Sight' : 'Scope'} ${zoom.toFixed(2)}x`;
+};
 
 // ── Styled attachment list ──────────────────────────────────────────────────────
 // On hover devices the native dropdown is replaced by a list of the site's own,
@@ -33,6 +57,7 @@ function openAttachmentMenu(sel, options) {
   if (slotNumber && slotNumber !== '1') menu.classList.add(`att-menu-${slotNumber}`);
   menu.setAttribute('role', 'listbox');
   if (sel.labels?.[0]) menu.setAttribute('aria-label', sel.labels[0].textContent);
+  if (options.some(optData => optData.preview)) menu.dataset.tipAnchor = 'top';
   const items = [];
   const choose = id => {
     closeAttachmentMenu();
@@ -51,7 +76,10 @@ function openAttachmentMenu(sel, options) {
     item.setAttribute('aria-selected', String(on));
     item.textContent = optionText(optData);
     const title = optionTitle(optData);
-    if (title) { item.title = title; item.dataset.tipSide = 'right'; }
+    const tipHtml = optionTipHtml(optData);
+    // A drawing alone still needs a title: the bubble opens on titled elements.
+    if (title || tipHtml) { item.title = title || optData.text; item.dataset.tipSide = 'right'; }
+    if (tipHtml) item.dataset.tipHtml = tipHtml;
     item.addEventListener('click', () => choose(optData.id));
     menu.appendChild(item);
     items.push(item);
@@ -239,6 +267,20 @@ export function renderAttachmentSection({
     const stringId = data.ATTACHMENT_TOOLTIPS?.byWeapon?.[weapon?.id]?.[slot]?.[id];
     return stringId ? data.ATTACHMENT_TOOLTIPS.descriptions[stringId] : undefined;
   };
+  const previewFor = sight => {
+    const previews = data.SIGHT_PREVIEWS;
+    if (!previews || !weapon) return undefined;
+    const iron = sight.id === 'iron' || sight.category === 'iron';
+    if (!(iron ? previews.irons?.[weapon.id] : previews.optics)?.includes(sight.id)) return undefined;
+    return {
+      src: iron ? `./assets/sights/iron/${weapon.id}${sight.id === 'iron' ? '' : `__${sight.id}`}.svg`
+        : `./assets/sights/optic/${sight.id}.svg`,
+      name: attDisplayName(sight, weapon.id),
+      label: sightLabel(sight),
+      width: previews.width,
+      height: previews.height,
+    };
+  };
   const attDataSource = {
     SIGHTS: data.SIGHTS,
     MUZZLES: data.MUZZLES,
@@ -355,7 +397,8 @@ export function renderAttachmentSection({
         return { id: key === 'rail' && a.id !== 'none' ? `${a.type}:${a.id}` : a.id, text: pts > 0 ? `${name} [${pts}]` : name,
           // Every sight sets the target zoom now, so none is shown as having no effect.
           description: tooltipFor(key === 'rail' ? a.type : key, a.id), noEffect: key === 'sight' ? false : a.noEffect, assumed: isAssumedAtt(a, weapon?.id),
-          bugs: bugsFor(key === 'rail' ? a.type : key, a.id) };
+          bugs: bugsFor(key === 'rail' ? a.type : key, a.id),
+          preview: key === 'sight' ? previewFor(a) : undefined };
       }),
       onChange: value => handleChange(key, value),
       lock: lockFor(key, label),

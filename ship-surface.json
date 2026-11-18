@@ -17,6 +17,7 @@
     "data/hit_zones.json",
     "data/provenance/data-status.json",
     "data/recoil_decay.json",
+    "data/sight-previews.json",
     "data/weapons.json",
     "data/weapon_attributes.json"
   ],

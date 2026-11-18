@@ -48,9 +48,9 @@ fetchJson('./data/provenance/data-status.json').then(r => r.json()).then(({ allC
 }).catch(() => {});
 
 let _weaponAttributes;
-let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips;
+let W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips, _sightPreviews;
 try {
-  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips, _weaponAttributes] = await Promise.all([
+  [W, _recoilDecay, _balance, _atts, _ammo, _ballistics, _hitZones, _attachmentTooltips, _weaponAttributes, _sightPreviews] = await Promise.all([
     fetchJson('./data/weapons.json').then(r => r.json()),
     fetchJson('./data/recoil_decay.json').then(r => r.json()),
     fetchJson('./data/balance_tables.json').then(r => r.json()),
@@ -60,6 +60,8 @@ try {
     fetchJson('./data/hit_zones.json').then(r => r.json()),
     fetchJson('./data/attachment-tooltips.json').then(r => r.json()),
     fetchJson('./data/weapon_attributes.json').then(r => r.json()),
+    // The sight drawings are an extra: the page works without their list.
+    fetchJson('./data/sight-previews.json').then(r => r.json()).catch(() => null),
   ]);
   for (const weapon of W) {
     validateWeaponSimulation(weapon);
@@ -93,6 +95,7 @@ const LOADOUT_DATA = {
   WEAPON_ATTS, WEAPON_ERGO, WEAPON_ACCESSORY, WEAPON_MAG,
   AMMO, WEAPON_AMMO, WEAPON_ATTS,
   ATTACHMENT_TOOLTIPS: _attachmentTooltips,
+  SIGHT_PREVIEWS: _sightPreviews,
   GAME_BUGS: _atts.GAME_BUGS ?? [],
 };
 
@@ -4526,10 +4529,13 @@ function initHoverTooltips() {
     if (el.dataset.tipSide === 'right') {
       // Beside a list item: past the list's own edge (and its scrollbar), top
       // aligned with the item, so the bubble covers none of the list.
-      const box = (el.closest('.att-menu') ?? el).getBoundingClientRect();
+      const menu = el.closest('.att-menu');
+      const box = (menu ?? el).getBoundingClientRect();
       left = box.right + 2;
       if (left + tw > vw - 8) left = Math.max(8, box.left - tw - 2);
-      top = Math.max(8, Math.min(r.top, vh - th - 8));
+      // A list of drawings keeps its bubble level with the top of the list, so
+      // the drawings can be compared in place while moving down the items.
+      top = Math.max(8, Math.min(menu?.dataset.tipAnchor === 'top' ? box.top : r.top, vh - th - 8));
     } else {
       // Under the element from its left edge, as the attachment-effect popovers sit.
       left = Math.max(8, Math.min(r.left, vw - tw - 8));

@@ -107,6 +107,13 @@ body.is-popout .rc-note{flex-shrink:0}
 .m-tip.h-tip{white-space:pre-line;max-width:340px}
 /* Structured stat bubbles: the description, then label / value rows, under a
    weapon name in its compare colour when two weapons are shown. */
+/* A sight's drawing, above its description. Its width and height attributes
+   give the bubble its size before the image has loaded. */
+.m-tip .tt-sight{display:block;max-width:100%;height:auto;margin:0 auto}
+.m-tip .tt-sight-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin-top:6px;padding-top:6px;border-top:1px solid var(--border)}
+.m-tip .tt-sight-head .tt-wname{margin-top:0;font-size:.68rem}
+.m-tip .tt-sight-head b{font-weight:600;white-space:nowrap}
+.m-tip .tt-sight-head + .tt-desc{margin-top:4px;white-space:pre-line;color:var(--muted)}
 .m-tip .tt-desc{white-space:normal}
 .m-tip .tt-wname{margin-top:7px;font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--accent)}
 .m-tip .tt-wname.c2{color:var(--accent2)}

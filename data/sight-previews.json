@@ -1,0 +1,255 @@
+{
+  "schemaVersion": 1,
+  "width": 280,
+  "height": 210,
+  "optics": [
+    "1p86_lpvo",
+    "1p87_1_50x",
+    "1p88_variable",
+    "2pro_1_25x",
+    "3vzr_1_75x",
+    "a_p2_1_75x",
+    "baker_3_00x",
+    "bf_2m_2_50x",
+    "cco_2_00x",
+    "cq_rds_1_25x",
+    "dvo_lpvo",
+    "grim_1_50x",
+    "lds_4_50x",
+    "lert_8_00x",
+    "mars_f_lpvo",
+    "mc_co_lpvo",
+    "mgo_3_50x",
+    "mini_flex_1_00x",
+    "nfx_8_00x",
+    "ngfc_lpvo",
+    "osa_7_1_00x",
+    "pa_sl_2_50x",
+    "pas_35_3_00x",
+    "pvq_31_4_00x",
+    "qmk_3_00x",
+    "r4t_2_00x",
+    "r_mr_1_00x",
+    "r_vps_10_00x",
+    "ro_m_1_75x",
+    "ro_s_1_25x",
+    "rox_1_50x",
+    "s_vps_6_00x",
+    "sdo_3_50x",
+    "sf_g2_5_00x",
+    "sm_rifle_variable",
+    "ssds_6_00x",
+    "st_prism_5_00x",
+    "su_123_1_50x",
+    "su_230_lpvo",
+    "th_rds_1_00x",
+    "ts_hd_6_00x"
+  ],
+  "irons": {
+    "m433": [
+      "iron"
+    ],
+    "b36a4": [
+      "iron"
+    ],
+    "sor556": [
+      "iron"
+    ],
+    "ak4d": [
+      "iron"
+    ],
+    "tr7": [
+      "iron"
+    ],
+    "kord6p67": [
+      "iron"
+    ],
+    "nvo228e": [
+      "iron"
+    ],
+    "l85a3": [
+      "iron"
+    ],
+    "vcr2": [
+      "iron"
+    ],
+    "m16a4": [
+      "iron",
+      "flip_up_irons"
+    ],
+    "m4a1": [
+      "iron",
+      "carry_handle_irons"
+    ],
+    "m277": [
+      "iron"
+    ],
+    "ak205": [
+      "iron"
+    ],
+    "m417a2": [
+      "iron"
+    ],
+    "grtbc": [
+      "iron"
+    ],
+    "qbz192": [
+      "iron"
+    ],
+    "sg553r": [
+      "iron"
+    ],
+    "sor300sc": [
+      "iron"
+    ],
+    "sgx": [
+      "iron"
+    ],
+    "pw5a3": [
+      "iron"
+    ],
+    "pw7a2": [
+      "iron",
+      "cqb_sights"
+    ],
+    "umg40": [
+      "iron",
+      "cqb_sights"
+    ],
+    "usg90": [
+      "iron"
+    ],
+    "kv9": [
+      "iron"
+    ],
+    "scw10": [
+      "iron"
+    ],
+    "sl9": [
+      "iron"
+    ],
+    "cz3a1": [
+      "iron"
+    ],
+    "pp19": [
+      "iron"
+    ],
+    "drsiar": [
+      "iron"
+    ],
+    "m60": [
+      "iron"
+    ],
+    "rpkm": [
+      "iron"
+    ],
+    "m123k": [
+      "iron"
+    ],
+    "m250": [
+      "iron"
+    ],
+    "kts100": [
+      "iron"
+    ],
+    "m240l": [
+      "iron"
+    ],
+    "m121a2": [
+      "iron"
+    ],
+    "rpk74m": [
+      "iron"
+    ],
+    "m39emr": [
+      "iron"
+    ],
+    "lmr27": [
+      "iron"
+    ],
+    "svk86": [
+      "iron"
+    ],
+    "svdm": [
+      "iron"
+    ],
+    "grtcps": [
+      "iron"
+    ],
+    "m2010esr": [
+      "iron"
+    ],
+    "sv98": [
+      "iron"
+    ],
+    "psr": [
+      "iron"
+    ],
+    "miniscout": [
+      "iron"
+    ],
+    "interdictor": [
+      "iron"
+    ],
+    "l115": [
+      "iron"
+    ],
+    "m87a1": [
+      "iron"
+    ],
+    "m1014": [
+      "iron"
+    ],
+    "ks18k": [
+      "iron"
+    ],
+    "db12": [
+      "iron"
+    ],
+    "p18": [
+      "iron"
+    ],
+    "es57": [
+      "iron"
+    ],
+    "m45a1": [
+      "iron"
+    ],
+    "ggh22": [
+      "iron"
+    ],
+    "m44": [
+      "iron"
+    ],
+    "m357trait": [
+      "iron"
+    ],
+    "vz61": [
+      "iron"
+    ],
+    "brod3": [
+      "iron"
+    ],
+    "ef88": [
+      "iron"
+    ],
+    "vssm": [
+      "iron"
+    ],
+    "mk24": [
+      "iron"
+    ],
+    "elr40": [
+      "iron"
+    ],
+    "z84m": [
+      "iron"
+    ],
+    "rspr": [
+      "iron"
+    ],
+    "nsw4": [
+      "iron"
+    ]
+  }
+}
