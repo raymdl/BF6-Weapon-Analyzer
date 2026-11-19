@@ -141,10 +141,13 @@ delivery with the same clock age. Overlapping impulses retain their full input.
 The selected recoil group must supply explicit recovery parameters; missing
 values are reported and the dependent simulation is unavailable. `_adsRecoilDecayMult` or
 `_hipRecoilDecayMult` scales the factor for the selected aim state. Since 14 October 2026 the factor
-also carries one empirical constant, `RECOIL_RECOVERY_SCALE` = 0.8: bullet-hole captures on four recovery
-profiles (AK-205, LMR27, TR-7, M433; leads L4040 to L4049) put the game's recovery at 0.8 of the stored
-factor with the law's shape and reset-on-shot clock otherwise confirmed. The paragraphs from "Applied
-14 October 2026" below carry the evidence and the open residuals.
+also carries one empirical constant, `RECOIL_RECOVERY_SCALE`, first 0.8 and since 19 November 2026 0.865
+together with `RECOIL_RECOVERY_OFFSET` = 0, which the simulator uses in place of the stored `decOffset`
+(0.06): bullet-hole captures on four recovery profiles (AK-205, LMR27, TR-7, M433; leads L4040 to L4049)
+put the game's recovery below the stored factor, with the law's shape and reset-on-shot clock otherwise
+confirmed, and fit best with no offset. The equation above therefore runs with `decOffset` 0. The paragraphs
+from "Applied 14 October 2026" below carry the evidence and the open residuals; figures quoted there as
+"x0.8" describe the law as it was applied until 19 November.
 
 Smooth recoil uses the selected source duration as an override and the selected
 source recovery operand as a multiplier in both aim states. The duration
@@ -177,8 +180,8 @@ the `GunSwayRecoilData` members that the BF1 formula uses by value. Term by term
 | `abs(CurrentRecoil)` per axis | per-axis state | | `cx`, `cy` | per axis, as in BF1 |
 | `/ 0.5` | `RecoilDecreaseNorm` | 1 | `decNorm` | divisor before the power; neutral at 1, so not applied |
 | `^0.6` | `RecoilDecreaseExponent` | 1 (0.6 on bolt-actions and two shotguns) | `decExp` | applied |
-| `+ 0.001` | `RecoilDecreaseOffset` | 0.06 (KSG reference 0.001, the BF1 value) | `decOffset` | applied |
-| `RecoilDecrease` | `RecoilDecreaseFactor` | 57 | `decFactor` | applied, times `RECOIL_RECOVERY_SCALE` 0.8 (measured; see below) |
+| `+ 0.001` | `RecoilDecreaseOffset` | 0.06 (KSG reference 0.001, the BF1 value) | `decOffset` | stored but not applied since 19 November 2026 (`RECOIL_RECOVERY_OFFSET` 0; see below) |
+| `RecoilDecrease` | `RecoilDecreaseFactor` | 57 | `decFactor` | applied, times `RECOIL_RECOVERY_SCALE` 0.865 (measured; see below) |
 | `TimeSinceLastShot^0.5` | `RecoilDecreaseTimeExponent` | 1.045 | `decTimeExp` | applied; clock reset on every shot |
 | `DeltaTime` | frame step | | 1 ms steps, exact integral | continuous limit, not the engine's tick |
 | `C` (about 5) | none known | | none | not applied; see the replay below |
@@ -306,8 +309,13 @@ from the stored 0.06 to 0: 358.9, 328.2 (0.045), 299.8 (0.03), 286.0 (0.02), 276
 weapons and scored on the fourth, offset 0 gives 95.9 / 57.2 / 147.5 / 25.8 (AK-205 / LMR27 / TR-7 / M433) against 119.5 / 56.5 / 180.3 / 28.9 at
 the stored offset. Both laws still miss the 290 to 350 ms bands by half or more (AK-205 Standard at 292 ms: 0.101 observed, 0.021 applied,
 0.061 offset 0). On the site the change would lower the mean aim before shot 15 by 3.2 to 6.0% on the four weapons. Offset 0 contradicts the
-stored 0.06 and has no source mechanism, and a best value at the boundary can mean a missing term. Recorded as a candidate; nothing changed
-on the site.
+stored 0.06 and has no source mechanism, and a best value at the boundary can mean a missing term.
+
+**Applied 19 November 2026 (operator decision).** `RECOIL_RECOVERY_SCALE` is 0.865 and `RECOIL_RECOVERY_OFFSET` is 0 in `sim/core.js`, used by
+the recoil path generator and the live-fire simulation. The stored `decOffset` values are unchanged. The site generator reproduces the research
+simulator at these constants to three decimals (mean aim before shot 15: AK-205 2.237, LMR27 2.277, TR-7 8.046, M433 5.230 degrees; under the
+earlier x0.8 law 2.340, 2.423, 8.320, 5.404). A single M433 shot now keeps 0.107 degrees at 300 ms and 0.048 at 350 ms (0.064 and 0.001 before).
+Bolt-actions and the two shotguns with `decExp` 0.6 are untested under either setting.
 
 ### Duration and Smooth attachment selection
 
@@ -590,7 +598,7 @@ precision, shotgun shifts and clamping. The
 single-attachment builds fit the display axis. These checks protect the
 implementation; they do not independently validate its physical accuracy.
 
-The recoil recovery law's form, its reset-on-shot clock and the 0.8 factor scale are supported by
+The recoil recovery law's form, its reset-on-shot clock and the fitted factor scale and offset (0.865 and 0 since 19 November 2026) are supported by
 bullet-hole and camera captures on four recovery profiles (L4040 to L4049, above); the spread law's
 increase, firing and not-firing recovery were checked against the in-game spread indicator (L4050).
 Still unresolved: the native arithmetic behind the 0.8, the 100 ms tail on the AK-205 and TR-7, the

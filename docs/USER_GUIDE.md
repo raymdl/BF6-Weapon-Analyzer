@@ -283,8 +283,8 @@ The [recoil guide](RECOIL_SPREAD_MODEL.md) explains each layer and the per-shot 
 Recoil is delivered over the selected weapon/attachment duration while recovery
 acts at the same time. Smooth attachments use source duration and recovery values;
 some weapon–muzzle pairs differ from the ordinary 50 ms/1.2 set. Heavy-type barrels
-use source ADS spread factors supported by the AK4D recordings. Recoil recovery runs at 0.8 of the
-source factor, measured on bullet-hole captures of four weapons in October 2026, and the spread
+use source ADS spread factors supported by the AK4D recordings. Recoil recovery runs at 0.865 of the
+source factor with no recovery offset, fitted to bullet-hole captures of four weapons from October 2026, and the spread
 recovery law was checked against the in-game spread indicator; the native equations themselves
 are not decoded.
 

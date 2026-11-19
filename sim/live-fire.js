@@ -28,7 +28,7 @@ import {
   mulberry32, whash, uniformDev, recoilGroup, selectedRecoilAmountFor, selectedRecoilVariationFor,
   spreadBounds, selectedSpreadIncFor, spreadRecoveries, applySpreadRecovery, sampleSpreadRadius, samplePellets,
   shotIntervalAfter, isBurstGapAfter, weaponRpm, recoilRecoveryWeight, recoverRecoilAxis,
-  RECOIL_TIME_STEP, RECOIL_RECOVERY_SCALE, simContext,
+  RECOIL_TIME_STEP, RECOIL_RECOVERY_SCALE, RECOIL_RECOVERY_OFFSET, simContext,
 } from './core.js';
 import { requireNumber } from './required-data.js';
 
@@ -47,7 +47,7 @@ export function createLiveFire(w, { seed = 1, magazine = w.mag } = {}) {
   const group = recoilGroup(w);
   const decF = group.decFactor * RECOIL_RECOVERY_SCALE
     * (aimState === 'ads' ? (w._adsRecoilDecayMult ?? 1) : (w._hipRecoilDecayMult ?? 1));
-  const decExp = group.decExp, timeExp = group.decTimeExp, decOffset = group.decOffset;
+  const decExp = group.decExp, timeExp = group.decTimeExp, decOffset = RECOIL_RECOVERY_OFFSET;
   const amount = selectedRecoilAmountFor(w);
   const variation = selectedRecoilVariationFor(w);
   const duration = Math.max(0, group.duration == null ? 0 : requireNumber(group.duration, `${w.id} recoil duration`)) || 0.025;

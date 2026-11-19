@@ -383,12 +383,16 @@ export function simulateSpread(w, shotCount) {
  * Compensation is read from ctx.compensationFn() — pages provide their own.
  */
 /**
- * Global scale on every weapon's recovery factor. Measured from impact pairs and bursts on the
- * AK-205 (0.8, L4040) and confirmed within one band on the LMR27 (0.85 to 0.9, L4041); the stored
- * factors in data/weapons.json are the source operands and are left as read. The Control attribute
- * bar in weapon-attributes.js is deliberately unscaled: it matches the in-game stat screen.
+ * Global scale on every weapon's recovery factor, and the recovery offset the simulator uses in
+ * place of the stored RecoilDecreaseOffset (0.06). Both are fitted to bullet-hole pairs and bursts
+ * on four recovery profiles (AK-205, LMR27, TR-7, M433): offset 0 with scale 0.865 fits better than
+ * the stored offset with 0.8, also on weapons left out of the fit (RECOIL_SPREAD_MODEL.md, 19 November
+ * 2026). The stored factors and offsets in data/weapons.json are the source operands and are left as
+ * read. The Control attribute bar in weapon-attributes.js is deliberately unscaled: it matches the
+ * in-game stat screen.
  */
-export const RECOIL_RECOVERY_SCALE = 0.8;
+export const RECOIL_RECOVERY_SCALE = 0.865;
+export const RECOIL_RECOVERY_OFFSET = 0;
 
 export function genRecoilPts(w, seed = 0, shots = 20) {
   const { compensationFn } = _ctx;
@@ -400,7 +404,7 @@ export function genRecoilPts(w, seed = 0, shots = 20) {
     ? (w._adsRecoilDecayMult ?? 1) : (w._hipRecoilDecayMult ?? 1));
   const decExp  = group.decExp;
   const timeExp = group.decTimeExp;
-  const decOffset = group.decOffset;
+  const decOffset = RECOIL_RECOVERY_OFFSET;
   const amount      = selectedRecoilAmountFor(w);
   const variation   = selectedRecoilVariationFor(w);
   const compensation = compensationFn() / 100;
