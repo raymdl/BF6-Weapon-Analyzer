@@ -842,7 +842,7 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
    updated first or the run fails or leaves new choices unmapped: write a new dated identity
    follow-up file (pattern: `frosty-attachment-identity-followup-2026-11-19.json`) holding the
    new weapon's identity, one evidence-backed row per new or renamed choice, and a retirement
-   for each panel-review row whose choice the site removed. `--keep-going` skips stale reviewed
+   for each panel-review row whose choice the site removed. Generate a descriptions file for the new build first (`frosty-descriptions.py`) and pass it in, so the text is current. `--keep-going` skips stale reviewed
    tooltip rows and lists them as `reviewDrift`. Run it before any reverse check ("site choice with no stored
    effect"); a check on the previous mapping misses new weapons and renamed choices.
 2. **Decide which source changes require site changes.** Not every diff does.
