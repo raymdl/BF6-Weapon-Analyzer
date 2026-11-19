@@ -299,6 +299,16 @@ TR-7, 0.7 on the LMR27) is excluded by the holes (5959.4). The x0.8 scale, the s
 changed on the site. A fit with RecoilDecreaseOffset 0 and scale 0.87 is better on every weapon (270.6) but changes a source
 operand and is recorded as an open question, not proposed.
 
+**19 November offset evaluation.** The offset question was run on its own with the L4049 scoring and the same 56 observations
+(control: stored 1099.5, applied x0.8 359.2). With the factor scale refitted at each value, the score falls steadily as the offset falls
+from the stored 0.06 to 0: 358.9, 328.2 (0.045), 299.8 (0.03), 286.0 (0.02), 276.6 (0.01), 270.6 (0, scale 0.865). The gain is in the pair bands
+(299.5 to 208.9), mostly the AK-205 and TR-7 from 290 to 350 ms; burst extents do not change (59.4 to 61.7). With the scale fitted on three
+weapons and scored on the fourth, offset 0 gives 95.9 / 57.2 / 147.5 / 25.8 (AK-205 / LMR27 / TR-7 / M433) against 119.5 / 56.5 / 180.3 / 28.9 at
+the stored offset. Both laws still miss the 290 to 350 ms bands by half or more (AK-205 Standard at 292 ms: 0.101 observed, 0.021 applied,
+0.061 offset 0). On the site the change would lower the mean aim before shot 15 by 3.2 to 6.0% on the four weapons. Offset 0 contradicts the
+stored 0.06 and has no source mechanism, and a best value at the boundary can mean a missing term. Recorded as a candidate; nothing changed
+on the site.
+
 ### Duration and Smooth attachment selection
 
 Base duration comes from `recoil.ads.duration` or `recoil.hip.duration` in the
