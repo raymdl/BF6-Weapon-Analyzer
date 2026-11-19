@@ -28,7 +28,7 @@
 <body>
 <header>
   <h1 class="logo-h1"><a class="logo" id="homeLink" href="./" title="Back to the start — clears the selected weapons and every loadout option">BF6 <span>/ Weapon Analyzer</span></a></h1>
-  <div class="hdr-tag">Season 5 (v2.1.2.0) - <time datetime="2026-11-17">Updated 17 NOV 2026</time></div>
+  <div class="hdr-tag">Season 5 (v2.1.2.0) - <time datetime="2026-11-18">Updated 18 NOV 2026</time></div>
   <div class="archive-group">
     <select class="archive-select" id="archiveSelect" autocomplete="off" aria-label="Site version">
       <option value="" selected disabled hidden>Site Versions</option>
@@ -194,9 +194,7 @@
           <div class="rc-head">
             <div class="ptitle rc-title">
               <button class="panel-toggle" data-collapse="recoil" data-collapse-label="the recoil and spread pattern" type="button" aria-expanded="true"><svg class="panel-toggle-icon" viewBox="0 0 10 10" aria-hidden="true"><polyline points="2,3.75 5,6.75 8,3.75"/></svg></button>
-              Recoil &amp; Spread Pattern (Simulated -
-              <input id="rcShotCountInput" class="rc-title-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate"><span class="rc-shot-suffix">Shots)</span>
-              <button class="rc-popout-btn" id="rcPopoutBtn" type="button" title="Open the pattern in its own window, sized to fill it">Pop Out &#8599;</button>
+              Recoil &amp; Spread Pattern (Simulated<span id="rcShotsField">, <input id="rcShotCountInput" class="rc-shot-num" type="text" inputmode="numeric" value="20" size="2" aria-label="Number of shots to simulate" title="Number of shots to simulate"> Shots</span>)
               <button class="rc-loadout-btn" id="rcLoadoutBtn" type="button" aria-controls="loadoutPanel" aria-expanded="false" title="Show or hide the weapon and attachment panel beside the plot"><svg class="rc-loadout-icon" viewBox="0 0 12 10" aria-hidden="true"><rect x="1" y="1" width="10" height="8" rx="1.2"/><line x1="4.6" y1="1" x2="4.6" y2="9"/></svg><span id="rcLoadoutBtnText">Modify Loadout</span></button></div>
             <div class="rc-groups">
               <div class="rc-group">
@@ -220,8 +218,8 @@
                   <div class="rc-control-group" data-control-group="input">
                     <div class="rc-sub">Input</div>
                     <div class="rc-group-row seg">
-                      <button class="mode-btn rc-mode-btn on" id="rcPlatformPc" title="Use PC recoil values">PC</button>
-                      <button class="mode-btn rc-mode-btn" id="rcPlatformConsole" title="Apply the console recoil reduction">Console</button>
+                      <button class="mode-btn rc-mode-btn on" id="rcPlatformPc" title="PC: No recoil reduction" aria-label="PC"><svg class="rc-input-icon" viewBox="0 0 16 16" aria-hidden="true"><rect x="4" y="1" width="8" height="14" rx="4"/><path d="M4 6.8h8M8 1v5.8"/></svg></button>
+                      <button class="mode-btn rc-mode-btn" id="rcPlatformConsole" title="Controller: recoil reduction" aria-label="Console"><svg class="rc-input-icon" viewBox="0 0 16 16" aria-hidden="true"><path d="M4.6 3.5h6.8a3.4 3.4 0 0 1 3.3 2.7l.8 4.4a1.9 1.9 0 0 1-3.3 1.6l-1.6-1.6H5.4l-1.6 1.6a1.9 1.9 0 0 1-3.3-1.6l.8-4.4a3.4 3.4 0 0 1 3.3-2.7z"/><path d="M5 5.6v2.6M3.7 6.9h2.6"/><path d="M10.3 6.1h.01M12 7.6h.01"/></svg></button>
                     </div>
                   </div>
                   <div class="rc-control-group" data-control-group="recoil-control">
@@ -250,7 +248,6 @@
                       <button class="mode-btn rc-mode-btn switch-btn" id="rcConeToggleBtn" title="Show the spread envelope cone across all shots">Cone</button>
                       <button class="mode-btn rc-mode-btn switch-btn" id="rcSpreadToggleBtn" title="Show potential spread bubbles on selected shots. The presets include shot 1 to show first-shot spread, especially useful for movement and hipfire.">Bubbles</button>
                     </div>
-                  </div>
                   <div class="rc-control-group rc-control-group--grow rc-bubble-preset-group" data-control-group="bubbles">
                     <div class="rc-group-row rc-group-row-grow rc-bubble-field">
                       <select id="rcSpreadPreset" class="rc-select" aria-label="Shots that get spread bubbles">
@@ -261,6 +258,7 @@
                       </select>
                       <input id="rcSpreadShotsInput" class="rc-shots-input rc-custom-pop" type="text" value="2, 3, 5, 8, 13, 20" hidden aria-label="Custom shot numbers for spread bubbles" title="Comma-separated shot numbers, ranges (e.g. 2-5), 'all', or 'every N'. Press Enter or click away to close.">
                     </div>
+                  </div>
                   </div>
                 </div>
               </div>
@@ -293,6 +291,7 @@
                   <output class="rc-readout" id="rcZoomReadout" for="rcZoomRange">±5°</output>
                 </span>
                 <button class="rc-scale-btn" id="rcResetView" type="button" title="Reset the view, the aim point and the spray sample" aria-label="Reset view, aim and spray sample"><span class="rc-reset-icon" aria-hidden="true">↺</span></button>
+                <button class="rc-scale-btn" id="rcPopoutBtn" type="button" title="Pop out: open the pattern in its own window, sized to fill it" aria-label="Pop out the pattern into its own window"><svg class="rc-scale-icon" viewBox="0 0 10 10" aria-hidden="true"><path d="M4 1.5H1.5v7h7V6"/><path d="M6 1.5h2.5V4"/><line x1="8.5" y1="1.5" x2="4.75" y2="5.25"/></svg></button>
               </div>
               <div class="rc-canvas-wrap">
                 <div class="rc-scale-controls">
@@ -328,7 +327,7 @@
                   <span class="rc-fire-mode" id="rcRangeModeKey"></span>
                   <span class="rc-zone-legend" id="rcZoneLegend"></span>
                 </span>
-                <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText">Aim: center chest</span></span>
+                <span class="rc-aim-readout" id="rcAimReadout" hidden><span id="rcAimText"></span></span>
               </div>
             </div>
             <div class="rc-note"></div>

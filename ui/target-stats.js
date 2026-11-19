@@ -63,6 +63,9 @@ export function targetImpactStatsHtml(entries, { distance, showHeading = false, 
         </table>
       </section>`;
   });
-  html += '<div class="target-impact-note">Multipliers include the weapon\'s hit-zone class and ammo effects. Damage uses the selected weapon, ammo, attachments, and range. Results describe this simulated spray, not expected player accuracy. Target shape and hit zones are approximate. Total damage includes hits after the first lethal shot. Shotgun figures count pellets; the lethal figure is pellet hits over shells fired.</div>';
+  // The pellet sentence only applies when a shotgun is among the weapons shown.
+  const pelletNote = entries.some(entry => (entry.weapon.pellets ?? 1) > 1)
+    ? ' Shotgun figures count pellets; the lethal figure is pellet hits over shells fired.' : '';
+  html += `<div class="target-impact-note">Multipliers include the weapon's hit-zone class and ammo effects. Results describe this simulated spray, not expected player accuracy; target shape and hit zones are approximate. Total damage includes hits after the first lethal shot.${pelletNote}</div>`;
   return html;
 }

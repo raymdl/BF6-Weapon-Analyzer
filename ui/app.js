@@ -1591,6 +1591,7 @@ function renderOverview() {
     'Mag Size': 'Magazine Size',
     'Strafe Spd': 'ADS Move Speed',
     'Sprint Rec': 'Sprint Recovery',
+    'DRAW/HOLSTER SPEED': 'Draw/Holster',
     'Recoil/Shot': 'Recoil Amount',
     'Recoil Dir': 'Recoil Direction',
     'ADS Spread': 'ADS Spread',
@@ -1696,7 +1697,6 @@ function renderOverview() {
       if (!secFields.length) return;
       const block = document.createElement('div');
       block.className = 'sgroup';
-      block.style.borderLeftColor = sec.color;
       // Drives the group's flex basis and grow factor; see .sgroup in the
       // stylesheet. Spare row width splits by card count, so cards stay a
       // uniform width instead of the smallest group getting the widest cards.
@@ -3966,13 +3966,18 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
   const crosshairToggle = document.getElementById('rcCrosshairToggle');
   if (crosshairToggle) {
-    // The range draws its own live crosshair; its corner holds the range controls instead.
-    crosshairToggle.hidden = state.recoil.view === 'range';
+    // Only the soldier target has a crosshair overlay to toggle: the angle plot's
+    // origin is the aim point, and the range draws its own live crosshair.
+    crosshairToggle.hidden = state.recoil.view !== 'target';
     crosshairToggle.setAttribute('aria-pressed', String(state.recoil.crosshair));
     const label = `${state.recoil.crosshair ? 'Hide' : 'Show'} crosshair overlay`;
     crosshairToggle.title = label;
     crosshairToggle.setAttribute('aria-label', label);
   }
+  // The Firing Range fires from the magazine under the mouse, so the title drops
+  // the simulated shot count there.
+  const shotsField = document.getElementById('rcShotsField');
+  if (shotsField) shotsField.hidden = state.recoil.view === 'range';
   const isTarget = isTargetGeometry();
   const targetControls = document.getElementById('rcTargetControls');
   if (targetControls) targetControls.hidden = !isTarget;
@@ -4038,23 +4043,25 @@ function renderRecoil({ plotOnly = false } = {}) {
   }
   const aimReadout = document.getElementById('rcAimReadout');
   // The range aims with the mouse, so the Soldier Target aim read-out is not shown there.
-  if (aimReadout) aimReadout.hidden = state.recoil.view !== 'target';
   const aimText = document.getElementById('rcAimText');
-  if (aimText) {
+  // The default aim (centre chest) goes unstated: only a moved aim point or a
+  // zeroing offset is worth a line, and an empty read-out leaves the hints the row.
+  const aimParts = [];
+  if (state.recoil.targetAim !== 'chest') {
     const offset = currentAimOffset();
-    aimText.textContent = state.recoil.targetAim === 'chest'
-      ? 'Aim: center chest'
-      : `Aim: ${(offset.x / 100).toFixed(2)} m, ${(offset.y / 100).toFixed(2)} m`;
-    if (isTarget && w1) {
-      const zero = zeroDistanceFor(w1);
-      if (w1._projectileModel && zero != null) {
-        const offset = targetVerticalOffsetMeters(w1);
-        aimText.textContent += offset == null
-          ? ` · drop unavailable at ${zero} m zero`
-          : ` · ${Math.abs(offset).toFixed(2)} m from ${zero} m zero`;
-      }
+    aimParts.push(`Aim: ${(offset.x / 100).toFixed(2)} m, ${(offset.y / 100).toFixed(2)} m`);
+  }
+  if (isTarget && w1) {
+    const zero = zeroDistanceFor(w1);
+    if (w1._projectileModel && zero != null) {
+      const offset = targetVerticalOffsetMeters(w1);
+      aimParts.push(offset == null
+        ? `drop unavailable at ${zero} m zero`
+        : `${Math.abs(offset).toFixed(2)} m from ${zero} m zero`);
     }
   }
+  if (aimText) aimText.textContent = aimParts.join(' · ');
+  if (aimReadout) aimReadout.hidden = state.recoil.view !== 'target' || !aimParts.length;
   const distanceRange = document.getElementById('rcDistanceRange');
   const distanceReadout = document.getElementById('rcDistanceReadout');
   if (distanceRange) {
@@ -4156,29 +4163,20 @@ function renderRecoil({ plotOnly = false } = {}) {
     ? firingRange.render()
     : drawRecoilFixed(document.getElementById('rcMain'), builds, layers, refSeed);
   const noteEl = document.querySelector('.rc-note');
-  const stateLabel = `${aim.toUpperCase()} / ${stance === 'move' ? 'MOV' : stance === 'mount' ? 'MNT' : 'STD'}`;
   if (noteEl && axis) {
-    const activeLayers = [
-      layers.scatter ? 'scatter' : null,
-      layers.spray   ? 'spray pattern' : null,
-      layers.path    ? 'recoil path' : null,
-      layers.spread   ? 'spread bubbles' : null,
-      layers.cone    ? 'cone' : null,
-    ].filter(Boolean).join(' + ');
-    const pathNote  = layers.path  ? ' Recoil Path = recoil-only reference line.' : '';
-    const spreadNote = layers.spread ? ` Bubbles = potential spread on shots ${(axis.spreadBubbleIdxs ?? []).map(i => i + 1).join(', ')}.` : '';
-    const coneNote  = layers.cone  ? ' Cone = spread envelope across all shots.' : '';
+    // One caveat, then only what the plot cannot say for itself. What each
+    // overlay draws is on its button's tooltip, and the axes give the view.
+    const caveat = 'Estimated pattern: recoil recovery and shot distribution are not fully verified against the game.';
     const hasPellets = (isRange ? [w1] : builds).some(w => (w?.pellets ?? 1) > 1);
-    const pelletNote = hasPellets && !isRange ? ' Each shell\'s pellets scatter inside the weapon\'s dispersion cone, as measured on the in-game wall; the scatter cloud shows pellets too, and the bubbles and cone cover the spread plus that cone.' : '';
-    const rangePelletNote = hasPellets && isRange ? ' Each shell\'s pellets scatter inside the dashed ring, the spread plus the weapon\'s dispersion cone, as measured on the in-game wall.' : '';
-    const layerNote = `Estimated pattern. Recoil recovery and shot distribution are not fully verified against the game. Showing ${activeLayers} (${stateLabel}). Scatter = ${CLOUD_RUNS} faded simulated sprays. Spray Pattern = solid reference dots.${pathNote}${spreadNote}${coneNote}`;
+    const pelletNote = hasPellets && !isRange ? " Each shell's pellets scatter inside the weapon's dispersion cone, as measured on the in-game wall; the scatter cloud shows pellets too, and the bubbles and cone cover the spread plus that cone." : '';
+    const rangePelletNote = hasPellets && isRange ? " Each shell's pellets scatter inside the dashed ring, the spread plus the weapon's dispersion cone, as measured on the in-game wall." : '';
     if (isRange) {
-      noteEl.textContent = `Live fire with your own mouse as the recoil control (${stateLabel}). The ring is the spread the next shot is sampled from.${rangePelletNote} Dots are coloured by hit zone; faded dots miss. Recoil recovery and shot distribution are not fully verified against the game. Hipfire cm/360 matches the in-game settings panel.`;
+      noteEl.textContent = `${caveat} The ring is the spread the next shot is sampled from.${rangePelletNote} Faded dots miss. Hipfire cm/360 matches the in-game settings panel.`;
     } else if (axis.isTargetView) {
-      const ringNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
-      noteEl.textContent = `${layerNote}${ringNote}${pelletNote}`;
+      const hitNote = layers.spray ? ' Solid dots hit the target; faded dots miss.' : '';
+      noteEl.textContent = `${caveat}${hitNote}${pelletNote}`;
     } else {
-      noteEl.textContent = `${layerNote} View: ${fmtAxisDeg(axis.xMin)}°–${fmtAxisDeg(axis.xMax)}° H / ${fmtAxisDeg(axis.yMin)}°–${fmtAxisDeg(axis.yMax)}° V.${pelletNote}`;
+      noteEl.textContent = `${caveat}${pelletNote}`;
     }
   }
 
@@ -5006,7 +5004,7 @@ function bindEvents() {
   });
   document.getElementById('rcPlatformPc').addEventListener('click', () => setRecoilPlatform('pc'));
   document.getElementById('rcPlatformConsole').addEventListener('click', () => setRecoilPlatform('console'));
-  document.getElementById('rcPlatformConsole').title = `Apply the ${+((1 - CONSOLE_RECOIL_MULT) * 100).toFixed(2)}% console recoil reduction`;
+  document.getElementById('rcPlatformConsole').title = `Controller: ${+((1 - CONSOLE_RECOIL_MULT) * 100).toFixed(2)}% recoil reduction`;
   document.getElementById('rcZeroCycleBtn')?.addEventListener('click', cycleTargetZero);
 
   // Recoil overlays
