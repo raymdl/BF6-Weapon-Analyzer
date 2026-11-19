@@ -659,6 +659,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   Inc/Shot (their hip step is bound), with the note in the attachment menu and panel.
   The grip pod mark also covers the BROD 3, whose grip pods lack the same ADS bloom
   binding in the wiring survey; it offers no bipod, so it has no recording comparison.
+  The NSW4 was added to the mark on 19 November 2026: in the 2.1.2.0 files its three grip pods
+  bind the hip step and the recoil package without the ADS bloom binding, like the BROD 3, and it
+  offers no bipod either.
 - **What would close it.** A patch that adds the two bindings to the four gun-sway files.
 
 ### 26. EF88, BROD 3, Mk 24 and NSW4 keep per-shot spread growth in semi-auto
