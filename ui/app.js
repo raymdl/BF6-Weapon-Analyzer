@@ -1608,7 +1608,8 @@ function renderOverview() {
   });
   fields.splice(fields.findIndex(f => f.lbl === 'ADS Spread'), 0, {
     lbl: 'Spread Inc/Shot',
-    k: 'recoilIncAds',
+    // Manually selected semi-auto adds no spread per shot (ATTACHMENT_BUGS.md entry 26).
+    compute: w => w._manualSingleNoBloom ? 0 : w.recoilIncAds,
     unit: '\u00b0',
     fmt: v => v.toFixed(2),
     lowerBetter: true,
@@ -3779,7 +3780,7 @@ function renderAttachmentStats(loadouts) {
         footer.push({ note: scaleNote(+scale.toFixed(2), names) });
       }
       // Match Trigger's spread rows: semi-automatic fire already adds no spread
-      // per shot on every weapon except EF88, BROD 3 and Mk 24 (ATTACHMENT_BUGS.md
+      // per shot on every weapon except EF88, BROD 3, Mk 24 and NSW4 (ATTACHMENT_BUGS.md
       // entry 26), so on the others the rows change nothing in practice.
       if ((m.lbl === 'Spread Inc/Shot' || m.lbl === 'Hip Spread/Shot') && weapon.fireModes?.single?.hipNoBloomOnSwitch === true
         && selectedFireMode(weapon, atts) === 'single' && contributions.some(c => c.record?.semiAuto?.spreadIncMult === 0)) {
@@ -4325,10 +4326,17 @@ function renderRecoil({ plotOnly = false } = {}) {
         if (!selW || !w) return '';
         const bar = ATT_BY_ID.BARRELS[atts.barrel] ?? BARRELS[0];
         const lines = [];
-        const effectNames = [
+        // Semi-auto alone zeroes the increase where its rule is bound; nothing else contributes.
+        const effectNames = w._manualSingleNoBloom ? ['Semi-Auto'] : [
           aim === 'ads' && bar.adsSpreadIncMult !== 1 && bar.adsSpreadIncMult != null ? bar.name : null,
           aim === 'ads' && ATT_BY_ID.AMMO[atts.ammo]?.adsSpreadDynOverride ? ATT_BY_ID.AMMO[atts.ammo].name : null,
           ATT_BY_ID.ERGOS[atts.ergo]?.[aim + 'SpreadDynOverride'] ? ATT_BY_ID.ERGOS[atts.ergo].name : null,
+          // Lights and lasers that scale hip spread per shot (Flashlight, Taclight - Hip, combos).
+          ...(aim === 'hip' ? Object.values(Loadout.resolveMountAttachments(atts, selW, _atts))
+            .filter(a => a.hipSpreadIncMult != null && a.hipSpreadIncMult !== 1).map(a => a.name) : []),
+          // Match Trigger: its no-increase effect applies only in semi-automatic fire.
+          w.fireMode === 'semi' && ({ ...ATT_BY_ID.ERGOS[atts.ergo], ...ATT_BY_ID.ERGOS[atts.ergo]?.weaponOverrides?.[selW.id] })
+            .semiAuto?.spreadIncMult != null ? ATT_BY_ID.ERGOS[atts.ergo].name : null,
         ].filter(Boolean);
         if (eff !== base) {
           const d = +(eff - base).toFixed(3);

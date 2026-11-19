@@ -124,19 +124,19 @@ test('selected-mode rates keep source precision and drive shot spacing, TTK and 
   }
 });
 
-test('manual single disables hip bloom only on the L63-bound single rows; default VSSM remains unchanged', () => {
+test('manual single disables hip and ADS bloom only on the L63-bound single rows; default VSSM remains unchanged', () => {
   const bound = weapons.filter(w => w.fireModes.single?.hipNoBloomOnSwitch);
   assert.ok(bound.length > 0);
   for (const w of bound) {
     const single = build(w.id, { fireMode: 'single' });
-    for (const stanceState of ['stand', 'move']) {
-      setSimContext({ aimState: 'hip', stanceState });
+    for (const aimState of ['hip', 'ads']) for (const stanceState of ['stand', 'move']) {
+      setSimContext({ aimState, stanceState });
       const spread = simulateSpread(single, 10);
-      assert.ok(spread.every(v => v === spread[0]), w.id);
+      assert.ok(spread.every(v => v === spread[0]), `${w.id} ${aimState}`);
     }
     assert.equal(single.recoilIncAds, build(w.id).recoilIncAds);
   }
-  for (const id of ['ef88', 'brod3', 'grtcps']) {
+  for (const id of ['ef88', 'brod3', 'mk24', 'nsw4']) {
     assert.equal(build(id, { fireMode: 'single' })._manualSingleNoBloom, false);
   }
   setSimContext({ aimState: 'hip', stanceState: 'stand' });

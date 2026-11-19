@@ -63,7 +63,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Matches game: with these two scopes the site offers no Optic Accessory; the SDO 3.50x and Baker 3.00x keep it |
 | 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
 | 25 | Bipod, deployed | Mk 24, EF88, VSSM, Z84M | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), and the operator confirmed the same on the Z84M in game, while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Matches game: the Mounted stance deploys the recoil package only on these four, and the bipod and grip pods are marked † with the missing spread benefits |
-| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24 | Game error | In semi-auto these three rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 gun-sway files in 2.1.1.0 finds it missing on exactly these three. | Matches source data: `hipNoBloomOnSwitch` false for the three, true for the rest |
+| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24, NSW4 | Game error | In semi-auto these four rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 gun-sway files in 2.1.1.0 finds it missing on exactly these four (the NSW4 then unreleased). | Matches source data: `hipNoBloomOnSwitch` false for the four, true for the rest |
 | 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. The CQB Suppressor incorrectly receives the Lightened Suppressor recoil benefits. | Matches game: the CQB Suppressor receives the Lightened Suppressor recoil benefits |
 | 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
 
@@ -660,7 +660,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   binding in the wiring survey; it offers no bipod, so it has no recording comparison.
 - **What would close it.** A patch that adds the two bindings to the four gun-sway files.
 
-### 26. EF88, BROD 3 and Mk 24 keep per-shot spread growth in semi-auto
+### 26. EF88, BROD 3, Mk 24 and NSW4 keep per-shot spread growth in semi-auto
 
 - **Status.** Game error.
 
@@ -680,19 +680,35 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   ([survey](../reference-data/provenance/spread-binding-survey-2026-10-17.md)) it is
   bound in 42 of the 69 gun-sway files. Of the 38 weapons that offer auto (or burst) and
   single, 35 bind it; the three that do not are `GS_EF88`, `GS_BREN3` (BROD 3) and
-  `GS_MRGGA` (Mk 24). The other seven bindings are the VSSM and the six auto-only belt
+  `GS_MRGGA` (Mk 24). `GS_Devgru` (NSW4, released in 2.1.2.0 and not a site weapon at the
+  survey) does not bind it either, which makes 35 of 39. The other seven bindings are the VSSM and the six auto-only belt
   LMGs. The 1.4.2.5 export shows the same gap for the
   EF88 and BROD 3. The selector itself (`CMU_SemiAuto`) is referenced by key, not as an
   import, in every file, so the difference is only the missing effect binding. The M433 in
   manually selected semi was captured on 25 September with no widening across 10 hip
   shots, consistent with the binding being active after a mode switch.
-- **Interpretation.** Three rifles out of 38 with a selectable semi mode lack the one
+- **ADS recordings (19 November 2026, client 2.1.2.0).** M433 and Mk 24 at the 360 to 400 RPM
+  semi cap, standing ADS through a 4.50x optic, with automatic fire as the control
+  (`reference-data/Recordings/11192026/Semi Auto Spread/`). The spread indicator rests at 8 to 9 px
+  (the 0.05° minimum). Automatic fire widens it to 225 px (M433) and 213 px (Mk 24). In semi
+  the bare Mk 24 jumps to 63 to 67 px on every shot (about 0.36°, against the site's 0.409° less
+  the indicator's two to three frame ramp) and recovers before the next shot; the bare M433, the
+  M433 with Match Trigger and the Mk 24 with Match Trigger never exceed 9 px. So the semi binding
+  zeroes the ADS increase too, as its data says (×0 in all states), and Match Trigger's
+  `GBM_NoIncrease_ERG_P00` restores the missing benefit on the Mk 24.
+- **NSW4 recordings (19 November 2026, same setup and folder).** Automatic fire widens the
+  indicator to 176 px; bare semi jumps to 55 to 57 px on every shot (about 48 px above rest,
+  the same as the M433's first automatic shot, both 0.36°) and returns to 8 to 9 px before the
+  next shot; semi with Match Trigger never exceeds 9 px. The NSW4 has the same missing binding
+  in game, and Match Trigger removes its semi bloom.
+- **Interpretation.** Four rifles out of 39 with a selectable semi mode lack the one
   binding that removes semi-auto bloom. The pattern is a missing binding rather than a
   tuning choice.
 - **Site.** `data/weapons.json` stores `hipNoBloomOnSwitch` false for these three and true
-  for the rest, so the site already matches the source. The ADS branch applies the same
-  increase in every mode on the site; the single-mode semi state is not modelled.
-- **Follow-up verification.** A patch that adds the binding to the three gun-sway files, or
+  for the rest, so the site already matches the source (the NSW4 included). Since 19 November 2026 the flag
+  zeroes the increase in hip and ADS (before that, hip only, which added the full ADS increase
+  in semi on the 35 bound weapons). The field name keeps its original `hip` prefix.
+- **Follow-up verification.** A patch that adds the binding to the four gun-sway files, or
   a hip-fire semi recording on the EF88 against the M433 at the semi cap (predicted:
   EF88 hip indicator climbs 0.65° per shot less recovery; M433 flat).
 

@@ -296,10 +296,12 @@ selected fire mode is semi-automatic: +3 on both recoil tier exponents, recoil
 decrease factor ×1.728 in both aim states and no spread increase per shot (Frosty
 `GRM_MatchTrigger_ERG_P15` and `GBM_NoIncrease_ERG_P00`, reached through an
 embedded context identifier; L17 and L24 in the research notes). The source path
-is established; activation in semi-automatic fire is still the open L17 capture,
-and EA has said the attachment must not affect automatic fire, which the gating
+is established. Activation in semi-automatic fire is observed for the spread effect: the
+bare Mk 24 and NSW4 bloom on every semi shot and do not with Match Trigger (19 November
+recordings, [bug entry 26](ATTACHMENT_BUGS.md)); the recoil and recovery effects are still
+unmeasured (the open L17 capture). EA has said the attachment must not affect automatic fire, which the gating
 follows. Its two spread rows in the Attachment Effects panel carry a footnote on
-every weapon but the EF88, BROD 3 and Mk 24: semi-automatic fire already adds no
+every weapon but the EF88, BROD 3, Mk 24 and NSW4: semi-automatic fire already adds no
 spread per shot there ([bug entry 26](ATTACHMENT_BUGS.md)), so the rows change
 nothing in practice. The Bipod has no undeployed
 effect; the Mounted stance deploys it (and the grip pods) through each grip's

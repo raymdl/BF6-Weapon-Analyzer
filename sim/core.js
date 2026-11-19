@@ -233,17 +233,16 @@ export function spreadDynamics(w, aimState = _ctx.aimState) {
     ['inc', 'firingCoef', 'firingExp', 'firingOffset', 'notFiringCoef', 'notFiringExp',
       'notFiringOffset', 'distExp'], `${w.id} spreadDyn.${aimState}`);
   if (dyn.distExpMove != null) requireNumber(dyn.distExpMove, `${w.id} spreadDyn.${aimState}.distExpMove`);
-  if (aimState === 'ads') return { ...dyn, inc: w.recoilIncAds == null ? dyn.inc : requireNumber(w.recoilIncAds, `${w.id} recoilIncAds`) };
+  // Manually selected semi-auto adds no spread per shot in hip or ADS
+  // (GBM_NoIncrease_Semi_P00; ATTACHMENT_BUGS.md entry 26).
   if (w._manualSingleNoBloom) return { ...dyn, inc: 0 };
+  if (aimState === 'ads') return { ...dyn, inc: w.recoilIncAds == null ? dyn.inc : requireNumber(w.recoilIncAds, `${w.id} recoilIncAds`) };
   return dyn;
 }
 
 /** Per-shot spread increase for the current weapon + aim state. */
 export function selectedSpreadIncFor(w) {
-  const { aimState } = _ctx;
-  const dyn = spreadDynamics(w);
-  if (aimState === 'ads') return w.recoilIncAds ?? dyn.inc;
-  return dyn.inc;
+  return spreadDynamics(w).inc;
 }
 
 // Burst fire and multi-round pump cycles share the rounds-then-pause cadence.
