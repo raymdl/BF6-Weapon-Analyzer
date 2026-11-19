@@ -692,7 +692,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   shots, consistent with the binding being active after a mode switch.
 - **ADS recordings (19 November 2026, client 2.1.2.0).** M433 and Mk 24 at the 360 to 400 RPM
   semi cap, standing ADS through a 4.50x optic, with automatic fire as the control
-  (`reference-data/Recordings/11192026/Semi Auto Spread/`). The spread indicator rests at 8 to 9 px
+  (`reference-data/Recordings/11192026/Semi Auto Spread/`; [receipt](../reference-data/provenance/semi-auto-match-trigger-2026-11-19.md)). The spread indicator rests at 8 to 9 px
   (the 0.05° minimum). Automatic fire widens it to 225 px (M433) and 213 px (Mk 24). In semi
   the bare Mk 24 jumps to 63 to 67 px on every shot (about 0.36°, against the site's 0.409° less
   the indicator's two to three frame ramp) and recovers before the next shot; the bare M433, the
@@ -794,7 +794,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Status.** Game error.
 - **In-game (operator recordings, 19 November 2026, client 2.1.2.0).** Standing ADS through a
   4.50x optic, semi-auto, about 0.9 s between shots
-  (`reference-data/Recordings/11192026/Semi Auto Spread/`). View kick and the time to recover 80%
+  (`reference-data/Recordings/11192026/Semi Auto Spread/`; [receipt](../reference-data/provenance/semi-auto-match-trigger-2026-11-19.md)). View kick and the time to recover 80%
   of it, measured by frame-to-frame phase correlation of the unmagnified ceiling band:
 
   | Weapon | Shots (bare / Match Trigger) | Kick, bare | Kick, Match Trigger | Ratio | 80% recovery, bare | Match Trigger |
