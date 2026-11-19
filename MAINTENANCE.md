@@ -257,7 +257,7 @@ its tooltip without a drawing, and the page loads without the file.
 The drawings are made outside this repository, by run-folder scripts in the datamining
 folder; how each part is sourced and how to draw a new sight is in the research repo's
 [sight drawings](https://github.com/raymdl/BF6-Frosty-Research/blob/main/docs/frosty/ATTACHMENTS.md#sight-drawings-2120-17-november-2026)
-section. To bring new or changed drawings into the site:
+section. Iron-sight drawings are at the same scale as the 1.00x–2.00x optics (0.48 × on-screen size) and show the gun body around the sight; their rules are in that page's "Iron-sight drawings, second version" section. To bring new or changed drawings into the site:
 
 ```bash
 node scripts/build-sight-previews.mjs "<optic svg folder>" "<iron-sight svg folder>"
