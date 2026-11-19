@@ -61,9 +61,8 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4, NSW4) | Game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons (and on the BROD 3, RPK-74M and VSSM, recorded before 2.1.1.0, and the NSW4, found in the 19 November re-run of this rule on 2.1.2.0) and 2 on the B36A4 and the rest. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Does not match game: shows 100 |
 | 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Matches game: with these two scopes the site offers no Optic Accessory; the SDO 3.50x and Baker 3.00x keep it |
-| 24 | Single Shot magazine | ELR-40 | Suspected game error | The description says "massive damage between 30m and 60m", but the magazine's bullet one-shots the chest from 30 to 80 m. The 50 m window matches the pre-1.3.3.0 sweet-spot widths; every other sniper window, including the ELR-40's own 150 to 180 m, is about 30 m and matches its text. The bullet curve may have been left out of the 1.3.3.0 reduction. | Matches source data: the 30 to 80 m curve; not tested in game |
 | 25 | Bipod, deployed | Mk 24, EF88, VSSM, Z84M | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), and the operator confirmed the same on the Z84M in game, while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Matches game: the Mounted stance deploys the recoil package only on these four, and the bipod and grip pods are marked † with the missing spread benefits |
-| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24, NSW4 | Game error | In semi-auto these four rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 gun-sway files in 2.1.1.0 finds it missing on exactly these four (the NSW4 then unreleased). | Matches game on the Mk 24 and NSW4 (19 November recordings) and source data on the EF88 and BROD 3: `hipNoBloomOnSwitch` false for the four, true for the rest |
+| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24, NSW4 | Game error | In semi-auto these four rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 gun-sway files in 2.1.1.0 finds it missing on exactly these four (the NSW4 then unreleased). | Matches game on all four (Mk 24 and NSW4 recorded 19 November; EF88 and BROD 3 verified by the operator in the firing range, no capture): `hipNoBloomOnSwitch` false for the four, true for the rest |
 | 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. The CQB Suppressor incorrectly receives the Lightened Suppressor recoil benefits. | Matches game: the CQB Suppressor receives the Lightened Suppressor recoil benefits |
 | 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
 | 29 | Match Trigger | M433 | Game error | The Match Trigger does nothing on the M433. Its weapon file points to a shared package whose effect list is empty, where every other weapon holds a working local chain. Slow-fire recordings show no recoil or recovery change on the M433 and a clear one on the NSW4 and B36A4. | Matches game: the M433 override drops the semi-auto effects |
@@ -121,6 +120,12 @@ recoil. See
   ([bug report](https://forums.ea.com/idea/battlefield-6-bug-reports-en/incorrect-stats-for-pp-19s-20-round-fast-magazine/13472218)).
   Recorded as `suspectedGameBug` in `data/attachments.json` and as a screenshot
   exception in `data/reload-exceptions.json`.
+- **Cause (file trace, 19 November 2026, 2.1.2.0).** The magazine the game offers selects
+  `U_WPM_MAG_020Cpt3_PP19_W05`, whose package has no reload effect. A second package,
+  `WPM_MAG_020Cpt2_PP19_W05`, is imported by `PP19_WB` and holds `ReloadSpeedRegular_P10`
+  (x1.13) plus one step of draw and sprint-recovery speed, but no PP-19 attachment selects
+  it. The 20 Rnd fast packages on other weapons (5.56, PW7A2, Scorpion) carry the reload
+  effect. The site matches what the game applies: no reload, draw or sprint bonus.
 
 ### 6. PP-19 Flash Comp
 
@@ -560,36 +565,6 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   The MGO 3.50x on the Interdictor and the QMK 3.00x on the M16A4 therefore remove the slot,
   as in game.
 
-### 24. ELR-40 Single Shot sweet spot is wider than its description
-
-- **In-game text.** The Single Shot magazine: "Blocked magwell for individually loading
-  custom 9.52×70mm rounds, dealing massive damage between 30m and 60m but at the detriment
-  of long-range ballistics." The ELR-40 itself: "Most effective between between 150m-180m."
-- **Frosty data (2.1.1.0).** The magazine fires its own bullet, `PD_.375EnABELR_API`, whose
-  damage curve is (0 m, 90), (24 m, 90), (42 m, 120), (68 m, 120), (80 m, 100), (140 m, 80),
-  with straight ramps between points. The curve is stored twice in the raw file and both
-  copies agree. The base bullet holds 100 from 150 to 180 m.
-- **Conflict.** A sweet spot is the span where one upper-chest hit kills, so where chest
-  damage is at or above 100. For the Single Shot bullet that span is 30 to 80 m (50 m wide);
-  the description gives 30 to 60 m (30 m wide). The near end matches exactly, the far end
-  does not. The base ELR-40's 150 to 180 m matches its text, as do the launch rifles'
-  windows after the 1.3.3.0 reduction (L115 120-175 to 100-133, M2010 ESR 75-120 to 75-100,
-  PSR 100-150 to 90-120, SV-98 54-90 to 54-75: every window cut by about 40 percent, the
-  PSR's from 50 m to 30 m).
-- **Interpretation.** The 50 m window is the pre-1.3.3.0 width and the 30 m text is the
-  post-1.3.3.0 width. The simplest reading is that the ELR-40 and the Single Shot were
-  designed before that update, the descriptions and the base bullet curve were reduced with
-  the other rifles, and the Single Shot bullet curve was not. The ELR-40 first appears in
-  2.1.1.0, after the update, so no earlier curve exists to confirm this; the curve and the
-  text were captured from the same build. The other reading, stale text over a deliberate
-  curve, cannot be excluded.
-- **Site.** The site applies the 30 to 80 m curve through the magazine's `projectileOverride`
-  (`WEAPON_MAG.elr40.mags["1_rnd"]`). `scripts/sweet-spot.mjs` derives the one-shot span and
-  gives 30 to 80 m for this bullet; the span is not displayed. Not tested in game.
-- **What would settle it.** A later update that moves the curve's 68 and 80 m breakpoints
-  toward 60 m confirms the forgotten curve; a description change to 30-80 m means the text
-  was stale. A firing-range test at 70 m (one chest hit should kill) checks the current curve.
-
 ### 25. Mk 24, EF88, VSSM and Z84M deployed bipods do not stop per-shot spread growth
 
 - **In-game (operator recordings, 17 October 2026, client 2.1.1.0).**
@@ -718,9 +693,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   for the rest, so the site already matches the source (the NSW4 included). Since 19 November 2026 the flag
   zeroes the increase in hip and ADS (before that, hip only, which added the full ADS increase
   in semi on the 35 bound weapons). The field name keeps its original `hip` prefix.
-- **Follow-up verification.** A patch that adds the binding to the four gun-sway files, or
-  a hip-fire semi recording on the EF88 against the M433 at the semi cap (predicted:
-  EF88 hip indicator climbs 0.65° per shot less recovery; M433 flat).
+- **Follow-up verification.** None needed in game: the operator has verified the EF88 and
+  BROD 3 in the firing range as well (no capture taken). Recheck when a patch adds the
+  binding to the four gun-sway files.
 
 ### 27. ELR-40 CQB Suppressor is bound to the Lightened Suppressor selector
 

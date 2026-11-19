@@ -81,3 +81,23 @@ test('compensation, aim-state recovery multipliers, and deterministic seeds rema
   assert.deepEqual(genRecoilPts(w, 7, 10), genRecoilPts(w, 7, 10));
   assert.notDeepEqual(genRecoilPts(w, 7, 10), genRecoilPts(w, 8, 10));
 });
+
+// Pins the fitted recovery constants (scale and offset) through a real weapon: the synthetic
+// weapons above divide the scale out, so a silent change to either constant would pass them.
+test('default-loadout climb before shot 15 stays at the fitted values', async () => {
+  const fs = await import('node:fs');
+  const R = p => JSON.parse(fs.readFileSync(new URL(`../data/${p}.json`, import.meta.url), 'utf8'));
+  const { applyAttachments, setAttachmentContext } = await import('../sim/applyAttachments.js');
+  const { resetAttsForWeapon } = await import('../sim/loadout.js');
+  const B = R('balance_tables'), data = { ...R('attachments'), ...R('ammo') };
+  setAttachmentContext({ HIT_ZONES: R('hit_zones'), ...data, ...B, HP_HS_HIGH: new Set(B.HP_HS_HIGH) });
+  setSimContext({ aimState: 'ads', stanceState: 'stand', compensationFn: () => 0, platformRecoilMultFn: () => 1 });
+  for (const [id, expected] of [['ak205', 2.237], ['m433', 5.230]]) {
+    const base = R('weapons').find(w => w.id === id), atts = {};
+    resetAttsForWeapon(atts, base, data);
+    const w = applyAttachments(base, atts);
+    let sum = 0;
+    for (let seed = 0; seed < 500; seed++) sum += genRecoilPts(w, seed, 15)[14].y;
+    close(sum / 500, expected, 0.002);
+  }
+});

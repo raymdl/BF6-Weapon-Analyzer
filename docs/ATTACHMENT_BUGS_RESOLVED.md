@@ -17,6 +17,7 @@ Only the resolved part is here.
 | 13 | Tungsten Core | L115, Interdictor | Game error | Both used one recoil penalty step; M2010 ESR, PSR and SV-98 use six. | Resolved in 2.1.2.0: both now use six steps (−6). The Mini Scout part is still active ([entry 13](ATTACHMENT_BUGS.md#13-sniper-tungsten-core-recoil-penalties-are-inconsistent)) | 2.1.2.0 |
 | 19 | Single-Port Brake | RSPR | Game error | Reduces recoil by seven steps: the weapon file binds the bolt-action sniper recoil modifier (six steps) on top of the normal one. A 5-point brake gives more Control than the 35-point Classic Vertical grip.  With any vertical or stubby grip added, the recoil amount sum passes the end of the Precision table and the panel shows Precision 0. | Resolved in 2.1.2.0: one ADS and one hip step | 2.1.2.0 |
 | 20 | Tungsten Core | M121 A2 | Game error | The stat panel showed Collateral Multiplier x0.00: Tungsten Core put the summed penetration row at 10, past the end of the table. Firing-range tests showed full x1.00 damage to the second target. | Resolved in 2.1.2.0 (Tungsten Core one row lower). The ELR-40 part is still active ([entry 20](ATTACHMENT_BUGS.md#20-collateral-multiplier-panel-shows-x000-past-the-top-of-the-table)) | 2.1.2.0 |
+| 24 | Single Shot magazine | ELR-40 | Suspected game error | The description said "massive damage between 30m and 60m", but the bullet one-shots the chest from 30 to 80 m. | Resolved in 2.1.2.0: the description now says 30m and 80m, matching the curve (operator confirmed the range in game) | 2.1.2.0 |
 
 ## Game errors and suspected errors
 
@@ -204,3 +205,37 @@ Resolved in 2.1.2.0 for the M121 A2: its Tungsten Core row went from 10 to 9, in
   (`frosty-barrel-ads-generated.json`).
 - **In-game.** Operator review: stale text from before the Extended barrel ADS buff
   was removed. Behavior matches the data.
+
+### 24. ELR-40 Single Shot sweet spot is wider than its description
+
+- **In-game text.** The Single Shot magazine: "Blocked magwell for individually loading
+  custom 9.52×70mm rounds, dealing massive damage between 30m and 60m but at the detriment
+  of long-range ballistics." The ELR-40 itself: "Most effective between between 150m-180m."
+- **Frosty data (2.1.1.0).** The magazine fires its own bullet, `PD_.375EnABELR_API`, whose
+  damage curve is (0 m, 90), (24 m, 90), (42 m, 120), (68 m, 120), (80 m, 100), (140 m, 80),
+  with straight ramps between points. The curve is stored twice in the raw file and both
+  copies agree. The base bullet holds 100 from 150 to 180 m.
+- **Conflict.** A sweet spot is the span where one upper-chest hit kills, so where chest
+  damage is at or above 100. For the Single Shot bullet that span is 30 to 80 m (50 m wide);
+  the description gives 30 to 60 m (30 m wide). The near end matches exactly, the far end
+  does not. The base ELR-40's 150 to 180 m matches its text, as do the launch rifles'
+  windows after the 1.3.3.0 reduction (L115 120-175 to 100-133, M2010 ESR 75-120 to 75-100,
+  PSR 100-150 to 90-120, SV-98 54-90 to 54-75: every window cut by about 40 percent, the
+  PSR's from 50 m to 30 m).
+- **Interpretation.** The 50 m window is the pre-1.3.3.0 width and the 30 m text is the
+  post-1.3.3.0 width. The simplest reading is that the ELR-40 and the Single Shot were
+  designed before that update, the descriptions and the base bullet curve were reduced with
+  the other rifles, and the Single Shot bullet curve was not. The ELR-40 first appears in
+  2.1.1.0, after the update, so no earlier curve exists to confirm this; the curve and the
+  text were captured from the same build. The other reading, stale text over a deliberate
+  curve, cannot be excluded.
+- **Site.** The site applies the 30 to 80 m curve through the magazine's `projectileOverride`
+  (`WEAPON_MAG.elr40.mags["1_rnd"]`). `scripts/sweet-spot.mjs` derives the one-shot span and
+  gives 30 to 80 m for this bullet; the span is not displayed. The operator confirmed the 30 to 80 m one-shot range in game (no capture taken).
+- **What would settle it.** A later update that moves the curve's 68 and 80 m breakpoints
+  toward 60 m confirms the forgotten curve; a description change to 30-80 m means the text
+  was stale. A firing-range test at 70 m (one chest hit should kill) checks the current curve.
+- **Resolved (2.1.2.0).** The description now reads "massive damage between 30m and 80m"
+  (string 61371A94), which matches the 30 to 80 m curve. The text was corrected; the curve is
+  unchanged. Found by the 19 November 2026 bug-rule recheck (Frosty research
+  `reference-data/provenance/frosty-2026-11-19-bug-rules-2.1.2.0.json`).

@@ -705,7 +705,13 @@ For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
 2. **Source side.** Did any asset behind the entry change? This rests on hashes, not decoding.
 3. **Description side.** Compare string sets (Stage 6); decode metadata per Stage 4 rather
    than recording the entry as unverified.
-4. Re-run the multi-package scan and the relative-to-default comparison.
+4. Re-run the multi-package scan and the relative-to-default comparison. One script does this
+   for every file-decidable entry across all weapons: in the Frosty Research repo run
+   `python scripts/frosty-bug-rules.py <build>\capture\collection\raw --out <result>.json`
+   (`--only 2,4` limits it to some entries). For each entry it lists the weapons affected now,
+   the newly affected and the no-longer-affected ones against the entry's listed weapons, and
+   marks in-game-only parts "manual". Treat any newly or no-longer affected weapon as a
+   candidate for step 5; save the result under `reference-data/provenance/`.
 5. **Decide the status.**
    - Asset changed and the stored values now agree with the text: resolved, with the build and
      the changed asset.
@@ -829,6 +835,16 @@ reused. Apply what it settles and remove the item from IN_GAME_CHECKS.md in the 
      material grids of the new build are captured.
    - `frosty-hit-zones.py`: needs the material grids through the bounded reader; capture them
      on every new build whose comparison shows changed grids or bullet materials.
+
+   **Site-to-game attachment mapping.** After the site data changes (new weapon, renamed or
+   removed choices), write a new dated `frosty-site-attachment-mapping-<date>.json` by running
+   `frosty-attachment-tooltips.py` in raw mode on the new build. Its reviewed inputs must be
+   updated first or the run fails or leaves new choices unmapped: write a new dated identity
+   follow-up file (pattern: `frosty-attachment-identity-followup-2026-11-19.json`) holding the
+   new weapon's identity, one evidence-backed row per new or renamed choice, and a retirement
+   for each panel-review row whose choice the site removed. `--keep-going` skips stale reviewed
+   tooltip rows and lists them as `reviewDrift`. Run it before any reverse check ("site choice with no stored
+   effect"); a check on the previous mapping misses new weapons and renamed choices.
 2. **Decide which source changes require site changes.** Not every diff does.
 3. **Apply only those**, preserving the observed / fitted / native-confirmed evidence
    boundaries. **Reach of a shared package:** when a shared package (`WPM_*`, `WME_*`, `PD_*`)
