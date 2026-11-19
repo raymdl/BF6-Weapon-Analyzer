@@ -9859,6 +9859,9 @@
         "spreadIncMult": 0
       },
       "weaponOverrides": {
+        "m433": {
+          "semiAuto": null
+        },
         "m44": {
           "pts": 10,
           "semiAuto": null,
@@ -36436,6 +36439,21 @@
         "Recoil Duration"
       ],
       "note": "Also applies the sniper suppressors' recoil smoothing (a longer kick with faster recovery), which its text does not state."
+    },
+    {
+      "ref": "29",
+      "slot": "ergo",
+      "attachments": [
+        "match_trigger"
+      ],
+      "weapons": [
+        "m433"
+      ],
+      "metrics": [
+        "ADS Recoil/Shot",
+        "Recoil Recovery"
+      ],
+      "note": "The semi-auto recoil and recovery benefits aren't applied on this weapon."
     }
   ]
 }

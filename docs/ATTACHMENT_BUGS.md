@@ -66,6 +66,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24, NSW4 | Game error | In semi-auto these four rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 gun-sway files in 2.1.1.0 finds it missing on exactly these four (the NSW4 then unreleased). | Matches source data: `hipNoBloomOnSwitch` false for the four, true for the rest |
 | 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. The CQB Suppressor incorrectly receives the Lightened Suppressor recoil benefits. | Matches game: the CQB Suppressor receives the Lightened Suppressor recoil benefits |
 | 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
+| 29 | Match Trigger | M433 | Game error | The Match Trigger does nothing on the M433. Its weapon file points to a shared package whose effect list is empty, where every other weapon holds a working local chain. Slow-fire recordings show no recoil or recovery change on the M433 and a clear one on the NSW4 and B36A4. | Matches game: the M433 override drops the semi-auto effects |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](ATTACHMENT_BUGS_METHOD.md#review-method-and-rejected-findings)); numbers are not reused.
@@ -787,6 +788,36 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   each uses its `<weapon ID>-mode-branch-0` record).
 - **Recheck** after a game update changes any affected weapon's mode list or Burst Training
   modifier, or when the intended cycle order is confirmed.
+
+### 29. Match Trigger has no effect on the M433
+
+- **Status.** Game error.
+- **In-game (operator recordings, 19 November 2026, client 2.1.2.0).** Standing ADS through a
+  4.50x optic, semi-auto, about 0.9 s between shots
+  (`reference-data/Recordings/11192026/Semi Auto Spread/`). View kick and the time to recover 80%
+  of it, measured by frame-to-frame phase correlation of the unmagnified ceiling band:
+
+  | Weapon | Shots (bare / Match Trigger) | Kick, bare | Kick, Match Trigger | Ratio | 80% recovery, bare | Match Trigger |
+  |---|---|---|---|---|---|---|
+  | M433 (four clips) | 59 / 60 | 65.0 px | 63.9 px | 0.98 | 236 ms | 236 ms |
+  | NSW4 | 29 / 28 | 66.0 px | 51.9 px | 0.79 | 248 ms | 188 ms |
+  | B36A4 | 29 / 30 | 54.4 px | 44.7 px | 0.82 | 236 ms | 189 ms |
+
+  The site's kick ratios for the NSW4 and B36A4 are 0.825 and 0.831. The four M433 clip means range
+  from 60 to 68 px, cause unknown; the recovery times range from 230 to 242 ms.
+- **Source (2.1.2.0 raw capture).** All 27 gun-sway files of weapons with a standard Match Trigger
+  bind `GRM_MatchTrigger_ERG_P15` and `GBM_NoIncrease_ERG_P00` to identifier `15cff9ff`. In 26
+  weapon files the Match Trigger selector `3eaeac2e` leads through a local effect and condition
+  group to the record that holds that identifier. `HK433_WB` has none of these objects: it imports
+  `WPM_ERG_MatchTrigger_W15`, whose selector has an empty effect list, and it is the only weapon
+  file that imports that package. The identifier occurs nowhere else in the 42,073 captured files.
+  `HK433_WB` held the local chain in 1.4.2.5 and 1.4.3.0 and the package import from a 1.4.3.5
+  capture onward.
+- **Interpretation.** One weapon was moved to a shared package that was left empty. The spread
+  half cannot be seen on the M433, because semi-auto already removes its bloom (entry 26).
+- **Site.** `match_trigger.weaponOverrides.m433` sets `semiAuto` to null, so the attachment changes
+  nothing on the M433. `GAME_BUGS` (ref 29) marks the choice.
+- **Recheck** when a game update changes `HK433_WB` or `WPM_ERG_MatchTrigger_W15`.
 
 ## Description errors
 

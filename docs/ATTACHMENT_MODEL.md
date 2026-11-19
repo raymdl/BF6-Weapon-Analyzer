@@ -306,7 +306,7 @@ Match Trigger shots at about 0.9 s spacing) show no change: mean view kick ratio
 time to recover 80% of the kick 236 ms in both, against a predicted 0.84 and a ×1.728 faster
 recovery. The M433 is the one weapon whose weapon file lacks the Match Trigger activation chain
 ([method notes](ATTACHMENT_BUGS_METHOD.md)), so on the M433 the attachment is inactive in game
-while the site still applies it (a known site difference until the M433 override is added). The operator confirms
+and the site's M433 override drops the semi-auto effects ([bug entry 29](ATTACHMENT_BUGS.md)). The operator confirms
 Match Trigger has no effect in automatic fire (an early EF88 and BROD 3 bug that applied it in
 automatic fire has been fixed). EA has said the attachment must not affect automatic fire, which the gating
 follows. Its two spread rows in the Attachment Effects panel carry a footnote on
