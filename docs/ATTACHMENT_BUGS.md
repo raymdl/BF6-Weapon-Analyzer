@@ -681,7 +681,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   bound in 42 of the 69 gun-sway files. Of the 38 weapons that offer auto (or burst) and
   single, 35 bind it; the three that do not are `GS_EF88`, `GS_BREN3` (BROD 3) and
   `GS_MRGGA` (Mk 24). `GS_Devgru` (NSW4, released in 2.1.2.0 and not a site weapon at the
-  survey) does not bind it either, which makes 35 of 39. The other seven bindings are the VSSM and the six auto-only belt
+  survey) does not bind it either, which makes 35 of 39. A raw read of the 2.1.2.0 capture
+  (19 November) confirms it: the import GUID of `GBM_NoIncrease_Semi_P00` (`f3c1e2de`) is absent from
+  `GS_Devgru`, `GS_MRGGA`, `GS_EF88` and `GS_BREN3` and present in `GS_M4A1` and `GS_HK433`. The other seven bindings are the VSSM and the six auto-only belt
   LMGs. The 1.4.2.5 export shows the same gap for the
   EF88 and BROD 3. The selector itself (`CMU_SemiAuto`) is referenced by key, not as an
   import, in every file, so the difference is only the missing effect binding. The M433 in

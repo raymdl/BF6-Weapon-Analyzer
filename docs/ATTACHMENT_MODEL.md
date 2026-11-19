@@ -298,8 +298,17 @@ decrease factor ×1.728 in both aim states and no spread increase per shot (Fros
 embedded context identifier; L17 and L24 in the research notes). The source path
 is established. Activation in semi-automatic fire is observed for the spread effect: the
 bare Mk 24 and NSW4 bloom on every semi shot and do not with Match Trigger (19 November
-recordings, [bug entry 26](ATTACHMENT_BUGS.md)); the recoil and recovery effects are still
-unmeasured (the open L17 capture). EA has said the attachment must not affect automatic fire, which the gating
+recordings, [bug entry 26](ATTACHMENT_BUGS.md)); the recoil and recovery effects are
+observed on the NSW4 and B36A4 (19 November slow-fire pairs, 28 to 30 shots each: view kick ratio
+0.79 and 0.82 against a predicted 0.84, and time to recover 80% of the kick 188 and 189 ms against
+248 and 236 ms bare). Slow-fire M433 recordings (19 November, four clips, 59 bare and 60
+Match Trigger shots at about 0.9 s spacing) show no change: mean view kick ratio 0.98 and
+time to recover 80% of the kick 236 ms in both, against a predicted 0.84 and a ×1.728 faster
+recovery. The M433 is the one weapon whose weapon file lacks the Match Trigger activation chain
+([method notes](ATTACHMENT_BUGS_METHOD.md)), so on the M433 the attachment is inactive in game
+while the site still applies it (a known site difference until the M433 override is added). The operator confirms
+Match Trigger has no effect in automatic fire (an early EF88 and BROD 3 bug that applied it in
+automatic fire has been fixed). EA has said the attachment must not affect automatic fire, which the gating
 follows. Its two spread rows in the Attachment Effects panel carry a footnote on
 every weapon but the EF88, BROD 3, Mk 24 and NSW4: semi-automatic fire already adds no
 spread per shot there ([bug entry 26](ATTACHMENT_BUGS.md)), so the rows change
