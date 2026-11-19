@@ -2952,7 +2952,7 @@
       "single": {
         "mechanism": "semi",
         "rpm": 449.9989929199219,
-        "hipNoBloomOnSwitch": true
+        "hipNoBloomOnSwitch": false
       },
       "auto": {
         "mechanism": "auto",

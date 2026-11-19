@@ -60,9 +60,9 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 20 | Single Shot magazine | ELR-40 | Game error | The stat panel shows Collateral Multiplier x0.00 when the summed penetration row passes the end of the table (row 10). Firing-range tests on the M121 A2 and on the ELR-40 Single Shot show full x1.00 damage to the second target. | ELR-40 matches game: x1.00; the panel shows x0.00. The M121 A2 part was resolved in 2.1.2.0 ([resolved](ATTACHMENT_BUGS_RESOLVED.md#20-m121-a2-tungsten-core-collateral-panel-resolved-part)) |
 | 21 | Adjustable Angled, Full Angled, QD Grip Pod | Mk 24, Z84M (QD Grip Pod also EF88, M16A4, NSW4) | Game error | Adjustable Angled and Full Angled reduce recoil by one step more than on other weapons (2 and 3 steps against 1 and 2). The QD Grip Pod gives 3 steps on these four weapons (and on the BROD 3, RPK-74M and VSSM, recorded before 2.1.1.0, and the NSW4, found in the 19 November re-run of this rule on 2.1.2.0) and 2 on the B36A4 and the rest. The descriptions and costs are unchanged. | Matches game: the stronger steps |
 | 22 | Weapon Precision stat (no attachment) | Interdictor | Game display error | Precision reads 1; other bolt-action rifles read 100. The Interdictor's fallback table row is 0.5 where theirs is 100, and the panel appears to use the fallback row. The keyed row was corrected to 100 in 2.1.1.0 without effect. | Does not match game: shows 100 |
-| 23 | MGO 3.50x; QMK 3.00x | Interdictor; M16A4 | Suspected game error | Since 2.1.1.0, equipping the MGO 3.50x on the Interdictor or the QMK 3.00x on the M16A4 removes the whole Optic Accessory slot. The other scope of the same magnification on each weapon (SDO 3.50x, Baker 3.00x) keeps it. The update removed these scopes from the last accessory lists that named them, one patch after 1.4.3.5 had added them on most weapons. | Matches game: with these two scopes the site offers no Optic Accessory; the SDO 3.50x and Baker 3.00x keep it |
+| 23 | MGO 3.50x; QMK 3.00x; PA-SL 2.50x; 1p87 1.50x; LDS 4.50x | Interdictor, Mk 24; M16A4, Mk 24; SGX; M87A1; UMG-40 | Suspected game error | Equipping one of these scopes on its listed weapon removes the whole Optic Accessory slot: MGO 3.50x (Interdictor, Mk 24), QMK 3.00x (M16A4, Mk 24), PA-SL 2.50x (SGX), 1p87 1.50x (M87A1), LDS 4.50x (UMG-40). Other scopes of the same magnification keep it. No accessory list on the weapon names the scope; 2.1.1.0 removed the first two from the last lists that named them. | Matches game (operator, 13 October and 19 November): with these scopes the site offers no Optic Accessory |
 | 25 | Bipod, deployed | Mk 24, EF88, VSSM, Z84M | Suspected game error | With the bipod deployed, the Mk 24, EF88 and VSSM (Folding Stock) spread indicators grow per shot exactly as undeployed (to 43, 42 and 52 px over 20 auto shots), and the operator confirmed the same on the Z84M in game, while the M277, VCR-2 and M121 A2 hold 14 to 18 px deployed against 38 to 51 px standing. Under the bipod selector, every other bipod-capable automatic weapon binds a hip-dispersion array and an ADS per-shot-increase package as well as the recoil package; the Mk 24, EF88, VSSM and Z84M bind the recoil package only. | Matches game: the Mounted stance deploys the recoil package only on these four, and the bipod and grip pods are marked † with the missing spread benefits |
-| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24, NSW4 | Game error | In semi-auto these four rifles still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 gun-sway files in 2.1.1.0 finds it missing on exactly these four (the NSW4 then unreleased). | Matches game on all four (Mk 24 and NSW4 recorded 19 November; EF88 and BROD 3 verified by the operator in the firing range, no capture): `hipNoBloomOnSwitch` false for the four, true for the rest |
+| 26 | None (semi-auto fire mode) | EF88, BROD 3, Mk 24, NSW4, SGX | Game error | In semi-auto these five weapons still bloom per shot. Every other weapon that offers auto and single binds `GBM_NoIncrease_Semi_P00`, which zeroes the per-shot increase in semi; a survey of all 69 gun-sway files in 2.1.1.0 finds it missing on exactly these four (the NSW4 then unreleased). The SGX binds it, but since 2.1.1.0 its weapon file no longer imports the semi-auto condition the binding is keyed on. | Matches game on all five (SGX verified by the operator 19 November, no capture; Mk 24 and NSW4 recorded 19 November; EF88 and BROD 3 verified by the operator in the firing range, no capture): `hipNoBloomOnSwitch` false for the five, true for the rest |
 | 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. The CQB Suppressor incorrectly receives the Lightened Suppressor recoil benefits. | Matches game: the CQB Suppressor receives the Lightened Suppressor recoil benefits |
 | 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
 | 29 | Match Trigger | M433 | Game error | The Match Trigger does nothing on the M433. Its weapon file points to a shared package whose effect list is empty, where every other weapon holds a working local chain. Slow-fire recordings show no recoil or recovery change on the M433 and a clear one on the NSW4 and B36A4. | Matches game: the M433 override drops the semi-auto effects |
@@ -503,7 +503,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   change weapon behaviour.
 - **Site.** Shows 100, the 2.1.1.0 keyed row value and the value every other bolt-action rifle shows (operator decision, 22 October 2026). The site table in `data/weapon_attributes.json` is from 1.4.3.0, where the keyed row was 1; that one row holds the 2.1.1.0 value of 100 (23 October 2026). The fallback row stays 0.5.
 
-### 23. Interdictor MGO 3.50x and M16A4 QMK 3.00x remove the Optic Accessory slot
+### 23. Scopes that remove the Optic Accessory slot (Interdictor, M16A4, Mk 24, SGX, M87A1, UMG-40)
 
 - **In-game (operator, 13 October 2026, client 2.1.1.0).** With the MGO 3.50x equipped on the
   Interdictor, the Optic Accessory slot is not shown at all; with the SDO 3.50x it offers
@@ -556,12 +556,30 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   anti-glare coating, "Reduces visible cone of scope glint with an anti-reflective coating.";
   magnifier, "Additional high-magnification zoom level with low-magnification sights." None
   states which scopes it can be combined with.
+- **More pairs (19 November 2026, client 2.1.2.0).** The scripted rule (Frosty research
+  `scripts/frosty-bug-rules.py`: a scope most weapons list under an optic accessory is listed
+  under none on this weapon) finds five more pairs, and the operator confirmed in game that each
+  removes the slot (no capture taken):
+
+  | Weapon | Scope | History | Same-magnification scope that keeps the slot |
+  |---|---|---|---|
+  | Mk 24 | MGO 3.50x | never listed (weapon added in 2.1.1.0) | SDO 3.50x |
+  | Mk 24 | QMK 3.00x | never listed (weapon added in 2.1.1.0) | SDO 3.50x |
+  | SGX | PA-SL 2.50x | scope added in 2.1.2.0; every other weapon lists it | - |
+  | M87A1 | 1p87 1.50x | unlisted since at least 1.4.3.5 | GRIM 1.50x, SU-123 1.50x |
+  | UMG-40 | LDS 4.50x | unlisted since at least 1.4.3.5 | PVQ-31 4.00x |
+
+  The rule also flags six M16A4 pairs (A-P2 1.75x, CQ RDS 1.25x, Mini Flex 1.00x, R-MR 1.00x,
+  RO-S 1.25x, ROX 1.50x). They are not counted: the M16A4 leaves out the whole compact red-dot
+  family and every LPVO while listing the larger 1.00x to 1.75x sights, unchanged since
+  1.4.3.5, which reads as a choice for this weapon rather than an omission.
 - **Why it looks like an error.** The change is not in the patch notes, undoes on two weapons
   what the previous patch added on most, and leaves a 10-point scope that silently removes a
   whole slot. The scopes' descriptions are the same as those of the scopes that keep the slot.
 - **Site.** The site lists each optic by name, and the Optic Accessory prerequisites name
   the individual optics the files list
   ([individual optics](../reference-data/provenance/frosty-individual-optics-2026-10-21.json)).
+  The site lists for all six weapons were compared with the 2.1.2.0 files and are identical.
   The MGO 3.50x on the Interdictor and the QMK 3.00x on the M16A4 therefore remove the slot,
   as in game.
 
@@ -643,7 +661,7 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   offers no bipod either.
 - **What would close it.** A patch that adds the two bindings to the four gun-sway files.
 
-### 26. EF88, BROD 3, Mk 24 and NSW4 keep per-shot spread growth in semi-auto
+### 26. EF88, BROD 3, Mk 24, NSW4 and SGX keep per-shot spread growth in semi-auto
 
 - **Status.** Game error.
 
@@ -686,11 +704,17 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   the same as the M433's first automatic shot, both 0.36°) and returns to 8 to 9 px before the
   next shot; semi with Match Trigger never exceeds 9 px. The NSW4 has the same missing binding
   in game, and Match Trigger removes its semi bloom.
+- **SGX (19 November 2026, 2.1.2.0).** A different cause with the same result. `GS_MPX` binds
+  `GBM_NoIncrease_Semi_P00` like the other 35, but the binding is keyed on an identifier defined
+  inside `CMU_SemiAuto`, and `MPX_WB` stopped importing `CMU_SemiAuto` in 2.1.1.0 (Frosty lead
+  L4054; the auto-only L110 lost it too, with no effect). The files cannot show whether the
+  condition is still reached; the operator checked in the firing range and the SGX blooms per
+  shot in semi (no capture taken). Found by the one-by-one check of the binding-key scan.
 - **Interpretation.** Four rifles out of 39 with a selectable semi mode lack the one
   binding that removes semi-auto bloom. The pattern is a missing binding rather than a
   tuning choice.
-- **Site.** `data/weapons.json` stores `hipNoBloomOnSwitch` false for these three and true
-  for the rest, so the site already matches the source (the NSW4 included). Since 19 November 2026 the flag
+- **Site.** `data/weapons.json` stores `hipNoBloomOnSwitch` false for these five and true
+  for the rest, so the site matches the game (the NSW4 included; the SGX set to false on 19 November 2026). Since 19 November 2026 the flag
   zeroes the increase in hip and ADS (before that, hip only, which added the full ADS increase
   in semi on the 35 bound weapons). The field name keeps its original `hip` prefix.
 - **Follow-up verification.** None needed in game: the operator has verified the EF88 and
