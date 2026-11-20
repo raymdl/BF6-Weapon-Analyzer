@@ -711,7 +711,11 @@ For each entry in [ATTACHMENT_BUGS.md](ATTACHMENT_BUGS.md):
    (`--only 2,4` limits it to some entries). For each entry it lists the weapons affected now,
    the newly affected and the no-longer-affected ones against the entry's listed weapons, and
    marks in-game-only parts "manual". Treat any newly or no-longer affected weapon as a
-   candidate for step 5; save the result under `reference-data/provenance/`.
+   candidate for step 5; save the result under `reference-data/provenance/`. The same run
+   writes an `offerChecks` section: it checks that every site choice (attachments and sights)
+   is listed in the weapon's `Equipment_*` file and has a live ability branch, and that nothing
+   listed and live is missing from the site. The expected result is 0 / 0 / 0; any hit is a
+   site-offer difference to look into before the site update.
 5. **Decide the status.**
    - Asset changed and the stored values now agree with the text: resolved, with the build and
      the changed asset.

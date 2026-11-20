@@ -66,6 +66,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 27 | CQB Suppressor | ELR-40 | Game error | The ELR-40 suppressor shows the CQB Suppressor name and description in game, but its source binds the Lightened Suppressor selector (`U_WPM_MZL_ImprvdSuppressor02_W30`, the SV-98 precedent; the sniper CQB Suppressor uses `ImprvdSuppressor01`) with the bolt-action recoil package, and its raw values carry no hipfire penalty. The CQB Suppressor incorrectly receives the Lightened Suppressor recoil benefits. | Matches game: the CQB Suppressor receives the Lightened Suppressor recoil benefits |
 | 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
 | 29 | Match Trigger | M433 | Game error | The Match Trigger does nothing on the M433. Its weapon file points to a shared package whose effect list is empty, where every other weapon holds a working local chain. Slow-fire recordings show no recoil or recovery change on the M433 and a clear one on the NSW4 and B36A4. | Matches game: the M433 override drops the semi-auto effects |
+| 30 | G43 Magnifier (Optic Accessory) | PP-19 | Game error | The magnifier is meant to double the sight's magnification (4.00x on a 2.00x sight). On the PP-19 it gives 3.00x on every sight, because none of its eight magnifier-capable sights carries the key that selects the per-sight zoom, so the magnifier falls back to its default. Present since at least 1.4.2.5. | Not modelled: the site shows no magnifier zoom on any weapon |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](ATTACHMENT_BUGS_METHOD.md#review-method-and-rejected-findings)); numbers are not reused.
@@ -573,6 +574,8 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   RO-S 1.25x, ROX 1.50x). They are not counted: the M16A4 leaves out the whole compact red-dot
   family and every LPVO while listing the larger 1.00x to 1.75x sights, unchanged since
   1.4.3.5, which reads as a choice for this weapon rather than an omission.
+  The operator reads it as intended: the M16A4's optic accessories are canted irons and reflex
+  sights, so a second reflex on top of a small red dot would add nothing.
 - **Why it looks like an error.** The change is not in the patch notes, undoes on two weapons
   what the previous patch added on most, and leaves a 10-point scope that silently removes a
   whole slot. The scopes' descriptions are the same as those of the scopes that keep the slot.
@@ -824,6 +827,34 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
 - **Site.** `match_trigger.weaponOverrides.m433` sets `semiAuto` to null, so the attachment changes
   nothing on the M433. `GAME_BUGS` (ref 29) marks the choice.
 - **Recheck** when a game update changes `HK433_WB` or `WPM_ERG_MatchTrigger_W15`.
+
+### 30. PP-19 G43 Magnifier zooms to 3.00x on every sight
+
+- **Status.** Game error.
+- **In-game (operator recordings, 19 November 2026, client 2.1.2.0).** With the magnifier flipped
+  up on the CCO 2.00x, the view zooms about 2.0 times further on the PW5A3 (the same view as a
+  PVQ-31 4.00x) but only about 1.5 times further on the PP-19. Two measures agree: matching the
+  background between the magnifier-down and magnifier-up views, and the climb of the view over
+  one magazine (256 against 132 px on the PW5A3, 178 against 123 px on the PP-19). Receipt:
+  [magnifier-view-kick-2026-11-19.json](../reference-data/provenance/magnifier-view-kick-2026-11-19.json);
+  clips in `reference-data/Recordings/11192026/Magnifier/`.
+- **Frosty data.** Five packages `WPM_SCA_Magnifier_1x00` to `_2x00` set the magnifier zoom to twice
+  the base sight (2.0x, 2.5x, 3.0x, 3.5x, 4.0x; priority 9001). Each is selected by two keys
+  together: `U_WPM_SCA_EOTechG43` and the sight's `U_WPM_SCP_<n>_MagnifierCompatible`. The default
+  package `WPM_G43Magnifier` needs only the G43 key and sets `Zoom_03x00_PiP` (priority 123). On 61
+  weapons the low-magnification sights carry their compatibility key in `<Weapon>_Ability`. In
+  `PP19_Ability` none of the eight does (the 1.00x to 2.00x sights: OPK7, MeproM22, PG350, XPS3, MRO,
+  VZOR3, Romeo4T, CompM5b), so only the default applies: 3.00x on every sight, which is 3.0 times
+  further on a 1.00x sight and 1.5 times on a 2.00x one. The same missing keys leave the PP-19
+  without `WME_HighZoom_Magnifier_P00` and the five `GCR_Magnifier_*` camera-recoil bindings in
+  `GS_PP19`. The PP-19 is the only weapon that offers the magnifier without the keys, and its files
+  are the same in 1.4.2.5, 1.4.3.0, 1.4.3.5, 2.1.1.0 and 2.1.2.0.
+- **Limits.** The rule that the higher-priority package wins is inferred from the priority values
+  and the selectors, and agrees with the recording; the engine code was not read. One take per
+  condition. The view-kick part could not be measured (take-to-take noise as large as the
+  difference).
+- **Site.** The site folds the magnifier into the Secondary Optic accessory and shows no zoom for
+  it on any weapon, so nothing on the site is wrong; the PP-19 difference is not shown.
 
 ## Description errors
 
