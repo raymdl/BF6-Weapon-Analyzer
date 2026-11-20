@@ -36402,7 +36402,6 @@
         "Spread Inc/Shot",
         "Hipfire Spread"
       ],
-      "suspected": true,
       "note": "The mounted spread benefits aren't applied; only the recoil reduction is."
     },
     {
@@ -36424,7 +36423,6 @@
       "metrics": [
         "Spread Inc/Shot"
       ],
-      "suspected": true,
       "note": "The mounted ADS spread benefit isn't applied; recoil and hipfire spread are."
     },
     {
