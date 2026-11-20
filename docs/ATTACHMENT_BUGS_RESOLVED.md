@@ -8,7 +8,7 @@ Only the resolved part is here.
 | # | Attachment | Weapons | Type | Error | Site status | Resolved in |
 |---|---|---|---|---|---|---|
 | 1 | Slim Angled | PSR, SV-98, L115, Mini Scout, Interdictor, ELR-40 | Game error | The game applies −1 ADS accuracy while moving. The description does not state this penalty. The Slim Angled action selects the Full Angled package in error. | Resolved in 2.1.2.0: Slim Angled now selects the M2010 ESR package (no moving-ADS penalty); confirmed in game (operator, 10 Nov 2026: spread indicator; Mini Scout Mobility 60 with Low-Profile Stubby, 62 Slim Angled, 58 Full Angled) | 2.1.2.0 |
-| 2 | Hollow Point, Frangible, Tungsten Core | M121 A2 | Game error | The game added the FMJ +1 penetration step to these three ammo types, so Hollow Point and Frangible kept the Standard collateral value. | Resolved in 2.1.2.0: the three ammo selectors lost the FMJ step. The M45A1 part is still active ([entry 2](ATTACHMENT_BUGS.md#2-m121-a2-and-m45a1-special-ammo-keep-the-fmj-package)) | 2.1.2.0 |
+| 2 | Hollow Point, Frangible, Tungsten Core | M121 A2 | Game error | The game added the FMJ +1 penetration step to these three ammo types, so Hollow Point and Frangible kept the Standard collateral value. | Resolved in 2.1.2.0: the three ammo selectors lost the FMJ step. The M45A1 part is still active ([entry 2](ATTACHMENT_BUGS.md#2-m45a1-special-ammo-keeps-the-fmj-package)) | 2.1.2.0 |
 | 3 | Slim Angled | SGX, PW5A3, PW7A2, UMG-40, KV9, SCW-10, CZ3A1, PP-19, RSPR | Game error | The description stated increased weapon draw speed. The game did not apply it. | Resolved: the description no longer claims the draw speed (all nine link 263642D4); confirmed in game on the SCW-10 (operator, 10 Nov 2026) | By 2.1.2.0 (build not known) |
 | 7 | 200 Rnd belt box | L110, M123K | Game error | The description states reduced ADS accuracy while moving. The game does not apply it. | Resolved in 2.1.2.0: the description no longer claims the penalty | 2.1.2.0 |
 | 8 | 30 Rnd fast | PW7A2 | Description error | The description stated improved weapon draw speed (Regular magazine text). The game applies faster reload speed (×1.13) and no weapon draw speed change. | Resolved: the description now reads "Standard magazine with mag pull for faster reloads." (operator, in game, 10 Nov 2026) | 2.1.2.0 (patch notes) |
@@ -82,7 +82,7 @@ Only the resolved part is here.
 
 ### 2. M121 A2 special ammo (resolved part)
 
-Resolved in 2.1.2.0 for the M121 A2: its three ammo selectors lost the FMJ step. The M45A1 part is still in the game; see [entry 2](ATTACHMENT_BUGS.md#2-m121-a2-and-m45a1-special-ammo-keep-the-fmj-package), which keeps the shared description, panels and evidence.
+Resolved in 2.1.2.0 for the M121 A2: its three ammo selectors lost the FMJ step. The M45A1 part is still in the game; see [entry 2](ATTACHMENT_BUGS.md#2-m45a1-special-ammo-keeps-the-fmj-package), which keeps the shared description, panels and evidence.
 
 - **2.1.1.0 panels (operator screenshots, 14 October 2026).** M121 A2: Polymer Links
   0.75, Hollow Point 0.75 and Frangible 0.75, still the Standard value. Tungsten Core
