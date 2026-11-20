@@ -36341,6 +36341,20 @@
       "note": "The promised recoil smoothing and recovery aren't applied."
     },
     {
+      "ref": "13",
+      "slot": "ammo",
+      "attachments": [
+        "penetration"
+      ],
+      "weapons": [
+        "miniscout"
+      ],
+      "metrics": [
+        "ADS Recoil/Shot"
+      ],
+      "note": "Adds one more recoil penalty step than on the other bolt-action rifles."
+    },
+    {
       "ref": "16",
       "slot": "sight",
       "attachments": [
@@ -36383,7 +36397,27 @@
       "metrics": [
         "ADS Recoil/Shot"
       ],
-      "suspected": true,
+      "note": "Reduces recoil by one step more than on other weapons."
+    },
+    {
+      "ref": "21",
+      "slot": "grip",
+      "attachments": [
+        "qd_grip_pod"
+      ],
+      "weapons": [
+        "mk24",
+        "z84m",
+        "ef88",
+        "m16a4",
+        "nsw4",
+        "brod3",
+        "rpk74m",
+        "vssm"
+      ],
+      "metrics": [
+        "ADS Recoil/Shot"
+      ],
       "note": "Reduces recoil by one step more than on other weapons."
     },
     {
