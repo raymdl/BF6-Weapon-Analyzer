@@ -370,7 +370,9 @@ is not evidence about GRT-BC firing, because every burst weapon shows it.
   from the operator, not re-read from files here. The same update also changed
   `ProjSimEx_SniperDecoyGameplay` `Field_87611ff9` from 150 to 75.
 - **Site.** The site uses 75 m as the in-world base for these four weapons and 54 m for
-  the others; attachment and ammunition factors multiply it as before.
+  the others, except the NSW4, M45A1 and vz. 61, which store 27 m in-world and 64.29 m on the
+  minimap (2.1.2.0 files). The operator reads those three as having a built-in subsonic effect,
+  so they are not part of this entry; attachment and ammunition factors multiply it as before.
 
 ### 18. Mk 24 Hollow Point costs 5 points
 
@@ -948,8 +950,8 @@ this site.
 - **Other weapons.** L115A3_WB links the same six base parts. This is a source finding
   only; it is not checked in game. The four semi-automatic pistols (P18, ES 5.7,
   GGH-22, M45A1) also use the base parts. The M44, vz. 61 and M357 Trait use the
-  low-riser parts (40), so 55 on the four pistols may also be unintended; not checked in
-  game. The other 57 optics have the same render FOV on every weapon.
+  low-riser parts (40). The operator reads 55 on the four pistols as intended: pistols are
+  held further from the eye, so the optic should look smaller. They are not counted here. The other 57 optics have the same render FOV on every weapon.
 - **Not affected.** RO-M 1.75x (Trijicon MRO): the RPK-74M uses `WPM_SCP_MRO` and
   other weapons use `WPM_SCP_MRO_Tall`, but both have 34. The other RPK-74M optics use
   the same part as the RPKM.
