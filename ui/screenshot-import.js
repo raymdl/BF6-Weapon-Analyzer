@@ -46,8 +46,10 @@ export const imageFromClipboard = e => [...(e.clipboardData?.items ?? [])].find(
  * The drop box shown inside the slot menu once a target slot is picked: paste, drop, or choose a file.
  */
 export function renderDropBox(menu, onImage) {
+  // touch devices (the hover test attachStyledMenu uses) have no Ctrl+V or drag and drop, but can photograph the screen
+  const touch = !(typeof matchMedia === 'function' && matchMedia('(hover: hover)').matches);
   const box = el('div', 'import-drop');
-  const text = el('div', 'import-drop-text', 'Paste a screenshot (Ctrl+V) or drop one here');
+  const text = el('div', 'import-drop-text', touch ? 'Photograph your loadout screen or choose a screenshot' : 'Paste a screenshot (Ctrl+V) or drop one here');
   const input = el('input'); input.type = 'file'; input.accept = 'image/*'; input.hidden = true;
   const choose = el('button', 'share-menu-item import-choose', 'Choose file…'); choose.type = 'button';
   choose.addEventListener('click', e => { e.stopPropagation(); input.click(); });
@@ -60,7 +62,15 @@ export function renderDropBox(menu, onImage) {
     if (f) onImage(f);
   });
   box.append(text, input);
-  menu.append(box, choose);
+  menu.append(box);
+  if (touch) {  // straight from the rear camera
+    const cam = el('input'); cam.type = 'file'; cam.accept = 'image/*'; cam.setAttribute('capture', 'environment'); cam.hidden = true;
+    const shoot = el('button', 'share-menu-item import-choose', 'Take a photo…'); shoot.type = 'button';
+    shoot.addEventListener('click', e => { e.stopPropagation(); cam.click(); });
+    cam.addEventListener('change', () => cam.files[0] && onImage(cam.files[0]));
+    menu.append(cam, shoot);
+  }
+  menu.append(choose);
 }
 
 let dialog = null;
