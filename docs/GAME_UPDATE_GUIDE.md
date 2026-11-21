@@ -971,6 +971,9 @@ Finish the Stage 2 descriptor check and the Stage 7 availability census first.
       weapons were missed until 18 October.)
 12. **Iron-sight drawing.** Once the weapon is in the site data, draw its iron sights
     ("Sight drawings for new weapons and optics" below).
+13. **Screenshot import data.** Once the feature is live, refresh the importer's data so the
+    weapon and its attachments can be read ("Screenshot import data for new weapons and
+    attachments" below).
 
 ### Sight drawings for new weapons and optics
 
@@ -1031,6 +1034,69 @@ this step never blocks the rest of Stage 9, and it runs after the weapon or opti
 
 Model: the main session or one Sonnet 5.5 worker per sight for the drawing; no Frosty run is
 delegated (Workers, "Not delegated"). Check each drawing by eye before it is committed.
+
+### Screenshot import data for new weapons and attachments
+
+The screenshot importer reads a loadout from a screenshot of the game's customisation screen.
+**Status on 20 November 2026:** it is on the branch `feature/screenshot-import` and not live.
+The reader is in `vendor/screenshot-import/` (see its README); its test tooling and test
+screenshots stay in the run folder `builds\2.1.2.0\reports\screenshot-import-prototype-2026-11-20`
+(datamining folder). Skip this section until the feature is live.
+
+The reader has two data files in `vendor/screenshot-import/`: `import-data.json` (weapons,
+choices with points, iron-sight costs, names), built from the site data, and
+`icon-features.json` (the icon library), built from the game's icon atlases. They go stale
+without failing: a weapon missing from them is "not found", and an attachment with a missing
+icon, a changed icon or a changed point cost is read as another attachment or left unread. So
+refresh them on every update that adds, removes or renames a weapon or attachment, changes a
+point cost, or changes what a weapon offers, not only for new content. Like the sight drawings,
+this never blocks the rest of Stage 9. It runs after the site data and the new site-to-game
+mapping file (step 1) are final.
+
+1. **Inputs from the new build** (the icon script takes each as an argument; the defaults are
+   the 2.1.2.0 paths):
+   - `--atlases`: the attachment icon atlases (pages, `sprites.json`, `ad-refs.json`; the
+     2.1.2.0 set is `reports\attachment-icon-atlases-2026-11-20` in the datamining folder),
+     captured again when the update adds attachments or the comparison shows a changed atlas;
+   - `--capture`: the build's capture folder, for the optics' AAM records;
+   - `--mapping`: the new `frosty-site-attachment-mapping-<date>.json` (step 1, research repo);
+   - `--optics`: the current `reference-data/provenance/frosty-individual-optics-<date>.json`;
+   - the site's `data/` as committed.
+2. **Rebuild, in this order:**
+
+   ```bash
+   node scripts/build-screenshot-import-data.mjs
+   python scripts/build-screenshot-import-icons.py --atlases "<atlas folder>" --capture "<capture folder>" --mapping "<mapping file>" --optics "<optics file>"
+   ```
+
+   The first writes `import-data.json` from the site data the way the loadout sidebar lists it
+   (`availableAttachments` and its points in `sim/loadout.js`), so the importer offers exactly
+   what the site offers, Optic Accessory choices included. The second decodes the AAM records
+   for the optics and the optic accessories (cached in
+   `.local-archive/screenshot-import-build/`; delete that folder when the capture changes) and
+   writes `icon-features.json` for those choices. Read the counts each prints.
+3. **Check coverage.** The icon script ends with every site choice that has no icon. On 2.1.2.0
+   that is one: the M1014 8 Rnd magazine. A choice without an icon is still offered by cost and
+   checked by the stat panel, but a new weapon or attachment in that list needs a look at its
+   icon link (the mapping's `uiLink.assets`, or the optic's AAM record). Iron sights are not
+   choices: they have no icon, the main irons are read by cost and position, and the dialog
+   offers a weapon's other irons (M16A4, M4A1, PW7A2, UMG-40) as corrections only.
+   Optic accessories get their icons from the same AAM records (their `OpticAccessory` atlas
+   sprites). The reader treats a tile on the accessory spot, right of the sight in the top row,
+   as an accessory, and no tile elsewhere as one. On 2.1.2.0 every accessory choice has an icon.
+   Two kept test screenshots show an equipped accessory: 43 (L115, Anti-Glare Coating) and 44
+   (M16A4, Canted Iron Sights). They have no recorded text reads, so only the `--real` run checks
+   them.
+4. **Run the reader check** on the kept test screenshots, from the run folder, against the
+   site's reader: set `ENGINE` to the site's `vendor/screenshot-import` folder and run
+   `node web-scratch/test-recognize.mjs`, then again with `--real`. Screenshots taken before the
+   update that show a changed cost or icon no longer read fully; that is expected (the importer
+   supports the current game version only), so drop them from the checked set with the reason
+   and do not add handling for them.
+5. **A new weapon has no test screenshot.** One screenshot of its customisation screen is the
+   only check of its header name and icons; put one row per new weapon on
+   [IN_GAME_CHECKS.md](IN_GAME_CHECKS.md) and import it on the local site when it comes back.
+6. **Commit** the two data files with the header date, as a site change.
 
 ## Stage 10 — Independent review
 

@@ -97,7 +97,8 @@ function openAttachmentMenu(sel, options) {
   // Fixed to the viewport under the select, so the sidebar's scroll box never
   // clips it. A long list scrolls rather than moving; it opens above only
   // when the room below is too small for a useful list and above has more.
-  document.body.appendChild(menu);
+  // inside a modal dialog the list must join it in the top layer, or it opens behind the dialog
+  (sel.closest('dialog[open]') ?? document.body).appendChild(menu);
   const r = sel.getBoundingClientRect();
   const gap = 3, margin = 8;
   const below = window.innerHeight - r.bottom - gap - margin;

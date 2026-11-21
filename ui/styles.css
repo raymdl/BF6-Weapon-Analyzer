@@ -2,7 +2,7 @@
   --bg:#0c0e0e; --bg2:#151a1a; --bg3:#1c2222;
   --accent:#c9a227; --accent2:#4d94d0; --accent3:#de78a6; --accent4:#3fbfae;
   --text:#dde3e3; --muted:#93a3a3; --border:#283030;
-  --green:#56c464; --red:#e05555;
+  --green:#56c464; --red:#e05555; --orange:#f5641e;
   --lock-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 8 0v4'/%3E%3C/svg%3E");
   --unlock-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='4' y='11' width='16' height='10' rx='2'/%3E%3Cpath d='M8 11V7a4 4 0 0 1 7.5-2'/%3E%3C/svg%3E");
   --share-icon:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='18' cy='5' r='3'/%3E%3Ccircle cx='6' cy='12' r='3'/%3E%3Ccircle cx='18' cy='19' r='3'/%3E%3Cline x1='8.6' y1='13.5' x2='15.4' y2='17.5'/%3E%3Cline x1='15.4' y1='6.5' x2='8.6' y2='10.5'/%3E%3C/svg%3E");
@@ -766,7 +766,9 @@ body.rc-plot-expanded{overflow:hidden}
 .att-lock-hint{margin:0 0 6px;padding:5px 7px;border:1px solid rgba(201,162,39,.35);border-radius:3px;background:rgba(201,162,39,.06);color:var(--text)}
 /* Swap and Clone sit beside the compare button; disabled rather than hidden
    while nothing is compared, so the button keeps its width. */
-.cmp-hdr-tools{display:flex;gap:4px}
+.cmp-hdr-tools{display:flex;gap:3px}
+/* four tools (Swap, Copy, Import, Expand) leave "+ Add Weapon" room for one line */
+.cmp-hdr-tools .clone-btn{width:24px}
 /* Swap and Copy's weapon menu, for three or four weapons. */
 .cmp-hdr-tools{position:relative}
 .slot-menu{min-width:176px}
@@ -778,6 +780,64 @@ body.rc-plot-expanded{overflow:hidden}
 /* The source takes its weapon's colour and a light tint. */
 .slot-menu .share-menu-item.is-source,.slot-menu .share-menu-item.is-source:hover{background:color-mix(in srgb,var(--src) 14%,transparent);color:var(--src)}
 .slot-menu .share-menu-item[aria-disabled="true"]{opacity:.4}
+/* Screenshot import: the drop box in the slot menu, then the review dialog */
+.import-drop{margin:3px 4px 2px;padding:14px 10px;border:1px dashed var(--border);border-radius:4px;color:var(--muted);font-size:0.68rem;letter-spacing:.03em;text-align:center;line-height:1.4}
+.import-drop.over{border-color:var(--accent);color:var(--text)}
+.slot-menu .import-choose{display:block;text-align:center}
+.import-dialog{width:min(1040px,calc(100vw - 32px));height:min(620px,calc(100dvh - 32px));max-width:none;max-height:none;margin:auto;padding:0;border:1px solid var(--border);border-radius:8px;background:var(--bg2);color:var(--text);overflow:hidden}
+.import-dialog:not([open]){display:none}
+.import-dialog[open]{display:flex;flex-direction:column}
+.import-dialog::backdrop{background:rgba(0,0,0,.8)}
+.import-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 12px;border-bottom:1px solid var(--border);flex-shrink:0}
+.import-title{font-size:0.66rem;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;font-weight:700}
+/* the target slot is a picker in the title's own type, coloured like the slot, with the rows' chevron */
+.import-title .import-target-sel{appearance:none;-webkit-appearance:none;field-sizing:content;font:inherit;letter-spacing:inherit;text-transform:inherit;margin:0 0 0 -5px;padding:1px 20px 1px 5px;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 3.5l3 3 3-3' fill='none' stroke='%2393a3a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 5px center/9px;border:1px solid transparent;border-radius:4px;cursor:pointer}
+.import-title .import-target-sel:hover,.import-title .import-target-sel:focus,.import-title .import-target-sel[aria-expanded="true"]{border-color:var(--border);background-color:var(--bg2)}
+.import-title .import-target-sel option{color:var(--text);background:var(--bg2);text-transform:none}
+.import-close{display:grid;place-items:center;width:28px;height:26px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--text);font-size:1rem;line-height:1}
+.import-body{flex:1;min-height:0;display:flex}
+.import-shot{flex:1;min-width:0;padding:12px;display:flex;align-items:center;justify-content:center;background:var(--bg)}
+.import-shot canvas{max-width:100%;max-height:100%;display:block;border-radius:3px}
+.import-side{width:340px;flex-shrink:0;border-left:1px solid var(--border);overflow-y:auto;padding:10px 12px;display:flex;flex-direction:column;gap:8px}
+.import-status{color:var(--muted);font-size:0.72rem;line-height:1.5}
+.import-status[hidden]{display:none}
+.import-weapon{font-size:0.78rem;font-weight:700;letter-spacing:.3px}
+.import-weapon:empty,.import-warns:empty{display:none}
+.import-weapon{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.import-weapon .import-total{margin-top:0}
+.import-total.c2:not(.over){color:var(--accent2)} .import-total.c3:not(.over){color:var(--accent3)} .import-total.c4:not(.over){color:var(--accent4)}
+/* rows share the list's columns, so a long label (Laser / Light) widens the label column for all of them */
+.import-list{display:grid;grid-template-columns:14px minmax(74px,max-content) minmax(0,1fr);column-gap:8px;row-gap:4px}
+.import-row{grid-column:1 / -1;display:grid;grid-template-columns:subgrid;column-gap:8px;row-gap:1px;align-items:center;background:var(--bg3);border-radius:4px;padding:3px 7px}
+.import-num{grid-column:1;grid-row:1;font-size:0.68rem;font-weight:700;color:var(--accent)}
+.import-slot{grid-column:2;grid-row:1;font-size:.65rem;color:var(--muted);text-transform:uppercase;letter-spacing:.7px;white-space:nowrap}
+.import-name{grid-column:3;grid-row:1;font-size:0.72rem;font-weight:700;letter-spacing:.3px;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.import-note{grid-column:3;grid-row:2;font-size:.65rem;color:var(--muted)}
+.import-note[hidden]{display:none}
+.import-row .import-sel{grid-column:3;grid-row:1;justify-self:start;field-sizing:content;max-width:calc(100% + 6px);appearance:none;-webkit-appearance:none;margin:0 0 0 -6px;padding:1px 22px 1px 5px;background:transparent url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 10'%3E%3Cpath d='M2 3.5l3 3 3-3' fill='none' stroke='%2393a3a3' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") no-repeat right 6px center/10px;border:1px solid transparent;color:var(--text);font-size:0.72rem;font-weight:700;letter-spacing:.3px;text-overflow:ellipsis}
+.import-row .import-sel:hover,.import-row .import-sel:focus,.import-row .import-sel[aria-expanded="true"]{border-color:var(--border);background-color:var(--bg2)}
+.import-row.is-unclear:not(.is-changed) .import-sel{color:var(--muted);font-weight:400}
+.import-row.is-empty:not(.is-changed) .import-sel,.import-from{color:var(--muted);font-weight:400}
+.import-row.is-empty .import-from{grid-column:3;grid-row:1}
+.import-sel[hidden],.import-from[hidden]{display:none}
+.import-row.is-unclear .import-num,.import-row.is-zero .import-num{color:var(--red)}
+.import-row.is-panel .import-num{color:var(--orange)}
+.import-row.is-unclear .import-name{color:var(--muted);font-weight:400}
+.import-warns{display:flex;flex-direction:column;gap:5px;border-bottom:1px solid var(--border);padding-bottom:8px}
+.import-warn{font-size:.68rem;color:var(--muted);line-height:1.45}
+.import-foot{display:flex;justify-content:flex-end;gap:8px;padding:8px 12px;border-top:1px solid var(--border);flex-shrink:0}
+.import-cancel{min-height:34px;padding:0 14px;background:var(--bg3);border:1px solid var(--border);border-radius:4px;color:var(--muted);font-size:.78rem;letter-spacing:.03em}
+.import-cancel:hover{color:var(--text);border-color:var(--muted)}
+.import-apply:disabled{opacity:.4;cursor:not-allowed;filter:none}
+@media (max-width:700px){
+  .import-body{flex-direction:column}
+  .import-shot{flex:0 0 38%}
+  .import-side{width:auto;flex:1;border-left:0;border-top:1px solid var(--border)}
+  /* the target picker always on its own second line, so the header keeps one height whatever the gun name */
+  .import-head{align-items:flex-start}
+  .import-title{flex:1 1 0;min-width:0}
+  .import-title .import-target-sel{display:block;max-width:calc(100% + 5px);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
 /* Weapons 3 and 4 take their colour from --slot-c, set on their section. */
 .wslot .cmp-hdr{color:var(--slot-c)}
 .wslot .cbtn:hover,.wslot .cbtn.on{border-color:var(--slot-c);color:var(--slot-c);background:color-mix(in srgb,var(--slot-c) 10%,transparent)}

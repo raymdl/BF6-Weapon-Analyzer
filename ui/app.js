@@ -16,6 +16,7 @@ import {
 } from '../sim/core.js';
 import { setAttachmentContext, applyAttachments, applyBareWeapon, attachmentContributions, floorStatDisplay, wLabel, applyDeployedState, hasDeployable } from '../sim/applyAttachments.js';
 import { captureView, captureFilename } from './capture.js';
+import { renderDropBox, importScreenshot, importDialogOpen, imageFromClipboard } from './screenshot-import.js';
 import { damageAtRange, damagePerShotAtRange, bulletsToKillAtRange, zoneMultiplierForWeapon, resolveHitMultipliers } from '../sim/damage.js';
 import * as Loadout from '../sim/loadout.js';
 import { createShareCodec, TARGET_DEFAULT_DISTANCE } from '../sim/share-state.js';
@@ -1331,18 +1332,23 @@ function renderSlotPicker() {
   const menu = document.getElementById('slotMenu');
   const { mode, from } = slotPicker;
   const count = shownSlotCount();
-  const rows = [...Array(count).keys()];
-  if (mode === 'copy' && count < MAX_SLOTS) rows.push(count);
+  const importing = mode === 'import';
+  let rows = [...Array(count).keys()];
+  // a new slot is not offered on the Firing Range, where only Weapon 1 fires and compare weapons are held
+  if ((mode === 'copy' || (importing && state.recoil.view !== 'range')) && count < MAX_SLOTS) rows.push(count);
+  // Import: pick the target, then the screenshot (unless one was pasted already)
+  if (importing && from !== null) rows = [from];
   const verb = mode === 'swap' ? 'Swap' : 'Copy';
   menu.textContent = '';
   const head = document.createElement('div');
   head.className = 'slot-menu-head';
-  head.textContent = from === null ? `${verb}: pick a weapon` : `${verb} Weapon ${from + 1} ${mode === 'swap' ? 'with' : 'to'}…`;
+  head.textContent = importing ? (from !== null ? 'Import screenshot to' : 'Import screenshot to…')
+    : from === null ? `${verb}: pick a weapon` : `${verb} Weapon ${from + 1} ${mode === 'swap' ? 'with' : 'to'}…`;
   menu.appendChild(head);
   rows.forEach(i => {
     const weapon = i < count ? state.slots[i].weapon : null;
-    const enabled = from === null ? !!weapon
-      : i === from || mode === 'copy' || !!weapon;
+    const enabled = importing || (from === null ? !!weapon
+      : i === from || mode === 'copy' || !!weapon);
     const item = document.createElement('button');
     item.type = 'button';
     item.className = 'share-menu-item' + (i === from ? ' is-source' : '');
@@ -1366,6 +1372,49 @@ function renderSlotPicker() {
     });
     menu.appendChild(item);
   });
+  if (importing && from !== null) renderDropBox(menu, blob => { closeSlotMenu(); runScreenshotImport(blob, from); });
+}
+/** The slots a screenshot can go to: each shown weapon, and a new slot where one can be added (as in the slot menu). */
+function importTargets() {
+  const count = shownSlotCount();
+  const targets = [...Array(count).keys()].map(i => ({ to: i, label: `Weapon ${i + 1}`, cls: `c${i + 1}`,
+    gun: state.slots[i].weapon ? weaponDisplayLabel(state.slots[i].weapon) : 'Empty' }));
+  if (state.recoil.view !== 'range' && count < MAX_SLOTS) targets.push({ to: count, label: `Weapon ${count + 1}`, cls: `c${count + 1}`, gun: 'New' });
+  return targets;
+}
+/** A paste's starting target, least destructive first: an empty shown slot, else a new one, else Weapon 1. */
+function defaultImportTarget() {
+  const targets = importTargets();
+  return (targets.find(t => t.gun === 'Empty') ?? targets.find(t => t.gun === 'New') ?? targets[0]).to;
+}
+/** Read a loadout screenshot for slot `to` (a new slot when `to` is past the shown ones); the dialog can change it. */
+let importTarget = 0;  // the slot the open review dialog is for; follows the dialog's picker
+function runScreenshotImport(blob, to) {
+  importTarget = to;
+  importScreenshot(blob, { targets: importTargets(), target: to, onTarget: t => { importTarget = t; },
+    apply: (weaponId, picks) => applyImportedLoadout(importTarget, weaponId, picks) });
+}
+function applyImportedLoadout(to, weaponId, picks) {
+  const w = W.find(x => x.id === weaponId);
+  if (!w || (to >= shownSlotCount() && state.recoil.view === 'range')) return;
+  if (to >= shownSlotCount()) {
+    if (!state.comparing) { state.slotCount = 2; setComparing(true); }
+    else state.slotCount = to + 1;
+  }
+  const slot = state.slots[to];
+  slot.cls = w.cls;
+  slot.weapon = w;
+  // the weapon's defaults with the read attachments fitted (a shared laser/light rail included)
+  slot.atts = Loadout.blankAtts();
+  Loadout.carryAttsToWeapon(slot.atts, w, LOADOUT_DATA, Object.fromEntries(picks.map(p => [p.slot, p.id])));
+  // The screenshot is the whole set, so any locks from before are let go.
+  slot.locked = {};
+  saveLocks(to);
+  slot.savedName = null;
+  slot.folded = false;
+  renderSidebar();
+  renderStats();
+  if (to >= 1) scrollToSlot(to);
 }
 function openSlotPicker(btn, mode) {
   const menu = document.getElementById('slotMenu');
@@ -1391,6 +1440,29 @@ function onCopyClick(e) {
   if (!filled.length) return;
   if (shownSlotCount() === 1) { closeSlotMenu(); copySlot(0, 1); }
   else openSlotPicker(e.currentTarget, 'copy');
+}
+function onImportClick(e) {
+  e.stopPropagation();
+  openSlotPicker(e.currentTarget, 'import');
+}
+/** Ctrl+V with an image anywhere on the page: into the slot already picked, else straight into the dialog with a
+ *  slot that overwrites nothing if there is one (the dialog's picker changes it). */
+function onImportPaste(e) {
+  if (e.target.closest?.('input, textarea, [contenteditable]')) return;
+  const blob = imageFromClipboard(e);
+  const btn = document.getElementById('importShotBtn');
+  if (!blob || !btn) return;
+  e.preventDefault();
+  // with the review dialog open, a new paste replaces its screenshot for the same slot
+  if (importDialogOpen()) { runScreenshotImport(blob, importTarget); return; }
+  if (slotPicker?.mode === 'import' && slotPicker.from !== null) {
+    const to = slotPicker.from;
+    closeSlotMenu();
+    runScreenshotImport(blob, to);
+    return;
+  }
+  closeSlotMenu();
+  runScreenshotImport(blob, defaultImportTarget());
 }
 function syncSlotMenuButtons() {
   closeSlotMenu();
@@ -4884,6 +4956,8 @@ function bindEvents() {
   document.getElementById('cloneLoadoutBtn').addEventListener('click', onCopyClick);
   bindChartTableHover();
   document.getElementById('swapLoadoutBtn')?.addEventListener('click', onSwapClick);
+  document.getElementById('importShotBtn')?.addEventListener('click', onImportClick);
+  document.addEventListener('paste', onImportPaste);
   document.addEventListener('click', e => {
     if (!document.getElementById('slotMenu')?.contains(e.target)) closeSlotMenu();
   });
