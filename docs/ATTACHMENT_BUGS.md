@@ -69,6 +69,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
 | 29 | Match Trigger | M433 | Game error | The Match Trigger does nothing on the M433. Its weapon file points to a shared package whose effect list is empty, where every other weapon holds a working local chain. Slow-fire recordings show no recoil or recovery change on the M433 and a clear one on the NSW4 and B36A4. | Matches game: the M433 override drops the semi-auto effects |
 | 30 | G43 Magnifier (Optic Accessory) | PP-19 | Game error | The magnifier is meant to double the sight's magnification (4.00x on a 2.00x sight). On the PP-19 it gives 3.00x on every sight, because none of its eight magnifier-capable sights carries the key that selects the per-sight zoom, so the magnifier falls back to its default. | Not modelled: the site shows no magnifier zoom on any weapon |
+| 31 | 8 Rnd magazine (8 Shell Tube) | M1014 | Visual error | The attachment tile shows no icon. Its UI record names no icon in the magazine icon atlas, where the M1014's other three magazines each name one. | Not modelled: the site shows no attachment icons |
 | 32 | Second "Full Auto" Ergo tile (0 points) | VSSM | Menu error | 2.1.2.0 added a second, 0-point "Full Auto" tile to the Ergo row. It is the VSSM's default stock record, with the Full Auto name, icon and description, and it has no effect: it duplicates the existing None slot. | Not offered: the site's None Ergo choice gives the same stats |
 
 Entry 5 was removed on 14 October 2026 (see
@@ -1015,6 +1016,37 @@ listed as an error. The site labels it "Iron Sights" and gives it a 1.50× magni
 sets the Soldier Target zoom. The M4A1, PW7A2, M16A4 and UMG-40 have two iron sights, listed under
 their in-game names (Flip-Up Irons, Carry Handle Irons, Aperture Sight, CQB Sights) with the same
 zoom and sway reduction.
+
+### 31. M1014 8 Rnd magazine has no tile icon
+
+- **In-game.** The magazine list shows the 8 Rnd tile (in-game name "8 Shell Tube", 35 points)
+  with no icon, locked or unlocked. Locked, it shows only the padlock, where a locked
+  attachment normally still shows its icon (operator screenshot, 20 November 2026). Unlocked,
+  the tile is blank apart from its cost and name, next to the 6 Rnd, 4 Rnd and 4 Fast tiles
+  with their icons (screenshot from a player with it unlocked, 20 November 2026).
+- **Frosty (2.1.2.0).** Each attachment's UI description record (`AD_*`) holds two icon
+  references: a layered-icon sprite (`Field_f0aecf83`) and the slot tile icon
+  (`Field_651ab360`, an index into the slot's icon atlas). The M1014 magazine records:
+
+  | Magazine | UI record | Tile icon (`Field_651ab360`) | Layered icon (`Field_f0aecf83`) |
+  |---|---|---|---|
+  | 4 Rnd | `ad_m1014_mag_005cpt1` | `Magazine_IconAtlas` 67 | `M1014_LayeredIconAtlas` 4 |
+  | 4 Fast | `ad_m1014_mag_005cpt2` | `Magazine_IconAtlas` 67 | `M1014_LayeredIconAtlas` 4 |
+  | 6 Rnd | `ad_m1014_mag_007regular` | `Magazine_IconAtlas` 68 | `M1014_LayeredIconAtlas` 5 |
+  | 8 Rnd | `ad_m1014_mag_009ext1` | **no atlas, index 0** | `M1014_LayeredIconAtlas` 6 |
+
+  The attachment is linked normally: the M1014 attachment record `M1014 - Extended 1` in
+  `AAM_M1014` imports `ad_m1014_mag_009ext1`. Only the tile icon reference is empty. It is
+  the only site choice on any weapon with no tile icon (checked 20 November 2026 by
+  `scripts/build-screenshot-import-icons.py` over all 68 weapons). Source: the attachment
+  icon atlas export `builds\2.1.2.0\reports\attachment-icon-atlases-2026-11-20\ad-refs.json`
+  (datamining folder).
+- **Probable fix.** Point the record's tile icon at a magazine atlas sprite, as the other
+  three M1014 magazines do.
+- **Site.** Not modelled: the site shows no attachment icons. The screenshot importer reads
+  the 8 Rnd by its point cost, which no other M1014 magazine shares, and the stat panel
+  confirms it.
+- **Recheck** after a game update that changes the M1014 magazines or the magazine atlas.
 
 ## Source data inconsistencies
 
