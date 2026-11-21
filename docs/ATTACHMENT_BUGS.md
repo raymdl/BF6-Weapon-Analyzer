@@ -19,6 +19,8 @@ Each entry is one of these types:
   property; in-game timing shows which value the game uses.
 - **Game display error**: the stat panel shows a value that the game does not apply, or a
   wrong value for a stat with no gameplay effect.
+- **Menu error**: the attachment menu offers an entry that should not be there, such as a
+  duplicate of another choice. Stats are not affected.
 
 Descriptions that leave out an effect that the game applies consistently are not
 errors. They are in [Accepted text](ATTACHMENT_BUGS_METHOD.md#accepted-text).
@@ -67,6 +69,7 @@ affected stat and adds a one-line footnote; the detail stays in this file.
 | 28 | Burst Training | KORD 6P67, SG 553R, PW5A3, UMG-40, KV9, CZ3A1 | Suspected game error | Equipping Burst Training reverses the fire-mode cycle: Auto → Burst → Single becomes Single → Burst → Auto. All six use the same base order and attachment modifier, which sets Burst as primary and Auto, Single as alternates. Intended cycle order is not confirmed. | Not modelled: in-game fire-mode cycle order |
 | 29 | Match Trigger | M433 | Game error | The Match Trigger does nothing on the M433. Its weapon file points to a shared package whose effect list is empty, where every other weapon holds a working local chain. Slow-fire recordings show no recoil or recovery change on the M433 and a clear one on the NSW4 and B36A4. | Matches game: the M433 override drops the semi-auto effects |
 | 30 | G43 Magnifier (Optic Accessory) | PP-19 | Game error | The magnifier is meant to double the sight's magnification (4.00x on a 2.00x sight). On the PP-19 it gives 3.00x on every sight, because none of its eight magnifier-capable sights carries the key that selects the per-sight zoom, so the magnifier falls back to its default. | Not modelled: the site shows no magnifier zoom on any weapon |
+| 32 | Second "Full Auto" Ergo tile (0 points) | VSSM | Menu error | 2.1.2.0 added a second, 0-point "Full Auto" tile to the Ergo row. It is the VSSM's default stock record, with the Full Auto name, icon and description, and it has no effect: it duplicates the existing None slot. | Not offered: the site's None Ergo choice gives the same stats |
 
 Entry 5 was removed on 14 October 2026 (see
 [rejected findings](ATTACHMENT_BUGS_METHOD.md#review-method-and-rejected-findings)); numbers are not reused.
@@ -915,6 +918,31 @@ the panel and comes from source data.
 | Weapon | Magazine | In-game text | Relative to default | Incorrect part |
 |---|---|---|---|---|
 | KTS100 MK8 | 50 Rnd (default 60 Rnd) | "Wide magazine for improved handling at the cost of capacity." | Reload +1, sway ×0.667; ADS, draw and ADS movement unchanged | "improved handling" (only reload and sway improve) |
+
+## Menu errors
+
+### 32. VSSM Ergo row has a second "Full Auto" tile
+
+- **In-game (2.1.2.0).** The VSSM Ergo row shows the empty None tile, Mag Catch (5 points) and two
+  "Full Auto" tiles with the same icon, at 40 and 0 points. The 0-point one is titled "Folding Stock" with
+  the text "Allows the weapon to be used aggressively, increasing overall rate of fire but reducing
+  controllability." With it equipped the panel shows ROF 450, the bare weapon's single-fire rate
+  (operator screenshot, 20 November 2026).
+- **Frosty (2.1.2.0).** The tile is `Attachment_VSSM_ERG_None` (0 points). The record, its UI record
+  `AD_VSSM_ERG_None` and its `AAM_VSSM` entry ("VSSM - None") are new in 2.1.2.0; in 2.1.1.0
+  `Equipment_VSSM` listed Full Auto only. Its unlock `U_PRG_VSSM_ERG_None` is the weapon's default Ergo
+  unlock and attaches only the stock mesh `U_ATT_VSSM_Stock`. It has no modifier package, so the weapon stays single
+  fire at 449.999 RPM. The UI record reuses the Full Auto name (`737CF0F0`), description (`D4A9BAC0`) and
+  tile icon (`MagazineWell_IconAtlas` 19), and the AAM entry has the Full Auto title "Folding Stock". The
+  40-point Full Auto (`U_WPM_ERG_FullAutoReplaceVSSM_W50`) adds auto fire at 800 RPM and sets single fire
+  to 400 RPM.
+- **Error.** The tile should not be in the menu. The empty None tile, which every weapon has, already
+  gives the bare weapon, so this record duplicates it, and its copied name and description wrongly
+  promise a higher rate of fire. Equipping it gives the same stats as no Ergo. Source: Frosty receipt
+  [frosty-2026-11-20-vssm-erg-none-full-auto-label.json](https://github.com/raymdl/BF6-Frosty-Research/blob/main/reference-data/provenance/frosty-2026-11-20-vssm-erg-none-full-auto-label.json).
+- **Site.** Not offered: the site's None Ergo choice already gives the same result, so a second entry
+  would duplicate it. The screenshot importer should read a 0-point "Full Auto" VSSM Ergo tile as None.
+- **Recheck** after a game update that changes the VSSM Ergo records.
 
 ## Visual errors
 
