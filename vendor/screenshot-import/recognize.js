@@ -186,7 +186,11 @@ export function createRecognizer({ cv, ocr, features, data, simulate, fastCosts 
     const keep = top < 0.2 ? new Uint8Array(W * H) : Uint8Array.from(m);  // sight crop only: multi-part icons (ammo) need every part
     for (let i = 1; i < n; i++) {  // tile-border specks at the crop edge stretch the icon box
       const [x0, y0, w0, h0, a0] = st[i];
-      if (a0 < 6 && (x0 === 0 || y0 === 0 || x0 + w0 === W || y0 + h0 === H)) for (let p = 0; p < W * H; p++) if (lab[p] === i) keep[p] = 0;
+      const speck = a0 < 6 && (x0 === 0 || y0 === 0 || x0 + w0 === W || y0 + h0 === H);
+      // something bright behind the tile showing through its edge (the light streak across the top row): icons end
+      // well above the crop's bottom edge and never run down its right edge
+      const streak = top >= 0.2 && (y0 + h0 === H || (x0 + w0 === W && h0 > 0.8 * H));
+      if (speck || streak) for (let p = 0; p < W * H; p++) if (lab[p] === i) keep[p] = 0;
     }
     if (n > 1 && top < 0.2) {  // keep strokes near the largest one: drops leader-line fragments crossing the tile
       let big = 1, bv = -Infinity;
